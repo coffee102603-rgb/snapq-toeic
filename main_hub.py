@@ -315,6 +315,8 @@ def load_css():
     .stApp { background: #0A0C15 !important; }
     #MainMenu, footer, header { visibility: hidden; }
     .block-container { padding: 0 8px 40px 8px !important; max-width: 100% !important; margin: 0 auto !important; }
+    div[data-testid="stVerticalBlock"] > div { gap: 0 !important; margin: 0 !important; padding: 0 !important; }
+    iframe { display: block !important; margin: 0 !important; padding: 0 !important; }
 
     /* 상단 배너 - 형광 반짝 테두리 */
     .top-banner {
@@ -927,18 +929,27 @@ def _mk_card(cls, title, s1b, s1l, s1svg, s2b, s2l, s2svg, s3mot):
 _GO_STYLE = """
 <style>
 .card{position:relative;overflow:hidden;}
-@keyframes goPulse{0%,100%{box-shadow:0 0 8px rgba(255,255,255,0.6),0 0 16px rgba(255,220,0,0.4);}50%{box-shadow:0 0 16px rgba(255,255,255,1),0 0 32px rgba(255,220,0,0.8);}}
-.go-btn{
-  position:absolute;right:10px;top:50%;transform:translateY(-50%);
-  background:linear-gradient(135deg,rgba(255,180,0,0.85),rgba(255,80,0,0.85));
-  border:2.5px solid rgba(255,255,255,0.9);
-  border-radius:12px;color:#fff;font-size:22px;font-weight:900;
-  width:52px;height:70%;min-height:50px;max-height:80px;
-  cursor:pointer;display:flex;align-items:center;justify-content:center;
-  animation:goPulse 1.5s ease-in-out infinite;
-  text-shadow:0 0 8px rgba(255,200,0,0.8);
+@keyframes goPulse{
+  0%,100%{box-shadow:0 0 10px #ff8800,0 0 20px #ff4400,0 0 40px rgba(255,100,0,0.4);border-color:rgba(255,200,0,0.9);}
+  50%{box-shadow:0 0 20px #ffcc00,0 0 40px #ff8800,0 0 80px rgba(255,150,0,0.7);border-color:#fff;}
 }
-.go-btn:active{transform:translateY(-50%) scale(0.93);}
+@keyframes goShine{
+  0%{background-position:200% center;}
+  100%{background-position:-200% center;}
+}
+.go-btn{
+  position:absolute;right:8px;top:50%;transform:translateY(-50%);
+  background:linear-gradient(270deg,#ff6600,#ffcc00,#ff3300,#ffaa00);
+  background-size:300% 300%;
+  animation:goPulse 1.2s ease-in-out infinite, goShine 2s linear infinite;
+  border:2.5px solid rgba(255,220,100,0.95);
+  border-radius:14px;color:#fff;font-size:24px;
+  width:56px;height:75%;min-height:52px;max-height:84px;
+  cursor:pointer;display:flex;align-items:center;justify-content:center;
+  text-shadow:0 0 10px rgba(255,255,100,1),0 0 20px rgba(255,150,0,0.8);
+  filter:drop-shadow(0 0 6px rgba(255,150,0,0.8));
+}
+.go-btn:active{transform:translateY(-50%) scale(0.9);filter:brightness(1.3);}
 </style>
 """
 
@@ -958,7 +969,7 @@ if _p5_go:
     st.session_state.phase = "lobby"
     st.session_state._p5_active = False
     st.switch_page("pages/02_P5_Arena.py")
-st.markdown('<div style="height:3px"></div>', unsafe_allow_html=True)
+
 
 # ── P7 ──
 _hc.html(_CSS + _GO_STYLE + _mk_card("p7c","📖 P7 전장",
@@ -976,7 +987,7 @@ if _p7_go:
     if "p7_phase" in st.session_state:
         st.session_state.p7_phase = "lobby"
     st.switch_page("pages/04_P7_Reading.py")
-st.markdown('<div style="height:3px"></div>', unsafe_allow_html=True)
+
 
 # ── 역전장 ──
 _hc.html(_CSS + _GO_STYLE + _mk_card("arc","🗡️ 역전장",
@@ -992,7 +1003,7 @@ _hc.html(_CSS + _GO_STYLE + _mk_card("arc","🗡️ 역전장",
 _arm_go = st.button("ARM_GO", key="armory_btn")
 if _arm_go:
     st.switch_page("pages/03_역전장.py")
-st.markdown('<div style="height:3px"></div>', unsafe_allow_html=True)
+
 
 # ── 하단 박스 2개 ──
 _adm_go = st.button("ADMIN_GO", key="admin_go_btn")
