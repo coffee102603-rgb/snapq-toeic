@@ -1,6 +1,6 @@
 """
 SnapQ TOEIC V2 - Main Hub
-게이미피케이션 디자인
+??????? ???
 """
 
 import streamlit as st
@@ -8,7 +8,7 @@ import os
 from datetime import datetime
 
 # Config
-# config 제거됨
+# config ???
 
 # V1 Core
 from app.core.access_guard import require_access
@@ -16,22 +16,22 @@ from app.core.pretest_gate import require_pretest_gate
 from app.core.attendance_engine import mark_attendance_once, has_attended_today
 from app.core.battle_state import load_profile
 
-# 페이지 설정
+# ??? ??
 st.set_page_config(page_title='SnapQ TOEIC', page_icon='?', layout='centered', initial_sidebar_state='collapsed')
 
-# CSS 로드 + 새로운 스타일
+# CSS ?? + ??? ???
 def load_all_css():
-    # 기존 CSS
+    # ?? CSS
     css_files = ["styles/global.css", "styles/mobile.css", "styles/components.css"]
     for css_file in css_files:
         if os.path.exists(css_file):
             with open(css_file, "r", encoding="utf-8") as f:
                 st.markdown(f"<style>{f.read()}</style>", unsafe_allow_html=True)
     
-    # 메인 허브 전용 CSS
+    # ?? ?? ?? CSS
     st.markdown("""
     <style>
-    /* 헤더 고정 */
+    /* ?? ?? */
     .main-header {
         background: rgba(26, 31, 46, 0.95);
         backdrop-filter: blur(10px);
@@ -83,7 +83,7 @@ def load_all_css():
         color: #FFFFFF;
     }
     
-    /* READY 타이틀 애니메이션 */
+    /* READY ??? ????? */
     .ready-title {
         text-align: center;
         padding: 40px 0;
@@ -110,7 +110,7 @@ def load_all_css():
         50% { transform: scale(1.05); }
     }
     
-    /* 전장 카드 */
+    /* ?? ?? */
     .arena-card {
         height: 200px;
         border-radius: 20px;
@@ -180,7 +180,7 @@ def load_all_css():
         border-radius: 999px;
     }
     
-    /* 서브 메뉴 */
+    /* ?? ?? */
     .sub-menu {
         display: grid;
         grid-template-columns: 1fr 1fr;
@@ -199,7 +199,7 @@ def load_all_css():
         border: 1px solid rgba(255, 255, 255, 0.1);
     }
     
-    /* 모바일 최적화 */
+    /* ??? ??? */
     @media (max-width: 768px) {
         .ready-text { font-size: 42px; }
         .arena-emoji { font-size: 70px; }
@@ -211,34 +211,34 @@ def load_all_css():
 
 load_all_css()
 
-# 로그인 체크
+# ??? ??
 nickname = require_access()
 require_pretest_gate()
 
-# 프로필 로드
+# ??? ??
 if "profile" not in st.session_state:
     st.session_state.profile = load_profile()
 
 profile = st.session_state.profile
 
-# 출석 체크
+# ?? ??
 attended_today = has_attended_today(nickname)
 if not attended_today:
-    if st.button("?? 출석하기", key="attend_btn"):
+    if st.button("?? ????", key="attend_btn"):
         mark_attendance_once(nickname)
-        st.success("출석 완료! ?? +10 XP")
+        st.success("?? ??! ?? +10 XP")
         st.rerun()
 
-# 헤더
+# ??
 st.markdown(f"""
 <div class="main-header">
     <div class="header-title">?? {nickname}</div>
-    <div class="header-subtitle">HACKERS · SnapQ TOEIC · Battle Commander</div>
+    <div class="header-subtitle">HACKERS ? SnapQ TOEIC ? Battle Commander</div>
     <div class="header-badges">
         <span class="badge {'badge-attend-done' if attended_today else 'badge-attend-need'}">
-            {'? ATTEND · DONE' if attended_today else '?? ATTEND · NEED'}
+            {'? ATTEND ? DONE' if attended_today else '?? ATTEND ? NEED'}
         </span>
-        <span class="badge badge-mission">?? MISSION · READY</span>
+        <span class="badge badge-mission">?? MISSION ? READY</span>
         <span class="badge" style="background: rgba(255,255,255,0.1);">
             ? XP: {profile.get('xp', 0)}
         </span>
@@ -249,21 +249,21 @@ st.markdown(f"""
 </div>
 """, unsafe_allow_html=True)
 
-# READY 타이틀
+# READY ???
 st.markdown("""
 <div class="ready-title">
     <div class="ready-text">?? READY</div>
-    <div class="lobby-text">SnapQ TOEIC · BATTLE LOBBY</div>
+    <div class="lobby-text">SnapQ TOEIC ? BATTLE LOBBY</div>
 </div>
 """, unsafe_allow_html=True)
 
-# P5 TIMEBOMB 카드
+# P5 TIMEBOMB ??
 st.markdown("""
 <div class="arena-card arena-card-p5">
     <div class="arena-emoji">??</div>
     <div class="arena-title">P5 TIMEBOMB</div>
-    <div class="arena-subtitle">40초 문법 전투</div>
-    <div class="arena-hint">터치하여 입장</div>
+    <div class="arena-subtitle">40? ?? ??</div>
+    <div class="arena-hint">???? ??</div>
 </div>
 """, unsafe_allow_html=True)
 
@@ -272,44 +272,44 @@ if st.button("", key="p5_arena", use_container_width=True, help="P5 Timebomb Are
     st.session_state._p5_active = False
     st.switch_page("pages/02_P5_Timebomb_Arena.py")
 
-# P7 READING 카드
+# P7 READING ??
 st.markdown("""
 <div class="arena-card arena-card-p7">
     <div class="arena-emoji">??</div>
     <div class="arena-title">P7 READING</div>
-    <div class="arena-subtitle">60초 독해 전투</div>
-    <div class="arena-hint">터치하여 입장</div>
+    <div class="arena-subtitle">60? ?? ??</div>
+    <div class="arena-hint">???? ??</div>
 </div>
 """, unsafe_allow_html=True)
 
 if st.button("", key="p7_arena", use_container_width=True, help="P7 Reading Arena"):
     st.switch_page("pages/01_P7_Reading_Arena.py")
 
-# 저장고 카드
+# ??? ??
 st.markdown("""
 <div class="arena-card arena-card-armory">
     <div class="arena-emoji">??</div>
-    <div class="arena-title">저장고</div>
-    <div class="arena-subtitle">P5 학습 · VOCA 웨이브 · 콤보러시</div>
-    <div class="arena-hint">터치하여 입장</div>
+    <div class="arena-title">???</div>
+    <div class="arena-subtitle">P5 ?? ? VOCA ??? ? ????</div>
+    <div class="arena-hint">???? ??</div>
 </div>
 """, unsafe_allow_html=True)
 
-if st.button("", key="armory", use_container_width=True, help="저장고"):
+if st.button("", key="armory", use_container_width=True, help="???"):
     st.session_state.sg_phase = "lobby"
     st.switch_page("pages/03_Secret_Armory_Main.py")
 
-# 서브 메뉴 (관리자 접근)
+# ?? ?? (??? ??)
 col_stats, col_p4 = st.columns(2)
 
 with col_stats:
-    if st.button("?? STATS (관리자)", key="stats_admin", use_container_width=True):
+    if st.button("?? STATS (???)", key="stats_admin", use_container_width=True):
         st.switch_page("pages/01_Admin.py")
 
 with col_p4:
-    st.button("?? P4 준비중", key="p4_soon", use_container_width=True, disabled=True)
+    st.button("?? P4 ???", key="p4_soon", use_container_width=True, disabled=True)
 
-st.stop()  # 아래 서브 메뉴 HTML은 표시 안 함
+st.stop()  # ?? ?? ?? HTML? ?? ? ?
 st.markdown("""
 <div class="sub-menu">
     <div class="sub-card">
@@ -318,17 +318,17 @@ st.markdown("""
     </div>
     <div class="sub-card">
         <div style="font-size: 32px;">??</div>
-        <div style="font-size: 16px; font-weight: 700; color: #FFFFFF;">P4 준비중</div>
+        <div style="font-size: 16px; font-weight: 700; color: #FFFFFF;">P4 ???</div>
     </div>
 </div>
 """, unsafe_allow_html=True)
 
-# 푸터
+# ??
 st.markdown("<br><br>", unsafe_allow_html=True)
 st.markdown("""
 <div style="text-align: center; padding: 20px; color: rgba(255,255,255,0.5);">
     <p style="font-size: 14px;">
-        SnapQ TOEIC V2 | Made with ?? by Battle Commander 최정은
+        SnapQ TOEIC V2 | Made with ?? by Battle Commander ???
     </p>
 </div>
 """, unsafe_allow_html=True)
