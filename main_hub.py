@@ -924,59 +924,60 @@ def _mk_card(cls, title, s1b, s1l, s1svg, s2b, s2l, s2svg, s3mot):
 </div>"""
 
 # ── P5 ──
-col_p5, col_p5_btn = st.columns([8, 1])
-with col_p5:
-    _hc.html(_CSS + _mk_card("p5c","⚡ P5 전장",
-        _p5_s1_big,_p5_s1_lbl,_p5_rate_svg if not _is_first else "",
-        _p5_s2_big,_p5_s2_lbl,_p5_cnt_svg if not _is_first else "",_p5_s3) + """
+_hc.html(_CSS + _mk_card("p5c","⚡ P5 전장",
+    _p5_s1_big,_p5_s1_lbl,_p5_rate_svg if not _is_first else "",
+    _p5_s2_big,_p5_s2_lbl,_p5_cnt_svg if not _is_first else "",_p5_s3) + """
+<style>
+.card{position:relative;}
+.go-btn{position:absolute;right:8px;top:50%;transform:translateY(-50%);
+  background:rgba(0,0,0,0.45);border:2px solid rgba(255,255,255,0.7);
+  border-radius:10px;color:#fff;font-size:18px;font-weight:900;
+  width:44px;height:60px;cursor:pointer;display:flex;align-items:center;justify-content:center;}
+</style>
+<button class="go-btn" onclick="parent.window.parent.document.querySelectorAll('button').forEach(b=>{if((b.innerText||'').trim()==='P5_GO')b.click()})">▶</button>
 <script>
 (function(){
   var h=window.innerWidth<=480?70:window.innerWidth<=768?100:140;
   document.querySelector('.card').style.height=h+'px';
 })();
 </script>""", height=140)
-with col_p5_btn:
-    if st.button("▶", key="p5_btn", use_container_width=True):
-        st.session_state.phase = "lobby"
-        st.session_state._p5_active = False
-        st.switch_page("pages/02_P5_Arena.py")
-st.markdown('<div style="margin-bottom:2px;"></div>', unsafe_allow_html=True)
+_p5_go = st.button("P5_GO", key="p5_btn")
+if _p5_go:
+    st.session_state.phase = "lobby"
+    st.session_state._p5_active = False
+    st.switch_page("pages/02_P5_Arena.py")
 
 # ── P7 ──
-col_p7, col_p7_btn = st.columns([8, 1])
-with col_p7:
-    _hc.html(_CSS + _mk_card("p7c","📖 P7 전장",
-        _p7_s1_big,_p7_s1_lbl,_p7_rate_svg if not _is_first else "",
-        _p7_s2_big,_p7_s2_lbl,_p7_cnt_svg if not _is_first else "",_p7_s3) + """
+_hc.html(_CSS + _mk_card("p7c","📖 P7 전장",
+    _p7_s1_big,_p7_s1_lbl,_p7_rate_svg if not _is_first else "",
+    _p7_s2_big,_p7_s2_lbl,_p7_cnt_svg if not _is_first else "",_p7_s3) + """
+<button class="go-btn" onclick="parent.window.parent.document.querySelectorAll('button').forEach(b=>{if((b.innerText||'').trim()==='P7_GO')b.click()})">▶</button>
 <script>
 (function(){
   var h=window.innerWidth<=480?70:window.innerWidth<=768?100:140;
   document.querySelector('.card').style.height=h+'px';
 })();
 </script>""", height=140)
-with col_p7_btn:
-    if st.button("▶", key="p7_btn", use_container_width=True):
-        if "p7_phase" in st.session_state:
-            st.session_state.p7_phase = "lobby"
-        st.switch_page("pages/04_P7_Reading.py")
-st.markdown('<div style="margin-bottom:2px;"></div>', unsafe_allow_html=True)
+_p7_go = st.button("P7_GO", key="p7_btn")
+if _p7_go:
+    if "p7_phase" in st.session_state:
+        st.session_state.p7_phase = "lobby"
+    st.switch_page("pages/04_P7_Reading.py")
 
 # ── 역전장 ──
-col_arm, col_arm_btn = st.columns([8, 1])
-with col_arm:
-    _hc.html(_CSS + _mk_card("arc","🗡️ 역전장",
-        _arm_s1_big,_arm_s1_lbl,_arm_p5_svg if not _is_first else "",
-        _arm_s2_big,_arm_s2_lbl,_arm_vc_svg if not _is_first else "",_arm_s3) + """
+_hc.html(_CSS + _mk_card("arc","🗡️ 역전장",
+    _arm_s1_big,_arm_s1_lbl,_arm_p5_svg if not _is_first else "",
+    _arm_s2_big,_arm_s2_lbl,_arm_vc_svg if not _is_first else "",_arm_s3) + """
+<button class="go-btn" onclick="parent.window.parent.document.querySelectorAll('button').forEach(b=>{if((b.innerText||'').trim()==='ARM_GO')b.click()})">▶</button>
 <script>
 (function(){
   var h=window.innerWidth<=480?70:window.innerWidth<=768?100:140;
   document.querySelector('.card').style.height=h+'px';
 })();
 </script>""", height=140)
-with col_arm_btn:
-    if st.button("▶", key="armory_btn", use_container_width=True):
-        st.switch_page("pages/03_역전장.py")
-st.markdown('<div style="margin-bottom:2px;"></div>', unsafe_allow_html=True)
+_arm_go = st.button("ARM_GO", key="armory_btn")
+if _arm_go:
+    st.switch_page("pages/03_역전장.py")
 
 # ── 하단 박스 2개 ──
 _adm_go = st.button("ADMIN_GO", key="admin_go_btn")
@@ -1016,7 +1017,8 @@ function goAdmin(){
 }
 function hideBtn(){
   window.parent.document.querySelectorAll('button').forEach(b=>{
-    if((b.innerText||'').trim()==='ADMIN_GO'){
+    const t=(b.innerText||'').trim();
+    if(t==='ADMIN_GO'||t==='P5_GO'||t==='P7_GO'||t==='ARM_GO'){
       const w=b.closest('[data-testid="stButton"]');
       if(w) w.style.cssText='position:absolute;opacity:0;pointer-events:none;height:0;overflow:hidden;';
     }
