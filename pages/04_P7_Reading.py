@@ -142,10 +142,10 @@ button[kind="secondary"] p{font-size:1.6rem!important;font-weight:900!important;
 
 /* P7 지문 카드 */
 .p7-pass{background:linear-gradient(145deg,#13112a,#1a1535);border:2px solid rgba(155,89,182,0.7);border-radius:18px;padding:1.5rem;margin:0.5rem 0;box-shadow:0 0 20px rgba(155,89,182,0.15);}
-.p7-sent{color:#e8e8f0;font-size:1.69rem;font-weight:700;line-height:1.7;}
-.p7-new{color:#c49fff;font-weight:900;font-size:1.69rem;}
+.p7-sent{color:#e8e8f0;font-size:clamp(0.85rem,3vw,1rem);font-weight:700;line-height:1.7;}
+.p7-new{color:#c49fff;font-weight:900;font-size:clamp(0.85rem,3vw,1rem);}
 .p7-qbox{background:linear-gradient(145deg,#1e1040,#2a1555);border:2px solid rgba(155,89,182,0.8);border-radius:18px;padding:1.5rem;margin:0.5rem 0;box-shadow:0 0 15px rgba(155,89,182,0.2);}
-.p7-q{color:#ffffff;font-size:1.98rem;font-weight:800;line-height:1.8;}
+.p7-q{color:#ffffff;font-size:clamp(0.85rem,3vw,1rem);font-weight:800;line-height:1.8;}
 
 /* 진행 표시 */
 .p7-step{text-align:center;font-size:1.2rem;font-weight:900;color:#44ffcc;margin:0.3rem 0;}
@@ -853,12 +853,12 @@ elif st.session_state.p7_phase == "battle":
     st.markdown(f'<div style="background:{pass_bg};border:2px solid {pass_border};border-radius:14px;padding:0.8rem 1rem;margin:0.3rem 0;box-shadow:{pass_shadow};transition:border-color 1s,background 1s;">{pass_html}</div>', unsafe_allow_html=True)
 
     # 질문 - [Q1] 형식 + 최소 패딩
-    st.markdown(f'<div style="background:linear-gradient(145deg,#1a0a20,#2a1030);border:2px solid rgba(255,255,255,0.55);border-radius:14px;padding:0.6rem 1rem;margin:0.3rem 0;text-align:center;"><div style="color:#ffcc00;font-size:1.7rem;font-weight:900;line-height:1.6;">[Q{step+1}] {cur["question"]}</div></div>', unsafe_allow_html=True)
+    st.markdown(f'<div style="background:linear-gradient(145deg,#1a0a20,#2a1030);border:2px solid rgba(255,255,255,0.55);border-radius:14px;padding:0.6rem 1rem;margin:0.3rem 0;text-align:center;"><div style="color:#ffcc00;font-size:clamp(0.9rem,3.5vw,1.3rem);font-weight:900;line-height:1.6;">[Q{step+1}] {cur["question"]}</div></div>', unsafe_allow_html=True)
 
     # 선택지 - 2x2 격자 (공간 절약)
     st.markdown("""<style>
-    button[kind="primary"]{font-size:1.49rem!important;padding:0.4rem 0.3rem!important;min-height:46px!important;border-radius:8px!important;font-weight:900!important;line-height:1.2!important;color:#ffffff!important;margin:0!important;}
-    button[kind="primary"] p{font-size:1.49rem!important;font-weight:900!important;line-height:1.2!important;white-space:normal!important;word-break:break-word!important;}
+    button[kind="primary"]{font-size:clamp(0.8rem,3vw,1rem)!important;padding:0.4rem 0.3rem!important;min-height:46px!important;border-radius:8px!important;font-weight:900!important;line-height:1.2!important;color:#ffffff!important;margin:0!important;}
+    button[kind="primary"] p{font-size:clamp(0.8rem,3vw,1rem)!important;font-weight:900!important;line-height:1.2!important;white-space:normal!important;word-break:break-word!important;}
     </style>""", unsafe_allow_html=True)
     st.markdown("""<style>.stVerticalBlock{gap:0!important;}.stHorizontalBlock{gap:4px!important;}
     div[data-testid="stVerticalBlock"] > div:nth-child(1) button[kind="primary"]{background:#2d1b4e!important;border:2.5px solid #9b59b6!important;}
