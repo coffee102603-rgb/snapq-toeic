@@ -4,6 +4,48 @@ import streamlit.components.v1 as components
 from streamlit_autorefresh import st_autorefresh
 import random, time, json, os
 
+# ═══ GOOGLE SHEETS 연동 ═══
+def save_to_sheets(record):
+    """연구 데이터를 Google Sheets에 저장"""
+    try:
+        import gspread
+        from google.oauth2.service_account import Credentials
+        scopes = ["https://www.googleapis.com/auth/spreadsheets"]
+        creds_dict = dict(st.secrets["gcp_service_account"])
+        creds = Credentials.from_service_account_info(creds_dict, scopes=scopes)
+        gc = gspread.authorize(creds)
+        spreadsheet_id = st.secrets["SPREADSHEET_ID"]
+        sh = gc.open_by_key(spreadsheet_id)
+        ws = sh.sheet1
+        # 헤더가 없으면 추가
+        if ws.row_count == 0 or ws.cell(1,1).value is None:
+            headers = ["session_id","timestamp","player_id","player_type","category",
+                      "timer_sec","result","total_score",
+                      "step1_qtype","step1_correct","step1_sec",
+                      "step2_qtype","step2_correct","step2_sec",
+                      "step3_qtype","step3_correct","step3_sec","step3_type_guess"]
+            ws.append_row(headers)
+        steps = record.get("steps", [])
+        def sv(steps, i, key, default=""):
+            return steps[i].get(key, default) if i < len(steps) else default
+        row = [
+            record.get("session_id",""),
+            record.get("timestamp",""),
+            record.get("player_id",""),
+            record.get("player_type",""),
+            record.get("category",""),
+            record.get("timer_sec",""),
+            record.get("result",""),
+            record.get("total_score",""),
+            sv(steps,0,"q_type"), sv(steps,0,"correct"), sv(steps,0,"response_sec"),
+            sv(steps,1,"q_type"), sv(steps,1,"correct"), sv(steps,1,"response_sec"),
+            sv(steps,2,"q_type"), sv(steps,2,"correct"), sv(steps,2,"response_sec"),
+            sv(steps,2,"type_guess_correct",""),
+        ]
+        ws.append_row(row)
+    except Exception as e:
+        pass  # 조용히 실패 (학생 화면에 오류 노출 안 함)
+
 st.set_page_config(page_title="P7 Reading ⚔️", page_icon="📖", layout="wide", initial_sidebar_state="collapsed")
 
 # ═══ STORAGE ═══
@@ -18,11 +60,15 @@ def load_research_data():
     return []
 
 def save_research_record(record):
-    """플레이 1회 기록을 누적 저장 (논문용)"""
-    data = load_research_data()
-    data.append(record)
-    with open(RESEARCH_FILE, "w", encoding="utf-8") as f:
-        json.dump(data, f, ensure_ascii=False, indent=2)
+    """플레이 1회 기록을 누적 저장 (논문용) + Google Sheets"""
+    try:
+        data = load_research_data()
+        data.append(record)
+        with open(RESEARCH_FILE, "w", encoding="utf-8") as f:
+            json.dump(data, f, ensure_ascii=False, indent=2)
+    except:
+        pass
+    save_to_sheets(record)
 
 def build_research_record(result):
     """현재 세션 데이터로 논문용 레코드 생성"""
