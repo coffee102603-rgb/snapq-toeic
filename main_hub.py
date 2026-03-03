@@ -1,26 +1,23 @@
 """
 SnapQ TOEIC V2 - Main Hub
-게이미피케이션 디자인
-"""
+게이미피케?�션 ?�자??"""
 
 import streamlit as st
 import os
 from datetime import datetime
 
 # Config
-# config 제거됨
-
+# config ?�거??
 # V1 Core
 from app.core.access_guard import require_access
 from app.core.pretest_gate import require_pretest_gate
 from app.core.attendance_engine import mark_attendance_once, has_attended_today
 from app.core.battle_state import load_profile
 
-# 페이지 설정
+# ?�이지 ?�정
 st.set_page_config(page_title='SnapQ TOEIC', page_icon='?', layout='centered', initial_sidebar_state='collapsed')
 
-# CSS 로드 + 새로운 스타일
-def load_all_css():
+# CSS 로드 + ?�로???��???def load_all_css():
     # 기존 CSS
     css_files = ["styles/global.css", "styles/mobile.css", "styles/components.css"]
     for css_file in css_files:
@@ -28,10 +25,10 @@ def load_all_css():
             with open(css_file, "r", encoding="utf-8") as f:
                 st.markdown(f"<style>{f.read()}</style>", unsafe_allow_html=True)
     
-    # 메인 허브 전용 CSS
+    # 메인 ?�브 ?�용 CSS
     st.markdown("""
     <style>
-    /* 헤더 고정 */
+    /* ?�더 고정 */
     .main-header {
         background: rgba(26, 31, 46, 0.95);
         backdrop-filter: blur(10px);
@@ -83,7 +80,7 @@ def load_all_css():
         color: #FFFFFF;
     }
     
-    /* READY 타이틀 애니메이션 */
+    /* READY ?�?��? ?�니메이??*/
     .ready-title {
         text-align: center;
         padding: 40px 0;
@@ -110,7 +107,7 @@ def load_all_css():
         50% { transform: scale(1.05); }
     }
     
-    /* 전장 카드 */
+    /* ?�장 카드 */
     .arena-card {
         height: 200px;
         border-radius: 20px;
@@ -180,7 +177,7 @@ def load_all_css():
         border-radius: 999px;
     }
     
-    /* 서브 메뉴 */
+    /* ?�브 메뉴 */
     .sub-menu {
         display: grid;
         grid-template-columns: 1fr 1fr;
@@ -199,7 +196,7 @@ def load_all_css():
         border: 1px solid rgba(255, 255, 255, 0.1);
     }
     
-    /* 모바일 최적화 */
+    /* 모바??최적??*/
     @media (max-width: 768px) {
         .ready-text { font-size: 42px; }
         .arena-emoji { font-size: 70px; }
@@ -211,11 +208,11 @@ def load_all_css():
 
 load_all_css()
 
-# 로그인 체크
+# 로그??체크
 nickname = require_access()
 require_pretest_gate()
 
-# 프로필 로드
+# ?�로??로드
 if "profile" not in st.session_state:
     st.session_state.profile = load_profile()
 
@@ -224,12 +221,12 @@ profile = st.session_state.profile
 # 출석 체크
 attended_today = has_attended_today(nickname)
 if not attended_today:
-    if st.button("?? 출석하기", key="attend_btn"):
+    if st.button("?? 출석?�기", key="attend_btn"):
         mark_attendance_once(nickname)
-        st.success("출석 완료! ?? +10 XP")
+        st.success("출석 ?�료! ?? +10 XP")
         st.rerun()
 
-# 헤더
+# ?�더
 st.markdown(f"""
 <div class="main-header">
     <div class="header-title">?? {nickname}</div>
@@ -249,7 +246,7 @@ st.markdown(f"""
 </div>
 """, unsafe_allow_html=True)
 
-# READY 타이틀
+# READY ?�?��?
 st.markdown("""
 <div class="ready-title">
     <div class="ready-text">?? READY</div>
@@ -262,8 +259,8 @@ st.markdown("""
 <div class="arena-card arena-card-p5">
     <div class="arena-emoji">??</div>
     <div class="arena-title">P5 TIMEBOMB</div>
-    <div class="arena-subtitle">40초 문법 전투</div>
-    <div class="arena-hint">터치하여 입장</div>
+    <div class="arena-subtitle">40�?문법 ?�투</div>
+    <div class="arena-hint">?�치?�여 ?�장</div>
 </div>
 """, unsafe_allow_html=True)
 
@@ -277,29 +274,29 @@ st.markdown("""
 <div class="arena-card arena-card-p7">
     <div class="arena-emoji">??</div>
     <div class="arena-title">P7 READING</div>
-    <div class="arena-subtitle">60초 독해 전투</div>
-    <div class="arena-hint">터치하여 입장</div>
+    <div class="arena-subtitle">60�??�해 ?�투</div>
+    <div class="arena-hint">?�치?�여 ?�장</div>
 </div>
 """, unsafe_allow_html=True)
 
 if st.button("", key="p7_arena", use_container_width=True, help="P7 Reading Arena"):
     st.switch_page("pages/01_P7_Reading_Arena.py")
 
-# 저장고 카드
+# ?�?�고 카드
 st.markdown("""
 <div class="arena-card arena-card-armory">
     <div class="arena-emoji">??</div>
-    <div class="arena-title">저장고</div>
-    <div class="arena-subtitle">P5 학습 · VOCA 웨이브 · 콤보러시</div>
-    <div class="arena-hint">터치하여 입장</div>
+    <div class="arena-title">?�?�고</div>
+    <div class="arena-subtitle">P5 ?�습 · VOCA ?�이�?· 콤보?�시</div>
+    <div class="arena-hint">?�치?�여 ?�장</div>
 </div>
 """, unsafe_allow_html=True)
 
-if st.button("", key="armory", use_container_width=True, help="저장고"):
+if st.button("", key="armory", use_container_width=True, help="?�?�고"):
     st.session_state.sg_phase = "lobby"
     st.switch_page("pages/03_Secret_Armory_Main.py")
 
-# 서브 메뉴 (관리자 접근)
+# ?�브 메뉴 (관리자 ?�근)
 col_stats, col_p4 = st.columns(2)
 
 with col_stats:
@@ -309,8 +306,7 @@ with col_stats:
 with col_p4:
     st.button("?? P4 준비중", key="p4_soon", use_container_width=True, disabled=True)
 
-st.stop()  # 아래 서브 메뉴 HTML은 표시 안 함
-st.markdown("""
+st.stop()  # ?�래 ?�브 메뉴 HTML?� ?�시 ????st.markdown("""
 <div class="sub-menu">
     <div class="sub-card">
         <div style="font-size: 32px;">??</div>
@@ -323,15 +319,17 @@ st.markdown("""
 </div>
 """, unsafe_allow_html=True)
 
-# 푸터
+# ?�터
 st.markdown("<br><br>", unsafe_allow_html=True)
 st.markdown("""
 <div style="text-align: center; padding: 20px; color: rgba(255,255,255,0.5);">
     <p style="font-size: 14px;">
-        SnapQ TOEIC V2 | Made with ?? by Battle Commander 최정은
+        SnapQ TOEIC V2 | Made with ?? by Battle Commander 최정?�
     </p>
 </div>
 """, unsafe_allow_html=True)
+
+
 
 
 
