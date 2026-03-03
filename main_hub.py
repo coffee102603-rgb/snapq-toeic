@@ -928,6 +928,7 @@ def _mk_card(cls, title, s1b, s1l, s1svg, s2b, s2l, s2svg, s3mot):
 </div>"""
 
 # ── 공통 go-btn 스타일 ──
+st.markdown('<div style="height:6px"></div>', unsafe_allow_html=True)
 _GO_STYLE = """
 <style>
 .card{position:relative;overflow:hidden;}
