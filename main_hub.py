@@ -584,15 +584,16 @@ def load_css():
     div[data-testid="stButton"] { margin: 0 !important; }
     div.stButton > button {
         background: rgba(0,0,0,0.3) !important;
-        border: 3px solid rgba(255,255,255,0.7) !important;
-        border-radius: 16px !important;
+        border: 2px solid rgba(255,255,255,0.7) !important;
+        border-radius: 10px !important;
         color: #fff !important;
-        font-size: 18px !important;
+        font-size: 14px !important;
         font-weight: 900 !important;
-        height: 60px !important;
+        height: 140px !important;
         cursor: pointer !important;
-        letter-spacing: 2px !important;
+        letter-spacing: 1px !important;
         text-shadow: 0 2px 6px rgba(0,0,0,0.5) !important;
+        padding: 0 !important;
     }
     div.stButton > button:hover {
         background: rgba(0,0,0,0.5) !important;
@@ -677,8 +678,8 @@ def load_css():
         .hub-teacher-photo { width: 40px; height: 40px; }
         .arena-icon-title { font-size: 15px; }
         .arena-enter-btn { font-size: 13px; padding: 12px 8px; min-width: 44px; }
-        div.stButton > button { font-size: 13px !important; height: 44px !important; border-width: 2px !important; border-radius: 10px !important; letter-spacing: 1px !important; }
-        div.stButton > button p { font-size: 13px !important; }
+        div.stButton > button { font-size: 11px !important; height: 70px !important; border-width: 1.5px !important; border-radius: 8px !important; letter-spacing: 0px !important; padding: 0 !important; }
+        div.stButton > button p { font-size: 11px !important; }
     }
     </style>
     """, unsafe_allow_html=True)
@@ -923,59 +924,59 @@ def _mk_card(cls, title, s1b, s1l, s1svg, s2b, s2l, s2svg, s3mot):
 </div>"""
 
 # ── P5 ──
-col_p5, col_p5_btn = st.columns([5, 1])
+col_p5, col_p5_btn = st.columns([8, 1])
 with col_p5:
     _hc.html(_CSS + _mk_card("p5c","⚡ P5 전장",
         _p5_s1_big,_p5_s1_lbl,_p5_rate_svg if not _is_first else "",
         _p5_s2_big,_p5_s2_lbl,_p5_cnt_svg if not _is_first else "",_p5_s3) + """
 <script>
 (function(){
-  var h=window.innerWidth<=480?90:window.innerWidth<=768?120:160;
+  var h=window.innerWidth<=480?70:window.innerWidth<=768?100:140;
   document.querySelector('.card').style.height=h+'px';
 })();
-</script>""", height=160)
+</script>""", height=140)
 with col_p5_btn:
-    if st.button("출격", key="p5_btn", use_container_width=True):
+    if st.button("▶", key="p5_btn", use_container_width=True):
         st.session_state.phase = "lobby"
         st.session_state._p5_active = False
         st.switch_page("pages/02_P5_Arena.py")
-st.markdown('<div style="margin-bottom:4px;"></div>', unsafe_allow_html=True)
+st.markdown('<div style="margin-bottom:2px;"></div>', unsafe_allow_html=True)
 
 # ── P7 ──
-col_p7, col_p7_btn = st.columns([5, 1])
+col_p7, col_p7_btn = st.columns([8, 1])
 with col_p7:
     _hc.html(_CSS + _mk_card("p7c","📖 P7 전장",
         _p7_s1_big,_p7_s1_lbl,_p7_rate_svg if not _is_first else "",
         _p7_s2_big,_p7_s2_lbl,_p7_cnt_svg if not _is_first else "",_p7_s3) + """
 <script>
 (function(){
-  var h=window.innerWidth<=480?90:window.innerWidth<=768?120:160;
+  var h=window.innerWidth<=480?70:window.innerWidth<=768?100:140;
   document.querySelector('.card').style.height=h+'px';
 })();
-</script>""", height=160)
+</script>""", height=140)
 with col_p7_btn:
-    if st.button("출격", key="p7_btn", use_container_width=True):
+    if st.button("▶", key="p7_btn", use_container_width=True):
         if "p7_phase" in st.session_state:
             st.session_state.p7_phase = "lobby"
         st.switch_page("pages/04_P7_Reading.py")
-st.markdown('<div style="margin-bottom:4px;"></div>', unsafe_allow_html=True)
+st.markdown('<div style="margin-bottom:2px;"></div>', unsafe_allow_html=True)
 
 # ── 역전장 ──
-col_arm, col_arm_btn = st.columns([5, 1])
+col_arm, col_arm_btn = st.columns([8, 1])
 with col_arm:
     _hc.html(_CSS + _mk_card("arc","🗡️ 역전장",
         _arm_s1_big,_arm_s1_lbl,_arm_p5_svg if not _is_first else "",
         _arm_s2_big,_arm_s2_lbl,_arm_vc_svg if not _is_first else "",_arm_s3) + """
 <script>
 (function(){
-  var h=window.innerWidth<=480?90:window.innerWidth<=768?120:160;
+  var h=window.innerWidth<=480?70:window.innerWidth<=768?100:140;
   document.querySelector('.card').style.height=h+'px';
 })();
-</script>""", height=160)
+</script>""", height=140)
 with col_arm_btn:
-    if st.button("출격", key="armory_btn", use_container_width=True):
+    if st.button("▶", key="armory_btn", use_container_width=True):
         st.switch_page("pages/03_역전장.py")
-st.markdown('<div style="margin-bottom:4px;"></div>', unsafe_allow_html=True)
+st.markdown('<div style="margin-bottom:2px;"></div>', unsafe_allow_html=True)
 
 # ── 하단 박스 2개 ──
 _adm_go = st.button("ADMIN_GO", key="admin_go_btn")
@@ -985,16 +986,16 @@ if _adm_go:
 _hc.html("""
 <style>
 *{box-sizing:border-box;margin:0;padding:0;font-family:-apple-system,sans-serif;}
-.row{display:flex;gap:12px;padding:4px 0 12px;}
-.box{flex:1;border-radius:14px;padding:14px 0;display:flex;flex-direction:column;
-     align-items:center;justify-content:center;gap:5px;}
+.row{display:flex;gap:8px;padding:2px 0 6px;}
+.box{flex:1;border-radius:10px;padding:6px 0;display:flex;flex-direction:column;
+     align-items:center;justify-content:center;gap:3px;}
 .box-p4{background:rgba(255,255,255,0.05);border:1.5px solid rgba(255,255,255,0.1);cursor:default;}
 .box-adm{background:rgba(255,255,255,0.07);border:1.5px solid rgba(255,255,255,0.18);
          cursor:pointer;transition:background 0.2s;}
 .box-adm:hover{background:rgba(255,255,255,0.15);}
 .box-adm:active{background:rgba(255,255,255,0.22);}
-.ico{font-size:1.3rem;}
-.lbl{font-size:0.78rem;font-weight:700;color:rgba(255,255,255,0.45);}
+.ico{font-size:0.9rem;}
+.lbl{font-size:0.6rem;font-weight:700;color:rgba(255,255,255,0.45);}
 .lbl-adm{color:rgba(255,255,255,0.65);}
 </style>
 <div class="row">
@@ -1024,4 +1025,4 @@ function hideBtn(){
 setTimeout(hideBtn,100);setTimeout(hideBtn,600);
 new MutationObserver(hideBtn).observe(window.parent.document.body,{childList:true,subtree:true});
 </script>
-""", height=90)
+""", height=50)
