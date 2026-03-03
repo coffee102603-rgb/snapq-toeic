@@ -165,13 +165,13 @@ button[kind="secondary"] p{font-size:1.6rem!important;font-weight:900!important;
 .p7-ban-l{background:linear-gradient(135deg,#550000,#aa0000);color:#fff;border:2px solid rgba(255,255,255,0.55);}
 @media(max-width:768px){
 .block-container{padding-left:0.6rem!important;padding-right:0.6rem!important;}
-button[kind="primary"],button[kind="secondary"]{font-size:1.6rem!important;padding:0.9rem 1rem!important;}
-button[kind="primary"] p,button[kind="secondary"] p{font-size:1.6rem!important;}
-.p7-sent{font-size:1.5rem!important;}.p7-new{font-size:1.55rem!important;}
-.p7-q{font-size:1.45rem!important;}.p7-pass,.p7-qbox{padding:1.1rem!important;}
-.p7-br-s{font-size:1.6rem!important;}.p7-br-hl{font-size:1.7rem!important;}
-.p7-br-kr{font-size:1.2rem!important;}.p7-br-ex{font-size:1.1rem!important;}
-.p7-hud-l{font-size:1.1rem!important;}.p7-hud-r{font-size:0.95rem!important;}
+button[kind="primary"],button[kind="secondary"]{font-size:1rem!important;padding:0.6rem 0.7rem!important;}
+button[kind="primary"] p,button[kind="secondary"] p{font-size:1rem!important;}
+.p7-sent{font-size:1rem!important;}.p7-new{font-size:1.05rem!important;}
+.p7-q{font-size:1rem!important;}.p7-pass,.p7-qbox{padding:0.8rem!important;}
+.p7-br-s{font-size:1.05rem!important;}.p7-br-hl{font-size:1.1rem!important;}
+.p7-br-kr{font-size:0.9rem!important;}.p7-br-ex{font-size:0.85rem!important;}
+.p7-hud-l{font-size:0.9rem!important;}.p7-hud-r{font-size:0.85rem!important;}
 }
 @media(max-width:480px){
 .block-container{padding-left:0.3rem!important;padding-right:0.3rem!important;padding-top:0.5rem!important;}

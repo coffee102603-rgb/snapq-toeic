@@ -215,5 +215,98 @@
         "type_guess_correct": null
       }
     ]
+  },
+  {
+    "session_id": "d93cc423",
+    "timestamp": "2026-03-03 18:05:22",
+    "player_id": "unknown",
+    "player_type": "student",
+    "category": "article",
+    "timer_sec": 60,
+    "result": "victory",
+    "total_score": 3,
+    "steps": [
+      {
+        "step": 1,
+        "q_type": "purpose",
+        "correct": true,
+        "response_sec": 1.7
+      },
+      {
+        "step": 2,
+        "q_type": "detail",
+        "correct": true,
+        "response_sec": 2.2
+      },
+      {
+        "step": 3,
+        "q_type": "inference",
+        "correct": true,
+        "response_sec": 11.4,
+        "type_guess_correct": null
+      }
+    ]
+  },
+  {
+    "session_id": "52c0d13f",
+    "timestamp": "2026-03-03 18:13:04",
+    "player_id": "unknown",
+    "player_type": "student",
+    "category": "article",
+    "timer_sec": 60,
+    "result": "victory",
+    "total_score": 3,
+    "steps": [
+      {
+        "step": 1,
+        "q_type": "purpose",
+        "correct": true,
+        "response_sec": 1.4
+      },
+      {
+        "step": 2,
+        "q_type": "detail",
+        "correct": true,
+        "response_sec": 1.5
+      },
+      {
+        "step": 3,
+        "q_type": "inference",
+        "correct": true,
+        "response_sec": 1.0,
+        "type_guess_correct": null
+      }
+    ]
+  },
+  {
+    "session_id": "e0258021",
+    "timestamp": "2026-03-03 20:51:06",
+    "player_id": "unknown",
+    "player_type": "student",
+    "category": "article",
+    "timer_sec": 60,
+    "result": "timeout",
+    "total_score": 0,
+    "steps": [
+      {
+        "step": 1,
+        "q_type": "purpose",
+        "correct": null,
+        "response_sec": null
+      },
+      {
+        "step": 2,
+        "q_type": "detail",
+        "correct": null,
+        "response_sec": null
+      },
+      {
+        "step": 3,
+        "q_type": "inference",
+        "correct": null,
+        "response_sec": null,
+        "type_guess_correct": null
+      }
+    ]
   }
 ]
