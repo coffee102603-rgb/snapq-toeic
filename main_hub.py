@@ -1042,6 +1042,6 @@ function goAdmin(){
   });
 }
 
-new MutationObserver(hideBtn).observe(window.parent.document.body,{childList:true,subtree:true});
+
 </script>
 """, height=50)
