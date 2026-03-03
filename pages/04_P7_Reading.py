@@ -44,7 +44,7 @@ def save_to_sheets(record):
         ]
         ws.append_row(row)
     except Exception as e:
-        pass  # 조용히 실패 (학생 화면에 오류 노출 안 함)
+        st.error(f"Sheets 오류: {e}")
 
 st.set_page_config(page_title="P7 Reading ⚔️", page_icon="📖", layout="wide", initial_sidebar_state="collapsed")
 
