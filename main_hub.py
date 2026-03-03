@@ -316,7 +316,9 @@ def load_css():
     #MainMenu, footer, header { visibility: hidden; }
     .block-container { padding: 0 8px 40px 8px !important; max-width: 100% !important; margin: 0 auto !important; }
     div[data-testid="stVerticalBlock"] > div { gap: 0 !important; margin: 0 !important; padding: 0 !important; }
+    div[data-testid="stVerticalBlock"] { gap: 0 !important; }
     iframe { display: block !important; margin: 0 !important; padding: 0 !important; }
+    div[data-testid="element-container"] { margin: 0 !important; padding: 0 !important; }
 
     /* 상단 배너 - 형광 반짝 테두리 */
     .top-banner {
@@ -944,7 +946,7 @@ _GO_STYLE = """
   animation:goPulse 1.2s ease-in-out infinite, goShine 2s linear infinite;
   border:2.5px solid rgba(255,220,100,0.95);
   border-radius:14px;color:#fff;font-size:24px;
-  width:56px;height:75%;min-height:52px;max-height:84px;
+  width:52px;height:80%;min-height:44px;max-height:72px;
   cursor:pointer;display:flex;align-items:center;justify-content:center;
   text-shadow:0 0 10px rgba(255,255,100,1),0 0 20px rgba(255,150,0,0.8);
   filter:drop-shadow(0 0 6px rgba(255,150,0,0.8));
@@ -960,10 +962,10 @@ _hc.html(_CSS + _GO_STYLE + _mk_card("p5c","⚡ P5 전장",
 <button class="go-btn" onclick="parent.window.parent.document.querySelectorAll('button').forEach(b=>{if((b.innerText||'').trim()==='P5_GO')b.click()})">⚡</button>
 <script>
 (function(){
-  var h=window.innerWidth<=480?70:window.innerWidth<=768?100:140;
+  var h=window.innerWidth<=480?75:window.innerWidth<=768?85:95;
   document.querySelector('.card').style.height=h+'px';
 })();
-</script>""", height=140)
+</script>""", height=95)
 _p5_go = st.button("P5_GO", key="p5_btn")
 if _p5_go:
     st.session_state.phase = "lobby"
@@ -978,10 +980,10 @@ _hc.html(_CSS + _GO_STYLE + _mk_card("p7c","📖 P7 전장",
 <button class="go-btn" onclick="parent.window.parent.document.querySelectorAll('button').forEach(b=>{if((b.innerText||'').trim()==='P7_GO')b.click()})">📖</button>
 <script>
 (function(){
-  var h=window.innerWidth<=480?70:window.innerWidth<=768?100:140;
+  var h=window.innerWidth<=480?75:window.innerWidth<=768?85:95;
   document.querySelector('.card').style.height=h+'px';
 })();
-</script>""", height=140)
+</script>""", height=95)
 _p7_go = st.button("P7_GO", key="p7_btn")
 if _p7_go:
     if "p7_phase" in st.session_state:
@@ -996,10 +998,10 @@ _hc.html(_CSS + _GO_STYLE + _mk_card("arc","🗡️ 역전장",
 <button class="go-btn" onclick="parent.window.parent.document.querySelectorAll('button').forEach(b=>{if((b.innerText||'').trim()==='ARM_GO')b.click()})">🗡️</button>
 <script>
 (function(){
-  var h=window.innerWidth<=480?70:window.innerWidth<=768?100:140;
+  var h=window.innerWidth<=480?75:window.innerWidth<=768?85:95;
   document.querySelector('.card').style.height=h+'px';
 })();
-</script>""", height=140)
+</script>""", height=95)
 _arm_go = st.button("ARM_GO", key="armory_btn")
 if _arm_go:
     st.switch_page("pages/03_역전장.py")
