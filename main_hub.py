@@ -964,7 +964,7 @@ _hc.html(_CSS + _GO_STYLE + _mk_card("p5c","⚡ P5 전장",
   document.querySelector('.card').style.height=h+'px';
 })();
 </script>""", height=140)
-#_p5_go = st.button("P5_GO", key="p5_btn")
+_p5_go = False
 if _p5_go:
     st.session_state.phase = "lobby"
     st.session_state._p5_active = False
@@ -982,7 +982,7 @@ _hc.html(_CSS + _GO_STYLE + _mk_card("p7c","📖 P7 전장",
   document.querySelector('.card').style.height=h+'px';
 })();
 </script>""", height=140)
-#_p7_go = st.button("P7_GO", key="p7_btn")
+_p7_go = False
 if _p7_go:
     if "p7_phase" in st.session_state:
         st.session_state.p7_phase = "lobby"
