@@ -1,0 +1,64 @@
+[
+  {
+    "session_id": "a2dbba72",
+    "timestamp": "2026-03-03 10:44:22",
+    "player_id": "unknown",
+    "player_type": "student",
+    "category": "article",
+    "timer_sec": 60,
+    "result": "timeout",
+    "total_score": 0,
+    "steps": [
+      {
+        "step": 1,
+        "q_type": "purpose",
+        "correct": null,
+        "response_sec": null
+      },
+      {
+        "step": 2,
+        "q_type": "detail",
+        "correct": null,
+        "response_sec": null
+      },
+      {
+        "step": 3,
+        "q_type": "inference",
+        "correct": null,
+        "response_sec": null,
+        "type_guess_correct": null
+      }
+    ]
+  },
+  {
+    "session_id": "26c8e744",
+    "timestamp": "2026-03-03 10:49:02",
+    "player_id": "unknown",
+    "player_type": "student",
+    "category": "article",
+    "timer_sec": 60,
+    "result": "lost",
+    "total_score": 2,
+    "steps": [
+      {
+        "step": 1,
+        "q_type": "purpose",
+        "correct": true,
+        "response_sec": 23.1
+      },
+      {
+        "step": 2,
+        "q_type": "detail",
+        "correct": true,
+        "response_sec": 13.3
+      },
+      {
+        "step": 3,
+        "q_type": "inference",
+        "correct": false,
+        "response_sec": 10.1,
+        "type_guess_correct": null
+      }
+    ]
+  }
+]

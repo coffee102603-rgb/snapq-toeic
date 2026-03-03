@@ -1,0 +1,58 @@
+﻿/* SnapQ TOEIC V2 - Component Styles */
+
+/* 카드 */
+.card {
+    background: #1A1F2E;
+    border-radius: 16px;
+    padding: 20px;
+    margin: 16px 0;
+}
+
+/* 타이머 */
+.timer-container {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.timer-bar {
+    height: 10px;
+    background: rgba(255,255,255,0.1);
+    border-radius: 999px;
+    overflow: hidden;
+}
+
+.timer-fill {
+    height: 100%;
+    transition: width 1s linear;
+}
+
+/* HP 표시 */
+.hp-display {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+/* 점수 뱃지 */
+.score-badges {
+    display: flex;
+    gap: 12px;
+    margin: 16px 0;
+}
+
+.badge {
+    padding: 8px 16px;
+    border-radius: 999px;
+    font-weight: 800;
+}
+
+.badge-xp {
+    background: #F59E0B;
+    color: #FFFFFF;
+}
+
+.badge-coin {
+    background: #10B981;
+    color: #FFFFFF;
+}
