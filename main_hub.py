@@ -636,37 +636,37 @@ def load_css():
     ══════════════════════════════════ */
     @media (max-width: 480px) {
         .block-container { padding: 0 4px 20px 4px !important; }
-        .top-banner { padding: 8px 10px; gap: 4px; flex-wrap: wrap; }
-        .banner-name { font-size: 16px; }
-        .banner-item { font-size: 12px; }
+        .top-banner { padding: 5px 8px; gap: 3px; flex-wrap: wrap; }
+        .banner-name { font-size: 13px; }
+        .banner-item { font-size: 10px; }
         .banner-rank { font-size: 13px; }
         .banner-divider { font-size: 14px; }
-        .hub-brand { gap: 8px; padding: 8px 0 10px 0; }
-        .hub-teacher-photo { width: 48px; height: 48px; border-width: 2px; }
-        .hub-title-text { font-size: 26px; letter-spacing: 1px; }
-        .hub-subtitle { font-size: 11px; }
-        .hub-platform { font-size: 9px; letter-spacing: 1px; }
+        .hub-brand { gap: 6px; padding: 4px 0 6px 0; }
+        .hub-teacher-photo { width: 36px; height: 36px; border-width: 2px; }
+        .hub-title-text { font-size: 20px; letter-spacing: 1px; }
+        .hub-subtitle { font-size: 9px; }
+        .hub-platform { font-size: 8px; letter-spacing: 1px; }
         .arena-icon-title { font-size: 18px; margin-bottom: 4px; }
         .arena-count { font-size: 12px; margin-top: 4px; }
         .arena-rate { font-size: 30px; }
         .arena-enter-btn { font-size: 16px; padding: 14px 10px; min-width: 52px; border-width: 2px; }
-        .arena-btn { min-height: 86px; padding: 10px; border-radius: 14px; }
-        .arena-first { font-size: 13px; padding: 6px 10px; }
-        .neon-label { font-size: 0.72rem; width: 30px; }
-        .neon-track { height: 9px; }
-        .neon-pct { font-size: 0.75rem; width: 28px; }
-        .neon-bar-row { gap: 5px; margin-bottom: 5px; }
-        .hub-msg-title { font-size: 0.92rem; }
-        .hub-msg-sub { font-size: 0.78rem; }
-        .hub-msg-count { font-size: 0.72rem; }
-        .sub-btn-icon { font-size: 22px; }
-        .sub-btn-label { font-size: 11px; }
-        .sub-row { gap: 8px; }
-        .armory-sub-item { font-size: 14px; }
-        .armory-pending { font-size: 13px; }
-        .armory-sub { gap: 10px; }
-        div.stButton > button { font-size: 16px !important; height: 60px !important; border-width: 2px !important; border-radius: 12px !important; letter-spacing: 1px !important; }
-        div.stButton > button p { font-size: 16px !important; }
+        .arena-btn { min-height: 60px; padding: 7px 10px; border-radius: 12px; }
+        .arena-first { font-size: 11px; padding: 4px 8px; }
+        .neon-label { font-size: 0.65rem; width: 28px; }
+        .neon-track { height: 7px; }
+        .neon-pct { font-size: 0.68rem; width: 24px; }
+        .neon-bar-row { gap: 4px; margin-bottom: 3px; }
+        .hub-msg-title { font-size: 0.8rem; }
+        .hub-msg-sub { font-size: 0.7rem; }
+        .hub-msg-count { font-size: 0.65rem; }
+        .sub-btn-icon { font-size: 18px; }
+        .sub-btn-label { font-size: 10px; }
+        .sub-row { gap: 6px; }
+        .armory-sub-item { font-size: 12px; }
+        .armory-pending { font-size: 11px; }
+        .armory-sub { gap: 8px; }
+        div.stButton > button { font-size: 13px !important; height: 44px !important; border-width: 2px !important; border-radius: 10px !important; letter-spacing: 1px !important; }
+        div.stButton > button p { font-size: 13px !important; }
     }
 
     /* ══════════════════════════════════

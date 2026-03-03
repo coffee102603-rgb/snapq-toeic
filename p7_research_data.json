@@ -308,5 +308,36 @@
         "type_guess_correct": null
       }
     ]
+  },
+  {
+    "session_id": "4d2f4395",
+    "timestamp": "2026-03-03 21:13:36",
+    "player_id": "unknown",
+    "player_type": "student",
+    "category": "article",
+    "timer_sec": 60,
+    "result": "lost",
+    "total_score": 2,
+    "steps": [
+      {
+        "step": 1,
+        "q_type": "purpose",
+        "correct": true,
+        "response_sec": 20.7
+      },
+      {
+        "step": 2,
+        "q_type": "detail",
+        "correct": true,
+        "response_sec": 1.7
+      },
+      {
+        "step": 3,
+        "q_type": "inference",
+        "correct": false,
+        "response_sec": 10.0,
+        "type_guess_correct": null
+      }
+    ]
   }
 ]
