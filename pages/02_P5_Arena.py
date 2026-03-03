@@ -759,6 +759,105 @@ button[kind="secondary"] p::first-line{font-size:1.52rem!important;font-weight:9
             <div class="act-label">🎬 1 막 · 전투 시간을 선택하라!</div>
             <div class="act-msg">전사여, <span class="hi">몇 초</span>의 시간을 원하느냐?</div>
         </div>''', unsafe_allow_html=True)
+        import streamlit.components.v1 as _hc2
+        _hc2.html("""<style>
+*{box-sizing:border-box;margin:0;padding:0;}
+.tw{display:flex;gap:10px;padding:8px 2px;}
+.tc{flex:1;border-radius:16px;padding:22px 6px 16px;display:flex;flex-direction:column;align-items:center;cursor:pointer;position:relative;overflow:hidden;border:2px solid rgba(255,255,255,0.1);background:#0d0d0d;transition:transform .1s;}
+.tc:active{transform:scale(.93);}
+@keyframes g30{0%,26%,34%,100%{box-shadow:0 0 4px rgba(255,80,0,.1);}28%,32%{box-shadow:0 0 40px #ff4400,0 0 80px #ff8800,inset 0 0 30px rgba(255,100,0,.5);border-color:#ff8800;}}
+@keyframes g40{0%,59%,67%,100%{box-shadow:0 0 4px rgba(255,200,0,.1);}61%,65%{box-shadow:0 0 40px #ffcc00,0 0 80px #ffee00,inset 0 0 30px rgba(255,220,0,.5);border-color:#ffee00;}}
+@keyframes g50{0%,92%,100%{box-shadow:0 0 4px rgba(0,220,100,.1);}94%,98%{box-shadow:0 0 40px #00ee66,0 0 80px #00ffaa,inset 0 0 30px rgba(0,255,120,.5);border-color:#00ffaa;}}
+@keyframes f30{0%,26%,34%,100%{opacity:0;}29%,31%{opacity:.6;}}
+@keyframes f40{0%,59%,67%,100%{opacity:0;}62%,64%{opacity:.6;}}
+@keyframes f50{0%,92%,100%{opacity:0;}95%,97%{opacity:.6;}}
+.c30{animation:g30 3.6s ease-in-out infinite;border:2px solid rgba(255,80,0,.25);border-radius:16px;}
+.c40{animation:g40 3.6s ease-in-out infinite;border:2px solid rgba(255,200,0,.25);border-radius:16px;}
+.c50{animation:g50 3.6s ease-in-out infinite;border:2px solid rgba(0,220,100,.25);border-radius:16px;}
+.fl{position:absolute;inset:0;border-radius:14px;background:#fff;pointer-events:none;opacity:0;}
+.fl30{animation:f30 3.6s ease-in-out infinite;}
+.fl40{animation:f40 3.6s ease-in-out infinite;}
+.fl50{animation:f50 3.6s ease-in-out infinite;}
+.em{font-size:2.2rem;margin-bottom:8px;}
+.lb{font-size:2rem;font-weight:900;color:#fff;}
+.lb30{text-shadow:0 0 16px #ff6600;}
+.lb40{text-shadow:0 0 16px #ffcc00;}
+.lb50{text-shadow:0 0 16px #00ee88;}
+.md{font-size:.6rem;color:rgba(255,255,255,.35);margin-top:6px;letter-spacing:2px;font-weight:700;}
+</style>
+<div class="tw">
+<div class="tc c30" onclick="pk(30)"><div class="fl fl30"></div><div class="em">🔥</div><div class="lb lb30">30초</div><div class="md">HARD</div></div>
+<div class="tc c40" onclick="pk(40)"><div class="fl fl40"></div><div class="em">⚡</div><div class="lb lb40">40초</div><div class="md">NORMAL</div></div>
+<div class="tc c50" onclick="pk(50)"><div class="fl fl50"></div><div class="em">✅</div><div class="lb lb50">50초</div><div class="md">EASY</div></div>
+</div>
+<script>function pk(s){window.parent.document.querySelectorAll("button").forEach(function(b){if((b.innerText||"").replace(/\s/g,"").indexOf(s+"초")>-1)b.click();});}</script>
+""", height=160)
+        import streamlit.components.v1 as _hc2
+        _hc2.html("""<style>
+*{box-sizing:border-box;margin:0;padding:0;}
+.tw{display:flex;gap:10px;padding:8px 2px;}
+.tc{flex:1;border-radius:16px;padding:22px 6px 16px;display:flex;flex-direction:column;align-items:center;cursor:pointer;position:relative;overflow:hidden;border:2px solid rgba(255,255,255,0.1);background:#0d0d0d;transition:transform .1s;}
+.tc:active{transform:scale(.93);}
+@keyframes g30{0%,26%,34%,100%{box-shadow:0 0 4px rgba(255,80,0,.1);}28%,32%{box-shadow:0 0 40px #ff4400,0 0 80px #ff8800,inset 0 0 30px rgba(255,100,0,.5);border-color:#ff8800;}}
+@keyframes g40{0%,59%,67%,100%{box-shadow:0 0 4px rgba(255,200,0,.1);}61%,65%{box-shadow:0 0 40px #ffcc00,0 0 80px #ffee00,inset 0 0 30px rgba(255,220,0,.5);border-color:#ffee00;}}
+@keyframes g50{0%,92%,100%{box-shadow:0 0 4px rgba(0,220,100,.1);}94%,98%{box-shadow:0 0 40px #00ee66,0 0 80px #00ffaa,inset 0 0 30px rgba(0,255,120,.5);border-color:#00ffaa;}}
+@keyframes f30{0%,26%,34%,100%{opacity:0;}29%,31%{opacity:.6;}}
+@keyframes f40{0%,59%,67%,100%{opacity:0;}62%,64%{opacity:.6;}}
+@keyframes f50{0%,92%,100%{opacity:0;}95%,97%{opacity:.6;}}
+.c30{animation:g30 3.6s ease-in-out infinite;border:2px solid rgba(255,80,0,.25);border-radius:16px;}
+.c40{animation:g40 3.6s ease-in-out infinite;border:2px solid rgba(255,200,0,.25);border-radius:16px;}
+.c50{animation:g50 3.6s ease-in-out infinite;border:2px solid rgba(0,220,100,.25);border-radius:16px;}
+.fl{position:absolute;inset:0;border-radius:14px;background:#fff;pointer-events:none;opacity:0;}
+.fl30{animation:f30 3.6s ease-in-out infinite;}
+.fl40{animation:f40 3.6s ease-in-out infinite;}
+.fl50{animation:f50 3.6s ease-in-out infinite;}
+.em{font-size:2.2rem;margin-bottom:8px;}
+.lb{font-size:2rem;font-weight:900;color:#fff;}
+.lb30{text-shadow:0 0 16px #ff6600;}
+.lb40{text-shadow:0 0 16px #ffcc00;}
+.lb50{text-shadow:0 0 16px #00ee88;}
+.md{font-size:.6rem;color:rgba(255,255,255,.35);margin-top:6px;letter-spacing:2px;font-weight:700;}
+</style>
+<div class="tw">
+<div class="tc c30" onclick="pk(30)"><div class="fl fl30"></div><div class="em">🔥</div><div class="lb lb30">30초</div><div class="md">HARD</div></div>
+<div class="tc c40" onclick="pk(40)"><div class="fl fl40"></div><div class="em">⚡</div><div class="lb lb40">40초</div><div class="md">NORMAL</div></div>
+<div class="tc c50" onclick="pk(50)"><div class="fl fl50"></div><div class="em">✅</div><div class="lb lb50">50초</div><div class="md">EASY</div></div>
+</div>
+<script>function pk(s){window.parent.document.querySelectorAll("button").forEach(function(b){if((b.innerText||"").replace(/\s/g,"").indexOf(s+"초")>-1)b.click();});}</script>
+""", height=160)
+        import streamlit.components.v1 as _hc2
+        _hc2.html("""<style>
+*{box-sizing:border-box;margin:0;padding:0;}
+.tw{display:flex;gap:10px;padding:8px 2px;}
+.tc{flex:1;border-radius:16px;padding:22px 6px 16px;display:flex;flex-direction:column;align-items:center;cursor:pointer;position:relative;overflow:hidden;border:2px solid rgba(255,255,255,0.1);background:#0d0d0d;transition:transform .1s;}
+.tc:active{transform:scale(.93);}
+@keyframes g30{0%,26%,34%,100%{box-shadow:0 0 4px rgba(255,80,0,.1);}28%,32%{box-shadow:0 0 40px #ff4400,0 0 80px #ff8800,inset 0 0 30px rgba(255,100,0,.5);border-color:#ff8800;}}
+@keyframes g40{0%,59%,67%,100%{box-shadow:0 0 4px rgba(255,200,0,.1);}61%,65%{box-shadow:0 0 40px #ffcc00,0 0 80px #ffee00,inset 0 0 30px rgba(255,220,0,.5);border-color:#ffee00;}}
+@keyframes g50{0%,92%,100%{box-shadow:0 0 4px rgba(0,220,100,.1);}94%,98%{box-shadow:0 0 40px #00ee66,0 0 80px #00ffaa,inset 0 0 30px rgba(0,255,120,.5);border-color:#00ffaa;}}
+@keyframes f30{0%,26%,34%,100%{opacity:0;}29%,31%{opacity:.6;}}
+@keyframes f40{0%,59%,67%,100%{opacity:0;}62%,64%{opacity:.6;}}
+@keyframes f50{0%,92%,100%{opacity:0;}95%,97%{opacity:.6;}}
+.c30{animation:g30 3.6s ease-in-out infinite;border:2px solid rgba(255,80,0,.25);border-radius:16px;}
+.c40{animation:g40 3.6s ease-in-out infinite;border:2px solid rgba(255,200,0,.25);border-radius:16px;}
+.c50{animation:g50 3.6s ease-in-out infinite;border:2px solid rgba(0,220,100,.25);border-radius:16px;}
+.fl{position:absolute;inset:0;border-radius:14px;background:#fff;pointer-events:none;opacity:0;}
+.fl30{animation:f30 3.6s ease-in-out infinite;}
+.fl40{animation:f40 3.6s ease-in-out infinite;}
+.fl50{animation:f50 3.6s ease-in-out infinite;}
+.em{font-size:2.2rem;margin-bottom:8px;}
+.lb{font-size:2rem;font-weight:900;color:#fff;}
+.lb30{text-shadow:0 0 16px #ff6600;}
+.lb40{text-shadow:0 0 16px #ffcc00;}
+.lb50{text-shadow:0 0 16px #00ee88;}
+.md{font-size:.6rem;color:rgba(255,255,255,.35);margin-top:6px;letter-spacing:2px;font-weight:700;}
+</style>
+<div class="tw">
+<div class="tc c30" onclick="pk(30)"><div class="fl fl30"></div><div class="em">🔥</div><div class="lb lb30">30초</div><div class="md">HARD</div></div>
+<div class="tc c40" onclick="pk(40)"><div class="fl fl40"></div><div class="em">⚡</div><div class="lb lb40">40초</div><div class="md">NORMAL</div></div>
+<div class="tc c50" onclick="pk(50)"><div class="fl fl50"></div><div class="em">✅</div><div class="lb lb50">50초</div><div class="md">EASY</div></div>
+</div>
+<script>function pk(s){window.parent.document.querySelectorAll("button").forEach(function(b){if((b.innerText||"").replace(/\s/g,"").indexOf(s+"초")>-1)b.click();});}</script>
+""", height=160)
         tc1,tc2,tc3 = st.columns(3)
         with tc1:
             if st.button("🔥\n30초", key="t30", type="secondary", use_container_width=True):
