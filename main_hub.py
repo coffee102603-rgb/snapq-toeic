@@ -587,9 +587,9 @@ def load_css():
         border: 3px solid rgba(255,255,255,0.7) !important;
         border-radius: 16px !important;
         color: #fff !important;
-        font-size: 26px !important;
+        font-size: 18px !important;
         font-weight: 900 !important;
-        height: 90px !important;
+        height: 60px !important;
         cursor: pointer !important;
         letter-spacing: 2px !important;
         text-shadow: 0 2px 6px rgba(0,0,0,0.5) !important;
@@ -636,37 +636,37 @@ def load_css():
     ══════════════════════════════════ */
     @media (max-width: 480px) {
         .block-container { padding: 0 4px 20px 4px !important; }
-        .top-banner { padding: 5px 8px; gap: 3px; flex-wrap: wrap; }
-        .banner-name { font-size: 13px; }
-        .banner-item { font-size: 10px; }
+        .top-banner { padding: 8px 10px; gap: 4px; flex-wrap: wrap; }
+        .banner-name { font-size: 16px; }
+        .banner-item { font-size: 12px; }
         .banner-rank { font-size: 13px; }
         .banner-divider { font-size: 14px; }
-        .hub-brand { gap: 6px; padding: 4px 0 6px 0; }
-        .hub-teacher-photo { width: 36px; height: 36px; border-width: 2px; }
-        .hub-title-text { font-size: 20px; letter-spacing: 1px; }
-        .hub-subtitle { font-size: 9px; }
-        .hub-platform { font-size: 8px; letter-spacing: 1px; }
+        .hub-brand { gap: 8px; padding: 8px 0 10px 0; }
+        .hub-teacher-photo { width: 48px; height: 48px; border-width: 2px; }
+        .hub-title-text { font-size: 26px; letter-spacing: 1px; }
+        .hub-subtitle { font-size: 11px; }
+        .hub-platform { font-size: 9px; letter-spacing: 1px; }
         .arena-icon-title { font-size: 18px; margin-bottom: 4px; }
         .arena-count { font-size: 12px; margin-top: 4px; }
         .arena-rate { font-size: 30px; }
         .arena-enter-btn { font-size: 16px; padding: 14px 10px; min-width: 52px; border-width: 2px; }
-        .arena-btn { min-height: 60px; padding: 7px 10px; border-radius: 12px; }
-        .arena-first { font-size: 11px; padding: 4px 8px; }
-        .neon-label { font-size: 0.65rem; width: 28px; }
-        .neon-track { height: 7px; }
-        .neon-pct { font-size: 0.68rem; width: 24px; }
-        .neon-bar-row { gap: 4px; margin-bottom: 3px; }
-        .hub-msg-title { font-size: 0.8rem; }
-        .hub-msg-sub { font-size: 0.7rem; }
-        .hub-msg-count { font-size: 0.65rem; }
-        .sub-btn-icon { font-size: 18px; }
-        .sub-btn-label { font-size: 10px; }
-        .sub-row { gap: 6px; }
-        .armory-sub-item { font-size: 12px; }
-        .armory-pending { font-size: 11px; }
-        .armory-sub { gap: 8px; }
-        div.stButton > button { font-size: 13px !important; height: 44px !important; border-width: 2px !important; border-radius: 10px !important; letter-spacing: 1px !important; }
-        div.stButton > button p { font-size: 13px !important; }
+        .arena-btn { min-height: 86px; padding: 10px; border-radius: 14px; }
+        .arena-first { font-size: 13px; padding: 6px 10px; }
+        .neon-label { font-size: 0.72rem; width: 30px; }
+        .neon-track { height: 9px; }
+        .neon-pct { font-size: 0.75rem; width: 28px; }
+        .neon-bar-row { gap: 5px; margin-bottom: 5px; }
+        .hub-msg-title { font-size: 0.92rem; }
+        .hub-msg-sub { font-size: 0.78rem; }
+        .hub-msg-count { font-size: 0.72rem; }
+        .sub-btn-icon { font-size: 22px; }
+        .sub-btn-label { font-size: 11px; }
+        .sub-row { gap: 8px; }
+        .armory-sub-item { font-size: 14px; }
+        .armory-pending { font-size: 13px; }
+        .armory-sub { gap: 10px; }
+        div.stButton > button { font-size: 16px !important; height: 60px !important; border-width: 2px !important; border-radius: 12px !important; letter-spacing: 1px !important; }
+        div.stButton > button p { font-size: 16px !important; }
     }
 
     /* ══════════════════════════════════
@@ -677,7 +677,7 @@ def load_css():
         .hub-teacher-photo { width: 40px; height: 40px; }
         .arena-icon-title { font-size: 15px; }
         .arena-enter-btn { font-size: 13px; padding: 12px 8px; min-width: 44px; }
-        div.stButton > button { font-size: 13px !important; height: 52px !important; }
+        div.stButton > button { font-size: 13px !important; height: 44px !important; border-width: 2px !important; border-radius: 10px !important; letter-spacing: 1px !important; }
         div.stButton > button p { font-size: 13px !important; }
     }
     </style>
@@ -930,16 +930,16 @@ with col_p5:
         _p5_s2_big,_p5_s2_lbl,_p5_cnt_svg if not _is_first else "",_p5_s3) + """
 <script>
 (function(){
-  var h=window.innerWidth<=480?128:window.innerWidth<=768?154:182;
+  var h=window.innerWidth<=480?90:window.innerWidth<=768?120:160;
   document.querySelector('.card').style.height=h+'px';
 })();
-</script>""", height=182)
+</script>""", height=160)
 with col_p5_btn:
     if st.button("출격", key="p5_btn", use_container_width=True):
         st.session_state.phase = "lobby"
         st.session_state._p5_active = False
         st.switch_page("pages/02_P5_Arena.py")
-st.markdown('<div style="margin-bottom:10px;"></div>', unsafe_allow_html=True)
+st.markdown('<div style="margin-bottom:4px;"></div>', unsafe_allow_html=True)
 
 # ── P7 ──
 col_p7, col_p7_btn = st.columns([5, 1])
@@ -949,16 +949,16 @@ with col_p7:
         _p7_s2_big,_p7_s2_lbl,_p7_cnt_svg if not _is_first else "",_p7_s3) + """
 <script>
 (function(){
-  var h=window.innerWidth<=480?128:window.innerWidth<=768?154:182;
+  var h=window.innerWidth<=480?90:window.innerWidth<=768?120:160;
   document.querySelector('.card').style.height=h+'px';
 })();
-</script>""", height=182)
+</script>""", height=160)
 with col_p7_btn:
     if st.button("출격", key="p7_btn", use_container_width=True):
         if "p7_phase" in st.session_state:
             st.session_state.p7_phase = "lobby"
         st.switch_page("pages/04_P7_Reading.py")
-st.markdown('<div style="margin-bottom:10px;"></div>', unsafe_allow_html=True)
+st.markdown('<div style="margin-bottom:4px;"></div>', unsafe_allow_html=True)
 
 # ── 역전장 ──
 col_arm, col_arm_btn = st.columns([5, 1])
@@ -968,14 +968,14 @@ with col_arm:
         _arm_s2_big,_arm_s2_lbl,_arm_vc_svg if not _is_first else "",_arm_s3) + """
 <script>
 (function(){
-  var h=window.innerWidth<=480?128:window.innerWidth<=768?154:182;
+  var h=window.innerWidth<=480?90:window.innerWidth<=768?120:160;
   document.querySelector('.card').style.height=h+'px';
 })();
-</script>""", height=182)
+</script>""", height=160)
 with col_arm_btn:
     if st.button("출격", key="armory_btn", use_container_width=True):
         st.switch_page("pages/03_역전장.py")
-st.markdown('<div style="margin-bottom:12px;"></div>', unsafe_allow_html=True)
+st.markdown('<div style="margin-bottom:4px;"></div>', unsafe_allow_html=True)
 
 # ── 하단 박스 2개 ──
 _adm_go = st.button("ADMIN_GO", key="admin_go_btn")
