@@ -923,18 +923,30 @@ def _mk_card(cls, title, s1b, s1l, s1svg, s2b, s2l, s2svg, s3mot):
   <div class="sl sl3"><div class="mot">{s3mot}</div></div>
 </div>"""
 
+# ── 공통 go-btn 스타일 ──
+_GO_STYLE = """
+<style>
+.card{position:relative;overflow:hidden;}
+@keyframes goPulse{0%,100%{box-shadow:0 0 8px rgba(255,255,255,0.6),0 0 16px rgba(255,220,0,0.4);}50%{box-shadow:0 0 16px rgba(255,255,255,1),0 0 32px rgba(255,220,0,0.8);}}
+.go-btn{
+  position:absolute;right:10px;top:50%;transform:translateY(-50%);
+  background:linear-gradient(135deg,rgba(255,180,0,0.85),rgba(255,80,0,0.85));
+  border:2.5px solid rgba(255,255,255,0.9);
+  border-radius:12px;color:#fff;font-size:22px;font-weight:900;
+  width:52px;height:70%;min-height:50px;max-height:80px;
+  cursor:pointer;display:flex;align-items:center;justify-content:center;
+  animation:goPulse 1.5s ease-in-out infinite;
+  text-shadow:0 0 8px rgba(255,200,0,0.8);
+}
+.go-btn:active{transform:translateY(-50%) scale(0.93);}
+</style>
+"""
+
 # ── P5 ──
-_hc.html(_CSS + _mk_card("p5c","⚡ P5 전장",
+_hc.html(_CSS + _GO_STYLE + _mk_card("p5c","⚡ P5 전장",
     _p5_s1_big,_p5_s1_lbl,_p5_rate_svg if not _is_first else "",
     _p5_s2_big,_p5_s2_lbl,_p5_cnt_svg if not _is_first else "",_p5_s3) + """
-<style>
-.card{position:relative;}
-.go-btn{position:absolute;right:8px;top:50%;transform:translateY(-50%);
-  background:rgba(0,0,0,0.45);border:2px solid rgba(255,255,255,0.7);
-  border-radius:10px;color:#fff;font-size:18px;font-weight:900;
-  width:44px;height:60px;cursor:pointer;display:flex;align-items:center;justify-content:center;}
-</style>
-<button class="go-btn" onclick="parent.window.parent.document.querySelectorAll('button').forEach(b=>{if((b.innerText||'').trim()==='P5_GO')b.click()})">▶</button>
+<button class="go-btn" onclick="parent.window.parent.document.querySelectorAll('button').forEach(b=>{if((b.innerText||'').trim()==='P5_GO')b.click()})">⚡</button>
 <script>
 (function(){
   var h=window.innerWidth<=480?70:window.innerWidth<=768?100:140;
@@ -946,12 +958,13 @@ if _p5_go:
     st.session_state.phase = "lobby"
     st.session_state._p5_active = False
     st.switch_page("pages/02_P5_Arena.py")
+st.markdown('<div style="height:3px"></div>', unsafe_allow_html=True)
 
 # ── P7 ──
-_hc.html(_CSS + _mk_card("p7c","📖 P7 전장",
+_hc.html(_CSS + _GO_STYLE + _mk_card("p7c","📖 P7 전장",
     _p7_s1_big,_p7_s1_lbl,_p7_rate_svg if not _is_first else "",
     _p7_s2_big,_p7_s2_lbl,_p7_cnt_svg if not _is_first else "",_p7_s3) + """
-<button class="go-btn" onclick="parent.window.parent.document.querySelectorAll('button').forEach(b=>{if((b.innerText||'').trim()==='P7_GO')b.click()})">▶</button>
+<button class="go-btn" onclick="parent.window.parent.document.querySelectorAll('button').forEach(b=>{if((b.innerText||'').trim()==='P7_GO')b.click()})">📖</button>
 <script>
 (function(){
   var h=window.innerWidth<=480?70:window.innerWidth<=768?100:140;
@@ -963,12 +976,13 @@ if _p7_go:
     if "p7_phase" in st.session_state:
         st.session_state.p7_phase = "lobby"
     st.switch_page("pages/04_P7_Reading.py")
+st.markdown('<div style="height:3px"></div>', unsafe_allow_html=True)
 
 # ── 역전장 ──
-_hc.html(_CSS + _mk_card("arc","🗡️ 역전장",
+_hc.html(_CSS + _GO_STYLE + _mk_card("arc","🗡️ 역전장",
     _arm_s1_big,_arm_s1_lbl,_arm_p5_svg if not _is_first else "",
     _arm_s2_big,_arm_s2_lbl,_arm_vc_svg if not _is_first else "",_arm_s3) + """
-<button class="go-btn" onclick="parent.window.parent.document.querySelectorAll('button').forEach(b=>{if((b.innerText||'').trim()==='ARM_GO')b.click()})">▶</button>
+<button class="go-btn" onclick="parent.window.parent.document.querySelectorAll('button').forEach(b=>{if((b.innerText||'').trim()==='ARM_GO')b.click()})">🗡️</button>
 <script>
 (function(){
   var h=window.innerWidth<=480?70:window.innerWidth<=768?100:140;
@@ -978,6 +992,7 @@ _hc.html(_CSS + _mk_card("arc","🗡️ 역전장",
 _arm_go = st.button("ARM_GO", key="armory_btn")
 if _arm_go:
     st.switch_page("pages/03_역전장.py")
+st.markdown('<div style="height:3px"></div>', unsafe_allow_html=True)
 
 # ── 하단 박스 2개 ──
 _adm_go = st.button("ADMIN_GO", key="admin_go_btn")
