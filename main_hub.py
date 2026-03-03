@@ -958,5 +958,90 @@ _hc.html(_CSS + _GO_STYLE + _mk_card("p5c","⚡ P5 전장",
     _p5_s1_big,_p5_s1_lbl,_p5_rate_svg if not _is_first else "",
     _p5_s2_big,_p5_s2_lbl,_p5_cnt_svg if not _is_first else "",_p5_s3) + """
 <button class="go-btn" onclick="parent.window.parent.document.querySelectorAll('button').forEach(b=>{if((b.innerText||'').trim()==='P5_GO')b.click()})">⚡</button>
+<script>
+(function(){
+  var h=window.innerWidth<=480?70:window.innerWidth<=768?100:140;
+  document.querySelector('.card').style.height=h+'px';
+})();
+</script>""", height=140)
+_p5_go = st.button("P5_GO", key="p5_btn")
+if _p5_go:
+    st.session_state.phase = "lobby"
+    st.session_state._p5_active = False
+    st.switch_page("pages/02_P5_Arena.py")
 
+
+# ── P7 ──
+_hc.html(_CSS + _GO_STYLE + _mk_card("p7c","📖 P7 전장",
+    _p7_s1_big,_p7_s1_lbl,_p7_rate_svg if not _is_first else "",
+    _p7_s2_big,_p7_s2_lbl,_p7_cnt_svg if not _is_first else "",_p7_s3) + """
+<button class="go-btn" onclick="parent.window.parent.document.querySelectorAll('button').forEach(b=>{if((b.innerText||'').trim()==='P7_GO')b.click()})">📖</button>
+<script>
+(function(){
+  var h=window.innerWidth<=480?70:window.innerWidth<=768?100:140;
+  document.querySelector('.card').style.height=h+'px';
+})();
+</script>""", height=140)
+_p7_go = st.button("P7_GO", key="p7_btn")
+if _p7_go:
+    if "p7_phase" in st.session_state:
+        st.session_state.p7_phase = "lobby"
+    st.switch_page("pages/04_P7_Reading.py")
+
+
+# ── 역전장 ──
+_hc.html(_CSS + _GO_STYLE + _mk_card("arc","🗡️ 역전장",
+    _arm_s1_big,_arm_s1_lbl,_arm_p5_svg if not _is_first else "",
+    _arm_s2_big,_arm_s2_lbl,_arm_vc_svg if not _is_first else "",_arm_s3) + """
+<button class="go-btn" onclick="parent.window.parent.document.querySelectorAll('button').forEach(b=>{if((b.innerText||'').trim()==='ARM_GO')b.click()})">🗡️</button>
+<script>
+(function(){
+  var h=window.innerWidth<=480?70:window.innerWidth<=768?100:140;
+  document.querySelector('.card').style.height=h+'px';
+})();
+</script>""", height=140)
+_arm_go = st.button("ARM_GO", key="armory_btn")
+if _arm_go:
+    st.switch_page("pages/03_역전장.py")
+
+
+# ── 하단 박스 2개 ──
+_adm_go = st.button("ADMIN_GO", key="admin_go_btn")
+if _adm_go:
+    st.switch_page("pages/01_Admin.py")
+
+_hc.html("""
+<style>
+*{box-sizing:border-box;margin:0;padding:0;font-family:-apple-system,sans-serif;}
+.row{display:flex;gap:8px;padding:2px 0 6px;}
+.box{flex:1;border-radius:10px;padding:6px 0;display:flex;flex-direction:column;
+     align-items:center;justify-content:center;gap:3px;}
+.box-p4{background:rgba(255,255,255,0.05);border:1.5px solid rgba(255,255,255,0.1);cursor:default;}
+.box-adm{background:rgba(255,255,255,0.07);border:1.5px solid rgba(255,255,255,0.18);
+         cursor:pointer;transition:background 0.2s;}
+.box-adm:hover{background:rgba(255,255,255,0.15);}
+.box-adm:active{background:rgba(255,255,255,0.22);}
+.ico{font-size:0.9rem;}
+.lbl{font-size:0.6rem;font-weight:700;color:rgba(255,255,255,0.45);}
+.lbl-adm{color:rgba(255,255,255,0.65);}
+</style>
+<div class="row">
+  <div class="box box-p4">
+    <div class="ico">🎵</div>
+    <div class="lbl">P4 Coming Soon</div>
+  </div>
+  <div class="box box-adm" onclick="goAdmin()">
+    <div class="ico">🔒</div>
+    <div class="lbl lbl-adm">관리자 전용</div>
+  </div>
+</div>
+<script>
+function goAdmin(){
+  window.parent.document.querySelectorAll('button').forEach(b=>{
+    if((b.innerText||'').trim()==='ADMIN_GO') b.click();
+  });
+}
+
+new MutationObserver(hideBtn).observe(window.parent.document.body,{childList:true,subtree:true});
+</script>
 """, height=50)
