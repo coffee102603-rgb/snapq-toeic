@@ -926,55 +926,23 @@ def _mk_card(cls, title, s1b, s1l, s1svg, s2b, s2l, s2svg, s3mot):
 </div>"""
 
 # ── 공통 go-btn 스타일 ──
-_GO_STYLE = """
-<style>
-.card{position:relative;overflow:hidden;}
-@keyframes goPulse{
-  0%,100%{box-shadow:0 0 10px #ff8800,0 0 20px #ff4400,0 0 40px rgba(255,100,0,0.4);border-color:rgba(255,200,0,0.9);}
-  50%{box-shadow:0 0 20px #ffcc00,0 0 40px #ff8800,0 0 80px rgba(255,150,0,0.7);border-color:#fff;}
-}
-@keyframes goShine{
-  0%{background-position:200% center;}
-  100%{background-position:-200% center;}
-}
-.go-btn{
-  position:absolute;right:8px;top:50%;transform:translateY(-50%);
-  background:linear-gradient(270deg,#ff6600,#ffcc00,#ff3300,#ffaa00);
-  background-size:300% 300%;
-  animation:goPulse 1.2s ease-in-out infinite, goShine 2s linear infinite;
-  border:2.5px solid rgba(255,220,100,0.95);
-  border-radius:14px;color:#fff;font-size:24px;
-  width:56px;height:75%;min-height:52px;max-height:84px;
-  cursor:pointer;display:flex;align-items:center;justify-content:center;
-  text-shadow:0 0 10px rgba(255,255,100,1),0 0 20px rgba(255,150,0,0.8);
-  filter:drop-shadow(0 0 6px rgba(255,150,0,0.8));
-}
-.go-btn:active{transform:translateY(-50%) scale(0.9);filter:brightness(1.3);}
-</style>
-"""
 
 st.markdown("""<style>
-/* 전체 여백 줄이기 */
-.main .block-container{padding-top:0.5rem!important;padding-bottom:0.5rem!important;}
-section[data-testid="stSidebar"]{display:none!important;}
-
-/* 카드 버튼 스타일 */
+.main .block-container{padding-top:0.3rem!important;}
 div[data-testid="stButton"]>button{
     min-height:80px!important;
     border-radius:16px!important;
-    font-size:1.1rem!important;
+    font-size:1.05rem!important;
     font-weight:900!important;
     color:white!important;
     text-align:left!important;
     padding:16px 20px!important;
     margin-bottom:6px!important;
-    border:2px solid rgba(255,255,255,0.15)!important;
     width:100%!important;
-    background:linear-gradient(135deg,#1a3a6b,#2d6abf)!important;
 }
-div[data-testid="stButton"]:nth-of-type(1)>button{background:linear-gradient(135deg,#1a3a6b,#2d6abf)!important;border-color:#4a9eff!important;}
-div[data-testid="stButton"]:nth-of-type(2)>button{background:linear-gradient(135deg,#4a1a8a,#7b3fc4)!important;border-color:#a855f7!important;}
-div[data-testid="stButton"]:nth-of-type(3)>button{background:linear-gradient(135deg,#7a3a00,#d4720a)!important;border-color:#f97316!important;}
+div[data-testid="stButton"]:nth-of-type(1)>button{background:linear-gradient(135deg,#1a3a6b,#2d6abf)!important;border:2px solid #4a9eff!important;}
+div[data-testid="stButton"]:nth-of-type(2)>button{background:linear-gradient(135deg,#4a1a8a,#7b3fc4)!important;border:2px solid #a855f7!important;}
+div[data-testid="stButton"]:nth-of-type(3)>button{background:linear-gradient(135deg,#7a3a00,#d4720a)!important;border:2px solid #f97316!important;}
 </style>""", unsafe_allow_html=True)
 # ── P5 ──
 _hc.html(_CSS + _GO_STYLE + _mk_card("p5c","⚡ P5 전장",
@@ -1013,7 +981,7 @@ if _p7_go:
 
 
 # ── 역전장 ──
-if st.button("역전장 - 오답 설욕전! 토익 역전! 인생 역전!", key="arm_btn", use_container_width=True):
+if st.button("🗡  역전장          오답 설욕전! 인생 역전!", key="arm_btn", use_container_width=True):
     st.switch_page("pages/03_역전장.py")
 
 
