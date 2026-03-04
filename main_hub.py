@@ -928,7 +928,10 @@ def _mk_card(cls, title, s1b, s1l, s1svg, s2b, s2l, s2svg, s3mot):
 # ── 공통 go-btn 스타일 ──
 
 st.markdown("""<style>
-.main .block-container{padding-top:0.3rem!important;}
+.main .block-container{padding-top:0.3rem!important;padding-bottom:0!important;}
+div[data-testid="stButton"] button[kind="secondaryFormSubmit"]{display:none!important;}
+div[data-testid="stButton"]:has(button[data-testid="baseButton-secondary"])[style]{margin:0!important;}
+div[data-testid="stVerticalBlock"]{gap:0.3rem!important;}
 div[data-testid="stButton"]>button{
     min-height:80px!important;
     border-radius:16px!important;
@@ -940,6 +943,7 @@ div[data-testid="stButton"]>button{
     margin-bottom:6px!important;
     width:100%!important;
 }
+button[key="admin_go_btn"]{display:none!important;}
 div[data-testid="stButton"]:nth-of-type(1)>button{background:linear-gradient(135deg,#1a3a6b,#2d6abf)!important;border:2px solid #4a9eff!important;}
 div[data-testid="stButton"]:nth-of-type(2)>button{background:linear-gradient(135deg,#4a1a8a,#7b3fc4)!important;border:2px solid #a855f7!important;}
 div[data-testid="stButton"]:nth-of-type(3)>button{background:linear-gradient(135deg,#7a3a00,#d4720a)!important;border:2px solid #f97316!important;}
@@ -964,7 +968,7 @@ if st.button("🗡  역전장          오답 설욕전! 인생 역전!", key="a
 
 
 # ── 하단 박스 2개 ──
-_adm_go = st.button("ADMIN_GO", key="admin_go_btn")
+_adm_go = st.button("ADMIN_GO", key="admin_go_btn", disabled=False)
 if _adm_go:
     st.switch_page("pages/01_Admin.py")
 
