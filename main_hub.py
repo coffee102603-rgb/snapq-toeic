@@ -429,18 +429,18 @@ def load_css():
 
     /* P5 - 강렬한 파랑+시안 */
     .arena-p5 {
-        background: linear-gradient(135deg, #0077FF, #00C6FF);
-        box-shadow: 0 8px 32px rgba(0,119,255,0.35);
+        background: linear-gradient(135deg, #050a0f, #0a1a2a);
+        box-shadow: 0 0 24px rgba(0,229,255,0.5); border: 1.5px solid #00e5ff;
     }
     /* P7 - 보라+핑크 */
     .arena-p7 {
-        background: linear-gradient(135deg, #7C5CFF, #E040FB);
-        box-shadow: 0 8px 32px rgba(124,92,255,0.35);
+        background: linear-gradient(135deg, #0f0e05, #1f1a05);
+        box-shadow: 0 0 24px rgba(255,215,0,0.5); border: 1.5px solid #ffd700;
     }
     /* 역전장 - 금+주황 */
     .arena-armory {
-        background: linear-gradient(135deg, #FF6B35, #FFD600);
-        box-shadow: 0 8px 32px rgba(255,107,53,0.35);
+        background: linear-gradient(135deg, #0f0508, #1f0510);
+        box-shadow: 0 0 24px rgba(255,45,85,0.5); border: 1.5px solid #ff2d55;
     }
 
     .arena-inner {
