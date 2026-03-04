@@ -968,7 +968,7 @@ if st.button("🗡  역전장          오답 설욕전! 인생 역전!", key="a
 
 
 # ── 하단 박스 2개 ──
-_adm_go = st.button("ADMIN_GO", key="admin_go_btn", disabled=False)
+_adm_go = False  # ADMIN_GO 숨김
 if _adm_go:
     st.switch_page("pages/01_Admin.py")
 
