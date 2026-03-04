@@ -1,710 +1,388 @@
-"""
-SnapQ TOEIC V2 - 검사 게이트 시스템
-1차(1~10일) / 2차(11~24일) / 3차(25~28일) 강제 검사
-P5 10문제 + P7 1지문 3문제 / 시간 측정 포함
-"""
+# app/core/pretest_gate.py
+# ============================================
+# SnapQ TOEIC - PRETEST MISSION GATE (UI 강화)
+# - 프리테스트(사전 설문) 완료 전에는 로비/전장 진입 차단
+# - 완료 시 data/cohorts/<cohort>/pretest_done.json 에 기록
+# - main_hub.py 에서 require_pretest_gate() 호출 형태 유지
+#
+# ✅ 패치(Option A):
+# 1) PRETEST_URL이 비어있으면 게이트를 "자동 스킵" (바로 Main Hub)
+# 2) Windows 파일 잠김(PermissionError) 대비: 저장 재시도 + 폴백
+# 3) Gate 화면 가독성(폰트/대비) 상향
+# ============================================
+
 from __future__ import annotations
 
+import base64
 import json
 import os
 import time
-from datetime import date, datetime
-from pathlib import Path
+from dataclasses import dataclass
 from typing import Optional
 
 import streamlit as st
 
-# =========================================================
-# 검사 일정
-# =========================================================
-STAGE_1_DAYS = range(1, 11)
-STAGE_2_DAYS = range(11, 25)
-STAGE_3_DAYS = range(25, 29)
+# -----------------------------
+# Settings
+# -----------------------------
+COHORTS_DIR = os.path.join("data", "cohorts")
+DONE_FILENAME = "pretest_done.json"
 
-# =========================================================
-# P5 문제 (10문제)
-# =========================================================
-P5_QUESTIONS = [
-    {
-        "id": "T1", "type": "P5",
-        "text": "The new marketing strategy _______ a significant increase in sales last quarter.",
-        "ch": ["(A) result", "(B) resulted", "(C) results", "(D) resulting"],
-        "a": 1, "cat": "동사/시제"
-    },
-    {
-        "id": "T2", "type": "P5",
-        "text": "All employees are required to submit their reports _______ the end of the month.",
-        "ch": ["(A) by", "(B) until", "(C) during", "(D) while"],
-        "a": 0, "cat": "전치사"
-    },
-    {
-        "id": "T3", "type": "P5",
-        "text": "The manager asked that the project _______ completed before the deadline.",
-        "ch": ["(A) is", "(B) was", "(C) be", "(D) being"],
-        "a": 2, "cat": "가정법"
-    },
-    {
-        "id": "T4", "type": "P5",
-        "text": "_______ the heavy rain, the outdoor event proceeded as scheduled.",
-        "ch": ["(A) Because of", "(B) Although", "(C) Despite", "(D) However"],
-        "a": 2, "cat": "접속/연결"
-    },
-    {
-        "id": "T5", "type": "P5",
-        "text": "The financial report was _______ reviewed by the board of directors.",
-        "ch": ["(A) care", "(B) careful", "(C) carefully", "(D) carefulness"],
-        "a": 2, "cat": "품사/수식"
-    },
-    {
-        "id": "T6", "type": "P5",
-        "text": "Ms. Chen, _______ has worked here for ten years, will be promoted next month.",
-        "ch": ["(A) who", "(B) whom", "(C) which", "(D) whose"],
-        "a": 0, "cat": "관계절"
-    },
-    {
-        "id": "T7", "type": "P5",
-        "text": "The company will _______ its annual conference in Seoul this year.",
-        "ch": ["(A) hold", "(B) held", "(C) holding", "(D) holds"],
-        "a": 0, "cat": "동사형태"
-    },
-    {
-        "id": "T8", "type": "P5",
-        "text": "Please ensure that all documents are _______ before the meeting begins.",
-        "ch": ["(A) prepare", "(B) preparation", "(C) prepared", "(D) preparing"],
-        "a": 2, "cat": "수동태"
-    },
-    {
-        "id": "T9", "type": "P5",
-        "text": "The new software _______ employees to manage their schedules more efficiently.",
-        "ch": ["(A) allows", "(B) allow", "(C) allowed", "(D) allowing"],
-        "a": 0, "cat": "주어-동사 일치"
-    },
-    {
-        "id": "T10", "type": "P5",
-        "text": "The budget for next year has not _______ been finalized by the finance team.",
-        "ch": ["(A) yet", "(B) already", "(C) still", "(D) ever"],
-        "a": 0, "cat": "부사"
-    },
-]
+PRETEST_URL = ""  # 예: "https://forms.gle/...."
 
-# =========================================================
-# P7 지문 + 문제 (1지문 3문제)
-# =========================================================
-P7_PASSAGE = {
-    "title": "Notice",
-    "text": """To: All Staff
-From: Human Resources Department
-Subject: Annual Performance Review Schedule
 
-This year's annual performance reviews will be conducted during the month of March. All employees are required to complete a self-evaluation form by February 28. The forms are available on the company intranet.
+# -----------------------------
+# Utilities
+# -----------------------------
+def _safe_read_json(path: str, default):
+    try:
+        if os.path.exists(path):
+            with open(path, "r", encoding="utf-8") as f:
+                return json.load(f)
+    except Exception:
+        pass
+    return default
 
-Managers will schedule individual meetings with their team members between March 3 and March 21. Each meeting is expected to last approximately 30 minutes. Employees should come prepared to discuss their accomplishments and goals.
 
-Final review documents must be submitted to the Human Resources Department by March 25. Any employee who has questions regarding the review process should contact HR at extension 4521.""",
-    "questions": [
-        {
-            "id": "T11", "type": "P7",
-            "text": "What is the purpose of this notice?",
-            "ch": [
-                "(A) To announce new company policies",
-                "(B) To inform employees about performance reviews",
-                "(C) To introduce a new HR manager",
-                "(D) To explain changes to the intranet"
-            ],
-            "a": 1
-        },
-        {
-            "id": "T12", "type": "P7",
-            "text": "By when must employees submit their self-evaluation forms?",
-            "ch": [
-                "(A) March 3",
-                "(B) March 21",
-                "(C) February 28",
-                "(D) March 25"
-            ],
-            "a": 2
-        },
-        {
-            "id": "T13", "type": "P7",
-            "text": "How long is each performance review meeting expected to last?",
-            "ch": [
-                "(A) 20 minutes",
-                "(B) 30 minutes",
-                "(C) 45 minutes",
-                "(D) 60 minutes"
-            ],
-            "a": 1
-        },
-    ]
-}
+def _safe_write_json(path: str, data) -> None:
+    """Windows에서 streamlit 핫리로드/백신 등으로 파일이 잠길 때를 대비한 안전 저장.
+    - 여러 번 재시도
+    - 마지막에는 '직접 덮어쓰기' 폴백
+    """
+    os.makedirs(os.path.dirname(path), exist_ok=True)
 
-ALL_QUESTIONS = P5_QUESTIONS + P7_PASSAGE["questions"]
+    tmp = f"{path}.tmp_{int(time.time()*1000)}_{os.getpid()}"
+    payload = json.dumps(data, ensure_ascii=False, indent=2)
 
-# =========================================================
-# 경로 유틸
-# =========================================================
-def _project_root() -> Path:
-    return Path(__file__).resolve().parents[2]
+    # 1) tmp에 기록
+    with open(tmp, "w", encoding="utf-8") as f:
+        f.write(payload)
 
-def _cohort_dir(month_key: str) -> Path:
-    return _project_root() / "data" / "cohorts" / month_key
+    # 2) 원자적 교체(잠김이면 재시도)
+    for _ in range(12):
+        try:
+            os.replace(tmp, path)
+            return
+        except PermissionError:
+            time.sleep(0.08)
+        except Exception:
+            time.sleep(0.05)
 
-def _test_record_path(month_key: str) -> Path:
-    return _cohort_dir(month_key) / "test_records.json"
+    # 3) 폴백: 직접 쓰기
+    try:
+        with open(path, "w", encoding="utf-8") as f:
+            f.write(payload)
+    finally:
+        try:
+            if os.path.exists(tmp):
+                os.remove(tmp)
+        except Exception:
+            pass
+
+
+def _detect_latest_cohort() -> str:
+    """
+    data/cohorts 폴더 안에서 가장 최신(문자열 정렬 기준) 코호트 폴더를 잡는다.
+    예: 2026-01, 2026-02 ...
+    """
+    if not os.path.isdir(COHORTS_DIR):
+        return "default"
+
+    names = []
+    for name in os.listdir(COHORTS_DIR):
+        p = os.path.join(COHORTS_DIR, name)
+        if os.path.isdir(p):
+            names.append(name)
+
+    if not names:
+        return "default"
+
+    names.sort()
+    return names[-1]
+
+
+def _get_current_cohort() -> str:
+    """
+    access_guard 쪽에서 코호트를 session_state에 넣는 경우도 있어서 우선 사용하고,
+    없으면 data/cohorts에서 자동 감지.
+    """
+    for k in ("cohort", "cohort_id", "current_cohort", "active_cohort"):
+        v = st.session_state.get(k)
+        if isinstance(v, str) and v.strip():
+            return v.strip()
+    return _detect_latest_cohort()
+
 
 def _get_nickname() -> str:
-    for k in ("battle_nickname", "nickname"):
+    for k in ("battle_nickname", "nickname", "codename", "call_sign"):
         v = st.session_state.get(k)
         if isinstance(v, str) and v.strip():
             return v.strip()
     return ""
 
-def _get_cohort_month() -> str:
-    return st.session_state.get("cohort_month", date.today().strftime("%Y-%m"))
 
-# =========================================================
-# 검사 기록
-# =========================================================
-def _read_records(month_key: str) -> dict:
-    path = _test_record_path(month_key)
-    if not path.exists():
-        return {}
+def _done_path(cohort: str) -> str:
+    return os.path.join(COHORTS_DIR, cohort, DONE_FILENAME)
+
+
+def _is_done(nickname: str, cohort: str) -> bool:
+    data = _safe_read_json(_done_path(cohort), default={})
+    if isinstance(data, dict):
+        return bool(data.get(nickname))
+    if isinstance(data, list):
+        return nickname in data
+    return False
+
+
+def _mark_done(nickname: str, cohort: str) -> None:
+    path = _done_path(cohort)
+    data = _safe_read_json(path, default={})
+
+    if isinstance(data, list):
+        if nickname not in data:
+            data.append(nickname)
+    elif isinstance(data, dict):
+        data[nickname] = True
+    else:
+        data = {nickname: True}
+
+    _safe_write_json(path, data)
+
+
+def _img_to_data_uri(path: str) -> Optional[str]:
     try:
-        with open(path, "r", encoding="utf-8") as f:
-            return json.load(f)
-    except:
-        return {}
+        if not os.path.exists(path):
+            return None
+        ext = os.path.splitext(path)[1].lower().replace(".", "")
+        mime = "png" if ext == "png" else "jpeg" if ext in ("jpg", "jpeg") else "png"
+        with open(path, "rb") as f:
+            b64 = base64.b64encode(f.read()).decode("utf-8")
+        return f"data:image/{mime};base64,{b64}"
+    except Exception:
+        return None
 
-def _write_records(month_key: str, data: dict) -> None:
-    path = _test_record_path(month_key)
-    path.parent.mkdir(parents=True, exist_ok=True)
-    with open(path, "w", encoding="utf-8") as f:
-        json.dump(data, f, ensure_ascii=False, indent=2)
 
-def _get_student_tests(nickname: str, month_key: str) -> dict:
-    records = _read_records(month_key)
-    return records.get(nickname, {"stage1": None, "stage2": None, "stage3": None})
+# -----------------------------
+# UI (MISSION GATE)
+# -----------------------------
+def _apply_gate_css(bg_img_data_uri: Optional[str]) -> None:
+    bg_img = (
+        f"background-image: radial-gradient(1100px 650px at 20% 0%, rgba(255,170,0,0.10), transparent 55%),"
+        f" radial-gradient(900px 520px at 95% 20%, rgba(255,60,80,0.12), transparent 60%),"
+        f" linear-gradient(160deg, rgba(7,12,22,1) 0%, rgba(5,8,15,1) 60%, rgba(0,0,0,1) 100%);"
+    )
 
-def _save_test_result(nickname: str, month_key: str, stage: int, score_p5: int, score_p7: int, answers: list, elapsed_sec: float) -> None:
-    records = _read_records(month_key)
-    if nickname not in records:
-        records[nickname] = {"stage1": None, "stage2": None, "stage3": None}
-    records[nickname][f"stage{stage}"] = {
-        "score_p5": score_p5,
-        "score_p7": score_p7,
-        "score_total": score_p5 + score_p7,
-        "total_p5": len(P5_QUESTIONS),
-        "total_p7": len(P7_PASSAGE["questions"]),
-        "total": len(ALL_QUESTIONS),
-        "answers": answers,
-        "elapsed_sec": round(elapsed_sec, 1),
-        "completed_at": datetime.now().isoformat(),
-        "date": date.today().strftime("%Y-%m-%d")
-    }
-    _write_records(month_key, records)
+    st.markdown(
+        f"""
+        <style>
+        .block-container {{
+          padding-top: 1.2rem;
+          padding-bottom: 2.2rem;
+          max-width: 1200px;
+        }}
 
-# =========================================================
-# 단계 정보
-# =========================================================
-def _get_required_stage() -> Optional[int]:
-    today = date.today().day
-    if today in STAGE_1_DAYS:
-        return 1
-    elif today in STAGE_2_DAYS:
-        return 2
-    elif today in STAGE_3_DAYS:
-        return 3
-    return None
+        .gate-wrap {{
+          border-radius: 22px;
+          padding: 26px 28px;
+          background: rgba(20,24,34,0.62);
+          border: 1px solid rgba(255,255,255,0.09);
+          box-shadow: 0 12px 42px rgba(0,0,0,0.55);
+          position: relative;
+          overflow: hidden;
+        }}
 
-def _stage_name(stage: int) -> str:
-    return {1: "1차 사전검사", 2: "2차 중간검사", 3: "3차 사후검사"}.get(stage, "검사")
+        .gate-topline {{
+          height: 3px;
+          border-radius: 99px;
+          background: linear-gradient(90deg, rgba(255,170,0,0.95), rgba(255,60,80,0.90), rgba(255,170,0,0.95));
+          box-shadow: 0 0 18px rgba(255,120,40,0.35);
+          margin-bottom: 16px;
+        }}
 
-def _stage_color(stage: int) -> str:
-    return {1: "#00E5FF", 2: "#FFD600", 3: "#FF2D55"}.get(stage, "#7C5CFF")
+        .gate-title {{
+          font-size: 46px;
+          font-weight: 900;
+          letter-spacing: 1px;
+          margin: 0 0 8px 0;
+          color: rgba(255,255,255,0.95);
+          text-shadow: 0 6px 18px rgba(0,0,0,0.65);
+        }}
 
-# =========================================================
-# 공통 CSS
-# =========================================================
-def _base_css(color: str) -> None:
-    st.markdown(f"""
-    <style>
-    @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;700;900&display=swap');
-    .stApp {{ background: #0D0F1A !important; font-family: 'Noto Sans KR', sans-serif !important; }}
-    .block-container {{ max-width: 640px !important; margin: 0 auto !important; padding: 16px 20px 40px !important; }}
-    div.stButton > button {{
-        border-radius: 16px !important;
-        font-size: 22px !important;
-        font-weight: 900 !important;
-        padding: 20px !important;
-        min-height: 70px !important;
-        font-family: 'Noto Sans KR', sans-serif !important;
-    }}
-    div.stButton > button[kind="primary"] {{
-        background: linear-gradient(135deg, {color}, {color}cc) !important;
-        border: none !important;
-    }}
-    div.stButton > button:not([kind="primary"]) {{
-        background: rgba(255,255,255,0.06) !important;
-        border: 2px solid rgba(255,255,255,0.15) !important;
-        color: #fff !important;
-    }}
-    div.stButton > button:not([kind="primary"]):hover {{
-        background: rgba(255,255,255,0.12) !important;
-        border-color: {color} !important;
-    }}
-    #MainMenu, footer, header {{ visibility: hidden; }}
-    </style>
-    """, unsafe_allow_html=True)
+        .gate-sub {{
+          font-size: 18px;
+          font-weight: 800;
+          color: rgba(255,255,255,0.85);
+          margin: 0 0 10px 0;
+        }}
 
-# =========================================================
-# 검사 안내 화면
-# =========================================================
-def _render_gate(stage: int, nickname: str) -> None:
-    color = _stage_color(stage)
-    name = _stage_name(stage)
-    _base_css(color)
+        .gate-desc {{
+          font-size: 18px;
+          color: rgba(255,255,255,0.82);
+          margin-bottom: 16px;
+          line-height: 1.45;
+        }}
 
-    student_name = nickname.split('_')[0] if '_' in nickname else nickname
+        .chiprow {{
+          display: flex;
+          gap: 10px;
+          flex-wrap: wrap;
+          margin-top: 10px;
+          margin-bottom: 6px;
+        }}
+        .chip {{
+          display: inline-flex;
+          align-items: center;
+          gap: 8px;
+          border-radius: 999px;
+          padding: 7px 12px;
+          background: rgba(0,0,0,0.35);
+          border: 1px solid rgba(255,255,255,0.08);
+          color: rgba(255,255,255,0.88);
+          font-size: 13px;
+          font-weight: 800;
+        }}
 
-    st.markdown(f"""
-    <div style="text-align:center;padding:30px 0 20px;">
-        <div style="font-size:80px;margin-bottom:16px;">📋</div>
-        <div style="font-size:19px;color:{color};font-weight:900;letter-spacing:4px;margin-bottom:10px;">
-            MISSION REQUIRED
+        .gate-alert {{
+          margin-top: 18px;
+          padding: 14px 16px;
+          border-radius: 16px;
+          background: rgba(255,70,90,0.18);
+          border: 1px solid rgba(255,70,90,0.30);
+          color: rgba(255,255,255,0.92);
+          font-weight: 900;
+        }}
+
+        .small-note {{
+          font-size: 14px;
+          color: rgba(255,255,255,0.70);
+          line-height: 1.5;
+          margin-top: 10px;
+        }}
+
+        .btn-hero > div > button {{
+          border-radius: 16px !important;
+          height: 64px !important;
+          font-size: 19px !important;
+          font-weight: 900 !important;
+        }}
+
+        .stApp {{
+          {bg_img}
+        }}
+        </style>
+        """,
+        unsafe_allow_html=True,
+    )
+
+
+def _render_gate(nickname: str, cohort: str) -> None:
+    _apply_gate_css(bg_img_data_uri=None)
+
+    st.markdown('<div class="gate-wrap">', unsafe_allow_html=True)
+    st.markdown('<div class="gate-topline"></div>', unsafe_allow_html=True)
+    st.markdown('<div class="gate-title">🔒 MISSION GATE</div>', unsafe_allow_html=True)
+    st.markdown('<div class="gate-sub">AUTHORIZED PERSONNEL ONLY.</div>', unsafe_allow_html=True)
+    st.markdown(
+        '<div class="gate-desc">사전 설문(PRETEST)을 완료해야 전장 입장이 허가됩니다.</div>',
+        unsafe_allow_html=True,
+    )
+
+    st.markdown(
+        f"""
+        <div class="chiprow">
+          <div class="chip">🧑 CALL SIGN: {nickname or "UNKNOWN"}</div>
+          <div class="chip">🗂️ ACTIVE COHORT: {cohort}</div>
+          <div class="chip">📁 LOG: {COHORTS_DIR}\\{cohort}\\{DONE_FILENAME}</div>
         </div>
-        <div style="font-size:40px;font-weight:900;color:#fff;margin-bottom:8px;">
-            {name}
-        </div>
-        <div style="font-size:24px;color:rgba(255,255,255,0.8);margin-bottom:24px;font-weight:900;">
-            {student_name}님, 검사를 완료해야 입장할 수 있어요!
-        </div>
-    </div>
+        """,
+        unsafe_allow_html=True,
+    )
+    st.markdown("</div>", unsafe_allow_html=True)
 
-    <div style="background:rgba(255,255,255,0.05);border:2px solid rgba(255,255,255,0.1);
-                border-radius:20px;padding:28px;margin-bottom:24px;">
-        <div style="font-size:26px;font-weight:900;color:#fff;margin-bottom:20px;">📌 검사 안내</div>
-        <div style="font-size:24px;font-weight:900;color:rgba(255,255,255,0.95);line-height:2.4;">
-            ✅ &nbsp;P5 문법 문제 · <b style="color:{color}">10문제</b><br>
-            ✅ &nbsp;P7 독해 지문 · <b style="color:{color}">1지문 3문제</b><br>
-            ✅ &nbsp;총 <b style="color:{color}">13문제</b> · 약 <b style="color:{color}">5분</b> 소요<br>
-            ✅ &nbsp;풀이 시간이 자동으로 기록돼요<br>
-            ✅ &nbsp;정답/오답 <b style="color:{color}">상관없이</b> 완료만 하면 돼요!
-        </div>
-    </div>
-    """, unsafe_allow_html=True)
+    # 닉네임이 없으면 안내만
+    if not nickname:
+        st.markdown(
+            """
+            <div class="gate-alert">
+              ⚠️ CALL SIGN 미확인. 먼저 닉네임 인증 게이트를 통과하십시오.
+            </div>
+            <div class="small-note">
+              • 권장 흐름: <b>access_guard(닉네임 인증)</b> → <b>pretest_gate(사전 설문)</b><br/>
+              • 닉네임이 세팅되면, 이 화면이 자동으로 정상 작동합니다.
+            </div>
+            """,
+            unsafe_allow_html=True,
+        )
+        return
 
-    # HTML 버튼으로 직접 렌더링
-    st.markdown(f"""
-    <style>
-    .start-btn {{
-        display: block; width: 100%; padding: 26px;
-        background: linear-gradient(135deg, {color}, {color}cc);
-        border: none; border-radius: 18px; cursor: pointer;
-        font-size: 32px; font-weight: 900; color: #000000;
-        text-align: center; margin-top: 8px;
-    }}
-    .start-btn:hover {{ opacity: 0.9; }}
-    </style>
-    <form method="get">
-        <button class="start-btn" name="start_test" value="1" type="submit">
-            📋 {name} 시작하기
-        </button>
-    </form>
-    """, unsafe_allow_html=True)
+    # 설문 링크 안내 + 완료 체크
+    colL, colR = st.columns([1.2, 1.0], gap="large")
+    with colL:
+        st.markdown('<div class="gate-alert">🚫 ACCESS DENIED — PRETEST 미완료.</div>', unsafe_allow_html=True)
+        st.markdown(
+            """
+            <div class="small-note">
+              1) 설문 이동 → 제출<br/>
+              2) 돌아와서 아래의 <b>✅ 완료 체크(입장 허가)</b> 버튼 클릭
+            </div>
+            """,
+            unsafe_allow_html=True,
+        )
 
-    if st.query_params.get("start_test") == "1":
-        st.query_params.clear()
-        st.session_state.test_qi = 0
-        st.session_state.test_answers = []
-        st.session_state.test_start = time.time()
-        st.session_state.test_phase = "p5"
-        st.session_state.current_test_stage = stage
-        st.rerun()
+        if PRETEST_URL.strip():
+            st.link_button("📝 PRETEST BRIEFING (설문 이동)", PRETEST_URL, use_container_width=True)
+        else:
+            st.warning("PRETEST_URL이 비어있습니다. (Option A에선 이 게이트는 자동 스킵이지만, 강제로 들어온 경우 표시됩니다)")
+
+    with colR:
+        st.markdown('<div style="height:10px;"></div>', unsafe_allow_html=True)
+        if st.button("✅ 완료 체크(입장 허가)", use_container_width=True, key="pretest_done_btn"):
+            _mark_done(nickname, cohort)
+            st.success("✅ 기록 완료! 이제 전장 입장 가능합니다. (자동으로 다음 화면으로 진행)")
+            st.rerun()
+
+        st.markdown(
+            """
+            <div class="small-note">
+              ※ 제출했는데도 막히면: <b>완료 체크</b>를 다시 눌러 기록을 갱신하세요.
+            </div>
+            """,
+            unsafe_allow_html=True,
+        )
 
     st.stop()
 
-# =========================================================
-# P5 문제 화면
-# =========================================================
-def _render_p5(stage: int, nickname: str, month_key: str) -> None:
-    color = _stage_color(stage)
-    name = _stage_name(stage)
-    _base_css(color)
-    st.markdown(f"""
-    <style>
-    div.stButton > button {{
-        font-size: 30px !important;
-        font-weight: 900 !important;
-        text-shadow: 0 1px 4px rgba(0,0,0,0.5) !important;
-        min-height: 80px !important;
-        letter-spacing: 0.5px !important;
-    }}
-    div.stButton > button[kind="primary"] {{
-        color: #000 !important;
-        text-shadow: none !important;
-        font-size: 28px !important;
-        font-weight: 900 !important;
-    }}
-    </style>
-    """, unsafe_allow_html=True)
 
-    qi = st.session_state.test_qi
-    total_p5 = len(P5_QUESTIONS)
-    elapsed = int(time.time() - st.session_state.test_start)
-
-    # 진행바
-    st.markdown(f"""
-    <div style="text-align:center;padding:16px 0 12px;">
-        <div style="font-size:15px;color:{color};font-weight:700;letter-spacing:3px;margin-bottom:6px;">
-            SnapQ TOEIC · {name} · P5 문법
-        </div>
-        <div style="font-size:36px;font-weight:900;color:#fff;margin-bottom:8px;">
-            {qi+1} / {total_p5}
-        </div>
-        <div style="background:rgba(255,255,255,0.1);border-radius:999px;height:8px;margin:0 0 8px;">
-            <div style="background:{color};height:8px;border-radius:999px;width:{int((qi/total_p5)*100)}%;transition:width 0.3s;"></div>
-        </div>
-        <div style="font-size:16px;color:rgba(255,255,255,0.4);">⏱ {elapsed}초 경과</div>
-    </div>
-    """, unsafe_allow_html=True)
-
-    q = P5_QUESTIONS[qi]
-
-    # 문제 박스
-    st.markdown(f"""
-    <div style="background:rgba(255,255,255,0.05);border:2px solid {color}55;
-                border-radius:20px;padding:28px;margin:12px 0 20px;text-align:center;">
-        <div style="font-size:20px;color:{color};font-weight:900;letter-spacing:2px;margin-bottom:14px;">
-            {q['cat']}
-        </div>
-        <div style="font-size:34px;font-weight:900;color:#fff;line-height:1.7;
-                    text-shadow:0 1px 4px rgba(0,0,0,0.5);">
-            {q['text']}
-        </div>
-    </div>
-    """, unsafe_allow_html=True)
-
-    # 선택지 버튼 - components.html로 직접 렌더링
-    import streamlit.components.v1 as components
-    choices_html = ""
-    for idx, ch in enumerate(q["ch"]):
-        row = idx // 2
-        choices_html += f"""
-        <button onclick="window.parent.postMessage({{type:'p5_choice',idx:{idx},qi:{qi}}}, '*')"
-                style="width:48%;margin:1%;padding:22px 10px;font-size:28px;font-weight:900;
-                       background:rgba(255,255,255,0.06);border:2px solid rgba(255,255,255,0.15);
-                       border-radius:16px;color:#fff;cursor:pointer;display:inline-block;
-                       text-shadow:0 1px 4px rgba(0,0,0,0.5);">
-            {ch}
-        </button>"""
-
-    for idx, ch in enumerate(q["ch"]):
-        if st.button(ch, key=f"p5_{qi}_{idx}", use_container_width=False):
-            st.session_state.test_answers.append({
-                "q_id": q["id"],
-                "type": "P5",
-                "selected": idx,
-                "correct": idx == q["a"],
-                "time_sec": round(time.time() - st.session_state.test_start, 1)
-            })
-            if qi + 1 >= total_p5:
-                st.session_state.test_phase = "p7_intro"
-                st.session_state.test_qi = 0
-            else:
-                st.session_state.test_qi = qi + 1
-            st.rerun()
-
-    st.markdown("""
-    <style>
-    /* P5 선택지 버튼 강제 크기 */
-    section[data-testid="stMain"] button p {
-        font-size: 28px !important;
-        font-weight: 900 !important;
-        line-height: 1.4 !important;
-    }
-    section[data-testid="stMain"] button {
-        min-height: 80px !important;
-        font-size: 28px !important;
-        font-weight: 900 !important;
-    }
-    </style>
-    """, unsafe_allow_html=True)
-
-# =========================================================
-# P7 지문 소개 화면
-# =========================================================
-def _render_p7_intro(stage: int) -> None:
-    color = _stage_color(stage)
-    _base_css(color)
-    st.markdown(f"""
-    <style>
-    div.stButton > button {{
-        font-size: 34px !important;
-        font-weight: 900 !important;
-        min-height: 90px !important;
-        letter-spacing: 0.5px !important;
-        text-shadow: 0 1px 4px rgba(0,0,0,0.5) !important;
-    }}
-    div.stButton > button[kind="primary"] {{
-        color: #000 !important;
-        text-shadow: none !important;
-        font-size: 34px !important;
-        font-weight: 900 !important;
-    }}
-    div.stButton > button p {{
-        font-size: 34px !important;
-        font-weight: 900 !important;
-    }}
-    </style>
-    """, unsafe_allow_html=True)
-
-    elapsed = int(time.time() - st.session_state.get("test_start", time.time()))
-    minutes = elapsed // 60
-    seconds = elapsed % 60
-
-    st.markdown(f"""
-    <div style="text-align:center;padding:16px 0 12px;">
-        <div style="font-size:15px;color:{color};font-weight:700;letter-spacing:3px;margin-bottom:6px;">
-            P5 완료! · 다음은 P7 독해
-        </div>
-        <div style="font-size:36px;font-weight:900;color:#fff;margin-bottom:6px;">
-            📖 지문 읽기
-        </div>
-        <div style="font-size:16px;color:rgba(255,255,255,0.4);margin-bottom:16px;">
-            ⏱ {minutes}분 {seconds}초 경과 · 타이머 압박 없어요, 천천히 읽으세요!
-        </div>
-    </div>
-    """, unsafe_allow_html=True)
-
-    # P7 전장 스타일 지문 박스
-    passage_lines = P7_PASSAGE['text'].strip().replace('\n', '<br>')
-    st.markdown(f"""
-    <style>
-    .block-container {{ padding-left: 8px !important; padding-right: 8px !important; max-width: 100% !important; }}
-    </style>
-    <div style="background:rgba(255,255,255,0.04);border:2px solid {color}55;
-                border-radius:16px;padding:20px 16px;margin-bottom:16px;">
-        <div style="display:flex;align-items:center;gap:10px;margin-bottom:14px;
-                    border-bottom:1px solid rgba(255,255,255,0.1);padding-bottom:12px;">
-            <span style="font-size:30px;">📄</span>
-            <span style="font-size:26px;color:{color};font-weight:900;letter-spacing:2px;">
-                {P7_PASSAGE['title'].upper()}
-            </span>
-        </div>
-        <div style="font-size:28px;font-weight:700;color:rgba(255,255,255,0.95);line-height:2.1;word-break:keep-all;text-shadow:0 1px 3px rgba(0,0,0,0.4);">
-            {passage_lines}
-        </div>
-    </div>
-    """, unsafe_allow_html=True)
-
-    if st.button("✅  지문 읽었어요 → 문제 풀기", use_container_width=True, type="primary"):
-        st.session_state.test_phase = "p7"
-        st.session_state.test_qi = 0
-        st.rerun()
-
-# =========================================================
-# P7 문제 화면
-# =========================================================
-def _render_p7(stage: int, nickname: str, month_key: str) -> None:
-    color = _stage_color(stage)
-    name = _stage_name(stage)
-    _base_css(color)
-    st.markdown(f"""
-    <style>
-    div.stButton > button {{
-        font-size: 30px !important;
-        font-weight: 900 !important;
-        min-height: 84px !important;
-        text-shadow: 0 1px 4px rgba(0,0,0,0.5) !important;
-        letter-spacing: 0.3px !important;
-    }}
-    div.stButton > button p {{
-        font-size: 30px !important;
-        font-weight: 900 !important;
-    }}
-    div.stButton > button[kind="primary"] {{
-        color: #000 !important;
-        text-shadow: none !important;
-    }}
-    </style>
-    """, unsafe_allow_html=True)
-
-    qi = st.session_state.test_qi
-    questions = P7_PASSAGE["questions"]
-    total_p7 = len(questions)
-    elapsed = int(time.time() - st.session_state.test_start)
-
-    # 진행바
-    st.markdown(f"""
-    <div style="text-align:center;padding:16px 0 12px;">
-        <div style="font-size:15px;color:{color};font-weight:700;letter-spacing:3px;margin-bottom:6px;">
-            SnapQ TOEIC · {name} · P7 독해
-        </div>
-        <div style="font-size:36px;font-weight:900;color:#fff;margin-bottom:8px;">
-            {qi+1} / {total_p7}
-        </div>
-        <div style="background:rgba(255,255,255,0.1);border-radius:999px;height:8px;margin:0 0 8px;">
-            <div style="background:{color};height:8px;border-radius:999px;width:{int(((qi)/total_p7)*100)}%;transition:width 0.3s;"></div>
-        </div>
-        <div style="font-size:16px;color:rgba(255,255,255,0.4);">⏱ {elapsed}초 경과 · P7 {qi+1}/{total_p7}</div>
-    </div>
-    """, unsafe_allow_html=True)
-
-    q = questions[qi]
-
-    # 문제
-    st.markdown(f"""
-    <div style="background:rgba(255,255,255,0.05);border:2px solid {color}55;
-                border-radius:20px;padding:28px;margin:12px 0 20px;text-align:center;">
-        <div style="font-size:30px;font-weight:900;color:#fff;line-height:1.7;
-                    text-shadow:0 1px 4px rgba(0,0,0,0.5);">
-            {q['text']}
-        </div>
-    </div>
-    """, unsafe_allow_html=True)
-
-    # 선택지
-    for idx, ch in enumerate(q["ch"]):
-        if st.button(ch, key=f"p7_{qi}_{idx}", use_container_width=True):
-            st.session_state.test_answers.append({
-                "q_id": q["id"],
-                "type": "P7",
-                "selected": idx,
-                "correct": idx == q["a"],
-                "time_sec": round(time.time() - st.session_state.test_start, 1)
-            })
-            if qi + 1 >= total_p7:
-                st.session_state.test_phase = "result"
-            else:
-                st.session_state.test_qi = qi + 1
-            st.rerun()
-
-# =========================================================
-# 결과 화면
-# =========================================================
-def _render_result(stage: int, nickname: str, month_key: str) -> None:
-    color = _stage_color(stage)
-    name = _stage_name(stage)
-    _base_css(color)
-
-    answers = st.session_state.test_answers
-    elapsed = round(time.time() - st.session_state.test_start, 1)
-
-    p5_ans = [a for a in answers if a["type"] == "P5"]
-    p7_ans = [a for a in answers if a["type"] == "P7"]
-    score_p5 = sum(1 for a in p5_ans if a["correct"])
-    score_p7 = sum(1 for a in p7_ans if a["correct"])
-    total = score_p5 + score_p7
-    max_total = len(ALL_QUESTIONS)
-
-    # 저장
-    _save_test_result(nickname, month_key, stage, score_p5, score_p7, answers, elapsed)
-
-    pct = int(total / max_total * 100)
-    emoji = "🏆" if pct >= 80 else "💪" if pct >= 60 else "📚"
-    minutes = int(elapsed // 60)
-    seconds = int(elapsed % 60)
-    student_name = nickname.split('_')[0] if '_' in nickname else nickname
-
-    st.markdown(f"""
-    <div style="text-align:center;padding:30px 0 20px;">
-        <div style="font-size:80px;margin-bottom:16px;">{emoji}</div>
-        <div style="font-size:22px;color:{color};font-weight:900;letter-spacing:4px;margin-bottom:10px;">
-            {name} 완료!
-        </div>
-        <div style="font-size:56px;font-weight:900;color:#fff;margin-bottom:4px;">
-            {total} / {max_total}
-        </div>
-        <div style="font-size:26px;color:rgba(255,255,255,0.7);font-weight:900;margin-bottom:24px;">
-            정답률 {pct}%
-        </div>
-    </div>
-
-    <div style="background:rgba(255,255,255,0.05);border:2px solid rgba(255,255,255,0.1);
-                border-radius:20px;padding:28px;margin-bottom:24px;">
-        <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:20px;">
-            <div style="font-size:26px;color:rgba(255,255,255,0.9);font-weight:900;">P5 문법</div>
-            <div style="font-size:30px;font-weight:900;color:{color};">{score_p5} / {len(P5_QUESTIONS)}</div>
-        </div>
-        <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:20px;">
-            <div style="font-size:26px;color:rgba(255,255,255,0.9);font-weight:900;">P7 독해</div>
-            <div style="font-size:30px;font-weight:900;color:{color};">{score_p7} / {len(P7_PASSAGE['questions'])}</div>
-        </div>
-        <div style="border-top:1px solid rgba(255,255,255,0.1);padding-top:20px;
-                    display:flex;justify-content:space-between;align-items:center;">
-            <div style="font-size:26px;color:rgba(255,255,255,0.9);font-weight:900;">⏱ 풀이 시간</div>
-            <div style="font-size:30px;font-weight:900;color:#fff;">{minutes}분 {seconds}초</div>
-        </div>
-    </div>
-
-    <div style="text-align:center;font-size:22px;color:rgba(255,255,255,0.7);margin-bottom:20px;font-weight:900;">
-        수고하셨어요, {student_name}님! 이제 플랫폼을 이용할 수 있어요 😊
-    </div>
-    """, unsafe_allow_html=True)
-
-    st.markdown("""
-    <style>
-    div.stButton > button[kind="primary"] p {
-        color: #000 !important;
-        font-size: 26px !important;
-        font-weight: 900 !important;
-    }
-    div.stButton > button[kind="primary"] {
-        color: #000 !important;
-        font-size: 26px !important;
-        font-weight: 900 !important;
-        min-height: 80px !important;
-    }
-    </style>
-    """, unsafe_allow_html=True)
-
-    if st.button("⚡  플랫폼 입장하기", use_container_width=True, type="primary"):
-        for k in ["test_qi", "test_answers", "test_start", "test_phase", "current_test_stage"]:
-            if k in st.session_state:
-                del st.session_state[k]
-        st.rerun()
-
-    st.stop()
-
-# =========================================================
-# 메인 게이트 (main_hub.py에서 호출)
-# =========================================================
 def require_pretest_gate() -> None:
+    """
+    main_hub.py에서 호출:
+    - PRETEST_URL 비어있으면(설문 미운영) => 자동 스킵(바로 Main Hub)
+    - 프리테스트 완료 전이면 Gate UI 띄우고 st.stop()
+    - 완료면 그대로 통과
+    """
+    cohort = _get_current_cohort()
     nickname = _get_nickname()
-    month_key = _get_cohort_month()
 
     if not nickname:
+        _render_gate(nickname="", cohort=cohort)
         return
 
-    required_stage = _get_required_stage()
-    if required_stage is None:
+    # ✅ Option A 핵심: 설문 링크가 비어있으면 게이트를 띄우지 않는다.
+    if not PRETEST_URL.strip():
         return
 
-    # 검사 진행 중
-    phase = st.session_state.get("test_phase")
-    stage = st.session_state.get("current_test_stage", required_stage)
+    if _is_done(nickname, cohort):
+        return
 
-    if phase == "p5":
-        _render_p5(stage, nickname, month_key)
-        st.stop()
-    elif phase == "p7_intro":
-        _render_p7_intro(stage)
-        st.stop()
-    elif phase == "p7":
-        _render_p7(stage, nickname, month_key)
-        st.stop()
-    elif phase == "result":
-        _render_result(stage, nickname, month_key)
-        st.stop()
+    _render_gate(nickname=nickname, cohort=cohort)
 
-    # 완료 여부 확인
-    student_tests = _get_student_tests(nickname, month_key)
-    if student_tests.get(f"stage{required_stage}") is not None:
-        return  # 이미 완료
-
-    # 검사 안내 화면
-    _render_gate(required_stage, nickname)
-
-
+# -----------------------------
+# Backward-compat helper
+# (main_hub.py 등에서 import 하던 이름 유지)
+# -----------------------------
 def mark_pretest_done(nickname: str, cohort: str) -> None:
-    pass
+    """"pretest 완료 기록을 강제로 찍어주는 호환 함수."""
+    if not nickname:
+        return
+    _mark_done(nickname, cohort)
+
