@@ -954,7 +954,14 @@ _GO_STYLE = """
 """
 
 st.markdown("""<style>
-button[kind="secondary"]{display:none!important;}
+button[kind="secondary"]{
+    position:fixed!important;
+    top:-9999px!important;
+    left:-9999px!important;
+    width:1px!important;
+    height:1px!important;
+    opacity:0.01!important;
+}
 </style>""", unsafe_allow_html=True)
 # ── P5 ──
 _hc.html(_CSS + _GO_STYLE + _mk_card("p5c","⚡ P5 전장",
