@@ -964,10 +964,8 @@ div[data-testid="stButton"]>button{
     padding:20px!important;
     white-space:pre-wrap!important;
     margin-bottom:8px!important;
+    border:none!important;
 }
-div[data-testid="stButton"]:nth-of-type(1)>button{background:linear-gradient(135deg,#1a3a6b,#2d6abf)!important;border:2px solid #4a9eff!important;}
-div[data-testid="stButton"]:nth-of-type(2)>button{background:linear-gradient(135deg,#4a1a8a,#7b3fc4)!important;border:2px solid #a855f7!important;}
-div[data-testid="stButton"]:nth-of-type(3)>button{background:linear-gradient(135deg,#7a3a00,#d4720a)!important;border:2px solid #f97316!important;}
 </style>""", unsafe_allow_html=True)
 # ── P5 ──
 _hc.html(_CSS + _GO_STYLE + _mk_card("p5c","⚡ P5 전장",
@@ -1006,18 +1004,8 @@ if _p7_go:
 
 
 # ── 역전장 ──
-_hc.html(_CSS + _GO_STYLE + _mk_card("arc","🗡️ 역전장",
-    _arm_s1_big,_arm_s1_lbl,_arm_p5_svg if not _is_first else "",
-    _arm_s2_big,_arm_s2_lbl,_arm_vc_svg if not _is_first else "",_arm_s3) + """
-<button class="go-btn" onclick="parent.window.parent.document.querySelectorAll('button').forEach(b=>{if((b.innerText||'').trim()==='ARM_GO')b.click()})">🗡️</button>
-<script>
-(function(){
-  var h=window.innerWidth<=480?70:window.innerWidth<=768?100:140;
-  document.querySelector('.card').style.height=h+'px';
-})();
-</script>""", height=140)
-_arm_go = st.button("ARM_GO", key="armory_btn")
-if _arm_go:
+if st.button("🗡️ 역전장
+오답 설욕전! 토익 역전! 인생 역전!", key="arm_btn", use_container_width=True):
     st.switch_page("pages/03_역전장.py")
 
 
