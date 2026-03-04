@@ -963,7 +963,7 @@ _hc.html(_CSS + _GO_STYLE + _mk_card("p5c","⚡ P5 전장",
   var h=window.innerWidth<=480?70:window.innerWidth<=768?100:140;
   document.querySelector('.card').style.height=h+'px';
 })();
-</script>""", height=140)
+</script>""", height=90)
 _p5_go = st.button("P5_GO", key="p5_btn")
 if _p5_go:
     st.session_state.phase = "lobby"
@@ -981,7 +981,7 @@ _hc.html(_CSS + _GO_STYLE + _mk_card("p7c","📖 P7 전장",
   var h=window.innerWidth<=480?70:window.innerWidth<=768?100:140;
   document.querySelector('.card').style.height=h+'px';
 })();
-</script>""", height=140)
+</script>""", height=90)
 _p7_go = st.button("P7_GO", key="p7_btn")
 if _p7_go:
     if "p7_phase" in st.session_state:
@@ -999,7 +999,7 @@ _hc.html(_CSS + _GO_STYLE + _mk_card("arc","🗡️ 역전장",
   var h=window.innerWidth<=480?70:window.innerWidth<=768?100:140;
   document.querySelector('.card').style.height=h+'px';
 })();
-</script>""", height=140)
+</script>""", height=90)
 _arm_go = st.button("ARM_GO", key="armory_btn")
 if _arm_go:
     st.switch_page("pages/03_역전장.py")
