@@ -959,8 +959,8 @@ div[data-testid="stButton"] button {
     position:fixed!important;
     left:-9999px!important;
     opacity:0!important;
-    pointer-events:none!important;
-    width:1px!important;height:1px!important;
+    width:1px!important;
+    height:1px!important;
 }
 </style>""", unsafe_allow_html=True)
 _hc.html(_CSS + _GO_STYLE + _mk_card("p5c","⚡ P5 전장",
