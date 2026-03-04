@@ -954,19 +954,27 @@ _GO_STYLE = """
 """
 
 st.markdown("""<style>
+/* 전체 여백 줄이기 */
+.main .block-container{padding-top:0.5rem!important;padding-bottom:0.5rem!important;}
+section[data-testid="stSidebar"]{display:none!important;}
+
+/* 카드 버튼 스타일 */
 div[data-testid="stButton"]>button{
-    min-height:90px!important;
-    border-radius:14px!important;
+    min-height:80px!important;
+    border-radius:16px!important;
     font-size:1.1rem!important;
-    font-weight:800!important;
+    font-weight:900!important;
     color:white!important;
     text-align:left!important;
-    padding:18px 20px!important;
-    white-space:pre-wrap!important;
-    margin-bottom:10px!important;
-    border:none!important;
+    padding:16px 20px!important;
+    margin-bottom:6px!important;
+    border:2px solid rgba(255,255,255,0.15)!important;
     width:100%!important;
+    background:linear-gradient(135deg,#1a3a6b,#2d6abf)!important;
 }
+div[data-testid="stButton"]:nth-of-type(1)>button{background:linear-gradient(135deg,#1a3a6b,#2d6abf)!important;border-color:#4a9eff!important;}
+div[data-testid="stButton"]:nth-of-type(2)>button{background:linear-gradient(135deg,#4a1a8a,#7b3fc4)!important;border-color:#a855f7!important;}
+div[data-testid="stButton"]:nth-of-type(3)>button{background:linear-gradient(135deg,#7a3a00,#d4720a)!important;border-color:#f97316!important;}
 </style>""", unsafe_allow_html=True)
 # ── P5 ──
 _hc.html(_CSS + _GO_STYLE + _mk_card("p5c","⚡ P5 전장",
