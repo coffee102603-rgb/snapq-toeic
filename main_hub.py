@@ -954,18 +954,7 @@ _GO_STYLE = """
 """
 
 st.markdown("""<style>
-div[data-testid="stButton"]>button{
-    min-height:100px!important;
-    border-radius:16px!important;
-    font-size:1.15rem!important;
-    font-weight:800!important;
-    color:white!important;
-    text-align:left!important;
-    padding:20px!important;
-    white-space:pre-wrap!important;
-    margin-bottom:8px!important;
-    border:none!important;
-}
+button[kind="secondary"]{display:none!important;}
 </style>""", unsafe_allow_html=True)
 # ── P5 ──
 _hc.html(_CSS + _GO_STYLE + _mk_card("p5c","⚡ P5 전장",
@@ -1004,7 +993,18 @@ if _p7_go:
 
 
 # ── 역전장 ──
-if st.button("역전장\n오답 설욕전! 토익 역전! 인생 역전!", key="arm_btn", use_container_width=True):
+_hc.html(_CSS + _GO_STYLE + _mk_card("arc","🗡️ 역전장",
+    _arm_s1_big,_arm_s1_lbl,_arm_p5_svg if not _is_first else "",
+    _arm_s2_big,_arm_s2_lbl,_arm_vc_svg if not _is_first else "",_arm_s3) + """
+<button class="go-btn" onclick="parent.window.parent.document.querySelectorAll('button').forEach(b=>{if((b.innerText||'').trim()==='ARM_GO')b.click()})">🗡️</button>
+<script>
+(function(){
+  var h=window.innerWidth<=480?70:window.innerWidth<=768?100:140;
+  document.querySelector('.card').style.height=h+'px';
+})();
+</script>""", height=140)
+_arm_go = st.button("ARM_GO", key="armory_btn")
+if _arm_go:
     st.switch_page("pages/03_역전장.py")
 
 
