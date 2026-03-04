@@ -1000,13 +1000,13 @@ _hc.html(_CSS + _GO_STYLE + _mk_card("arc","🗡️ 역전장",
   document.querySelector('.card').style.height=h+'px';
 })();
 </script>""", height=140)
-_arm_go = st.button("ARM_GO", key="armory_btn")
+_arm_go = False
 if _arm_go:
     st.switch_page("pages/03_역전장.py")
 
 
 # ── 하단 박스 2개 ──
-_adm_go = st.button("ADMIN_GO", key="admin_go_btn")
+_adm_go = False
 if _adm_go:
     st.switch_page("pages/01_Admin.py")
 
