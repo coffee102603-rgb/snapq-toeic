@@ -957,7 +957,7 @@ _GO_STYLE = """
 _hc.html(_CSS + _GO_STYLE + _mk_card("p5c","⚡ P5 전장",
     _p5_s1_big,_p5_s1_lbl,_p5_rate_svg if not _is_first else "",
     _p5_s2_big,_p5_s2_lbl,_p5_cnt_svg if not _is_first else "",_p5_s3) + """
-<button class="go-btn" onclick="parent.window.parent.document.querySelectorAll('button').forEach(b=>{if((b.innerText||'').trim()==='P5_GO')b.click()})">⚡</button>
+<button class="go-btn" onclick="window.parent.document.querySelectorAll('button').forEach(b=>{if((b.innerText||'').trim()==='P5_GO')b.click()})">⚡</button>
 <script>
 (function(){
   var h=window.innerWidth<=480?70:window.innerWidth<=768?100:140;
@@ -975,7 +975,7 @@ if _p5_go:
 _hc.html(_CSS + _GO_STYLE + _mk_card("p7c","📖 P7 전장",
     _p7_s1_big,_p7_s1_lbl,_p7_rate_svg if not _is_first else "",
     _p7_s2_big,_p7_s2_lbl,_p7_cnt_svg if not _is_first else "",_p7_s3) + """
-<button class="go-btn" onclick="parent.window.parent.document.querySelectorAll('button').forEach(b=>{if((b.innerText||'').trim()==='P7_GO')b.click()})">📖</button>
+<button class="go-btn" onclick="window.parent.document.querySelectorAll('button').forEach(b=>{if((b.innerText||'').trim()==='P7_GO')b.click()})">📖</button>
 <script>
 (function(){
   var h=window.innerWidth<=480?70:window.innerWidth<=768?100:140;
@@ -993,7 +993,7 @@ if _p7_go:
 _hc.html(_CSS + _GO_STYLE + _mk_card("arc","🗡️ 역전장",
     _arm_s1_big,_arm_s1_lbl,_arm_p5_svg if not _is_first else "",
     _arm_s2_big,_arm_s2_lbl,_arm_vc_svg if not _is_first else "",_arm_s3) + """
-<button class="go-btn" onclick="parent.window.parent.document.querySelectorAll('button').forEach(b=>{if((b.innerText||'').trim()==='ARM_GO')b.click()})">🗡️</button>
+<button class="go-btn" onclick="window.parent.document.querySelectorAll('button').forEach(b=>{if((b.innerText||'').trim()==='ARM_GO')b.click()})">🗡️</button>
 <script>
 (function(){
   var h=window.innerWidth<=480?70:window.innerWidth<=768?100:140;
