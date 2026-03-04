@@ -1050,16 +1050,7 @@ function goAdmin(){
     if((b.innerText||'').trim()==='ADMIN_GO') b.click();
   });
 }
-//function hideBtn(){
-  window.parent.document.querySelectorAll('button').forEach(b=>{
-    const t=(b.innerText||'').trim();
-    if(t==='ADMIN_GO'||t==='P5_GO'||t==='P7_GO'||t==='ARM_GO'){
-      const w=b.closest('[data-testid="stButton"]');
-      if(w) w.style.cssText='position:absolute;opacity:0;pointer-events:none;height:0;overflow:hidden;';
-    }
-  });
-}
-setTimeout(hideBtn,100);setTimeout(hideBtn,600);
-//new MutationObserver(hideBtn).observe(window.parent.document.body,{childList:true,subtree:true});
+setTimeout(hideBtn,600);
+
 </script>
 """, height=50)
