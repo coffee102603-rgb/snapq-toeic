@@ -984,16 +984,14 @@ div[data-testid="stButton"]:nth-of-type(2)>button{background:linear-gradient(135
 div[data-testid="stButton"]:nth-of-type(3)>button{background:linear-gradient(135deg,#7a3a00,#d4720a)!important;border:2px solid #f97316!important;}
 </style>""", unsafe_allow_html=True)
 # ── P5 ──
-if st.button("⚡  P5 전장
-    시험장은 전쟁터다!", key="p5_btn", use_container_width=True):
+if st.button("⚡ P5 전장 - 시험장은 전쟁터다!", key="p5_btn", use_container_width=True):
     st.session_state.phase = "lobby"
     st.session_state._p5_active = False
     st.switch_page("pages/02_P5_Arena.py")
 
 
 # ── P7 ──
-if st.button("📖  P7 전장
-    고득점, 원하니?", key="p7_btn", use_container_width=True):
+if st.button("📖 P7 전장 - 고득점, 원하니?", key="p7_btn", use_container_width=True):
     if "p7_phase" in st.session_state:
         st.session_state.p7_phase = "lobby"
     st.switch_page("pages/04_P7_Reading.py")
