@@ -1004,7 +1004,7 @@ if _p7_go:
 
 
 # ── 역전장 ──
-if st.button("🗡️ 역전장
+if st.button("역전장
 오답 설욕전! 토익 역전! 인생 역전!", key="arm_btn", use_container_width=True):
     st.switch_page("pages/03_역전장.py")
 
