@@ -929,9 +929,44 @@ def _mk_card(cls, title, s1b, s1l, s1svg, s2b, s2l, s2svg, s3mot):
 
 st.markdown("""<style>
 .main .block-container{padding-top:0.3rem!important;padding-bottom:0!important;}
-div[data-testid="stButton"] button[kind="secondaryFormSubmit"]{display:none!important;}
-div[data-testid="stButton"]:has(button[data-testid="baseButton-secondary"])[style]{margin:0!important;}
-div[data-testid="stVerticalBlock"]{gap:0.3rem!important;}
+div[data-testid="stVerticalBlock"]{gap:0.4rem!important;}
+div[data-testid="stButton"]>button{
+    min-height:85px!important;
+    border-radius:16px!important;
+    font-size:1.05rem!important;
+    font-weight:900!important;
+    color:white!important;
+    text-align:left!important;
+    padding:16px 20px!important;
+    margin-bottom:4px!important;
+    width:100%!important;
+    letter-spacing:0.02em!important;
+    text-shadow:0 1px 3px rgba(0,0,0,0.4)!important;
+    transition:transform 0.1s,box-shadow 0.1s!important;
+    animation:pulse 2s infinite!important;
+}
+div[data-testid="stButton"]>button:active{
+    transform:scale(0.97)!important;
+}
+div[data-testid="stButton"]:nth-of-type(1)>button{
+    background:linear-gradient(135deg,#0d2d6e,#1a5bbf,#0d2d6e)!important;
+    border:2px solid #4a9eff!important;
+    box-shadow:0 0 15px rgba(74,158,255,0.4),0 4px 15px rgba(0,0,0,0.3)!important;
+}
+div[data-testid="stButton"]:nth-of-type(2)>button{
+    background:linear-gradient(135deg,#3a0d7a,#6b2fc4,#3a0d7a)!important;
+    border:2px solid #a855f7!important;
+    box-shadow:0 0 15px rgba(168,85,247,0.4),0 4px 15px rgba(0,0,0,0.3)!important;
+}
+div[data-testid="stButton"]:nth-of-type(3)>button{
+    background:linear-gradient(135deg,#6a2e00,#c4620a,#6a2e00)!important;
+    border:2px solid #f97316!important;
+    box-shadow:0 0 15px rgba(249,115,22,0.4),0 4px 15px rgba(0,0,0,0.3)!important;
+}
+@keyframes pulse{
+    0%,100%{box-shadow:0 0 10px rgba(255,255,255,0.1),0 4px 15px rgba(0,0,0,0.3);}
+    50%{box-shadow:0 0 20px rgba(255,255,255,0.25),0 4px 20px rgba(0,0,0,0.4);}
+}
 div[data-testid="stButton"]>button{
     min-height:80px!important;
     border-radius:16px!important;
@@ -949,14 +984,16 @@ div[data-testid="stButton"]:nth-of-type(2)>button{background:linear-gradient(135
 div[data-testid="stButton"]:nth-of-type(3)>button{background:linear-gradient(135deg,#7a3a00,#d4720a)!important;border:2px solid #f97316!important;}
 </style>""", unsafe_allow_html=True)
 # ── P5 ──
-if st.button("P5 전장 - 시험장은 전쟁터다!", key="p5_btn", use_container_width=True):
+if st.button("⚡  P5 전장
+    시험장은 전쟁터다!", key="p5_btn", use_container_width=True):
     st.session_state.phase = "lobby"
     st.session_state._p5_active = False
     st.switch_page("pages/02_P5_Arena.py")
 
 
 # ── P7 ──
-if st.button("P7 전장 - 고득점, 원하니?", key="p7_btn", use_container_width=True):
+if st.button("📖  P7 전장
+    고득점, 원하니?", key="p7_btn", use_container_width=True):
     if "p7_phase" in st.session_state:
         st.session_state.p7_phase = "lobby"
     st.switch_page("pages/04_P7_Reading.py")
