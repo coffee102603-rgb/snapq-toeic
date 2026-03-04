@@ -926,84 +926,87 @@ def _mk_card(cls, title, s1b, s1l, s1svg, s2b, s2l, s2svg, s3mot):
 </div>"""
 
 # ── 공통 go-btn 스타일 ──
+_GO_STYLE = """
+<style>
+.card{position:relative;overflow:hidden;}
+@keyframes goPulse{
+  0%,100%{box-shadow:0 0 10px #ff8800,0 0 20px #ff4400,0 0 40px rgba(255,100,0,0.4);border-color:rgba(255,200,0,0.9);}
+  50%{box-shadow:0 0 20px #ffcc00,0 0 40px #ff8800,0 0 80px rgba(255,150,0,0.7);border-color:#fff;}
+}
+@keyframes goShine{
+  0%{background-position:200% center;}
+  100%{background-position:-200% center;}
+}
+.go-btn{
+  position:absolute;right:8px;top:50%;transform:translateY(-50%);
+  background:linear-gradient(270deg,#ff6600,#ffcc00,#ff3300,#ffaa00);
+  background-size:300% 300%;
+  animation:goPulse 1.2s ease-in-out infinite, goShine 2s linear infinite;
+  border:2.5px solid rgba(255,220,100,0.95);
+  border-radius:14px;color:#fff;font-size:24px;
+  width:56px;height:75%;min-height:52px;max-height:84px;
+  cursor:pointer;display:flex;align-items:center;justify-content:center;
+  text-shadow:0 0 10px rgba(255,255,100,1),0 0 20px rgba(255,150,0,0.8);
+  filter:drop-shadow(0 0 6px rgba(255,150,0,0.8));
+}
+.go-btn:active{transform:translateY(-50%) scale(0.9);filter:brightness(1.3);}
+</style>
+"""
 
-st.markdown("""<style>
-.main .block-container{padding-top:0.3rem!important;padding-bottom:0!important;}
-div[data-testid="stVerticalBlock"]{gap:0.4rem!important;}
-div[data-testid="stButton"]>button{
-    min-height:85px!important;
-    border-radius:16px!important;
-    font-size:1.05rem!important;
-    font-weight:900!important;
-    color:white!important;
-    text-align:left!important;
-    padding:16px 20px!important;
-    margin-bottom:4px!important;
-    width:100%!important;
-    letter-spacing:0.02em!important;
-    text-shadow:0 1px 3px rgba(0,0,0,0.4)!important;
-    transition:transform 0.1s,box-shadow 0.1s!important;
-    animation:pulse 2s infinite!important;
-}
-div[data-testid="stButton"]>button:active{
-    transform:scale(0.97)!important;
-}
-div[data-testid="stButton"]:nth-of-type(1)>button{
-    background:linear-gradient(135deg,#0d2d6e,#1a5bbf,#0d2d6e)!important;
-    border:2px solid #4a9eff!important;
-    box-shadow:0 0 15px rgba(74,158,255,0.4),0 4px 15px rgba(0,0,0,0.3)!important;
-}
-div[data-testid="stButton"]:nth-of-type(2)>button{
-    background:linear-gradient(135deg,#3a0d7a,#6b2fc4,#3a0d7a)!important;
-    border:2px solid #a855f7!important;
-    box-shadow:0 0 15px rgba(168,85,247,0.4),0 4px 15px rgba(0,0,0,0.3)!important;
-}
-div[data-testid="stButton"]:nth-of-type(3)>button{
-    background:linear-gradient(135deg,#6a2e00,#c4620a,#6a2e00)!important;
-    border:2px solid #f97316!important;
-    box-shadow:0 0 15px rgba(249,115,22,0.4),0 4px 15px rgba(0,0,0,0.3)!important;
-}
-@keyframes pulse{
-    0%,100%{box-shadow:0 0 10px rgba(255,255,255,0.1),0 4px 15px rgba(0,0,0,0.3);}
-    50%{box-shadow:0 0 20px rgba(255,255,255,0.25),0 4px 20px rgba(0,0,0,0.4);}
-}
-div[data-testid="stButton"]>button{
-    min-height:80px!important;
-    border-radius:16px!important;
-    font-size:1.05rem!important;
-    font-weight:900!important;
-    color:white!important;
-    text-align:left!important;
-    padding:16px 20px!important;
-    margin-bottom:6px!important;
-    width:100%!important;
-}
-button[key="admin_go_btn"]{display:none!important;}
-div[data-testid="stButton"]:nth-of-type(1)>button{background:linear-gradient(135deg,#1a3a6b,#2d6abf)!important;border:2px solid #4a9eff!important;}
-div[data-testid="stButton"]:nth-of-type(2)>button{background:linear-gradient(135deg,#4a1a8a,#7b3fc4)!important;border:2px solid #a855f7!important;}
-div[data-testid="stButton"]:nth-of-type(3)>button{background:linear-gradient(135deg,#7a3a00,#d4720a)!important;border:2px solid #f97316!important;}
-</style>""", unsafe_allow_html=True)
 # ── P5 ──
-if st.button("⚡ P5 전장 - 시험장은 전쟁터다!", key="p5_btn", use_container_width=True):
+_hc.html(_CSS + _GO_STYLE + _mk_card("p5c","⚡ P5 전장",
+    _p5_s1_big,_p5_s1_lbl,_p5_rate_svg if not _is_first else "",
+    _p5_s2_big,_p5_s2_lbl,_p5_cnt_svg if not _is_first else "",_p5_s3) + """
+<button class="go-btn" onclick="parent.window.parent.document.querySelectorAll('button').forEach(b=>{if((b.innerText||'').trim()==='P5_GO')b.click()})">⚡</button>
+<script>
+(function(){
+  var h=window.innerWidth<=480?70:window.innerWidth<=768?100:140;
+  document.querySelector('.card').style.height=h+'px';
+})();
+</script>""", height=140)
+_p5_go = st.button("P5_GO", key="p5_btn")
+if _p5_go:
     st.session_state.phase = "lobby"
     st.session_state._p5_active = False
     st.switch_page("pages/02_P5_Arena.py")
 
 
 # ── P7 ──
-if st.button("📖 P7 전장 - 고득점, 원하니?", key="p7_btn", use_container_width=True):
+_hc.html(_CSS + _GO_STYLE + _mk_card("p7c","📖 P7 전장",
+    _p7_s1_big,_p7_s1_lbl,_p7_rate_svg if not _is_first else "",
+    _p7_s2_big,_p7_s2_lbl,_p7_cnt_svg if not _is_first else "",_p7_s3) + """
+<button class="go-btn" onclick="parent.window.parent.document.querySelectorAll('button').forEach(b=>{if((b.innerText||'').trim()==='P7_GO')b.click()})">📖</button>
+<script>
+(function(){
+  var h=window.innerWidth<=480?70:window.innerWidth<=768?100:140;
+  document.querySelector('.card').style.height=h+'px';
+})();
+</script>""", height=140)
+_p7_go = st.button("P7_GO", key="p7_btn")
+if _p7_go:
     if "p7_phase" in st.session_state:
         st.session_state.p7_phase = "lobby"
     st.switch_page("pages/04_P7_Reading.py")
 
 
 # ── 역전장 ──
-if st.button("🗡  역전장          오답 설욕전! 인생 역전!", key="arm_btn", use_container_width=True):
+_hc.html(_CSS + _GO_STYLE + _mk_card("arc","🗡️ 역전장",
+    _arm_s1_big,_arm_s1_lbl,_arm_p5_svg if not _is_first else "",
+    _arm_s2_big,_arm_s2_lbl,_arm_vc_svg if not _is_first else "",_arm_s3) + """
+<button class="go-btn" onclick="parent.window.parent.document.querySelectorAll('button').forEach(b=>{if((b.innerText||'').trim()==='ARM_GO')b.click()})">🗡️</button>
+<script>
+(function(){
+  var h=window.innerWidth<=480?70:window.innerWidth<=768?100:140;
+  document.querySelector('.card').style.height=h+'px';
+})();
+</script>""", height=140)
+_arm_go = st.button("ARM_GO", key="armory_btn")
+if _arm_go:
     st.switch_page("pages/03_역전장.py")
 
 
 # ── 하단 박스 2개 ──
-_adm_go = False  # ADMIN_GO 숨김
+_adm_go = st.button("ADMIN_GO", key="admin_go_btn")
 if _adm_go:
     st.switch_page("pages/01_Admin.py")
 
@@ -1038,7 +1041,16 @@ function goAdmin(){
     if((b.innerText||'').trim()==='ADMIN_GO') b.click();
   });
 }
-setTimeout(hideBtn,600);
-
+function hideBtn(){
+  window.parent.document.querySelectorAll('button').forEach(b=>{
+    const t=(b.innerText||'').trim();
+    if(t==='ADMIN_GO'||t==='P5_GO'||t==='P7_GO'||t==='ARM_GO'){
+      const w=b.closest('[data-testid="stButton"]');
+      if(w) w.style.cssText='position:absolute;opacity:0;pointer-events:none;height:0;overflow:hidden;';
+    }
+  });
+}
+setTimeout(hideBtn,100);setTimeout(hideBtn,600);
+new MutationObserver(hideBtn).observe(window.parent.document.body,{childList:true,subtree:true});
 </script>
 """, height=50)
