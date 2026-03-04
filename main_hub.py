@@ -952,18 +952,7 @@ if st.button("P5 전장 - 시험장은 전쟁터다!", key="p5_btn", use_contain
 
 
 # ── P7 ──
-_hc.html(_CSS + _GO_STYLE + _mk_card("p7c","📖 P7 전장",
-    _p7_s1_big,_p7_s1_lbl,_p7_rate_svg if not _is_first else "",
-    _p7_s2_big,_p7_s2_lbl,_p7_cnt_svg if not _is_first else "",_p7_s3) + """
-<button class="go-btn" onclick="parent.window.parent.document.querySelectorAll('button').forEach(b=>{if((b.innerText||'').trim()==='P7_GO')b.click()})">📖</button>
-<script>
-(function(){
-  var h=window.innerWidth<=480?70:window.innerWidth<=768?100:140;
-  document.querySelector('.card').style.height=h+'px';
-})();
-</script>""", height=140)
-_p7_go = st.button("P7_GO", key="p7_btn")
-if _p7_go:
+if st.button("P7 전장 - 고득점, 원하니?", key="p7_btn", use_container_width=True):
     if "p7_phase" in st.session_state:
         st.session_state.p7_phase = "lobby"
     st.switch_page("pages/04_P7_Reading.py")
