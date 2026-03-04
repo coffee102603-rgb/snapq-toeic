@@ -953,16 +953,23 @@ _GO_STYLE = """
 </style>
 """
 
-# ── P5 ──
 st.markdown("""<style>
-div[data-testid="stButton"] button {
-    position:fixed!important;
-    left:-9999px!important;
-    opacity:0!important;
-    width:1px!important;
-    height:1px!important;
+div[data-testid="stButton"]>button{
+    min-height:100px!important;
+    border-radius:16px!important;
+    font-size:1.15rem!important;
+    font-weight:800!important;
+    color:white!important;
+    text-align:left!important;
+    padding:20px!important;
+    white-space:pre-wrap!important;
+    margin-bottom:8px!important;
 }
+div[data-testid="stButton"]:nth-of-type(1)>button{background:linear-gradient(135deg,#1a3a6b,#2d6abf)!important;border:2px solid #4a9eff!important;}
+div[data-testid="stButton"]:nth-of-type(2)>button{background:linear-gradient(135deg,#4a1a8a,#7b3fc4)!important;border:2px solid #a855f7!important;}
+div[data-testid="stButton"]:nth-of-type(3)>button{background:linear-gradient(135deg,#7a3a00,#d4720a)!important;border:2px solid #f97316!important;}
 </style>""", unsafe_allow_html=True)
+# ── P5 ──
 _hc.html(_CSS + _GO_STYLE + _mk_card("p5c","⚡ P5 전장",
     _p5_s1_big,_p5_s1_lbl,_p5_rate_svg if not _is_first else "",
     _p5_s2_big,_p5_s2_lbl,_p5_cnt_svg if not _is_first else "",_p5_s3) + """
