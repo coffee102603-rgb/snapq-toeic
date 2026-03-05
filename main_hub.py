@@ -75,41 +75,36 @@ def _daily_rates(logs: list, activity_type: str, days: int = 7) -> list:
     return result
 
 def _svg_line(pts: list, color: str, w: int = 200, h: int = 45) -> str:
-    """pts: [0~100 or None] 리스트 → SVG 라인차트 문자열"""
+    """네온 글로우 + 면적채우기 SVG"""
     valid = [p for p in pts if p is not None]
     if len(valid) < 2:
-        # 데이터 없으면 샘플 우상향 점선
         sample = [30, 35, 28, 42, 50, 45, 60]
-        return _svg_line(sample, color, w, h) + '<!-- sample -->'
-    n = len(pts)
-    pad = 4
+        return _svg_line(sample, color, w, h)
+    last_two = valid[-2:]
+    if last_two[1] > last_two[0]: lc = "#00ff88"
+    elif last_two[1] < last_two[0]: lc = "#ff4466"
+    else: lc = color
+    n = len(pts); pad = 4
     uw = (w - pad*2) / (n - 1)
     coords = []
     for i, v in enumerate(pts):
-        if v is None:
-            coords.append(None)
+        if v is None: coords.append(None)
         else:
             x = pad + i * uw
             y = h - pad - (v / 100) * (h - pad*2)
             coords.append((x, y))
-    # 선 그리기 (None 구간은 건너뜀)
     path_d = ""
     for i, c in enumerate(coords):
-        if c is None:
-            continue
-        if path_d == "" or coords[i-1] is None:
-            path_d += f"M{c[0]:.1f},{c[1]:.1f} "
-        else:
-            path_d += f"L{c[0]:.1f},{c[1]:.1f} "
-    # 점
-    dots = "".join(
-        f'<circle cx="{c[0]:.1f}" cy="{c[1]:.1f}" r="2.5" fill="{color}"/>'
-        for c in coords if c is not None
-    )
-    svg = f"""<svg width="{w}" height="{h}" viewBox="0 0 {w} {h}" xmlns="http://www.w3.org/2000/svg">
-  <path d="{path_d.strip()}" stroke="{color}" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
-  {dots}
-</svg>"""
+        if c is None: continue
+        if path_d == "" or coords[i-1] is None: path_d += f"M{c[0]:.1f},{c[1]:.1f} "
+        else: path_d += f"L{c[0]:.1f},{c[1]:.1f} "
+    vc = [c for c in coords if c is not None]
+    area_d = f"M{vc[0][0]:.1f},{h} L{vc[0][0]:.1f},{vc[0][1]:.1f} "
+    area_d += " ".join(f"L{c[0]:.1f},{c[1]:.1f}" for c in vc[1:])
+    area_d += f" L{vc[-1][0]:.1f},{h} Z"
+    uid = abs(hash(str(pts)+color)) % 99999
+    dots = "".join(f'<circle cx="{c[0]:.1f}" cy="{c[1]:.1f}" r="2.8" fill="{lc}" filter="url(#ng{uid})"/>' for c in vc)
+    svg = (f'<svg width="{w}" height="{h}" viewBox="0 0 {w} {h}" xmlns="http://www.w3.org/2000/svg"><defs><filter id="ng{uid}" x="-50%" y="-50%" width="200%" height="200%"><feGaussianBlur stdDeviation="2.5" result="blur"/><feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge></filter><linearGradient id="ag{uid}" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="{lc}" stop-opacity="0.45"/><stop offset="100%" stop-color="{lc}" stop-opacity="0.02"/></linearGradient></defs><path d="{area_d}" fill="url(#ag{uid})" stroke="none"/><path d="{path_d.strip()}" stroke="{lc}" stroke-width="2.2" fill="none" stroke-linecap="round" stroke-linejoin="round" filter="url(#ng{uid})"/><path d="{path_d.strip()}" stroke="{lc}" stroke-width="1.2" fill="none" stroke-linecap="round" stroke-linejoin="round" opacity="0.9"/>{dots}</svg>')
     return svg
 
 def _daily_counts(logs: list, activity_type: str, days: int = 7) -> list:
@@ -757,12 +752,12 @@ arm_pending = stats["armory_pending"]
 _logs    = stats["_logs"]
 
 # ── SVG 그래프 (크게) ──
-_p5_rate_svg = _svg_line(_daily_rates(_logs, "p5_answer"),  "#00eeff", 200, 68)
-_p5_cnt_svg  = _svg_line(_daily_counts(_logs, "p5_answer"), "#44ffaa", 200, 68)
-_p7_rate_svg = _svg_line(_daily_rates(_logs, "p7_answer"),  "#dd88ff", 200, 68)
-_p7_cnt_svg  = _svg_line(_daily_counts(_logs, "p7_answer"), "#ffcc44", 200, 68)
-_arm_p5_svg  = _svg_line(_daily_rates(_logs, "armory_p5"),  "#ffee44", 200, 68)
-_arm_vc_svg  = _svg_line(_daily_rates(_logs, "armory_voca"),"#ff9944", 200, 68)
+_p5_rate_svg = _svg_line(_daily_rates(_logs, "p5_answer"),  "#00eeff", 200, 38)
+_p5_cnt_svg  = _svg_line(_daily_counts(_logs, "p5_answer"), "#44ffaa", 200, 38)
+_p7_rate_svg = _svg_line(_daily_rates(_logs, "p7_answer"),  "#dd88ff", 200, 38)
+_p7_cnt_svg  = _svg_line(_daily_counts(_logs, "p7_answer"), "#ffcc44", 200, 38)
+_arm_p5_svg  = _svg_line(_daily_rates(_logs, "armory_p5"),  "#ffee44", 200, 38)
+_arm_vc_svg  = _svg_line(_daily_rates(_logs, "armory_voca"),"#ff9944", 200, 38)
 
 # =========================================================
 # 환영/복귀 메시지
@@ -774,15 +769,15 @@ if _is_first_check:
 *{{box-sizing:border-box;margin:0;padding:0;font-family:-apple-system,sans-serif;}}
 @keyframes wi{{0%{{opacity:0;transform:translateY(8px);}}100%{{opacity:1;transform:translateY(0);}}}}
 .wel{{background:linear-gradient(135deg,rgba(0,200,100,0.15),rgba(0,100,255,0.15));
-      border:1.5px solid rgba(0,220,120,0.4);border-radius:16px;
-      padding:16px 20px;animation:wi 0.6s ease forwards;}}
-.wt{{font-size:1.15rem;font-weight:900;color:#fff;margin-bottom:4px;}}
-.ws{{font-size:0.82rem;color:rgba(255,255,255,0.6);}}
+      border:1.5px solid rgba(0,220,120,0.35);border-radius:12px;
+      padding:7px 14px;animation:wi 0.4s ease forwards;display:flex;align-items:center;gap:8px;}}
+.wt{{font-size:0.88rem;font-weight:900;color:#fff;white-space:nowrap;}}
+.ws{{font-size:0.78rem;color:rgba(255,255,255,0.55);}}
 </style>
 <div class="wel">
   <div class="wt">👋 반가워요, {student_name}님!</div>
-  <div class="ws">이번달 첫 접속이에요 · 아래 전장 중 하나를 골라 시작하세요 🔥</div>
-</div>""", height=80)
+  <div class="ws">🔥 첫판 · 지금 바로 시작!</div>
+</div>""", height=36)
 else:
     _total = p5_count + p7_count
     _hc.html(f"""
@@ -790,15 +785,15 @@ else:
 *{{box-sizing:border-box;margin:0;padding:0;font-family:-apple-system,sans-serif;}}
 @keyframes wi{{0%{{opacity:0;transform:translateY(8px);}}100%{{opacity:1;transform:translateY(0);}}}}
 .wel{{background:linear-gradient(135deg,rgba(255,100,0,0.12),rgba(200,0,255,0.12));
-      border:1.5px solid rgba(255,150,0,0.35);border-radius:16px;
-      padding:16px 20px;animation:wi 0.6s ease forwards;}}
-.wt{{font-size:1.15rem;font-weight:900;color:#fff;margin-bottom:4px;}}
-.ws{{font-size:0.82rem;color:rgba(255,255,255,0.6);}}
+      border:1.5px solid rgba(255,150,0,0.3);border-radius:12px;
+      padding:7px 14px;animation:wi 0.4s ease forwards;display:flex;align-items:center;gap:8px;}}
+.wt{{font-size:0.88rem;font-weight:900;color:#fff;white-space:nowrap;}}
+.ws{{font-size:0.78rem;color:rgba(255,255,255,0.55);}}
 </style>
 <div class="wel">
   <div class="wt">🔥 다시 왔군요, {student_name}님!</div>
-  <div class="ws">이번달 총 {_total}문제 완료 · 오늘도 한 판 더! 💪</div>
-</div>""", height=80)
+  <div class="ws">💥 {_total}문제 완료 · 오늘도 한 판 더!</div>
+</div>""", height=36)
 
 # ── 접속 횟수 기반 로테이션 멘트 ──
 _visit = _get_visit_count(nickname)
@@ -835,39 +830,49 @@ _p7_rot  = _P7_ROT[_ri % len(_P7_ROT)]
 _arm_rot = _ARM_ROT[_ri % len(_ARM_ROT)]
 
 # 슬라이드1: 정답률 (재접속) or 소개멘트 (첫접속)
+def _trend(logs, activity_type):
+    pts = [p for p in _daily_rates(logs, activity_type, 7) if p is not None]
+    if len(pts) < 2: return ""
+    diff = pts[-1] - pts[-2]
+    if diff > 0: return f" ▲{diff}%"
+    if diff < 0: return f" ▼{abs(diff)}%"
+    return " ―"
+_p5_trend = _trend(_logs, "p5_answer")
+_p7_trend = _trend(_logs, "p7_answer")
 if _is_first:
-    _p5_s1_big  = _p5_rot[0]
-    _p5_s1_lbl  = ""
-    _p7_s1_big  = _p7_rot[0]
-    _p7_s1_lbl  = ""
-    _arm_s1_big = _arm_rot[0]
-    _arm_s1_lbl = ""
-    _p5_s2_big  = _p5_rot[1]
-    _p5_s2_lbl  = ""
-    _p7_s2_big  = _p7_rot[1]
-    _p7_s2_lbl  = ""
-    _arm_s2_big = _arm_rot[1]
-    _arm_s2_lbl = ""
-    _p5_s3  = _p5_rot[2]
-    _p7_s3  = _p7_rot[2]
-    _arm_s3 = _arm_rot[2]
+    _sn = student_name
+    _p5_s1_big  = f"{_sn}! 문법 속도전"
+    _p5_s1_lbl  = "30초 · 5문제 · 지금 바로!"
+    _p7_s1_big  = f"{_sn}! 독해 집중전"
+    _p7_s1_lbl  = "60초 · 1지문 · 3문제!"
+    _arm_s1_big = f"{_sn}! 설욕할 시간"
+    _arm_s1_lbl = "오답 · 지금 없애라!"
+    _p5_s2_big  = "아직도 망설여?"
+    _p5_s2_lbl  = "전쟁터엔 핑계 없다!"
+    _p7_s2_big  = "읽지도 않고 찍어?"
+    _p7_s2_lbl  = "지문을 읽어라!"
+    _arm_s2_big = "틀린 문제가 웃는다"
+    _arm_s2_lbl = "네가 도망치는 중!"
+    _p5_s3  = "⚡ 30초 · 5문제 · 지금 바로!"
+    _p7_s3  = "📖 60초 · 1지문 · 지금 증명해!"
+    _arm_s3 = "🗡️ 오답 설욕 · 토익 역전!"
 else:
-    # 재접속: 슬1=정답률+그래프, 슬2=풀이수+그래프, 슬3=로테이션 자극멘트
-    _p5_s1_big  = f"{p5_rate}%" if p5_rate is not None else "—"
-    _p5_s1_lbl  = "정답률"
-    _p7_s1_big  = f"{p7_rate}%" if p7_rate is not None else "—"
-    _p7_s1_lbl  = "정답률"
-    _arm_s1_big = f"{arm_p5}%"  if arm_p5  is not None else "—"
-    _arm_s1_lbl = "P5 정답률"
+    _sn = student_name
+    _p5_s1_big  = f"{p5_rate}%{_p5_trend}" if p5_rate is not None else f"{_sn}! 첫 도전"
+    _p5_s1_lbl  = "7일 정답률"
     _p5_s2_big  = f"{p5_count}문제"
     _p5_s2_lbl  = "이번달 풀이"
+    _p7_s1_big  = f"{p7_rate}%{_p7_trend}" if p7_rate is not None else f"{_sn}! 첫 도전"
+    _p7_s1_lbl  = "7일 정답률"
     _p7_s2_big  = f"{p7_count}문제"
     _p7_s2_lbl  = "이번달 풀이"
-    _arm_s2_big = f"{arm_voca}%" if arm_voca is not None else "—"
-    _arm_s2_lbl = "보카 정답률"
+    _arm_s1_big = f"{arm_pending}개" if arm_pending > 0 else "완벽!"
+    _arm_s1_lbl = "🔥 오답 아직 남았다!" if arm_pending > 0 else "✅ 오답 제로!"
+    _arm_s2_big = f"{arm_p5}%" if arm_p5 is not None else "—"
+    _arm_s2_lbl = "정복률"
     _p5_s3  = _p5_rot[2]
     _p7_s3  = _p7_rot[2]
-    _arm_s3 = _arm_rot[2]
+    _arm_s3 = f"🔥 {arm_pending}개 남았다! 지금 없애라!" if arm_pending > 0 else "✅ 다 잡았다! 완벽!" 
 
 # ── 공통 CSS ──
 _CSS = """<style>
@@ -879,33 +884,33 @@ _CSS = """<style>
 .p5c{background:linear-gradient(145deg,#001f55,#0055bb,#0099ee);}
 .p7c{background:linear-gradient(145deg,#220044,#6600bb,#aa44ff);}
 .arc{background:linear-gradient(145deg,#551100,#bb5500,#ffaa00);}
-.ttl{font-size:1.26rem;font-weight:900;color:#fff;margin-bottom:6px;text-shadow:0 0 8px rgba(255,255,255,0.3);}
-.sl{position:absolute;left:18px;right:18px;top:44px;}
+.ttl{font-size:0;height:0;margin:0;overflow:hidden;}
+.sl{position:absolute;left:18px;right:18px;top:10px;}
 .sl1{animation:s1 9s ease-in-out infinite;}
 .sl2{animation:s2 9s ease-in-out infinite;}
 .sl3{animation:s3 9s ease-in-out infinite;}
 .row{display:flex;align-items:center;gap:14px;}
 .numbox{min-width:80px;flex-shrink:0;}
 .big{font-size:1.62rem;font-weight:900;color:#fff;line-height:1.25;}
-.lbl{font-size:0.75rem;color:rgba(255,255,255,0.6);margin-top:4px;}
+.lbl{font-size:0.95rem;font-weight:700;color:rgba(255,255,255,0.85);margin-top:4px;}
 .chart{flex:1;min-width:0;}
 .mot{font-size:1.68rem;font-weight:900;color:#fff;line-height:1.35;padding-top:6px;}
 svg{display:block;overflow:visible;width:100%;}
 @media(max-width:768px){
   .card{height:150px;padding:10px 14px 8px;border-radius:14px 0 0 14px;}
-  .ttl{font-size:1.05rem;}
+  .ttl{font-size:0;height:0;}
   .big{font-size:1.3rem;}
   .mot{font-size:1.3rem;}
-  .sl{top:36px;}
+  .sl{top:8px;}
   .numbox{min-width:64px;}
 }
 @media(max-width:480px){
   .card{height:124px;padding:8px 10px 6px;border-radius:12px 0 0 12px;}
-  .ttl{font-size:0.9rem;margin-bottom:3px;}
+  .ttl{font-size:0;height:0;}
   .big{font-size:1.1rem;}
-  .lbl{font-size:0.65rem;}
+  .lbl{font-size:0.82rem;}
   .mot{font-size:1.05rem;line-height:1.3;}
-  .sl{top:28px;left:10px;right:10px;}
+  .sl{top:6px;left:10px;right:10px;}
   .numbox{min-width:52px;}
   .row{gap:8px;}
 }
@@ -955,8 +960,8 @@ _GO_STYLE = """
 
 # ── P5 ──
 _hc.html(_CSS + _GO_STYLE + _mk_card("p5c","⚡ P5 전장",
-    _p5_s1_big,_p5_s1_lbl,_p5_rate_svg if not _is_first else "",
-    _p5_s2_big,_p5_s2_lbl,_p5_cnt_svg if not _is_first else "",_p5_s3) + """
+    _p5_s1_big,_p5_s1_lbl,_p5_rate_svg,
+    _p5_s2_big,_p5_s2_lbl,_p5_cnt_svg,_p5_s3) + """
 <button class="go-btn" onclick="window.parent.document.querySelectorAll('button').forEach(b=>{if((b.innerText||'').trim()==='P5_GO')b.click()})">⚡</button>
 <script>
 (function(){
@@ -973,8 +978,8 @@ if _p5_go:
 
 # ── P7 ──
 _hc.html(_CSS + _GO_STYLE + _mk_card("p7c","📖 P7 전장",
-    _p7_s1_big,_p7_s1_lbl,_p7_rate_svg if not _is_first else "",
-    _p7_s2_big,_p7_s2_lbl,_p7_cnt_svg if not _is_first else "",_p7_s3) + """
+    _p7_s1_big,_p7_s1_lbl,_p7_rate_svg,
+    _p7_s2_big,_p7_s2_lbl,_p7_cnt_svg,_p7_s3) + """
 <button class="go-btn" onclick="window.parent.document.querySelectorAll('button').forEach(b=>{if((b.innerText||'').trim()==='P7_GO')b.click()})">📖</button>
 <script>
 (function(){
@@ -991,8 +996,8 @@ if _p7_go:
 
 # ── 역전장 ──
 _hc.html(_CSS + _GO_STYLE + _mk_card("arc","🗡️ 역전장",
-    _arm_s1_big,_arm_s1_lbl,_arm_p5_svg if not _is_first else "",
-    _arm_s2_big,_arm_s2_lbl,_arm_vc_svg if not _is_first else "",_arm_s3) + """
+    _arm_s1_big,_arm_s1_lbl,_arm_p5_svg,
+    _arm_s2_big,_arm_s2_lbl,_arm_vc_svg,_arm_s3) + """
 <button class="go-btn" onclick="window.parent.document.querySelectorAll('button').forEach(b=>{if((b.innerText||'').trim()==='ARM_GO')b.click()})">🗡️</button>
 <script>
 (function(){
