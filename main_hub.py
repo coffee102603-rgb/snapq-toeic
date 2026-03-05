@@ -81,7 +81,7 @@ def _svg_line(pts: list, color: str, w: int = 200, h: int = 45) -> str:
         sample = [30, 35, 28, 42, 50, 45, 60]
         return _svg_line(sample, color, w, h)
     last_two = valid[-2:]
-    if last_two[1] > last_two[0]: lc = "#00ff88"
+    if last_two[1] > last_two[0]: lc = color
     elif last_two[1] < last_two[0]: lc = "#ff4466"
     else: lc = color
     n = len(pts); pad = 4
@@ -944,10 +944,10 @@ _GO_STYLE = """
 }
 .go-btn{
   position:absolute;right:8px;top:50%;transform:translateY(-50%);
-  background:linear-gradient(270deg,#ff6600,#ffcc00,#ff3300,#ffaa00);
+  background:var(--go-bg,linear-gradient(270deg,#ff6600,#ffcc00,#ff3300,#ffaa00));
   background-size:300% 300%;
   animation:goPulse 1.2s ease-in-out infinite, goShine 2s linear infinite;
-  border:2.5px solid rgba(255,220,100,0.95);
+  border:2.5px solid var(--go-border,rgba(255,220,100,0.95));
   border-radius:14px;color:#fff;font-size:24px;
   width:56px;height:75%;min-height:52px;max-height:84px;
   cursor:pointer;display:flex;align-items:center;justify-content:center;
@@ -959,10 +959,10 @@ _GO_STYLE = """
 """
 
 # ── P5 ──
-_hc.html(_CSS + _GO_STYLE + _mk_card("p5c","⚡ P5 전장",
+_hc.html(_CSS + _GO_STYLE + "<style>.p5c .go-btn{--go-bg:linear-gradient(270deg,#1565c0,#4fc3f7,#0d47a1,#29b6f6);--go-border:rgba(79,195,247,0.9);}</style>" + _mk_card("p5c","⚡ P5 전장",
     _p5_s1_big,_p5_s1_lbl,_p5_rate_svg,
     _p5_s2_big,_p5_s2_lbl,_p5_cnt_svg,_p5_s3) + """
-<button class="go-btn" onclick="window.parent.document.querySelectorAll('button').forEach(b=>{if((b.innerText||'').trim()==='P5_GO')b.click()})">⚡</button>
+<button class="go-btn" style="background:linear-gradient(270deg,#1565c0,#4fc3f7,#0d47a1,#29b6f6);border-color:rgba(79,195,247,0.9);" onclick="window.parent.document.querySelectorAll('button').forEach(b=>{if((b.innerText||'').trim()==='P5_GO')b.click()})">⚡</button>
 <script>
 (function(){
   var h=window.innerWidth<=480?70:window.innerWidth<=768?100:140;
@@ -977,10 +977,10 @@ if _p5_go:
 
 
 # ── P7 ──
-_hc.html(_CSS + _GO_STYLE + _mk_card("p7c","📖 P7 전장",
+_hc.html(_CSS + _GO_STYLE + "<style>.p7c .go-btn{--go-bg:linear-gradient(270deg,#6a1b9a,#ce93d8,#4a148c,#ab47bc);--go-border:rgba(155,127,212,0.9);}</style>" + _mk_card("p7c","📖 P7 전장",
     _p7_s1_big,_p7_s1_lbl,_p7_rate_svg,
     _p7_s2_big,_p7_s2_lbl,_p7_cnt_svg,_p7_s3) + """
-<button class="go-btn" onclick="window.parent.document.querySelectorAll('button').forEach(b=>{if((b.innerText||'').trim()==='P7_GO')b.click()})">📖</button>
+<button class="go-btn" style="background:linear-gradient(270deg,#6a1b9a,#ce93d8,#4a148c,#ab47bc);border-color:rgba(155,127,212,0.9);" onclick="window.parent.document.querySelectorAll('button').forEach(b=>{if((b.innerText||'').trim()==='P7_GO')b.click()})">📖</button>
 <script>
 (function(){
   var h=window.innerWidth<=480?70:window.innerWidth<=768?100:140;
@@ -995,10 +995,10 @@ if _p7_go:
 
 
 # ── 역전장 ──
-_hc.html(_CSS + _GO_STYLE + _mk_card("arc","🗡️ 역전장",
+_hc.html(_CSS + _GO_STYLE + "<style>.arc .go-btn{--go-bg:linear-gradient(270deg,#e65100,#ffd54f,#bf360c,#ffca28);--go-border:rgba(255,215,0,0.95);}</style>" + _mk_card("arc","🗡️ 역전장",
     _arm_s1_big,_arm_s1_lbl,_arm_p5_svg,
     _arm_s2_big,_arm_s2_lbl,_arm_vc_svg,_arm_s3) + """
-<button class="go-btn" onclick="window.parent.document.querySelectorAll('button').forEach(b=>{if((b.innerText||'').trim()==='ARM_GO')b.click()})">🗡️</button>
+<button class="go-btn" style="background:linear-gradient(270deg,#e65100,#ffd54f,#bf360c,#ffca28);border-color:rgba(255,215,0,0.95);" onclick="window.parent.document.querySelectorAll('button').forEach(b=>{if((b.innerText||'').trim()==='ARM_GO')b.click()})">🗡️</button>
 <script>
 (function(){
   var h=window.innerWidth<=480?70:window.innerWidth<=768?100:140;
