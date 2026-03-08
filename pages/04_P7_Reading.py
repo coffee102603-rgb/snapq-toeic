@@ -1,4 +1,4 @@
-"""P7 Reading Arena — 60초 독해 전투 (V2)"""
+﻿"""P7 Reading Arena — 60초 독해 전투 (V2)"""
 import streamlit as st
 import streamlit.components.v1 as components
 from streamlit_autorefresh import st_autorefresh
@@ -135,10 +135,10 @@ section[data-testid="stSidebar"]{background:#0a0a1a!important;}
 @keyframes hlDraw{from{background-size:0% 4px}to{background-size:100% 4px}}
 
 /* 전투 버튼 */
-button[kind="primary"]{background:#111111!important;color:#ffffff!important;border:2px solid #ff4400!important;border-radius:10px!important;font-size:1.6rem!important;font-weight:900!important;padding:0.7rem 1rem!important;box-shadow:0 0 10px rgba(255,68,0,0.3)!important;text-align:center!important;}
-button[kind="primary"] p{font-size:1.6rem!important;font-weight:900!important;text-align:center!important;}
-button[kind="secondary"]{background:#111111!important;color:#ffffff!important;border:2px solid #00aacc!important;border-radius:10px!important;font-size:1.6rem!important;font-weight:900!important;padding:0.7rem 1rem!important;box-shadow:0 0 10px rgba(0,170,204,0.3)!important;text-align:center!important;}
-button[kind="secondary"] p{font-size:1.6rem!important;font-weight:900!important;text-align:center!important;}
+button[kind="primary"]{background:#111111!important;color:#ffffff!important;border:2px solid #ff4400!important;border-radius:10px!important;font-size:1.2rem!important;font-weight:900!important;padding:0.7rem 1rem!important;box-shadow:0 0 10px rgba(255,68,0,0.3)!important;text-align:center!important;}
+button[kind="primary"] p{font-size:1.2rem!important;font-weight:900!important;text-align:center!important;}
+button[kind="secondary"]{background:#111111!important;color:#ffffff!important;border:2px solid #00aacc!important;border-radius:10px!important;font-size:1.2rem!important;font-weight:900!important;padding:0.7rem 1rem!important;box-shadow:0 0 10px rgba(0,170,204,0.3)!important;text-align:center!important;}
+button[kind="secondary"] p{font-size:1.2rem!important;font-weight:900!important;text-align:center!important;}
 
 /* P7 지문 카드 */
 .p7-pass{background:linear-gradient(145deg,#13112a,#1a1535);border:2px solid rgba(155,89,182,0.7);border-radius:18px;padding:1.5rem;margin:0.5rem 0;box-shadow:0 0 20px rgba(155,89,182,0.15);}
@@ -595,45 +595,43 @@ if st.session_state.p7_phase == "lobby":
     @keyframes p7stageIn{from{opacity:0;transform:translateY(30px);}to{opacity:1;transform:translateY(0);}}
     @keyframes p7startPulse{0%,100%{box-shadow:0 0 25px rgba(155,89,182,0.6),0 0 50px rgba(155,89,182,0.3);}50%{box-shadow:0 0 40px rgba(196,159,255,0.9),0 0 80px rgba(155,89,182,0.5);}}
 
-    .p7ms-title{text-align:center;padding:18px 8px 8px 8px;animation:p7stageIn 0.6s ease;}
-    .p7ms-title h1{font-size:2.2rem;font-weight:900;color:#c49fff;letter-spacing:3px;animation:p7titleGlow 3s ease infinite;margin:0;}
-    .p7ms-title p{font-size:0.9rem;color:#666;letter-spacing:2px;margin:4px 0 0 0;}
+    .p7ms-title{text-align:center;padding:8px 8px 4px 8px;animation:p7stageIn 0.6s ease;}
+    .p7ms-title h1{font-size:1.6rem;font-weight:900;color:#c49fff;letter-spacing:2px;animation:p7titleGlow 3s ease infinite;margin:0;white-space:nowrap;}
+    .p7ms-title p{font-size:0.75rem;color:#666;letter-spacing:2px;margin:2px 0 0 0;}
 
-    .p7stage{animation:p7stageIn 0.5s ease;border-radius:20px;padding:20px 12px;margin:8px 0;}
+    .p7stage{animation:p7stageIn 0.5s ease;border-radius:12px;padding:6px 10px;margin:3px 0;}
     .p7stage-act{background:linear-gradient(145deg,#0d0d1a,#13112a);border:2px solid rgba(155,89,182,0.5);box-shadow:0 0 20px rgba(155,89,182,0.1);}
 
-    .p7act-label{font-size:0.75rem;font-weight:900;letter-spacing:4px;color:#9b59b6;margin-bottom:10px;text-align:center;}
-    .p7act-msg{font-size:1.3rem;font-weight:900;color:#fff;text-align:center;margin-bottom:14px;line-height:1.4;}
+    .p7act-label{font-size:0.7rem;font-weight:900;letter-spacing:3px;color:#9b59b6;margin-bottom:4px;text-align:center;}
+    .p7act-msg{font-size:1rem;font-weight:900;color:#fff;text-align:center;margin-bottom:4px;line-height:1.3;}
     .p7act-msg span.hi{color:#c49fff;}
     .p7act-msg span.gold{color:#ffd700;}
     .p7act-msg span.go{color:#a855f7;}
 
-    .p7confirmed{text-align:center;padding:8px;margin-bottom:10px;}
-    .p7confirmed span{font-size:1rem;color:#ffd700;font-weight:900;background:rgba(255,215,0,0.1);padding:6px 16px;border-radius:20px;border:1px solid rgba(255,215,0,0.4);}
+    .p7confirmed{text-align:center;padding:2px;margin-bottom:3px;}
+    .p7confirmed span{font-size:1rem;color:#ffd700;font-weight:900;background:rgba(255,215,0,0.1);padding:4px 12px;border-radius:20px;border:1px solid rgba(255,215,0,0.4);}
 
-    @keyframes p7float{0%,100%{transform:translateY(0);box-shadow:0 0 15px rgba(155,89,182,0.25);}50%{transform:translateY(-9px);box-shadow:0 0 55px rgba(210,170,255,1),0 0 100px rgba(155,89,182,0.6);border-color:rgba(230,200,255,1)!important;}}
+    @keyframes p7float{0%,100%{transform:translateY(0);box-shadow:0 0 15px rgba(155,89,182,0.25);}50%{transform:translateY(-5px);box-shadow:0 0 30px rgba(210,170,255,0.8),0 0 60px rgba(155,89,182,0.4);border-color:rgba(230,200,255,1)!important;}}
     button[kind="secondary"]{
         background:#0d0d1a!important;border:2px solid rgba(155,89,182,0.6)!important;
-        border-radius:14px!important;font-size:1.35rem!important;font-weight:900!important;
-        padding:14px 8px!important;color:#e0e0e0!important;min-height:60px!important;
+        border-radius:12px!important;font-size:1rem!important;font-weight:900!important;
+        padding:5px 6px!important;color:#e0e0e0!important;min-height:40px!important;
         animation:p7float 2.8s ease-in-out infinite!important;
     }
-    button[kind="secondary"] p{font-size:1.35rem!important;font-weight:900!important;white-space:pre-line!important;line-height:1.3!important;text-align:center!important;}
+    button[kind="secondary"] p{font-size:1rem!important;font-weight:900!important;white-space:pre-line!important;line-height:1.25!important;text-align:center!important;}
 
     button[data-testid="stBaseButton-primary"]{
         background:linear-gradient(135deg,#2d1b4e,#6c3483,#9b59b6)!important;
-        border:3px solid #c49fff!important;font-size:1.6rem!important;font-weight:900!important;
-        padding:1.2rem!important;color:#fff!important;border-radius:16px!important;
+        border:3px solid #c49fff!important;font-size:1.2rem!important;font-weight:900!important;
+        padding:0.8rem!important;color:#fff!important;border-radius:14px!important;
         animation:p7startPulse 1.5s ease infinite!important;
     }
     #MainMenu{visibility:hidden!important;}header[data-testid="stHeader"]{height:0!important;visibility:hidden!important;}div[data-testid="stToolbar"]{visibility:hidden!important;}.block-container{padding-top:0.2rem!important;}
     </style>""", unsafe_allow_html=True)
 
-    # 타이틀
-    st.markdown('''<div class="p7ms-title">
-        <h1>📖 P7 READING 📖</h1>
-        <p>TOEIC PART 7 · 독해 전투</p>
-    </div>''', unsafe_allow_html=True)
+    # 타이틀 (1막에서만 표시)
+    if not _p7_tc:
+        st.markdown('''<div class="p7ms-title"><h1>📖 P7 READING 📖</h1><p>TOEIC PART 7 · 독해 전투</p></div>''', unsafe_allow_html=True)
 
     # ━━━ 참여자: 메인허브 nickname 자동 연결 (화면 표시 없음) ━━━
     if not st.session_state.get("p7_player_set", False):
@@ -685,9 +683,9 @@ if st.session_state.p7_phase == "lobby":
         _cat_name = PASSAGES[cat]["title"]
         _t = f"{_p7_tsec}초"
         st.markdown(f'''<div class="p7confirmed"><span>⏱ {_t} · {_cat_name} 확정!</span></div>''', unsafe_allow_html=True)
-        st.markdown(f'''<div class="p7stage p7stage-act" style="text-align:center;padding:24px 12px;">
+        st.markdown(f'''<div class="p7stage p7stage-act" style="text-align:center;padding:12px;">
             <div class="p7act-label">🎬 3 막 · 독해 전투 개시!</div>
-            <div class="p7act-msg" style="font-size:1.5rem;margin-bottom:6px;">
+            <div class="p7act-msg" style="font-size:1rem;margin-bottom:4px;">
                 전사여... <span class="go">준비됐다면</span><br>지금 바로 <span class="gold">시작하라!!!</span>
             </div>
         </div>''', unsafe_allow_html=True)
@@ -705,7 +703,7 @@ if st.session_state.p7_phase == "lobby":
             st.session_state.p7_tsec=80; st.session_state.p7_tsec_chosen=False; st.session_state.p7_cat=None; st.rerun()
 
     # ━━━ 항상 고정 네비게이션 ━━━
-    st.markdown('<div style="font-size:0.7rem;color:#333;text-align:center;letter-spacing:3px;margin-top:16px;padding-top:12px;border-top:1px solid #111;">N A V I G A T E</div>', unsafe_allow_html=True)
+    st.markdown('<div style="font-size:0.7rem;color:#333;text-align:center;letter-spacing:3px;margin-top:8px;padding-top:8px;border-top:1px solid #111;">N A V I G A T E</div>', unsafe_allow_html=True)
     nc1,nc2 = st.columns(2)
     with nc1:
         if st.button("🔥 역전장", key="p7nav1", type="secondary", use_container_width=True):
@@ -1135,3 +1133,4 @@ elif st.session_state.p7_phase == "briefing":
         if st.button("🏠 메인", key="p7lobby", type="secondary", use_container_width=True):
             for k in D: st.session_state[k] = D[k]
             st.switch_page("main_hub.py")
+
