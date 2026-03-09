@@ -706,10 +706,10 @@ if st.session_state.p7_phase == "lobby":
     st.markdown('<div style="font-size:0.7rem;color:#333;text-align:center;letter-spacing:3px;margin-top:8px;padding-top:8px;border-top:1px solid #111;">N A V I G A T E</div>', unsafe_allow_html=True)
     nc1,nc2 = st.columns(2)
     with nc1:
-        if st.button("🔥 역전장", key="p7nav1", type="secondary", use_container_width=True):
+        if st.button("🔥", key="p7nav1", type="secondary", use_container_width=True):
             st.switch_page("pages/03_역전장.py")
     with nc2:
-        if st.button("🏠 메인", key="p7nav2", type="secondary", use_container_width=True):
+        if st.button("🏠", key="p7nav2", type="secondary", use_container_width=True):
             st.session_state._p7_just_left = True
             st.switch_page("main_hub.py")
     import streamlit.components.v1 as _cmp
@@ -1066,7 +1066,7 @@ elif st.session_state.p7_phase == "briefing":
     wb += f'<div style="font-size:1.1rem;font-weight:900;color:#00aa88;margin-bottom:0.4rem;">{sym} Step {bi+1} / {num_steps}</div>'
 
     # 영어 지문 (핵심 표현 형광 밑줄)
-    wb += '<div style="font-size:1.8rem;font-weight:900;color:#1a1a1a;line-height:1.6;margin-bottom:0.3rem;">'
+    wb += '<div style="font-size:1.0rem;font-weight:900;color:#1a1a1a;line-height:1.6;margin-bottom:0.3rem;">'
     _mark_style = "background:none;display:inline;background-image:linear-gradient(#ffe066,#ffe066);background-size:0% 4px;background-position:left bottom;background-repeat:no-repeat;animation:hlDraw 0.8s ease-out 0.3s forwards;color:#008855;font-weight:900;padding:0 2px;"
     _exprs_list = [e.get("expr","") for e in s.get("expressions", []) if e.get("expr")]
     import re as _re3
@@ -1088,22 +1088,22 @@ elif st.session_state.p7_phase == "briefing":
 
     # 한글 해석
     wb += '<div style="border-top:1px dashed #ccc;margin:0.4rem 0;"></div>'
-    wb += f'<div style="font-size:1.7rem;font-weight:400;color:#444;line-height:1.7;margin-bottom:0.3rem;">📖 {s["kr"]}</div>'
+    wb += f'<div style="font-size:0.95rem;font-weight:400;color:#444;line-height:1.6;margin-bottom:0.3rem;">📖 {s["kr"]}</div>'
 
     # 문제: 영어 (한글) 한 줄
     q_kr = s.get("question_kr", "")
     c_kr = s.get("choices_kr", [])
     answer_kr = c_kr[s["answer"]] if c_kr and s["answer"] < len(c_kr) else ""
     wb += '<div style="border-top:1px dashed #ccc;margin:0.4rem 0;"></div>'
-    wb += f'<div style="margin-bottom:0.3rem;"><span style="font-size:1.8rem;font-weight:900;color:#6633aa;">[Q{bi+1}] {s["question"]}</span>'
+    wb += f'<div style="margin-bottom:0.3rem;"><span style="font-size:1.0rem;font-weight:900;color:#6633aa;">[Q{bi+1}] {s["question"]}</span>'
     if q_kr:
-        wb += f' <span style="font-size:1.7rem;font-weight:400;color:#8866bb;">({q_kr})</span>'
+        wb += f' <span style="font-size:0.9rem;font-weight:400;color:#8866bb;">({q_kr})</span>'
     wb += '</div>'
 
     # 정답: 영어 (한글) 한 줄
-    wb += f'<div><span style="font-size:1.8rem;font-weight:900;color:#008844;">{sym} {correct_choice}</span>'
+    wb += f'<div><span style="font-size:1.0rem;font-weight:900;color:#008844;">{sym} {correct_choice}</span>'
     if answer_kr:
-        wb += f' <span style="font-size:1.7rem;font-weight:400;color:#22aa66;">({answer_kr})</span>'
+        wb += f' <span style="font-size:0.9rem;font-weight:400;color:#22aa66;">({answer_kr})</span>'
     wb += '</div>'
     wb += '</div>'
     st.markdown(wb, unsafe_allow_html=True)
@@ -1111,26 +1111,26 @@ elif st.session_state.p7_phase == "briefing":
     # ─── 핵심 표현 (해당 Step의 표현만) ───
     exprs = s.get("expressions", [])
     if exprs:
-        st.markdown('<div style="text-align:center;color:#44ffcc;font-size:1.3rem;font-weight:900;margin:0.4rem 0;">💎 핵심 표현</div>', unsafe_allow_html=True)
+        st.markdown('<div style="text-align:center;color:#44ffcc;font-size:0.95rem;font-weight:900;margin:0.2rem 0;">💎 핵심 표현</div>', unsafe_allow_html=True)
         expr_html = ''
         for e in exprs:
-            expr_html += f'<div style="background:#0a1a28;border:2px solid rgba(255,255,255,0.55);border-radius:12px;padding:0.7rem 1rem;margin:0.3rem 0;display:flex;justify-content:space-between;align-items:center;"><span style="color:#44ffcc;font-size:1.8rem;font-weight:900;">{e["expr"]}</span><span style="color:#bbccdd;font-size:1.5rem;font-weight:700;">{e["meaning"]}</span></div>'
+            expr_html += f'<div style="background:#0a1a28;border:2px solid rgba(255,255,255,0.55);border-radius:8px;padding:0.4rem 0.6rem;margin:0.2rem 0;display:flex;justify-content:space-between;align-items:center;"><span style="color:#44ffcc;font-size:0.9rem;font-weight:900;">{e["expr"]}</span><span style="color:#bbccdd;font-size:0.85rem;font-weight:700;">{e["meaning"]}</span></div>'
         st.markdown(expr_html, unsafe_allow_html=True)
 
     # ─── 하단 4버튼 한 줄 ───
     bc1, bc2, bc3, bc4 = st.columns(4)
     with bc1:
-        if st.button("📝 단어저장", key=f"p7sv_{bi}", type="primary", use_container_width=True):
+        if st.button("📝", key=f"p7sv_{bi}", type="primary", use_container_width=True):
             save_expressions(exprs, step_data=s)
     with bc2:
-        if st.button("🔄 다시!", key="p7retry", type="primary", use_container_width=True):
+        if st.button("🔄", key="p7retry", type="primary", use_container_width=True):
             for k in D: st.session_state[k] = D[k]
             st.rerun()
     with bc3:
-        if st.button("🔥 역전장", key="p7store", type="secondary", use_container_width=True):
+        if st.button("🔥", key="p7store", type="secondary", use_container_width=True):
             st.switch_page("pages/03_역전장.py")
     with bc4:
-        if st.button("🏠 메인", key="p7lobby", type="secondary", use_container_width=True):
+        if st.button("🏠", key="p7lobby", type="secondary", use_container_width=True):
             for k in D: st.session_state[k] = D[k]
             st.switch_page("main_hub.py")
 
