@@ -37,27 +37,29 @@ st.markdown("""
 @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@700;900&family=Rajdhani:wght@600;700&display=swap');
 .stApp{background:linear-gradient(rgba(0,212,255,0.03) 1px,transparent 1px),linear-gradient(90deg,rgba(0,212,255,0.03) 1px,transparent 1px),#0a0a0a!important;background-size:40px 40px,40px 40px,100% 100%!important;color:#f0f0f0!important;}
 section[data-testid="stSidebar"]{display:none!important;}
-header[data-testid="stHeader"]{background:transparent!important;}
-.block-container{padding-top:0.3rem!important;padding-bottom:0.3rem!important;}
-.ah{text-align:center;padding:0.6rem 0 0.2rem 0;}
-.ah h1{font-family:'Orbitron',monospace!important;font-size:1.2rem;font-weight:900;margin:0;background:linear-gradient(90deg,#00d4ff,#ffffff,#00d4ff);background-size:200%;-webkit-background-clip:text;-webkit-text-fill-color:transparent;animation:titleShine 3s linear infinite;letter-spacing:4px;}
+header[data-testid="stHeader"]{background:transparent!important;height:0!important;min-height:0!important;overflow:hidden!important;}
+.block-container{padding-top:0!important;padding-bottom:0.2rem!important;}
+.ah{text-align:center;padding:0;margin:-4px 0 -4px 0;line-height:0.6;}
+.ah h1{font-family:'Orbitron',monospace!important;font-size:0.95rem;font-weight:900;margin:0;background:linear-gradient(90deg,#00d4ff,#ffffff,#00d4ff);background-size:200%;-webkit-background-clip:text;-webkit-text-fill-color:transparent;animation:titleShine 3s linear infinite;letter-spacing:4px;}
 @keyframes titleShine{0%{background-position:200% center}100%{background-position:-200% center}}
-button[kind="primary"],button[kind="secondary"]{background:#0d0d0d!important;color:#fff!important;border:1.5px solid rgba(0,212,255,0.5)!important;border-radius:8px!important;font-family:'Rajdhani',sans-serif!important;font-size:1.45rem!important;font-weight:700!important;padding:0.55rem 0.6rem!important;box-shadow:0 0 12px rgba(0,212,255,0.15)!important;text-align:center!important;transition:all 0.15s!important;}
-button[kind="primary"] p,button[kind="primary"] span,button[kind="secondary"] p,button[kind="secondary"] span{font-family:'Rajdhani',sans-serif!important;font-size:1.45rem!important;font-weight:700!important;text-align:center!important;}
+@keyframes p5bounce{0%,100%{transform:translateY(0);}30%{transform:translateY(-6px);}60%{transform:translateY(-3px);}80%{transform:translateY(-5px);}}
+@keyframes p5flash{0%,75%,100%{box-shadow:0 0 12px rgba(0,212,255,0.15);}88%{box-shadow:0 0 45px rgba(0,255,255,1),0 0 90px rgba(0,212,255,0.7);}}
+button[kind="primary"],button[kind="secondary"]{background:#0d0d0d!important;color:#fff!important;border:1.5px solid rgba(0,212,255,0.5)!important;border-radius:8px!important;font-family:'Rajdhani',sans-serif!important;font-size:2.1rem!important;font-weight:700!important;padding:1.2rem 1.4rem!important;text-align:center!important;transition:none!important;animation:p5bounce 1.4s ease-in-out infinite,p5flash 3s ease-in-out infinite!important;}
+button[kind="primary"] p,button[kind="primary"] span,button[kind="secondary"] p,button[kind="secondary"] span{font-family:'Rajdhani',sans-serif!important;font-size:2.1rem!important;font-weight:700!important;text-align:center!important;}
 button[kind="primary"]:hover,button[kind="secondary"]:hover{background:rgba(0,212,255,0.08)!important;border-color:#00d4ff!important;box-shadow:0 0 25px rgba(0,212,255,0.4)!important;transform:translateY(-2px)!important;}
-.qb{border-radius:14px;padding:0.8rem 1rem;margin:0.2rem 0 0.4rem 0;background:#0d0d0d;}
+.qb{border-radius:12px;padding:0.6rem 0.8rem;margin:0.1rem 0 0.2rem 0;background:#0d0d0d;}
 .qb-g,.qb-v{background:#0d0d0d!important;border:none!important;animation:borderGlow 3s linear infinite;}
 @keyframes borderGlow{0%{box-shadow:0 0 0 2px #00d4ff,0 0 15px rgba(0,212,255,0.4);}50%{box-shadow:0 0 0 2px #fff,0 0 25px rgba(0,212,255,0.6);}100%{box-shadow:0 0 0 2px #00d4ff,0 0 15px rgba(0,212,255,0.4);}}
-.qc{font-family:'Orbitron',monospace;font-size:0.8rem;font-weight:800;margin-bottom:0.3rem;letter-spacing:2px;}
+.qc{font-family:'Orbitron',monospace;font-size:1.05rem;font-weight:800;margin-bottom:0.8rem;letter-spacing:3px;}
 .qc-g,.qc-v{color:#00d4ff;text-shadow:0 0 8px rgba(0,212,255,0.6);}
-.qt{font-family:'Rajdhani',sans-serif;color:#fff;font-size:1.55rem;font-weight:700;line-height:1.6;word-break:keep-all;}
-.qk{color:#00d4ff;font-weight:900;font-size:1.7rem;border-bottom:3px solid #00d4ff;text-shadow:0 0 15px rgba(0,212,255,0.8);}
-.bt{display:flex;align-items:center;justify-content:space-between;padding:0.4rem 0.8rem;border-radius:10px;margin-bottom:0.2rem;}
+.qt{font-family:'Rajdhani',sans-serif;color:#fff;font-size:2.4rem;font-weight:700;line-height:2;word-break:keep-all;}
+.qk{color:#00d4ff;font-weight:900;font-size:2.6rem;border-bottom:3px solid #00d4ff;text-shadow:0 0 15px rgba(0,212,255,0.8);}
+.bt{display:flex;align-items:center;justify-content:space-between;padding:0.01rem 0.8rem;border-radius:6px;margin-bottom:0;transform:scale(0.85);transform-origin:top center;margin-top:-4px;}
 .bt-g,.bt-v{background:#0d0d0d;border:1px solid rgba(0,212,255,0.4);box-shadow:0 0 15px rgba(0,212,255,0.1);}
-.bq{font-family:'Orbitron',monospace;font-size:1.1rem;font-weight:900;}
+.bq{font-family:'Orbitron',monospace;font-size:1.6rem;font-weight:900;}
 .bq-g,.bq-v{color:#00d4ff;text-shadow:0 0 10px rgba(0,212,255,0.8);}
-.bs{font-family:'Orbitron',monospace;font-size:0.85rem;font-weight:800;color:#fff;}
-.rd-dots{display:flex;justify-content:center;gap:0.6rem;margin:0.3rem 0;}
+.bs{font-family:'Orbitron',monospace;font-size:1.1rem;font-weight:800;color:#fff;}
+.rd-dots{display:flex;justify-content:center;gap:0.6rem;margin:0 0;}
 .rd-dot{width:22px;height:22px;border-radius:50%;border:2px solid #333;display:flex;align-items:center;justify-content:center;font-size:0.7rem;font-weight:900;}
 .rd-cur{border-color:#00d4ff!important;color:#00d4ff!important;box-shadow:0 0 10px #00d4ff!important;}
 .rd-ok{background:#00d4ff;border-color:#00d4ff;color:#000;}
@@ -70,13 +72,13 @@ button[kind="primary"]:hover,button[kind="secondary"]:hover{background:rgba(0,21
 .ct{font-size:1.7rem;font-weight:900;margin-bottom:0.4rem;font-family:'Orbitron',monospace;}
 .cg .ct{color:#00d4ff;}.cv .ct{color:#88ddff;}
 .cd{font-size:1.3rem;font-weight:800;color:#ccc;line-height:1.5;}
-.wb{background:#0d0d0d;border-radius:14px;padding:1rem 1rem;margin:0.4rem 0;border:1px solid rgba(0,212,255,0.3);}
+.wb{background:#0d0d0d;border-radius:16px;padding:1.8rem 1.5rem;margin:0.5rem 0;border:1px solid rgba(0,212,255,0.3);min-height:250px;}
 .wb-qn-ok{color:#00d4ff;}.wb-qn-no{color:#ff2244;}
-.wb-s{font-size:1.5rem;font-weight:700;color:#f0f0f0;line-height:1.6;margin-bottom:0.5rem;word-break:keep-all;}
-.wb-h{color:#00d4ff;font-weight:900;font-size:1.6rem;text-decoration:underline;text-decoration-color:#00d4ff;}
-.wb-hn{color:#ff2244;font-weight:900;font-size:1.6rem;text-decoration:underline;text-decoration-color:#ff2244;}
-.wb-k{font-size:1.1rem;font-weight:600;color:#ccc;line-height:1.5;}
-.wb-e{font-size:1.05rem;color:#aaa;padding:0.4rem 0.7rem;background:rgba(0,212,255,0.06);border-left:4px solid #00d4ff;border-radius:0 8px 8px 0;}
+.wb-s{font-size:2.15rem;font-weight:700;color:#f0f0f0;line-height:2;margin-bottom:1rem;word-break:keep-all;}
+.wb-h{color:#00d4ff;font-weight:900;font-size:2.3rem;text-decoration:underline;text-decoration-color:#00d4ff;}
+.wb-hn{color:#ff2244;font-weight:900;font-size:2.3rem;text-decoration:underline;text-decoration-color:#ff2244;}
+.wb-k{font-size:1.6rem;font-weight:600;color:#ccc;line-height:1.7;}
+.wb-e{font-size:1.5rem;color:#aaa;padding:0.6rem 0.8rem;background:rgba(0,212,255,0.06);border-left:4px solid #00d4ff;border-radius:0 10px 10px 0;}
 .br-ban-v{border:1.5px solid #00d4ff;color:#00d4ff;}
 .br-ban-l{border:1.5px solid #ff2244;color:#ff2244;}
 .zl{color:#00d4ff!important;font-family:'Orbitron',monospace!important;letter-spacing:4px!important;}
@@ -242,21 +244,21 @@ if st.session_state.phase=="battle":
 
         components.html(f"""
         <style>
-        *{{margin:0;padding:0;}}body{{background:transparent;overflow:hidden;font-family:sans-serif;}}
-        #w{{text-align:center;}}
-        #n{{font-size:3rem;font-weight:900;animation:p 1s ease-in-out infinite;}}
-        #bw{{background:#1a1a2e;border-radius:10px;height:14px;margin:0.2rem 0.5rem;overflow:hidden;border:1px solid #333;}}
+        *{{margin:0;padding:0;box-sizing:border-box;}}body{{background:transparent;overflow:hidden;font-family:sans-serif;margin:0;padding:0;}}
+        #w{{text-align:center;padding:0;margin:0;line-height:1;}}
+        #n{{font-size:1.8rem;font-weight:900;animation:p 1s ease-in-out infinite;}}
+        #bw{{background:#1a1a2e;border-radius:8px;height:10px;margin:0.1rem 0.3rem;overflow:hidden;border:1px solid #333;}}
         #b{{height:100%;border-radius:10px;transition:width 1s linear;}}
         .safe{{color:#44ff88;text-shadow:0 0 20px #44ff88;}}
-        .warn{{color:#ffcc00;text-shadow:0 0 25px #ffcc00;}}
-        .danger{{color:#ff4444;text-shadow:0 0 35px #ff4444;}}
-        .critical{{color:#ff0000;text-shadow:0 0 50px #ff0000;font-size:3.5rem!important;}}
+        .warn{{color:#ffcc00;text-shadow:0 0 25px #ffcc00,0 0 50px #ff8800;}}
+        .danger{{color:#ff4444;text-shadow:0 0 35px #ff4444,0 0 70px #ff0000;}}
+        .critical{{color:#ff0000;text-shadow:0 0 50px #ff0000;font-size:1.8rem!important;}}
         .bs{{background:linear-gradient(90deg,#22cc66,#44ff88);box-shadow:0 0 10px #44ff88;}}
         .bw{{background:linear-gradient(90deg,#cc8800,#ffcc00);box-shadow:0 0 10px #ffcc00;}}
         .bd{{background:linear-gradient(90deg,#cc2200,#ff4444);box-shadow:0 0 15px #ff4444;animation:bp 0.5s infinite;}}
         .bc{{background:linear-gradient(90deg,#ff0000,#ff4444);box-shadow:0 0 25px #ff0000;animation:bp 0.25s infinite;}}
         @keyframes p{{0%,100%{{transform:scale(1);opacity:1}}50%{{transform:scale(1.07);opacity:0.8}}}}
-        @keyframes bp{{0%,100%{{opacity:1}}50%{{opacity:0.4}}}}
+        @keyframes bp{{0%,100%{{opacity:1}}50%{{opacity:0.4}}}}@keyframes shake{{0%{{transform:translate(0,0)}}20%{{transform:translate(-3px,2px)}}40%{{transform:translate(3px,-2px)}}60%{{transform:translate(-2px,3px)}}80%{{transform:translate(2px,-3px)}}100%{{transform:translate(0,0)}}}}
         </style>
         <div id="w"><div id="n" class="{tcl}">{rem}</div>
         <div id="bw"><div id="b" class="b{'s' if tcl=='safe' else 'w' if tcl=='warn' else 'd' if tcl=='danger' else 'c'}" style="width:{pct}%"></div></div></div>
@@ -265,7 +267,7 @@ if st.session_state.phase=="battle":
         setInterval(function(){{l--;if(l<0)l=0;e.textContent=l;var r=l/t;
         var c=r>0.6?"safe":r>0.35?"warn":r>0.15?"danger":"critical";e.className=c;
         b.className="b"+(r>0.6?"s":r>0.35?"w":r>0.15?"d":"c");b.style.width=(r*100)+"%";}},1000);
-        </script>""", height=70)
+        </script>""", height=44)
 
         # 시간초과 → YOU LOST
         if rem<=0:
@@ -326,8 +328,8 @@ elif st.session_state.phase=="victory":
     <style>
     *{margin:0;padding:0;}body{background:#000;overflow:hidden;display:flex;align-items:center;justify-content:center;height:100vh;font-family:sans-serif;}
     .v{text-align:center;animation:vi 0.8s ease-out;}
-    .v h1{font-size:5rem;font-weight:900;color:#ffcc00;text-shadow:0 0 40px #ffcc00,0 0 80px #ff8800,0 0 120px #ff4400;animation:glow 1.5s ease-in-out infinite alternate;}
-    .v p{font-size:1.5rem;color:#44ff88;font-weight:700;margin-top:0.5rem;}
+    .v h1{font-size:2rem;font-weight:900;color:#ffcc00;text-shadow:0 0 20px #ffcc00,0 0 40px #ff8800;animation:glow 1.5s ease-in-out infinite alternate;}
+    .v p{font-size:0.8rem;color:#44ff88;font-weight:700;margin-top:0.2rem;}
     .stars{position:absolute;width:100%;height:100%;}
     .star{position:absolute;background:#ffcc00;border-radius:50%;animation:twinkle 1s ease-in-out infinite;}
     @keyframes vi{0%{transform:scale(0);opacity:0}100%{transform:scale(1);opacity:1}}
@@ -338,7 +340,7 @@ elif st.session_state.phase=="victory":
     """ + "".join([f'<div class="star" style="left:{random.randint(5,95)}%;top:{random.randint(5,95)}%;width:{random.randint(3,8)}px;height:{random.randint(3,8)}px;animation-delay:{random.random():.1f}s;"></div>' for _ in range(30)]) + """
     </div>
     <div class="v"><h1>⚔️ VICTORY ⚔️</h1><p>라운드 클리어!</p></div>
-    """, height=350)
+    """, height=70)
 
     st.markdown("")
     vc=st.columns(2)
@@ -381,13 +383,13 @@ elif st.session_state.phase=="lost":
     @keyframes rise{{0%{{opacity:1;transform:translateY(0) scale(1);}}100%{{opacity:0;transform:translateY(-300px) scale(0.3);}}}}
     @keyframes flicker{{0%,100%{{opacity:1;}}50%{{opacity:0.7;}}}}
     body{{animation:redPulse 0.8s ease-in-out infinite;}}
-    .wrap{{text-align:center;animation:crashIn 0.6s cubic-bezier(0.34,1.56,0.64,1) forwards;z-index:10;position:relative;padding:20px;}}
-    .skull{{font-size:5rem;animation:shakeX 0.4s ease-in-out infinite;display:inline-block;margin-bottom:10px;}}
-    .lost-txt{{font-size:3.5rem;font-weight:900;color:#ff0000;text-shadow:0 0 20px #ff0000,0 0 60px #cc0000;animation:flicker 0.3s infinite;letter-spacing:4px;}}
-    .reason{{font-size:1.4rem;color:#ff6644;font-weight:700;margin:8px 0;letter-spacing:2px;}}
-    .score{{font-size:4rem;font-weight:900;color:#ffcc00;text-shadow:0 0 30px #ffaa00;margin:10px 0;}}
-    .taunt{{font-size:1.3rem;color:#ff8888;font-weight:700;margin:6px 0;}}
-    .sub{{font-size:1rem;color:#ff6666;margin-top:4px;}}
+    .wrap{{text-align:center;animation:crashIn 0.6s cubic-bezier(0.34,1.56,0.64,1) forwards;z-index:10;position:relative;padding:6px;}}
+    .skull{{font-size:2rem;animation:shakeX 0.4s ease-in-out infinite;display:inline-block;margin-bottom:4px;}}
+    .lost-txt{{font-size:1.5rem;font-weight:900;color:#ff0000;text-shadow:0 0 10px #ff0000;animation:flicker 0.3s infinite;letter-spacing:2px;}}
+    .reason{{font-size:0.8rem;color:#ff6644;font-weight:700;margin:3px 0;letter-spacing:1px;}}
+    .score{{font-size:1.8rem;font-weight:900;color:#ffcc00;text-shadow:0 0 15px #ffaa00;margin:4px 0;}}
+    .taunt{{font-size:0.75rem;color:#ff8888;font-weight:700;margin:2px 0;}}
+    .sub{{font-size:0.7rem;color:#ff6666;margin-top:2px;}}
     .embers{{position:absolute;width:100%;height:100%;top:0;left:0;pointer-events:none;}}
     .ember{{position:absolute;border-radius:50%;animation:rise 1.5s ease-in infinite;}}
     </style>
@@ -399,7 +401,7 @@ elif st.session_state.phase=="lost":
         <div class="score">{_pct}점</div>
         <div class="taunt">{_taunt}</div>
         <div class="sub">{_sub}</div>
-    </div>""", height=420)
+    </div>""", height=90)
     st.markdown("")
     bc=st.columns(2)
     with bc[0]:
@@ -424,27 +426,29 @@ elif st.session_state.phase=="briefing":
 @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@700;900&family=Rajdhani:wght@600;700&display=swap');
 .stApp{background:linear-gradient(rgba(0,212,255,0.03) 1px,transparent 1px),linear-gradient(90deg,rgba(0,212,255,0.03) 1px,transparent 1px),#0a0a0a!important;background-size:40px 40px,40px 40px,100% 100%!important;color:#f0f0f0!important;}
 section[data-testid="stSidebar"]{display:none!important;}
-header[data-testid="stHeader"]{background:transparent!important;}
-.block-container{padding-top:0.3rem!important;padding-bottom:0.3rem!important;}
-.ah{text-align:center;padding:0.6rem 0 0.2rem 0;}
-.ah h1{font-family:'Orbitron',monospace!important;font-size:1.2rem;font-weight:900;margin:0;background:linear-gradient(90deg,#00d4ff,#ffffff,#00d4ff);background-size:200%;-webkit-background-clip:text;-webkit-text-fill-color:transparent;animation:titleShine 3s linear infinite;letter-spacing:4px;}
+header[data-testid="stHeader"]{background:transparent!important;height:0!important;min-height:0!important;overflow:hidden!important;}
+.block-container{padding-top:0!important;padding-bottom:0.2rem!important;}
+.ah{text-align:center;padding:0 0 0 0;}
+.ah h1{font-family:'Orbitron',monospace!important;font-size:2rem;font-weight:900;margin:0;background:linear-gradient(90deg,#00d4ff,#ffffff,#00d4ff);background-size:200%;-webkit-background-clip:text;-webkit-text-fill-color:transparent;animation:titleShine 3s linear infinite;letter-spacing:4px;}
 @keyframes titleShine{0%{background-position:200% center}100%{background-position:-200% center}}
-button[kind="primary"],button[kind="secondary"]{background:#0d0d0d!important;color:#fff!important;border:1.5px solid rgba(0,212,255,0.5)!important;border-radius:8px!important;font-family:'Rajdhani',sans-serif!important;font-size:1.45rem!important;font-weight:700!important;padding:0.55rem 0.6rem!important;box-shadow:0 0 12px rgba(0,212,255,0.15)!important;text-align:center!important;transition:all 0.15s!important;}
-button[kind="primary"] p,button[kind="primary"] span,button[kind="secondary"] p,button[kind="secondary"] span{font-family:'Rajdhani',sans-serif!important;font-size:1.45rem!important;font-weight:700!important;text-align:center!important;}
+@keyframes p5bounce{0%,100%{transform:translateY(0);}30%{transform:translateY(-6px);}60%{transform:translateY(-3px);}80%{transform:translateY(-5px);}}
+@keyframes p5flash{0%,75%,100%{box-shadow:0 0 12px rgba(0,212,255,0.15);}88%{box-shadow:0 0 45px rgba(0,255,255,1),0 0 90px rgba(0,212,255,0.7);}}
+button[kind="primary"],button[kind="secondary"]{background:#0d0d0d!important;color:#fff!important;border:1.5px solid rgba(0,212,255,0.5)!important;border-radius:8px!important;font-family:'Rajdhani',sans-serif!important;font-size:0.25rem!important;font-weight:300!important;padding:0 8px!important;min-height:0!important;height:44px!important;text-align:center!important;white-space:nowrap!important;overflow:hidden!important;transition:none!important;animation:p5bounce 1.4s ease-in-out infinite,p5flash 3s ease-in-out infinite!important;}button[kind="primary"]{font-size:0.45rem!important;font-weight:300!important;padding:0 12px!important;white-space:nowrap!important;}[data-testid="stHorizontalBlock"]{display:flex!important;flex-direction:row!important;flex-wrap:nowrap!important;gap:4px!important;}[data-testid="stHorizontalBlock"] [data-testid="stColumn"]{flex:1!important;min-width:0!important;max-width:20%!important;}
+button[kind="primary"] p,button[kind="primary"] span,button[kind="secondary"] p,button[kind="secondary"] span{font-family:'Rajdhani',sans-serif!important;font-size:2.1rem!important;font-weight:700!important;text-align:center!important;}
 button[kind="primary"]:hover,button[kind="secondary"]:hover{background:rgba(0,212,255,0.08)!important;border-color:#00d4ff!important;box-shadow:0 0 25px rgba(0,212,255,0.4)!important;transform:translateY(-2px)!important;}
-.qb{border-radius:14px;padding:0.8rem 1rem;margin:0.2rem 0 0.4rem 0;background:#0d0d0d;}
+.qb{border-radius:12px;padding:0.6rem 0.8rem;margin:0.1rem 0 0.2rem 0;background:#0d0d0d;}
 .qb-g,.qb-v{background:#0d0d0d!important;border:none!important;animation:borderGlow 3s linear infinite;}
 @keyframes borderGlow{0%{box-shadow:0 0 0 2px #00d4ff,0 0 15px rgba(0,212,255,0.4);}50%{box-shadow:0 0 0 2px #fff,0 0 25px rgba(0,212,255,0.6);}100%{box-shadow:0 0 0 2px #00d4ff,0 0 15px rgba(0,212,255,0.4);}}
-.qc{font-family:'Orbitron',monospace;font-size:0.8rem;font-weight:800;margin-bottom:0.3rem;letter-spacing:2px;}
+.qc{font-family:'Orbitron',monospace;font-size:1.05rem;font-weight:800;margin-bottom:0.8rem;letter-spacing:3px;}
 .qc-g,.qc-v{color:#00d4ff;text-shadow:0 0 8px rgba(0,212,255,0.6);}
-.qt{font-family:'Rajdhani',sans-serif;color:#fff;font-size:1.55rem;font-weight:700;line-height:1.6;word-break:keep-all;}
-.qk{color:#00d4ff;font-weight:900;font-size:1.7rem;border-bottom:3px solid #00d4ff;text-shadow:0 0 15px rgba(0,212,255,0.8);}
-.bt{display:flex;align-items:center;justify-content:space-between;padding:0.4rem 0.8rem;border-radius:10px;margin-bottom:0.2rem;}
+.qt{font-family:'Rajdhani',sans-serif;color:#fff;font-size:2.4rem;font-weight:700;line-height:2;word-break:keep-all;}
+.qk{color:#00d4ff;font-weight:900;font-size:2.6rem;border-bottom:3px solid #00d4ff;text-shadow:0 0 15px rgba(0,212,255,0.8);}
+.bt{display:flex;align-items:center;justify-content:space-between;padding:0.01rem 0.8rem;border-radius:6px;margin-bottom:0;transform:scale(0.85);transform-origin:top center;margin-top:-4px;}
 .bt-g,.bt-v{background:#0d0d0d;border:1px solid rgba(0,212,255,0.4);box-shadow:0 0 15px rgba(0,212,255,0.1);}
-.bq{font-family:'Orbitron',monospace;font-size:1.1rem;font-weight:900;}
+.bq{font-family:'Orbitron',monospace;font-size:1.6rem;font-weight:900;}
 .bq-g,.bq-v{color:#00d4ff;text-shadow:0 0 10px rgba(0,212,255,0.8);}
-.bs{font-family:'Orbitron',monospace;font-size:0.85rem;font-weight:800;color:#fff;}
-.rd-dots{display:flex;justify-content:center;gap:0.6rem;margin:0.3rem 0;}
+.bs{font-family:'Orbitron',monospace;font-size:1.1rem;font-weight:800;color:#fff;}
+.rd-dots{display:flex;justify-content:center;gap:0.6rem;margin:0 0;}
 .rd-dot{width:22px;height:22px;border-radius:50%;border:2px solid #333;display:flex;align-items:center;justify-content:center;font-size:0.7rem;font-weight:900;}
 .rd-cur{border-color:#00d4ff!important;color:#00d4ff!important;box-shadow:0 0 10px #00d4ff!important;}
 .rd-ok{background:#00d4ff;border-color:#00d4ff;color:#000;}
@@ -457,13 +461,13 @@ button[kind="primary"]:hover,button[kind="secondary"]:hover{background:rgba(0,21
 .ct{font-size:1.7rem;font-weight:900;margin-bottom:0.4rem;font-family:'Orbitron',monospace;}
 .cg .ct{color:#00d4ff;}.cv .ct{color:#88ddff;}
 .cd{font-size:1.3rem;font-weight:800;color:#ccc;line-height:1.5;}
-.wb{background:#0d0d0d;border-radius:14px;padding:1rem 1rem;margin:0.4rem 0;border:1px solid rgba(0,212,255,0.3);}
+.wb{background:#0d0d0d;border-radius:16px;padding:1.8rem 1.5rem;margin:0.5rem 0;border:1px solid rgba(0,212,255,0.3);min-height:250px;}
 .wb-qn-ok{color:#00d4ff;}.wb-qn-no{color:#ff2244;}
-.wb-s{font-size:1.5rem;font-weight:700;color:#f0f0f0;line-height:1.6;margin-bottom:0.5rem;word-break:keep-all;}
-.wb-h{color:#00d4ff;font-weight:900;font-size:1.6rem;text-decoration:underline;text-decoration-color:#00d4ff;}
-.wb-hn{color:#ff2244;font-weight:900;font-size:1.6rem;text-decoration:underline;text-decoration-color:#ff2244;}
-.wb-k{font-size:1.1rem;font-weight:600;color:#ccc;line-height:1.5;}
-.wb-e{font-size:1.05rem;color:#aaa;padding:0.4rem 0.7rem;background:rgba(0,212,255,0.06);border-left:4px solid #00d4ff;border-radius:0 8px 8px 0;}
+.wb-s{font-size:2.15rem;font-weight:700;color:#f0f0f0;line-height:2;margin-bottom:1rem;word-break:keep-all;}
+.wb-h{color:#00d4ff;font-weight:900;font-size:2.3rem;text-decoration:underline;text-decoration-color:#00d4ff;}
+.wb-hn{color:#ff2244;font-weight:900;font-size:2.3rem;text-decoration:underline;text-decoration-color:#ff2244;}
+.wb-k{font-size:1.6rem;font-weight:600;color:#ccc;line-height:1.7;}
+.wb-e{font-size:1.5rem;color:#aaa;padding:0.6rem 0.8rem;background:rgba(0,212,255,0.06);border-left:4px solid #00d4ff;border-radius:0 10px 10px 0;}
 .br-ban-v{border:1.5px solid #00d4ff;color:#00d4ff;}
 .br-ban-l{border:1.5px solid #ff2244;color:#ff2244;}
 .zl{color:#00d4ff!important;font-family:'Orbitron',monospace!important;letter-spacing:4px!important;}
@@ -471,54 +475,35 @@ details{background:rgba(0,212,255,0.03)!important;border-radius:12px!important;}
 summary{color:#aaa!important;font-weight:700!important;}
 ::-webkit-scrollbar{width:4px;}::-webkit-scrollbar-track{background:#0a0a0a;}
 ::-webkit-scrollbar-thumb{background:rgba(0,212,255,0.4);border-radius:2px;}
-
-/* ━━━ 카테고리 버튼 설명글자 작게 ━━━ */
-@keyframes p5bounce{0%,100%{transform:translateY(0);}25%{transform:translateY(-7px);}60%{transform:translateY(-3px);}80%{transform:translateY(-6px);}}
-@keyframes p5flash{0%,65%,100%{box-shadow:0 0 12px rgba(0,212,255,0.15);}82%{box-shadow:0 0 55px rgba(0,255,255,1),0 0 110px rgba(0,212,255,0.9);}}
-@keyframes titleGlow{0%,100%{text-shadow:0 0 20px #00d4ff,0 0 40px #00d4ff;}50%{text-shadow:0 0 30px #00ffaa,0 0 60px #00ffaa;}}
-@keyframes stageIn{from{opacity:0;transform:translateY(20px);}to{opacity:1;transform:translateY(0);}}
-@keyframes startPulse{0%,100%{box-shadow:0 0 25px rgba(255,136,0,0.6);}50%{box-shadow:0 0 40px rgba(255,200,0,0.9),0 0 80px rgba(255,100,0,0.5);}}
-.ms-title{text-align:center;padding:14px 8px 6px 8px;animation:stageIn 0.5s ease;}
-.ms-title h1{font-size:2.2rem;font-weight:900;color:#00d4ff;letter-spacing:3px;animation:titleGlow 3s ease infinite;margin:0;}
-.ms-title p{font-size:0.9rem;color:#666;letter-spacing:2px;margin:3px 0 0 0;}
-.stage{animation:stageIn 0.4s ease;border-radius:16px;padding:14px 12px;margin:3px 0;}
-.stage-act{background:linear-gradient(145deg,#050d15,#0a1520);border:2px solid rgba(0,212,255,0.5);}
-.stage-dim{background:#050505;border:2px solid #111;opacity:0.3;pointer-events:none;}
-.act-label{font-size:0.75rem;font-weight:900;letter-spacing:4px;color:#00d4ff;margin-bottom:8px;text-align:center;}
-.act-msg{font-size:1.2rem;font-weight:900;color:#fff;text-align:center;margin-bottom:10px;line-height:1.3;}
-.act-msg span.hi{color:#00d4ff;}.act-msg span.gold{color:#ffd700;}.act-msg span.go{color:#00ff88;}
-.confirmed{text-align:center;padding:6px;margin-bottom:8px;}
-.confirmed span{font-size:0.9rem;color:#ffd700;font-weight:900;background:rgba(255,215,0,0.1);padding:4px 12px;border-radius:20px;border:1px solid rgba(255,215,0,0.4);}
-.stVerticalBlock{gap:0.2rem!important;}
-[data-testid="stVerticalBlock"]>*{margin-bottom:0!important;}
-[data-testid="stHorizontalBlock"]{gap:5px!important;margin:0!important;}
-
-/* ━━━ 타이머: 전기 찌릿찌릿 ━━━ */
-@keyframes timerBlaze{
-  0%{transform:scale(1) skewX(0deg);box-shadow:0 0 8px rgba(0,212,255,0.3);border-color:rgba(0,212,255,0.5);filter:brightness(1);}
-  8%{transform:scale(1.04) skewX(-2deg);box-shadow:0 0 90px rgba(0,255,255,1),0 0 180px rgba(0,212,255,1);border-color:rgba(255,255,255,1)!important;filter:brightness(2);}
-  12%{transform:scale(0.98) skewX(2deg);box-shadow:0 0 15px rgba(0,212,255,0.3);filter:brightness(1);}
-  16%{transform:scale(1.03) skewX(-1deg);box-shadow:0 0 100px rgba(0,255,255,1),0 0 200px rgba(0,212,255,0.9);filter:brightness(2.2);}
-  22%,100%{transform:scale(1) skewX(0deg);box-shadow:0 0 8px rgba(0,212,255,0.2);border-color:rgba(0,212,255,0.5);filter:brightness(1);}}
-
-/* ━━━ 카테고리: 마법진 테두리 회전 ━━━ */
-@keyframes magicBorder{
-  0%{box-shadow:6px 0 25px rgba(0,255,255,0.95),0 0 8px rgba(0,212,255,0.2);}
-  25%{box-shadow:0 6px 25px rgba(0,255,200,0.95),0 0 8px rgba(0,212,255,0.2);}
-  50%{box-shadow:-6px 0 25px rgba(100,200,255,0.95),0 0 8px rgba(0,212,255,0.2);}
-  75%{box-shadow:0 -6px 25px rgba(0,255,255,0.95),0 0 8px rgba(0,212,255,0.2);}
-  100%{box-shadow:6px 0 25px rgba(0,255,255,0.95),0 0 8px rgba(0,212,255,0.2);}}
-@keyframes magicColor{
-  0%,100%{border-color:rgba(0,212,255,0.6);}
-  25%{border-color:rgba(0,255,200,1);}
-  50%{border-color:rgba(100,200,255,1);}
-  75%{border-color:rgba(0,255,255,1);}}
-
-button[kind="secondary"] p{white-space:pre-line!important;line-height:1.5!important;font-size:1.2rem!important;color:#ccc!important;font-weight:800!important;}
-button[kind="secondary"] p::first-line{font-size:1.52rem!important;font-weight:900!important;color:#fff!important;}
 </style>
 """, unsafe_allow_html=True)
     was_victory = st.session_state.sc>=4
+    _br_nav = st.query_params.get("br_nav","")
+    if _br_nav != "":
+        st.query_params.clear()
+        if _br_nav == "lobby":
+            for k in ["cq","qi","sc","wrong","ta","ans","sel","round_qs","round_results","br_idx"]:
+                if k in st.session_state: del st.session_state[k]
+            for k,v in D.items():
+                if k not in st.session_state: st.session_state[k]=v
+            st.session_state.phase = "lobby"; st.rerun()
+        elif _br_nav == "main":
+            st.session_state._p5_just_left = True
+            st.session_state.ans = False
+            st.session_state["_battle_entry_ans_reset"] = True
+            st.switch_page("main_hub.py")
+    _br_q = st.query_params.get("br_q","")
+    if _br_q != "":
+        st.query_params.clear()
+        st.session_state.br_idx = int(_br_q); st.rerun()
+    _br_save = st.query_params.get("br_save","")
+    if _br_save != "":
+        st.query_params.clear()
+        _sq = rqs[bi] if "rqs" in dir() else st.session_state.round_qs[st.session_state.br_idx]
+        _sitem = {"id":_sq["id"],"text":_sq["text"],"ch":_sq["ch"],"a":_sq["a"],"ex":_sq.get("ex",""),"exk":_sq.get("exk",""),"cat":_sq.get("cat",""),"kr":_sq.get("kr",""),"tp":_sq.get("tp","grammar")}
+        save_to_storage([_sitem])
+        st.session_state["_saved_ok"] = True
+        st.rerun()
     if "br_idx" not in st.session_state: st.session_state.br_idx=0
     bi = st.session_state.br_idx
     rqs = st.session_state.round_qs
@@ -541,7 +526,6 @@ button[kind="secondary"] p::first-line{font-size:1.52rem!important;font-weight:9
     ban_emoji = "\U0001f3c6"
     st.markdown(f'<div class="br-ban {v_cls}">{ban_emoji} \ub77c\uc6b4\ub4dc {rn} \u2014 {v_label} \u2705{sc_v} \u274c{wr_v}</div>', unsafe_allow_html=True)
 
-    # 화살표 삭제 — 번호 버튼으로 통합
 
     q = rqs[bi]
     ok = rrs[bi]
@@ -560,77 +544,52 @@ button[kind="secondary"] p::first-line{font-size:1.52rem!important;font-weight:9
     wb += f'</div>'
     st.markdown(wb, unsafe_allow_html=True)
 
-    sv_c1, sv_c2, sv_c3 = st.columns([1, 2, 1])
+    st.markdown('''<style>
+    div[data-testid="stButton"] > button { font-size:0.75rem!important; font-weight:300!important; animation:none!important; transition:none!important; }
+    div[data-testid="stButton"] > button p { font-size:0.75rem!important; font-weight:300!important; }
+    div[data-testid="stButton"] > button span { font-size:0.75rem!important; font-weight:300!important; }
+    </style>''', unsafe_allow_html=True)
+    saved_ok = st.session_state.pop("_saved_ok", False)
+    save_lbl = "✅ 완료!" if saved_ok else "저장"
+    sv_c1, sv_c2, sv_c3 = st.columns([2, 3, 2])
     with sv_c2:
-        if st.button("\U0001f4be \uc774 \ubb38\uc81c \uc800\uc7a5", key=f"sv_{q['id']}_{bi}", type="primary", use_container_width=True):
+        if st.button(save_lbl, key=f"sv_{q['id']}_{bi}", type="primary", use_container_width=True):
             item = {"id":q["id"],"text":q["text"],"ch":q["ch"],"a":q["a"],"ex":q.get("ex",""),"exk":q.get("exk",""),"cat":q.get("cat",""),"kr":q.get("kr",""),"tp":q.get("tp","grammar")}
             save_to_storage([item])
-            st.success("\u2705 \uc800\uc7a5 \uc644\ub8cc!")
-
+            st.session_state["_saved_ok"] = True
+            st.rerun()
     dot_cols = st.columns(num_qs)
-    for i in range(num_qs):
-        with dot_cols[i]:
-            oi = rrs[i]
-            si = "\u2705" if oi else "\u274c"
-            bt = "primary" if i == bi else "secondary"
-            if st.button(f"{si}{i+1}", key=f"brd_{i}", type=bt, use_container_width=True):
-                st.session_state.br_idx = i; st.rerun()
-
+    for _di in range(num_qs):
+        with dot_cols[_di]:
+            _bt = "primary" if _di == bi else "secondary"
+            if st.button(str(_di+1), key=f"brd_{_di}", type=_bt, use_container_width=True):
+                st.session_state.br_idx = _di; st.rerun()
     st.markdown("---")
-    if was_victory:
-        bc = st.columns(3)
-        with bc[0]:
-            nrd = st.session_state.round_num + 1
-            if st.button(f"\u2694\ufe0f \ub77c\uc6b4\ub4dc {nrd}!", type="primary", use_container_width=True):
-                st.session_state.round_num += 1
-                for k in ["cq","qi","sc","wrong","ta","ans","sel","round_qs","round_results","br_idx"]:
-                    if k in st.session_state: del st.session_state[k]
-                for k,v in D.items():
-                    if k not in st.session_state: st.session_state[k]=v
-                qs = pick5(st.session_state.mode)
-                st.session_state.round_qs = qs; st.session_state.cq = qs[0]
-                st.session_state.qst = time.time(); st.session_state.phase = "battle"; st.rerun()
-        with bc[1]:
-            if st.button("\U0001f3e0 \ub85c\ube44", type="secondary", use_container_width=True):
-                for k in ["cq","qi","sc","wrong","ta","ans","sel","round_qs","round_results","br_idx"]:
-                    if k in st.session_state: del st.session_state[k]
-                for k,v in D.items():
-                    if k not in st.session_state: st.session_state[k]=v
-                st.session_state.phase = "lobby"; st.rerun()
-        with bc[2]:
-            if st.button("\U0001f30d \uba54\uc778\ud5c8\ube0c", type="secondary", use_container_width=True):
-                st.session_state._p5_just_left = True
-                st.session_state.ans = False
-                st.session_state["_battle_entry_ans_reset"] = True
-                st.switch_page("main_hub.py")
-    else:
-        bc = st.columns(3)
-        with bc[0]:
-            if st.button("\U0001f504 \uc7ac\ub3c4\uc804", type="primary", use_container_width=True):
-                for k in ["cq","qi","sc","wrong","ta","ans","sel","round_qs","round_results","br_idx"]:
-                    if k in st.session_state: del st.session_state[k]
-                for k,v in D.items():
-                    if k not in st.session_state: st.session_state[k]=v
-                qs = pick5(st.session_state.mode)
-                st.session_state.round_qs = qs; st.session_state.cq = qs[0]
-                st.session_state.qst = time.time(); st.session_state.phase = "battle"; st.rerun()
-        with bc[1]:
-            if st.button("\U0001f3e0 \ub85c\ube44", type="secondary", use_container_width=True):
-                for k in ["cq","qi","sc","wrong","ta","ans","sel","round_qs","round_results","br_idx"]:
-                    if k in st.session_state: del st.session_state[k]
-                for k,v in D.items():
-                    if k not in st.session_state: st.session_state[k]=v
-                st.session_state.phase = "lobby"; st.rerun()
-        with bc[2]:
-            if st.button("\U0001f30d \uba54\uc778\ud5c8\ube0c", type="secondary", use_container_width=True):
-                st.session_state._p5_just_left = True
-                st.session_state.ans = False
-                st.session_state["_battle_entry_ans_reset"] = True
-                st.switch_page("main_hub.py")
+    _nav_cols = st.columns(2)
+    with _nav_cols[0]:
+        if st.button("로비", key="br_nav_lobby", use_container_width=True):
+            for k in ["cq","qi","sc","wrong","ta","ans","sel","round_qs","round_results","br_idx"]:
+                if k in st.session_state: del st.session_state[k]
+            st.session_state.phase = "lobby"; st.rerun()
+    with _nav_cols[1]:
+        if st.button("메인", key="br_nav_main", use_container_width=True):
+            for k in ["cq","qi","sc","wrong","ta","ans","sel","round_qs","round_results","br_idx","phase"]:
+                if k in st.session_state: del st.session_state[k]
+            st.switch_page("main_hub.py")
 
 # PHASE: LOBBY
 # ════════════════════════════════════════
 else:
+    _nav = st.query_params.get('nav', '')
+    if _nav == 'hub':
+        st.query_params.clear()
+        st.session_state._p5_just_left = True
+        st.session_state.ans = False
+        st.session_state["_battle_entry_ans_reset"] = True
+        st.switch_page("main_hub.py")
+    elif _nav == 'stg':
+        st.query_params.clear()
+        st.switch_page("pages/03_역전장.py")
     st.session_state.phase="lobby"
     if "sel_mode" not in st.session_state: st.session_state.sel_mode=None
 
@@ -644,27 +603,33 @@ else:
 @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@700;900&family=Rajdhani:wght@600;700&display=swap');
 .stApp{background:linear-gradient(rgba(0,212,255,0.03) 1px,transparent 1px),linear-gradient(90deg,rgba(0,212,255,0.03) 1px,transparent 1px),#0a0a0a!important;background-size:40px 40px,40px 40px,100% 100%!important;color:#f0f0f0!important;}
 section[data-testid="stSidebar"]{display:none!important;}
-header[data-testid="stHeader"]{background:transparent!important;}
-.block-container{padding-top:0.3rem!important;padding-bottom:0.3rem!important;}
-.ah{text-align:center;padding:0.6rem 0 0.2rem 0;}
-.ah h1{font-family:'Orbitron',monospace!important;font-size:1.2rem;font-weight:900;margin:0;background:linear-gradient(90deg,#00d4ff,#ffffff,#00d4ff);background-size:200%;-webkit-background-clip:text;-webkit-text-fill-color:transparent;animation:titleShine 3s linear infinite;letter-spacing:4px;}
+header[data-testid="stHeader"]{background:transparent!important;height:0!important;min-height:0!important;overflow:hidden!important;}
+.block-container{padding-top:0!important;padding-bottom:0.2rem!important;}
+.ah{text-align:center;padding:0 0 0 0;}
+.ah h1{font-family:'Orbitron',monospace!important;font-size:2rem;font-weight:900;margin:0;background:linear-gradient(90deg,#00d4ff,#ffffff,#00d4ff);background-size:200%;-webkit-background-clip:text;-webkit-text-fill-color:transparent;animation:titleShine 3s linear infinite;letter-spacing:4px;}
 @keyframes titleShine{0%{background-position:200% center}100%{background-position:-200% center}}
-button[kind="primary"],button[kind="secondary"]{background:#0d0d0d!important;color:#fff!important;border:1.5px solid rgba(0,212,255,0.5)!important;border-radius:8px!important;font-family:'Rajdhani',sans-serif!important;font-size:1.45rem!important;font-weight:700!important;padding:0.55rem 0.6rem!important;box-shadow:0 0 12px rgba(0,212,255,0.15)!important;text-align:center!important;transition:all 0.15s!important;}
-button[kind="primary"] p,button[kind="primary"] span,button[kind="secondary"] p,button[kind="secondary"] span{font-family:'Rajdhani',sans-serif!important;font-size:1.45rem!important;font-weight:700!important;text-align:center!important;}
+@keyframes p5bounce{0%,100%{transform:translateY(0);}30%{transform:translateY(-6px);}60%{transform:translateY(-3px);}80%{transform:translateY(-5px);}}
+@keyframes p5flash{0%,75%,100%{box-shadow:0 0 12px rgba(0,212,255,0.15);}88%{box-shadow:0 0 45px rgba(0,255,255,1),0 0 90px rgba(0,212,255,0.7);}}
+button[kind="primary"],button[kind="secondary"]{background:#0d0d0d!important;color:#fff!important;border:1.5px solid rgba(0,212,255,0.5)!important;border-radius:8px!important;font-size:0.56rem!important;font-weight:300!important;padding:0.1rem 0.3rem!important;text-align:center!important;transition:none!important;}
+
+button[kind="primary"] p,button[kind="primary"] span,button[kind="secondary"] p,button[kind="secondary"] span,.stButton button p,.stButton>button p,.stButton>button span{font-size:0.56rem!important;font-weight:300!important;}
+
+
+
 button[kind="primary"]:hover,button[kind="secondary"]:hover{background:rgba(0,212,255,0.08)!important;border-color:#00d4ff!important;box-shadow:0 0 25px rgba(0,212,255,0.4)!important;transform:translateY(-2px)!important;}
-.qb{border-radius:14px;padding:0.8rem 1rem;margin:0.2rem 0 0.4rem 0;background:#0d0d0d;}
+.qb{border-radius:12px;padding:0.6rem 0.8rem;margin:0.1rem 0 0.2rem 0;background:#0d0d0d;}
 .qb-g,.qb-v{background:#0d0d0d!important;border:none!important;animation:borderGlow 3s linear infinite;}
 @keyframes borderGlow{0%{box-shadow:0 0 0 2px #00d4ff,0 0 15px rgba(0,212,255,0.4);}50%{box-shadow:0 0 0 2px #fff,0 0 25px rgba(0,212,255,0.6);}100%{box-shadow:0 0 0 2px #00d4ff,0 0 15px rgba(0,212,255,0.4);}}
-.qc{font-family:'Orbitron',monospace;font-size:0.8rem;font-weight:800;margin-bottom:0.3rem;letter-spacing:2px;}
+.qc{font-family:'Orbitron',monospace;font-size:1.05rem;font-weight:800;margin-bottom:0.8rem;letter-spacing:3px;}
 .qc-g,.qc-v{color:#00d4ff;text-shadow:0 0 8px rgba(0,212,255,0.6);}
-.qt{font-family:'Rajdhani',sans-serif;color:#fff;font-size:1.55rem;font-weight:700;line-height:1.6;word-break:keep-all;}
-.qk{color:#00d4ff;font-weight:900;font-size:1.7rem;border-bottom:3px solid #00d4ff;text-shadow:0 0 15px rgba(0,212,255,0.8);}
-.bt{display:flex;align-items:center;justify-content:space-between;padding:0.4rem 0.8rem;border-radius:10px;margin-bottom:0.2rem;}
+.qt{font-family:'Rajdhani',sans-serif;color:#fff;font-size:2.4rem;font-weight:700;line-height:2;word-break:keep-all;}
+.qk{color:#00d4ff;font-weight:900;font-size:2.6rem;border-bottom:3px solid #00d4ff;text-shadow:0 0 15px rgba(0,212,255,0.8);}
+.bt{display:flex;align-items:center;justify-content:space-between;padding:0.01rem 0.8rem;border-radius:6px;margin-bottom:0;transform:scale(0.85);transform-origin:top center;margin-top:-4px;}
 .bt-g,.bt-v{background:#0d0d0d;border:1px solid rgba(0,212,255,0.4);box-shadow:0 0 15px rgba(0,212,255,0.1);}
-.bq{font-family:'Orbitron',monospace;font-size:1.1rem;font-weight:900;}
+.bq{font-family:'Orbitron',monospace;font-size:1.6rem;font-weight:900;}
 .bq-g,.bq-v{color:#00d4ff;text-shadow:0 0 10px rgba(0,212,255,0.8);}
-.bs{font-family:'Orbitron',monospace;font-size:0.85rem;font-weight:800;color:#fff;}
-.rd-dots{display:flex;justify-content:center;gap:0.6rem;margin:0.3rem 0;}
+.bs{font-family:'Orbitron',monospace;font-size:1.1rem;font-weight:800;color:#fff;}
+.rd-dots{display:flex;justify-content:center;gap:0.6rem;margin:0 0;}
 .rd-dot{width:22px;height:22px;border-radius:50%;border:2px solid #333;display:flex;align-items:center;justify-content:center;font-size:0.7rem;font-weight:900;}
 .rd-cur{border-color:#00d4ff!important;color:#00d4ff!important;box-shadow:0 0 10px #00d4ff!important;}
 .rd-ok{background:#00d4ff;border-color:#00d4ff;color:#000;}
@@ -677,13 +642,13 @@ button[kind="primary"]:hover,button[kind="secondary"]:hover{background:rgba(0,21
 .ct{font-size:1.7rem;font-weight:900;margin-bottom:0.4rem;font-family:'Orbitron',monospace;}
 .cg .ct{color:#00d4ff;}.cv .ct{color:#88ddff;}
 .cd{font-size:1.3rem;font-weight:800;color:#ccc;line-height:1.5;}
-.wb{background:#0d0d0d;border-radius:14px;padding:1rem 1rem;margin:0.4rem 0;border:1px solid rgba(0,212,255,0.3);}
+.wb{background:#0d0d0d;border-radius:16px;padding:1.8rem 1.5rem;margin:0.5rem 0;border:1px solid rgba(0,212,255,0.3);min-height:250px;}
 .wb-qn-ok{color:#00d4ff;}.wb-qn-no{color:#ff2244;}
-.wb-s{font-size:1.5rem;font-weight:700;color:#f0f0f0;line-height:1.6;margin-bottom:0.5rem;word-break:keep-all;}
-.wb-h{color:#00d4ff;font-weight:900;font-size:1.6rem;text-decoration:underline;text-decoration-color:#00d4ff;}
-.wb-hn{color:#ff2244;font-weight:900;font-size:1.6rem;text-decoration:underline;text-decoration-color:#ff2244;}
-.wb-k{font-size:1.1rem;font-weight:600;color:#ccc;line-height:1.5;}
-.wb-e{font-size:1.05rem;color:#aaa;padding:0.4rem 0.7rem;background:rgba(0,212,255,0.06);border-left:4px solid #00d4ff;border-radius:0 8px 8px 0;}
+.wb-s{font-size:2.15rem;font-weight:700;color:#f0f0f0;line-height:2;margin-bottom:1rem;word-break:keep-all;}
+.wb-h{color:#00d4ff;font-weight:900;font-size:2.3rem;text-decoration:underline;text-decoration-color:#00d4ff;}
+.wb-hn{color:#ff2244;font-weight:900;font-size:2.3rem;text-decoration:underline;text-decoration-color:#ff2244;}
+.wb-k{font-size:1.6rem;font-weight:600;color:#ccc;line-height:1.7;}
+.wb-e{font-size:1.5rem;color:#aaa;padding:0.6rem 0.8rem;background:rgba(0,212,255,0.06);border-left:4px solid #00d4ff;border-radius:0 10px 10px 0;}
 .br-ban-v{border:1.5px solid #00d4ff;color:#00d4ff;}
 .br-ban-l{border:1.5px solid #ff2244;color:#ff2244;}
 .zl{color:#00d4ff!important;font-family:'Orbitron',monospace!important;letter-spacing:4px!important;}
@@ -691,62 +656,60 @@ details{background:rgba(0,212,255,0.03)!important;border-radius:12px!important;}
 summary{color:#aaa!important;font-weight:700!important;}
 ::-webkit-scrollbar{width:4px;}::-webkit-scrollbar-track{background:#0a0a0a;}
 ::-webkit-scrollbar-thumb{background:rgba(0,212,255,0.4);border-radius:2px;}
-
-/* ━━━ 카테고리 버튼 설명글자 작게 ━━━ */
-@keyframes p5bounce{0%,100%{transform:translateY(0);}25%{transform:translateY(-7px);}60%{transform:translateY(-3px);}80%{transform:translateY(-6px);}}
-@keyframes p5flash{0%,65%,100%{box-shadow:0 0 12px rgba(0,212,255,0.15);}82%{box-shadow:0 0 55px rgba(0,255,255,1),0 0 110px rgba(0,212,255,0.9);}}
-@keyframes titleGlow{0%,100%{text-shadow:0 0 20px #00d4ff,0 0 40px #00d4ff;}50%{text-shadow:0 0 30px #00ffaa,0 0 60px #00ffaa;}}
-@keyframes stageIn{from{opacity:0;transform:translateY(20px);}to{opacity:1;transform:translateY(0);}}
-@keyframes startPulse{0%,100%{box-shadow:0 0 25px rgba(255,136,0,0.6);}50%{box-shadow:0 0 40px rgba(255,200,0,0.9),0 0 80px rgba(255,100,0,0.5);}}
-.ms-title{text-align:center;padding:14px 8px 6px 8px;animation:stageIn 0.5s ease;}
-.ms-title h1{font-size:2.2rem;font-weight:900;color:#00d4ff;letter-spacing:3px;animation:titleGlow 3s ease infinite;margin:0;}
-.ms-title p{font-size:0.9rem;color:#666;letter-spacing:2px;margin:3px 0 0 0;}
-.stage{animation:stageIn 0.4s ease;border-radius:16px;padding:14px 12px;margin:3px 0;}
-.stage-act{background:linear-gradient(145deg,#050d15,#0a1520);border:2px solid rgba(0,212,255,0.5);}
-.stage-dim{background:#050505;border:2px solid #111;opacity:0.3;pointer-events:none;}
-.act-label{font-size:0.75rem;font-weight:900;letter-spacing:4px;color:#00d4ff;margin-bottom:8px;text-align:center;}
-.act-msg{font-size:1.2rem;font-weight:900;color:#fff;text-align:center;margin-bottom:10px;line-height:1.3;}
-.act-msg span.hi{color:#00d4ff;}.act-msg span.gold{color:#ffd700;}.act-msg span.go{color:#00ff88;}
-.confirmed{text-align:center;padding:6px;margin-bottom:8px;}
-.confirmed span{font-size:0.9rem;color:#ffd700;font-weight:900;background:rgba(255,215,0,0.1);padding:4px 12px;border-radius:20px;border:1px solid rgba(255,215,0,0.4);}
-.stVerticalBlock{gap:0.2rem!important;}
-[data-testid="stVerticalBlock"]>*{margin-bottom:0!important;}
-[data-testid="stHorizontalBlock"]{gap:5px!important;margin:0!important;}
-
-/* ━━━ 타이머: 전기 찌릿찌릿 ━━━ */
-@keyframes timerBlaze{
-  0%{transform:scale(1) skewX(0deg);box-shadow:0 0 8px rgba(0,212,255,0.3);border-color:rgba(0,212,255,0.5);filter:brightness(1);}
-  8%{transform:scale(1.04) skewX(-2deg);box-shadow:0 0 90px rgba(0,255,255,1),0 0 180px rgba(0,212,255,1);border-color:rgba(255,255,255,1)!important;filter:brightness(2);}
-  12%{transform:scale(0.98) skewX(2deg);box-shadow:0 0 15px rgba(0,212,255,0.3);filter:brightness(1);}
-  16%{transform:scale(1.03) skewX(-1deg);box-shadow:0 0 100px rgba(0,255,255,1),0 0 200px rgba(0,212,255,0.9);filter:brightness(2.2);}
-  22%,100%{transform:scale(1) skewX(0deg);box-shadow:0 0 8px rgba(0,212,255,0.2);border-color:rgba(0,212,255,0.5);filter:brightness(1);}}
-
-/* ━━━ 카테고리: 마법진 테두리 회전 ━━━ */
-@keyframes magicBorder{
-  0%{box-shadow:6px 0 25px rgba(0,255,255,0.95),0 0 8px rgba(0,212,255,0.2);}
-  25%{box-shadow:0 6px 25px rgba(0,255,200,0.95),0 0 8px rgba(0,212,255,0.2);}
-  50%{box-shadow:-6px 0 25px rgba(100,200,255,0.95),0 0 8px rgba(0,212,255,0.2);}
-  75%{box-shadow:0 -6px 25px rgba(0,255,255,0.95),0 0 8px rgba(0,212,255,0.2);}
-  100%{box-shadow:6px 0 25px rgba(0,255,255,0.95),0 0 8px rgba(0,212,255,0.2);}}
-@keyframes magicColor{
-  0%,100%{border-color:rgba(0,212,255,0.6);}
-  25%{border-color:rgba(0,255,200,1);}
-  50%{border-color:rgba(100,200,255,1);}
-  75%{border-color:rgba(0,255,255,1);}}
-
-button[kind="secondary"] p{white-space:pre-line!important;line-height:1.5!important;font-size:1.2rem!important;color:#ccc!important;font-weight:800!important;}
-button[kind="secondary"] p::first-line{font-size:1.52rem!important;font-weight:900!important;color:#fff!important;}
 </style>
 """, unsafe_allow_html=True)
 
+    # ═══ 뮤지컬 3막 로비 CSS ═══
+    st.markdown("""<style>
+    @keyframes titleGlow{0%,100%{text-shadow:0 0 20px #00d4ff,0 0 40px #00d4ff;}50%{text-shadow:0 0 30px #00ffaa,0 0 60px #00ffaa;}}
+    @keyframes stageIn{from{opacity:0;transform:translateY(30px);}to{opacity:1;transform:translateY(0);}}
+    @keyframes pulse{0%,100%{box-shadow:0 0 20px rgba(0,212,255,0.4);}50%{box-shadow:0 0 40px rgba(0,212,255,0.8),0 0 60px rgba(0,212,255,0.3);}}
+    @keyframes startPulse{0%,100%{box-shadow:0 0 25px rgba(255,136,0,0.6),0 0 50px rgba(255,68,0,0.3);}50%{box-shadow:0 0 40px rgba(255,200,0,0.9),0 0 80px rgba(255,100,0,0.5);}}
+    @keyframes navGlow{0%,100%{opacity:0.7;}50%{opacity:1;}}
 
+    .ms-title{text-align:center;padding:18px 8px 8px 8px;animation:stageIn 0.6s ease;}
+    .ms-title h1{font-size:2.2rem;font-weight:900;color:#00d4ff;letter-spacing:3px;animation:titleGlow 3s ease infinite;margin:0;}
+    .ms-title p{font-size:0.9rem;color:#666;letter-spacing:2px;margin:4px 0 0 0;}
+
+    .stage{animation:stageIn 0.5s ease;border-radius:14px;padding:10px 12px;margin:4px 0;}
+    .stage-act{background:linear-gradient(145deg,#050d15,#0a1520);border:2px solid rgba(0,212,255,0.5);box-shadow:0 0 20px rgba(0,212,255,0.1);}
+    .stage-dim{background:#050505;border:2px solid #111;opacity:0.3;pointer-events:none;}
+
+    .act-label{font-size:0.7rem;font-weight:900;letter-spacing:3px;color:#00d4ff;margin-bottom:4px;text-align:center;}
+    .act-msg{font-size:0.85rem;font-weight:900;color:#fff;text-align:center;margin-bottom:4px;line-height:1.2;}
+    .act-msg span.hi{color:#00d4ff;}
+    .act-msg span.gold{color:#ffd700;}
+    .act-msg span.go{color:#00ff88;}
+
+    .confirmed{text-align:center;padding:8px;margin-bottom:10px;}
+    .confirmed span{font-size:1rem;color:#ffd700;font-weight:900;background:rgba(255,215,0,0.1);padding:6px 16px;border-radius:20px;border:1px solid rgba(255,215,0,0.4);}
+
+    button[kind="secondary"]{
+        background:#060e18!important;border:2px solid rgba(0,212,255,0.35)!important;
+        border-radius:10px!important;font-size:0.85rem!important;font-weight:900!important;
+        padding:10px 4px!important;color:#e0e0e0!important;min-height:52px!important;
+        animation:p5bounce 1.4s ease-in-out infinite,p5flash 3s ease-in-out infinite!important;
+    }
+    button[kind="secondary"] p{font-size:0.85rem!important;font-weight:900!important;white-space:pre-line!important;line-height:1.0!important;text-align:center!important;}
+
+    button[data-testid="stBaseButton-primary"]{
+        background:linear-gradient(135deg,#ff4400,#ff8800,#ffaa00)!important;
+        border:2px solid #ffd700!important;font-size:1.05rem!important;font-weight:900!important;
+        padding:0.6rem!important;color:#fff!important;border-radius:12px!important;
+        animation:startPulse 1.5s ease infinite!important;
+        text-shadow:0 2px 8px rgba(0,0,0,0.5)!important;
+    }
+
+    .nav-bar{display:flex;gap:8px;margin-top:16px;padding:12px 4px 4px 4px;border-top:1px solid #111;}
+    .nav-bar-label{font-size:0.7rem;color:#333;text-align:center;letter-spacing:3px;margin-bottom:6px;}[data-testid="stHorizontalBlock"]{flex-wrap:nowrap!important;}[data-testid="stHorizontalBlock"] [data-testid="stColumn"]{min-width:0!important;flex:1!important;}
+    </style>""", unsafe_allow_html=True)
 
     # 타이틀
     if rn > 1:
         round_txt = f'<p style="color:#cc6600;font-size:0.9rem;font-weight:800;margin:2px 0;">🏆 Round {rn}</p>'
     else:
         round_txt = ''
-    st.markdown(f'<div class="ms-title"><h1>⚔️ P5 ARENA ⚔️</h1><p>TOEIC PART 5 · 5문제 서바이벌</p>{round_txt}</div>', unsafe_allow_html=True)
+    st.markdown(f'<div class="ms-title"><p>TOEIC PART 5 · 5문제 서바이벌</p>{round_txt}</div>', unsafe_allow_html=True)
 
     _tsec = st.session_state.get('tsec', 30)
     _tsec_chosen = st.session_state.get('tsec_chosen', False)
@@ -759,12 +722,16 @@ button[kind="secondary"] p::first-line{font-size:1.52rem!important;font-weight:9
             <div class="act-label">🎬 1 막 · 전투 시간을 선택하라!</div>
             <div class="act-msg">전사여, <span class="hi">몇 초</span>의 시간을 원하느냐?</div>
         </div>''', unsafe_allow_html=True)
-        if st.button("🔥  30초  ·  고수의 선택", key="t30", type="secondary", use_container_width=True):
-            st.session_state.tsec=30; st.session_state.tsec_chosen=True; st.rerun()
-        if st.button("⚡  40초  ·  표준 전투", key="t40", type="secondary", use_container_width=True):
-            st.session_state.tsec=40; st.session_state.tsec_chosen=True; st.rerun()
-        if st.button("✅  50초  ·  여유로운 전투", key="t50", type="secondary", use_container_width=True):
-            st.session_state.tsec=50; st.session_state.tsec_chosen=True; st.rerun()
+        tc1,tc2,tc3 = st.columns(3)
+        with tc1:
+            if st.button("🔥\n30초", key="t30", type="secondary", use_container_width=True):
+                st.session_state.tsec=30; st.session_state.tsec_chosen=True; st.rerun()
+        with tc2:
+            if st.button("⚡\n40초", key="t40", type="secondary", use_container_width=True):
+                st.session_state.tsec=40; st.session_state.tsec_chosen=True; st.rerun()
+        with tc3:
+            if st.button("✅\n50초", key="t50", type="secondary", use_container_width=True):
+                st.session_state.tsec=50; st.session_state.tsec_chosen=True; st.rerun()
 
     # ━━━ 2막: 카테고리 선택 ━━━
     elif _tsec_chosen and not (sm and sm in ["g1","g2","g3","vocab"]):
@@ -775,17 +742,17 @@ button[kind="secondary"] p::first-line{font-size:1.52rem!important;font-weight:9
         </div>''', unsafe_allow_html=True)
         b1,b2 = st.columns(2)
         with b1:
-            if st.button("⚔ 문법력\n수일치·시제·수동", key="sg1", type="secondary", use_container_width=True):
+            if st.button("⚔\n문법력\n수일치·시제·수동", key="sg1", type="secondary", use_container_width=True):
                 st.session_state.sel_mode="g1"; st.rerun()
         with b2:
-            if st.button("⚔ 구조력\n가정법·도치·당위", key="sg2", type="secondary", use_container_width=True):
+            if st.button("⚔\n구조력\n가정법·도치·당위", key="sg2", type="secondary", use_container_width=True):
                 st.session_state.sel_mode="g2"; st.rerun()
         b3,b4 = st.columns(2)
         with b3:
-            if st.button("⚔ 연결력\n접속사·관계사·분사", key="sg3", type="secondary", use_container_width=True):
+            if st.button("⚔\n연결력\n접속사·관계사·분사", key="sg3", type="secondary", use_container_width=True):
                 st.session_state.sel_mode="g3"; st.rerun()
         with b4:
-            if st.button("📘 어휘력\n품사·동사·콜로케이션", key="svc", type="secondary", use_container_width=True):
+            if st.button("📘\n어휘력\n품사·동사·콜로케이션", key="svc", type="secondary", use_container_width=True):
                 st.session_state.sel_mode="vocab"; st.rerun()
 
     # ━━━ 3막: START 주인공 ━━━
@@ -793,7 +760,7 @@ button[kind="secondary"] p::first-line{font-size:1.52rem!important;font-weight:9
         _cat = lbl_map.get(sm,'')
         _t = f"{_tsec}초"
         st.markdown(f'''<div class="confirmed"><span>⏱ {_t} · {_cat} 확정!</span></div>''', unsafe_allow_html=True)
-        st.markdown(f'''<div class="stage stage-act" style="text-align:center;padding:24px 12px;">
+        st.markdown(f'''<div class="stage stage-act" style="text-align:center;padding:10px 8px;">
             <div class="act-label">🎬 3 막 · 전투 개시!</div>
             <div class="act-msg" style="font-size:1.5rem;margin-bottom:6px;">
                 전사여... <span class="go">준비됐다면</span><br>지금 바로 <span class="gold">시작하라!!!</span>
@@ -808,18 +775,8 @@ button[kind="secondary"] p::first-line{font-size:1.52rem!important;font-weight:9
             st.session_state.tsec=30; st.session_state.tsec_chosen=False; st.session_state.sel_mode=None; st.rerun()
 
     # ━━━ 항상 고정 네비게이션 ━━━
-    st.markdown('<div style="font-size:0.7rem;color:#333;text-align:center;letter-spacing:3px;margin-top:4px;padding-top:5px;border-top:1px solid #111;">N A V I G A T E</div>', unsafe_allow_html=True)
-    nc1,nc2 = st.columns(2)
-    with nc1:
-        if st.button("🔥 역전장", key="nav_stg", type="secondary", use_container_width=True):
-            st.switch_page("pages/03_역전장.py")
-    with nc2:
-        if st.button("🏠 메인", key="nav_hub", type="secondary", use_container_width=True):
-            st.session_state._p5_just_left = True
-            st.session_state.ans = False
-            st.session_state["_battle_entry_ans_reset"] = True
-            st.switch_page("main_hub.py")
-
+    st.markdown('''<style>button[kind="secondary"]{animation:none!important;transform:none!important;border:1.5px solid rgba(255,255,255,0.5)!important;background:#040404!important;box-shadow:none!important;}</style>''', unsafe_allow_html=True)
+    st.markdown('<div style="margin-top:16px;padding-top:10px;border-top:1px solid #111;text-align:center;"><span style="font-size:0.6rem;color:#333;letter-spacing:3px;">N A V I G A T E</span><div style="display:flex;gap:8px;justify-content:center;margin-top:6px;"><a href="?nav=stg" target="_self" style="padding:10px 18px;font-size:0.85rem;font-weight:700;color:#aaa;border:1px solid #333;border-radius:8px;text-decoration:none;background:#0a0a0a;">🔥 역전장</a><a href="?nav=hub" target="_self" style="padding:10px 18px;font-size:0.85rem;font-weight:700;color:#aaa;border:1px solid #333;border-radius:8px;text-decoration:none;background:#0a0a0a;">🏠 메인</a></div></div>', unsafe_allow_html=True)
 
     import streamlit.components.v1 as components
     _sel30 = "border:2px solid #00d4ff!important;box-shadow:0 0 15px rgba(0,212,255,0.6)!important;color:#00d4ff!important;" if tsec==30 and _tsec_chosen else ""
@@ -829,65 +786,6 @@ button[kind="secondary"] p::first-line{font-size:1.52rem!important;font-weight:9
     _selg2 = "border:2px solid #ff8811!important;box-shadow:0 0 15px rgba(255,136,17,0.6)!important;color:#ff8811!important;" if sm=="g2" else ""
     _selg3 = "border:2px solid #00cc77!important;box-shadow:0 0 15px rgba(0,204,119,0.6)!important;color:#00cc77!important;" if sm=="g3" else ""
     _selvc = "border:2px solid #5544cc!important;box-shadow:0 0 15px rgba(85,68,204,0.6)!important;color:#5544cc!important;" if sm=="vocab" else ""
-
-    # JS v22: keyframes inject + 클래스 애니메이션
-    import streamlit.components.v1 as _cmp2
-    _cmp2.html("""<script>
-    (function(){
-        var doc=window.parent.document;
-        if(!doc.getElementById('p5-anim-styles')){
-            var s=doc.createElement('style');
-            s.id='p5-anim-styles';
-            var css='';
-            css+='@keyframes timerBlaze {';
-            css+='0%{transform:scale(1) skewX(0deg);filter:brightness(1);box-shadow:0 0 8px rgba(0,212,255,0.3);}';
-            css+='8%{transform:scale(1.06) skewX(-3deg);filter:brightness(2.2);box-shadow:0 0 90px rgba(0,255,255,1),0 0 180px rgba(0,212,255,1);}';
-            css+='12%{transform:scale(0.97) skewX(3deg);filter:brightness(1);}';
-            css+='16%{transform:scale(1.05) skewX(-2deg);filter:brightness(2.5);box-shadow:0 0 100px rgba(0,255,255,1);}';
-            css+='22%,100%{transform:scale(1) skewX(0deg);filter:brightness(1);box-shadow:0 0 8px rgba(0,212,255,0.2);}';
-            css+='}';
-            css+='@keyframes magicBorder {';
-            css+='0%{box-shadow:6px 0 25px rgba(0,255,255,0.95),0 0 8px rgba(0,212,255,0.2);}';
-            css+='25%{box-shadow:0 6px 25px rgba(0,255,200,0.95),0 0 8px rgba(0,212,255,0.2);}';
-            css+='50%{box-shadow:-6px 0 25px rgba(100,200,255,0.95),0 0 8px rgba(0,212,255,0.2);}';
-            css+='75%{box-shadow:0 -6px 25px rgba(0,255,255,0.95),0 0 8px rgba(0,212,255,0.2);}';
-            css+='100%{box-shadow:6px 0 25px rgba(0,255,255,0.95),0 0 8px rgba(0,212,255,0.2);}';
-            css+='}';
-            css+='button.p5-timer{animation:timerBlaze 2.5s ease-in-out infinite!important;}';
-            css+='button.p5-magic{animation:magicBorder 1.8s linear infinite!important;}';
-            css+='button.p5-nav{animation:none!important;border:1.5px solid rgba(255,255,255,0.35)!important;background:#050505!important;box-shadow:none!important;color:#bbb!important;font-size:1.1rem!important;}';
-            s.textContent=css;
-            doc.head.appendChild(s);
-        }
-        function styleButtons(){
-            var rows=doc.querySelectorAll('[data-testid="stHorizontalBlock"]');
-            if(rows.length<2) return;
-            rows[0].querySelectorAll('button').forEach(function(b){
-                b.classList.remove('p5-magic','p5-nav');b.classList.add('p5-timer');
-            });
-            for(var ri=1;ri<rows.length-1;ri++){
-                rows[ri].querySelectorAll('button').forEach(function(b){
-                    b.classList.remove('p5-timer','p5-nav');b.classList.add('p5-magic');
-                });
-                rows[ri].querySelectorAll('button p').forEach(function(p){
-                    if(p.querySelector('span.p5l1')) return;
-                    var txt=(p.innerText||p.textContent||'').trim();
-                    var parts=txt.split('\n');
-                    if(parts.length>=2){
-                        p.innerHTML='<span class="p5l1" style="display:block;font-size:1.52rem;font-weight:900;color:#fff;line-height:1.4;">'+parts[0]+'</span>'
-                            +'<span style="display:block;font-size:1.1rem;font-weight:800;color:#ccc;line-height:1.3;">'+parts.slice(1).join(' ')+'</span>';
-                    }
-                });
-            }
-            var last=rows[rows.length-1];
-            last.querySelectorAll('button').forEach(function(b){
-                b.classList.remove('p5-timer','p5-magic');b.classList.add('p5-nav');
-            });
-        }
-        setTimeout(styleButtons,150);setTimeout(styleButtons,500);setTimeout(styleButtons,1200);setTimeout(styleButtons,3000);
-        new MutationObserver(function(){setTimeout(styleButtons,80);}).observe(doc.body,{childList:true,subtree:true});
-    })();
-    </script>""", height=0)
 
 
 
