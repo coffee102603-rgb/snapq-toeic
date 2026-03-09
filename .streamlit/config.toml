@@ -1,8 +1,6 @@
-[server]
-headless = true
-
-[theme]
-base = "dark"
+﻿[server]
+enableCORS = false
+enableXsrfProtection = false
 
 [browser]
 gatherUsageStats = false
