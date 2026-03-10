@@ -1162,11 +1162,20 @@ elif st.session_state.p7_phase == "briefing":
     # ─── 핵심 표현 (해당 Step의 표현만) ───
     exprs = s.get("expressions", [])
     if exprs:
-        st.markdown('<div style="text-align:center;color:#44ffcc;font-size:0.95rem;font-weight:900;margin:0.2rem 0;">💎 핵심 표현</div>', unsafe_allow_html=True)
-        expr_html = ''
-        for e in exprs:
-            expr_html += f'<div style="background:#0a1a28;border:2px solid rgba(255,255,255,0.55);border-radius:8px;padding:0.4rem 0.6rem;margin:0.2rem 0;display:flex;justify-content:space-between;align-items:center;"><span style="color:#44ffcc;font-size:0.9rem;font-weight:900;">{e["expr"]}</span><span style="color:#bbccdd;font-size:0.85rem;font-weight:700;">{e["meaning"]}</span></div>'
-        st.markdown(expr_html, unsafe_allow_html=True)
+        # 핵심표현 양쪽에 이전/다음 버튼
+        ex1, ex2, ex3 = st.columns([1, 6, 1])
+        with ex1:
+            if st.button("◀\n이전", key="p7brp", disabled=bi<=0, use_container_width=True):
+                st.session_state.p7_br_idx = bi - 1; st.rerun()
+        with ex2:
+            st.markdown('<div style="text-align:center;color:#44ffcc;font-size:0.95rem;font-weight:900;margin:0.2rem 0;">💎 핵심 표현</div>', unsafe_allow_html=True)
+            expr_html = ''
+            for e in exprs:
+                expr_html += f'<div style="background:#0a1a28;border:2px solid rgba(255,255,255,0.55);border-radius:8px;padding:0.4rem 0.6rem;margin:0.2rem 0;display:flex;justify-content:space-between;align-items:center;"><span style="color:#44ffcc;font-size:0.9rem;font-weight:900;">{e["expr"]}</span><span style="color:#bbccdd;font-size:0.85rem;font-weight:700;">{e["meaning"]}</span></div>'
+            st.markdown(expr_html, unsafe_allow_html=True)
+        with ex3:
+            if st.button("▶\n다음", key="p7brn", disabled=bi>=num_steps-1, use_container_width=True):
+                st.session_state.p7_br_idx = bi + 1; st.rerun()
 
     # ─── 하단 버튼 2줄 ───
         bb1, bb2, bb3, bb4 = st.columns([1,2,2,1])
