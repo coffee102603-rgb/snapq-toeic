@@ -1117,11 +1117,7 @@ elif st.session_state.p7_phase == "briefing":
         st.markdown(expr_html, unsafe_allow_html=True)
 
     # ─── 하단 버튼 2줄 ───
-    st.markdown('''<style>
-    section.main .stButton button{min-height:38px!important;padding:2px 2px!important;font-size:0.8rem!important;line-height:1.1!important;}
-    section.main .stButton button p{font-size:0.8rem!important;line-height:1.1!important;}
-    </style>''', unsafe_allow_html=True)
-    bb1, bb2, bb3, bb4 = st.columns(4)
+    bb1, bb2, bb3, bb4 = st.columns([1,2,2,1])
     with bb1:
         if st.button("◀", key="p7brp", disabled=bi<=0, use_container_width=True):
             st.session_state.p7_br_idx = bi - 1; st.rerun()
