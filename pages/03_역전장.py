@@ -67,6 +67,9 @@ st.markdown("""<style>
 section[data-testid="stSidebar"]{display:none!important;}
 header[data-testid="stHeader"]{background:transparent!important;}
 .block-container{padding-top:0.7rem!important;padding-bottom:1rem!important;max-width:100%!important;padding-left:1rem!important;padding-right:1rem!important;}
+div[data-testid="stSidebarNav"]{display:none!important;}
+div[data-testid="stNavigation"]{display:none!important;}
+section[data-testid="stSidebar"]{display:none!important;}
 div[data-testid="stVerticalBlock"]>div{gap:0.1rem;}
 @keyframes rb{0%,100%{background-position:0% 50%}50%{background-position:100% 50%}}
 
