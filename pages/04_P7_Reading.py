@@ -1103,7 +1103,7 @@ elif st.session_state.p7_phase == "briefing":
             _algo_color = "#ff8844"
         _ct_html += f'<div style="color:{_algo_color};font-size:1.0rem;font-weight:900;margin-top:0.5rem;padding-top:0.4rem;">📌 4단계 알고리즘화: {_algo_msg}</div>'
         _ct_html += '</div>'
-        with st.expander("🧠 CT 독해 알고리즘 분석 보기", expanded=False):
+        with st.expander("<span style="color:white;">🧠 CT 독해 알고리즘 분석 보기</span>", expanded=False):
             st.markdown(_ct_html, unsafe_allow_html=True)
 
     # 현재 스텝 데이터
@@ -1173,10 +1173,10 @@ elif st.session_state.p7_phase == "briefing":
     # ─── 하단 버튼 3줄 ───
     bc1, bc2 = st.columns(2)
     with bc1:
-        if st.button("💾 내 것으로 저장!", key=f"p7sv_{bi}", type="primary", use_container_width=True):
+        if st.button("💾 위 핵심표현들 내것으로 저장, 꾹!", key=f"p7sv_{bi}", type="primary", use_container_width=True):
             save_expressions(exprs, step_data=s)
     with bc2:
-        if st.button("🔄 다시 한판!", key="p7retry", type="primary", use_container_width=True):
+        if st.button("🔄 다시 한판 하자!", key="p7retry", type="primary", use_container_width=True):
             for k in D: st.session_state[k] = D[k]
             st.rerun()
     bc3, bc4 = st.columns(2)
@@ -1189,10 +1189,10 @@ elif st.session_state.p7_phase == "briefing":
             st.switch_page("main_hub.py")
     bc5, bc6 = st.columns(2)
     with bc5:
-        if st.button("◀ 이전", key="p7brp", disabled=bi<=0, use_container_width=True):
+        if st.button("◀ 앞 문제 브리핑 보자!", key="p7brp", disabled=bi<=0, use_container_width=True):
             st.session_state.p7_br_idx = bi - 1; st.rerun()
     with bc6:
-        if st.button("▶ 다음", key="p7brn", disabled=bi>=num_steps-1, use_container_width=True):
+        if st.button("▶ 다음 문제 브리핑 보자!", key="p7brn", disabled=bi>=num_steps-1, use_container_width=True):
             st.session_state.p7_br_idx = bi + 1; st.rerun()
 
 
