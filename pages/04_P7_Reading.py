@@ -1033,6 +1033,16 @@ elif st.session_state.p7_phase == "briefing":
         st.query_params.clear()
         st.switch_page("main_hub.py")
 
+    # 역전장/본부귀환 골드 스타일
+    st.markdown("""<style>
+    button[kind="secondary"]{
+        border:2px solid #FFD700!important;
+        color:#ffffff!important;
+    }
+    button[kind="secondary"] p{
+        color:#ffffff!important;
+    }
+    </style>""", unsafe_allow_html=True)
     # CT expander 글자 흰색
     st.markdown("""<style>
     div[data-testid="stExpander"] summary p,
@@ -1197,10 +1207,10 @@ elif st.session_state.p7_phase == "briefing":
             st.session_state.p7_br_idx = bi + 1; st.rerun()
     bc3, bc4 = st.columns(2)
     with bc3:
-        if st.button("🔥역전장", key="p7store", type="secondary", use_container_width=True):
+        if st.button("🔥 역전장으로!", key="p7store", type="secondary", use_container_width=True):
             st.switch_page("pages/03_역전장.py")
     with bc4:
-        if st.button("🏠본부귀환", key="p7lobby", type="secondary", use_container_width=True):
+        if st.button("🏠 본부 귀환!", key="p7lobby", type="secondary", use_container_width=True):
             for k in D: st.session_state[k] = D[k]
             st.switch_page("main_hub.py")
 
