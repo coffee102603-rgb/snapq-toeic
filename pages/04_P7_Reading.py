@@ -1197,10 +1197,10 @@ elif st.session_state.p7_phase == "briefing":
             st.session_state.p7_br_idx = bi + 1; st.rerun()
     bc3, bc4 = st.columns(2)
     with bc3:
-        if st.button("🔥 역전장으로!", key="p7store", type="secondary", use_container_width=True):
+        if st.button("🔥역전장", key="p7store", type="secondary", use_container_width=True):
             st.switch_page("pages/03_역전장.py")
     with bc4:
-        if st.button("🏠 본부 귀환", key="p7lobby", type="secondary", use_container_width=True):
+        if st.button("🏠본부귀환", key="p7lobby", type="secondary", use_container_width=True):
             for k in D: st.session_state[k] = D[k]
             st.switch_page("main_hub.py")
 
