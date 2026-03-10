@@ -1143,14 +1143,14 @@ elif st.session_state.p7_phase == "briefing":
     next_disabled = "pointer-events:none;opacity:0.4;" if bi>=num_steps-1 else ""
     st.markdown(f"""
     <div style="display:flex;gap:4px;margin:4px 0;">
-        <button onclick="window.parent.postMessage({action:'prev'}, '*')" style="flex:1;height:38px;font-size:0.9rem;border-radius:8px;border:2px solid #00aacc;background:#0d1117;color:white;cursor:pointer;{prev_disabled}">◀</button>
-        <button onclick="window.parent.postMessage({action:'save'}, '*')" style="flex:2;height:38px;font-size:0.9rem;border-radius:8px;border:2px solid #ff4444;background:#1a0000;color:white;cursor:pointer;">저장</button>
-        <button onclick="window.parent.postMessage({action:'retry'}, '*')" style="flex:2;height:38px;font-size:0.9rem;border-radius:8px;border:2px solid #ff4444;background:#1a0000;color:white;cursor:pointer;">다시</button>
-        <button onclick="window.parent.postMessage({action:'next'}, '*')" style="flex:1;height:38px;font-size:0.9rem;border-radius:8px;border:2px solid #00aacc;background:#0d1117;color:white;cursor:pointer;{next_disabled}">▶</button>
+        <button onclick="void(0)" style="flex:1;height:38px;font-size:0.9rem;border-radius:8px;border:2px solid #00aacc;background:#0d1117;color:white;cursor:pointer;{prev_disabled}">◀</button>
+        <button onclick="void(0)" style="flex:2;height:38px;font-size:0.9rem;border-radius:8px;border:2px solid #ff4444;background:#1a0000;color:white;cursor:pointer;">저장</button>
+        <button onclick="void(0)" style="flex:2;height:38px;font-size:0.9rem;border-radius:8px;border:2px solid #ff4444;background:#1a0000;color:white;cursor:pointer;">다시</button>
+        <button onclick="void(0)" style="flex:1;height:38px;font-size:0.9rem;border-radius:8px;border:2px solid #00aacc;background:#0d1117;color:white;cursor:pointer;{next_disabled}">▶</button>
     </div>
     <div style="display:flex;gap:4px;margin:4px 0;">
-        <button onclick="window.parent.postMessage({action:'store'}, '*')" style="flex:1;height:38px;font-size:0.9rem;border-radius:8px;border:2px solid #00aacc;background:#0d1117;color:white;cursor:pointer;">🔥역전장</button>
-        <button onclick="window.parent.postMessage({action:'lobby'}, '*')" style="flex:1;height:38px;font-size:0.9rem;border-radius:8px;border:2px solid #00aacc;background:#0d1117;color:white;cursor:pointer;">🏠메인</button>
+        <button onclick="void(0)" style="flex:1;height:38px;font-size:0.9rem;border-radius:8px;border:2px solid #00aacc;background:#0d1117;color:white;cursor:pointer;">🔥역전장</button>
+        <button onclick="void(0)" style="flex:1;height:38px;font-size:0.9rem;border-radius:8px;border:2px solid #00aacc;background:#0d1117;color:white;cursor:pointer;">🏠메인</button>
     </div>
     <style>
     div[data-testid="stHorizontalBlock"] {{display:none!important;}}
