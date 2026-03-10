@@ -161,7 +161,7 @@ button[kind="secondary"] p{font-size:1.2rem!important;font-weight:900!important;
 .p7-br-ex{font-size:1.4rem;color:#444;line-height:1.6;padding:0.5rem 0.7rem;background:rgba(0,180,150,0.1);border-left:4px solid #00aa88;border-radius:0 10px 10px 0;}
 
 /* VICTORY/LOST 배너 */
-.p7-ban{text-align:center;padding:4px 8px!important;font-size:0.95rem!important;padding:0.8rem;border-radius:14px;margin:0.3rem 0;font-size:1.3rem;font-weight:900;}
+.p7-ban{text-align:center;padding:3px 6px!important;border-radius:10px;margin:1px 0;font-size:0.85rem!important;font-weight:900;}
 .p7-ban-v{background:#000000;color:#fff;border:2px solid rgba(255,255,255,0.55);}
 .p7-ban-l{background:linear-gradient(135deg,#550000,#aa0000);color:#fff;border:2px solid rgba(255,255,255,0.55);}
 @media(max-width:768px){
