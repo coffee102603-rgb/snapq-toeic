@@ -1188,6 +1188,13 @@ elif st.session_state.p7_phase == "briefing":
         if st.button("🔄 다시 한판 하자!", key="p7retry", type="primary", use_container_width=True):
             for k in D: st.session_state[k] = D[k]
             st.rerun()
+    bc5, bc6 = st.columns(2)
+    with bc5:
+        if st.button("◀ 앞 문제 브리핑 보자!", key="p7brp", disabled=bi<=0, use_container_width=True):
+            st.session_state.p7_br_idx = bi - 1; st.rerun()
+    with bc6:
+        if st.button("▶ 다음 문제 브리핑 보자!", key="p7brn", disabled=bi>=num_steps-1, use_container_width=True):
+            st.session_state.p7_br_idx = bi + 1; st.rerun()
     bc3, bc4 = st.columns(2)
     with bc3:
         if st.button("🔥 역전장으로!", key="p7store", type="secondary", use_container_width=True):
@@ -1196,12 +1203,5 @@ elif st.session_state.p7_phase == "briefing":
         if st.button("🏠 본부 귀환", key="p7lobby", type="secondary", use_container_width=True):
             for k in D: st.session_state[k] = D[k]
             st.switch_page("main_hub.py")
-    bc5, bc6 = st.columns(2)
-    with bc5:
-        if st.button("◀ 앞 문제 브리핑 보자!", key="p7brp", disabled=bi<=0, use_container_width=True):
-            st.session_state.p7_br_idx = bi - 1; st.rerun()
-    with bc6:
-        if st.button("▶ 다음 문제 브리핑 보자!", key="p7brn", disabled=bi>=num_steps-1, use_container_width=True):
-            st.session_state.p7_br_idx = bi + 1; st.rerun()
 
 
