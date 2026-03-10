@@ -1033,6 +1033,15 @@ elif st.session_state.p7_phase == "briefing":
         st.query_params.clear()
         st.switch_page("main_hub.py")
 
+    # CT expander 글자 흰색
+    st.markdown("""<style>
+    div[data-testid="stExpander"] summary p,
+    div[data-testid="stExpander"] summary span,
+    div[data-testid="stExpander"] details summary{
+        color:white!important;
+        font-weight:900!important;
+    }
+    </style>""", unsafe_allow_html=True)
     # 브리핑 전용 버튼 CSS 강제 적용
     st.markdown("""<style>
     div[data-testid="stVerticalBlockBorderWrapper"] button[kind="primary"] p,
