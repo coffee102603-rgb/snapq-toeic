@@ -1011,17 +1011,8 @@ elif st.session_state.p7_phase == "briefing":
     if num_steps == 0: num_steps = 1
     if bi >= num_steps: bi = num_steps - 1
 
-    # 배너 + 화살표 한 줄
-    st.markdown('<style>div[data-testid="column"] .stButton button{min-height:28px!important;padding:0px!important;font-size:0.8rem!important;line-height:1!important;}div[data-testid="column"] .stButton button p{font-size:0.8rem!important;line-height:1!important;}</style>', unsafe_allow_html=True)
-    ac1, ac2, ac3 = st.columns([0.6, 6, 0.6])
-    with ac1:
-        if st.button("◀", key="p7brp", disabled=bi<=0, use_container_width=True):
-            st.session_state.p7_br_idx = bi - 1; st.rerun()
-    with ac2:
-        st.markdown(f'<div class="p7-ban {v_cls}">{data["title"]} — {v_label} ✅{ok_cnt} ❌{len(answers)-ok_cnt}</div>', unsafe_allow_html=True)
-    with ac3:
-        if st.button("▶", key="p7brn", disabled=bi>=num_steps-1, use_container_width=True):
-            st.session_state.p7_br_idx = bi + 1; st.rerun()
+    # 배너만 표시
+    st.markdown(f'<div class="p7-ban {v_cls}">{data["title"]} — {v_label} ✅{ok_cnt} ❌{len(answers)-ok_cnt}</div>', unsafe_allow_html=True)
 
     # ─── CT 피드백 + 데이터 패널 ───
     _an = st.session_state.get("p7_analytics", {})
@@ -1125,20 +1116,27 @@ elif st.session_state.p7_phase == "briefing":
             expr_html += f'<div style="background:#0a1a28;border:2px solid rgba(255,255,255,0.55);border-radius:8px;padding:0.4rem 0.6rem;margin:0.2rem 0;display:flex;justify-content:space-between;align-items:center;"><span style="color:#44ffcc;font-size:0.9rem;font-weight:900;">{e["expr"]}</span><span style="color:#bbccdd;font-size:0.85rem;font-weight:700;">{e["meaning"]}</span></div>'
         st.markdown(expr_html, unsafe_allow_html=True)
 
-    # ─── 하단 4버튼 한 줄 ───
-    bc1, bc2, bc3, bc4 = st.columns(4)
-    with bc1:
-        if st.button("📝", key=f"p7sv_{bi}", type="primary", use_container_width=True):
+    # ─── 하단 버튼 2줄 ───
+    bb1, bb2, bb3, bb4 = st.columns(4)
+    with bb1:
+        if st.button("◀", key="p7brp", disabled=bi<=0, use_container_width=True):
+            st.session_state.p7_br_idx = bi - 1; st.rerun()
+    with bb2:
+        if st.button("📝(저장)", key=f"p7sv_{bi}", type="primary", use_container_width=True):
             save_expressions(exprs, step_data=s)
-    with bc2:
-        if st.button("🔄", key="p7retry", type="primary", use_container_width=True):
+    with bb3:
+        if st.button("🔄(다시)", key="p7retry", type="primary", use_container_width=True):
             for k in D: st.session_state[k] = D[k]
             st.rerun()
-    with bc3:
-        if st.button("🔥", key="p7store", type="secondary", use_container_width=True):
+    with bb4:
+        if st.button("▶", key="p7brn", disabled=bi>=num_steps-1, use_container_width=True):
+            st.session_state.p7_br_idx = bi + 1; st.rerun()
+    bc1, bc2 = st.columns(2)
+    with bc1:
+        if st.button("🔥(역전장)", key="p7store", type="secondary", use_container_width=True):
             st.switch_page("pages/03_역전장.py")
-    with bc4:
-        if st.button("🏠", key="p7lobby", type="secondary", use_container_width=True):
+    with bc2:
+        if st.button("🏠(메인)", key="p7lobby", type="secondary", use_container_width=True):
             for k in D: st.session_state[k] = D[k]
             st.switch_page("main_hub.py")
 
