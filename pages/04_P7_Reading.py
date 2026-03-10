@@ -1116,27 +1116,41 @@ elif st.session_state.p7_phase == "briefing":
             expr_html += f'<div style="background:#0a1a28;border:2px solid rgba(255,255,255,0.55);border-radius:8px;padding:0.4rem 0.6rem;margin:0.2rem 0;display:flex;justify-content:space-between;align-items:center;"><span style="color:#44ffcc;font-size:0.9rem;font-weight:900;">{e["expr"]}</span><span style="color:#bbccdd;font-size:0.85rem;font-weight:700;">{e["meaning"]}</span></div>'
         st.markdown(expr_html, unsafe_allow_html=True)
 
-    # ─── 하단 버튼 2줄 ───
+    # ─── 하단 버튼 2줄 (HTML) ───
+    prev_disabled = "pointer-events:none;opacity:0.4;" if bi<=0 else ""
+    next_disabled = "pointer-events:none;opacity:0.4;" if bi>=num_steps-1 else ""
+    st.markdown(f"""
+    <div style="display:flex;gap:4px;margin:4px 0;">
+        <button onclick="void(0)" id="p7brp_btn" style="flex:1;height:38px;font-size:0.9rem;border-radius:8px;border:2px solid #00aacc;background:#0d1117;color:white;cursor:pointer;{prev_disabled}">◀</button>
+        <button onclick="void(0)" id="p7sv_btn" style="flex:2;height:38px;font-size:0.9rem;border-radius:8px;border:2px solid #ff4444;background:#1a0000;color:white;cursor:pointer;">저장</button>
+        <button onclick="void(0)" id="p7retry_btn" style="flex:2;height:38px;font-size:0.9rem;border-radius:8px;border:2px solid #ff4444;background:#1a0000;color:white;cursor:pointer;">다시</button>
+        <button onclick="void(0)" id="p7brn_btn" style="flex:1;height:38px;font-size:0.9rem;border-radius:8px;border:2px solid #00aacc;background:#0d1117;color:white;cursor:pointer;{next_disabled}">▶</button>
+    </div>
+    <div style="display:flex;gap:4px;margin:4px 0;">
+        <button onclick="void(0)" id="p7store_btn" style="flex:1;height:38px;font-size:0.9rem;border-radius:8px;border:2px solid #00aacc;background:#0d1117;color:white;cursor:pointer;">🔥역전장</button>
+        <button onclick="void(0)" id="p7lobby_btn" style="flex:1;height:38px;font-size:0.9rem;border-radius:8px;border:2px solid #00aacc;background:#0d1117;color:white;cursor:pointer;">🏠메인</button>
+    </div>
+    """, unsafe_allow_html=True)
     bb1, bb2, bb3, bb4 = st.columns([1,2,2,1])
     with bb1:
-        if st.button("◀", key="p7brp", disabled=bi<=0, use_container_width=True):
+        if st.button("◀", key="p7brp", disabled=bi<=0, use_container_width=True, label_visibility="collapsed"):
             st.session_state.p7_br_idx = bi - 1; st.rerun()
     with bb2:
-        if st.button("저장", key=f"p7sv_{bi}", type="primary", use_container_width=True):
+        if st.button("저장", key=f"p7sv_{bi}", type="primary", use_container_width=True, label_visibility="collapsed"):
             save_expressions(exprs, step_data=s)
     with bb3:
-        if st.button("다시", key="p7retry", type="primary", use_container_width=True):
+        if st.button("다시", key="p7retry", type="primary", use_container_width=True, label_visibility="collapsed"):
             for k in D: st.session_state[k] = D[k]
             st.rerun()
     with bb4:
-        if st.button("▶", key="p7brn", disabled=bi>=num_steps-1, use_container_width=True):
+        if st.button("▶", key="p7brn", disabled=bi>=num_steps-1, use_container_width=True, label_visibility="collapsed"):
             st.session_state.p7_br_idx = bi + 1; st.rerun()
     bc1, bc2 = st.columns(2)
     with bc1:
-        if st.button("🔥역전장", key="p7store", type="secondary", use_container_width=True):
+        if st.button("🔥역전장", key="p7store", type="secondary", use_container_width=True, label_visibility="collapsed"):
             st.switch_page("pages/03_역전장.py")
     with bc2:
-        if st.button("🏠메인", key="p7lobby", type="secondary", use_container_width=True):
+        if st.button("🏠메인", key="p7lobby", type="secondary", use_container_width=True, label_visibility="collapsed"):
             for k in D: st.session_state[k] = D[k]
             st.switch_page("main_hub.py")
 
