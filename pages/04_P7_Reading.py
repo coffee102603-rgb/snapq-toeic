@@ -1012,7 +1012,7 @@ elif st.session_state.p7_phase == "briefing":
     if bi >= num_steps: bi = num_steps - 1
 
     # query_params 버튼 처리
-    _qp = st.query_params.get("action", "")
+    _qp = st.query_params.get("p7action", "")
     if _qp == "prev" and bi > 0:
         st.session_state.p7_br_idx = bi - 1
         st.query_params.clear()
@@ -1171,14 +1171,14 @@ elif st.session_state.p7_phase == "briefing":
         st.markdown(f'''<div style="display:flex;align-items:center;justify-content:center;gap:8px;margin:0.3rem 0;">
             <div style="opacity:{prev_op};">
                 <form action="" method="get">
-                    <button name="action" value="prev" type="submit"
+                    <button name="p7action" value="prev" type="submit"
                         style="background:#0d1117;color:#44ffcc;border:2px solid #44ffcc;border-radius:8px;padding:4px 8px;font-size:0.75rem;font-weight:900;cursor:pointer;min-width:44px;">◀ 이전</button>
                 </form>
             </div>
             <div style="color:#44ffcc;font-size:0.95rem;font-weight:900;">💎 핵심 표현</div>
             <div style="opacity:{next_op};">
                 <form action="" method="get">
-                    <button name="action" value="next" type="submit"
+                    <button name="p7action" value="next" type="submit"
                         style="background:#0d1117;color:#44ffcc;border:2px solid #44ffcc;border-radius:8px;padding:4px 8px;font-size:0.75rem;font-weight:900;cursor:pointer;min-width:44px;">▶ 다음</button>
                 </form>
             </div>
