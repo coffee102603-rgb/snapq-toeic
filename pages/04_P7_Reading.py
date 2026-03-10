@@ -184,7 +184,10 @@ button[kind="primary"] p,button[kind="secondary"] p{font-size:0.95rem!important;
 .p7-br-s{font-size:1rem!important;line-height:1.6!important;}.p7-br-hl{font-size:1.05rem!important;}
 .p7-br-kr{font-size:0.85rem!important;}.p7-br-ex{font-size:0.8rem!important;}
 .p7-hud{padding:0.5rem 0.8rem!important;margin-bottom:0.3rem!important;}.p7-hud-l{font-size:0.85rem!important;}.p7-hud-r{font-size:0.8rem!important;}
-.p7-step{font-size:0.85rem!important;}.p7-ban{font-size:0.95rem!important;}
+.p7-step{font-size:0.85rem!important;}.p7-ban{font-size:0.85rem!important;}
+.element-container:has(button[kind="secondary"]){margin:0!important;padding:0!important;}
+button[kind="secondary"]{min-height:28px!important;padding:2px 4px!important;font-size:0.85rem!important;line-height:1!important;}
+button[kind="secondary"] p{font-size:0.85rem!important;line-height:1!important;}
 }
 @media(max-width:360px){
 button[kind="primary"],button[kind="secondary"]{font-size:1rem!important;}
