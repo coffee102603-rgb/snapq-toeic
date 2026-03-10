@@ -1012,6 +1012,7 @@ elif st.session_state.p7_phase == "briefing":
     if bi >= num_steps: bi = num_steps - 1
 
     # 배너 + 화살표 한 줄
+    st.markdown('<style>div[data-testid="column"] .stButton button{min-height:28px!important;padding:0px!important;font-size:0.8rem!important;line-height:1!important;}div[data-testid="column"] .stButton button p{font-size:0.8rem!important;line-height:1!important;}</style>', unsafe_allow_html=True)
     ac1, ac2, ac3 = st.columns([0.6, 6, 0.6])
     with ac1:
         if st.button("◀", key="p7brp", disabled=bi<=0, use_container_width=True):
