@@ -1035,6 +1035,18 @@ elif st.session_state.p7_phase == "briefing":
 
     # 브리핑 전용 버튼 CSS 강제 적용
     st.markdown("""<style>
+    div[data-testid="stVerticalBlockBorderWrapper"] button[kind="primary"] p,
+    div[data-testid="stVerticalBlock"] button[kind="primary"] p{
+        text-align:center!important;
+        color:#ffdd44!important;
+    }
+    div[data-testid="stVerticalBlockBorderWrapper"] button[kind="secondary"] p,
+    div[data-testid="stVerticalBlock"] button[kind="secondary"] p{
+        text-align:center!important;
+        color:#44ffcc!important;
+    }
+    </style>""", unsafe_allow_html=True)
+    st.markdown("""<style>
     div[data-testid="stVerticalBlockBorderWrapper"] button[kind],
     div[data-testid="stVerticalBlock"] button[kind]{
         padding:1px 2px!important;
@@ -1159,24 +1171,24 @@ elif st.session_state.p7_phase == "briefing":
     # ─── 하단 버튼 2줄 ───
         bb1, bb2, bb3, bb4 = st.columns([1,2,2,1])
     with bb1:
-        if st.button("◀", key="p7brp", disabled=bi<=0, use_container_width=True):
+        if st.button("◀ 이전", key="p7brp", disabled=bi<=0, use_container_width=True):
             st.session_state.p7_br_idx = bi - 1; st.rerun()
     with bb2:
-        if st.button("💾", key=f"p7sv_{bi}", type="primary", use_container_width=True):
+        if st.button("💾 내 것으로 저장!", key=f"p7sv_{bi}", type="primary", use_container_width=True):
             save_expressions(exprs, step_data=s)
     with bb3:
-        if st.button("🔄", key="p7retry", type="primary", use_container_width=True):
+        if st.button("🔄 다시 한판!", key="p7retry", type="primary", use_container_width=True):
             for k in D: st.session_state[k] = D[k]
             st.rerun()
     with bb4:
-        if st.button("▶", key="p7brn", disabled=bi>=num_steps-1, use_container_width=True):
+        if st.button("▶ 다음", key="p7brn", disabled=bi>=num_steps-1, use_container_width=True):
             st.session_state.p7_br_idx = bi + 1; st.rerun()
     bc1, bc2 = st.columns(2)
     with bc1:
-        if st.button("🔥", key="p7store", type="secondary", use_container_width=True):
+        if st.button("🔥 역전장으로!", key="p7store", type="secondary", use_container_width=True):
             st.switch_page("pages/03_역전장.py")
     with bc2:
-        if st.button("🏠", key="p7lobby", type="secondary", use_container_width=True):
+        if st.button("🏠 본부 귀환", key="p7lobby", type="secondary", use_container_width=True):
             for k in D: st.session_state[k] = D[k]
             st.switch_page("main_hub.py")
 
