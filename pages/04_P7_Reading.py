@@ -1103,7 +1103,7 @@ elif st.session_state.p7_phase == "briefing":
             _algo_color = "#ff8844"
         _ct_html += f'<div style="color:{_algo_color};font-size:1.0rem;font-weight:900;margin-top:0.5rem;padding-top:0.4rem;">📌 4단계 알고리즘화: {_algo_msg}</div>'
         _ct_html += '</div>'
-        with st.expander("<span style="color:white;">🧠 CT 독해 알고리즘 분석 보기</span>", expanded=False):
+        with st.expander("🧠 CT 독해 알고리즘 분석 보기", expanded=False):
             st.markdown(_ct_html, unsafe_allow_html=True)
 
     # 현재 스텝 데이터
