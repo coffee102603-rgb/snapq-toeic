@@ -267,23 +267,7 @@ if st.session_state.sg_phase == "lobby":
     #MainMenu{visibility:hidden!important;}header[data-testid="stHeader"]{height:0!important;visibility:hidden!important;}div[data-testid="stToolbar"]{visibility:hidden!important;}.block-container{padding-top:0.2rem!important;}
     </style>""", unsafe_allow_html=True)
 
-    # 타이틀
-    st.markdown('''<div class="rv-title">
-        <h1>🔥 역 전 장</h1>
-        <p>패배는 없다 · 역전만 있을 뿐이다</p>
-    </div>''', unsafe_allow_html=True)
 
-    # 나긴 멘트 애니메이션
-    nag = random.choice(NAGGING)
-    nag_words = nag.split()
-    nag_spans = ""
-    for i, w in enumerate(nag_words):
-        delay = i * 0.4
-        nag_spans += f'<span style="opacity:0;animation:nagFade 0.5s ease {delay}s forwards;font-size:1.6rem;font-weight:900;color:#ff8800;">{w} </span>'
-    components.html(f"""
-    <style>@keyframes nagFade{{0%{{opacity:0;transform:translateY(8px)}}100%{{opacity:1;transform:translateY(0)}}}}</style>
-    <div style="text-align:center;padding:8px 0 12px 0;background:transparent;">{nag_spans}</div>
-    """, height=60)
 
     _rv_battle = st.session_state.get("rv_battle", None)   # "p5" or "p7"
     _rv_mode = st.session_state.get("rv_mode", None)       # "p5s","p5e","p7s","p7e"
