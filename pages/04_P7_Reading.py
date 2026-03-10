@@ -1205,6 +1205,7 @@ elif st.session_state.p7_phase == "briefing":
     with bc6:
         if st.button("▶ 다음 문제 브리핑 보자!", key="p7brn", disabled=bi>=num_steps-1, use_container_width=True):
             st.session_state.p7_br_idx = bi + 1; st.rerun()
+    st.markdown('<style>div[data-testid="column"]:has(button[kind="secondary"]) button{border:2px solid #ffffff!important;color:#ffffff!important;}div[data-testid="column"]:has(button[kind="secondary"]) button p{color:#ffffff!important;}</style>', unsafe_allow_html=True)
     bc3, bc4 = st.columns(2)
     with bc3:
         if st.button("🔥 역전장으로!", key="p7store", type="secondary", use_container_width=True):
