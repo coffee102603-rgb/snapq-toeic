@@ -138,7 +138,7 @@ section[data-testid="stSidebar"]{background:#0a0a1a!important;}
 button[kind="primary"]{background:#111111!important;color:#ffffff!important;border:2px solid #ff4400!important;border-radius:10px!important;font-size:1.2rem!important;font-weight:900!important;padding:0.7rem 1rem!important;box-shadow:0 0 10px rgba(255,68,0,0.3)!important;text-align:center!important;}
 button[kind="primary"] p{font-size:1.2rem!important;font-weight:900!important;text-align:center!important;}
 button[kind="secondary"]{background:#111111!important;color:#ffffff!important;border:2px solid #ffffff!important;border-radius:10px!important;font-size:1.2rem!important;font-weight:900!important;padding:0.4rem 0.5rem!important;box-shadow:0 0 10px rgba(0,170,204,0.3)!important;text-align:center!important;min-height:36px!important;}
-button[kind="secondary"] p{font-size:1.2rem!important;font-weight:900!important;text-align:center!important;}
+button[kind="secondary"] p{font-size:1.2rem!important;font-weight:900!important;text-align:center!important;color:#ffffff!important;}
 
 /* P7 지문 카드 */
 .p7-pass{background:linear-gradient(145deg,#13112a,#1a1535);border:2px solid rgba(155,89,182,0.7);border-radius:18px;padding:1.5rem;margin:0.5rem 0;box-shadow:0 0 20px rgba(155,89,182,0.15);}
