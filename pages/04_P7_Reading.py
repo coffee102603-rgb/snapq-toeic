@@ -1163,19 +1163,30 @@ elif st.session_state.p7_phase == "briefing":
     exprs = s.get("expressions", [])
     if exprs:
         # 핵심표현 양쪽에 이전/다음 버튼
-        ex1, ex2, ex3 = st.columns([1, 6, 1])
-        with ex1:
-            if st.button("◀\n이전", key="p7brp", disabled=bi<=0, use_container_width=True):
-                st.session_state.p7_br_idx = bi - 1; st.rerun()
-        with ex2:
-            st.markdown('<div style="text-align:center;color:#44ffcc;font-size:0.95rem;font-weight:900;margin:0.2rem 0;">💎 핵심 표현</div>', unsafe_allow_html=True)
-            expr_html = ''
-            for e in exprs:
-                expr_html += f'<div style="background:#0a1a28;border:2px solid rgba(255,255,255,0.55);border-radius:8px;padding:0.4rem 0.6rem;margin:0.2rem 0;display:flex;justify-content:space-between;align-items:center;"><span style="color:#44ffcc;font-size:0.9rem;font-weight:900;">{e["expr"]}</span><span style="color:#bbccdd;font-size:0.85rem;font-weight:700;">{e["meaning"]}</span></div>'
-            st.markdown(expr_html, unsafe_allow_html=True)
-        with ex3:
-            if st.button("▶\n다음", key="p7brn", disabled=bi>=num_steps-1, use_container_width=True):
-                st.session_state.p7_br_idx = bi + 1; st.rerun()
+        # 💎 핵심 표현 타이틀 + 양쪽 버튼 한 줄
+        prev_dis = bi <= 0
+        next_dis = bi >= num_steps - 1
+        prev_op = "0.3" if prev_dis else "1"
+        next_op = "0.3" if next_dis else "1"
+        st.markdown(f'''<div style="display:flex;align-items:center;justify-content:center;gap:8px;margin:0.3rem 0;">
+            <div style="opacity:{prev_op};">
+                <form action="" method="get">
+                    <button name="action" value="prev" type="submit"
+                        style="background:#0d1117;color:#44ffcc;border:2px solid #44ffcc;border-radius:8px;padding:4px 8px;font-size:0.75rem;font-weight:900;cursor:pointer;min-width:44px;">◀ 이전</button>
+                </form>
+            </div>
+            <div style="color:#44ffcc;font-size:0.95rem;font-weight:900;">💎 핵심 표현</div>
+            <div style="opacity:{next_op};">
+                <form action="" method="get">
+                    <button name="action" value="next" type="submit"
+                        style="background:#0d1117;color:#44ffcc;border:2px solid #44ffcc;border-radius:8px;padding:4px 8px;font-size:0.75rem;font-weight:900;cursor:pointer;min-width:44px;">▶ 다음</button>
+                </form>
+            </div>
+        </div>''', unsafe_allow_html=True)
+        expr_html = ''
+        for e in exprs:
+            expr_html += f'<div style="background:#0a1a28;border:2px solid rgba(255,255,255,0.55);border-radius:8px;padding:0.4rem 0.6rem;margin:0.2rem 0;display:flex;justify-content:space-between;align-items:center;"><span style="color:#44ffcc;font-size:0.9rem;font-weight:900;">{e["expr"]}</span><span style="color:#bbccdd;font-size:0.85rem;font-weight:700;">{e["meaning"]}</span></div>'
+        st.markdown(expr_html, unsafe_allow_html=True)
 
     # ─── 하단 버튼 2줄 ───
     bc1, bc2 = st.columns(2)
