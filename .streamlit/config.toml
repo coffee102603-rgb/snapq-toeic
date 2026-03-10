@@ -7,3 +7,6 @@ gatherUsageStats = false
 
 [ui]
 hideTopBar = true
+
+[client]
+showSidebarNavigation = false
