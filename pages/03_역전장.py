@@ -70,10 +70,10 @@ header[data-testid="stHeader"]{background:transparent!important;}
 div[data-testid="stVerticalBlock"]>div{gap:0.1rem;}
 @keyframes rb{0%,100%{background-position:0% 50%}50%{background-position:100% 50%}}
 
-button[kind="primary"]{background:#000000!important;color:#fff!important;border:2px solid #ff4444!important;border-radius:14px!important;font-size:2rem!important;font-weight:900!important;padding:0.8rem 1rem!important;}
-button[kind="primary"] p{font-size:2rem!important;font-weight:900!important;text-align:center!important;}
-button[kind="secondary"]{background:#000000!important;color:#fff!important;border:2px solid #4488ff!important;border-radius:14px!important;font-size:2rem!important;font-weight:900!important;padding:0.8rem 1rem!important;}
-button[kind="secondary"] p{font-size:2rem!important;font-weight:900!important;text-align:center!important;}
+button[kind="primary"]{background:#000000!important;color:#fff!important;border:2px solid #ff4444!important;border-radius:14px!important;font-size:1.0rem!important;font-weight:900!important;padding:0.4rem 0.6rem!important;}
+button[kind="primary"] p{font-size:1.0rem!important;font-weight:900!important;text-align:center!important;}
+button[kind="secondary"]{background:#000000!important;color:#fff!important;border:2px solid #4488ff!important;border-radius:14px!important;font-size:1.0rem!important;font-weight:900!important;padding:0.4rem 0.6rem!important;}
+button[kind="secondary"] p{font-size:1.0rem!important;font-weight:900!important;text-align:center!important;}
 
 /* 줄노트 */
 .note{background:#fffef5;border-radius:12px;padding:1.5rem 1.2rem;margin:0.5rem 0;
@@ -92,37 +92,37 @@ button[kind="secondary"] p{font-size:2rem!important;font-weight:900!important;te
 .sg-rmt{max-width:95vw;margin:0 auto;background:#000000;
     border-radius:32px;padding:24px 16px 16px 16px;border:3px solid #ffd700;
     box-shadow:0 8px 40px rgba(255,215,0,0.2);text-align:center;}
-.sg-rmt-t{font-size:2.6rem;font-weight:900;
+.sg-rmt-t{font-size:1.4rem;font-weight:900;
     background:linear-gradient(90deg,#ffd700,#ffffff,#ffd700);
     background-size:300% 300%;-webkit-background-clip:text;-webkit-text-fill-color:transparent;
     animation:rb 4s ease infinite;letter-spacing:2px;}
 .sg-nag{background:#000000;border:2px solid #ffd700;border-radius:18px;padding:14px;margin:12px 0;text-align:center;}
-.sg-nag-t{font-size:1.4rem;font-weight:900;color:#ffd700;text-shadow:0 0 12px rgba(255,215,0,0.4);}
+.sg-nag-t{font-size:1.0rem;font-weight:900;color:#ffd700;text-shadow:0 0 12px rgba(255,215,0,0.4);}
 .sg-zn{border-radius:18px;padding:14px;margin:12px 0 6px 0;text-align:center;}
-.sg-zl{font-size:1.6rem;font-weight:900;letter-spacing:4px;text-transform:uppercase;}
+.sg-zl{font-size:1.1rem;font-weight:900;letter-spacing:4px;text-transform:uppercase;}
 
 /* 로비 4개 카드 버튼 공통 */
 div[data-testid="column"] button[kind="primary"],
 div[data-testid="column"] button[kind="secondary"]{
-    min-height:180px!important;
+    min-height:80px!important;
     height:auto!important;
     white-space:pre-line!important;
-    font-size:1.55rem!important;
+    font-size:1.0rem!important;
     font-weight:900!important;
-    line-height:1.8!important;
+    line-height:1.4!important;
     display:flex!important;
     align-items:center!important;
     justify-content:center!important;
-    padding:1.4rem 1rem!important;
+    padding:0.5rem 0.5rem!important;
     box-sizing:border-box!important;
     word-break:keep-all!important;
 }
 div[data-testid="column"] button[kind="primary"] p,
 div[data-testid="column"] button[kind="secondary"] p{
     white-space:pre-line!important;
-    font-size:1.55rem!important;
+    font-size:1.0rem!important;
     font-weight:900!important;
-    line-height:1.8!important;
+    line-height:1.4!important;
     text-align:center!important;
     word-break:keep-all!important;
     overflow-wrap:break-word!important;
