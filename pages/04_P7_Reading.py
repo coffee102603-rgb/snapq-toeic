@@ -1117,6 +1117,7 @@ elif st.session_state.p7_phase == "briefing":
         st.markdown(expr_html, unsafe_allow_html=True)
 
     # ─── 하단 버튼 2줄 ───
+    st.markdown('<style>div[data-testid="stHorizontalBlock"]{flex-wrap:nowrap!important;flex-direction:row!important;}</style>', unsafe_allow_html=True)
     bb1, bb2, bb3, bb4 = st.columns(4)
     with bb1:
         if st.button("◀", key="p7brp", disabled=bi<=0, use_container_width=True):
