@@ -1033,6 +1033,24 @@ elif st.session_state.p7_phase == "briefing":
         st.query_params.clear()
         st.switch_page("main_hub.py")
 
+    # 브리핑 전용 버튼 CSS 강제 적용
+    st.markdown("""<style>
+    div[data-testid="stVerticalBlockBorderWrapper"] button[kind],
+    div[data-testid="stVerticalBlock"] button[kind]{
+        padding:1px 2px!important;
+        min-height:30px!important;
+        max-height:30px!important;
+        font-size:0.7rem!important;
+        line-height:1!important;
+    }
+    div[data-testid="stVerticalBlockBorderWrapper"] button[kind] p,
+    div[data-testid="stVerticalBlock"] button[kind] p{
+        font-size:0.7rem!important;
+        line-height:1!important;
+        margin:0!important;
+        padding:0!important;
+    }
+    </style>""", unsafe_allow_html=True)
     # 배너만 표시
     st.markdown(f'<div class="p7-ban {v_cls}">{data["title"]} — {v_label} ✅{ok_cnt} ❌{len(answers)-ok_cnt}</div>', unsafe_allow_html=True)
 
