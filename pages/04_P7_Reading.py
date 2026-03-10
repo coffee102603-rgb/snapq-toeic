@@ -195,6 +195,8 @@ button[kind="primary"] p,button[kind="secondary"] p{font-size:1rem!important;}
 .p7-sent{font-size:1.05rem!important;}.p7-q{font-size:1rem!important;}
 .p7-br-s{font-size:1.1rem!important;}
 }
+.stButton button{min-height:36px!important;padding:4px 6px!important;}
+.stButton button p{font-size:1.0rem!important;}
 </style>""", unsafe_allow_html=True)
 
 # ═══ 문제 데이터: 4개 카테고리 × 1세트 ═══
