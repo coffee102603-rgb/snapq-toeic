@@ -1117,16 +1117,15 @@ elif st.session_state.p7_phase == "briefing":
         st.markdown(expr_html, unsafe_allow_html=True)
 
     # ─── 하단 버튼 2줄 ───
-    st.markdown('<style>div[data-testid="stHorizontalBlock"]{flex-wrap:nowrap!important;flex-direction:row!important;}</style>', unsafe_allow_html=True)
     bb1, bb2, bb3, bb4 = st.columns(4)
     with bb1:
         if st.button("◀", key="p7brp", disabled=bi<=0, use_container_width=True):
             st.session_state.p7_br_idx = bi - 1; st.rerun()
     with bb2:
-        if st.button("📝(저장)", key=f"p7sv_{bi}", type="primary", use_container_width=True):
+        if st.button("저장", key=f"p7sv_{bi}", type="primary", use_container_width=True):
             save_expressions(exprs, step_data=s)
     with bb3:
-        if st.button("🔄(다시)", key="p7retry", type="primary", use_container_width=True):
+        if st.button("다시", key="p7retry", type="primary", use_container_width=True):
             for k in D: st.session_state[k] = D[k]
             st.rerun()
     with bb4:
@@ -1134,10 +1133,10 @@ elif st.session_state.p7_phase == "briefing":
             st.session_state.p7_br_idx = bi + 1; st.rerun()
     bc1, bc2 = st.columns(2)
     with bc1:
-        if st.button("🔥(역전장)", key="p7store", type="secondary", use_container_width=True):
+        if st.button("🔥역전장", key="p7store", type="secondary", use_container_width=True):
             st.switch_page("pages/03_역전장.py")
     with bc2:
-        if st.button("🏠(메인)", key="p7lobby", type="secondary", use_container_width=True):
+        if st.button("🏠메인", key="p7lobby", type="secondary", use_container_width=True):
             for k in D: st.session_state[k] = D[k]
             st.switch_page("main_hub.py")
 
