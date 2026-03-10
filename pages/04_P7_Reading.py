@@ -176,7 +176,7 @@ button[kind="primary"] p,button[kind="secondary"] p{font-size:1rem!important;}
 }
 @media(max-width:480px){
 .block-container{padding-left:0.3rem!important;padding-right:0.3rem!important;padding-top:0.5rem!important;}
-button[kind="primary"],button[kind="secondary"]{font-size:0.85rem!important;padding:0.3rem 0.2rem!important;border-radius:10px!important;min-height:36px!important;}
+button[kind="primary"],button[kind="secondary"]{font-size:0.75rem!important;padding:0.1rem 0.1rem!important;border-radius:8px!important;min-height:28px!important;}
 button[kind="primary"] p,button[kind="secondary"] p{font-size:0.95rem!important;}
 .p7-sent{font-size:0.95rem!important;line-height:1.5!important;}.p7-new{font-size:1rem!important;}
 .p7-q{font-size:0.95rem!important;line-height:1.5!important;}
