@@ -1170,17 +1170,15 @@ elif st.session_state.p7_phase == "briefing":
         next_op = "0.3" if next_dis else "1"
         st.markdown(f'''<div style="display:flex;align-items:center;justify-content:center;gap:8px;margin:0.3rem 0;">
             <div style="opacity:{prev_op};">
-                <form action="" method="get">
-                    <button name="p7action" value="prev" type="submit"
-                        style="background:#0d1117;color:#44ffcc;border:2px solid #44ffcc;border-radius:8px;padding:4px 8px;font-size:0.75rem;font-weight:900;cursor:pointer;min-width:44px;">◀ 이전</button>
-                </form>
+                <a href="?p7action=prev" style="text-decoration:none;">
+                    <div style="background:#0d1117;color:#44ffcc;border:2px solid #44ffcc;border-radius:8px;padding:4px 8px;font-size:0.75rem;font-weight:900;cursor:pointer;min-width:44px;text-align:center;">◀ 이전</div>
+                </a>
             </div>
             <div style="color:#44ffcc;font-size:0.95rem;font-weight:900;">💎 핵심 표현</div>
             <div style="opacity:{next_op};">
-                <form action="" method="get">
-                    <button name="p7action" value="next" type="submit"
-                        style="background:#0d1117;color:#44ffcc;border:2px solid #44ffcc;border-radius:8px;padding:4px 8px;font-size:0.75rem;font-weight:900;cursor:pointer;min-width:44px;">▶ 다음</button>
-                </form>
+                <a href="?p7action=next" style="text-decoration:none;">
+                    <div style="background:#0d1117;color:#44ffcc;border:2px solid #44ffcc;border-radius:8px;padding:4px 8px;font-size:0.75rem;font-weight:900;cursor:pointer;min-width:44px;text-align:center;">▶ 다음</div>
+                </a>
             </div>
         </div>''', unsafe_allow_html=True)
         expr_html = ''
