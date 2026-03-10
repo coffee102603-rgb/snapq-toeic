@@ -1011,6 +1011,28 @@ elif st.session_state.p7_phase == "briefing":
     if num_steps == 0: num_steps = 1
     if bi >= num_steps: bi = num_steps - 1
 
+    # query_params 버튼 처리
+    _qp = st.query_params.get("action", "")
+    if _qp == "prev" and bi > 0:
+        st.session_state.p7_br_idx = bi - 1
+        st.query_params.clear()
+        st.rerun()
+    elif _qp == "next" and bi < num_steps - 1:
+        st.session_state.p7_br_idx = bi + 1
+        st.query_params.clear()
+        st.rerun()
+    elif _qp == "retry":
+        for k in D: st.session_state[k] = D[k]
+        st.query_params.clear()
+        st.rerun()
+    elif _qp == "store":
+        st.query_params.clear()
+        st.switch_page("pages/03_역전장.py")
+    elif _qp == "lobby":
+        for k in D: st.session_state[k] = D[k]
+        st.query_params.clear()
+        st.switch_page("main_hub.py")
+
     # 배너만 표시
     st.markdown(f'<div class="p7-ban {v_cls}">{data["title"]} — {v_label} ✅{ok_cnt} ❌{len(answers)-ok_cnt}</div>', unsafe_allow_html=True)
 
@@ -1121,14 +1143,14 @@ elif st.session_state.p7_phase == "briefing":
     next_disabled = "pointer-events:none;opacity:0.4;" if bi>=num_steps-1 else ""
     st.markdown(f"""
     <div style="display:flex;gap:4px;margin:4px 0;">
-        <button onclick="window.parent.document.querySelectorAll('button[kind]')[0].click()" style="flex:1;height:38px;font-size:0.9rem;border-radius:8px;border:2px solid #00aacc;background:#0d1117;color:white;cursor:pointer;{prev_disabled}">◀</button>
-        <button onclick="window.parent.document.querySelectorAll('button[kind]')[1].click()" style="flex:2;height:38px;font-size:0.9rem;border-radius:8px;border:2px solid #ff4444;background:#1a0000;color:white;cursor:pointer;">저장</button>
-        <button onclick="window.parent.document.querySelectorAll('button[kind]')[2].click()" style="flex:2;height:38px;font-size:0.9rem;border-radius:8px;border:2px solid #ff4444;background:#1a0000;color:white;cursor:pointer;">다시</button>
-        <button onclick="window.parent.document.querySelectorAll('button[kind]')[3].click()" style="flex:1;height:38px;font-size:0.9rem;border-radius:8px;border:2px solid #00aacc;background:#0d1117;color:white;cursor:pointer;{next_disabled}">▶</button>
+        <button onclick="window.location.href=window.location.pathname+'?action=prev'" style="flex:1;height:38px;font-size:0.9rem;border-radius:8px;border:2px solid #00aacc;background:#0d1117;color:white;cursor:pointer;{prev_disabled}">◀</button>
+        <button onclick="window.location.href=window.location.pathname+'?action=save'" style="flex:2;height:38px;font-size:0.9rem;border-radius:8px;border:2px solid #ff4444;background:#1a0000;color:white;cursor:pointer;">저장</button>
+        <button onclick="window.location.href=window.location.pathname+'?action=retry'" style="flex:2;height:38px;font-size:0.9rem;border-radius:8px;border:2px solid #ff4444;background:#1a0000;color:white;cursor:pointer;">다시</button>
+        <button onclick="window.location.href=window.location.pathname+'?action=next'" style="flex:1;height:38px;font-size:0.9rem;border-radius:8px;border:2px solid #00aacc;background:#0d1117;color:white;cursor:pointer;{next_disabled}">▶</button>
     </div>
     <div style="display:flex;gap:4px;margin:4px 0;">
-        <button onclick="window.parent.document.querySelectorAll('button[kind]')[4].click()" style="flex:1;height:38px;font-size:0.9rem;border-radius:8px;border:2px solid #00aacc;background:#0d1117;color:white;cursor:pointer;">🔥역전장</button>
-        <button onclick="window.parent.document.querySelectorAll('button[kind]')[5].click()" style="flex:1;height:38px;font-size:0.9rem;border-radius:8px;border:2px solid #00aacc;background:#0d1117;color:white;cursor:pointer;">🏠메인</button>
+        <button onclick="window.location.href=window.location.pathname+'?action=store'" style="flex:1;height:38px;font-size:0.9rem;border-radius:8px;border:2px solid #00aacc;background:#0d1117;color:white;cursor:pointer;">🔥역전장</button>
+        <button onclick="window.location.href=window.location.pathname+'?action=lobby'" style="flex:1;height:38px;font-size:0.9rem;border-radius:8px;border:2px solid #00aacc;background:#0d1117;color:white;cursor:pointer;">🏠메인</button>
     </div>
     <style>
     div[data-testid="stHorizontalBlock"] {{display:none!important;}}
