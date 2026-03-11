@@ -296,10 +296,10 @@ if st.session_state.sg_phase == "lobby":
         </div>''', unsafe_allow_html=True)
         c1, c2 = st.columns(2)
         with c1:
-            if st.button("⚔️\nP5\n문법", key="rv_p5", type="secondary", use_container_width=True):
+            if st.button("⚔️\nP5 전장\n문법의 전쟁", key="rv_p5", type="secondary", use_container_width=False):
                 st.session_state.rv_battle = "p5"; st.rerun()
         with c2:
-            if st.button("📖\nP7\n독해", key="rv_p7", type="secondary", use_container_width=True):
+            if st.button("📖\nP7 전장\n독해의 전쟁", key="rv_p7", type="secondary", use_container_width=False):
                 st.session_state.rv_battle = "p7"; st.rerun()
 
     # ━━━ 2막 P5: 전투 방식 선택 ━━━
