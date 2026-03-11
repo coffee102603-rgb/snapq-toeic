@@ -87,7 +87,7 @@ button[kind="secondary"] p{font-size:1.0rem!important;font-weight:900!important;
     background-image:repeating-linear-gradient(transparent,transparent 39px,#e8e0c8 39px,#e8e0c8 40px);
     background-position:0 1.5rem;box-shadow:0 3px 15px rgba(0,0,0,0.2);border:1px solid #d8d0b8;min-height:200px;}
 .note-sent{font-size:1.0rem;font-weight:700;color:#1a1a1a;line-height:1.6;margin:0.4rem 0;}
-.note-hl{color:#008844;font-weight:900;font-size:1.8rem;text-decoration:underline;text-underline-offset:5px;text-decoration-thickness:3px;background:rgba(0,180,80,0.08);padding:0 4px;border-radius:4px;}
+.note-hl{color:#008844;font-weight:900;font-size:1.0rem;text-decoration:underline;text-underline-offset:5px;text-decoration-thickness:3px;background:rgba(0,180,80,0.08);padding:0 4px;border-radius:4px;}
 .note-kr{font-size:1.5rem;font-weight:600;color:#333;line-height:1.8;margin-bottom:0.5rem;}
 .note-ex{font-size:1.3rem;color:#555;line-height:1.6;padding:0.5rem 0.8rem;background:rgba(255,180,0,0.1);border-left:4px solid #ffaa00;border-radius:0 8px 8px 0;}
 
@@ -604,12 +604,12 @@ elif st.session_state.sg_phase == "survival":
 
     if wave == 1:
         # 영어표현 → 한글뜻
-        q_display = f'<div style="border-radius:20px;padding:1.8rem 1.4rem;margin:10px 0;text-align:center;background:linear-gradient(145deg,#124028,#185535,#124028);border:2.5px solid rgba(68,204,136,0.7);box-shadow:0 0 40px rgba(68,204,136,0.3);animation:slideUp 0.4s ease-out;"><div style="font-size:1rem;font-weight:800;letter-spacing:3px;text-transform:uppercase;color:rgba(68,204,136,0.75);margin-bottom:8px;">what does this mean?</div><div style="font-size:3.5rem;font-weight:900;line-height:1.3;color:#88ffbb;">{expr_text}</div></div>'
+        q_display = f'<div style="border-radius:20px;padding:1.8rem 1.4rem;margin:10px 0;text-align:center;background:linear-gradient(145deg,#124028,#185535,#124028);border:2.5px solid rgba(68,204,136,0.7);box-shadow:0 0 40px rgba(68,204,136,0.3);animation:slideUp 0.4s ease-out;"><div style="font-size:1rem;font-weight:800;letter-spacing:3px;text-transform:uppercase;color:rgba(68,204,136,0.75);margin-bottom:8px;">what does this mean?</div><div style="font-size:1.2rem;font-weight:900;line-height:1.3;color:#88ffbb;">{expr_text}</div></div>'
         correct_ans = meaning
         others = [v.get("meaning","") for v in voca_data if v.get("meaning","") != meaning]
     elif wave == 2:
         # 한글뜻 → 영어표현
-        q_display = f'<div style="border-radius:20px;padding:1.8rem 1.4rem;margin:10px 0;text-align:center;background:linear-gradient(145deg,#3e3210,#4a3c15,#3e3210);border:2.5px solid rgba(255,204,0,0.7);box-shadow:0 0 40px rgba(255,204,0,0.3);animation:slideUp 0.4s ease-out;"><div style="font-size:1rem;font-weight:800;letter-spacing:3px;text-transform:uppercase;color:rgba(255,204,0,0.75);margin-bottom:8px;">영어 표현은?</div><div style="font-size:3.5rem;font-weight:900;line-height:1.3;color:#ffee88;">{meaning}</div></div>'
+        q_display = f'<div style="border-radius:20px;padding:1.8rem 1.4rem;margin:10px 0;text-align:center;background:linear-gradient(145deg,#3e3210,#4a3c15,#3e3210);border:2.5px solid rgba(255,204,0,0.7);box-shadow:0 0 40px rgba(255,204,0,0.3);animation:slideUp 0.4s ease-out;"><div style="font-size:1rem;font-weight:800;letter-spacing:3px;text-transform:uppercase;color:rgba(255,204,0,0.75);margin-bottom:8px;">영어 표현은?</div><div style="font-size:1.2rem;font-weight:900;line-height:1.3;color:#ffee88;">{meaning}</div></div>'
         correct_ans = expr_text
         others = [v.get("expr","") for v in voca_data if v.get("expr","") != expr_text]
     elif wave == 3:
