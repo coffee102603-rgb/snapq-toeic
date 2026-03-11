@@ -197,6 +197,18 @@ button[kind="primary"] p,button[kind="secondary"] p{font-size:1rem!important;}
 }
 .stButton button{min-height:36px!important;padding:4px 6px!important;}
 .stButton button p{font-size:1.0rem!important;}
+
+/* P7브리핑 버튼 강제 가로배치 */
+@media (max-width: 768px) {
+    div[data-testid="stHorizontalBlock"] {
+        flex-wrap: nowrap !important;
+        flex-direction: row !important;
+    }
+    div[data-testid="stHorizontalBlock"] > div[data-testid="stColumn"] {
+        min-width: 0 !important;
+        flex: 1 !important;
+    }
+}
 </style>""", unsafe_allow_html=True)
 
 # ═══ 문제 데이터: 4개 카테고리 × 1세트 ═══
@@ -1192,26 +1204,26 @@ elif st.session_state.p7_phase == "briefing":
     # ─── 하단 버튼 3줄 ───
     bc1, bc2 = st.columns(2)
     with bc1:
-        if st.button("💾 위 핵심표현들 내것으로 저장, 꾹!", key=f"p7sv_{bi}", type="primary", use_container_width=True):
+        if st.button("💾 저장", key=f"p7sv_{bi}", type="primary", use_container_width=True):
             save_expressions(exprs, step_data=s)
     with bc2:
-        if st.button("🔄 다시 한판 하자!", key="p7retry", type="primary", use_container_width=True):
+        if st.button("🔄 다시", key="p7retry", type="primary", use_container_width=True):
             for k in D: st.session_state[k] = D[k]
             st.rerun()
     bc5, bc6 = st.columns(2)
     with bc5:
-        if st.button("◀ 앞 문제 브리핑 보자!", key="p7brp", disabled=bi<=0, use_container_width=True):
+        if st.button("◀ 이전", key="p7brp", disabled=bi<=0, use_container_width=True):
             st.session_state.p7_br_idx = bi - 1; st.rerun()
     with bc6:
-        if st.button("▶ 다음 문제 브리핑 보자!", key="p7brn", disabled=bi>=num_steps-1, use_container_width=True):
+        if st.button("▶ 다음", key="p7brn", disabled=bi>=num_steps-1, use_container_width=True):
             st.session_state.p7_br_idx = bi + 1; st.rerun()
     st.markdown('<style>button[data-testid="baseButton-secondary"]#p7store,button[data-testid="baseButton-secondary"]#p7lobby{border:2px solid #ffffff!important;} div[data-testid="column"]:has(button[kind="secondary"]) button{border:2px solid #ffffff!important;color:#ffffff!important;border-radius:10px!important;} div[data-testid="column"]:has(button[kind="secondary"]) button p{color:#ffffff!important;}</style>', unsafe_allow_html=True)
     bc3, bc4 = st.columns(2)
     with bc3:
-        if st.button("🔥 역전장으로!", key="p7store", type="secondary", use_container_width=True):
+        if st.button("🔥 역전장", key="p7store", type="secondary", use_container_width=True):
             st.switch_page("pages/03_역전장.py")
     with bc4:
-        if st.button("🏠 본부 귀환!", key="p7lobby", type="secondary", use_container_width=True):
+        if st.button("🏠 본부", key="p7lobby", type="secondary", use_container_width=True):
             for k in D: st.session_state[k] = D[k]
             st.switch_page("main_hub.py")
 
