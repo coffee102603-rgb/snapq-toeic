@@ -66,11 +66,11 @@ st.markdown("""<style>
 @keyframes choiceFade{from{opacity:0;transform:translateX(-10px)}to{opacity:1;transform:translateX(0)}}\n@keyframes highlightDraw{from{width:0}to{width:100%}}\n@keyframes hlDraw{from{background-size:0% 4px}to{background-size:100% 4px}}
 section[data-testid="stSidebar"]{display:none!important;}
 header[data-testid="stHeader"]{background:transparent!important;}
-.block-container{padding-top:0.7rem!important;padding-bottom:1rem!important;max-width:100%!important;padding-left:1rem!important;padding-right:1rem!important;}
+.block-container{padding-top:0.2rem!important;padding-bottom:1rem!important;max-width:100%!important;padding-left:1rem!important;padding-right:1rem!important;}
 div[data-testid="stSidebarNav"]{display:none!important;}
 div[data-testid="stNavigation"]{display:none!important;}
 section[data-testid="stSidebar"]{display:none!important;}
-div[data-testid="stVerticalBlock"]>div{gap:0.1rem;}
+div[data-testid="stVerticalBlock"]>div{gap:0rem;}
 @keyframes rb{0%,100%{background-position:0% 50%}50%{background-position:100% 50%}}
 
 button[kind="primary"]{background:#000000!important;color:#fff!important;border:2px solid #ff4444!important;border-radius:14px!important;font-size:1.0rem!important;font-weight:900!important;padding:0.4rem 0.6rem!important;}
@@ -107,7 +107,7 @@ button[kind="secondary"] p{font-size:1.0rem!important;font-weight:900!important;
 /* 로비 4개 카드 버튼 공통 */
 div[data-testid="column"] button[kind="primary"],
 div[data-testid="column"] button[kind="secondary"]{
-    min-height:60px!important;
+    min-height:50px!important;
     height:auto!important;
     white-space:pre-line!important;
     font-size:1.0rem!important;
@@ -141,7 +141,7 @@ div[data-testid="column"] button[kind="secondary"] p{
     button[kind="primary"],button[kind="secondary"]{font-size:1.5rem!important;padding:0.6rem 0.8rem!important;}
     button[kind="primary"] p,button[kind="secondary"] p{font-size:1.5rem!important;}
     div[data-testid="column"] button[kind="primary"],
-    div[data-testid="column"] button[kind="secondary"]{min-height:150px!important;font-size:1.3rem!important;}
+    div[data-testid="column"] button[kind="secondary"]{min-height:50px!important;font-size:1.3rem!important;}
     div[data-testid="column"] button[kind="primary"] p,
     div[data-testid="column"] button[kind="secondary"] p{font-size:1.3rem!important;}
     .sg-rmt-t{font-size:2rem!important;}
@@ -162,7 +162,7 @@ div[data-testid="column"] button[kind="secondary"] p{
     button[kind="primary"],button[kind="secondary"]{font-size:1.2rem!important;padding:0.5rem 0.6rem!important;border-radius:12px!important;}
     button[kind="primary"] p,button[kind="secondary"] p{font-size:1.2rem!important;}
     div[data-testid="column"] button[kind="primary"],
-    div[data-testid="column"] button[kind="secondary"]{min-height:60px!important;font-size:1.1rem!important;padding:1rem 0.6rem!important;}
+    div[data-testid="column"] button[kind="secondary"]{min-height:50px!important;font-size:1.1rem!important;padding:0.3rem 0.4rem!important;}
     div[data-testid="column"] button[kind="primary"] p,
     div[data-testid="column"] button[kind="secondary"] p{font-size:1.1rem!important;line-height:1.6!important;}
     .sg-rmt{padding:16px 10px 12px!important;border-radius:22px!important;}
@@ -183,7 +183,7 @@ div[data-testid="column"] button[kind="secondary"] p{
 ══════════════════════════════════ */
 @media(max-width:360px){
     div[data-testid="column"] button[kind="primary"],
-    div[data-testid="column"] button[kind="secondary"]{min-height:100px!important;font-size:1rem!important;}
+    div[data-testid="column"] button[kind="secondary"]{min-height:50px!important;font-size:1rem!important;}
     div[data-testid="column"] button[kind="primary"] p,
     div[data-testid="column"] button[kind="secondary"] p{font-size:1rem!important;}
     .sg-rmt-t{font-size:1.3rem!important;}
