@@ -279,10 +279,6 @@ if st.session_state.sg_phase == "lobby":
 
     # ━━━ 1막: 전장 선택 ━━━
     if not _rv_battle:
-        st.markdown('''<div class="rv-stage rv-stage-1">
-            <div class="rv-act rv-act-1">🎬 1 막 · 돌아갈 전장을 선택하라!</div>
-            <div class="rv-msg">틀린 적이 있다면,<br><span class="fire">아직 끝나지 않았다!</span></div>
-        </div>''', unsafe_allow_html=True)
         c1, c2 = st.columns(2)
         with c1:
             if st.button("⚔️\nP5 전장\n문법의 전쟁", key="rv_p5", type="secondary", use_container_width=True):
