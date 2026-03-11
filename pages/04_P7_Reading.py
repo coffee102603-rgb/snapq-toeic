@@ -1,4 +1,4 @@
-﻿"""P7 Reading Arena — 60초 독해 전투 (V2)"""
+"""P7 Reading Arena — 60초 독해 전투 (V2)"""
 import streamlit as st
 import streamlit.components.v1 as components
 from streamlit_autorefresh import st_autorefresh
@@ -125,6 +125,9 @@ def save_expressions(exprs, step_data=None):
         if not exists:
             data["saved_expressions"].append(enriched)
     save_storage(data)
+    # session_state에도 동기화 (Streamlit Cloud 파일 휘발 대비)
+    import streamlit as _st
+    _st.session_state["saved_expressions"] = data["saved_expressions"]
 
 # ═══ CSS (공통) ═══
 st.markdown("""<style>

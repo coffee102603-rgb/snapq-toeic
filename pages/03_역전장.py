@@ -233,7 +233,11 @@ for k,v in {"sg_phase":"lobby","sg_idx":0,"sg_mode":None,"rv_battle":None,"rv_mo
 
 storage = load_storage()
 p5_data = storage.get("saved_questions",[])
-voca_data = storage.get("saved_expressions",[])
+# session_state 우선, 없으면 파일에서
+if "saved_expressions" in st.session_state:
+    voca_data = st.session_state["saved_expressions"]
+else:
+    voca_data = storage.get("saved_expressions",[])
 
 # ════════════════════════════════
 # PHASE: LOBBY (리모컨)
