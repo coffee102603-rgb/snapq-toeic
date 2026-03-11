@@ -227,7 +227,7 @@ if st.session_state.sg_phase == "lobby":
     @keyframes nagFade{0%{opacity:0;transform:translateY(8px)}100%{opacity:1;transform:translateY(0)}}
 
     .rv-title{text-align:center;padding:16px 8px 6px 8px;}
-    .rv-title h1{font-size:2rem!important;font-size:2.4rem;font-weight:900;letter-spacing:6px;color:#ffd700;animation:fireGlow 2.5s ease infinite;margin:0;}
+    .rv-title h1{font-size:1.5rem!important;font-size:2.4rem;font-weight:900;letter-spacing:6px;color:#ffd700;animation:fireGlow 2.5s ease infinite;margin:0;}
     .rv-title p{font-size:0.85rem;color:#664400;letter-spacing:3px;margin:4px 0 0 0;}
 
     .rv-stage{animation:stageIn 0.5s ease;border-radius:20px;padding:18px 12px;margin:8px 0;}
@@ -294,10 +294,7 @@ if st.session_state.sg_phase == "lobby":
     # ━━━ 2막 P5: 전투 방식 선택 ━━━
     elif _rv_battle == "p5" and not _rv_mode:
         st.markdown('''<div class="rv-confirmed"><span>⚔️ P5 전장 귀환!</span></div>''', unsafe_allow_html=True)
-        st.markdown('''<div class="rv-stage rv-stage-2p5">
-            <div class="rv-act rv-act-2p5">🎬 2 막 · 전투 방식을 선택하라!</div>
-            <div class="rv-msg"><span class="red">새기며 익히느냐</span><br>실전으로 <span class="gold">증명하느냐!</span><br><span style="font-size:1rem;color:#888;">선택이 곧 너의 무기다</span></div>
-        </div>''', unsafe_allow_html=True)
+    
         if st.button(f"😤  P5 학습모드\n틀린 문제, 이번엔 완전히 박살! ({len(p5_data)}문제)", key="rv_p5s", type="secondary", use_container_width=True):
             if p5_data:
                 st.session_state.rv_mode="p5s"; st.session_state.sg_phase="p5_study"; st.session_state.sg_idx=0; st.rerun()
