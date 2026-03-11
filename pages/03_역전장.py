@@ -381,9 +381,6 @@ if st.session_state.sg_phase == "lobby":
     })();
     </script>""", height=0)
 
-            storage["saved_questions"] = []; save_storage(storage); st.rerun()
-            storage["saved_expressions"] = []; save_storage(storage); st.rerun()
-            save_storage(storage); st.rerun()
 
 
 elif st.session_state.sg_phase == "p5_study":
