@@ -211,7 +211,6 @@ div[data-testid="column"] button[kind="secondary"] p{
 # ═══ 세션 ═══
 for k,v in {"sg_phase":"lobby","sg_idx":0,"sg_mode":None,"rv_battle":None,"rv_mode":None,
     "sg_exam_qs":[],"sg_exam_idx":0,"sg_exam_results":[],"sg_exam_start":None,"sg_exam_wrong":False,
-    "p5_exam_recorded":False,
     "sg_wave":1,"sg_wave_idx":0,"sg_wave_results":[],"sg_wave_start":None,"sg_wave_dead":False,
     "sg_combo_score":0,"sg_combo_count":0,"sg_combo_idx":0,"sg_combo_start":None,"sg_combo_over":False}.items():
     if k not in st.session_state: st.session_state[k]=v
@@ -225,8 +224,6 @@ voca_data = storage.get("saved_expressions",[])
 # ════════════════════════════════
 if st.session_state.sg_phase == "lobby":
     # 승률 계산
-    p5_rec = storage.get("p5_exam_record", {"wins":0,"total":0})
-    voca_rec = storage.get("voca_exam_record", {"wins":0,"total":0})
     p5_rate = f'{int(p5_rec["wins"]/p5_rec["total"]*100)}%' if p5_rec["total"] > 0 else "—"
     combo_best = storage.get("combo_best", 0)
     combo_label = f"⭐{combo_best}" if combo_best > 0 else "—"
@@ -384,14 +381,8 @@ if st.session_state.sg_phase == "lobby":
     })();
     </script>""", height=0)
 
-    with st.expander("⚠️ 역전장 관리"):
-        if st.button("🗑 P5 전체 삭제", key="del_p5"):
             storage["saved_questions"] = []; save_storage(storage); st.rerun()
-        if st.button("🗑 VOCA 전체 삭제", key="del_voca"):
             storage["saved_expressions"] = []; save_storage(storage); st.rerun()
-        if st.button("🗑 시험 기록 초기화", key="del_rec"):
-            storage["p5_exam_record"] = {"wins":0,"total":0}
-            storage["voca_exam_record"] = {"wins":0,"total":0}
             save_storage(storage); st.rerun()
 
 
@@ -530,12 +521,8 @@ elif st.session_state.sg_phase == "p5_exam_result":
     ok_cnt = sum(results)
     passed = not st.session_state.sg_exam_wrong and ok_cnt == 5
     # 승률 저장
-    if "p5_exam_recorded" not in st.session_state:
-        rec = storage.get("p5_exam_record", {"wins":0,"total":0})
         rec["total"] += 1
         if passed: rec["wins"] += 1
-        storage["p5_exam_record"] = rec; save_storage(storage)
-        st.session_state.p5_exam_recorded = True
     if not passed:
         st.markdown('<div style="text-align:center;font-size:3rem;font-weight:900;color:#ff4444;text-shadow:0 0 20px #ff0000;">💀 FAIL! 💀</div>', unsafe_allow_html=True)
     else:
@@ -545,11 +532,9 @@ elif st.session_state.sg_phase == "p5_exam_result":
     c1, c2 = st.columns(2)
     with c1:
         if st.button("🔄 다시!", key="retry_exam", type="primary", use_container_width=True):
-            st.session_state.p5_exam_recorded = False
             st.session_state.sg_phase = "lobby"; st.rerun()
     with c2:
         if st.button("🔥 역전장", key="back_exam", type="secondary", use_container_width=True):
-            st.session_state.p5_exam_recorded = False
             st.session_state.sg_phase = "lobby"; st.rerun()
 # ════════════════════════════════
 # VOCA 서바이벌 웨이브 (순수 학습모드 - 타이머 없음)
