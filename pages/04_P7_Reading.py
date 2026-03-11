@@ -1106,9 +1106,9 @@ elif st.session_state.p7_phase == "briefing":
     # CT 알고리즘 안내 (전체 결과 요약 - 한 번만 표시)
     if bi == 0:
         _ct_html = '<div style="background:#030a12;border:2px solid rgba(68,255,204,0.4);border-radius:14px;padding:0.8rem 1rem;margin:0.3rem 0;">'
-        _ct_html += '<div style="color:#44ffcc;font-size:1.1rem;font-weight:900;margin-bottom:0.5rem;">🧠 CT 독해 알고리즘 — 내 전투 분석</div>'
+        _ct_html += '<div style="color:#44ffcc;font-size:0.9rem;font-weight:900;margin-bottom:0.3rem;">🧠 내 전투 분석</div>'
 
-        ct_step_labels = ["🎯 분해 (주제/목적 가설)", "🔍 패턴인식 (근거 확인)", "✂️ 추상화 (선택지 제거)"]
+        ct_step_labels = ["🎯 분해", "🔍 패턴인식", "✂️ 추상화"]
         ct_type_map = {"purpose":"주제/목적","detail":"세부사항","inference":"추론","not":"NOT문제","synonym":"동의어"}
         for si in range(num_steps):
             _c = _corrects[si] if si < len(_corrects) else None
@@ -1118,23 +1118,23 @@ elif st.session_state.p7_phase == "briefing":
             _qtype = steps[si].get("q_type","detail")
             _type_kr = ct_type_map.get(_qtype, _qtype)
             _ct_html += f'<div style="display:flex;justify-content:space-between;align-items:center;padding:0.3rem 0;border-bottom:1px solid rgba(255,255,255,0.07);">'
-            _ct_html += f'<span style="color:{_color};font-size:1.0rem;font-weight:700;">{_sym} Step {si+1} · {ct_step_labels[si]} <span style="color:#aaa;font-size:0.85rem;">[{_type_kr}]</span></span>'
-            _ct_html += f'<span style="color:#aaa;font-size:0.95rem;">⏱ {_t}</span></div>'
+            _ct_html += f'<span style="color:{_color};font-size:0.85rem;font-weight:700;">{_sym} Step {si+1} · {ct_step_labels[si]} <span style="color:#aaa;font-size:0.75rem;">[{_type_kr}]</span></span>'
+            _ct_html += f'<span style="color:#aaa;font-size:0.8rem;">⏱ {_t}</span></div>'
 
         # 4단계: 알고리즘화 메시지
         _all_ok = all(_corrects[:num_steps]) if _corrects else False
         if _all_ok:
-            _algo_msg = "🎯 완벽! 3단계 CT 절차를 모두 통과했어. 이 흐름을 기억해!"
+            _algo_msg = "🎯 완벽! 이 흐름을 기억해!"
             _algo_color = "#44ffcc"
         elif len(_corrects) > 0 and _corrects[0]:
-            _algo_msg = "⚡ 분해는 됐어. 패턴인식·추상화 단계를 더 연습해보자!"
+            _algo_msg = "⚡ 분해 OK. 패턴인식·추상화 더 연습!"
             _algo_color = "#ffcc44"
         else:
-            _algo_msg = "💡 Step 1부터 다시: 2문장 → 핵심 단어 → 주제 가설 순서로!"
+            _algo_msg = "💡 Step1부터 다시: 2문장→핵심단어→주제가설"
             _algo_color = "#ff8844"
-        _ct_html += f'<div style="color:{_algo_color};font-size:1.0rem;font-weight:900;margin-top:0.5rem;padding-top:0.4rem;">📌 4단계 알고리즘화: {_algo_msg}</div>'
+        _ct_html += f'<div style="color:{_algo_color};font-size:0.85rem;font-weight:900;margin-top:0.3rem;padding-top:0.3rem;">📌 {_algo_msg}</div>'
         _ct_html += '</div>'
-        with st.expander("🧠 CT 독해 알고리즘 분석 보기", expanded=False):
+        with st.expander("🧠 전투 분석", expanded=False):
             st.markdown(_ct_html, unsafe_allow_html=True)
 
     # 현재 스텝 데이터
@@ -1226,6 +1226,7 @@ elif st.session_state.p7_phase == "briefing":
         if st.button("🏠 본부", key="p7lobby", type="secondary", use_container_width=True):
             for k in D: st.session_state[k] = D[k]
             st.switch_page("main_hub.py")
+
 
 
 
