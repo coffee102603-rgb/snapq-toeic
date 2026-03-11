@@ -395,14 +395,6 @@ elif st.session_state.sg_phase == "p5_study":
 
     st.markdown('<div style="text-align:center;"><span style="font-size:1.5rem;font-weight:900;color:#44cc88;">📖 P5 학습모드</span></div>', unsafe_allow_html=True)
 
-    nc1, nc2, nc3 = st.columns([1, 6, 1])
-    with nc1:
-        if st.button("◀", key="st_p", disabled=bi<=0, use_container_width=True):
-            st.session_state.sg_idx = bi-1; st.rerun()
-    with nc3:
-        if st.button("▶", key="st_n", disabled=bi>=len(p5_data)-1, use_container_width=True):
-            st.session_state.sg_idx = bi+1; st.rerun()
-
     ans = q["ch"][q["a"]]
     clean = ans.split(") ",1)[-1] if ") " in ans else ans
     sent = q["text"].replace("_______", f'<span class="note-hl">{clean}</span>')
@@ -421,6 +413,13 @@ elif st.session_state.sg_phase == "p5_study":
         <div class="note-ex">💡 {exk}</div>
     </div>''', unsafe_allow_html=True)
 
+    nav1, nav2 = st.columns(2)
+    with nav1:
+        if st.button("◀ 이전", key="st_p", disabled=bi<=0, use_container_width=True):
+            st.session_state.sg_idx = bi-1; st.rerun()
+    with nav2:
+        if st.button("다음 ▶", key="st_n", disabled=bi>=len(p5_data)-1, use_container_width=True):
+            st.session_state.sg_idx = bi+1; st.rerun()
     c1, c2, c3, c4 = st.columns(4)
     with c1:
         if st.button("🗑 삭제", key="del_q", type="secondary", use_container_width=True):
