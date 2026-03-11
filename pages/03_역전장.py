@@ -944,6 +944,10 @@ elif st.session_state.sg_phase == "survival_result":
 # VOCA 콤보 러시 — 33초 타임폭탄 시험!
 # ════════════════════════════════
 elif st.session_state.sg_phase == "combo_rush":
+    if not voca_data:
+        st.warning("⚠️ 저장된 P7 단어/표현이 없습니다! 먼저 역전장 학습모드에서 단어를 저장하세요.")
+        if st.button("🔙 돌아가기"): st.session_state.sg_phase = "lobby"; st.rerun()
+        st.stop()
     st_autorefresh(interval=1000, limit=40, key="combo_timer")
 
     if "sg_combo_score" not in st.session_state: st.session_state.sg_combo_score = 0
