@@ -142,8 +142,8 @@ div[data-testid="column"] button[kind="secondary"] p{
 ══════════════════════════════════ */
 @media(max-width:768px){
     .block-container{padding-top:0.5rem!important;padding-bottom:2rem!important;padding-left:0.6rem!important;padding-right:0.6rem!important;}
-    button[kind="primary"],button[kind="secondary"]{font-size:1.5rem!important;padding:0.6rem 0.8rem!important;}
-    button[kind="primary"] p,button[kind="secondary"] p{font-size:1.5rem!important;}
+    button[kind="primary"],button[kind="secondary"]{font-size:1.0rem!important;padding:0.4rem 0.6rem!important;}
+    button[kind="primary"] p,button[kind="secondary"] p{font-size:1.0rem!important;}
     div[data-testid="column"] button[kind="primary"],
     div[data-testid="column"] button[kind="secondary"]{min-height:50px!important;font-size:1.3rem!important;}
     div[data-testid="column"] button[kind="primary"] p,
@@ -155,7 +155,7 @@ div[data-testid="column"] button[kind="secondary"] p{
     .note-hl{font-size:1.5rem!important;}
     .note-kr{font-size:1.2rem!important;}
     .note-ex{font-size:1.1rem!important;}
-    .exam-q{font-size:1.7rem!important;}
+    .exam-q{font-size:1.0rem!important;line-height:1.5!important;}
 }
 
 /* ══════════════════════════════════
@@ -163,8 +163,8 @@ div[data-testid="column"] button[kind="secondary"] p{
 ══════════════════════════════════ */
 @media(max-width:480px){
     .block-container{padding-top:0.3rem!important;padding-bottom:1.5rem!important;padding-left:0.4rem!important;padding-right:0.4rem!important;}
-    button[kind="primary"],button[kind="secondary"]{font-size:1.2rem!important;padding:0.5rem 0.6rem!important;border-radius:12px!important;}
-    button[kind="primary"] p,button[kind="secondary"] p{font-size:1.2rem!important;}
+    button[kind="primary"],button[kind="secondary"]{font-size:0.9rem!important;padding:0.3rem 0.4rem!important;border-radius:12px!important;}
+    button[kind="primary"] p,button[kind="secondary"] p{font-size:0.9rem!important;}
     div[data-testid="column"] button[kind="primary"],
     div[data-testid="column"] button[kind="secondary"]{min-height:50px!important;font-size:1.1rem!important;padding:0.3rem 0.4rem!important;}
     div[data-testid="column"] button[kind="primary"] p,
@@ -179,7 +179,7 @@ div[data-testid="column"] button[kind="secondary"] p{
     .note-kr{font-size:1.05rem!important;}
     .note-ex{font-size:0.95rem!important;}
     .exam{padding:1.2rem 1rem!important;}
-    .exam-q{font-size:1.4rem!important;line-height:1.7!important;}
+    .exam-q{font-size:0.95rem!important;line-height:1.5!important;}
 }
 
 /* ══════════════════════════════════
@@ -192,7 +192,7 @@ div[data-testid="column"] button[kind="secondary"] p{
     div[data-testid="column"] button[kind="secondary"] p{font-size:1rem!important;}
     .sg-rmt-t{font-size:1.3rem!important;}
     .note-sent{font-size:1.1rem!important;}
-    .exam-q{font-size:1.2rem!important;}
+    .exam-q{font-size:0.85rem!important;}
 }
 
 /* P5학습 버튼 강제 가로배치 */
