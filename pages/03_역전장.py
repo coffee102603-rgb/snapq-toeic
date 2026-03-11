@@ -107,7 +107,7 @@ button[kind="secondary"] p{font-size:1.0rem!important;font-weight:900!important;
 /* 로비 4개 카드 버튼 공통 */
 div[data-testid="column"] button[kind="primary"],
 div[data-testid="column"] button[kind="secondary"]{
-    min-height:80px!important;
+    min-height:60px!important;
     height:auto!important;
     white-space:pre-line!important;
     font-size:1.0rem!important;
@@ -162,7 +162,7 @@ div[data-testid="column"] button[kind="secondary"] p{
     button[kind="primary"],button[kind="secondary"]{font-size:1.2rem!important;padding:0.5rem 0.6rem!important;border-radius:12px!important;}
     button[kind="primary"] p,button[kind="secondary"] p{font-size:1.2rem!important;}
     div[data-testid="column"] button[kind="primary"],
-    div[data-testid="column"] button[kind="secondary"]{min-height:120px!important;font-size:1.1rem!important;padding:1rem 0.6rem!important;}
+    div[data-testid="column"] button[kind="secondary"]{min-height:60px!important;font-size:1.1rem!important;padding:1rem 0.6rem!important;}
     div[data-testid="column"] button[kind="primary"] p,
     div[data-testid="column"] button[kind="secondary"] p{font-size:1.1rem!important;line-height:1.6!important;}
     .sg-rmt{padding:16px 10px 12px!important;border-radius:22px!important;}
