@@ -99,7 +99,7 @@ button[kind="secondary"] p{font-size:1.0rem!important;font-weight:900!important;
 .sg-rmt{max-width:95vw;margin:0 auto;background:#000000;
     border-radius:32px;padding:24px 16px 16px 16px;border:3px solid #ffd700;
     box-shadow:0 8px 40px rgba(255,215,0,0.2);text-align:center;}
-.sg-rmt-t{font-size:1.4rem;font-weight:900;
+.sg-rmt-t{font-size:1.12rem;font-weight:900;
     background:linear-gradient(90deg,#ffd700,#ffffff,#ffd700);
     background-size:300% 300%;-webkit-background-clip:text;-webkit-text-fill-color:transparent;
     animation:rb 4s ease infinite;letter-spacing:2px;}
@@ -148,7 +148,7 @@ div[data-testid="column"] button[kind="secondary"] p{
     div[data-testid="column"] button[kind="secondary"]{min-height:50px!important;font-size:1.3rem!important;}
     div[data-testid="column"] button[kind="primary"] p,
     div[data-testid="column"] button[kind="secondary"] p{font-size:1.3rem!important;}
-    .sg-rmt-t{font-size:2rem!important;}
+    .sg-rmt-t{font-size:1.6rem!important;}
     .sg-nag-t{font-size:1.2rem!important;}
     .sg-zl{font-size:1.3rem!important;}
     .note-sent{font-size:1.4rem!important;line-height:2!important;}
@@ -170,7 +170,7 @@ div[data-testid="column"] button[kind="secondary"] p{
     div[data-testid="column"] button[kind="primary"] p,
     div[data-testid="column"] button[kind="secondary"] p{font-size:1.1rem!important;line-height:1.6!important;}
     .sg-rmt{padding:16px 10px 12px!important;border-radius:22px!important;}
-    .sg-rmt-t{font-size:1.6rem!important;letter-spacing:1px!important;}
+    .sg-rmt-t{font-size:1.28rem!important;letter-spacing:1px!important;}
     .sg-nag-t{font-size:1.1rem!important;}
     .sg-zl{font-size:1.1rem!important;letter-spacing:2px!important;}
     .note{padding:1rem 0.8rem!important;}
@@ -190,7 +190,7 @@ div[data-testid="column"] button[kind="secondary"] p{
     div[data-testid="column"] button[kind="secondary"]{min-height:50px!important;font-size:1rem!important;}
     div[data-testid="column"] button[kind="primary"] p,
     div[data-testid="column"] button[kind="secondary"] p{font-size:1rem!important;}
-    .sg-rmt-t{font-size:1.3rem!important;}
+    .sg-rmt-t{font-size:1.04rem!important;}
     .note-sent{font-size:1.1rem!important;}
     .exam-q{font-size:0.85rem!important;}
 }
@@ -583,7 +583,7 @@ elif st.session_state.sg_phase == "survival":
     sv_header = f'<div style="background:linear-gradient(180deg,#181850,#2c2068);border:2.5px solid {wc};border-radius:22px;padding:14px;text-align:center;">'
     wave_icons={1:'🧠',2:'🧠',3:'💥',4:'🏆'}
     wi=wave_icons.get(wave,'🏆')
-    sv_header += f'<div style="font-size:2rem;font-weight:900;color:{wc};">{wi} {cfg["name"]}</div>'
+    sv_header += f'<div style="font-size:1.6rem;font-weight:900;color:{wc};">{wi} {cfg["name"]}</div>'
     sv_header += f'<div style="font-size:1rem;color:#aaa;font-weight:700;">{cfg["desc"]}</div>'
     
     sv_header += '</div>'
