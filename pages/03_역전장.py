@@ -223,7 +223,7 @@ if st.session_state.sg_phase == "lobby":
     @keyframes nagFade{0%{opacity:0;transform:translateY(8px)}100%{opacity:1;transform:translateY(0)}}
 
     .rv-title{text-align:center;padding:16px 8px 6px 8px;}
-    .rv-title h1{font-size:2.4rem;font-weight:900;letter-spacing:6px;color:#ffd700;animation:fireGlow 2.5s ease infinite;margin:0;}
+    .rv-title h1{font-size:2rem!important;font-size:2.4rem;font-weight:900;letter-spacing:6px;color:#ffd700;animation:fireGlow 2.5s ease infinite;margin:0;}
     .rv-title p{font-size:0.85rem;color:#664400;letter-spacing:3px;margin:4px 0 0 0;}
 
     .rv-stage{animation:stageIn 0.5s ease;border-radius:20px;padding:18px 12px;margin:8px 0;}
@@ -270,20 +270,9 @@ if st.session_state.sg_phase == "lobby":
     # 타이틀
     st.markdown('''<div class="rv-title">
         <h1>🔥 역 전 장</h1>
-        <p>패배는 없다 · 역전만 있을 뿐이다</p>
     </div>''', unsafe_allow_html=True)
 
-    # 나긴 멘트 애니메이션
-    nag = random.choice(NAGGING)
-    nag_words = nag.split()
-    nag_spans = ""
-    for i, w in enumerate(nag_words):
-        delay = i * 0.4
-        nag_spans += f'<span style="opacity:0;animation:nagFade 0.5s ease {delay}s forwards;font-size:1.6rem;font-weight:900;color:#ff8800;">{w} </span>'
-    components.html(f"""
-    <style>@keyframes nagFade{{0%{{opacity:0;transform:translateY(8px)}}100%{{opacity:1;transform:translateY(0)}}}}</style>
-    <div style="text-align:center;padding:8px 0 12px 0;background:transparent;">{nag_spans}</div>
-    """, height=60)
+
 
     _rv_battle = st.session_state.get("rv_battle", None)   # "p5" or "p7"
     _rv_mode = st.session_state.get("rv_mode", None)       # "p5s","p5e","p7s","p7e"
@@ -296,10 +285,10 @@ if st.session_state.sg_phase == "lobby":
         </div>''', unsafe_allow_html=True)
         c1, c2 = st.columns(2)
         with c1:
-            if st.button("⚔️\nP5 전장\n문법의 전쟁", key="rv_p5", type="secondary", use_container_width=False):
+            if st.button("⚔️\nP5 전장\n문법의 전쟁", key="rv_p5", type="secondary", use_container_width=True):
                 st.session_state.rv_battle = "p5"; st.rerun()
         with c2:
-            if st.button("📖\nP7 전장\n독해의 전쟁", key="rv_p7", type="secondary", use_container_width=False):
+            if st.button("📖\nP7 전장\n독해의 전쟁", key="rv_p7", type="secondary", use_container_width=True):
                 st.session_state.rv_battle = "p7"; st.rerun()
 
     # ━━━ 2막 P5: 전투 방식 선택 ━━━
