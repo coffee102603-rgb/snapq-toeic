@@ -471,29 +471,29 @@ elif st.session_state.sg_phase == "p5_exam":
     # 배경색 점차 붉어짐 (움직임 없음!)
     if rem <= 5:
         bg_css = "background:linear-gradient(135deg,#2a0808,#3a0a1a 30%,#2a0510 70%,#2a0808)!important;"
-        tcl = "#ff0000"; tsz = "5rem"; tglow = "text-shadow:0 0 40px #ff0000,0 0 80px #cc0000;"
+        tcl = "#ff0000"; tsz = "2.5rem"; tglow = "text-shadow:0 0 40px #ff0000,0 0 80px #cc0000;"
         twarn = '<div style="text-align:center;font-size:1.4rem;color:#ff0000;font-weight:900;margin-top:4px;">💀💀 폭발한다!! 💀💀</div>'
     elif rem <= 10:
         bg_css = "background:linear-gradient(135deg,#1e0815,#2e0a25 30%,#1e0818 70%,#1e0815)!important;"
-        tcl = "#ff2200"; tsz = "4rem"; tglow = "text-shadow:0 0 25px #ff2200,0 0 50px #ff0000;"
+        tcl = "#ff2200"; tsz = "2rem"; tglow = "text-shadow:0 0 25px #ff2200,0 0 50px #ff0000;"
         twarn = '<div style="text-align:center;font-size:1.1rem;color:#ff4444;font-weight:900;">💀 서둘러!! 또 틀릴 거야?! 💀</div>'
     elif rem <= 15:
         bg_css = "background:linear-gradient(135deg,#160a1e,#220e30 30%,#160a22 70%,#160a1e)!important;"
-        tcl = "#ff6600"; tsz = "3.2rem"; tglow = "text-shadow:0 0 15px #ff6600;"
+        tcl = "#ff6600"; tsz = "1.6rem"; tglow = "text-shadow:0 0 15px #ff6600;"
         twarn = '<div style="text-align:center;font-size:1rem;color:#ff8844;font-weight:900;">⚡ 서둘러!! ⚡</div>'
     elif rem <= 20:
         bg_css = "background:linear-gradient(135deg,#121530,#1e1845 30%,#121838 70%,#121530)!important;"
-        tcl = "#ffaa00"; tsz = "2.8rem"; tglow = "text-shadow:0 0 8px #ffaa00;"
+        tcl = "#ffaa00"; tsz = "1.4rem"; tglow = "text-shadow:0 0 8px #ffaa00;"
         twarn = ""
     else:
         bg_css = ""
-        tcl = "#44ff88"; tsz = "2.4rem"; tglow = ""; twarn = ""
+        tcl = "#44ff88"; tsz = "1.2rem"; tglow = ""; twarn = ""
     tpct = int(rem / 33 * 100)
     q_border = "rgba(255,50,50,0.6)" if rem <= 10 else "rgba(100,140,255,0.4)"
     q_shadow = "0 0 40px rgba(255,0,0,0.2)" if rem <= 10 else "0 0 30px rgba(100,140,255,0.15)"
     if bg_css:
         st.markdown(f'<style>.stApp{{{bg_css}}}</style>', unsafe_allow_html=True)
-    st.markdown(f'<div style="text-align:center;margin:8px 0;padding:10px;"><span style="font-size:{tsz};font-weight:900;color:{tcl};font-family:Impact,Arial Black,sans-serif;{tglow}">{rem}</span><span style="font-size:1.5rem;color:{tcl};opacity:0.7;">s</span><div style="font-size:1rem;color:#888;font-weight:700;margin-top:4px;">Q{qi+1} / 5 · 남은 {left}문제</div></div>', unsafe_allow_html=True)
+    st.markdown(f'<div style="text-align:center;margin:2px 0;padding:4px;"><span style="font-size:{tsz};font-weight:900;color:{tcl};font-family:Impact,Arial Black,sans-serif;{tglow}">{rem}</span><span style="font-size:0.8rem;color:{tcl};opacity:0.7;">s</span><div style="font-size:1rem;color:#888;font-weight:700;margin-top:4px;">Q{qi+1} / 5 · 남은 {left}문제</div></div>', unsafe_allow_html=True)
     st.markdown(f'<div style="background:rgba(255,255,255,0.06);border-radius:12px;padding:3px;margin:4px 0;"><div style="background:linear-gradient(90deg,{tcl},#4488ff);height:12px;border-radius:10px;width:{tpct}%;"></div></div>', unsafe_allow_html=True)
     if twarn:
         st.markdown(twarn, unsafe_allow_html=True)
@@ -580,7 +580,7 @@ elif st.session_state.sg_phase == "survival":
     wave_colors = {1: "#44cc88", 2: "#ffcc00", 3: "#ff8844", 4: "#ff4466"}
     wc = wave_colors.get(wave, "#ff4466")
 
-    sv_header = f'<div style="background:linear-gradient(180deg,#181850,#2c2068);border:2.5px solid {wc};border-radius:22px;padding:14px;text-align:center;">'
+    sv_header = f'<div style="background:linear-gradient(180deg,#181850,#2c2068);border:2.5px solid {wc};border-radius:22px;padding:7px;text-align:center;">'
     wave_icons={1:'🧠',2:'🧠',3:'💥',4:'🏆'}
     wi=wave_icons.get(wave,'🏆')
     sv_header += f'<div style="font-size:1.6rem;font-weight:900;color:{wc};">{wi} {cfg["name"]}</div>'
@@ -966,22 +966,22 @@ elif st.session_state.sg_phase == "combo_rush":
     # 배경 붉어짐 (움직임 없음!)
     if rem <= 5:
         bg_css = "background:linear-gradient(135deg,#2a0808,#3a0a1a 30%,#2a0510 70%,#2a0808)!important;"
-        tcl = "#ff0000"; tsz = "5rem"; tglow = "text-shadow:0 0 40px #ff0000,0 0 80px #cc0000;"
+        tcl = "#ff0000"; tsz = "2.5rem"; tglow = "text-shadow:0 0 40px #ff0000,0 0 80px #cc0000;"
         twarn = '<div style="text-align:center;font-size:1.4rem;color:#ff0000;font-weight:900;margin-top:4px;">💀💀 폭발한다!! 💀💀</div>'
     elif rem <= 10:
         bg_css = "background:linear-gradient(135deg,#1e0815,#2e0a25 30%,#1e0818 70%,#1e0815)!important;"
-        tcl = "#ff2200"; tsz = "4rem"; tglow = "text-shadow:0 0 25px #ff2200,0 0 50px #ff0000;"
+        tcl = "#ff2200"; tsz = "2rem"; tglow = "text-shadow:0 0 25px #ff2200,0 0 50px #ff0000;"
         twarn = '<div style="text-align:center;font-size:1.1rem;color:#ff4444;font-weight:900;">💀 서둘러!! 💀</div>'
     elif rem <= 15:
         bg_css = "background:linear-gradient(135deg,#160a1e,#220e30 30%,#160a22 70%,#160a1e)!important;"
-        tcl = "#ff6600"; tsz = "3.2rem"; tglow = "text-shadow:0 0 15px #ff6600;"
+        tcl = "#ff6600"; tsz = "1.6rem"; tglow = "text-shadow:0 0 15px #ff6600;"
         twarn = '<div style="text-align:center;font-size:1rem;color:#ff8844;font-weight:900;">⚡ 서둘러!! ⚡</div>'
     elif rem <= 20:
         bg_css = "background:linear-gradient(135deg,#121530,#1e1845 30%,#121838 70%,#121530)!important;"
-        tcl = "#ffaa00"; tsz = "2.8rem"; tglow = "text-shadow:0 0 8px #ffaa00;"
+        tcl = "#ffaa00"; tsz = "1.4rem"; tglow = "text-shadow:0 0 8px #ffaa00;"
         twarn = ""
     else:
-        bg_css = ""; tcl = "#44ff88"; tsz = "2.4rem"; tglow = ""; twarn = ""
+        bg_css = ""; tcl = "#44ff88"; tsz = "1.2rem"; tglow = ""; twarn = ""
     tpct = int(rem / 33 * 100)
     q_border = "rgba(255,50,50,0.6)" if rem <= 10 else "rgba(255,136,0,0.7)"
     if bg_css:
@@ -1003,7 +1003,7 @@ elif st.session_state.sg_phase == "combo_rush":
     st.markdown(header, unsafe_allow_html=True)
 
     # 타이머 UI
-    st.markdown(f'<div style="text-align:center;margin:8px 0;padding:10px;"><span style="font-size:{tsz};font-weight:900;color:{tcl};font-family:Impact,Arial Black,sans-serif;{tglow}">{rem}</span><span style="font-size:1.5rem;color:{tcl};opacity:0.7;">s</span><div style="font-size:1rem;color:#888;font-weight:700;margin-top:4px;">Q{cidx+1}/{total_qs} · 남은 {left}문제</div></div>', unsafe_allow_html=True)
+    st.markdown(f'<div style="text-align:center;margin:2px 0;padding:4px;"><span style="font-size:{tsz};font-weight:900;color:{tcl};font-family:Impact,Arial Black,sans-serif;{tglow}">{rem}</span><span style="font-size:0.8rem;color:{tcl};opacity:0.7;">s</span><div style="font-size:1rem;color:#888;font-weight:700;margin-top:4px;">Q{cidx+1}/{total_qs} · 남은 {left}문제</div></div>', unsafe_allow_html=True)
     st.markdown(f'<div style="background:rgba(255,255,255,0.06);border-radius:12px;padding:3px;margin:4px 0;"><div style="background:linear-gradient(90deg,{tcl},#ff8800);height:12px;border-radius:10px;width:{tpct}%;"></div></div>', unsafe_allow_html=True)
     if twarn:
         st.markdown(twarn, unsafe_allow_html=True)
