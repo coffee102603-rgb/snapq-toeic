@@ -798,7 +798,7 @@ elif st.session_state.sg_phase == "survival":
         note += f'<div style="font-size:1.5rem;color:#ff8888;font-weight:800;margin-bottom:8px;">내 선택: <span style="text-decoration:line-through;opacity:0.7;">{wr["my_ans"]}</span></div>'
         
         note += f'<div style="border-top:1px solid rgba(255,255,255,0.1);padding-top:12px;margin-top:8px;">'
-        note += f'<div style="font-size:2.5rem;font-weight:900;color:#88bbff;margin-bottom:6px;">📖 {wr["expr"]}</div>'
+        note += f'<div style="font-size:1.1rem;font-weight:900;color:#88bbff;margin-bottom:4px;">📖 {wr["expr"]}</div>'
         note += f'<div style="font-size:2rem;color:#aaa;font-weight:700;margin-bottom:6px;">뜻: {wr["meaning"]}</div>'
         if wr.get("sentence"):
             import re as _re2
@@ -874,7 +874,7 @@ elif st.session_state.sg_phase == "survival":
     _wc_map = {1:"68,204,136", 2:"255,204,0", 3:"255,136,68", 4:"255,68,102"}
     _rgb = _wc_map.get(wave, "255,68,102")
     components.html(f"""<script>
-    function stW(){{const d=window.parent.document;d.querySelectorAll('button[kind="secondary"]').forEach(b=>{{const t=(b.textContent||'').trim();if(/^\([A-D]\)/.test(t)){{b.style.cssText='background:linear-gradient(135deg,rgba({_rgb},0.25),rgba({_rgb},0.12))!important;color:#ffffff!important;border:2px solid rgba({_rgb},0.5)!important;border-radius:16px!important;font-size:1.0rem!important;font-weight:900!important;padding:0.4rem 0.5rem!important;min-height:auto!important;box-shadow:0 3px 15px rgba('+'{_rgb}'+',0.15)!important;';b.querySelectorAll('p').forEach(p=>p.style.cssText='font-size:1.8rem!important;font-weight:900!important;');}}}});}};setTimeout(stW,80);setTimeout(stW,300);setTimeout(stW,700);new MutationObserver(stW).observe(window.parent.document.body,{{childList:true,subtree:true}});
+    function stW(){{const d=window.parent.document;d.querySelectorAll('button[kind="secondary"]').forEach(b=>{{const t=(b.textContent||'').trim();if(/^\([A-D]\)/.test(t)){{b.style.cssText='background:linear-gradient(135deg,rgba({_rgb},0.25),rgba({_rgb},0.12))!important;color:#ffffff!important;border:2px solid rgba({_rgb},0.5)!important;border-radius:16px!important;font-size:1.1rem!important;font-weight:900!important;padding:0.4rem 0.5rem!important;min-height:auto!important;box-shadow:0 3px 15px rgba('+'{_rgb}'+',0.15)!important;';b.querySelectorAll('p').forEach(p=>p.style.cssText='font-size:1.8rem!important;font-weight:900!important;');}}}});}};setTimeout(stW,80);setTimeout(stW,300);setTimeout(stW,700);new MutationObserver(stW).observe(window.parent.document.body,{{childList:true,subtree:true}});
     </script>""", height=0)
 
 # ════════════════════════════════
@@ -1077,7 +1077,7 @@ elif st.session_state.sg_phase == "combo_rush":
                 st.session_state.sg_phase = "combo_result"; st.rerun()
 
     components.html("""<script>
-    function stC(){const d=window.parent.document;d.querySelectorAll('button[kind="secondary"]').forEach(b=>{const t=(b.textContent||'').trim();if(/^\([A-D]\)/.test(t)){b.style.cssText='background:linear-gradient(135deg,rgba(255,136,0,0.22),rgba(255,136,0,0.10))!important;color:#ffffff!important;border:1.5px solid rgba(255,136,0,0.5)!important;border-radius:16px!important;font-size:1.0rem!important;font-weight:900!important;padding:0.4rem 0.5rem!important;min-height:auto!important;box-shadow:0 3px 15px rgba('+'{_rgb}'+',0.15)!important;';b.querySelectorAll('p').forEach(p=>p.style.cssText='font-size:1.8rem!important;font-weight:900!important;');}});};setTimeout(stC,80);setTimeout(stC,300);setTimeout(stC,700);new MutationObserver(stC).observe(window.parent.document.body,{childList:true,subtree:true});
+    function stC(){const d=window.parent.document;d.querySelectorAll('button[kind="secondary"]').forEach(b=>{const t=(b.textContent||'').trim();if(/^\([A-D]\)/.test(t)){b.style.cssText='background:linear-gradient(135deg,rgba(255,136,0,0.22),rgba(255,136,0,0.10))!important;color:#ffffff!important;border:1.5px solid rgba(255,136,0,0.5)!important;border-radius:16px!important;font-size:1.1rem!important;font-weight:900!important;padding:0.4rem 0.5rem!important;min-height:auto!important;box-shadow:0 3px 15px rgba('+'{_rgb}'+',0.15)!important;';b.querySelectorAll('p').forEach(p=>p.style.cssText='font-size:1.8rem!important;font-weight:900!important;');}});};setTimeout(stC,80);setTimeout(stC,300);setTimeout(stC,700);new MutationObserver(stC).observe(window.parent.document.body,{childList:true,subtree:true});
     </script>""", height=0)
 
 # ════════════════════════════════
