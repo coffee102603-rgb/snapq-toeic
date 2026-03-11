@@ -338,17 +338,8 @@ if st.session_state.sg_phase == "lobby":
 
     # ━━━ 항상 고정 네비게이션 ━━━
     st.markdown('<div style="font-size:0.7rem;color:#331100;text-align:center;letter-spacing:3px;margin-top:16px;padding-top:12px;border-top:1px solid #1a0800;">N A V I G A T E</div>', unsafe_allow_html=True)
-    mn1, mn2, mn3 = st.columns(3)
-    with mn1:
-        if st.button("⚔️ P5전장", key="sg_nav1", type="secondary", use_container_width=True):
-            st.session_state.phase="lobby"; st.session_state._p5_active=False
-            st.switch_page("pages/02_P5_Arena.py")
-    with mn2:
-        if st.button("📖 P7전장", key="sg_nav2", type="secondary", use_container_width=True):
-            st.switch_page("pages/04_P7_Reading.py")
-    with mn3:
-        if st.button("🏠 메인", key="sg_nav3", type="secondary", use_container_width=True):
-            st.switch_page("main_hub.py")
+    if st.button("🏠 메인으로 귀환", key="sg_nav3", type="secondary", use_container_width=True):
+        st.switch_page("main_hub.py")
     import streamlit.components.v1 as _cmp
     _cmp.html("""<script>
     (function(){
