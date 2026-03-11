@@ -413,22 +413,22 @@ elif st.session_state.sg_phase == "p5_study":
         <div class="note-ex">💡 {exk}</div>
     </div>''', unsafe_allow_html=True)
 
-    nav1, nav2 = st.columns(2)
-    with nav1:
+    r1c1, r1c2 = st.columns(2)
+    with r1c1:
         if st.button("◀ 이전", key="st_p", disabled=bi<=0, use_container_width=True):
             st.session_state.sg_idx = bi-1; st.rerun()
-    with nav2:
+    with r1c2:
         if st.button("다음 ▶", key="st_n", disabled=bi>=len(p5_data)-1, use_container_width=True):
             st.session_state.sg_idx = bi+1; st.rerun()
-    c1, c2, c3, c4 = st.columns(4)
-    with c1:
+    r2c1, r2c2 = st.columns(2)
+    with r2c1:
         if st.button("🗑 삭제", key="del_q", type="secondary", use_container_width=True):
             p5_data.pop(bi)
             storage["saved_questions"] = p5_data
             save_storage(storage)
             if bi >= len(p5_data): st.session_state.sg_idx = max(0, len(p5_data)-1)
             st.rerun()
-    with c2:
+    with r2c2:
         if st.button("📝 시험", key="go_exam", type="primary", use_container_width=True):
             if len(p5_data) >= 5:
                 qs = random.sample(p5_data, 5)
@@ -439,10 +439,11 @@ elif st.session_state.sg_phase == "p5_study":
                 st.session_state.sg_exam_wrong = False
                 st.session_state.sg_phase = "p5_exam"; st.rerun()
             else: st.warning("최소 5문제 필요!")
-    with c3:
+    r3c1, r3c2 = st.columns(2)
+    with r3c1:
         if st.button("📦 로비", key="back_lobby", type="secondary", use_container_width=True):
             st.session_state.sg_phase = "lobby"; st.rerun()
-    with c4:
+    with r3c2:
         if st.button("🏠 메인", key="go_main_p5s", type="secondary", use_container_width=True):
             st.switch_page("main_hub.py")
 
