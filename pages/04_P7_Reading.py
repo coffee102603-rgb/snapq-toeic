@@ -135,9 +135,9 @@ section[data-testid="stSidebar"]{background:#0a0a1a!important;}
 @keyframes hlDraw{from{background-size:0% 4px}to{background-size:100% 4px}}
 
 /* 전투 버튼 */
-button[kind="primary"]{background:#111111!important;color:#ffffff!important;border:2px solid #ff4400!important;border-radius:10px!important;font-size:1.2rem!important;font-weight:900!important;padding:0.7rem 1rem!important;box-shadow:0 0 10px rgba(255,68,0,0.3)!important;text-align:center!important;}
+button[kind="primary"]{background:#111111!important;color:#ffffff!important;border:2px solid #ff4400!important;border-radius:10px!important;font-size:1.2rem!important;font-weight:900!important;padding:0.84rem 1rem!important;box-shadow:0 0 10px rgba(255,68,0,0.3)!important;text-align:center!important;}
 button[kind="primary"] p{font-size:1.2rem!important;font-weight:900!important;text-align:center!important;}
-button[kind="secondary"]{background:#111111!important;color:#ffffff!important;border:2px solid #ffffff!important;border-radius:10px!important;font-size:1.2rem!important;font-weight:900!important;padding:0.4rem 0.5rem!important;box-shadow:0 0 10px rgba(255,255,255,0.3)!important;text-align:center!important;min-height:36px!important;}
+button[kind="secondary"]{background:#111111!important;color:#ffffff!important;border:2px solid #ffffff!important;border-radius:10px!important;font-size:1.2rem!important;font-weight:900!important;padding:0.48rem 0.5rem!important;box-shadow:0 0 10px rgba(255,255,255,0.3)!important;text-align:center!important;min-height:43px!important;}
 button[kind="secondary"] p{font-size:1.2rem!important;font-weight:900!important;text-align:center!important;color:#ffffff!important;}
 
 /* P7 지문 카드 */
@@ -195,7 +195,7 @@ button[kind="primary"] p,button[kind="secondary"] p{font-size:1rem!important;}
 .p7-sent{font-size:1.05rem!important;}.p7-q{font-size:1rem!important;}
 .p7-br-s{font-size:1.1rem!important;}
 }
-.stButton button{min-height:36px!important;padding:4px 6px!important;}
+.stButton button{min-height:43px!important;padding:4px 6px!important;}
 .stButton button p{font-size:1.0rem!important;}
 
 /* P7브리핑 버튼 강제 가로배치 */
@@ -1081,8 +1081,8 @@ elif st.session_state.p7_phase == "briefing":
     div[data-testid="stVerticalBlockBorderWrapper"] button[kind],
     div[data-testid="stVerticalBlock"] button[kind]{
         padding:1px 2px!important;
-        min-height:30px!important;
-        max-height:30px!important;
+        min-height:36px!important;
+        max-height:36px!important;
         font-size:0.7rem!important;
         line-height:1!important;
     }
@@ -1226,5 +1226,6 @@ elif st.session_state.p7_phase == "briefing":
         if st.button("🏠 본부", key="p7lobby", type="secondary", use_container_width=True):
             for k in D: st.session_state[k] = D[k]
             st.switch_page("main_hub.py")
+
 
 
