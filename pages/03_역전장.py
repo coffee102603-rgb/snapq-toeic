@@ -993,11 +993,11 @@ elif st.session_state.sg_phase == "combo_rush":
         combo_color = "#ff00ff"
     combo_text = f"{combo}x" if combo > 0 else "0x"
 
-    header = '<div style="background:linear-gradient(180deg,#0a0a1a,#1a1030);border:2.5px solid #ff8800;border-radius:22px;padding:12px;text-align:center;">'
-    header += '<div style="font-size:2rem;font-weight:900;color:#ff8800;">💪 P7 단어 · 덤벼봐, 틀리면 끝이다!</div>'
+    header = '<div style="background:linear-gradient(180deg,#0a0a1a,#1a1030);border:2.5px solid #ff8800;border-radius:22px;padding:5px;text-align:center;">'
+    header += '<div style="font-size:1.0rem;font-weight:900;color:#ff8800;">💪 P7 단어 · 덤벼봐, 틀리면 끝이다!</div>'
     header += f'<div style="display:flex;justify-content:space-around;margin-top:6px;">'
-    header += f'<span style="font-size:1.3rem;font-weight:900;color:{combo_color};">🔥 {combo_text}</span>'
-    header += f'<span style="font-size:1.3rem;font-weight:900;color:#ffcc00;">⭐ {score}</span>'
+    header += f'<span style="font-size:0.85rem;font-weight:900;color:{combo_color};">🔥 {combo_text}</span>'
+    header += f'<span style="font-size:0.85rem;font-weight:900;color:#ffcc00;">⭐ {score}</span>'
     header += f'<span style="font-size:1.3rem;font-weight:900;color:#aaa;">{cidx+1}/{total_qs}</span>'
     header += '</div></div>'
     st.markdown(header, unsafe_allow_html=True)
