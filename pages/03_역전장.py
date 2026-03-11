@@ -1,4 +1,4 @@
-﻿"""통합 역전장 — P5 학습/시험 + VOCA 학습/시험"""
+"""통합 역전장 — P5 학습/시험 + VOCA 학습/시험"""
 import streamlit as st
 import streamlit.components.v1 as components
 import json, os, random, time, re
