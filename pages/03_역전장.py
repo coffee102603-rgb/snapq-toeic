@@ -92,8 +92,8 @@ button[kind="secondary"] p{font-size:1.0rem!important;font-weight:900!important;
 .note-ex{font-size:1.3rem;color:#555;line-height:1.6;padding:0.5rem 0.8rem;background:rgba(255,180,0,0.1);border-left:4px solid #ffaa00;border-radius:0 8px 8px 0;}
 
 /* 시험 */
-.exam{background:#fff;border-radius:4px;padding:1.8rem 1.5rem;margin:0.4rem 0;box-shadow:0 2px 10px rgba(0,0,0,0.15);border:1px solid #ccc;font-family:'Times New Roman',serif;}
-.exam-q{font-size:2rem;font-weight:900;color:#e8e8ff;line-height:1.9;margin:0.8rem 0;word-break:keep-all;}
+.exam{background:#fff;border-radius:4px;padding:0.8rem 0.8rem;margin:0.2rem 0;box-shadow:0 2px 10px rgba(0,0,0,0.15);border:1px solid #ccc;font-family:'Times New Roman',serif;}
+.exam-q{font-size:1.0rem;font-weight:900;color:#e8e8ff;line-height:1.5;margin:0.4rem 0;word-break:keep-all;}
 
 /* 리모컨 */
 .sg-rmt{max-width:95vw;margin:0 auto;background:#000000;
@@ -498,7 +498,7 @@ elif st.session_state.sg_phase == "p5_exam":
     if twarn:
         st.markdown(twarn, unsafe_allow_html=True)
     blank_text = q["text"].replace("_______", '<span style="border-bottom:3px solid #66aaff;padding:0 16px;color:#88bbff;">________</span>')
-    st.markdown(f'<div style="background:linear-gradient(145deg,#141435,#1c1c4a);border:2.5px solid {q_border};border-radius:20px;padding:1.8rem 1.4rem;margin:10px 0;box-shadow:{q_shadow};"><div style="font-size:2.4rem;font-weight:900;color:#e8e8ff;line-height:1.7;font-family:Georgia,serif;">{blank_text}</div></div>', unsafe_allow_html=True)
+    st.markdown(f'<div style="background:linear-gradient(145deg,#141435,#1c1c4a);border:2.5px solid {q_border};border-radius:20px;padding:1.8rem 1.4rem;margin:10px 0;box-shadow:{q_shadow};"><div style="font-size:1.1rem;font-weight:900;color:#e8e8ff;line-height:1.5;font-family:Georgia,serif;">{blank_text}</div></div>', unsafe_allow_html=True)
     for i, ch in enumerate(q["ch"]):
         if st.button(ch, key=f"ex_{qi}_{i}", type="secondary", use_container_width=True):
             ok = (i == q["a"])
@@ -510,7 +510,7 @@ elif st.session_state.sg_phase == "p5_exam":
                 st.session_state.sg_exam_idx += 1
                 st.rerun()
     components.html("""<script>
-    function stP(){const d=window.parent.document;d.querySelectorAll('button[kind="secondary"]').forEach(b=>{const t=(b.textContent||'').trim();if(/^\([A-D]\)/.test(t)){b.style.cssText='background:linear-gradient(135deg,rgba(100,140,200,0.25),rgba(100,140,200,0.12))!important;color:#ffffff!important;border:2px solid rgba(100,140,200,0.5)!important;border-radius:16px!important;font-size:1.9rem!important;font-weight:900!important;padding:0.9rem 1rem!important;min-height:auto!important;box-shadow:0 3px 15px rgba(100,140,200,0.15)!important;font-family:Georgia,serif!important;';b.querySelectorAll('p').forEach(p=>p.style.cssText='font-size:1.9rem!important;font-weight:900!important;font-family:Georgia,serif!important;');}});};setTimeout(stP,80);setTimeout(stP,300);setTimeout(stP,700);new MutationObserver(stP).observe(window.parent.document.body,{childList:true,subtree:true});
+    function stP(){const d=window.parent.document;d.querySelectorAll('button[kind="secondary"]').forEach(b=>{const t=(b.textContent||'').trim();if(/^\([A-D]\)/.test(t)){b.style.cssText='background:linear-gradient(135deg,rgba(100,140,200,0.25),rgba(100,140,200,0.12))!important;color:#ffffff!important;border:2px solid rgba(100,140,200,0.5)!important;border-radius:16px!important;font-size:1.0rem!important;font-weight:900!important;padding:0.45rem 0.5rem!important;min-height:auto!important;box-shadow:0 3px 15px rgba(100,140,200,0.15)!important;font-family:Georgia,serif!important;';b.querySelectorAll('p').forEach(p=>p.style.cssText='font-size:1.0rem!important;font-weight:900!important;font-family:Georgia,serif!important;');}});};setTimeout(stP,80);setTimeout(stP,300);setTimeout(stP,700);new MutationObserver(stP).observe(window.parent.document.body,{childList:true,subtree:true});
     </script>""", height=0)
 
 # ════════════════════════════════
