@@ -38,7 +38,13 @@ def make_alt_question(q):
     new_words = words.copy()
     new_words[idx] = words[idx].replace(target_clean, "_______")
     new_text = " ".join(new_words).replace(" ,", ",").replace(" .", ".")
-    distractors_pool = ["provide","maintain","require","consider","establish","develop","address","achieve","indicate","determine","implement","evaluate","facilitate","demonstrate","acknowledge","contribute","participate","collaborate","recommend","negotiate","relevant","significant","appropriate","essential","available","potential","sufficient","additional","comprehensive","preliminary"]
+    # voca_data에서 오답 단어 수집 (정답 제외)
+    voca_exprs = [v.get("expr","").strip(".,;:!?'\"").split()[-1] for v in voca_data if v.get("expr","")]
+    voca_exprs = [e for e in voca_exprs if e.lower() != target_clean.lower() and len(e) > 2]
+    distractors_pool = list(dict.fromkeys(voca_exprs))  # 중복 제거
+    if len(distractors_pool) < 3:
+        fallback = ["provide","maintain","require","consider","establish","develop","address","achieve","indicate","determine","relevant","significant","appropriate","essential","available","potential","sufficient","additional","comprehensive","preliminary"]
+        distractors_pool += [d for d in fallback if d.lower() != target_clean.lower() and d not in distractors_pool]
     distractors = random.sample([d for d in distractors_pool if d.lower() != target_clean.lower()], min(3, len(distractors_pool)))
     choices = distractors + [target_clean]
     random.shuffle(choices)
