@@ -604,12 +604,12 @@ elif st.session_state.sg_phase == "survival":
 
     if wave == 1:
         # 영어표현 → 한글뜻
-        q_display = f'<div style="border-radius:20px;padding:1.8rem 1.4rem;margin:10px 0;text-align:center;background:linear-gradient(145deg,#124028,#185535,#124028);border:2.5px solid rgba(68,204,136,0.7);box-shadow:0 0 40px rgba(68,204,136,0.3);animation:slideUp 0.4s ease-out;"><div style="font-size:1rem;font-weight:800;letter-spacing:3px;text-transform:uppercase;color:rgba(68,204,136,0.75);margin-bottom:8px;">what does this mean?</div><div style="font-size:1.2rem;font-weight:900;line-height:1.3;color:#88ffbb;">{expr_text}</div></div>'
+        q_display = f'<div style="border-radius:20px;padding:1.8rem 1.4rem;margin:10px 0;text-align:center;background:linear-gradient(145deg,#124028,#185535,#124028);border:2.5px solid rgba(68,204,136,0.7);box-shadow:0 0 40px rgba(68,204,136,0.3);animation:slideUp 0.4s ease-out;"><div style="font-size:1rem;font-weight:800;letter-spacing:3px;text-transform:uppercase;color:rgba(68,204,136,0.75);margin-bottom:8px;">what does this mean?</div><div style="font-size:1.1rem;font-weight:900;line-height:1.4;color:#88ffbb;">{expr_text}</div></div>'
         correct_ans = meaning
         others = [v.get("meaning","") for v in voca_data if v.get("meaning","") != meaning]
     elif wave == 2:
         # 한글뜻 → 영어표현
-        q_display = f'<div style="border-radius:20px;padding:1.8rem 1.4rem;margin:10px 0;text-align:center;background:linear-gradient(145deg,#3e3210,#4a3c15,#3e3210);border:2.5px solid rgba(255,204,0,0.7);box-shadow:0 0 40px rgba(255,204,0,0.3);animation:slideUp 0.4s ease-out;"><div style="font-size:1rem;font-weight:800;letter-spacing:3px;text-transform:uppercase;color:rgba(255,204,0,0.75);margin-bottom:8px;">영어 표현은?</div><div style="font-size:1.2rem;font-weight:900;line-height:1.3;color:#ffee88;">{meaning}</div></div>'
+        q_display = f'<div style="border-radius:20px;padding:1.8rem 1.4rem;margin:10px 0;text-align:center;background:linear-gradient(145deg,#3e3210,#4a3c15,#3e3210);border:2.5px solid rgba(255,204,0,0.7);box-shadow:0 0 40px rgba(255,204,0,0.3);animation:slideUp 0.4s ease-out;"><div style="font-size:1rem;font-weight:800;letter-spacing:3px;text-transform:uppercase;color:rgba(255,204,0,0.75);margin-bottom:8px;">영어 표현은?</div><div style="font-size:1.1rem;font-weight:900;line-height:1.4;color:#ffee88;">{meaning}</div></div>'
         correct_ans = expr_text
         others = [v.get("expr","") for v in voca_data if v.get("expr","") != expr_text]
     elif wave == 3:
@@ -874,7 +874,7 @@ elif st.session_state.sg_phase == "survival":
     _wc_map = {1:"68,204,136", 2:"255,204,0", 3:"255,136,68", 4:"255,68,102"}
     _rgb = _wc_map.get(wave, "255,68,102")
     components.html(f"""<script>
-    function stW(){{const d=window.parent.document;d.querySelectorAll('button[kind="secondary"]').forEach(b=>{{const t=(b.textContent||'').trim();if(/^\([A-D]\)/.test(t)){{b.style.cssText='background:linear-gradient(135deg,rgba({_rgb},0.25),rgba({_rgb},0.12))!important;color:#ffffff!important;border:2px solid rgba({_rgb},0.5)!important;border-radius:16px!important;font-size:1.1rem!important;font-weight:900!important;padding:0.4rem 0.5rem!important;min-height:auto!important;box-shadow:0 3px 15px rgba('+'{_rgb}'+',0.15)!important;';b.querySelectorAll('p').forEach(p=>p.style.cssText='font-size:1.8rem!important;font-weight:900!important;');}}}});}};setTimeout(stW,80);setTimeout(stW,300);setTimeout(stW,700);new MutationObserver(stW).observe(window.parent.document.body,{{childList:true,subtree:true}});
+    function stW(){{const d=window.parent.document;d.querySelectorAll('button[kind="secondary"]').forEach(b=>{{const t=(b.textContent||'').trim();if(/^\([A-D]\)/.test(t)){{b.style.cssText='background:linear-gradient(135deg,rgba({_rgb},0.25),rgba({_rgb},0.12))!important;color:#ffffff!important;border:2px solid rgba({_rgb},0.5)!important;border-radius:16px!important;font-size:1.1rem!important;font-weight:900!important;padding:0.4rem 0.5rem!important;min-height:auto!important;box-shadow:0 3px 15px rgba('+'{_rgb}'+',0.15)!important;';b.querySelectorAll('p').forEach(p=>p.style.cssText='font-size:1.1rem!important;font-weight:900!important;');}}}});}};setTimeout(stW,80);setTimeout(stW,300);setTimeout(stW,700);new MutationObserver(stW).observe(window.parent.document.body,{{childList:true,subtree:true}});
     </script>""", height=0)
 
 # ════════════════════════════════
@@ -1024,13 +1024,13 @@ elif st.session_state.sg_phase == "combo_rush":
 
     if qtype == "expr2meaning":
         # 영어표현 → 한글뜻
-        st.markdown(f'<div style="border-radius:20px;padding:0.8rem 0.8rem;margin:6px 0;text-align:center;background:linear-gradient(145deg,#3e2810,#4a3415,#3e2810);border:2.5px solid rgba(255,136,0,0.7);box-shadow:0 0 40px rgba(255,136,0,0.35);animation:slideUp 0.4s ease-out;"><div style="font-size:1rem;font-weight:800;letter-spacing:3px;text-transform:uppercase;color:rgba(255,136,0,0.75);margin-bottom:8px;">what does this mean?</div><div style="font-size:3.5rem;font-weight:900;line-height:1.3;color:#ffcc88;">{expr_text}</div></div>', unsafe_allow_html=True)
+        st.markdown(f'<div style="border-radius:20px;padding:0.8rem 0.8rem;margin:6px 0;text-align:center;background:linear-gradient(145deg,#3e2810,#4a3415,#3e2810);border:2.5px solid rgba(255,136,0,0.7);box-shadow:0 0 40px rgba(255,136,0,0.35);animation:slideUp 0.4s ease-out;"><div style="font-size:1rem;font-weight:800;letter-spacing:3px;text-transform:uppercase;color:rgba(255,136,0,0.75);margin-bottom:8px;">what does this mean?</div><div style="font-size:1.1rem;font-weight:900;line-height:1.4;color:#ffcc88;">{expr_text}</div></div>', unsafe_allow_html=True)
         correct_ans = meaning
         others = [v.get("meaning","") for v in voca_data if v.get("meaning","") != meaning]
 
     elif qtype == "meaning2expr":
         # 한글뜻 → 영어표현
-        st.markdown(f'<div style="border-radius:20px;padding:0.8rem 0.8rem;margin:6px 0;text-align:center;background:linear-gradient(145deg,#3e2810,#4a3415,#3e2810);border:2.5px solid rgba(255,136,0,0.7);box-shadow:0 0 40px rgba(255,136,0,0.35);animation:slideUp 0.4s ease-out;"><div style="font-size:1rem;font-weight:800;letter-spacing:3px;text-transform:uppercase;color:rgba(255,136,0,0.75);margin-bottom:8px;">영어 표현은?</div><div style="font-size:3.5rem;font-weight:900;line-height:1.3;color:#ffcc88;">{meaning}</div></div>', unsafe_allow_html=True)
+        st.markdown(f'<div style="border-radius:20px;padding:0.8rem 0.8rem;margin:6px 0;text-align:center;background:linear-gradient(145deg,#3e2810,#4a3415,#3e2810);border:2.5px solid rgba(255,136,0,0.7);box-shadow:0 0 40px rgba(255,136,0,0.35);animation:slideUp 0.4s ease-out;"><div style="font-size:1rem;font-weight:800;letter-spacing:3px;text-transform:uppercase;color:rgba(255,136,0,0.75);margin-bottom:8px;">영어 표현은?</div><div style="font-size:1.1rem;font-weight:900;line-height:1.4;color:#ffcc88;">{meaning}</div></div>', unsafe_allow_html=True)
         correct_ans = expr_text
         others = [v.get("expr","") for v in voca_data if v.get("expr","") != expr_text]
 
@@ -1077,7 +1077,7 @@ elif st.session_state.sg_phase == "combo_rush":
                 st.session_state.sg_phase = "combo_result"; st.rerun()
 
     components.html("""<script>
-    function stC(){const d=window.parent.document;d.querySelectorAll('button[kind="secondary"]').forEach(b=>{const t=(b.textContent||'').trim();if(/^\([A-D]\)/.test(t)){b.style.cssText='background:linear-gradient(135deg,rgba(255,136,0,0.22),rgba(255,136,0,0.10))!important;color:#ffffff!important;border:1.5px solid rgba(255,136,0,0.5)!important;border-radius:16px!important;font-size:1.1rem!important;font-weight:900!important;padding:0.4rem 0.5rem!important;min-height:auto!important;box-shadow:0 3px 15px rgba('+'{_rgb}'+',0.15)!important;';b.querySelectorAll('p').forEach(p=>p.style.cssText='font-size:1.8rem!important;font-weight:900!important;');}});};setTimeout(stC,80);setTimeout(stC,300);setTimeout(stC,700);new MutationObserver(stC).observe(window.parent.document.body,{childList:true,subtree:true});
+    function stC(){const d=window.parent.document;d.querySelectorAll('button[kind="secondary"]').forEach(b=>{const t=(b.textContent||'').trim();if(/^\([A-D]\)/.test(t)){b.style.cssText='background:linear-gradient(135deg,rgba(255,136,0,0.22),rgba(255,136,0,0.10))!important;color:#ffffff!important;border:1.5px solid rgba(255,136,0,0.5)!important;border-radius:16px!important;font-size:1.1rem!important;font-weight:900!important;padding:0.4rem 0.5rem!important;min-height:auto!important;box-shadow:0 3px 15px rgba('+'{_rgb}'+',0.15)!important;';b.querySelectorAll('p').forEach(p=>p.style.cssText='font-size:1.1rem!important;font-weight:900!important;');}});};setTimeout(stC,80);setTimeout(stC,300);setTimeout(stC,700);new MutationObserver(stC).observe(window.parent.document.body,{childList:true,subtree:true});
     </script>""", height=0)
 
 # ════════════════════════════════
