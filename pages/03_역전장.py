@@ -65,11 +65,15 @@ st.markdown("""<style>
 @keyframes slideUp{from{opacity:0;transform:translateY(15px)}to{opacity:1;transform:translateY(0)}}
 @keyframes choiceFade{from{opacity:0;transform:translateX(-10px)}to{opacity:1;transform:translateX(0)}}\n@keyframes highlightDraw{from{width:0}to{width:100%}}\n@keyframes hlDraw{from{background-size:0% 4px}to{background-size:100% 4px}}
 section[data-testid="stSidebar"]{display:none!important;}
+div[data-testid="stSidebarNav"] a span{font-weight:300!important;opacity:0.4!important;font-size:0.8rem!important;}
+div[data-testid="stSidebarNav"] svg{display:none!important;}
 header[data-testid="stHeader"]{background:transparent!important;}
 .block-container{padding-top:0.2rem!important;padding-bottom:1rem!important;max-width:100%!important;padding-left:1rem!important;padding-right:1rem!important;}
 div[data-testid="stSidebarNav"]{display:none!important;}
 div[data-testid="stNavigation"]{display:none!important;}
 section[data-testid="stSidebar"]{display:none!important;}
+div[data-testid="stSidebarNav"] a span{font-weight:300!important;opacity:0.4!important;font-size:0.8rem!important;}
+div[data-testid="stSidebarNav"] svg{display:none!important;}
 div[data-testid="stVerticalBlock"]>div{gap:0rem;}
 @keyframes rb{0%,100%{background-position:0% 50%}50%{background-position:100% 50%}}
 
