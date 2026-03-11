@@ -224,6 +224,8 @@ voca_data = storage.get("saved_expressions",[])
 # ════════════════════════════════
 if st.session_state.sg_phase == "lobby":
     # 승률 계산
+    p5_rec = storage.get("p5_exam_record", {"wins":0,"total":0})
+    voca_rec = storage.get("voca_exam_record", {"wins":0,"total":0})
     p5_rate = f'{int(p5_rec["wins"]/p5_rec["total"]*100)}%' if p5_rec["total"] > 0 else "—"
     combo_best = storage.get("combo_best", 0)
     combo_label = f"⭐{combo_best}" if combo_best > 0 else "—"
@@ -518,8 +520,6 @@ elif st.session_state.sg_phase == "p5_exam_result":
     ok_cnt = sum(results)
     passed = not st.session_state.sg_exam_wrong and ok_cnt == 5
     # 승률 저장
-        rec["total"] += 1
-        if passed: rec["wins"] += 1
     if not passed:
         st.markdown('<div style="text-align:center;font-size:3rem;font-weight:900;color:#ff4444;text-shadow:0 0 20px #ff0000;">💀 FAIL! 💀</div>', unsafe_allow_html=True)
     else:
