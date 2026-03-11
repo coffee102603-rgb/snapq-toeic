@@ -32,26 +32,30 @@ def make_alt_question(q):
         cw = w.strip(".,;:!?'\"").lower()
         if len(cw) >= 3 and cw not in skip and cw != clean_ans.lower():
             candidates.append((i, w))
+    # voca_data 단어만 빈칸 후보로 사용 (정답 보장)
+    voca_words = set()
+    for v in voca_data:
+        for w in v.get("expr","").split():
+            voca_words.add(w.strip(".,;:!?\'\"").lower())
+    candidates = [(i,w) for i,w in candidates if w.strip(".,;:!?\'\"").lower() in voca_words]
     if not candidates: return None
     idx, target_word = random.choice(candidates)
-    target_clean = target_word.strip(".,;:!?'\"")
+    target_clean = target_word.strip(".,;:!?\'\"")
     new_words = words.copy()
     new_words[idx] = words[idx].replace(target_clean, "_______")
     new_text = " ".join(new_words).replace(" ,", ",").replace(" .", ".")
-    # voca_data에서 오답 단어 수집 - 모든 단어 분해
-    voca_exprs = []
+    # 오답도 voca_data 단어에서
+    all_voca = []
     for v in voca_data:
-        expr = v.get("expr","")
-        for w in expr.split():
-            w2 = w.strip(".,;:!?\'\"").lower()
-            if len(w2) > 2 and w2 != target_clean.lower():
-                voca_exprs.append(w2)
-    distractors_pool = list(dict.fromkeys(voca_exprs))
-    fallback = ["provide","maintain","require","consider","establish","develop","address","achieve","indicate","determine","relevant","significant","appropriate","essential","available","potential","sufficient","additional","comprehensive","preliminary"]
+        for w in v.get("expr","").split():
+            cw = w.strip(".,;:!?\'\"")
+            if len(cw) > 2 and cw.lower() != target_clean.lower() and cw not in all_voca:
+                all_voca.append(cw)
+    fallback = ["provide","maintain","require","consider","establish","develop","relevant","significant","appropriate","essential","available","potential"]
     for d in fallback:
-        if d.lower() != target_clean.lower() and d not in distractors_pool:
-            distractors_pool.append(d)
-    distractors = random.sample([d for d in distractors_pool if d.lower() != target_clean.lower()], min(3, len(distractors_pool)))
+        if d not in all_voca:
+            all_voca.append(d)
+    distractors = random.sample([d for d in all_voca if d.lower() != target_clean.lower()], min(3, len(all_voca)))
     choices = distractors + [target_clean]
     random.shuffle(choices)
     correct_idx = choices.index(target_clean)
