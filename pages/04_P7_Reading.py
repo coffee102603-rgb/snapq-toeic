@@ -721,13 +721,13 @@ if st.session_state.p7_phase == "lobby":
             st.session_state.p7_tsec=80; st.session_state.p7_tsec_chosen=False; st.session_state.p7_cat=None; st.rerun()
 
     # ━━━ 항상 고정 네비게이션 ━━━
-    st.markdown('<div style="font-size:0.7rem;color:#333;text-align:center;letter-spacing:3px;margin-top:8px;padding-top:8px;border-top:1px solid #111;">N A V I G A T E</div>', unsafe_allow_html=True)
+    st.markdown('<div style="font-size:0.7rem;color:#aaaaaa;text-align:center;letter-spacing:3px;margin-top:8px;padding-top:8px;border-top:1px solid #444;">N A V I G A T E</div>', unsafe_allow_html=True)
     nc1,nc2 = st.columns(2)
     with nc1:
-        if st.button("🔥", key="p7nav1", type="secondary", use_container_width=True):
+        if st.button("🔥 역전장", key="p7nav1", type="secondary", use_container_width=True):
             st.switch_page("pages/03_역전장.py")
     with nc2:
-        if st.button("🏠", key="p7nav2", type="secondary", use_container_width=True):
+        if st.button("🏠 메인", key="p7nav2", type="secondary", use_container_width=True):
             st.session_state._p7_just_left = True
             st.switch_page("main_hub.py")
     import streamlit.components.v1 as _cmp
@@ -1226,6 +1226,7 @@ elif st.session_state.p7_phase == "briefing":
         if st.button("🏠 본부", key="p7lobby", type="secondary", use_container_width=True):
             for k in D: st.session_state[k] = D[k]
             st.switch_page("main_hub.py")
+
 
 
 
