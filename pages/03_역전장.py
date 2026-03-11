@@ -314,10 +314,7 @@ if st.session_state.sg_phase == "lobby":
     # ━━━ 2막 P7: 전투 방식 선택 ━━━
     elif _rv_battle == "p7" and not _rv_mode:
         st.markdown('''<div class="rv-confirmed"><span>📖 P7 전장 귀환!</span></div>''', unsafe_allow_html=True)
-        st.markdown('''<div class="rv-stage rv-stage-2p7">
-            <div class="rv-act rv-act-2p7">🎬 2 막 · 전투 방식을 선택하라!</div>
-            <div class="rv-msg"><span class="gold">어휘를 새기느냐</span><br>어휘로 <span class="fire">싸우느냐!</span><br><span style="font-size:1rem;color:#888;">단어 하나가 점수 하나다</span></div>
-        </div>''', unsafe_allow_html=True)
+    
         if st.button(f"🧠  P7 어휘 학습모드\n단어를 완전히 내 몸에 새겨라! ({len(voca_data)}단어)", key="rv_p7s", type="secondary", use_container_width=True):
             if len(voca_data) >= 3:
                 st.session_state.sg_wave=1; st.session_state.sg_wave_idx=0
