@@ -238,8 +238,8 @@ if st.session_state.sg_phase == "lobby":
     @keyframes nagFade{0%{opacity:0;transform:translateY(8px)}100%{opacity:1;transform:translateY(0)}}
 
     .rv-title{text-align:center;padding:16px 8px 6px 8px;}
-    .rv-title h1{font-size:1.5rem!important;font-size:2.4rem;font-weight:900;letter-spacing:6px;color:#ffd700;animation:fireGlow 2.5s ease infinite;margin:0;}
-    .rv-title p{font-size:0.85rem;color:#664400;letter-spacing:3px;margin:4px 0 0 0;}
+    .rv-title h1{font-size:1.5rem!important;font-size:3.2rem;font-weight:900;letter-spacing:6px;color:#ffd700;animation:fireGlow 2.5s ease infinite;margin:0;}
+    .rv-title p{font-size:1.0rem;color:#ff8800;font-weight:900;letter-spacing:3px;margin:4px 0 0 0;}
 
     .rv-stage{animation:stageIn 0.5s ease;border-radius:20px;padding:18px 12px;margin:8px 0;}
     .rv-stage-1{background:linear-gradient(145deg,#0a0500,#150900);border:2px solid rgba(255,136,0,0.6);box-shadow:0 0 20px rgba(255,136,0,0.1);}
@@ -289,6 +289,7 @@ if st.session_state.sg_phase == "lobby":
 
 
 
+    st.markdown('<div style="text-align:center;font-size:1.1rem;font-weight:900;color:#ffcc00;letter-spacing:1px;margin:4px 0 10px 0;">👇 전장을 선택하고 돌격하라!</div>', unsafe_allow_html=True)
     _rv_battle = st.session_state.get("rv_battle", None)   # "p5" or "p7"
     _rv_mode = st.session_state.get("rv_mode", None)       # "p5s","p5e","p7s","p7e"
 
@@ -1125,6 +1126,7 @@ elif st.session_state.sg_phase == "combo_result":
     with c3:
         if st.button("🔥 역전장으로\n귀환", key="cb_back", type="secondary", use_container_width=True):
             st.session_state.sg_phase = "lobby"; st.rerun()
+
 
 
 
