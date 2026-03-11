@@ -1212,10 +1212,10 @@ elif st.session_state.p7_phase == "briefing":
             st.rerun()
     bc5, bc6 = st.columns(2)
     with bc5:
-        if st.button("◀ 이전", key="p7brp", disabled=bi<=0, use_container_width=True):
+        if st.button("◀ 이전", key="p7brp", type="secondary", disabled=bi<=0, use_container_width=True):
             st.session_state.p7_br_idx = bi - 1; st.rerun()
     with bc6:
-        if st.button("▶ 다음", key="p7brn", disabled=bi>=num_steps-1, use_container_width=True):
+        if st.button("▶ 다음", key="p7brn", type="secondary", disabled=bi>=num_steps-1, use_container_width=True):
             st.session_state.p7_br_idx = bi + 1; st.rerun()
     st.markdown('<style>button[data-testid="baseButton-secondary"]#p7store,button[data-testid="baseButton-secondary"]#p7lobby{border:2px solid #ffffff!important;} div[data-testid="column"]:has(button[kind="secondary"]) button{border:2px solid #ffffff!important;color:#ffffff!important;border-radius:10px!important;} div[data-testid="column"]:has(button[kind="secondary"]) button p{color:#ffffff!important;}</style>', unsafe_allow_html=True)
     bc3, bc4 = st.columns(2)
@@ -1226,6 +1226,7 @@ elif st.session_state.p7_phase == "briefing":
         if st.button("🏠 본부", key="p7lobby", type="secondary", use_container_width=True):
             for k in D: st.session_state[k] = D[k]
             st.switch_page("main_hub.py")
+
 
 
 
