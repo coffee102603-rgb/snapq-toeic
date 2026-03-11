@@ -86,7 +86,7 @@ button[kind="secondary"] p{font-size:1.0rem!important;font-weight:900!important;
 .note{background:#fffef5;border-radius:12px;padding:1.5rem 1.2rem;margin:0.5rem 0;
     background-image:repeating-linear-gradient(transparent,transparent 39px,#e8e0c8 39px,#e8e0c8 40px);
     background-position:0 1.5rem;box-shadow:0 3px 15px rgba(0,0,0,0.2);border:1px solid #d8d0b8;min-height:200px;}
-.note-sent{font-size:1.7rem;font-weight:700;color:#1a1a1a;line-height:2.2;margin:0.8rem 0;}
+.note-sent{font-size:1.0rem;font-weight:700;color:#1a1a1a;line-height:1.6;margin:0.4rem 0;}
 .note-hl{color:#008844;font-weight:900;font-size:1.8rem;text-decoration:underline;text-underline-offset:5px;text-decoration-thickness:3px;background:rgba(0,180,80,0.08);padding:0 4px;border-radius:4px;}
 .note-kr{font-size:1.5rem;font-weight:600;color:#333;line-height:1.8;margin-bottom:0.5rem;}
 .note-ex{font-size:1.3rem;color:#555;line-height:1.6;padding:0.5rem 0.8rem;background:rgba(255,180,0,0.1);border-left:4px solid #ffaa00;border-radius:0 8px 8px 0;}
@@ -614,7 +614,7 @@ elif st.session_state.sg_phase == "survival":
         others = [v.get("expr","") for v in voca_data if v.get("expr","") != expr_text]
     elif wave == 3:
         # 영어문장 → 한글해석
-        q_display = f'<div style="border-radius:20px;padding:1.8rem 1.4rem;margin:10px 0;text-align:center;background:linear-gradient(145deg,#3e2810,#4a3215,#3e2810);border:2.5px solid rgba(255,136,68,0.7);box-shadow:0 0 40px rgba(255,136,68,0.3);animation:slideUp 0.4s ease-out;"><div style="font-size:1rem;font-weight:800;letter-spacing:3px;text-transform:uppercase;color:rgba(255,136,68,0.75);margin-bottom:10px;">translate this sentence</div><div style="font-size:2.5rem;font-weight:900;line-height:1.6;color:#ffddaa;text-align:left;">{first_en}</div></div>'
+        q_display = f'<div style="border-radius:20px;padding:0.8rem 0.8rem;margin:6px 0;text-align:center;background:linear-gradient(145deg,#3e2810,#4a3215,#3e2810);border:2.5px solid rgba(255,136,68,0.7);box-shadow:0 0 40px rgba(255,136,68,0.3);animation:slideUp 0.4s ease-out;"><div style="font-size:1rem;font-weight:800;letter-spacing:3px;text-transform:uppercase;color:rgba(255,136,68,0.75);margin-bottom:10px;">translate this sentence</div><div style="font-size:1.2rem;font-weight:900;line-height:1.4;color:#ffddaa;text-align:left;">{first_en}</div></div>'
         correct_ans = kr_first
         def make_kr_distractors(correct_kr, count=3):
             result = []
@@ -658,7 +658,7 @@ elif st.session_state.sg_phase == "survival":
         others = make_kr_distractors(correct_ans, 3)
     else:
         # 한글해석 → 영어문장
-        q_display = f'<div style="border-radius:20px;padding:1.8rem 1.4rem;margin:10px 0;text-align:center;background:linear-gradient(145deg,#3e1a2a,#4a2235,#3e1a2a);border:2.5px solid rgba(255,68,102,0.7);box-shadow:0 0 40px rgba(255,68,102,0.3);animation:slideUp 0.4s ease-out;"><div style="font-size:1rem;font-weight:800;letter-spacing:3px;text-transform:uppercase;color:rgba(255,68,102,0.75);margin-bottom:10px;">영어 문장은?</div><div style="font-size:2.5rem;font-weight:900;line-height:1.6;color:#ffbbcc;text-align:left;">{kr_first}</div></div>'
+        q_display = f'<div style="border-radius:20px;padding:0.8rem 0.8rem;margin:6px 0;text-align:center;background:linear-gradient(145deg,#3e1a2a,#4a2235,#3e1a2a);border:2.5px solid rgba(255,68,102,0.7);box-shadow:0 0 40px rgba(255,68,102,0.3);animation:slideUp 0.4s ease-out;"><div style="font-size:1rem;font-weight:800;letter-spacing:3px;text-transform:uppercase;color:rgba(255,68,102,0.75);margin-bottom:10px;">영어 문장은?</div><div style="font-size:1.2rem;font-weight:900;line-height:1.4;color:#ffbbcc;text-align:left;">{kr_first}</div></div>'
         correct_ans = first_en
         # Wave4: 고유명사/날짜/숫자 고정, 핵심 동사만 교체해서 오답 생성
         def make_en_distractors(correct_en, count=3):
@@ -874,7 +874,7 @@ elif st.session_state.sg_phase == "survival":
     _wc_map = {1:"68,204,136", 2:"255,204,0", 3:"255,136,68", 4:"255,68,102"}
     _rgb = _wc_map.get(wave, "255,68,102")
     components.html(f"""<script>
-    function stW(){{const d=window.parent.document;d.querySelectorAll('button[kind="secondary"]').forEach(b=>{{const t=(b.textContent||'').trim();if(/^\([A-D]\)/.test(t)){{b.style.cssText='background:linear-gradient(135deg,rgba({_rgb},0.25),rgba({_rgb},0.12))!important;color:#ffffff!important;border:2px solid rgba({_rgb},0.5)!important;border-radius:16px!important;font-size:1.8rem!important;font-weight:900!important;padding:0.85rem 1rem!important;min-height:auto!important;box-shadow:0 3px 15px rgba('+'{_rgb}'+',0.15)!important;';b.querySelectorAll('p').forEach(p=>p.style.cssText='font-size:1.8rem!important;font-weight:900!important;');}}}});}};setTimeout(stW,80);setTimeout(stW,300);setTimeout(stW,700);new MutationObserver(stW).observe(window.parent.document.body,{{childList:true,subtree:true}});
+    function stW(){{const d=window.parent.document;d.querySelectorAll('button[kind="secondary"]').forEach(b=>{{const t=(b.textContent||'').trim();if(/^\([A-D]\)/.test(t)){{b.style.cssText='background:linear-gradient(135deg,rgba({_rgb},0.25),rgba({_rgb},0.12))!important;color:#ffffff!important;border:2px solid rgba({_rgb},0.5)!important;border-radius:16px!important;font-size:1.0rem!important;font-weight:900!important;padding:0.4rem 0.5rem!important;min-height:auto!important;box-shadow:0 3px 15px rgba('+'{_rgb}'+',0.15)!important;';b.querySelectorAll('p').forEach(p=>p.style.cssText='font-size:1.8rem!important;font-weight:900!important;');}}}});}};setTimeout(stW,80);setTimeout(stW,300);setTimeout(stW,700);new MutationObserver(stW).observe(window.parent.document.body,{{childList:true,subtree:true}});
     </script>""", height=0)
 
 # ════════════════════════════════
@@ -1024,13 +1024,13 @@ elif st.session_state.sg_phase == "combo_rush":
 
     if qtype == "expr2meaning":
         # 영어표현 → 한글뜻
-        st.markdown(f'<div style="border-radius:20px;padding:1.8rem 1.4rem;margin:10px 0;text-align:center;background:linear-gradient(145deg,#3e2810,#4a3415,#3e2810);border:2.5px solid rgba(255,136,0,0.7);box-shadow:0 0 40px rgba(255,136,0,0.35);animation:slideUp 0.4s ease-out;"><div style="font-size:1rem;font-weight:800;letter-spacing:3px;text-transform:uppercase;color:rgba(255,136,0,0.75);margin-bottom:8px;">what does this mean?</div><div style="font-size:3.5rem;font-weight:900;line-height:1.3;color:#ffcc88;">{expr_text}</div></div>', unsafe_allow_html=True)
+        st.markdown(f'<div style="border-radius:20px;padding:0.8rem 0.8rem;margin:6px 0;text-align:center;background:linear-gradient(145deg,#3e2810,#4a3415,#3e2810);border:2.5px solid rgba(255,136,0,0.7);box-shadow:0 0 40px rgba(255,136,0,0.35);animation:slideUp 0.4s ease-out;"><div style="font-size:1rem;font-weight:800;letter-spacing:3px;text-transform:uppercase;color:rgba(255,136,0,0.75);margin-bottom:8px;">what does this mean?</div><div style="font-size:3.5rem;font-weight:900;line-height:1.3;color:#ffcc88;">{expr_text}</div></div>', unsafe_allow_html=True)
         correct_ans = meaning
         others = [v.get("meaning","") for v in voca_data if v.get("meaning","") != meaning]
 
     elif qtype == "meaning2expr":
         # 한글뜻 → 영어표현
-        st.markdown(f'<div style="border-radius:20px;padding:1.8rem 1.4rem;margin:10px 0;text-align:center;background:linear-gradient(145deg,#3e2810,#4a3415,#3e2810);border:2.5px solid rgba(255,136,0,0.7);box-shadow:0 0 40px rgba(255,136,0,0.35);animation:slideUp 0.4s ease-out;"><div style="font-size:1rem;font-weight:800;letter-spacing:3px;text-transform:uppercase;color:rgba(255,136,0,0.75);margin-bottom:8px;">영어 표현은?</div><div style="font-size:3.5rem;font-weight:900;line-height:1.3;color:#ffcc88;">{meaning}</div></div>', unsafe_allow_html=True)
+        st.markdown(f'<div style="border-radius:20px;padding:0.8rem 0.8rem;margin:6px 0;text-align:center;background:linear-gradient(145deg,#3e2810,#4a3415,#3e2810);border:2.5px solid rgba(255,136,0,0.7);box-shadow:0 0 40px rgba(255,136,0,0.35);animation:slideUp 0.4s ease-out;"><div style="font-size:1rem;font-weight:800;letter-spacing:3px;text-transform:uppercase;color:rgba(255,136,0,0.75);margin-bottom:8px;">영어 표현은?</div><div style="font-size:3.5rem;font-weight:900;line-height:1.3;color:#ffcc88;">{meaning}</div></div>', unsafe_allow_html=True)
         correct_ans = expr_text
         others = [v.get("expr","") for v in voca_data if v.get("expr","") != expr_text]
 
@@ -1046,7 +1046,7 @@ elif st.session_state.sg_phase == "combo_rush":
             blank_sent = f"The company will _______ by next quarter."
 
         blank_styled = blank_sent.replace("_______", '<span style="border-bottom:3px solid #ff8800;padding:0 8px;color:#ffaa44;">_______</span>')
-        st.markdown(f'<div style="border-radius:20px;padding:1.8rem 1.4rem;margin:10px 0;text-align:center;background:linear-gradient(145deg,#3e2810,#4a3415,#3e2810);border:2.5px solid rgba(255,136,0,0.7);box-shadow:0 0 40px rgba(255,136,0,0.35);animation:slideUp 0.4s ease-out;"><div style="font-size:1rem;font-weight:800;letter-spacing:3px;text-transform:uppercase;color:rgba(255,136,0,0.75);margin-bottom:10px;">fill in the blank</div><div style="font-size:2.5rem;font-weight:900;line-height:1.6;color:#ffddaa;text-align:left;">{blank_styled}</div></div>', unsafe_allow_html=True)
+        st.markdown(f'<div style="border-radius:20px;padding:0.8rem 0.8rem;margin:6px 0;text-align:center;background:linear-gradient(145deg,#3e2810,#4a3415,#3e2810);border:2.5px solid rgba(255,136,0,0.7);box-shadow:0 0 40px rgba(255,136,0,0.35);animation:slideUp 0.4s ease-out;"><div style="font-size:1rem;font-weight:800;letter-spacing:3px;text-transform:uppercase;color:rgba(255,136,0,0.75);margin-bottom:10px;">fill in the blank</div><div style="font-size:1.2rem;font-weight:900;line-height:1.4;color:#ffddaa;text-align:left;">{blank_styled}</div></div>', unsafe_allow_html=True)
         correct_ans = key_word
         fallback_words = ["implement","approximately","eligible","comprehensive","facilitate","preliminary","mandatory","subsequent","operational","sustainable"]
         others = [w for w in fallback_words if w.lower() != key_word.lower()]
@@ -1077,7 +1077,7 @@ elif st.session_state.sg_phase == "combo_rush":
                 st.session_state.sg_phase = "combo_result"; st.rerun()
 
     components.html("""<script>
-    function stC(){const d=window.parent.document;d.querySelectorAll('button[kind="secondary"]').forEach(b=>{const t=(b.textContent||'').trim();if(/^\([A-D]\)/.test(t)){b.style.cssText='background:linear-gradient(135deg,rgba(255,136,0,0.22),rgba(255,136,0,0.10))!important;color:#ffffff!important;border:1.5px solid rgba(255,136,0,0.5)!important;border-radius:16px!important;font-size:1.8rem!important;font-weight:900!important;padding:0.85rem 1rem!important;min-height:auto!important;box-shadow:0 3px 15px rgba('+'{_rgb}'+',0.15)!important;';b.querySelectorAll('p').forEach(p=>p.style.cssText='font-size:1.8rem!important;font-weight:900!important;');}});};setTimeout(stC,80);setTimeout(stC,300);setTimeout(stC,700);new MutationObserver(stC).observe(window.parent.document.body,{childList:true,subtree:true});
+    function stC(){const d=window.parent.document;d.querySelectorAll('button[kind="secondary"]').forEach(b=>{const t=(b.textContent||'').trim();if(/^\([A-D]\)/.test(t)){b.style.cssText='background:linear-gradient(135deg,rgba(255,136,0,0.22),rgba(255,136,0,0.10))!important;color:#ffffff!important;border:1.5px solid rgba(255,136,0,0.5)!important;border-radius:16px!important;font-size:1.0rem!important;font-weight:900!important;padding:0.4rem 0.5rem!important;min-height:auto!important;box-shadow:0 3px 15px rgba('+'{_rgb}'+',0.15)!important;';b.querySelectorAll('p').forEach(p=>p.style.cssText='font-size:1.8rem!important;font-weight:900!important;');}});};setTimeout(stC,80);setTimeout(stC,300);setTimeout(stC,700);new MutationObserver(stC).observe(window.parent.document.body,{childList:true,subtree:true});
     </script>""", height=0)
 
 # ════════════════════════════════
