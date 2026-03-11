@@ -297,16 +297,10 @@ if st.session_state.sg_phase == "lobby":
     if not _rv_battle:
         c1, c2 = st.columns(2)
         with c1:
-            if st.button("⚔️
-P5 어법·어휘
-틀린 문제만 골라
-이번엔 완전히 박살낸다!", key="rv_p5", type="secondary", use_container_width=True):
+            if st.button("⚔️\nP5 어법·어휘\n틀린 문제만 골라\n이번엔 완전히 박살낸다!", key="rv_p5", type="secondary", use_container_width=True):
                 st.session_state.rv_battle = "p5"; st.rerun()
         with c2:
-            if st.button("📖
-P7 독해 약점
-단어·해석·패러프라이징
-이번엔 내 것으로 만든다!", key="rv_p7", type="secondary", use_container_width=True):
+            if st.button("📖\nP7 독해 약점\n단어·해석·패러프라이징\n이번엔 내 것으로 만든다!", key="rv_p7", type="secondary", use_container_width=True):
                 st.session_state.rv_battle = "p7"; st.rerun()
 
     # ━━━ 2막 P5: 전투 방식 선택 ━━━
