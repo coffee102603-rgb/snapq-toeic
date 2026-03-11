@@ -194,6 +194,18 @@ div[data-testid="column"] button[kind="secondary"] p{
     .note-sent{font-size:1.1rem!important;}
     .exam-q{font-size:1.2rem!important;}
 }
+
+/* P5학습 버튼 강제 가로배치 */
+@media (max-width: 768px) {
+    div[data-testid="stHorizontalBlock"] {
+        flex-wrap: nowrap !important;
+        flex-direction: row !important;
+    }
+    div[data-testid="stHorizontalBlock"] > div[data-testid="stColumn"] {
+        min-width: 0 !important;
+        flex: 1 !important;
+    }
+}
 </style>""", unsafe_allow_html=True)
 
 # ═══ 세션 ═══
