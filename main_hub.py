@@ -24,7 +24,45 @@ st.set_page_config(
     layout='centered',
     initial_sidebar_state='collapsed'
 )
-st.markdown("""
+st.markdown("""<style>
+/* iOS 버튼 터치 강제 활성화 */
+button, [role="button"], [data-testid="baseButton-primary"],
+[data-testid="baseButton-secondary"], .stButton > button {
+    -webkit-appearance: none !important;
+    appearance: none !important;
+    touch-action: manipulation !important;
+    cursor: pointer !important;
+    pointer-events: auto !important;
+    -webkit-user-select: none !important;
+    user-select: none !important;
+    position: relative !important;
+    z-index: 1 !important;
+}
+* { -webkit-tap-highlight-color: transparent !important; }
+body { touch-action: pan-y !important; }
+</style>
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    function fixButtons() {
+        var btns = window.parent.document.querySelectorAll('button');
+        btns.forEach(function(btn) {
+            btn.style.touchAction = 'manipulation';
+            btn.style.webkitAppearance = 'none';
+            btn.style.pointerEvents = 'auto';
+            btn.style.cursor = 'pointer';
+            btn.style.position = 'relative';
+            btn.style.zIndex = '1';
+        });
+    }
+    fixButtons();
+    setTimeout(fixButtons, 500);
+    setTimeout(fixButtons, 1500);
+    new MutationObserver(fixButtons).observe(
+        window.parent.document.body,
+        {childList: true, subtree: true}
+    );
+});
+</script>
     <style>
     * { -webkit-tap-highlight-color: rgba(0,0,0,0) !important; }
     button, [role="button"] {
