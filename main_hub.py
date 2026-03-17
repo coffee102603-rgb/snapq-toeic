@@ -7,6 +7,29 @@ import streamlit as st
 
 # iOS Safari 호환
 _IOS_CSS = True
+# iOS Safari Chrome 유도
+import streamlit.components.v1 as _components
+_components.html("""
+<script>
+var ua = navigator.userAgent;
+var isIOS = /iPad|iPhone|iPod/.test(ua);
+var isSafari = /Safari/.test(ua) && !/Chrome/.test(ua) && !/CriOS/.test(ua);
+if (isIOS && isSafari) {
+    document.body.style.overflow = 'hidden';
+    var div = document.createElement('div');
+    div.style.cssText = 'position:fixed;top:0;left:0;width:100vw;height:100vh;background:rgba(0,0,0,0.95);z-index:99999;display:flex;align-items:center;justify-content:center;';
+    div.innerHTML = '<div style="background:#1a1a2e;border:2px solid #ff8800;border-radius:20px;padding:30px 20px;text-align:center;max-width:300px;">'
+        + '<div style="font-size:2rem;margin-bottom:8px;">⚠️</div>'
+        + '<div style="color:#ff8800;font-size:1.1rem;font-weight:900;margin-bottom:8px;">Safari는 지원 안 됩니다!</div>'
+        + '<div style="color:#fff;font-size:0.9rem;margin-bottom:16px;line-height:1.6;">아이폰에서는<br><b style=\"color:#ff8800\">Chrome 브라우저</b>로<br>접속해주세요! 🙏</div>'
+        + '<a href=\"googlechrome://snapq-toeic.onrender.com\" style=\"display:block;background:#ff8800;color:#fff;padding:12px;border-radius:12px;font-weight:900;font-size:0.95rem;text-decoration:none;margin-bottom:8px;\">📱 Chrome으로 열기</a>'
+        + '<div style=\"color:#aaa;font-size:0.75rem;\">Chrome 없으면 App Store에서 설치!</div>'
+        + '</div>';
+    document.body.appendChild(div);
+}
+</script>
+""", height=0)
+
 import os
 import json
 import time
@@ -41,25 +64,7 @@ button, [role="button"], [data-testid="baseButton-primary"],
 * { -webkit-tap-highlight-color: transparent !important; }
 body { touch-action: pan-y !important; }
 </style>
-<script>
-(function() {
-    var ua = navigator.userAgent;
-    var isIOS = /iPad|iPhone|iPod/.test(ua);
-    var isSafari = /Safari/.test(ua) && !/Chrome/.test(ua) && !/CriOS/.test(ua);
-    if (isIOS && isSafari) {
-        var div = document.createElement('div');
-        div.style.cssText = 'position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,0.92);z-index:99999;display:flex;align-items:center;justify-content:center;';
-        div.innerHTML = '<div style="background:#1a1a2e;border:2px solid #ff8800;border-radius:20px;padding:30px;text-align:center;max-width:320px;margin:20px;">'
-            + '<div style="font-size:2.5rem;margin-bottom:10px;">⚠️</div>'
-            + '<div style="color:#ff8800;font-size:1.2rem;font-weight:900;margin-bottom:10px;">Safari는 지원되지 않습니다!</div>'
-            + '<div style="color:#fff;font-size:0.95rem;margin-bottom:20px;line-height:1.6;">아이폰에서는 반드시<br><b style="color:#ff8800">Chrome 브라우저</b>로<br>접속해주세요! 🙏</div>'
-            + '<a href="googlechrome://snapq-toeic.onrender.com" style="display:block;background:#ff8800;color:#fff;padding:12px 20px;border-radius:12px;font-weight:900;font-size:1rem;text-decoration:none;margin-bottom:10px;">📱 Chrome으로 열기</a>'
-            + '<div style="color:#aaa;font-size:0.8rem;">Chrome 앱이 없으면 App Store에서 설치 후 접속하세요</div>'
-            + '</div>';
-        document.body.appendChild(div);
-    }
-})();
-</script>
+
 
 <script>
 document.addEventListener('DOMContentLoaded', function() {
@@ -1039,12 +1044,7 @@ _hc.html(_CSS + _GO_STYLE + "<style>.p5c .go-btn{--go-bg:linear-gradient(270deg,
     _p5_s1_big,_p5_s1_lbl,_p5_rate_svg,
     _p5_s2_big,_p5_s2_lbl,_p5_cnt_svg,_p5_s3) + """
 <button class="go-btn" style="background:linear-gradient(270deg,#1565c0,#4fc3f7,#0d47a1,#29b6f6);border-color:rgba(79,195,247,0.9);" onclick="window.parent.document.querySelectorAll('button').forEach(b=>{if((b.innerText||'').trim()==='P5_GO')b.click()})">⚡</button>
-<script>
-(function(){
-  var h=window.innerWidth<=480?70:window.innerWidth<=768?100:140;
-  document.querySelector('.card').style.height=h+'px';
-})();
-</script>""", height=70)
+""", height=70)
 _p5_go = st.button("P5_GO", key="p5_btn")
 if _p5_go:
     st.session_state.phase = "lobby"
@@ -1057,12 +1057,7 @@ _hc.html(_CSS + _GO_STYLE + "<style>.p7c .go-btn{--go-bg:linear-gradient(270deg,
     _p7_s1_big,_p7_s1_lbl,_p7_rate_svg,
     _p7_s2_big,_p7_s2_lbl,_p7_cnt_svg,_p7_s3) + """
 <button class="go-btn" style="background:linear-gradient(270deg,#6a1b9a,#ce93d8,#4a148c,#ab47bc);border-color:rgba(155,127,212,0.9);" onclick="window.parent.document.querySelectorAll('button').forEach(b=>{if((b.innerText||'').trim()==='P7_GO')b.click()})">📖</button>
-<script>
-(function(){
-  var h=window.innerWidth<=480?70:window.innerWidth<=768?100:140;
-  document.querySelector('.card').style.height=h+'px';
-})();
-</script>""", height=70)
+""", height=70)
 _p7_go = st.button("P7_GO", key="p7_btn")
 if _p7_go:
     if "p7_phase" in st.session_state:
@@ -1075,12 +1070,7 @@ _hc.html(_CSS + _GO_STYLE + "<style>.arc .go-btn{--go-bg:linear-gradient(270deg,
     _arm_s1_big,_arm_s1_lbl,_arm_p5_svg,
     _arm_s2_big,_arm_s2_lbl,_arm_vc_svg,_arm_s3) + """
 <button class="go-btn" style="background:linear-gradient(270deg,#e65100,#ffd54f,#bf360c,#ffca28);border-color:rgba(255,215,0,0.95);" onclick="window.parent.document.querySelectorAll('button').forEach(b=>{if((b.innerText||'').trim()==='ARM_GO')b.click()})">🗡️</button>
-<script>
-(function(){
-  var h=window.innerWidth<=480?70:window.innerWidth<=768?100:140;
-  document.querySelector('.card').style.height=h+'px';
-})();
-</script>""", height=70)
+""", height=70)
 _arm_go = st.button("ARM_GO", key="armory_btn")
 if _arm_go:
     st.switch_page("pages/03_역전장.py")
