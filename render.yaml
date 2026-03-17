@@ -1,0 +1,15 @@
+﻿services:
+  - type: web
+    name: snapq-toeic
+    env: python
+    buildCommand: pip install -r requirements.txt
+    startCommand: streamlit run main_hub.py --server.port=10000 --server.address=0.0.0.0
+    envVars:
+      - key: DATABASE_URL
+        fromDatabase:
+          name: snapq-db
+          property: connectionString
+
+databases:
+  - name: snapq-db
+    plan: free
