@@ -42,6 +42,26 @@ button, [role="button"], [data-testid="baseButton-primary"],
 body { touch-action: pan-y !important; }
 </style>
 <script>
+(function() {
+    var ua = navigator.userAgent;
+    var isIOS = /iPad|iPhone|iPod/.test(ua);
+    var isSafari = /Safari/.test(ua) && !/Chrome/.test(ua) && !/CriOS/.test(ua);
+    if (isIOS && isSafari) {
+        var div = document.createElement('div');
+        div.style.cssText = 'position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,0.92);z-index:99999;display:flex;align-items:center;justify-content:center;';
+        div.innerHTML = '<div style="background:#1a1a2e;border:2px solid #ff8800;border-radius:20px;padding:30px;text-align:center;max-width:320px;margin:20px;">'
+            + '<div style="font-size:2.5rem;margin-bottom:10px;">⚠️</div>'
+            + '<div style="color:#ff8800;font-size:1.2rem;font-weight:900;margin-bottom:10px;">Safari는 지원되지 않습니다!</div>'
+            + '<div style="color:#fff;font-size:0.95rem;margin-bottom:20px;line-height:1.6;">아이폰에서는 반드시<br><b style="color:#ff8800">Chrome 브라우저</b>로<br>접속해주세요! 🙏</div>'
+            + '<a href="googlechrome://snapq-toeic.onrender.com" style="display:block;background:#ff8800;color:#fff;padding:12px 20px;border-radius:12px;font-weight:900;font-size:1rem;text-decoration:none;margin-bottom:10px;">📱 Chrome으로 열기</a>'
+            + '<div style="color:#aaa;font-size:0.8rem;">Chrome 앱이 없으면 App Store에서 설치 후 접속하세요</div>'
+            + '</div>';
+        document.body.appendChild(div);
+    }
+})();
+</script>
+
+<script>
 document.addEventListener('DOMContentLoaded', function() {
     function fixButtons() {
         var btns = window.parent.document.querySelectorAll('button');
