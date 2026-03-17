@@ -4,6 +4,9 @@ C안: 상단배너 + P5/P7 나란히 + 역전장 전체 + 하단 서브메뉴
 """
 
 import streamlit as st
+
+# iOS Safari 호환
+_IOS_CSS = True
 import os
 import json
 import time
@@ -21,6 +24,21 @@ st.set_page_config(
     layout='centered',
     initial_sidebar_state='collapsed'
 )
+st.markdown("""
+    <style>
+    * { -webkit-tap-highlight-color: rgba(0,0,0,0) !important; }
+    button, [role="button"] {
+        -webkit-appearance: none !important;
+        touch-action: manipulation !important;
+        cursor: pointer !important;
+    }
+    input, textarea, select {
+        -webkit-appearance: none !important;
+        font-size: 16px !important;
+    }
+    .stApp { -webkit-overflow-scrolling: touch !important; }
+    </style>
+""", unsafe_allow_html=True)
 
 # =========================================================
 # 데이터 헬퍼
