@@ -1007,7 +1007,7 @@ _hc.html(_CSS + _GO_STYLE + "<style>.arc .go-btn{--go-bg:linear-gradient(270deg,
 </script>""", height=70)
 _arm_go = st.button("ARM_GO", key="armory_btn")
 if _arm_go:
-    st.switch_page("pages/03_역전장.py")
+    st.switch_page("pages/03_오답전장.py")
 
 
 # ── 하단 박스 2개 ──
