@@ -4,437 +4,495 @@
     "p5": [
       {
         "id": "d1_p5_1",
-        "mode": "grammar",
-        "category": "verb_tense",
-        "question": "The manager _____ the report before the meeting.",
-        "options": ["review", "reviewing", "reviewed", "was review"],
-        "answer_index": 2,
-        "explanation": "과거 시점을 나타내므로 과거형 'reviewed'가 적절합니다.",
-        "korean": "매니저는 회의 전에 보고서를 검토했습니다."
+        "question": "The board of directors has decided to ------- the merger agreement until all regulatory approvals have been obtained from the relevant authorities.",
+        "options": [
+          "postpone",
+          "postponing",
+          "postponed",
+          "has postponed"
+        ],
+        "answer_index": 0,
+        "explanation": "to부정사 뒤에는 동사원형이 옵니다."
       },
       {
         "id": "d1_p5_2",
-        "mode": "grammar",
-        "category": "prepositions",
-        "question": "Please submit the form _____ Friday.",
-        "options": ["in", "on", "by", "at"],
+        "question": "Employees who wish to transfer to the overseas branch must submit their applications ------- the end of the current fiscal quarter.",
+        "options": [
+          "during",
+          "while",
+          "by",
+          "throughout"
+        ],
         "answer_index": 2,
-        "explanation": "'by + 기한'은 '~까지'라는 의미입니다.",
-        "korean": "금요일까지 양식을 제출해 주세요."
+        "explanation": "by는 기한을 나타내며 까지라는 의미입니다."
       },
       {
         "id": "d1_p5_3",
-        "mode": "grammar",
-        "category": "articles",
-        "question": "She will give _____ presentation tomorrow.",
-        "options": ["a", "an", "the", "no article"],
-        "answer_index": 0,
-        "explanation": "presentation이 처음 언급되고 자음으로 시작하므로 a가 적절합니다.",
-        "korean": "그녀는 내일 발표를 할 것입니다."
+        "question": "The marketing team proposal was so ------- that the executive committee approved it without requesting any further revisions.",
+        "options": [
+          "comprehend",
+          "comprehensive",
+          "comprehensively",
+          "comprehension"
+        ],
+        "answer_index": 1,
+        "explanation": "so 뒤에는 형용사가 오며 comprehensive는 포괄적인이라는 뜻입니다."
       },
       {
         "id": "d1_p5_4",
-        "mode": "grammar",
-        "category": "modals",
-        "question": "The shipment _____ arrive by noon, according to the tracking system.",
-        "options": ["must", "should", "might", "would"],
-        "answer_index": 1,
-        "explanation": "should는 '예상/당연'의 의미로 '~할 것으로 기대된다'는 뜻입니다.",
-        "korean": "추적 시스템에 따르면 화물은 정오까지 도착할 것입니다."
+        "question": "------- the unexpected decline in quarterly revenues, the company managed to maintain its commitment to employee bonuses and benefit programs.",
+        "options": [
+          "Despite",
+          "Although",
+          "However",
+          "Nevertheless"
+        ],
+        "answer_index": 0,
+        "explanation": "Despite는 전치사로 명사구 앞에 사용됩니다."
       },
       {
         "id": "d1_p5_5",
-        "mode": "vocab",
-        "category": "vocab_core",
-        "question": "The brochure provides _____ information about the tour.",
-        "options": ["delayed", "divided", "detailed", "decided"],
+        "question": "The new software platform will be ------- across all regional offices simultaneously to ensure consistency in data management and reporting.",
+        "options": [
+          "implement",
+          "implementation",
+          "implemented",
+          "implementing"
+        ],
         "answer_index": 2,
-        "explanation": "'detailed'는 '자세한'이라는 뜻입니다.",
-        "korean": "그 브로셔는 여행에 대한 자세한 정보를 제공합니다."
+        "explanation": "수동태 구조에서 implemented가 적절합니다."
       },
       {
         "id": "d1_p5_6",
-        "mode": "vocab",
-        "category": "vocab_core",
-        "question": "The manager will _____ the schedule after lunch.",
-        "options": ["announce", "annoy", "attach", "arrive"],
-        "answer_index": 0,
-        "explanation": "'announce'는 '공식적으로 발표하다'라는 뜻입니다.",
-        "korean": "매니저는 점심 후에 일정을 발표할 것입니다."
+        "question": "Mr. Harrison, ------- extensive experience in international trade law made him the ideal candidate, was appointed as the new chief legal officer.",
+        "options": [
+          "who",
+          "whom",
+          "whose",
+          "which"
+        ],
+        "answer_index": 2,
+        "explanation": "뒤에 명사가 오므로 소유격 관계대명사 whose가 적절합니다."
       },
       {
         "id": "d1_p5_7",
-        "mode": "vocab",
-        "category": "vocab_core",
-        "question": "We need to _____ costs to stay within the budget.",
-        "options": ["release", "replace", "repeat", "reduce"],
-        "answer_index": 3,
-        "explanation": "'reduce costs'는 '비용을 줄이다'라는 뜻입니다.",
-        "korean": "예산 내에 맞추기 위해 비용을 줄여야 합니다."
+        "question": "The research committee strongly recommends ------- additional funding for the development of sustainable energy solutions in rural communities.",
+        "options": [
+          "allocate",
+          "allocated",
+          "allocating",
+          "to allocate"
+        ],
+        "answer_index": 2,
+        "explanation": "recommend는 동명사를 목적어로 취합니다."
       },
       {
         "id": "d1_p5_8",
-        "mode": "vocab",
-        "category": "vocab_core",
-        "question": "All visitors must _____ their ID at the entrance.",
-        "options": ["predict", "present", "prepare", "prevent"],
+        "question": "Candidates are expected to demonstrate ------- in at least two programming languages and have prior experience with large-scale database management systems.",
+        "options": [
+          "proficient",
+          "proficiency",
+          "proficiently",
+          "proficiencies"
+        ],
         "answer_index": 1,
-        "explanation": "'present'는 '제시하다'라는 뜻입니다.",
-        "korean": "방문객들은 입구에서 신분증을 제시해야 합니다."
+        "explanation": "demonstrate의 목적어로 명사 proficiency가 적절합니다."
       },
       {
         "id": "d1_p5_9",
-        "mode": "vocab",
-        "category": "vocab_core",
-        "question": "The meeting has been _____ until next Monday.",
-        "options": ["postponed", "provided", "persuaded", "promoted"],
+        "question": "The annual compliance audit revealed that several departments had failed to ------- with the updated data protection regulations introduced last year.",
+        "options": [
+          "comply",
+          "complied",
+          "compliance",
+          "complying"
+        ],
         "answer_index": 0,
-        "explanation": "'postponed'는 '연기된'이라는 뜻입니다.",
-        "korean": "회의는 다음 주 월요일까지 연기되었습니다."
+        "explanation": "to부정사 뒤에는 동사원형이 오며 comply with는 준수하다라는 뜻입니다."
       },
       {
         "id": "d1_p5_10",
-        "mode": "vocab",
-        "category": "vocab_core",
-        "question": "Please _____ the form before submitting it.",
-        "options": ["review", "repair", "relax", "remove"],
-        "answer_index": 0,
-        "explanation": "'review'는 '검토하다'라는 뜻입니다.",
-        "korean": "제출하기 전에 양식을 검토해 주세요."
+        "question": "Shareholders were informed that the dividend payment would be ------- proportional to the number of shares held at the time of the record date.",
+        "options": [
+          "distribute",
+          "distributed",
+          "distributing",
+          "distribution"
+        ],
+        "answer_index": 1,
+        "explanation": "수동태 구조에서 distributed가 적절합니다."
       }
     ],
     "p7": {
-      "passage": "To: All Staff\nFrom: HR Department\nSubject: Office Closure Notice\n\nPlease be informed that our main office will be closed on March 25 for building maintenance. All employees are encouraged to work from home on that day. If you need access to office equipment, please contact your manager by March 22 to make alternative arrangements. Normal office hours will resume on March 26.",
+      "passage": "To: All Department Heads\nFrom: Office of the Chief Operating Officer\nSubject: Implementation of Revised Procurement Procedures\n\nEffective the first day of next month, all procurement requests exceeding five thousand dollars must be submitted through the newly launched vendor management portal rather than through the existing paper-based approval system. This transition is part of our broader initiative to streamline operational efficiency and reduce processing times across all divisions.\n\nDepartment heads are required to ensure that all staff members responsible for purchasing activities complete the mandatory online training module before the deadline. The training, which covers portal navigation, vendor evaluation criteria, and compliance requirements, takes approximately ninety minutes to complete and must be finished by the fifteenth of this month.\n\nVendors who have not yet registered on the new portal will be temporarily ineligible to receive purchase orders until their registration and verification process is finalized. Procurement staff should notify existing vendors of this requirement as soon as possible to avoid any disruption to ongoing supply agreements.\n\nFor technical assistance with the portal or questions regarding the new procedures, please contact the Procurement Support Team at procure.support@company.com or call extension 4872 during regular business hours. A comprehensive user guide has also been uploaded to the company intranet for reference.",
       "questions": [
         {
           "id": "d1_p7_1",
-          "question": "Why will the office be closed?",
+          "question": "What is the primary purpose of this memorandum?",
           "options": [
-            "For a company holiday",
-            "For building maintenance",
-            "For a staff training session",
-            "For a fire safety inspection"
+            "To announce the hiring of a new Chief Operating Officer",
+            "To notify department heads of changes to procurement procedures",
+            "To introduce a new vendor evaluation policy for all suppliers",
+            "To request approval for an increase in the procurement budget"
           ],
           "answer_index": 1,
-          "explanation": "지문에서 'building maintenance'(건물 유지보수)를 위해 문을 닫는다고 명시하고 있습니다."
+          "explanation": "메모의 주제는 새로운 조달 절차 변경 사항을 부서장들에게 알리는 것입니다."
         },
         {
           "id": "d1_p7_2",
-          "question": "What are employees encouraged to do on March 25?",
+          "question": "What must department heads ensure before the fifteenth of the month?",
           "options": [
-            "Take a day off",
-            "Attend a training",
-            "Work from home",
-            "Visit a client"
+            "That all vendors have completed their registration on the new portal",
+            "That procurement requests over five thousand dollars are submitted in paper form",
+            "That purchasing staff complete the required online training module",
+            "That all supply agreements are renegotiated with registered vendors"
           ],
           "answer_index": 2,
-          "explanation": "'employees are encouraged to work from home'에서 재택근무가 권장됨을 알 수 있습니다."
+          "explanation": "purchasing staff가 온라인 교육을 완료해야 합니다."
         },
         {
           "id": "d1_p7_3",
-          "question": "By when should employees contact their manager if they need office equipment?",
+          "question": "What can be inferred about vendors who have not registered on the new portal?",
           "options": [
-            "March 22",
-            "March 25",
-            "March 26",
-            "March 30"
+            "They will be permanently removed from the approved supplier list",
+            "They will not be able to receive purchase orders until registration is complete",
+            "They are required to attend an in-person orientation at headquarters",
+            "They must resubmit all previous invoices through the new system"
           ],
-          "answer_index": 0,
-          "explanation": "'contact your manager by March 22'에서 3월 22일까지 연락해야 함을 알 수 있습니다."
+          "answer_index": 1,
+          "explanation": "미등록 공급업체는 등록 완료 전까지 구매 주문을 받을 수 없습니다."
         }
       ]
     }
   },
-
   "day10": {
     "label": "Day 10 진단",
     "p5": [
       {
         "id": "d10_p5_1",
-        "mode": "grammar",
-        "category": "subject_verb",
-        "question": "Neither the manager nor the employees _____ responsible for the error.",
-        "options": ["is", "are", "be", "was"],
-        "answer_index": 1,
-        "explanation": "neither A nor B에서 동사는 B(가까운 주어)에 일치합니다. employees(복수)이므로 are.",
-        "korean": "매니저도 직원들도 그 오류에 책임이 없습니다."
+        "question": "The financial projections presented at the shareholders meeting indicated that the company operating margins would ------- improve over the next three fiscal years.",
+        "options": [
+          "continuation",
+          "continue",
+          "continued",
+          "continuously"
+        ],
+        "answer_index": 3,
+        "explanation": "동사 improve를 수식하는 부사 continuously가 적절합니다."
       },
       {
         "id": "d10_p5_2",
-        "mode": "grammar",
-        "category": "gerunds_infinitives",
-        "question": "The director suggested _____ the meeting until next week.",
-        "options": ["postpone", "postponing", "to postpone", "postponed"],
-        "answer_index": 1,
-        "explanation": "suggest는 동명사(-ing)를 목적어로 취합니다.",
-        "korean": "감독은 회의를 다음 주로 미루자고 제안했습니다."
+        "question": "The telecommunications firm announced that it would ------- its existing infrastructure investment by an additional two billion dollars over the next five years.",
+        "options": [
+          "augment",
+          "augmented",
+          "augmenting",
+          "augmentation"
+        ],
+        "answer_index": 0,
+        "explanation": "would 뒤에는 동사원형이 오며 augment는 증가시키다라는 뜻입니다."
       },
       {
         "id": "d10_p5_3",
-        "mode": "grammar",
-        "category": "relative_clauses",
-        "question": "The candidate _____ resume impressed the interviewer was hired.",
-        "options": ["who", "whose", "which", "whom"],
-        "answer_index": 1,
-        "explanation": "resume(명사) 앞에서 소유를 나타내므로 whose가 맞습니다.",
-        "korean": "이력서가 면접관을 감동시켰던 지원자가 채용되었습니다."
+        "question": "Participants in the executive leadership program are strongly encouraged to ------- themselves with the case studies distributed prior to each session.",
+        "options": [
+          "familiar",
+          "familiarity",
+          "familiarize",
+          "familiarly"
+        ],
+        "answer_index": 2,
+        "explanation": "to부정사 뒤에는 동사원형이 오며 familiarize oneself with는 익숙해지다라는 뜻입니다."
       },
       {
         "id": "d10_p5_4",
-        "mode": "grammar",
-        "category": "modals",
-        "question": "All employees must _____ their badges at all times.",
-        "options": ["wear", "wearing", "wore", "to wear"],
+        "question": "The proposed amendment to the employment contract stipulates that any disputes arising between the parties ------- resolved through binding arbitration rather than litigation.",
+        "options": [
+          "be",
+          "are",
+          "were",
+          "being"
+        ],
         "answer_index": 0,
-        "explanation": "조동사 must 뒤에는 동사원형이 옵니다.",
-        "korean": "모든 직원은 항상 배지를 착용해야 합니다."
+        "explanation": "stipulate that 절에서는 동사원형을 사용합니다."
       },
       {
         "id": "d10_p5_5",
-        "mode": "vocab",
-        "category": "vocab_core",
-        "question": "The CEO emphasized the need to _____ productivity across all departments.",
-        "options": ["enclose", "ensure", "enhance", "enroll"],
+        "question": "The logistics coordinator confirmed that the shipment had been ------- delayed due to unforeseen customs clearance complications at the port of entry.",
+        "options": [
+          "significant",
+          "significance",
+          "significantly",
+          "signify"
+        ],
         "answer_index": 2,
-        "explanation": "'enhance'는 '향상시키다'라는 뜻입니다.",
-        "korean": "CEO는 모든 부서에서 생산성을 향상시킬 필요성을 강조했습니다."
+        "explanation": "delayed를 수식하는 부사 significantly가 적절합니다."
       },
       {
         "id": "d10_p5_6",
-        "mode": "vocab",
-        "category": "vocab_core",
-        "question": "The committee will _____ the proposal before making a decision.",
-        "options": ["evaluate", "elevate", "evacuate", "eliminate"],
-        "answer_index": 0,
-        "explanation": "'evaluate'는 '평가하다'라는 뜻입니다.",
-        "korean": "위원회는 결정을 내리기 전에 제안을 평가할 것입니다."
+        "question": "All staff members are reminded that ------- company resources for personal use without prior written authorization constitutes a violation of the employee conduct policy.",
+        "options": [
+          "use",
+          "used",
+          "using",
+          "to use"
+        ],
+        "answer_index": 2,
+        "explanation": "주어 자리에 동명사 using이 적절합니다."
       },
       {
         "id": "d10_p5_7",
-        "mode": "vocab",
-        "category": "vocab_core",
-        "question": "Due to unexpected demand, supplies are _____.",
-        "options": ["secure", "steady", "scarce", "sincere"],
+        "question": "The independent review panel concluded that the organization risk management framework was ------- inadequate to address the emerging cybersecurity threats facing the industry.",
+        "options": [
+          "consider",
+          "considerable",
+          "considerably",
+          "consideration"
+        ],
         "answer_index": 2,
-        "explanation": "'scarce'는 '희귀한'이라는 뜻입니다.",
-        "korean": "예상치 못한 수요로 인해 물자가 부족합니다."
+        "explanation": "형용사 inadequate를 수식하는 부사 considerably가 적절합니다."
       },
       {
         "id": "d10_p5_8",
-        "mode": "vocab",
-        "category": "vocab_core",
-        "question": "The new policy will be _____ immediately.",
-        "options": ["imported", "implemented", "impressed", "implied"],
+        "question": "It is ------- that all prospective tenants provide verifiable proof of income and two professional references before being considered for any available residential units.",
+        "options": [
+          "requirement",
+          "required",
+          "requiring",
+          "require"
+        ],
         "answer_index": 1,
-        "explanation": "'implemented'는 '시행된'이라는 뜻입니다.",
-        "korean": "새 정책은 즉시 시행될 것입니다."
+        "explanation": "It is required that은 하는 것이 요구된다는 관용 표현입니다."
       },
       {
         "id": "d10_p5_9",
-        "mode": "vocab",
-        "category": "vocab_core",
-        "question": "The company faced a significant _____ in revenue last quarter.",
-        "options": ["delight", "decline", "delivery", "delay"],
+        "question": "The quarterly earnings report, ------- was released ahead of schedule, exceeded analyst expectations by a considerable margin for the third consecutive period.",
+        "options": [
+          "that",
+          "which",
+          "who",
+          "what"
+        ],
         "answer_index": 1,
-        "explanation": "'decline'은 '감소'를 나타냅니다.",
-        "korean": "회사는 지난 분기에 상당한 수익 감소에 직면했습니다."
+        "explanation": "콤마가 있으므로 계속적 용법의 which가 적절합니다."
       },
       {
         "id": "d10_p5_10",
-        "mode": "vocab",
-        "category": "vocab_core",
-        "question": "Applicants must submit the required documents in a _____ manner.",
-        "options": ["timely", "tragic", "tender", "tiny"],
+        "question": "The human resources department has been directed to ------- a comprehensive review of all existing compensation structures to ensure alignment with current industry benchmarks.",
+        "options": [
+          "conduct",
+          "conducted",
+          "conducting",
+          "conduction"
+        ],
         "answer_index": 0,
-        "explanation": "'timely'는 '시간 내 적절한'이라는 뜻입니다.",
-        "korean": "지원자들은 필요한 서류를 제때 제출해야 합니다."
+        "explanation": "to부정사 뒤에는 동사원형이 오며 conduct는 수행하다라는 뜻입니다."
       }
     ],
     "p7": {
-      "passage": "Greenfield Technology is pleased to announce the launch of its new customer support portal. Starting April 1, customers can submit service requests, track order status, and access product manuals through the portal at support.greenfieldtech.com. Customers who register before April 15 will receive a 10% discount on their next purchase. For assistance with registration, please call our helpline at 1-800-555-0199.",
+      "passage": "Harrington and Associates Consulting\nClient Advisory Bulletin\n\nThe recent amendment to the Commercial Tenancy Act has introduced several significant changes that will directly affect businesses operating under long-term lease agreements in both urban and suburban commercial zones. Organizations that entered into lease contracts prior to the enactment of the revised legislation may find that certain clauses within their existing agreements are no longer fully enforceable under the updated statutory framework.\n\nOne of the most consequential modifications involves the mandatory inclusion of a rent escalation cap, which limits annual rent increases to a maximum of three percent regardless of prevailing market conditions or inflationary pressures. Landlords who have previously relied on open-ended escalation clauses to adjust rents in line with the consumer price index will need to renegotiate the relevant provisions of their agreements accordingly.\n\nAdditionally, the amended act now requires that all commercial landlords provide tenants with a minimum of one hundred and eighty days written notice prior to initiating any lease termination proceedings, a substantial increase from the previous requirement of ninety days. Tenants who believe their rights under the new legislation have been violated are entitled to file a formal complaint with the Commercial Tenancy Tribunal within sixty days of the alleged infringement.\n\nBusinesses are strongly advised to have their current lease agreements reviewed by qualified legal counsel to identify any provisions that may require modification in light of the legislative changes. Our firm offers comprehensive lease compliance audits and can assist clients in negotiating favorable amendments with their respective landlords.",
       "questions": [
         {
           "id": "d10_p7_1",
-          "question": "What is the main purpose of the announcement?",
+          "question": "What is the main purpose of this advisory bulletin?",
           "options": [
-            "To advertise a new product",
-            "To introduce a new support portal",
-            "To announce a company merger",
-            "To notify customers of a price increase"
+            "To promote the legal services offered by Harrington and Associates",
+            "To inform clients about recent changes to commercial tenancy legislation",
+            "To announce the formation of a new commercial tenancy tribunal",
+            "To explain the process for filing complaints against landlords"
           ],
           "answer_index": 1,
-          "explanation": "'pleased to announce the launch of its new customer support portal'에서 새 지원 포털 소개가 목적임을 알 수 있습니다."
+          "explanation": "상업용 임대차 법률의 변경 사항을 알리는 것이 주목적입니다."
         },
         {
           "id": "d10_p7_2",
-          "question": "What benefit do early registrants receive?",
+          "question": "What restriction has been placed on annual rent increases?",
           "options": [
-            "Free shipping",
-            "A free product manual",
-            "A 10% discount on next purchase",
-            "Priority customer service"
+            "Rent increases must be approved by the Commercial Tenancy Tribunal",
+            "Rent increases are limited to a maximum of three percent per year",
+            "Landlords must justify any rent increase with documented market data",
+            "Rent increases cannot exceed the current consumer price index rate"
           ],
-          "answer_index": 2,
-          "explanation": "'register before April 15 will receive a 10% discount on their next purchase'에서 확인할 수 있습니다."
+          "answer_index": 1,
+          "explanation": "연간 임대료 인상은 최대 3퍼센트로 제한됩니다."
         },
         {
           "id": "d10_p7_3",
-          "question": "How can customers get help with registration?",
+          "question": "What change has been made regarding the notice period for lease termination?",
           "options": [
-            "By visiting the main office",
-            "By sending an email",
-            "By calling the helpline",
-            "By chatting online"
+            "The notice period has been reduced from one hundred eighty to ninety days",
+            "Landlords must obtain tribunal approval before terminating any lease",
+            "The minimum notice period has been extended from ninety to one hundred eighty days",
+            "Tenants must provide sixty days notice before vacating a commercial property"
           ],
           "answer_index": 2,
-          "explanation": "'please call our helpline'에서 전화로 도움을 받을 수 있음을 알 수 있습니다."
+          "explanation": "통지 기간이 90일에서 180일로 연장되었습니다."
         }
       ]
     }
   },
-
   "day20": {
     "label": "Day 20 진단",
     "p5": [
       {
         "id": "d20_p5_1",
-        "mode": "grammar",
-        "category": "verb_tense",
-        "question": "By the time the director arrived, the team _____ the presentation.",
-        "options": ["finish", "finished", "had finished", "has finished"],
-        "answer_index": 2,
-        "explanation": "'by the time + 과거'는 과거완료(had + p.p.)와 함께 사용됩니다.",
-        "korean": "감독이 도착했을 때, 팀은 이미 발표를 마쳤습니다."
+        "question": "The executive vice president emphasized that ------- the organization succeeds in diversifying its revenue streams will depend largely on the effectiveness of its international expansion strategy.",
+        "options": [
+          "whether",
+          "although",
+          "despite",
+          "whenever"
+        ],
+        "answer_index": 0,
+        "explanation": "whether는 인지 아닌지라는 의미로 명사절을 이끕니다."
       },
       {
         "id": "d20_p5_2",
-        "mode": "grammar",
-        "category": "conditionals",
-        "question": "If the budget _____ approved, we will start the project next month.",
-        "options": ["is", "was", "were", "will be"],
-        "answer_index": 0,
-        "explanation": "현재 가정(실현 가능) 조건절에는 현재형을 사용합니다.",
-        "korean": "예산이 승인되면 다음 달에 프로젝트를 시작할 것입니다."
+        "question": "Investors are advised that past performance of any financial instrument should not be ------- as a reliable indicator of future returns in volatile or uncertain market conditions.",
+        "options": [
+          "regard",
+          "regarded",
+          "regarding",
+          "regardless"
+        ],
+        "answer_index": 1,
+        "explanation": "수동태 구조에서 regarded가 적절하며 be regarded as는 로 간주되다라는 뜻입니다."
       },
       {
         "id": "d20_p5_3",
-        "mode": "grammar",
-        "category": "passive",
-        "question": "The new branch _____ by the end of this year.",
-        "options": ["will open", "will be opened", "has opened", "is opening"],
-        "answer_index": 1,
-        "explanation": "새 지점은 '열리는' 대상이므로 수동태 'will be opened'가 적절합니다.",
-        "korean": "새 지점은 올해 말까지 열릴 것입니다."
+        "question": "The company decision to consolidate its three separate research divisions into a single integrated unit was met with considerable ------- from senior staff who feared a reduction in departmental autonomy.",
+        "options": [
+          "resist",
+          "resistant",
+          "resistance",
+          "resisted"
+        ],
+        "answer_index": 2,
+        "explanation": "considerable의 수식을 받는 명사 resistance가 적절합니다."
       },
       {
         "id": "d20_p5_4",
-        "mode": "grammar",
-        "category": "conjunctions",
-        "question": "The product was expensive; _____, it sold out within a week.",
-        "options": ["therefore", "however", "moreover", "because"],
+        "question": "Had the project manager ------- the potential risks associated with the new supplier logistics network, the subsequent delays in product delivery could have been avoided entirely.",
+        "options": [
+          "anticipate",
+          "anticipated",
+          "has anticipated",
+          "anticipating"
+        ],
         "answer_index": 1,
-        "explanation": "'however'는 앞 내용과 반대되는 내용을 연결하는 접속부사입니다.",
-        "korean": "제품이 비쌌지만, 그럼에도 일주일 내에 매진되었습니다."
+        "explanation": "가정법 과거완료에서 anticipated가 적절합니다."
       },
       {
         "id": "d20_p5_5",
-        "mode": "vocab",
-        "category": "vocab_core",
-        "question": "The board reached a _____ after hours of discussion.",
-        "options": ["confidence", "consensus", "consequence", "convenience"],
-        "answer_index": 1,
-        "explanation": "'consensus'는 '합의'를 나타냅니다.",
-        "korean": "이사회는 몇 시간의 논의 끝에 합의에 도달했습니다."
+        "question": "The terms outlined in the memorandum of understanding are not legally binding; ------- they serve as a preliminary framework for the negotiation of a more formal contractual agreement.",
+        "options": [
+          "rather",
+          "therefore",
+          "similarly",
+          "consequently"
+        ],
+        "answer_index": 0,
+        "explanation": "rather는 오히려 그 대신에라는 의미로 대조적 내용을 연결합니다."
       },
       {
         "id": "d20_p5_6",
-        "mode": "vocab",
-        "category": "vocab_core",
-        "question": "The report provides a _____ overview of market trends.",
-        "options": ["comprehensive", "comparative", "compatible", "competitive"],
+        "question": "The regulatory body has mandated that all financial institutions ------- their internal audit procedures to align with the newly adopted international accounting standards by year end.",
+        "options": [
+          "revise",
+          "revised",
+          "revising",
+          "revision"
+        ],
         "answer_index": 0,
-        "explanation": "'comprehensive'는 '포괄적인'이라는 뜻입니다.",
-        "korean": "그 보고서는 시장 동향에 대한 포괄적인 개요를 제공합니다."
+        "explanation": "mandate that 절에서는 동사원형을 사용합니다."
       },
       {
         "id": "d20_p5_7",
-        "mode": "vocab",
-        "category": "vocab_core",
-        "question": "The supplier agreed to _____ the shipment at no extra cost.",
-        "options": ["exhibit", "expedite", "exceed", "explain"],
+        "question": "The ------- of the proposed infrastructure development project has been called into question following the release of an independent environmental impact assessment commissioned by the city council.",
+        "options": [
+          "feasible",
+          "feasibility",
+          "feasibly",
+          "infeasible"
+        ],
         "answer_index": 1,
-        "explanation": "'expedite'는 '신속히 처리하다'라는 뜻입니다.",
-        "korean": "공급업체는 추가 비용 없이 배송을 신속히 처리하기로 했습니다."
+        "explanation": "주어 자리이므로 명사 feasibility가 적절합니다."
       },
       {
         "id": "d20_p5_8",
-        "mode": "vocab",
-        "category": "vocab_core",
-        "question": "We must comply with all _____ requirements.",
-        "options": ["reliable", "regular", "regulatory", "regional"],
+        "question": "Customers who experience difficulties accessing their online accounts are advised to clear their browser cache and cookies before ------- the technical support team for further assistance.",
+        "options": [
+          "contact",
+          "contacted",
+          "contacting",
+          "to contact"
+        ],
         "answer_index": 2,
-        "explanation": "'regulatory'는 '규제의'라는 뜻입니다.",
-        "korean": "우리는 모든 규제 요건을 준수해야 합니다."
+        "explanation": "before는 전치사로 뒤에 동명사가 옵니다."
       },
       {
         "id": "d20_p5_9",
-        "mode": "vocab",
-        "category": "vocab_core",
-        "question": "The proposal outlines a _____ strategy for long-term growth.",
-        "options": ["sustainable", "separate", "subtle", "suitable"],
+        "question": "The proposed acquisition of the pharmaceutical subsidiary remains ------- upon the satisfactory completion of a comprehensive due diligence review and approval from antitrust regulators.",
+        "options": [
+          "contingent",
+          "contingency",
+          "contingently",
+          "contiguous"
+        ],
         "answer_index": 0,
-        "explanation": "'sustainable'은 '지속 가능한'이라는 뜻입니다.",
-        "korean": "그 제안서는 장기 성장을 위한 지속 가능한 전략을 제시합니다."
+        "explanation": "contingent upon은 에 달려있는이라는 관용 표현입니다."
       },
       {
         "id": "d20_p5_10",
-        "mode": "vocab",
-        "category": "vocab_core",
-        "question": "The company plans to _____ its operations overseas.",
-        "options": ["extract", "expand", "expire", "expend"],
-        "answer_index": 1,
-        "explanation": "'expand'는 '확장하다'라는 뜻입니다.",
-        "korean": "회사는 해외로 사업을 확장할 계획입니다."
+        "question": "It was not until the third quarter of the fiscal year that the newly appointed chief financial officer was able to ------- a sustainable balance between aggressive growth targets and prudent capital allocation.",
+        "options": [
+          "strike",
+          "striking",
+          "struck",
+          "stricken"
+        ],
+        "answer_index": 0,
+        "explanation": "be able to 뒤에는 동사원형이 오며 strike a balance는 균형을 잡다라는 관용 표현입니다."
       }
     ],
     "p7": {
-      "passage": "Riverton City Council\nPublic Notice — Road Closure\n\nPlease be advised that Maple Avenue between Oak Street and Pine Road will be closed to all vehicular traffic from June 3 to June 14 for underground utility repairs. Pedestrian access will be maintained via the temporary walkway on Cedar Lane. Businesses located within the closure area will remain open and accessible via Pine Road. We apologize for any inconvenience and appreciate your patience during this period.",
+      "passage": "InterPacific Trade Solutions — Corporate Newsletter\nSpecial Feature: Navigating Supply Chain Disruptions in the Post-Pandemic Era\n\nThe global supply chain landscape has undergone a fundamental transformation over the past several years, driven by a confluence of factors including geopolitical tensions, shifting consumer demand patterns, and the lingering aftereffects of pandemic-related disruptions. Organizations that once relied exclusively on lean just-in-time inventory models are now confronting the inherent vulnerabilities of those approaches and reconsidering their strategic frameworks accordingly.\n\nA growing number of multinational corporations have responded to these challenges by adopting a dual-sourcing strategy, whereby critical components and raw materials are procured from at least two geographically distinct suppliers. While this approach inevitably results in somewhat higher procurement costs in the short term, it provides organizations with a considerably greater degree of resilience against localized disruptions such as port congestion, natural disasters, or sudden regulatory changes affecting a single source region.\n\nAnother trend gaining significant traction among supply chain professionals is the strategic reshoring or nearshoring of manufacturing operations. By relocating production facilities closer to end markets, companies can substantially reduce their exposure to long-distance logistics risks, currency fluctuation, and extended lead times. Several major electronics manufacturers have already announced substantial capital investments in domestic or regional production capacity as part of this broader strategic realignment.\n\nTechnology is also playing an increasingly central role in supply chain resilience. Advanced analytics platforms, artificial intelligence-driven demand forecasting tools, and blockchain-based traceability systems are enabling organizations to identify potential bottlenecks and respond proactively before disruptions escalate into critical operational crises. Investment in these capabilities is no longer considered optional for firms seeking to maintain competitive advantage in an increasingly unpredictable global marketplace.\n\nSupply chain professionals who wish to deepen their expertise in this rapidly evolving domain are encouraged to register for our upcoming series of executive workshops, which will address risk assessment methodologies, supplier relationship management, and technology integration strategies in detail.",
       "questions": [
         {
           "id": "d20_p7_1",
-          "question": "Why is Maple Avenue being closed?",
+          "question": "What does the article suggest is a primary disadvantage of the dual-sourcing strategy?",
           "options": [
-            "For a street festival",
-            "For road repaving",
-            "For underground utility repairs",
-            "For building construction"
+            "It limits the range of available suppliers in international markets",
+            "It results in higher procurement costs in the short term",
+            "It increases exposure to localized disruptions in supply regions",
+            "It requires substantial investment in blockchain technology"
           ],
-          "answer_index": 2,
-          "explanation": "'underground utility repairs'(지하 시설 수리)를 위해 도로가 폐쇄됩니다."
+          "answer_index": 1,
+          "explanation": "이중 소싱 전략은 단기적으로 조달 비용이 높아지는 단점이 있습니다."
         },
         {
           "id": "d20_p7_2",
-          "question": "How long will the road closure last?",
+          "question": "What benefit do companies gain by relocating manufacturing operations closer to end markets?",
           "options": [
-            "5 days",
-            "10 days",
-            "12 days",
-            "14 days"
+            "Elimination of the need for advanced analytics tools",
+            "Access to a broader range of raw material suppliers",
+            "Reduced exposure to long-distance logistics risks and extended lead times",
+            "Guaranteed protection against currency fluctuations"
           ],
           "answer_index": 2,
-          "explanation": "June 3부터 June 14까지 총 12일간 폐쇄됩니다."
+          "explanation": "제조 시설을 최종 시장에 가깝게 이전하면 물류 위험과 리드타임을 줄일 수 있습니다."
         },
         {
           "id": "d20_p7_3",
-          "question": "Where can pedestrians walk during the closure?",
+          "question": "What can be inferred about companies that do not invest in advanced supply chain technologies?",
           "options": [
-            "On Maple Avenue",
-            "On Oak Street",
-            "On Cedar Lane",
-            "On Pine Road"
+            "They are likely to benefit from lower operational costs",
+            "They may struggle to maintain a competitive advantage in the global marketplace",
+            "They will be required to adopt dual-sourcing strategies",
+            "They are exempt from regulatory changes affecting international procurement"
           ],
-          "answer_index": 2,
-          "explanation": "'temporary walkway on Cedar Lane'에서 보행자는 Cedar Lane을 이용할 수 있습니다."
+          "answer_index": 1,
+          "explanation": "기술 투자는 더 이상 선택이 아니므로 투자하지 않으면 경쟁 우위를 유지하기 어렵습니다."
         }
       ]
     }
