@@ -551,7 +551,7 @@ summary{color:#aaa!important;font-weight:700!important;}
     </style>''', unsafe_allow_html=True)
     saved_ok = st.session_state.pop("_saved_ok", False)
     save_lbl = "✅ 완료!" if saved_ok else "저장"
-    st.markdown('''<div style="text-align:center;padding:0.3rem 0;"><span style="font-size:1.0rem;font-weight:900;color:#ffff00;text-shadow:0 0 10px #ffff00,0 0 20px #ffee00;animation:saveMentPulse 1.5s ease-in-out infinite;display:inline-block;">&#9889; 저장해! 오답전장에서 꼭! 또 만나자!</span></div><style>@keyframes saveMentPulse{0%,100%{opacity:1;text-shadow:0 0 10px #ffff00,0 0 20px #ffee00;}50%{opacity:0.5;text-shadow:0 0 25px #ffff00,0 0 50px #ffee00;}}</style>''', unsafe_allow_html=True)
+    st.markdown('<div style="text-align:center;padding:0.4rem 0;margin-bottom:0.3rem;"><span id="saveMent" style="font-size:1.05rem;font-weight:900;color:#ffff00;text-shadow:0 0 10px #ffff00,0 0 20px #ffee00;display:inline-block;">⚡ 저장해! 오답전장에서 꼭! 또 만나자!</span></div>', unsafe_allow_html=True)
     sv_c1, sv_c2, sv_c3 = st.columns([2, 3, 2])
     with sv_c2:
         if st.button(save_lbl, key=f"sv_{q['id']}_{bi}", type="primary", use_container_width=True):
