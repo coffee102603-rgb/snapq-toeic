@@ -1,4 +1,4 @@
-import streamlit as st
+﻿import streamlit as st
 import json, os, pandas as pd
 from datetime import datetime
 
@@ -197,3 +197,4 @@ with tab5:
         {"항목": "사용 모듈", "값": ", ".join(_modules) if _modules else "없음"},
     ])
     st.dataframe(_summary, use_container_width=True, hide_index=True)
+
