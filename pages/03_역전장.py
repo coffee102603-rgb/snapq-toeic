@@ -32,30 +32,14 @@ def make_alt_question(q):
         cw = w.strip(".,;:!?'\"").lower()
         if len(cw) >= 3 and cw not in skip and cw != clean_ans.lower():
             candidates.append((i, w))
-    # voca_data 단어만 빈칸 후보로 사용 (정답 보장)
-    voca_words = set()
-    for v in voca_data:
-        for w in v.get("expr","").split():
-            voca_words.add(w.strip(".,;:!?\'\"").lower())
-    candidates = [(i,w) for i,w in candidates if w.strip(".,;:!?\'\"").lower() in voca_words]
     if not candidates: return None
     idx, target_word = random.choice(candidates)
-    target_clean = target_word.strip(".,;:!?\'\"")
+    target_clean = target_word.strip(".,;:!?'\"")
     new_words = words.copy()
     new_words[idx] = words[idx].replace(target_clean, "_______")
     new_text = " ".join(new_words).replace(" ,", ",").replace(" .", ".")
-    # 오답도 voca_data 단어에서
-    all_voca = []
-    for v in voca_data:
-        for w in v.get("expr","").split():
-            cw = w.strip(".,;:!?\'\"")
-            if len(cw) > 2 and cw.lower() != target_clean.lower() and cw not in all_voca:
-                all_voca.append(cw)
-    fallback = ["provide","maintain","require","consider","establish","develop","relevant","significant","appropriate","essential","available","potential"]
-    for d in fallback:
-        if d not in all_voca:
-            all_voca.append(d)
-    distractors = random.sample([d for d in all_voca if d.lower() != target_clean.lower()], min(3, len(all_voca)))
+    distractors_pool = ["provide","maintain","require","consider","establish","develop","address","achieve","indicate","determine","implement","evaluate","facilitate","demonstrate","acknowledge","contribute","participate","collaborate","recommend","negotiate","relevant","significant","appropriate","essential","available","potential","sufficient","additional","comprehensive","preliminary"]
+    distractors = random.sample([d for d in distractors_pool if d.lower() != target_clean.lower()], min(3, len(distractors_pool)))
     choices = distractors + [target_clean]
     random.shuffle(choices)
     correct_idx = choices.index(target_clean)
@@ -81,163 +65,76 @@ st.markdown("""<style>
 @keyframes slideUp{from{opacity:0;transform:translateY(15px)}to{opacity:1;transform:translateY(0)}}
 @keyframes choiceFade{from{opacity:0;transform:translateX(-10px)}to{opacity:1;transform:translateX(0)}}\n@keyframes highlightDraw{from{width:0}to{width:100%}}\n@keyframes hlDraw{from{background-size:0% 4px}to{background-size:100% 4px}}
 section[data-testid="stSidebar"]{display:none!important;}
-div[data-testid="stSidebarNav"] a span{font-weight:300!important;opacity:0.4!important;font-size:0.8rem!important;}
-div[data-testid="stSidebarNav"] svg{display:none!important;}
 header[data-testid="stHeader"]{background:transparent!important;}
-.block-container{padding-top:0.2rem!important;padding-bottom:1rem!important;max-width:100%!important;padding-left:1rem!important;padding-right:1rem!important;}
-div[data-testid="stSidebarNav"]{display:none!important;}
-div[data-testid="stNavigation"]{display:none!important;}
-section[data-testid="stSidebar"]{display:none!important;}
-div[data-testid="stSidebarNav"] a span{font-weight:300!important;opacity:0.4!important;font-size:0.8rem!important;}
-div[data-testid="stSidebarNav"] svg{display:none!important;}
-div[data-testid="stVerticalBlock"]>div{gap:0rem;}
+.block-container{padding-top:0.7rem!important;padding-bottom:1rem!important;max-width:100%!important;padding-left:1rem!important;padding-right:1rem!important;}
+div[data-testid="stVerticalBlock"]>div{gap:0.1rem;}
 @keyframes rb{0%,100%{background-position:0% 50%}50%{background-position:100% 50%}}
 
-button[kind="primary"]{background:#000000!important;color:#fff!important;border:2px solid #ff4444!important;border-radius:14px!important;font-size:1.0rem!important;font-weight:900!important;padding:0.4rem 0.6rem!important;}
-button[kind="primary"] p{font-size:1.0rem!important;font-weight:900!important;text-align:center!important;}
-button[kind="secondary"]{background:#000000!important;color:#fff!important;border:2px solid #4488ff!important;border-radius:14px!important;font-size:1.0rem!important;font-weight:900!important;padding:0.4rem 0.6rem!important;}
-button[kind="secondary"] p{font-size:1.0rem!important;font-weight:900!important;text-align:center!important;}
+button[kind="primary"]{background:#000000!important;color:#fff!important;border:2px solid #ff4444!important;border-radius:14px!important;font-size:2rem!important;font-weight:900!important;padding:0.8rem 1rem!important;}
+button[kind="primary"] p{font-size:2rem!important;font-weight:900!important;text-align:center!important;}
+button[kind="secondary"]{background:#000000!important;color:#fff!important;border:2px solid #4488ff!important;border-radius:14px!important;font-size:2rem!important;font-weight:900!important;padding:0.8rem 1rem!important;}
+button[kind="secondary"] p{font-size:2rem!important;font-weight:900!important;text-align:center!important;}
 
 /* 줄노트 */
 .note{background:#fffef5;border-radius:12px;padding:1.5rem 1.2rem;margin:0.5rem 0;
     background-image:repeating-linear-gradient(transparent,transparent 39px,#e8e0c8 39px,#e8e0c8 40px);
     background-position:0 1.5rem;box-shadow:0 3px 15px rgba(0,0,0,0.2);border:1px solid #d8d0b8;min-height:200px;}
-.note-sent{font-size:1.0rem;font-weight:700;color:#1a1a1a;line-height:1.6;margin:0.4rem 0;}
-.note-hl{color:#008844;font-weight:900;font-size:1.0rem;text-decoration:underline;text-underline-offset:5px;text-decoration-thickness:3px;background:rgba(0,180,80,0.08);padding:0 4px;border-radius:4px;}
+.note-sent{font-size:1.7rem;font-weight:700;color:#1a1a1a;line-height:2.2;margin:0.8rem 0;}
+.note-hl{color:#008844;font-weight:900;font-size:1.8rem;text-decoration:underline;text-underline-offset:5px;text-decoration-thickness:3px;background:rgba(0,180,80,0.08);padding:0 4px;border-radius:4px;}
 .note-kr{font-size:1.5rem;font-weight:600;color:#333;line-height:1.8;margin-bottom:0.5rem;}
 .note-ex{font-size:1.3rem;color:#555;line-height:1.6;padding:0.5rem 0.8rem;background:rgba(255,180,0,0.1);border-left:4px solid #ffaa00;border-radius:0 8px 8px 0;}
 
 /* 시험 */
-.exam{background:#fff;border-radius:4px;padding:0.8rem 0.8rem;margin:0.2rem 0;box-shadow:0 2px 10px rgba(0,0,0,0.15);border:1px solid #ccc;font-family:'Times New Roman',serif;}
-.exam-q{font-size:1.0rem;font-weight:900;color:#e8e8ff;line-height:1.5;margin:0.4rem 0;word-break:keep-all;}
+.exam{background:#fff;border-radius:4px;padding:1.8rem 1.5rem;margin:0.4rem 0;box-shadow:0 2px 10px rgba(0,0,0,0.15);border:1px solid #ccc;font-family:'Times New Roman',serif;}
+.exam-q{font-size:2rem;font-weight:900;color:#e8e8ff;line-height:1.9;margin:0.8rem 0;word-break:keep-all;}
 
 /* 리모컨 */
 .sg-rmt{max-width:95vw;margin:0 auto;background:#000000;
     border-radius:32px;padding:24px 16px 16px 16px;border:3px solid #ffd700;
     box-shadow:0 8px 40px rgba(255,215,0,0.2);text-align:center;}
-.sg-rmt-t{font-size:1.12rem;font-weight:900;
+.sg-rmt-t{font-size:2.6rem;font-weight:900;
     background:linear-gradient(90deg,#ffd700,#ffffff,#ffd700);
     background-size:300% 300%;-webkit-background-clip:text;-webkit-text-fill-color:transparent;
     animation:rb 4s ease infinite;letter-spacing:2px;}
 .sg-nag{background:#000000;border:2px solid #ffd700;border-radius:18px;padding:14px;margin:12px 0;text-align:center;}
-.sg-nag-t{font-size:1.0rem;font-weight:900;color:#ffd700;text-shadow:0 0 12px rgba(255,215,0,0.4);}
+.sg-nag-t{font-size:1.4rem;font-weight:900;color:#ffd700;text-shadow:0 0 12px rgba(255,215,0,0.4);}
 .sg-zn{border-radius:18px;padding:14px;margin:12px 0 6px 0;text-align:center;}
-.sg-zl{font-size:1.1rem;font-weight:900;letter-spacing:4px;text-transform:uppercase;}
+.sg-zl{font-size:1.6rem;font-weight:900;letter-spacing:4px;text-transform:uppercase;}
 
-/* 로비 4개 카드 버튼 공통 */
+/* 결과 버튼 균일 높이 강제 */
 div[data-testid="column"] button[kind="primary"],
 div[data-testid="column"] button[kind="secondary"]{
-    min-height:50px!important;
-    height:auto!important;
+    min-height:120px!important;
+    height:120px!important;
     white-space:pre-line!important;
-    font-size:1.0rem!important;
+    font-size:1.55rem!important;
     font-weight:900!important;
-    line-height:1.4!important;
+    line-height:1.6!important;
     display:flex!important;
     align-items:center!important;
     justify-content:center!important;
-    padding:0.5rem 0.5rem!important;
-    box-sizing:border-box!important;
-    word-break:keep-all!important;
 }
 div[data-testid="column"] button[kind="primary"] p,
 div[data-testid="column"] button[kind="secondary"] p{
     white-space:pre-line!important;
-    font-size:1.0rem!important;
+    font-size:1.55rem!important;
     font-weight:900!important;
-    line-height:1.4!important;
+    line-height:1.6!important;
     text-align:center!important;
-    word-break:keep-all!important;
-    overflow-wrap:break-word!important;
-    margin:0!important;
-    padding:0 4px!important;
-}
-
-/* ══════════════════════════════════
-   반응형 — 태블릿 (768px 이하)
-══════════════════════════════════ */
-@media(max-width:768px){
-    .block-container{padding-top:0.5rem!important;padding-bottom:2rem!important;padding-left:0.6rem!important;padding-right:0.6rem!important;}
-    button[kind="primary"],button[kind="secondary"]{font-size:1.0rem!important;padding:0.4rem 0.6rem!important;}
-    button[kind="primary"] p,button[kind="secondary"] p{font-size:1.0rem!important;}
-    div[data-testid="column"] button[kind="primary"],
-    div[data-testid="column"] button[kind="secondary"]{min-height:50px!important;font-size:1.3rem!important;}
-    div[data-testid="column"] button[kind="primary"] p,
-    div[data-testid="column"] button[kind="secondary"] p{font-size:1.3rem!important;}
-    .sg-rmt-t{font-size:1.6rem!important;}
-    .sg-nag-t{font-size:1.2rem!important;}
-    .sg-zl{font-size:1.3rem!important;}
-    .note-sent{font-size:1.4rem!important;line-height:2!important;}
-    .note-hl{font-size:1.5rem!important;}
-    .note-kr{font-size:1.2rem!important;}
-    .note-ex{font-size:1.1rem!important;}
-    .exam-q{font-size:1.0rem!important;line-height:1.5!important;}
-}
-
-/* ══════════════════════════════════
-   반응형 — 모바일 (480px 이하)
-══════════════════════════════════ */
-@media(max-width:480px){
-    .block-container{padding-top:0.3rem!important;padding-bottom:1.5rem!important;padding-left:0.4rem!important;padding-right:0.4rem!important;}
-    button[kind="primary"],button[kind="secondary"]{font-size:0.9rem!important;padding:0.3rem 0.4rem!important;border-radius:12px!important;}
-    button[kind="primary"] p,button[kind="secondary"] p{font-size:0.9rem!important;}
-    div[data-testid="column"] button[kind="primary"],
-    div[data-testid="column"] button[kind="secondary"]{min-height:50px!important;font-size:1.1rem!important;padding:0.3rem 0.4rem!important;}
-    div[data-testid="column"] button[kind="primary"] p,
-    div[data-testid="column"] button[kind="secondary"] p{font-size:1.1rem!important;line-height:1.6!important;}
-    .sg-rmt{padding:16px 10px 12px!important;border-radius:22px!important;}
-    .sg-rmt-t{font-size:1.28rem!important;letter-spacing:1px!important;}
-    .sg-nag-t{font-size:1.1rem!important;}
-    .sg-zl{font-size:1.1rem!important;letter-spacing:2px!important;}
-    .note{padding:1rem 0.8rem!important;}
-    .note-sent{font-size:1.2rem!important;line-height:1.9!important;}
-    .note-hl{font-size:1.3rem!important;}
-    .note-kr{font-size:1.05rem!important;}
-    .note-ex{font-size:0.95rem!important;}
-    .exam{padding:1.2rem 1rem!important;}
-    .exam-q{font-size:0.95rem!important;line-height:1.5!important;}
-}
-
-/* ══════════════════════════════════
-   반응형 — 초소형 (360px 이하)
-══════════════════════════════════ */
-@media(max-width:360px){
-    div[data-testid="column"] button[kind="primary"],
-    div[data-testid="column"] button[kind="secondary"]{min-height:50px!important;font-size:1rem!important;}
-    div[data-testid="column"] button[kind="primary"] p,
-    div[data-testid="column"] button[kind="secondary"] p{font-size:1rem!important;}
-    .sg-rmt-t{font-size:1.04rem!important;}
-    .note-sent{font-size:1.1rem!important;}
-    .exam-q{font-size:0.85rem!important;}
-}
-
-/* P5학습 버튼 강제 가로배치 */
-@media (max-width: 768px) {
-    div[data-testid="stHorizontalBlock"] {
-        flex-wrap: nowrap !important;
-        flex-direction: row !important;
-    }
-    div[data-testid="stHorizontalBlock"] > div[data-testid="stColumn"] {
-        min-width: 0 !important;
-        flex: 1 !important;
-    }
 }
 </style>""", unsafe_allow_html=True)
 
 # ═══ 세션 ═══
-for k,v in {"sg_phase":"lobby","sg_idx":0,"sg_mode":None,"rv_battle":None,"rv_mode":None,
+for k,v in {"sg_phase":"lobby","sg_idx":0,"sg_mode":None,
     "sg_exam_qs":[],"sg_exam_idx":0,"sg_exam_results":[],"sg_exam_start":None,"sg_exam_wrong":False,
+    "p5_exam_recorded":False,
     "sg_wave":1,"sg_wave_idx":0,"sg_wave_results":[],"sg_wave_start":None,"sg_wave_dead":False,
     "sg_combo_score":0,"sg_combo_count":0,"sg_combo_idx":0,"sg_combo_start":None,"sg_combo_over":False}.items():
     if k not in st.session_state: st.session_state[k]=v
 
 storage = load_storage()
 p5_data = storage.get("saved_questions",[])
-# session_state 우선, 없으면 파일에서
-if "saved_expressions" in st.session_state:
-    voca_data = st.session_state["saved_expressions"]
-else:
-    voca_data = storage.get("saved_expressions",[])
+voca_data = storage.get("saved_expressions",[])
 
 # ════════════════════════════════
 # PHASE: LOBBY (리모컨)
@@ -247,132 +144,113 @@ if st.session_state.sg_phase == "lobby":
     p5_rec = storage.get("p5_exam_record", {"wins":0,"total":0})
     voca_rec = storage.get("voca_exam_record", {"wins":0,"total":0})
     p5_rate = f'{int(p5_rec["wins"]/p5_rec["total"]*100)}%' if p5_rec["total"] > 0 else "—"
-    combo_best = storage.get("combo_best", 0)
-    combo_label = f"⭐{combo_best}" if combo_best > 0 else "—"
+    voca_rate = f'{int(voca_rec["wins"]/voca_rec["total"]*100)}%' if voca_rec["total"] > 0 else "—"
 
-    # 뮤지컬 CSS
-    st.markdown("""<style>
-    @keyframes fireGlow{0%,100%{text-shadow:0 0 20px #ff8800,0 0 40px #ff4400;}50%{text-shadow:0 0 35px #ffd700,0 0 60px #ff8800;}}
-    @keyframes stageIn{from{opacity:0;transform:translateY(25px);}to{opacity:1;transform:translateY(0);}}
-    @keyframes firePulse{0%,100%{box-shadow:0 0 25px rgba(255,136,0,0.5),0 0 50px rgba(255,68,0,0.2);}50%{box-shadow:0 0 45px rgba(255,215,0,0.9),0 0 80px rgba(255,136,0,0.5);}}
-    @keyframes nagFade{0%{opacity:0;transform:translateY(8px)}100%{opacity:1;transform:translateY(0)}}
+    # ═══ 상단 ═══
+    st.markdown("""<div style="background:#000000;border:2px solid #ffd700;border-radius:22px;padding:16px;text-align:center;margin-bottom:12px;">
+        <div style="font-size:2.4rem;font-weight:900;letter-spacing:6px;color:#ffd700;text-shadow:0 0 20px rgba(255,215,0,0.4);">🔥  역 전 장</div>
+    </div>""", unsafe_allow_html=True)
 
-    .rv-title{text-align:center;padding:16px 8px 6px 8px;}
-    .rv-title h1{font-size:1.5rem!important;font-size:3.2rem;font-weight:900;letter-spacing:6px;color:#ffd700;animation:fireGlow 2.5s ease infinite;margin:0;}
-    .rv-title p{font-size:1.0rem;color:#ff8800;font-weight:900;letter-spacing:3px;margin:4px 0 0 0;}
+    nag = random.choice(NAGGING)
+    nag_words = nag.split()
+    nag_spans = ""
+    for i, w in enumerate(nag_words):
+        delay = i * 0.4
+        nag_spans += f'<span style="opacity:0;animation:nagFade 0.5s ease {delay}s forwards;font-size:1.8rem;font-weight:900;color:#ffcc00;">{w} </span>'
+    components.html(f"""
+    <style>
+    @keyframes nagFade{{0%{{opacity:0;transform:translateY(8px)}}100%{{opacity:1;transform:translateY(0)}}}}
+    </style>
+    <div style="text-align:center;padding:10px 0 16px 0;background:transparent;">{nag_spans}</div>
+    """, height=70)
 
-    .rv-stage{animation:stageIn 0.5s ease;border-radius:20px;padding:18px 12px;margin:8px 0;}
-    .rv-stage-1{background:linear-gradient(145deg,#0a0500,#150900);border:2px solid rgba(255,136,0,0.6);box-shadow:0 0 20px rgba(255,136,0,0.1);}
-    .rv-stage-2p5{background:linear-gradient(145deg,#0a0000,#180500);border:2px solid rgba(255,68,0,0.6);box-shadow:0 0 20px rgba(255,68,0,0.1);}
-    .rv-stage-2p7{background:linear-gradient(145deg,#080500,#150a00);border:2px solid rgba(255,170,0,0.6);box-shadow:0 0 20px rgba(255,170,0,0.1);}
-    .rv-stage-3{background:linear-gradient(145deg,#0a0600,#1a0800);border:2px solid rgba(255,215,0,0.7);box-shadow:0 0 30px rgba(255,215,0,0.15);}
-
-    .rv-act{font-size:0.7rem;font-weight:900;letter-spacing:4px;margin-bottom:8px;text-align:center;}
-    .rv-act-1{color:#ff8800;}
-    .rv-act-2p5{color:#ff4400;}
-    .rv-act-2p7{color:#ffaa00;}
-    .rv-act-3{color:#ffd700;}
-
-    .rv-msg{font-size:1.25rem;font-weight:900;color:#fff;text-align:center;line-height:1.5;margin-bottom:12px;}
-    .rv-msg .fire{color:#ff8800;}
-    .rv-msg .gold{color:#ffd700;}
-    .rv-msg .red{color:#ff4444;}
-    .rv-msg .cyan{color:#00ffcc;}
-
-    .rv-confirmed{text-align:center;padding:6px;margin-bottom:8px;}
-    .rv-confirmed span{font-size:1rem;color:#ffd700;font-weight:900;background:rgba(255,136,0,0.15);padding:5px 14px;border-radius:20px;border:1px solid rgba(255,136,0,0.5);}
-
-    @keyframes rvshake{0%,100%{transform:translateY(0);}20%{transform:translateY(-9px);}50%{transform:translateY(-3px);}75%{transform:translateY(-7px);}90%{transform:translateY(-1px);}}
-    @keyframes rvblaze{0%,100%{box-shadow:0 0 15px rgba(255,136,0,0.3);}50%{box-shadow:0 0 60px rgba(255,210,0,1),0 0 120px rgba(255,80,0,0.7);border-color:rgba(255,235,0,1)!important;}}
-    button[kind="secondary"]{
-        background:#080300!important;border:2px solid rgba(255,136,0,0.7)!important;
-        border-radius:14px!important;font-size:1.3rem!important;font-weight:900!important;
-        padding:14px 8px!important;color:#e0e0e0!important;min-height:64px!important;
-        animation:rvshake 1.6s ease-in-out infinite,rvblaze 1.9s ease-in-out infinite!important;
-    }
-    button[kind="secondary"] p{font-size:1.3rem!important;font-weight:900!important;white-space:pre-line!important;line-height:1.3!important;text-align:center!important;}
-
-    button[data-testid="stBaseButton-primary"]{
-        background:linear-gradient(135deg,#3a1500,#7a2a00,#aa4400)!important;
-        border:3px solid #ffd700!important;font-size:1.6rem!important;font-weight:900!important;
-        padding:1.2rem!important;color:#ffd700!important;border-radius:16px!important;
-        animation:firePulse 1.5s ease infinite!important;
-        text-shadow:0 0 10px rgba(255,215,0,0.8)!important;
-    }
-    #MainMenu{visibility:hidden!important;}header[data-testid="stHeader"]{height:0!important;visibility:hidden!important;}div[data-testid="stToolbar"]{visibility:hidden!important;}.block-container{padding-top:0.2rem!important;}
-    </style>""", unsafe_allow_html=True)
-
-    # 타이틀
-    st.markdown('''<div class="rv-title">
-        <h1>🔥 역 전 장</h1>
-    </div>''', unsafe_allow_html=True)
-
-
-
-    st.markdown('<div style="text-align:center;font-size:1.1rem;font-weight:900;color:#ffcc00;letter-spacing:1px;margin:4px 0 10px 0;">👇 전장을 선택하고 돌격하라!</div>', unsafe_allow_html=True)
-    _rv_battle = st.session_state.get("rv_battle", None)   # "p5" or "p7"
-    _rv_mode = st.session_state.get("rv_mode", None)       # "p5s","p5e","p7s","p7e"
-
-    # ━━━ 1막: 전장 선택 ━━━
-    if not _rv_battle:
-        c1, c2 = st.columns(2)
-        with c1:
-            if st.button("⚔️\nP5 어법·어휘\n틀린 문제만 골라\n이번엔 완전히 박살낸다!", key="rv_p5", type="secondary", use_container_width=True):
-                st.session_state.rv_battle = "p5"; st.rerun()
-        with c2:
-            if st.button("📖\nP7 독해 약점\n단어·해석·패러프라이징\n이번엔 내 것으로 만든다!", key="rv_p7", type="secondary", use_container_width=True):
-                st.session_state.rv_battle = "p7"; st.rerun()
-
-    # ━━━ 2막 P5: 전투 방식 선택 ━━━
-    elif _rv_battle == "p5" and not _rv_mode:
-        st.markdown('''<div class="rv-confirmed"><span>⚔️ P5 전장 귀환!</span></div>''', unsafe_allow_html=True)
-    
-        if st.button(f"😤  P5 학습모드\n틀린 문제, 이번엔 완전히 박살! ({len(p5_data)}문제)", key="rv_p5s", type="secondary", use_container_width=True):
+    # ═══ 학습 줄 ═══
+    r1c1, r1c2 = st.columns([1,1], gap="medium")
+    with r1c1:
+        if st.button(f"😤  P5 틀린 것들\n반드시 잡는다! ({len(p5_data)}문제)", key="sg_p5s", type="secondary", use_container_width=True):
             if p5_data:
-                st.session_state.rv_mode="p5s"; st.session_state.sg_phase="p5_study"; st.session_state.sg_idx=0; st.rerun()
+                st.session_state.sg_phase = "p5_study"; st.session_state.sg_idx = 0; st.rerun()
             else: st.warning("P5 저장 문제 없음!")
-        if st.button(f"🔥  P5 시험모드\n이번엔 절대 안 틀린다, 증명하라! 🏆{p5_rate}", key="rv_p5e", type="secondary", use_container_width=True):
-            if len(p5_data) >= 5:
-                import random as _r
-                qs = _r.sample(p5_data, 5)
-                st.session_state.sg_exam_qs=qs; st.session_state.sg_exam_idx=0
-                st.session_state.sg_exam_results=[]; st.session_state.sg_exam_start=time.time()
-                st.session_state.sg_exam_wrong=False; st.session_state.rv_mode="p5e"
-                st.session_state.sg_phase="p5_exam"; st.rerun()
-            else: st.warning("최소 5문제 필요!")
-        if st.button("↩ 전장 다시 선택", key="rv_back1", use_container_width=True):
-            st.session_state.rv_battle=None; st.rerun()
-
-    # ━━━ 2막 P7: 전투 방식 선택 ━━━
-    elif _rv_battle == "p7" and not _rv_mode:
-        st.markdown('''<div class="rv-confirmed"><span>📖 P7 전장 귀환!</span></div>''', unsafe_allow_html=True)
-    
-        if st.button(f"🧠  P7 어휘 학습모드\n단어를 완전히 내 몸에 새겨라! ({len(voca_data)}단어)", key="rv_p7s", type="secondary", use_container_width=True):
+    with r1c2:
+        if st.button(f"🧠  P7 단어, 완전히\n내 것으로! ({len(voca_data)}단어)", key="sg_vs", type="secondary", use_container_width=True):
             if len(voca_data) >= 3:
-                st.session_state.sg_wave=1; st.session_state.sg_wave_idx=0
-                st.session_state.sg_wave_results=[]; st.session_state.sg_wave_dead=False
-                st.session_state.sg_wave_start=time.time()
+                st.session_state.sg_wave = 1; st.session_state.sg_wave_idx = 0
+                st.session_state.sg_wave_results = []; st.session_state.sg_wave_dead = False
+                st.session_state.sg_wave_start = time.time()
                 if "sg_sv_pool" in st.session_state: del st.session_state.sg_sv_pool
                 if "sg_wave_start" in st.session_state: del st.session_state.sg_wave_start
-                st.session_state.rv_mode="p7s"; st.session_state.sg_phase="survival"; st.rerun()
+                st.session_state.sg_phase = "survival"; st.rerun()
             else: st.warning("최소 3단어 필요!")
-        if st.button(f"💪  P7 어휘 시험모드\n진짜 내 것이 됐는지 증명하라! {combo_label}", key="rv_p7e", type="secondary", use_container_width=True):
-            if len(voca_data) >= 3:
-                st.session_state.sg_combo_score=0; st.session_state.sg_combo_count=0
-                st.session_state.sg_combo_idx=0; st.session_state.sg_combo_start=time.time()
-                st.session_state.sg_combo_over=False
-                if "sg_combo_pool" in st.session_state: del st.session_state.sg_combo_pool
-                st.session_state.rv_mode="p7e"; st.session_state.sg_phase="combo_rush"; st.rerun()
-            else: st.warning("최소 3단어 필요!")
-        if st.button("↩ 전장 다시 선택", key="rv_back2", use_container_width=True):
-            st.session_state.rv_battle=None; st.rerun()
 
-    # ━━━ 항상 고정 네비게이션 ━━━
-    st.markdown('<div style="font-size:0.7rem;color:#331100;text-align:center;letter-spacing:3px;margin-top:16px;padding-top:12px;border-top:1px solid #1a0800;">N A V I G A T E</div>', unsafe_allow_html=True)
-    mn1, mn2, mn3 = st.columns(3)
+    # 간격
+    st.markdown('<div style="height:14px;"></div>', unsafe_allow_html=True)
+
+    # ═══ 시험 줄 ═══
+    r2c1, r2c2 = st.columns([1,1], gap="medium")
+    with r2c1:
+        if st.button(f"🔥  P5, 이번엔 절대\n안 틀린다! 🏆{p5_rate}", key="sg_p5e", type="primary", use_container_width=True):
+            if len(p5_data) >= 5:
+                qs = random.sample(p5_data, 5)
+                st.session_state.sg_exam_qs = qs; st.session_state.sg_exam_idx = 0
+                st.session_state.sg_exam_results = []; st.session_state.sg_exam_start = time.time()
+                st.session_state.sg_exam_wrong = False; st.session_state.sg_phase = "p5_exam"; st.rerun()
+            else: st.warning("최소 5문제 필요!")
+    with r2c2:
+        combo_best = storage.get("combo_best", 0)
+        combo_label = f"⭐{combo_best}" if combo_best > 0 else "—"
+        if st.button(f"💪  P7 단어\n진짜 됐는지 확인! ⭐{combo_label}", key="sg_ve", type="primary", use_container_width=True):
+            if len(voca_data) >= 3:
+                st.session_state.sg_combo_score = 0; st.session_state.sg_combo_count = 0
+                st.session_state.sg_combo_idx = 0; st.session_state.sg_combo_start = time.time()
+                st.session_state.sg_combo_over = False
+                if "sg_combo_pool" in st.session_state: del st.session_state.sg_combo_pool
+                st.session_state.sg_phase = "combo_rush"; st.rerun()
+            else: st.warning("최소 3단어 필요!")
+
+    # 간격
+    st.markdown('<div style="height:16px;"></div>', unsafe_allow_html=True)
+
+    # ═══ 버튼 색상 JS ═══
+    import streamlit.components.v1 as _c
+    _c.html("""<script>
+    function rvbtn(){
+        const doc=window.parent.document;
+        const btns=doc.querySelectorAll('button');
+        btns.forEach(btn=>{
+            const t=btn.textContent||'';
+            if(t.includes('P5 학습')){
+                btn.style.cssText='background:#000000!important;border:3px solid #4488ff!important;box-shadow:0 0 18px rgba(68,136,255,0.4)!important;border-radius:14px!important;color:#fff!important;font-size:2rem!important;font-weight:900!important;padding:0.8rem 1rem!important;';
+                btn.querySelectorAll('p').forEach(p=>{p.style.cssText='font-size:2rem!important;font-weight:900!important;text-align:center!important;white-space:pre-line!important;';});
+            } else if(t.includes('웨이브')){
+                btn.style.cssText='background:#000000!important;border:3px solid #00ccaa!important;box-shadow:0 0 18px rgba(0,204,170,0.4)!important;border-radius:14px!important;color:#fff!important;font-size:2rem!important;font-weight:900!important;padding:0.8rem 1rem!important;';
+                btn.querySelectorAll('p').forEach(p=>{p.style.cssText='font-size:2rem!important;font-weight:900!important;text-align:center!important;white-space:pre-line!important;';});
+            } else if(t.includes('P5 시험')){
+                btn.style.cssText='background:#000000!important;border:3px solid #ff4444!important;box-shadow:0 0 18px rgba(255,68,68,0.4)!important;border-radius:14px!important;color:#fff!important;font-size:2rem!important;font-weight:900!important;padding:0.8rem 1rem!important;';
+                btn.querySelectorAll('p').forEach(p=>{p.style.cssText='font-size:2rem!important;font-weight:900!important;text-align:center!important;white-space:pre-line!important;';});
+            } else if(t.includes('콤보러시')){
+                btn.style.cssText='background:#000000!important;border:3px solid #ff9900!important;box-shadow:0 0 18px rgba(255,153,0,0.4)!important;border-radius:14px!important;color:#fff!important;font-size:2rem!important;font-weight:900!important;padding:0.8rem 1rem!important;';
+                btn.querySelectorAll('p').forEach(p=>{p.style.cssText='font-size:2rem!important;font-weight:900!important;text-align:center!important;white-space:pre-line!important;';});
+            } else if(t.includes('P5전장')||t.includes('P7전장')||t.includes('메인')){
+                btn.style.cssText='background:#000000!important;border:2px solid #ffd700!important;box-shadow:0 0 12px rgba(255,215,0,0.3)!important;border-radius:14px!important;color:#fff!important;font-size:2rem!important;font-weight:900!important;padding:0.8rem 1rem!important;';
+                btn.querySelectorAll('p').forEach(p=>{p.style.cssText='font-size:2rem!important;font-weight:900!important;text-align:center!important;';});
+            }
+        });
+    }
+    setTimeout(rvbtn,200);setTimeout(rvbtn,800);setTimeout(rvbtn,2000);
+    const obs=new MutationObserver(()=>{setTimeout(rvbtn,100);});
+    obs.observe(window.parent.document.body,{childList:true,subtree:true});
+    </script>""", height=0)
+
+    # ═══ 하단 ═══
+    st.markdown("""<div style="background:#000000;border:2px solid #ffd700;border-radius:22px;padding:10px;text-align:center;">
+        <div style="font-size:1.1rem;font-weight:900;color:#7799bb;letter-spacing:4px;">🧭 N A V I G A T E</div>
+    </div>""", unsafe_allow_html=True)
+    st.markdown('<div style="height:6px;"></div>', unsafe_allow_html=True)
+    mn1, mn2, mn3 = st.columns(3, gap="medium")
     with mn1:
         if st.button("⚔️ P5전장", key="sg_nav1", type="secondary", use_container_width=True):
-            st.session_state.phase="lobby"; st.session_state._p5_active=False
+            st.session_state.phase = "lobby"
+            st.session_state._p5_active = False
             st.switch_page("pages/02_P5_Arena.py")
     with mn2:
         if st.button("📖 P7전장", key="sg_nav2", type="secondary", use_container_width=True):
@@ -380,36 +258,44 @@ if st.session_state.sg_phase == "lobby":
     with mn3:
         if st.button("🏠 메인", key="sg_nav3", type="secondary", use_container_width=True):
             st.switch_page("main_hub.py")
-    import streamlit.components.v1 as _cmp
-    _cmp.html("""<script>
-    (function(){
-        function styleNavBtns(){
-            var doc=window.parent.document;
-            var rows=doc.querySelectorAll('[data-testid="stHorizontalBlock"]');
-            if(!rows.length) return;
-            var lastRow=rows[rows.length-1];
-            var btns=lastRow.querySelectorAll('button');
-            btns.forEach(function(b){
-                b.style.setProperty('animation','none','important');
-                b.style.setProperty('transform','none','important');
-                b.style.setProperty('border','1.5px solid rgba(255,255,255,0.4)','important');
-                b.style.setProperty('background','#030303','important');
-                b.style.setProperty('box-shadow','none','important');
-                b.style.setProperty('color','#ccc','important');
-            });
-        }
-        setTimeout(styleNavBtns,150);setTimeout(styleNavBtns,500);setTimeout(styleNavBtns,1200);
-        var ob=new MutationObserver(function(){setTimeout(styleNavBtns,100);});
-        ob.observe(window.parent.document.body,{childList:true,subtree:true,attributes:true,attributeFilter:['style']});
-    })();
-    </script>""", height=0)
 
+    with st.expander("⚠️ 역전장 관리"):
+        if st.button("🗑 P5 전체 삭제", key="del_p5"):
+            storage["saved_questions"] = []; save_storage(storage); st.rerun()
+        if st.button("🗑 VOCA 전체 삭제", key="del_voca"):
+            storage["saved_expressions"] = []; save_storage(storage); st.rerun()
+        if st.button("🗑 시험 기록 초기화", key="del_rec"):
+            storage["p5_exam_record"] = {"wins":0,"total":0}
+            storage["voca_exam_record"] = {"wins":0,"total":0}
+            save_storage(storage); st.rerun()
+
+    # JS — 밝고 세련된 색상
+    components.html("""
+    <script>
+    function sgC(){
+        const d=window.parent.document;
+        d.querySelectorAll('button[kind="secondary"]').forEach(b=>{
+            const t=b.textContent||'';
+            if(t.includes('P5 학습')){b.style.cssText='background:linear-gradient(145deg,#3d1530,#5a2045)!important;border:2.5px solid #ee5599!important;border-radius:22px!important;min-height:120px!important;color:#fff!important;font-size:1.6rem!important;font-weight:900!important;box-shadow:0 4px 20px rgba(238,85,153,0.15)!important;';}
+            if(t.includes('VOCA 학습')||t.includes('웨이브')){b.style.cssText='background:linear-gradient(145deg,#0a2a4a,#153858)!important;border:2.5px solid #4488ff!important;border-radius:22px!important;min-height:120px!important;color:#fff!important;font-size:1.6rem!important;font-weight:900!important;box-shadow:0 4px 20px rgba(68,136,255,0.15)!important;';}
+            if(t.includes('P5전장')||t.includes('P7전장')||t.includes('메인')){b.style.cssText='background:linear-gradient(145deg,#1a2545,#253560)!important;border:1.5px solid #5577aa!important;border-radius:16px!important;color:#aaccee!important;font-size:1.3rem!important;font-weight:900!important;';}
+        });
+        d.querySelectorAll('button[kind="primary"]').forEach(b=>{
+            const t=b.textContent||'';
+            if(t.includes('P5 시험')){b.style.cssText='background:linear-gradient(145deg,#4a1525,#6a2035)!important;border:2.5px solid #ff4477!important;border-radius:22px!important;min-height:120px!important;color:#fff!important;font-size:1.6rem!important;font-weight:900!important;box-shadow:0 4px 20px rgba(255,68,119,0.2)!important;';}
+            if(t.includes('VOCA 시험')||t.includes('콤보러시')){b.style.cssText='background:linear-gradient(145deg,#3a1a00,#5a2a0a)!important;border:2.5px solid #ff8800!important;border-radius:22px!important;min-height:120px!important;color:#fff!important;font-size:1.6rem!important;font-weight:900!important;box-shadow:0 4px 20px rgba(255,136,0,0.2)!important;';}
+        });
+    }
+    setTimeout(sgC,200);setTimeout(sgC,800);
+    const o=new MutationObserver(sgC);o.observe(window.parent.document.body,{childList:true,subtree:true});
+    </script>
+    """, height=0)
 
 
 elif st.session_state.sg_phase == "p5_study":
     if not p5_data:
         st.warning("저장된 문제가 없습니다!")
-        st.session_state.sg_phase = "lobby"; st.session_state.rv_battle = None; st.session_state.rv_mode = None; st.rerun()
+        st.session_state.sg_phase = "lobby"; st.rerun()
 
     bi = st.session_state.sg_idx
     if bi >= len(p5_data): bi = len(p5_data)-1
@@ -417,6 +303,14 @@ elif st.session_state.sg_phase == "p5_study":
     q = p5_data[bi]
 
     st.markdown('<div style="text-align:center;"><span style="font-size:1.5rem;font-weight:900;color:#44cc88;">📖 P5 학습모드</span></div>', unsafe_allow_html=True)
+
+    nc1, nc2, nc3 = st.columns([1, 6, 1])
+    with nc1:
+        if st.button("◀", key="st_p", disabled=bi<=0, use_container_width=True):
+            st.session_state.sg_idx = bi-1; st.rerun()
+    with nc3:
+        if st.button("▶", key="st_n", disabled=bi>=len(p5_data)-1, use_container_width=True):
+            st.session_state.sg_idx = bi+1; st.rerun()
 
     ans = q["ch"][q["a"]]
     clean = ans.split(") ",1)[-1] if ") " in ans else ans
@@ -436,22 +330,15 @@ elif st.session_state.sg_phase == "p5_study":
         <div class="note-ex">💡 {exk}</div>
     </div>''', unsafe_allow_html=True)
 
-    r1c1, r1c2 = st.columns(2)
-    with r1c1:
-        if st.button("◀ 이전", key="st_p", disabled=bi<=0, use_container_width=True):
-            st.session_state.sg_idx = bi-1; st.rerun()
-    with r1c2:
-        if st.button("다음 ▶", key="st_n", disabled=bi>=len(p5_data)-1, use_container_width=True):
-            st.session_state.sg_idx = bi+1; st.rerun()
-    r2c1, r2c2 = st.columns(2)
-    with r2c1:
+    c1, c2, c3, c4 = st.columns(4)
+    with c1:
         if st.button("🗑 삭제", key="del_q", type="secondary", use_container_width=True):
             p5_data.pop(bi)
             storage["saved_questions"] = p5_data
             save_storage(storage)
             if bi >= len(p5_data): st.session_state.sg_idx = max(0, len(p5_data)-1)
             st.rerun()
-    with r2c2:
+    with c2:
         if st.button("📝 시험", key="go_exam", type="primary", use_container_width=True):
             if len(p5_data) >= 5:
                 qs = random.sample(p5_data, 5)
@@ -462,11 +349,10 @@ elif st.session_state.sg_phase == "p5_study":
                 st.session_state.sg_exam_wrong = False
                 st.session_state.sg_phase = "p5_exam"; st.rerun()
             else: st.warning("최소 5문제 필요!")
-    r3c1, r3c2 = st.columns(2)
-    with r3c1:
+    with c3:
         if st.button("📦 로비", key="back_lobby", type="secondary", use_container_width=True):
-            st.session_state.sg_phase = "lobby"; st.session_state.rv_battle = None; st.session_state.rv_mode = None; st.rerun()
-    with r3c2:
+            st.session_state.sg_phase = "lobby"; st.rerun()
+    with c4:
         if st.button("🏠 메인", key="go_main_p5s", type="secondary", use_container_width=True):
             st.switch_page("main_hub.py")
 
@@ -474,7 +360,7 @@ elif st.session_state.sg_phase == "p5_study":
 # P5 시험모드 — 33초 타임폭탄
 # ════════════════════════════════
 elif st.session_state.sg_phase == "p5_exam":
-    st_autorefresh(interval=1000, limit=36, key="p5_exam_timer")
+    st_autorefresh(interval=1000, limit=40, key="p5_exam_timer")
     qs = st.session_state.sg_exam_qs
     qi = st.session_state.sg_exam_idx
     if qi >= len(qs):
@@ -491,34 +377,34 @@ elif st.session_state.sg_phase == "p5_exam":
     # 배경색 점차 붉어짐 (움직임 없음!)
     if rem <= 5:
         bg_css = "background:linear-gradient(135deg,#2a0808,#3a0a1a 30%,#2a0510 70%,#2a0808)!important;"
-        tcl = "#ff0000"; tsz = "2.5rem"; tglow = "text-shadow:0 0 40px #ff0000,0 0 80px #cc0000;"
+        tcl = "#ff0000"; tsz = "5rem"; tglow = "text-shadow:0 0 40px #ff0000,0 0 80px #cc0000;"
         twarn = '<div style="text-align:center;font-size:1.4rem;color:#ff0000;font-weight:900;margin-top:4px;">💀💀 폭발한다!! 💀💀</div>'
     elif rem <= 10:
         bg_css = "background:linear-gradient(135deg,#1e0815,#2e0a25 30%,#1e0818 70%,#1e0815)!important;"
-        tcl = "#ff2200"; tsz = "2rem"; tglow = "text-shadow:0 0 25px #ff2200,0 0 50px #ff0000;"
+        tcl = "#ff2200"; tsz = "4rem"; tglow = "text-shadow:0 0 25px #ff2200,0 0 50px #ff0000;"
         twarn = '<div style="text-align:center;font-size:1.1rem;color:#ff4444;font-weight:900;">💀 서둘러!! 또 틀릴 거야?! 💀</div>'
     elif rem <= 15:
         bg_css = "background:linear-gradient(135deg,#160a1e,#220e30 30%,#160a22 70%,#160a1e)!important;"
-        tcl = "#ff6600"; tsz = "1.6rem"; tglow = "text-shadow:0 0 15px #ff6600;"
+        tcl = "#ff6600"; tsz = "3.2rem"; tglow = "text-shadow:0 0 15px #ff6600;"
         twarn = '<div style="text-align:center;font-size:1rem;color:#ff8844;font-weight:900;">⚡ 서둘러!! ⚡</div>'
     elif rem <= 20:
         bg_css = "background:linear-gradient(135deg,#121530,#1e1845 30%,#121838 70%,#121530)!important;"
-        tcl = "#ffaa00"; tsz = "1.4rem"; tglow = "text-shadow:0 0 8px #ffaa00;"
+        tcl = "#ffaa00"; tsz = "2.8rem"; tglow = "text-shadow:0 0 8px #ffaa00;"
         twarn = ""
     else:
         bg_css = ""
-        tcl = "#44ff88"; tsz = "1.2rem"; tglow = ""; twarn = ""
+        tcl = "#44ff88"; tsz = "2.4rem"; tglow = ""; twarn = ""
     tpct = int(rem / 33 * 100)
     q_border = "rgba(255,50,50,0.6)" if rem <= 10 else "rgba(100,140,255,0.4)"
     q_shadow = "0 0 40px rgba(255,0,0,0.2)" if rem <= 10 else "0 0 30px rgba(100,140,255,0.15)"
     if bg_css:
         st.markdown(f'<style>.stApp{{{bg_css}}}</style>', unsafe_allow_html=True)
-    st.markdown(f'<div style="text-align:center;margin:2px 0;padding:4px;"><span style="font-size:{tsz};font-weight:900;color:{tcl};font-family:Impact,Arial Black,sans-serif;{tglow}">{rem}</span><span style="font-size:0.8rem;color:{tcl};opacity:0.7;">s</span><div style="font-size:1rem;color:#888;font-weight:700;margin-top:4px;">Q{qi+1} / 5 · 남은 {left}문제</div></div>', unsafe_allow_html=True)
+    st.markdown(f'<div style="text-align:center;margin:8px 0;padding:10px;"><span style="font-size:{tsz};font-weight:900;color:{tcl};font-family:Impact,Arial Black,sans-serif;{tglow}">{rem}</span><span style="font-size:1.5rem;color:{tcl};opacity:0.7;">s</span><div style="font-size:1rem;color:#888;font-weight:700;margin-top:4px;">Q{qi+1} / 5 · 남은 {left}문제</div></div>', unsafe_allow_html=True)
     st.markdown(f'<div style="background:rgba(255,255,255,0.06);border-radius:12px;padding:3px;margin:4px 0;"><div style="background:linear-gradient(90deg,{tcl},#4488ff);height:12px;border-radius:10px;width:{tpct}%;"></div></div>', unsafe_allow_html=True)
     if twarn:
         st.markdown(twarn, unsafe_allow_html=True)
     blank_text = q["text"].replace("_______", '<span style="border-bottom:3px solid #66aaff;padding:0 16px;color:#88bbff;">________</span>')
-    st.markdown(f'<div style="background:linear-gradient(145deg,#141435,#1c1c4a);border:2.5px solid {q_border};border-radius:20px;padding:1.8rem 1.4rem;margin:10px 0;box-shadow:{q_shadow};"><div style="font-size:1.1rem;font-weight:900;color:#e8e8ff;line-height:1.5;font-family:Georgia,serif;">{blank_text}</div></div>', unsafe_allow_html=True)
+    st.markdown(f'<div style="background:linear-gradient(145deg,#141435,#1c1c4a);border:2.5px solid {q_border};border-radius:20px;padding:1.8rem 1.4rem;margin:10px 0;box-shadow:{q_shadow};"><div style="font-size:2.4rem;font-weight:900;color:#e8e8ff;line-height:1.7;font-family:Georgia,serif;">{blank_text}</div></div>', unsafe_allow_html=True)
     for i, ch in enumerate(q["ch"]):
         if st.button(ch, key=f"ex_{qi}_{i}", type="secondary", use_container_width=True):
             ok = (i == q["a"])
@@ -530,7 +416,7 @@ elif st.session_state.sg_phase == "p5_exam":
                 st.session_state.sg_exam_idx += 1
                 st.rerun()
     components.html("""<script>
-    function stP(){const d=window.parent.document;d.querySelectorAll('button[kind="secondary"]').forEach(b=>{const t=(b.textContent||'').trim();if(/^\([A-D]\)/.test(t)){b.style.cssText='background:linear-gradient(135deg,rgba(100,140,200,0.25),rgba(100,140,200,0.12))!important;color:#ffffff!important;border:2px solid rgba(100,140,200,0.5)!important;border-radius:16px!important;font-size:1.0rem!important;font-weight:900!important;padding:0.45rem 0.5rem!important;min-height:auto!important;box-shadow:0 3px 15px rgba(100,140,200,0.15)!important;font-family:Georgia,serif!important;';b.querySelectorAll('p').forEach(p=>p.style.cssText='font-size:1.0rem!important;font-weight:900!important;font-family:Georgia,serif!important;');}});};setTimeout(stP,80);setTimeout(stP,300);setTimeout(stP,700);new MutationObserver(stP).observe(window.parent.document.body,{childList:true,subtree:true});
+    function stP(){const d=window.parent.document;d.querySelectorAll('button[kind="secondary"]').forEach(b=>{const t=(b.textContent||'').trim();if(/^\([A-D]\)/.test(t)){b.style.cssText='background:linear-gradient(135deg,rgba(100,140,200,0.25),rgba(100,140,200,0.12))!important;color:#ffffff!important;border:2px solid rgba(100,140,200,0.5)!important;border-radius:16px!important;font-size:1.9rem!important;font-weight:900!important;padding:0.9rem 1rem!important;min-height:auto!important;box-shadow:0 3px 15px rgba(100,140,200,0.15)!important;font-family:Georgia,serif!important;';b.querySelectorAll('p').forEach(p=>p.style.cssText='font-size:1.9rem!important;font-weight:900!important;font-family:Georgia,serif!important;');}});};setTimeout(stP,80);setTimeout(stP,300);setTimeout(stP,700);new MutationObserver(stP).observe(window.parent.document.body,{childList:true,subtree:true});
     </script>""", height=0)
 
 # ════════════════════════════════
@@ -541,6 +427,12 @@ elif st.session_state.sg_phase == "p5_exam_result":
     ok_cnt = sum(results)
     passed = not st.session_state.sg_exam_wrong and ok_cnt == 5
     # 승률 저장
+    if "p5_exam_recorded" not in st.session_state:
+        rec = storage.get("p5_exam_record", {"wins":0,"total":0})
+        rec["total"] += 1
+        if passed: rec["wins"] += 1
+        storage["p5_exam_record"] = rec; save_storage(storage)
+        st.session_state.p5_exam_recorded = True
     if not passed:
         st.markdown('<div style="text-align:center;font-size:3rem;font-weight:900;color:#ff4444;text-shadow:0 0 20px #ff0000;">💀 FAIL! 💀</div>', unsafe_allow_html=True)
     else:
@@ -550,10 +442,12 @@ elif st.session_state.sg_phase == "p5_exam_result":
     c1, c2 = st.columns(2)
     with c1:
         if st.button("🔄 다시!", key="retry_exam", type="primary", use_container_width=True):
-            st.session_state.sg_phase = "lobby"; st.session_state.rv_battle = None; st.session_state.rv_mode = None; st.rerun()
+            st.session_state.p5_exam_recorded = False
+            st.session_state.sg_phase = "lobby"; st.rerun()
     with c2:
         if st.button("🔥 역전장", key="back_exam", type="secondary", use_container_width=True):
-            st.session_state.sg_phase = "lobby"; st.session_state.rv_battle = None; st.session_state.rv_mode = None; st.rerun()
+            st.session_state.p5_exam_recorded = False
+            st.session_state.sg_phase = "lobby"; st.rerun()
 # ════════════════════════════════
 # VOCA 서바이벌 웨이브 (순수 학습모드 - 타이머 없음)
 # ════════════════════════════════
@@ -600,10 +494,10 @@ elif st.session_state.sg_phase == "survival":
     wave_colors = {1: "#44cc88", 2: "#ffcc00", 3: "#ff8844", 4: "#ff4466"}
     wc = wave_colors.get(wave, "#ff4466")
 
-    sv_header = f'<div style="background:linear-gradient(180deg,#181850,#2c2068);border:2.5px solid {wc};border-radius:22px;padding:7px;text-align:center;">'
+    sv_header = f'<div style="background:linear-gradient(180deg,#181850,#2c2068);border:2.5px solid {wc};border-radius:22px;padding:14px;text-align:center;">'
     wave_icons={1:'🧠',2:'🧠',3:'💥',4:'🏆'}
     wi=wave_icons.get(wave,'🏆')
-    sv_header += f'<div style="font-size:1.6rem;font-weight:900;color:{wc};">{wi} {cfg["name"]}</div>'
+    sv_header += f'<div style="font-size:2rem;font-weight:900;color:{wc};">{wi} {cfg["name"]}</div>'
     sv_header += f'<div style="font-size:1rem;color:#aaa;font-weight:700;">{cfg["desc"]}</div>'
     
     sv_header += '</div>'
@@ -624,17 +518,17 @@ elif st.session_state.sg_phase == "survival":
 
     if wave == 1:
         # 영어표현 → 한글뜻
-        q_display = f'<div style="border-radius:20px;padding:1.8rem 1.4rem;margin:10px 0;text-align:center;background:linear-gradient(145deg,#124028,#185535,#124028);border:2.5px solid rgba(68,204,136,0.7);box-shadow:0 0 40px rgba(68,204,136,0.3);animation:slideUp 0.4s ease-out;"><div style="font-size:1rem;font-weight:800;letter-spacing:3px;text-transform:uppercase;color:rgba(68,204,136,0.75);margin-bottom:8px;">what does this mean?</div><div style="font-size:1.1rem;font-weight:900;line-height:1.4;color:#88ffbb;">{expr_text}</div></div>'
+        q_display = f'<div style="border-radius:20px;padding:1.8rem 1.4rem;margin:10px 0;text-align:center;background:linear-gradient(145deg,#124028,#185535,#124028);border:2.5px solid rgba(68,204,136,0.7);box-shadow:0 0 40px rgba(68,204,136,0.3);animation:slideUp 0.4s ease-out;"><div style="font-size:1rem;font-weight:800;letter-spacing:3px;text-transform:uppercase;color:rgba(68,204,136,0.75);margin-bottom:8px;">what does this mean?</div><div style="font-size:3.5rem;font-weight:900;line-height:1.3;color:#88ffbb;">{expr_text}</div></div>'
         correct_ans = meaning
         others = [v.get("meaning","") for v in voca_data if v.get("meaning","") != meaning]
     elif wave == 2:
         # 한글뜻 → 영어표현
-        q_display = f'<div style="border-radius:20px;padding:1.8rem 1.4rem;margin:10px 0;text-align:center;background:linear-gradient(145deg,#3e3210,#4a3c15,#3e3210);border:2.5px solid rgba(255,204,0,0.7);box-shadow:0 0 40px rgba(255,204,0,0.3);animation:slideUp 0.4s ease-out;"><div style="font-size:1rem;font-weight:800;letter-spacing:3px;text-transform:uppercase;color:rgba(255,204,0,0.75);margin-bottom:8px;">영어 표현은?</div><div style="font-size:1.1rem;font-weight:900;line-height:1.4;color:#ffee88;">{meaning}</div></div>'
+        q_display = f'<div style="border-radius:20px;padding:1.8rem 1.4rem;margin:10px 0;text-align:center;background:linear-gradient(145deg,#3e3210,#4a3c15,#3e3210);border:2.5px solid rgba(255,204,0,0.7);box-shadow:0 0 40px rgba(255,204,0,0.3);animation:slideUp 0.4s ease-out;"><div style="font-size:1rem;font-weight:800;letter-spacing:3px;text-transform:uppercase;color:rgba(255,204,0,0.75);margin-bottom:8px;">영어 표현은?</div><div style="font-size:3.5rem;font-weight:900;line-height:1.3;color:#ffee88;">{meaning}</div></div>'
         correct_ans = expr_text
         others = [v.get("expr","") for v in voca_data if v.get("expr","") != expr_text]
     elif wave == 3:
         # 영어문장 → 한글해석
-        q_display = f'<div style="border-radius:20px;padding:0.8rem 0.8rem;margin:6px 0;text-align:center;background:linear-gradient(145deg,#3e2810,#4a3215,#3e2810);border:2.5px solid rgba(255,136,68,0.7);box-shadow:0 0 40px rgba(255,136,68,0.3);animation:slideUp 0.4s ease-out;"><div style="font-size:1rem;font-weight:800;letter-spacing:3px;text-transform:uppercase;color:rgba(255,136,68,0.75);margin-bottom:10px;">translate this sentence</div><div style="font-size:1.2rem;font-weight:900;line-height:1.4;color:#ffddaa;text-align:left;">{first_en}</div></div>'
+        q_display = f'<div style="border-radius:20px;padding:1.8rem 1.4rem;margin:10px 0;text-align:center;background:linear-gradient(145deg,#3e2810,#4a3215,#3e2810);border:2.5px solid rgba(255,136,68,0.7);box-shadow:0 0 40px rgba(255,136,68,0.3);animation:slideUp 0.4s ease-out;"><div style="font-size:1rem;font-weight:800;letter-spacing:3px;text-transform:uppercase;color:rgba(255,136,68,0.75);margin-bottom:10px;">translate this sentence</div><div style="font-size:2.5rem;font-weight:900;line-height:1.6;color:#ffddaa;text-align:left;">{first_en}</div></div>'
         correct_ans = kr_first
         def make_kr_distractors(correct_kr, count=3):
             result = []
@@ -678,7 +572,7 @@ elif st.session_state.sg_phase == "survival":
         others = make_kr_distractors(correct_ans, 3)
     else:
         # 한글해석 → 영어문장
-        q_display = f'<div style="border-radius:20px;padding:0.8rem 0.8rem;margin:6px 0;text-align:center;background:linear-gradient(145deg,#3e1a2a,#4a2235,#3e1a2a);border:2.5px solid rgba(255,68,102,0.7);box-shadow:0 0 40px rgba(255,68,102,0.3);animation:slideUp 0.4s ease-out;"><div style="font-size:1rem;font-weight:800;letter-spacing:3px;text-transform:uppercase;color:rgba(255,68,102,0.75);margin-bottom:10px;">영어 문장은?</div><div style="font-size:1.2rem;font-weight:900;line-height:1.4;color:#ffbbcc;text-align:left;">{kr_first}</div></div>'
+        q_display = f'<div style="border-radius:20px;padding:1.8rem 1.4rem;margin:10px 0;text-align:center;background:linear-gradient(145deg,#3e1a2a,#4a2235,#3e1a2a);border:2.5px solid rgba(255,68,102,0.7);box-shadow:0 0 40px rgba(255,68,102,0.3);animation:slideUp 0.4s ease-out;"><div style="font-size:1rem;font-weight:800;letter-spacing:3px;text-transform:uppercase;color:rgba(255,68,102,0.75);margin-bottom:10px;">영어 문장은?</div><div style="font-size:2.5rem;font-weight:900;line-height:1.6;color:#ffbbcc;text-align:left;">{kr_first}</div></div>'
         correct_ans = first_en
         # Wave4: 고유명사/날짜/숫자 고정, 핵심 동사만 교체해서 오답 생성
         def make_en_distractors(correct_en, count=3):
@@ -814,12 +708,12 @@ elif st.session_state.sg_phase == "survival":
         note_border = "rgba(255,100,100,0.6)"
         note_bg = "linear-gradient(145deg,#1a1235,#221540,#1a1235)"
         note = f'<div style="background:{note_bg};border:2.5px solid {note_border};border-radius:20px;padding:1.5rem;margin:10px 0;box-shadow:0 0 25px rgba(255,100,100,0.15);">'
-        note += f'<div style="font-size:1.1rem;font-weight:800;letter-spacing:3px;color:rgba(255,150,150,0.8);margin-bottom:10px;">📝 REVIEW NOTE</div>'
-        note += f'<div style="font-size:1.1rem;color:#ff8888;font-weight:800;margin-bottom:8px;">내 선택: <span style="text-decoration:line-through;opacity:0.7;">{wr["my_ans"]}</span></div>'
+        note += f'<div style="font-size:1.5rem;font-weight:800;letter-spacing:3px;color:rgba(255,150,150,0.8);margin-bottom:10px;">📝 REVIEW NOTE</div>'
+        note += f'<div style="font-size:1.5rem;color:#ff8888;font-weight:800;margin-bottom:8px;">내 선택: <span style="text-decoration:line-through;opacity:0.7;">{wr["my_ans"]}</span></div>'
         
         note += f'<div style="border-top:1px solid rgba(255,255,255,0.1);padding-top:12px;margin-top:8px;">'
-        note += f'<div style="font-size:1.1rem;font-weight:900;color:#88bbff;margin-bottom:4px;">📖 {wr["expr"]}</div>'
-        note += f'<div style="font-size:1.1rem;color:#aaa;font-weight:700;margin-bottom:6px;">뜻: {wr["meaning"]}</div>'
+        note += f'<div style="font-size:2.5rem;font-weight:900;color:#88bbff;margin-bottom:6px;">📖 {wr["expr"]}</div>'
+        note += f'<div style="font-size:2rem;color:#aaa;font-weight:700;margin-bottom:6px;">뜻: {wr["meaning"]}</div>'
         if wr.get("sentence"):
             import re as _re2
             _hl_sent = wr["sentence"]
@@ -843,11 +737,11 @@ elif st.session_state.sg_phase == "survival":
                             except: pass
             note += '<div style="font-size:1.1rem;font-weight:800;letter-spacing:2px;color:#88bbff;margin-top:12px;margin-bottom:4px;">[정답]</div>'
             if wave == 4:
-                note += f'<div style="font-size:1.1rem;color:#ccddff;font-weight:700;line-height:1.6;margin-top:4px;padding:14px;background:rgba(100,140,255,0.08);border-radius:12px;">{_hl_sent}</div>'
+                note += f'<div style="font-size:2.3rem;color:#ccddff;font-weight:700;line-height:1.6;margin-top:4px;padding:14px;background:rgba(100,140,255,0.08);border-radius:12px;">{_hl_sent}</div>'
             # Wave 3: 영어문장 위에 이미 보임 → 표시 안 함
         if wr.get("kr"):
             if wave == 3:
-                note += f'<div style="font-size:1.1rem;color:#aabbcc;font-weight:600;margin-top:4px;padding:0 10px;">→ {wr["kr"]}</div>'
+                note += f'<div style="font-size:2.0rem;color:#aabbcc;font-weight:600;margin-top:4px;padding:0 10px;">→ {wr["kr"]}</div>'
             # Wave 4: 한글문장 위에 이미 보임 → 표시 안 함>'
         note += '</div></div>'
         st.markdown(note, unsafe_allow_html=True)
@@ -894,7 +788,7 @@ elif st.session_state.sg_phase == "survival":
     _wc_map = {1:"68,204,136", 2:"255,204,0", 3:"255,136,68", 4:"255,68,102"}
     _rgb = _wc_map.get(wave, "255,68,102")
     components.html(f"""<script>
-    function stW(){{const d=window.parent.document;d.querySelectorAll('button[kind="secondary"]').forEach(b=>{{const t=(b.textContent||'').trim();if(/^\([A-D]\)/.test(t)){{b.style.cssText='background:linear-gradient(135deg,rgba({_rgb},0.25),rgba({_rgb},0.12))!important;color:#ffffff!important;border:2px solid rgba({_rgb},0.5)!important;border-radius:16px!important;font-size:1.1rem!important;font-weight:900!important;padding:0.4rem 0.5rem!important;min-height:auto!important;box-shadow:0 3px 15px rgba('+'{_rgb}'+',0.15)!important;';b.querySelectorAll('p').forEach(p=>p.style.cssText='font-size:1.1rem!important;font-weight:900!important;');}}}});}};setTimeout(stW,80);setTimeout(stW,300);setTimeout(stW,700);new MutationObserver(stW).observe(window.parent.document.body,{{childList:true,subtree:true}});
+    function stW(){{const d=window.parent.document;d.querySelectorAll('button[kind="secondary"]').forEach(b=>{{const t=(b.textContent||'').trim();if(/^\([A-D]\)/.test(t)){{b.style.cssText='background:linear-gradient(135deg,rgba({_rgb},0.25),rgba({_rgb},0.12))!important;color:#ffffff!important;border:2px solid rgba({_rgb},0.5)!important;border-radius:16px!important;font-size:1.8rem!important;font-weight:900!important;padding:0.85rem 1rem!important;min-height:auto!important;box-shadow:0 3px 15px rgba('+'{_rgb}'+',0.15)!important;';b.querySelectorAll('p').forEach(p=>p.style.cssText='font-size:1.8rem!important;font-weight:900!important;');}}}});}};setTimeout(stW,80);setTimeout(stW,300);setTimeout(stW,700);new MutationObserver(stW).observe(window.parent.document.body,{{childList:true,subtree:true}});
     </script>""", height=0)
 
 # ════════════════════════════════
@@ -942,16 +836,12 @@ elif st.session_state.sg_phase == "survival_result":
             st.session_state.sg_phase = "combo_rush"; st.rerun()
     with c3:
         if st.button("🔥 역전장으로\n귀환", key="sv_back", type="secondary", use_container_width=True):
-            st.session_state.sg_phase = "lobby"; st.session_state.rv_battle = None; st.session_state.rv_mode = None; st.rerun()
+            st.session_state.sg_phase = "lobby"; st.rerun()
 
 # ════════════════════════════════
 # VOCA 콤보 러시 — 33초 타임폭탄 시험!
 # ════════════════════════════════
 elif st.session_state.sg_phase == "combo_rush":
-    if not voca_data:
-        st.warning("⚠️ 저장된 P7 단어/표현이 없습니다! 먼저 역전장 학습모드에서 단어를 저장하세요.")
-        if st.button("🔙 돌아가기"): st.session_state.sg_phase = "lobby"; st.session_state.rv_battle = None; st.session_state.rv_mode = None; st.rerun()
-        st.stop()
     st_autorefresh(interval=1000, limit=40, key="combo_timer")
 
     if "sg_combo_score" not in st.session_state: st.session_state.sg_combo_score = 0
@@ -962,15 +852,15 @@ elif st.session_state.sg_phase == "combo_rush":
     score = st.session_state.sg_combo_score
     combo = st.session_state.sg_combo_count
     cidx = st.session_state.sg_combo_idx
-    total_qs = min(5, len(voca_data))
+    total_qs = min(10, len(voca_data))
 
     # 문제 풀 준비
     if "sg_combo_pool" not in st.session_state:
         pool = voca_data.copy()
         random.shuffle(pool)
-        while len(pool) < 5:
+        while len(pool) < 10:
             pool += voca_data.copy()
-        st.session_state.sg_combo_pool = pool[:5]
+        st.session_state.sg_combo_pool = pool[:10]
     c_pool = st.session_state.sg_combo_pool
 
     # 종료 판정
@@ -990,22 +880,22 @@ elif st.session_state.sg_phase == "combo_rush":
     # 배경 붉어짐 (움직임 없음!)
     if rem <= 5:
         bg_css = "background:linear-gradient(135deg,#2a0808,#3a0a1a 30%,#2a0510 70%,#2a0808)!important;"
-        tcl = "#ff0000"; tsz = "2.5rem"; tglow = "text-shadow:0 0 40px #ff0000,0 0 80px #cc0000;"
+        tcl = "#ff0000"; tsz = "5rem"; tglow = "text-shadow:0 0 40px #ff0000,0 0 80px #cc0000;"
         twarn = '<div style="text-align:center;font-size:1.4rem;color:#ff0000;font-weight:900;margin-top:4px;">💀💀 폭발한다!! 💀💀</div>'
     elif rem <= 10:
         bg_css = "background:linear-gradient(135deg,#1e0815,#2e0a25 30%,#1e0818 70%,#1e0815)!important;"
-        tcl = "#ff2200"; tsz = "2rem"; tglow = "text-shadow:0 0 25px #ff2200,0 0 50px #ff0000;"
+        tcl = "#ff2200"; tsz = "4rem"; tglow = "text-shadow:0 0 25px #ff2200,0 0 50px #ff0000;"
         twarn = '<div style="text-align:center;font-size:1.1rem;color:#ff4444;font-weight:900;">💀 서둘러!! 💀</div>'
     elif rem <= 15:
         bg_css = "background:linear-gradient(135deg,#160a1e,#220e30 30%,#160a22 70%,#160a1e)!important;"
-        tcl = "#ff6600"; tsz = "1.6rem"; tglow = "text-shadow:0 0 15px #ff6600;"
+        tcl = "#ff6600"; tsz = "3.2rem"; tglow = "text-shadow:0 0 15px #ff6600;"
         twarn = '<div style="text-align:center;font-size:1rem;color:#ff8844;font-weight:900;">⚡ 서둘러!! ⚡</div>'
     elif rem <= 20:
         bg_css = "background:linear-gradient(135deg,#121530,#1e1845 30%,#121838 70%,#121530)!important;"
-        tcl = "#ffaa00"; tsz = "1.4rem"; tglow = "text-shadow:0 0 8px #ffaa00;"
+        tcl = "#ffaa00"; tsz = "2.8rem"; tglow = "text-shadow:0 0 8px #ffaa00;"
         twarn = ""
     else:
-        bg_css = ""; tcl = "#44ff88"; tsz = "1.2rem"; tglow = ""; twarn = ""
+        bg_css = ""; tcl = "#44ff88"; tsz = "2.4rem"; tglow = ""; twarn = ""
     tpct = int(rem / 33 * 100)
     q_border = "rgba(255,50,50,0.6)" if rem <= 10 else "rgba(255,136,0,0.7)"
     if bg_css:
@@ -1017,17 +907,17 @@ elif st.session_state.sg_phase == "combo_rush":
         combo_color = "#ff00ff"
     combo_text = f"{combo}x" if combo > 0 else "0x"
 
-    header = '<div style="background:linear-gradient(180deg,#0a0a1a,#1a1030);border:2.5px solid #ff8800;border-radius:22px;padding:5px;text-align:center;">'
-    header += '<div style="font-size:1.0rem;font-weight:900;color:#ff8800;">💪 P7 단어 · 덤벼봐, 틀리면 끝이다!</div>'
+    header = '<div style="background:linear-gradient(180deg,#0a0a1a,#1a1030);border:2.5px solid #ff8800;border-radius:22px;padding:12px;text-align:center;">'
+    header += '<div style="font-size:2rem;font-weight:900;color:#ff8800;">💪 P7 단어 · 덤벼봐, 틀리면 끝이다!</div>'
     header += f'<div style="display:flex;justify-content:space-around;margin-top:6px;">'
-    header += f'<span style="font-size:0.85rem;font-weight:900;color:{combo_color};">🔥 {combo_text}</span>'
-    header += f'<span style="font-size:0.85rem;font-weight:900;color:#ffcc00;">⭐ {score}</span>'
+    header += f'<span style="font-size:1.3rem;font-weight:900;color:{combo_color};">🔥 {combo_text}</span>'
+    header += f'<span style="font-size:1.3rem;font-weight:900;color:#ffcc00;">⭐ {score}</span>'
     header += f'<span style="font-size:1.3rem;font-weight:900;color:#aaa;">{cidx+1}/{total_qs}</span>'
     header += '</div></div>'
     st.markdown(header, unsafe_allow_html=True)
 
     # 타이머 UI
-    st.markdown(f'<div style="text-align:center;margin:2px 0;padding:4px;"><span style="font-size:{tsz};font-weight:900;color:{tcl};font-family:Impact,Arial Black,sans-serif;{tglow}">{rem}</span><span style="font-size:0.8rem;color:{tcl};opacity:0.7;">s</span><div style="font-size:1rem;color:#888;font-weight:700;margin-top:4px;">Q{cidx+1}/{total_qs} · 남은 {left}문제</div></div>', unsafe_allow_html=True)
+    st.markdown(f'<div style="text-align:center;margin:8px 0;padding:10px;"><span style="font-size:{tsz};font-weight:900;color:{tcl};font-family:Impact,Arial Black,sans-serif;{tglow}">{rem}</span><span style="font-size:1.5rem;color:{tcl};opacity:0.7;">s</span><div style="font-size:1rem;color:#888;font-weight:700;margin-top:4px;">Q{cidx+1}/{total_qs} · 남은 {left}문제</div></div>', unsafe_allow_html=True)
     st.markdown(f'<div style="background:rgba(255,255,255,0.06);border-radius:12px;padding:3px;margin:4px 0;"><div style="background:linear-gradient(90deg,{tcl},#ff8800);height:12px;border-radius:10px;width:{tpct}%;"></div></div>', unsafe_allow_html=True)
     if twarn:
         st.markdown(twarn, unsafe_allow_html=True)
@@ -1048,13 +938,13 @@ elif st.session_state.sg_phase == "combo_rush":
 
     if qtype == "expr2meaning":
         # 영어표현 → 한글뜻
-        st.markdown(f'<div style="border-radius:20px;padding:0.8rem 0.8rem;margin:6px 0;text-align:center;background:linear-gradient(145deg,#3e2810,#4a3415,#3e2810);border:2.5px solid rgba(255,136,0,0.7);box-shadow:0 0 40px rgba(255,136,0,0.35);animation:slideUp 0.4s ease-out;"><div style="font-size:1rem;font-weight:800;letter-spacing:3px;text-transform:uppercase;color:rgba(255,136,0,0.75);margin-bottom:8px;">what does this mean?</div><div style="font-size:1.1rem;font-weight:900;line-height:1.4;color:#ffcc88;">{expr_text}</div></div>', unsafe_allow_html=True)
+        st.markdown(f'<div style="border-radius:20px;padding:1.8rem 1.4rem;margin:10px 0;text-align:center;background:linear-gradient(145deg,#3e2810,#4a3415,#3e2810);border:2.5px solid rgba(255,136,0,0.7);box-shadow:0 0 40px rgba(255,136,0,0.35);animation:slideUp 0.4s ease-out;"><div style="font-size:1rem;font-weight:800;letter-spacing:3px;text-transform:uppercase;color:rgba(255,136,0,0.75);margin-bottom:8px;">what does this mean?</div><div style="font-size:3.5rem;font-weight:900;line-height:1.3;color:#ffcc88;">{expr_text}</div></div>', unsafe_allow_html=True)
         correct_ans = meaning
         others = [v.get("meaning","") for v in voca_data if v.get("meaning","") != meaning]
 
     elif qtype == "meaning2expr":
         # 한글뜻 → 영어표현
-        st.markdown(f'<div style="border-radius:20px;padding:0.8rem 0.8rem;margin:6px 0;text-align:center;background:linear-gradient(145deg,#3e2810,#4a3415,#3e2810);border:2.5px solid rgba(255,136,0,0.7);box-shadow:0 0 40px rgba(255,136,0,0.35);animation:slideUp 0.4s ease-out;"><div style="font-size:1rem;font-weight:800;letter-spacing:3px;text-transform:uppercase;color:rgba(255,136,0,0.75);margin-bottom:8px;">영어 표현은?</div><div style="font-size:1.1rem;font-weight:900;line-height:1.4;color:#ffcc88;">{meaning}</div></div>', unsafe_allow_html=True)
+        st.markdown(f'<div style="border-radius:20px;padding:1.8rem 1.4rem;margin:10px 0;text-align:center;background:linear-gradient(145deg,#3e2810,#4a3415,#3e2810);border:2.5px solid rgba(255,136,0,0.7);box-shadow:0 0 40px rgba(255,136,0,0.35);animation:slideUp 0.4s ease-out;"><div style="font-size:1rem;font-weight:800;letter-spacing:3px;text-transform:uppercase;color:rgba(255,136,0,0.75);margin-bottom:8px;">영어 표현은?</div><div style="font-size:3.5rem;font-weight:900;line-height:1.3;color:#ffcc88;">{meaning}</div></div>', unsafe_allow_html=True)
         correct_ans = expr_text
         others = [v.get("expr","") for v in voca_data if v.get("expr","") != expr_text]
 
@@ -1070,7 +960,7 @@ elif st.session_state.sg_phase == "combo_rush":
             blank_sent = f"The company will _______ by next quarter."
 
         blank_styled = blank_sent.replace("_______", '<span style="border-bottom:3px solid #ff8800;padding:0 8px;color:#ffaa44;">_______</span>')
-        st.markdown(f'<div style="border-radius:20px;padding:0.8rem 0.8rem;margin:6px 0;text-align:center;background:linear-gradient(145deg,#3e2810,#4a3415,#3e2810);border:2.5px solid rgba(255,136,0,0.7);box-shadow:0 0 40px rgba(255,136,0,0.35);animation:slideUp 0.4s ease-out;"><div style="font-size:1rem;font-weight:800;letter-spacing:3px;text-transform:uppercase;color:rgba(255,136,0,0.75);margin-bottom:10px;">fill in the blank</div><div style="font-size:1.2rem;font-weight:900;line-height:1.4;color:#ffddaa;text-align:left;">{blank_styled}</div></div>', unsafe_allow_html=True)
+        st.markdown(f'<div style="border-radius:20px;padding:1.8rem 1.4rem;margin:10px 0;text-align:center;background:linear-gradient(145deg,#3e2810,#4a3415,#3e2810);border:2.5px solid rgba(255,136,0,0.7);box-shadow:0 0 40px rgba(255,136,0,0.35);animation:slideUp 0.4s ease-out;"><div style="font-size:1rem;font-weight:800;letter-spacing:3px;text-transform:uppercase;color:rgba(255,136,0,0.75);margin-bottom:10px;">fill in the blank</div><div style="font-size:2.5rem;font-weight:900;line-height:1.6;color:#ffddaa;text-align:left;">{blank_styled}</div></div>', unsafe_allow_html=True)
         correct_ans = key_word
         fallback_words = ["implement","approximately","eligible","comprehensive","facilitate","preliminary","mandatory","subsequent","operational","sustainable"]
         others = [w for w in fallback_words if w.lower() != key_word.lower()]
@@ -1101,7 +991,7 @@ elif st.session_state.sg_phase == "combo_rush":
                 st.session_state.sg_phase = "combo_result"; st.rerun()
 
     components.html("""<script>
-    function stC(){const d=window.parent.document;d.querySelectorAll('button[kind="secondary"]').forEach(b=>{const t=(b.textContent||'').trim();if(/^\([A-D]\)/.test(t)){b.style.cssText='background:linear-gradient(135deg,rgba(255,136,0,0.22),rgba(255,136,0,0.10))!important;color:#ffffff!important;border:1.5px solid rgba(255,136,0,0.5)!important;border-radius:16px!important;font-size:1.1rem!important;font-weight:900!important;padding:0.4rem 0.5rem!important;min-height:auto!important;box-shadow:0 3px 15px rgba('+'{_rgb}'+',0.15)!important;';b.querySelectorAll('p').forEach(p=>p.style.cssText='font-size:1.1rem!important;font-weight:900!important;');}});};setTimeout(stC,80);setTimeout(stC,300);setTimeout(stC,700);new MutationObserver(stC).observe(window.parent.document.body,{childList:true,subtree:true});
+    function stC(){const d=window.parent.document;d.querySelectorAll('button[kind="secondary"]').forEach(b=>{const t=(b.textContent||'').trim();if(/^\([A-D]\)/.test(t)){b.style.cssText='background:linear-gradient(135deg,rgba(255,136,0,0.22),rgba(255,136,0,0.10))!important;color:#ffffff!important;border:1.5px solid rgba(255,136,0,0.5)!important;border-radius:16px!important;font-size:1.8rem!important;font-weight:900!important;padding:0.85rem 1rem!important;min-height:auto!important;box-shadow:0 3px 15px rgba('+'{_rgb}'+',0.15)!important;';b.querySelectorAll('p').forEach(p=>p.style.cssText='font-size:1.8rem!important;font-weight:900!important;');}});};setTimeout(stC,80);setTimeout(stC,300);setTimeout(stC,700);new MutationObserver(stC).observe(window.parent.document.body,{childList:true,subtree:true});
     </script>""", height=0)
 
 # ════════════════════════════════
@@ -1149,11 +1039,5 @@ elif st.session_state.sg_phase == "combo_result":
             st.session_state.sg_phase = "survival"; st.rerun()
     with c3:
         if st.button("🔥 역전장으로\n귀환", key="cb_back", type="secondary", use_container_width=True):
-            st.session_state.sg_phase = "lobby"; st.session_state.rv_battle = None; st.session_state.rv_mode = None; st.rerun()
-
-
-
-
-
-
+            st.session_state.sg_phase = "lobby"; st.rerun()
 
