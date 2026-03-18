@@ -1205,10 +1205,30 @@ elif st.session_state.p7_phase == "briefing":
         st.markdown(expr_html, unsafe_allow_html=True)
 
     # ─── 하단 버튼 3줄 ───
+    save_key = f"p7_saved_{bi}"
+    if save_key not in st.session_state:
+        st.session_state[save_key] = False
+    st.markdown("""<style>
+    @keyframes savePulse{0%,100%{box-shadow:0 0 10px rgba(255,215,0,0.4);border-color:#ffd700!important;}50%{box-shadow:0 0 30px rgba(255,215,0,0.9);border-color:#ffaa00!important;}}
+    @keyframes savedGlow{0%,100%{box-shadow:0 0 10px rgba(0,255,100,0.4);border-color:#00ff66!important;}50%{box-shadow:0 0 25px rgba(0,255,100,0.8);border-color:#00cc44!important;}}
+    .save-btn-wrap button[kind="primary"]{animation:savePulse 1.2s ease-in-out infinite!important;border:2px solid #ffd700!important;color:#ffd700!important;}
+    .save-btn-wrap button[kind="primary"] p{color:#ffd700!important;}
+    .saved-btn-wrap button[kind="primary"]{animation:savedGlow 2s ease-in-out infinite!important;border:2px solid #00ff66!important;color:#00ff66!important;background:#001a0a!important;}
+    .saved-btn-wrap button[kind="primary"] p{color:#00ff66!important;}
+    </style>""", unsafe_allow_html=True)
     bc1, bc2 = st.columns(2)
     with bc1:
-        if st.button("💾 저장", key=f"p7sv_{bi}", type="primary", use_container_width=True):
-            save_expressions(exprs, step_data=s)
+        if st.session_state[save_key]:
+            st.markdown('<div class="saved-btn-wrap">', unsafe_allow_html=True)
+            st.button("✅ 저장완료!", key=f"p7sv_{bi}", type="primary", use_container_width=True, disabled=True)
+            st.markdown('</div>', unsafe_allow_html=True)
+        else:
+            st.markdown('<div class="save-btn-wrap">', unsafe_allow_html=True)
+            if st.button("💾 저장", key=f"p7sv_{bi}", type="primary", use_container_width=True):
+                save_expressions(exprs, step_data=s)
+                st.session_state[save_key] = True
+                st.rerun()
+            st.markdown('</div>', unsafe_allow_html=True)
     with bc2:
         if st.button("🔄 다시", key="p7retry", type="primary", use_container_width=True):
             for k in D: st.session_state[k] = D[k]
