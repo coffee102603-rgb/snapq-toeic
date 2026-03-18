@@ -1,10 +1,10 @@
-﻿"""통합 역전장 — P5 학습/시험 + VOCA 학습/시험"""
+﻿"""통합 오답전장 — P5 학습/시험 + VOCA 학습/시험"""
 import streamlit as st
 import streamlit.components.v1 as components
 import json, os, random, time, re
 from streamlit_autorefresh import st_autorefresh
 
-st.set_page_config(page_title="🔥 역전장", page_icon="🔥", layout="wide", initial_sidebar_state="collapsed")
+st.set_page_config(page_title="🔥 오답전장", page_icon="🔥", layout="wide", initial_sidebar_state="collapsed")
 
 STORAGE_FILE = os.path.join(os.path.dirname(os.path.dirname(__file__)), "storage_data.json")
 
@@ -148,7 +148,7 @@ if st.session_state.sg_phase == "lobby":
 
     # ═══ 상단 ═══
     st.markdown("""<div style="background:#000000;border:2px solid #ffd700;border-radius:22px;padding:16px;text-align:center;margin-bottom:12px;">
-        <div style="font-size:2.4rem;font-weight:900;letter-spacing:6px;color:#ffd700;text-shadow:0 0 20px rgba(255,215,0,0.4);">🔥  역 전 장</div>
+        <div style="font-size:2.4rem;font-weight:900;letter-spacing:6px;color:#ffd700;text-shadow:0 0 20px rgba(255,215,0,0.4);">🔥  오 답 전 장</div>
     </div>""", unsafe_allow_html=True)
 
     nag = random.choice(NAGGING)
@@ -259,7 +259,7 @@ if st.session_state.sg_phase == "lobby":
         if st.button("🏠 메인", key="sg_nav3", type="secondary", use_container_width=True):
             st.switch_page("main_hub.py")
 
-    with st.expander("⚠️ 역전장 관리"):
+    with st.expander("⚠️ 오답전장 관리"):
         if st.button("🗑 P5 전체 삭제", key="del_p5"):
             storage["saved_questions"] = []; save_storage(storage); st.rerun()
         if st.button("🗑 VOCA 전체 삭제", key="del_voca"):
@@ -445,7 +445,7 @@ elif st.session_state.sg_phase == "p5_exam_result":
             st.session_state.p5_exam_recorded = False
             st.session_state.sg_phase = "lobby"; st.rerun()
     with c2:
-        if st.button("🔥 역전장", key="back_exam", type="secondary", use_container_width=True):
+        if st.button("🔥 오답전장", key="back_exam", type="secondary", use_container_width=True):
             st.session_state.p5_exam_recorded = False
             st.session_state.sg_phase = "lobby"; st.rerun()
 # ════════════════════════════════
@@ -835,7 +835,7 @@ elif st.session_state.sg_phase == "survival_result":
             if "sg_combo_pool" in st.session_state: del st.session_state.sg_combo_pool
             st.session_state.sg_phase = "combo_rush"; st.rerun()
     with c3:
-        if st.button("🔥 역전장으로\n귀환", key="sv_back", type="secondary", use_container_width=True):
+        if st.button("🔥 오답전장으로\\n귀환", key="sv_back", type="secondary", use_container_width=True):
             st.session_state.sg_phase = "lobby"; st.rerun()
 
 # ════════════════════════════════
@@ -1038,6 +1038,6 @@ elif st.session_state.sg_phase == "combo_result":
             if "sg_wave_start" in st.session_state: del st.session_state.sg_wave_start
             st.session_state.sg_phase = "survival"; st.rerun()
     with c3:
-        if st.button("🔥 역전장으로\n귀환", key="cb_back", type="secondary", use_container_width=True):
+        if st.button("🔥 오답전장으로\\n귀환", key="cb_back", type="secondary", use_container_width=True):
             st.session_state.sg_phase = "lobby"; st.rerun()
 
