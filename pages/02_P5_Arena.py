@@ -1,4 +1,4 @@
-﻿"""P5 Arena v13b — 로비 구역별 색감 적용 (틸/핑크오렌지에메랄드인디고/포레스트)"""
+"""P5 Arena v13b — 로비 구역별 색감 적용 (틸/핑크오렌지에메랄드인디고/포레스트)"""
 import streamlit as st
 import streamlit.components.v1 as components
 from streamlit_autorefresh import st_autorefresh
@@ -97,18 +97,18 @@ button[kind="primary"] p,button[kind="primary"] span,button[kind="secondary"] p,
 .bq{font-size:1.3rem!important;}.ct{font-size:1.4rem!important;}.cd{font-size:1.1rem!important;}
 }
 @media(max-width:480px){
-.block-container{padding-top:0.3rem!important;padding-bottom:1.5rem!important;padding-left:0.3rem!important;padding-right:0.3rem!important;}
+.block-container{padding-top:0.2rem!important;padding-bottom:1rem!important;padding-left:0.3rem!important;padding-right:0.3rem!important;}
 .ah h1{font-size:0.95rem!important;letter-spacing:1px!important;}
-button[kind="primary"],button[kind="secondary"]{font-size:1rem!important;padding:0.5rem 0.5rem!important;border-radius:6px!important;}
-button[kind="primary"] p,button[kind="primary"] span,button[kind="secondary"] p,button[kind="secondary"] span{font-size:1rem!important;}
-.qt{font-size:1.2rem!important;line-height:1.6!important;}.qk{font-size:1.3rem!important;}
-.qb{padding:0.8rem 0.7rem!important;border-radius:12px!important;}
-.wb{padding:0.8rem 0.7rem!important;}.wb-s{font-size:1.1rem!important;line-height:1.6!important;}
-.wb-h,.wb-hn{font-size:1.2rem!important;}.wb-k{font-size:0.95rem!important;}.wb-e{font-size:0.9rem!important;}
-.bq{font-size:1rem!important;}.bs{font-size:0.85rem!important;}
-.ct{font-size:1rem!important;}.cd{font-size:0.88rem!important;}
+button[kind="primary"],button[kind="secondary"]{font-size:0.9rem!important;padding:0.4rem 0.4rem!important;border-radius:6px!important;}
+button[kind="primary"] p,button[kind="primary"] span,button[kind="secondary"] p,button[kind="secondary"] span{font-size:0.9rem!important;}
+.qt{font-size:1.08rem!important;line-height:1.5!important;}.qk{font-size:1.17rem!important;}
+.qb{padding:0.6rem 0.5rem!important;border-radius:12px!important;}
+.wb{padding:0.6rem 0.5rem!important;}.wb-s{font-size:0.99rem!important;line-height:1.5!important;}
+.wb-h,.wb-hn{font-size:1.08rem!important;}.wb-k{font-size:0.85rem!important;}.wb-e{font-size:0.81rem!important;}
+.bq{font-size:0.9rem!important;}.bs{font-size:0.76rem!important;}
+.ct{font-size:0.9rem!important;}.cd{font-size:0.79rem!important;}
 .rd-dot{width:16px!important;height:16px!important;}
-.cg,.cv{min-height:120px!important;padding:0.8rem!important;}
+.cg,.cv{min-height:100px!important;padding:0.6rem!important;}
 }
 @media(max-width:360px){
 .ah h1{font-size:0.95rem!important;}
