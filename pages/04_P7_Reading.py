@@ -1208,54 +1208,13 @@ elif st.session_state.p7_phase == "briefing":
     save_key = f"p7_saved_{bi}"
     if save_key not in st.session_state:
         st.session_state[save_key] = False
-    bc1, bc2 = st.columns(2)
-    with bc1:
-        if st.session_state[save_key]:
-            st.button("✅ 저장완료!", key=f"p7sv_{bi}", type="primary", use_container_width=True, disabled=True)
-            components.html("""<script>
-            (function(){
-                var css=document.createElement("style");
-                css.textContent="@keyframes savedGlow{0%,100%{box-shadow:0 0 10px rgba(0,255,100,0.5);} 50%{box-shadow:0 0 35px rgba(0,255,100,1);}}";
-                document.head.appendChild(css);
-                function go(){
-                    window.parent.document.querySelectorAll("button").forEach(function(b){
-                        if(b.innerText&&b.innerText.indexOf("저장완료")>=0){
-                            b.style.cssText+="border:2px solid #00ff66!important;color:#00ff66!important;background:#001a0a!important;animation:savedGlow 2s ease-in-out infinite!important;";
-                            b.querySelectorAll("p").forEach(function(p){p.style.cssText+="color:#00ff66!important;";});
-                        }
-                    });
-                }
-                setTimeout(go,100);setTimeout(go,400);setTimeout(go,900);setTimeout(go,1800);
-                new MutationObserver(go).observe(window.parent.document.body,{childList:true,subtree:true});
-            })();
-            </script>""", height=0)
-        else:
-            if st.button("핵심표현 저장!", key=f"p7sv_{bi}", type="primary", use_container_width=True):
-                save_expressions(exprs, step_data=s)
-                st.session_state[save_key] = True
-                st.rerun()
-            components.html("""<script>
-            (function(){
-                var css=document.createElement("style");
-                css.textContent="@keyframes savePulse{0%,100%{box-shadow:0 0 12px rgba(255,215,0,0.5);border-color:#ffd700;} 50%{box-shadow:0 0 45px rgba(255,215,0,1),0 0 80px rgba(255,136,0,0.6);border-color:#ffaa00;}}";
-                document.head.appendChild(css);
-                function go(){
-                    window.parent.document.querySelectorAll("button").forEach(function(b){
-                        if(b.innerText&&b.innerText.indexOf("저장")>=0&&b.innerText.indexOf("완료")<0){
-                            b.style.cssText+="border:2px solid #ffd700!important;color:#ffd700!important;animation:savePulse 1.0s ease-in-out infinite!important;";
-                            b.querySelectorAll("p").forEach(function(p){p.style.cssText+="color:#ffd700!important;";});
-                        }
-                    });
-                }
-                setTimeout(go,100);setTimeout(go,400);setTimeout(go,900);setTimeout(go,1800);
-                new MutationObserver(go).observe(window.parent.document.body,{childList:true,subtree:true});
-            })();
-            </script>""", height=0)
-    with bc2:
-        if st.button("한 판 더!", key="p7retry", type="primary", use_container_width=True):
-            for k in D: st.session_state[k] = D[k]
+    if st.session_state[save_key]:
+        st.button("✅ 저장완료!", key=f"p7sv_{bi}", type="primary", use_container_width=True, disabled=True)
+    else:
+        if st.button("핵심표현 저장하고, 오답전장에서 다시 꼭 만나자!", key=f"p7sv_{bi}", type="primary", use_container_width=True):
+            save_expressions(exprs, step_data=s)
+            st.session_state[save_key] = True
             st.rerun()
-    bc5, bc6 = st.columns(2)
     with bc5:
         if st.button("◀ 이전", key="p7brp", type="secondary", disabled=bi<=0, use_container_width=True):
             st.session_state.p7_br_idx = bi - 1; st.rerun()
