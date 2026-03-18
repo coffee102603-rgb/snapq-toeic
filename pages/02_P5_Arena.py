@@ -52,7 +52,7 @@ button[kind="primary"]:hover,button[kind="secondary"]:hover{background:rgba(0,21
 @keyframes borderGlow{0%{box-shadow:0 0 0 2px #00d4ff,0 0 15px rgba(0,212,255,0.4);}50%{box-shadow:0 0 0 2px #fff,0 0 25px rgba(0,212,255,0.6);}100%{box-shadow:0 0 0 2px #00d4ff,0 0 15px rgba(0,212,255,0.4);}}
 .qc{font-family:'Orbitron',monospace;font-size:1.05rem;font-weight:800;margin-bottom:0.8rem;letter-spacing:3px;}
 .qc-g,.qc-v{color:#00d4ff;text-shadow:0 0 8px rgba(0,212,255,0.6);}
-.qt{font-family:'Rajdhani',sans-serif;color:#fff;font-size:2.4rem;font-weight:700;line-height:2;word-break:keep-all;}
+.qt{font-family:'Rajdhani',sans-serif;color:#fff;font-size:2.4rem;font-weight:700;line-height:1.4;word-break:keep-all;}
 .qk{color:#00d4ff;font-weight:900;font-size:2.6rem;border-bottom:3px solid #00d4ff;text-shadow:0 0 15px rgba(0,212,255,0.8);}
 .bt{display:flex;align-items:center;justify-content:space-between;padding:0.01rem 0.8rem;border-radius:6px;margin-bottom:0;transform:scale(0.85);transform-origin:top center;margin-top:-4px;}
 .bt-g,.bt-v{background:#0d0d0d;border:1px solid rgba(0,212,255,0.4);box-shadow:0 0 15px rgba(0,212,255,0.1);}
