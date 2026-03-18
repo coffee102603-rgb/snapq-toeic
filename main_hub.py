@@ -1,4 +1,4 @@
-"""
+﻿"""
 SnapQ TOEIC V2 - Main Hub (새 디자인)
 C안: 상단배너 + P5/P7 나란히 + 역전장 전체 + 하단 서브메뉴
 """
@@ -802,7 +802,7 @@ _is_first = (p5_count == 0 and p7_count == 0)
 # P5 로테이션 멘트 (슬1/슬2/슬3)
 _P5_ROT = [
     ("시험장은 전쟁터다!", "편하게 있지 마라!", "⚡ 30초 · 5문제 · 문법 속도전!"),
-    ("아직도 느리냐?", "전쟁터엔 핑계 없다!", "⚡ 30초 · 5문제 · 지금 바로!"),
+    ("아직도 느리냐?", "전쟁터엔 핑계 없다!", "⚡ 문법·어휘 속도전!"),
     ("문장 1개도 못 읽으면서", "시험장 갈 건가?", "⚡ 30초 · 5문제 · 틀리면 탈락!"),
     ("실력은 연습이 만든다!", "오늘도 도망치면 내일도 같다!", "⚡ 30초 · 5문제 · 도망치지 마라!"),
     ("빠르게, 정확하게!", "그게 전부다!", "⚡ 30초 · 5문제 · 완벽하게!"),
@@ -853,9 +853,9 @@ if _is_first:
     _p7_s2_lbl  = "지문을 읽어라!"
     _arm_s2_big = "틀린 문제가 웃는다"
     _arm_s2_lbl = "네가 도망치는 중!"
-    _p5_s3  = "⚡ 30초 · 5문제 · 지금 바로!"
-    _p7_s3  = "📖 60초 · 1지문 · 지금 증명해!"
-    _arm_s3 = "🗡️ 오답 설욕 · 토익 역전!"
+    _p5_s3  = "⚡ 문법·어휘 속도전!"
+    _p7_s3  = "📖 읽는 뇌를 깨워라!"
+    _arm_s3 = "🔥 약점, 지금 박살낸다!"
 else:
     _sn = student_name
     _p5_s1_big  = f"{p5_rate}%{_p5_trend}" if p5_rate is not None else f"{_sn}! 첫 도전"
@@ -995,7 +995,7 @@ if _p7_go:
 
 
 # ── 역전장 ──
-_hc.html(_CSS + _GO_STYLE + "<style>.arc .go-btn{--go-bg:linear-gradient(270deg,#e65100,#ffd54f,#bf360c,#ffca28);--go-border:rgba(255,215,0,0.95);}</style>" + _mk_card("arc","🗡️ 역전장",
+_hc.html(_CSS + _GO_STYLE + "<style>.arc .go-btn{--go-bg:linear-gradient(270deg,#e65100,#ffd54f,#bf360c,#ffca28);--go-border:rgba(255,215,0,0.95);}</style>" + _mk_card("arc","🔥 오답전장",
     _arm_s1_big,_arm_s1_lbl,_arm_p5_svg,
     _arm_s2_big,_arm_s2_lbl,_arm_vc_svg,_arm_s3) + """
 <button class="go-btn" style="background:linear-gradient(270deg,#e65100,#ffd54f,#bf360c,#ffca28);border-color:rgba(255,215,0,0.95);" onclick="window.parent.document.querySelectorAll('button').forEach(b=>{if((b.innerText||'').trim()==='ARM_GO')b.click()})">🗡️</button>
