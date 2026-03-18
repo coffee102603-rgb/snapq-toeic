@@ -182,3 +182,4 @@ def require_pretest_gate() -> None:
 
 def mark_pretest_done(nickname: str, cohort: str) -> None:
     pass
+
