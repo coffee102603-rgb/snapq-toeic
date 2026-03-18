@@ -409,7 +409,7 @@ if st.session_state.sg_phase == "lobby":
 elif st.session_state.sg_phase == "p5_study":
     if not p5_data:
         st.warning("저장된 문제가 없습니다!")
-        st.session_state.sg_phase = "lobby"; st.rerun()
+        st.session_state.sg_phase = "lobby"; st.session_state.rv_battle = None; st.session_state.rv_mode = None; st.rerun()
 
     bi = st.session_state.sg_idx
     if bi >= len(p5_data): bi = len(p5_data)-1
@@ -465,7 +465,7 @@ elif st.session_state.sg_phase == "p5_study":
     r3c1, r3c2 = st.columns(2)
     with r3c1:
         if st.button("📦 로비", key="back_lobby", type="secondary", use_container_width=True):
-            st.session_state.sg_phase = "lobby"; st.rerun()
+            st.session_state.sg_phase = "lobby"; st.session_state.rv_battle = None; st.session_state.rv_mode = None; st.rerun()
     with r3c2:
         if st.button("🏠 메인", key="go_main_p5s", type="secondary", use_container_width=True):
             st.switch_page("main_hub.py")
@@ -550,10 +550,10 @@ elif st.session_state.sg_phase == "p5_exam_result":
     c1, c2 = st.columns(2)
     with c1:
         if st.button("🔄 다시!", key="retry_exam", type="primary", use_container_width=True):
-            st.session_state.sg_phase = "lobby"; st.rerun()
+            st.session_state.sg_phase = "lobby"; st.session_state.rv_battle = None; st.session_state.rv_mode = None; st.rerun()
     with c2:
         if st.button("🔥 역전장", key="back_exam", type="secondary", use_container_width=True):
-            st.session_state.sg_phase = "lobby"; st.rerun()
+            st.session_state.sg_phase = "lobby"; st.session_state.rv_battle = None; st.session_state.rv_mode = None; st.rerun()
 # ════════════════════════════════
 # VOCA 서바이벌 웨이브 (순수 학습모드 - 타이머 없음)
 # ════════════════════════════════
@@ -942,7 +942,7 @@ elif st.session_state.sg_phase == "survival_result":
             st.session_state.sg_phase = "combo_rush"; st.rerun()
     with c3:
         if st.button("🔥 역전장으로\n귀환", key="sv_back", type="secondary", use_container_width=True):
-            st.session_state.sg_phase = "lobby"; st.rerun()
+            st.session_state.sg_phase = "lobby"; st.session_state.rv_battle = None; st.session_state.rv_mode = None; st.rerun()
 
 # ════════════════════════════════
 # VOCA 콤보 러시 — 33초 타임폭탄 시험!
@@ -950,7 +950,7 @@ elif st.session_state.sg_phase == "survival_result":
 elif st.session_state.sg_phase == "combo_rush":
     if not voca_data:
         st.warning("⚠️ 저장된 P7 단어/표현이 없습니다! 먼저 역전장 학습모드에서 단어를 저장하세요.")
-        if st.button("🔙 돌아가기"): st.session_state.sg_phase = "lobby"; st.rerun()
+        if st.button("🔙 돌아가기"): st.session_state.sg_phase = "lobby"; st.session_state.rv_battle = None; st.session_state.rv_mode = None; st.rerun()
         st.stop()
     st_autorefresh(interval=1000, limit=40, key="combo_timer")
 
@@ -1149,7 +1149,7 @@ elif st.session_state.sg_phase == "combo_result":
             st.session_state.sg_phase = "survival"; st.rerun()
     with c3:
         if st.button("🔥 역전장으로\n귀환", key="cb_back", type="secondary", use_container_width=True):
-            st.session_state.sg_phase = "lobby"; st.rerun()
+            st.session_state.sg_phase = "lobby"; st.session_state.rv_battle = None; st.session_state.rv_mode = None; st.rerun()
 
 
 
