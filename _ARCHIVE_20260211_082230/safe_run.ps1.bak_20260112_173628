@@ -1,0 +1,38 @@
+﻿# ============================================================
+# SNAPQ SAFE RUN (LITE v2) - NO MOVE / NO QUARANTINE
+# - taskkill이 "프로세스 없음"이라도 절대 멈추지 않게 처리
+# ============================================================
+
+$ROOT = "C:\Users\최정은\Desktop\SNAPQ_TOEIC"
+Set-Location $ROOT
+
+Write-Host "`n[SAFE RUN LITE v2] SNAPQ TOEIC" -ForegroundColor Cyan
+Write-Host "[ROOT] $ROOT" -ForegroundColor Green
+
+# ✅ 실행 중 프로세스 종료 (없어도 OK, 조용히 무시)
+cmd /c "taskkill /F /IM streamlit.exe >nul 2>&1"
+cmd /c "taskkill /F /IM python.exe >nul 2>&1"
+
+# ✅ 컴파일 체크
+Write-Host "`n[CHECK] py_compile main_hub.py ..." -ForegroundColor Yellow
+python -m py_compile .\main_hub.py
+
+Write-Host "[CHECK] py_compile pages/*.py ..." -ForegroundColor Yellow
+python -m py_compile .\pages\*.py
+
+Write-Host "[CHECK] py_compile app/arenas/*.py ..." -ForegroundColor Yellow
+python -m py_compile .\app\arenas\*.py
+
+if ($LASTEXITCODE -ne 0) {
+  Write-Host "[ERROR] py_compile FAILED" -ForegroundColor Red
+  Read-Host "Press Enter to close"
+  exit 1
+}
+
+Write-Host "`n[OK] 컴파일 통과. Streamlit 실행!" -ForegroundColor Green
+Write-Host "  Local URL: http://localhost:8501" -ForegroundColor Cyan
+
+# ✅ streamlit 명령 없이 실행
+python -m streamlit run .\main_hub.py
+
+Read-Host "Press Enter to close"

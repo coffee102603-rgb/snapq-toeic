@@ -1,0 +1,65 @@
+{
+    "shipment":  {
+                     "ko_correct":  "獄쏄퀣???遺압?",
+                     "ko_wrongs":  [
+                                       "筌욊낯??,
+                                       "???벥",
+                                       "癰귣떯???
+                                   ],
+                     "kind":  "word"
+                 },
+    "according to":  {
+                         "ko_correct":  "~???怨뺚뀮筌?,
+                         "ko_wrongs":  [
+                                           "~?癒?즲 ?븍뜃???랁?,
+                                           "~?????,
+                                           "~???醫롫퓠"
+                                       ],
+                         "kind":  "phrase"
+                     },
+    "immediately":  {
+                        "ko_correct":  "筌앸맩??,
+                        "ko_wrongs":  [
+                                          "揶쎛??,
+                                          "沃섎챶??,
+                                          "筌ｌ뮇荑??
+                                      ],
+                        "kind":  "word"
+                    },
+    "at all times":  {
+                         "ko_correct":  "??湲?,
+                         "ko_wrongs":  [
+                                           "揶쎛??,
+                                           "?紐꾩젴揶쎛",
+                                           "?遺우촿"
+                                       ],
+                         "kind":  "phrase"
+                     },
+    "revised":  {
+                    "ko_correct":  "??륁젟??,
+                    "ko_wrongs":  [
+                                      "?怨뚮┛??,
+                                      "獄쎛?딅맧留?,
+                                      "?브쑴???
+                                  ],
+                    "kind":  "word"
+                },
+    "submit":  {
+                   "ko_correct":  "??뽱뀱??롫뼄",
+                   "ko_wrongs":  [
+                                     "筌왖?癒곕릭??,
+                                     "??륁젟??롫뼄",
+                                     "癰귣떯???롫뼄"
+                                 ],
+                   "kind":  "word"
+               },
+    "attached":  {
+                     "ko_correct":  "筌ｂ뫀???,
+                     "ko_wrongs":  [
+                                       "?怨뚭퍙??,
+                                       "??됰튋??,
+                                       "筌왖?怨뺣쭆"
+                                   ],
+                     "kind":  "word"
+                 }
+}

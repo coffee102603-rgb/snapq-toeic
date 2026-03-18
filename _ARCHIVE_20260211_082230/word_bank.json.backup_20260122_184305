@@ -1,0 +1,40 @@
+{
+  "_meta": {
+    "version": "WB_KO_v1",
+    "notes": "Q2 auto-gen. Prompt is English. Choices are Korean meanings. Keys can be WORD or PHRASE."
+  },
+
+  "submit": {"kind":"word","ko_correct":"제출하다","ko_wrongs":["연기하다","거절하다","확인하다"]},
+  "review": {"kind":"word","ko_correct":"검토하다","ko_wrongs":["작성하다","배포하다","폐기하다"]},
+  "reviewed": {"kind":"word","ko_correct":"검토했다","ko_wrongs":["제출했다","연기했다","요청했다"]},
+  "confirm": {"kind":"word","ko_correct":"확인하다","ko_wrongs":["취소하다","연기하다","무시하다"]},
+  "contact": {"kind":"word","ko_correct":"연락하다","ko_wrongs":["방문하다","거절하다","환불하다"]},
+  "arrive": {"kind":"word","ko_correct":"도착하다","ko_wrongs":["출발하다","취소하다","교체하다"]},
+  "shipment": {"kind":"word","ko_correct":"배송 물품","ko_wrongs":["회의 일정","보고서","요청서"]},
+  "tracking": {"kind":"word","ko_correct":"추적","ko_wrongs":["인쇄","지불","예약"]},
+  "system": {"kind":"word","ko_correct":"시스템","ko_wrongs":["감사","직원","사무실"]},
+  "immediately": {"kind":"word","ko_correct":"즉시","ko_wrongs":["미리","가끔","결국"]},
+  "deadline": {"kind":"word","ko_correct":"마감일","ko_wrongs":["휴가","할인","승인"]},
+  "available": {"kind":"word","ko_correct":"이용 가능한","ko_wrongs":["파손된","취소된","위험한"]},
+  "require": {"kind":"word","ko_correct":"필요로 하다","ko_wrongs":["무시하다","반품하다","고치다"]},
+  "schedule": {"kind":"word","ko_correct":"일정","ko_wrongs":["불만","영수증","보고서"]},
+  "refund": {"kind":"word","ko_correct":"환불","ko_wrongs":["구매","고용","예약"]},
+  "replace": {"kind":"word","ko_correct":"교체하다","ko_wrongs":["승인하다","연기하다","확인하다"]},
+  "increase": {"kind":"word","ko_correct":"증가하다","ko_wrongs":["감소하다","취소하다","파손되다"]},
+  "decrease": {"kind":"word","ko_correct":"감소하다","ko_wrongs":["증가하다","도착하다","승인하다"]},
+  "notify": {"kind":"word","ko_correct":"알리다","ko_wrongs":["거절하다","연기하다","환불하다"]},
+  "reschedule": {"kind":"word","ko_correct":"일정을 변경하다","ko_wrongs":["확정하다","거절하다","배송하다"]},
+
+  "manager": {"kind":"word","ko_correct":"관리자","ko_wrongs":["고객","사무실","기술자"]},
+  "report": {"kind":"word","ko_correct":"보고서","ko_wrongs":["배송","예약","청구서"]},
+  "meeting": {"kind":"word","ko_correct":"회의","ko_wrongs":["배송","환불","할인"]},
+  "form": {"kind":"word","ko_correct":"서식","ko_wrongs":["상품","회의","주소"]},
+
+  "by friday": {"kind":"phrase","ko_correct":"금요일까지","ko_wrongs":["금요일에","금요일 이후에","금요일 전에"]},
+  "before the meeting": {"kind":"phrase","ko_correct":"회의 전에","ko_wrongs":["회의 후에","회의 중에","회의 때문에"]},
+  "according to": {"kind":"phrase","ko_correct":"~에 따르면","ko_wrongs":["~와 함께","~에도 불구하고","~을 제외하고"]},
+  "by noon": {"kind":"phrase","ko_correct":"정오까지","ko_wrongs":["정오에","정오 이후에","정오 전에"]},
+  "as soon as possible": {"kind":"phrase","ko_correct":"가능한 한 빨리","ko_wrongs":["가능하면 나중에","가능하면 생략","가능하면 포기"]},
+  "in advance": {"kind":"phrase","ko_correct":"미리","ko_wrongs":["즉시","우연히","가끔"]},
+  "no later than": {"kind":"phrase","ko_correct":"늦어도 ~까지","ko_wrongs":["~보다 더 늦게","~와 동시에","~에 따라서"]}
+}

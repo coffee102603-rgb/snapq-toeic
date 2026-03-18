@@ -1,0 +1,56 @@
+content = open('pages/02_P5_Arena.py', 'r', encoding='utf-8').read()
+
+old = """    # ━━━ 항상 고정 네비게이션 ━━━
+    st.markdown(\'\'\'<div style="margin-top:8px;padding-top:6px;border-top:1px solid rgba(255,255,255,0.08);text-align:center;">
+    <span style="font-size:0.6rem;color:rgba(255,255,255,0.2);letter-spacing:2px;">─ 다른 곳으로 ─</span>
+    </div>\'\'\', unsafe_allow_html=True)
+    nc1,_,nc2 = st.columns([2,1,2])
+    with nc1:
+        if st.button("🔥 역전장", key="nav_stg", type="secondary", use_container_width=True):
+            st.switch_page("pages/03_역전장.py")
+    with nc2:
+        if st.button("🏠 메인", key="nav_hub", type="secondary", use_container_width=True):
+            st.session_state._p5_just_left = True
+            st.session_state.ans = False
+            st.session_state["_battle_entry_ans_reset"] = True
+            st.switch_page("main_hub.py")
+    st.markdown(\'\'\'<style>
+section[data-testid="stSidebar"] ~ div [data-testid="stHorizontalBlock"]:last-of-type button,
+[data-testid="stHorizontalBlock"]:last-of-type button {
+    font-size:0.8rem !important;
+    padding:4px 6px !important;
+    min-height:0 !important;
+    height:auto !important;
+    border:1px solid rgba(255,255,255,0.15) !important;
+    background:rgba(0,0,0,0) !important;
+    box-shadow:none !important;
+    animation:none !important;
+    line-height:1.2 !important;
+}
+[data-testid="stHorizontalBlock"]:last-of-type button p {
+    font-size:0.8rem !important;
+    color:#555 !important;
+    font-weight:400 !important;
+}
+</style>\'\'\', unsafe_allow_html=True)"""
+
+new = """    # ━━━ 항상 고정 네비게이션 ━━━
+    _nav = st.query_params.get("nav","")
+    if _nav == "stg":
+        st.switch_page("pages/03_역전장.py")
+    if _nav == "hub":
+        st.session_state._p5_just_left = True
+        st.session_state.ans = False
+        st.session_state["_battle_entry_ans_reset"] = True
+        st.switch_page("main_hub.py")
+    st.markdown(f\'\'\'<div style="margin-top:10px;padding-top:6px;border-top:1px solid rgba(255,255,255,0.08);text-align:center;">
+    <span style="font-size:0.6rem;color:rgba(255,255,255,0.2);letter-spacing:2px;">─ 다른 곳으로 ─</span>
+    </div>
+    <div style="display:flex;gap:8px;margin-top:6px;">
+        <a href="?nav=stg" target="_self" style="flex:1;display:block;text-align:center;padding:6px 4px;font-size:0.82rem;color:#666;border:1px solid rgba(255,255,255,0.15);border-radius:8px;text-decoration:none;background:transparent;">🔥 역전장</a>
+        <a href="?nav=hub" target="_self" style="flex:1;display:block;text-align:center;padding:6px 4px;font-size:0.82rem;color:#666;border:1px solid rgba(255,255,255,0.15);border-radius:8px;text-decoration:none;background:transparent;">🏠 메인</a>
+    </div>\'\'\', unsafe_allow_html=True)"""
+
+content = content.replace(old, new)
+open('pages/02_P5_Arena.py', 'w', encoding='utf-8').write(content)
+print('done:', 'query_params' in content)

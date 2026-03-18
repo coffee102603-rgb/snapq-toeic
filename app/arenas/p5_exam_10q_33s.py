@@ -1,0 +1,724 @@
+﻿# app/arenas/p5_exam_10q_33s.py
+# ============================================================
+# SNAPQ TOEIC - P5 EXAM (10Q / 44s) FINAL HUD BUILD v4
+# - Forced DARK "PC-bang" theme
+# - ONE LANE: Problem + Choices under it (clean & mobile-friendly)
+# - NO typing: 4-choice card clicks only
+# - Sudden Death: wrong at ANY step => instant fail
+# - Each question has 2 steps, SAME sentence:
+#     Step A: blank #1 (original question 그대로)
+#     Step B: same sentence, blank #2 (원형 그대로)
+# - Timer:
+#     total base 44s
+#     bonus +0.6s on every correct step (A correct +0.6, B correct +0.6)
+#     bonus cap = 8.0s
+# - UI cleanup:
+#     * remove "카드 선택지 (4지선다)" title
+#     * remove bottom mobile guide text
+# ============================================================
+
+from __future__ import annotations
+
+import time
+import random
+from dataclasses import dataclass
+from typing import List, Optional
+
+import streamlit as st
+
+# --- SNAPQ_MAIN_HUB_NAV (auto) ---
+try:
+    _hub_col, _hub_spacer = st.columns([1.4, 8.6])
+    with _hub_col:
+        if st.button("🏠 MAIN HUB", key=f"hub_{__file__}", use_container_width=True):
+            try:
+                st.switch_page("main_hub.py")
+            except Exception:
+                st.info("좌측 메뉴(사이드바)에서 Main Hub로 이동해주세요.")
+except Exception:
+    pass
+# --- /SNAPQ_MAIN_HUB_NAV ---
+
+
+
+# ---------------------------
+# Constants
+# ---------------------------
+ARENA_VER = "P5_EXAM_10Q_44S__HUD_AB_SAME_SENTENCE__2026-01-27"
+
+TOTAL_SECONDS = 44
+TOTAL_QUESTIONS = 10
+DANGER_SHAKE_SECONDS = 10
+
+BONUS_PER_CORRECT = 0.6
+BONUS_CAP = 8.0  # total bonus max
+
+# Session keys
+KEY_SET_OFFICIAL = "ex10_set_idx"
+KEY_SET_COMPAT = "p5_exam_set_idx"
+
+KEY_ACTIVE = "p5ex10_active"
+KEY_START_TS = "p5ex10_start_ts"
+KEY_QIDX = "p5ex10_qidx"           # 0..9
+KEY_STEP = "p5ex10_step"           # "A" or "B"
+KEY_SCORE = "p5ex10_score"         # cleared questions count (0..10)
+KEY_BONUS = "p5ex10_bonus"         # float, total bonus seconds (0..8)
+
+KEY_LOCKED = "p5ex10_locked"
+KEY_FAIL = "p5ex10_failed"
+KEY_SEED = "p5ex10_seed"
+KEY_QUESTIONS = "p5ex10_questions"
+KEY_LAST = "p5ex10_last_pick"      # (qidx, step, picked_idx, correct)
+
+
+# ---------------------------
+# Data model
+# ---------------------------
+@dataclass(frozen=True)
+class ExamQ:
+    tag: str
+
+    # SAME sentence, but blank position changes by step
+    prompt_a: str
+    choices_a: List[str]
+    answer_a: int
+
+    prompt_b: str
+    choices_b: List[str]
+    answer_b: int
+
+    tip: Optional[str] = None
+
+
+# ---------------------------
+# Key sync
+# ---------------------------
+def _sync_set_idx() -> int:
+    off = st.session_state.get(KEY_SET_OFFICIAL, None)
+    com = st.session_state.get(KEY_SET_COMPAT, None)
+
+    if off is None and com is None:
+        st.session_state[KEY_SET_OFFICIAL] = 0
+        st.session_state[KEY_SET_COMPAT] = 0
+        return 0
+
+    if off is None and com is not None:
+        st.session_state[KEY_SET_OFFICIAL] = int(com)
+        st.session_state[KEY_SET_COMPAT] = int(com)
+        return int(com)
+
+    st.session_state[KEY_SET_OFFICIAL] = int(off)
+    st.session_state[KEY_SET_COMPAT] = int(off)
+    return int(off)
+
+
+def _maybe_autorefresh(active: bool, interval_ms: int = 250) -> None:
+    if not active:
+        return
+    fn = getattr(st, "autorefresh", None)
+    if callable(fn):
+        try:
+            fn(interval=interval_ms, key="p5ex10_autorefresh")
+        except TypeError:
+            try:
+                fn(interval_ms, key="p5ex10_autorefresh")
+            except Exception:
+                pass
+
+
+# ---------------------------
+# Timer with bonus
+# ---------------------------
+def _seconds_left() -> int:
+    start = st.session_state.get(KEY_START_TS, None)
+    bonus = float(st.session_state.get(KEY_BONUS, 0.0))
+    bonus = max(0.0, min(BONUS_CAP, bonus))
+
+    if not start:
+        return int(TOTAL_SECONDS + bonus)
+
+    elapsed = time.time() - float(start)
+    left = (TOTAL_SECONDS - elapsed) + bonus
+    return max(0, int(left))
+
+
+def _award_bonus() -> None:
+    b = float(st.session_state.get(KEY_BONUS, 0.0))
+    b = min(BONUS_CAP, b + BONUS_PER_CORRECT)
+    st.session_state[KEY_BONUS] = b
+
+
+# ---------------------------
+# Questions (원형 그대로 유지)
+# ---------------------------
+def _load_questions_fallback(set_idx: int, seed: int) -> List[ExamQ]:
+    # NOTE: 문장/선택지/정답 "절대 변형 금지" — 기존 bank 그대로
+    bank: List[ExamQ] = [
+        ExamQ(
+            tag="Preposition/Time",
+            prompt_a="The report was reviewed ____ the manager before noon.",
+            choices_a=["by", "to", "with", "at"],
+            answer_a=0,
+            prompt_b="The report was reviewed by the manager ____ noon.",
+            choices_b=["before", "during", "since", "until"],
+            answer_b=0,
+            tip="reviewed by / before noon",
+        ),
+        ExamQ(
+            tag="Preposition/Time",
+            prompt_a="All employees must submit their forms ____ Friday.",
+            choices_a=["by", "until", "during", "since"],
+            answer_a=0,
+            prompt_b="All employees must submit their forms by Friday, ____ the office closes.",
+            choices_b=["before", "during", "since", "although"],
+            answer_b=0,
+            tip="by Friday / before the office closes",
+        ),
+        ExamQ(
+            tag="Conjunction/Result",
+            prompt_a="The technician repaired the machine, ____ production resumed.",
+            choices_a=["so", "because", "although", "unless"],
+            answer_a=0,
+            prompt_b="The technician repaired the machine, so production resumed ____ delay.",
+            choices_b=["without", "during", "between", "since"],
+            answer_b=0,
+            tip="so (result) / without delay",
+        ),
+        ExamQ(
+            tag="Preposition/Exception",
+            prompt_a="The email was sent to everyone ____ the interns.",
+            choices_a=["except", "beside", "during", "among"],
+            answer_a=0,
+            prompt_b="The email was sent to everyone except the interns, ____ they were off-site.",
+            choices_b=["because", "so", "unless", "and"],
+            answer_b=0,
+            tip="except / because",
+        ),
+        ExamQ(
+            tag="Clause/Time",
+            prompt_a="The documents need to be filed ____ they are signed.",
+            choices_a=["as soon as", "as long as", "even though", "so that"],
+            answer_a=0,
+            prompt_b="The documents need to be filed as soon as they are signed ____ they are archived.",
+            choices_b=["before", "during", "since", "until"],
+            answer_b=0,
+            tip="as soon as / before",
+        ),
+        ExamQ(
+            tag="Preposition/Condition",
+            prompt_a="Ms. Lee is responsible ____ scheduling the interviews.",
+            choices_a=["for", "to", "with", "at"],
+            answer_a=0,
+            prompt_b="Ms. Lee is responsible for scheduling the interviews ____ the new system.",
+            choices_b=["with", "in", "on", "by"],
+            answer_b=0,
+            tip="responsible for / with the system",
+        ),
+        ExamQ(
+            tag="Time/Sequence",
+            prompt_a="The new policy will take effect ____ March 1.",
+            choices_a=["on", "in", "at", "by"],
+            answer_a=0,
+            prompt_b="The new policy will take effect on March 1, ____ it is announced to staff.",
+            choices_b=["after", "during", "until", "unless"],
+            answer_b=0,
+            tip="on a date / after announcement",
+        ),
+        ExamQ(
+            tag="Preposition/Info",
+            prompt_a="Please keep me informed ____ any changes to the schedule.",
+            choices_a=["of", "on", "in", "for"],
+            answer_a=0,
+            prompt_b="Please keep me informed of any changes to the schedule ____ email.",
+            choices_b=["by", "at", "in", "to"],
+            answer_b=0,
+            tip="informed of / by email",
+        ),
+        ExamQ(
+            tag="Conjunction/Contrast",
+            prompt_a="The proposal was rejected ____ it lacked sufficient data.",
+            choices_a=["because", "so", "unless", "however"],
+            answer_a=0,
+            prompt_b="The proposal was rejected because it lacked sufficient data, ____ the idea was promising.",
+            choices_b=["although", "so", "because", "before"],
+            answer_b=0,
+            tip="because / although",
+        ),
+        ExamQ(
+            tag="Preposition/Location",
+            prompt_a="The meeting will be held ____ the main conference room.",
+            choices_a=["in", "on", "at", "by"],
+            answer_a=0,
+            prompt_b="The meeting will be held in the main conference room ____ the third floor.",
+            choices_b=["on", "in", "at", "by"],
+            answer_b=0,
+            tip="in a room / on a floor",
+        ),
+    ]
+
+    rng = random.Random(seed + set_idx * 9973)
+    rng.shuffle(bank)
+    return bank[:TOTAL_QUESTIONS]
+
+
+def _get_questions() -> List[ExamQ]:
+    set_idx = _sync_set_idx()
+    qs = st.session_state.get(KEY_QUESTIONS, None)
+    if isinstance(qs, list) and len(qs) >= TOTAL_QUESTIONS:
+        return qs[:TOTAL_QUESTIONS]
+
+    seed = st.session_state.get(KEY_SEED, None)
+    if seed is None:
+        seed = int(time.time() * 1000) % 2_000_000_000
+        st.session_state[KEY_SEED] = seed
+
+    qs2 = _load_questions_fallback(set_idx=set_idx, seed=int(seed))
+    st.session_state[KEY_QUESTIONS] = qs2
+    return qs2[:TOTAL_QUESTIONS]
+
+
+# ---------------------------
+# Run controls
+# ---------------------------
+def _reset_run(advance_set: bool = False) -> None:
+    set_idx = _sync_set_idx()
+    if advance_set:
+        set_idx += 1
+        st.session_state[KEY_SET_OFFICIAL] = set_idx
+        st.session_state[KEY_SET_COMPAT] = set_idx
+
+    seed = int(time.time() * 1000) % 2_000_000_000
+    st.session_state[KEY_SEED] = seed
+    st.session_state[KEY_QUESTIONS] = _load_questions_fallback(set_idx=set_idx, seed=seed)
+
+    st.session_state[KEY_ACTIVE] = True
+    st.session_state[KEY_START_TS] = time.time()
+    st.session_state[KEY_QIDX] = 0
+    st.session_state[KEY_STEP] = "A"
+    st.session_state[KEY_SCORE] = 0
+    st.session_state[KEY_BONUS] = 0.0
+
+    st.session_state[KEY_LOCKED] = False
+    st.session_state[KEY_FAIL] = False
+    st.session_state[KEY_LAST] = None
+
+
+def _finish_run() -> None:
+    st.session_state[KEY_ACTIVE] = False
+    st.session_state[KEY_LOCKED] = True
+
+
+def _sudden_death() -> None:
+    st.session_state[KEY_FAIL] = True
+    _finish_run()
+
+
+def _handle_choice(picked_idx: int) -> None:
+    if st.session_state.get(KEY_LOCKED, False):
+        return
+
+    qidx = int(st.session_state.get(KEY_QIDX, 0))
+    step = str(st.session_state.get(KEY_STEP, "A"))
+    qs = _get_questions()
+
+    if qidx >= len(qs):
+        _finish_run()
+        return
+
+    q = qs[qidx]
+
+    if step == "A":
+        correct = (picked_idx == q.answer_a)
+        st.session_state[KEY_LAST] = (qidx, "A", picked_idx, correct)
+
+        if not correct:
+            _sudden_death()
+            return
+
+        _award_bonus()
+        st.session_state[KEY_STEP] = "B"
+        return
+
+    # step B
+    correct = (picked_idx == q.answer_b)
+    st.session_state[KEY_LAST] = (qidx, "B", picked_idx, correct)
+
+    if not correct:
+        _sudden_death()
+        return
+
+    _award_bonus()
+    st.session_state[KEY_SCORE] = int(st.session_state.get(KEY_SCORE, 0)) + 1
+
+    qidx += 1
+    st.session_state[KEY_QIDX] = qidx
+    st.session_state[KEY_STEP] = "A"
+
+    if qidx >= TOTAL_QUESTIONS:
+        _finish_run()
+        st.session_state[KEY_SET_OFFICIAL] = _sync_set_idx() + 1
+        st.session_state[KEY_SET_COMPAT] = st.session_state[KEY_SET_OFFICIAL]
+
+
+# ---------------------------
+# CSS (FORCED DARK + clean layout)
+# - choices under question
+# - remove extra captions/titles
+# - choice text: 1.2x bigger + bolder
+# ---------------------------
+def _inject_css() -> None:
+    st.markdown(
+        """
+<style>
+html, body, [data-testid="stAppViewContainer"]{
+  background: radial-gradient(1400px 700px at 10% 0%, #1a1430 0%, #0b0f1a 55%, #070910 100%) !important;
+  color: rgba(255,255,255,0.92) !important;
+}
+[data-testid="stHeader"] { background: transparent !important; }
+[data-testid="stToolbar"] { right: 1rem !important; }
+
+.block-container{
+  max-width: 980px;
+  padding-top: 0.8rem;
+  padding-bottom: 2.2rem;
+}
+@media (max-width: 768px){
+  .block-container{ padding-left: 0.9rem; padding-right: 0.9rem; }
+}
+
+/* HUD */
+.p5hud{
+  position: sticky; top: 0.35rem; z-index: 999;
+  border-radius: 20px;
+  border: 1px solid rgba(255,255,255,0.10);
+  background: linear-gradient(135deg, rgba(10,12,18,0.92), rgba(24,16,40,0.92));
+  box-shadow: 0 16px 40px rgba(0,0,0,0.55);
+  padding: 0.85rem 1.0rem;
+  margin-bottom: 1.0rem;
+  backdrop-filter: blur(10px);
+}
+.p5hudTop{
+  display:flex; align-items:center; justify-content:space-between; gap:0.8rem; flex-wrap:wrap;
+}
+.p5title{
+  font-weight: 950; letter-spacing: 0.2px;
+  font-size: 1.18rem;
+}
+.p5badges{ display:flex; gap:0.55rem; flex-wrap:wrap; align-items:center; }
+.p5badge{
+  border-radius: 999px;
+  padding: 0.28rem 0.68rem;
+  font-weight: 900;
+  font-size: 0.95rem;
+  border: 1px solid rgba(255,255,255,0.14);
+  background: rgba(255,255,255,0.07);
+}
+.p5badge.danger{ border-color: rgba(255,90,90,0.45); background: rgba(255,90,90,0.14); }
+.p5badge.ok{ border-color: rgba(90,255,200,0.32); background: rgba(90,255,200,0.12); }
+.p5badge.bonus{ border-color: rgba(255,220,120,0.35); background: rgba(255,220,120,0.12); }
+
+.p5gaugeWrap{
+  margin-top: 0.65rem;
+  border-radius: 999px;
+  background: rgba(255,255,255,0.10);
+  border: 1px solid rgba(255,255,255,0.10);
+  overflow:hidden;
+  height: 12px;
+}
+.p5gaugeBar{
+  height: 100%;
+  width: 50%;
+  background: linear-gradient(90deg, rgba(90,170,255,0.96), rgba(175,120,255,0.96));
+  transition: width 0.12s linear;
+}
+.p5gaugeBar.danger{
+  background: linear-gradient(90deg, rgba(255,140,140,0.98), rgba(255,70,70,0.98));
+}
+
+@keyframes p5shake{
+  0%{transform:translateX(0)}
+  20%{transform:translateX(-3px)}
+  40%{transform:translateX(3px)}
+  60%{transform:translateX(-3px)}
+  80%{transform:translateX(3px)}
+  100%{transform:translateX(0)}
+}
+.p5shake{ animation:p5shake 0.25s infinite; }
+
+/* Panels */
+.p5panel{
+  border-radius: 22px;
+  border: 1px solid rgba(255,255,255,0.10);
+  background: rgba(255,255,255,0.06);
+  box-shadow: 0 14px 34px rgba(0,0,0,0.55);
+  padding: 1.05rem 1.05rem;
+}
+.p5qBox{
+  border-radius: 18px;
+  border: 1px solid rgba(255,255,255,0.12);
+  background: rgba(255,255,255,0.06);
+  padding: 1.05rem 1.05rem;
+  margin-bottom: 0.85rem;
+}
+.p5qTag{
+  display:inline-block;
+  font-size: 0.92rem;
+  font-weight: 950;
+  padding: 0.26rem 0.62rem;
+  border-radius: 999px;
+  border: 1px solid rgba(255,255,255,0.16);
+  background: rgba(255,255,255,0.08);
+  margin-bottom: 0.7rem;
+}
+
+/* Problem */
+.p5qText{
+  font-size: 1.70rem;
+  font-weight: 950;
+  line-height: 1.35;
+  color: rgba(255,255,255,0.96);
+}
+@media (max-width: 768px){
+  .p5qText{ font-size: 1.38rem; }
+}
+
+/* Choice buttons: 1.2x bigger + bolder */
+div.stButton > button{
+  width:100%;
+  border-radius: 18px !important;
+  padding: 1.06rem 1.06rem !important;
+  font-weight: 1000 !important;
+  font-size: 1.51rem !important;   /* 1.26 * 1.2 */
+  border: 1px solid rgba(255,255,255,0.16) !important;
+  background: rgba(255,255,255,0.08) !important;
+  color: #F5F7FF !important;
+  box-shadow: 0 14px 26px rgba(0,0,0,0.55) !important;
+  text-align: left !important;
+  white-space: normal !important;
+  line-height: 1.18 !important;
+  transition: transform .08s ease, border-color .08s ease, background .08s ease, color .08s ease;
+}
+div.stButton > button:hover{
+  transform: translateY(-1px);
+  border-color: rgba(170,190,255,0.62) !important;
+  background: rgba(170,190,255,0.18) !important;
+  color: #FFFFFF !important;
+}
+@media (max-width: 768px){
+  div.stButton > button{
+    font-size: 1.37rem !important; /* 1.14 * 1.2 */
+    padding: 1.00rem 1.00rem !important;
+  }
+}
+
+/* Feedback */
+.p5ok{
+  border: 1px solid rgba(90,255,200,0.30);
+  background: rgba(90,255,200,0.14);
+  border-radius: 16px;
+  padding: 0.75rem 0.85rem;
+  font-weight: 950;
+  font-size: 1.05rem;
+}
+.p5bad{
+  border: 1px solid rgba(255,90,90,0.34);
+  background: rgba(255,90,90,0.16);
+  border-radius: 16px;
+  padding: 0.75rem 0.85rem;
+  font-weight: 950;
+  font-size: 1.05rem;
+}
+.p5small{ opacity: 0.86; font-size: 0.98rem; font-weight: 800; }
+[data-testid="stMarkdownContainer"] p{ margin-bottom: 0.55rem; }
+</style>
+        """,
+        unsafe_allow_html=True,
+    )
+
+
+def _render_hud(set_idx: int, qidx: int, step: str, score: int, seconds_left: int, active: bool) -> None:
+    danger = active and (0 < seconds_left <= DANGER_SHAKE_SECONDS)
+
+    max_total = TOTAL_SECONDS + BONUS_CAP
+    pct = 0.0 if max_total <= 0 else (seconds_left / max_total)
+    pct = max(0.0, min(1.0, pct))
+    bar_w = int(pct * 100)
+
+    shake_class = "p5shake" if danger else ""
+    time_badge_class = "danger" if danger else "ok"
+    bar_class = "p5gaugeBar danger" if danger else "p5gaugeBar"
+
+    shown_set = (set_idx % 5) + 1
+    bonus = float(st.session_state.get(KEY_BONUS, 0.0))
+    bonus = max(0.0, min(BONUS_CAP, bonus))
+
+    st.markdown(
+        f"""
+<div class="p5hud {shake_class}">
+  <div class="p5hudTop">
+    <div class="p5title">🔥 P5 EXAM 10Q · 44s</div>
+    <div class="p5badges">
+      <div class="p5badge">SET {shown_set}/5</div>
+      <div class="p5badge">Q {min(qidx+1, TOTAL_QUESTIONS)}/{TOTAL_QUESTIONS}</div>
+      <div class="p5badge">STEP {step}</div>
+      <div class="p5badge">SCORE {score}/{TOTAL_QUESTIONS}</div>
+      <div class="p5badge bonus">+{bonus:.1f}s</div>
+      <div class="p5badge {time_badge_class}">⏱ {seconds_left}s</div>
+    </div>
+  </div>
+  <div class="p5gaugeWrap">
+    <div class="{bar_class}" style="width:{bar_w}%"></div>
+  </div>
+</div>
+        """,
+        unsafe_allow_html=True,
+    )
+
+
+def render() -> None:
+    _inject_css()
+    set_idx = _sync_set_idx()
+
+    # init
+    if KEY_ACTIVE not in st.session_state:
+        st.session_state[KEY_ACTIVE] = False
+    if KEY_LOCKED not in st.session_state:
+        st.session_state[KEY_LOCKED] = False
+    if KEY_FAIL not in st.session_state:
+        st.session_state[KEY_FAIL] = False
+    if KEY_STEP not in st.session_state:
+        st.session_state[KEY_STEP] = "A"
+    if KEY_BONUS not in st.session_state:
+        st.session_state[KEY_BONUS] = 0.0
+
+    active = bool(st.session_state.get(KEY_ACTIVE, False))
+
+    if KEY_QUESTIONS not in st.session_state:
+        st.session_state[KEY_SEED] = int(time.time() * 1000) % 2_000_000_000
+        st.session_state[KEY_QUESTIONS] = _load_questions_fallback(
+            set_idx=set_idx, seed=int(st.session_state[KEY_SEED])
+        )
+
+    _maybe_autorefresh(active=active, interval_ms=250)
+
+    seconds_left = _seconds_left()
+    if active and seconds_left <= 0:
+        _finish_run()
+        active = False
+
+    qidx = int(st.session_state.get(KEY_QIDX, 0))
+    step = str(st.session_state.get(KEY_STEP, "A"))
+    score = int(st.session_state.get(KEY_SCORE, 0))
+
+    _render_hud(set_idx=set_idx, qidx=qidx, step=step, score=score, seconds_left=seconds_left, active=active)
+    st.caption(f"ARENA_VER: {ARENA_VER}")
+
+    st.markdown('<div class="p5panel">', unsafe_allow_html=True)
+
+    # Lobby (not active)
+    if not active:
+        st.markdown("### 🧾 Commander Brief (전장 규칙)")
+        st.markdown(
+            """
+- **한 세트 = 10문항**, 각 문항은 **같은 문장**으로 **A → B** 2스텝
+- **44초 전체** + 정답 보너스 **+0.6초**(상한 8초)
+- **Wrong = Sudden Death**
+- **타이핑 없음**: 4지선다 카드 클릭만
+- **10초 이하**: 폭탄 경고(흔들림 + 게이지 빨강)
+            """.strip()
+        )
+
+        c1, c2 = st.columns(2, gap="small")
+        with c1:
+            if st.button("🚀 START MISSION", key="p5ex10_start_btn", use_container_width=True):
+                _reset_run(advance_set=False)
+                st.rerun()
+        with c2:
+            if st.button("♻️ NEW SET", key="p5ex10_newset_btn", use_container_width=True):
+                _reset_run(advance_set=True)
+                st.rerun()
+
+        if st.session_state.get(KEY_LOCKED, False):
+            st.markdown("---")
+            if st.session_state.get(KEY_FAIL, False):
+                st.markdown('<div class="p5bad">💥 SUDDEN DEATH! 오답으로 즉시 종료.</div>', unsafe_allow_html=True)
+            else:
+                st.markdown('<div class="p5ok">🏁 MISSION CLEAR! 10문항(2스텝) 통과.</div>', unsafe_allow_html=True)
+
+            st.markdown(f"### 결과: **{score}/{TOTAL_QUESTIONS}**")
+            st.markdown('<div class="p5small">※ SCORE는 “문항 클리어(=B까지 통과)” 개수입니다.</div>', unsafe_allow_html=True)
+
+            if st.button("🔁 RESTART", key="p5ex10_restart_btn", use_container_width=True):
+                _reset_run(advance_set=False)
+                st.rerun()
+
+        st.markdown("</div>", unsafe_allow_html=True)  # p5panel
+        return
+
+    # Active run
+    qs = _get_questions()
+    qidx = int(st.session_state.get(KEY_QIDX, 0))
+    step = str(st.session_state.get(KEY_STEP, "A"))
+
+    if qidx >= TOTAL_QUESTIONS:
+        _finish_run()
+        st.rerun()
+
+    q = qs[qidx]
+
+    if step == "A":
+        st.markdown(
+            f"""
+<div class="p5qBox">
+  <div class="p5qTag">🎯 {q.tag} · Q{qidx+1} · STEP A</div>
+  <div class="p5qText">{q.prompt_a}</div>
+</div>
+            """,
+            unsafe_allow_html=True,
+        )
+        choices = q.choices_a
+    else:
+        st.markdown(
+            f"""
+<div class="p5qBox">
+  <div class="p5qTag">🎯 {q.tag} · Q{qidx+1} · STEP B</div>
+  <div class="p5qText">{q.prompt_b}</div>
+</div>
+            """,
+            unsafe_allow_html=True,
+        )
+        choices = q.choices_b
+
+    # Feedback (A->B transition)
+    lp = st.session_state.get(KEY_LAST, None)
+    if isinstance(lp, tuple) and len(lp) == 4:
+        prev_qidx, prev_step, _picked, correct = lp
+        if prev_qidx == qidx and prev_step != step:
+            st.markdown("---")
+            if correct:
+                st.markdown('<div class="p5ok">✅ 정답! +0.6s 보너스 지급 🔥</div>', unsafe_allow_html=True)
+            else:
+                st.markdown('<div class="p5bad">💥 오답! Sudden Death 발동.</div>', unsafe_allow_html=True)
+
+    # Choices: 문제 아래로 2x2
+    row1 = st.columns(2, gap="medium")
+    with row1[0]:
+        if st.button(f"(A)  {choices[0]}", key=f"p5ex10_pick_{qidx}_{step}_0", use_container_width=True):
+            _handle_choice(0)
+            st.rerun()
+    with row1[1]:
+        if st.button(f"(B)  {choices[1]}", key=f"p5ex10_pick_{qidx}_{step}_1", use_container_width=True):
+            _handle_choice(1)
+            st.rerun()
+
+    row2 = st.columns(2, gap="medium")
+    with row2[0]:
+        if st.button(f"(C)  {choices[2]}", key=f"p5ex10_pick_{qidx}_{step}_2", use_container_width=True):
+            _handle_choice(2)
+            st.rerun()
+    with row2[1]:
+        if st.button(f"(D)  {choices[3]}", key=f"p5ex10_pick_{qidx}_{step}_3", use_container_width=True):
+            _handle_choice(3)
+            st.rerun()
+
+    st.markdown("</div>", unsafe_allow_html=True)  # p5panel

@@ -1,0 +1,850 @@
+[
+  {
+    "id": 1,
+    "mode": "grammar",
+    "category": "verb_tense",
+    "level": "easy",
+    "question": "The manager _____ the report before the meeting.",
+    "options": [
+      "review",
+      "reviewing",
+      "reviewed",
+      "was review"
+    ],
+    "answer_index": 2,
+    "explanation": "과거 시점이므로 과거형 'reviewed'가 자연스럽다.",
+    "korean": "매니저는 회의 전에 보고서를 검토했다."
+  },
+  {
+    "id": 2,
+    "mode": "grammar",
+    "category": "verb_tense",
+    "level": "easy",
+    "question": "All employees must _____ their badges at all times.",
+    "options": [
+      "wear",
+      "wearing",
+      "wore",
+      "to wear"
+    ],
+    "answer_index": 0,
+    "explanation": "조동사 must 뒤에는 동사원형이 온다.",
+    "korean": "모든 직원은 항상 배지를 착용해야 한다."
+  },
+  {
+    "id": 3,
+    "mode": "grammar",
+    "category": "prepositions",
+    "level": "easy",
+    "question": "Please submit the form _____ Friday.",
+    "options": [
+      "in",
+      "on",
+      "by",
+      "at"
+    ],
+    "answer_index": 2,
+    "explanation": "'by + 기한'은 '~까지'라는 의미다.",
+    "korean": "금요일까지 서류를 제출해 주세요."
+  },
+  {
+    "id": 4,
+    "mode": "grammar",
+    "category": "articles",
+    "level": "easy",
+    "question": "She will give _____ presentation tomorrow.",
+    "options": [
+      "a",
+      "an",
+      "the",
+      "no article"
+    ],
+    "answer_index": 0,
+    "explanation": "presentation은 가산명사이며, 일반적인 의미로 처음 언급되므로 a가 적절하다.",
+    "korean": "그녀는 내일 발표를 할 것이다."
+  },
+  {
+    "id": 5,
+    "mode": "grammar",
+    "category": "subject_verb",
+    "level": "hard",
+    "question": "Neither the manager nor the employees _____ responsible for the error.",
+    "options": [
+      "is",
+      "are",
+      "be",
+      "was"
+    ],
+    "answer_index": 1,
+    "explanation": "neither A nor B에서 동사는 B(가까운 주어)에 수일치한다. employees(복수)이므로 are.",
+    "korean": "매니저도 직원들도 그 오류에 대해 책임이 없다."
+  },
+  {
+    "id": 6,
+    "mode": "grammar",
+    "category": "modals",
+    "level": "hard",
+    "question": "The shipment _____ arrive by noon, according to the tracking system.",
+    "options": [
+      "must",
+      "should",
+      "might",
+      "would"
+    ],
+    "answer_index": 1,
+    "explanation": "should는 '예상/추정' 의미로 '~일 것이다'에 가깝게 쓰인다.",
+    "korean": "추적 시스템에 따르면 배송은 정오까지 도착할 것이다."
+  },
+  {
+    "id": 7,
+    "mode": "grammar",
+    "category": "gerunds_infinitives",
+    "level": "hard",
+    "question": "The director suggested _____ the meeting until next week.",
+    "options": [
+      "postpone",
+      "postponing",
+      "to postpone",
+      "postponed"
+    ],
+    "answer_index": 1,
+    "explanation": "suggest는 동명사(-ing)를 목적어로 취한다.",
+    "korean": "이사는 회의를 다음 주로 미루자고 제안했다."
+  },
+  {
+    "id": 8,
+    "mode": "grammar",
+    "category": "relative_clauses",
+    "level": "hard",
+    "question": "The candidate _____ resume impressed the interviewer was hired.",
+    "options": [
+      "who",
+      "whose",
+      "which",
+      "whom"
+    ],
+    "answer_index": 1,
+    "explanation": "resume(명사) 앞에서 소유를 나타내므로 whose가 맞다.",
+    "korean": "이력서가 면접관에게 인상적이었던 지원자가 채용되었다."
+  },
+  {
+    "id": 100,
+    "mode": "vocab",
+    "category": "vocab_core",
+    "level": "easy",
+    "question": "The brochure provides _____ information about the tour.",
+    "options": [
+      "delayed",
+      "divided",
+      "detailed",
+      "decided"
+    ],
+    "answer_index": 2,
+    "vocab_word": "detailed",
+    "vocab_meaning": "상세한",
+    "explanation": "'detailed'는 '상세한'이라는 뜻이다.",
+    "korean": "그 안내 책자는 투어에 대한 상세한 정보를 제공한다."
+  },
+  {
+    "id": 101,
+    "mode": "vocab",
+    "category": "vocab_core",
+    "level": "easy",
+    "question": "The manager will _____ the schedule after lunch.",
+    "options": [
+      "announce",
+      "annoy",
+      "attach",
+      "arrive"
+    ],
+    "answer_index": 0,
+    "vocab_word": "announce",
+    "vocab_meaning": "발표하다",
+    "explanation": "'announce'는 '공식적으로 발표하다'라는 뜻이다.",
+    "korean": "매니저는 점심 후에 일정을 발표할 것이다."
+  },
+  {
+    "id": 102,
+    "mode": "vocab",
+    "category": "vocab_core",
+    "level": "easy",
+    "question": "We need to _____ costs to stay within the budget.",
+    "options": [
+      "release",
+      "replace",
+      "repeat",
+      "reduce"
+    ],
+    "answer_index": 3,
+    "vocab_word": "reduce",
+    "vocab_meaning": "줄이다",
+    "explanation": "'reduce costs'는 '비용을 줄이다'라는 뜻이다.",
+    "korean": "예산 내에 머물기 위해 비용을 줄여야 한다."
+  },
+  {
+    "id": 103,
+    "mode": "vocab",
+    "category": "vocab_core",
+    "level": "easy",
+    "question": "Please _____ the form before submitting it.",
+    "options": [
+      "review",
+      "repair",
+      "relax",
+      "remove"
+    ],
+    "answer_index": 0,
+    "vocab_word": "review",
+    "vocab_meaning": "검토하다",
+    "explanation": "'review'는 '검토하다'라는 뜻이다.",
+    "korean": "제출하기 전에 서류를 검토해 주세요."
+  },
+  {
+    "id": 104,
+    "mode": "vocab",
+    "category": "vocab_core",
+    "level": "easy",
+    "question": "All visitors must _____ their ID at the entrance.",
+    "options": [
+      "predict",
+      "present",
+      "prepare",
+      "prevent"
+    ],
+    "answer_index": 1,
+    "vocab_word": "present",
+    "vocab_meaning": "제시하다",
+    "explanation": "'present'는 '제시하다'라는 뜻이다.",
+    "korean": "방문객은 입구에서 신분증을 제시해야 한다."
+  },
+  {
+    "id": 105,
+    "mode": "vocab",
+    "category": "vocab_core",
+    "level": "easy",
+    "question": "The meeting has been _____ until next Monday.",
+    "options": [
+      "postponed",
+      "provided",
+      "persuaded",
+      "promoted"
+    ],
+    "answer_index": 0,
+    "vocab_word": "postponed",
+    "vocab_meaning": "연기된",
+    "explanation": "'postponed'는 '연기된'이라는 뜻이다.",
+    "korean": "회의는 다음 주 월요일까지 연기되었다."
+  },
+  {
+    "id": 106,
+    "mode": "vocab",
+    "category": "vocab_core",
+    "level": "easy",
+    "question": "The printer is out of paper; please _____ it.",
+    "options": [
+      "relieve",
+      "refill",
+      "reject",
+      "refund"
+    ],
+    "answer_index": 1,
+    "vocab_word": "refill",
+    "vocab_meaning": "다시 채우다",
+    "explanation": "'refill'은 '다시 채우다'라는 뜻이다.",
+    "korean": "프린터에 종이가 없으니 다시 채워 주세요."
+  },
+  {
+    "id": 107,
+    "mode": "vocab",
+    "category": "vocab_core",
+    "level": "easy",
+    "question": "The company will _____ a new product next month.",
+    "options": [
+      "lock",
+      "launch",
+      "lend",
+      "load"
+    ],
+    "answer_index": 1,
+    "vocab_word": "launch",
+    "vocab_meaning": "출시하다",
+    "explanation": "'launch'는 '출시하다'라는 뜻이다.",
+    "korean": "회사는 다음 달에 신제품을 출시할 것이다."
+  },
+  {
+    "id": 108,
+    "mode": "vocab",
+    "category": "vocab_core",
+    "level": "easy",
+    "question": "He was _____ for the position because of his experience.",
+    "options": [
+      "qualified",
+      "questioned",
+      "quick",
+      "quiet"
+    ],
+    "answer_index": 0,
+    "vocab_word": "qualified",
+    "vocab_meaning": "자격이 있는",
+    "explanation": "'qualified'는 '자격이 있는'이라는 뜻이다.",
+    "korean": "그는 경험 때문에 그 직책에 자격이 있었다."
+  },
+  {
+    "id": 109,
+    "mode": "vocab",
+    "category": "vocab_core",
+    "level": "easy",
+    "question": "The package will be _____ within two business days.",
+    "options": [
+      "decided",
+      "described",
+      "developed",
+      "delivered"
+    ],
+    "answer_index": 3,
+    "vocab_word": "delivered",
+    "vocab_meaning": "배송된",
+    "explanation": "'delivered'는 '배송된'이라는 뜻이다.",
+    "korean": "그 소포는 영업일 기준 2일 내에 배송될 것이다."
+  },
+  {
+    "id": 110,
+    "mode": "vocab",
+    "category": "vocab_core",
+    "level": "easy",
+    "question": "Please _____ a seat in advance.",
+    "options": [
+      "reserve",
+      "repeat",
+      "resolve",
+      "refuse"
+    ],
+    "answer_index": 0,
+    "vocab_word": "reserve",
+    "vocab_meaning": "예약하다",
+    "explanation": "'reserve'는 '예약하다'라는 뜻이다.",
+    "korean": "미리 좌석을 예약해 주세요."
+  },
+  {
+    "id": 111,
+    "mode": "vocab",
+    "category": "vocab_core",
+    "level": "easy",
+    "question": "The staff were very _____ and answered all my questions.",
+    "options": [
+      "harmful",
+      "hopeful",
+      "helpful",
+      "hasty"
+    ],
+    "answer_index": 2,
+    "vocab_word": "helpful",
+    "vocab_meaning": "도움이 되는",
+    "explanation": "'helpful'은 '도움이 되는'이라는 뜻이다.",
+    "korean": "직원들은 매우 친절했고 내 질문을 모두 답해 주었다."
+  },
+  {
+    "id": 112,
+    "mode": "vocab",
+    "category": "vocab_core",
+    "level": "easy",
+    "question": "The report is due at the end of the _____ year.",
+    "options": [
+      "formal",
+      "fiscal",
+      "fraction",
+      "final"
+    ],
+    "answer_index": 1,
+    "vocab_word": "fiscal",
+    "vocab_meaning": "회계의",
+    "explanation": "'fiscal year'는 '회계연도'를 뜻한다.",
+    "korean": "보고서는 회계연도 말에 제출해야 한다."
+  },
+  {
+    "id": 113,
+    "mode": "vocab",
+    "category": "vocab_core",
+    "level": "easy",
+    "question": "The hotel offers a free _____ for guests.",
+    "options": [
+      "shutter",
+      "shuttle",
+      "shuffle",
+      "shelter"
+    ],
+    "answer_index": 1,
+    "vocab_word": "shuttle",
+    "vocab_meaning": "셔틀",
+    "explanation": "'shuttle'은 왕복 운행 차량을 뜻한다.",
+    "korean": "그 호텔은 투숙객에게 무료 셔틀을 제공한다."
+  },
+  {
+    "id": 114,
+    "mode": "vocab",
+    "category": "vocab_core",
+    "level": "easy",
+    "question": "You can _____ your reservation online.",
+    "options": [
+      "combine",
+      "comfort",
+      "confirm",
+      "confuse"
+    ],
+    "answer_index": 2,
+    "vocab_word": "confirm",
+    "vocab_meaning": "확인하다",
+    "explanation": "'confirm'은 '확인하다'라는 뜻이다.",
+    "korean": "온라인으로 예약을 확인할 수 있다."
+  },
+  {
+    "id": 115,
+    "mode": "vocab",
+    "category": "vocab_core",
+    "level": "easy",
+    "question": "The store will _____ items with a receipt.",
+    "options": [
+      "extend",
+      "exclude",
+      "exchange",
+      "expose"
+    ],
+    "answer_index": 2,
+    "vocab_word": "exchange",
+    "vocab_meaning": "교환하다",
+    "explanation": "'exchange'는 '교환하다'라는 뜻이다.",
+    "korean": "영수증이 있으면 상품을 교환해 준다."
+  },
+  {
+    "id": 116,
+    "mode": "vocab",
+    "category": "vocab_core",
+    "level": "easy",
+    "question": "Please _____ this email to the sales team.",
+    "options": [
+      "forget",
+      "forgive",
+      "forward",
+      "follow"
+    ],
+    "answer_index": 2,
+    "vocab_word": "forward",
+    "vocab_meaning": "전달하다",
+    "explanation": "'forward'는 '전달하다'라는 뜻이다.",
+    "korean": "이 이메일을 영업팀에 전달해 주세요."
+  },
+  {
+    "id": 117,
+    "mode": "vocab",
+    "category": "vocab_core",
+    "level": "easy",
+    "question": "The office will be _____ for the holiday.",
+    "options": [
+      "closed",
+      "climbed",
+      "cleared",
+      "cloned"
+    ],
+    "answer_index": 0,
+    "vocab_word": "closed",
+    "vocab_meaning": "문을 닫은",
+    "explanation": "'closed'는 '문을 닫은'이라는 뜻이다.",
+    "korean": "사무실은 휴일에 문을 닫는다."
+  },
+  {
+    "id": 118,
+    "mode": "vocab",
+    "category": "vocab_core",
+    "level": "easy",
+    "question": "We appreciate your _____ in this matter.",
+    "options": [
+      "competition",
+      "cooperation",
+      "correction",
+      "collection"
+    ],
+    "answer_index": 1,
+    "vocab_word": "cooperation",
+    "vocab_meaning": "협조",
+    "explanation": "'cooperation'은 '협조'를 뜻한다.",
+    "korean": "이 일에 대한 당신의 협조에 감사드립니다."
+  },
+  {
+    "id": 119,
+    "mode": "vocab",
+    "category": "vocab_core",
+    "level": "easy",
+    "question": "The warranty _____ for one year from the purchase date.",
+    "options": [
+      "covers",
+      "costs",
+      "copies",
+      "counts"
+    ],
+    "answer_index": 0,
+    "vocab_word": "covers",
+    "vocab_meaning": "보장하다",
+    "explanation": "'cover'는 '보장하다'의 의미로 쓰인다.",
+    "korean": "보증은 구매일로부터 1년간 적용된다."
+  },
+  {
+    "id": 200,
+    "mode": "vocab",
+    "category": "vocab_core",
+    "level": "hard",
+    "question": "The CEO emphasized the need to _____ productivity across all departments.",
+    "options": [
+      "enclose",
+      "ensure",
+      "enhance",
+      "enroll"
+    ],
+    "answer_index": 2,
+    "vocab_word": "enhance",
+    "vocab_meaning": "향상시키다",
+    "explanation": "'enhance'는 '향상시키다'라는 뜻이다.",
+    "korean": "CEO는 모든 부서에서 생산성을 향상시킬 필요를 강조했다."
+  },
+  {
+    "id": 201,
+    "mode": "vocab",
+    "category": "vocab_core",
+    "level": "hard",
+    "question": "The contract includes a _____ clause regarding confidentiality.",
+    "options": [
+      "promotion",
+      "prediction",
+      "provision",
+      "permission"
+    ],
+    "answer_index": 2,
+    "vocab_word": "provision",
+    "vocab_meaning": "조항",
+    "explanation": "'provision'은 계약의 '조항'을 뜻한다.",
+    "korean": "계약서에는 기밀유지 관련 조항이 포함되어 있다."
+  },
+  {
+    "id": 202,
+    "mode": "vocab",
+    "category": "vocab_core",
+    "level": "hard",
+    "question": "Due to unexpected demand, supplies are _____.",
+    "options": [
+      "secure",
+      "steady",
+      "scarce",
+      "sincere"
+    ],
+    "answer_index": 2,
+    "vocab_word": "scarce",
+    "vocab_meaning": "부족한",
+    "explanation": "'scarce'는 '부족한'이라는 뜻이다.",
+    "korean": "예상치 못한 수요로 물자가 부족하다."
+  },
+  {
+    "id": 203,
+    "mode": "vocab",
+    "category": "vocab_core",
+    "level": "hard",
+    "question": "The committee will _____ the proposal before making a decision.",
+    "options": [
+      "evaluate",
+      "elevate",
+      "evacuate",
+      "eliminate"
+    ],
+    "answer_index": 0,
+    "vocab_word": "evaluate",
+    "vocab_meaning": "평가하다",
+    "explanation": "'evaluate'는 '평가하다'라는 뜻이다.",
+    "korean": "위원회는 결정을 내리기 전에 제안을 평가할 것이다."
+  },
+  {
+    "id": 204,
+    "mode": "vocab",
+    "category": "vocab_core",
+    "level": "hard",
+    "question": "The technician performed a thorough _____ of the system.",
+    "options": [
+      "invitation",
+      "inspection",
+      "instruction",
+      "invention"
+    ],
+    "answer_index": 1,
+    "vocab_word": "inspection",
+    "vocab_meaning": "점검",
+    "explanation": "'inspection'은 '점검'을 뜻한다.",
+    "korean": "기술자가 시스템을 철저히 점검했다."
+  },
+  {
+    "id": 205,
+    "mode": "vocab",
+    "category": "vocab_core",
+    "level": "hard",
+    "question": "Applicants must submit the required documents in a _____ manner.",
+    "options": [
+      "timely",
+      "tragic",
+      "tender",
+      "tiny"
+    ],
+    "answer_index": 0,
+    "vocab_word": "timely",
+    "vocab_meaning": "시기 적절한",
+    "explanation": "'timely'는 '시기 적절한'이라는 뜻이다.",
+    "korean": "지원자는 필요한 서류를 제때 제출해야 한다."
+  },
+  {
+    "id": 206,
+    "mode": "vocab",
+    "category": "vocab_core",
+    "level": "hard",
+    "question": "The company faced a significant _____ in revenue last quarter.",
+    "options": [
+      "delight",
+      "decline",
+      "delivery",
+      "delay"
+    ],
+    "answer_index": 1,
+    "vocab_word": "decline",
+    "vocab_meaning": "감소",
+    "explanation": "'decline'은 '감소'를 뜻한다.",
+    "korean": "회사는 지난 분기에 매출이 크게 감소했다."
+  },
+  {
+    "id": 207,
+    "mode": "vocab",
+    "category": "vocab_core",
+    "level": "hard",
+    "question": "The new policy will be _____ immediately.",
+    "options": [
+      "imported",
+      "implemented",
+      "impressed",
+      "implied"
+    ],
+    "answer_index": 1,
+    "vocab_word": "implemented",
+    "vocab_meaning": "시행된",
+    "explanation": "'implemented'는 '시행된'이라는 뜻이다.",
+    "korean": "새 정책은 즉시 시행될 것이다."
+  },
+  {
+    "id": 208,
+    "mode": "vocab",
+    "category": "vocab_core",
+    "level": "hard",
+    "question": "Please _____ any errors you find in the report.",
+    "options": [
+      "rectify",
+      "reconcile",
+      "rehearse",
+      "recognize"
+    ],
+    "answer_index": 0,
+    "vocab_word": "rectify",
+    "vocab_meaning": "바로잡다",
+    "explanation": "'rectify'는 '바로잡다'라는 뜻이다.",
+    "korean": "보고서에서 발견한 오류를 바로잡아 주세요."
+  },
+  {
+    "id": 209,
+    "mode": "vocab",
+    "category": "vocab_core",
+    "level": "hard",
+    "question": "The manager issued a formal _____ to the client.",
+    "options": [
+      "approval",
+      "analysis",
+      "apology",
+      "ability"
+    ],
+    "answer_index": 2,
+    "vocab_word": "apology",
+    "vocab_meaning": "사과",
+    "explanation": "'apology'는 '사과'를 뜻한다.",
+    "korean": "매니저가 고객에게 공식 사과를 했다."
+  },
+  {
+    "id": 210,
+    "mode": "vocab",
+    "category": "vocab_core",
+    "level": "hard",
+    "question": "The project was delayed because of _____ funding.",
+    "options": [
+      "incredible",
+      "insufficient",
+      "invisible",
+      "inflexible"
+    ],
+    "answer_index": 1,
+    "vocab_word": "insufficient",
+    "vocab_meaning": "불충분한",
+    "explanation": "'insufficient'는 '불충분한'이라는 뜻이다.",
+    "korean": "자금이 불충분해서 프로젝트가 지연되었다."
+  },
+  {
+    "id": 211,
+    "mode": "vocab",
+    "category": "vocab_core",
+    "level": "hard",
+    "question": "The board reached a _____ after hours of discussion.",
+    "options": [
+      "confidence",
+      "consensus",
+      "consequence",
+      "convenience"
+    ],
+    "answer_index": 1,
+    "vocab_word": "consensus",
+    "vocab_meaning": "합의",
+    "explanation": "'consensus'는 '합의'를 뜻한다.",
+    "korean": "이사회는 몇 시간의 논의 끝에 합의에 도달했다."
+  },
+  {
+    "id": 212,
+    "mode": "vocab",
+    "category": "vocab_core",
+    "level": "hard",
+    "question": "The report provides an _____ overview of market trends.",
+    "options": [
+      "comprehensive",
+      "comparative",
+      "compatible",
+      "competitive"
+    ],
+    "answer_index": 0,
+    "vocab_word": "comprehensive",
+    "vocab_meaning": "포괄적인",
+    "explanation": "'comprehensive'는 '포괄적인'이라는 뜻이다.",
+    "korean": "그 보고서는 시장 동향에 대한 포괄적 개요를 제공한다."
+  },
+  {
+    "id": 213,
+    "mode": "vocab",
+    "category": "vocab_core",
+    "level": "hard",
+    "question": "We must comply with all _____ requirements.",
+    "options": [
+      "reliable",
+      "regular",
+      "regulatory",
+      "regional"
+    ],
+    "answer_index": 2,
+    "vocab_word": "regulatory",
+    "vocab_meaning": "규제의",
+    "explanation": "'regulatory'는 '규제의'라는 뜻이다.",
+    "korean": "우리는 모든 규제 요건을 준수해야 한다."
+  },
+  {
+    "id": 214,
+    "mode": "vocab",
+    "category": "vocab_core",
+    "level": "hard",
+    "question": "The supplier agreed to _____ the shipment at no extra cost.",
+    "options": [
+      "exhibit",
+      "expedite",
+      "exceed",
+      "explain"
+    ],
+    "answer_index": 1,
+    "vocab_word": "expedite",
+    "vocab_meaning": "신속히 처리하다",
+    "explanation": "'expedite'는 '신속히 처리하다'라는 뜻이다.",
+    "korean": "공급업체는 추가 비용 없이 배송을 신속히 처리하기로 했다."
+  },
+  {
+    "id": 215,
+    "mode": "vocab",
+    "category": "vocab_core",
+    "level": "hard",
+    "question": "The department will be _____ for its outstanding performance.",
+    "options": [
+      "recruited",
+      "recognized",
+      "revised",
+      "relocated"
+    ],
+    "answer_index": 1,
+    "vocab_word": "recognized",
+    "vocab_meaning": "인정받은",
+    "explanation": "'recognized'는 '인정받은'이라는 뜻이다.",
+    "korean": "그 부서는 뛰어난 성과로 인정받을 것이다."
+  },
+  {
+    "id": 216,
+    "mode": "vocab",
+    "category": "vocab_core",
+    "level": "hard",
+    "question": "The proposal outlines a _____ strategy for long-term growth.",
+    "options": [
+      "sustainable",
+      "separate",
+      "subtle",
+      "suitable"
+    ],
+    "answer_index": 0,
+    "vocab_word": "sustainable",
+    "vocab_meaning": "지속 가능한",
+    "explanation": "'sustainable'는 '지속 가능한'이라는 뜻이다.",
+    "korean": "그 제안서는 장기 성장을 위한 지속 가능한 전략을 제시한다."
+  },
+  {
+    "id": 217,
+    "mode": "vocab",
+    "category": "vocab_core",
+    "level": "hard",
+    "question": "Please attach the invoice for _____ purposes.",
+    "options": [
+      "vacation",
+      "verification",
+      "vibration",
+      "variation"
+    ],
+    "answer_index": 1,
+    "vocab_word": "verification",
+    "vocab_meaning": "확인",
+    "explanation": "'verification'은 '확인'을 뜻한다.",
+    "korean": "확인 목적을 위해 송장을 첨부해 주세요."
+  },
+  {
+    "id": 218,
+    "mode": "vocab",
+    "category": "vocab_core",
+    "level": "hard",
+    "question": "The company plans to _____ its operations overseas.",
+    "options": [
+      "extract",
+      "expand",
+      "expire",
+      "expend"
+    ],
+    "answer_index": 1,
+    "vocab_word": "expand",
+    "vocab_meaning": "확장하다",
+    "explanation": "'expand'는 '확장하다'라는 뜻이다.",
+    "korean": "회사는 해외로 운영을 확장할 계획이다."
+  },
+  {
+    "id": 219,
+    "mode": "vocab",
+    "category": "vocab_core",
+    "level": "hard",
+    "question": "Employees are entitled to _____ benefits.",
+    "options": [
+      "ethical",
+      "elegant",
+      "eligible",
+      "elastic"
+    ],
+    "answer_index": 2,
+    "vocab_word": "eligible",
+    "vocab_meaning": "자격이 있는",
+    "explanation": "'eligible'는 '자격이 있는'이라는 뜻이다.",
+    "korean": "직원들은 다양한 복지 혜택을 받을 자격이 있다."
+  }
+]

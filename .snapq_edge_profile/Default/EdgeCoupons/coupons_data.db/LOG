@@ -1,0 +1,6 @@
+2026/01/30-08:48:36.183 47c Reusing MANIFEST C:\Users\최정은\Desktop\snapq_toeic\.snapq_edge_profile\Default\EdgeCoupons/coupons_data.db/MANIFEST-000001
+2026/01/30-08:48:36.184 47c Recovering log #13
+2026/01/30-08:48:36.185 47c Reusing old log C:\Users\최정은\Desktop\snapq_toeic\.snapq_edge_profile\Default\EdgeCoupons/coupons_data.db/000013.log 
+2026/01/30-08:48:36.243 8134 Level-0 table #17: started
+2026/01/30-08:48:36.246 8134 Level-0 table #17: 681456 bytes OK
+2026/01/30-08:48:36.247 8134 Delete type=0 #13

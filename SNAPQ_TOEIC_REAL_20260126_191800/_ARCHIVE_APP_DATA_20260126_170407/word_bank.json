@@ -1,0 +1,65 @@
+{
+  "submit": {
+    "kind": "word",
+    "ko_correct": "제출하다",
+    "ko_wrongs": [
+      "지원하다",
+      "수정하다",
+      "보관하다"
+    ]
+  },
+  "revised": {
+    "kind": "word",
+    "ko_correct": "수정된",
+    "ko_wrongs": [
+      "연기된",
+      "밀봉된",
+      "분실된"
+    ]
+  },
+  "attached": {
+    "kind": "word",
+    "ko_correct": "첨부된",
+    "ko_wrongs": [
+      "연결된",
+      "예약된",
+      "지연된"
+    ]
+  },
+  "shipment": {
+    "kind": "word",
+    "ko_correct": "배송(화물)",
+    "ko_wrongs": [
+      "직원",
+      "회의",
+      "보고서"
+    ]
+  },
+  "immediately": {
+    "kind": "word",
+    "ko_correct": "즉시",
+    "ko_wrongs": [
+      "가끔",
+      "미리",
+      "천천히"
+    ]
+  },
+  "at all times": {
+    "kind": "phrase",
+    "ko_correct": "항상",
+    "ko_wrongs": [
+      "가끔",
+      "언젠가",
+      "요즘"
+    ]
+  },
+  "according to": {
+    "kind": "phrase",
+    "ko_correct": "~에 따르면",
+    "ko_wrongs": [
+      "~에도 불구하고",
+      "~때문에",
+      "~대신에"
+    ]
+  }
+}

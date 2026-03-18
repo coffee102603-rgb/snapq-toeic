@@ -1,35 +1,19 @@
 {
   "saved_questions": [
     {
-      "id": "G12",
-      "text": "Not until the final report is submitted _______ begin the evaluation process.",
+      "id": "G13",
+      "text": "The policies _______ by the board last week will take effect next month.",
       "ch": [
-        "(A) we can",
-        "(B) we will",
-        "(C) can we",
-        "(D) will"
+        "(A) approve",
+        "(B) approving",
+        "(C) approved",
+        "(D) to approve"
       ],
       "a": 2,
-      "ex": "Not until~ 문두 → 주절 도치 → 'can we'",
-      "exk": "쉽게: Not until이 앞에 오면 뒤집기! can+we 순서!",
-      "cat": "도치",
-      "kr": "최종 보고서가 제출될 때까지는 평가 과정을 시작할 수 없다.",
-      "tp": "grammar"
-    },
-    {
-      "id": "G5",
-      "text": "The equipment, along with all the spare parts, _______ shipped yesterday.",
-      "ch": [
-        "(A) were",
-        "(B) have been",
-        "(C) was",
-        "(D) are"
-      ],
-      "a": 2,
-      "ex": "'along with'는 주어 불포함. 주어=equipment(단수) → 'was'",
-      "exk": "쉽게: along with는 무시! 진짜 주어만 보기! equipment=단수 → was!",
-      "cat": "수일치",
-      "kr": "그 장비는 모든 여분 부품과 함께 어제 배송되었다.",
+      "ex": "명사 수식 수동 → 과거분사 approved",
+      "exk": "쉽게: 정책이 승인되는 것이니 수동! approved!",
+      "cat": "수동태/수일치",
+      "kr": "지난주 이사회에 의해 승인된 정책들은 다음 달부터 효력을 발휘할 것이다.",
       "tp": "grammar"
     },
     {
@@ -49,38 +33,6 @@
       "tp": "grammar"
     },
     {
-      "id": "G10",
-      "text": "It is essential that every employee _______ the new security protocol.",
-      "ch": [
-        "(A) follows",
-        "(B) follow",
-        "(C) following",
-        "(D) followed"
-      ],
-      "a": 1,
-      "ex": "It is essential that+S+(should) 동사원형 → 'follow'",
-      "exk": "쉽게: essential(필수적) 뒤에도 동사원형! suggest랑 같은 규칙!",
-      "cat": "가정법/당위",
-      "kr": "모든 직원이 새 보안 프로토콜을 따르는 것이 필수적이다.",
-      "tp": "grammar"
-    },
-    {
-      "id": "G7",
-      "text": "Had the shipment arrived on time, we _______ the deadline.",
-      "ch": [
-        "(A) will meet",
-        "(B) would meet",
-        "(C) would have met",
-        "(D) had met"
-      ],
-      "a": 2,
-      "ex": "Had+S+p.p.=가정법 과거완료 도치 → 주절 would have+p.p.",
-      "exk": "쉽게: Had로 시작=과거 가정법! → would have p.p.가 짝꿍!",
-      "cat": "가정법",
-      "kr": "만약 배송이 제때 도착했더라면, 우리는 마감을 맞출 수 있었을 텐데.",
-      "tp": "grammar"
-    },
-    {
       "id": "G4",
       "text": "Neither the supervisor nor the team members _______ aware of the policy change.",
       "ch": [
@@ -97,115 +49,19 @@
       "tp": "grammar"
     },
     {
-      "id": "G9",
-      "text": "_______ reviewed the contract, the lawyer found several clauses that needed revision.",
+      "id": "G5",
+      "text": "The equipment, along with all the spare parts, _______ shipped yesterday.",
       "ch": [
-        "(A) Having",
-        "(B) Have",
-        "(C) Had",
-        "(D) To have"
-      ],
-      "a": 0,
-      "ex": "분사구문 앞선 시제 → Having+p.p.",
-      "exk": "쉽게: 먼저 한 일+나중 한 일 → Having이 '먼저'를 표시!",
-      "cat": "분사구문",
-      "kr": "계약서를 검토한 후, 변호사는 수정이 필요한 여러 조항을 발견했다.",
-      "tp": "grammar"
-    },
-    {
-      "id": "V1",
-      "text": "The company plans to _______ its operations to three new countries next year.",
-      "ch": [
-        "(A) expand",
-        "(B) expend",
-        "(C) expect",
-        "(D) expose"
-      ],
-      "a": 0,
-      "ex": "expand=확장하다. 사업을 새 나라로 확장.",
-      "exk": "쉽게: expand=넓히다! expend=쓰다, expect=기대, expose=노출 → 소거법!",
-      "cat": "동사 어휘",
-      "kr": "그 회사는 내년에 3개 신규 국가로 사업을 확장할 계획이다.",
-      "tp": "vocab"
-    },
-    {
-      "id": "V2",
-      "text": "Please _______ your receipt as proof of purchase for warranty claims.",
-      "ch": [
-        "(A) retain",
-        "(B) attain",
-        "(C) obtain",
-        "(D) contain"
-      ],
-      "a": 0,
-      "ex": "retain=보유하다. 영수증을 보관하라는 맥락.",
-      "exk": "쉽게: retain=re(다시)+tain(잡다)=계속 잡고 있다=보관!",
-      "cat": "동사 어휘",
-      "kr": "보증 청구를 위한 구매 증빙으로 영수증을 보관해 주세요.",
-      "tp": "vocab"
-    },
-    {
-      "id": "G11",
-      "text": "The CEO, _______ founded the company in 2005, announced her retirement today.",
-      "ch": [
-        "(A) who",
-        "(B) whom",
-        "(C) which",
-        "(D) whose"
-      ],
-      "a": 0,
-      "ex": "관계대명사 주어 역할 → 주격 'who'. 사람 → which 불가.",
-      "exk": "쉽게: 빈칸 뒤에 바로 동사(founded) → 주격 who! 사람이니까 which 안 됨!",
-      "cat": "관계대명사",
-      "kr": "2005년에 회사를 설립한 CEO가 오늘 은퇴를 발표했다.",
-      "tp": "grammar"
-    },
-    {
-      "id": "G3",
-      "text": "_______ the budget has been approved, the project can begin immediately.",
-      "ch": [
-        "(A) Now that",
-        "(B) In case",
-        "(C) So that",
-        "(D) Even if"
-      ],
-      "a": 0,
-      "ex": "'Now that~'='~이므로'. 예산 승인→프로젝트 시작 인과관계.",
-      "exk": "쉽게: '이제 ~했으니까'라는 뜻! 원인→결과 연결!",
-      "cat": "접속사",
-      "kr": "예산이 승인되었으므로, 프로젝트는 즉시 시작될 수 있다.",
-      "tp": "grammar"
-    },
-    {
-      "id": "G2",
-      "text": "The manager suggested that the report _______ submitted by Friday.",
-      "ch": [
-        "(A) is",
-        "(B) be",
+        "(A) were",
+        "(B) have been",
         "(C) was",
-        "(D) will be"
+        "(D) are"
       ],
-      "a": 1,
-      "ex": "suggest 뒤 that절 → (should)+동사원형. 'be submitted'가 정답.",
-      "exk": "쉽게: suggest(제안) 뒤에는 항상 동사원형! should가 숨어있다고 생각!",
-      "cat": "가정법/당위",
-      "kr": "매니저는 그 보고서가 금요일까지 제출되어야 한다고 제안했다.",
-      "tp": "grammar"
-    },
-    {
-      "id": "G6",
-      "text": "Ms. Kim is responsible for _______ that all invoices are processed on time.",
-      "ch": [
-        "(A) ensure",
-        "(B) ensuring",
-        "(C) ensured",
-        "(D) to ensure"
-      ],
-      "a": 1,
-      "ex": "전치사 for 뒤 → 동명사(-ing). 'ensuring'이 정답.",
-      "exk": "쉽게: for 다음에는 ~ing! 전치사+동명사 공식!",
-      "cat": "동명사/준동사",
-      "kr": "김 씨는 모든 송장이 제때 처리되는 것을 보장할 책임이 있다.",
+      "a": 2,
+      "ex": "'along with'는 주어 불포함. 주어=equipment(단수) → 'was'",
+      "exk": "쉽게: along with는 무시! 진짜 주어만 보기! equipment=단수 → was!",
+      "cat": "수일치",
+      "kr": "그 장비는 모든 여분 부품과 함께 어제 배송되었다.",
       "tp": "grammar"
     },
     {
@@ -225,19 +81,51 @@
       "tp": "grammar"
     },
     {
-      "id": "V11",
-      "text": "The board expressed _______ satisfaction with the quarterly earnings report.",
+      "id": "G14",
+      "text": "A number of employees _______ volunteered to work overtime this week.",
       "ch": [
-        "(A) consider",
-        "(B) considerate",
-        "(C) considerable",
-        "(D) considerably"
+        "(A) has",
+        "(B) have",
+        "(C) is",
+        "(D) was"
+      ],
+      "a": 1,
+      "ex": "A number of=많은 → 복수 → have",
+      "exk": "쉽게: A number of=여러 명→복수! The number of=그 수→단수!",
+      "cat": "수일치",
+      "kr": "많은 직원들이 이번 주 초과 근무를 자원했다.",
+      "tp": "grammar"
+    },
+    {
+      "id": "G19",
+      "text": "The report _______ by the committee before the deadline was praised by the board.",
+      "ch": [
+        "(A) submit",
+        "(B) submitting",
+        "(C) submitted",
+        "(D) to submit"
       ],
       "a": 2,
-      "ex": "명사 수식 → 형용사 'considerable'. considerate='사려 깊은'으로 의미 다름.",
-      "exk": "쉽게: satisfaction(명사) 앞 = 형용사! considerable=상당한, considerate=배려하는 → 헷갈림 주의!",
-      "cat": "품사(형용사)",
-      "kr": "이사회는 분기 실적 보고서에 상당한 만족을 표했다.",
+      "ex": "명사 수식 수동 → 과거분사 submitted",
+      "exk": "쉽게: 보고서가 제출된 것 → 수동! submitted!",
+      "cat": "수동태/수일치",
+      "kr": "마감 전에 위원회에 의해 제출된 보고서는 이사회의 칭찬을 받았다.",
+      "tp": "grammar"
+    },
+    {
+      "id": "V5",
+      "text": "The marketing team will _______ a survey to gather customer feedback.",
+      "ch": [
+        "(A) conduct",
+        "(B) connect",
+        "(C) convince",
+        "(D) confirm"
+      ],
+      "a": 0,
+      "ex": "conduct a survey=설문조사 실시(콜로케이션)",
+      "exk": "쉽게: conduct+survey는 짝꿍! '조사를 실시하다'는 항상 conduct!",
+      "cat": "콜로케이션",
+      "kr": "마케팅 팀은 고객 피드백을 수집하기 위해 설문조사를 실시할 것이다.",
       "tp": "vocab"
     },
     {
@@ -273,35 +161,19 @@
       "tp": "vocab"
     },
     {
-      "id": "V5",
-      "text": "The marketing team will _______ a survey to gather customer feedback.",
+      "id": "V2",
+      "text": "Please _______ your receipt as proof of purchase for warranty claims.",
       "ch": [
-        "(A) conduct",
-        "(B) connect",
-        "(C) convince",
-        "(D) confirm"
+        "(A) retain",
+        "(B) attain",
+        "(C) obtain",
+        "(D) contain"
       ],
       "a": 0,
-      "ex": "conduct a survey=설문조사 실시(콜로케이션)",
-      "exk": "쉽게: conduct+survey는 짝꿍! '조사를 실시하다'는 항상 conduct!",
-      "cat": "콜로케이션",
-      "kr": "마케팅 팀은 고객 피드백을 수집하기 위해 설문조사를 실시할 것이다.",
-      "tp": "vocab"
-    },
-    {
-      "id": "V4",
-      "text": "Due to _______ demand, the product launch has been moved to an earlier date.",
-      "ch": [
-        "(A) overwhelming",
-        "(B) underwhelming",
-        "(C) overlooking",
-        "(D) overcoming"
-      ],
-      "a": 0,
-      "ex": "overwhelming=압도적인",
-      "exk": "쉽게: over(넘치는)+whelming(덮치는)=압도적! 수요 폭발 → 출시 앞당김!",
-      "cat": "형용사 어휘",
-      "kr": "압도적인 수요로 인해 제품 출시가 더 이른 날짜로 앞당겨졌다.",
+      "ex": "retain=보유하다. 영수증을 보관하라는 맥락.",
+      "exk": "쉽게: retain=re(다시)+tain(잡다)=계속 잡고 있다=보관!",
+      "cat": "동사 어휘",
+      "kr": "보증 청구를 위한 구매 증빙으로 영수증을 보관해 주세요.",
       "tp": "vocab"
     },
     {
@@ -319,280 +191,7 @@
       "cat": "동사 어휘",
       "kr": "그 공장은 모든 지역 환경 규정을 준수해야 한다.",
       "tp": "vocab"
-    },
-    {
-      "id": "G18",
-      "text": "_______ the construction noise, the staff managed to concentrate on their work.",
-      "ch": [
-        "(A) Despite",
-        "(B) Although",
-        "(C) However",
-        "(D) Because of"
-      ],
-      "a": 0,
-      "ex": "빈칸 뒤 명사구 → 전치사 Despite",
-      "exk": "쉽게: Despite 뒤=명사! Although 뒤=주어+동사!",
-      "cat": "접속사",
-      "kr": "공사 소음에도 불구하고 직원들은 업무에 집중할 수 있었다.",
-      "tp": "grammar"
     }
   ],
-  "saved_expressions": [
-    {
-      "expr": "be fully operational",
-      "meaning": "완전히 가동되다",
-      "sentences": [
-        "GreenTech Solutions has announced plans to open a new research facility in Austin, Texas.",
-        "The company expects the facility to be fully operational by the third quarter of next year."
-      ],
-      "kr": "GreenTech Solutions는 텍사스 오스틴에 새 연구 시설을 열 계획을 발표했다. 회사는 내년 3분기까지 시설이 완전히 가동될 것으로 예상한다."
-    },
-    {
-      "expr": "announce plans to",
-      "meaning": "~할 계획을 발표하다",
-      "sentences": [
-        "GreenTech Solutions has announced plans to open a new research facility in Austin, Texas.",
-        "The company expects the facility to be fully operational by the third quarter of next year."
-      ],
-      "kr": "GreenTech Solutions는 텍사스 오스틴에 새 연구 시설을 열 계획을 발표했다. 회사는 내년 3분기까지 시설이 완전히 가동될 것으로 예상한다."
-    },
-    {
-      "expr": "the third quarter",
-      "meaning": "3분기",
-      "sentences": [
-        "GreenTech Solutions has announced plans to open a new research facility in Austin, Texas.",
-        "The company expects the facility to be fully operational by the third quarter of next year."
-      ],
-      "kr": "GreenTech Solutions는 텍사스 오스틴에 새 연구 시설을 열 계획을 발표했다. 회사는 내년 3분기까지 시설이 완전히 가동될 것으로 예상한다."
-    },
-    {
-      "expr": "focus on",
-      "meaning": "~에 집중하다",
-      "sentences": [
-        "According to CEO Maria Chen, the facility will focus on developing sustainable energy storage systems.",
-        "The project is expected to create over 200 jobs in the local community.",
-        "GreenTech has already secured $50 million in funding from private investors."
-      ],
-      "kr": "CEO Maria Chen에 따르면 시설은 지속 가능한 에너지 저장 시스템 개발에 집중할 것이다. 이 프로젝트는 지역 사회에 200개 이상의 일자리를 창출할 것으로 예상된다. GreenTech는 이미 민간 투자자로부터 5천만 달러의 자금을 확보했다."
-    },
-    {
-      "expr": "secure funding",
-      "meaning": "자금을 확보하다",
-      "sentences": [
-        "According to CEO Maria Chen, the facility will focus on developing sustainable energy storage systems.",
-        "The project is expected to create over 200 jobs in the local community.",
-        "GreenTech has already secured $50 million in funding from private investors."
-      ],
-      "kr": "CEO Maria Chen에 따르면 시설은 지속 가능한 에너지 저장 시스템 개발에 집중할 것이다. 이 프로젝트는 지역 사회에 200개 이상의 일자리를 창출할 것으로 예상된다. GreenTech는 이미 민간 투자자로부터 5천만 달러의 자금을 확보했다."
-    },
-    {
-      "expr": "sustainable",
-      "meaning": "지속 가능한",
-      "sentences": [
-        "According to CEO Maria Chen, the facility will focus on developing sustainable energy storage systems.",
-        "The project is expected to create over 200 jobs in the local community.",
-        "GreenTech has already secured $50 million in funding from private investors."
-      ],
-      "kr": "CEO Maria Chen에 따르면 시설은 지속 가능한 에너지 저장 시스템 개발에 집중할 것이다. 이 프로젝트는 지역 사회에 200개 이상의 일자리를 창출할 것으로 예상된다. GreenTech는 이미 민간 투자자로부터 5천만 달러의 자금을 확보했다."
-    },
-    {
-      "expr": "tax incentives",
-      "meaning": "세금 혜택/인센티브",
-      "sentences": [
-        "Local officials have expressed strong support for the project, citing its potential economic benefits.",
-        "The city of Austin has offered tax incentives to encourage GreenTech's investment in the region.",
-        "Construction of the facility is scheduled to begin in early January and will take approximately 14 months."
-      ],
-      "kr": "지역 관리들은 잠재적 경제적 이점을 들어 프로젝트를 강력히 지지했다. 오스틴 시는 이 지역에 대한 GreenTech의 투자를 장려하기 위해 세금 혜택을 제공했다. 시설 건설은 1월 초에 시작되어 약 14개월이 소요될 예정이다."
-    },
-    {
-      "expr": "approximately",
-      "meaning": "대략, 약",
-      "sentences": [
-        "Local officials have expressed strong support for the project, citing its potential economic benefits.",
-        "The city of Austin has offered tax incentives to encourage GreenTech's investment in the region.",
-        "Construction of the facility is scheduled to begin in early January and will take approximately 14 months."
-      ],
-      "kr": "지역 관리들은 잠재적 경제적 이점을 들어 프로젝트를 강력히 지지했다. 오스틴 시는 이 지역에 대한 GreenTech의 투자를 장려하기 위해 세금 혜택을 제공했다. 시설 건설은 1월 초에 시작되어 약 14개월이 소요될 예정이다."
-    },
-    {
-      "expr": "be scheduled to",
-      "meaning": "~할 예정이다",
-      "sentences": [
-        "Local officials have expressed strong support for the project, citing its potential economic benefits.",
-        "The city of Austin has offered tax incentives to encourage GreenTech's investment in the region.",
-        "Construction of the facility is scheduled to begin in early January and will take approximately 14 months."
-      ],
-      "kr": "지역 관리들은 잠재적 경제적 이점을 들어 프로젝트를 강력히 지지했다. 오스틴 시는 이 지역에 대한 GreenTech의 투자를 장려하기 위해 세금 혜택을 제공했다. 시설 건설은 1월 초에 시작되어 약 14개월이 소요될 예정이다."
-    },
-    {
-      "expr": "be approved for",
-      "meaning": "~이 승인되다",
-      "sentences": [
-        "Dear Mr. Thompson, I am writing to inform you that your annual membership at Riverside Fitness Club has been approved for renewal.",
-        "Your new membership period will begin on March 1 and will remain valid for twelve months."
-      ],
-      "kr": "Thompson씨에게 Riverside Fitness Club의 연간 회원권 갱신이 승인되었음을 알립니다. 새 회원 기간은 3월 1일에 시작되며 12개월간 유효합니다."
-    },
-    {
-      "expr": "renewal",
-      "meaning": "갱신, 연장",
-      "sentences": [
-        "Dear Mr. Thompson, I am writing to inform you that your annual membership at Riverside Fitness Club has been approved for renewal.",
-        "Your new membership period will begin on March 1 and will remain valid for twelve months."
-      ],
-      "kr": "Thompson씨에게 Riverside Fitness Club의 연간 회원권 갱신이 승인되었음을 알립니다. 새 회원 기간은 3월 1일에 시작되며 12개월간 유효합니다."
-    },
-    {
-      "expr": "remain valid",
-      "meaning": "유효하다",
-      "sentences": [
-        "Dear Mr. Thompson, I am writing to inform you that your annual membership at Riverside Fitness Club has been approved for renewal.",
-        "Your new membership period will begin on March 1 and will remain valid for twelve months."
-      ],
-      "kr": "Thompson씨에게 Riverside Fitness Club의 연간 회원권 갱신이 승인되었음을 알립니다. 새 회원 기간은 3월 1일에 시작되며 12개월간 유효합니다."
-    },
-    {
-      "expr": "be entitled to",
-      "meaning": "~할 자격/권리가 있다",
-      "sentences": [
-        "As a valued member, you are entitled to a 15 percent discount on all personal training sessions.",
-        "Additionally, we have recently upgraded our swimming pool and added a new yoga studio on the second floor.",
-        "These improvements were made based on feedback from members like you."
-      ],
-      "kr": "소중한 회원으로서 모든 개인 트레이닝 세션에 15% 할인을 받을 수 있습니다. 또한 수영장을 업그레이드하고 2층에 새 요가 스튜디오를 추가했습니다. 이 개선 사항은 회원들의 피드백을 기반으로 이루어졌습니다."
-    },
-    {
-      "expr": "based on feedback",
-      "meaning": "피드백을 기반으로",
-      "sentences": [
-        "As a valued member, you are entitled to a 15 percent discount on all personal training sessions.",
-        "Additionally, we have recently upgraded our swimming pool and added a new yoga studio on the second floor.",
-        "These improvements were made based on feedback from members like you."
-      ],
-      "kr": "소중한 회원으로서 모든 개인 트레이닝 세션에 15% 할인을 받을 수 있습니다. 또한 수영장을 업그레이드하고 2층에 새 요가 스튜디오를 추가했습니다. 이 개선 사항은 회원들의 피드백을 기반으로 이루어졌습니다."
-    },
-    {
-      "expr": "complimentary",
-      "meaning": "무료의, 무상의",
-      "sentences": [
-        "As a valued member, you are entitled to a 15 percent discount on all personal training sessions.",
-        "Additionally, we have recently upgraded our swimming pool and added a new yoga studio on the second floor.",
-        "These improvements were made based on feedback from members like you."
-      ],
-      "kr": "소중한 회원으로서 모든 개인 트레이닝 세션에 15% 할인을 받을 수 있습니다. 또한 수영장을 업그레이드하고 2층에 새 요가 스튜디오를 추가했습니다. 이 개선 사항은 회원들의 피드백을 기반으로 이루어졌습니다."
-    },
-    {
-      "expr": "due by",
-      "meaning": "~까지 납부/제출해야 하는",
-      "sentences": [
-        "Please note that the annual membership fee of $480 is due by February 20.",
-        "Payment can be made online through our website or in person at the front desk.",
-        "If you have any questions regarding your membership, please do not hesitate to contact us at (555) 234-5678."
-      ],
-      "kr": "연간 회원비 $480는 2월 20일까지 납부해야 합니다. 결제는 웹사이트 또는 프론트 데스크에서 직접 할 수 있습니다. 회원권 관련 문의는 (555) 234-5678로 연락하세요."
-    },
-    {
-      "expr": "do not hesitate to",
-      "meaning": "주저하지 말고 ~하다",
-      "sentences": [
-        "Please note that the annual membership fee of $480 is due by February 20.",
-        "Payment can be made online through our website or in person at the front desk.",
-        "If you have any questions regarding your membership, please do not hesitate to contact us at (555) 234-5678."
-      ],
-      "kr": "연간 회원비 $480는 2월 20일까지 납부해야 합니다. 결제는 웹사이트 또는 프론트 데스크에서 직접 할 수 있습니다. 회원권 관련 문의는 (555) 234-5678로 연락하세요."
-    },
-    {
-      "expr": "regarding",
-      "meaning": "~에 관하여",
-      "sentences": [
-        "Please note that the annual membership fee of $480 is due by February 20.",
-        "Payment can be made online through our website or in person at the front desk.",
-        "If you have any questions regarding your membership, please do not hesitate to contact us at (555) 234-5678."
-      ],
-      "kr": "연간 회원비 $480는 2월 20일까지 납부해야 합니다. 결제는 웹사이트 또는 프론트 데스크에서 직접 할 수 있습니다. 회원권 관련 문의는 (555) 234-5678로 연락하세요."
-    },
-    {
-      "expr": "be closed for maintenance",
-      "meaning": "유지보수를 위해 폐쇄되다",
-      "sentences": [
-        "All employees are hereby notified that the main parking garage will be closed for maintenance starting Monday, April 7.",
-        "The closure is expected to last for two weeks."
-      ],
-      "kr": "모든 직원에게 주 주차장이 4월 7일 월요일부터 유지보수를 위해 폐쇄됨을 알립니다. 폐쇄는 2주간 지속될 예정입니다."
-    },
-    {
-      "expr": "hereby",
-      "meaning": "이로써, 이에",
-      "sentences": [
-        "All employees are hereby notified that the main parking garage will be closed for maintenance starting Monday, April 7.",
-        "The closure is expected to last for two weeks."
-      ],
-      "kr": "모든 직원에게 주 주차장이 4월 7일 월요일부터 유지보수를 위해 폐쇄됨을 알립니다. 폐쇄는 2주간 지속될 예정입니다."
-    },
-    {
-      "expr": "closure",
-      "meaning": "폐쇄, 휴업",
-      "sentences": [
-        "All employees are hereby notified that the main parking garage will be closed for maintenance starting Monday, April 7.",
-        "The closure is expected to last for two weeks."
-      ],
-      "kr": "모든 직원에게 주 주차장이 4월 7일 월요일부터 유지보수를 위해 폐쇄됨을 알립니다. 폐쇄는 2주간 지속될 예정입니다."
-    },
-    {
-      "expr": "temporary",
-      "meaning": "임시의",
-      "sentences": [
-        "During this period, employees may use the temporary parking lot located at 45 Oak Street, approximately a five-minute walk from the office.",
-        "A free shuttle service will operate between the temporary lot and the main entrance every 15 minutes from 7:00 A.M. to 7:00 P.M.",
-        "Employees who wish to use the shuttle should display their company ID badges."
-      ],
-      "kr": "이 기간 동안 직원들은 사무실에서 도보 약 5분 거리인 45 Oak Street의 임시 주차장을 이용할 수 있습니다. 무료 셔틀이 오전 7시부터 오후 7시까지 15분 간격으로 운행됩니다. 셔틀 이용 시 사원증을 제시해야 합니다."
-    },
-    {
-      "expr": "display",
-      "meaning": "제시하다, 보여주다",
-      "sentences": [
-        "During this period, employees may use the temporary parking lot located at 45 Oak Street, approximately a five-minute walk from the office.",
-        "A free shuttle service will operate between the temporary lot and the main entrance every 15 minutes from 7:00 A.M. to 7:00 P.M.",
-        "Employees who wish to use the shuttle should display their company ID badges."
-      ],
-      "kr": "이 기간 동안 직원들은 사무실에서 도보 약 5분 거리인 45 Oak Street의 임시 주차장을 이용할 수 있습니다. 무료 셔틀이 오전 7시부터 오후 7시까지 15분 간격으로 운행됩니다. 셔틀 이용 시 사원증을 제시해야 합니다."
-    },
-    {
-      "expr": "apologize for any inconvenience",
-      "meaning": "불편을 드려 죄송합니다",
-      "sentences": [
-        "We apologize for any inconvenience this may cause and appreciate your patience during the renovation.",
-        "The upgraded garage will feature additional spaces, improved lighting, and electric vehicle charging stations.",
-        "For further information, please contact the Facilities Department at extension 4200."
-      ],
-      "kr": "불편을 끼쳐 죄송하며 리모델링 기간 동안 양해 부탁드립니다. 업그레이드된 주차장에는 추가 공간, 개선된 조명, 전기차 충전소가 설치됩니다. 추가 정보는 시설 관리부 내선 4200으로 연락하세요."
-    },
-    {
-      "expr": "for further information",
-      "meaning": "추가 정보는",
-      "sentences": [
-        "We apologize for any inconvenience this may cause and appreciate your patience during the renovation.",
-        "The upgraded garage will feature additional spaces, improved lighting, and electric vehicle charging stations.",
-        "For further information, please contact the Facilities Department at extension 4200."
-      ],
-      "kr": "불편을 끼쳐 죄송하며 리모델링 기간 동안 양해 부탁드립니다. 업그레이드된 주차장에는 추가 공간, 개선된 조명, 전기차 충전소가 설치됩니다. 추가 정보는 시설 관리부 내선 4200으로 연락하세요."
-    },
-    {
-      "expr": "feature",
-      "meaning": "(특징으로) 갖추다",
-      "sentences": [
-        "We apologize for any inconvenience this may cause and appreciate your patience during the renovation.",
-        "The upgraded garage will feature additional spaces, improved lighting, and electric vehicle charging stations.",
-        "For further information, please contact the Facilities Department at extension 4200."
-      ],
-      "kr": "불편을 끼쳐 죄송하며 리모델링 기간 동안 양해 부탁드립니다. 업그레이드된 주차장에는 추가 공간, 개선된 조명, 전기차 충전소가 설치됩니다. 추가 정보는 시설 관리부 내선 4200으로 연락하세요."
-    }
-  ],
-  "voca_exam_record": {
-    "wins": 0,
-    "total": 2
-  },
-  "combo_best": 5500
+  "saved_expressions": []
 }

@@ -1,0 +1,10 @@
+﻿f='C:/Users/최정은/Desktop/snapq_toeic_V3/pages/02_P5_Arena.py'
+c=open(f,'r',encoding='utf-8').read()
+c=c.replace('#n{{font-size:5rem;font-weight:900;animation:p 1s ease-in-out infinite;}}','#n{{font-size:3rem;font-weight:900;animation:p 1s ease-in-out infinite;}}')
+c=c.replace('#bw{{background:#1a1a2e;border-radius:10px;height:14px;margin:0.2rem 0.5rem;overflow:hidden;border:1px solid #333;}}','#bw{{background:#1a1a2e;border-radius:8px;height:10px;margin:0.1rem 0.3rem;overflow:hidden;border:1px solid #333;}}')
+c=c.replace('.critical{{color:#ff0000;text-shadow:0 0 50px #ff0000;font-size:6rem!important;}}','.critical{{color:#ff0000;text-shadow:0 0 50px #ff0000;font-size:4rem!important;}}')
+c=c.replace('""", height=120)','""", height=72)')
+c=c.replace('.qb{border-radius:18px;padding:1.8rem 1.5rem;margin:0.2rem 0 0.6rem 0;background:#0d0d0d;}','.qb{border-radius:12px;padding:0.6rem 0.8rem;margin:0.1rem 0 0.2rem 0;background:#0d0d0d;}')
+c=c.replace('.bt{display:flex;align-items:center;justify-content:space-between;padding:0.7rem 1rem;border-radius:14px;margin-bottom:0.2rem;}','.bt{display:flex;align-items:center;justify-content:space-between;padding:0.3rem 0.8rem;border-radius:10px;margin-bottom:0.1rem;}')
+open(f,'w',encoding='utf-8').write(c)
+print('done!')

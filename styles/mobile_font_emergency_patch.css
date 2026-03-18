@@ -1,0 +1,162 @@
+﻿/* ============================================================
+   SnapQ TOEIC - 모바일 폰트 크기 긴급 패치
+   생성: 20260211_083816
+   목적: 모바일 가독성 최우선 개선
+   ============================================================ */
+
+/* === 기본 폰트 크기 증가 (모바일) === */
+@media (max-width: 768px) {
+    
+    /* 1. 지문/문제 텍스트 */
+    .p7-zone-body,
+    .p7-question,
+    .p5-question,
+    .p5-qtext {
+        font-size: 22px !important;
+        line-height: 1.6 !important;
+        font-weight: 700 !important;
+    }
+    
+    /* 2. 선택지 버튼 */
+    .p7-opt-wrap button,
+    .p5-opt-wrap button,
+    div[data-testid="stButton"] > button {
+        font-size: 20px !important;
+        font-weight: 800 !important;
+        min-height: 70px !important;
+        padding: 18px 20px !important;
+        line-height: 1.4 !important;
+    }
+    
+    /* 3. HUD/타이머 */
+    .p7-hud-left,
+    .p5-hud-left,
+    .p7-badge,
+    .p5-badge {
+        font-size: 16px !important;
+        font-weight: 800 !important;
+    }
+    
+    /* 4. Main Hub 버튼 */
+    .hub-mainfight button,
+    .hub-armory button {
+        font-size: 28px !important;
+        font-weight: 900 !important;
+        min-height: 90px !important;
+    }
+    
+    /* 5. 작은 정보 텍스트 */
+    .caption,
+    .small-text,
+    .st-caption {
+        font-size: 14px !important;
+    }
+}
+
+/* === 선택지 간격 증가 === */
+@media (max-width: 768px) {
+    .p7-opt-wrap,
+    .p5-opt-wrap {
+        gap: 18px !important;
+        margin-top: 16px !important;
+    }
+}
+
+/* === P7 긴 지문 스크롤 영역 === */
+@media (max-width: 768px) {
+    .p7-zone-body {
+        max-height: 45vh !important;
+        overflow-y: auto !important;
+        padding-bottom: 20px !important;
+        margin-bottom: 16px !important;
+    }
+    
+    /* 스크롤바 스타일 */
+    .p7-zone-body::-webkit-scrollbar {
+        width: 8px;
+    }
+    .p7-zone-body::-webkit-scrollbar-thumb {
+        background: rgba(0,229,255,0.5);
+        border-radius: 4px;
+    }
+}
+
+/* === 하단 버튼 안전 영역 === */
+@media (max-width: 768px) {
+    .p7-battlefield,
+    .p5-battlefield {
+        padding-bottom: 80px !important;
+    }
+}
+
+/* === 색상 대비 강화 === */
+
+/* 다크 배경 위 텍스트 */
+.p7-zone-body,
+.p5-question,
+body, .stApp {
+    color: #FFFFFF !important;
+}
+
+/* 밝은 버튼 위 텍스트 */
+button,
+div[data-testid="stButton"] > button {
+    background: #FFFFFF !important;
+    color: #0F1419 !important;
+    opacity: 1 !important;
+}
+
+button *,
+div[data-testid="stButton"] > button * {
+    color: #0F1419 !important;
+    opacity: 1 !important;
+}
+
+/* hover 시에만 색 변경 */
+button:hover,
+div[data-testid="stButton"] > button:hover {
+    background: #00E5FF !important;
+    color: #FFFFFF !important;
+}
+
+button:hover *,
+div[data-testid="stButton"] > button:hover * {
+    color: #FFFFFF !important;
+}
+
+/* 비활성 버튼 명확하게 */
+button:disabled,
+div[data-testid="stButton"] > button:disabled {
+    background: #94A3B8 !important;
+    color: #FFFFFF !important;
+    opacity: 0.6 !important;
+}
+
+/* === P5 Train 모드 === */
+@media (max-width: 768px) {
+    .p5-train-question {
+        font-size: 22px !important;
+        margin-bottom: 20px !important;
+    }
+    
+    .p5-train-options {
+        display: grid !important;
+        grid-template-columns: 1fr 1fr !important;
+        gap: 16px !important;
+    }
+    
+    .p5-train-options button {
+        font-size: 18px !important;
+        min-height: 70px !important;
+    }
+}
+
+/* === Brief/Tip 박스 === */
+@media (max-width: 768px) {
+    .brief-box,
+    .tip-box {
+        font-size: 16px !important;
+        padding: 16px !important;
+        line-height: 1.5 !important;
+    }
+}

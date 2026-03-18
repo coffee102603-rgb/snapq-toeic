@@ -1,0 +1,50 @@
+﻿# ============================================================
+# SNAPQ SAFE RUN (LITE v3) - NO MOVE / NO QUARANTINE
+# - wildcard py_compile 문제 해결: 파일 목록 펼쳐서 1개씩 컴파일
+# ============================================================
+
+$ROOT = "C:\Users\최정은\Desktop\SNAPQ_TOEIC"
+Set-Location $ROOT
+
+Write-Host "`n[SAFE RUN LITE v3] SNAPQ TOEIC" -ForegroundColor Cyan
+Write-Host "[ROOT] $ROOT" -ForegroundColor Green
+
+# ✅ 실행 중 프로세스 종료 (없어도 OK)
+cmd /c "taskkill /F /IM streamlit.exe >nul 2>&1"
+cmd /c "taskkill /F /IM python.exe >nul 2>&1"
+
+# ✅ main_hub.py 컴파일
+Write-Host "`n[CHECK] py_compile main_hub.py ..." -ForegroundColor Yellow
+python -m py_compile .\main_hub.py
+if ($LASTEXITCODE -ne 0) { Write-Host "[ERROR] main_hub.py compile failed" -ForegroundColor Red; Read-Host "Press Enter"; exit 1 }
+
+# ✅ pages 폴더: .py 파일 목록 펼쳐서 1개씩 컴파일
+Write-Host "`n[CHECK] py_compile pages/*.py ..." -ForegroundColor Yellow
+$pages = Get-ChildItem .\pages -File -Filter "*.py" -ErrorAction SilentlyContinue
+foreach($f in $pages){
+  python -m py_compile $f.FullName
+  if ($LASTEXITCODE -ne 0) {
+    Write-Host "[ERROR] pages compile failed => $($f.Name)" -ForegroundColor Red
+    Read-Host "Press Enter"
+    exit 1
+  }
+}
+
+# ✅ arenas 폴더: .py 파일 목록 펼쳐서 1개씩 컴파일
+Write-Host "`n[CHECK] py_compile app/arenas/*.py ..." -ForegroundColor Yellow
+$arenas = Get-ChildItem .\app\arenas -File -Filter "*.py" -ErrorAction SilentlyContinue
+foreach($f in $arenas){
+  python -m py_compile $f.FullName
+  if ($LASTEXITCODE -ne 0) {
+    Write-Host "[ERROR] arenas compile failed => $($f.Name)" -ForegroundColor Red
+    Read-Host "Press Enter"
+    exit 1
+  }
+}
+
+Write-Host "`n[OK] 컴파일 통과. Streamlit 실행!" -ForegroundColor Green
+Write-Host "  Local URL: http://localhost:8501" -ForegroundColor Cyan
+
+python -m streamlit run .\main_hub.py
+
+Read-Host "Press Enter to close"

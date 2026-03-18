@@ -1,0 +1,60 @@
+﻿# ===============================
+# SnapQ SAFE RUN (script) - v2
+# - 중복/임시 파일 격리(삭제 아님)
+# - py_compile 검사
+# - main_hub.py 실행
+# ===============================
+
+$ErrorActionPreference = "Stop"
+
+# 0) 프로젝트 루트로 이동 (이 스크립트 위치 기준)
+$root = Resolve-Path (Join-Path $PSScriptRoot "..")
+Set-Location $root
+
+Write-Host "`n[ROOT] $root" -ForegroundColor Cyan
+
+# 1) 실행 중인 프로세스 종료 (없으면 조용히 넘어감)
+$targets = @("streamlit", "python")
+foreach ($t in $targets) {
+  Get-Process $t -ErrorAction SilentlyContinue | Stop-Process -Force -ErrorAction SilentlyContinue
+}
+
+# 2) 중복/임시 파일 격리(삭제 아님)
+$ts = Get-Date -Format "yyyyMMdd_HHmmss"
+$quarantine = Join-Path $root ("_quarantine_dupes_" + $ts)
+New-Item -ItemType Directory -Path $quarantine -Force | Out-Null
+
+$patterns = @(
+  "*_FIXED*.py",
+  "* (1).py",
+  "* (2).py",
+  "* (3).py",
+  "*.tmp.py",
+  "*.copy.py"
+)
+
+foreach ($p in $patterns) {
+  Get-ChildItem $root -Recurse -File -Filter $p -ErrorAction SilentlyContinue |
+    ForEach-Object { Move-Item $_.FullName $quarantine -Force }
+}
+
+Write-Host "`n[OK] 겹침 파일 격리 => $quarantine" -ForegroundColor Green
+
+# 3) 실행 대상 확정 출력
+Write-Host "[RUN TARGET] $(Resolve-Path .\main_hub.py)`n" -ForegroundColor Yellow
+
+# 4) 문법 검사
+Write-Host "[CHECK] py_compile main_hub.py ..." -ForegroundColor Cyan
+python -m py_compile .\main_hub.py
+
+if (Test-Path ".\pages") {
+  Write-Host "[CHECK] py_compile pages/*.py ..." -ForegroundColor Cyan
+  Get-ChildItem ".\pages" -File -Filter "*.py" | ForEach-Object {
+    python -m py_compile $_.FullName
+  }
+}
+
+Write-Host "`n[OK] 컴파일 통과. Streamlit 실행!" -ForegroundColor Green
+
+# 5) 실행
+python -m streamlit run .\main_hub.py

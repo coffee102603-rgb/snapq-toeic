@@ -1,0 +1,26 @@
+0235:             st.error("??FAIL (Sudden Death)")
+0236:             st.write(reason)
+0237:         else:
+0238:             st.success("??CLEAR! (Perfect run)")
+0239:         st.markdown(f"### Score: {score} / {TOTAL_Q}")
+0240:         c1, c2 = st.columns(2)
+0241:         with c1:
+0242:             if st.button("?봺 Retry", use_container_width=True):
+0243:                 reset()
+0244:     print('🚨 RERUN BLOCKED HERE')
+0245:         with c2:
+0246:             if st.button("?룧 Hub", use_container_width=True):
+0247:                 try:
+0248:                     st.switch_page("main_hub.py")
+0249:                 except Exception:
+0250:                     pass
+0251:         st.stop()
+0252: 
+0253:     if not st.session_state.get("ex10_active", False):
+0254:         st.markdown(
+0255:             """
+0256:             <div style="background:rgba(20,25,45,.72);border:1px solid rgba(255,255,255,.16);
+0257:                         border-radius:16px;padding:14px 16px;box-shadow:0 18px 40px rgba(0,0,0,.22);color:#fff;">
+0258:               <div style="font-weight:950;font-size:18px;">?㎤ RULES</div>
+0259:               <div style="margin-top:6px;line-height:1.55;">
+0260:                 ??5 sentences<br>
