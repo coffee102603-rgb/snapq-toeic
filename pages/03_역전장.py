@@ -962,15 +962,15 @@ elif st.session_state.sg_phase == "combo_rush":
     score = st.session_state.sg_combo_score
     combo = st.session_state.sg_combo_count
     cidx = st.session_state.sg_combo_idx
-    total_qs = min(10, len(voca_data))
+    total_qs = min(5, len(voca_data))
 
     # 문제 풀 준비
     if "sg_combo_pool" not in st.session_state:
         pool = voca_data.copy()
         random.shuffle(pool)
-        while len(pool) < 10:
+        while len(pool) < 5:
             pool += voca_data.copy()
-        st.session_state.sg_combo_pool = pool[:10]
+        st.session_state.sg_combo_pool = pool[:5]
     c_pool = st.session_state.sg_combo_pool
 
     # 종료 판정
