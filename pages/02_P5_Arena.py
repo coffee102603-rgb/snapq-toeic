@@ -99,10 +99,10 @@ button[kind="primary"] p,button[kind="primary"] span,button[kind="secondary"] p,
 @media(max-width:480px){
 .block-container{padding-top:0.2rem!important;padding-bottom:1rem!important;padding-left:0.3rem!important;padding-right:0.3rem!important;}
 .ah h1{font-size:0.95rem!important;letter-spacing:1px!important;}
-button[kind="primary"],button[kind="secondary"]{font-size:0.9rem!important;padding:0.4rem 0.4rem!important;border-radius:6px!important;}
+button[kind="primary"],button[kind="secondary"]{font-size:0.9rem!important;padding:0.2rem 0.4rem!important;border-radius:6px!important;}
 button[kind="primary"] p,button[kind="primary"] span,button[kind="secondary"] p,button[kind="secondary"] span{font-size:0.9rem!important;}
-.qt{font-size:1.08rem!important;line-height:1.5!important;}.qk{font-size:1.17rem!important;}
-.qb{padding:0.6rem 0.5rem!important;border-radius:12px!important;}
+.qt{font-size:1.0rem!important;line-height:1.2!important;}.qk{font-size:1.1rem!important;}
+.qb{padding:0.4rem 0.5rem!important;border-radius:12px!important;}
 .wb{padding:0.6rem 0.5rem!important;}.wb-s{font-size:0.99rem!important;line-height:1.5!important;}
 .wb-h,.wb-hn{font-size:1.08rem!important;}.wb-k{font-size:0.85rem!important;}.wb-e{font-size:0.81rem!important;}
 .bq{font-size:0.9rem!important;}.bs{font-size:0.76rem!important;}
@@ -246,8 +246,8 @@ if st.session_state.phase=="battle":
         <style>
         *{{margin:0;padding:0;box-sizing:border-box;}}body{{background:transparent;overflow:hidden;font-family:sans-serif;margin:0;padding:0;}}
         #w{{text-align:center;padding:0;margin:0;line-height:1;}}
-        #n{{font-size:1.8rem;font-weight:900;animation:p 1s ease-in-out infinite;}}
-        #bw{{background:#1a1a2e;border-radius:8px;height:10px;margin:0.1rem 0.3rem;overflow:hidden;border:1px solid #333;}}
+        #n{{font-size:1.5rem;font-weight:900;animation:p 1s ease-in-out infinite;}}
+        #bw{{background:#1a1a2e;border-radius:8px;height:8px;margin:0.05rem 0.3rem;overflow:hidden;border:1px solid #333;}}
         #b{{height:100%;border-radius:10px;transition:width 1s linear;}}
         .safe{{color:#44ff88;text-shadow:0 0 20px #44ff88;}}
         .warn{{color:#ffcc00;text-shadow:0 0 25px #ffcc00,0 0 50px #ff8800;}}
