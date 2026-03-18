@@ -1215,6 +1215,7 @@ elif st.session_state.p7_phase == "briefing":
             save_expressions(exprs, step_data=s)
             st.session_state[save_key] = True
             st.rerun()
+    bc5, bc6 = st.columns(2)
     with bc5:
         if st.button("◀ 이전", key="p7brp", type="secondary", disabled=bi<=0, use_container_width=True):
             st.session_state.p7_br_idx = bi - 1; st.rerun()
