@@ -304,7 +304,7 @@ if st.session_state.sg_phase == "lobby":
 
     # 타이틀
     st.markdown('''<div class="rv-title">
-        <h1>🔥 역 전 장</h1>
+        <h1>🔥 오 답 전 장</h1>
     </div>''', unsafe_allow_html=True)
 
 
@@ -949,7 +949,7 @@ elif st.session_state.sg_phase == "survival_result":
 # ════════════════════════════════
 elif st.session_state.sg_phase == "combo_rush":
     if not voca_data:
-        st.warning("⚠️ 저장된 P7 단어/표현이 없습니다! 먼저 역전장 학습모드에서 단어를 저장하세요.")
+        st.warning("⚠️ 저장된 P7 단어/표현이 없습니다! 먼저 오답전장 학습모드에서 단어를 저장하세요.")
         if st.button("🔙 돌아가기"): st.session_state.sg_phase = "lobby"; st.session_state.rv_battle = None; st.session_state.rv_mode = None; st.rerun()
         st.stop()
     st_autorefresh(interval=1000, limit=40, key="combo_timer")
