@@ -74,7 +74,7 @@ button[kind="primary"]:hover,button[kind="secondary"]:hover{background:rgba(0,21
 .cd{font-size:1.3rem;font-weight:800;color:#ccc;line-height:1.5;}
 .wb{background:#0d0d0d;border-radius:16px;padding:1.8rem 1.5rem;margin:0.5rem 0;border:1px solid rgba(0,212,255,0.3);min-height:250px;}
 .wb-qn-ok{color:#00d4ff;}.wb-qn-no{color:#ff2244;}
-.wb-s{font-size:1.94rem;font-weight:700;color:#f0f0f0;line-height:1.4;margin-bottom:0.3rem;word-break:keep-all;}
+.wb-s{font-size:1.94rem;font-weight:700;color:#f0f0f0;line-height:1.05;margin-bottom:0.3rem;word-break:keep-all;}
 .wb-h{color:#00d4ff;font-weight:900;font-size:2.07rem;text-decoration:underline;text-decoration-color:#00d4ff;}
 .wb-hn{color:#ff2244;font-weight:900;font-size:2.07rem;text-decoration:underline;text-decoration-color:#ff2244;}
 .wb-k{font-size:1.44rem;font-weight:600;color:#ccc;line-height:1.3;}
@@ -463,7 +463,7 @@ button[kind="primary"]:hover,button[kind="secondary"]:hover{background:rgba(0,21
 .cd{font-size:1.3rem;font-weight:800;color:#ccc;line-height:1.5;}
 .wb{background:#0d0d0d;border-radius:16px;padding:1.8rem 1.5rem;margin:0.5rem 0;border:1px solid rgba(0,212,255,0.3);min-height:250px;}
 .wb-qn-ok{color:#00d4ff;}.wb-qn-no{color:#ff2244;}
-.wb-s{font-size:1.6rem;font-weight:700;color:#f0f0f0;line-height:1.2;margin-bottom:0.3rem;word-break:keep-all;}
+.wb-s{font-size:1.6rem;font-weight:700;color:#f0f0f0;line-height:1.05;margin-bottom:0.3rem;word-break:keep-all;}
 .wb-h{color:#00d4ff;font-weight:900;font-size:2.3rem;text-decoration:underline;text-decoration-color:#00d4ff;}
 .wb-hn{color:#ff2244;font-weight:900;font-size:2.3rem;text-decoration:underline;text-decoration-color:#ff2244;}
 .wb-k{font-size:1.6rem;font-weight:600;color:#ccc;line-height:1.7;}
