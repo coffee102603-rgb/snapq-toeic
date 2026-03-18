@@ -1272,6 +1272,27 @@ elif st.session_state.p7_phase == "briefing":
             for k in D: st.session_state[k] = D[k]
             st.switch_page("main_hub.py")
 
+    import streamlit.components.v1 as _cmp2
+    _cmp2.html("""<script>
+    (function(){
+        function styleNav(){
+            var doc=window.parent.document;
+            var rows=doc.querySelectorAll('[data-testid="stHorizontalBlock"]');
+            if(!rows.length) return;
+            var lastRow=rows[rows.length-1];
+            var btns=lastRow.querySelectorAll('button');
+            btns.forEach(function(b){
+                b.style.setProperty("animation","none","important");
+                b.style.setProperty("border","1.5px solid rgba(255,255,255,0.5)","important");
+                b.style.setProperty("background","#050505","important");
+                b.style.setProperty("box-shadow","none","important");
+                b.style.setProperty("color","#cccccc","important");
+            });
+        }
+        setTimeout(styleNav,150);setTimeout(styleNav,500);setTimeout(styleNav,1200);
+        new MutationObserver(function(){setTimeout(styleNav,100);}).observe(window.parent.document.body,{childList:true,subtree:true,attributes:true});
+    })();
+    </script>""", height=0)
 
 
 
