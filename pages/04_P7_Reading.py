@@ -1,4 +1,4 @@
-"""P7 Reading Arena — 60초 독해 전투 (V2)"""
+﻿"""P7 Reading Arena — 60초 독해 전투 (V2)"""
 import streamlit as st
 import streamlit.components.v1 as components
 from streamlit_autorefresh import st_autorefresh
@@ -727,8 +727,8 @@ if st.session_state.p7_phase == "lobby":
     st.markdown('<div style="font-size:0.7rem;color:#aaaaaa;text-align:center;letter-spacing:3px;margin-top:8px;padding-top:8px;border-top:1px solid #444;">N A V I G A T E</div>', unsafe_allow_html=True)
     nc1,nc2 = st.columns(2)
     with nc1:
-        if st.button("🔥 역전장", key="p7nav1", type="secondary", use_container_width=True):
-            st.switch_page("pages/03_역전장.py")
+        if st.button("🔥 오답전장", key="p7nav1", type="secondary", use_container_width=True):
+            st.switch_page("pages/03_오답전장.py")
     with nc2:
         if st.button("🏠 메인", key="p7nav2", type="secondary", use_container_width=True):
             st.session_state._p7_just_left = True
@@ -1042,13 +1042,13 @@ elif st.session_state.p7_phase == "briefing":
         st.rerun()
     elif _qp == "store":
         st.query_params.clear()
-        st.switch_page("pages/03_역전장.py")
+        st.switch_page("pages/03_오답전장.py")
     elif _qp == "lobby":
         for k in D: st.session_state[k] = D[k]
         st.query_params.clear()
         st.switch_page("main_hub.py")
 
-    # 역전장/본부귀환 골드 스타일
+    # 오답전장/본부귀환 골드 스타일
     st.markdown("""<style>
     button[kind="secondary"]{
         border:2px solid #FFD700!important;
@@ -1223,8 +1223,8 @@ elif st.session_state.p7_phase == "briefing":
     st.markdown('<style>button[data-testid="baseButton-secondary"]#p7store,button[data-testid="baseButton-secondary"]#p7lobby{border:2px solid #ffffff!important;} div[data-testid="column"]:has(button[kind="secondary"]) button{border:2px solid #ffffff!important;color:#ffffff!important;border-radius:10px!important;} div[data-testid="column"]:has(button[kind="secondary"]) button p{color:#ffffff!important;}</style>', unsafe_allow_html=True)
     bc3, bc4 = st.columns(2)
     with bc3:
-        if st.button("🔥 역전장", key="p7store", type="secondary", use_container_width=True):
-            st.switch_page("pages/03_역전장.py")
+        if st.button("🔥 오답전장", key="p7store", type="secondary", use_container_width=True):
+            st.switch_page("pages/03_오답전장.py")
     with bc4:
         if st.button("🏠 본부", key="p7lobby", type="secondary", use_container_width=True):
             for k in D: st.session_state[k] = D[k]
