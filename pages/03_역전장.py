@@ -1,4 +1,4 @@
-"""통합 역전장 — P5 학습/시험 + VOCA 학습/시험"""
+﻿"""통합 역전장 — P5 학습/시험 + VOCA 학습/시험"""
 import streamlit as st
 import streamlit.components.v1 as components
 import json, os, random, time, re
@@ -814,12 +814,12 @@ elif st.session_state.sg_phase == "survival":
         note_border = "rgba(255,100,100,0.6)"
         note_bg = "linear-gradient(145deg,#1a1235,#221540,#1a1235)"
         note = f'<div style="background:{note_bg};border:2.5px solid {note_border};border-radius:20px;padding:1.5rem;margin:10px 0;box-shadow:0 0 25px rgba(255,100,100,0.15);">'
-        note += f'<div style="font-size:1.5rem;font-weight:800;letter-spacing:3px;color:rgba(255,150,150,0.8);margin-bottom:10px;">📝 REVIEW NOTE</div>'
-        note += f'<div style="font-size:1.5rem;color:#ff8888;font-weight:800;margin-bottom:8px;">내 선택: <span style="text-decoration:line-through;opacity:0.7;">{wr["my_ans"]}</span></div>'
+        note += f'<div style="font-size:1.1rem;font-weight:800;letter-spacing:3px;color:rgba(255,150,150,0.8);margin-bottom:10px;">📝 REVIEW NOTE</div>'
+        note += f'<div style="font-size:1.1rem;color:#ff8888;font-weight:800;margin-bottom:8px;">내 선택: <span style="text-decoration:line-through;opacity:0.7;">{wr["my_ans"]}</span></div>'
         
         note += f'<div style="border-top:1px solid rgba(255,255,255,0.1);padding-top:12px;margin-top:8px;">'
         note += f'<div style="font-size:1.1rem;font-weight:900;color:#88bbff;margin-bottom:4px;">📖 {wr["expr"]}</div>'
-        note += f'<div style="font-size:2rem;color:#aaa;font-weight:700;margin-bottom:6px;">뜻: {wr["meaning"]}</div>'
+        note += f'<div style="font-size:1.1rem;color:#aaa;font-weight:700;margin-bottom:6px;">뜻: {wr["meaning"]}</div>'
         if wr.get("sentence"):
             import re as _re2
             _hl_sent = wr["sentence"]
@@ -843,11 +843,11 @@ elif st.session_state.sg_phase == "survival":
                             except: pass
             note += '<div style="font-size:1.1rem;font-weight:800;letter-spacing:2px;color:#88bbff;margin-top:12px;margin-bottom:4px;">[정답]</div>'
             if wave == 4:
-                note += f'<div style="font-size:2.3rem;color:#ccddff;font-weight:700;line-height:1.6;margin-top:4px;padding:14px;background:rgba(100,140,255,0.08);border-radius:12px;">{_hl_sent}</div>'
+                note += f'<div style="font-size:1.1rem;color:#ccddff;font-weight:700;line-height:1.6;margin-top:4px;padding:14px;background:rgba(100,140,255,0.08);border-radius:12px;">{_hl_sent}</div>'
             # Wave 3: 영어문장 위에 이미 보임 → 표시 안 함
         if wr.get("kr"):
             if wave == 3:
-                note += f'<div style="font-size:2.0rem;color:#aabbcc;font-weight:600;margin-top:4px;padding:0 10px;">→ {wr["kr"]}</div>'
+                note += f'<div style="font-size:1.1rem;color:#aabbcc;font-weight:600;margin-top:4px;padding:0 10px;">→ {wr["kr"]}</div>'
             # Wave 4: 한글문장 위에 이미 보임 → 표시 안 함>'
         note += '</div></div>'
         st.markdown(note, unsafe_allow_html=True)
