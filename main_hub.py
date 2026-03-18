@@ -4,32 +4,6 @@ C안: 상단배너 + P5/P7 나란히 + 역전장 전체 + 하단 서브메뉴
 """
 
 import streamlit as st
-
-# iOS Safari 호환
-_IOS_CSS = True
-# iOS Safari Chrome 유도
-import streamlit.components.v1 as _components
-_components.html("""
-<script>
-var ua = navigator.userAgent;
-var isIOS = /iPad|iPhone|iPod/.test(ua);
-var isSafari = /Safari/.test(ua) && !/Chrome/.test(ua) && !/CriOS/.test(ua);
-if (isIOS && isSafari) {
-    document.body.style.overflow = 'hidden';
-    var div = document.createElement('div');
-    div.style.cssText = 'position:fixed;top:0;left:0;width:100vw;height:100vh;background:rgba(0,0,0,0.95);z-index:99999;display:flex;align-items:center;justify-content:center;';
-    div.innerHTML = '<div style="background:#1a1a2e;border:2px solid #ff8800;border-radius:20px;padding:30px 20px;text-align:center;max-width:300px;">'
-        + '<div style="font-size:2rem;margin-bottom:8px;">⚠️</div>'
-        + '<div style="color:#ff8800;font-size:1.1rem;font-weight:900;margin-bottom:8px;">Safari는 지원 안 됩니다!</div>'
-        + '<div style="color:#fff;font-size:0.9rem;margin-bottom:16px;line-height:1.6;">아이폰에서는<br><b style=\"color:#ff8800\">Chrome 브라우저</b>로<br>접속해주세요! 🙏</div>'
-        + '<a href=\"googlechrome://snapq-toeic.onrender.com\" style=\"display:block;background:#ff8800;color:#fff;padding:12px;border-radius:12px;font-weight:900;font-size:0.95rem;text-decoration:none;margin-bottom:8px;\">📱 Chrome으로 열기</a>'
-        + '<div style=\"color:#aaa;font-size:0.75rem;\">Chrome 없으면 App Store에서 설치!</div>'
-        + '</div>';
-    document.body.appendChild(div);
-}
-</script>
-""", height=0)
-
 import os
 import json
 import time
@@ -47,7 +21,6 @@ st.set_page_config(
     layout='centered',
     initial_sidebar_state='collapsed'
 )
-
 
 # =========================================================
 # 데이터 헬퍼
@@ -330,7 +303,383 @@ def _mini_bar(rate):
 def load_css():
     # 모바일 뷰포트 메타태그 - 휴대폰에서 올바른 크기로 표시
     st.markdown('<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">', unsafe_allow_html=True)
-    
+    st.markdown("""
+    <style>
+    @import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Noto+Sans+KR:wght@400;700;900&display=swap');
+
+    .stApp { background: #0A0C15 !important; }
+    #MainMenu, footer, header { visibility: hidden; }
+    .block-container { padding: 0 8px 40px 8px !important; max-width: 100% !important; margin: 0 auto !important; }
+    div[data-testid="stVerticalBlock"] > div { gap: 0 !important; margin: 0 !important; padding: 0 !important; }
+    iframe { display: block !important; margin: 0 !important; padding: 0 !important; }
+
+    /* 상단 배너 - 형광 반짝 테두리 */
+    .top-banner {
+        background: linear-gradient(135deg, rgba(124,92,255,0.2), rgba(0,229,160,0.15));
+        border: 2px solid rgba(0,229,255,0.6);
+        border-radius: 16px;
+        padding: 14px 18px;
+        margin: 12px 0 20px 0;
+        display: flex;
+        flex-wrap: wrap;
+        gap: 10px;
+        align-items: center;
+        box-shadow: 0 0 16px rgba(0,229,255,0.35), 0 0 32px rgba(0,229,255,0.15), inset 0 0 20px rgba(0,229,255,0.05);
+        animation: bannerGlow 2s ease-in-out infinite alternate;
+    }
+    @keyframes bannerGlow {
+        from { box-shadow: 0 0 12px rgba(0,229,255,0.3), 0 0 24px rgba(0,229,255,0.1); border-color: rgba(0,229,255,0.5); }
+        to   { box-shadow: 0 0 24px rgba(0,229,255,0.7), 0 0 48px rgba(0,229,255,0.3); border-color: rgba(0,229,255,1.0); }
+    }
+    .banner-name {
+        font-family: 'Noto Sans KR', sans-serif;
+        font-size: 26px;
+        font-weight: 900;
+        color: #fff;
+        text-shadow: 0 0 10px rgba(0,229,255,0.5);
+    }
+    .banner-item {
+        font-family: 'Noto Sans KR', sans-serif;
+        font-size: 18px;
+        font-weight: 900;
+        color: rgba(255,255,255,0.95);
+        display: flex;
+        align-items: center;
+        gap: 4px;
+    }
+    .banner-divider {
+        color: rgba(0,229,255,0.5);
+        font-size: 20px;
+    }
+    .banner-rank {
+        background: linear-gradient(135deg, #FFD600, #FF6B35);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+        font-weight: 900;
+        font-size: 20px;
+    }
+
+    /* 타이틀 + 브랜딩 */
+    .hub-brand {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 16px;
+        padding: 14px 0 20px 0;
+    }
+    .hub-teacher-photo {
+        width: 80px;
+        height: 80px;
+        border-radius: 50%;
+        object-fit: cover;
+        object-position: center top;
+        border: 3px solid #00E5FF;
+        box-shadow: 0 0 16px rgba(0,229,255,0.5), 0 0 32px rgba(0,229,255,0.2);
+        flex-shrink: 0;
+    }
+    .hub-brand-text {
+        text-align: left;
+    }
+    .hub-title-text {
+        font-family: 'Bebas Neue', sans-serif;
+        font-size: 46px;
+        letter-spacing: 4px;
+        background: linear-gradient(135deg, #FF2D55, #7C5CFF, #00E5FF);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+        line-height: 1;
+        margin: 0;
+    }
+    .hub-subtitle {
+        font-family: 'Noto Sans KR', sans-serif;
+        font-size: 14px;
+        font-weight: 900;
+        color: #FFD600;
+        letter-spacing: 1px;
+        margin-top: 4px;
+    }
+    .hub-platform {
+        font-family: 'Noto Sans KR', sans-serif;
+        font-size: 11px;
+        color: rgba(255,255,255,0.35);
+        letter-spacing: 2px;
+        margin-top: 2px;
+    }
+
+    /* 전장 버튼 공통 */
+    .arena-btn {
+        border-radius: 20px;
+        padding: 16px 20px;
+        margin-bottom: 4px;
+        cursor: pointer;
+        position: relative;
+        overflow: hidden;
+        border: none;
+        width: 100%;
+        box-sizing: border-box;
+        min-height: 130px;
+    }
+
+    /* P5 - 강렬한 파랑+시안 */
+    .arena-p5 {
+        background: linear-gradient(135deg, #050a0f, #0a1a2a);
+        box-shadow: 0 0 24px rgba(0,229,255,0.5); border: 1.5px solid #00e5ff;
+    }
+    /* P7 - 보라+핑크 */
+    .arena-p7 {
+        background: linear-gradient(135deg, #0f0e05, #1f1a05);
+        box-shadow: 0 0 24px rgba(255,215,0,0.5); border: 1.5px solid #ffd700;
+    }
+    /* 역전장 - 금+주황 */
+    .arena-armory {
+        background: linear-gradient(135deg, #0f0508, #1f0510);
+        box-shadow: 0 0 24px rgba(255,45,85,0.5); border: 1.5px solid #ff2d55;
+    }
+
+    .arena-inner {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        gap: 10px;
+    }
+    .arena-enter-btn {
+        background: rgba(0,0,0,0.3);
+        border: 3px solid rgba(255,255,255,0.7);
+        border-radius: 16px;
+        color: #fff;
+        font-family: "Noto Sans KR", sans-serif;
+        font-size: 26px;
+        font-weight: 900;
+        padding: 24px 22px;
+        min-width: 80px;
+        text-align: center;
+        letter-spacing: 2px;
+        flex-shrink: 0;
+        text-shadow: 0 2px 6px rgba(0,0,0,0.5);
+        box-shadow: 0 4px 16px rgba(0,0,0,0.3);
+    }
+    .arena-left {}
+    .arena-icon-title {
+        font-family: 'Noto Sans KR', sans-serif;
+        font-size: 28px;
+        font-weight: 900;
+        color: #fff;
+        text-shadow: 0 2px 8px rgba(0,0,0,0.4);
+        margin-bottom: 6px;
+    }
+    .arena-count {
+        font-family: 'Noto Sans KR', sans-serif;
+        font-size: 17px;
+        color: rgba(255,255,255,0.9);
+        font-weight: 900;
+        margin-top: 8px;
+    }
+    /* 네온 그래프 + 멘트 전환 */
+    @keyframes hubFadeGraph {
+        0%,38%  {opacity:1;}
+        45%,100%{opacity:0;}
+    }
+    @keyframes hubFadeMsg {
+        0%,38%  {opacity:0;}
+        45%,100%{opacity:1;}
+    }
+    .hub-layer {
+        position:absolute; left:0; right:0; top:0; bottom:0;
+        padding:10px 16px 12px;
+        display:flex; flex-direction:column; justify-content:center;
+    }
+    .hub-graph-layer { animation:hubFadeGraph 7s ease-in-out infinite; }
+    .hub-msg-layer   { animation:hubFadeMsg   7s ease-in-out infinite; }
+    .neon-bar-row { display:flex; align-items:center; gap:8px; margin-bottom:8px; }
+    .neon-label { font-size:0.9rem; font-weight:800; color:rgba(255,255,255,0.85); width:42px; flex-shrink:0; }
+    .neon-track { flex:1; height:11px; background:rgba(0,0,0,0.25); border-radius:6px; overflow:hidden; }
+    .neon-fill  { height:100%; border-radius:6px; }
+    .neon-cyan   { background:linear-gradient(90deg,#00ccff,#00ffee); box-shadow:0 0 8px #00ccff; }
+    .neon-purple { background:linear-gradient(90deg,#aa44ff,#dd88ff); box-shadow:0 0 8px #aa44ff; }
+    .neon-green  { background:linear-gradient(90deg,#00ff88,#aaff44); box-shadow:0 0 8px #00ff88; }
+    .neon-pct { font-size:0.95rem; font-weight:900; color:#fff; width:36px; text-align:right; flex-shrink:0; }
+    .hub-msg-title { font-size:1.25rem; font-weight:900; color:#fff; margin-bottom:4px; }
+    .hub-msg-sub   { font-size:1rem; font-weight:700; color:rgba(255,255,255,0.8); margin-bottom:3px; }
+    .hub-msg-count { font-size:0.85rem; color:rgba(255,255,255,0.55); }
+
+    .arena-right {
+        text-align: right;
+    }
+    .arena-rate {
+        font-family: 'Bebas Neue', sans-serif;
+        font-size: 48px;
+        color: #fff;
+        line-height: 1;
+        text-shadow: 0 2px 10px rgba(0,0,0,0.3);
+    }
+    .arena-arrow {
+        font-size: 26px;
+        font-weight: 900;
+        margin-left: 4px;
+    }
+    .arena-first {
+        font-family: 'Noto Sans KR', sans-serif;
+        font-size: 17px;
+        font-weight: 900;
+        background: rgba(255,255,255,0.25);
+        color: #fff;
+        padding: 8px 14px;
+        border-radius: 999px;
+        display: inline-block;
+    }
+
+    /* 역전장 분리 표시 */
+    .armory-sub {
+        display: flex;
+        gap: 16px;
+        margin-top: 8px;
+    }
+    .armory-sub-item {
+        font-family: 'Noto Sans KR', sans-serif;
+        font-size: 18px;
+        font-weight: 900;
+        color: rgba(0,0,0,0.85);
+    }
+    .armory-pending {
+        font-family: 'Noto Sans KR', sans-serif;
+        font-size: 17px;
+        color: rgba(0,0,0,0.75);
+        font-weight: 900;
+        margin-top: 6px;
+    }
+
+    /* 하단 서브 버튼 */
+    .sub-row {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 12px;
+        margin-top: 8px;
+    }
+    .sub-btn {
+        background: rgba(255,255,255,0.04);
+        border: 1px solid rgba(255,255,255,0.1);
+        border-radius: 16px;
+        padding: 16px;
+        text-align: center;
+        cursor: pointer;
+    }
+    .sub-btn-disabled {
+        opacity: 0.4;
+        cursor: not-allowed;
+    }
+    .sub-btn-icon { font-size: 28px; margin-bottom: 6px; }
+    .sub-btn-label {
+        font-family: 'Noto Sans KR', sans-serif;
+        font-size: 13px;
+        font-weight: 700;
+        color: rgba(255,255,255,0.7);
+    }
+
+    /* 출격 버튼 - 작은 컬럼 버튼 */
+    div[data-testid="stButton"] { margin: 0 !important; }
+    div.stButton > button {
+        background: rgba(0,0,0,0.3) !important;
+        border: 2px solid rgba(255,255,255,0.7) !important;
+        border-radius: 10px !important;
+        color: #fff !important;
+        font-size: 14px !important;
+        font-weight: 900 !important;
+        height: 140px !important;
+        cursor: pointer !important;
+        letter-spacing: 1px !important;
+        text-shadow: 0 2px 6px rgba(0,0,0,0.5) !important;
+        padding: 0 !important;
+    }
+    div.stButton > button:hover {
+        background: rgba(0,0,0,0.5) !important;
+        transform: scale(1.05);
+    }
+    div.stButton > button p {
+        font-size: 26px !important;
+        font-weight: 900 !important;
+        color: #fff !important;
+    }
+
+    /* ══════════════════════════════════
+       반응형 — 태블릿 (768px 이하)
+    ══════════════════════════════════ */
+    @media (max-width: 768px) {
+        .block-container { padding: 0 6px 30px 6px !important; }
+        .top-banner { padding: 10px 12px; gap: 6px; }
+        .banner-name { font-size: 20px; }
+        .banner-item { font-size: 14px; }
+        .banner-rank { font-size: 16px; }
+        .hub-brand { gap: 10px; padding: 10px 0 14px 0; }
+        .hub-teacher-photo { width: 60px; height: 60px; }
+        .hub-title-text { font-size: 34px; letter-spacing: 2px; }
+        .hub-subtitle { font-size: 12px; }
+        .hub-platform { font-size: 10px; }
+        .arena-icon-title { font-size: 22px; }
+        .arena-count { font-size: 14px; }
+        .arena-rate { font-size: 38px; }
+        .arena-enter-btn { font-size: 20px; padding: 18px 14px; min-width: 64px; }
+        .arena-btn { min-height: 100px; padding: 12px 14px; }
+        .neon-label { font-size: 0.78rem; width: 36px; }
+        .neon-pct { font-size: 0.82rem; }
+        .hub-msg-title { font-size: 1.05rem; }
+        .hub-msg-sub { font-size: 0.88rem; }
+        div.stButton > button { font-size: 20px !important; height: 72px !important; }
+        div.stButton > button p { font-size: 20px !important; }
+    }
+
+    /* ══════════════════════════════════
+       반응형 — 모바일 (480px 이하)
+    ══════════════════════════════════ */
+    @media (max-width: 480px) {
+        .block-container { padding: 0 4px 20px 4px !important; }
+        .top-banner { padding: 8px 10px; gap: 4px; flex-wrap: wrap; }
+        .banner-name { font-size: 16px; }
+        .banner-item { font-size: 12px; }
+        .banner-rank { font-size: 13px; }
+        .banner-divider { font-size: 14px; }
+        .hub-brand { gap: 8px; padding: 8px 0 10px 0; }
+        .hub-teacher-photo { width: 48px; height: 48px; border-width: 2px; }
+        .hub-title-text { font-size: 26px; letter-spacing: 1px; }
+        .hub-subtitle { font-size: 11px; }
+        .hub-platform { font-size: 9px; letter-spacing: 1px; }
+        .arena-icon-title { font-size: 18px; margin-bottom: 4px; }
+        .arena-count { font-size: 12px; margin-top: 4px; }
+        .arena-rate { font-size: 30px; }
+        .arena-enter-btn { font-size: 16px; padding: 14px 10px; min-width: 52px; border-width: 2px; }
+        .arena-btn { min-height: 86px; padding: 10px; border-radius: 14px; }
+        .arena-first { font-size: 13px; padding: 6px 10px; }
+        .neon-label { font-size: 0.72rem; width: 30px; }
+        .neon-track { height: 9px; }
+        .neon-pct { font-size: 0.75rem; width: 28px; }
+        .neon-bar-row { gap: 5px; margin-bottom: 5px; }
+        .hub-msg-title { font-size: 0.92rem; }
+        .hub-msg-sub { font-size: 0.78rem; }
+        .hub-msg-count { font-size: 0.72rem; }
+        .sub-btn-icon { font-size: 22px; }
+        .sub-btn-label { font-size: 11px; }
+        .sub-row { gap: 8px; }
+        .armory-sub-item { font-size: 14px; }
+        .armory-pending { font-size: 13px; }
+        .armory-sub { gap: 10px; }
+        div.stButton > button { font-size: 16px !important; height: 60px !important; border-width: 2px !important; border-radius: 12px !important; letter-spacing: 1px !important; }
+        div.stButton > button p { font-size: 16px !important; }
+    }
+
+    /* ══════════════════════════════════
+       반응형 — 초소형 (360px 이하)
+    ══════════════════════════════════ */
+    @media (max-width: 360px) {
+        .hub-title-text { font-size: 22px; }
+        .hub-teacher-photo { width: 40px; height: 40px; }
+        .arena-icon-title { font-size: 15px; }
+        .arena-enter-btn { font-size: 13px; padding: 12px 8px; min-width: 44px; }
+        div.stButton > button { font-size: 11px !important; height: 70px !important; border-width: 1.5px !important; border-radius: 8px !important; letter-spacing: 0px !important; padding: 0 !important; }
+        div.stButton > button p { font-size: 11px !important; }
+    }
+    </style>
+    """, unsafe_allow_html=True)
 
 # =========================================================
 # 메인
@@ -614,7 +963,12 @@ _hc.html(_CSS + _GO_STYLE + "<style>.p5c .go-btn{--go-bg:linear-gradient(270deg,
     _p5_s1_big,_p5_s1_lbl,_p5_rate_svg,
     _p5_s2_big,_p5_s2_lbl,_p5_cnt_svg,_p5_s3) + """
 <button class="go-btn" style="background:linear-gradient(270deg,#1565c0,#4fc3f7,#0d47a1,#29b6f6);border-color:rgba(79,195,247,0.9);" onclick="window.parent.document.querySelectorAll('button').forEach(b=>{if((b.innerText||'').trim()==='P5_GO')b.click()})">⚡</button>
-""", height=70)
+<script>
+(function(){
+  var h=window.innerWidth<=480?70:window.innerWidth<=768?100:140;
+  document.querySelector('.card').style.height=h+'px';
+})();
+</script>""", height=70)
 _p5_go = st.button("P5_GO", key="p5_btn")
 if _p5_go:
     st.session_state.phase = "lobby"
@@ -627,7 +981,12 @@ _hc.html(_CSS + _GO_STYLE + "<style>.p7c .go-btn{--go-bg:linear-gradient(270deg,
     _p7_s1_big,_p7_s1_lbl,_p7_rate_svg,
     _p7_s2_big,_p7_s2_lbl,_p7_cnt_svg,_p7_s3) + """
 <button class="go-btn" style="background:linear-gradient(270deg,#6a1b9a,#ce93d8,#4a148c,#ab47bc);border-color:rgba(155,127,212,0.9);" onclick="window.parent.document.querySelectorAll('button').forEach(b=>{if((b.innerText||'').trim()==='P7_GO')b.click()})">📖</button>
-""", height=70)
+<script>
+(function(){
+  var h=window.innerWidth<=480?70:window.innerWidth<=768?100:140;
+  document.querySelector('.card').style.height=h+'px';
+})();
+</script>""", height=70)
 _p7_go = st.button("P7_GO", key="p7_btn")
 if _p7_go:
     if "p7_phase" in st.session_state:
@@ -640,7 +999,12 @@ _hc.html(_CSS + _GO_STYLE + "<style>.arc .go-btn{--go-bg:linear-gradient(270deg,
     _arm_s1_big,_arm_s1_lbl,_arm_p5_svg,
     _arm_s2_big,_arm_s2_lbl,_arm_vc_svg,_arm_s3) + """
 <button class="go-btn" style="background:linear-gradient(270deg,#e65100,#ffd54f,#bf360c,#ffca28);border-color:rgba(255,215,0,0.95);" onclick="window.parent.document.querySelectorAll('button').forEach(b=>{if((b.innerText||'').trim()==='ARM_GO')b.click()})">🗡️</button>
-""", height=70)
+<script>
+(function(){
+  var h=window.innerWidth<=480?70:window.innerWidth<=768?100:140;
+  document.querySelector('.card').style.height=h+'px';
+})();
+</script>""", height=70)
 _arm_go = st.button("ARM_GO", key="armory_btn")
 if _arm_go:
     st.switch_page("pages/03_역전장.py")
