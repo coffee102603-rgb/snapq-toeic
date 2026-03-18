@@ -1208,6 +1208,11 @@ elif st.session_state.p7_phase == "briefing":
     save_key = f"p7_saved_{bi}"
     if save_key not in st.session_state:
         st.session_state[save_key] = False
+    st.markdown('''<style>
+    @keyframes redGlow{0%,100%{box-shadow:0 0 10px rgba(255,68,0,0.6)!important;} 50%{box-shadow:0 0 40px rgba(255,68,0,1),0 0 80px rgba(255,136,0,0.8)!important;}}
+    button[kind="primary"]{animation:redGlow 1.0s ease-in-out infinite!important;border:2px solid #ff4400!important;color:#ff8800!important;}
+    button[kind="primary"] p{color:#ff8800!important;}
+    </style>''', unsafe_allow_html=True)
     if st.session_state[save_key]:
         st.button("✅ 저장완료!", key=f"p7sv_{bi}", type="primary", use_container_width=True, disabled=True)
     else:
