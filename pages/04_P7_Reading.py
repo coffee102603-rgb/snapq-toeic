@@ -1,4 +1,4 @@
-﻿"""P7 Reading Arena — 60초 독해 전투 (V2)"""
+"""P7 Reading Arena — 60초 독해 전투 (V2)"""
 import streamlit as st
 import streamlit.components.v1 as components
 from streamlit_autorefresh import st_autorefresh
@@ -1211,58 +1211,45 @@ elif st.session_state.p7_phase == "briefing":
     bc1, bc2 = st.columns(2)
     with bc1:
         if st.session_state[save_key]:
-            st.button("✅ 저장완료!", key=f"p7sv_{bi}", type="primary", use_container_width=True, disabled=True)
-            components.html(f"""<script>
-            (function(){{
-                function styleBtn(){{
-                    var d=window.parent.document;
-                    d.querySelectorAll('button[kind="primary"]').forEach(function(b){{
-                        if(b.innerText.includes("저장완료")){{ 
-                            b.style.setProperty("border","2px solid #00ff66","important");
-                            b.style.setProperty("color","#00ff66","important");
-                            b.style.setProperty("background","#001a0a","important");
-                            b.style.setProperty("animation","savedGlow 2s ease-in-out infinite","important");
-                            b.querySelectorAll("p").forEach(function(p){{p.style.setProperty("color","#00ff66","important");}});
-                        }}
-                    }});
-                }}
-                if(!window.parent.document.getElementById("saveGlowStyle_{bi}")){{ 
-                    var s=window.parent.document.createElement("style");
-                    s.id="saveGlowStyle_{bi}";
-                    s.textContent="@keyframes savedGlow{{0%,100%{{box-shadow:0 0 10px rgba(0,255,100,0.5);}} 50%{{box-shadow:0 0 30px rgba(0,255,100,1);}}}}";
-                    window.parent.document.head.appendChild(s);
-                }}
-                setTimeout(styleBtn,100);setTimeout(styleBtn,400);setTimeout(styleBtn,900);
-                new MutationObserver(styleBtn).observe(window.parent.document.body,{{childList:true,subtree:true}});
-            }})();
+            st.button("[저장완료]", key=f"p7sv_{bi}", type="primary", use_container_width=True, disabled=True)
+            components.html("""<script>
+            (function(){
+                var css=document.createElement("style");
+                css.textContent="@keyframes savedGlow{0%,100%{box-shadow:0 0 10px rgba(0,255,100,0.5);} 50%{box-shadow:0 0 35px rgba(0,255,100,1);}}";
+                document.head.appendChild(css);
+                function go(){
+                    window.parent.document.querySelectorAll("button").forEach(function(b){
+                        if(b.innerText&&b.innerText.indexOf("저장완료")>=0){
+                            b.style.cssText+="border:2px solid #00ff66!important;color:#00ff66!important;background:#001a0a!important;animation:savedGlow 2s ease-in-out infinite!important;";
+                            b.querySelectorAll("p").forEach(function(p){p.style.cssText+="color:#00ff66!important;";});
+                        }
+                    });
+                }
+                setTimeout(go,100);setTimeout(go,400);setTimeout(go,900);setTimeout(go,1800);
+                new MutationObserver(go).observe(window.parent.document.body,{childList:true,subtree:true});
+            })();
             </script>""", height=0)
         else:
-            if st.button("💾 저장", key=f"p7sv_{bi}", type="primary", use_container_width=True):
+            if st.button("[저장]", key=f"p7sv_{bi}", type="primary", use_container_width=True):
                 save_expressions(exprs, step_data=s)
                 st.session_state[save_key] = True
                 st.rerun()
-            components.html(f"""<script>
-            (function(){{
-                function styleBtn(){{
-                    var d=window.parent.document;
-                    d.querySelectorAll('button[kind="primary"]').forEach(function(b){{
-                        if(b.innerText.includes("저장")){{ 
-                            b.style.setProperty("border","2px solid #ffd700","important");
-                            b.style.setProperty("color","#ffd700","important");
-                            b.style.setProperty("animation","savePulse 1.2s ease-in-out infinite","important");
-                            b.querySelectorAll("p").forEach(function(p){{p.style.setProperty("color","#ffd700","important");}});
-                        }}
-                    }});
-                }}
-                if(!window.parent.document.getElementById("savePulseStyle_{bi}")){{ 
-                    var s=window.parent.document.createElement("style");
-                    s.id="savePulseStyle_{bi}";
-                    s.textContent="@keyframes savePulse{{0%,100%{{box-shadow:0 0 10px rgba(255,215,0,0.4);border-color:#ffd700;}} 50%{{box-shadow:0 0 35px rgba(255,215,0,1);border-color:#ffaa00;}}}}";
-                    window.parent.document.head.appendChild(s);
-                }}
-                setTimeout(styleBtn,100);setTimeout(styleBtn,400);setTimeout(styleBtn,900);
-                new MutationObserver(styleBtn).observe(window.parent.document.body,{{childList:true,subtree:true}});
-            }})();
+            components.html("""<script>
+            (function(){
+                var css=document.createElement("style");
+                css.textContent="@keyframes savePulse{0%,100%{box-shadow:0 0 12px rgba(255,215,0,0.5);border-color:#ffd700;} 50%{box-shadow:0 0 45px rgba(255,215,0,1),0 0 80px rgba(255,136,0,0.6);border-color:#ffaa00;}}";
+                document.head.appendChild(css);
+                function go(){
+                    window.parent.document.querySelectorAll("button").forEach(function(b){
+                        if(b.innerText&&b.innerText.indexOf("저장")>=0&&b.innerText.indexOf("완료")<0){
+                            b.style.cssText+="border:2px solid #ffd700!important;color:#ffd700!important;animation:savePulse 1.0s ease-in-out infinite!important;";
+                            b.querySelectorAll("p").forEach(function(p){p.style.cssText+="color:#ffd700!important;";});
+                        }
+                    });
+                }
+                setTimeout(go,100);setTimeout(go,400);setTimeout(go,900);setTimeout(go,1800);
+                new MutationObserver(go).observe(window.parent.document.body,{childList:true,subtree:true});
+            })();
             </script>""", height=0)
     with bc2:
         if st.button("🔄 다시", key="p7retry", type="primary", use_container_width=True):
