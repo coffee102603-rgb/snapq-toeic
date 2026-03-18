@@ -1,10 +1,10 @@
-﻿"""통합 역전장 — P5 학습/시험 + VOCA 학습/시험"""
+﻿"""통합 오답전장 — P5 학습/시험 + VOCA 학습/시험"""
 import streamlit as st
 import streamlit.components.v1 as components
 import json, os, random, time, re
 from streamlit_autorefresh import st_autorefresh
 
-st.set_page_config(page_title="🔥 역전장", page_icon="🔥", layout="wide", initial_sidebar_state="collapsed")
+st.set_page_config(page_title="🔥 오답전장", page_icon="🔥", layout="wide", initial_sidebar_state="collapsed")
 
 STORAGE_FILE = os.path.join(os.path.dirname(os.path.dirname(__file__)), "storage_data.json")
 
@@ -552,7 +552,7 @@ elif st.session_state.sg_phase == "p5_exam_result":
         if st.button("🔄 다시!", key="retry_exam", type="primary", use_container_width=True):
             st.session_state.sg_phase = "lobby"; st.session_state.rv_battle = None; st.session_state.rv_mode = None; st.rerun()
     with c2:
-        if st.button("🔥 역전장", key="back_exam", type="secondary", use_container_width=True):
+        if st.button("🔥 오답전장", key="back_exam", type="secondary", use_container_width=True):
             st.session_state.sg_phase = "lobby"; st.session_state.rv_battle = None; st.session_state.rv_mode = None; st.rerun()
 # ════════════════════════════════
 # VOCA 서바이벌 웨이브 (순수 학습모드 - 타이머 없음)
@@ -941,7 +941,7 @@ elif st.session_state.sg_phase == "survival_result":
             if "sg_combo_pool" in st.session_state: del st.session_state.sg_combo_pool
             st.session_state.sg_phase = "combo_rush"; st.rerun()
     with c3:
-        if st.button("🔥 역전장으로\n귀환", key="sv_back", type="secondary", use_container_width=True):
+        if st.button("🔥 오답전장으로\\n귀환", key="sv_back", type="secondary", use_container_width=True):
             st.session_state.sg_phase = "lobby"; st.session_state.rv_battle = None; st.session_state.rv_mode = None; st.rerun()
 
 # ════════════════════════════════
@@ -1148,7 +1148,7 @@ elif st.session_state.sg_phase == "combo_result":
             if "sg_wave_start" in st.session_state: del st.session_state.sg_wave_start
             st.session_state.sg_phase = "survival"; st.rerun()
     with c3:
-        if st.button("🔥 역전장으로\n귀환", key="cb_back", type="secondary", use_container_width=True):
+        if st.button("🔥 오답전장으로\\n귀환", key="cb_back", type="secondary", use_container_width=True):
             st.session_state.sg_phase = "lobby"; st.session_state.rv_battle = None; st.session_state.rv_mode = None; st.rerun()
 
 
