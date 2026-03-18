@@ -1,4 +1,4 @@
-﻿import streamlit as st
+import streamlit as st
 import json, os, pandas as pd
 from datetime import datetime
 
@@ -38,6 +38,7 @@ def load_all_logs():
 df_all = load_all_logs()
 if df_all.empty:
     st.warning("아직 수집된 데이터가 없습니다.")
+    st.stop()
 
 df = df_all[~df_all.get("type", pd.Series([""]*len(df_all))).isin(["session","session_v2"])].copy() if "type" in df_all.columns else df_all.copy()
 tab1, tab2, tab3, tab4, tab5 = st.tabs(["👥 학생 현황","📈 학습 분석","🎮 게이미피케이션","📋 설문 데이터","💾 내보내기"])
@@ -196,4 +197,3 @@ with tab5:
         {"항목": "사용 모듈", "값": ", ".join(_modules) if _modules else "없음"},
     ])
     st.dataframe(_summary, use_container_width=True, hide_index=True)
-
