@@ -1211,7 +1211,7 @@ elif st.session_state.p7_phase == "briefing":
     bc1, bc2 = st.columns(2)
     with bc1:
         if st.session_state[save_key]:
-            st.button("[저장완료]", key=f"p7sv_{bi}", type="primary", use_container_width=True, disabled=True)
+            st.button("✅ 저장완료!", key=f"p7sv_{bi}", type="primary", use_container_width=True, disabled=True)
             components.html("""<script>
             (function(){
                 var css=document.createElement("style");
@@ -1230,7 +1230,7 @@ elif st.session_state.p7_phase == "briefing":
             })();
             </script>""", height=0)
         else:
-            if st.button("[저장]", key=f"p7sv_{bi}", type="primary", use_container_width=True):
+            if st.button("핵심표현 저장!", key=f"p7sv_{bi}", type="primary", use_container_width=True):
                 save_expressions(exprs, step_data=s)
                 st.session_state[save_key] = True
                 st.rerun()
@@ -1252,7 +1252,7 @@ elif st.session_state.p7_phase == "briefing":
             })();
             </script>""", height=0)
     with bc2:
-        if st.button("🔄 다시", key="p7retry", type="primary", use_container_width=True):
+        if st.button("한 판 더!", key="p7retry", type="primary", use_container_width=True):
             for k in D: st.session_state[k] = D[k]
             st.rerun()
     bc5, bc6 = st.columns(2)
