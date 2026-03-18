@@ -1232,6 +1232,27 @@ elif st.session_state.p7_phase == "briefing":
             for k in D: st.session_state[k] = D[k]
             st.switch_page("main_hub.py")
 
+    import streamlit.components.v1 as _cmp3
+    _cmp3.html("""<script>
+    (function(){
+        var css=document.createElement("style");
+        css.textContent="@keyframes redGlow{0%,100%{box-shadow:0 0 10px rgba(255,68,0,0.6);border-color:#ff4400;} 50%{box-shadow:0 0 35px rgba(255,68,0,1),0 0 70px rgba(255,136,0,0.6);border-color:#ff8800;}}";
+        document.head.appendChild(css);
+        function go(){
+            window.parent.document.querySelectorAll("button").forEach(function(b){
+                if(b.innerText&&(
+                    b.innerText.indexOf("저장하고")>=0||
+                    b.innerText.indexOf("오답전장")>=0
+                )){
+                    b.style.cssText+="border:2px solid #ff4400!important;color:#ff8800!important;animation:redGlow 1.2s ease-in-out infinite!important;";
+                    b.querySelectorAll("p").forEach(function(p){p.style.cssText+="color:#ff8800!important;";});
+                }
+            });
+        }
+        setTimeout(go,100);setTimeout(go,400);setTimeout(go,900);setTimeout(go,1800);
+        new MutationObserver(go).observe(window.parent.document.body,{childList:true,subtree:true});
+    })();
+    </script>""", height=0)
     import streamlit.components.v1 as _cmp2
     _cmp2.html("""<script>
     (function(){
