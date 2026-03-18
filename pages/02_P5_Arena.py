@@ -566,12 +566,31 @@ summary{color:#aaa!important;font-weight:700!important;}
             if st.button(str(_di+1), key=f"brd_{_di}", type=_bt, use_container_width=True):
                 st.session_state.br_idx = _di; st.rerun()
     st.markdown("---")
+    import streamlit.components.v1 as _cmp3
+    _cmp3.html("""<script>
+    (function(){
+        function styleOdap(){
+            var doc=window.parent.document;
+            var btns=doc.querySelectorAll("button");
+            btns.forEach(function(b){
+                if(b.innerText&&b.innerText.indexOf("오답전장")>=0){
+                    b.style.setProperty("border","2px solid #ffff00","important");
+                    b.style.setProperty("color","#ffff00","important");
+                    b.style.setProperty("box-shadow","0 0 15px rgba(255,255,0,0.6)","important");
+                    b.style.setProperty("background","#0a0a00","important");
+                    b.style.setProperty("animation","none","important");
+                    b.querySelectorAll("p").forEach(function(p){p.style.setProperty("color","#ffff00","important");});
+                }
+            });
+        }
+        setTimeout(styleOdap,100);setTimeout(styleOdap,400);setTimeout(styleOdap,900);
+        new MutationObserver(styleOdap).observe(window.parent.document.body,{childList:true,subtree:true});
+    })();
+    </script>""", height=0)
     _nav_cols = st.columns(2)
     with _nav_cols[0]:
-        if st.button("로비", key="br_nav_lobby", use_container_width=True):
-            for k in ["cq","qi","sc","wrong","ta","ans","sel","round_qs","round_results","br_idx","tsec_chosen","sel_mode","cat"]:
-                if k in st.session_state: del st.session_state[k]
-            st.session_state.phase = "lobby"; st.session_state.tsec = 30; st.rerun()
+        if st.button("오답전장", key="br_nav_odap", use_container_width=True):
+            st.switch_page("pages/03_오답전장.py")
     with _nav_cols[1]:
         if st.button("메인", key="br_nav_main", use_container_width=True):
             for k in ["cq","qi","sc","wrong","ta","ans","sel","round_qs","round_results","br_idx","phase"]:
