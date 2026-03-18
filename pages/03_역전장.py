@@ -474,14 +474,14 @@ elif st.session_state.sg_phase == "p5_study":
 # P5 시험모드 — 33초 타임폭탄
 # ════════════════════════════════
 elif st.session_state.sg_phase == "p5_exam":
-    st_autorefresh(interval=1000, limit=40, key="p5_exam_timer")
+    st_autorefresh(interval=1000, limit=36, key="p5_exam_timer")
     qs = st.session_state.sg_exam_qs
     qi = st.session_state.sg_exam_idx
     if qi >= len(qs):
         st.session_state.sg_phase = "p5_exam_result"; st.rerun()
     q = qs[qi]
     elapsed = time.time() - st.session_state.sg_exam_start
-    rem = max(0, 66 - int(elapsed))
+    rem = max(0, 33 - int(elapsed))
     left = 5 - qi
     if rem <= 0:
         st.session_state.sg_exam_results.append(False)
@@ -508,7 +508,7 @@ elif st.session_state.sg_phase == "p5_exam":
     else:
         bg_css = ""
         tcl = "#44ff88"; tsz = "1.2rem"; tglow = ""; twarn = ""
-    tpct = int(rem / 66 * 100)
+    tpct = int(rem / 33 * 100)
     q_border = "rgba(255,50,50,0.6)" if rem <= 10 else "rgba(100,140,255,0.4)"
     q_shadow = "0 0 40px rgba(255,0,0,0.2)" if rem <= 10 else "0 0 30px rgba(100,140,255,0.15)"
     if bg_css:
@@ -981,7 +981,7 @@ elif st.session_state.sg_phase == "combo_rush":
 
     # 통합 33초 타이머
     elapsed = time.time() - st.session_state.sg_combo_start
-    rem = max(0, 66 - int(elapsed))
+    rem = max(0, 33 - int(elapsed))
     left = total_qs - cidx
     if rem <= 0:
         st.session_state.sg_combo_over = True
@@ -1006,7 +1006,7 @@ elif st.session_state.sg_phase == "combo_rush":
         twarn = ""
     else:
         bg_css = ""; tcl = "#44ff88"; tsz = "1.2rem"; tglow = ""; twarn = ""
-    tpct = int(rem / 66 * 100)
+    tpct = int(rem / 33 * 100)
     q_border = "rgba(255,50,50,0.6)" if rem <= 10 else "rgba(255,136,0,0.7)"
     if bg_css:
         st.markdown(f'<style>.stApp{{{bg_css}}}</style>', unsafe_allow_html=True)
