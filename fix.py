@@ -1,5 +1,0 @@
-﻿content = open('main_hub.py', 'r', encoding='utf-8').read()
-content = content.replace('if last_two[1] > last_two[0]: lc = "#00ff88"', 'if last_two[1] > last_two[0]: lc = color')
-content = content.replace('<button class="go-btn" onclick="window.parent.document.querySelectorAll(\'button\').forEach(b=>{if((b.innerText||\'\'). trim()==\'P5_GO\')b.click()})">&#9889;</button>', '<button class="go-btn" style="background:linear-gradient(270deg,#1565c0,#4fc3f7,#0d47a1,#29b6f6);border-color:rgba(79,195,247,0.9);" onclick="window.parent.document.querySelectorAll(\'button\').forEach(b=>{if((b.innerText||\'\'). trim()==\'P5_GO\')b.click()})">&#9889;</button>')
-open('main_hub.py', 'w', encoding='utf-8').write(content)
-print('done')

@@ -1,5 +1,0 @@
-﻿f='C:/Users/최정은/Desktop/snapq_toeic_V3/pages/02_P5_Arena.py'
-c=open(f,'r',encoding='utf-8').read()
-c=c.replace('b.style.width=(r*100)+"%";var pd=window.parent.document;var app=pd.querySelector(".stApp");if(app){if(r>0.6){app.style.background="linear-gradient(rgba(0,212,255,0.03) 1px,transparent 1px),linear-gradient(90deg,rgba(0,212,255,0.03) 1px,transparent 1px),#0a0a0a";}else if(r>0.35){app.style.background="radial-gradient(ellipse at center,rgba(180,80,0,0.35) 0%,rgba(80,30,0,0.2) 50%,transparent 75%),#0a0500";}else if(r>0.15){app.style.background="radial-gradient(ellipse at top,rgba(255,60,0,0.5) 0%,rgba(150,20,0,0.35) 40%,transparent 70%),radial-gradient(ellipse at bottom,rgba(255,40,0,0.4) 0%,transparent 60%),#0a0200";}else{app.style.background="radial-gradient(ellipse at top,rgba(255,0,0,0.7) 0%,rgba(200,0,0,0.5) 30%,transparent 60%),radial-gradient(ellipse at bottom,rgba(255,50,0,0.6) 0%,rgba(150,0,0,0.4) 40%,transparent 65%),#0f0000";}}}},1000);','b.style.width=(r*100)+"%";}},1000);')
-open(f,'w',encoding='utf-8').write(c)
-print('done!')
