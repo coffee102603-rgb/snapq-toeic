@@ -376,7 +376,7 @@ TEACHER_B64 = "/9j/4AAQSkZJRgABAQAAAQABAAD/4gHYSUNDX1BST0ZJTEUAAQEAAAHIAAAAAAQwA
 
 st.markdown(f"""
 <div class="hub-brand">
-    <img class="hub-teacher-photo" 
+    <img class="hub-teacher-photo" style="width:80px!important;height:80px!important;object-fit:cover;border-radius:50%;" 
          src="data:image/jpeg;base64,{TEACHER_B64}"
          alt="최샘"/>
     <div class="hub-brand-text">
