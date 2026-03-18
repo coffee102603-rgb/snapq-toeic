@@ -62,9 +62,8 @@ def _apply_css() -> None:
 .progress-bar-wrap{background:rgba(255,255,255,0.08);border-radius:99px;height:8px;margin:12px 0 4px;overflow:hidden;}
 .progress-bar-fill{height:8px;border-radius:99px;background:linear-gradient(90deg,#ffaa00,#ff6600);}
 .q-box{background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.1);border-radius:14px;padding:18px 20px;margin-bottom:1rem;}
-.q-num{font-size:0.78rem;font-weight:700;color:rgba(255,170,0,0.8);letter-spacing:1px;margin-bottom:8px;}
-.q-text{font-size:1.05rem;font-weight:700;color:#ffffff;line-height:1.5;margin-bottom:4px;}
-.q-korean{font-size:0.82rem;color:rgba(255,255,255,0.45);margin-bottom:12px;}
+.q-num{font-size:0.9rem;font-weight:700;color:#ffaa00;margin-bottom:8px;}
+.q-text{font-size:1.05rem;font-weight:700;color:#ffffff;line-height:1.5;}
 .passage-box{background:rgba(255,255,255,0.04);border-left:3px solid rgba(255,170,0,0.5);border-radius:0 12px 12px 0;padding:14px 16px;font-size:0.88rem;color:rgba(255,255,255,0.8);line-height:1.7;margin-bottom:1.2rem;white-space:pre-line;}
 .result-box{background:rgba(0,200,100,0.1);border:1px solid rgba(0,200,100,0.3);border-radius:16px;padding:24px;text-align:center;margin:1rem 0;}
 .result-score{font-size:3rem;font-weight:900;color:#00ff88;}
@@ -85,7 +84,7 @@ def _render_diagnosis(day_key: str, student_id: str, cohort_month: str) -> None:
     p7_questions = p7_data.get("questions", [])
     total_q = len(p5_questions) + len(p7_questions)
 
-    st.markdown(f'<div class="diag-header"><div class="diag-title">📋 {label} 진단</div><div class="diag-sub">전장 입장 전 필수 · P5 {len(p5_questions)}문제 + P7 {len(p7_questions)}문제 = 총 {total_q}문제</div></div>', unsafe_allow_html=True)
+    st.markdown(f'<div class="diag-header"><div class="diag-title">📋 {label}</div><div class="diag-sub">전장 입장 전 필수 · P5 {len(p5_questions)}문제 + P7 {len(p7_questions)}문제 = 총 {total_q}문제</div></div>', unsafe_allow_html=True)
 
     if "diag_answers" not in st.session_state:
         st.session_state["diag_answers"] = {}
@@ -105,7 +104,7 @@ def _render_diagnosis(day_key: str, student_id: str, cohort_month: str) -> None:
     st.markdown("### ⚡ Part 5 — 문법 / 어휘")
     for i, q in enumerate(p5_questions):
         qid = q["id"]
-        st.markdown(f'<div class="q-box"><div class="q-num">Q{i+1} · {q.get("category","").upper()}</div><div class="q-text">{q["question"]}</div><div class="q-korean">{q.get("korean","")}</div></div>', unsafe_allow_html=True)
+        st.markdown(f'<div class="q-box"><div class="q-num">Q{i+1}</div><div class="q-text">{q["question"]}</div></div>', unsafe_allow_html=True)
         choice = st.radio(label=f"Q{i+1}", options=q["options"], index=None, key=f"diag_{qid}", label_visibility="collapsed")
         if choice is not None:
             answers[qid] = q["options"].index(choice)
@@ -115,7 +114,7 @@ def _render_diagnosis(day_key: str, student_id: str, cohort_month: str) -> None:
     st.markdown(f'<div class="passage-box">{p7_passage}</div>', unsafe_allow_html=True)
     for i, q in enumerate(p7_questions):
         qid = q["id"]
-        st.markdown(f'<div class="q-box"><div class="q-num">Q{len(p5_questions)+i+1} · READING COMPREHENSION</div><div class="q-text">{q["question"]}</div></div>', unsafe_allow_html=True)
+        st.markdown(f'<div class="q-box"><div class="q-num">Q{len(p5_questions)+i+1}</div><div class="q-text">{q["question"]}</div></div>', unsafe_allow_html=True)
         choice = st.radio(label=f"P7_Q{i+1}", options=q["options"], index=None, key=f"diag_{qid}", label_visibility="collapsed")
         if choice is not None:
             answers[qid] = q["options"].index(choice)
@@ -182,4 +181,3 @@ def require_pretest_gate() -> None:
 
 def mark_pretest_done(nickname: str, cohort: str) -> None:
     pass
-
