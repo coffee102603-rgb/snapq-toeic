@@ -1,4 +1,4 @@
-"""P5 Arena v13b — 로비 구역별 색감 적용 (틸/핑크오렌지에메랄드인디고/포레스트)"""
+﻿"""P5 Arena v13b — 로비 구역별 색감 적용 (틸/핑크오렌지에메랄드인디고/포레스트)"""
 import streamlit as st
 import streamlit.components.v1 as components
 from streamlit_autorefresh import st_autorefresh
@@ -589,7 +589,7 @@ else:
         st.switch_page("main_hub.py")
     elif _nav == 'stg':
         st.query_params.clear()
-        st.switch_page("pages/03_역전장.py")
+        st.switch_page("pages/03_오답전장.py")
     st.session_state.phase="lobby"
     if "sel_mode" not in st.session_state: st.session_state.sel_mode=None
 
@@ -776,7 +776,7 @@ summary{color:#aaa!important;font-weight:700!important;}
 
     # ━━━ 항상 고정 네비게이션 ━━━
     st.markdown('''<style>button[kind="secondary"]{animation:none!important;transform:none!important;border:1.5px solid rgba(255,255,255,0.5)!important;background:#040404!important;box-shadow:none!important;}</style>''', unsafe_allow_html=True)
-    st.markdown('<div style="margin-top:16px;padding-top:10px;border-top:1px solid #111;text-align:center;"><span style="font-size:0.6rem;color:#333;letter-spacing:3px;">N A V I G A T E</span><div style="display:flex;gap:8px;justify-content:center;margin-top:6px;"><a href="?nav=stg" target="_self" style="padding:10px 18px;font-size:0.85rem;font-weight:700;color:#aaa;border:1px solid #333;border-radius:8px;text-decoration:none;background:#0a0a0a;">🔥 역전장</a><a href="?nav=hub" target="_self" style="padding:10px 18px;font-size:0.85rem;font-weight:700;color:#aaa;border:1px solid #333;border-radius:8px;text-decoration:none;background:#0a0a0a;">🏠 메인</a></div></div>', unsafe_allow_html=True)
+    st.markdown('<div style="margin-top:16px;padding-top:10px;border-top:1px solid #111;text-align:center;"><span style="font-size:0.6rem;color:#333;letter-spacing:3px;">N A V I G A T E</span><div style="display:flex;gap:8px;justify-content:center;margin-top:6px;"><a href="?nav=stg" target="_self" style="padding:10px 18px;font-size:0.85rem;font-weight:700;color:#aaa;border:1px solid #333;border-radius:8px;text-decoration:none;background:#0a0a0a;">🔥 오답전장</a><a href="?nav=hub" target="_self" style="padding:10px 18px;font-size:0.85rem;font-weight:700;color:#aaa;border:1px solid #333;border-radius:8px;text-decoration:none;background:#0a0a0a;">🏠 메인</a></div></div>', unsafe_allow_html=True)
 
     import streamlit.components.v1 as components
     _sel30 = "border:2px solid #00d4ff!important;box-shadow:0 0 15px rgba(0,212,255,0.6)!important;color:#00d4ff!important;" if tsec==30 and _tsec_chosen else ""
