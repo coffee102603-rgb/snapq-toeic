@@ -568,9 +568,9 @@ summary{color:#aaa!important;font-weight:700!important;}
     _nav_cols = st.columns(2)
     with _nav_cols[0]:
         if st.button("로비", key="br_nav_lobby", use_container_width=True):
-            for k in ["cq","qi","sc","wrong","ta","ans","sel","round_qs","round_results","br_idx"]:
+            for k in ["cq","qi","sc","wrong","ta","ans","sel","round_qs","round_results","br_idx","tsec_chosen","sel_mode","cat"]:
                 if k in st.session_state: del st.session_state[k]
-            st.session_state.phase = "lobby"; st.rerun()
+            st.session_state.phase = "lobby"; st.session_state.tsec = 30; st.rerun()
     with _nav_cols[1]:
         if st.button("메인", key="br_nav_main", use_container_width=True):
             for k in ["cq","qi","sc","wrong","ta","ans","sel","round_qs","round_results","br_idx","phase"]:
