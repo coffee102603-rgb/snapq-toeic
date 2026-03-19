@@ -54,77 +54,81 @@ def _which_diagnosis_needed(profile: dict) -> Optional[str]:
 def _apply_css() -> None:
     st.markdown("""
 <style>
-.stApp{background:linear-gradient(160deg,#07090f 0%,#050810 60%,#000000 100%);}
-.block-container{padding-top:1.5rem;max-width:600px;}
-.diag-header{background:linear-gradient(135deg,rgba(255,170,0,0.15),rgba(255,60,0,0.1));border:1px solid rgba(255,170,0,0.3);border-radius:16px;padding:16px 20px;margin-bottom:1.2rem;}
-.diag-title{font-size:1.4rem;font-weight:900;color:#ffaa00;margin-bottom:4px;}
-.diag-sub{font-size:0.85rem;color:rgba(255,255,255,0.6);}
-.progress-bar-wrap{background:rgba(255,255,255,0.08);border-radius:99px;height:8px;margin:12px 0 4px;overflow:hidden;}
-.progress-bar-fill{height:8px;border-radius:99px;background:linear-gradient(90deg,#ffaa00,#ff6600);}
-.q-box{background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.1);border-radius:14px;padding:18px 20px;margin-bottom:1rem;}
-.q-num{font-size:0.9rem;font-weight:700;color:#ffaa00;margin-bottom:8px;}
-.q-text{font-size:1.05rem;font-weight:700;color:#ffffff;line-height:1.5;}
-.passage-box{background:rgba(255,255,255,0.04);border-left:3px solid rgba(255,170,0,0.5);border-radius:0 12px 12px 0;padding:14px 16px;font-size:0.88rem;color:rgba(255,255,255,0.8);line-height:1.7;margin-bottom:1.2rem;white-space:pre-line;}
-.result-box{background:rgba(0,200,100,0.1);border:1px solid rgba(0,200,100,0.3);border-radius:16px;padding:24px;text-align:center;margin:1rem 0;}
-.result-score{font-size:3rem;font-weight:900;color:#00ff88;}
-.result-label{font-size:0.9rem;color:rgba(255,255,255,0.6);margin-top:4px;}
+.stApp { background-color: #07090f !important; }
+.block-container { padding-top: 1.5rem !important; max-width: 600px !important; background-color: #07090f !important; }
+.diag-header { background: linear-gradient(135deg,rgba(255,170,0,0.15),rgba(255,60,0,0.1)); border: 1px solid rgba(255,170,0,0.3); border-radius: 16px; padding: 16px 20px; margin-bottom: 1.2rem; }
+.diag-title { font-size: 1.4rem; font-weight: 900; color: #ffaa00 !important; margin-bottom: 4px; }
+.diag-sub { font-size: 0.85rem; color: rgba(255,255,255,0.6) !important; }
+.progress-bar-wrap { background: rgba(255,255,255,0.08); border-radius: 99px; height: 8px; margin: 12px 0 4px; overflow: hidden; }
+.progress-bar-fill { height: 8px; border-radius: 99px; background: linear-gradient(90deg,#ffaa00,#ff6600); }
+.q-box { background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1); border-radius: 14px; padding: 18px 20px; margin-bottom: 1rem; }
+.q-num { font-size: 0.9rem; font-weight: 700; color: #ffaa00 !important; margin-bottom: 8px; }
+.q-text { font-size: 1.05rem; font-weight: 700; color: #ffffff !important; line-height: 1.5; }
+.passage-box { background: rgba(255,255,255,0.04); border-left: 3px solid rgba(255,170,0,0.5); border-radius: 0 12px 12px 0; padding: 14px 16px; font-size: 0.88rem; color: rgba(255,255,255,0.85) !important; line-height: 1.7; margin-bottom: 1.2rem; white-space: pre-line; }
+.result-box { background: rgba(0,200,100,0.1); border: 1px solid rgba(0,200,100,0.3); border-radius: 16px; padding: 24px; text-align: center; margin: 1rem 0; }
+.result-score { font-size: 3rem; font-weight: 900; color: #00ff88 !important; }
+.result-label { font-size: 0.9rem; color: rgba(255,255,255,0.6) !important; margin-top: 4px; }
 
-/* ✅ 라디오 버튼 모바일 강제 스타일 */
-div[data-testid="stRadio"] > div {background:transparent !important;}
+/* ✅ 라디오 버튼 - 노트북 + 모바일 완전 강제 */
+div[data-testid="stRadio"] { background: transparent !important; }
+div[data-testid="stRadio"] > div { background: transparent !important; gap: 8px !important; }
 div[data-testid="stRadio"] label {
-    color:#ffffff !important;
-    font-size:1rem !important;
-    font-weight:600 !important;
-    background:rgba(255,255,255,0.06) !important;
-    border:1.5px solid rgba(255,255,255,0.15) !important;
-    border-radius:10px !important;
-    padding:10px 16px !important;
-    margin-bottom:6px !important;
-    display:flex !important;
-    align-items:center !important;
-    width:100% !important;
-    cursor:pointer !important;
+    background: #1e2235 !important;
+    border: 1.5px solid rgba(255,255,255,0.2) !important;
+    border-radius: 10px !important;
+    padding: 12px 16px !important;
+    margin-bottom: 6px !important;
+    width: 100% !important;
+    cursor: pointer !important;
+    display: flex !important;
+    align-items: center !important;
 }
 div[data-testid="stRadio"] label:hover {
-    background:rgba(255,170,0,0.15) !important;
-    border-color:rgba(255,170,0,0.5) !important;
+    background: rgba(255,170,0,0.15) !important;
+    border-color: rgba(255,170,0,0.6) !important;
 }
-div[data-testid="stRadio"] label span {
-    color:#ffffff !important;
+div[data-testid="stRadio"] label > div {
+    color: #ffffff !important;
+    -webkit-text-fill-color: #ffffff !important;
+    font-size: 1rem !important;
+    font-weight: 600 !important;
+}
+div[data-testid="stRadio"] label p {
+    color: #ffffff !important;
+    -webkit-text-fill-color: #ffffff !important;
+    font-size: 1rem !important;
+    font-weight: 600 !important;
+    margin: 0 !important;
 }
 div[data-testid="stRadio"] input[type="radio"] {
-    accent-color:#ffaa00 !important;
-    width:18px !important;
-    height:18px !important;
-    margin-right:10px !important;
-    flex-shrink:0 !important;
+    accent-color: #ffaa00 !important;
+    width: 18px !important;
+    height: 18px !important;
+    margin-right: 10px !important;
+    flex-shrink: 0 !important;
 }
 
-/* ✅ 입력창 모바일 강제 스타일 */
-div[data-testid="stTextInput"] input {
-    background:rgba(255,255,255,0.07) !important;
-    border:1.5px solid rgba(255,255,255,0.15) !important;
-    border-radius:12px !important;
-    color:#ffffff !important;
-    font-size:1.5rem !important;
-    font-weight:900 !important;
-    text-align:center !important;
-    letter-spacing:6px !important;
-    padding:12px !important;
-    -webkit-text-fill-color:#ffffff !important;
-}
-
-/* ✅ 버튼 스타일 */
+/* ✅ 버튼 */
 div[data-testid="stButton"] button {
-    background:linear-gradient(135deg,#ffaa00,#ff6600) !important;
-    color:#000000 !important;
-    font-weight:900 !important;
-    font-size:1rem !important;
-    border-radius:14px !important;
-    border:none !important;
-    padding:0.7rem !important;
-    width:100% !important;
-    -webkit-text-fill-color:#000000 !important;
+    background: linear-gradient(135deg,#ffaa00,#ff6600) !important;
+    color: #000000 !important;
+    -webkit-text-fill-color: #000000 !important;
+    font-weight: 900 !important;
+    font-size: 1rem !important;
+    border-radius: 14px !important;
+    border: none !important;
+    padding: 0.7rem !important;
+    width: 100% !important;
+}
+div[data-testid="stButton"] button p {
+    color: #000000 !important;
+    -webkit-text-fill-color: #000000 !important;
+}
+
+/* ✅ 경고 메시지 */
+div[data-testid="stAlert"] p {
+    color: #ffffff !important;
+    -webkit-text-fill-color: #ffffff !important;
 }
 </style>
 """, unsafe_allow_html=True)

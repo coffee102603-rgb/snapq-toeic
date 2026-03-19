@@ -74,9 +74,8 @@ def is_returning_student(student_id: str, cohort_month: str) -> bool:
 def _apply_css() -> None:
     st.markdown("""
 <style>
-html, body, [data-testid="stApp"], .stApp {
+.stApp {
     background-color: #07090f !important;
-    color: #ffffff !important;
 }
 .block-container {
     padding-top: 2rem !important;
@@ -125,8 +124,13 @@ div[data-testid="stTextInput"] input {
     caret-color: #ffaa00 !important;
 }
 div[data-testid="stTextInput"] input::placeholder {
-    color: rgba(255,255,255,0.3) !important;
-    -webkit-text-fill-color: rgba(255,255,255,0.3) !important;
+    color: rgba(255,255,255,0.25) !important;
+    -webkit-text-fill-color: rgba(255,255,255,0.25) !important;
+}
+div[data-testid="stTextInput"] input:focus {
+    -webkit-text-fill-color: #ffffff !important;
+    color: #ffffff !important;
+    border-color: rgba(255,170,0,0.9) !important;
 }
 div[data-testid="stButton"] button {
     background: linear-gradient(135deg, #ffaa00, #ff6600) !important;
@@ -139,13 +143,14 @@ div[data-testid="stButton"] button {
     padding: 0.8rem !important;
     width: 100% !important;
 }
-div[data-testid="stAlert"] {
-    background: rgba(255,50,50,0.15) !important;
-    color: #ffffff !important;
-    border-radius: 10px !important;
+div[data-testid="stButton"] button:hover {
+    background: linear-gradient(135deg, #ffcc00, #ff8800) !important;
+    color: #000000 !important;
+    -webkit-text-fill-color: #000000 !important;
 }
-p, span, label, div {
-    color: #ffffff !important;
+div[data-testid="stButton"] button p {
+    color: #000000 !important;
+    -webkit-text-fill-color: #000000 !important;
 }
 </style>
 """, unsafe_allow_html=True)
