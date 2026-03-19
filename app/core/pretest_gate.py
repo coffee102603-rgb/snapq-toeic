@@ -79,7 +79,7 @@ div[data-testid="stRadio"] label > div { color: #ffffff !important; -webkit-text
 div[data-testid="stRadio"] label p { color: #ffffff !important; -webkit-text-fill-color: #ffffff !important; font-size: 1rem !important; font-weight: 600 !important; margin: 0 !important; }
 div[data-testid="stRadio"] input[type="radio"] { accent-color: #ffaa00 !important; width: 18px !important; height: 18px !important; margin-right: 10px !important; flex-shrink: 0 !important; }
 div[data-testid="stButton"] button { background: linear-gradient(135deg,#ffaa00,#ff6600) !important; color: #000000 !important; -webkit-text-fill-color: #000000 !important; font-weight: 900 !important; font-size: 1rem !important; border-radius: 14px !important; border: none !important; padding: 0.7rem !important; width: 100% !important; }
-div[data-testid="stButton"] button p { color: #000000 !important; -webkit-text-fill-color: #000000 !important; }
+div[data-testid="stButton"] button p { color: #000000 !important; -webkit-text-fill-color: #000000 !important; } div[data-testid="stButton"] button:hover { background: linear-gradient(135deg,#ffcc00,#ff8800) !important; } div[data-testid="stButton"] button:hover p { color: #000000 !important; -webkit-text-fill-color: #000000 !important; } div[data-testid="stButton"] button:hover * { color: #000000 !important; -webkit-text-fill-color: #000000 !important; }
 div[data-testid="stAlert"] p { color: #ffffff !important; -webkit-text-fill-color: #ffffff !important; }
 </style>
 """, unsafe_allow_html=True)
@@ -297,3 +297,4 @@ def require_pretest_gate() -> None:
 
 def mark_pretest_done(nickname: str, cohort: str) -> None:
     pass
+
