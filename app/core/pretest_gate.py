@@ -68,8 +68,64 @@ def _apply_css() -> None:
 .result-box{background:rgba(0,200,100,0.1);border:1px solid rgba(0,200,100,0.3);border-radius:16px;padding:24px;text-align:center;margin:1rem 0;}
 .result-score{font-size:3rem;font-weight:900;color:#00ff88;}
 .result-label{font-size:0.9rem;color:rgba(255,255,255,0.6);margin-top:4px;}
-div[data-testid="stRadio"] label{color:rgba(255,255,255,0.85)!important;font-size:0.95rem!important;}
-div[data-testid="stButton"] button{background:linear-gradient(135deg,#ffaa00,#ff6600)!important;color:#000!important;font-weight:900!important;font-size:1rem!important;border-radius:14px!important;border:none!important;padding:0.7rem!important;width:100%!important;}
+
+/* ✅ 라디오 버튼 모바일 강제 스타일 */
+div[data-testid="stRadio"] > div {background:transparent !important;}
+div[data-testid="stRadio"] label {
+    color:#ffffff !important;
+    font-size:1rem !important;
+    font-weight:600 !important;
+    background:rgba(255,255,255,0.06) !important;
+    border:1.5px solid rgba(255,255,255,0.15) !important;
+    border-radius:10px !important;
+    padding:10px 16px !important;
+    margin-bottom:6px !important;
+    display:flex !important;
+    align-items:center !important;
+    width:100% !important;
+    cursor:pointer !important;
+}
+div[data-testid="stRadio"] label:hover {
+    background:rgba(255,170,0,0.15) !important;
+    border-color:rgba(255,170,0,0.5) !important;
+}
+div[data-testid="stRadio"] label span {
+    color:#ffffff !important;
+}
+div[data-testid="stRadio"] input[type="radio"] {
+    accent-color:#ffaa00 !important;
+    width:18px !important;
+    height:18px !important;
+    margin-right:10px !important;
+    flex-shrink:0 !important;
+}
+
+/* ✅ 입력창 모바일 강제 스타일 */
+div[data-testid="stTextInput"] input {
+    background:rgba(255,255,255,0.07) !important;
+    border:1.5px solid rgba(255,255,255,0.15) !important;
+    border-radius:12px !important;
+    color:#ffffff !important;
+    font-size:1.5rem !important;
+    font-weight:900 !important;
+    text-align:center !important;
+    letter-spacing:6px !important;
+    padding:12px !important;
+    -webkit-text-fill-color:#ffffff !important;
+}
+
+/* ✅ 버튼 스타일 */
+div[data-testid="stButton"] button {
+    background:linear-gradient(135deg,#ffaa00,#ff6600) !important;
+    color:#000000 !important;
+    font-weight:900 !important;
+    font-size:1rem !important;
+    border-radius:14px !important;
+    border:none !important;
+    padding:0.7rem !important;
+    width:100% !important;
+    -webkit-text-fill-color:#000000 !important;
+}
 </style>
 """, unsafe_allow_html=True)
 
