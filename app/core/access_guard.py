@@ -74,14 +74,79 @@ def is_returning_student(student_id: str, cohort_month: str) -> bool:
 def _apply_css() -> None:
     st.markdown("""
 <style>
-.stApp{background:linear-gradient(160deg,#07090f 0%,#050810 60%,#000000 100%);}
-.block-container{padding-top:2rem;max-width:420px;}
-.auth-title{font-size:2rem;font-weight:900;color:#ffffff;text-align:center;letter-spacing:2px;margin-bottom:0.2rem;}
-.auth-sub{font-size:0.95rem;color:rgba(255,255,255,0.5);text-align:center;margin-bottom:1.8rem;letter-spacing:1px;}
-.auth-label{font-size:0.85rem;font-weight:700;color:rgba(255,200,0,0.9);letter-spacing:1px;margin-bottom:0.3rem;}
-.auth-hint{font-size:0.78rem;color:rgba(255,255,255,0.4);margin-top:0.3rem;margin-bottom:1rem;}
-div[data-testid="stTextInput"] input{background:rgba(255,255,255,0.07)!important;border:1.5px solid rgba(255,255,255,0.15)!important;border-radius:12px!important;color:#ffffff!important;font-size:1.5rem!important;font-weight:900!important;text-align:center!important;letter-spacing:6px!important;padding:12px!important;}
-div[data-testid="stButton"] button{background:linear-gradient(135deg,#ffaa00,#ff6600)!important;color:#000!important;font-weight:900!important;font-size:1rem!important;border-radius:14px!important;border:none!important;padding:0.7rem!important;width:100%!important;}
+html, body, [data-testid="stApp"], .stApp {
+    background-color: #07090f !important;
+    color: #ffffff !important;
+}
+.block-container {
+    padding-top: 2rem !important;
+    max-width: 420px !important;
+    background-color: #07090f !important;
+}
+.auth-title {
+    font-size: 2rem;
+    font-weight: 900;
+    color: #ffffff !important;
+    text-align: center;
+    letter-spacing: 2px;
+    margin-bottom: 0.2rem;
+}
+.auth-sub {
+    font-size: 0.95rem;
+    color: rgba(255,255,255,0.5) !important;
+    text-align: center;
+    margin-bottom: 1.8rem;
+    letter-spacing: 1px;
+}
+.auth-label {
+    font-size: 0.95rem;
+    font-weight: 700;
+    color: #ffcc00 !important;
+    letter-spacing: 1px;
+    margin-bottom: 0.5rem;
+}
+.auth-hint {
+    font-size: 0.82rem;
+    color: rgba(255,255,255,0.5) !important;
+    margin-top: 0.3rem;
+    margin-bottom: 1rem;
+}
+div[data-testid="stTextInput"] input {
+    background: #1a1a2e !important;
+    border: 2px solid rgba(255,170,0,0.5) !important;
+    border-radius: 12px !important;
+    color: #ffffff !important;
+    -webkit-text-fill-color: #ffffff !important;
+    font-size: 2rem !important;
+    font-weight: 900 !important;
+    text-align: center !important;
+    letter-spacing: 8px !important;
+    padding: 14px !important;
+    caret-color: #ffaa00 !important;
+}
+div[data-testid="stTextInput"] input::placeholder {
+    color: rgba(255,255,255,0.3) !important;
+    -webkit-text-fill-color: rgba(255,255,255,0.3) !important;
+}
+div[data-testid="stButton"] button {
+    background: linear-gradient(135deg, #ffaa00, #ff6600) !important;
+    color: #000000 !important;
+    -webkit-text-fill-color: #000000 !important;
+    font-weight: 900 !important;
+    font-size: 1.1rem !important;
+    border-radius: 14px !important;
+    border: none !important;
+    padding: 0.8rem !important;
+    width: 100% !important;
+}
+div[data-testid="stAlert"] {
+    background: rgba(255,50,50,0.15) !important;
+    color: #ffffff !important;
+    border-radius: 10px !important;
+}
+p, span, label, div {
+    color: #ffffff !important;
+}
 </style>
 """, unsafe_allow_html=True)
 
