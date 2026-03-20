@@ -1,4 +1,4 @@
-﻿"""통합 오답전장 — P5 학습/시험 + VOCA 학습/시험"""
+"""통합 오답전장 — P5 학습/시험 + VOCA 학습/시험"""
 import streamlit as st
 import streamlit.components.v1 as components
 import json, os, random, time, re
@@ -359,11 +359,11 @@ if st.session_state.sg_phase == "lobby":
                 if "sg_wave_start" in st.session_state: del st.session_state.sg_wave_start
                 st.session_state.rv_mode="p7s"; st.session_state.sg_phase="survival"; st.rerun()
             else: st.warning("최소 3단어 필요!")
-        if st.button(f"💪  P7 어휘 시험모드\n진짜 내 것이 됐는지 증명하라! {combo_label}", key="rv_p7e", type="secondary", use_container_width=True):
+        if st.button(f"⚡  P7 실전 블랭크 시험\n문장 속 빈칸 완성! 5문제 생존 전투! {combo_label}", key="rv_p7e", type="secondary", use_container_width=True):
             if len(voca_data) >= 3:
                 st.session_state.sg_combo_score=0; st.session_state.sg_combo_count=0
                 st.session_state.sg_combo_idx=0; st.session_state.sg_combo_start=time.time()
-                st.session_state.sg_combo_over=False
+                st.session_state.sg_combo_over=False; st.session_state.sg_combo_results=[]
                 if "sg_combo_pool" in st.session_state: del st.session_state.sg_combo_pool
                 st.session_state.rv_mode="p7e"; st.session_state.sg_phase="combo_rush"; st.rerun()
             else: st.warning("최소 3단어 필요!")
@@ -963,161 +963,80 @@ elif st.session_state.sg_phase == "survival_result":
 # ════════════════════════════════
 elif st.session_state.sg_phase == "combo_rush":
     if not voca_data:
-        st.warning("⚠️ 저장된 P7 단어/표현이 없습니다! 먼저 오답전장 학습모드에서 단어를 저장하세요.")
-        if st.button("🔙 돌아가기"): st.session_state.sg_phase = "lobby"; st.session_state.rv_battle = None; st.session_state.rv_mode = None; st.rerun()
+        st.warning("저장된 P7 단어/표현이 없습니다!")
+        if st.button("돌아가기"): st.session_state.sg_phase="lobby"; st.session_state.rv_battle=None; st.session_state.rv_mode=None; st.rerun()
         st.stop()
     st_autorefresh(interval=1000, limit=40, key="combo_timer")
-
-    if "sg_combo_score" not in st.session_state: st.session_state.sg_combo_score = 0
-    if "sg_combo_count" not in st.session_state: st.session_state.sg_combo_count = 0
-    if "sg_combo_idx" not in st.session_state: st.session_state.sg_combo_idx = 0
-    if "sg_combo_over" not in st.session_state: st.session_state.sg_combo_over = False
-
-    score = st.session_state.sg_combo_score
-    combo = st.session_state.sg_combo_count
-    cidx = st.session_state.sg_combo_idx
-    total_qs = min(5, len(voca_data))
-
-    # 문제 풀 준비
+    if "sg_combo_score" not in st.session_state: st.session_state.sg_combo_score=0
+    if "sg_combo_count" not in st.session_state: st.session_state.sg_combo_count=0
+    if "sg_combo_idx" not in st.session_state: st.session_state.sg_combo_idx=0
+    if "sg_combo_over" not in st.session_state: st.session_state.sg_combo_over=False
+    if "sg_combo_results" not in st.session_state: st.session_state.sg_combo_results=[]
+    score=st.session_state.sg_combo_score; combo=st.session_state.sg_combo_count
+    cidx=st.session_state.sg_combo_idx; total_qs=min(5,len(voca_data))
     if "sg_combo_pool" not in st.session_state:
-        pool = voca_data.copy()
-        random.shuffle(pool)
-        while len(pool) < 5:
-            pool += voca_data.copy()
-        st.session_state.sg_combo_pool = pool[:5]
-    c_pool = st.session_state.sg_combo_pool
-
-    # 종료 판정
-    if cidx >= total_qs or st.session_state.sg_combo_over:
-        st.session_state.sg_phase = "combo_result"; st.rerun()
-
-    q_item = c_pool[cidx]
-
-    # 통합 33초 타이머
-    elapsed = time.time() - st.session_state.sg_combo_start
-    rem = max(0, 33 - int(elapsed))
-    left = total_qs - cidx
-    if rem <= 0:
-        st.session_state.sg_combo_over = True
-        st.session_state.sg_phase = "combo_result"; st.rerun()
-
-    # 배경 붉어짐 (움직임 없음!)
-    if rem <= 5:
-        bg_css = "background:linear-gradient(135deg,#2a0808,#3a0a1a 30%,#2a0510 70%,#2a0808)!important;"
-        tcl = "#ff0000"; tsz = "2.5rem"; tglow = "text-shadow:0 0 40px #ff0000,0 0 80px #cc0000;"
-        twarn = '<div style="text-align:center;font-size:1.4rem;color:#ff0000;font-weight:900;margin-top:4px;">💀💀 폭발한다!! 💀💀</div>'
-    elif rem <= 10:
-        bg_css = "background:linear-gradient(135deg,#1e0815,#2e0a25 30%,#1e0818 70%,#1e0815)!important;"
-        tcl = "#ff2200"; tsz = "2rem"; tglow = "text-shadow:0 0 25px #ff2200,0 0 50px #ff0000;"
-        twarn = '<div style="text-align:center;font-size:1.1rem;color:#ff4444;font-weight:900;">💀 서둘러!! 💀</div>'
-    elif rem <= 15:
-        bg_css = "background:linear-gradient(135deg,#160a1e,#220e30 30%,#160a22 70%,#160a1e)!important;"
-        tcl = "#ff6600"; tsz = "1.6rem"; tglow = "text-shadow:0 0 15px #ff6600;"
-        twarn = '<div style="text-align:center;font-size:1rem;color:#ff8844;font-weight:900;">⚡ 서둘러!! ⚡</div>'
-    elif rem <= 20:
-        bg_css = "background:linear-gradient(135deg,#121530,#1e1845 30%,#121838 70%,#121530)!important;"
-        tcl = "#ffaa00"; tsz = "1.4rem"; tglow = "text-shadow:0 0 8px #ffaa00;"
-        twarn = ""
-    else:
-        bg_css = ""; tcl = "#44ff88"; tsz = "1.2rem"; tglow = ""; twarn = ""
-    tpct = int(rem / 33 * 100)
-    q_border = "rgba(255,50,50,0.6)" if rem <= 10 else "rgba(255,136,0,0.7)"
-    if bg_css:
-        st.markdown(f'<style>.stApp{{{bg_css}}}</style>', unsafe_allow_html=True)
-
-    # ── 헤더 ──
-    combo_color = "#44ff88" if combo < 3 else "#ffcc00" if combo < 6 else "#ff4444"
-    if combo >= 8:
-        combo_color = "#ff00ff"
-    combo_text = f"{combo}x" if combo > 0 else "0x"
-
-    header = '<div style="background:linear-gradient(180deg,#0a0a1a,#1a1030);border:2.5px solid #ff8800;border-radius:22px;padding:5px;text-align:center;">'
-    header += '<div style="font-size:1.0rem;font-weight:900;color:#ff8800;">💪 P7 단어 · 덤벼봐, 틀리면 끝이다!</div>'
-    header += f'<div style="display:flex;justify-content:space-around;margin-top:6px;">'
-    header += f'<span style="font-size:0.85rem;font-weight:900;color:{combo_color};">🔥 {combo_text}</span>'
-    header += f'<span style="font-size:0.85rem;font-weight:900;color:#ffcc00;">⭐ {score}</span>'
-    header += f'<span style="font-size:1.3rem;font-weight:900;color:#aaa;">{cidx+1}/{total_qs}</span>'
-    header += '</div></div>'
-    st.markdown(header, unsafe_allow_html=True)
-
-    # 타이머 UI
-    st.markdown(f'<div style="text-align:center;margin:2px 0;padding:4px;"><span style="font-size:{tsz};font-weight:900;color:{tcl};font-family:Impact,Arial Black,sans-serif;{tglow}">{rem}</span><span style="font-size:0.8rem;color:{tcl};opacity:0.7;">s</span><div style="font-size:1rem;color:#888;font-weight:700;margin-top:4px;">Q{cidx+1}/{total_qs} · 남은 {left}문제</div></div>', unsafe_allow_html=True)
-    st.markdown(f'<div style="background:rgba(255,255,255,0.06);border-radius:12px;padding:3px;margin:4px 0;"><div style="background:linear-gradient(90deg,{tcl},#ff8800);height:12px;border-radius:10px;width:{tpct}%;"></div></div>', unsafe_allow_html=True)
-    if twarn:
-        st.markdown(twarn, unsafe_allow_html=True)
-
-    # ── 문제 유형 랜덤 ──
-    expr_text = q_item.get("expr", "")
-    meaning = q_item.get("meaning", "")
-    sentences = q_item.get("sentences", [])
-    kr_text = q_item.get("kr", meaning)
-    first_en = sentences[0] if sentences else expr_text
-    kr_first = kr_text.split(". ")[0] + "." if ". " in kr_text else kr_text
-
-    q_types = ["expr2meaning", "meaning2expr"]
+        has_sent=[v for v in voca_data if v.get("sentences")]
+        no_sent=[v for v in voca_data if not v.get("sentences")]
+        pool=has_sent+no_sent; random.shuffle(pool)
+        while len(pool)<5: pool+=voca_data.copy(); random.shuffle(pool)
+        st.session_state.sg_combo_pool=pool[:5]
+    c_pool=st.session_state.sg_combo_pool
+    if cidx>=total_qs or st.session_state.sg_combo_over:
+        st.session_state.sg_phase="combo_result"; st.rerun()
+    q_item=c_pool[cidx]
+    elapsed=time.time()-st.session_state.sg_combo_start
+    rem=max(0,30-int(elapsed))
+    if rem<=0: st.session_state.sg_combo_over=True; st.session_state.sg_phase="combo_result"; st.rerun()
+    if rem<=5: bg_css="background:linear-gradient(135deg,#2a0808,#3a0a1a)!important;"; tcl="#ff0000"; tsz="2.5rem"; tglow="text-shadow:0 0 40px #ff0000;"; twarn='<div style="text-align:center;font-size:1.4rem;color:#ff0000;font-weight:900;">💀 폭발한다!! 💀</div>'
+    elif rem<=10: bg_css="background:linear-gradient(135deg,#1e0815,#2e0a25)!important;"; tcl="#ff2200"; tsz="2rem"; tglow="text-shadow:0 0 25px #ff2200;"; twarn='<div style="text-align:center;font-size:1.1rem;color:#ff4444;font-weight:900;">💀 서둘러!! 💀</div>'
+    elif rem<=15: bg_css=""; tcl="#ff6600"; tsz="1.6rem"; tglow="text-shadow:0 0 15px #ff6600;"; twarn='<div style="text-align:center;font-size:1rem;color:#ff8844;font-weight:900;">⚡ 서둘러!!</div>'
+    else: bg_css=""; tcl="#44ff88"; tsz="1.2rem"; tglow=""; twarn=""
+    tpct=int(rem/30*100)
+    if bg_css: st.markdown(f'<style>.stApp{{{bg_css}}}</style>',unsafe_allow_html=True)
+    ok_cnt=sum(1 for r in st.session_state.sg_combo_results if r)
+    needed=max(0,3-ok_cnt); remain_q=total_qs-cidx
+    survive_color="#44ff88" if ok_cnt>=3 else "#ffcc00" if needed<=remain_q else "#ff4444"
+    st.markdown(f'<div style="background:linear-gradient(180deg,#0a0a1a,#1a1030);border:2.5px solid #4488ff;border-radius:22px;padding:8px;text-align:center;"><div style="font-size:1.0rem;font-weight:900;color:#4488ff;">⚡ P7 실전 블랭크 · 5문제 중 3개 이상!</div><div style="display:flex;justify-content:space-around;margin-top:6px;"><span style="font-size:0.85rem;font-weight:900;color:#44ff88;">✅ {ok_cnt}개</span><span style="font-size:0.85rem;font-weight:900;color:#ffcc00;">{cidx+1}/{total_qs}</span><span style="font-size:0.85rem;font-weight:900;color:{survive_color};">필요 {needed}개</span></div></div>',unsafe_allow_html=True)
+    st.markdown(f'<div style="text-align:center;margin:4px 0;"><span style="font-size:{tsz};font-weight:900;color:{tcl};{tglow}">{rem}</span><span style="font-size:0.8rem;color:{tcl};opacity:0.7;">s</span></div>',unsafe_allow_html=True)
+    st.markdown(f'<div style="background:rgba(255,255,255,0.06);border-radius:12px;padding:3px;margin:4px 0;"><div style="background:linear-gradient(90deg,{tcl},#4488ff);height:12px;border-radius:10px;width:{tpct}%;"></div></div>',unsafe_allow_html=True)
+    if twarn: st.markdown(twarn,unsafe_allow_html=True)
+    import re as _re2
+    expr_text=q_item.get("expr",""); meaning=q_item.get("meaning",""); sentences=q_item.get("sentences",[])
+    expr_words=expr_text.split(); key_word=max(expr_words,key=len) if expr_words else expr_text
     if sentences:
-        q_types.append("blank_fill")
-    qtype_rng = random.Random(hash(f"qt_{cidx}"))
-    qtype = qtype_rng.choice(q_types)
-
-    if qtype == "expr2meaning":
-        # 영어표현 → 한글뜻
-        st.markdown(f'<div style="border-radius:20px;padding:0.8rem 0.8rem;margin:6px 0;text-align:center;background:linear-gradient(145deg,#3e2810,#4a3415,#3e2810);border:2.5px solid rgba(255,136,0,0.7);box-shadow:0 0 40px rgba(255,136,0,0.35);animation:slideUp 0.4s ease-out;"><div style="font-size:1rem;font-weight:800;letter-spacing:3px;text-transform:uppercase;color:rgba(255,136,0,0.75);margin-bottom:8px;">what does this mean?</div><div style="font-size:1.1rem;font-weight:900;line-height:1.4;color:#ffcc88;">{expr_text}</div></div>', unsafe_allow_html=True)
-        correct_ans = meaning
-        others = [v.get("meaning","") for v in voca_data if v.get("meaning","") != meaning]
-
-    elif qtype == "meaning2expr":
-        # 한글뜻 → 영어표현
-        st.markdown(f'<div style="border-radius:20px;padding:0.8rem 0.8rem;margin:6px 0;text-align:center;background:linear-gradient(145deg,#3e2810,#4a3415,#3e2810);border:2.5px solid rgba(255,136,0,0.7);box-shadow:0 0 40px rgba(255,136,0,0.35);animation:slideUp 0.4s ease-out;"><div style="font-size:1rem;font-weight:800;letter-spacing:3px;text-transform:uppercase;color:rgba(255,136,0,0.75);margin-bottom:8px;">영어 표현은?</div><div style="font-size:1.1rem;font-weight:900;line-height:1.4;color:#ffcc88;">{meaning}</div></div>', unsafe_allow_html=True)
-        correct_ans = expr_text
-        others = [v.get("expr","") for v in voca_data if v.get("expr","") != expr_text]
-
+        first_en=sentences[0]
+        blank_sent=_re2.sub(r"(?i)\b"+_re2.escape(key_word)+r"\b","_______",first_en,count=1)
+        if "_______" not in blank_sent: blank_sent=first_en.replace(expr_text,"_______",1)
+        if "_______" not in blank_sent: blank_sent="The company decided to _______ as part of its strategy."
     else:
-        # 빈칸 채우기
-        import re as _re
-        expr_words = expr_text.split()
-        key_word = max(expr_words, key=len) if expr_words else expr_text
-        blank_sent = _re.sub(r'(?i)\b' + _re.escape(key_word) + r'\b', "_______", first_en, count=1)
-        if "_______" not in blank_sent:
-            blank_sent = first_en.replace(expr_text, "_______", 1)
-        if "_______" not in blank_sent:
-            blank_sent = f"The company will _______ by next quarter."
-
-        blank_styled = blank_sent.replace("_______", '<span style="border-bottom:3px solid #ff8800;padding:0 8px;color:#ffaa44;">_______</span>')
-        st.markdown(f'<div style="border-radius:20px;padding:0.8rem 0.8rem;margin:6px 0;text-align:center;background:linear-gradient(145deg,#3e2810,#4a3415,#3e2810);border:2.5px solid rgba(255,136,0,0.7);box-shadow:0 0 40px rgba(255,136,0,0.35);animation:slideUp 0.4s ease-out;"><div style="font-size:1rem;font-weight:800;letter-spacing:3px;text-transform:uppercase;color:rgba(255,136,0,0.75);margin-bottom:10px;">fill in the blank</div><div style="font-size:1.2rem;font-weight:900;line-height:1.4;color:#ffddaa;text-align:left;">{blank_styled}</div></div>', unsafe_allow_html=True)
-        correct_ans = key_word
-        fallback_words = ["implement","approximately","eligible","comprehensive","facilitate","preliminary","mandatory","subsequent","operational","sustainable"]
-        others = [w for w in fallback_words if w.lower() != key_word.lower()]
-
-    # 선택지
-    rng2 = random.Random(hash(f"cb_{cidx}_{correct_ans}"))
-    rng2.shuffle(others)
-    distractors = others[:3]
-    while len(distractors) < 3:
-        distractors.append("N/A")
-    choices = distractors + [correct_ans]
-    rng2.shuffle(choices)
-    correct_idx = choices.index(correct_ans)
-    labeled = [f"({chr(65+i)}) {c}" for i, c in enumerate(choices)]
-
-    for i, ch in enumerate(labeled):
-        if st.button(ch, key=f"cb_{cidx}_{i}", type="secondary", use_container_width=True):
-            if i == correct_idx:
-                new_combo = combo + 1
-                bonus = 100 * new_combo
-                st.session_state.sg_combo_count = new_combo
-                st.session_state.sg_combo_score = score + bonus
-                st.session_state.sg_combo_idx = cidx + 1
-                st.rerun()
-            else:
-                # 틀리면 즉사! YOU LOST!
-                st.session_state.sg_combo_over = True
-                st.session_state.sg_phase = "combo_result"; st.rerun()
-
-    components.html("""<script>
-    function stC(){const d=window.parent.document;d.querySelectorAll('button[kind="secondary"]').forEach(b=>{const t=(b.textContent||'').trim();if(/^\([A-D]\)/.test(t)){b.style.cssText='background:linear-gradient(135deg,rgba(255,136,0,0.22),rgba(255,136,0,0.10))!important;color:#ffffff!important;border:1.5px solid rgba(255,136,0,0.5)!important;border-radius:16px!important;font-size:1.1rem!important;font-weight:900!important;padding:0.4rem 0.5rem!important;min-height:auto!important;box-shadow:0 3px 15px rgba('+'{_rgb}'+',0.15)!important;';b.querySelectorAll('p').forEach(p=>p.style.cssText='font-size:1.1rem!important;font-weight:900!important;');}});};setTimeout(stC,80);setTimeout(stC,300);setTimeout(stC,700);new MutationObserver(stC).observe(window.parent.document.body,{childList:true,subtree:true});
-    </script>""", height=0)
-
+        blank_sent="They will _______ the process accordingly."
+    blank_styled=blank_sent.replace("_______",'<span style="border-bottom:3px solid #4488ff;padding:0 8px;color:#88aaff;font-weight:900;">_______</span>')
+    st.markdown(f'<div style="border-radius:20px;padding:1rem;margin:6px 0;background:linear-gradient(145deg,#1a1a2e,#2a2040);border:2.5px solid rgba(100,150,255,0.6);"><div style="font-size:0.85rem;font-weight:800;letter-spacing:3px;color:rgba(150,200,255,0.8);margin-bottom:10px;">📖 FILL IN THE BLANK</div><div style="font-size:1.1rem;font-weight:700;line-height:1.6;color:#eeeeff;">{blank_styled}</div><div style="font-size:0.85rem;color:#aaa;margin-top:8px;">💡 {meaning}</div></div>',unsafe_allow_html=True)
+    WORD_DB={"a":["address","adjust","advance","achieve","allocate","approve","assess","assist","announce"],"b":["balance","benefit","build","boost","brief","bring","budget"],"c":["comply","conduct","confirm","consider","complete","calculate","cancel","coordinate","clarify"],"d":["deliver","determine","develop","distribute","demonstrate","decline","delay","discuss"],"e":["establish","evaluate","examine","execute","expand","ensure","enforce","engage","enhance"],"f":["facilitate","finalize","follow","forecast","fulfill","focus","forward"],"g":["generate","grant","guide","gather","guarantee"],"h":["handle","highlight","hire","hold","head"],"i":["implement","improve","increase","indicate","inspect","install","integrate","introduce"],"j":["justify","join"],"l":["launch","limit","list","locate","lead","leverage"],"m":["maintain","manage","measure","monitor","modify","meet","mention"],"n":["notify","negotiate","note"],"o":["obtain","operate","optimize","organize","outline","oversee"],"p":["prepare","process","produce","provide","publish","perform","present","prevent","promote"],"q":["qualify","question"],"r":["receive","record","reduce","renew","replace","report","require","resolve","review"],"s":["submit","supply","support","suspend","sustain","schedule","secure","select","specify","streamline"],"t":["terminate","transfer","transform","transmit","track","test","target"],"u":["update","upgrade","utilize","undergo"],"v":["verify","validate","volunteer"],"w":["withdraw","work","warrant"]}
+    def get_distractors(correct_word,n=3):
+        first=correct_word[0].lower() if correct_word else "s"
+        candidates=WORD_DB.get(first,WORD_DB["s"])
+        filtered=[w for w in candidates if w.lower()!=correct_word.lower()]
+        filtered.sort(key=lambda w:abs(len(w)-len(correct_word)))
+        rng=random.Random(hash(f"dist_{correct_word}")); rng.shuffle(filtered[:8])
+        result=filtered[:n]
+        fallback=["implement","facilitate","demonstrate","establish","coordinate"]
+        for fb in fallback:
+            if len(result)>=n: break
+            if fb not in result and fb!=correct_word: result.append(fb)
+        return result[:n]
+    correct_ans=key_word; distractors=get_distractors(correct_ans,3)
+    choices=distractors+[correct_ans]; rng2=random.Random(hash(f"cb_{cidx}_{correct_ans}")); rng2.shuffle(choices)
+    correct_idx=choices.index(correct_ans); labeled=[f"({chr(65+i)}) {c}" for i,c in enumerate(choices)]
+    for i,ch in enumerate(labeled):
+        if st.button(ch,key=f"cb_{cidx}_{i}",type="secondary",use_container_width=True):
+            results=st.session_state.sg_combo_results
+            if i==correct_idx: results.append(True); st.session_state.sg_combo_score=score+100; st.session_state.sg_combo_count=combo+1
+            else: results.append(False)
+            st.session_state.sg_combo_results=results; st.session_state.sg_combo_idx=cidx+1
+            wrong_cnt=sum(1 for r in results if not r)
+            if wrong_cnt>(total_qs-3): st.session_state.sg_combo_over=True
+            st.rerun()
 
 # ════════════════════════════════
 # 단어 저장고 — 무기 관리 (삭제)
