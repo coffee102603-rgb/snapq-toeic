@@ -690,46 +690,6 @@ elif st.session_state.sg_phase == "survival":
     </div>''', unsafe_allow_html=True)
 
     st.markdown('<div style="text-align:center;color:#888;font-size:0.8rem;margin:3px 0;">↓ 영어 문장 빈칸을 채워라!</div>', unsafe_allow_html=True)
-    # ── 영어 빈칸 문장 / 결과 표시 ──
-    if "sb_wrong_cnt" not in st.session_state: st.session_state.sb_wrong_cnt=0
-    if "sb_wrong_counted" not in st.session_state: st.session_state.sb_wrong_counted=False
-
-    if done:
-        sel_sorted=sorted([s.lower() for s in selected])
-        ord_sorted=sorted([b.lower() for b in blank_order])
-        correct=(sel_sorted==ord_sorted)
-        if not correct and not st.session_state.sb_wrong_counted:
-            st.session_state.sb_wrong_cnt+=1
-            st.session_state.sb_wrong_counted=True
-            st.rerun()
-        wrong_cnt=st.session_state.sb_wrong_cnt
-        if correct:
-            ok_sent=blanked
-            for bw in blank_order:
-                ok_sent=ok_sent.replace("[___]",f'<span style="background:#0a2a0a;border:2px solid #44ff88;border-radius:8px;padding:2px 10px;color:#44ff88;font-weight:900;margin:0 3px;">{bw}</span>',1)
-            st.markdown(f'''<div style="background:#1a1a2e;border:2px solid #44ff88;border-radius:12px;padding:12px 14px;margin-bottom:8px;font-size:1.05rem;font-weight:600;line-height:2.2;color:#ddddff;">{ok_sent}</div>''', unsafe_allow_html=True)
-        elif wrong_cnt==1:
-            s1_html=""
-            for i,part in enumerate(blanked.split("[___]")):
-                s1_html+=f'<span style="color:#ddddff;">{part}</span>'
-                if i<len(blanked.split("[___]"))-1:
-                    if i<len(selected): s1_html+=f'<span style="background:#3a0a0a;border:2px solid #ff4444;border-radius:8px;padding:2px 10px;color:#ff8888;font-weight:700;margin:0 3px;">{selected[i]}</span>'
-                    else: s1_html+='<span style="background:#0a0a1a;border:2px dashed #ff4444;border-radius:8px;padding:2px 18px;color:#333;margin:0 3px;">_____</span>'
-            st.markdown(f'''<div style="background:#1a1a2e;border:1.5px solid #ff4444;border-radius:12px;padding:12px 14px;margin-bottom:8px;font-size:1.05rem;font-weight:600;line-height:2.2;">{s1_html}</div>''', unsafe_allow_html=True)
-        else:
-            ans_sent=blanked
-            for bw in blank_order:
-                ans_sent=ans_sent.replace("[___]",f'<span style="background:#0a2a0a;border:2px solid #44ff88;border-radius:8px;padding:2px 10px;color:#44ff88;font-weight:900;margin:0 3px;">{bw}</span>',1)
-            st.markdown(f'''<div style="background:#1a1a2e;border:2px solid #44ff88;border-radius:12px;padding:12px 14px;margin-bottom:8px;font-size:1.05rem;font-weight:600;line-height:2.2;color:#ddddff;">{ans_sent}</div>''', unsafe_allow_html=True)
-    else:
-        s0_html=""
-        for i,part in enumerate(blanked.split("[___]")):
-            s0_html+=f'<span style="color:#ddddff;">{part}</span>'
-            if i<len(blanked.split("[___]"))-1:
-                if i<len(selected): s0_html+=f'<span style="background:#0a2a0a;border:2px solid #44ff88;border-radius:8px;padding:2px 10px;color:#44ff88;font-weight:700;margin:0 3px;">{selected[i]}</span>'
-                else: s0_html+='<span style="background:#0a0a1a;border:2px dashed #4488ff;border-radius:8px;padding:2px 18px;color:#333;margin:0 3px;">_____</span>'
-        st.markdown(f'''<div style="background:#1a1a2e;border:1.5px solid #4488ff;border-radius:12px;padding:12px 14px;margin-bottom:8px;font-size:1.05rem;font-weight:600;line-height:2.2;">{s0_html}</div>''', unsafe_allow_html=True)
-
     if "sb_wrong_cnt" not in st.session_state: st.session_state.sb_wrong_cnt=0
     if "sb_wrong_counted" not in st.session_state: st.session_state.sb_wrong_counted=False
     if done:
@@ -789,6 +749,13 @@ elif st.session_state.sg_phase == "survival":
                         if k in st.session_state: del st.session_state[k]
                     st.rerun()
     else:
+        fp0=blanked.split("[___]"); s0_html=""
+        for _i,_p in enumerate(fp0):
+            s0_html+=f'<span style="color:#ddddff;">{_p}</span>'
+            if _i<len(fp0)-1:
+                if _i<len(selected): s0_html+=f'<span style="background:#0a2a0a;border:2px solid #44ff88;border-radius:8px;padding:2px 10px;color:#44ff88;font-weight:700;margin:0 3px;">{selected[_i]}</span>'
+                else: s0_html+='<span style="background:#0a0a1a;border:2px dashed #4488ff;border-radius:8px;padding:2px 18px;color:#333;margin:0 3px;">_____</span>'
+        st.markdown(f'''<div style="background:#1a1a2e;border:1.5px solid #4488ff;border-radius:12px;padding:12px 14px;margin-bottom:8px;font-size:1.05rem;font-weight:600;line-height:2.2;">{s0_html}</div>''', unsafe_allow_html=True)
         # ── 단어 카드 5개 ──
         st.markdown('<div style="font-size:0.8rem;color:#888;text-align:center;margin-bottom:5px;">👇 단어를 터치해서 빈칸에 넣어라!</div>', unsafe_allow_html=True)
         used=[s.lower() for s in selected]
