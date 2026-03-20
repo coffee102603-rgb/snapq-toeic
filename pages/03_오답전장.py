@@ -614,27 +614,29 @@ elif st.session_state.sg_phase == "survival":
     # 블랭크 준비 (한 번만 계산해서 저장)
     if not st.session_state.sb_blank_order or st.session_state.get("sb_last_idx",-1) != idx:
         st.session_state.sb_last_idx = idx
+        # 문장에 실제 있는 단어만 추출
         words_in_sent=[w.strip(".,!?;:()[]") for w in sentence.split()]
         words_in_sent=[w for w in words_in_sent if len(w)>=3]
-        key_words=[w for w in expr.split() if len(w)>=3]
+        # 핵심표현 단어 중 문장에 실제로 있는 것만
+        key_words=[w for w in expr.split() if len(w)>=3 and any(w.lower()==ws.lower() for ws in words_in_sent)]
         rng_blank=random.Random(hash(f"blank_{expr}"))
-        blank_candidates=key_words.copy()
-        other_words=[w for w in words_in_sent if w.lower() not in [k.lower() for k in key_words]]
+        # 나머지 문장 단어 중 길이 4이상인 것
+        other_words=[w for w in words_in_sent if w.lower() not in [k.lower() for k in key_words] and len(w)>=4]
         rng_blank.shuffle(other_words)
-        blank_candidates+=other_words
+        blank_candidates=key_words+other_words
         seen=set(); unique_blanks=[]
         for w in blank_candidates:
-            if w.lower() not in seen and len(w)>=3: seen.add(w.lower()); unique_blanks.append(w)
+            if w.lower() not in seen: seen.add(w.lower()); unique_blanks.append(w)
         bw_list=unique_blanks[:4]
-        while len(bw_list)<4: bw_list.append("the")
         blanked=sentence; border=[]
         for bw in bw_list:
             pat=r"(?i)\b"+_re3.escape(bw)+r"\b"
             if _re3.search(pat,blanked): blanked=_re3.sub(pat,"[___]",blanked,count=1); border.append(bw)
-        # 블랭크가 2개 미만이면 추가
+        # 블랭크 최소 2개 보장
         if len(border)<2:
-            extra=[w for w in words_in_sent if w.lower() not in [b.lower() for b in border] and len(w)>=4]
-            for ew in extra[:2]:
+            extra=[w for w in words_in_sent if w.lower() not in [b.lower() for b in border] and len(w)>=3]
+            for ew in extra:
+                if len(border)>=2: break
                 pat=r"(?i)\b"+_re3.escape(ew)+r"\b"
                 if _re3.search(pat,blanked): blanked=_re3.sub(pat,"[___]",blanked,count=1); border.append(ew)
         st.session_state.sb_blanked=blanked
@@ -686,7 +688,7 @@ elif st.session_state.sg_phase == "survival":
                     result_sent=result_sent.replace("[___]",f'<span style="background:#2a1a0a;border:2px solid #ff8844;border-radius:6px;padding:2px 8px;color:#ff8844;font-weight:900;margin:0 2px;">{bw}</span>',1)
             st.markdown(f'<div style="background:linear-gradient(145deg,#1a1a2e,#0d1020);border:2px solid rgba(255,100,100,0.4);border-radius:16px;padding:1rem;margin:8px 0;font-size:1.1rem;line-height:2.2;">{result_sent}</div>',unsafe_allow_html=True)
             if wrong_cnt>=2:
-                st.markdown(f'<div style="text-align:center;padding:1rem;background:#1a0a0a;border:2px solid #ff8844;border-radius:16px;margin:8px 0;"><div style="font-size:1.8rem;font-weight:900;color:#ff8844;">힘내! 정답 & 해석 공개! 💪</div><div style="font-size:1.1rem;color:#88ffbb;font-weight:700;margin-top:8px;">📖 {kr_text}</div></div>',unsafe_allow_html=True)
+                st.markdown(f'<div style="text-align:center;padding:0.8rem;background:#140d08;border:1.5px solid #885533;border-radius:14px;margin:6px 0;"><div style="font-size:1.1rem;font-weight:700;color:#cc8855;">💪 힘내! 정답 & 해석 공개!</div><div style="font-size:0.95rem;color:#99bb99;font-weight:500;margin-top:6px;">📖 {kr_text}</div></div>',unsafe_allow_html=True)
                 if st.button("▶ 다음 문장!",key="sb_show_next",type="primary",use_container_width=True):
                     st.session_state.sb_idx=idx+1; st.session_state.sb_selected=[]
                     st.session_state.sb_done=False; st.session_state.sb_wrong_cnt=0
