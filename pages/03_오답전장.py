@@ -347,15 +347,8 @@ if st.session_state.sg_phase == "lobby":
     # ━━━ 2막 P7: 전투 방식 선택 ━━━
     elif _rv_battle == "p7" and not _rv_mode:
         st.markdown('''<div class="rv-confirmed"><span>📖 P7 전장 귀환!</span></div>''', unsafe_allow_html=True)
-        if hall_of_fame:
-            hof_count = len(hall_of_fame)
-            st.markdown(f'<div style="background:linear-gradient(135deg,#1a1a00,#2a2000);border:2px solid #ffcc00;border-radius:16px;padding:10px 14px;margin:6px 0;text-align:center;"><div style="font-size:1.4rem;font-weight:900;color:#ffcc00;">🏆 명예의 전당 {hof_count}개</div><div style="font-size:0.85rem;color:#aaa;margin-top:2px;">숙련도 3 달성 완전정복 표현들 ⭐</div></div>', unsafe_allow_html=True)
-        if voca_data:
-            m0 = sum(1 for v in voca_data if v.get("mastery",0)==0)
-            m1 = sum(1 for v in voca_data if v.get("mastery",0)==1)
-            m2 = sum(1 for v in voca_data if v.get("mastery",0)==2)
-            st.markdown(f'<div style="background:#111;border:1px solid #333;border-radius:10px;padding:8px 12px;margin:4px 0;text-align:center;font-size:0.9rem;font-weight:700;color:#aaa;">🔴 훈련중 {m0}개 | 🟡 익숙함 {m1}개 | 🟠 거의완성 {m2}개 | 🏆 명예의전당 {len(hall_of_fame)}개</div>', unsafe_allow_html=True)
-    
+        total_words = len(voca_data)
+        st.markdown(f'<div style="background:#111;border:1px solid #444;border-radius:10px;padding:8px 12px;margin:4px 0;text-align:center;font-size:1.0rem;font-weight:700;color:#ffcc00;">💎 무기 {total_words}개 보유 중</div>', unsafe_allow_html=True)
         if st.button(f"🧠  P7 어휘 학습모드\n단어를 완전히 내 몸에 새겨라! ({len(voca_data)}단어)", key="rv_p7s", type="secondary", use_container_width=True):
             if len(voca_data) >= 3:
                 st.session_state.sg_wave=1; st.session_state.sg_wave_idx=0
@@ -373,9 +366,8 @@ if st.session_state.sg_phase == "lobby":
                 if "sg_combo_pool" in st.session_state: del st.session_state.sg_combo_pool
                 st.session_state.rv_mode="p7e"; st.session_state.sg_phase="combo_rush"; st.rerun()
             else: st.warning("최소 3단어 필요!")
-        if st.button("↩ 전장 다시 선택", key="rv_back2", use_container_width=True):
-            st.session_state.rv_battle=None; st.rerun()
-
+        if st.button(f"📦  단어 저장고 · 무기 관리\n보유 {total_words}개 · 불필요한 무기는 지워라!", key="rv_vault", use_container_width=True):
+            st.session_state.rv_mode="p7_vault"; st.rerun()
     # ━━━ 항상 고정 네비게이션 ━━━
     st.markdown('<div style="font-size:0.7rem;color:#331100;text-align:center;letter-spacing:3px;margin-top:16px;padding-top:12px;border-top:1px solid #1a0800;">N A V I G A T E</div>', unsafe_allow_html=True)
     mn1, mn2, mn3 = st.columns(3)
@@ -1120,6 +1112,45 @@ elif st.session_state.sg_phase == "combo_rush":
     components.html("""<script>
     function stC(){const d=window.parent.document;d.querySelectorAll('button[kind="secondary"]').forEach(b=>{const t=(b.textContent||'').trim();if(/^\([A-D]\)/.test(t)){b.style.cssText='background:linear-gradient(135deg,rgba(255,136,0,0.22),rgba(255,136,0,0.10))!important;color:#ffffff!important;border:1.5px solid rgba(255,136,0,0.5)!important;border-radius:16px!important;font-size:1.1rem!important;font-weight:900!important;padding:0.4rem 0.5rem!important;min-height:auto!important;box-shadow:0 3px 15px rgba('+'{_rgb}'+',0.15)!important;';b.querySelectorAll('p').forEach(p=>p.style.cssText='font-size:1.1rem!important;font-weight:900!important;');}});};setTimeout(stC,80);setTimeout(stC,300);setTimeout(stC,700);new MutationObserver(stC).observe(window.parent.document.body,{childList:true,subtree:true});
     </script>""", height=0)
+
+
+# ════════════════════════════════
+# 단어 저장고 — 무기 관리 (삭제)
+# ════════════════════════════════
+elif st.session_state.sg_phase == "lobby" and st.session_state.get("rv_mode") == "p7_vault":
+    st.markdown('''<div style="text-align:center;padding:0.8rem 0;">
+        <div style="font-size:2rem;font-weight:900;color:#ffcc00;">📦 단어 저장고</div>
+        <div style="font-size:1rem;color:#aaa;margin-top:4px;">불필요한 무기는 지워라!</div>
+    </div>''', unsafe_allow_html=True)
+
+    storage2 = load_storage()
+    voca_list = storage2.get("saved_expressions", [])
+
+    if not voca_list:
+        st.markdown('<div style="text-align:center;color:#888;font-size:1.1rem;padding:2rem;">저장된 단어가 없습니다!</div>', unsafe_allow_html=True)
+    else:
+        for idx, item in enumerate(voca_list):
+            expr = item.get("expr", "")
+            meaning = item.get("meaning", "")
+            col1, col2 = st.columns([4, 1])
+            with col1:
+                st.markdown(f'<div style="background:#111;border:1px solid #333;border-radius:8px;padding:10px 14px;margin:4px 0;"><span style="color:#44ccff;font-weight:700;font-size:1.0rem;">{expr}</span><span style="color:#aaa;font-size:0.9rem;margin-left:12px;">{meaning}</span></div>', unsafe_allow_html=True)
+            with col2:
+                if st.button("🗑", key=f"del_v_{idx}", use_container_width=True):
+                    deleted = voca_list.pop(idx)
+                    deleted["deleted_at"] = __import__("time").time()
+                    deleted["days_kept"] = round((deleted["deleted_at"] - deleted.get("first_saved_at", deleted["deleted_at"])) / 86400, 1)
+                    deleted_log = storage2.get("deleted_expressions", [])
+                    deleted_log.append(deleted)
+                    storage2["deleted_expressions"] = deleted_log
+                    storage2["saved_expressions"] = voca_list
+                    save_storage(storage2)
+                    st.rerun()
+
+    st.markdown("<br>", unsafe_allow_html=True)
+    if st.button("↩ 돌아가기", key="vault_back", use_container_width=True):
+        st.session_state.rv_mode = None
+        st.rerun()
 
 # ════════════════════════════════
 # 콤보 러시 결과
