@@ -623,20 +623,6 @@ elif st.session_state.sg_phase == "survival":
     # 핵심단어만 (명사/동사/형용사/부사) - 불용어 제외
     stopwords={"the","a","an","in","on","at","to","for","of","by","with","is","are","was","were","has","have","had","be","been","that","this","it","its","and","or","but","as","if","so","not","do","did","will","shall","would","could","should","must","from","into","upon","than","then","also","very","just","even","still","yet","both","few","some","any","such","what","which","who","whom","whose","where","when","how","why","no","nor","all"}
     key_words_idx=[i for i,w in enumerate(en_clean) if w.lower() not in stopwords and len(w)>=3]
-    en_html='<div style="background:#1a1a2e;border:1px solid #333;border-radius:12px;padding:12px 14px;margin-bottom:4px;"><div style="font-size:0.7rem;color:#666;margin-bottom:8px;letter-spacing:2px;">ENGLISH — 핵심단어를 탭하세요</div><div style="line-height:2.0;">'
-    for wi,word in enumerate(words_en):
-        clean=en_clean[wi]
-        is_key=wi in key_words_idx
-        is_active=clicked==clean.lower()
-        if is_active:
-            style="background:#1a3a6b;border:2px solid #4488ff;color:#88ccff;font-weight:900;padding:4px 8px;border-radius:6px;font-size:1.1rem;display:inline-block;margin:2px;"
-        elif is_key:
-            style="color:#ffffff;font-weight:700;padding:4px 8px;border-radius:6px;font-size:1.1rem;display:inline-block;margin:2px;border:1px solid #4488ff;cursor:pointer;"
-        else:
-            style="color:#888;font-weight:400;padding:4px 4px;font-size:1.0rem;display:inline-block;margin:1px;"
-        en_html+=f'<span style="{style}">{word}</span> '
-    en_html+='</div></div>'
-    st.markdown(en_html, unsafe_allow_html=True)
     # 핵심단어 버튼만
     if key_words_idx:
         num_cols=min(len(key_words_idx),4)
