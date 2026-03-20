@@ -764,7 +764,6 @@ elif st.session_state.sg_phase == "survival_result":
         sv_pool = st.session_state.get("sg_sv_pool", [])
         hof_new = []
         for item in sv_pool:
-        pass  # upgrade_mastery removed
             if result == "hof":
                 hof_new.append(item.get("expr",""))
         hof_msg = f'<div style="font-size:1.0rem;color:#ffcc00;font-weight:800;margin-top:6px;">🏆 {len(hof_new)}개 표현 명예의 전당 입성!</div>' if hof_new else ""
@@ -957,7 +956,6 @@ elif st.session_state.sg_phase == "combo_result":
     combo_hof = []
     if score > 0:
         for item in combo_pool:
-        pass  # upgrade_mastery removed
             if result == "hof":
                 combo_hof.append(item.get("expr",""))
     st.session_state["_combo_hof_count"] = len(combo_hof)
