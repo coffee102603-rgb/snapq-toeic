@@ -1065,7 +1065,7 @@ elif st.session_state.p7_phase == "briefing":
     </div>''', unsafe_allow_html=True)
 
     # 지문 문장 + 저장 버튼
-    st.markdown('<div style="font-size:11px;color:#b4b2a9;margin:4px 0;">지문 문장 — 어려운 문장을 저장하세요</div>', unsafe_allow_html=True)
+    st.markdown('<div style="font-size:13px;font-weight:900;color:#00ffcc;text-shadow:0 0 10px #00ffcc;margin:8px 0;text-align:center;animation:none;">🔥 저장해! 오답전장에서 다시 만나자! 완전 내 것으로!</div>', unsafe_allow_html=True)
 
     import re as _re3
     _mark_style = "color:#008855;font-weight:900;text-decoration:underline;"
@@ -1083,7 +1083,7 @@ elif st.session_state.p7_phase == "briefing":
             if _ex.lower() in _hl.lower():
                 try: _hl = _re3.sub(f"(?i)({_re3.escape(_ex)})", f'<span style="{_mark_style}">\\1</span>', _hl)
                 except: pass
-        col1, col2 = st.columns([8, 1])
+        col1, col2 = st.columns([9, 2])
         with col1:
             if is_saved:
                 st.markdown(f'<div class="br-sent-saved"><div class="br-en-saved">{_hl}</div><div class="br-kr-saved">{sent_kr}</div></div>', unsafe_allow_html=True)
@@ -1091,7 +1091,7 @@ elif st.session_state.p7_phase == "briefing":
                 st.markdown(f'<div class="br-sent"><div class="br-en">{_hl}</div><div class="br-kr">{sent_kr}</div></div>', unsafe_allow_html=True)
         with col2:
             if not is_saved:
-                if st.button("📌", key=f"br_sv_{bi}_{si}", use_container_width=True):
+                if st.button("📌\n저장", key=f"br_sv_{bi}_{si}", use_container_width=True):
                     sent_data = dict(s); sent_data["sentences"] = [sent]; sent_data["kr"] = sent_kr
                     save_expressions(s.get("expressions", []), step_data=sent_data)
                     st.session_state[sent_key] = True; st.rerun()
