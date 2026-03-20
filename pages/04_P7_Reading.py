@@ -1086,20 +1086,31 @@ elif st.session_state.p7_phase == "briefing":
             if _ex.lower() in _hl.lower():
                 try: _hl = _re3.sub(f"(?i)({_re3.escape(_ex)})", f'<span style="{_mark_style}">\\1</span>', _hl)
                 except: pass
-        col1, col2 = st.columns([11, 1])
-        with col1:
-            if is_saved:
-                st.markdown(f'<div style="background:#0a2a0a;border:0.5px solid #c0dd97;border-radius:10px;padding:10px 12px;margin-bottom:6px;"><div style="font-size:16px;font-weight:700;color:#ffffff;line-height:1.6;">{_hl}</div><div style="font-size:13px;color:#99dd99;margin-top:4px;">{sent_kr}</div></div>', unsafe_allow_html=True)
-            else:
-                st.markdown(f'<div style="background:#1a1a2e;border:0.5px solid #444;border-radius:10px;padding:10px 12px;margin-bottom:6px;"><div style="font-size:16px;font-weight:700;color:#ffffff;line-height:1.6;">{_hl}</div><div style="font-size:13px;color:#cccccc;margin-top:4px;">{sent_kr}</div></div>', unsafe_allow_html=True)
-        with col2:
-            if not is_saved:
-                if st.button("저\n장", key=f"br_sv_{bi}_{si}", use_container_width=True):
-                    sent_data = dict(s); sent_data["sentences"] = [sent]; sent_data["kr"] = sent_kr
-                    save_expressions(s.get("expressions", []), step_data=sent_data)
-                    st.session_state[sent_key] = True; st.rerun()
-            else:
-                st.markdown('<div style="text-align:center;font-size:20px;padding:4px 0;">✅</div>', unsafe_allow_html=True)
+        _btn_id = f"savebtn_{bi}_{si}"
+        if is_saved:
+            st.markdown(f'''<div style="background:#0a2a0a;border:0.5px solid #44ff88;border-radius:10px;padding:10px 12px;margin-bottom:6px;">
+                <div style="font-size:16px;font-weight:700;color:#ffffff;line-height:1.6;">{_hl}</div>
+                <div style="font-size:13px;color:#99dd99;margin-top:4px;">{sent_kr}</div>
+                <div style="text-align:right;margin-top:6px;font-size:13px;color:#44ff88;font-weight:700;">✅ 저장완료!</div>
+            </div>''', unsafe_allow_html=True)
+        else:
+            st.markdown(f'''<div style="background:#1a1a2e;border:0.5px solid #444;border-radius:10px;padding:10px 12px;margin-bottom:6px;">
+                <div style="font-size:16px;font-weight:700;color:#ffffff;line-height:1.6;">{_hl}</div>
+                <div style="font-size:13px;color:#cccccc;margin-top:4px;">{sent_kr}</div>
+                <div style="text-align:right;margin-top:8px;">
+                    <span id="{_btn_id}" onclick="
+                        var btns=window.parent.document.querySelectorAll('button');
+                        for(var b of btns){{if(b.getAttribute('data-key')=='{sent_key}' || (b.innerText||b.textContent).trim()=='{sent_key}'){{b.click();break;}}}}
+                        var allBtns=window.parent.document.querySelectorAll('[data-testid=baseButton-secondary],[data-testid=baseButton-primary]');
+                        allBtns.forEach(function(b){{var t=(b.innerText||b.textContent||'').trim();if(t.includes('{bi}')&&t.includes('{si}'))b.click();}});
+                    " style="background:#1a3a6b;border:1.5px solid #4488ff;border-radius:8px;color:#88ccff;font-size:13px;font-weight:700;padding:5px 14px;cursor:pointer;display:inline-block;">📌 저장</span>
+                </div>
+            </div>''', unsafe_allow_html=True)
+            if st.button(f"save_{bi}_{si}", key=f"br_sv_{bi}_{si}", use_container_width=False):
+                sent_data = dict(s); sent_data["sentences"] = [sent]; sent_data["kr"] = sent_kr
+                save_expressions(s.get("expressions", []), step_data=sent_data)
+                st.session_state[sent_key] = True; st.rerun()
+        st.markdown('<style>div[data-testid="stBaseButton-secondary"] button{visibility:hidden!important;height:0!important;padding:0!important;margin:0!important;min-height:0!important;border:none!important;}</style>', unsafe_allow_html=True)
 
     st.markdown('<div style="border-top:0.5px solid #444;margin:10px 0;"></div>', unsafe_allow_html=True)
     b3, b4 = st.columns(2)
