@@ -638,8 +638,12 @@ elif st.session_state.sg_phase == "survival":
         else:
             st.session_state.sb_wrong_cnt = st.session_state.get("sb_wrong_cnt",0) + 1
             if st.session_state.sb_wrong_cnt >= 2:
-                answer_str = " / ".join(blank_order)
-                st.markdown(f'<div style="text-align:center;padding:1rem;background:#1a0a0a;border:2px solid #ff8844;border-radius:16px;margin:8px 0;"><div style="font-size:1.5rem;font-weight:900;color:#ff4444;">❌ 정답 공개!</div><div style="font-size:1.1rem;color:#ffcc88;font-weight:700;margin-top:6px;">✅ {answer_str}</div><div style="font-size:1.0rem;color:#88ffbb;margin-top:4px;">📖 {meaning}</div></div>',unsafe_allow_html=True)
+                # 정답 단어로 완성된 문장 만들기
+                correct_sent = blanked
+                for bw in blank_order:
+                    correct_sent = correct_sent.replace("[___]",f'<span style="background:#1a3a1a;border:2px solid #44ff88;border-radius:6px;padding:2px 8px;color:#44ff88;font-weight:900;margin:0 2px;">{bw}</span>',1)
+                st.markdown(f'<div style="background:linear-gradient(145deg,#1a1a2e,#0d1020);border:2px solid rgba(100,150,255,0.4);border-radius:16px;padding:1rem;margin:8px 0;font-size:1.1rem;line-height:2.2;">{correct_sent}</div>',unsafe_allow_html=True)
+                st.markdown(f'<div style="text-align:center;padding:1rem;background:#1a0a0a;border:2px solid #ff8844;border-radius:16px;margin:8px 0;"><div style="font-size:1.5rem;font-weight:900;color:#ff8844;">❌ 정답 & 해석 공개!</div><div style="font-size:1.1rem;color:#88ffbb;font-weight:700;margin-top:8px;">📖 {meaning}</div></div>',unsafe_allow_html=True)
                 if st.button("▶ 다음 문장!",key="sb_show_next",type="primary",use_container_width=True):
                     st.session_state.sb_idx=idx+1; st.session_state.sb_selected=[]; st.session_state.sb_done=False; st.session_state.sb_wrong_cnt=0; st.rerun()
             else:
