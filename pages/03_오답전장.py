@@ -693,7 +693,8 @@ elif st.session_state.sg_phase == "survival":
 
     # ── 영어 빈칸 문장 ──
     wrong_cnt_now=st.session_state.get("sb_wrong_cnt",0)
-    if not done or (done and wrong_cnt_now==1):
+    if not done:
+        # 풀고 있는 중 - 선택한 단어 표시
         filled_parts=blanked.split("[___]")
         sentence_html=""
         for i,part in enumerate(filled_parts):
@@ -704,6 +705,24 @@ elif st.session_state.sg_phase == "survival":
                 else:
                     sentence_html+='<span style="background:#0a0a1a;border:2px dashed #4488ff;border-radius:8px;padding:2px 18px;color:#333;margin:0 3px;">_____</span>'
         st.markdown(f'''<div style="background:#1a1a2e;border:1.5px solid #4488ff;border-radius:12px;padding:12px 14px;margin-bottom:8px;font-size:1.05rem;font-weight:600;line-height:2.2;">{sentence_html}</div>''', unsafe_allow_html=True)
+    elif done and wrong_cnt_now>=2:
+        # 2번 틀림 - 정답으로 채운 문장 표시
+        result_html=blanked
+        for bw in blank_order:
+            result_html=result_html.replace("[___]",f'<span style="background:#0a2a0a;border:2px solid #44ff88;border-radius:8px;padding:2px 10px;color:#44ff88;font-weight:900;margin:0 3px;">{bw}</span>',1)
+        st.markdown(f'''<div style="background:#1a1a2e;border:2px solid #44ff88;border-radius:12px;padding:12px 14px;margin-bottom:8px;font-size:1.05rem;font-weight:600;line-height:2.2;color:#ddddff;">{result_html}</div>''', unsafe_allow_html=True)
+    elif done and wrong_cnt_now==1:
+        # 1번 틀림 - 선택한 답 그대로 표시 (다시 도전 전 확인용)
+        filled_parts=blanked.split("[___]")
+        sentence_html=""
+        for i,part in enumerate(filled_parts):
+            sentence_html+=f'<span style="color:#ddddff;">{part}</span>'
+            if i<len(filled_parts)-1:
+                if i<len(selected):
+                    sentence_html+=f'<span style="background:#3a0a0a;border:2px solid #ff4444;border-radius:8px;padding:2px 10px;color:#ff8888;font-weight:700;margin:0 3px;">{selected[i]}</span>'
+                else:
+                    sentence_html+='<span style="background:#0a0a1a;border:2px dashed #ff4444;border-radius:8px;padding:2px 18px;color:#333;margin:0 3px;">_____</span>'
+        st.markdown(f'''<div style="background:#1a1a2e;border:1.5px solid #ff4444;border-radius:12px;padding:12px 14px;margin-bottom:8px;font-size:1.05rem;font-weight:600;line-height:2.2;">{sentence_html}</div>''', unsafe_allow_html=True)
 
     if "sb_wrong_cnt" not in st.session_state: st.session_state.sb_wrong_cnt=0
     if "sb_wrong_counted" not in st.session_state: st.session_state.sb_wrong_counted=False
