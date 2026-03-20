@@ -1086,34 +1086,20 @@ elif st.session_state.p7_phase == "briefing":
             if _ex.lower() in _hl.lower():
                 try: _hl = _re3.sub(f"(?i)({_re3.escape(_ex)})", f'<span style="{_mark_style}">\\1</span>', _hl)
                 except: pass
-        save_btn_key = f"br_sv_{bi}_{si}"
-        if not is_saved:
-            card_html = f'''<div style="display:flex;align-items:stretch;gap:6px;margin-bottom:8px;">
-                <div style="flex:1;background:#1a1a2e;border:0.5px solid #444;border-radius:10px;padding:10px 12px;">
-                    <div style="font-size:16px;font-weight:700;color:#ffffff;line-height:1.6;">{_hl}</div>
-                    <div style="font-size:13px;color:#cccccc;margin-top:4px;">{sent_kr}</div>
-                </div>
-                <div style="width:36px;flex-shrink:0;">
-                    <button onclick="window.parent.document.querySelectorAll(\'[data-testid=stButton]\').forEach(b=>{{if(b.innerText.includes(\'{sent_key}\'))b.click()}})" 
-                        style="width:36px;height:100%;min-height:80px;background:#1a3a6b;border:1.5px solid #4488ff;border-radius:8px;color:#88aaff;font-size:13px;font-weight:700;cursor:pointer;line-height:1.8;writing-mode:vertical-rl;text-orientation:mixed;letter-spacing:2px;">저장</button>
-                </div>
-            </div>'''
-            st.markdown(card_html, unsafe_allow_html=True)
-            if st.button(sent_key, key=f"br_sv_{bi}_{si}", use_container_width=False):
-                sent_data = dict(s); sent_data["sentences"] = [sent]; sent_data["kr"] = sent_kr
-                save_expressions(s.get("expressions", []), step_data=sent_data)
-                st.session_state[sent_key] = True; st.rerun()
-            st.markdown('<style>div[data-testid="stButton"]:has(button p) button p{display:none!important;} div[data-testid="stButton"] button{display:none!important;}</style>', unsafe_allow_html=True)
-        else:
-            st.markdown(f'''<div style="display:flex;align-items:stretch;gap:6px;margin-bottom:8px;">
-                <div style="flex:1;background:#0a2a0a;border:0.5px solid #c0dd97;border-radius:10px;padding:10px 12px;">
-                    <div style="font-size:16px;font-weight:700;color:#ffffff;line-height:1.6;">{_hl}</div>
-                    <div style="font-size:13px;color:#99dd99;margin-top:4px;">{sent_kr}</div>
-                </div>
-                <div style="width:36px;flex-shrink:0;display:flex;align-items:center;justify-content:center;">
-                    <div style="width:36px;height:80px;background:#0a2a0a;border:1.5px solid #44ff88;border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:18px;">✅</div>
-                </div>
-            </div>''', unsafe_allow_html=True)
+        col1, col2 = st.columns([11, 1])
+        with col1:
+            if is_saved:
+                st.markdown(f'<div style="background:#0a2a0a;border:0.5px solid #c0dd97;border-radius:10px;padding:10px 12px;margin-bottom:6px;"><div style="font-size:16px;font-weight:700;color:#ffffff;line-height:1.6;">{_hl}</div><div style="font-size:13px;color:#99dd99;margin-top:4px;">{sent_kr}</div></div>', unsafe_allow_html=True)
+            else:
+                st.markdown(f'<div style="background:#1a1a2e;border:0.5px solid #444;border-radius:10px;padding:10px 12px;margin-bottom:6px;"><div style="font-size:16px;font-weight:700;color:#ffffff;line-height:1.6;">{_hl}</div><div style="font-size:13px;color:#cccccc;margin-top:4px;">{sent_kr}</div></div>', unsafe_allow_html=True)
+        with col2:
+            if not is_saved:
+                if st.button("저\n장", key=f"br_sv_{bi}_{si}", use_container_width=True):
+                    sent_data = dict(s); sent_data["sentences"] = [sent]; sent_data["kr"] = sent_kr
+                    save_expressions(s.get("expressions", []), step_data=sent_data)
+                    st.session_state[sent_key] = True; st.rerun()
+            else:
+                st.markdown('<div style="text-align:center;font-size:20px;padding:4px 0;">✅</div>', unsafe_allow_html=True)
 
     st.markdown('<div style="border-top:0.5px solid #444;margin:10px 0;"></div>', unsafe_allow_html=True)
     b3, b4 = st.columns(2)
