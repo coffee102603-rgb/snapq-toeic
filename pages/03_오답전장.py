@@ -1137,9 +1137,9 @@ if st.session_state.get("rv_mode") == "p7_vault":
         for idx, item in enumerate(voca_list):
             expr = item.get("expr", "")
             meaning = item.get("meaning", "")
-            col1, col2 = st.columns([4, 1])
+            col1, col2 = st.columns([5, 1])
             with col1:
-                st.markdown(f'<div style="background:#111;border:1px solid #333;border-radius:8px;padding:10px 14px;margin:4px 0;"><span style="color:#44ccff;font-weight:700;font-size:1.0rem;">{expr}</span><span style="color:#aaa;font-size:0.9rem;margin-left:12px;">{meaning}</span></div>', unsafe_allow_html=True)
+                st.markdown(f'<div style="background:#111;border:1px solid #333;border-radius:8px;padding:10px 14px;margin:4px 0;"><div style="color:#44ccff;font-weight:700;font-size:1.0rem;">{expr}</div><div style="color:#aaa;font-size:0.9rem;margin-top:3px;">{meaning}</div></div>', unsafe_allow_html=True)
             with col2:
                 if st.button("🗑", key=f"del_v_{idx}", use_container_width=True):
                     deleted = voca_list.pop(idx)
