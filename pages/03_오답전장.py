@@ -691,17 +691,18 @@ elif st.session_state.sg_phase == "survival":
 
     st.markdown('<div style="text-align:center;color:#888;font-size:0.8rem;margin:3px 0;">↓ 영어 문장 빈칸을 채워라!</div>', unsafe_allow_html=True)
 
-    # ── 영어 빈칸 문장 (아래) ──
-    filled_parts=blanked.split("[___]")
-    sentence_html=""
-    for i,part in enumerate(filled_parts):
-        sentence_html+=f'<span style="color:#ddddff;">{part}</span>'
-        if i<len(filled_parts)-1:
-            if i<len(selected):
-                sentence_html+=f'<span style="background:#0a2a0a;border:2px solid #44ff88;border-radius:8px;padding:2px 10px;color:#44ff88;font-weight:700;margin:0 3px;">{selected[i]}</span>'
-            else:
-                sentence_html+='<span style="background:#0a0a1a;border:2px dashed #4488ff;border-radius:8px;padding:2px 18px;color:#333;margin:0 3px;">_____</span>'
-    st.markdown(f'''<div style="background:#1a1a2e;border:1.5px solid #4488ff;border-radius:12px;padding:12px 14px;margin-bottom:8px;font-size:1.05rem;font-weight:600;line-height:2.2;">{sentence_html}</div>''', unsafe_allow_html=True)
+    # ── 영어 빈칸 문장 (done=False일 때만) ──
+    if not done:
+        filled_parts=blanked.split("[___]")
+        sentence_html=""
+        for i,part in enumerate(filled_parts):
+            sentence_html+=f'<span style="color:#ddddff;">{part}</span>'
+            if i<len(filled_parts)-1:
+                if i<len(selected):
+                    sentence_html+=f'<span style="background:#0a2a0a;border:2px solid #44ff88;border-radius:8px;padding:2px 10px;color:#44ff88;font-weight:700;margin:0 3px;">{selected[i]}</span>'
+                else:
+                    sentence_html+='<span style="background:#0a0a1a;border:2px dashed #4488ff;border-radius:8px;padding:2px 18px;color:#333;margin:0 3px;">_____</span>'
+        st.markdown(f'''<div style="background:#1a1a2e;border:1.5px solid #4488ff;border-radius:12px;padding:12px 14px;margin-bottom:8px;font-size:1.05rem;font-weight:600;line-height:2.2;">{sentence_html}</div>''', unsafe_allow_html=True)
 
     if "sb_wrong_cnt" not in st.session_state: st.session_state.sb_wrong_cnt=0
     if done:
