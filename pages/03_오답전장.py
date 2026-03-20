@@ -1134,23 +1134,39 @@ if st.session_state.get("rv_mode") == "p7_vault":
     if not voca_list:
         st.markdown('<div style="text-align:center;color:#888;font-size:1.1rem;padding:2rem;">저장된 단어가 없습니다!</div>', unsafe_allow_html=True)
     else:
+        st.markdown('''<style>
+        .vault-row{display:flex;align-items:stretch;gap:6px;margin:4px 0;}
+        .vault-card{flex:1;background:#111;border:1px solid #333;border-radius:8px;padding:10px 14px;}
+        .vault-card .expr{color:#44ccff;font-weight:700;font-size:1.0rem;}
+        .vault-card .meaning{color:#aaa;font-size:0.9rem;margin-top:3px;}
+        .vault-del-wrap{width:52px;min-width:52px;}
+        div[data-testid="stButton"].vault-del > button{
+            width:52px!important;min-width:52px!important;max-width:52px!important;
+            height:100%!important;min-height:52px!important;
+            padding:0!important;font-size:1.3rem!important;
+            background:#1a0800!important;border:1px solid #ff4400!important;
+            border-radius:8px!important;
+        }
+        </style>''', unsafe_allow_html=True)
         for idx, item in enumerate(voca_list):
             expr = item.get("expr", "")
             meaning = item.get("meaning", "")
-            col1, col2 = st.columns([9, 1])
-            with col1:
-                st.markdown(f'<div style="background:#111;border:1px solid #333;border-radius:8px;padding:10px 14px;margin:4px 0;"><div style="color:#44ccff;font-weight:700;font-size:1.0rem;">{expr}</div><div style="color:#aaa;font-size:0.9rem;margin-top:3px;">{meaning}</div></div>', unsafe_allow_html=True)
-            with col2:
-                if st.button("🗑", key=f"del_v_{idx}", use_container_width=True):
-                    deleted = voca_list.pop(idx)
-                    deleted["deleted_at"] = __import__("time").time()
-                    deleted["days_kept"] = round((deleted["deleted_at"] - deleted.get("first_saved_at", deleted["deleted_at"])) / 86400, 1)
-                    deleted_log = storage2.get("deleted_expressions", [])
-                    deleted_log.append(deleted)
-                    storage2["deleted_expressions"] = deleted_log
-                    storage2["saved_expressions"] = voca_list
-                    save_storage(storage2)
-                    st.rerun()
+            st.markdown(f'''<div class="vault-row">
+                <div class="vault-card">
+                    <div class="expr">{expr}</div>
+                    <div class="meaning">{meaning}</div>
+                </div>
+            </div>''', unsafe_allow_html=True)
+            if st.button("🗑", key=f"del_v_{idx}", use_container_width=False):
+                deleted = voca_list.pop(idx)
+                deleted["deleted_at"] = __import__("time").time()
+                deleted["days_kept"] = round((deleted["deleted_at"] - deleted.get("first_saved_at", deleted["deleted_at"])) / 86400, 1)
+                deleted_log = storage2.get("deleted_expressions", [])
+                deleted_log.append(deleted)
+                storage2["deleted_expressions"] = deleted_log
+                storage2["saved_expressions"] = voca_list
+                save_storage(storage2)
+                st.rerun()
 
     st.markdown("<br>", unsafe_allow_html=True)
     if st.button("↩ 돌아가기", key="vault_back", use_container_width=True):
