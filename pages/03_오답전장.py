@@ -324,16 +324,6 @@ if st.session_state.sg_phase == "lobby":
             if st.button("📖\nP7 독해 약점\n단어·해석·패러프라이징\n이번엔 내 것으로 만든다!", key="rv_p7", type="secondary", use_container_width=True):
                 st.session_state.rv_battle = "p7"; st.rerun()
 
-    # ━━━ 명예의 전당 + 숙련도 현황 ━━━
-    if hall_of_fame:
-        hof_count = len(hall_of_fame)
-        st.markdown(f'<div style="background:linear-gradient(135deg,#1a1a00,#2a2000);border:2px solid #ffcc00;border-radius:16px;padding:12px 16px;margin:8px 0;text-align:center;"><div style="font-size:1.6rem;font-weight:900;color:#ffcc00;">🏆 명예의 전당</div><div style="font-size:1.1rem;color:#ffdd88;font-weight:700;margin-top:4px;">완전정복 표현 {hof_count}개 · 진짜 내 것이 됐다!</div><div style="font-size:0.85rem;color:#aaa;margin-top:2px;">숙련도 3 달성 → 여기서 영원히 빛난다 ⭐</div></div>', unsafe_allow_html=True)
-    if voca_data:
-        m0 = sum(1 for v in voca_data if v.get("mastery",0)==0)
-        m1 = sum(1 for v in voca_data if v.get("mastery",0)==1)
-        m2 = sum(1 for v in voca_data if v.get("mastery",0)==2)
-        st.markdown(f'<div style="background:#111;border:1px solid #333;border-radius:10px;padding:8px 12px;margin:4px 0;text-align:center;font-size:0.9rem;font-weight:700;color:#aaa;">🔴 훈련중 {m0}개 | 🟡 익숙함 {m1}개 | 🟠 거의완성 {m2}개 | 🏆 명예의전당 {len(hall_of_fame)}개</div>', unsafe_allow_html=True)
-
     # ━━━ 2막 P5: 전투 방식 선택 ━━━
     elif _rv_battle == "p5" and not _rv_mode:
         st.markdown('''<div class="rv-confirmed"><span>⚔️ P5 전장 귀환!</span></div>''', unsafe_allow_html=True)
@@ -357,6 +347,14 @@ if st.session_state.sg_phase == "lobby":
     # ━━━ 2막 P7: 전투 방식 선택 ━━━
     elif _rv_battle == "p7" and not _rv_mode:
         st.markdown('''<div class="rv-confirmed"><span>📖 P7 전장 귀환!</span></div>''', unsafe_allow_html=True)
+        if hall_of_fame:
+            hof_count = len(hall_of_fame)
+            st.markdown(f'<div style="background:linear-gradient(135deg,#1a1a00,#2a2000);border:2px solid #ffcc00;border-radius:16px;padding:10px 14px;margin:6px 0;text-align:center;"><div style="font-size:1.4rem;font-weight:900;color:#ffcc00;">🏆 명예의 전당 {hof_count}개</div><div style="font-size:0.85rem;color:#aaa;margin-top:2px;">숙련도 3 달성 완전정복 표현들 ⭐</div></div>', unsafe_allow_html=True)
+        if voca_data:
+            m0 = sum(1 for v in voca_data if v.get("mastery",0)==0)
+            m1 = sum(1 for v in voca_data if v.get("mastery",0)==1)
+            m2 = sum(1 for v in voca_data if v.get("mastery",0)==2)
+            st.markdown(f'<div style="background:#111;border:1px solid #333;border-radius:10px;padding:8px 12px;margin:4px 0;text-align:center;font-size:0.9rem;font-weight:700;color:#aaa;">🔴 훈련중 {m0}개 | 🟡 익숙함 {m1}개 | 🟠 거의완성 {m2}개 | 🏆 명예의전당 {len(hall_of_fame)}개</div>', unsafe_allow_html=True)
     
         if st.button(f"🧠  P7 어휘 학습모드\n단어를 완전히 내 몸에 새겨라! ({len(voca_data)}단어)", key="rv_p7s", type="secondary", use_container_width=True):
             if len(voca_data) >= 3:
