@@ -691,8 +691,9 @@ elif st.session_state.sg_phase == "survival":
 
     st.markdown('<div style="text-align:center;color:#888;font-size:0.8rem;margin:3px 0;">↓ 영어 문장 빈칸을 채워라!</div>', unsafe_allow_html=True)
 
-    # ── 영어 빈칸 문장 (done=False일 때만) ──
-    if not done:
+    # ── 영어 빈칸 문장 ──
+    wrong_cnt_now=st.session_state.get("sb_wrong_cnt",0)
+    if not done or (done and wrong_cnt_now==1):
         filled_parts=blanked.split("[___]")
         sentence_html=""
         for i,part in enumerate(filled_parts):
