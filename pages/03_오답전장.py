@@ -369,8 +369,8 @@ if st.session_state.sg_phase == "lobby":
         if st.button(f"📦  단어 저장고 · 무기 관리\n보유 {total_words}개 · 불필요한 무기는 지워라!", key="rv_vault", use_container_width=True):
             st.session_state.rv_mode="p7_vault"; st.rerun()
     # ━━━ 항상 고정 네비게이션 ━━━
-    if st.session_state.get("rv_mode") == "p7_vault": st.stop()
-    st.markdown('<div style="font-size:0.7rem;color:#331100;text-align:center;letter-spacing:3px;margin-top:16px;padding-top:12px;border-top:1px solid #1a0800;">N A V I G A T E</div>', unsafe_allow_html=True)
+    if st.session_state.get("rv_mode") != "p7_vault":
+     st.markdown('<div style="font-size:0.7rem;color:#331100;text-align:center;letter-spacing:3px;margin-top:16px;padding-top:12px;border-top:1px solid #1a0800;">N A V I G A T E</div>', unsafe_allow_html=True)
     mn1, mn2, mn3 = st.columns(3)
     with mn1:
         if st.button("⚔️ P5전장", key="sg_nav1", type="secondary", use_container_width=True):
