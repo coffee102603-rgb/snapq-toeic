@@ -310,7 +310,8 @@ if st.session_state.sg_phase == "lobby":
 
 
 
-    st.markdown('<div style="text-align:center;font-size:1.1rem;font-weight:900;color:#ffcc00;letter-spacing:1px;margin:4px 0 10px 0;">👇 전장을 선택하고 돌격하라!</div>', unsafe_allow_html=True)
+    if st.session_state.get("rv_mode") != "p7_vault":
+        st.markdown('<div style="text-align:center;font-size:1.1rem;font-weight:900;color:#ffcc00;letter-spacing:1px;margin:4px 0 10px 0;">👇 전장을 선택하고 돌격하라!</div>', unsafe_allow_html=True)
     _rv_battle = st.session_state.get("rv_battle", None)   # "p5" or "p7"
     _rv_mode = st.session_state.get("rv_mode", None)       # "p5s","p5e","p7s","p7e"
 
