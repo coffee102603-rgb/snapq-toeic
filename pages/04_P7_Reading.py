@@ -710,23 +710,6 @@ if st.session_state.p7_phase == "lobby":
                 전사여... <span class="go">준비됐다면</span><br>지금 바로 <span class="gold">시작하라!!!</span>
             </div>
         </div>''', unsafe_allow_html=True)
-        st.markdown('''
-<style>
-@keyframes p7typing1{0%{width:0}100%{width:100%}}
-@keyframes p7typing2{0%,38%{width:0}100%{width:100%}}
-@keyframes p7typing3{0%,68%{width:0}100%{width:100%}}
-@keyframes p7blink{0%,100%{border-color:transparent}50%{border-color:#cc44ff}}
-.p7warn-box{background:rgba(180,0,255,0.07);border:1.5px solid rgba(180,0,255,0.45);border-radius:12px;padding:14px 18px;margin:10px 0 10px 0;text-align:center;}
-.p7warn-line1{font-family:"Orbitron",monospace;font-weight:700;overflow:hidden;white-space:nowrap;display:block;margin:0 auto;font-size:1.0rem;color:#cc44ff;text-shadow:0 0 8px rgba(180,0,255,0.7);width:0;animation:p7typing1 0.7s steps(8,end) 0.2s forwards,p7blink 0.6s step-end 0.2s 2;letter-spacing:2px;}
-.p7warn-line2{font-family:"Orbitron",monospace;font-weight:700;overflow:hidden;white-space:nowrap;display:block;margin:0 auto;font-size:1.15rem;color:#ff4488;text-shadow:0 0 8px rgba(255,68,136,0.7);width:0;animation:p7typing2 0.9s steps(12,end) 1.1s forwards,p7blink 0.6s step-end 1.1s 2;letter-spacing:1px;margin-top:4px;}
-.p7warn-line3{font-family:"Orbitron",monospace;font-weight:700;overflow:hidden;white-space:nowrap;display:block;margin:0 auto;font-size:1.0rem;color:#ff8844;text-shadow:0 0 8px rgba(255,136,68,0.6);width:0;animation:p7typing3 0.8s steps(11,end) 2.2s forwards,p7blink 0.6s step-end 2.2s 2;letter-spacing:1px;margin-top:4px;}
-</style>
-<div class="p7warn-box">
-<span class="p7warn-line1">⚠️ 경고한다.</span>
-<span class="p7warn-line2">이 전장엔 실수가 없다.</span>
-<span class="p7warn-line3">하나라도 틀리면... 끝이다.</span>
-</div>
-''', unsafe_allow_html=True)
         if st.button(f"▶  {_cat_name} 전투 시작!", key="p7go", type="primary", use_container_width=True):
             st.session_state.p7_data = PASSAGES[cat]
             st.session_state.p7_step = 0
@@ -1301,7 +1284,6 @@ elif st.session_state.p7_phase == "briefing":
         if st.button("🏠 본부", key="p7lobby", type="secondary", use_container_width=True):
             for k in D: st.session_state[k] = D[k]
             st.switch_page("main_hub.py")
-
 
 
 
