@@ -1022,16 +1022,16 @@ elif st.session_state.p7_phase == "briefing":
     if bi >= num_steps: bi = num_steps - 1
 
     st.markdown("""<style>
-    .br-card{background:#ffffff;border:0.5px solid #d3d1c7;border-radius:12px;padding:10px 12px;margin-bottom:8px;}
-    .br-q{font-size:13px;font-weight:500;color:#185FA5;margin-bottom:3px;}
-    .br-qkr{font-size:12px;color:#888780;margin-bottom:8px;}
+    .br-card{background:#1a1a2e;border:0.5px solid #4444aa;border-radius:12px;padding:10px 12px;margin-bottom:8px;}
+    .br-q{font-size:13px;font-weight:700;color:#88aaff;margin-bottom:3px;}
+    .br-qkr{font-size:12px;color:#aaaaaa;margin-bottom:8px;}
     .br-ans{background:#eaf3de;border-radius:8px;padding:6px 10px;}
     .br-ans-en{font-size:13px;font-weight:500;color:#3b6d11;}
     .br-ans-kr{font-size:11px;color:#639922;margin-top:2px;}
-    .br-sent{border:0.5px solid #d3d1c7;border-radius:10px;padding:9px 10px;margin-bottom:6px;background:#ffffff;}
+    .br-sent{border:0.5px solid #444;border-radius:10px;padding:9px 10px;margin-bottom:6px;background:#1a1a2e;}
     .br-sent-saved{border:0.5px solid #c0dd97;border-radius:10px;padding:9px 10px;margin-bottom:6px;background:#eaf3de;}
-    .br-en{font-size:13px;font-weight:500;color:#2c2c2a;line-height:1.5;}
-    .br-kr{font-size:11px;color:#5f5e5a;margin-top:3px;}
+    .br-en{font-size:13px;font-weight:700;color:#ffffff;line-height:1.5;}
+    .br-kr{font-size:11px;color:#cccccc;margin-top:3px;}
     .br-en-saved{font-size:13px;font-weight:500;color:#27500a;line-height:1.5;}
     .br-kr-saved{font-size:11px;color:#3b6d11;margin-top:3px;}
     </style>""", unsafe_allow_html=True)
@@ -1083,7 +1083,7 @@ elif st.session_state.p7_phase == "briefing":
             if _ex.lower() in _hl.lower():
                 try: _hl = _re3.sub(f"(?i)({_re3.escape(_ex)})", f'<span style="{_mark_style}">\\1</span>', _hl)
                 except: pass
-        col1, col2 = st.columns([6, 1])
+        col1, col2 = st.columns([8, 1])
         with col1:
             if is_saved:
                 st.markdown(f'<div class="br-sent-saved"><div class="br-en-saved">{_hl}</div><div class="br-kr-saved">{sent_kr}</div></div>', unsafe_allow_html=True)
@@ -1098,14 +1098,8 @@ elif st.session_state.p7_phase == "briefing":
             else:
                 st.markdown('<div style="text-align:center;font-size:16px;padding:8px 0;">✅</div>', unsafe_allow_html=True)
 
-    st.markdown('<div style="border-top:0.5px solid #d3d1c7;margin:10px 0;"></div>', unsafe_allow_html=True)
-    b1, b2, b3, b4 = st.columns(4)
-    with b1:
-        if st.button("◀ 이전", key="p7brp", disabled=bi<=0, use_container_width=True):
-            st.session_state.p7_br_idx = bi-1; st.rerun()
-    with b2:
-        if st.button("▶ 다음", key="p7brn", disabled=bi>=num_steps-1, use_container_width=True):
-            st.session_state.p7_br_idx = bi+1; st.rerun()
+    st.markdown('<div style="border-top:0.5px solid #444;margin:10px 0;"></div>', unsafe_allow_html=True)
+    b3, b4 = st.columns(2)
     with b3:
         if st.button("🔥 오답전장", key="p7store", use_container_width=True):
             st.switch_page("pages/03_오답전장.py")
