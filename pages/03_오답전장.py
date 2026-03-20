@@ -238,6 +238,7 @@ if "saved_expressions" in st.session_state:
     voca_data = st.session_state["saved_expressions"]
 else:
     voca_data = storage.get("saved_expressions",[])
+hall_of_fame = storage.get("hall_of_fame", [])
 
 # ════════════════════════════════
 # PHASE: LOBBY (리모컨)
@@ -322,6 +323,16 @@ if st.session_state.sg_phase == "lobby":
         with c2:
             if st.button("📖\nP7 독해 약점\n단어·해석·패러프라이징\n이번엔 내 것으로 만든다!", key="rv_p7", type="secondary", use_container_width=True):
                 st.session_state.rv_battle = "p7"; st.rerun()
+
+    # ━━━ 명예의 전당 + 숙련도 현황 ━━━
+    if hall_of_fame:
+        hof_count = len(hall_of_fame)
+        st.markdown(f'<div style="background:linear-gradient(135deg,#1a1a00,#2a2000);border:2px solid #ffcc00;border-radius:16px;padding:12px 16px;margin:8px 0;text-align:center;"><div style="font-size:1.6rem;font-weight:900;color:#ffcc00;">🏆 명예의 전당</div><div style="font-size:1.1rem;color:#ffdd88;font-weight:700;margin-top:4px;">완전정복 표현 {hof_count}개 · 진짜 내 것이 됐다!</div><div style="font-size:0.85rem;color:#aaa;margin-top:2px;">숙련도 3 달성 → 여기서 영원히 빛난다 ⭐</div></div>', unsafe_allow_html=True)
+    if voca_data:
+        m0 = sum(1 for v in voca_data if v.get("mastery",0)==0)
+        m1 = sum(1 for v in voca_data if v.get("mastery",0)==1)
+        m2 = sum(1 for v in voca_data if v.get("mastery",0)==2)
+        st.markdown(f'<div style="background:#111;border:1px solid #333;border-radius:10px;padding:8px 12px;margin:4px 0;text-align:center;font-size:0.9rem;font-weight:700;color:#aaa;">🔴 훈련중 {m0}개 | 🟡 익숙함 {m1}개 | 🟠 거의완성 {m2}개 | 🏆 명예의전당 {len(hall_of_fame)}개</div>', unsafe_allow_html=True)
 
     # ━━━ 2막 P5: 전투 방식 선택 ━━━
     elif _rv_battle == "p5" and not _rv_mode:
@@ -908,9 +919,17 @@ elif st.session_state.sg_phase == "survival_result":
     cleared = wave > 4
 
     if cleared and ok_cnt == total_answered:
-        st.markdown('''<div style="text-align:center;padding:1.5rem;">
+        sv_pool = st.session_state.get("sg_sv_pool", [])
+        hof_new = []
+        for item in sv_pool:
+            result = upgrade_mastery(item.get("expr",""), storage)
+            if result == "hof":
+                hof_new.append(item.get("expr",""))
+        hof_msg = f'<div style="font-size:1.0rem;color:#ffcc00;font-weight:800;margin-top:6px;">🏆 {len(hof_new)}개 표현 명예의 전당 입성!</div>' if hof_new else ""
+        st.markdown(f'''<div style="text-align:center;padding:1.5rem;">
             <div style="font-size:3.5rem;font-weight:900;color:#ffcc00;text-shadow:0 0 30px #ffaa00;">🏆 완전정복! 🏆</div>
-            <div style="font-size:1.5rem;color:#ffdd44;font-weight:800;margin-top:8px;">4전 전부 완벽 정답! 진짜 내 것이 됐다!</div>
+            <div style="font-size:1.5rem;color:#ffdd44;font-weight:800;margin-top:8px;">4전 전부 완벽 정답! 숙련도 +1 상승!</div>
+            {hof_msg}
         </div>''', unsafe_allow_html=True)
     elif cleared:
         st.markdown(f'''<div style="text-align:center;padding:1.5rem;">
@@ -1118,6 +1137,14 @@ elif st.session_state.sg_phase == "combo_result":
     if new_record:
         storage["combo_best"] = score
         save_storage(storage)
+    combo_pool = st.session_state.get("sg_combo_pool", [])
+    combo_hof = []
+    if score > 0:
+        for item in combo_pool:
+            result = upgrade_mastery(item.get("expr",""), storage)
+            if result == "hof":
+                combo_hof.append(item.get("expr",""))
+    st.session_state["_combo_hof_count"] = len(combo_hof)
 
     if new_record:
         st.markdown(f'''<div style="text-align:center;padding:1.5rem;">
@@ -1150,6 +1177,9 @@ elif st.session_state.sg_phase == "combo_result":
     with c3:
         if st.button("🔥 오답전장으로\\n귀환", key="cb_back", type="secondary", use_container_width=True):
             st.session_state.sg_phase = "lobby"; st.session_state.rv_battle = None; st.session_state.rv_mode = None; st.rerun()
+
+
+
 
 
 
