@@ -703,27 +703,51 @@ elif st.session_state.sg_phase == "survival":
                 sentence_html+='<span style="background:#0a0a1a;border:2px dashed #4488ff;border-radius:8px;padding:2px 18px;color:#333;margin:0 3px;">_____</span>'
     st.markdown(f'''<div style="background:#1a1a2e;border:1.5px solid #4488ff;border-radius:12px;padding:12px 14px;margin-bottom:8px;font-size:1.05rem;font-weight:600;line-height:2.2;">{sentence_html}</div>''', unsafe_allow_html=True)
 
+    if "sb_wrong_cnt" not in st.session_state: st.session_state.sb_wrong_cnt=0
     if done:
-        sel_lower=[s.lower() for s in selected]
-        ord_lower=[b.lower() for b in blank_order]
-        correct=(sel_lower==ord_lower)
+        sel_sorted=sorted([s.lower() for s in selected])
+        ord_sorted=sorted([b.lower() for b in blank_order])
+        correct=(sel_sorted==ord_sorted)
+        wrong_cnt=st.session_state.sb_wrong_cnt
         if correct:
-            st.markdown('''<div style="background:#0a2a0a;border:1.5px solid #44ff88;border-radius:12px;padding:10px;text-align:center;">
-                <div style="font-size:1.2rem;font-weight:800;color:#44ff88;">✅ 완벽해!</div>
+            st.markdown('''<div style="background:#0a2a0a;border:2px solid #44ff88;border-radius:14px;padding:14px;text-align:center;margin-bottom:8px;">
+                <div style="font-size:2rem;">🎯</div>
+                <div style="font-size:1.3rem;font-weight:900;color:#44ff88;margin-top:4px;">완벽해! 바로 이거야!</div>
+                <div style="font-size:0.9rem;color:#88ddaa;margin-top:4px;">이 문장, 이제 완전히 네 것!</div>
             </div>''', unsafe_allow_html=True)
+            if st.button("▶ 다음 문장!",key="sb_next",type="primary",use_container_width=True):
+                st.session_state.sb_idx=idx+1; st.session_state.sb_wrong_cnt=0
+                for k in ["sb_selected","sb_done","sb_blanked","sb_blank_order","sb_blank_words"]:
+                    if k in st.session_state: del st.session_state[k]
+                st.rerun()
         else:
-            result_sent=blanked
-            for bw in blank_order:
-                result_sent=result_sent.replace("[___]",f'<span style="background:#0a2a0a;border:2px solid #44ff88;border-radius:6px;padding:2px 8px;color:#44ff88;font-weight:700;">{bw}</span>',1)
-            st.markdown(f'''<div style="background:#1a0808;border:1.5px solid #ff4444;border-radius:12px;padding:10px 12px;margin-bottom:6px;">
-                <div style="font-size:0.85rem;font-weight:700;color:#ff6666;margin-bottom:6px;">❌ 정답은 이거야!</div>
-                <div style="font-size:1.0rem;font-weight:600;line-height:2.0;">{result_sent}</div>
-            </div>''', unsafe_allow_html=True)
-        if st.button("▶ 다음 문장!",key="sb_next",type="primary",use_container_width=True):
-            st.session_state.sb_idx=idx+1
-            for k in ["sb_selected","sb_done","sb_blanked","sb_blank_order","sb_blank_words"]:
-                if k in st.session_state: del st.session_state[k]
-            st.rerun()
+            st.session_state.sb_wrong_cnt=wrong_cnt+1
+            wrong_cnt=st.session_state.sb_wrong_cnt
+            if wrong_cnt==1:
+                st.markdown('''<div style="background:#1a0808;border:2px solid #ff6644;border-radius:14px;padding:12px;text-align:center;margin-bottom:8px;">
+                    <div style="font-size:1.5rem;">😤</div>
+                    <div style="font-size:1.1rem;font-weight:800;color:#ff8866;margin-top:4px;">한 번 더! 할 수 있어!</div>
+                    <div style="font-size:0.85rem;color:#ffaa88;margin-top:3px;">다시 한글 보고 순서대로!</div>
+                </div>''', unsafe_allow_html=True)
+                if st.button("🔄 다시 도전!",key="sb_retry",type="primary",use_container_width=True):
+                    st.session_state.sb_selected=[]; st.session_state.sb_done=False; st.rerun()
+            else:
+                result_sent=blanked
+                for bw in blank_order:
+                    result_sent=result_sent.replace("[___]",f'<span style="background:#0a2a0a;border:2px solid #44ff88;border-radius:6px;padding:2px 8px;color:#44ff88;font-weight:700;margin:0 2px;">{bw}</span>',1)
+                funny_msgs=["💪 괜찮아! 보고 외우면 그만!", "🧠 뇌에 저장 중... 완료!", "📚 오늘 틀린 게 내일의 실력!", "⚡ 다음엔 무조건 맞춘다!"]
+                import random as _rnd2
+                msg=_rnd2.choice(funny_msgs)
+                st.markdown(f'''<div style="background:#0d0d1a;border:2px solid #4488ff;border-radius:14px;padding:12px 14px;margin-bottom:8px;">
+                    <div style="font-size:0.85rem;font-weight:700;color:#88aaff;margin-bottom:6px;">💡 정답이야! 눈에 새겨라!</div>
+                    <div style="font-size:1.0rem;font-weight:600;line-height:2.2;color:#ddddff;">{result_sent}</div>
+                    <div style="font-size:1.0rem;font-weight:700;color:#ffcc44;margin-top:8px;text-align:center;">{msg}</div>
+                </div>''', unsafe_allow_html=True)
+                if st.button("▶ 다음 문장!",key="sb_next2",type="primary",use_container_width=True):
+                    st.session_state.sb_idx=idx+1; st.session_state.sb_wrong_cnt=0
+                    for k in ["sb_selected","sb_done","sb_blanked","sb_blank_order","sb_blank_words"]:
+                        if k in st.session_state: del st.session_state[k]
+                    st.rerun()
     else:
         # ── 단어 카드 5개 ──
         st.markdown('<div style="font-size:0.8rem;color:#888;text-align:center;margin-bottom:5px;">👇 단어를 터치해서 빈칸에 넣어라!</div>', unsafe_allow_html=True)
