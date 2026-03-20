@@ -350,7 +350,7 @@ if st.session_state.sg_phase == "lobby":
         st.markdown('''<div class="rv-confirmed"><span>📖 P7 전장 귀환!</span></div>''', unsafe_allow_html=True)
         total_words = len(voca_data)
         st.markdown(f'<div style="background:#111;border:1px solid #444;border-radius:10px;padding:8px 12px;margin:4px 0;text-align:center;font-size:1.0rem;font-weight:700;color:#ffcc00;">💎 무기 {total_words}개 보유 중</div>', unsafe_allow_html=True)
-        if st.button(f"🧠  P7 어휘 학습모드\n단어를 완전히 내 몸에 새겨라! ({len(voca_data)}단어)", key="rv_p7s", type="secondary", use_container_width=True):
+        if st.button(f"📖  P7 문장 학습모드\n영어↔한글 악보+피아노 학습! ({len(voca_data)}단어)", key="rv_p7s", type="secondary", use_container_width=True):
             if len(voca_data) >= 3:
                 st.session_state.sg_wave=1; st.session_state.sg_wave_idx=0
                 st.session_state.sg_wave_results=[]; st.session_state.sg_wave_dead=False
@@ -565,7 +565,7 @@ elif st.session_state.sg_phase == "p5_exam_result":
 # ════════════════════════════════
 elif st.session_state.sg_phase == "survival":
     if not voca_data:
-        st.warning("저장된 P7 단어/표현이 없습니다!")
+        st.warning("저장된 문장이 없습니다! P7전장 브리핑에서 문장을 저장하세요.")
         if st.button("돌아가기"): st.session_state.sg_phase="lobby"; st.session_state.rv_battle=None; st.session_state.rv_mode=None; st.rerun()
         st.stop()
     if "sb_idx" not in st.session_state: st.session_state.sb_idx=0
@@ -574,19 +574,17 @@ elif st.session_state.sg_phase == "survival":
         nosent=[v for v in voca_data if not v.get("sentences")]
         random.shuffle(pool); random.shuffle(nosent)
         st.session_state.sb_pool=pool+nosent
-    if "sb_selected" not in st.session_state: st.session_state.sb_selected=[]
-    if "sb_done" not in st.session_state: st.session_state.sb_done=False
-    if "sb_wrong_cnt" not in st.session_state: st.session_state.sb_wrong_cnt=0
-    if "sb_blanked" not in st.session_state: st.session_state.sb_blanked=""
-    if "sb_blank_order" not in st.session_state: st.session_state.sb_blank_order=[]
-    if "sb_blank_words" not in st.session_state: st.session_state.sb_blank_words=[]
+    if "sb_clicked_word" not in st.session_state: st.session_state.sb_clicked_word=None
+    if "sb_last_idx" not in st.session_state: st.session_state.sb_last_idx=-1
     pool=st.session_state.sb_pool
     idx=st.session_state.sb_idx
-    selected=st.session_state.sb_selected
-    done=st.session_state.sb_done
-    total_cards=len(pool)
-    if idx>=total_cards:
-        st.markdown('''<div style="text-align:center;padding:2rem;"><div style="font-size:3rem;font-weight:900;color:#ffcc00;">🏆 전부 완성! 🏆</div><div style="font-size:1.2rem;color:#88ffbb;font-weight:800;margin-top:8px;">모든 문장 조립 완료!</div></div>''',unsafe_allow_html=True)
+    total=len(pool)
+    if idx>=total:
+        st.markdown('''<div style="text-align:center;padding:2rem;background:#f8fff8;border-radius:16px;border:1px solid #c0dd97;">
+            <div style="font-size:2rem;">🎉</div>
+            <div style="font-size:1.4rem;font-weight:700;color:#27500a;margin-top:8px;">모든 문장 완료!</div>
+            <div style="font-size:1rem;color:#639922;margin-top:4px;">이제 시험모드에서 증명하라!</div>
+        </div>''', unsafe_allow_html=True)
         c1,c2=st.columns(2)
         with c1:
             if st.button("⚡ 시험모드 도전!",key="sb_go_exam",type="primary",use_container_width=True):
@@ -596,162 +594,83 @@ elif st.session_state.sg_phase == "survival":
                 if "sg_combo_pool" in st.session_state: del st.session_state.sg_combo_pool
                 st.session_state.rv_mode="p7e"; st.session_state.sg_phase="combo_rush"; st.rerun()
         with c2:
-            if st.button("🔄 처음부터!",key="sb_restart",type="secondary",use_container_width=True):
-                for k in ["sb_idx","sb_pool","sb_selected","sb_done","sb_wrong_cnt","sb_blanked","sb_blank_order","sb_blank_words"]:
+            if st.button("🔄 처음부터",key="sb_restart",type="secondary",use_container_width=True):
+                for k in ["sb_idx","sb_pool","sb_clicked_word","sb_last_idx"]:
                     if k in st.session_state: del st.session_state[k]
                 st.rerun()
         st.stop()
-    item=pool[idx]; expr=item.get("expr",""); meaning=item.get("meaning",""); sentences=item.get("sentences",[])
-    _kr_full=item.get("kr","") or meaning
-    # sentences 개수에 맞춰 kr도 문장 분리
-    _kr_sents=[s.strip() for s in _kr_full.replace("!","!|").replace("?","?|").replace(".",".|").split("|") if s.strip()]
-    _sent_idx=0  # sentences[0] 기준
-    kr_text=_kr_sents[_sent_idx] if _sent_idx<len(_kr_sents) else (meaning or _kr_full)
-    # 헤더
-    st.markdown(f'<div style="background:linear-gradient(180deg,#0a0a1a,#1a2040);border:2.5px solid #4488ff;border-radius:20px;padding:10px;text-align:center;margin-bottom:8px;"><div style="font-size:1.1rem;font-weight:900;color:#4488ff;">📖 문장 조립 배틀</div><div style="font-size:0.85rem;color:#aaa;margin-top:2px;">{idx+1} / {total_cards} 문장 · 타이머 없음!</div><div style="background:#1a2040;border-radius:8px;height:8px;margin-top:6px;"><div style="background:linear-gradient(90deg,#4488ff,#44ccff);height:8px;border-radius:8px;width:{int((idx/max(total_cards,1))*100)}%;"></div></div></div>',unsafe_allow_html=True)
-    import re as _re3
-    sentence=sentences[0] if sentences else f"The company will {expr} as required."
-    # 문장에 핵심표현이 들어있는지 확인 후 힌트 표시
-    expr_in_sent = any(w.lower() in sentence.lower() for w in expr.split() if len(w)>=3)
-    if expr_in_sent:
-        st.markdown(f'<div style="background:#111;border:1px solid #4488ff;border-radius:10px;padding:8px 14px;margin:4px 0;text-align:center;"><span style="color:#44ccff;font-weight:700;font-size:1.0rem;">💡 {expr}</span></div>',unsafe_allow_html=True)
-    # 블랭크 준비 (한 번만 계산해서 저장)
-    if not st.session_state.sb_blank_order or st.session_state.get("sb_last_idx",-1) != idx:
+    if st.session_state.sb_last_idx != idx:
+        st.session_state.sb_clicked_word = None
         st.session_state.sb_last_idx = idx
-        # 문장에 실제 있는 단어만 추출
-        words_in_sent=[w.strip(".,!?;:()[]") for w in sentence.split()]
-        words_in_sent=[w for w in words_in_sent if len(w)>=3]
-        # 핵심표현 단어 중 문장에 실제로 있는 것만
-        key_words=[w for w in expr.split() if len(w)>=3 and any(w.lower()==ws.lower() for ws in words_in_sent)]
-        rng_blank=random.Random(hash(f"blank_{expr}"))
-        # 나머지 문장 단어 중 길이 4이상인 것
-        other_words=[w for w in words_in_sent if w.lower() not in [k.lower() for k in key_words] and len(w)>=4]
-        rng_blank.shuffle(other_words)
-        blank_candidates=key_words+other_words
-        seen=set(); unique_blanks=[]
-        for w in blank_candidates:
-            if w.lower() not in seen: seen.add(w.lower()); unique_blanks.append(w)
-        bw_list=unique_blanks[:4]
-        blanked=sentence; border=[]
-        for bw in bw_list:
-            pat=r"(?i)\b"+_re3.escape(bw)+r"\b"
-            if _re3.search(pat,blanked): blanked=_re3.sub(pat,"[___]",blanked,count=1); border.append(bw)
-        # 블랭크 최소 2개 보장
-        if len(border)<2:
-            extra=[w for w in words_in_sent if w.lower() not in [b.lower() for b in border] and len(w)>=3]
-            for ew in extra:
-                if len(border)>=2: break
-                pat=r"(?i)\b"+_re3.escape(ew)+r"\b"
-                if _re3.search(pat,blanked): blanked=_re3.sub(pat,"[___]",blanked,count=1); border.append(ew)
-        # blank_order를 문장에서 실제 등장 순서로 재정렬
-        def get_pos(w, s):
-            import re as _rp
-            m=_rp.search(r"(?i)\b"+_rp.escape(w)+r"\b", s)
-            return m.start() if m else 9999
-        border=sorted(border, key=lambda w: get_pos(w, sentence))
-        # blanked도 순서대로 재생성
-        blanked=sentence
-        for bw in border:
-            pat=r"(?i)\b"+_re3.escape(bw)+r"\b"
-            blanked=_re3.sub(pat,"[___]",blanked,count=1)
-        st.session_state.sb_blanked=blanked
-        st.session_state.sb_blank_order=border
-        st.session_state.sb_blank_words=bw_list
-        st.session_state.sb_selected=[]
-        st.session_state.sb_done=False
-    blanked=st.session_state.sb_blanked
-    blank_order=st.session_state.sb_blank_order
-    blank_words=st.session_state.sb_blank_words
-    selected=st.session_state.sb_selected
-    done=st.session_state.sb_done
-    filled_parts=blanked.split("[___]")
-    sentence_html=""
-    for i,part in enumerate(filled_parts):
-        sentence_html+=f'<span style="color:#eeeeff;">{part}</span>'
-        if i<len(filled_parts)-1:
-            if i<len(selected): sentence_html+=f'<span style="background:#1a3a6b;border:2px solid #4488ff;border-radius:6px;padding:2px 8px;color:#88ccff;font-weight:900;margin:0 2px;">{selected[i]}</span>'
-            else: sentence_html+='<span style="background:#0a0a1a;border:2px dashed #4488ff;border-radius:6px;padding:2px 20px;color:#333;margin:0 2px;">_____</span>'
-    if not done:
-        st.markdown(f'<div style="background:linear-gradient(145deg,#1a1a2e,#0d1020);border:2px solid rgba(100,150,255,0.4);border-radius:16px;padding:1rem;margin:8px 0;font-size:1.1rem;line-height:2.2;">{sentence_html}</div>',unsafe_allow_html=True)
-    if done:
-        # 정답 체크 - 순서 무관하게 모든 선택이 blank_order에 있는지
-        sel_lower=[s.lower() for s in selected]
-        ord_lower=[b.lower() for b in blank_order]
-        correct=(sel_lower==ord_lower)
-        if correct:
-            done_sent=blanked
-            for bw in blank_order:
-                done_sent=done_sent.replace("[___]",f'<span style="background:#0a2a0a;border:2px solid #44ff88;border-radius:6px;padding:2px 8px;color:#44ff88;font-weight:900;margin:0 2px;">{bw}</span>',1)
-            st.markdown(f'<div style="background:linear-gradient(145deg,#1a1a2e,#0d1020);border:2px solid rgba(68,255,136,0.4);border-radius:16px;padding:1rem;margin:8px 0;font-size:1.1rem;line-height:2.2;">{done_sent}</div>',unsafe_allow_html=True)
-            st.markdown(f'<div style="text-align:center;padding:0.8rem;background:#0d140d;border:1.5px solid #2a6a2a;border-radius:14px;margin:6px 0;"><div style="font-size:1.1rem;font-weight:800;color:#66bb66;">✅ 완벽해! 해석 공개!</div><div style="font-size:1.0rem;color:#aaddaa;font-weight:600;margin-top:6px;">📖 {kr_text}</div></div>',unsafe_allow_html=True)
-            if st.button("▶ 다음 문장!",key="sb_next",type="primary",use_container_width=True):
-                st.session_state.sb_idx=idx+1; st.session_state.sb_selected=[]
-                st.session_state.sb_done=False; st.session_state.sb_wrong_cnt=0
-                st.session_state.sb_blank_order=[]; st.session_state.sb_blanked=""
-                st.session_state.sb_blank_words=[]; st.rerun()
+    item=pool[idx]; expr=item.get("expr",""); sentences=item.get("sentences",[])
+    sentence=sentences[0] if sentences else f"The company will {expr} as required."
+    kr_full=item.get("kr","") or item.get("meaning","")
+    kr_sents=[x.strip() for x in kr_full.replace("!","!|").replace("?","?|").replace(".",".|").split("|") if x.strip()]
+    sent_kr=kr_sents[0] if kr_sents else kr_full
+    clicked=st.session_state.sb_clicked_word
+    st.markdown(f'''<div style="background:#1a1a2e;border:1.5px solid #4488ff;border-radius:16px;padding:10px 14px;text-align:center;margin-bottom:10px;">
+        <div style="font-size:1.0rem;font-weight:700;color:#4488ff;">📖 문장 학습 배틀</div>
+        <div style="font-size:0.85rem;color:#aaa;margin-top:2px;">{idx+1} / {total} 문장</div>
+        <div style="background:#0a0a1a;border-radius:6px;height:6px;margin-top:6px;"><div style="background:linear-gradient(90deg,#4488ff,#44ccff);height:6px;border-radius:6px;width:{int((idx/max(total,1))*100)}%;"></div></div>
+    </div>''', unsafe_allow_html=True)
+    import re as _re4
+    words_en=sentence.split()
+    en_clean=[w.strip(".,!?;:()") for w in words_en]
+    clicked_pos=None
+    if clicked:
+        for i,w in enumerate(en_clean):
+            if w.lower()==clicked: clicked_pos=i; break
+    en_html='<div style="background:#1a1a2e;border:1px solid #333;border-radius:12px;padding:12px 14px;margin-bottom:4px;"><div style="font-size:0.7rem;color:#666;margin-bottom:8px;letter-spacing:2px;">ENGLISH — 단어를 탭하세요</div><div style="line-height:2.4;">"'
+    for wi,word in enumerate(words_en):
+        clean=en_clean[wi]
+        is_active=clicked==clean.lower()
+        if is_active:
+            style="background:#1a3a6b;border:1.5px solid #4488ff;color:#88ccff;font-weight:700;padding:4px 8px;border-radius:6px;cursor:pointer;font-size:1.1rem;display:inline-block;margin:2px;"
         else:
-            st.session_state.sb_wrong_cnt=st.session_state.get("sb_wrong_cnt",0)+1
-            wrong_cnt=st.session_state.sb_wrong_cnt
-            st.session_state.sb_selected=[]
-            st.session_state.sb_done=False
-            selected=[]
-            if wrong_cnt>=2:
-                # 2번 틀림 - 정답 표시
-                result_sent=blanked
-                for bw in blank_order:
-                    result_sent=result_sent.replace("[___]",f'<span style="background:#0a2a0a;border:2px solid #44ff88;border-radius:6px;padding:2px 8px;color:#44ff88;font-weight:900;margin:0 2px;">{bw}</span>',1)
-                st.markdown(f'<div style="background:linear-gradient(145deg,#1a1a2e,#0d1020);border:2px solid rgba(68,255,136,0.4);border-radius:16px;padding:1rem;margin:8px 0;font-size:1.1rem;line-height:2.2;">{result_sent}</div>',unsafe_allow_html=True)
-                st.markdown(f'<div style="text-align:center;padding:0.8rem;background:#140d08;border:1.5px solid #885533;border-radius:14px;margin:6px 0;"><div style="font-size:1.1rem;font-weight:700;color:#cc8855;">💪 힘내! 정답 & 해석 공개!</div><div style="font-size:0.95rem;color:#99bb99;font-weight:500;margin-top:6px;">📖 {kr_text}</div></div>',unsafe_allow_html=True)
-                if st.button("▶ 다음 문장!",key="sb_show_next",type="primary",use_container_width=True):
-                    st.session_state.sb_idx=idx+1; st.session_state.sb_selected=[]
-                    st.session_state.sb_done=False; st.session_state.sb_wrong_cnt=0
-                    st.session_state.sb_blank_order=[]; st.session_state.sb_blanked=""
-                    st.session_state.sb_blank_words=[]; st.rerun()
+            style="color:#ffffff;font-weight:600;padding:4px 8px;border-radius:6px;cursor:pointer;font-size:1.1rem;display:inline-block;margin:2px;border:1px solid transparent;"
+        en_html+=f'<span style="{style}" onclick="window.parent.postMessage({{type:''clicked_word'',word:''{clean.lower()}''}},''*'')">{word}</span> '
+    en_html+='</div></div>'
+    st.markdown(en_html, unsafe_allow_html=True)
+    st.markdown('<div style="text-align:center;color:#555;font-size:1.0rem;margin:4px 0;">↕</div>', unsafe_allow_html=True)
+    words_kr=sent_kr.replace(",","").split()
+    kr_html='<div style="background:#fffff5;border:1px solid #e8e0c8;border-radius:12px;padding:12px 14px;"><div style="font-size:0.7rem;color:#888;margin-bottom:8px;letter-spacing:2px;">KOREAN</div><div style="line-height:2.4;">"'
+    for ki,kw in enumerate(words_kr):
+        if clicked_pos is not None:
+            ratio=clicked_pos/max(len(en_clean)-1,1)
+            kr_center=int(ratio*(len(words_kr)-1))
+            if abs(ki-kr_center)<=1:
+                kr_html+=f'<span style="background:#faeeda;color:#633806;font-weight:700;padding:4px 8px;border-radius:6px;margin:2px;display:inline-block;font-size:1.05rem;">{kw}</span> '
             else:
-                # 1번 틀림 - 힌트(한글해석) 공개 + 단어카드 다시 대기
-                st.markdown(f'<div style="text-align:center;padding:0.8rem;background:#1a0808;border:2px solid #ff4444;border-radius:14px;margin:6px 0;"><div style="font-size:1.3rem;font-weight:800;color:#ff6666;">❌ 틀렸어! 힌트 공개!</div><div style="font-size:1.0rem;color:#ffcc88;font-weight:600;margin-top:6px;">💡 {kr_text}</div></div>',unsafe_allow_html=True)
-                st.markdown('<div style="text-align:center;font-size:0.85rem;color:#888;margin:6px 0;">👇 한글 해석 보고 다시 채워넣어라!</div>',unsafe_allow_html=True)
-                empty_html=""
-                for _ip,_pp in enumerate(filled_parts):
-                    empty_html+=f'<span style="color:#eeeeff;">{_pp}</span>'
-                    if _ip<len(filled_parts)-1:
-                        empty_html+='<span style="background:#0a0a1a;border:2px dashed #ff6644;border-radius:6px;padding:2px 20px;color:#333;margin:0 2px;">_____</span>'
-                st.markdown(f'<div style="background:linear-gradient(145deg,#1a1a2e,#0d1020);border:2px solid rgba(255,100,100,0.3);border-radius:16px;padding:1rem;margin:4px 0;font-size:1.1rem;line-height:2.2;">{empty_html}</div>',unsafe_allow_html=True)
-                used2=[s.lower() for s in selected]
-                rng_card2=random.Random(hash(f"card2_{expr}"))
-                shuffled2=blank_words.copy(); rng_card2.shuffle(shuffled2)
-                cols2=st.columns(4)
-                for ci2,bw2 in enumerate(shuffled2):
-                    with cols2[ci2]:
-                        if st.button(bw2,key=f"sb_retry_{idx}_{ci2}",type="secondary",use_container_width=True):
-                            new_sel2=st.session_state.sb_selected+[bw2]; st.session_state.sb_selected=new_sel2
-                            if len(new_sel2)>=len(blank_order): st.session_state.sb_done=True
-                            st.rerun()
-                if st.button("↩ 다시 선택",key="sb_clear2",type="secondary",use_container_width=True):
-                    st.session_state.sb_selected=[]; st.session_state.sb_done=False; st.rerun()
-    else:
-        st.markdown('<div style="text-align:center;font-size:0.85rem;color:#888;margin:8px 0;">👇 단어를 탭해서 빈칸에 채워넣어라!</div>',unsafe_allow_html=True)
-        used=[s.lower() for s in selected]
-        rng_card=random.Random(hash(f"card_{expr}"))
-        shuffled=blank_words.copy(); rng_card.shuffle(shuffled)
-        cols=st.columns(4)
-        for ci,bw in enumerate(shuffled):
-            with cols[ci]:
-                if bw.lower() in used:
-                    st.markdown(f'<div style="background:#1a1a1a;border:2px solid #333;border-radius:10px;padding:10px 4px;text-align:center;color:#444;font-weight:700;font-size:0.9rem;">{bw}</div>',unsafe_allow_html=True)
-                else:
-                    if st.button(bw,key=f"sb_word_{idx}_{ci}",type="secondary",use_container_width=True):
-                        new_sel=selected+[bw]; st.session_state.sb_selected=new_sel
-                        if len(new_sel)>=len(blank_order): st.session_state.sb_done=True
-                        st.rerun()
-        if selected:
-            if st.button("↩ 다시 선택",key="sb_clear",type="secondary",use_container_width=True):
-                st.session_state.sb_selected=[]; st.session_state.sb_done=False; st.rerun()
-    if st.button("⏭ 건너뛰기",key=f"sb_skip_{idx}",use_container_width=True):
-        st.session_state.sb_idx=idx+1; st.session_state.sb_selected=[]
-        st.session_state.sb_done=False; st.session_state.sb_wrong_cnt=0
-        st.session_state.sb_blank_order=[]; st.session_state.sb_blanked=""
-        st.session_state.sb_blank_words=[]; st.rerun()
+                kr_html+=f'<span style="color:#333;padding:4px 4px;margin:2px;display:inline-block;font-size:1.05rem;">{kw}</span> '
+        else:
+            kr_html+=f'<span style="color:#333;padding:4px 4px;margin:2px;display:inline-block;font-size:1.05rem;">{kw}</span> '
+    kr_html+='</div></div>'
+    st.markdown(kr_html, unsafe_allow_html=True)
+    st.markdown('<div style="text-align:center;font-size:0.8rem;color:#888;margin:6px 0;">👆 영어 단어 탭 → 한글 형광 표시!</div>', unsafe_allow_html=True)
+    # 단어 클릭 처리 - 버튼 방식
+    if words_en:
+        num_cols=min(len(words_en),6)
+        btn_cols=st.columns(num_cols)
+        for wi,word in enumerate(words_en):
+            clean=en_clean[wi]
+            with btn_cols[wi%num_cols]:
+                is_active=clicked==clean.lower()
+                if st.button(word,key=f"enw_{idx}_{wi}",type="primary" if is_active else "secondary",use_container_width=True):
+                    st.session_state.sb_clicked_word=clean.lower(); st.rerun()
+    c1,c2,c3=st.columns(3)
+    with c1:
+        if st.button("⏭ 건너뛰기",key=f"sb_skip_{idx}",use_container_width=True):
+            st.session_state.sb_idx=idx+1; st.session_state.sb_clicked_word=None; st.rerun()
+    with c2:
+        if st.button("✅ 다음 문장!",key="sb_next",type="primary",use_container_width=True):
+            st.session_state.sb_idx=idx+1; st.session_state.sb_clicked_word=None; st.rerun()
+    with c3:
+        if st.button("⚡ 시험 바로가기",key="sb_exam_now",use_container_width=True):
+            st.session_state.sg_combo_score=0; st.session_state.sg_combo_count=0
+            st.session_state.sg_combo_idx=0; st.session_state.sg_combo_start=time.time()
+            st.session_state.sg_combo_over=False; st.session_state.sg_combo_results=[]
+            if "sg_combo_pool" in st.session_state: del st.session_state.sg_combo_pool
+            st.session_state.rv_mode="p7e"; st.session_state.sg_phase="combo_rush"; st.rerun()
 
 elif st.session_state.sg_phase == "survival_result":
     wave = st.session_state.get("sg_wave", 1)
@@ -882,55 +801,39 @@ elif st.session_state.sg_phase == "combo_rush":
 # 단어 저장고 — 무기 관리 (삭제)
 # ════════════════════════════════
 if st.session_state.get("rv_mode") == "p7_vault":
-    st.markdown('''<div style="text-align:center;padding:0.8rem 0;">
-        <div style="font-size:2rem;font-weight:900;color:#ffcc00;">📦 단어 저장고</div>
-        <div style="font-size:1rem;color:#aaa;margin-top:4px;">불필요한 무기는 지워라!</div>
+    st.markdown('''<div style="text-align:center;padding:1rem 0;">
+        <div style="font-size:1.8rem;font-weight:900;color:#185FA5;">📦 문장 저장고</div>
+        <div style="font-size:0.9rem;color:#888;margin-top:4px;">저장한 문장으로 학습하고 시험 준비하세요</div>
     </div>''', unsafe_allow_html=True)
-
-    storage2 = load_storage()
-    voca_list = storage2.get("saved_expressions", [])
-
+    storage2=load_storage()
+    voca_list=storage2.get("saved_expressions",[])
     if not voca_list:
-        st.markdown('<div style="text-align:center;color:#888;font-size:1.1rem;padding:2rem;">저장된 단어가 없습니다!</div>', unsafe_allow_html=True)
+        st.markdown('''<div style="text-align:center;background:#f8f8f8;border-radius:12px;padding:2rem;color:#888;">
+            <div style="font-size:2rem;">📭</div>
+            <div style="font-size:1rem;margin-top:8px;">저장된 문장이 없어요!</div>
+            <div style="font-size:0.85rem;margin-top:4px;">P7전장 브리핑에서 어려운 문장을 저장하세요</div>
+        </div>''', unsafe_allow_html=True)
     else:
-        st.markdown('''<style>
-        .vault-row{display:flex;align-items:stretch;gap:6px;margin:4px 0;}
-        .vault-card{flex:1;background:#111;border:1px solid #333;border-radius:8px;padding:10px 14px;}
-        .vault-card .expr{color:#44ccff;font-weight:700;font-size:1.0rem;}
-        .vault-card .meaning{color:#aaa;font-size:0.9rem;margin-top:3px;}
-        .vault-del-wrap{width:52px;min-width:52px;}
-        div[data-testid="stButton"].vault-del > button{
-            width:52px!important;min-width:52px!important;max-width:52px!important;
-            height:100%!important;min-height:52px!important;
-            padding:0!important;font-size:1.3rem!important;
-            background:#1a0800!important;border:1px solid #ff4400!important;
-            border-radius:8px!important;
-        }
-        </style>''', unsafe_allow_html=True)
-        for idx, item in enumerate(voca_list):
-            expr = item.get("expr", "")
-            meaning = item.get("meaning", "")
-            st.markdown(f'''<div class="vault-row">
-                <div class="vault-card">
-                    <div class="expr">{expr}</div>
-                    <div class="meaning">{meaning}</div>
-                </div>
+        for idx,item in enumerate(voca_list):
+            sentences=item.get("sentences",[])
+            sentence=sentences[0] if sentences else item.get("expr","")
+            kr_full=item.get("kr","") or item.get("meaning","")
+            kr_sents=[x.strip() for x in kr_full.replace("!","!|").replace("?","?|").replace(".",".|").split("|") if x.strip()]
+            sent_kr=kr_sents[0] if kr_sents else kr_full
+            st.markdown(f'''<div style="background:#ffffff;border:0.5px solid #d3d1c7;border-radius:12px;padding:12px 14px;margin-bottom:4px;">
+                <div style="font-size:15px;font-weight:700;color:#1a1a2e;line-height:1.6;">{sentence}</div>
+                <div style="font-size:13px;color:#5f5e5a;margin-top:4px;">{sent_kr}</div>
             </div>''', unsafe_allow_html=True)
-            if st.button("🗑", key=f"del_v_{idx}", use_container_width=False):
-                deleted = voca_list.pop(idx)
-                deleted["deleted_at"] = __import__("time").time()
-                deleted["days_kept"] = round((deleted["deleted_at"] - deleted.get("first_saved_at", deleted["deleted_at"])) / 86400, 1)
-                deleted_log = storage2.get("deleted_expressions", [])
-                deleted_log.append(deleted)
-                storage2["deleted_expressions"] = deleted_log
-                storage2["saved_expressions"] = voca_list
-                save_storage(storage2)
-                st.rerun()
-
-    st.markdown("<br>", unsafe_allow_html=True)
-    if st.button("↩ 돌아가기", key="vault_back", use_container_width=True):
-        st.session_state.rv_mode = None
-        st.rerun()
+            if st.button("🗑 삭제",key=f"del_v_{idx}"):
+                deleted=voca_list.pop(idx)
+                deleted["deleted_at"]=__import__("time").time()
+                deleted["days_kept"]=round((deleted["deleted_at"]-deleted.get("first_saved_at",deleted["deleted_at"]))/86400,1)
+                dl=storage2.get("deleted_expressions",[]); dl.append(deleted)
+                storage2["deleted_expressions"]=dl; storage2["saved_expressions"]=voca_list
+                save_storage(storage2); st.rerun()
+    st.markdown('<div style="margin-top:12px;"></div>', unsafe_allow_html=True)
+    if st.button("↩ 돌아가기",key="vault_back",use_container_width=True):
+        st.session_state.rv_mode=None; st.rerun()
 
 # ════════════════════════════════
 # 콤보 러시 결과
