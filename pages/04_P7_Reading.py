@@ -1,4 +1,4 @@
-﻿"""P7 Reading Arena — 60초 독해 전투 (V2)"""
+"""P7 Reading Arena — 60초 독해 전투 (V2)"""
 import streamlit as st
 import streamlit.components.v1 as components
 from streamlit_autorefresh import st_autorefresh
@@ -1014,276 +1014,107 @@ elif st.session_state.p7_phase == "briefing":
     data = st.session_state.p7_data
     steps = data["steps"]
     answers = st.session_state.p7_answers
-    was_victory = len(answers) == 3 and all(answers)
-
-    v_cls = "p7-ban-v" if was_victory else "p7-ban-l"
-    v_label = "CLEAR!" if was_victory else "YOU LOST"
     ok_cnt = len([a for a in answers if a])
-
     if "p7_br_idx" not in st.session_state: st.session_state.p7_br_idx = 0
     bi = st.session_state.p7_br_idx
     num_steps = min(len(steps), len(answers))
     if num_steps == 0: num_steps = 1
     if bi >= num_steps: bi = num_steps - 1
 
-    # query_params 버튼 처리
-    _qp = st.query_params.get("p7action", "")
-    if _qp == "prev" and bi > 0:
-        st.session_state.p7_br_idx = bi - 1
-        st.query_params.clear()
-        st.rerun()
-    elif _qp == "next" and bi < num_steps - 1:
-        st.session_state.p7_br_idx = bi + 1
-        st.query_params.clear()
-        st.rerun()
-    elif _qp == "retry":
-        for k in D: st.session_state[k] = D[k]
-        st.query_params.clear()
-        st.rerun()
-    elif _qp == "store":
-        st.query_params.clear()
-        st.switch_page("pages/03_오답전장.py")
-    elif _qp == "lobby":
-        for k in D: st.session_state[k] = D[k]
-        st.query_params.clear()
-        st.switch_page("main_hub.py")
-
-    # 오답전장/본부귀환 골드 스타일
     st.markdown("""<style>
-    button[kind="secondary"]{
-        border:2px solid #FFD700!important;
-        color:#ffffff!important;
-    }
-    button[kind="secondary"] p{
-        color:#ffffff!important;
-    }
+    .br-card{background:#ffffff;border:0.5px solid #d3d1c7;border-radius:12px;padding:10px 12px;margin-bottom:8px;}
+    .br-q{font-size:13px;font-weight:500;color:#185FA5;margin-bottom:3px;}
+    .br-qkr{font-size:12px;color:#888780;margin-bottom:8px;}
+    .br-ans{background:#eaf3de;border-radius:8px;padding:6px 10px;}
+    .br-ans-en{font-size:13px;font-weight:500;color:#3b6d11;}
+    .br-ans-kr{font-size:11px;color:#639922;margin-top:2px;}
+    .br-sent{border:0.5px solid #d3d1c7;border-radius:10px;padding:9px 10px;margin-bottom:6px;background:#ffffff;}
+    .br-sent-saved{border:0.5px solid #c0dd97;border-radius:10px;padding:9px 10px;margin-bottom:6px;background:#eaf3de;}
+    .br-en{font-size:13px;font-weight:500;color:#2c2c2a;line-height:1.5;}
+    .br-kr{font-size:11px;color:#5f5e5a;margin-top:3px;}
+    .br-en-saved{font-size:13px;font-weight:500;color:#27500a;line-height:1.5;}
+    .br-kr-saved{font-size:11px;color:#3b6d11;margin-top:3px;}
     </style>""", unsafe_allow_html=True)
-    # CT expander 글자 흰색
-    st.markdown("""<style>
-    div[data-testid="stExpander"] summary p,
-    div[data-testid="stExpander"] summary span,
-    div[data-testid="stExpander"] details summary{
-        color:white!important;
-        font-weight:900!important;
-    }
-    </style>""", unsafe_allow_html=True)
-    # 브리핑 전용 버튼 CSS 강제 적용
-    st.markdown("""<style>
-    div[data-testid="stVerticalBlockBorderWrapper"] button[kind="primary"] p,
-    div[data-testid="stVerticalBlock"] button[kind="primary"] p{
-        text-align:center!important;
-        color:#ffdd44!important;
-    }
-    div[data-testid="stVerticalBlockBorderWrapper"] button[kind="secondary"] p,
-    div[data-testid="stVerticalBlock"] button[kind="secondary"] p{
-        text-align:center!important;
-        color:#44ffcc!important;
-    }
-    </style>""", unsafe_allow_html=True)
-    st.markdown("""<style>
-    div[data-testid="stVerticalBlockBorderWrapper"] button[kind],
-    div[data-testid="stVerticalBlock"] button[kind]{
-        padding:1px 2px!important;
-        min-height:36px!important;
-        max-height:36px!important;
-        font-size:0.7rem!important;
-        line-height:1!important;
-    }
-    div[data-testid="stVerticalBlockBorderWrapper"] button[kind] p,
-    div[data-testid="stVerticalBlock"] button[kind] p{
-        font-size:0.7rem!important;
-        line-height:1!important;
-        margin:0!important;
-        padding:0!important;
-    }
-    </style>""", unsafe_allow_html=True)
-    # 배너만 표시
-    st.markdown(f'<div class="p7-ban {v_cls}">{data["title"]} — {v_label} ✅{ok_cnt} ❌{len(answers)-ok_cnt}</div>', unsafe_allow_html=True)
 
-    # ─── CT 피드백 + 데이터 패널 ───
-    _an = st.session_state.get("p7_analytics", {})
-    _times = _an.get("step_times", [])
-    _corrects = _an.get("step_correct", [])
-    num_steps = min(len(steps), len(answers))
+    # 탭
+    tab_cols = st.columns(num_steps)
+    for ti in range(num_steps):
+        with tab_cols[ti]:
+            if ti == bi:
+                st.markdown(f'<div style="background:#185FA5;color:#E6F1FB;border-radius:8px;padding:6px;text-align:center;font-size:14px;font-weight:500;">{ti+1}</div>', unsafe_allow_html=True)
+            else:
+                if st.button(str(ti+1), key=f"br_tab_{ti}", use_container_width=True):
+                    st.session_state.p7_br_idx = ti; st.rerun()
 
-    # CT 알고리즘 안내 (전체 결과 요약 - 한 번만 표시)
-    if bi == 0:
-        _ct_html = '<div style="background:#030a12;border:2px solid rgba(68,255,204,0.4);border-radius:14px;padding:0.8rem 1rem;margin:0.3rem 0;">'
-        _ct_html += '<div style="color:#44ffcc;font-size:0.9rem;font-weight:900;margin-bottom:0.3rem;">🧠 내 전투 분석</div>'
-
-        ct_step_labels = ["🎯 분해", "🔍 패턴인식", "✂️ 추상화"]
-        ct_type_map = {"purpose":"주제/목적","detail":"세부사항","inference":"추론","not":"NOT문제","synonym":"동의어"}
-        for si in range(num_steps):
-            _c = _corrects[si] if si < len(_corrects) else None
-            _t = f"{_times[si]}초" if si < len(_times) else "-"
-            _sym = "✅" if _c else ("❌" if _c is False else "⬜")
-            _color = "#44ff88" if _c else ("#ff4444" if _c is False else "#888")
-            _qtype = steps[si].get("q_type","detail")
-            _type_kr = ct_type_map.get(_qtype, _qtype)
-            _ct_html += f'<div style="display:flex;justify-content:space-between;align-items:center;padding:0.3rem 0;border-bottom:1px solid rgba(255,255,255,0.07);">'
-            _ct_html += f'<span style="color:{_color};font-size:0.85rem;font-weight:700;">{_sym} Step {si+1} · {ct_step_labels[si]} <span style="color:#aaa;font-size:0.75rem;">[{_type_kr}]</span></span>'
-            _ct_html += f'<span style="color:#aaa;font-size:0.8rem;">⏱ {_t}</span></div>'
-
-        # 4단계: 알고리즘화 메시지
-        _all_ok = all(_corrects[:num_steps]) if _corrects else False
-        if _all_ok:
-            _algo_msg = "🎯 완벽! 이 흐름을 기억해!"
-            _algo_color = "#44ffcc"
-        elif len(_corrects) > 0 and _corrects[0]:
-            _algo_msg = "⚡ 분해 OK. 패턴인식·추상화 더 연습!"
-            _algo_color = "#ffcc44"
-        else:
-            _algo_msg = "💡 Step1부터 다시: 2문장→핵심단어→주제가설"
-            _algo_color = "#ff8844"
-        _ct_html += f'<div style="color:{_algo_color};font-size:0.85rem;font-weight:900;margin-top:0.3rem;padding-top:0.3rem;">📌 {_algo_msg}</div>'
-        _ct_html += '</div>'
-        with st.expander("🧠 전투 분석", expanded=False):
-            st.markdown(_ct_html, unsafe_allow_html=True)
-
-    # 현재 스텝 데이터
     s = steps[bi]
     ok = answers[bi] if bi < len(answers) else False
     sym = "✅" if ok else "❌"
     correct_choice = s["choices"][s["answer"]]
-
-    # ─── 카드: 통일된 크기 영어1.8rem굵게 / 한글1.7rem일반 ───
-    wb = '<div style="background:#fffff5;border-radius:16px;padding:1rem;border:2px solid #ddd;margin:0.3rem 0;">'
-    wb += f'<div style="font-size:1.1rem;font-weight:900;color:#00aa88;margin-bottom:0.4rem;">{sym} Step {bi+1} / {num_steps}</div>'
-
-    # 영어 지문 (핵심 표현 형광 밑줄)
-    wb += '<div style="font-size:1.0rem;font-weight:900;color:#1a1a1a;line-height:1.6;margin-bottom:0.3rem;">'
-    _mark_style = "background:none;display:inline;background-image:linear-gradient(#ffe066,#ffe066);background-size:0% 4px;background-position:left bottom;background-repeat:no-repeat;animation:hlDraw 0.8s ease-out 0.3s forwards;color:#008855;font-weight:900;padding:0 2px;"
-    _exprs_list = [e.get("expr","") for e in s.get("expressions", []) if e.get("expr")]
-    import re as _re3
-    for sent in s["sentences"]:
-        _hl = sent
-        for _ex in _exprs_list:
-            if _ex.lower() in _hl.lower():
-                try:
-                    _hl = _re3.sub(f"(?i)({_re3.escape(_ex)})", f'<mark style="{_mark_style}">\\1</mark>', _hl)
-                except: pass
-            else:
-                for _w in _ex.split():
-                    if len(_w) >= 4 and _w.lower() in _hl.lower():
-                        try:
-                            _hl = _re3.sub(f"(?i)(\\b{_re3.escape(_w)}\\w*)", f'<mark style="{_mark_style}">\\1</mark>', _hl, count=1)
-                        except: pass
-        wb += f'{_hl} '
-    wb += '</div>'
-
-    # 한글 해석
-    wb += '<div style="border-top:1px dashed #ccc;margin:0.4rem 0;"></div>'
-    wb += f'<div style="font-size:0.95rem;font-weight:400;color:#444;line-height:1.6;margin-bottom:0.3rem;">📖 {s["kr"]}</div>'
-
-    # 문제: 영어 (한글) 한 줄
     q_kr = s.get("question_kr", "")
     c_kr = s.get("choices_kr", [])
     answer_kr = c_kr[s["answer"]] if c_kr and s["answer"] < len(c_kr) else ""
-    wb += '<div style="border-top:1px dashed #ccc;margin:0.4rem 0;"></div>'
-    wb += f'<div style="margin-bottom:0.3rem;"><span style="font-size:1.0rem;font-weight:900;color:#6633aa;">[Q{bi+1}] {s["question"]}</span>'
-    if q_kr:
-        wb += f' <span style="font-size:0.9rem;font-weight:400;color:#8866bb;">({q_kr})</span>'
-    wb += '</div>'
 
-    # 정답: 영어 (한글) 한 줄
-    wb += f'<div><span style="font-size:1.0rem;font-weight:900;color:#008844;">{sym} {correct_choice}</span>'
-    if answer_kr:
-        wb += f' <span style="font-size:0.9rem;font-weight:400;color:#22aa66;">({answer_kr})</span>'
-    wb += '</div>'
-    wb += '</div>'
-    st.markdown(wb, unsafe_allow_html=True)
+    # 문제 + 정답
+    st.markdown(f'''<div class="br-card">
+        <div class="br-q">[Q{bi+1}] {s["question"]}</div>
+        <div class="br-qkr">{q_kr}</div>
+        <div class="br-ans">
+            <div class="br-ans-en">{sym} {correct_choice}</div>
+            <div class="br-ans-kr">{answer_kr}</div>
+        </div>
+    </div>''', unsafe_allow_html=True)
 
-    # ─── 핵심 표현 (해당 Step의 표현만) ───
-    exprs = s.get("expressions", [])
-    if exprs:
-        # 핵심표현 양쪽에 이전/다음 버튼
-        # 💎 핵심 표현 타이틀
-        st.markdown('<div style="text-align:center;color:#44ffcc;font-size:0.95rem;font-weight:900;margin:0.2rem 0;">💎 핵심 표현</div>', unsafe_allow_html=True)
-        expr_html = ''
-        for e in exprs:
-            expr_html += f'<div style="background:#0a1a28;border:2px solid rgba(255,255,255,0.55);border-radius:8px;padding:0.4rem 0.6rem;margin:0.2rem 0;display:flex;justify-content:space-between;align-items:center;"><span style="color:#44ffcc;font-size:0.9rem;font-weight:900;">{e["expr"]}</span><span style="color:#bbccdd;font-size:0.85rem;font-weight:700;">{e["meaning"]}</span></div>'
-        st.markdown(expr_html, unsafe_allow_html=True)
+    # 지문 문장 + 저장 버튼
+    st.markdown('<div style="font-size:11px;color:#b4b2a9;margin:4px 0;">지문 문장 — 어려운 문장을 저장하세요</div>', unsafe_allow_html=True)
 
-    # ─── 하단 버튼 3줄 ───
-    save_key = f"p7_saved_{bi}"
-    if save_key not in st.session_state:
-        st.session_state[save_key] = False
-    bc1, bc2 = st.columns(2)
-    with bc1:
-        if st.session_state[save_key]:
-            st.button("✅ 저장완료!", key=f"p7sv_{bi}", type="primary", use_container_width=True, disabled=True)
-            components.html(f"""<script>
-            (function(){{
-                function styleBtn(){{
-                    var d=window.parent.document;
-                    d.querySelectorAll('button[kind="primary"]').forEach(function(b){{
-                        if(b.innerText.includes("저장완료")){{ 
-                            b.style.setProperty("border","2px solid #00ff66","important");
-                            b.style.setProperty("color","#00ff66","important");
-                            b.style.setProperty("background","#001a0a","important");
-                            b.style.setProperty("animation","savedGlow 2s ease-in-out infinite","important");
-                            b.querySelectorAll("p").forEach(function(p){{p.style.setProperty("color","#00ff66","important");}});
-                        }}
-                    }});
-                }}
-                if(!window.parent.document.getElementById("saveGlowStyle_{bi}")){{ 
-                    var s=window.parent.document.createElement("style");
-                    s.id="saveGlowStyle_{bi}";
-                    s.textContent="@keyframes savedGlow{{0%,100%{{box-shadow:0 0 10px rgba(0,255,100,0.5);}} 50%{{box-shadow:0 0 30px rgba(0,255,100,1);}}}}";
-                    window.parent.document.head.appendChild(s);
-                }}
-                setTimeout(styleBtn,100);setTimeout(styleBtn,400);setTimeout(styleBtn,900);
-                new MutationObserver(styleBtn).observe(window.parent.document.body,{{childList:true,subtree:true}});
-            }})();
-            </script>""", height=0)
-        else:
-            if st.button("💾 저장", key=f"p7sv_{bi}", type="primary", use_container_width=True):
-                save_expressions(exprs, step_data=s)
-                st.session_state[save_key] = True
-                st.rerun()
-            components.html(f"""<script>
-            (function(){{
-                function styleBtn(){{
-                    var d=window.parent.document;
-                    d.querySelectorAll('button[kind="primary"]').forEach(function(b){{
-                        if(b.innerText.includes("저장")){{ 
-                            b.style.setProperty("border","2px solid #ffd700","important");
-                            b.style.setProperty("color","#ffd700","important");
-                            b.style.setProperty("animation","savePulse 1.2s ease-in-out infinite","important");
-                            b.querySelectorAll("p").forEach(function(p){{p.style.setProperty("color","#ffd700","important");}});
-                        }}
-                    }});
-                }}
-                if(!window.parent.document.getElementById("savePulseStyle_{bi}")){{ 
-                    var s=window.parent.document.createElement("style");
-                    s.id="savePulseStyle_{bi}";
-                    s.textContent="@keyframes savePulse{{0%,100%{{box-shadow:0 0 10px rgba(255,215,0,0.4);border-color:#ffd700;}} 50%{{box-shadow:0 0 35px rgba(255,215,0,1);border-color:#ffaa00;}}}}";
-                    window.parent.document.head.appendChild(s);
-                }}
-                setTimeout(styleBtn,100);setTimeout(styleBtn,400);setTimeout(styleBtn,900);
-                new MutationObserver(styleBtn).observe(window.parent.document.body,{{childList:true,subtree:true}});
-            }})();
-            </script>""", height=0)
-    with bc2:
-        if st.button("🔄 다시", key="p7retry", type="primary", use_container_width=True):
-            for k in D: st.session_state[k] = D[k]
-            st.rerun()
-    bc5, bc6 = st.columns(2)
-    with bc5:
-        if st.button("◀ 이전", key="p7brp", type="secondary", disabled=bi<=0, use_container_width=True):
-            st.session_state.p7_br_idx = bi - 1; st.rerun()
-    with bc6:
-        if st.button("▶ 다음", key="p7brn", type="secondary", disabled=bi>=num_steps-1, use_container_width=True):
-            st.session_state.p7_br_idx = bi + 1; st.rerun()
-    st.markdown('<style>button[data-testid="baseButton-secondary"]#p7store,button[data-testid="baseButton-secondary"]#p7lobby{border:2px solid #ffffff!important;} div[data-testid="column"]:has(button[kind="secondary"]) button{border:2px solid #ffffff!important;color:#ffffff!important;border-radius:10px!important;} div[data-testid="column"]:has(button[kind="secondary"]) button p{color:#ffffff!important;}</style>', unsafe_allow_html=True)
-    bc3, bc4 = st.columns(2)
-    with bc3:
-        if st.button("🔥 오답전장", key="p7store", type="secondary", use_container_width=True):
+    import re as _re3
+    _mark_style = "color:#008855;font-weight:900;text-decoration:underline;"
+    _exprs_list = [e.get("expr","") for e in s.get("expressions", []) if e.get("expr")]
+    kr_full = s.get("kr", "")
+    kr_sents = [x.strip() for x in kr_full.replace("!","!|").replace("?","?|").replace(".",".|").split("|") if x.strip()]
+
+    for si, sent in enumerate(s["sentences"]):
+        sent_key = f"br_sent_saved_{bi}_{si}"
+        if sent_key not in st.session_state: st.session_state[sent_key] = False
+        is_saved = st.session_state[sent_key]
+        sent_kr = kr_sents[si] if si < len(kr_sents) else kr_full
+        _hl = sent
+        for _ex in _exprs_list:
+            if _ex.lower() in _hl.lower():
+                try: _hl = _re3.sub(f"(?i)({_re3.escape(_ex)})", f'<span style="{_mark_style}">\\1</span>', _hl)
+                except: pass
+        col1, col2 = st.columns([6, 1])
+        with col1:
+            if is_saved:
+                st.markdown(f'<div class="br-sent-saved"><div class="br-en-saved">{_hl}</div><div class="br-kr-saved">{sent_kr}</div></div>', unsafe_allow_html=True)
+            else:
+                st.markdown(f'<div class="br-sent"><div class="br-en">{_hl}</div><div class="br-kr">{sent_kr}</div></div>', unsafe_allow_html=True)
+        with col2:
+            if not is_saved:
+                if st.button("📌", key=f"br_sv_{bi}_{si}", use_container_width=True):
+                    sent_data = dict(s); sent_data["sentences"] = [sent]; sent_data["kr"] = sent_kr
+                    save_expressions(s.get("expressions", []), step_data=sent_data)
+                    st.session_state[sent_key] = True; st.rerun()
+            else:
+                st.markdown('<div style="text-align:center;font-size:16px;padding:8px 0;">✅</div>', unsafe_allow_html=True)
+
+    st.markdown('<div style="border-top:0.5px solid #d3d1c7;margin:10px 0;"></div>', unsafe_allow_html=True)
+    b1, b2, b3, b4 = st.columns(4)
+    with b1:
+        if st.button("◀ 이전", key="p7brp", disabled=bi<=0, use_container_width=True):
+            st.session_state.p7_br_idx = bi-1; st.rerun()
+    with b2:
+        if st.button("▶ 다음", key="p7brn", disabled=bi>=num_steps-1, use_container_width=True):
+            st.session_state.p7_br_idx = bi+1; st.rerun()
+    with b3:
+        if st.button("🔥 오답전장", key="p7store", use_container_width=True):
             st.switch_page("pages/03_오답전장.py")
-    with bc4:
-        if st.button("🏠 본부", key="p7lobby", type="secondary", use_container_width=True):
+    with b4:
+        if st.button("🏠 메인", key="p7lobby", use_container_width=True):
             for k in D: st.session_state[k] = D[k]
             st.switch_page("main_hub.py")
+
+
 
 
 
