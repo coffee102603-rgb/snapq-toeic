@@ -705,10 +705,14 @@ elif st.session_state.sg_phase == "survival":
         st.markdown(f'''<div style="background:#1a1a2e;border:1.5px solid #4488ff;border-radius:12px;padding:12px 14px;margin-bottom:8px;font-size:1.05rem;font-weight:600;line-height:2.2;">{sentence_html}</div>''', unsafe_allow_html=True)
 
     if "sb_wrong_cnt" not in st.session_state: st.session_state.sb_wrong_cnt=0
+    if "sb_wrong_counted" not in st.session_state: st.session_state.sb_wrong_counted=False
     if done:
         sel_sorted=sorted([s.lower() for s in selected])
         ord_sorted=sorted([b.lower() for b in blank_order])
         correct=(sel_sorted==ord_sorted)
+        if not correct and not st.session_state.sb_wrong_counted:
+            st.session_state.sb_wrong_cnt+=1
+            st.session_state.sb_wrong_counted=True
         wrong_cnt=st.session_state.sb_wrong_cnt
         if correct:
             st.markdown('''<div style="background:#0a2a0a;border:2px solid #44ff88;border-radius:14px;padding:14px;text-align:center;margin-bottom:8px;">
@@ -731,7 +735,10 @@ elif st.session_state.sg_phase == "survival":
                     <div style="font-size:0.85rem;color:#ffaa88;margin-top:3px;">다시 한글 보고 순서대로!</div>
                 </div>''', unsafe_allow_html=True)
                 if st.button("🔄 다시 도전!",key="sb_retry",type="primary",use_container_width=True):
-                    st.session_state.sb_selected=[]; st.session_state.sb_done=False; st.rerun()
+                    st.session_state.sb_selected=[]
+                    st.session_state.sb_done=False
+                    st.session_state.sb_wrong_counted=False
+                    st.rerun()
             else:
                 import random as _rnd2
                 # 위 네모: 정답으로 채워진 문장
@@ -755,7 +762,7 @@ elif st.session_state.sg_phase == "survival":
                 </div>''', unsafe_allow_html=True)
                 if st.button("▶ 다음 문장!",key="sb_next2",type="primary",use_container_width=True):
                     st.session_state.sb_idx=idx+1; st.session_state.sb_wrong_cnt=0
-                    for k in ["sb_selected","sb_done","sb_blanked","sb_blank_order","sb_blank_words"]:
+                    for k in ["sb_selected","sb_done","sb_blanked","sb_blank_order","sb_blank_words","sb_wrong_counted"]:
                         if k in st.session_state: del st.session_state[k]
                     st.rerun()
     else:
