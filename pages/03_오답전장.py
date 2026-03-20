@@ -662,7 +662,7 @@ elif st.session_state.sg_phase == "survival":
         # 정답 체크 - 순서 무관하게 모든 선택이 blank_order에 있는지
         sel_lower=[s.lower() for s in selected]
         ord_lower=[b.lower() for b in blank_order]
-        correct=(sorted(sel_lower)==sorted(ord_lower))
+        correct=(sel_lower==ord_lower)
         if correct:
             done_sent=blanked
             for bw in blank_order:
