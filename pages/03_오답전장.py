@@ -370,14 +370,12 @@ if st.session_state.sg_phase == "lobby":
             st.session_state.rv_mode="p7_vault"; st.rerun()
     # ━━━ 항상 고정 네비게이션 ━━━
     if st.session_state.get("rv_mode") != "p7_vault":
-    if st.session_state.get('rv_mode') != 'p7_vault':
-         st.markdown('<div style="font-size:0.7rem;color:#331100;text-align:center;letter-spacing:3px;margin-top:16px;padding-top:12px;border-top:1px solid #1a0800;">N A V I G A T E</div>', unsafe_allow_html=True)
+        st.markdown('<div style="font-size:0.7rem;color:#331100;text-align:center;letter-spacing:3px;margin-top:16px;padding-top:12px;border-top:1px solid #1a0800;">N A V I G A T E</div>', unsafe_allow_html=True)
         mn1, mn2, mn3 = st.columns(3)
         with mn1:
             if st.button("⚔️ P5전장", key="sg_nav1", type="secondary", use_container_width=True):
                 st.session_state.rv_mode = None; st.session_state.rv_battle = None
-                st.session_state.phase="lobby"; st.session_state._p5_active=False
-                st.switch_page("pages/02_P5_Arena.py")
+                st.session_state._p5_active=False
                 st.switch_page("pages/02_P5_Arena.py")
         with mn2:
             if st.button("📖 P7전장", key="sg_nav2", type="secondary", use_container_width=True):
