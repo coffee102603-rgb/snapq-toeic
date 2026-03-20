@@ -654,7 +654,8 @@ elif st.session_state.sg_phase == "survival":
         if i<len(filled_parts)-1:
             if i<len(selected): sentence_html+=f'<span style="background:#1a3a6b;border:2px solid #4488ff;border-radius:6px;padding:2px 8px;color:#88ccff;font-weight:900;margin:0 2px;">{selected[i]}</span>'
             else: sentence_html+='<span style="background:#0a0a1a;border:2px dashed #4488ff;border-radius:6px;padding:2px 20px;color:#333;margin:0 2px;">_____</span>'
-    st.markdown(f'<div style="background:linear-gradient(145deg,#1a1a2e,#0d1020);border:2px solid rgba(100,150,255,0.4);border-radius:16px;padding:1rem;margin:8px 0;font-size:1.1rem;line-height:2.2;">{sentence_html}</div>',unsafe_allow_html=True)
+    if not done:
+        st.markdown(f'<div style="background:linear-gradient(145deg,#1a1a2e,#0d1020);border:2px solid rgba(100,150,255,0.4);border-radius:16px;padding:1rem;margin:8px 0;font-size:1.1rem;line-height:2.2;">{sentence_html}</div>',unsafe_allow_html=True)
     if done:
         # 정답 체크 - 순서 무관하게 모든 선택이 blank_order에 있는지
         sel_lower=[s.lower() for s in selected]
@@ -665,7 +666,7 @@ elif st.session_state.sg_phase == "survival":
             for bw in blank_order:
                 done_sent=done_sent.replace("[___]",f'<span style="background:#0a2a0a;border:2px solid #44ff88;border-radius:6px;padding:2px 8px;color:#44ff88;font-weight:900;margin:0 2px;">{bw}</span>',1)
             st.markdown(f'<div style="background:linear-gradient(145deg,#1a1a2e,#0d1020);border:2px solid rgba(68,255,136,0.4);border-radius:16px;padding:1rem;margin:8px 0;font-size:1.1rem;line-height:2.2;">{done_sent}</div>',unsafe_allow_html=True)
-            st.markdown(f'<div style="text-align:center;padding:1rem;background:linear-gradient(135deg,#0a1a0a,#0d2010);border:2px solid #44ff88;border-radius:16px;margin:8px 0;"><div style="font-size:2rem;font-weight:900;color:#44ff88;">완벽해! 해석 공개! 🎉</div><div style="font-size:1.1rem;color:#88ffbb;font-weight:700;margin-top:8px;">📖 {kr_text}</div></div>',unsafe_allow_html=True)
+            st.markdown(f'<div style="text-align:center;padding:0.8rem;background:#0d140d;border:1.5px solid #2a6a2a;border-radius:14px;margin:6px 0;"><div style="font-size:1.1rem;font-weight:800;color:#66bb66;">✅ 완벽해! 해석 공개!</div><div style="font-size:1.0rem;color:#aaddaa;font-weight:600;margin-top:6px;">📖 {kr_text}</div></div>',unsafe_allow_html=True)
             if st.button("▶ 다음 문장!",key="sb_next",type="primary",use_container_width=True):
                 st.session_state.sb_idx=idx+1; st.session_state.sb_selected=[]
                 st.session_state.sb_done=False; st.session_state.sb_wrong_cnt=0
