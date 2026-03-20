@@ -576,6 +576,7 @@ elif st.session_state.sg_phase == "survival":
         st.session_state.sb_pool=pool+nosent
     if "sb_selected" not in st.session_state: st.session_state.sb_selected=[]
     if "sb_done" not in st.session_state: st.session_state.sb_done=False
+    if "sb_wrong_cnt" not in st.session_state: st.session_state.sb_wrong_cnt=0
     pool=st.session_state.sb_pool
     idx=st.session_state.sb_idx
     selected=st.session_state.sb_selected
@@ -635,9 +636,16 @@ elif st.session_state.sg_phase == "survival":
             if st.button("▶ 다음 문장!",key="sb_next",type="primary",use_container_width=True):
                 st.session_state.sb_idx=idx+1; st.session_state.sb_selected=[]; st.session_state.sb_done=False; st.rerun()
         else:
-            st.markdown('<div style="text-align:center;padding:0.8rem;background:#1a0808;border:2px solid #ff4444;border-radius:16px;margin:8px 0;"><div style="font-size:1.5rem;font-weight:900;color:#ff4444;">❌ 다시 해봐!</div></div>',unsafe_allow_html=True)
-            if st.button("🔄 다시 시도",key="sb_retry",type="secondary",use_container_width=True):
-                st.session_state.sb_selected=[]; st.session_state.sb_done=False; st.rerun()
+            st.session_state.sb_wrong_cnt = st.session_state.get("sb_wrong_cnt",0) + 1
+            if st.session_state.sb_wrong_cnt >= 2:
+                answer_str = " / ".join(blank_order)
+                st.markdown(f'<div style="text-align:center;padding:1rem;background:#1a0a0a;border:2px solid #ff8844;border-radius:16px;margin:8px 0;"><div style="font-size:1.5rem;font-weight:900;color:#ff4444;">❌ 정답 공개!</div><div style="font-size:1.1rem;color:#ffcc88;font-weight:700;margin-top:6px;">✅ {answer_str}</div><div style="font-size:1.0rem;color:#88ffbb;margin-top:4px;">📖 {meaning}</div></div>',unsafe_allow_html=True)
+                if st.button("▶ 다음 문장!",key="sb_show_next",type="primary",use_container_width=True):
+                    st.session_state.sb_idx=idx+1; st.session_state.sb_selected=[]; st.session_state.sb_done=False; st.session_state.sb_wrong_cnt=0; st.rerun()
+            else:
+                st.markdown('<div style="text-align:center;padding:0.8rem;background:#1a0808;border:2px solid #ff4444;border-radius:16px;margin:8px 0;"><div style="font-size:1.5rem;font-weight:900;color:#ff4444;">❌ 한 번 더!</div><div style="font-size:0.9rem;color:#ff8888;margin-top:4px;">한 번 더 기회가 있다!</div></div>',unsafe_allow_html=True)
+                if st.button("🔄 다시 시도",key="sb_retry",type="secondary",use_container_width=True):
+                    st.session_state.sb_selected=[]; st.session_state.sb_done=False; st.rerun()
     else:
         st.markdown('<div style="text-align:center;font-size:0.85rem;color:#888;margin:8px 0;">👇 단어를 탭해서 빈칸에 채워넣어라!</div>',unsafe_allow_html=True)
         used=[s.lower() for s in selected]
@@ -657,7 +665,7 @@ elif st.session_state.sg_phase == "survival":
             if st.button("↩ 다시 선택",key="sb_clear",type="secondary",use_container_width=True):
                 st.session_state.sb_selected=[]; st.session_state.sb_done=False; st.rerun()
     if st.button("⏭ 건너뛰기",key=f"sb_skip_{idx}",use_container_width=True):
-        st.session_state.sb_idx=idx+1; st.session_state.sb_selected=[]; st.session_state.sb_done=False; st.rerun()
+        st.session_state.sb_idx=idx+1; st.session_state.sb_selected=[]; st.session_state.sb_done=False; st.session_state.sb_wrong_cnt=0; st.rerun()
 
 elif st.session_state.sg_phase == "survival_result":
     wave = st.session_state.get("sg_wave", 1)
