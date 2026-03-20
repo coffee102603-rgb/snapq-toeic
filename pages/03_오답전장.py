@@ -727,8 +727,6 @@ elif st.session_state.sg_phase == "survival":
                     if k in st.session_state: del st.session_state[k]
                 st.rerun()
         else:
-            st.session_state.sb_wrong_cnt=wrong_cnt+1
-            wrong_cnt=st.session_state.sb_wrong_cnt
             if wrong_cnt==1:
                 st.markdown('''<div style="background:#1a0808;border:2px solid #ff6644;border-radius:14px;padding:12px;text-align:center;margin-bottom:8px;">
                     <div style="font-size:1.5rem;">😤</div>
