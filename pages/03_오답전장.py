@@ -620,17 +620,33 @@ elif st.session_state.sg_phase == "survival":
     if clicked:
         for i,w in enumerate(en_clean):
             if w.lower()==clicked: clicked_pos=i; break
-    en_html='<div style="background:#1a1a2e;border:1px solid #333;border-radius:12px;padding:12px 14px;margin-bottom:4px;"><div style="font-size:0.7rem;color:#666;margin-bottom:8px;letter-spacing:2px;">ENGLISH — 단어를 탭하세요</div><div style="line-height:2.4;">"'
+    # 핵심단어만 (명사/동사/형용사/부사) - 불용어 제외
+    stopwords={"the","a","an","in","on","at","to","for","of","by","with","is","are","was","were","has","have","had","be","been","that","this","it","its","and","or","but","as","if","so","not","do","did","will","shall","would","could","should","must","from","into","upon","than","then","also","very","just","even","still","yet","both","few","some","any","such","what","which","who","whom","whose","where","when","how","why","no","nor","all"}
+    key_words_idx=[i for i,w in enumerate(en_clean) if w.lower() not in stopwords and len(w)>=3]
+    en_html='<div style="background:#1a1a2e;border:1px solid #333;border-radius:12px;padding:12px 14px;margin-bottom:4px;"><div style="font-size:0.7rem;color:#666;margin-bottom:8px;letter-spacing:2px;">ENGLISH — 핵심단어를 탭하세요</div><div style="line-height:2.0;">'
     for wi,word in enumerate(words_en):
         clean=en_clean[wi]
+        is_key=wi in key_words_idx
         is_active=clicked==clean.lower()
         if is_active:
-            style="background:#1a3a6b;border:1.5px solid #4488ff;color:#88ccff;font-weight:700;padding:4px 8px;border-radius:6px;cursor:pointer;font-size:1.1rem;display:inline-block;margin:2px;"
+            style="background:#1a3a6b;border:2px solid #4488ff;color:#88ccff;font-weight:900;padding:4px 8px;border-radius:6px;font-size:1.1rem;display:inline-block;margin:2px;"
+        elif is_key:
+            style="color:#ffffff;font-weight:700;padding:4px 8px;border-radius:6px;font-size:1.1rem;display:inline-block;margin:2px;border:1px solid #4488ff;cursor:pointer;"
         else:
-            style="color:#ffffff;font-weight:600;padding:4px 8px;border-radius:6px;cursor:pointer;font-size:1.1rem;display:inline-block;margin:2px;border:1px solid transparent;"
-        en_html+=f'<span style="{style}" onclick="window.parent.postMessage({{type:''clicked_word'',word:''{clean.lower()}''}},''*'')">{word}</span> '
+            style="color:#888;font-weight:400;padding:4px 4px;font-size:1.0rem;display:inline-block;margin:1px;"
+        en_html+=f'<span style="{style}">{word}</span> '
     en_html+='</div></div>'
     st.markdown(en_html, unsafe_allow_html=True)
+    # 핵심단어 버튼만
+    if key_words_idx:
+        num_cols=min(len(key_words_idx),4)
+        btn_cols=st.columns(num_cols)
+        for bi2,wi in enumerate(key_words_idx):
+            word=words_en[wi]; clean=en_clean[wi]
+            with btn_cols[bi2%num_cols]:
+                is_active=clicked==clean.lower()
+                if st.button(word,key=f"enw_{idx}_{wi}",type="primary" if is_active else "secondary",use_container_width=True):
+                    st.session_state.sb_clicked_word=clean.lower(); st.rerun()
     st.markdown('<div style="text-align:center;color:#555;font-size:1.0rem;margin:4px 0;">↕</div>', unsafe_allow_html=True)
     words_kr=sent_kr.replace(",","").split()
     kr_html='<div style="background:#fffff5;border:1px solid #e8e0c8;border-radius:12px;padding:12px 14px;"><div style="font-size:0.7rem;color:#888;margin-bottom:8px;letter-spacing:2px;">KOREAN</div><div style="line-height:2.4;">"'
@@ -647,16 +663,6 @@ elif st.session_state.sg_phase == "survival":
     kr_html+='</div></div>'
     st.markdown(kr_html, unsafe_allow_html=True)
     st.markdown('<div style="text-align:center;font-size:0.8rem;color:#888;margin:6px 0;">👆 영어 단어 탭 → 한글 형광 표시!</div>', unsafe_allow_html=True)
-    # 단어 클릭 처리 - 버튼 방식
-    if words_en:
-        num_cols=min(len(words_en),6)
-        btn_cols=st.columns(num_cols)
-        for wi,word in enumerate(words_en):
-            clean=en_clean[wi]
-            with btn_cols[wi%num_cols]:
-                is_active=clicked==clean.lower()
-                if st.button(word,key=f"enw_{idx}_{wi}",type="primary" if is_active else "secondary",use_container_width=True):
-                    st.session_state.sb_clicked_word=clean.lower(); st.rerun()
     c1,c2,c3=st.columns(3)
     with c1:
         if st.button("⏭ 건너뛰기",key=f"sb_skip_{idx}",use_container_width=True):
@@ -769,6 +775,10 @@ elif st.session_state.sg_phase == "combo_rush":
     blank_sent=_re2.sub(r"(?i)\b"+_re2.escape(key_word)+r"\b","_______",first_en,count=1)
     if "_______" not in blank_sent: blank_sent=first_en.replace(expr_text,"_______",1)
     if "_______" not in blank_sent: blank_sent=first_en
+    if "_______" not in blank_sent:
+        st.session_state.sg_combo_idx=cidx+1
+        if not st.session_state.sg_combo_results: st.session_state.sg_combo_results=[]
+        st.session_state.sg_combo_results.append(True); st.rerun()
     blank_styled=blank_sent.replace("_______",'<span style="border-bottom:3px solid #4488ff;padding:0 8px;color:#88aaff;font-weight:900;">_______</span>')
     st.markdown(f'<div style="border-radius:20px;padding:1rem;margin:6px 0;background:linear-gradient(145deg,#1a1a2e,#2a2040);border:2.5px solid rgba(100,150,255,0.6);"><div style="font-size:0.85rem;font-weight:800;letter-spacing:3px;color:rgba(150,200,255,0.8);margin-bottom:10px;">📖 FILL IN THE BLANK</div><div style="font-size:1.1rem;font-weight:700;line-height:1.6;color:#eeeeff;">{blank_styled}</div></div>',unsafe_allow_html=True)
     WORD_DB={"a":["address","adjust","advance","achieve","allocate","approve","assess","assist","announce"],"b":["balance","benefit","build","boost","brief","bring","budget"],"c":["comply","conduct","confirm","consider","complete","calculate","cancel","coordinate","clarify"],"d":["deliver","determine","develop","distribute","demonstrate","decline","delay","discuss"],"e":["establish","evaluate","examine","execute","expand","ensure","enforce","engage","enhance"],"f":["facilitate","finalize","follow","forecast","fulfill","focus","forward"],"g":["generate","grant","guide","gather","guarantee"],"h":["handle","highlight","hire","hold","head"],"i":["implement","improve","increase","indicate","inspect","install","integrate","introduce"],"j":["justify","join"],"l":["launch","limit","list","locate","lead","leverage"],"m":["maintain","manage","measure","monitor","modify","meet","mention"],"n":["notify","negotiate","note"],"o":["obtain","operate","optimize","organize","outline","oversee"],"p":["prepare","process","produce","provide","publish","perform","present","prevent","promote"],"q":["qualify","question"],"r":["receive","record","reduce","renew","replace","report","require","resolve","review"],"s":["submit","supply","support","suspend","sustain","schedule","secure","select","specify","streamline"],"t":["terminate","transfer","transform","transmit","track","test","target"],"u":["update","upgrade","utilize","undergo"],"v":["verify","validate","volunteer"],"w":["withdraw","work","warrant"]}
