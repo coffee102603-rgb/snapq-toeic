@@ -692,6 +692,9 @@ elif st.session_state.sg_phase == "survival":
         else:
             st.session_state.sb_wrong_cnt=st.session_state.get("sb_wrong_cnt",0)+1
             wrong_cnt=st.session_state.sb_wrong_cnt
+            st.session_state.sb_selected=[]
+            st.session_state.sb_done=False
+            selected=[]
             if wrong_cnt>=2:
                 # 2번 틀림 - 정답 표시
                 result_sent=blanked
