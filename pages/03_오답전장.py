@@ -373,13 +373,17 @@ if st.session_state.sg_phase == "lobby":
     mn1, mn2, mn3 = st.columns(3)
     with mn1:
         if st.button("⚔️ P5전장", key="sg_nav1", type="secondary", use_container_width=True):
+            st.session_state.rv_mode = None; st.session_state.rv_battle = None
             st.session_state.phase="lobby"; st.session_state._p5_active=False
+            st.switch_page("pages/02_P5_Arena.py")
             st.switch_page("pages/02_P5_Arena.py")
     with mn2:
         if st.button("📖 P7전장", key="sg_nav2", type="secondary", use_container_width=True):
+            st.session_state.rv_mode = None; st.session_state.rv_battle = None
             st.switch_page("pages/04_P7_Reading.py")
     with mn3:
         if st.button("🏠 메인", key="sg_nav3", type="secondary", use_container_width=True):
+            st.session_state.rv_mode = None; st.session_state.rv_battle = None
             st.switch_page("main_hub.py")
     import streamlit.components.v1 as _cmp
     _cmp.html("""<script>
@@ -1117,7 +1121,7 @@ elif st.session_state.sg_phase == "combo_rush":
 # ════════════════════════════════
 # 단어 저장고 — 무기 관리 (삭제)
 # ════════════════════════════════
-elif st.session_state.sg_phase == "lobby" and st.session_state.get("rv_mode") == "p7_vault":
+elif st.session_state.get("rv_mode") == "p7_vault":
     st.markdown('''<div style="text-align:center;padding:0.8rem 0;">
         <div style="font-size:2rem;font-weight:900;color:#ffcc00;">📦 단어 저장고</div>
         <div style="font-size:1rem;color:#aaa;margin-top:4px;">불필요한 무기는 지워라!</div>
