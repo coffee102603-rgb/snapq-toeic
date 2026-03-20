@@ -564,348 +564,101 @@ elif st.session_state.sg_phase == "p5_exam_result":
 # VOCA 서바이벌 웨이브 (순수 학습모드 - 타이머 없음)
 # ════════════════════════════════
 elif st.session_state.sg_phase == "survival":
-
-    wave = st.session_state.get("sg_wave", 1)
-    widx = st.session_state.get("sg_wave_idx", 0)
-    results = st.session_state.get("sg_wave_results", [])
-    dead = st.session_state.get("sg_wave_dead", False)
-
-    # 웨이브 설정 (시간 제한 없음 - 학습모드)
-    WAVE_CFG = {
-        1: {"name": "1전 · 뜻, 내가 먼저 안다!", "desc": "영어표현 → 한글뜻", "count": 2},
-        2: {"name": "2전 · 표현, 내 입으로 말한다!", "desc": "한글뜻 → 영어표현", "count": 2},
-        3: {"name": "3전 · 문장, 눈으로 꿰뚫는다!", "desc": "영어문장 → 한글해석", "count": 2},
-        4: {"name": "4전 · 완전정복 · 마지막이다!", "desc": "한글해석 → 영어문장", "count": 2},
-    }
-    cfg = WAVE_CFG.get(wave, WAVE_CFG[4])
-    q_per_wave = cfg["count"]
-
-    # 전체 진행 인덱스
-    global_idx = (wave - 1) * 2 + widx
-    total_qs = 8  # 4웨이브 × 2문제
-
-    # 문제 풀 준비
-    if "sg_sv_pool" not in st.session_state:
-        pool = voca_data.copy()
-        random.shuffle(pool)
-        while len(pool) < 8:
-            pool += voca_data.copy()
-        st.session_state.sg_sv_pool = pool[:8]
-
-    sv_pool = st.session_state.sg_sv_pool
-
-    # 클리어 / 사망 판정
-    if dead:
-        st.session_state.sg_phase = "survival_result"; st.rerun()
-    if wave > 4:
-        st.session_state.sg_phase = "survival_result"; st.rerun()
-
-    q_item = sv_pool[global_idx] if global_idx < len(sv_pool) else sv_pool[-1]
-
-    # ── UI ──
-    wave_colors = {1: "#44cc88", 2: "#ffcc00", 3: "#ff8844", 4: "#ff4466"}
-    wc = wave_colors.get(wave, "#ff4466")
-
-    sv_header = f'<div style="background:linear-gradient(180deg,#181850,#2c2068);border:2.5px solid {wc};border-radius:22px;padding:7px;text-align:center;">'
-    wave_icons={1:'🧠',2:'🧠',3:'💥',4:'🏆'}
-    wi=wave_icons.get(wave,'🏆')
-    sv_header += f'<div style="font-size:1.6rem;font-weight:900;color:{wc};">{wi} {cfg["name"]}</div>'
-    sv_header += f'<div style="font-size:1rem;color:#aaa;font-weight:700;">{cfg["desc"]}</div>'
-    
-    sv_header += '</div>'
-    st.markdown(sv_header, unsafe_allow_html=True)
-
-    # 진행 바
-    prog_pct = int(global_idx / total_qs * 100)
-    st.markdown(f'<div style="background:#2a2a50;border-radius:10px;padding:3px;margin:6px 0;"><div style="background:linear-gradient(90deg,#44cc88,{wc});height:10px;border-radius:8px;width:{prog_pct}%;"></div></div>', unsafe_allow_html=True)
-    st.markdown(f'<div style="text-align:center;font-size:1rem;color:#888;font-weight:700;">{global_idx}/{total_qs}</div>', unsafe_allow_html=True)
-
-    # ── 문제 출제 (웨이브별) ──
-    expr_text = q_item.get("expr", "")
-    meaning = q_item.get("meaning", "")
-    sentences = q_item.get("sentences", [])
-    kr_text = q_item.get("kr", meaning)
-    first_en = sentences[0] if sentences else expr_text
-    kr_first = kr_text.split(". ")[0] + "." if ". " in kr_text else kr_text
-
-    if wave == 1:
-        # 영어표현 → 한글뜻
-        q_display = f'<div style="border-radius:20px;padding:1.8rem 1.4rem;margin:10px 0;text-align:center;background:linear-gradient(145deg,#124028,#185535,#124028);border:2.5px solid rgba(68,204,136,0.7);box-shadow:0 0 40px rgba(68,204,136,0.3);animation:slideUp 0.4s ease-out;"><div style="font-size:1rem;font-weight:800;letter-spacing:3px;text-transform:uppercase;color:rgba(68,204,136,0.75);margin-bottom:8px;">what does this mean?</div><div style="font-size:1.1rem;font-weight:900;line-height:1.4;color:#88ffbb;">{expr_text}</div></div>'
-        correct_ans = meaning
-        others = [v.get("meaning","") for v in voca_data if v.get("meaning","") != meaning]
-    elif wave == 2:
-        # 한글뜻 → 영어표현
-        q_display = f'<div style="border-radius:20px;padding:1.8rem 1.4rem;margin:10px 0;text-align:center;background:linear-gradient(145deg,#3e3210,#4a3c15,#3e3210);border:2.5px solid rgba(255,204,0,0.7);box-shadow:0 0 40px rgba(255,204,0,0.3);animation:slideUp 0.4s ease-out;"><div style="font-size:1rem;font-weight:800;letter-spacing:3px;text-transform:uppercase;color:rgba(255,204,0,0.75);margin-bottom:8px;">영어 표현은?</div><div style="font-size:1.1rem;font-weight:900;line-height:1.4;color:#ffee88;">{meaning}</div></div>'
-        correct_ans = expr_text
-        others = [v.get("expr","") for v in voca_data if v.get("expr","") != expr_text]
-    elif wave == 3:
-        # 영어문장 → 한글해석
-        q_display = f'<div style="border-radius:20px;padding:0.8rem 0.8rem;margin:6px 0;text-align:center;background:linear-gradient(145deg,#3e2810,#4a3215,#3e2810);border:2.5px solid rgba(255,136,68,0.7);box-shadow:0 0 40px rgba(255,136,68,0.3);animation:slideUp 0.4s ease-out;"><div style="font-size:1rem;font-weight:800;letter-spacing:3px;text-transform:uppercase;color:rgba(255,136,68,0.75);margin-bottom:10px;">translate this sentence</div><div style="font-size:1.2rem;font-weight:900;line-height:1.4;color:#ffddaa;text-align:left;">{first_en}</div></div>'
-        correct_ans = kr_first
-        def make_kr_distractors(correct_kr, count=3):
-            result = []
-            swap_map = {
-                "개발": ["판매","구축","운영","폐기","축소"],
-                "집중": ["중단","포기","전환","확대","지원"],
-                "집중할": ["중단할","포기할","전환할","확대할"],
-                "발표": ["철회","수정","취소","연기","검토"],
-                "지지": ["반대","비판","거부","철회","검토"],
-                "완료": ["중단","취소","연기","실패","포기"],
-                "시작": ["중단","완료","취소","연기","포기"],
-                "증가": ["감소","유지","하락","축소","정체"],
-                "확보": ["상실","반환","포기","실패","축소"],
-                "가동": ["중단","폐쇄","축소","매각","정지"],
-                "제공": ["철회","중단","거부","취소","제한"],
-                "열": ["닫","취소","연기","폐쇄"],
-                "지속 가능한": ["재생 가능한","친환경적인","효율적인"],
-                "새로운": ["기존의","낡은"],
-                "강력히": ["약하게","소극적으로"],
-            }
-            for orig, replacements in swap_map.items():
-                if orig in correct_kr:
-                    for rep in replacements:
-                        fake = correct_kr.replace(orig, rep, 1)
-                        if fake != correct_kr and fake not in result:
-                            result.append(fake)
-                        if len(result) >= count:
-                            break
-                if len(result) >= count:
-                    break
-            if len(result) < count:
-                for v in voca_data:
-                    if v.get("expr","") != expr_text:
-                        vkr = v.get("kr", v.get("meaning",""))
-                        vkr_f = vkr.split(". ")[0] + "." if ". " in vkr else vkr
-                        if vkr_f != correct_kr and vkr_f not in result:
-                            result.append(vkr_f)
-                    if len(result) >= count:
-                        break
-            return result[:count]
-        others = make_kr_distractors(correct_ans, 3)
-    else:
-        # 한글해석 → 영어문장
-        q_display = f'<div style="border-radius:20px;padding:0.8rem 0.8rem;margin:6px 0;text-align:center;background:linear-gradient(145deg,#3e1a2a,#4a2235,#3e1a2a);border:2.5px solid rgba(255,68,102,0.7);box-shadow:0 0 40px rgba(255,68,102,0.3);animation:slideUp 0.4s ease-out;"><div style="font-size:1rem;font-weight:800;letter-spacing:3px;text-transform:uppercase;color:rgba(255,68,102,0.75);margin-bottom:10px;">영어 문장은?</div><div style="font-size:1.2rem;font-weight:900;line-height:1.4;color:#ffbbcc;text-align:left;">{kr_first}</div></div>'
-        correct_ans = first_en
-        # Wave4: 고유명사/날짜/숫자 고정, 핵심 동사만 교체해서 오답 생성
-        def make_en_distractors(correct_en, count=3):
-            import re as _re5
-            result = []
-            # 핵심 동사/표현 교체 쌍
-            verb_swaps = [
-                ("is due by", "must be paid by"),
-                ("is due by", "should be submitted by"),
-                ("is due by", "needs to be settled by"),
-                ("must be paid", "is required by"),
-                ("will focus on", "will concentrate on"),
-                ("will focus on", "will work toward"),
-                ("will focus on", "will shift away from"),
-                ("has announced", "has reported"),
-                ("has announced", "has canceled"),
-                ("has announced", "has delayed"),
-                ("announced plans to open", "announced plans to close"),
-                ("announced plans to open", "announced plans to expand"),
-                ("announced plans to open", "announced plans to relocate"),
-                ("is pleased to inform", "regrets to inform"),
-                ("is pleased to inform", "would like to confirm"),
-                ("approved", "rejected"),
-                ("approved", "suspended"),
-                ("approved", "under review for"),
-                ("will be held", "has been canceled"),
-                ("will be held", "has been postponed"),
-                ("is eligible for", "is not eligible for"),
-                ("is eligible for", "may apply for"),
-                ("are required to", "are encouraged to"),
-                ("are required to", "are not required to"),
-                ("will increase", "will decrease"),
-                ("will increase", "is expected to remain"),
-                ("has been completed", "has been delayed"),
-                ("has been completed", "has been suspended"),
-            ]
-            words_en = correct_en.lower()
-            for orig, rep in verb_swaps:
-                if orig.lower() in words_en:
-                    # 대소문자 유지하면서 교체
-                    import re as _re6
-                    fake = _re6.sub(re.escape(orig), rep, correct_en, count=1, flags=re.IGNORECASE)
-                    if fake != correct_en and fake not in result:
-                        result.append(fake)
-                if len(result) >= count:
-                    break
-            # 부족하면 다른 카드 문장에서 채우기 (fallback)
-            if len(result) < count:
-                for v in voca_data:
-                    if v.get("expr","") != expr_text:
-                        vs = v.get("sentences", [])
-                        if vs and vs[0] != correct_en and vs[0] not in result:
-                            result.append(vs[0])
-                    if len(result) >= count:
-                        break
-            return result[:count]
-        others = make_en_distractors(correct_ans, 3)
-
-    st.markdown(q_display, unsafe_allow_html=True)
-
-    # ── 비슷한 첫 글자 오답 생성 (Wave 1,2) ──
-    def similar_distractors(ans, pool, count=3):
-        """같은 첫 글자 → 같은 길이 순으로 비슷한 오답 선택"""
-        if not ans:
-            return pool[:count]
-        first_ch = ans[0].lower()
-        ans_len = len(ans)
-        # 같은 첫 글자 우선
-        same_first = [w for w in pool if w and w[0].lower() == first_ch and w != ans]
-        # 길이 비슷한 순 정렬
-        same_first.sort(key=lambda w: abs(len(w) - ans_len))
-        result = same_first[:count]
-        # 부족하면 길이 비슷한 다른 단어로 채움
-        if len(result) < count:
-            rest = [w for w in pool if w != ans and w not in result]
-            rest.sort(key=lambda w: abs(len(w) - ans_len))
-            result += rest[:count - len(result)]
-        return result[:count]
-
-    if wave in (1, 2):
-        distractors = similar_distractors(correct_ans, others, 3)
-    else:
-        # Wave 3,4: 정답 문장 끝부분만 바꿔서 비슷한 오답
-        def make_similar_sentences(correct, others_pool, count=3):
-            import random as _rnd2
-            result = []
-            words = correct.split()
-            is_korean = any('\uac00' <= ch <= '\ud7a3' for ch in correct)
-            if len(words) >= 4:
-                for o in others_pool:
-                    ow = o.split()
-                    if len(ow) >= 3:
-                        # 정답 앞부분 + 다른 문장 뒷부분
-                        cut = max(2, len(words) - 2)
-                        fake = ' '.join(words[:cut]) + ' ' + ' '.join(ow[-2:])
-                        if fake != correct and fake not in result:
-                            result.append(fake)
-                    if len(result) >= count:
-                        break
-            # 부족하면 기존 others
-            for o in others_pool:
-                if o != correct and o not in result:
-                    result.append(o)
-                if len(result) >= count:
-                    break
-            return result[:count]
-        distractors = make_similar_sentences(correct_ans, others, 3)
-
-    fallback_pool = ["implement","approximately","eligible","comprehensive","완전히 가동되다","자금을 확보하다","~에 집중하다","추가 비용 없이"]
-    while len(distractors) < 3:
-        for fb in fallback_pool:
-            if fb != correct_ans and fb not in distractors:
-                distractors.append(fb)
-                break
+    if not voca_data:
+        st.warning("저장된 P7 단어/표현이 없습니다!")
+        if st.button("돌아가기"): st.session_state.sg_phase="lobby"; st.session_state.rv_battle=None; st.session_state.rv_mode=None; st.rerun()
+        st.stop()
+    if "sb_idx" not in st.session_state: st.session_state.sb_idx=0
+    if "sb_pool" not in st.session_state:
+        pool=[v for v in voca_data if v.get("sentences")]
+        nosent=[v for v in voca_data if not v.get("sentences")]
+        random.shuffle(pool); random.shuffle(nosent)
+        st.session_state.sb_pool=pool+nosent
+    if "sb_selected" not in st.session_state: st.session_state.sb_selected=[]
+    if "sb_done" not in st.session_state: st.session_state.sb_done=False
+    pool=st.session_state.sb_pool
+    idx=st.session_state.sb_idx
+    selected=st.session_state.sb_selected
+    done=st.session_state.sb_done
+    total_cards=len(pool)
+    if idx>=total_cards:
+        st.markdown('''<div style="text-align:center;padding:2rem;"><div style="font-size:3rem;font-weight:900;color:#ffcc00;">🏆 전부 완성! 🏆</div><div style="font-size:1.2rem;color:#88ffbb;font-weight:800;margin-top:8px;">모든 문장 조립 완료!</div></div>''',unsafe_allow_html=True)
+        c1,c2=st.columns(2)
+        with c1:
+            if st.button("⚡ 시험모드 도전!",key="sb_go_exam",type="primary",use_container_width=True):
+                st.session_state.sg_combo_score=0; st.session_state.sg_combo_count=0
+                st.session_state.sg_combo_idx=0; st.session_state.sg_combo_start=time.time()
+                st.session_state.sg_combo_over=False; st.session_state.sg_combo_results=[]
+                if "sg_combo_pool" in st.session_state: del st.session_state.sg_combo_pool
+                st.session_state.rv_mode="p7e"; st.session_state.sg_phase="combo_rush"; st.rerun()
+        with c2:
+            if st.button("🔄 처음부터!",key="sb_restart",type="secondary",use_container_width=True):
+                for k in ["sb_idx","sb_pool","sb_selected","sb_done"]:
+                    if k in st.session_state: del st.session_state[k]
+                st.rerun()
+        st.stop()
+    item=pool[idx]; expr=item.get("expr",""); meaning=item.get("meaning",""); sentences=item.get("sentences",[])
+    st.markdown(f'<div style="background:linear-gradient(180deg,#0a0a1a,#1a2040);border:2.5px solid #4488ff;border-radius:20px;padding:10px;text-align:center;margin-bottom:8px;"><div style="font-size:1.1rem;font-weight:900;color:#4488ff;">📖 문장 조립 배틀</div><div style="font-size:0.85rem;color:#aaa;margin-top:2px;">{idx+1} / {total_cards} 문장 · 타이머 없음!</div><div style="background:#1a2040;border-radius:8px;height:8px;margin-top:6px;"><div style="background:linear-gradient(90deg,#4488ff,#44ccff);height:8px;border-radius:8px;width:{int((idx/max(total_cards,1))*100)}%;"></div></div></div>',unsafe_allow_html=True)
+    st.markdown(f'<div style="background:#111;border:1px solid #4488ff;border-radius:10px;padding:8px 14px;margin:4px 0;text-align:center;"><span style="color:#44ccff;font-weight:700;font-size:1.0rem;">{expr}</span><span style="color:#aaa;font-size:0.9rem;margin-left:10px;">→ {meaning}</span></div>',unsafe_allow_html=True)
+    import re as _re3
+    sentence=sentences[0] if sentences else f"The company will {expr} as required."
+    words_in_sent=[w.strip(".,!?;:()[]") for w in sentence.split()]
+    words_in_sent=[w for w in words_in_sent if len(w)>=3]
+    key_words=[w for w in expr.split() if len(w)>=3]
+    rng_blank=random.Random(hash(f"blank_{expr}"))
+    blank_candidates=key_words.copy()
+    other_words=[w for w in words_in_sent if w.lower() not in [k.lower() for k in key_words]]
+    rng_blank.shuffle(other_words)
+    blank_candidates+=other_words
+    seen=set(); unique_blanks=[]
+    for w in blank_candidates:
+        if w.lower() not in seen and len(w)>=3: seen.add(w.lower()); unique_blanks.append(w)
+    blank_words=unique_blanks[:4]
+    while len(blank_words)<4: blank_words.append("the")
+    blanked=sentence
+    blank_order=[]
+    for bw in blank_words:
+        pat=r"(?i)\b"+_re3.escape(bw)+r"\b"
+        if _re3.search(pat,blanked): blanked=_re3.sub(pat,"[___]",blanked,count=1); blank_order.append(bw)
+    filled_parts=blanked.split("[___]")
+    sentence_html=""
+    for i,part in enumerate(filled_parts):
+        sentence_html+=f'<span style="color:#eeeeff;">{part}</span>'
+        if i<len(filled_parts)-1:
+            if i<len(selected): sentence_html+=f'<span style="background:#1a3a6b;border:2px solid #4488ff;border-radius:6px;padding:2px 8px;color:#88ccff;font-weight:900;margin:0 2px;">{selected[i]}</span>'
+            else: sentence_html+='<span style="background:#0a0a1a;border:2px dashed #4488ff;border-radius:6px;padding:2px 20px;color:#333;margin:0 2px;">_____</span>'
+    st.markdown(f'<div style="background:linear-gradient(145deg,#1a1a2e,#0d1020);border:2px solid rgba(100,150,255,0.4);border-radius:16px;padding:1rem;margin:8px 0;font-size:1.1rem;line-height:2.2;">{sentence_html}</div>',unsafe_allow_html=True)
+    if done:
+        correct=len(selected)==len(blank_order) and all(s.lower()==b.lower() for s,b in zip(selected,blank_order))
+        if correct:
+            st.markdown(f'<div style="text-align:center;padding:1rem;background:linear-gradient(135deg,#0a1a0a,#0d2010);border:2px solid #44ff88;border-radius:16px;margin:8px 0;"><div style="font-size:2rem;font-weight:900;color:#44ff88;">✅ 완벽 조립!</div><div style="font-size:1.0rem;color:#88ffbb;margin-top:6px;">📖 {meaning}</div></div>',unsafe_allow_html=True)
+            if st.button("▶ 다음 문장!",key="sb_next",type="primary",use_container_width=True):
+                st.session_state.sb_idx=idx+1; st.session_state.sb_selected=[]; st.session_state.sb_done=False; st.rerun()
         else:
-            break
-
-    rng = random.Random(hash(f"sv_{wave}_{widx}_{correct_ans}"))
-    choices = distractors[:3] + [correct_ans]
-    rng.shuffle(choices)
-    correct_idx = choices.index(correct_ans)
-    labeled = [f"({chr(65+i)}) {c}" for i, c in enumerate(choices)]
-
-    # ── 틀렸을 때 브리핑 모드 체크 ──
-    wave_wrong = st.session_state.get("sg_wave_wrong_review", None)
-
-    if wave_wrong and wave_wrong.get("wave") == wave and wave_wrong.get("widx") == widx:
-        # 브리핑 노트 표시 (선택지 대신!)
-        wr = wave_wrong
-        st.markdown(f'<div style="text-align:center;font-size:2rem;font-weight:900;color:#ff5555;margin:8px 0;">❌ 오답!</div>', unsafe_allow_html=True)
-
-        # 브리핑 노트
-        note_border = "rgba(255,100,100,0.6)"
-        note_bg = "linear-gradient(145deg,#1a1235,#221540,#1a1235)"
-        note = f'<div style="background:{note_bg};border:2.5px solid {note_border};border-radius:20px;padding:1.5rem;margin:10px 0;box-shadow:0 0 25px rgba(255,100,100,0.15);">'
-        note += f'<div style="font-size:1.1rem;font-weight:800;letter-spacing:3px;color:rgba(255,150,150,0.8);margin-bottom:10px;">📝 REVIEW NOTE</div>'
-        note += f'<div style="font-size:1.1rem;color:#ff8888;font-weight:800;margin-bottom:8px;">내 선택: <span style="text-decoration:line-through;opacity:0.7;">{wr["my_ans"]}</span></div>'
-        
-        note += f'<div style="border-top:1px solid rgba(255,255,255,0.1);padding-top:12px;margin-top:8px;">'
-        note += f'<div style="font-size:1.1rem;font-weight:900;color:#88bbff;margin-bottom:4px;">📖 {wr["expr"]}</div>'
-        note += f'<div style="font-size:1.1rem;color:#aaa;font-weight:700;margin-bottom:6px;">뜻: {wr["meaning"]}</div>'
-        if wr.get("sentence"):
-            import re as _re2
-            _hl_sent = wr["sentence"]
-            _hl_expr = wr["expr"]
-            _matched = False
-            if _hl_expr:
-                # 1차: 정확한 매칭
-                if _hl_expr.lower() in _hl_sent.lower():
-                    try:
-                        _hl_sent = _re2.sub(f"(?i)({_re2.escape(_hl_expr)})", '<mark style="background:none;color:#ffffff;font-weight:900;padding:0 2px;border-bottom:4px solid #ffe066;text-decoration:none;position:relative;display:inline;background-image:linear-gradient(#ffe066,#ffe066);background-size:0% 4px;background-position:left bottom;background-repeat:no-repeat;animation:hlDraw 0.8s ease-out 0.3s forwards;border-bottom:none;">\\1</mark>', _hl_sent)
-                        _matched = True
-                    except: pass
-                # 2차: 어근 매칭 (첫 4글자 이상 공통)
-                if not _matched:
-                    _words = _hl_expr.split()
-                    for _w in _words:
-                        if len(_w) >= 4:
-                            _stem = _w[:min(len(_w)-1, 5)]
-                            try:
-                                _hl_sent = _re2.sub(f"(?i)(\\b{_re2.escape(_stem)}\\w*)", '<mark style="background:none;color:#ffffff;font-weight:900;padding:0 2px;border-bottom:4px solid #ffe066;text-decoration:none;position:relative;display:inline;background-image:linear-gradient(#ffe066,#ffe066);background-size:0% 4px;background-position:left bottom;background-repeat:no-repeat;animation:hlDraw 0.8s ease-out 0.3s forwards;border-bottom:none;">\\1</mark>', _hl_sent, count=1)
-                            except: pass
-            note += '<div style="font-size:1.1rem;font-weight:800;letter-spacing:2px;color:#88bbff;margin-top:12px;margin-bottom:4px;">[정답]</div>'
-            if wave == 4:
-                note += f'<div style="font-size:1.1rem;color:#ccddff;font-weight:700;line-height:1.6;margin-top:4px;padding:14px;background:rgba(100,140,255,0.08);border-radius:12px;">{_hl_sent}</div>'
-            # Wave 3: 영어문장 위에 이미 보임 → 표시 안 함
-        if wr.get("kr"):
-            if wave == 3:
-                note += f'<div style="font-size:1.1rem;color:#aabbcc;font-weight:600;margin-top:4px;padding:0 10px;">→ {wr["kr"]}</div>'
-            # Wave 4: 한글문장 위에 이미 보임 → 표시 안 함>'
-        note += '</div></div>'
-        st.markdown(note, unsafe_allow_html=True)
-
-        # 다음 문제 버튼
-        if st.button("▶ 다음 문제", key=f"wave_next_{wave}_{widx}", type="primary", use_container_width=True):
-            st.session_state.sg_wave_wrong_review = None
-            new_widx = widx + 1
-            if new_widx >= q_per_wave:
-                st.session_state.sg_wave = wave + 1
-                st.session_state.sg_wave_idx = 0
-            else:
-                st.session_state.sg_wave_idx = new_widx
-            st.rerun()
+            st.markdown('<div style="text-align:center;padding:0.8rem;background:#1a0808;border:2px solid #ff4444;border-radius:16px;margin:8px 0;"><div style="font-size:1.5rem;font-weight:900;color:#ff4444;">❌ 다시 해봐!</div></div>',unsafe_allow_html=True)
+            if st.button("🔄 다시 시도",key="sb_retry",type="secondary",use_container_width=True):
+                st.session_state.sb_selected=[]; st.session_state.sb_done=False; st.rerun()
     else:
-        # 일반 선택지 표시
-        for i, ch in enumerate(labeled):
-            if st.button(ch, key=f"sv_{wave}_{widx}_{i}", type="secondary", use_container_width=True):
-                if i == correct_idx:
-                    results.append(True)
-                    st.session_state.sg_wave_results = results
-                    # 맞추면 바로 다음 문제!
-                    st.session_state.sg_wave_wrong_review = None
-                    new_widx = widx + 1
-                    if new_widx >= q_per_wave:
-                        st.session_state.sg_wave = wave + 1
-                        st.session_state.sg_wave_idx = 0
-                    else:
-                        st.session_state.sg_wave_idx = new_widx
-                    st.rerun()
+        st.markdown('<div style="text-align:center;font-size:0.85rem;color:#888;margin:8px 0;">👇 단어를 탭해서 빈칸에 채워넣어라!</div>',unsafe_allow_html=True)
+        used=[s.lower() for s in selected]
+        rng_card=random.Random(hash(f"card_{expr}"))
+        shuffled=blank_words.copy(); rng_card.shuffle(shuffled)
+        cols=st.columns(4)
+        for ci,bw in enumerate(shuffled):
+            with cols[ci]:
+                if bw.lower() in used:
+                    st.markdown(f'<div style="background:#1a1a1a;border:2px solid #333;border-radius:10px;padding:10px 4px;text-align:center;color:#444;font-weight:700;font-size:0.9rem;">{bw}</div>',unsafe_allow_html=True)
                 else:
-                    results.append(False)
-                    st.session_state.sg_wave_results = results
-                    # 틀리면 브리핑 노트 표시! (다음 문제로 안 넘어감)
-                    st.session_state.sg_wave_wrong_review = {
-                        "wave": wave, "widx": widx,
-                        "my_ans": choices[i], "correct_ans": correct_ans,
-                        "expr": expr_text, "meaning": meaning,
-                        "sentence": first_en if sentences else "",
-                        "kr": kr_first if kr_text else ""
-                    }
-                    st.rerun()
+                    if st.button(bw,key=f"sb_word_{idx}_{ci}",type="secondary",use_container_width=True):
+                        new_sel=selected+[bw]; st.session_state.sb_selected=new_sel
+                        if len(new_sel)>=len(blank_order): st.session_state.sb_done=True
+                        st.rerun()
+        if selected:
+            if st.button("↩ 다시 선택",key="sb_clear",type="secondary",use_container_width=True):
+                st.session_state.sb_selected=[]; st.session_state.sb_done=False; st.rerun()
+    if st.button("⏭ 건너뛰기",key=f"sb_skip_{idx}",use_container_width=True):
+        st.session_state.sb_idx=idx+1; st.session_state.sb_selected=[]; st.session_state.sb_done=False; st.rerun()
 
-    _wc_map = {1:"68,204,136", 2:"255,204,0", 3:"255,136,68", 4:"255,68,102"}
-    _rgb = _wc_map.get(wave, "255,68,102")
-    components.html(f"""<script>
-    function stW(){{const d=window.parent.document;d.querySelectorAll('button[kind="secondary"]').forEach(b=>{{const t=(b.textContent||'').trim();if(/^\([A-D]\)/.test(t)){{b.style.cssText='background:linear-gradient(135deg,rgba({_rgb},0.25),rgba({_rgb},0.12))!important;color:#ffffff!important;border:2px solid rgba({_rgb},0.5)!important;border-radius:16px!important;font-size:1.1rem!important;font-weight:900!important;padding:0.4rem 0.5rem!important;min-height:auto!important;box-shadow:0 3px 15px rgba('+'{_rgb}'+',0.15)!important;';b.querySelectorAll('p').forEach(p=>p.style.cssText='font-size:1.1rem!important;font-weight:900!important;');}}}});}};setTimeout(stW,80);setTimeout(stW,300);setTimeout(stW,700);new MutationObserver(stW).observe(window.parent.document.body,{{childList:true,subtree:true}});
-    </script>""", height=0)
-
-# ════════════════════════════════
-# 서바이벌 결과
-# ════════════════════════════════
 elif st.session_state.sg_phase == "survival_result":
     wave = st.session_state.get("sg_wave", 1)
     results = st.session_state.get("sg_wave_results", [])
