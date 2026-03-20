@@ -761,16 +761,9 @@ elif st.session_state.sg_phase == "survival_result":
     cleared = wave > 4
 
     if cleared and ok_cnt == total_answered:
-        sv_pool = st.session_state.get("sg_sv_pool", [])
-        hof_new = []
-        for item in sv_pool:
-            if result == "hof":
-                hof_new.append(item.get("expr",""))
-        hof_msg = f'<div style="font-size:1.0rem;color:#ffcc00;font-weight:800;margin-top:6px;">🏆 {len(hof_new)}개 표현 명예의 전당 입성!</div>' if hof_new else ""
         st.markdown(f'''<div style="text-align:center;padding:1.5rem;">
             <div style="font-size:3.5rem;font-weight:900;color:#ffcc00;text-shadow:0 0 30px #ffaa00;">🏆 완전정복! 🏆</div>
             <div style="font-size:1.5rem;color:#ffdd44;font-weight:800;margin-top:8px;">4전 전부 완벽 정답! 숙련도 +1 상승!</div>
-            {hof_msg}
         </div>''', unsafe_allow_html=True)
     elif cleared:
         st.markdown(f'''<div style="text-align:center;padding:1.5rem;">
@@ -953,12 +946,6 @@ elif st.session_state.sg_phase == "combo_result":
         storage["combo_best"] = score
         save_storage(storage)
     combo_pool = st.session_state.get("sg_combo_pool", [])
-    combo_hof = []
-    if score > 0:
-        for item in combo_pool:
-            if result == "hof":
-                combo_hof.append(item.get("expr",""))
-    st.session_state["_combo_hof_count"] = len(combo_hof)
 
     if new_record:
         st.markdown(f'''<div style="text-align:center;padding:1.5rem;">
