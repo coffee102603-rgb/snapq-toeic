@@ -602,7 +602,7 @@ elif st.session_state.sg_phase == "survival":
                 st.rerun()
         st.stop()
     item=pool[idx]; expr=item.get("expr",""); meaning=item.get("meaning",""); sentences=item.get("sentences",[])
-    kr_text=item.get("kr",meaning)
+    kr_text=item.get("kr","") or meaning
     # 헤더
     st.markdown(f'<div style="background:linear-gradient(180deg,#0a0a1a,#1a2040);border:2.5px solid #4488ff;border-radius:20px;padding:10px;text-align:center;margin-bottom:8px;"><div style="font-size:1.1rem;font-weight:900;color:#4488ff;">📖 문장 조립 배틀</div><div style="font-size:0.85rem;color:#aaa;margin-top:2px;">{idx+1} / {total_cards} 문장 · 타이머 없음!</div><div style="background:#1a2040;border-radius:8px;height:8px;margin-top:6px;"><div style="background:linear-gradient(90deg,#4488ff,#44ccff);height:8px;border-radius:8px;width:{int((idx/max(total_cards,1))*100)}%;"></div></div></div>',unsafe_allow_html=True)
     import re as _re3
@@ -700,7 +700,7 @@ elif st.session_state.sg_phase == "survival":
                 for ci2,bw2 in enumerate(shuffled2):
                     with cols2[ci2]:
                         if st.button(bw2,key=f"sb_retry_{idx}_{ci2}",type="secondary",use_container_width=True):
-                            new_sel2=[bw2]; st.session_state.sb_selected=new_sel2
+                            new_sel2=st.session_state.sb_selected+[bw2]; st.session_state.sb_selected=new_sel2
                             if len(new_sel2)>=len(blank_order): st.session_state.sb_done=True
                             st.rerun()
                 if st.button("↩ 다시 선택",key="sb_clear2",type="secondary",use_container_width=True):
