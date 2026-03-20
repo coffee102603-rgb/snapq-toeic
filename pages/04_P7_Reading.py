@@ -1028,7 +1028,7 @@ elif st.session_state.p7_phase == "briefing":
     .br-ans{background:#eaf3de;border-radius:8px;padding:6px 10px;}
     .br-ans-en{font-size:13px;font-weight:500;color:#3b6d11;}
     div[data-testid="stButton"] button p{white-space:pre-wrap!important;}
-    div[data-testid="column"]:last-child button{min-height:120px!important;font-size:13px!important;}
+    div[data-testid="column"]:last-child button{min-height:140px!important;max-width:40px!important;width:40px!important;font-size:14px!important;padding:4px 2px!important;line-height:1.8!important;letter-spacing:2px!important;}
     .br-ans-kr{font-size:11px;color:#639922;margin-top:2px;}
     .br-sent{border:0.5px solid #444;border-radius:10px;padding:9px 10px;margin-bottom:6px;background:#1a1a2e;}
     .br-sent-saved{border:0.5px solid #c0dd97;border-radius:10px;padding:9px 10px;margin-bottom:6px;background:#eaf3de;}
@@ -1086,7 +1086,7 @@ elif st.session_state.p7_phase == "briefing":
             if _ex.lower() in _hl.lower():
                 try: _hl = _re3.sub(f"(?i)({_re3.escape(_ex)})", f'<span style="{_mark_style}">\\1</span>', _hl)
                 except: pass
-        col1, col2 = st.columns([11, 1])
+        col1, col2 = st.columns([15, 1])
         with col1:
             if is_saved:
                 st.markdown(f'<div class="br-sent-saved"><div class="br-en-saved">{_hl}</div><div class="br-kr-saved">{sent_kr}</div></div>', unsafe_allow_html=True)
@@ -1094,7 +1094,7 @@ elif st.session_state.p7_phase == "briefing":
                 st.markdown(f'<div class="br-sent"><div class="br-en">{_hl}</div><div class="br-kr">{sent_kr}</div></div>', unsafe_allow_html=True)
         with col2:
             if not is_saved:
-                if st.button("📌\n\n저장", key=f"br_sv_{bi}_{si}", use_container_width=True):
+                if st.button("저\n장", key=f"br_sv_{bi}_{si}", use_container_width=True):
                     sent_data = dict(s); sent_data["sentences"] = [sent]; sent_data["kr"] = sent_kr
                     save_expressions(s.get("expressions", []), step_data=sent_data)
                     st.session_state[sent_key] = True; st.rerun()
