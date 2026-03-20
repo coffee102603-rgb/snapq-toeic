@@ -1027,12 +1027,15 @@ elif st.session_state.p7_phase == "briefing":
     .br-qkr{font-size:12px;color:#aaaaaa;margin-bottom:8px;}
     .br-ans{background:#eaf3de;border-radius:8px;padding:6px 10px;}
     .br-ans-en{font-size:13px;font-weight:500;color:#3b6d11;}
+    div[data-testid="stButton"] button p{white-space:pre-wrap!important;}
+    div[data-testid="column"]:last-child button{min-height:120px!important;font-size:13px!important;}
     .br-ans-kr{font-size:11px;color:#639922;margin-top:2px;}
     .br-sent{border:0.5px solid #444;border-radius:10px;padding:9px 10px;margin-bottom:6px;background:#1a1a2e;}
     .br-sent-saved{border:0.5px solid #c0dd97;border-radius:10px;padding:9px 10px;margin-bottom:6px;background:#eaf3de;}
-    .br-en{font-size:13px;font-weight:700;color:#ffffff;line-height:1.5;}
-    .br-kr{font-size:11px;color:#cccccc;margin-top:3px;}
-    .br-en-saved{font-size:13px;font-weight:500;color:#27500a;line-height:1.5;}
+    .br-en{font-size:16px;font-weight:700;color:#ffffff;line-height:1.6;}
+    .br-kr{font-size:13px;color:#cccccc;margin-top:4px;}
+    .br-en-saved{font-size:16px;font-weight:700;color:#27500a;line-height:1.6;}
+    .br-kr-saved{font-size:13px;color:#3b6d11;margin-top:4px;}
     .br-kr-saved{font-size:11px;color:#3b6d11;margin-top:3px;}
     </style>""", unsafe_allow_html=True)
 
@@ -1083,7 +1086,7 @@ elif st.session_state.p7_phase == "briefing":
             if _ex.lower() in _hl.lower():
                 try: _hl = _re3.sub(f"(?i)({_re3.escape(_ex)})", f'<span style="{_mark_style}">\\1</span>', _hl)
                 except: pass
-        col1, col2 = st.columns([9, 2])
+        col1, col2 = st.columns([11, 1])
         with col1:
             if is_saved:
                 st.markdown(f'<div class="br-sent-saved"><div class="br-en-saved">{_hl}</div><div class="br-kr-saved">{sent_kr}</div></div>', unsafe_allow_html=True)
@@ -1091,7 +1094,7 @@ elif st.session_state.p7_phase == "briefing":
                 st.markdown(f'<div class="br-sent"><div class="br-en">{_hl}</div><div class="br-kr">{sent_kr}</div></div>', unsafe_allow_html=True)
         with col2:
             if not is_saved:
-                if st.button("📌\n저장", key=f"br_sv_{bi}_{si}", use_container_width=True):
+                if st.button("📌\n\n저장", key=f"br_sv_{bi}_{si}", use_container_width=True):
                     sent_data = dict(s); sent_data["sentences"] = [sent]; sent_data["kr"] = sent_kr
                     save_expressions(s.get("expressions", []), step_data=sent_data)
                     st.session_state[sent_key] = True; st.rerun()
