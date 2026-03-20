@@ -577,6 +577,9 @@ elif st.session_state.sg_phase == "survival":
     if "sb_selected" not in st.session_state: st.session_state.sb_selected=[]
     if "sb_done" not in st.session_state: st.session_state.sb_done=False
     if "sb_wrong_cnt" not in st.session_state: st.session_state.sb_wrong_cnt=0
+    if "sb_blanked" not in st.session_state: st.session_state.sb_blanked=""
+    if "sb_blank_order" not in st.session_state: st.session_state.sb_blank_order=[]
+    if "sb_blank_words" not in st.session_state: st.session_state.sb_blank_words=[]
     pool=st.session_state.sb_pool
     idx=st.session_state.sb_idx
     selected=st.session_state.sb_selected
@@ -594,40 +597,56 @@ elif st.session_state.sg_phase == "survival":
                 st.session_state.rv_mode="p7e"; st.session_state.sg_phase="combo_rush"; st.rerun()
         with c2:
             if st.button("🔄 처음부터!",key="sb_restart",type="secondary",use_container_width=True):
-                for k in ["sb_idx","sb_pool","sb_selected","sb_done"]:
+                for k in ["sb_idx","sb_pool","sb_selected","sb_done","sb_wrong_cnt","sb_blanked","sb_blank_order","sb_blank_words"]:
                     if k in st.session_state: del st.session_state[k]
                 st.rerun()
         st.stop()
     item=pool[idx]; expr=item.get("expr",""); meaning=item.get("meaning",""); sentences=item.get("sentences",[])
+    kr_text=item.get("kr",meaning)
+    # 헤더
     st.markdown(f'<div style="background:linear-gradient(180deg,#0a0a1a,#1a2040);border:2.5px solid #4488ff;border-radius:20px;padding:10px;text-align:center;margin-bottom:8px;"><div style="font-size:1.1rem;font-weight:900;color:#4488ff;">📖 문장 조립 배틀</div><div style="font-size:0.85rem;color:#aaa;margin-top:2px;">{idx+1} / {total_cards} 문장 · 타이머 없음!</div><div style="background:#1a2040;border-radius:8px;height:8px;margin-top:6px;"><div style="background:linear-gradient(90deg,#4488ff,#44ccff);height:8px;border-radius:8px;width:{int((idx/max(total_cards,1))*100)}%;"></div></div></div>',unsafe_allow_html=True)
-    # 힌트: 현재 문장의 핵심표현
-    st.markdown(f'<div style="background:#111;border:1px solid #4488ff;border-radius:10px;padding:8px 14px;margin:4px 0;text-align:center;"><span style="color:#44ccff;font-weight:700;font-size:1.0rem;">💡 {expr}</span></div>',unsafe_allow_html=True)
     import re as _re3
     sentence=sentences[0] if sentences else f"The company will {expr} as required."
-    words_in_sent=[w.strip(".,!?;:()[]") for w in sentence.split()]
-    words_in_sent=[w for w in words_in_sent if len(w)>=3]
-    key_words=[w for w in expr.split() if len(w)>=3]
-    rng_blank=random.Random(hash(f"blank_{expr}"))
-    blank_candidates=key_words.copy()
-    other_words=[w for w in words_in_sent if w.lower() not in [k.lower() for k in key_words]]
-    rng_blank.shuffle(other_words)
-    blank_candidates+=other_words
-    seen=set(); unique_blanks=[]
-    for w in blank_candidates:
-        if w.lower() not in seen and len(w)>=3: seen.add(w.lower()); unique_blanks.append(w)
-    blank_words=unique_blanks[:4]
-    while len(blank_words)<4: blank_words.append("the")
-    # 블랭크 최소 2개 보장
-    if len([bw for bw in blank_words if bw.lower() in sentence.lower()]) < 2:
-        extra=[w for w in words_in_sent if w.lower() not in [b.lower() for b in blank_words] and len(w)>=4]
-        for ew in extra:
-            if len(blank_words)<4: blank_words.append(ew)
-            else: blank_words[-1]=ew; break
-    blanked=sentence
-    blank_order=[]
-    for bw in blank_words:
-        pat=r"(?i)\b"+_re3.escape(bw)+r"\b"
-        if _re3.search(pat,blanked): blanked=_re3.sub(pat,"[___]",blanked,count=1); blank_order.append(bw)
+    # 문장에 핵심표현이 들어있는지 확인 후 힌트 표시
+    expr_in_sent = any(w.lower() in sentence.lower() for w in expr.split() if len(w)>=3)
+    if expr_in_sent:
+        st.markdown(f'<div style="background:#111;border:1px solid #4488ff;border-radius:10px;padding:8px 14px;margin:4px 0;text-align:center;"><span style="color:#44ccff;font-weight:700;font-size:1.0rem;">💡 {expr}</span></div>',unsafe_allow_html=True)
+    # 블랭크 준비 (한 번만 계산해서 저장)
+    if not st.session_state.sb_blank_order or st.session_state.get("sb_last_idx",-1) != idx:
+        st.session_state.sb_last_idx = idx
+        words_in_sent=[w.strip(".,!?;:()[]") for w in sentence.split()]
+        words_in_sent=[w for w in words_in_sent if len(w)>=3]
+        key_words=[w for w in expr.split() if len(w)>=3]
+        rng_blank=random.Random(hash(f"blank_{expr}"))
+        blank_candidates=key_words.copy()
+        other_words=[w for w in words_in_sent if w.lower() not in [k.lower() for k in key_words]]
+        rng_blank.shuffle(other_words)
+        blank_candidates+=other_words
+        seen=set(); unique_blanks=[]
+        for w in blank_candidates:
+            if w.lower() not in seen and len(w)>=3: seen.add(w.lower()); unique_blanks.append(w)
+        bw_list=unique_blanks[:4]
+        while len(bw_list)<4: bw_list.append("the")
+        blanked=sentence; border=[]
+        for bw in bw_list:
+            pat=r"(?i)\b"+_re3.escape(bw)+r"\b"
+            if _re3.search(pat,blanked): blanked=_re3.sub(pat,"[___]",blanked,count=1); border.append(bw)
+        # 블랭크가 2개 미만이면 추가
+        if len(border)<2:
+            extra=[w for w in words_in_sent if w.lower() not in [b.lower() for b in border] and len(w)>=4]
+            for ew in extra[:2]:
+                pat=r"(?i)\b"+_re3.escape(ew)+r"\b"
+                if _re3.search(pat,blanked): blanked=_re3.sub(pat,"[___]",blanked,count=1); border.append(ew)
+        st.session_state.sb_blanked=blanked
+        st.session_state.sb_blank_order=border
+        st.session_state.sb_blank_words=bw_list
+        st.session_state.sb_selected=[]
+        st.session_state.sb_done=False
+    blanked=st.session_state.sb_blanked
+    blank_order=st.session_state.sb_blank_order
+    blank_words=st.session_state.sb_blank_words
+    selected=st.session_state.sb_selected
+    done=st.session_state.sb_done
     filled_parts=blanked.split("[___]")
     sentence_html=""
     for i,part in enumerate(filled_parts):
@@ -637,26 +656,41 @@ elif st.session_state.sg_phase == "survival":
             else: sentence_html+='<span style="background:#0a0a1a;border:2px dashed #4488ff;border-radius:6px;padding:2px 20px;color:#333;margin:0 2px;">_____</span>'
     st.markdown(f'<div style="background:linear-gradient(145deg,#1a1a2e,#0d1020);border:2px solid rgba(100,150,255,0.4);border-radius:16px;padding:1rem;margin:8px 0;font-size:1.1rem;line-height:2.2;">{sentence_html}</div>',unsafe_allow_html=True)
     if done:
-        correct=len(selected)==len(blank_order) and all(s.lower()==b.lower() for s,b in zip(selected,blank_order))
+        # 정답 체크 - 순서 무관하게 모든 선택이 blank_order에 있는지
+        sel_lower=[s.lower() for s in selected]
+        ord_lower=[b.lower() for b in blank_order]
+        correct=(sorted(sel_lower)==sorted(ord_lower))
         if correct:
-            # 완성 문장에 정답 단어 하이라이트
-            done_sent = blanked
+            done_sent=blanked
             for bw in blank_order:
-                done_sent = done_sent.replace("[___]",f'<span style="background:#0a2a0a;border:2px solid #44ff88;border-radius:6px;padding:2px 8px;color:#44ff88;font-weight:900;margin:0 2px;">{bw}</span>',1)
+                done_sent=done_sent.replace("[___]",f'<span style="background:#0a2a0a;border:2px solid #44ff88;border-radius:6px;padding:2px 8px;color:#44ff88;font-weight:900;margin:0 2px;">{bw}</span>',1)
             st.markdown(f'<div style="background:linear-gradient(145deg,#1a1a2e,#0d1020);border:2px solid rgba(68,255,136,0.4);border-radius:16px;padding:1rem;margin:8px 0;font-size:1.1rem;line-height:2.2;">{done_sent}</div>',unsafe_allow_html=True)
-            st.markdown(f'<div style="text-align:center;padding:1rem;background:linear-gradient(135deg,#0a1a0a,#0d2010);border:2px solid #44ff88;border-radius:16px;margin:8px 0;"><div style="font-size:2rem;font-weight:900;color:#44ff88;">완벽해! 해석 공개! 🎉</div><div style="font-size:1.1rem;color:#88ffbb;font-weight:700;margin-top:8px;">📖 {meaning}</div></div>',unsafe_allow_html=True)
+            st.markdown(f'<div style="text-align:center;padding:1rem;background:linear-gradient(135deg,#0a1a0a,#0d2010);border:2px solid #44ff88;border-radius:16px;margin:8px 0;"><div style="font-size:2rem;font-weight:900;color:#44ff88;">완벽해! 해석 공개! 🎉</div><div style="font-size:1.1rem;color:#88ffbb;font-weight:700;margin-top:8px;">📖 {kr_text}</div></div>',unsafe_allow_html=True)
             if st.button("▶ 다음 문장!",key="sb_next",type="primary",use_container_width=True):
-                st.session_state.sb_idx=idx+1; st.session_state.sb_selected=[]; st.session_state.sb_done=False; st.rerun()
+                st.session_state.sb_idx=idx+1; st.session_state.sb_selected=[]
+                st.session_state.sb_done=False; st.session_state.sb_wrong_cnt=0
+                st.session_state.sb_blank_order=[]; st.session_state.sb_blanked=""
+                st.session_state.sb_blank_words=[]; st.rerun()
         else:
-            st.session_state.sb_wrong_cnt = st.session_state.get("sb_wrong_cnt",0) + 1
-            if st.session_state.sb_wrong_cnt >= 2:
-                correct_sent = blanked
-                for bw in blank_order:
-                    correct_sent = correct_sent.replace("[___]",f'<span style="background:#1a3a1a;border:2px solid #44ff88;border-radius:6px;padding:2px 8px;color:#44ff88;font-weight:900;margin:0 2px;">{bw}</span>',1)
-                st.markdown(f'<div style="background:linear-gradient(145deg,#1a1a2e,#0d1020);border:2px solid rgba(68,255,136,0.4);border-radius:16px;padding:1rem;margin:8px 0;font-size:1.1rem;line-height:2.2;">{correct_sent}</div>',unsafe_allow_html=True)
-                st.markdown(f'<div style="text-align:center;padding:1rem;background:#1a0a0a;border:2px solid #ff8844;border-radius:16px;margin:8px 0;"><div style="font-size:1.8rem;font-weight:900;color:#ff8844;">힘내! 정답 & 해석 공개! 💪</div><div style="font-size:1.1rem;color:#88ffbb;font-weight:700;margin-top:8px;">📖 {meaning}</div></div>',unsafe_allow_html=True)
+            st.session_state.sb_wrong_cnt=st.session_state.get("sb_wrong_cnt",0)+1
+            wrong_cnt=st.session_state.sb_wrong_cnt
+            # 맞은것 초록, 틀린것 빨강으로 표시
+            result_sent=blanked
+            for i,bw in enumerate(blank_order):
+                if i<len(selected):
+                    if selected[i].lower()==bw.lower(): color="#44ff88"; bg="#0a2a0a"; border_c="#44ff88"
+                    else: color="#ff4444"; bg="#2a0a0a"; border_c="#ff4444"
+                    result_sent=result_sent.replace("[___]",f'<span style="background:{bg};border:2px solid {border_c};border-radius:6px;padding:2px 8px;color:{color};font-weight:900;margin:0 2px;">{selected[i]}</span>',1)
+                else:
+                    result_sent=result_sent.replace("[___]",f'<span style="background:#2a1a0a;border:2px solid #ff8844;border-radius:6px;padding:2px 8px;color:#ff8844;font-weight:900;margin:0 2px;">{bw}</span>',1)
+            st.markdown(f'<div style="background:linear-gradient(145deg,#1a1a2e,#0d1020);border:2px solid rgba(255,100,100,0.4);border-radius:16px;padding:1rem;margin:8px 0;font-size:1.1rem;line-height:2.2;">{result_sent}</div>',unsafe_allow_html=True)
+            if wrong_cnt>=2:
+                st.markdown(f'<div style="text-align:center;padding:1rem;background:#1a0a0a;border:2px solid #ff8844;border-radius:16px;margin:8px 0;"><div style="font-size:1.8rem;font-weight:900;color:#ff8844;">힘내! 정답 & 해석 공개! 💪</div><div style="font-size:1.1rem;color:#88ffbb;font-weight:700;margin-top:8px;">📖 {kr_text}</div></div>',unsafe_allow_html=True)
                 if st.button("▶ 다음 문장!",key="sb_show_next",type="primary",use_container_width=True):
-                    st.session_state.sb_idx=idx+1; st.session_state.sb_selected=[]; st.session_state.sb_done=False; st.session_state.sb_wrong_cnt=0; st.rerun()
+                    st.session_state.sb_idx=idx+1; st.session_state.sb_selected=[]
+                    st.session_state.sb_done=False; st.session_state.sb_wrong_cnt=0
+                    st.session_state.sb_blank_order=[]; st.session_state.sb_blanked=""
+                    st.session_state.sb_blank_words=[]; st.rerun()
             else:
                 st.markdown('<div style="text-align:center;padding:0.8rem;background:#1a0808;border:2px solid #ff4444;border-radius:16px;margin:8px 0;"><div style="font-size:1.5rem;font-weight:900;color:#ff4444;">❌ 한 번 더!</div><div style="font-size:0.9rem;color:#ff8888;margin-top:4px;">한 번 더 기회가 있다!</div></div>',unsafe_allow_html=True)
                 if st.button("🔄 다시 시도",key="sb_retry",type="secondary",use_container_width=True):
@@ -680,7 +714,10 @@ elif st.session_state.sg_phase == "survival":
             if st.button("↩ 다시 선택",key="sb_clear",type="secondary",use_container_width=True):
                 st.session_state.sb_selected=[]; st.session_state.sb_done=False; st.rerun()
     if st.button("⏭ 건너뛰기",key=f"sb_skip_{idx}",use_container_width=True):
-        st.session_state.sb_idx=idx+1; st.session_state.sb_selected=[]; st.session_state.sb_done=False; st.session_state.sb_wrong_cnt=0; st.rerun()
+        st.session_state.sb_idx=idx+1; st.session_state.sb_selected=[]
+        st.session_state.sb_done=False; st.session_state.sb_wrong_cnt=0
+        st.session_state.sb_blank_order=[]; st.session_state.sb_blanked=""
+        st.session_state.sb_blank_words=[]; st.rerun()
 
 elif st.session_state.sg_phase == "survival_result":
     wave = st.session_state.get("sg_wave", 1)
