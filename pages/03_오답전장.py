@@ -602,7 +602,11 @@ elif st.session_state.sg_phase == "survival":
                 st.rerun()
         st.stop()
     item=pool[idx]; expr=item.get("expr",""); meaning=item.get("meaning",""); sentences=item.get("sentences",[])
-    kr_text=item.get("kr","") or meaning
+    _kr_full=item.get("kr","") or meaning
+    # sentences 개수에 맞춰 kr도 문장 분리
+    _kr_sents=[s.strip() for s in _kr_full.replace("!","!|").replace("?","?|").replace(".",".|").split("|") if s.strip()]
+    _sent_idx=0  # sentences[0] 기준
+    kr_text=_kr_sents[_sent_idx] if _sent_idx<len(_kr_sents) else (meaning or _kr_full)
     # 헤더
     st.markdown(f'<div style="background:linear-gradient(180deg,#0a0a1a,#1a2040);border:2.5px solid #4488ff;border-radius:20px;padding:10px;text-align:center;margin-bottom:8px;"><div style="font-size:1.1rem;font-weight:900;color:#4488ff;">📖 문장 조립 배틀</div><div style="font-size:0.85rem;color:#aaa;margin-top:2px;">{idx+1} / {total_cards} 문장 · 타이머 없음!</div><div style="background:#1a2040;border-radius:8px;height:8px;margin-top:6px;"><div style="background:linear-gradient(90deg,#4488ff,#44ccff);height:8px;border-radius:8px;width:{int((idx/max(total_cards,1))*100)}%;"></div></div></div>',unsafe_allow_html=True)
     import re as _re3
@@ -639,6 +643,17 @@ elif st.session_state.sg_phase == "survival":
                 if len(border)>=2: break
                 pat=r"(?i)\b"+_re3.escape(ew)+r"\b"
                 if _re3.search(pat,blanked): blanked=_re3.sub(pat,"[___]",blanked,count=1); border.append(ew)
+        # blank_order를 문장에서 실제 등장 순서로 재정렬
+        def get_pos(w, s):
+            import re as _rp
+            m=_rp.search(r"(?i)\b"+_rp.escape(w)+r"\b", s)
+            return m.start() if m else 9999
+        border=sorted(border, key=lambda w: get_pos(w, sentence))
+        # blanked도 순서대로 재생성
+        blanked=sentence
+        for bw in border:
+            pat=r"(?i)\b"+_re3.escape(bw)+r"\b"
+            blanked=_re3.sub(pat,"[___]",blanked,count=1)
         st.session_state.sb_blanked=blanked
         st.session_state.sb_blank_order=border
         st.session_state.sb_blank_words=bw_list
@@ -693,6 +708,12 @@ elif st.session_state.sg_phase == "survival":
                 # 1번 틀림 - 힌트(한글해석) 공개 + 단어카드 다시 대기
                 st.markdown(f'<div style="text-align:center;padding:0.8rem;background:#1a0808;border:2px solid #ff4444;border-radius:14px;margin:6px 0;"><div style="font-size:1.3rem;font-weight:800;color:#ff6666;">❌ 틀렸어! 힌트 공개!</div><div style="font-size:1.0rem;color:#ffcc88;font-weight:600;margin-top:6px;">💡 {kr_text}</div></div>',unsafe_allow_html=True)
                 st.markdown('<div style="text-align:center;font-size:0.85rem;color:#888;margin:6px 0;">👇 한글 해석 보고 다시 채워넣어라!</div>',unsafe_allow_html=True)
+                empty_html=""
+                for _ip,_pp in enumerate(filled_parts):
+                    empty_html+=f'<span style="color:#eeeeff;">{_pp}</span>'
+                    if _ip<len(filled_parts)-1:
+                        empty_html+='<span style="background:#0a0a1a;border:2px dashed #ff6644;border-radius:6px;padding:2px 20px;color:#333;margin:0 2px;">_____</span>'
+                st.markdown(f'<div style="background:linear-gradient(145deg,#1a1a2e,#0d1020);border:2px solid rgba(255,100,100,0.3);border-radius:16px;padding:1rem;margin:4px 0;font-size:1.1rem;line-height:2.2;">{empty_html}</div>',unsafe_allow_html=True)
                 used2=[s.lower() for s in selected]
                 rng_card2=random.Random(hash(f"card2_{expr}"))
                 shuffled2=blank_words.copy(); rng_card2.shuffle(shuffled2)
