@@ -815,8 +815,8 @@ elif st.session_state.sg_phase == "combo_rush":
     cidx=st.session_state.sg_combo_idx; total_qs=min(5,len(voca_data))
     if "sg_combo_pool" not in st.session_state:
         has_sent=[v for v in voca_data if v.get("sentences")]
-        no_sent=[v for v in voca_data if not v.get("sentences")]
-        pool=has_sent+no_sent; random.shuffle(pool)
+        if not has_sent: has_sent=voca_data[:]
+        pool=has_sent[:]; random.shuffle(pool)
         while len(pool)<5: pool+=voca_data.copy(); random.shuffle(pool)
         st.session_state.sg_combo_pool=pool[:5]
     c_pool=st.session_state.sg_combo_pool
