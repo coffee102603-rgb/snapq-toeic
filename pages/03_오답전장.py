@@ -761,21 +761,6 @@ elif st.session_state.sg_phase == "survival":
             else:
                 import random as _rnd2
                 # 위 네모: 정답으로 채워진 문장
-                result_sent=blanked
-                for bw in blank_order:
-                    result_sent=result_sent.replace("[___]",f'<span style="background:#0a2a0a;border:2px solid #44ff88;border-radius:6px;padding:2px 8px;color:#44ff88;font-weight:900;margin:0 2px;">{bw}</span>',1)
-                st.markdown(f'''<div style="background:#1a1a2e;border:2px solid #4488ff;border-radius:14px;padding:12px 14px;margin-bottom:6px;font-size:1.05rem;font-weight:600;line-height:2.2;color:#ddddff;">{result_sent}</div>''', unsafe_allow_html=True)
-                # 아래 네모: 재밌는 잔소리
-                funny_msgs=[
-                    "😤 이걸 틀려?! 다음엔 눈 크게 뜨고!!",
-                    "🧠 뇌야 일해라! 저장 안 됐냐?!",
-                    "💀 틀렸다고 죽진 않아. 근데 990은 죽었어.",
-                    "📚 이 문장 모르면 토익도 몰라. 외워!",
-                    "⚡ 틀린 게 부끄럽진 않아. 또 틀리는 게 문제지!",
-                    "🔥 괜찮아! 오늘 틀린 게 시험장에서 맞는 거야!",
-                    "😂 이 문장이 웃겨? 외우면 더 웃길 거야!",
-                ]
-                msg=_rnd2.choice(funny_msgs)
                 st.markdown(f'''<div style="background:#1a0a00;border:2px solid #ff8844;border-radius:14px;padding:10px 14px;margin-bottom:8px;text-align:center;">
                     <div style="font-size:1.05rem;font-weight:800;color:#ffaa55;">{msg}</div>
                 </div>''', unsafe_allow_html=True)
