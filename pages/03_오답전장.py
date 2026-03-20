@@ -1121,7 +1121,7 @@ elif st.session_state.sg_phase == "combo_rush":
 # ════════════════════════════════
 # 단어 저장고 — 무기 관리 (삭제)
 # ════════════════════════════════
-elif st.session_state.get("rv_mode") == "p7_vault":
+if st.session_state.get("rv_mode") == "p7_vault":
     st.markdown('''<div style="text-align:center;padding:0.8rem 0;">
         <div style="font-size:2rem;font-weight:900;color:#ffcc00;">📦 단어 저장고</div>
         <div style="font-size:1rem;color:#aaa;margin-top:4px;">불필요한 무기는 지워라!</div>
