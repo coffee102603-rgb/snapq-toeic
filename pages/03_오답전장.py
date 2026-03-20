@@ -713,6 +713,7 @@ elif st.session_state.sg_phase == "survival":
         if not correct and not st.session_state.sb_wrong_counted:
             st.session_state.sb_wrong_cnt+=1
             st.session_state.sb_wrong_counted=True
+            st.rerun()
         wrong_cnt=st.session_state.sb_wrong_cnt
         if correct:
             st.markdown('''<div style="background:#0a2a0a;border:2px solid #44ff88;border-radius:14px;padding:14px;text-align:center;margin-bottom:8px;">
