@@ -677,17 +677,12 @@ elif st.session_state.sg_phase == "survival":
         else:
             st.session_state.sb_wrong_cnt=st.session_state.get("sb_wrong_cnt",0)+1
             wrong_cnt=st.session_state.sb_wrong_cnt
-            # 맞은것 초록, 틀린것 빨강으로 표시
-            result_sent=blanked
-            for i,bw in enumerate(blank_order):
-                if i<len(selected):
-                    if selected[i].lower()==bw.lower(): color="#44ff88"; bg="#0a2a0a"; border_c="#44ff88"
-                    else: color="#ff4444"; bg="#2a0a0a"; border_c="#ff4444"
-                    result_sent=result_sent.replace("[___]",f'<span style="background:{bg};border:2px solid {border_c};border-radius:6px;padding:2px 8px;color:{color};font-weight:900;margin:0 2px;">{selected[i]}</span>',1)
-                else:
-                    result_sent=result_sent.replace("[___]",f'<span style="background:#2a1a0a;border:2px solid #ff8844;border-radius:6px;padding:2px 8px;color:#ff8844;font-weight:900;margin:0 2px;">{bw}</span>',1)
-            st.markdown(f'<div style="background:linear-gradient(145deg,#1a1a2e,#0d1020);border:2px solid rgba(255,100,100,0.4);border-radius:16px;padding:1rem;margin:8px 0;font-size:1.1rem;line-height:2.2;">{result_sent}</div>',unsafe_allow_html=True)
             if wrong_cnt>=2:
+                # 2번 틀림 - 정답 표시
+                result_sent=blanked
+                for bw in blank_order:
+                    result_sent=result_sent.replace("[___]",f'<span style="background:#0a2a0a;border:2px solid #44ff88;border-radius:6px;padding:2px 8px;color:#44ff88;font-weight:900;margin:0 2px;">{bw}</span>',1)
+                st.markdown(f'<div style="background:linear-gradient(145deg,#1a1a2e,#0d1020);border:2px solid rgba(68,255,136,0.4);border-radius:16px;padding:1rem;margin:8px 0;font-size:1.1rem;line-height:2.2;">{result_sent}</div>',unsafe_allow_html=True)
                 st.markdown(f'<div style="text-align:center;padding:0.8rem;background:#140d08;border:1.5px solid #885533;border-radius:14px;margin:6px 0;"><div style="font-size:1.1rem;font-weight:700;color:#cc8855;">💪 힘내! 정답 & 해석 공개!</div><div style="font-size:0.95rem;color:#99bb99;font-weight:500;margin-top:6px;">📖 {kr_text}</div></div>',unsafe_allow_html=True)
                 if st.button("▶ 다음 문장!",key="sb_show_next",type="primary",use_container_width=True):
                     st.session_state.sb_idx=idx+1; st.session_state.sb_selected=[]
@@ -695,8 +690,20 @@ elif st.session_state.sg_phase == "survival":
                     st.session_state.sb_blank_order=[]; st.session_state.sb_blanked=""
                     st.session_state.sb_blank_words=[]; st.rerun()
             else:
-                st.markdown('<div style="text-align:center;padding:0.8rem;background:#1a0808;border:2px solid #ff4444;border-radius:16px;margin:8px 0;"><div style="font-size:1.5rem;font-weight:900;color:#ff4444;">❌ 한 번 더!</div><div style="font-size:0.9rem;color:#ff8888;margin-top:4px;">한 번 더 기회가 있다!</div></div>',unsafe_allow_html=True)
-                if st.button("🔄 다시 시도",key="sb_retry",type="secondary",use_container_width=True):
+                # 1번 틀림 - 힌트(한글해석) 공개 + 단어카드 다시 대기
+                st.markdown(f'<div style="text-align:center;padding:0.8rem;background:#1a0808;border:2px solid #ff4444;border-radius:14px;margin:6px 0;"><div style="font-size:1.3rem;font-weight:800;color:#ff6666;">❌ 틀렸어! 힌트 공개!</div><div style="font-size:1.0rem;color:#ffcc88;font-weight:600;margin-top:6px;">💡 {kr_text}</div></div>',unsafe_allow_html=True)
+                st.markdown('<div style="text-align:center;font-size:0.85rem;color:#888;margin:6px 0;">👇 한글 해석 보고 다시 채워넣어라!</div>',unsafe_allow_html=True)
+                used2=[s.lower() for s in selected]
+                rng_card2=random.Random(hash(f"card2_{expr}"))
+                shuffled2=blank_words.copy(); rng_card2.shuffle(shuffled2)
+                cols2=st.columns(4)
+                for ci2,bw2 in enumerate(shuffled2):
+                    with cols2[ci2]:
+                        if st.button(bw2,key=f"sb_retry_{idx}_{ci2}",type="secondary",use_container_width=True):
+                            new_sel2=[bw2]; st.session_state.sb_selected=new_sel2
+                            if len(new_sel2)>=len(blank_order): st.session_state.sb_done=True
+                            st.rerun()
+                if st.button("↩ 다시 선택",key="sb_clear2",type="secondary",use_container_width=True):
                     st.session_state.sb_selected=[]; st.session_state.sb_done=False; st.rerun()
     else:
         st.markdown('<div style="text-align:center;font-size:0.85rem;color:#888;margin:8px 0;">👇 단어를 탭해서 빈칸에 채워넣어라!</div>',unsafe_allow_html=True)
