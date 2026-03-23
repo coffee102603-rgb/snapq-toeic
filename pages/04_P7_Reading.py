@@ -687,12 +687,7 @@ if st.session_state.p7_phase == "lobby":
             st.session_state.p7_cat="information"; st.rerun()
     st.markdown('<div style="height:4px;"></div>', unsafe_allow_html=True)
 
-    # 선택 확인 배지
-    _cat_names = {"article":"📰 Article","letter":"✉️ Letter","notice":"📋 Notice","information":"ℹ️ Info"}
-    _cat_disp = _cat_names.get(cat, "미선택")
-    _time_disp = f"⏱ {_p7_tsec}초" if _p7_tc else "⏱ 미선택"
-    _badge_color = "#d4af37" if (_p7_tc and cat and cat in PASSAGES) else "#444"
-    st.markdown(f'<div style="background:#0d0d1a;border:1px solid {_badge_color};border-radius:8px;padding:5px 10px;text-align:center;margin-bottom:6px;font-size:0.82rem;font-weight:700;color:{_badge_color};">{_time_disp} · {_cat_disp}</div>', unsafe_allow_html=True)
+
 
     # 전투 시작 버튼
     _ready = _p7_tc and cat and cat in PASSAGES
