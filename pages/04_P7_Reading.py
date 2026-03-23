@@ -1193,11 +1193,14 @@ elif st.session_state.p7_phase == "briefing":
                 <div style="text-align:right;margin-top:6px;font-size:0.85rem;color:#44ff88;font-weight:700;">✅ 저장완료!</div>
             </div>''', unsafe_allow_html=True)
         else:
-            st.markdown(f'''<div style="background:#1a1a2e;border:1px solid #444;border-radius:12px;padding:12px 14px;margin-bottom:6px;">
-                <div style="font-size:1.0rem;font-weight:700;color:#ffffff;line-height:1.7;">{_hl}</div>
-                <div style="font-size:0.85rem;color:#aaaaaa;margin-top:4px;">{sent_kr}</div>
+            st.markdown(f'''<div style="background:#fffff5;border:1px solid #e8e0c8;border-radius:12px;padding:12px 14px;margin-bottom:2px;background-image:repeating-linear-gradient(transparent,transparent 27px,#e8e0c8 27px,#e8e0c8 28px);background-position:0 12px;">
+                <div style="font-size:1.0rem;font-weight:700;color:#1a1a1a;line-height:1.8;">{_hl}</div>
+                <div style="font-size:0.85rem;color:#666;margin-top:4px;">{sent_kr}</div>
             </div>''', unsafe_allow_html=True)
-            if st.button("📌 저장", key=f"br_sv_{bi}_{si}", use_container_width=True):
+            st.markdown('''<style>
+            div[data-testid="stBaseButton-secondary"]{margin-top:0!important;}
+            </style>''', unsafe_allow_html=True)
+            if st.button("저장", key=f"br_sv_{bi}_{si}", use_container_width=True):
                 sent_data = dict(s)
                 sent_data["sentences"] = [sent]
                 sent_data["kr"] = sent_kr
