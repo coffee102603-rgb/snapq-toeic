@@ -878,11 +878,11 @@ elif st.session_state.p7_phase == "battle":
     st.markdown(f'<div style="background:{pass_bg};border:1.5px solid {_p_border};border-left:4px solid {_p_border};border-radius:10px;padding:0.6rem 0.8rem 0.6rem 0.9rem;margin:0.2rem 0;box-shadow:{pass_shadow};transition:border-color 1s,background 1s;">{pass_html}</div>', unsafe_allow_html=True)
 
     # 질문 - [Q1] 형식 + 최소 패딩
-    st.markdown(f'<div style="background:#10101e;border:1px solid #9aa5b4;border-radius:8px;padding:5px 10px;margin:0.2rem 0;"><span style="color:#9aa5b4;font-size:0.78rem;font-weight:900;">[Q{step+1}]</span> <span style="color:#e8e0cc;font-size:0.85rem;font-weight:700;">{cur["question"]}</span></div>', unsafe_allow_html=True)
+    st.markdown(f'<div style="background:#10101e;border:1px solid #9aa5b4;border-radius:8px;padding:6px 10px;margin:0.3rem 0 0.5rem 0;"><span style="color:#9aa5b4;font-size:0.78rem;font-weight:900;">[Q{step+1}]</span> <span style="color:#e8e0cc;font-size:0.85rem;font-weight:700;">{cur["question"]}</span></div>', unsafe_allow_html=True)
 
     # 선택지 - 2x2 격자 (공간 절약)
     st.markdown("""<style>
-    button[kind="primary"]{font-size:0.82rem!important;padding:2px 8px 2px 12px!important;min-height:30px!important;max-height:34px!important;border-radius:8px!important;font-weight:600!important;line-height:1.1!important;color:#e8e0cc!important;margin:0!important;text-align:left!important;background:#0f0f1e!important;}
+    button[kind="primary"]{font-size:0.82rem!important;padding:2px 8px 2px 12px!important;min-height:32px!important;max-height:36px!important;border-radius:8px!important;font-weight:600!important;line-height:1.1!important;color:#e8e0cc!important;margin:2px 0!important;text-align:left!important;background:#0f0f1e!important;}
     button[kind="primary"] p{font-size:0.82rem!important;font-weight:600!important;line-height:1.1!important;white-space:nowrap!important;overflow:hidden!important;text-overflow:ellipsis!important;text-align:left!important;color:#e8e0cc!important;}
     </style>""", unsafe_allow_html=True)
     st.markdown("""<style>.stVerticalBlock{gap:0!important;}.stHorizontalBlock{gap:4px!important;}
@@ -933,9 +933,10 @@ elif st.session_state.p7_phase == "battle":
             if(t.match(/\(A\)|\(B\)|\(C\)|\(D\)/)){
                 const c=colors[ci%4];
                 btn.style.background=c.bg;
-                btn.style.border=c.bd;
-                btn.style.borderLeft=c.bl||c.bd;
-                btn.style.color='#e8e0cc';
+                btn.style.setProperty('background', c.bg, 'important');
+                btn.style.setProperty('border', c.bd, 'important');
+                btn.style.setProperty('border-left', c.bl||c.bd, 'important');
+                btn.style.setProperty('color', '#e8e0cc', 'important');
                 ci++;
             }
         });
