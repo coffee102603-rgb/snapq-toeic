@@ -303,9 +303,15 @@ if st.session_state.sg_phase == "lobby":
     #MainMenu{visibility:hidden!important;}header[data-testid="stHeader"]{height:0!important;visibility:hidden!important;}div[data-testid="stToolbar"]{visibility:hidden!important;}.block-container{padding-top:0.2rem!important;}
     </style>""", unsafe_allow_html=True)
 
-    # 타이틀
-    st.markdown('''<div class="rv-title">
-        <h1>🔥 오 답 전 장</h1>
+    # 타이틀 강화
+    st.markdown('''<div style="text-align:center;padding:8px 0 4px 0;">
+        <div style="font-size:1.8rem;font-weight:900;color:#ff9900;letter-spacing:5px;">🔥 오답전장</div>
+        <div style="font-size:0.65rem;color:#ff8800;letter-spacing:3px;margin-top:2px;">TOEIC WRONG ANSWER ARENA</div>
+        <div style="display:flex;align-items:center;justify-content:center;gap:8px;margin-top:4px;">
+            <div style="height:1px;width:60px;background:linear-gradient(90deg,transparent,#ff6600);"></div>
+            <div style="font-size:0.7rem;color:#ff6600;opacity:0.8;">오답을 무기로 — 실전에서 써먹어라!</div>
+            <div style="height:1px;width:60px;background:linear-gradient(90deg,#ff6600,transparent);"></div>
+        </div>
     </div>''', unsafe_allow_html=True)
 
     _rv_battle = st.session_state.get("rv_battle", None)
@@ -319,45 +325,58 @@ if st.session_state.sg_phase == "lobby":
         p5_rate_disp = f"{p5_rate_val}%" if p5_rec["total"] > 0 else "—"
         combo_best = storage.get("combo_best", 0)
         combo_disp = f"⭐{combo_best}" if combo_best > 0 else "—"
+        total_rate = int((p5_rate_val) / 100 * 100) if p5_rec["total"] > 0 else 0
 
-        st.markdown(f'''<div style="background:#12101a;border:1.5px solid #7766ff;border-radius:14px;padding:12px 10px 8px 10px;margin-bottom:10px;">
+        st.markdown(f'''<div style="background:#12101a;border:1.5px solid #7766ff;border-radius:14px;padding:12px 10px 10px 10px;margin-bottom:10px;">
             <div style="text-align:center;font-size:0.75rem;font-weight:900;color:#aa99ff;letter-spacing:2px;margin-bottom:8px;">📊 나의 전투 기록</div>
-            <div style="display:grid;grid-template-columns:1fr 1fr 1fr 1fr;text-align:center;gap:4px;">
-                <div>
-                    <div style="font-size:0.7rem;color:#888;margin-bottom:2px;">P5 정답률</div>
-                    <div style="font-size:1.5rem;font-weight:900;color:#ffcc44;">{p5_rate_disp}</div>
+            <div style="display:grid;grid-template-columns:1fr 1fr 1fr 1fr;text-align:center;gap:4px;border-bottom:1px solid #2a2a3a;padding-bottom:8px;">
+                <div style="border-right:1px solid #2a2a3a;">
+                    <div style="font-size:0.65rem;color:#666;margin-bottom:3px;">P5 정답률</div>
+                    <div style="font-size:1.4rem;font-weight:900;color:#ffcc44;">{p5_rate_disp}</div>
+                </div>
+                <div style="border-right:1px solid #2a2a3a;">
+                    <div style="font-size:0.65rem;color:#666;margin-bottom:3px;">P5 저장</div>
+                    <div style="font-size:1.4rem;font-weight:900;color:#44aaff;">{p5_save_cnt}개</div>
+                </div>
+                <div style="border-right:1px solid #2a2a3a;">
+                    <div style="font-size:0.65rem;color:#666;margin-bottom:3px;">P7 무기</div>
+                    <div style="font-size:1.4rem;font-weight:900;color:#44aaff;">{p7_weapon_cnt}개</div>
                 </div>
                 <div>
-                    <div style="font-size:0.7rem;color:#888;margin-bottom:2px;">P5 저장</div>
-                    <div style="font-size:1.5rem;font-weight:900;color:#44aaff;">{p5_save_cnt}개</div>
+                    <div style="font-size:0.65rem;color:#666;margin-bottom:3px;">최고기록</div>
+                    <div style="font-size:1.4rem;font-weight:900;color:#ff8844;">{combo_disp}</div>
                 </div>
-                <div>
-                    <div style="font-size:0.7rem;color:#888;margin-bottom:2px;">P7 무기</div>
-                    <div style="font-size:1.5rem;font-weight:900;color:#44aaff;">{p7_weapon_cnt}개</div>
+            </div>
+            <div style="margin-top:8px;">
+                <div style="background:#1a1a2a;border-radius:4px;height:6px;">
+                    <div style="background:#7766ff;height:6px;border-radius:4px;width:{p5_rate_val}%;opacity:0.8;"></div>
                 </div>
-                <div>
-                    <div style="font-size:0.7rem;color:#888;margin-bottom:2px;">최고기록</div>
-                    <div style="font-size:1.5rem;font-weight:900;color:#ff8844;">{combo_disp}</div>
-                </div>
+                <div style="text-align:right;font-size:0.65rem;color:#555;margin-top:2px;">총 전투력 {p5_rate_val}%</div>
             </div>
         </div>''', unsafe_allow_html=True)
 
         c1, c2 = st.columns(2)
         with c1:
-            st.markdown('''<div style="background:#180808;border:2px solid #ff5533;border-radius:14px;padding:16px 10px 10px 10px;text-align:center;margin-bottom:6px;">
-                <div style="font-size:2rem;">⚔️</div>
-                <div style="font-size:1.1rem;font-weight:900;color:#ffffff;margin:4px 0;">P5 전장</div>
-                <div style="font-size:0.8rem;color:#ffaa88;">문법 · 어휘</div>
+            st.markdown('''<div style="background:#150505;border:2px solid #ff5533;border-radius:14px;overflow:hidden;margin-bottom:6px;">
+                <div style="background:#2a0808;padding:6px;text-align:center;font-size:0.8rem;font-weight:900;color:#ff8866;letter-spacing:1px;">P5 오답전장</div>
+                <div style="padding:14px 10px 10px 10px;text-align:center;">
+                    <div style="font-size:2.2rem;">⚔️</div>
+                    <div style="font-size:0.95rem;color:#ffaa88;margin-top:4px;">문법 · 어휘</div>
+                    <div style="font-size:0.75rem;color:#666;margin-top:2px;">틀린 문제 박살!</div>
+                </div>
             </div>''', unsafe_allow_html=True)
-            if st.button("⚔️ 출격!", key="rv_p5", type="primary", use_container_width=True):
+            if st.button("출격!", key="rv_p5", type="primary", use_container_width=True):
                 st.session_state.rv_battle = "p5"; st.rerun()
         with c2:
-            st.markdown('''<div style="background:#080e1a;border:2px solid #3388ff;border-radius:14px;padding:16px 10px 10px 10px;text-align:center;margin-bottom:6px;">
-                <div style="font-size:2rem;">📖</div>
-                <div style="font-size:1.1rem;font-weight:900;color:#ffffff;margin:4px 0;">P7 전장</div>
-                <div style="font-size:0.8rem;color:#88ccff;">독해 · 무기 획득</div>
+            st.markdown('''<div style="background:#05080f;border:2px solid #3388ff;border-radius:14px;overflow:hidden;margin-bottom:6px;">
+                <div style="background:#081428;padding:6px;text-align:center;font-size:0.8rem;font-weight:900;color:#66aaff;letter-spacing:1px;">P7 오답전장</div>
+                <div style="padding:14px 10px 10px 10px;text-align:center;">
+                    <div style="font-size:2.2rem;">📖</div>
+                    <div style="font-size:0.95rem;color:#88ccff;margin-top:4px;">독해 · 무기 획득</div>
+                    <div style="font-size:0.75rem;color:#666;margin-top:2px;">문장으로 무기 장착!</div>
+                </div>
             </div>''', unsafe_allow_html=True)
-            if st.button("📖 출격!", key="rv_p7", type="primary", use_container_width=True):
+            if st.button("출격!", key="rv_p7", type="primary", use_container_width=True):
                 st.session_state.rv_battle = "p7"; st.rerun()
 
     # ━━━ 2막 P5: 전투 방식 선택 ━━━
@@ -406,21 +425,21 @@ if st.session_state.sg_phase == "lobby":
             st.session_state.rv_mode="p7_vault"; st.rerun()
     # ━━━ 항상 고정 네비게이션 ━━━
     if st.session_state.get("rv_mode") != "p7_vault":
-        st.markdown('<div style="font-size:0.7rem;color:#331100;text-align:center;letter-spacing:3px;margin-top:16px;padding-top:12px;border-top:1px solid #1a0800;">N A V I G A T E</div>', unsafe_allow_html=True)
+        st.markdown('<div style="height:1px;background:#2a2a2a;margin:14px 0 10px 0;"></div>', unsafe_allow_html=True)
         mn1, mn2, mn3 = st.columns(3)
         with mn1:
-            if st.button("⚔️ P5전장", key="sg_nav1", type="secondary", use_container_width=True):
+            if st.button("🏠 홈", key="sg_nav1", use_container_width=True):
+                st.session_state.rv_mode = None; st.session_state.rv_battle = None
+                st.switch_page("main_hub.py")
+        with mn2:
+            if st.button("⚔️ P5전장", key="sg_nav2", use_container_width=True):
                 st.session_state.rv_mode = None; st.session_state.rv_battle = None
                 st.session_state._p5_active=False
                 st.switch_page("pages/02_P5_Arena.py")
-        with mn2:
-            if st.button("📖 P7전장", key="sg_nav2", type="secondary", use_container_width=True):
+        with mn3:
+            if st.button("📖 P7전장", key="sg_nav3", use_container_width=True):
                 st.session_state.rv_mode = None; st.session_state.rv_battle = None
                 st.switch_page("pages/04_P7_Reading.py")
-        with mn3:
-            if st.button("🏠 메인", key="sg_nav3", type="secondary", use_container_width=True):
-                st.session_state.rv_mode = None; st.session_state.rv_battle = None
-                st.switch_page("main_hub.py")
     import streamlit.components.v1 as _cmp
     _cmp.html("""<script>
     (function(){
