@@ -613,6 +613,12 @@ elif st.session_state.sg_phase == "p5_study":
             st.session_state.sg_idx = bi+1; st.rerun()
 
     # 시험 + 돌아가기
+    st.markdown('''<style>
+    div[data-testid="stHorizontalBlock"]:last-of-type button{
+        min-height:46px!important;
+        height:46px!important;
+    }
+    </style>''', unsafe_allow_html=True)
     _rb4, _rb5 = st.columns([2, 1])
     with _rb4:
         st.markdown('''<style>
