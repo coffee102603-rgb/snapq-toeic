@@ -636,7 +636,7 @@ elif st.session_state.sg_phase == "p5_study":
             color:#ffffff!important;font-size:1.05rem!important;font-weight:900!important;
         }
         </style>''', unsafe_allow_html=True)
-        if st.button("🔥 시험 도전!", key="go_exam", use_container_width=True):
+        if st.button("🔥 시험 당장 도전!", key="go_exam", use_container_width=True):
             if len(p5_data) >= 5:
                 qs = random.sample(p5_data, 5)
                 st.session_state.sg_exam_qs = qs
