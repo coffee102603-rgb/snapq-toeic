@@ -620,12 +620,12 @@ if st.session_state.p7_phase == "lobby":
     div[data-testid="stToolbar"]{visibility:hidden!important;}.block-container{padding-top:0.2rem!important;}
     @keyframes p7float{0%,100%{transform:translateY(0);box-shadow:0 0 12px rgba(212,175,55,0.3);}50%{transform:translateY(-4px);box-shadow:0 0 25px rgba(212,175,55,0.7);}}
     button[kind="secondary"]{
-        background:#0a0a14!important;border:1.5px solid #9aa5b4!important;
+        background:#0a0a14!important;border:1.5px solid #333!important;
         border-radius:10px!important;font-size:0.82rem!important;font-weight:600!important;
-        padding:6px!important;color:#ccd0e0!important;min-height:46px!important;
-        animation:p7float 2.5s ease-in-out infinite!important;
+        padding:6px!important;color:#aaa!important;min-height:46px!important;
+        animation:none!important;transform:none!important;box-shadow:none!important;
     }
-    button[kind="secondary"] p{font-size:0.82rem!important;font-weight:600!important;color:#ccd0e0!important;}
+    button[kind="secondary"] p{font-size:0.82rem!important;font-weight:600!important;color:#aaa!important;}
     button[data-testid="stBaseButton-primary"]{
         background:#0c0c00!important;border:2px solid #d4af37!important;
         border-left:4px solid #d4af37!important;
@@ -722,7 +722,44 @@ if st.session_state.p7_phase == "lobby":
             st.session_state._p7_just_left = True
             st.switch_page("main_hub.py")
     import streamlit.components.v1 as _cmp
-    _cmp.html('''<script>
+    _p7_tsec_val = st.session_state.get("p7_tsec", 80)
+    _p7_tc_val = st.session_state.get("p7_tsec_chosen", False)
+    _p7_cat_val = st.session_state.get("p7_cat", None)
+    _time_map = {"60": "🔥 60초", "80": "⚡ 80초", "100": "✅ 100초"}
+    _cat_map = {"article": "📰 Article", "letter": "✉️ Letter", "notice": "📋 Notice", "information": "ℹ️ Info"}
+    _sel_time = str(_p7_tsec_val) if _p7_tc_val else ""
+    _sel_cat = _p7_cat_val or ""
+    _cmp.html(f'''<script>
+    (function(){{
+        var selTime = "{_sel_time}";
+        var selCat = "{_sel_cat}";
+        var timeMap = {{"60":"🔥 60초","80":"⚡ 80초","100":"✅ 100초"}};
+        var catMap = {{"article":"📰 Article","letter":"✉️ Letter","notice":"📋 Notice","information":"ℹ️ Info"}};
+        function styleAllBtns(){{
+            var doc=window.parent.document;
+            var btns=doc.querySelectorAll('button[kind="secondary"]');
+            btns.forEach(function(b){{
+                var t=(b.textContent||"").trim().replace(/\s+/g," ");
+                var isSelTime = selTime && t.indexOf(timeMap[selTime]&&timeMap[selTime].replace("🔥 ","").replace("⚡ ","").replace("✅ ",""))>-1;
+                var isSelCat = selCat && catMap[selCat] && t.indexOf(catMap[selCat].replace("📰 ","").replace("✉️ ","").replace("📋 ","").replace("ℹ️ ",""))>-1;
+                if(isSelTime||isSelCat){{
+                    b.style.setProperty("background","#1a1400","important");
+                    b.style.setProperty("border","2px solid #d4af37","important");
+                    b.style.setProperty("color","#d4af37","important");
+                    b.querySelectorAll("p").forEach(function(p){{p.style.setProperty("color","#d4af37","important");}});
+                }} else {{
+                    b.style.setProperty("animation","none","important");
+                    b.style.setProperty("transform","none","important");
+                    b.style.setProperty("box-shadow","none","important");
+                }}
+            }});
+        }}
+        setTimeout(styleAllBtns,100);setTimeout(styleAllBtns,400);setTimeout(styleAllBtns,900);
+        setInterval(styleAllBtns,800);
+    }})();
+    </script>''', height=0)
+    _cmp2 = _cmp
+    _cmp2.html('''<script>
     (function(){
         function styleNavBtns(){
             var doc=window.parent.document;
