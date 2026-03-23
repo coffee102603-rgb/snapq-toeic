@@ -1123,7 +1123,21 @@ elif st.session_state.p7_phase == "briefing":
     }
     </style>''', unsafe_allow_html=True)
     # 배너만 표시
-    st.markdown('<div style="text-align:center;font-size:1.1rem;font-weight:900;color:#ffd700;letter-spacing:3px;padding:4px 0 2px 0;">📖 전투 브리핑</div>', unsafe_allow_html=True)
+    _saved_exprs = st.session_state.get("saved_expressions", [])
+    _weapon_count = len(_saved_exprs)
+    _gauge_max = max(_weapon_count, 10)
+    _gauge_pct = int((_weapon_count / _gauge_max) * 100)
+    st.markdown(f'''<div style="background:#0a0a1a;border:1.5px solid #ffd700;border-radius:14px;padding:8px 14px;margin-bottom:6px;">
+        <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:6px;">
+            <span style="font-size:0.9rem;font-weight:900;color:#ffd700;">⚔️ 무기 {_weapon_count}개 보유 중</span>
+            <span style="font-size:0.8rem;color:#888;font-weight:700;">오답전장 전투력</span>
+        </div>
+        <div style="background:#1a1a1a;border-radius:6px;height:10px;">
+            <div style="background:linear-gradient(90deg,#ffd700,#ff8800);height:10px;border-radius:6px;width:{_gauge_pct}%;"></div>
+        </div>
+        <div style="text-align:center;margin-top:4px;font-size:0.75rem;color:#555;">{"🔥 전투 준비 완료!" if _weapon_count >= 5 else "⚡ 무기를 더 모아라!"}</div>
+    </div>''', unsafe_allow_html=True)
+    st.markdown('<div style="text-align:center;font-size:1.1rem;font-weight:900;color:#ffd700;letter-spacing:3px;padding:2px 0;">📖 전투 브리핑</div>', unsafe_allow_html=True)
     st.markdown(f'<div class="p7-ban {v_cls}" style="margin-top:0!important;padding:6px 10px!important;">{data["title"]} — {v_label} ✅{ok_cnt} ❌{len(answers)-ok_cnt}</div>', unsafe_allow_html=True)
 
     # ─── 탭 [1][2][3] ───
