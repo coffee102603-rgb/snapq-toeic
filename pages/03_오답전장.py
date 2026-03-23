@@ -308,21 +308,56 @@ if st.session_state.sg_phase == "lobby":
         <h1>🔥 오 답 전 장</h1>
     </div>''', unsafe_allow_html=True)
 
-
-
-    if st.session_state.get("rv_mode") != "p7_vault":
-        st.markdown('<div style="text-align:center;font-size:1.1rem;font-weight:900;color:#ffcc00;letter-spacing:1px;margin:4px 0 10px 0;">👇 전장을 선택하고 돌격하라!</div>', unsafe_allow_html=True)
-    _rv_battle = st.session_state.get("rv_battle", None)   # "p5" or "p7"
-    _rv_mode = st.session_state.get("rv_mode", None)       # "p5s","p5e","p7s","p7e"
+    _rv_battle = st.session_state.get("rv_battle", None)
+    _rv_mode = st.session_state.get("rv_mode", None)
 
     # ━━━ 1막: 전장 선택 ━━━
     if not _rv_battle:
+        p5_save_cnt = len(p5_data)
+        p7_weapon_cnt = len(voca_data)
+        p5_rate_val = int(p5_rec["wins"]/p5_rec["total"]*100) if p5_rec["total"] > 0 else 0
+        p5_rate_disp = f"{p5_rate_val}%" if p5_rec["total"] > 0 else "—"
+        combo_best = storage.get("combo_best", 0)
+        combo_disp = f"⭐{combo_best}" if combo_best > 0 else "—"
+
+        st.markdown(f'''<div style="background:#12101a;border:1.5px solid #7766ff;border-radius:14px;padding:12px 10px 8px 10px;margin-bottom:10px;">
+            <div style="text-align:center;font-size:0.75rem;font-weight:900;color:#aa99ff;letter-spacing:2px;margin-bottom:8px;">📊 나의 전투 기록</div>
+            <div style="display:grid;grid-template-columns:1fr 1fr 1fr 1fr;text-align:center;gap:4px;">
+                <div>
+                    <div style="font-size:0.7rem;color:#888;margin-bottom:2px;">P5 정답률</div>
+                    <div style="font-size:1.5rem;font-weight:900;color:#ffcc44;">{p5_rate_disp}</div>
+                </div>
+                <div>
+                    <div style="font-size:0.7rem;color:#888;margin-bottom:2px;">P5 저장</div>
+                    <div style="font-size:1.5rem;font-weight:900;color:#44aaff;">{p5_save_cnt}개</div>
+                </div>
+                <div>
+                    <div style="font-size:0.7rem;color:#888;margin-bottom:2px;">P7 무기</div>
+                    <div style="font-size:1.5rem;font-weight:900;color:#44aaff;">{p7_weapon_cnt}개</div>
+                </div>
+                <div>
+                    <div style="font-size:0.7rem;color:#888;margin-bottom:2px;">최고기록</div>
+                    <div style="font-size:1.5rem;font-weight:900;color:#ff8844;">{combo_disp}</div>
+                </div>
+            </div>
+        </div>''', unsafe_allow_html=True)
+
         c1, c2 = st.columns(2)
         with c1:
-            if st.button("⚔️\nP5 어법·어휘\n틀린 문제만 골라\n이번엔 완전히 박살낸다!", key="rv_p5", type="secondary", use_container_width=True):
+            st.markdown('''<div style="background:#180808;border:2px solid #ff5533;border-radius:14px;padding:16px 10px 10px 10px;text-align:center;margin-bottom:6px;">
+                <div style="font-size:2rem;">⚔️</div>
+                <div style="font-size:1.1rem;font-weight:900;color:#ffffff;margin:4px 0;">P5 전장</div>
+                <div style="font-size:0.8rem;color:#ffaa88;">문법 · 어휘</div>
+            </div>''', unsafe_allow_html=True)
+            if st.button("⚔️ 출격!", key="rv_p5", type="primary", use_container_width=True):
                 st.session_state.rv_battle = "p5"; st.rerun()
         with c2:
-            if st.button("📖\nP7 독해 약점\n단어·해석·패러프라이징\n이번엔 내 것으로 만든다!", key="rv_p7", type="secondary", use_container_width=True):
+            st.markdown('''<div style="background:#080e1a;border:2px solid #3388ff;border-radius:14px;padding:16px 10px 10px 10px;text-align:center;margin-bottom:6px;">
+                <div style="font-size:2rem;">📖</div>
+                <div style="font-size:1.1rem;font-weight:900;color:#ffffff;margin:4px 0;">P7 전장</div>
+                <div style="font-size:0.8rem;color:#88ccff;">독해 · 무기 획득</div>
+            </div>''', unsafe_allow_html=True)
+            if st.button("📖 출격!", key="rv_p7", type="primary", use_container_width=True):
                 st.session_state.rv_battle = "p7"; st.rerun()
 
     # ━━━ 2막 P5: 전투 방식 선택 ━━━
