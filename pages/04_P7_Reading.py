@@ -1012,6 +1012,11 @@ elif st.session_state.p7_phase == "lost":
 # PHASE: BRIEFING
 # ═══════════════════════════════════════
 elif st.session_state.p7_phase == "briefing":
+    st.markdown('''<style>
+    .block-container{padding-top:0.2rem!important;margin-top:0!important;}
+    header[data-testid="stHeader"]{display:none!important;}
+    div[data-testid="stAppViewBlockContainer"]{padding-top:0.2rem!important;}
+    </style>''', unsafe_allow_html=True)
     data = st.session_state.p7_data
     steps = data["steps"]
     answers = st.session_state.p7_answers
@@ -1217,15 +1222,17 @@ elif st.session_state.p7_phase == "briefing":
                 </div>
             </div>'''
             st.markdown(save_btn_html, unsafe_allow_html=True)
-            if st.button("저장", key=f"br_sv_{bi}_{si}", use_container_width=False):
+            _sv_key = f"br_sv_{bi}_{si}"
+            if st.button("저장", key=_sv_key, use_container_width=False):
                 sent_data = dict(s)
                 sent_data["sentences"] = [sent]
                 sent_data["kr"] = sent_kr
                 save_expressions(s.get("expressions", []), step_data=sent_data)
                 st.session_state[sent_key] = True
                 st.rerun()
-            st.markdown('''<style>
-            div[data-testid="stBaseButton-secondary"]{display:none!important;}
+            st.markdown(f'''<style>
+            div[data-testid="stBaseButton-secondary"] button{{display:none!important;height:0!important;min-height:0!important;padding:0!important;margin:0!important;border:none!important;}}
+            div[data-testid="stBaseButton-secondary"]{{height:0!important;min-height:0!important;padding:0!important;margin:0!important;overflow:hidden!important;}}
             </style>''', unsafe_allow_html=True)
 
     st.markdown('''<style>
