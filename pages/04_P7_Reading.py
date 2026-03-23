@@ -949,19 +949,72 @@ elif st.session_state.p7_phase == "battle":
 # PHASE: VICTORY
 # ═══════════════════════════════════════
 elif st.session_state.p7_phase == "victory":
-    components.html("""
-    <style>
-    *{margin:0;padding:0;}body{background:#000;overflow:hidden;display:flex;align-items:center;justify-content:center;height:100vh;}
-    .v{text-align:center;animation:vi 0.8s ease-out;}
-    .v h1{font-size:4.5rem;font-weight:900;color:#44ffcc;text-shadow:0 0 40px #44ffcc,0 0 80px #00aacc;}
-    .v p{font-size:1.5rem;color:#00ddff;font-weight:700;margin-top:0.5rem;}
-    @keyframes vi{0%{transform:scale(0);opacity:0}100%{transform:scale(1);opacity:1}}
-    </style>
-    <div class="v"><h1>📖 CLEAR! 📖</h1><p>독해 전투 클리어!</p></div>
-    """, height=300)
-
-    if st.button("📝 브리핑 보기", type="primary", use_container_width=True):
+    _answers = st.session_state.p7_answers
+    _ok = len([a for a in _answers if a])
+    st.markdown('<style>.stApp{background:#08080f!important;}</style>', unsafe_allow_html=True)
+    st.markdown('''<div style="text-align:center;padding:1.2rem 0 0.5rem 0;">
+        <div style="font-size:0.9rem;letter-spacing:4px;opacity:0.6;margin-bottom:6px;">💎 ⭐ ✨ 🏆 🌟 💫 💎</div>
+        <div style="font-size:2.8rem;font-weight:900;color:#44ffcc;letter-spacing:3px;text-shadow:0 0 30px #44ffcc,0 0 60px #00aacc;">CLEAR!</div>
+        <div style="font-size:0.9rem;color:#50c878;font-weight:600;letter-spacing:2px;margin-top:4px;">독해 전투 클리어!</div>
+    </div>''', unsafe_allow_html=True)
+    st.markdown(f'''<div style="background:#0c0c1e;border:1.5px solid #d4af37;border-left:4px solid #d4af37;border-radius:12px;padding:10px;text-align:center;margin:8px 0;">
+        <div style="font-size:0.75rem;color:#9aa5b4;margin-bottom:2px;">이번 결과</div>
+        <div style="font-size:1.5rem;font-weight:900;color:#d4af37;">✅ {_ok} / 3</div>
+    </div>''', unsafe_allow_html=True)
+    st.markdown('''<div style="background:#0a0a14;border:1px solid #50c878;border-radius:10px;padding:8px;text-align:center;margin-bottom:10px;">
+        <div style="font-size:0.82rem;color:#50c878;font-weight:700;">⚡ 3번 반복하면 장기기억 전환율 3배!</div>
+        <div style="font-size:0.72rem;color:#555;margin-top:2px;">지금 브리핑에서 핵심표현 무기로 장착하라!</div>
+    </div>''', unsafe_allow_html=True)
+    st.markdown('''<style>
+    button[data-testid="stBaseButton-primary"]{
+        background:#0a1a0f!important;border:2px solid #50c878!important;
+        border-left:4px solid #50c878!important;
+        color:#50c878!important;font-size:1.1rem!important;font-weight:900!important;
+        min-height:48px!important;animation:none!important;
+    }
+    button[data-testid="stBaseButton-primary"] p{color:#50c878!important;font-size:1.1rem!important;font-weight:900!important;}
+    </style>''', unsafe_allow_html=True)
+    if st.button("📋 브리핑 보기", type="primary", use_container_width=True):
         st.session_state.p7_phase = "briefing"; st.rerun()
+    _vc1, _vc2 = st.columns(2)
+    with _vc1:
+        if st.button("🔄 다시 도전", key="v_retry", use_container_width=True):
+            for k in ["p7_phase","p7_cat","p7_tsec","p7_tsec_chosen","p7_step","p7_started_at","p7_answers","p7_data"]:
+                if k in st.session_state: del st.session_state[k]
+            st.rerun()
+    with _vc2:
+        if st.button("🏠 메인", key="v_main", use_container_width=True):
+            st.session_state._p7_just_left = True
+            st.switch_page("main_hub.py")
+    import streamlit.components.v1 as _vc
+    _vc_js = '''<script>
+    (function(){
+        function styleVBtns(){
+            var doc=window.parent.document;
+            var rows=doc.querySelectorAll('[data-testid="stHorizontalBlock"]');
+            if(!rows.length) return;
+            var lastRow=rows[rows.length-1];
+            var btns=lastRow.querySelectorAll('button');
+            if(btns[0]){
+                btns[0].style.setProperty('background','#0f0f1e','important');
+                btns[0].style.setProperty('border','1px solid #1a1a2a','important');
+                btns[0].style.setProperty('border-left','4px solid #d4af37','important');
+                btns[0].style.setProperty('color','#e8e0cc','important');
+                btns[0].style.setProperty('animation','none','important');
+            }
+            if(btns[1]){
+                btns[1].style.setProperty('background','#0f0f1e','important');
+                btns[1].style.setProperty('border','1px solid #1a1a2a','important');
+                btns[1].style.setProperty('border-left','4px solid #4488cc','important');
+                btns[1].style.setProperty('color','#e8e0cc','important');
+                btns[1].style.setProperty('animation','none','important');
+            }
+        }
+        setTimeout(styleVBtns,150);setTimeout(styleVBtns,500);setTimeout(styleVBtns,1200);
+    })();
+    </script>'''
+    _vc.html(_vc_js, height=0)
+
 
 # ═══════════════════════════════════════
 # PHASE: LOST
