@@ -501,19 +501,17 @@ elif st.session_state.phase=="briefing":
             <div style="font-size:0.75rem;color:#661122;margin-top:2px;">✅{sc_v}문제 / ❌{wr_v}개 틀림</div>
         </div>''', unsafe_allow_html=True)
 
-    # 네비 — ◀ 도트(클릭) ▶
-    _nc1, _nc2, _nc3 = st.columns([1, 6, 1])
-    with _nc1:
+    # 네비 — ◀ ✅ ✅ ✅ ✅ ✅ ▶ 한 줄 7칸
+    _nav = st.columns(7)
+    with _nav[0]:
         if st.button("◀", key="br_p", disabled=bi<=0, use_container_width=True):
             st.session_state.br_idx = bi - 1; st.rerun()
-    with _nc2:
-        _dc = st.columns(num_qs)
-        for i in range(num_qs):
-            with _dc[i]:
-                _sym = "✅" if rrs[i] else "❌"
-                if st.button(f"{_sym}", key=f"dot_{i}", use_container_width=True):
-                    st.session_state.br_idx = i; st.rerun()
-    with _nc3:
+    for _i in range(num_qs):
+        with _nav[_i + 1]:
+            _sym = "✅" if rrs[_i] else "❌"
+            if st.button(f"{_sym}", key=f"dot_{_i}", use_container_width=True):
+                st.session_state.br_idx = _i; st.rerun()
+    with _nav[6]:
         if st.button("▶", key="br_n", disabled=bi>=num_qs-1, use_container_width=True):
             st.session_state.br_idx = bi + 1; st.rerun()
 
