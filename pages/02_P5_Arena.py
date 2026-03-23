@@ -281,6 +281,7 @@ if st.session_state.phase=="battle":
     _p5cmp.html('''<script>
     (function(){
         var colors=["#d4af37","#9aa5b4","#50c878","#4488cc"];
+        var lastQ = -1;
         function styleChoices(){
             var doc=window.parent.document;
             var btns=doc.querySelectorAll('button[kind="primary"],button[kind="secondary"]');
@@ -305,8 +306,17 @@ if st.session_state.phase=="battle":
                 }
             });
         }
+        function resetAndStyle(){
+            var doc=window.parent.document;
+            var allBtns=doc.querySelectorAll('button');
+            allBtns.forEach(function(b){
+                b.style.removeProperty("border-left");
+                b.style.removeProperty("background");
+            });
+            setTimeout(styleChoices,50);
+        }
         setTimeout(styleChoices,100);setTimeout(styleChoices,400);setTimeout(styleChoices,900);
-        setInterval(styleChoices,600);
+        setInterval(resetAndStyle,800);
     })();
     </script>''', height=0)
 
