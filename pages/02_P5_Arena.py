@@ -724,141 +724,104 @@ summary{color:#aaa!important;font-weight:700!important;}
     </style>""", unsafe_allow_html=True)
 
     # 타이틀
-    st.markdown(f'''<div style="text-align:center;padding:6px 0 4px 0;">
-        <div style="font-size:1.2rem;font-weight:900;color:#ff8800;letter-spacing:3px;">⚔️ P5 어법 전투</div>
-        <div style="font-size:0.7rem;color:#aaa;letter-spacing:2px;margin-top:2px;font-weight:600;">TOEIC PART 5 · 5문제 서바이벌</div>
-    </div>''', unsafe_allow_html=True)
+    if rn > 1:
+        round_txt = f'<p style="color:#cc6600;font-size:0.9rem;font-weight:800;margin:2px 0;">🏆 Round {rn}</p>'
+    else:
+        round_txt = ''
+    st.markdown(f'<div class="ms-title"><p>TOEIC PART 5 · 5문제 서바이벌</p>{round_txt}</div>', unsafe_allow_html=True)
 
     _tsec = st.session_state.get('tsec', 30)
     _tsec_chosen = st.session_state.get('tsec_chosen', False)
     lbl_map={"g1":"⚔️ 문법력","g2":"⚔️ 구조력","g3":"⚔️ 연결력","vocab":"📘 어휘력"}
     mode_map={"g1":("grammar","g1"),"g2":("grammar","g2"),"g3":("grammar","g3"),"vocab":("vocab",None)}
 
-    # ━━━ 1화면 통합 로비 ━━━
-    st.markdown('''<style>
-    button[kind="secondary"]{
-        background:#0a0a14!important;border:1.5px solid #333!important;
-        border-radius:10px!important;font-size:1.0rem!important;font-weight:600!important;
-        padding:6px!important;color:#aaa!important;min-height:61px!important;
-        animation:none!important;transform:none!important;box-shadow:none!important;
-    }
-    button[kind="secondary"] p{font-size:1.0rem!important;font-weight:600!important;color:#aaa!important;white-space:pre-line!important;line-height:1.2!important;}
-    button[data-testid="stBaseButton-primary"]{
-        background:#0c0c00!important;border:2px solid #d4af37!important;
-        border-left:4px solid #d4af37!important;
-        color:#d4af37!important;font-size:1.0rem!important;font-weight:900!important;
-        min-height:43px!important;animation:none!important;border-radius:12px!important;
-    }
-    button[data-testid="stBaseButton-primary"] p{color:#d4af37!important;font-size:1.0rem!important;font-weight:900!important;}
-    </style>''', unsafe_allow_html=True)
+    # ━━━ 1막: 타이머 선택 ━━━
+    if not _tsec_chosen:
+        st.markdown('''<div class="stage stage-act">
+            <div class="act-label">🎬 1 막 · 전투 시간을 선택하라!</div>
+            <div class="act-msg">전사여, <span class="hi">몇 초</span>의 시간을 원하느냐?</div>
+        </div>''', unsafe_allow_html=True)
+        tc1,tc2,tc3 = st.columns(3)
+        with tc1:
+            if st.button("🔥\n30초", key="t30", type="secondary", use_container_width=True):
+                st.session_state.tsec=30; st.session_state.tsec_chosen=True; st.rerun()
+        with tc2:
+            if st.button("⚡\n40초", key="t40", type="secondary", use_container_width=True):
+                st.session_state.tsec=40; st.session_state.tsec_chosen=True; st.rerun()
+        with tc3:
+            if st.button("✅\n50초", key="t50", type="secondary", use_container_width=True):
+                st.session_state.tsec=50; st.session_state.tsec_chosen=True; st.rerun()
 
-    st.markdown('''<div style="display:flex;align-items:flex-end;margin-bottom:0;">
-        <div style="background:#0c0c1e;border:1.5px solid #9aa5b4;border-bottom:none;border-radius:8px 8px 0 0;padding:3px 12px;font-size:0.72rem;font-weight:900;color:#9aa5b4;">⏱ 시간 선택</div>
-    </div>''', unsafe_allow_html=True)
-    tc1,tc2,tc3 = st.columns(3)
-    with tc1:
-        if st.button("🔥 30초", key="t30", use_container_width=True):
-            st.session_state.tsec=30; st.session_state.tsec_chosen=True; st.rerun()
-    with tc2:
-        if st.button("⚡ 40초", key="t40", use_container_width=True):
-            st.session_state.tsec=40; st.session_state.tsec_chosen=True; st.rerun()
-    with tc3:
-        if st.button("✅ 50초", key="t50", use_container_width=True):
-            st.session_state.tsec=50; st.session_state.tsec_chosen=True; st.rerun()
-    st.markdown('<div style="height:6px;"></div>', unsafe_allow_html=True)
+    # ━━━ 2막: 카테고리 선택 ━━━
+    elif _tsec_chosen and not (sm and sm in ["g1","g2","g3","vocab"]):
+        st.markdown(f'''<div class="confirmed"><span>⏱ {_tsec}초 확정!</span></div>''', unsafe_allow_html=True)
+        st.markdown('''<div class="stage stage-act">
+            <div class="act-label">🎬 2 막 · 전장을 선택하라!</div>
+            <div class="act-msg">이제 <span class="gold">어느 전장</span>에서 싸울 것이냐?</div>
+        </div>''', unsafe_allow_html=True)
+        b1,b2 = st.columns(2)
+        with b1:
+            if st.button("⚔\n문법력\n수일치·시제·수동", key="sg1", type="secondary", use_container_width=True):
+                st.session_state.sel_mode="g1"; st.rerun()
+        with b2:
+            if st.button("⚔\n구조력\n가정법·도치·당위", key="sg2", type="secondary", use_container_width=True):
+                st.session_state.sel_mode="g2"; st.rerun()
+        b3,b4 = st.columns(2)
+        with b3:
+            if st.button("⚔\n연결력\n접속사·관계사·분사", key="sg3", type="secondary", use_container_width=True):
+                st.session_state.sel_mode="g3"; st.rerun()
+        with b4:
+            if st.button("📘\n어휘력\n품사·동사·콜로케이션", key="svc", type="secondary", use_container_width=True):
+                st.session_state.sel_mode="vocab"; st.rerun()
 
-    if True:  # 항상 표시
-
-    # 전장 선택 — 주황
-    st.markdown('''<div style="display:flex;align-items:flex-end;margin-bottom:0;">
-        <div style="background:#140800;border:1.5px solid #ff8800;border-bottom:none;border-radius:8px 8px 0 0;padding:3px 12px;font-size:0.72rem;font-weight:900;color:#ff8800;">⚔️ 전장 선택</div>
-    </div>''', unsafe_allow_html=True)
-    b1,b2 = st.columns(2)
-    with b1:
-        if st.button("⚔️ 문법력\n수일치·시제·수동", key="sg1", use_container_width=True):
-            st.session_state.sel_mode="g1"; st.rerun()
-    with b2:
-        if st.button("⚔️ 구조력\n가정법·도치·당위", key="sg2", use_container_width=True):
-            st.session_state.sel_mode="g2"; st.rerun()
-    b3,b4 = st.columns(2)
-    with b3:
-        if st.button("⚔️ 연결력\n접속사·관계사·분사", key="sg3", use_container_width=True):
-            st.session_state.sel_mode="g3"; st.rerun()
-    with b4:
-        if st.button("📘 어휘력\n품사·동사·콜로케이션", key="svc", use_container_width=True):
-            st.session_state.sel_mode="vocab"; st.rerun()
-    st.markdown('<div style="height:6px;"></div>', unsafe_allow_html=True)
-
-    # 생존 규칙
-    st.markdown('''<div style="background:#0a0500;border:1px solid #441100;border-radius:8px;padding:5px 10px;text-align:center;margin-bottom:6px;">
-        <span style="font-size:0.78rem;color:#884422;font-weight:600;">⚔️ 생존 규칙: 5문제 중 3개 이상 · 그 이하면 전멸!</span>
-    </div>''', unsafe_allow_html=True)
-
-    if False:  # dummy
-
-    # 전투 시작
-    _ready = _tsec_chosen and sm and sm in ["g1","g2","g3","vocab"]
-    if _ready:
-        _cat = lbl_map.get(sm,"")
-        if st.button("▶ 전투 시작!", key="go_start", type="primary", use_container_width=True):
+    # ━━━ 3막: START 주인공 ━━━
+    elif sm and sm in ["g1","g2","g3","vocab"]:
+        _cat = lbl_map.get(sm,'')
+        _t = f"{_tsec}초"
+        st.markdown(f'''<div class="confirmed"><span>⏱ {_t} · {_cat} 확정!</span></div>''', unsafe_allow_html=True)
+        st.markdown(f'''<div class="stage stage-act" style="text-align:center;padding:10px 8px;">
+            <div class="act-label">🎬 3 막 · 전투 개시!</div>
+            <div class="act-msg" style="font-size:1.5rem;margin-bottom:6px;">
+                전사여... <span class="go">준비됐다면</span><br>지금 바로 <span class="gold">시작하라!!!</span>
+            </div>
+        </div>''', unsafe_allow_html=True)
+        st.markdown('''
+<style>
+@keyframes typing1{0%{width:0}100%{width:100%}}
+@keyframes typing2{0%,40%{width:0}100%{width:100%}}
+@keyframes typing3{0%,70%{width:0}100%{width:100%}}
+@keyframes cblink{0%,100%{border-color:transparent}50%{border-color:#ff4444}}
+.warn-box{background:rgba(255,34,34,0.07);border:1.5px solid rgba(255,34,34,0.4);border-radius:12px;padding:14px 18px;margin:10px 0 10px 0;text-align:center;}
+.warn-line1{font-family:"Orbitron",monospace;font-weight:700;overflow:hidden;white-space:nowrap;display:block;margin:0 auto;font-size:1.0rem;color:#ff4444;text-shadow:0 0 8px rgba(255,68,68,0.6);width:0;animation:typing1 0.8s steps(10,end) 0.2s forwards,cblink 0.6s step-end 0.2s 2;letter-spacing:2px;}
+.warn-line2{font-family:"Orbitron",monospace;font-weight:700;overflow:hidden;white-space:nowrap;display:block;margin:0 auto;font-size:1.15rem;color:#ffcc00;text-shadow:0 0 8px rgba(255,204,0,0.6);width:0;animation:typing2 1.0s steps(12,end) 1.2s forwards,cblink 0.6s step-end 1.2s 2;letter-spacing:1px;margin-top:4px;}
+.warn-line3{font-family:"Orbitron",monospace;font-weight:700;overflow:hidden;white-space:nowrap;display:block;margin:0 auto;font-size:1.0rem;color:#ff8800;text-shadow:0 0 8px rgba(255,136,0,0.5);width:0;animation:typing3 0.9s steps(12,end) 2.4s forwards,cblink 0.6s step-end 2.4s 2;letter-spacing:1px;margin-top:4px;}
+</style>
+<div class="warn-box">
+<span class="warn-line1">⚔️ 생존 규칙 하나.</span>
+<span class="warn-line2">5문제 중 3개 이상.</span>
+<span class="warn-line3">그 이하면... 전멸이다.</span>
+</div>
+''', unsafe_allow_html=True)
+        if st.button(f"▶  {_cat} 전투 시작!", key="go_start", type="primary", use_container_width=True):
             md,grp=mode_map[sm]
             st.session_state.mode=md; qs=pick5(md,grp)
             st.session_state.round_qs=qs; st.session_state.cq=qs[0]
             st.session_state.qst=time.time(); st.session_state.phase="battle"; st.rerun()
-    else:
-        st.markdown('<div style="background:#0a0a14;border:1px solid #222;border-radius:12px;padding:10px;text-align:center;color:#333;font-size:0.9rem;">시간 + 전장을 선택하면 시작!</div>', unsafe_allow_html=True)
+        if st.button("↩ 다시 선택", key="reset_lobby", use_container_width=True):
+            st.session_state.tsec=30; st.session_state.tsec_chosen=False; st.session_state.sel_mode=None; st.rerun()
 
-    if False:  # dummy2
+    # ━━━ 항상 고정 네비게이션 ━━━
+    st.markdown('''<style>button[kind="secondary"]{animation:none!important;transform:none!important;border:1.5px solid rgba(255,255,255,0.5)!important;background:#040404!important;box-shadow:none!important;}</style>''', unsafe_allow_html=True)
+    st.markdown('<div style="margin-top:16px;padding-top:10px;border-top:1px solid #111;text-align:center;"><span style="font-size:0.6rem;color:#333;letter-spacing:3px;">N A V I G A T E</span><div style="display:flex;gap:8px;justify-content:center;margin-top:6px;"><a href="?nav=stg" target="_self" style="padding:10px 18px;font-size:0.85rem;font-weight:700;color:#aaa;border:1px solid #333;border-radius:8px;text-decoration:none;background:#0a0a0a;">🔥 역전장</a><a href="?nav=hub" target="_self" style="padding:10px 18px;font-size:0.85rem;font-weight:700;color:#aaa;border:1px solid #333;border-radius:8px;text-decoration:none;background:#0a0a0a;">🏠 메인</a></div></div>', unsafe_allow_html=True)
 
-    st.markdown('<div style="height:1px;background:#1a1a2a;margin:8px 0;"></div>', unsafe_allow_html=True)
-    nc1,nc2 = st.columns(2)
-    with nc1:
-        if st.button("🔥 오답전장", key="p5nav1", use_container_width=True):
-            st.switch_page("pages/03_오답전장.py")
-    with nc2:
-        if st.button("🏠 메인", key="p5nav2", use_container_width=True):
-            st.session_state._p5_just_left = True
-            st.switch_page("main_hub.py")
-
-    import streamlit.components.v1 as _cmp5
-    _tsec_v = st.session_state.get("tsec", 30)
-    _tc_v = st.session_state.get("tsec_chosen", False)
-    _sm_v = st.session_state.get("sel_mode", None) or ""
-    _cmp5.html(f'''<script>
-    (function(){{
-        var selTime = "{_tsec_v if _tc_v else ""}";
-        var selMode = "{_sm_v}";
-        var timeLabels = {{"30":"30초","40":"40초","50":"50초"}};
-        var modeLabels = {{"g1":"문법력","g2":"구조력","g3":"연결력","vocab":"어휘력"}};
-        function styleBtns(){{
-            var doc=window.parent.document;
-            var btns=doc.querySelectorAll('button[kind="secondary"]');
-            btns.forEach(function(b){{
-                var t=(b.textContent||"").trim().replace(/\\s+/g," ");
-                var isTime = selTime && t.indexOf(timeLabels[selTime])>-1;
-                var isMode = selMode && modeLabels[selMode] && t.indexOf(modeLabels[selMode])>-1;
-                if(isTime||isMode){{
-                    b.style.setProperty("background","#1a1400","important");
-                    b.style.setProperty("border","2px solid #d4af37","important");
-                    b.style.setProperty("color","#d4af37","important");
-                    b.querySelectorAll("p").forEach(function(p){{p.style.setProperty("color","#d4af37","important");}});
-                }}
-            }});
-            var rows=doc.querySelectorAll('[data-testid="stHorizontalBlock"]');
-            if(!rows.length) return;
-            var lastRow=rows[rows.length-1];
-            var nb=lastRow.querySelectorAll('button');
-            nb.forEach(function(b){{
-                b.style.setProperty("animation","none","important");
-                b.style.setProperty("border","1.5px solid rgba(255,255,255,0.5)","important");
-                b.style.setProperty("background","#0f0f1e","important");
-                b.style.setProperty("color","#bbb","important");
-            }});
-        }}
-        setTimeout(styleBtns,100);setTimeout(styleBtns,400);setTimeout(styleBtns,900);
-        setInterval(styleBtns,800);
-    }})();
-    </script>''', height=0)""
+    import streamlit.components.v1 as components
+    _sel30 = "border:2px solid #00d4ff!important;box-shadow:0 0 15px rgba(0,212,255,0.6)!important;color:#00d4ff!important;" if tsec==30 and _tsec_chosen else ""
+    _sel40 = "border:2px solid #00d4ff!important;box-shadow:0 0 15px rgba(0,212,255,0.6)!important;color:#00d4ff!important;" if tsec==40 and _tsec_chosen else ""
+    _sel50 = "border:2px solid #00d4ff!important;box-shadow:0 0 15px rgba(0,212,255,0.6)!important;color:#00d4ff!important;" if tsec==50 and _tsec_chosen else ""
+    _selg1 = "border:2px solid #ff1166!important;box-shadow:0 0 15px rgba(255,17,102,0.6)!important;color:#ff1166!important;" if sm=="g1" else ""
+    _selg2 = "border:2px solid #ff8811!important;box-shadow:0 0 15px rgba(255,136,17,0.6)!important;color:#ff8811!important;" if sm=="g2" else ""
+    _selg3 = "border:2px solid #00cc77!important;box-shadow:0 0 15px rgba(0,204,119,0.6)!important;color:#00cc77!important;" if sm=="g3" else ""
+    _selvc = "border:2px solid #5544cc!important;box-shadow:0 0 15px rgba(85,68,204,0.6)!important;color:#5544cc!important;" if sm=="vocab" else ""
 
 
 
