@@ -141,7 +141,7 @@ st.markdown("""<style>
 .stApp{background:#0d0d1a!important;}
 section[data-testid="stSidebar"]{background:#0a0a1a!important;}
 .block-container{padding-top:0.2rem!important;padding-bottom:1rem!important;max-width:100%!important;padding-left:1rem!important;padding-right:1rem!important;}
-header[data-testid="stHeader"]{height:0!important;min-height:0!important;visibility:hidden!important;}
+header[data-testid="stHeader"]{background:transparent!important;}
 div[data-testid="stDecoration"]{display:none!important;}
 div[data-testid="stToolbar"]{display:none!important;}
 @keyframes rb{0%,100%{background-position:0% 50%}50%{background-position:100% 50%}}
