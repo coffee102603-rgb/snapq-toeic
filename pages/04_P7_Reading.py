@@ -157,7 +157,7 @@ button[kind="secondary"] p{font-size:1.2rem!important;font-weight:900!important;
 
 /* 진행 표시 */
 .p7-step{text-align:center;font-size:1.2rem;font-weight:900;color:#44ffcc;margin:0.3rem 0;}
-#MainMenu{visibility:hidden!important;}header[data-testid="stHeader"]{height:0!important;visibility:hidden!important;}div[data-testid="stToolbar"]{visibility:hidden!important;}.block-container{padding-top:0!important;}.p7-hud{background:#000000;border:2px solid rgba(255,255,255,0.55);border-radius:14px;padding:0.8rem 1.2rem;margin:0.3rem 0;display:flex;justify-content:space-between;align-items:center;}
+#MainMenu{visibility:hidden!important;}olbar"]{visibility:hidden!important;}.block-container{padding-top:0!important;}.p7-hud{background:#000000;border:2px solid rgba(255,255,255,0.55);border-radius:14px;padding:0.8rem 1.2rem;margin:0.3rem 0;display:flex;justify-content:space-between;align-items:center;}
 .p7-hud-l{font-size:1.3rem;font-weight:900;color:#44ffcc;}
 .p7-hud-r{font-size:1.1rem;font-weight:800;color:#ffcc00;}
 
@@ -652,7 +652,7 @@ if st.session_state.p7_phase == "lobby":
         padding:0.8rem!important;color:#fff!important;border-radius:14px!important;
         animation:p7startPulse 1.5s ease infinite!important;
     }
-    #MainMenu{visibility:hidden!important;}header[data-testid="stHeader"]{height:0!important;visibility:hidden!important;}div[data-testid="stToolbar"]{visibility:hidden!important;}.block-container{padding-top:0!important;}
+    #MainMenu{visibility:hidden!important;}olbar"]{visibility:hidden!important;}.block-container{padding-top:0!important;}
     </style>""", unsafe_allow_html=True)
 
     # 타이틀 (1막에서만 표시)
@@ -1018,8 +1018,7 @@ elif st.session_state.p7_phase == "lost":
 elif st.session_state.p7_phase == "briefing":
     st.markdown('''<style>
     .block-container{padding-top:0.2rem!important;margin-top:0!important;}
-    header[data-testid="stHeader"]{display:none!important;}
-    div[data-testid="stAppViewBlockContainer"]{padding-top:0.2rem!important;}
+        div[data-testid="stAppViewBlockContainer"]{padding-top:0.2rem!important;}
     </style>''', unsafe_allow_html=True)
     data = st.session_state.p7_data
     steps = data["steps"]
