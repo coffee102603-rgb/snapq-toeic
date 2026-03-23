@@ -1101,6 +1101,16 @@ elif st.session_state.p7_phase == "briefing":
     # 배너만 표시
     st.markdown(f'<div class="p7-ban {v_cls}">{data["title"]} — {v_label} ✅{ok_cnt} ❌{len(answers)-ok_cnt}</div>', unsafe_allow_html=True)
 
+    # ─── 탭 [1][2][3] ───
+    tab_cols = st.columns(num_steps)
+    for ti in range(num_steps):
+        with tab_cols[ti]:
+            if ti == bi:
+                st.markdown(f'<div style="background:#185FA5;color:#E6F1FB;border-radius:8px;padding:6px;text-align:center;font-size:1.1rem;font-weight:900;">{ti+1}</div>', unsafe_allow_html=True)
+            else:
+                if st.button(str(ti+1), key=f"br_tab_{ti}", use_container_width=True):
+                    st.session_state.p7_br_idx = ti; st.rerun()
+
     # ─── CT 피드백 + 데이터 패널 ───
     _an = st.session_state.get("p7_analytics", {})
     _times = _an.get("step_times", [])
@@ -1195,19 +1205,12 @@ elif st.session_state.p7_phase == "briefing":
                 st.session_state[sent_key] = True
                 st.rerun()
 
-    bc5, bc6 = st.columns(2)
-    with bc5:
-        if st.button("◀ 이전", key="p7brp", type="secondary", disabled=bi<=0, use_container_width=True):
-            st.session_state.p7_br_idx = bi - 1; st.rerun()
-    with bc6:
-        if st.button("▶ 다음", key="p7brn", type="secondary", disabled=bi>=num_steps-1, use_container_width=True):
-            st.session_state.p7_br_idx = bi + 1; st.rerun()
     bc3, bc4 = st.columns(2)
     with bc3:
-        if st.button("🔥 오답전장", key="p7store", type="secondary", use_container_width=True):
+        if st.button("🔥 오답전장", key="p7store", use_container_width=True):
             st.switch_page("pages/03_오답전장.py")
     with bc4:
-        if st.button("🏠 본부", key="p7lobby", type="secondary", use_container_width=True):
+        if st.button("🏠 본부", key="p7lobby", use_container_width=True):
             for k in D: st.session_state[k] = D[k]
             st.switch_page("main_hub.py")
 
