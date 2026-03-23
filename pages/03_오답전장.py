@@ -613,7 +613,7 @@ elif st.session_state.sg_phase == "p5_study":
             st.session_state.sg_idx = bi+1; st.rerun()
 
     # 시험 + 돌아가기
-    _rb4, _gap, _rb5 = st.columns([2, 0.1, 0.8])
+    _rb4, _rb5 = st.columns([2, 1])
     with _rb4:
         st.markdown('''<style>
         div[data-testid="column"]:first-child button[data-testid="stBaseButton-secondary"]{
@@ -640,8 +640,6 @@ elif st.session_state.sg_phase == "p5_study":
                 st.session_state.sg_exam_wrong = False
                 st.session_state.sg_phase = "p5_exam"; st.rerun()
             else: st.warning("최소 5문제 필요!")
-    with _gap:
-        st.markdown("", unsafe_allow_html=True)
     with _rb5:
         if st.button("↩ 돌아가기", key="back_lobby", use_container_width=True):
             st.session_state.sg_phase = "lobby"; st.session_state.rv_battle = None; st.session_state.rv_mode = None; st.rerun()
