@@ -35,37 +35,35 @@ def save_to_storage(items):
 st.markdown("""
 <style>
 @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@700;900&family=Rajdhani:wght@600;700&display=swap');
-.stApp{background:#06060e!important;color:#eeeeff!important;}
+.stApp{background:linear-gradient(rgba(0,212,255,0.03) 1px,transparent 1px),linear-gradient(90deg,rgba(0,212,255,0.03) 1px,transparent 1px),#0a0a0a!important;background-size:40px 40px,40px 40px,100% 100%!important;color:#f0f0f0!important;}
 section[data-testid="stSidebar"]{display:none!important;}
-header[data-testid="stHeader"]{background:transparent!important;height:0!important;min-height:0!important;overflow:hidden!important;}
-.block-container{padding-top:0!important;padding-bottom:0!important;margin-top:-8px!important;}
-.ah{text-align:center;padding:0;margin:-4px 0 -4px 0;line-height:0.6;}
-.ah h1{font-family:'Orbitron',monospace!important;font-size:0.95rem;font-weight:900;margin:0;background:linear-gradient(90deg,#00d4ff,#ffffff,#00d4ff);background-size:200%;-webkit-background-clip:text;-webkit-text-fill-color:transparent;animation:titleShine 3s linear infinite;letter-spacing:4px;}
+header[data-testid="stHeader"]{background:transparent!important;}
+.block-container{padding-top:0.7rem!important;padding-bottom:1rem!important;}
+.ah{text-align:center;padding:0.6rem 0 0.2rem 0;}
+.ah h1{font-family:'Orbitron',monospace!important;font-size:2rem;font-weight:900;margin:0;background:linear-gradient(90deg,#00d4ff,#ffffff,#00d4ff);background-size:200%;-webkit-background-clip:text;-webkit-text-fill-color:transparent;animation:titleShine 3s linear infinite;letter-spacing:4px;}
 @keyframes titleShine{0%{background-position:200% center}100%{background-position:-200% center}}
-@keyframes p5bounce{0%,100%{transform:translateY(0);}30%{transform:translateY(-6px);}60%{transform:translateY(-3px);}80%{transform:translateY(-5px);}}
-@keyframes p5flash{0%,75%,100%{box-shadow:0 0 12px rgba(0,212,255,0.15);}88%{box-shadow:0 0 45px rgba(0,255,255,1),0 0 90px rgba(0,212,255,0.7);}}
-button[kind="primary"],button[kind="secondary"]{background:#0d0d0d!important;color:#fff!important;border:1.5px solid rgba(0,212,255,0.5)!important;border-radius:8px!important;font-size:1.0rem!important;font-weight:500!important;padding:0.5rem 0.8rem!important;text-align:left!important;transition:none!important;animation:none!important;transform:none!important;box-shadow:none!important;min-height:38px!important;}
-button[kind="primary"] p,button[kind="secondary"] p{font-size:1.05rem!important;font-weight:700!important;color:#ddd8c8!important;text-align:left!important;}
+button[kind="primary"],button[kind="secondary"]{background:#0d0d0d!important;color:#fff!important;border:1.5px solid rgba(0,212,255,0.5)!important;border-radius:8px!important;font-family:'Rajdhani',sans-serif!important;font-size:2.1rem!important;font-weight:700!important;padding:1.2rem 1.4rem!important;box-shadow:0 0 12px rgba(0,212,255,0.15)!important;text-align:center!important;transition:all 0.15s!important;}
+button[kind="primary"] p,button[kind="primary"] span,button[kind="secondary"] p,button[kind="secondary"] span{font-family:'Rajdhani',sans-serif!important;font-size:2.1rem!important;font-weight:700!important;text-align:center!important;}
 button[kind="primary"]:hover,button[kind="secondary"]:hover{background:rgba(0,212,255,0.08)!important;border-color:#00d4ff!important;box-shadow:0 0 25px rgba(0,212,255,0.4)!important;transform:translateY(-2px)!important;}
-.qb{border-radius:12px;padding:0.3rem 0.5rem;margin:0.05rem 0;background:#0d0d0d;}
-.qb-g,.qb-v{background:#0d0d0d!important;border:none!important;animation:none;}
+.qb{border-radius:18px;padding:1.8rem 1.5rem;margin:0.2rem 0 0.6rem 0;background:#0d0d0d;}
+.qb-g,.qb-v{background:#0d0d0d!important;border:none!important;animation:borderGlow 3s linear infinite;}
 @keyframes borderGlow{0%{box-shadow:0 0 0 2px #00d4ff,0 0 15px rgba(0,212,255,0.4);}50%{box-shadow:0 0 0 2px #fff,0 0 25px rgba(0,212,255,0.6);}100%{box-shadow:0 0 0 2px #00d4ff,0 0 15px rgba(0,212,255,0.4);}}
-.qc{font-family:'Orbitron',monospace;font-size:0.72rem;font-weight:400;margin-bottom:0.3rem;letter-spacing:2px;color:#555!important;}
-.qc-g,.qc-v{color:#444;text-shadow:none;}
-.qt{font-family:'Rajdhani',sans-serif;color:#fff;font-size:0.95rem;font-weight:700;line-height:1.5;word-break:keep-all;}
-.qk{color:#00d4ff;font-weight:900;font-size:0.95rem;border-bottom:2px solid #00d4ff;text-shadow:0 0 10px rgba(0,212,255,0.8);}
-.bt{display:flex;align-items:center;justify-content:space-between;padding:0.01rem 0.8rem;border-radius:6px;margin-bottom:0;transform:scale(0.85);transform-origin:top center;margin-top:-8px;}
+.qc{font-family:'Orbitron',monospace;font-size:1.05rem;font-weight:800;margin-bottom:0.8rem;letter-spacing:3px;}
+.qc-g,.qc-v{color:#00d4ff;text-shadow:0 0 8px rgba(0,212,255,0.6);}
+.qt{font-family:'Rajdhani',sans-serif;color:#fff;font-size:2.4rem;font-weight:700;line-height:2;word-break:keep-all;}
+.qk{color:#00d4ff;font-weight:900;font-size:2.6rem;border-bottom:3px solid #00d4ff;text-shadow:0 0 15px rgba(0,212,255,0.8);}
+.bt{display:flex;align-items:center;justify-content:space-between;padding:0.7rem 1rem;border-radius:14px;margin-bottom:0.2rem;}
 .bt-g,.bt-v{background:#0d0d0d;border:1px solid rgba(0,212,255,0.4);box-shadow:0 0 15px rgba(0,212,255,0.1);}
 .bq{font-family:'Orbitron',monospace;font-size:1.6rem;font-weight:900;}
 .bq-g,.bq-v{color:#00d4ff;text-shadow:0 0 10px rgba(0,212,255,0.8);}
 .bs{font-family:'Orbitron',monospace;font-size:1.1rem;font-weight:800;color:#fff;}
-.rd-dots{display:flex;justify-content:center;gap:0.6rem;margin:0 0;}
+.rd-dots{display:flex;justify-content:center;gap:0.6rem;margin:0.3rem 0;}
 .rd-dot{width:22px;height:22px;border-radius:50%;border:2px solid #333;display:flex;align-items:center;justify-content:center;font-size:0.7rem;font-weight:900;}
 .rd-cur{border-color:#00d4ff!important;color:#00d4ff!important;box-shadow:0 0 10px #00d4ff!important;}
 .rd-ok{background:#00d4ff;border-color:#00d4ff;color:#000;}
 .rd-no{background:#ff2244;border-color:#ff2244;color:#fff;}
 .rd-wait{background:transparent;border-color:#333;color:#444;}
-.cg,.cv{border-radius:18px;padding:1.5rem 1.2rem;margin-bottom:0.8rem;min-height:190px;display:flex;flex-direction:column;justify-content:center;animation:none;}
+.cg,.cv{border-radius:18px;padding:1.5rem 1.2rem;margin-bottom:0.8rem;min-height:190px;display:flex;flex-direction:column;justify-content:center;animation:fl 3s ease-in-out infinite;}
 @keyframes fl{0%,100%{transform:translateY(0)}50%{transform:translateY(-6px)}}
 .cg{background:#0d0d0d;border:1.5px solid rgba(0,212,255,0.3);}
 .cv{background:#0d0d0d;border:1.5px solid rgba(0,212,255,0.2);}
@@ -86,37 +84,6 @@ details{background:rgba(0,212,255,0.03)!important;border-radius:12px!important;}
 summary{color:#aaa!important;font-weight:700!important;}
 ::-webkit-scrollbar{width:4px;}::-webkit-scrollbar-track{background:#0a0a0a;}
 ::-webkit-scrollbar-thumb{background:rgba(0,212,255,0.4);border-radius:2px;}
-@media(max-width:768px){
-.block-container{padding-top:0.5rem!important;padding-bottom:2rem!important;padding-left:0.6rem!important;padding-right:0.6rem!important;}
-.ah h1{font-size:1.5rem!important;letter-spacing:2px!important;}
-button[kind="primary"],button[kind="secondary"]{font-size:1.6rem!important;padding:0.9rem 1rem!important;}
-button[kind="primary"] p,button[kind="primary"] span,button[kind="secondary"] p,button[kind="secondary"] span{font-size:1.6rem!important;}
-.qt{font-size:1.9rem!important;}.qk{font-size:2rem!important;}
-.wb-s{font-size:1.7rem!important;}.wb-h,.wb-hn{font-size:1.85rem!important;}
-.wb-k{font-size:1.3rem!important;}.wb-e{font-size:1.2rem!important;}
-.bq{font-size:1.3rem!important;}.ct{font-size:1.4rem!important;}.cd{font-size:1.1rem!important;}
-}
-@media(max-width:480px){
-.block-container{padding-top:0.3rem!important;padding-bottom:1.5rem!important;padding-left:0.3rem!important;padding-right:0.3rem!important;}
-.ah h1{font-size:0.95rem!important;letter-spacing:1px!important;}
-button[kind="primary"],button[kind="secondary"]{font-size:1rem!important;padding:0.5rem 0.5rem!important;border-radius:6px!important;}
-button[kind="primary"] p,button[kind="primary"] span,button[kind="secondary"] p,button[kind="secondary"] span{font-size:1rem!important;}
-.qt{font-size:1.2rem!important;line-height:1.6!important;}.qk{font-size:1.3rem!important;}
-.qb{padding:0.8rem 0.7rem!important;border-radius:12px!important;}
-.wb{padding:0.8rem 0.7rem!important;}.wb-s{font-size:1.1rem!important;line-height:1.6!important;}
-.wb-h,.wb-hn{font-size:1.2rem!important;}.wb-k{font-size:0.95rem!important;}.wb-e{font-size:0.9rem!important;}
-.bq{font-size:1rem!important;}.bs{font-size:0.85rem!important;}
-.ct{font-size:1rem!important;}.cd{font-size:0.88rem!important;}
-.rd-dot{width:16px!important;height:16px!important;}
-.cg,.cv{min-height:120px!important;padding:0.8rem!important;}
-}
-@media(max-width:360px){
-.ah h1{font-size:0.95rem!important;}
-button[kind="primary"],button[kind="secondary"]{font-size:1.05rem!important;}
-button[kind="primary"] p,button[kind="secondary"] p{font-size:1.05rem!important;}
-.qt{font-size:1.25rem!important;}.qk{font-size:1.35rem!important;}
-.wb-s{font-size:1.15rem!important;}
-}
 </style>
 """, unsafe_allow_html=True)
 
@@ -134,18 +101,6 @@ GQ=[
 {"id":"G10","text":"It is essential that every employee _______ the new security protocol.","ch":["(A) follows","(B) follow","(C) following","(D) followed"],"a":1,"ex":"It is essential that+S+(should) 동사원형 → 'follow'","exk":"쉽게: essential(필수적) 뒤에도 동사원형! suggest랑 같은 규칙!","cat":"가정법/당위","kr":"모든 직원이 새 보안 프로토콜을 따르는 것이 필수적이다."},
 {"id":"G11","text":"The CEO, _______ founded the company in 2005, announced her retirement today.","ch":["(A) who","(B) whom","(C) which","(D) whose"],"a":0,"ex":"관계대명사 주어 역할 → 주격 'who'. 사람 → which 불가.","exk":"쉽게: 빈칸 뒤에 바로 동사(founded) → 주격 who! 사람이니까 which 안 됨!","cat":"관계대명사","kr":"2005년에 회사를 설립한 CEO가 오늘 은퇴를 발표했다."},
 {"id":"G12","text":"Not until the final report is submitted _______ begin the evaluation process.","ch":["(A) we can","(B) we will","(C) can we","(D) will"],"a":2,"ex":"Not until~ 문두 → 주절 도치 → 'can we'","exk":"쉽게: Not until이 앞에 오면 뒤집기! can+we 순서!","cat":"도치","kr":"최종 보고서가 제출될 때까지는 평가 과정을 시작할 수 없다."},
-{"id":"G13","text":"The policies _______ by the board last week will take effect next month.","ch":["(A) approve","(B) approving","(C) approved","(D) to approve"],"a":2,"ex":"명사 수식 수동 → 과거분사 approved","exk":"쉽게: 정책이 승인되는 것이니 수동! approved!","cat":"수동태/수일치","kr":"지난주 이사회에 의해 승인된 정책들은 다음 달부터 효력을 발휘할 것이다."},
-{"id":"G14","text":"A number of employees _______ volunteered to work overtime this week.","ch":["(A) has","(B) have","(C) is","(D) was"],"a":1,"ex":"A number of=많은 → 복수 → have","exk":"쉽게: A number of=여러 명→복수! The number of=그 수→단수!","cat":"수일치","kr":"많은 직원들이 이번 주 초과 근무를 자원했다."},
-{"id":"G15","text":"If the company _______ more staff last year, the project would have been completed.","ch":["(A) hired","(B) had hired","(C) would hire","(D) has hired"],"a":1,"ex":"가정법 과거완료 → if절 had+p.p.","exk":"쉽게: 과거 못한 일 가정 → if절에 had p.p.!","cat":"가정법","kr":"회사가 작년에 직원을 더 채용했더라면 프로젝트가 완료되었을 것이다."},
-{"id":"G16","text":"Only after the meeting ended _______ the final decision.","ch":["(A) they announced","(B) announced they","(C) did they announce","(D) they did announce"],"a":2,"ex":"Only after~ 문두 도치 → did+주어+동사원형","exk":"쉽게: Only로 시작하면 뒤집기! did+they+announce!","cat":"도치","kr":"회의가 끝난 후에야 그들은 최종 결정을 발표했다."},
-{"id":"G17","text":"The contractor, _______ proposal was accepted last week, will start work Monday.","ch":["(A) who","(B) whom","(C) whose","(D) which"],"a":2,"ex":"빈칸 뒤 명사(proposal) → 소유격 관계대명사 whose","exk":"쉽게: 빈칸 뒤에 명사 바로 오면 whose!","cat":"관계대명사","kr":"지난주 제안서가 채택된 계약업체가 월요일에 작업을 시작할 것이다."},
-{"id":"G18","text":"_______ the construction noise, the staff managed to concentrate on their work.","ch":["(A) Despite","(B) Although","(C) However","(D) Because of"],"a":0,"ex":"빈칸 뒤 명사구 → 전치사 Despite","exk":"쉽게: Despite 뒤=명사! Although 뒤=주어+동사!","cat":"접속사","kr":"공사 소음에도 불구하고 직원들은 업무에 집중할 수 있었다."},
-{"id":"G19","text":"The report _______ by the committee before the deadline was praised by the board.","ch":["(A) submit","(B) submitting","(C) submitted","(D) to submit"],"a":2,"ex":"명사 수식 수동 → 과거분사 submitted","exk":"쉽게: 보고서가 제출된 것 → 수동! submitted!","cat":"수동태/수일치","kr":"마감 전에 위원회에 의해 제출된 보고서는 이사회의 칭찬을 받았다."},
-{"id":"G20","text":"Not only _______ the project on time, but they also exceeded expectations.","ch":["(A) they completed","(B) did they complete","(C) they did complete","(D) completed they"],"a":1,"ex":"Not only~ 문두 도치 → did+주어+동사원형","exk":"쉽게: Not only가 앞에 오면 뒤집기! did+they+complete!","cat":"도치","kr":"그들은 프로젝트를 제때 완료했을 뿐만 아니라 기대를 초과했다."},
-{"id":"G21","text":"The employee _______ performance has improved significantly received a bonus.","ch":["(A) who","(B) whom","(C) whose","(D) which"],"a":2,"ex":"빈칸 뒤 명사(performance) → 소유격 whose","exk":"쉽게: 뒤에 명사 바로 오면 whose!","cat":"관계대명사","kr":"성과가 크게 향상된 직원은 보너스를 받았다."},
-{"id":"G22","text":"_______ she had more experience, she might have gotten the promotion.","ch":["(A) If","(B) Unless","(C) Had","(D) Since"],"a":2,"ex":"Had+S → 가정법 과거완료 도치","exk":"쉽게: Had로 시작=과거 가정법 도치!","cat":"가정법","kr":"그녀가 더 많은 경험이 있었다면 승진했을 것이다."},
-{"id":"G23","text":"The team is proud of _______ the project under budget.","ch":["(A) complete","(B) completed","(C) having completed","(D) to complete"],"a":2,"ex":"전치사 of 뒤 + 완료 → having+p.p.","exk":"쉽게: of 뒤=동명사! 이미 완료된 일=having completed!","cat":"동명사/준동사","kr":"팀은 예산 내에서 프로젝트를 완료한 것을 자랑스러워한다."},
-{"id":"G24","text":"_______ all the data, the analyst presented her findings to the board.","ch":["(A) Having reviewed","(B) Have reviewed","(C) Reviewed","(D) To reviewing"],"a":0,"ex":"앞선 동작 분사구문 → Having+p.p.","exk":"쉽게: 먼저 한 일+나중 한 일 → Having p.p.가 먼저!","cat":"분사구문","kr":"모든 데이터를 검토한 후 분석가는 이사회에 결과를 발표했다."},
 ]
 VQ=[
 {"id":"V1","diff":"easy","text":"The company plans to _______ its operations to three new countries next year.","ch":["(A) expand","(B) expend","(C) expect","(D) expose"],"a":0,"ex":"expand=확장하다. 사업을 새 나라로 확장.","exk":"쉽게: expand=넓히다! expend=쓰다, expect=기대, expose=노출 → 소거법!","cat":"동사 어휘","kr":"그 회사는 내년에 3개 신규 국가로 사업을 확장할 계획이다.","diff":"easy"},
@@ -169,15 +124,12 @@ D={"started":False,"cq":None,"qi":0,"sc":0,"wrong":0,"ta":0,"sk":0,"msk":0,
 for k,v in D.items():
     if k not in st.session_state: st.session_state[k]=v
 
-# 메인허브에서 재진입 시에만 리셋 (_p5_just_left 플래그)
-if st.session_state.get("_p5_just_left", False):
-    st.session_state._p5_just_left = False
-    for k in ["cq","qi","sc","wrong","ta","ans","sel","round_qs","round_results","round_num","mode"]:
-        if k in D: st.session_state[k] = D[k]
+# 외부에서 진입 시 게임 종료 상태면 lobby로 리셋
+if st.session_state.phase in ("lost", "victory", "briefing") and not st.session_state.get("_p5_active", False):
     st.session_state.phase = "lobby"
-    st.session_state.sel_mode = None
-    st.session_state.tsec = 30
-    st.session_state.tsec_chosen = False
+    for k in ["cq","qi","sc","wrong","ta","ans","sel","round_qs","round_results"]:
+        if k in D: st.session_state[k] = D[k]
+st.session_state._p5_active = True
 
 def pool(m): return GQ if m=="grammar" else VQ if m=="vocab" else GQ+VQ
 GRP={"g1":["수일치","수동태/수일치"],"g2":["가정법","가정법/당위","도치"],"g3":["접속사","동명사/준동사","분사구문","관계대명사"]}
@@ -244,21 +196,21 @@ if st.session_state.phase=="battle":
 
         components.html(f"""
         <style>
-        *{{margin:0;padding:0;box-sizing:border-box;}}body{{background:transparent;overflow:hidden;font-family:sans-serif;margin:0;padding:0;}}
-        #w{{text-align:center;padding:0;margin:0;line-height:1;}}
-        #n{{font-size:1.8rem;font-weight:900;animation:p 1s ease-in-out infinite;}}
-        #bw{{background:#1a1a2e;border-radius:8px;height:10px;margin:0.1rem 0.3rem;overflow:hidden;border:1px solid #333;}}
+        *{{margin:0;padding:0;}}body{{background:transparent;overflow:hidden;font-family:sans-serif;}}
+        #w{{text-align:center;}}
+        #n{{font-size:5rem;font-weight:900;animation:p 1s ease-in-out infinite;}}
+        #bw{{background:#1a1a2e;border-radius:10px;height:14px;margin:0.2rem 0.5rem;overflow:hidden;border:1px solid #333;}}
         #b{{height:100%;border-radius:10px;transition:width 1s linear;}}
         .safe{{color:#44ff88;text-shadow:0 0 20px #44ff88;}}
-        .warn{{color:#ffcc00;text-shadow:0 0 25px #ffcc00,0 0 50px #ff8800;}}
-        .danger{{color:#ff4444;text-shadow:0 0 35px #ff4444,0 0 70px #ff0000;}}
-        .critical{{color:#ff0000;text-shadow:0 0 50px #ff0000;font-size:1.8rem!important;}}
+        .warn{{color:#ffcc00;text-shadow:0 0 25px #ffcc00;}}
+        .danger{{color:#ff4444;text-shadow:0 0 35px #ff4444;}}
+        .critical{{color:#ff0000;text-shadow:0 0 50px #ff0000;font-size:6rem!important;}}
         .bs{{background:linear-gradient(90deg,#22cc66,#44ff88);box-shadow:0 0 10px #44ff88;}}
         .bw{{background:linear-gradient(90deg,#cc8800,#ffcc00);box-shadow:0 0 10px #ffcc00;}}
         .bd{{background:linear-gradient(90deg,#cc2200,#ff4444);box-shadow:0 0 15px #ff4444;animation:bp 0.5s infinite;}}
         .bc{{background:linear-gradient(90deg,#ff0000,#ff4444);box-shadow:0 0 25px #ff0000;animation:bp 0.25s infinite;}}
         @keyframes p{{0%,100%{{transform:scale(1);opacity:1}}50%{{transform:scale(1.07);opacity:0.8}}}}
-        @keyframes bp{{0%,100%{{opacity:1}}50%{{opacity:0.4}}}}@keyframes shake{{0%{{transform:translate(0,0)}}20%{{transform:translate(-3px,2px)}}40%{{transform:translate(3px,-2px)}}60%{{transform:translate(-2px,3px)}}80%{{transform:translate(2px,-3px)}}100%{{transform:translate(0,0)}}}}
+        @keyframes bp{{0%,100%{{opacity:1}}50%{{opacity:0.4}}}}
         </style>
         <div id="w"><div id="n" class="{tcl}">{rem}</div>
         <div id="bw"><div id="b" class="b{'s' if tcl=='safe' else 'w' if tcl=='warn' else 'd' if tcl=='danger' else 'c'}" style="width:{pct}%"></div></div></div>
@@ -267,7 +219,7 @@ if st.session_state.phase=="battle":
         setInterval(function(){{l--;if(l<0)l=0;e.textContent=l;var r=l/t;
         var c=r>0.6?"safe":r>0.35?"warn":r>0.15?"danger":"critical";e.className=c;
         b.className="b"+(r>0.6?"s":r>0.35?"w":r>0.15?"d":"c");b.style.width=(r*100)+"%";}},1000);
-        </script>""", height=44)
+        </script>""", height=120)
 
         # 시간초과 → YOU LOST
         if rem<=0:
@@ -275,50 +227,6 @@ if st.session_state.phase=="battle":
 
     # 문제
     st.markdown(f'<div class="qb qb-{th}"><div class="qc qc-{th}">{ej} {tn} · {q.get("cat","")}</div><div class="qt">{fq(q["text"])}</div></div>', unsafe_allow_html=True)
-
-    # 선택지 보석 포인트바 JS
-    import streamlit.components.v1 as _p5cmp
-    _p5cmp.html('''<script>
-    (function(){
-        var colors=["#d4af37","#9aa5b4","#50c878","#4488cc"];
-        var lastQ = -1;
-        function styleChoices(){
-            var doc=window.parent.document;
-            var btns=doc.querySelectorAll('button[kind="primary"],button[kind="secondary"]');
-            var ci=0;
-            btns.forEach(function(b){
-                var t=(b.textContent||"").trim();
-                if(t.match(/^\(A\)|^\(B\)|^\(C\)|^\(D\)/)){
-                    var c=colors[ci%4];
-                    b.style.setProperty("background","#0c0c14","important");
-                    b.style.setProperty("border","1px solid #1a1a28","important");
-                    b.style.setProperty("border-left","4px solid "+c,"important");
-                    b.style.setProperty("color","#ddd8c8","important");
-                    b.style.setProperty("animation","none","important");
-                    b.style.setProperty("min-height","38px","important");
-                    b.style.setProperty("text-align","left","important");
-                    b.querySelectorAll("p").forEach(function(p){
-                        p.style.setProperty("color","#ddd8c8","important");
-                        p.style.setProperty("font-size","1.05rem","important");p.style.setProperty("font-weight","700","important");
-                        p.style.setProperty("text-align","left","important");
-                    });
-                    ci++;
-                }
-            });
-        }
-        function resetAndStyle(){
-            var doc=window.parent.document;
-            var allBtns=doc.querySelectorAll('button');
-            allBtns.forEach(function(b){
-                b.style.removeProperty("border-left");
-                b.style.removeProperty("background");
-            });
-            setTimeout(styleChoices,50);
-        }
-        setTimeout(styleChoices,100);setTimeout(styleChoices,400);setTimeout(styleChoices,900);
-        setInterval(resetAndStyle,800);
-    })();
-    </script>''', height=0)
 
     # 선택지
     if not st.session_state.ans:
@@ -372,8 +280,8 @@ elif st.session_state.phase=="victory":
     <style>
     *{margin:0;padding:0;}body{background:#000;overflow:hidden;display:flex;align-items:center;justify-content:center;height:100vh;font-family:sans-serif;}
     .v{text-align:center;animation:vi 0.8s ease-out;}
-    .v h1{font-size:2rem;font-weight:900;color:#ffcc00;text-shadow:0 0 20px #ffcc00,0 0 40px #ff8800;animation:glow 1.5s ease-in-out infinite alternate;}
-    .v p{font-size:0.8rem;color:#44ff88;font-weight:700;margin-top:0.2rem;}
+    .v h1{font-size:5rem;font-weight:900;color:#ffcc00;text-shadow:0 0 40px #ffcc00,0 0 80px #ff8800,0 0 120px #ff4400;animation:glow 1.5s ease-in-out infinite alternate;}
+    .v p{font-size:1.5rem;color:#44ff88;font-weight:700;margin-top:0.5rem;}
     .stars{position:absolute;width:100%;height:100%;}
     .star{position:absolute;background:#ffcc00;border-radius:50%;animation:twinkle 1s ease-in-out infinite;}
     @keyframes vi{0%{transform:scale(0);opacity:0}100%{transform:scale(1);opacity:1}}
@@ -384,7 +292,7 @@ elif st.session_state.phase=="victory":
     """ + "".join([f'<div class="star" style="left:{random.randint(5,95)}%;top:{random.randint(5,95)}%;width:{random.randint(3,8)}px;height:{random.randint(3,8)}px;animation-delay:{random.random():.1f}s;"></div>' for _ in range(30)]) + """
     </div>
     <div class="v"><h1>⚔️ VICTORY ⚔️</h1><p>라운드 클리어!</p></div>
-    """, height=70)
+    """, height=350)
 
     st.markdown("")
     vc=st.columns(2)
@@ -393,7 +301,7 @@ elif st.session_state.phase=="victory":
             st.session_state.phase="briefing"; st.rerun()
     with vc[1]:
         if st.button("🏠 메인", type="secondary", use_container_width=True):
-            st.session_state._p5_just_left = True
+            st.session_state._p5_active = False
             st.session_state.ans = False
             st.session_state["_battle_entry_ans_reset"] = True
             st.switch_page("main_hub.py")
@@ -402,60 +310,39 @@ elif st.session_state.phase=="victory":
 # PHASE: YOU LOST
 # ════════════════════════════════════════
 elif st.session_state.phase=="lost":
-    _sc = st.session_state.sc
-    _wrong = st.session_state.wrong
-    _pct = int(_sc / 5 * 100)
-    _is_timeout = (time.time()-st.session_state.qst > st.session_state.tsec)
-    _reason = "시간초과" if _is_timeout else f"오답 {_wrong}개"
-    if _pct == 0:
-        _taunt = "문법책 한 번이라도 펴봤어? 📚"; _sub = "수일치도 모르면서 토익 점수 바라지 마 😶"
-    elif _is_timeout:
-        _taunt = "시간이 부족했다고? 그게 실력이야 ⏰"; _sub = "토익은 느린 사람 기다려주지 않아 🐢"
-    elif _pct <= 20:
-        _taunt = "찍어서 맞춘 거 다 알아 😂"; _sub = "운도 실력이라고? 그건 토익엔 없어 🙃"
-    elif _pct <= 40:
-        _taunt = f"겨우 {_sc}개... 어법이 이 정도면 문장도 못 읽겠다 😤"; _sub = "접속사? 수일치? 기초부터 다시 해"
-    else:
-        _taunt = "딱 한 문제 차이야. 억울하지? 😭"; _sub = "그 한 문제가 토익 점수 50점 차이야"
+    reason = "⏰ 시간 초과!" if (time.time()-st.session_state.qst>st.session_state.tsec) else f"💀 오답 {st.session_state.wrong}개!"
     components.html(f"""
     <style>
-    *{{margin:0;padding:0;box-sizing:border-box;}}
-    body{{background:#0a0000;overflow:hidden;display:flex;align-items:center;justify-content:center;height:100vh;font-family:'Arial Black',sans-serif;}}
-    @keyframes redPulse{{0%,100%{{background:#0a0000;}}50%{{background:#1a0000;}}}}
-    @keyframes crashIn{{0%{{transform:scale(4) rotate(-5deg);opacity:0;}}60%{{transform:scale(0.9) rotate(2deg);}}100%{{transform:scale(1) rotate(0deg);opacity:1;}}}}
-    @keyframes shakeX{{0%,100%{{transform:translateX(0);}}20%{{transform:translateX(-8px);}}40%{{transform:translateX(8px);}}60%{{transform:translateX(-5px);}}80%{{transform:translateX(5px);}}}}
-    @keyframes rise{{0%{{opacity:1;transform:translateY(0) scale(1);}}100%{{opacity:0;transform:translateY(-300px) scale(0.3);}}}}
-    @keyframes flicker{{0%,100%{{opacity:1;}}50%{{opacity:0.7;}}}}
-    body{{animation:redPulse 0.8s ease-in-out infinite;}}
-    .wrap{{text-align:center;animation:crashIn 0.6s cubic-bezier(0.34,1.56,0.64,1) forwards;z-index:10;position:relative;padding:6px;}}
-    .skull{{font-size:2rem;animation:shakeX 0.4s ease-in-out infinite;display:inline-block;margin-bottom:4px;}}
-    .lost-txt{{font-size:1.5rem;font-weight:900;color:#ff0000;text-shadow:0 0 10px #ff0000;animation:flicker 0.3s infinite;letter-spacing:2px;}}
-    .reason{{font-size:0.8rem;color:#ff6644;font-weight:700;margin:3px 0;letter-spacing:1px;}}
-    .score{{font-size:1.8rem;font-weight:900;color:#ffcc00;text-shadow:0 0 15px #ffaa00;margin:4px 0;}}
-    .taunt{{font-size:0.75rem;color:#ff8888;font-weight:700;margin:2px 0;}}
-    .sub{{font-size:0.7rem;color:#ff6666;margin-top:2px;}}
-    .embers{{position:absolute;width:100%;height:100%;top:0;left:0;pointer-events:none;}}
-    .ember{{position:absolute;border-radius:50%;animation:rise 1.5s ease-in infinite;}}
+    *{{margin:0;padding:0;}}body{{background:#000;overflow:hidden;display:flex;align-items:center;justify-content:center;height:100vh;font-family:sans-serif;}}
+    .l{{text-align:center;animation:li 0.6s ease-out;}}
+    .l h1{{font-size:5rem;font-weight:900;color:#ff0000;text-shadow:0 0 40px #ff0000,0 0 80px #cc0000,0 0 120px #880000;animation:shake 0.5s ease-in-out infinite;}}
+    .l p{{font-size:1.5rem;color:#ff6666;font-weight:700;margin-top:0.5rem;}}
+    @keyframes li{{0%{{transform:scale(3);opacity:0}}100%{{transform:scale(1);opacity:1}}}}
+    @keyframes shake{{0%,100%{{transform:translateX(0)}}25%{{transform:translateX(-5px)}}75%{{transform:translateX(5px)}}}}
+    .embers{{position:absolute;width:100%;height:100%;}}
+    .ember{{position:absolute;background:#ff4400;border-radius:50%;animation:rise 2s ease-in infinite;}}
+    @keyframes rise{{0%{{opacity:1;transform:translateY(0)}}100%{{opacity:0;transform:translateY(-200px)}}}}
     </style>
-    <div class="embers">""" + "".join([f'<div class="ember" style="left:{random.randint(5,95)}%;bottom:{random.randint(0,20)}%;width:{random.randint(4,10)}px;height:{random.randint(4,10)}px;background:{"#ff4400" if random.random()>0.5 else "#ff8800"};animation-delay:{random.random():.1f}s;animation-duration:{1+random.random():.1f}s;"></div>' for _ in range(40)]) + f"""</div>
-    <div class="wrap">
-        <div class="skull">💀</div>
-        <div class="lost-txt">GAME OVER</div>
-        <div class="reason">[ {_reason} ]</div>
-        <div class="score">{_pct}점</div>
-        <div class="taunt">{_taunt}</div>
-        <div class="sub">{_sub}</div>
-    </div>""", height=90)
+    <div class="embers">
+    """ + "".join([f'<div class="ember" style="left:{random.randint(5,95)}%;bottom:{random.randint(0,30)}%;width:{random.randint(3,6)}px;height:{random.randint(3,6)}px;animation-delay:{random.random():.1f}s;"></div>' for _ in range(25)]) + f"""
+    </div>
+    <div class="l"><h1>💀 YOU LOST 💀</h1><p>{reason}</p></div>
+    """, height=350)
+
     st.markdown("")
-    bc=st.columns(2)
+    bc=st.columns(3)
     with bc[0]:
-        if st.button("🔥 설욕전! 다시 싸운다!", type="primary", use_container_width=True):
-            for k in ["cq","qi","sc","wrong","ta","ans","sel","round_qs","round_results","round_num"]:
-                if k in D: st.session_state[k]=D[k]
-            st.session_state.phase="lobby"; st.rerun()
+        if st.button("📋 브리핑 보기", type="primary", use_container_width=True):
+            st.session_state.phase="briefing"; st.rerun()
     with bc[1]:
-        if st.button("🏃 도망가기", type="secondary", use_container_width=True):
-            st.session_state._p5_just_left = True
+        if st.button("🔄 재도전", type="secondary", use_container_width=True):
+            st.session_state.phase="lobby"
+            for k in ["cq","qi","sc","wrong","ta","ans","sel","round_qs","round_results"]:
+                st.session_state[k]=D[k]
+            st.rerun()
+    with bc[2]:
+        if st.button("🏠 메인", type="secondary", use_container_width=True):
+            st.session_state._p5_active = False
             st.session_state.ans = False
             st.session_state["_battle_entry_ans_reset"] = True
             st.switch_page("main_hub.py")
@@ -468,37 +355,35 @@ elif st.session_state.phase=="briefing":
     st.markdown("""
 <style>
 @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@700;900&family=Rajdhani:wght@600;700&display=swap');
-.stApp{background:#06060e!important;color:#eeeeff!important;}
+.stApp{background:linear-gradient(rgba(0,212,255,0.03) 1px,transparent 1px),linear-gradient(90deg,rgba(0,212,255,0.03) 1px,transparent 1px),#0a0a0a!important;background-size:40px 40px,40px 40px,100% 100%!important;color:#f0f0f0!important;}
 section[data-testid="stSidebar"]{display:none!important;}
-header[data-testid="stHeader"]{background:transparent!important;height:0!important;min-height:0!important;overflow:hidden!important;}
-.block-container{padding-top:0!important;padding-bottom:0!important;margin-top:-8px!important;}
-.ah{text-align:center;padding:0 0 0 0;}
+header[data-testid="stHeader"]{background:transparent!important;}
+.block-container{padding-top:0.7rem!important;padding-bottom:1rem!important;}
+.ah{text-align:center;padding:0.6rem 0 0.2rem 0;}
 .ah h1{font-family:'Orbitron',monospace!important;font-size:2rem;font-weight:900;margin:0;background:linear-gradient(90deg,#00d4ff,#ffffff,#00d4ff);background-size:200%;-webkit-background-clip:text;-webkit-text-fill-color:transparent;animation:titleShine 3s linear infinite;letter-spacing:4px;}
 @keyframes titleShine{0%{background-position:200% center}100%{background-position:-200% center}}
-@keyframes p5bounce{0%,100%{transform:translateY(0);}30%{transform:translateY(-6px);}60%{transform:translateY(-3px);}80%{transform:translateY(-5px);}}
-@keyframes p5flash{0%,75%,100%{box-shadow:0 0 12px rgba(0,212,255,0.15);}88%{box-shadow:0 0 45px rgba(0,255,255,1),0 0 90px rgba(0,212,255,0.7);}}
-button[kind="primary"],button[kind="secondary"]{background:#0d0d0d!important;color:#fff!important;border:1.5px solid rgba(0,212,255,0.5)!important;border-radius:8px!important;font-size:1.0rem!important;font-weight:500!important;padding:0.5rem 0.8rem!important;text-align:left!important;transition:none!important;animation:none!important;transform:none!important;box-shadow:none!important;min-height:38px!important;}
-button[kind="primary"] p,button[kind="secondary"] p{font-size:1.05rem!important;font-weight:700!important;color:#ddd8c8!important;text-align:left!important;}
+button[kind="primary"],button[kind="secondary"]{background:#0d0d0d!important;color:#fff!important;border:1.5px solid rgba(0,212,255,0.5)!important;border-radius:8px!important;font-family:'Rajdhani',sans-serif!important;font-size:2.1rem!important;font-weight:700!important;padding:1.2rem 1.4rem!important;box-shadow:0 0 12px rgba(0,212,255,0.15)!important;text-align:center!important;transition:all 0.15s!important;}
+button[kind="primary"] p,button[kind="primary"] span,button[kind="secondary"] p,button[kind="secondary"] span{font-family:'Rajdhani',sans-serif!important;font-size:2.1rem!important;font-weight:700!important;text-align:center!important;}
 button[kind="primary"]:hover,button[kind="secondary"]:hover{background:rgba(0,212,255,0.08)!important;border-color:#00d4ff!important;box-shadow:0 0 25px rgba(0,212,255,0.4)!important;transform:translateY(-2px)!important;}
-.qb{border-radius:12px;padding:0.3rem 0.5rem;margin:0.05rem 0;background:#0d0d0d;}
-.qb-g,.qb-v{background:#0d0d0d!important;border:none!important;animation:none;}
+.qb{border-radius:18px;padding:1.8rem 1.5rem;margin:0.2rem 0 0.6rem 0;background:#0d0d0d;}
+.qb-g,.qb-v{background:#0d0d0d!important;border:none!important;animation:borderGlow 3s linear infinite;}
 @keyframes borderGlow{0%{box-shadow:0 0 0 2px #00d4ff,0 0 15px rgba(0,212,255,0.4);}50%{box-shadow:0 0 0 2px #fff,0 0 25px rgba(0,212,255,0.6);}100%{box-shadow:0 0 0 2px #00d4ff,0 0 15px rgba(0,212,255,0.4);}}
-.qc{font-family:'Orbitron',monospace;font-size:0.72rem;font-weight:400;margin-bottom:0.3rem;letter-spacing:2px;color:#555!important;}
-.qc-g,.qc-v{color:#444;text-shadow:none;}
-.qt{font-family:'Rajdhani',sans-serif;color:#fff;font-size:0.95rem;font-weight:700;line-height:1.5;word-break:keep-all;}
-.qk{color:#00d4ff;font-weight:900;font-size:0.95rem;border-bottom:2px solid #00d4ff;text-shadow:0 0 10px rgba(0,212,255,0.8);}
-.bt{display:flex;align-items:center;justify-content:space-between;padding:0.01rem 0.8rem;border-radius:6px;margin-bottom:0;transform:scale(0.85);transform-origin:top center;margin-top:-8px;}
+.qc{font-family:'Orbitron',monospace;font-size:1.05rem;font-weight:800;margin-bottom:0.8rem;letter-spacing:3px;}
+.qc-g,.qc-v{color:#00d4ff;text-shadow:0 0 8px rgba(0,212,255,0.6);}
+.qt{font-family:'Rajdhani',sans-serif;color:#fff;font-size:2.4rem;font-weight:700;line-height:2;word-break:keep-all;}
+.qk{color:#00d4ff;font-weight:900;font-size:2.6rem;border-bottom:3px solid #00d4ff;text-shadow:0 0 15px rgba(0,212,255,0.8);}
+.bt{display:flex;align-items:center;justify-content:space-between;padding:0.7rem 1rem;border-radius:14px;margin-bottom:0.2rem;}
 .bt-g,.bt-v{background:#0d0d0d;border:1px solid rgba(0,212,255,0.4);box-shadow:0 0 15px rgba(0,212,255,0.1);}
 .bq{font-family:'Orbitron',monospace;font-size:1.6rem;font-weight:900;}
 .bq-g,.bq-v{color:#00d4ff;text-shadow:0 0 10px rgba(0,212,255,0.8);}
 .bs{font-family:'Orbitron',monospace;font-size:1.1rem;font-weight:800;color:#fff;}
-.rd-dots{display:flex;justify-content:center;gap:0.6rem;margin:0 0;}
+.rd-dots{display:flex;justify-content:center;gap:0.6rem;margin:0.3rem 0;}
 .rd-dot{width:22px;height:22px;border-radius:50%;border:2px solid #333;display:flex;align-items:center;justify-content:center;font-size:0.7rem;font-weight:900;}
 .rd-cur{border-color:#00d4ff!important;color:#00d4ff!important;box-shadow:0 0 10px #00d4ff!important;}
 .rd-ok{background:#00d4ff;border-color:#00d4ff;color:#000;}
 .rd-no{background:#ff2244;border-color:#ff2244;color:#fff;}
 .rd-wait{background:transparent;border-color:#333;color:#444;}
-.cg,.cv{border-radius:18px;padding:1.5rem 1.2rem;margin-bottom:0.8rem;min-height:190px;display:flex;flex-direction:column;justify-content:center;animation:none;}
+.cg,.cv{border-radius:18px;padding:1.5rem 1.2rem;margin-bottom:0.8rem;min-height:190px;display:flex;flex-direction:column;justify-content:center;animation:fl 3s ease-in-out infinite;}
 @keyframes fl{0%,100%{transform:translateY(0)}50%{transform:translateY(-6px)}}
 .cg{background:#0d0d0d;border:1.5px solid rgba(0,212,255,0.3);}
 .cv{background:#0d0d0d;border:1.5px solid rgba(0,212,255,0.2);}
@@ -615,7 +500,7 @@ summary{color:#aaa!important;font-weight:700!important;}
                 st.session_state.phase = "lobby"; st.rerun()
         with bc[2]:
             if st.button("\U0001f30d \uba54\uc778\ud5c8\ube0c", type="secondary", use_container_width=True):
-                st.session_state._p5_just_left = True
+                st.session_state._p5_active = False
                 st.session_state.ans = False
                 st.session_state["_battle_entry_ans_reset"] = True
                 st.switch_page("main_hub.py")
@@ -639,7 +524,7 @@ summary{color:#aaa!important;font-weight:700!important;}
                 st.session_state.phase = "lobby"; st.rerun()
         with bc[2]:
             if st.button("\U0001f30d \uba54\uc778\ud5c8\ube0c", type="secondary", use_container_width=True):
-                st.session_state._p5_just_left = True
+                st.session_state._p5_active = False
                 st.session_state.ans = False
                 st.session_state["_battle_entry_ans_reset"] = True
                 st.switch_page("main_hub.py")
@@ -647,16 +532,6 @@ summary{color:#aaa!important;font-weight:700!important;}
 # PHASE: LOBBY
 # ════════════════════════════════════════
 else:
-    _nav = st.query_params.get('nav', '')
-    if _nav == 'hub':
-        st.query_params.clear()
-        st.session_state._p5_just_left = True
-        st.session_state.ans = False
-        st.session_state["_battle_entry_ans_reset"] = True
-        st.switch_page("main_hub.py")
-    elif _nav == 'stg':
-        st.query_params.clear()
-        st.switch_page("pages/03_오답전장.py")
     st.session_state.phase="lobby"
     if "sel_mode" not in st.session_state: st.session_state.sel_mode=None
 
@@ -668,37 +543,35 @@ else:
     st.markdown("""
 <style>
 @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@700;900&family=Rajdhani:wght@600;700&display=swap');
-.stApp{background:#06060e!important;color:#eeeeff!important;}
+.stApp{background:linear-gradient(rgba(0,212,255,0.03) 1px,transparent 1px),linear-gradient(90deg,rgba(0,212,255,0.03) 1px,transparent 1px),#0a0a0a!important;background-size:40px 40px,40px 40px,100% 100%!important;color:#f0f0f0!important;}
 section[data-testid="stSidebar"]{display:none!important;}
-header[data-testid="stHeader"]{background:transparent!important;height:0!important;min-height:0!important;overflow:hidden!important;}
-.block-container{padding-top:0!important;padding-bottom:0!important;margin-top:-8px!important;}
-.ah{text-align:center;padding:0 0 0 0;}
+header[data-testid="stHeader"]{background:transparent!important;}
+.block-container{padding-top:0.7rem!important;padding-bottom:1rem!important;}
+.ah{text-align:center;padding:0.6rem 0 0.2rem 0;}
 .ah h1{font-family:'Orbitron',monospace!important;font-size:2rem;font-weight:900;margin:0;background:linear-gradient(90deg,#00d4ff,#ffffff,#00d4ff);background-size:200%;-webkit-background-clip:text;-webkit-text-fill-color:transparent;animation:titleShine 3s linear infinite;letter-spacing:4px;}
 @keyframes titleShine{0%{background-position:200% center}100%{background-position:-200% center}}
-@keyframes p5bounce{0%,100%{transform:translateY(0);}30%{transform:translateY(-6px);}60%{transform:translateY(-3px);}80%{transform:translateY(-5px);}}
-@keyframes p5flash{0%,75%,100%{box-shadow:0 0 12px rgba(0,212,255,0.15);}88%{box-shadow:0 0 45px rgba(0,255,255,1),0 0 90px rgba(0,212,255,0.7);}}
-button[kind="primary"],button[kind="secondary"]{background:#0d0d0d!important;color:#fff!important;border:1.5px solid rgba(0,212,255,0.5)!important;border-radius:8px!important;font-size:1.0rem!important;font-weight:500!important;padding:0.5rem 0.8rem!important;text-align:left!important;transition:none!important;animation:none!important;transform:none!important;box-shadow:none!important;min-height:38px!important;}
-button[kind="primary"] p,button[kind="secondary"] p{font-size:1.05rem!important;font-weight:700!important;color:#ddd8c8!important;text-align:left!important;}
+button[kind="primary"],button[kind="secondary"]{background:#0d0d0d!important;color:#fff!important;border:1.5px solid rgba(0,212,255,0.5)!important;border-radius:8px!important;font-family:'Rajdhani',sans-serif!important;font-size:2.1rem!important;font-weight:700!important;padding:1.2rem 1.4rem!important;box-shadow:0 0 12px rgba(0,212,255,0.15)!important;text-align:center!important;transition:all 0.15s!important;}
+button[kind="primary"] p,button[kind="primary"] span,button[kind="secondary"] p,button[kind="secondary"] span{font-family:'Rajdhani',sans-serif!important;font-size:2.1rem!important;font-weight:700!important;text-align:center!important;}
 button[kind="primary"]:hover,button[kind="secondary"]:hover{background:rgba(0,212,255,0.08)!important;border-color:#00d4ff!important;box-shadow:0 0 25px rgba(0,212,255,0.4)!important;transform:translateY(-2px)!important;}
-.qb{border-radius:12px;padding:0.3rem 0.5rem;margin:0.05rem 0;background:#0d0d0d;}
-.qb-g,.qb-v{background:#0d0d0d!important;border:none!important;animation:none;}
+.qb{border-radius:18px;padding:1.8rem 1.5rem;margin:0.2rem 0 0.6rem 0;background:#0d0d0d;}
+.qb-g,.qb-v{background:#0d0d0d!important;border:none!important;animation:borderGlow 3s linear infinite;}
 @keyframes borderGlow{0%{box-shadow:0 0 0 2px #00d4ff,0 0 15px rgba(0,212,255,0.4);}50%{box-shadow:0 0 0 2px #fff,0 0 25px rgba(0,212,255,0.6);}100%{box-shadow:0 0 0 2px #00d4ff,0 0 15px rgba(0,212,255,0.4);}}
-.qc{font-family:'Orbitron',monospace;font-size:0.72rem;font-weight:400;margin-bottom:0.3rem;letter-spacing:2px;color:#555!important;}
-.qc-g,.qc-v{color:#444;text-shadow:none;}
-.qt{font-family:'Rajdhani',sans-serif;color:#fff;font-size:0.95rem;font-weight:700;line-height:1.5;word-break:keep-all;}
-.qk{color:#00d4ff;font-weight:900;font-size:0.95rem;border-bottom:2px solid #00d4ff;text-shadow:0 0 10px rgba(0,212,255,0.8);}
-.bt{display:flex;align-items:center;justify-content:space-between;padding:0.01rem 0.8rem;border-radius:6px;margin-bottom:0;transform:scale(0.85);transform-origin:top center;margin-top:-8px;}
+.qc{font-family:'Orbitron',monospace;font-size:1.05rem;font-weight:800;margin-bottom:0.8rem;letter-spacing:3px;}
+.qc-g,.qc-v{color:#00d4ff;text-shadow:0 0 8px rgba(0,212,255,0.6);}
+.qt{font-family:'Rajdhani',sans-serif;color:#fff;font-size:2.4rem;font-weight:700;line-height:2;word-break:keep-all;}
+.qk{color:#00d4ff;font-weight:900;font-size:2.6rem;border-bottom:3px solid #00d4ff;text-shadow:0 0 15px rgba(0,212,255,0.8);}
+.bt{display:flex;align-items:center;justify-content:space-between;padding:0.7rem 1rem;border-radius:14px;margin-bottom:0.2rem;}
 .bt-g,.bt-v{background:#0d0d0d;border:1px solid rgba(0,212,255,0.4);box-shadow:0 0 15px rgba(0,212,255,0.1);}
 .bq{font-family:'Orbitron',monospace;font-size:1.6rem;font-weight:900;}
 .bq-g,.bq-v{color:#00d4ff;text-shadow:0 0 10px rgba(0,212,255,0.8);}
 .bs{font-family:'Orbitron',monospace;font-size:1.1rem;font-weight:800;color:#fff;}
-.rd-dots{display:flex;justify-content:center;gap:0.6rem;margin:0 0;}
+.rd-dots{display:flex;justify-content:center;gap:0.6rem;margin:0.3rem 0;}
 .rd-dot{width:22px;height:22px;border-radius:50%;border:2px solid #333;display:flex;align-items:center;justify-content:center;font-size:0.7rem;font-weight:900;}
 .rd-cur{border-color:#00d4ff!important;color:#00d4ff!important;box-shadow:0 0 10px #00d4ff!important;}
 .rd-ok{background:#00d4ff;border-color:#00d4ff;color:#000;}
 .rd-no{background:#ff2244;border-color:#ff2244;color:#fff;}
 .rd-wait{background:transparent;border-color:#333;color:#444;}
-.cg,.cv{border-radius:18px;padding:1.5rem 1.2rem;margin-bottom:0.8rem;min-height:190px;display:flex;flex-direction:column;justify-content:center;animation:none;}
+.cg,.cv{border-radius:18px;padding:1.5rem 1.2rem;margin-bottom:0.8rem;min-height:190px;display:flex;flex-direction:column;justify-content:center;animation:fl 3s ease-in-out infinite;}
 @keyframes fl{0%,100%{transform:translateY(0)}50%{transform:translateY(-6px)}}
 .cg{background:#0d0d0d;border:1.5px solid rgba(0,212,255,0.3);}
 .cv{background:#0d0d0d;border:1.5px solid rgba(0,212,255,0.2);}
@@ -722,180 +595,79 @@ summary{color:#aaa!important;font-weight:700!important;}
 </style>
 """, unsafe_allow_html=True)
 
-    # ═══ 뮤지컬 3막 로비 CSS ═══
-    st.markdown("""<style>
-    @keyframes titleGlow{0%,100%{text-shadow:0 0 20px #00d4ff,0 0 40px #00d4ff;}50%{text-shadow:0 0 30px #00ffaa,0 0 60px #00ffaa;}}
-    @keyframes stageIn{from{opacity:0;transform:translateY(30px);}to{opacity:1;transform:translateY(0);}}
-    @keyframes pulse{0%,100%{box-shadow:0 0 20px rgba(0,212,255,0.4);}50%{box-shadow:0 0 40px rgba(0,212,255,0.8),0 0 60px rgba(0,212,255,0.3);}}
-    @keyframes startPulse{0%,100%{box-shadow:0 0 25px rgba(255,136,0,0.6),0 0 50px rgba(255,68,0,0.3);}50%{box-shadow:0 0 40px rgba(255,200,0,0.9),0 0 80px rgba(255,100,0,0.5);}}
-    @keyframes navGlow{0%,100%{opacity:0.7;}50%{opacity:1;}}
-
-    .ms-title{text-align:center;padding:18px 8px 8px 8px;animation:stageIn 0.6s ease;}
-    .ms-title h1{font-size:2.2rem;font-weight:900;color:#00d4ff;letter-spacing:3px;animation:titleGlow 3s ease infinite;margin:0;}
-    .ms-title p{font-size:0.9rem;color:#666;letter-spacing:2px;margin:4px 0 0 0;}
-
-    .stage{animation:stageIn 0.5s ease;border-radius:14px;padding:10px 12px;margin:4px 0;}
-    .stage-act{background:linear-gradient(145deg,#050d15,#0a1520);border:2px solid rgba(0,212,255,0.5);box-shadow:0 0 20px rgba(0,212,255,0.1);}
-    .stage-dim{background:#050505;border:2px solid #111;opacity:0.3;pointer-events:none;}
-
-    .act-label{font-size:0.7rem;font-weight:900;letter-spacing:3px;color:#00d4ff;margin-bottom:4px;text-align:center;}
-    .act-msg{font-size:0.85rem;font-weight:900;color:#fff;text-align:center;margin-bottom:4px;line-height:1.2;}
-    .act-msg span.hi{color:#00d4ff;}
-    .act-msg span.gold{color:#ffd700;}
-    .act-msg span.go{color:#00ff88;}
-
-    .confirmed{text-align:center;padding:8px;margin-bottom:10px;}
-    .confirmed span{font-size:1rem;color:#ffd700;font-weight:900;background:rgba(255,215,0,0.1);padding:6px 16px;border-radius:20px;border:1px solid rgba(255,215,0,0.4);}
-
-    button[kind="secondary"]{
-        background:#060e18!important;border:2px solid rgba(0,212,255,0.35)!important;
-        border-radius:10px!important;font-size:0.85rem!important;font-weight:900!important;
-        padding:10px 4px!important;color:#e0e0e0!important;min-height:52px!important;
-        animation:none!important;transform:none!important;box-shadow:none!important;
-    }
-    button[kind="secondary"] p{font-size:0.85rem!important;font-weight:900!important;white-space:pre-line!important;line-height:1.0!important;text-align:center!important;}
-
-    button[data-testid="stBaseButton-primary"]{
-        background:linear-gradient(135deg,#ff4400,#ff8800,#ffaa00)!important;
-        border:2px solid #ffd700!important;font-size:1.05rem!important;font-weight:900!important;
-        padding:0.6rem!important;color:#fff!important;border-radius:12px!important;
-        animation:startPulse 1.5s ease infinite!important;
-        text-shadow:0 2px 8px rgba(0,0,0,0.5)!important;
-    }
-
-    .nav-bar{display:flex;gap:8px;margin-top:16px;padding:12px 4px 4px 4px;border-top:1px solid #111;}
-    .nav-bar-label{font-size:0.7rem;color:#333;text-align:center;letter-spacing:3px;margin-bottom:6px;}[data-testid="stHorizontalBlock"]{flex-wrap:nowrap!important;}[data-testid="stHorizontalBlock"] [data-testid="stColumn"]{min-width:0!important;flex:1!important;}
-    </style>""", unsafe_allow_html=True)
-
-    # 타이틀
+    # ═══ 리모컨 상단 ═══
+    st.markdown('<div class="rmt"><div class="rmt-t">⚔️ P5 ARENA ⚔️</div><div class="rmt-s">TOEIC Part 5 · 5문제 서바이벌</div><div class="rmt-ir"></div></div>', unsafe_allow_html=True)
     if rn > 1:
-        round_txt = f'<p style="color:#cc6600;font-size:0.9rem;font-weight:800;margin:2px 0;">🏆 Round {rn}</p>'
-    else:
-        round_txt = ''
-    st.markdown(f'<div class="ms-title"><p>TOEIC PART 5 · 5문제 서바이벌</p>{round_txt}</div>', unsafe_allow_html=True)
+        st.markdown(f'<div style="text-align:center;color:#cc6600;font-size:1rem;font-weight:800;margin:4px 0;">🏆 Round {rn}</div>', unsafe_allow_html=True)
 
-    _tsec = st.session_state.get('tsec', 30)
-    _tsec_chosen = st.session_state.get('tsec_chosen', False)
-    lbl_map={"g1":"⚔️ 문법력","g2":"⚔️ 구조력","g3":"⚔️ 연결력","vocab":"📘 어휘력"}
-    mode_map={"g1":("grammar","g1"),"g2":("grammar","g2"),"g3":("grammar","g3"),"vocab":("vocab",None)}
-
-    # ━━━ 1화면 통합 로비 ━━━
-    st.markdown('''<style>
-    button[kind="secondary"]{
-        background:#0a0a14!important;border:1.5px solid #333!important;
-        border-radius:10px!important;font-size:1.0rem!important;font-weight:600!important;
-        padding:6px!important;color:#aaa!important;min-height:61px!important;
-        animation:none!important;transform:none!important;box-shadow:none!important;
-    }
-    button[kind="secondary"] p{font-size:1.0rem!important;font-weight:600!important;color:#aaa!important;white-space:pre-line!important;line-height:1.2!important;}
-    button[data-testid="stBaseButton-primary"]{
-        background:#0c0c00!important;border:2px solid #d4af37!important;
-        border-left:4px solid #d4af37!important;
-        color:#d4af37!important;font-size:1.0rem!important;font-weight:900!important;
-        min-height:43px!important;animation:none!important;border-radius:12px!important;
-    }
-    button[data-testid="stBaseButton-primary"] p{color:#d4af37!important;font-size:1.0rem!important;font-weight:900!important;}
-    </style>''', unsafe_allow_html=True)
-
-    st.markdown('''<div style="display:flex;align-items:flex-end;margin-bottom:0;">
-        <div style="background:#0c0c1e;border:1.5px solid #9aa5b4;border-bottom:none;border-radius:8px 8px 0 0;padding:3px 12px;font-size:0.72rem;font-weight:900;color:#9aa5b4;">⏱ 시간 선택</div>
-    </div>''', unsafe_allow_html=True)
+    # ═══ TIMER ═══
+    st.markdown('<div class="zn zn-t"><div class="zl zl-t">⏱ T I M E R</div></div>', unsafe_allow_html=True)
     tc1,tc2,tc3 = st.columns(3)
     with tc1:
-        if st.button("🔥 30초", key="t30", use_container_width=True):
-            st.session_state.tsec=30; st.session_state.tsec_chosen=True; st.rerun()
+        if st.button("🔥 30초", key="t30", type="secondary", use_container_width=True):
+            st.session_state.tsec=30; st.rerun()
     with tc2:
-        if st.button("⚡ 40초", key="t40", use_container_width=True):
-            st.session_state.tsec=40; st.session_state.tsec_chosen=True; st.rerun()
+        if st.button("⚡ 40초", key="t40", type="secondary", use_container_width=True):
+            st.session_state.tsec=40; st.rerun()
     with tc3:
-        if st.button("✅ 50초", key="t50", use_container_width=True):
-            st.session_state.tsec=50; st.session_state.tsec_chosen=True; st.rerun()
-    st.markdown('<div style="height:6px;"></div>', unsafe_allow_html=True)
+        if st.button("✅ 50초", key="t50", type="secondary", use_container_width=True):
+            st.session_state.tsec=50; st.rerun()
 
-    st.markdown('''<div style="display:flex;align-items:flex-end;margin-bottom:0;">
-        <div style="background:#140800;border:1.5px solid #ff8800;border-bottom:none;border-radius:8px 8px 0 0;padding:3px 12px;font-size:0.72rem;font-weight:900;color:#ff8800;">⚔️ 전장 선택</div>
-    </div>''', unsafe_allow_html=True)
+    # ═══ BATTLE ═══
+    st.markdown('<div class="zn zn-b"><div class="zl zl-b">🎮 P 5  B A T T L E</div></div>', unsafe_allow_html=True)
     b1,b2 = st.columns(2)
     with b1:
-        if st.button("⚔️ 문법력\n수일치·시제·수동", key="sg1", use_container_width=True):
+        if st.button("⚔ 문법력\n수일치·시제·수동", key="sg1", type="secondary", use_container_width=True):
             st.session_state.sel_mode="g1"; st.rerun()
     with b2:
-        if st.button("⚔️ 구조력\n가정법·도치·당위", key="sg2", use_container_width=True):
+        if st.button("⚔ 구조력\n가정법·도치·당위", key="sg2", type="secondary", use_container_width=True):
             st.session_state.sel_mode="g2"; st.rerun()
     b3,b4 = st.columns(2)
     with b3:
-        if st.button("⚔️ 연결력\n접속사·관계사·분사", key="sg3", use_container_width=True):
+        if st.button("⚔ 연결력\n접속사·관계사·분사", key="sg3", type="secondary", use_container_width=True):
             st.session_state.sel_mode="g3"; st.rerun()
     with b4:
-        if st.button("📘 어휘력\n품사·동사·콜로케이션", key="svc", use_container_width=True):
+        if st.button("📘 어휘력\n품사·동사·콜로케이션", key="svc", type="secondary", use_container_width=True):
             st.session_state.sel_mode="vocab"; st.rerun()
-    st.markdown('<div style="height:6px;"></div>', unsafe_allow_html=True)
 
-    st.markdown('''<div style="background:#0a0500;border:1px solid #441100;border-radius:8px;padding:5px 10px;text-align:center;margin-bottom:6px;">
-        <span style="font-size:0.78rem;color:#884422;font-weight:600;">⚔️ 생존 규칙: 5문제 중 3개 이상 · 그 이하면 전멸!</span>
-    </div>''', unsafe_allow_html=True)
-
-    _ready = _tsec_chosen and sm and sm in ["g1","g2","g3","vocab"]
-    if _ready:
-        _cat = lbl_map.get(sm,"")
-        if st.button("▶ 전투 시작!", key="go_start", type="primary", use_container_width=True):
+    # ═══ START ═══
+    if sm and sm in ["g1","g2","g3","vocab"]:
+        mode_map={"g1":("grammar","g1"),"g2":("grammar","g2"),"g3":("grammar","g3"),"vocab":("vocab",None)}
+        lbl_map={"g1":"⚔️ 문법력 전투!","g2":"⚔️ 구조력 전투!","g3":"⚔️ 연결력 전투!","vocab":"📘 어휘력 전투!"}
+        if st.button(lbl_map.get(sm,"START"), key="go_start", type="primary", use_container_width=True):
             md,grp=mode_map[sm]
             st.session_state.mode=md; qs=pick5(md,grp)
             st.session_state.round_qs=qs; st.session_state.cq=qs[0]
             st.session_state.qst=time.time(); st.session_state.phase="battle"; st.rerun()
     else:
-        st.markdown('<div style="background:#0a0a14;border:1px solid #222;border-radius:12px;padding:10px;text-align:center;color:#333;font-size:0.9rem;">시간 + 전장을 선택하면 시작!</div>', unsafe_allow_html=True)
+        st.markdown('<div class="dis-start">▶ START</div>', unsafe_allow_html=True)
+        st.markdown('<div style="text-align:center;color:#999;font-size:0.95rem;font-weight:700;margin:6px 0;">↑ 모드를 선택하세요!</div>', unsafe_allow_html=True)
 
-    # ━━━ 하단 네비게이션 ━━━
-    st.markdown('<div style="height:1px;background:#1a1a2a;margin:8px 0;"></div>', unsafe_allow_html=True)
+    # ═══ NAVIGATE ═══
+    st.markdown('<div class="zn zn-n"><div class="zl zl-n">🧭 N A V I G A T E</div></div>', unsafe_allow_html=True)
     nc1,nc2 = st.columns(2)
     with nc1:
-        if st.button("🔥 오답전장", key="p5nav1", use_container_width=True):
-            st.switch_page("pages/03_오답전장.py")
+        if st.button("📦 저장고", key="nav_stg", type="secondary", use_container_width=True):
+            st.switch_page("pages/03_저장고.py")
     with nc2:
-        if st.button("🏠 메인", key="p5nav2", use_container_width=True):
-            st.session_state._p5_just_left = True
+        if st.button("🏠 메인", key="nav_hub", type="secondary", use_container_width=True):
+            st.session_state._p5_active = False
+            st.session_state.ans = False
+            st.session_state["_battle_entry_ans_reset"] = True
             st.switch_page("main_hub.py")
 
-    import streamlit.components.v1 as _cmp5
-    _tsec_v = st.session_state.get("tsec", 30)
-    _tc_v = st.session_state.get("tsec_chosen", False)
-    _sm_v = st.session_state.get("sel_mode", None) or ""
-    _cmp5.html(f'''<script>
-    (function(){{
-        var selTime = "{_tsec_v if _tc_v else ""}";
-        var selMode = "{_sm_v}";
-        var timeMap = {{"30":"30초","40":"40초","50":"50초"}};
-        var modeMap = {{"g1":"문법력","g2":"구조력","g3":"연결력","vocab":"어휘력"}};
-        function styleBtns(){{
-            var doc=window.parent.document;
-            var btns=doc.querySelectorAll('button[kind="secondary"]');
-            btns.forEach(function(b){{
-                var t=(b.textContent||"").replace(/\\s+/g," ").trim();
-                var isTime=selTime&&t.indexOf(timeMap[selTime])>-1;
-                var isMode=selMode&&modeMap[selMode]&&t.indexOf(modeMap[selMode])>-1;
-                if(isTime||isMode){{
-                    b.style.setProperty("background","#1a1400","important");
-                    b.style.setProperty("border","2px solid #d4af37","important");
-                    b.querySelectorAll("p").forEach(function(p){{p.style.setProperty("color","#d4af37","important");}});
-                }}
-            }});
-            var rows=doc.querySelectorAll('[data-testid="stHorizontalBlock"]');
-            if(!rows.length) return;
-            var last=rows[rows.length-1];
-            last.querySelectorAll('button').forEach(function(b){{
-                b.style.setProperty("animation","none","important");
-                b.style.setProperty("border","1.5px solid rgba(255,255,255,0.5)","important");
-                b.style.setProperty("background","#0f0f1e","important");
-                b.style.setProperty("color","#bbb","important");
-            }});
-        }}
-        setTimeout(styleBtns,100);setTimeout(styleBtns,400);setTimeout(styleBtns,900);
-        setInterval(styleBtns,800);
-    }})();
-    </script>''', height=0)
+    # 하단 장식
+    st.markdown('<div class="rmt-end"><div class="rmt-sp"><div class="rmt-sl"></div><div class="rmt-sl"></div><div class="rmt-sl"></div><div class="rmt-sl"></div><div class="rmt-sl"></div></div></div>', unsafe_allow_html=True)
 
-
+    # ═══ JavaScript 버튼 색상 (밝고 화사한 버전) ═══
+    import streamlit.components.v1 as components
+    _sel30 = "border:4px solid #fff;box-shadow:0 0 20px rgba(255,255,255,0.6),0 6px 20px rgba(0,150,180,0.5);" if tsec==30 else ""
+    _sel40 = "border:4px solid #fff;box-shadow:0 0 20px rgba(255,255,255,0.6),0 6px 20px rgba(0,120,200,0.5);" if tsec==40 else ""
+    _sel50 = "border:4px solid #fff;box-shadow:0 0 20px rgba(255,255,255,0.6),0 6px 20px rgba(0,100,180,0.5);" if tsec==50 else ""
+    _selg1 = "border:4px solid #fff;box-shadow:0 0 20px rgba(255,255,255,0.6),0 6px 20px rgba(255,17,102,0.5);" if sm=="g1" else ""
+    _selg2 = "border:4px solid #fff;box-shadow:0 0 20px rgba(255,255,255,0.6),0 6px 20px rgba(255,136,17,0.5);" if sm=="g2" else ""
+    _selg3 = "border:4px solid #fff;box-shadow:0 0 20px rgba(255,255,255,0.6),0 6px 20px rgba(0,204,119,0.5);" if sm=="g3" else ""
+    _selvc = "border:4px solid #fff;box-shadow:0 0 20px rgba(255,255,255,0.6),0 6px 20px rgba(85,68,204,0.5);" if sm=="vocab" else ""
 
 
 
