@@ -386,13 +386,33 @@ if st.session_state.sg_phase == "lobby":
 
     # ━━━ 2막 P5: 전투 방식 선택 ━━━
     elif _rv_battle == "p5" and not _rv_mode:
-        st.markdown('''<div class="rv-confirmed"><span>⚔️ P5 전장 귀환!</span></div>''', unsafe_allow_html=True)
-    
-        if st.button(f"😤  P5 학습모드\n틀린 문제, 이번엔 완전히 박살! ({len(p5_data)}문제)", key="rv_p5s", type="secondary", use_container_width=True):
+        st.markdown('''<div style="text-align:center;margin-bottom:8px;">
+            <span style="background:#2a1000;border:1.5px solid #ff6600;border-radius:12px;padding:5px 18px;font-size:0.9rem;font-weight:900;color:#ffaa44;">⚔️ P5 오답전장</span>
+        </div>''', unsafe_allow_html=True)
+
+        # 학습모드 카드
+        st.markdown('<div style="font-size:0.8rem;font-weight:900;color:#44ffaa;margin-bottom:4px;">📖 학습모드</div>', unsafe_allow_html=True)
+        st.markdown(f'''<div style="background:#081a14;border:2px solid #22cc88;border-radius:14px;padding:16px;margin-bottom:4px;text-align:center;">
+            <div style="font-size:1.3rem;font-weight:900;color:#ffffff;margin-bottom:6px;">🗡️ 오답 격파</div>
+            <div style="font-size:0.9rem;color:#44ffaa;margin-bottom:4px;">틀린 문제만 골라 완전히 내 것으로!</div>
+            <div style="font-size:0.75rem;color:#888;">{len(p5_data)}문제 · 해설 · 정답 확인</div>
+        </div>''', unsafe_allow_html=True)
+        if st.button("🗡️ 오답 격파 시작!", key="rv_p5s", type="primary", use_container_width=True):
             if p5_data:
                 st.session_state.rv_mode="p5s"; st.session_state.sg_phase="p5_study"; st.session_state.sg_idx=0; st.rerun()
             else: st.warning("P5 저장 문제 없음!")
-        if st.button(f"🔥  P5 시험모드\n이번엔 절대 안 틀린다, 증명하라! 🏆{p5_rate}", key="rv_p5e", type="secondary", use_container_width=True):
+
+        # 시험모드 카드
+        st.markdown('<div style="font-size:0.8rem;font-weight:900;color:#ffaa44;margin-top:8px;margin-bottom:4px;">⚡ 시험모드</div>', unsafe_allow_html=True)
+        st.markdown(f'''<div style="background:#1a0800;border:2px solid #ff8800;border-radius:14px;overflow:hidden;margin-bottom:4px;">
+            <div style="background:#2a1000;padding:6px;text-align:center;font-size:0.85rem;font-weight:900;color:#ff6600;letter-spacing:2px;">💣 33초 시한폭탄</div>
+            <div style="padding:14px;text-align:center;">
+                <div style="font-size:1.3rem;font-weight:900;color:#ffffff;margin-bottom:6px;">5문제 생존전투!</div>
+                <div style="font-size:0.9rem;color:#ffcc44;margin-bottom:4px;">못 맞추면 💥 폭파 — 살아남아라!</div>
+                <div style="font-size:0.75rem;color:#888;">3개 이상 정답 → 생존 · 최고 {p5_rate}</div>
+            </div>
+        </div>''', unsafe_allow_html=True)
+        if st.button("💣 시한폭탄 도전!", key="rv_p5e", type="primary", use_container_width=True):
             if len(p5_data) >= 5:
                 import random as _r
                 qs = _r.sample(p5_data, 5)
@@ -401,7 +421,9 @@ if st.session_state.sg_phase == "lobby":
                 st.session_state.sg_exam_wrong=False; st.session_state.rv_mode="p5e"
                 st.session_state.sg_phase="p5_exam"; st.rerun()
             else: st.warning("최소 5문제 필요!")
-        if st.button("↩ 전장 다시 선택", key="rv_back1", use_container_width=True):
+
+        st.markdown('<div style="margin-top:6px;"></div>', unsafe_allow_html=True)
+        if st.button("↩ 돌아가기", key="rv_back1", use_container_width=True):
             st.session_state.rv_battle=None; st.rerun()
 
     # ━━━ 2막 P7: 전투 방식 선택 ━━━
@@ -433,18 +455,18 @@ if st.session_state.sg_phase == "lobby":
         st.markdown('<div style="height:1px;background:#2a2a2a;margin:14px 0 10px 0;"></div>', unsafe_allow_html=True)
         st.markdown('''<style>
         div[data-testid="stHorizontalBlock"]:last-of-type button{
-            font-size:0.75rem!important;
-            font-weight:400!important;
-            border:1px solid #333!important;
-            background:#0a0a0a!important;
-            color:#666!important;
-            min-height:32px!important;
+            font-size:0.8rem!important;
+            font-weight:600!important;
+            border:1.5px solid #666!important;
+            background:#111!important;
+            color:#aaa!important;
+            min-height:36px!important;
             padding:4px!important;
         }
         div[data-testid="stHorizontalBlock"]:last-of-type button p{
-            font-size:0.75rem!important;
-            font-weight:400!important;
-            color:#666!important;
+            font-size:0.8rem!important;
+            font-weight:600!important;
+            color:#aaa!important;
         }
         </style>''', unsafe_allow_html=True)
         mn1, mn2, mn3 = st.columns(3)
