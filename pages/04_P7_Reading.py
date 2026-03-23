@@ -612,110 +612,93 @@ if st.session_state.get("_p7_just_left", False):
 if st.session_state.p7_phase == "lobby":
     tsec = st.session_state.p7_tsec
     cat = st.session_state.p7_cat
-    _p7_tsec = st.session_state.get('p7_tsec', 80)
-    _p7_tc = st.session_state.get('p7_tsec_chosen', False)
+    _p7_tsec = st.session_state.get("p7_tsec", 80)
+    _p7_tc = st.session_state.get("p7_tsec_chosen", False)
 
-    # 뮤지컬 3막 CSS
-    st.markdown("""<style>
-    @keyframes p7titleGlow{0%,100%{text-shadow:0 0 20px #9b59b6,0 0 40px #9b59b6;}50%{text-shadow:0 0 30px #c49fff,0 0 60px #c49fff;}}
-    @keyframes p7stageIn{from{opacity:0;transform:translateY(30px);}to{opacity:1;transform:translateY(0);}}
-    @keyframes p7startPulse{0%,100%{box-shadow:0 0 25px rgba(155,89,182,0.6),0 0 50px rgba(155,89,182,0.3);}50%{box-shadow:0 0 40px rgba(196,159,255,0.9),0 0 80px rgba(155,89,182,0.5);}}
-
-    .p7ms-title{text-align:center;padding:8px 8px 4px 8px;animation:p7stageIn 0.6s ease;}
-    .p7ms-title h1{font-size:1.6rem;font-weight:900;color:#c49fff;letter-spacing:2px;animation:p7titleGlow 3s ease infinite;margin:0;white-space:nowrap;}
-    .p7ms-title p{font-size:0.75rem;color:#666;letter-spacing:2px;margin:2px 0 0 0;}
-
-    .p7stage{animation:p7stageIn 0.5s ease;border-radius:12px;padding:6px 10px;margin:3px 0;}
-    .p7stage-act{background:linear-gradient(145deg,#0d0d1a,#13112a);border:2px solid rgba(155,89,182,0.5);box-shadow:0 0 20px rgba(155,89,182,0.1);}
-
-    .p7act-label{font-size:0.7rem;font-weight:900;letter-spacing:3px;color:#9b59b6;margin-bottom:4px;text-align:center;}
-    .p7act-msg{font-size:1rem;font-weight:900;color:#fff;text-align:center;margin-bottom:4px;line-height:1.3;}
-    .p7act-msg span.hi{color:#c49fff;}
-    .p7act-msg span.gold{color:#ffd700;}
-    .p7act-msg span.go{color:#a855f7;}
-
-    .p7confirmed{text-align:center;padding:2px;margin-bottom:3px;}
-    .p7confirmed span{font-size:1rem;color:#ffd700;font-weight:900;background:rgba(255,215,0,0.1);padding:4px 12px;border-radius:20px;border:1px solid rgba(255,215,0,0.4);}
-
-    @keyframes p7float{0%,100%{transform:translateY(0);box-shadow:0 0 15px rgba(155,89,182,0.25);}50%{transform:translateY(-5px);box-shadow:0 0 30px rgba(210,170,255,0.8),0 0 60px rgba(155,89,182,0.4);border-color:rgba(230,200,255,1)!important;}}
+    st.markdown('''<style>
+    #MainMenu{visibility:hidden!important;}header[data-testid="stHeader"]{height:0!important;visibility:hidden!important;}
+    div[data-testid="stToolbar"]{visibility:hidden!important;}.block-container{padding-top:0.2rem!important;}
+    @keyframes p7float{0%,100%{transform:translateY(0);box-shadow:0 0 12px rgba(212,175,55,0.3);}50%{transform:translateY(-4px);box-shadow:0 0 25px rgba(212,175,55,0.7);}}
     button[kind="secondary"]{
-        background:#0d0d1a!important;border:2px solid rgba(155,89,182,0.6)!important;
-        border-radius:12px!important;font-size:1rem!important;font-weight:900!important;
-        padding:5px 6px!important;color:#e0e0e0!important;min-height:40px!important;
-        animation:p7float 2.8s ease-in-out infinite!important;
+        background:#0a0a14!important;border:1.5px solid #d4af37!important;
+        border-radius:10px!important;font-size:0.95rem!important;font-weight:700!important;
+        padding:6px!important;color:#e8e0cc!important;min-height:38px!important;
+        animation:p7float 2.5s ease-in-out infinite!important;
     }
-    button[kind="secondary"] p{font-size:1rem!important;font-weight:900!important;white-space:pre-line!important;line-height:1.25!important;text-align:center!important;}
-
+    button[kind="secondary"] p{font-size:0.95rem!important;font-weight:700!important;color:#e8e0cc!important;}
     button[data-testid="stBaseButton-primary"]{
-        background:linear-gradient(135deg,#2d1b4e,#6c3483,#9b59b6)!important;
-        border:3px solid #c49fff!important;font-size:1.2rem!important;font-weight:900!important;
-        padding:0.8rem!important;color:#fff!important;border-radius:14px!important;
-        animation:p7startPulse 1.5s ease infinite!important;
+        background:#0c0c1e!important;border:2px solid #d4af37!important;
+        border-left:4px solid #d4af37!important;
+        color:#d4af37!important;font-size:1.1rem!important;font-weight:900!important;
+        min-height:48px!important;animation:none!important;border-radius:12px!important;
     }
-    #MainMenu{visibility:hidden!important;}olbar"]{visibility:hidden!important;}.block-container{padding-top:0!important;}
-    </style>""", unsafe_allow_html=True)
+    button[data-testid="stBaseButton-primary"] p{color:#d4af37!important;font-size:1.1rem!important;font-weight:900!important;}
+    </style>''', unsafe_allow_html=True)
 
-    # 타이틀 (1막에서만 표시)
-    if not _p7_tc:
-        st.markdown('''<div class="p7ms-title"><h1>📖 P7 READING 📖</h1><p>TOEIC PART 7 · 독해 전투</p></div>''', unsafe_allow_html=True)
+    # 타이틀
+    st.markdown('''<div style="text-align:center;padding:6px 0 4px 0;">
+        <div style="font-size:1.2rem;font-weight:900;color:#d4af37;letter-spacing:3px;">📖 P7 독해 전투</div>
+        <div style="font-size:0.7rem;color:#555;letter-spacing:2px;margin-top:2px;">TOEIC PART 7 · 지금 바로 싸운다!</div>
+    </div>''', unsafe_allow_html=True)
 
-    # ━━━ 참여자: 메인허브 nickname 자동 연결 (화면 표시 없음) ━━━
-    if not st.session_state.get("p7_player_set", False):
-        st.session_state.p7_player_id = st.session_state.get("nickname", "unknown")
-        st.session_state.p7_player_type = "student"
-        st.session_state.p7_player_set = True
+    # HUD 미리보기 — 배틀과 동일
+    _hud_t = f"{_p7_tsec}초" if _p7_tc else "? 초"
+    st.markdown(f'''<div style="display:flex;align-items:center;gap:6px;margin-bottom:6px;">
+        <div style="background:#0d0d1a;border-radius:6px;padding:3px 8px;font-size:0.75rem;font-weight:700;color:#9aa5b4;white-space:nowrap;">📖 전투</div>
+        <div style="flex:1;background:#0d0d1a;border-radius:11px;border:1.5px solid #9aa5b4;padding:3px 10px;text-align:center;font-size:0.85rem;font-weight:900;color:#9aa5b4;">{_hud_t}</div>
+        <div style="background:#0d0d1a;border-radius:6px;padding:3px 8px;font-size:0.75rem;color:#9aa5b4;white-space:nowrap;">✅0 ❌0</div>
+    </div>''', unsafe_allow_html=True)
 
-    # ━━━ 1막: 타이머 선택 ━━━
-    if not _p7_tc:
-        st.markdown('''<div class="p7stage p7stage-act">
-            <div class="p7act-label">🎬 1 막 · 전투 시간을 선택하라!</div>
-            <div class="p7act-msg">독해 전사여, <span class="hi">몇 초</span>의 시간을 원하느냐?</div>
-        </div>''', unsafe_allow_html=True)
-        tc1,tc2,tc3 = st.columns(3)
-        with tc1:
-            if st.button("🔥\n60초", key="p7t60", type="secondary", use_container_width=True):
-                st.session_state.p7_tsec=60; st.session_state.p7_tsec_chosen=True; st.rerun()
-        with tc2:
-            if st.button("⚡\n80초", key="p7t80", type="secondary", use_container_width=True):
-                st.session_state.p7_tsec=80; st.session_state.p7_tsec_chosen=True; st.rerun()
-        with tc3:
-            if st.button("✅\n100초", key="p7t100", type="secondary", use_container_width=True):
-                st.session_state.p7_tsec=100; st.session_state.p7_tsec_chosen=True; st.rerun()
+    # 시간 선택
+    st.markdown('''<div style="display:flex;align-items:flex-end;margin-bottom:0;">
+        <div style="background:#0c0c1e;border:1.5px solid #d4af37;border-bottom:none;border-radius:8px 8px 0 0;padding:3px 12px;font-size:0.75rem;font-weight:900;color:#d4af37;">⏱ 시간 선택</div>
+    </div>''', unsafe_allow_html=True)
+    st.markdown('<div style="background:#0c0c1e;border:1px solid #d4af37;border-top:none;border-radius:0 10px 10px 10px;padding:6px 8px;margin-bottom:6px;">', unsafe_allow_html=True)
+    tc1, tc2, tc3 = st.columns(3)
+    with tc1:
+        if st.button("🔥 60초", key="p7t60", use_container_width=True):
+            st.session_state.p7_tsec=60; st.session_state.p7_tsec_chosen=True; st.rerun()
+    with tc2:
+        if st.button("⚡ 80초", key="p7t80", use_container_width=True):
+            st.session_state.p7_tsec=80; st.session_state.p7_tsec_chosen=True; st.rerun()
+    with tc3:
+        if st.button("✅ 100초", key="p7t100", use_container_width=True):
+            st.session_state.p7_tsec=100; st.session_state.p7_tsec_chosen=True; st.rerun()
+    st.markdown('</div>', unsafe_allow_html=True)
 
-    # ━━━ 2막: 카테고리 선택 ━━━
-    elif _p7_tc and not (cat and cat in PASSAGES):
-        st.markdown(f'''<div class="p7confirmed"><span>⏱ {_p7_tsec}초 확정!</span></div>''', unsafe_allow_html=True)
-        st.markdown('''<div class="p7stage p7stage-act">
-            <div class="p7act-label">🎬 2 막 · 지문 유형을 선택하라!</div>
-            <div class="p7act-msg">이제 <span class="gold">어떤 지문</span>과 싸울 것이냐?</div>
-        </div>''', unsafe_allow_html=True)
-        b1,b2 = st.columns(2)
-        with b1:
-            if st.button("📰\nArticle\n기사·보도", key="p7c1", type="secondary", use_container_width=True):
-                st.session_state.p7_cat="article"; st.rerun()
-        with b2:
-            if st.button("✉️\nLetter\n편지·서신", key="p7c2", type="secondary", use_container_width=True):
-                st.session_state.p7_cat="letter"; st.rerun()
-        b3,b4 = st.columns(2)
-        with b3:
-            if st.button("📋\nNotice\n공지·안내", key="p7c3", type="secondary", use_container_width=True):
-                st.session_state.p7_cat="notice"; st.rerun()
-        with b4:
-            if st.button("ℹ️\nInformation\n정보·안내문", key="p7c4", type="secondary", use_container_width=True):
-                st.session_state.p7_cat="information"; st.rerun()
+    # 지문 선택
+    st.markdown('''<div style="display:flex;align-items:flex-end;margin-bottom:0;">
+        <div style="background:#0c0c1e;border:1.5px solid #d4af37;border-bottom:none;border-radius:8px 8px 0 0;padding:3px 12px;font-size:0.75rem;font-weight:900;color:#d4af37;">📄 지문 선택</div>
+    </div>''', unsafe_allow_html=True)
+    st.markdown('<div style="background:#0c0c1e;border:1px solid #d4af37;border-top:none;border-radius:0 10px 10px 10px;padding:6px 8px;margin-bottom:6px;">', unsafe_allow_html=True)
+    b1, b2 = st.columns(2)
+    with b1:
+        if st.button("📰 Article\n기사·보도", key="p7c1", use_container_width=True):
+            st.session_state.p7_cat="article"; st.rerun()
+    with b2:
+        if st.button("✉️ Letter\n편지·서신", key="p7c2", use_container_width=True):
+            st.session_state.p7_cat="letter"; st.rerun()
+    b3, b4 = st.columns(2)
+    with b3:
+        if st.button("📋 Notice\n공지·안내", key="p7c3", use_container_width=True):
+            st.session_state.p7_cat="notice"; st.rerun()
+    with b4:
+        if st.button("ℹ️ Info\n정보·안내문", key="p7c4", use_container_width=True):
+            st.session_state.p7_cat="information"; st.rerun()
+    st.markdown('</div>', unsafe_allow_html=True)
 
-    # ━━━ 3막: START 주인공 ━━━
-    elif cat and cat in PASSAGES:
+    # 선택 확인 배지
+    _cat_names = {"article":"📰 Article","letter":"✉️ Letter","notice":"📋 Notice","information":"ℹ️ Info"}
+    _cat_disp = _cat_names.get(cat, "미선택")
+    _time_disp = f"⏱ {_p7_tsec}초" if _p7_tc else "⏱ 미선택"
+    _badge_color = "#d4af37" if (_p7_tc and cat and cat in PASSAGES) else "#444"
+    st.markdown(f'<div style="background:#0d0d1a;border:1px solid {_badge_color};border-radius:8px;padding:5px 10px;text-align:center;margin-bottom:6px;font-size:0.82rem;font-weight:700;color:{_badge_color};">{_time_disp} · {_cat_disp}</div>', unsafe_allow_html=True)
+
+    # 전투 시작 버튼
+    _ready = _p7_tc and cat and cat in PASSAGES
+    if _ready:
         _cat_name = PASSAGES[cat]["title"]
-        _t = f"{_p7_tsec}초"
-        st.markdown(f'''<div class="p7confirmed"><span>⏱ {_t} · {_cat_name} 확정!</span></div>''', unsafe_allow_html=True)
-        st.markdown(f'''<div class="p7stage p7stage-act" style="text-align:center;padding:12px;">
-            <div class="p7act-label">🎬 3 막 · 독해 전투 개시!</div>
-            <div class="p7act-msg" style="font-size:1rem;margin-bottom:4px;">
-                전사여... <span class="go">준비됐다면</span><br>지금 바로 <span class="gold">시작하라!!!</span>
-            </div>
-        </div>''', unsafe_allow_html=True)
-        if st.button(f"▶  {_cat_name} 전투 시작!", key="p7go", type="primary", use_container_width=True):
+        if st.button(f"▶ 전투 시작!", key="p7go", type="primary", use_container_width=True):
             st.session_state.p7_data = PASSAGES[cat]
             st.session_state.p7_step = 0
             st.session_state.p7_answers = []
@@ -725,21 +708,21 @@ if st.session_state.p7_phase == "lobby":
             st.session_state.p7_analytics = {"step_times":[],"step_correct":[],"step_type_correct":[],"step_started_at":time.time()}
             st.session_state.p7_phase = "battle"
             st.rerun()
-        if st.button("↩ 다시 선택", key="p7reset", use_container_width=True):
-            st.session_state.p7_tsec=80; st.session_state.p7_tsec_chosen=False; st.session_state.p7_cat=None; st.rerun()
+    else:
+        st.markdown('<div style="background:#0a0a14;border:1px solid #222;border-radius:12px;padding:12px;text-align:center;color:#333;font-size:0.9rem;">시간 + 지문을 선택하면 시작!</div>', unsafe_allow_html=True)
 
-    # ━━━ 항상 고정 네비게이션 ━━━
-    st.markdown('<div style="font-size:0.7rem;color:#aaaaaa;text-align:center;letter-spacing:3px;margin-top:8px;padding-top:8px;border-top:1px solid #444;">N A V I G A T E</div>', unsafe_allow_html=True)
-    nc1,nc2 = st.columns(2)
+    # 하단 네비
+    st.markdown('<div style="height:1px;background:#1a1a2a;margin:8px 0;"></div>', unsafe_allow_html=True)
+    nc1, nc2 = st.columns(2)
     with nc1:
-        if st.button("🔥 오답전장", key="p7nav1", type="secondary", use_container_width=True):
+        if st.button("🔥 오답전장", key="p7nav1", use_container_width=True):
             st.switch_page("pages/03_오답전장.py")
     with nc2:
-        if st.button("🏠 메인", key="p7nav2", type="secondary", use_container_width=True):
+        if st.button("🏠 메인", key="p7nav2", use_container_width=True):
             st.session_state._p7_just_left = True
             st.switch_page("main_hub.py")
     import streamlit.components.v1 as _cmp
-    _cmp.html("""<script>
+    _cmp.html('''<script>
     (function(){
         function styleNavBtns(){
             var doc=window.parent.document;
@@ -747,20 +730,26 @@ if st.session_state.p7_phase == "lobby":
             if(!rows.length) return;
             var lastRow=rows[rows.length-1];
             var btns=lastRow.querySelectorAll('button');
-            btns.forEach(function(b){
-                b.style.setProperty('animation','none','important');
-                b.style.setProperty('transform','none','important');
-                b.style.setProperty('border','1.5px solid rgba(255,255,255,0.4)','important');
-                b.style.setProperty('background','#030303','important');
-                b.style.setProperty('box-shadow','none','important');
-                b.style.setProperty('color','#ccc','important');
-            });
+            if(btns[0]){
+                btns[0].style.setProperty('animation','none','important');
+                btns[0].style.setProperty('border','1px solid #1a1a2a','important');
+                btns[0].style.setProperty('border-left','4px solid #cc2244','important');
+                btns[0].style.setProperty('background','#0f0f1e','important');
+                btns[0].style.setProperty('color','#888','important');
+            }
+            if(btns[1]){
+                btns[1].style.setProperty('animation','none','important');
+                btns[1].style.setProperty('border','1px solid #1a1a2a','important');
+                btns[1].style.setProperty('border-left','4px solid #4488cc','important');
+                btns[1].style.setProperty('background','#0f0f1e','important');
+                btns[1].style.setProperty('color','#888','important');
+            }
         }
         setTimeout(styleNavBtns,150);setTimeout(styleNavBtns,500);setTimeout(styleNavBtns,1200);
-        var ob=new MutationObserver(function(){setTimeout(styleNavBtns,100);});
-        ob.observe(window.parent.document.body,{childList:true,subtree:true,attributes:true,attributeFilter:['style']});
+        new MutationObserver(function(){setTimeout(styleNavBtns,100);}).observe(
+            window.parent.document.body,{childList:true,subtree:true});
     })();
-    </script>""", height=0)
+    </script>''', height=0)
 
 
 # ═══════════════════════════════════════
