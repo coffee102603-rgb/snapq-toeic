@@ -35,7 +35,7 @@ def save_to_storage(items):
 st.markdown("""
 <style>
 @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@700;900&family=Rajdhani:wght@600;700&display=swap');
-.stApp{background:linear-gradient(rgba(0,212,255,0.03) 1px,transparent 1px),linear-gradient(90deg,rgba(0,212,255,0.03) 1px,transparent 1px),#0a0a0a!important;background-size:40px 40px,40px 40px,100% 100%!important;color:#f0f0f0!important;}
+.stApp{background:#06060e!important;color:#eeeeff!important;}
 section[data-testid="stSidebar"]{display:none!important;}
 header[data-testid="stHeader"]{background:transparent!important;height:0!important;min-height:0!important;overflow:hidden!important;}
 .block-container{padding-top:0!important;padding-bottom:0.2rem!important;}
@@ -44,8 +44,8 @@ header[data-testid="stHeader"]{background:transparent!important;height:0!importa
 @keyframes titleShine{0%{background-position:200% center}100%{background-position:-200% center}}
 @keyframes p5bounce{0%,100%{transform:translateY(0);}30%{transform:translateY(-6px);}60%{transform:translateY(-3px);}80%{transform:translateY(-5px);}}
 @keyframes p5flash{0%,75%,100%{box-shadow:0 0 12px rgba(0,212,255,0.15);}88%{box-shadow:0 0 45px rgba(0,255,255,1),0 0 90px rgba(0,212,255,0.7);}}
-button[kind="primary"],button[kind="secondary"]{background:#0d0d0d!important;color:#fff!important;border:1.5px solid rgba(0,212,255,0.5)!important;border-radius:8px!important;font-family:'Rajdhani',sans-serif!important;font-size:2.1rem!important;font-weight:700!important;padding:1.2rem 1.4rem!important;text-align:center!important;transition:none!important;animation:none!important;transform:none!important;box-shadow:none!important;}
-button[kind="primary"] p,button[kind="primary"] span,button[kind="secondary"] p,button[kind="secondary"] span{font-family:'Rajdhani',sans-serif!important;font-size:2.1rem!important;font-weight:700!important;text-align:center!important;}
+button[kind="primary"],button[kind="secondary"]{background:#0d0d0d!important;color:#fff!important;border:1.5px solid rgba(0,212,255,0.5)!important;border-radius:8px!important;font-size:1.0rem!important;font-weight:500!important;padding:0.5rem 0.8rem!important;text-align:left!important;transition:none!important;animation:none!important;transform:none!important;box-shadow:none!important;min-height:38px!important;}
+button[kind="primary"] p,button[kind="secondary"] p{font-size:1.0rem!important;font-weight:500!important;color:#ddd8c8!important;text-align:left!important;}
 button[kind="primary"]:hover,button[kind="secondary"]:hover{background:rgba(0,212,255,0.08)!important;border-color:#00d4ff!important;box-shadow:0 0 25px rgba(0,212,255,0.4)!important;transform:translateY(-2px)!important;}
 .qb{border-radius:12px;padding:0.6rem 0.8rem;margin:0.1rem 0 0.2rem 0;background:#0d0d0d;}
 .qb-g,.qb-v{background:#0d0d0d!important;border:none!important;animation:borderGlow 3s linear infinite;}
@@ -276,6 +276,40 @@ if st.session_state.phase=="battle":
     # 문제
     st.markdown(f'<div class="qb qb-{th}"><div class="qc qc-{th}">{ej} {tn} · {q.get("cat","")}</div><div class="qt">{fq(q["text"])}</div></div>', unsafe_allow_html=True)
 
+    # 선택지 보석 포인트바 JS
+    import streamlit.components.v1 as _p5cmp
+    _p5cmp.html('''<script>
+    (function(){
+        var colors=["#d4af37","#9aa5b4","#50c878","#4488cc"];
+        function styleChoices(){
+            var doc=window.parent.document;
+            var btns=doc.querySelectorAll('button[kind="primary"],button[kind="secondary"]');
+            var ci=0;
+            btns.forEach(function(b){
+                var t=(b.textContent||"").trim();
+                if(t.match(/^\(A\)|^\(B\)|^\(C\)|^\(D\)/)){
+                    var c=colors[ci%4];
+                    b.style.setProperty("background","#0c0c14","important");
+                    b.style.setProperty("border","1px solid #1a1a28","important");
+                    b.style.setProperty("border-left","4px solid "+c,"important");
+                    b.style.setProperty("color","#ddd8c8","important");
+                    b.style.setProperty("animation","none","important");
+                    b.style.setProperty("min-height","38px","important");
+                    b.style.setProperty("text-align","left","important");
+                    b.querySelectorAll("p").forEach(function(p){
+                        p.style.setProperty("color","#ddd8c8","important");
+                        p.style.setProperty("font-size","1.0rem","important");
+                        p.style.setProperty("text-align","left","important");
+                    });
+                    ci++;
+                }
+            });
+        }
+        setTimeout(styleChoices,100);setTimeout(styleChoices,400);setTimeout(styleChoices,900);
+        setInterval(styleChoices,600);
+    })();
+    </script>''', height=0)
+
     # 선택지
     if not st.session_state.ans:
         cc=st.columns(2)
@@ -424,7 +458,7 @@ elif st.session_state.phase=="briefing":
     st.markdown("""
 <style>
 @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@700;900&family=Rajdhani:wght@600;700&display=swap');
-.stApp{background:linear-gradient(rgba(0,212,255,0.03) 1px,transparent 1px),linear-gradient(90deg,rgba(0,212,255,0.03) 1px,transparent 1px),#0a0a0a!important;background-size:40px 40px,40px 40px,100% 100%!important;color:#f0f0f0!important;}
+.stApp{background:#06060e!important;color:#eeeeff!important;}
 section[data-testid="stSidebar"]{display:none!important;}
 header[data-testid="stHeader"]{background:transparent!important;height:0!important;min-height:0!important;overflow:hidden!important;}
 .block-container{padding-top:0!important;padding-bottom:0.2rem!important;}
@@ -433,8 +467,8 @@ header[data-testid="stHeader"]{background:transparent!important;height:0!importa
 @keyframes titleShine{0%{background-position:200% center}100%{background-position:-200% center}}
 @keyframes p5bounce{0%,100%{transform:translateY(0);}30%{transform:translateY(-6px);}60%{transform:translateY(-3px);}80%{transform:translateY(-5px);}}
 @keyframes p5flash{0%,75%,100%{box-shadow:0 0 12px rgba(0,212,255,0.15);}88%{box-shadow:0 0 45px rgba(0,255,255,1),0 0 90px rgba(0,212,255,0.7);}}
-button[kind="primary"],button[kind="secondary"]{background:#0d0d0d!important;color:#fff!important;border:1.5px solid rgba(0,212,255,0.5)!important;border-radius:8px!important;font-family:'Rajdhani',sans-serif!important;font-size:2.1rem!important;font-weight:700!important;padding:1.2rem 1.4rem!important;text-align:center!important;transition:none!important;animation:none!important;transform:none!important;box-shadow:none!important;}
-button[kind="primary"] p,button[kind="primary"] span,button[kind="secondary"] p,button[kind="secondary"] span{font-family:'Rajdhani',sans-serif!important;font-size:2.1rem!important;font-weight:700!important;text-align:center!important;}
+button[kind="primary"],button[kind="secondary"]{background:#0d0d0d!important;color:#fff!important;border:1.5px solid rgba(0,212,255,0.5)!important;border-radius:8px!important;font-size:1.0rem!important;font-weight:500!important;padding:0.5rem 0.8rem!important;text-align:left!important;transition:none!important;animation:none!important;transform:none!important;box-shadow:none!important;min-height:38px!important;}
+button[kind="primary"] p,button[kind="secondary"] p{font-size:1.0rem!important;font-weight:500!important;color:#ddd8c8!important;text-align:left!important;}
 button[kind="primary"]:hover,button[kind="secondary"]:hover{background:rgba(0,212,255,0.08)!important;border-color:#00d4ff!important;box-shadow:0 0 25px rgba(0,212,255,0.4)!important;transform:translateY(-2px)!important;}
 .qb{border-radius:12px;padding:0.6rem 0.8rem;margin:0.1rem 0 0.2rem 0;background:#0d0d0d;}
 .qb-g,.qb-v{background:#0d0d0d!important;border:none!important;animation:borderGlow 3s linear infinite;}
@@ -624,7 +658,7 @@ else:
     st.markdown("""
 <style>
 @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@700;900&family=Rajdhani:wght@600;700&display=swap');
-.stApp{background:linear-gradient(rgba(0,212,255,0.03) 1px,transparent 1px),linear-gradient(90deg,rgba(0,212,255,0.03) 1px,transparent 1px),#0a0a0a!important;background-size:40px 40px,40px 40px,100% 100%!important;color:#f0f0f0!important;}
+.stApp{background:#06060e!important;color:#eeeeff!important;}
 section[data-testid="stSidebar"]{display:none!important;}
 header[data-testid="stHeader"]{background:transparent!important;height:0!important;min-height:0!important;overflow:hidden!important;}
 .block-container{padding-top:0!important;padding-bottom:0.2rem!important;}
@@ -633,8 +667,8 @@ header[data-testid="stHeader"]{background:transparent!important;height:0!importa
 @keyframes titleShine{0%{background-position:200% center}100%{background-position:-200% center}}
 @keyframes p5bounce{0%,100%{transform:translateY(0);}30%{transform:translateY(-6px);}60%{transform:translateY(-3px);}80%{transform:translateY(-5px);}}
 @keyframes p5flash{0%,75%,100%{box-shadow:0 0 12px rgba(0,212,255,0.15);}88%{box-shadow:0 0 45px rgba(0,255,255,1),0 0 90px rgba(0,212,255,0.7);}}
-button[kind="primary"],button[kind="secondary"]{background:#0d0d0d!important;color:#fff!important;border:1.5px solid rgba(0,212,255,0.5)!important;border-radius:8px!important;font-family:'Rajdhani',sans-serif!important;font-size:2.1rem!important;font-weight:700!important;padding:1.2rem 1.4rem!important;text-align:center!important;transition:none!important;animation:none!important;transform:none!important;box-shadow:none!important;}
-button[kind="primary"] p,button[kind="primary"] span,button[kind="secondary"] p,button[kind="secondary"] span{font-family:'Rajdhani',sans-serif!important;font-size:2.1rem!important;font-weight:700!important;text-align:center!important;}
+button[kind="primary"],button[kind="secondary"]{background:#0d0d0d!important;color:#fff!important;border:1.5px solid rgba(0,212,255,0.5)!important;border-radius:8px!important;font-size:1.0rem!important;font-weight:500!important;padding:0.5rem 0.8rem!important;text-align:left!important;transition:none!important;animation:none!important;transform:none!important;box-shadow:none!important;min-height:38px!important;}
+button[kind="primary"] p,button[kind="secondary"] p{font-size:1.0rem!important;font-weight:500!important;color:#ddd8c8!important;text-align:left!important;}
 button[kind="primary"]:hover,button[kind="secondary"]:hover{background:rgba(0,212,255,0.08)!important;border-color:#00d4ff!important;box-shadow:0 0 25px rgba(0,212,255,0.4)!important;transform:translateY(-2px)!important;}
 .qb{border-radius:12px;padding:0.6rem 0.8rem;margin:0.1rem 0 0.2rem 0;background:#0d0d0d;}
 .qb-g,.qb-v{background:#0d0d0d!important;border:none!important;animation:borderGlow 3s linear infinite;}
