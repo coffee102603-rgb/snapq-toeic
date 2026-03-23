@@ -1196,7 +1196,7 @@ elif st.session_state.p7_phase == "briefing":
         ''' + (f'<div style="font-size:0.85rem;color:#88dd88;margin-top:2px;">{answer_kr}</div>' if answer_kr else "") + '''
     </div>''', unsafe_allow_html=True)
 
-    st.markdown('<div style="font-size:0.8rem;color:#44ffcc;font-weight:900;text-align:center;margin:6px 0;">🔥 저장해! 오답전장에서 다시 만나자!</div>', unsafe_allow_html=True)
+    st.markdown('<div style="font-size:0.8rem;color:#ffd700;font-weight:900;text-align:center;margin:6px 0;">⚔️ 무기를 획득하라! 오답전장에서 써먹어라!</div>', unsafe_allow_html=True)
 
     kr_full = s.get("kr", "")
     kr_sents = [x.strip() for x in kr_full.replace("!","!|").replace("?","?|").replace(".",".|").split("|") if x.strip()]
@@ -1215,19 +1215,16 @@ elif st.session_state.p7_phase == "briefing":
             st.markdown(f'''<div style="background:#0a2a0a;border:1.5px solid #44ff88;border-radius:12px;padding:12px 14px;margin-bottom:6px;">
                 <div style="font-size:1.0rem;font-weight:700;color:#ffffff;line-height:1.7;">{_hl}</div>
                 <div style="font-size:0.85rem;color:#88dd88;margin-top:4px;">{sent_kr}</div>
-                <div style="text-align:right;margin-top:6px;font-size:0.85rem;color:#44ff88;font-weight:700;">✅ 저장완료!</div>
+                <div style="text-align:right;margin-top:6px;font-size:0.9rem;color:#44ff88;font-weight:900;">🗡️ 무기 장착 완료!</div>
             </div>''', unsafe_allow_html=True)
         else:
-            save_btn_html = f'''<div style="background:#fffff5;border:1px solid #e8e0c8;border-radius:12px;padding:12px 14px;margin-bottom:6px;background-image:repeating-linear-gradient(transparent,transparent 27px,#e8e0c8 27px,#e8e0c8 28px);background-position:0 12px;">
+            save_btn_html = f'''<div style="background:#fffff5;border:1px solid #e8e0c8;border-radius:12px;padding:12px 14px;margin-bottom:2px;background-image:repeating-linear-gradient(transparent,transparent 27px,#e8e0c8 27px,#e8e0c8 28px);background-position:0 12px;">
                 <div style="font-size:1.0rem;font-weight:700;color:#1a1a1a;line-height:1.8;">{_hl}</div>
                 <div style="font-size:0.85rem;color:#666;margin-top:4px;">{sent_kr}</div>
-                <div style="text-align:right;margin-top:8px;">
-                    <span style="display:inline-block;background:#1a1a2e;border:1.5px solid #ffd700;border-radius:8px;padding:4px 16px;color:#ffd700;font-size:0.85rem;font-weight:700;cursor:pointer;" id="fakebtn_{bi}_{si}">저장</span>
-                </div>
             </div>'''
             st.markdown(save_btn_html, unsafe_allow_html=True)
             _sv_key = f"br_sv_{bi}_{si}"
-            if st.button("저장", key=_sv_key, use_container_width=False):
+            if st.button("⚔️ 무기 획득하기", key=_sv_key, use_container_width=False):
                 sent_data = dict(s)
                 sent_data["sentences"] = [sent]
                 sent_data["kr"] = sent_kr
