@@ -655,7 +655,6 @@ if st.session_state.p7_phase == "lobby":
     st.markdown('''<div style="display:flex;align-items:flex-end;margin-bottom:0;">
         <div style="background:#0c0c1e;border:1.5px solid #9aa5b4;border-bottom:none;border-radius:8px 8px 0 0;padding:3px 12px;font-size:0.72rem;font-weight:900;color:#9aa5b4;">⏱ 시간 선택</div>
     </div>''', unsafe_allow_html=True)
-    st.markdown('<div style="background:#0c0c1e;border:1px solid #9aa5b4;border-top:none;border-radius:0 10px 10px 10px;padding:6px 8px;margin-bottom:6px;">', unsafe_allow_html=True)
     tc1, tc2, tc3 = st.columns(3)
     with tc1:
         if st.button("🔥 60초", key="p7t60", use_container_width=True):
@@ -666,13 +665,12 @@ if st.session_state.p7_phase == "lobby":
     with tc3:
         if st.button("✅ 100초", key="p7t100", use_container_width=True):
             st.session_state.p7_tsec=100; st.session_state.p7_tsec_chosen=True; st.rerun()
-    st.markdown('</div>', unsafe_allow_html=True)
+    st.markdown('<div style="height:4px;"></div>', unsafe_allow_html=True)
 
     # 지문 선택
     st.markdown('''<div style="display:flex;align-items:flex-end;margin-top:4px;margin-bottom:0;">
         <div style="background:#081a10;border:1.5px solid #50c878;border-bottom:none;border-radius:8px 8px 0 0;padding:3px 12px;font-size:0.72rem;font-weight:900;color:#50c878;">📄 지문 선택</div>
     </div>''', unsafe_allow_html=True)
-    st.markdown('<div style="background:#081a10;border:1px solid #50c878;border-top:none;border-radius:0 10px 10px 10px;padding:6px 8px;margin-bottom:6px;">', unsafe_allow_html=True)
     b1, b2 = st.columns(2)
     with b1:
         if st.button("📰 Article\n기사·보도", key="p7c1", use_container_width=True):
@@ -687,7 +685,7 @@ if st.session_state.p7_phase == "lobby":
     with b4:
         if st.button("ℹ️ Info\n정보·안내문", key="p7c4", use_container_width=True):
             st.session_state.p7_cat="information"; st.rerun()
-    st.markdown('</div>', unsafe_allow_html=True)
+    st.markdown('<div style="height:4px;"></div>', unsafe_allow_html=True)
 
     # 선택 확인 배지
     _cat_names = {"article":"📰 Article","letter":"✉️ Letter","notice":"📋 Notice","information":"ℹ️ Info"}
