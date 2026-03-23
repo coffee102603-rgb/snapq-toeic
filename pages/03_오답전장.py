@@ -596,13 +596,12 @@ elif st.session_state.sg_phase == "p5_study":
     }
     </style>''', unsafe_allow_html=True)
 
-    # 이전/삭제/다음 — 한 줄
-    _rb1, _rb2, _rb3 = st.columns([1,1,1])
+    # 이전/삭제/다음 — 한 줄 (이전/다음 좁게)
+    _rb1, _rb2, _rb3 = st.columns([0.85, 1, 0.85])
     with _rb1:
         if st.button("◀ 이전", key="st_p", disabled=bi<=0, use_container_width=True):
             st.session_state.sg_idx = bi-1; st.rerun()
     with _rb2:
-        st.markdown('''<style>button[data-testid="stBaseButton-secondary"]{background:#111!important;border:1px solid #333!important;color:#444!important;}button[data-testid="stBaseButton-secondary"] p{color:#444!important;}</style>''', unsafe_allow_html=True)
         if st.button("🗑 삭제", key="del_q", use_container_width=True):
             p5_data.pop(bi)
             storage["saved_questions"] = p5_data
@@ -614,9 +613,22 @@ elif st.session_state.sg_phase == "p5_study":
             st.session_state.sg_idx = bi+1; st.rerun()
 
     # 시험 + 돌아가기
-    _rb4, _rb5 = st.columns([2,1])
+    st.markdown('''<style>
+    @keyframes fireBtn{0%,100%{box-shadow:0 0 10px #ff4400,0 0 20px #ff8800;border-color:#ff4400!important;}50%{box-shadow:0 0 25px #ffcc00,0 0 50px #ff4400;border-color:#ffcc00!important;}}
+    button[data-testid="stBaseButton-primary"]{
+        animation:fireBtn 1.2s ease-in-out infinite!important;
+        background:linear-gradient(135deg,#3a0800,#aa2200)!important;
+        border:2.5px solid #ff4400!important;
+        color:#ffffff!important;font-size:1.1rem!important;font-weight:900!important;
+        min-height:48px!important;
+    }
+    button[data-testid="stBaseButton-primary"] p{
+        color:#ffffff!important;font-size:1.1rem!important;font-weight:900!important;
+    }
+    </style>''', unsafe_allow_html=True)
+    _rb4, _gap, _rb5 = st.columns([2, 0.1, 0.8])
     with _rb4:
-        if st.button("💣 시험 바로 도전!", key="go_exam", type="primary", use_container_width=True):
+        if st.button("🔥 시험 바로 도전!", key="go_exam", type="primary", use_container_width=True):
             if len(p5_data) >= 5:
                 qs = random.sample(p5_data, 5)
                 st.session_state.sg_exam_qs = qs
@@ -626,8 +638,9 @@ elif st.session_state.sg_phase == "p5_study":
                 st.session_state.sg_exam_wrong = False
                 st.session_state.sg_phase = "p5_exam"; st.rerun()
             else: st.warning("최소 5문제 필요!")
+    with _gap:
+        st.markdown("", unsafe_allow_html=True)
     with _rb5:
-        st.markdown('<div style="margin-top:2px;"></div>', unsafe_allow_html=True)
         if st.button("↩ 돌아가기", key="back_lobby", use_container_width=True):
             st.session_state.sg_phase = "lobby"; st.session_state.rv_battle = None; st.session_state.rv_mode = None; st.rerun()
 
