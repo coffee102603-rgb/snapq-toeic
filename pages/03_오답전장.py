@@ -295,14 +295,14 @@ if st.session_state.sg_phase == "lobby":
 
     button[data-testid="stBaseButton-primary"]{
         background:linear-gradient(135deg,#3a1500,#7a2a00,#aa4400)!important;
-        border:3px solid #ffd700!important;font-size:1.8rem!important;font-weight:900!important;
-        padding:1.2rem!important;color:#ffffff!important;border-radius:16px!important;
-        min-height:68px!important;
-        animation:firePulse 1.5s ease infinite!important;
-        text-shadow:0 0 15px rgba(255,255,255,0.9)!important;
+        border:2px solid #ffd700!important;font-size:1.1rem!important;font-weight:900!important;
+        padding:0.5rem!important;color:#ffffff!important;border-radius:12px!important;
+        min-height:44px!important;max-height:44px!important;
+        animation:none!important;
+        text-shadow:none!important;
     }
     button[data-testid="stBaseButton-primary"] p{
-        font-size:1.8rem!important;font-weight:900!important;color:#ffffff!important;
+        font-size:1.1rem!important;font-weight:900!important;color:#ffffff!important;
     }
     #MainMenu{visibility:hidden!important;}header[data-testid="stHeader"]{height:0!important;visibility:hidden!important;}div[data-testid="stToolbar"]{visibility:hidden!important;}.block-container{padding-top:0.2rem!important;}
     </style>""", unsafe_allow_html=True)
@@ -422,7 +422,19 @@ if st.session_state.sg_phase == "lobby":
                 st.session_state.sg_phase="p5_exam"; st.rerun()
             else: st.warning("최소 5문제 필요!")
 
-        st.markdown('<div style="margin-top:6px;"></div>', unsafe_allow_html=True)
+        st.markdown('''<style>
+        button[data-testid="stBaseButton-secondary"]{
+            animation:none!important;transform:none!important;
+            box-shadow:none!important;
+            font-size:0.8rem!important;font-weight:500!important;
+            min-height:32px!important;padding:4px!important;
+            border:1px solid #444!important;color:#777!important;
+        }
+        button[data-testid="stBaseButton-secondary"] p{
+            font-size:0.8rem!important;color:#777!important;
+        }
+        </style>''', unsafe_allow_html=True)
+        st.markdown('<div style="margin-top:4px;"></div>', unsafe_allow_html=True)
         if st.button("↩ 돌아가기", key="rv_back1", use_container_width=True):
             st.session_state.rv_battle=None; st.rerun()
 
