@@ -47,6 +47,12 @@ def save_to_sheets(record):
         st.error(f"Sheets 오류: {e}")
 
 st.set_page_config(page_title="P7 Reading ⚔️", page_icon="📖", layout="wide", initial_sidebar_state="collapsed")
+st.markdown('''<style>
+#root > div:first-child{margin-top:0!important;}
+.stApp > header{display:none!important;}
+.stApp{margin-top:0!important;}
+section.main > div.block-container{padding-top:0.2rem!important;}
+</style>''', unsafe_allow_html=True)
 
 # ═══ STORAGE ═══
 STORAGE_FILE = os.path.join(os.path.dirname(os.path.dirname(__file__)), "storage_data.json")
