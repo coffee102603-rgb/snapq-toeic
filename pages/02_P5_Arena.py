@@ -46,7 +46,7 @@ header[data-testid="stHeader"]{background:transparent!important;height:0!importa
 @keyframes p5flash{0%,75%,100%{box-shadow:0 0 12px rgba(0,212,255,0.15);}88%{box-shadow:0 0 45px rgba(0,255,255,1),0 0 90px rgba(0,212,255,0.7);}}
 button[kind="primary"],button[kind="secondary"]{background:#0d0d0d!important;color:#fff!important;border:1.5px solid rgba(0,212,255,0.5)!important;border-radius:8px!important;font-size:1.0rem!important;font-weight:500!important;padding:0.5rem 0.8rem!important;text-align:left!important;transition:none!important;animation:none!important;transform:none!important;box-shadow:none!important;min-height:38px!important;}
 button[kind="primary"] p,button[kind="secondary"] p{font-size:1.05rem!important;font-weight:700!important;color:#ddd8c8!important;text-align:left!important;}
-button[kind="primary"]:hover,button[kind="secondary"]:hover{background:rgba(0,212,255,0.08)!important;border-color:#00d4ff!important;box-shadow:0 0 25px rgba(0,212,255,0.4)!important;transform:translateY(-2px)!important;}
+button[kind="primary"]:hover,button[kind="secondary"]:hover{background:rgba(0,212,255,0.08)!important;border-color:#00d4ff!important;box-shadow:0 0 25px rgba(0,212,255,0.4)!important;transform:none!important;}
 .qb{border-radius:12px;padding:0.3rem 0.5rem;margin:0.05rem 0;background:#0d0d0d;}
 .qb-g,.qb-v{background:#0d0d0d!important;border:none!important;animation:none;}
 @keyframes borderGlow{0%{box-shadow:0 0 0 2px #00d4ff,0 0 15px rgba(0,212,255,0.4);}50%{box-shadow:0 0 0 2px #fff,0 0 25px rgba(0,212,255,0.6);}100%{box-shadow:0 0 0 2px #00d4ff,0 0 15px rgba(0,212,255,0.4);}}
@@ -281,11 +281,16 @@ if st.session_state.phase=="battle":
     _p5cmp.html('''<script>
     (function(){
         var colors=["#d4af37","#9aa5b4","#50c878","#4488cc"];
-        var lastQ = -1;
+        var styled = false;
         function styleChoices(){
             var doc=window.parent.document;
             var btns=doc.querySelectorAll('button[kind="primary"],button[kind="secondary"]');
-            var ci=0;
+            var ci=0; var found=0;
+            btns.forEach(function(b){
+                var t=(b.textContent||"").trim();
+                if(t.match(/^\(A\)|^\(B\)|^\(C\)|^\(D\)/)){found++;}
+            });
+            if(found<4){styled=false;return;}
             btns.forEach(function(b){
                 var t=(b.textContent||"").trim();
                 if(t.match(/^\(A\)|^\(B\)|^\(C\)|^\(D\)/)){
@@ -295,28 +300,27 @@ if st.session_state.phase=="battle":
                     b.style.setProperty("border-left","4px solid "+c,"important");
                     b.style.setProperty("color","#ddd8c8","important");
                     b.style.setProperty("animation","none","important");
+                    b.style.setProperty("transform","none","important");
                     b.style.setProperty("min-height","38px","important");
                     b.style.setProperty("text-align","left","important");
                     b.querySelectorAll("p").forEach(function(p){
                         p.style.setProperty("color","#ddd8c8","important");
-                        p.style.setProperty("font-size","1.05rem","important");p.style.setProperty("font-weight","700","important");
+                        p.style.setProperty("font-size","1.05rem","important");
+                        p.style.setProperty("font-weight","700","important");
                         p.style.setProperty("text-align","left","important");
                     });
                     ci++;
                 }
             });
+            if(ci===4){styled=true;}
         }
-        function resetAndStyle(){
-            var doc=window.parent.document;
-            var allBtns=doc.querySelectorAll('button');
-            allBtns.forEach(function(b){
-                b.style.removeProperty("border-left");
-                b.style.removeProperty("background");
-            });
-            setTimeout(styleChoices,50);
-        }
-        setTimeout(styleChoices,100);setTimeout(styleChoices,400);setTimeout(styleChoices,900);
-        setInterval(resetAndStyle,800);
+        function tryStyle(){if(!styled){styleChoices();}}
+        setTimeout(tryStyle,100);
+        setTimeout(tryStyle,350);
+        setTimeout(tryStyle,700);
+        setTimeout(tryStyle,1200);
+        var obs=new MutationObserver(function(){styled=false;setTimeout(tryStyle,80);});
+        obs.observe(window.parent.document.body,{childList:true,subtree:true});
     })();
     </script>''', height=0)
 
@@ -647,7 +651,7 @@ header[data-testid="stHeader"]{background:transparent!important;height:0!importa
 @keyframes p5flash{0%,75%,100%{box-shadow:0 0 12px rgba(0,212,255,0.15);}88%{box-shadow:0 0 45px rgba(0,255,255,1),0 0 90px rgba(0,212,255,0.7);}}
 button[kind="primary"],button[kind="secondary"]{background:#0d0d0d!important;color:#fff!important;border:1.5px solid rgba(0,212,255,0.5)!important;border-radius:8px!important;font-size:1.0rem!important;font-weight:500!important;padding:0.5rem 0.8rem!important;text-align:left!important;transition:none!important;animation:none!important;transform:none!important;box-shadow:none!important;min-height:38px!important;}
 button[kind="primary"] p,button[kind="secondary"] p{font-size:1.05rem!important;font-weight:700!important;color:#ddd8c8!important;text-align:left!important;}
-button[kind="primary"]:hover,button[kind="secondary"]:hover{background:rgba(0,212,255,0.08)!important;border-color:#00d4ff!important;box-shadow:0 0 25px rgba(0,212,255,0.4)!important;transform:translateY(-2px)!important;}
+button[kind="primary"]:hover,button[kind="secondary"]:hover{background:rgba(0,212,255,0.08)!important;border-color:#00d4ff!important;box-shadow:0 0 25px rgba(0,212,255,0.4)!important;transform:none!important;}
 .qb{border-radius:12px;padding:0.3rem 0.5rem;margin:0.05rem 0;background:#0d0d0d;}
 .qb-g,.qb-v{background:#0d0d0d!important;border:none!important;animation:none;}
 @keyframes borderGlow{0%{box-shadow:0 0 0 2px #00d4ff,0 0 15px rgba(0,212,255,0.4);}50%{box-shadow:0 0 0 2px #fff,0 0 25px rgba(0,212,255,0.6);}100%{box-shadow:0 0 0 2px #00d4ff,0 0 15px rgba(0,212,255,0.4);}}
