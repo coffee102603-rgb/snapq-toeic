@@ -620,17 +620,17 @@ if st.session_state.p7_phase == "lobby":
     div[data-testid="stToolbar"]{visibility:hidden!important;}.block-container{padding-top:0.2rem!important;}
     @keyframes p7float{0%,100%{transform:translateY(0);box-shadow:0 0 12px rgba(212,175,55,0.3);}50%{transform:translateY(-4px);box-shadow:0 0 25px rgba(212,175,55,0.7);}}
     button[kind="secondary"]{
-        background:#0a0a14!important;border:1.5px solid #d4af37!important;
-        border-radius:10px!important;font-size:0.95rem!important;font-weight:700!important;
-        padding:6px!important;color:#e8e0cc!important;min-height:38px!important;
+        background:#0a0a14!important;border:1.5px solid #9aa5b4!important;
+        border-radius:10px!important;font-size:0.82rem!important;font-weight:600!important;
+        padding:6px!important;color:#ccd0e0!important;min-height:46px!important;
         animation:p7float 2.5s ease-in-out infinite!important;
     }
-    button[kind="secondary"] p{font-size:0.95rem!important;font-weight:700!important;color:#e8e0cc!important;}
+    button[kind="secondary"] p{font-size:0.82rem!important;font-weight:600!important;color:#ccd0e0!important;}
     button[data-testid="stBaseButton-primary"]{
-        background:#0c0c1e!important;border:2px solid #d4af37!important;
+        background:#0c0c00!important;border:2px solid #d4af37!important;
         border-left:4px solid #d4af37!important;
-        color:#d4af37!important;font-size:1.1rem!important;font-weight:900!important;
-        min-height:48px!important;animation:none!important;border-radius:12px!important;
+        color:#d4af37!important;font-size:1.0rem!important;font-weight:900!important;
+        min-height:43px!important;animation:none!important;border-radius:12px!important;
     }
     button[data-testid="stBaseButton-primary"] p{color:#d4af37!important;font-size:1.1rem!important;font-weight:900!important;}
     </style>''', unsafe_allow_html=True)
@@ -641,19 +641,21 @@ if st.session_state.p7_phase == "lobby":
         <div style="font-size:0.7rem;color:#555;letter-spacing:2px;margin-top:2px;">TOEIC PART 7 · 지금 바로 싸운다!</div>
     </div>''', unsafe_allow_html=True)
 
-    # HUD 미리보기 — 배틀과 동일
-    _hud_t = f"{_p7_tsec}초" if _p7_tc else "? 초"
-    st.markdown(f'''<div style="display:flex;align-items:center;gap:6px;margin-bottom:6px;">
-        <div style="background:#0d0d1a;border-radius:6px;padding:3px 8px;font-size:0.75rem;font-weight:700;color:#9aa5b4;white-space:nowrap;">📖 전투</div>
-        <div style="flex:1;background:#0d0d1a;border-radius:11px;border:1.5px solid #9aa5b4;padding:3px 10px;text-align:center;font-size:0.85rem;font-weight:900;color:#9aa5b4;">{_hud_t}</div>
-        <div style="background:#0d0d1a;border-radius:6px;padding:3px 8px;font-size:0.75rem;color:#9aa5b4;white-space:nowrap;">✅0 ❌0</div>
-    </div>''', unsafe_allow_html=True)
+
 
     # 시간 선택
+    st.markdown('''<style>
+    div[data-testid="stHorizontalBlock"] button[kind="secondary"]{
+        min-height:46px!important;font-size:0.82rem!important;
+    }
+    div[data-testid="stHorizontalBlock"] button[kind="secondary"] p{
+        font-size:0.82rem!important;
+    }
+    </style>''', unsafe_allow_html=True)
     st.markdown('''<div style="display:flex;align-items:flex-end;margin-bottom:0;">
-        <div style="background:#0c0c1e;border:1.5px solid #d4af37;border-bottom:none;border-radius:8px 8px 0 0;padding:3px 12px;font-size:0.75rem;font-weight:900;color:#d4af37;">⏱ 시간 선택</div>
+        <div style="background:#0c0c1e;border:1.5px solid #9aa5b4;border-bottom:none;border-radius:8px 8px 0 0;padding:3px 12px;font-size:0.72rem;font-weight:900;color:#9aa5b4;">⏱ 시간 선택</div>
     </div>''', unsafe_allow_html=True)
-    st.markdown('<div style="background:#0c0c1e;border:1px solid #d4af37;border-top:none;border-radius:0 10px 10px 10px;padding:6px 8px;margin-bottom:6px;">', unsafe_allow_html=True)
+    st.markdown('<div style="background:#0c0c1e;border:1px solid #9aa5b4;border-top:none;border-radius:0 10px 10px 10px;padding:6px 8px;margin-bottom:6px;">', unsafe_allow_html=True)
     tc1, tc2, tc3 = st.columns(3)
     with tc1:
         if st.button("🔥 60초", key="p7t60", use_container_width=True):
@@ -667,10 +669,10 @@ if st.session_state.p7_phase == "lobby":
     st.markdown('</div>', unsafe_allow_html=True)
 
     # 지문 선택
-    st.markdown('''<div style="display:flex;align-items:flex-end;margin-bottom:0;">
-        <div style="background:#0c0c1e;border:1.5px solid #d4af37;border-bottom:none;border-radius:8px 8px 0 0;padding:3px 12px;font-size:0.75rem;font-weight:900;color:#d4af37;">📄 지문 선택</div>
+    st.markdown('''<div style="display:flex;align-items:flex-end;margin-top:4px;margin-bottom:0;">
+        <div style="background:#081a10;border:1.5px solid #50c878;border-bottom:none;border-radius:8px 8px 0 0;padding:3px 12px;font-size:0.72rem;font-weight:900;color:#50c878;">📄 지문 선택</div>
     </div>''', unsafe_allow_html=True)
-    st.markdown('<div style="background:#0c0c1e;border:1px solid #d4af37;border-top:none;border-radius:0 10px 10px 10px;padding:6px 8px;margin-bottom:6px;">', unsafe_allow_html=True)
+    st.markdown('<div style="background:#081a10;border:1px solid #50c878;border-top:none;border-radius:0 10px 10px 10px;padding:6px 8px;margin-bottom:6px;">', unsafe_allow_html=True)
     b1, b2 = st.columns(2)
     with b1:
         if st.button("📰 Article\n기사·보도", key="p7c1", use_container_width=True):
