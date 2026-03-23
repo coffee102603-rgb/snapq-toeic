@@ -776,12 +776,7 @@ elif st.session_state.sg_phase == "p5_exam_result":
             if st.button("🔥 오답전장", key="retry_lobby", use_container_width=True):
                 st.session_state.sg_phase = "lobby"; st.session_state.rv_battle = None; st.session_state.rv_mode = None; st.rerun()
 
-    _dummy_c1, _dummy_c2 = st.columns(2)
-    with _dummy_c1:
-        pass
-    with _dummy_c2:
-        if st.button("🔥 오답전장", key="back_exam", type="secondary", use_container_width=True):
-            st.session_state.sg_phase = "lobby"; st.session_state.rv_battle = None; st.session_state.rv_mode = None; st.rerun()
+
 # ════════════════════════════════
 # VOCA 서바이벌 웨이브 (순수 학습모드 - 타이머 없음)
 # ════════════════════════════════
