@@ -150,8 +150,8 @@ button[kind="secondary"] p{font-size:1.2rem!important;font-weight:900!important;
 
 /* P7 지문 카드 */
 .p7-pass{background:linear-gradient(145deg,#13112a,#1a1535);border:2px solid rgba(155,89,182,0.7);border-radius:18px;padding:1.5rem;margin:0.5rem 0;box-shadow:0 0 20px rgba(155,89,182,0.15);}
-.p7-sent{color:#e8e8f0;font-size:clamp(0.85rem,3vw,1rem);font-weight:700;line-height:1.7;}
-.p7-new{color:#c49fff;font-weight:900;font-size:clamp(0.85rem,3vw,1rem);}
+.p7-sent{color:#dde0ee;font-size:clamp(0.85rem,3vw,1rem);font-weight:500;line-height:1.75;}
+.p7-new{color:#dde0ee;font-weight:500;font-size:clamp(0.85rem,3vw,1rem);}
 .p7-qbox{background:linear-gradient(145deg,#1e1040,#2a1555);border:2px solid rgba(155,89,182,0.8);border-radius:18px;padding:1.5rem;margin:0.5rem 0;box-shadow:0 0 15px rgba(155,89,182,0.2);}
 .p7-q{color:#ffffff;font-size:clamp(0.85rem,3vw,1rem);font-weight:800;line-height:1.8;}
 
@@ -885,10 +885,10 @@ elif st.session_state.p7_phase == "battle":
     button[kind="primary"] p{font-size:clamp(0.8rem,3vw,1rem)!important;font-weight:900!important;line-height:1.2!important;white-space:normal!important;word-break:break-word!important;}
     </style>""", unsafe_allow_html=True)
     st.markdown("""<style>.stVerticalBlock{gap:0!important;}.stHorizontalBlock{gap:4px!important;}
-    div[data-testid="stVerticalBlock"] > div:nth-child(1) button[kind="primary"]{background:#2d1b4e!important;border:2.5px solid #9b59b6!important;}
-    div[data-testid="stVerticalBlock"] > div:nth-child(2) button[kind="primary"]{background:#1b2d4e!important;border:2.5px solid #5b9bd5!important;}
-    div[data-testid="stVerticalBlock"] > div:nth-child(3) button[kind="primary"]{background:#4e1b3a!important;border:2.5px solid #d55b9b!important;}
-    div[data-testid="stVerticalBlock"] > div:nth-child(4) button[kind="primary"]{background:#1b3a2d!important;border:2.5px solid #5bd5a0!important;}</style>""", unsafe_allow_html=True)
+    div[data-testid="stVerticalBlock"] > div:nth-child(1) button[kind="primary"]{background:#0f0f1e!important;border:1.5px solid #4455aa!important;}
+    div[data-testid="stVerticalBlock"] > div:nth-child(2) button[kind="primary"]{background:#0f0f1e!important;border:1.5px solid #4455aa!important;}
+    div[data-testid="stVerticalBlock"] > div:nth-child(3) button[kind="primary"]{background:#0f0f1e!important;border:1.5px solid #4455aa!important;}
+    div[data-testid="stVerticalBlock"] > div:nth-child(4) button[kind="primary"]{background:#0f0f1e!important;border:1.5px solid #4455aa!important;}</style>""", unsafe_allow_html=True)
     for i, ch in enumerate(cur["choices"]):
         if st.button(ch, key=f"p7ch{step}_{i}", type="primary", use_container_width=True):
             ok = (i == cur["answer"])
@@ -921,10 +921,10 @@ elif st.session_state.p7_phase == "battle":
         const doc=window.parent.document;
         const btns=doc.querySelectorAll('button[kind="primary"]');
         const colors=[
-            {bg:'#2d1b4e',bd:'2.5px solid #9b59b6'},
-            {bg:'#1b2d4e',bd:'2.5px solid #5b9bd5'},
-            {bg:'#4e1b3a',bd:'2.5px solid #d55b9b'},
-            {bg:'#1b3a2d',bd:'2.5px solid #5bd5a0'}
+            {bg:'#0f0f1e',bd:'1.5px solid #4455aa'},
+            {bg:'#0f0f1e',bd:'1.5px solid #4455aa'},
+            {bg:'#0f0f1e',bd:'1.5px solid #4455aa'},
+            {bg:'#0f0f1e',bd:'1.5px solid #4455aa'}
         ];
         let ci=0;
         btns.forEach(btn=>{
