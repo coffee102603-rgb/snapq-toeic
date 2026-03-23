@@ -1,4 +1,4 @@
-"""통합 오답전장 — P5 학습/시험 + VOCA 학습/시험"""
+﻿"""통합 오답전장 — P5 학습/시험 + VOCA 학습/시험"""
 import streamlit as st
 import streamlit.components.v1 as components
 import json, os, random, time, re
@@ -859,14 +859,15 @@ elif st.session_state.sg_phase == "combo_rush":
     if "sg_combo_over" not in st.session_state: st.session_state.sg_combo_over=False
     if "sg_combo_results" not in st.session_state: st.session_state.sg_combo_results=[]
     score=st.session_state.sg_combo_score; combo=st.session_state.sg_combo_count
-    cidx=st.session_state.sg_combo_idx; total_qs=min(5,len(voca_data))
+    cidx=st.session_state.sg_combo_idx
     if "sg_combo_pool" not in st.session_state:
         has_sent=[v for v in voca_data if v.get("sentences")]
         if not has_sent: has_sent=voca_data[:]
         pool=has_sent[:]; random.shuffle(pool)
-        while len(pool)<5: pool+=voca_data.copy(); random.shuffle(pool)
+        while len(pool)<5: pool+=has_sent.copy(); random.shuffle(pool)
         st.session_state.sg_combo_pool=pool[:5]
     c_pool=st.session_state.sg_combo_pool
+    total_qs=min(5,len(c_pool))
     if cidx>=total_qs or st.session_state.sg_combo_over:
         st.session_state.sg_phase="combo_result"; st.rerun()
     q_item=c_pool[cidx]
@@ -1014,6 +1015,7 @@ elif st.session_state.sg_phase == "combo_result":
     with c3:
         if st.button("🔥 오답전장으로\\n귀환", key="cb_back", type="secondary", use_container_width=True):
             st.session_state.sg_phase = "lobby"; st.session_state.rv_battle = None; st.session_state.rv_mode = None; st.rerun()
+
 
 
 
