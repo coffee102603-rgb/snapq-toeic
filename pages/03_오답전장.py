@@ -1,4 +1,4 @@
-"""통합 오답전장 — P5 학습/시험 + VOCA 학습/시험"""
+﻿"""통합 오답전장 — P5 학습/시험 + VOCA 학습/시험"""
 import streamlit as st
 import streamlit.components.v1 as components
 import json, os, random, time, re
@@ -1003,6 +1003,7 @@ elif st.session_state.sg_phase == "combo_result":
     with c3:
         if st.button("🔥 오답전장으로\\n귀환", key="cb_back", type="secondary", use_container_width=True):
             st.session_state.sg_phase = "lobby"; st.session_state.rv_battle = None; st.session_state.rv_mode = None; st.rerun()
+
 
 
 
