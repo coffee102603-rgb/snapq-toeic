@@ -1205,6 +1205,20 @@ elif st.session_state.p7_phase == "briefing":
                 st.session_state[sent_key] = True
                 st.rerun()
 
+    st.markdown('''<style>
+    div[data-testid="stHorizontalBlock"]:last-of-type button{
+        background:#000000!important;
+        border:1.5px solid rgba(255,255,255,0.5)!important;
+        border-radius:12px!important;
+        color:rgba(255,255,255,0.5)!important;
+        font-size:0.85rem!important;
+        font-weight:500!important;
+    }
+    div[data-testid="stHorizontalBlock"]:last-of-type button p{
+        color:rgba(255,255,255,0.5)!important;
+        font-size:0.85rem!important;
+    }
+    </style>''', unsafe_allow_html=True)
     bc3, bc4 = st.columns(2)
     with bc3:
         if st.button("🔥 오답전장", key="p7store", use_container_width=True):
