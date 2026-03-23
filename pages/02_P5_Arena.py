@@ -1,4 +1,4 @@
-﻿"""P5 Arena v13b — 로비 구역별 색감 적용 (틸/핑크오렌지에메랄드인디고/포레스트)"""
+"""P5 Arena v13b — 로비 구역별 색감 적용 (틸/핑크오렌지에메랄드인디고/포레스트)"""
 import streamlit as st
 import streamlit.components.v1 as components
 from streamlit_autorefresh import st_autorefresh
@@ -612,7 +612,7 @@ else:
         st.switch_page("main_hub.py")
     elif _nav == 'stg':
         st.query_params.clear()
-        st.switch_page("pages/03_역전장.py")
+        st.switch_page("pages/03_오답전장.py")
     st.session_state.phase="lobby"
     if "sel_mode" not in st.session_state: st.session_state.sel_mode=None
 
