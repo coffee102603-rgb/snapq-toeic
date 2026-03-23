@@ -392,27 +392,44 @@ if st.session_state.sg_phase == "lobby":
 
         # 학습모드 카드
         st.markdown('<div style="font-size:0.8rem;font-weight:900;color:#44ffaa;margin-bottom:4px;">📖 학습모드</div>', unsafe_allow_html=True)
-        st.markdown(f'''<div style="background:#081a14;border:2px solid #22cc88;border-radius:14px;padding:16px;margin-bottom:4px;text-align:center;">
-            <div style="font-size:1.3rem;font-weight:900;color:#ffffff;margin-bottom:6px;">🗡️ 오답 격파</div>
-            <div style="font-size:0.9rem;color:#44ffaa;margin-bottom:4px;">틀린 문제만 골라 완전히 내 것으로!</div>
-            <div style="font-size:0.75rem;color:#888;">{len(p5_data)}문제 · 해설 · 정답 확인</div>
+        st.markdown(f'''<div style="background:#081a14;border:2px solid #22cc88;border-radius:14px;padding:14px 14px 10px 14px;margin-bottom:8px;">
+            <div style="display:flex;justify-content:space-between;align-items:center;">
+                <div>
+                    <div style="font-size:1.1rem;font-weight:900;color:#ffffff;">🗡️ 오답 격파</div>
+                    <div style="font-size:0.85rem;color:#44ffaa;margin-top:4px;">틀린 문제만 골라 완전히 내 것으로!</div>
+                    <div style="font-size:0.7rem;color:#888;margin-top:2px;">{len(p5_data)}문제 · 해설 · 정답 확인</div>
+                </div>
+                <div style="margin-left:10px;flex-shrink:0;">
+                    <span style="background:#1a5533;border:2px solid #22cc88;border-radius:10px;padding:8px 14px;color:#44ffaa;font-size:0.9rem;font-weight:900;white-space:nowrap;">▶ 시작</span>
+                </div>
+            </div>
         </div>''', unsafe_allow_html=True)
-        if st.button("🗡️ 오답 격파 시작!", key="rv_p5s", type="primary", use_container_width=True):
+        if st.button("▶ 시작", key="rv_p5s", use_container_width=False):
             if p5_data:
                 st.session_state.rv_mode="p5s"; st.session_state.sg_phase="p5_study"; st.session_state.sg_idx=0; st.rerun()
             else: st.warning("P5 저장 문제 없음!")
+        st.markdown('''<style>
+        button[key="rv_p5s"]{display:none!important;}
+        </style>''', unsafe_allow_html=True)
 
         # 시험모드 카드
         st.markdown('<div style="font-size:0.8rem;font-weight:900;color:#ffaa44;margin-top:8px;margin-bottom:4px;">⚡ 시험모드</div>', unsafe_allow_html=True)
-        st.markdown(f'''<div style="background:#1a0800;border:2px solid #ff8800;border-radius:14px;overflow:hidden;margin-bottom:4px;">
-            <div style="background:#2a1000;padding:6px;text-align:center;font-size:0.85rem;font-weight:900;color:#ff6600;letter-spacing:2px;">💣 33초 시한폭탄</div>
-            <div style="padding:14px;text-align:center;">
-                <div style="font-size:1.3rem;font-weight:900;color:#ffffff;margin-bottom:6px;">5문제 생존전투!</div>
-                <div style="font-size:0.9rem;color:#ffcc44;margin-bottom:4px;">못 맞추면 💥 폭파 — 살아남아라!</div>
-                <div style="font-size:0.75rem;color:#888;">3개 이상 정답 → 생존 · 최고 {p5_rate}</div>
+        st.markdown(f'''<div style="background:#1a0800;border:2px solid #ff8800;border-radius:14px;overflow:hidden;margin-bottom:8px;">
+            <div style="background:#2a1000;padding:5px;text-align:center;font-size:0.8rem;font-weight:900;color:#ff6600;letter-spacing:2px;">💣 33초 시한폭탄</div>
+            <div style="padding:12px 14px;">
+                <div style="display:flex;justify-content:space-between;align-items:center;">
+                    <div>
+                        <div style="font-size:1.1rem;font-weight:900;color:#ffffff;">5문제 생존전투!</div>
+                        <div style="font-size:0.85rem;color:#ffcc44;margin-top:4px;">못 맞추면 💥 폭파 — 살아남아라!</div>
+                        <div style="font-size:0.7rem;color:#888;margin-top:2px;">3개 이상 정답 → 생존 · 최고 {p5_rate}</div>
+                    </div>
+                    <div style="margin-left:10px;flex-shrink:0;">
+                        <span style="background:#3a1500;border:2px solid #ff8800;border-radius:10px;padding:8px 14px;color:#ffcc44;font-size:0.9rem;font-weight:900;white-space:nowrap;">💣 도전</span>
+                    </div>
+                </div>
             </div>
         </div>''', unsafe_allow_html=True)
-        if st.button("💣 시한폭탄 도전!", key="rv_p5e", type="primary", use_container_width=True):
+        if st.button("💣 도전", key="rv_p5e", use_container_width=False):
             if len(p5_data) >= 5:
                 import random as _r
                 qs = _r.sample(p5_data, 5)
@@ -421,6 +438,9 @@ if st.session_state.sg_phase == "lobby":
                 st.session_state.sg_exam_wrong=False; st.session_state.rv_mode="p5e"
                 st.session_state.sg_phase="p5_exam"; st.rerun()
             else: st.warning("최소 5문제 필요!")
+        st.markdown('''<style>
+        button[key="rv_p5e"]{display:none!important;}
+        </style>''', unsafe_allow_html=True)
 
         st.markdown('''<style>
         button[data-testid="stBaseButton-secondary"]{
