@@ -451,28 +451,72 @@ if st.session_state.sg_phase == "lobby":
 
     # ━━━ 2막 P7: 전투 방식 선택 ━━━
     elif _rv_battle == "p7" and not _rv_mode:
-        st.markdown('''<div class="rv-confirmed"><span>📖 P7 전장 귀환!</span></div>''', unsafe_allow_html=True)
         total_words = len(voca_data)
-        st.markdown(f'<div style="background:#111;border:1px solid #444;border-radius:10px;padding:8px 12px;margin:4px 0;text-align:center;font-size:1.0rem;font-weight:700;color:#ffcc00;">💎 무기 {total_words}개 보유 중</div>', unsafe_allow_html=True)
-        if st.button(f"📖  P7 문장 학습모드\n영어↔한글 악보+피아노 학습! ({len(voca_data)}단어)", key="rv_p7s", type="secondary", use_container_width=True):
-            if len(voca_data) >= 3:
-                st.session_state.sg_wave=1; st.session_state.sg_wave_idx=0
-                st.session_state.sg_wave_results=[]; st.session_state.sg_wave_dead=False
-                st.session_state.sg_wave_start=time.time()
-                if "sg_sv_pool" in st.session_state: del st.session_state.sg_sv_pool
-                if "sg_wave_start" in st.session_state: del st.session_state.sg_wave_start
-                st.session_state.rv_mode="p7s"; st.session_state.sg_phase="survival"; st.rerun()
-            else: st.warning("최소 3단어 필요!")
-        if st.button(f"⚡  P7 실전 블랭크 시험\n문장 속 빈칸 완성! 5문제 생존 전투! {combo_label}", key="rv_p7e", type="secondary", use_container_width=True):
-            if len(voca_data) >= 3:
-                st.session_state.sg_combo_score=0; st.session_state.sg_combo_count=0
-                st.session_state.sg_combo_idx=0; st.session_state.sg_combo_start=time.time()
-                st.session_state.sg_combo_over=False; st.session_state.sg_combo_results=[]
-                if "sg_combo_pool" in st.session_state: del st.session_state.sg_combo_pool
-                st.session_state.rv_mode="p7e"; st.session_state.sg_phase="combo_rush"; st.rerun()
-            else: st.warning("최소 3단어 필요!")
-        if st.button(f"📦  단어 저장고 · 무기 관리\n보유 {total_words}개 · 불필요한 무기는 지워라!", key="rv_vault", use_container_width=True):
+        st.markdown(f'''<div style="text-align:center;margin-bottom:8px;">
+            <span style="background:#0a1428;border:1.5px solid #3388ff;border-radius:12px;padding:5px 18px;font-size:0.9rem;font-weight:900;color:#66aaff;">📖 P7 오답전장</span>
+        </div>''', unsafe_allow_html=True)
+        st.markdown(f'<div style="background:#0a0a1a;border:1px solid #4488ff;border-radius:10px;padding:8px 12px;margin-bottom:8px;text-align:center;font-size:0.9rem;font-weight:900;color:#4488ff;">⚔️ 무기 {total_words}개 보유 중</div>', unsafe_allow_html=True)
+
+        # 학습모드 지붕
+        st.markdown('''<div style="display:flex;align-items:flex-end;margin-bottom:0;">
+            <div style="background:#081a14;border:2px solid #22cc88;border-bottom:none;border-radius:8px 8px 0 0;padding:4px 14px;font-size:0.85rem;font-weight:900;color:#44ffaa;display:inline-block;">📖 학습모드</div>
+        </div>''', unsafe_allow_html=True)
+        _p7c1, _p7c2 = st.columns([3, 1])
+        with _p7c1:
+            st.markdown(f'''<div style="background:#081a14;border:2px solid #22cc88;border-top:none;border-radius:0 12px 12px 12px;padding:12px 14px;min-height:90px;">
+                <div style="font-size:1.05rem;font-weight:900;color:#ffffff;">🗡️ 문장 격파</div>
+                <div style="font-size:0.9rem;color:#55ffbb;margin-top:5px;font-weight:700;">한글 보고 → 영어 빈칸 채워라!</div>
+                <div style="font-size:0.82rem;color:#cceecc;margin-top:3px;font-weight:600;">문장을 몸으로 익혀라!</div>
+                <div style="font-size:0.72rem;color:#888;margin-top:2px;">{len(voca_data)}문장 · 퍼즐 배틀 · 3번 기회</div>
+            </div>''', unsafe_allow_html=True)
+        with _p7c2:
+            st.markdown('<div style="height:4px;"></div>', unsafe_allow_html=True)
+            if st.button("▶\n시작", key="rv_p7s", use_container_width=True):
+                if len(voca_data) >= 3:
+                    st.session_state.sg_wave=1; st.session_state.sg_wave_idx=0
+                    st.session_state.sg_wave_results=[]; st.session_state.sg_wave_dead=False
+                    st.session_state.sg_wave_start=time.time()
+                    if "sg_sv_pool" in st.session_state: del st.session_state.sg_sv_pool
+                    if "sg_wave_start" in st.session_state: del st.session_state.sg_wave_start
+                    st.session_state.rv_mode="p7s"; st.session_state.sg_phase="survival"; st.rerun()
+                else: st.warning("최소 3문장 필요!")
+
+        # 시험모드 지붕
+        st.markdown('''<div style="display:flex;align-items:flex-end;margin-top:10px;margin-bottom:0;gap:4px;">
+            <div style="background:#1a0800;border:2px solid #ff8800;border-bottom:none;border-radius:8px 8px 0 0;padding:4px 14px;font-size:0.85rem;font-weight:900;color:#ffaa44;display:inline-block;">⚡ 시험모드</div>
+            <div style="background:#2a1000;border:2px solid #ff6600;border-bottom:none;border-radius:8px 8px 0 0;padding:4px 14px;font-size:0.8rem;font-weight:900;color:#ff8844;display:inline-block;">💣 33초 시한폭탄</div>
+        </div>''', unsafe_allow_html=True)
+        _p7c3, _p7c4 = st.columns([3, 1])
+        with _p7c3:
+            st.markdown(f'''<div style="background:#1a0800;border:2px solid #ff8800;border-top:none;border-radius:0 12px 12px 12px;padding:12px 14px;min-height:90px;">
+                <div style="font-size:1.05rem;font-weight:900;color:#ffffff;">5문제 생존전투!</div>
+                <div style="font-size:0.9rem;color:#ffdd66;margin-top:5px;font-weight:700;">문장 속 빈칸 — 33초 안에 맞춰라!</div>
+                <div style="font-size:0.82rem;color:#ffcc88;margin-top:3px;font-weight:600;">못 맞추면 💥 폭파 — 살아남아라!</div>
+                <div style="font-size:0.72rem;color:#888;margin-top:2px;">3개 이상 → 생존 · 최고 {combo_label}</div>
+            </div>''', unsafe_allow_html=True)
+        with _p7c4:
+            st.markdown('<div style="height:4px;"></div>', unsafe_allow_html=True)
+            if st.button("💣\n도전", key="rv_p7e", use_container_width=True):
+                if len(voca_data) >= 3:
+                    st.session_state.sg_combo_score=0; st.session_state.sg_combo_count=0
+                    st.session_state.sg_combo_idx=0; st.session_state.sg_combo_start=time.time()
+                    st.session_state.sg_combo_over=False; st.session_state.sg_combo_results=[]
+                    if "sg_combo_pool" in st.session_state: del st.session_state.sg_combo_pool
+                    st.session_state.rv_mode="p7e"; st.session_state.sg_phase="combo_rush"; st.rerun()
+                else: st.warning("최소 3문장 필요!")
+
+        # 문장 무기고 — 작게
+        st.markdown(f'''<div style="background:#0a0814;border:1.5px solid #7766ff;border-radius:10px;padding:10px 14px;margin-top:10px;display:flex;justify-content:space-between;align-items:center;">
+            <div>
+                <div style="font-size:1.0rem;font-weight:900;color:#ccbbff;">📦 문장 무기고</div>
+                <div style="font-size:0.75rem;color:#777;margin-top:2px;">보유 {total_words}개 · 불필요한 무기 제거</div>
+            </div>
+        </div>''', unsafe_allow_html=True)
+        if st.button("관리 ▶", key="rv_vault", use_container_width=False):
             st.session_state.rv_mode="p7_vault"; st.rerun()
+        st.markdown('<div style="margin-top:6px;"></div>', unsafe_allow_html=True)
+        if st.button("↩ 돌아가기", key="rv_back2", use_container_width=True):
+            st.session_state.rv_battle=None; st.rerun()
     # ━━━ 항상 고정 네비게이션 ━━━
     if st.session_state.get("rv_mode") != "p7_vault":
         st.markdown('<div style="height:1px;background:#2a2a2a;margin:14px 0 10px 0;"></div>', unsafe_allow_html=True)
