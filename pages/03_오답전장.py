@@ -304,7 +304,7 @@ if st.session_state.sg_phase == "lobby":
     button[data-testid="stBaseButton-primary"] p{
         font-size:1.1rem!important;font-weight:900!important;color:#ffffff!important;
     }
-    #MainMenu{visibility:hidden!important;}header[data-testid="stHeader"]{height:0!important;visibility:hidden!important;}div[data-testid="stToolbar"]{visibility:hidden!important;}.block-container{padding-top:0.2rem!important;}
+    #MainMenu{visibility:hidden!important;}header[data-testid="stHeader"]{height:0!important;visibility:hidden!important;}div[data-testid="stToolbar"]{visibility:hidden!important;}.block-container{padding-top:0.1rem!important;margin-top:0!important;}div[data-testid="stAppViewBlockContainer"]{padding-top:0!important;}
     </style>""", unsafe_allow_html=True)
 
     # 타이틀 강화
