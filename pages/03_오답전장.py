@@ -613,22 +613,24 @@ elif st.session_state.sg_phase == "p5_study":
             st.session_state.sg_idx = bi+1; st.rerun()
 
     # 시험 + 돌아가기
-    st.markdown('''<style>
-    @keyframes fireBtn{0%,100%{box-shadow:0 0 10px #ff4400,0 0 20px #ff8800;border-color:#ff4400!important;}50%{box-shadow:0 0 25px #ffcc00,0 0 50px #ff4400;border-color:#ffcc00!important;}}
-    button[data-testid="stBaseButton-primary"]{
-        animation:fireBtn 1.2s ease-in-out infinite!important;
-        background:linear-gradient(135deg,#3a0800,#aa2200)!important;
-        border:2.5px solid #ff4400!important;
-        color:#ffffff!important;font-size:1.1rem!important;font-weight:900!important;
-        min-height:48px!important;
-    }
-    button[data-testid="stBaseButton-primary"] p{
-        color:#ffffff!important;font-size:1.1rem!important;font-weight:900!important;
-    }
-    </style>''', unsafe_allow_html=True)
     _rb4, _gap, _rb5 = st.columns([2, 0.1, 0.8])
     with _rb4:
-        if st.button("🔥 시험 바로 도전!", key="go_exam", type="primary", use_container_width=True):
+        st.markdown('''<style>
+        div[data-testid="column"]:first-child button[data-testid="stBaseButton-secondary"]{
+            background:linear-gradient(135deg,#5a0800,#cc2200,#ff4400)!important;
+            border:3px solid #ff6600!important;
+            color:#ffffff!important;
+            font-size:1.05rem!important;
+            font-weight:900!important;
+            min-height:52px!important;
+            text-shadow:0 0 8px rgba(255,200,0,0.8)!important;
+            box-shadow:0 0 18px rgba(255,80,0,0.7),inset 0 0 10px rgba(255,150,0,0.2)!important;
+        }
+        div[data-testid="column"]:first-child button[data-testid="stBaseButton-secondary"] p{
+            color:#ffffff!important;font-size:1.05rem!important;font-weight:900!important;
+        }
+        </style>''', unsafe_allow_html=True)
+        if st.button("🔥 시험 바로 도전!", key="go_exam", use_container_width=True):
             if len(p5_data) >= 5:
                 qs = random.sample(p5_data, 5)
                 st.session_state.sg_exam_qs = qs
