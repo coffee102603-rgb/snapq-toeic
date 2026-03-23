@@ -514,18 +514,7 @@ if st.session_state.sg_phase == "lobby":
         </div>''', unsafe_allow_html=True)
         if st.button("관리 ▶", key="rv_vault", use_container_width=False):
             st.session_state.rv_mode="p7_vault"; st.rerun()
-        st.markdown('<div style="height:1px;background:#2a2a2a;margin:12px 0 8px 0;"></div>', unsafe_allow_html=True)
-        _p7n1, _p7n2, _p7n3 = st.columns(3)
-        with _p7n1:
-            if st.button("🔥 오답전장", key="rv_back2", use_container_width=True):
-                st.session_state.rv_battle=None; st.rerun()
-        with _p7n2:
-            if st.button("🏠 홈", key="rv_home2", use_container_width=True):
-                st.switch_page("main_hub.py")
-        with _p7n3:
-            if st.button("📖 P7전장", key="rv_p7arena", use_container_width=True):
-                st.session_state.rv_mode=None; st.session_state.rv_battle=None
-                st.switch_page("pages/04_P7_Reading.py")
+
     # ━━━ 항상 고정 네비게이션 ━━━
     if st.session_state.get("rv_mode") != "p7_vault":
         st.markdown('<div style="height:1px;background:#2a2a2a;margin:14px 0 10px 0;"></div>', unsafe_allow_html=True)
@@ -547,17 +536,15 @@ if st.session_state.sg_phase == "lobby":
         </style>''', unsafe_allow_html=True)
         mn1, mn2, mn3 = st.columns(3)
         with mn1:
-            if st.button("🏠 홈", key="sg_nav1", use_container_width=True):
-                st.session_state.rv_mode = None; st.session_state.rv_battle = None
-                st.switch_page("main_hub.py")
+            if st.button("🔥 오답전장", key="sg_nav1", use_container_width=True):
+                st.session_state.rv_battle=None; st.rerun()
         with mn2:
-            if st.button("P5전장", key="sg_nav2", use_container_width=True):
-                st.session_state.rv_mode = None; st.session_state.rv_battle = None
-                st.session_state._p5_active=False
-                st.switch_page("pages/02_P5_Arena.py")
+            if st.button("🏠 홈", key="sg_nav2", use_container_width=True):
+                st.session_state.rv_mode=None; st.session_state.rv_battle=None
+                st.switch_page("main_hub.py")
         with mn3:
-            if st.button("P7전장", key="sg_nav3", use_container_width=True):
-                st.session_state.rv_mode = None; st.session_state.rv_battle = None
+            if st.button("📖 P7전장", key="sg_nav3", use_container_width=True):
+                st.session_state.rv_mode=None; st.session_state.rv_battle=None
                 st.switch_page("pages/04_P7_Reading.py")
     import streamlit.components.v1 as _cmp
     _cmp.html("""<script>
