@@ -455,8 +455,7 @@ if st.session_state.sg_phase == "lobby":
         st.markdown(f'''<div style="text-align:center;margin-bottom:8px;">
             <span style="background:#0a1428;border:1.5px solid #3388ff;border-radius:12px;padding:5px 18px;font-size:0.9rem;font-weight:900;color:#66aaff;">📖 P7 오답전장</span>
         </div>''', unsafe_allow_html=True)
-        st.markdown(f'<div style="background:#0a0a1a;border:1px solid #4488ff;border-radius:10px;padding:8px 12px;margin-bottom:8px;text-align:center;font-size:0.9rem;font-weight:900;color:#4488ff;">⚔️ 무기 {total_words}개 보유 중</div>', unsafe_allow_html=True)
-
+        
         # 학습모드 지붕
         st.markdown('''<div style="display:flex;align-items:flex-end;margin-bottom:0;">
             <div style="background:#081a14;border:2px solid #22cc88;border-bottom:none;border-radius:8px 8px 0 0;padding:4px 14px;font-size:0.85rem;font-weight:900;color:#44ffaa;display:inline-block;">📖 학습모드</div>
