@@ -776,27 +776,7 @@ elif st.session_state.sg_phase == "p5_exam_result":
             if st.button("🔥 오답전장", key="retry_lobby", use_container_width=True):
                 st.session_state.sg_phase = "lobby"; st.session_state.rv_battle = None; st.session_state.rv_mode = None; st.rerun()
 
-    _dummy_c1, _dummy_c2 = st.columns(2)
-    with _dummy_c1:
-        pass
-    with _dummy_c2:
-        if st.button("🔥 오답전장", key="back_exam", type="secondary", use_container_width=True):
-            st.session_state.sg_phase = "lobby"; st.session_state.rv_battle = None; st.session_state.rv_mode = None; st.rerun()
-# ════════════════════════════════
-# VOCA 서바이벌 웨이브 (순수 학습모드 - 타이머 없음)
-# ════════════════════════════════
-elif st.session_state.sg_phase == "survival":
-    # ════════ 문장 퍼즐 배틀 ════════
-    import re as _re5
-    if not voca_data:
-        st.markdown('''<div style="text-align:center;background:#f8f8f8;border-radius:12px;padding:2rem;">
-            <div style="font-size:2rem;">📭</div>
-            <div style="font-size:1rem;font-weight:600;color:#333;margin-top:8px;">저장된 문장이 없어요!</div>
-            <div style="font-size:0.85rem;color:#888;margin-top:4px;">P7전장 브리핑에서 어려운 문장을 저장하세요</div>
-        </div>''', unsafe_allow_html=True)
-        if st.button("↩ 돌아가기", key="sv_no_data"):
-            st.session_state.sg_phase="lobby"; st.session_state.rv_battle=None; st.session_state.rv_mode=None; st.rerun()
-        st.stop()
+
 
     # 세션 초기화
     if "sb_idx" not in st.session_state: st.session_state.sb_idx=0
