@@ -1020,57 +1020,79 @@ elif st.session_state.p7_phase == "victory":
 # PHASE: LOST
 # ═══════════════════════════════════════
 elif st.session_state.p7_phase == "lost":
+    import random as _rnd2
     _answers = st.session_state.p7_answers
     _ok = len([a for a in _answers if a])
-    _pct = int(_ok / 3 * 100)
-    if _pct == 0:
-        _taunt = "0점?? 혹시 눈 감고 읽었어?"; _sub = "독해가 이 정도면 그냥 포기하는 게 낫지 않나요? 🤔"
-    elif _pct <= 33:
-        _taunt = f"3문제 중 {_ok}개... 진심이에요?"; _sub = "이 정도면 토익 점수 기대하지 마세요 😂"
-    elif _pct <= 66:
-        _taunt = "절반도 못 맞혔어요!"; _sub = "평균도 못 미치는데 자신감은 만점이시네 👀"
-    else:
-        _taunt = "아깝다! 한 문제 차이!"; _sub = "조금만 더 집중했으면 됐는데, 결국 패배자 😤"
-    components.html(f"""
-    <style>
-    *{{margin:0;padding:0;box-sizing:border-box;}}
-    body{{background:#0a0000;overflow:hidden;display:flex;align-items:center;justify-content:center;height:100vh;font-family:'Arial Black',sans-serif;animation:redPulse 0.8s ease-in-out infinite;}}
-    @keyframes redPulse{{0%,100%{{background:#0a0000;}}50%{{background:#1a0000;}}}}
-    @keyframes crashIn{{0%{{transform:scale(4) rotate(-5deg);opacity:0;}}100%{{transform:scale(1) rotate(0deg);opacity:1;}}}}
-    @keyframes shakeX{{0%,100%{{transform:translateX(0);}}20%{{transform:translateX(-8px);}}40%{{transform:translateX(8px);}}}}
-    @keyframes rise{{0%{{opacity:1;transform:translateY(0);}}100%{{opacity:0;transform:translateY(-300px);}}}}
-    @keyframes flicker{{0%,100%{{opacity:1;}}50%{{opacity:0.7;}}}}
-    .wrap{{text-align:center;animation:crashIn 0.6s ease forwards;z-index:10;position:relative;padding:20px;}}
-    .skull{{font-size:5rem;animation:shakeX 0.4s ease-in-out infinite;display:inline-block;}}
-    .lost-txt{{font-size:3.5rem;font-weight:900;color:#ff0000;text-shadow:0 0 20px #ff0000;animation:flicker 0.3s infinite;letter-spacing:4px;}}
-    .score{{font-size:4rem;font-weight:900;color:#ffcc00;text-shadow:0 0 30px #ffaa00;margin:10px 0;}}
-    .taunt{{font-size:1.3rem;color:#ff8888;font-weight:700;margin:6px 0;}}
-    .sub{{font-size:1rem;color:#ff6666;margin-top:4px;}}
-    .embers{{position:absolute;width:100%;height:100%;top:0;left:0;pointer-events:none;}}
-    .ember{{position:absolute;border-radius:50%;animation:rise 1.5s ease-in infinite;}}
-    </style>
-    <div class="embers">""" + "".join([f'<div class="ember" style="left:{random.randint(5,95)}%;bottom:{random.randint(0,20)}%;width:{random.randint(4,10)}px;height:{random.randint(4,10)}px;background:{"#ff4400" if random.random()>0.5 else "#ff8800"};animation-delay:{random.random():.1f}s;"></div>' for _ in range(40)]) + f"""</div>
-    <div class="wrap">
-        <div class="skull">💀</div>
-        <div class="lost-txt">GAME OVER</div>
-        <div class="score">{_pct}점 ({_ok}/3)</div>
-        <div class="taunt">{_taunt}</div>
-        <div class="sub">{_sub}</div>
-    </div>""", height=420)
-    st.markdown("")
-    bc = st.columns(2)
-    with bc[0]:
-        if st.button("🔥 설욕전! 다시 싸운다!", type="primary", use_container_width=True):
-            for k,v in D.items(): st.session_state[k] = v
-            st.rerun()
-    with bc[1]:
-        if st.button("🏃 도망가기", type="secondary", use_container_width=True):
-            st.session_state._p7_just_left = True
-            st.switch_page("main_hub.py")
+    _is_timeout = (st.session_state.get("p7_phase_reason","") == "timeout")
+    st.markdown('<style>.stApp{background:#080008!important;}</style>', unsafe_allow_html=True)
+    st.markdown('''<div style="text-align:center;padding:1rem 0 0.4rem 0;">
+        <div style="font-size:0.9rem;letter-spacing:3px;opacity:0.5;margin-bottom:6px;">💀 ☠️ 🪦 💔 ⚰️ 🩸 💀</div>
+        <div style="font-size:2.6rem;font-weight:900;color:#cc0000;letter-spacing:2px;">💀 GAME OVER</div>
+        <div style="font-size:0.8rem;color:#660000;letter-spacing:2px;margin-top:3px;">넌 오늘도 졌다...</div>
+    </div>''', unsafe_allow_html=True)
+    st.markdown(f'''<div style="background:#0c0008;border:1.5px solid #cc2244;border-left:4px solid #cc2244;border-radius:12px;padding:10px;text-align:center;margin:6px 0;">
+        <div style="font-size:0.72rem;color:#9aa5b4;margin-bottom:2px;">처참한 결과</div>
+        <div style="font-size:1.5rem;font-weight:900;color:#cc2244;">💀 {_ok} / 3</div>
+    </div>''', unsafe_allow_html=True)
 
-# ═══════════════════════════════════════
-# PHASE: BRIEFING
-# ═══════════════════════════════════════
+    if _is_timeout:
+        _nag1 = _rnd2.choice(["독해 속도가 거북이냐 🐢","토익은 널 기다려주지 않아 ⏰"])
+        _nag2 = "시간 안에 못 읽으면 실전에서도 똑같이 망해 😤"
+    elif _ok == 0:
+        _nag1 = _rnd2.choice(["눈 뜨고 읽긴 한 거야? 🫣","이거 토익이야, 점자가 아니야 😶"])
+        _nag2 = "에빙하우스: 복습 없이 24시간 후 80% 망각이야"
+    elif _ok == 1:
+        _nag1 = _rnd2.choice(["찍어서 맞춘 거 다 알아 😂","운도 실력이라고? 그건 토익엔 없어 🙃"])
+        _nag2 = "3문제 중 1개... 이게 실력이야"
+    else:
+        _nag1 = _rnd2.choice(["딱 한 문제 차이야. 억울하지? 😭","그 한 문제가 토익 점수 50점 차이야 😤"])
+        _nag2 = "아깝다고? 그럼 다시 싸워"
+
+    st.markdown(f'''<div style="background:#0a0008;border:1px solid #441122;border-radius:10px;padding:10px 12px;margin-bottom:10px;">
+        <div style="font-size:0.92rem;color:#ff4466;font-weight:700;margin-bottom:4px;">{_nag1}</div>
+        <div style="font-size:0.78rem;color:#664433;">{_nag2}</div>
+    </div>''', unsafe_allow_html=True)
+
+    st.markdown('''<style>
+    button[data-testid="stBaseButton-primary"]{
+        background:#0a0008!important;border:2px solid #cc2244!important;
+        border-left:4px solid #cc2244!important;
+        color:#ff4466!important;font-size:1.1rem!important;font-weight:900!important;
+        min-height:48px!important;animation:none!important;
+    }
+    button[data-testid="stBaseButton-primary"] p{color:#ff4466!important;font-size:1.1rem!important;font-weight:900!important;}
+    </style>''', unsafe_allow_html=True)
+    if st.button("🔥 설욕전! 다시 싸운다!", type="primary", use_container_width=True):
+        for k in ["p7_phase","p7_cat","p7_tsec","p7_tsec_chosen","p7_step","p7_started_at","p7_answers","p7_data","p7_phase_reason"]:
+            if k in st.session_state: del st.session_state[k]
+        st.rerun()
+    if st.button("🏠 도망가기! 홈으로!", key="lost_home", use_container_width=True):
+        st.session_state._p7_just_left = True
+        st.switch_page("main_hub.py")
+    import streamlit.components.v1 as _lc
+    _lc_js = '''<script>
+    (function(){
+        function styleLostBtn(){
+            var doc=window.parent.document;
+            var btns=doc.querySelectorAll('button[kind="secondary"]');
+            btns.forEach(function(b){
+                var t=b.textContent||"";
+                if(t.indexOf("도망")>-1){
+                    b.style.setProperty("background","#0f0f1e","important");
+                    b.style.setProperty("border","1px solid #1a1a2a","important");
+                    b.style.setProperty("border-left","4px solid #4488cc","important");
+                    b.style.setProperty("color","#666","important");
+                    b.style.setProperty("animation","none","important");
+                    b.style.setProperty("font-size","0.85rem","important");
+                }
+            });
+        }
+        setTimeout(styleLostBtn,150);setTimeout(styleLostBtn,500);setTimeout(styleLostBtn,1200);
+    })();
+    </script>'''
+    _lc.html(_lc_js, height=0)
+
+
 elif st.session_state.p7_phase == "briefing":
     st.markdown('''<style>
     .block-container{padding-top:0.2rem!important;margin-top:0!important;}
