@@ -1,4 +1,4 @@
-﻿"""P7 Reading Arena — 60초 독해 전투 (V2)"""
+"""P7 Reading Arena — 60초 독해 전투 (V2)"""
 import streamlit as st
 import streamlit.components.v1 as components
 from streamlit_autorefresh import st_autorefresh
@@ -114,18 +114,19 @@ def save_storage(data):
 def save_expressions(exprs, step_data=None):
     data=load_storage()
     if "saved_expressions" not in data: data["saved_expressions"]=[]
+    new_sentence = step_data.get("sentences", [None])[0] if step_data else None
     for e in exprs:
-        # 문장+해석 추가
         enriched = dict(e)
         if step_data:
             enriched["sentences"] = step_data.get("sentences", [])
             enriched["kr"] = step_data.get("kr", "")
-        # 중복 체크 (expr 기준)
-        exists = any(x.get("expr") == e.get("expr") for x in data["saved_expressions"])
+        if new_sentence:
+            exists = any((x.get("sentences") or [None])[0] == new_sentence for x in data["saved_expressions"])
+        else:
+            exists = any(x.get("expr") == e.get("expr") for x in data["saved_expressions"])
         if not exists:
             data["saved_expressions"].append(enriched)
     save_storage(data)
-    # session_state에도 동기화 (Streamlit Cloud 파일 휘발 대비)
     import streamlit as _st
     _st.session_state["saved_expressions"] = data["saved_expressions"]
 
@@ -1146,128 +1147,54 @@ elif st.session_state.p7_phase == "briefing":
     sym = "✅" if ok else "❌"
     correct_choice = s["choices"][s["answer"]]
 
-    # ─── 카드: 통일된 크기 영어1.8rem굵게 / 한글1.7rem일반 ───
-    wb = '<div style="background:#fffff5;border-radius:16px;padding:1rem;border:2px solid #ddd;margin:0.3rem 0;">'
-    wb += f'<div style="font-size:1.1rem;font-weight:900;color:#00aa88;margin-bottom:0.4rem;">{sym} Step {bi+1} / {num_steps}</div>'
-
-    # 영어 지문 (핵심 표현 형광 밑줄)
-    wb += '<div style="font-size:1.0rem;font-weight:900;color:#1a1a1a;line-height:1.6;margin-bottom:0.3rem;">'
-    _mark_style = "background:none;display:inline;background-image:linear-gradient(#ffe066,#ffe066);background-size:0% 4px;background-position:left bottom;background-repeat:no-repeat;animation:hlDraw 0.8s ease-out 0.3s forwards;color:#008855;font-weight:900;padding:0 2px;"
-    _exprs_list = [e.get("expr","") for e in s.get("expressions", []) if e.get("expr")]
+    # ─── 문제 + 정답 카드 ───
     import re as _re3
-    for sent in s["sentences"]:
-        _hl = sent
-        for _ex in _exprs_list:
-            if _ex.lower() in _hl.lower():
-                try:
-                    _hl = _re3.sub(f"(?i)({_re3.escape(_ex)})", f'<mark style="{_mark_style}">\\1</mark>', _hl)
-                except: pass
-            else:
-                for _w in _ex.split():
-                    if len(_w) >= 4 and _w.lower() in _hl.lower():
-                        try:
-                            _hl = _re3.sub(f"(?i)(\\b{_re3.escape(_w)}\\w*)", f'<mark style="{_mark_style}">\\1</mark>', _hl, count=1)
-                        except: pass
-        wb += f'{_hl} '
-    wb += '</div>'
-
-    # 한글 해석
-    wb += '<div style="border-top:1px dashed #ccc;margin:0.4rem 0;"></div>'
-    wb += f'<div style="font-size:0.95rem;font-weight:400;color:#444;line-height:1.6;margin-bottom:0.3rem;">📖 {s["kr"]}</div>'
-
-    # 문제: 영어 (한글) 한 줄
+    _mark_style = "color:#008855;font-weight:900;text-decoration:underline;text-underline-offset:3px;"
+    _exprs_list = [e.get("expr","") for e in s.get("expressions", []) if e.get("expr")]
     q_kr = s.get("question_kr", "")
     c_kr = s.get("choices_kr", [])
     answer_kr = c_kr[s["answer"]] if c_kr and s["answer"] < len(c_kr) else ""
-    wb += '<div style="border-top:1px dashed #ccc;margin:0.4rem 0;"></div>'
-    wb += f'<div style="margin-bottom:0.3rem;"><span style="font-size:1.0rem;font-weight:900;color:#6633aa;">[Q{bi+1}] {s["question"]}</span>'
-    if q_kr:
-        wb += f' <span style="font-size:0.9rem;font-weight:400;color:#8866bb;">({q_kr})</span>'
-    wb += '</div>'
 
-    # 정답: 영어 (한글) 한 줄
-    wb += f'<div><span style="font-size:1.0rem;font-weight:900;color:#008844;">{sym} {correct_choice}</span>'
-    if answer_kr:
-        wb += f' <span style="font-size:0.9rem;font-weight:400;color:#22aa66;">({answer_kr})</span>'
-    wb += '</div>'
-    wb += '</div>'
-    st.markdown(wb, unsafe_allow_html=True)
+    st.markdown(f'''<div style="background:#0a2a0a;border:2px solid #44ff88;border-radius:12px;padding:10px 14px;margin-bottom:8px;">
+        <div style="font-size:0.85rem;font-weight:700;color:#888;margin-bottom:4px;">[Q{bi+1}] {s["question"]}</div>
+        <div style="font-size:1.0rem;font-weight:900;color:#44ff88;">{sym} {correct_choice}</div>
+        ''' + (f'<div style="font-size:0.85rem;color:#88dd88;margin-top:2px;">{answer_kr}</div>' if answer_kr else "") + '''
+    </div>''', unsafe_allow_html=True)
 
-    # ─── 핵심 표현 (해당 Step의 표현만) ───
-    exprs = s.get("expressions", [])
-    if exprs:
-        # 핵심표현 양쪽에 이전/다음 버튼
-        # 💎 핵심 표현 타이틀
-        st.markdown('<div style="text-align:center;color:#44ffcc;font-size:0.95rem;font-weight:900;margin:0.2rem 0;">💎 핵심 표현</div>', unsafe_allow_html=True)
-        expr_html = ''
-        for e in exprs:
-            expr_html += f'<div style="background:#0a1a28;border:2px solid rgba(255,255,255,0.55);border-radius:8px;padding:0.4rem 0.6rem;margin:0.2rem 0;display:flex;justify-content:space-between;align-items:center;"><span style="color:#44ffcc;font-size:0.9rem;font-weight:900;">{e["expr"]}</span><span style="color:#bbccdd;font-size:0.85rem;font-weight:700;">{e["meaning"]}</span></div>'
-        st.markdown(expr_html, unsafe_allow_html=True)
+    st.markdown('<div style="font-size:0.8rem;color:#44ffcc;font-weight:900;text-align:center;margin:6px 0;">🔥 저장해! 오답전장에서 다시 만나자!</div>', unsafe_allow_html=True)
 
-    # ─── 하단 버튼 3줄 ───
-    save_key = f"p7_saved_{bi}"
-    if save_key not in st.session_state:
-        st.session_state[save_key] = False
-    bc1, bc2 = st.columns(2)
-    with bc1:
-        if st.session_state[save_key]:
-            st.button("✅ 저장완료!", key=f"p7sv_{bi}", type="primary", use_container_width=True, disabled=True)
-            components.html(f"""<script>
-            (function(){{
-                function styleBtn(){{
-                    var d=window.parent.document;
-                    d.querySelectorAll('button[kind="primary"]').forEach(function(b){{
-                        if(b.innerText.includes("저장완료")){{ 
-                            b.style.setProperty("border","2px solid #00ff66","important");
-                            b.style.setProperty("color","#00ff66","important");
-                            b.style.setProperty("background","#001a0a","important");
-                            b.style.setProperty("animation","savedGlow 2s ease-in-out infinite","important");
-                            b.querySelectorAll("p").forEach(function(p){{p.style.setProperty("color","#00ff66","important");}});
-                        }}
-                    }});
-                }}
-                if(!window.parent.document.getElementById("saveGlowStyle_{bi}")){{ 
-                    var s=window.parent.document.createElement("style");
-                    s.id="saveGlowStyle_{bi}";
-                    s.textContent="@keyframes savedGlow{{0%,100%{{box-shadow:0 0 10px rgba(0,255,100,0.5);}} 50%{{box-shadow:0 0 30px rgba(0,255,100,1);}}}}";
-                    window.parent.document.head.appendChild(s);
-                }}
-                setTimeout(styleBtn,100);setTimeout(styleBtn,400);setTimeout(styleBtn,900);
-                new MutationObserver(styleBtn).observe(window.parent.document.body,{{childList:true,subtree:true}});
-            }})();
-            </script>""", height=0)
+    kr_full = s.get("kr", "")
+    kr_sents = [x.strip() for x in kr_full.replace("!","!|").replace("?","?|").replace(".",".|").split("|") if x.strip()]
+
+    for si, sent in enumerate(s["sentences"]):
+        sent_key = f"br_sent_saved_{bi}_{si}"
+        if sent_key not in st.session_state: st.session_state[sent_key] = False
+        is_saved = st.session_state[sent_key]
+        sent_kr = kr_sents[si] if si < len(kr_sents) else kr_full
+        _hl = sent
+        for _ex in _exprs_list:
+            if _ex.lower() in _hl.lower():
+                try: _hl = _re3.sub(f"(?i)({_re3.escape(_ex)})", f'<span style="{_mark_style}">\\1</span>', _hl)
+                except: pass
+        if is_saved:
+            st.markdown(f'''<div style="background:#0a2a0a;border:1.5px solid #44ff88;border-radius:12px;padding:12px 14px;margin-bottom:6px;">
+                <div style="font-size:1.0rem;font-weight:700;color:#ffffff;line-height:1.7;">{_hl}</div>
+                <div style="font-size:0.85rem;color:#88dd88;margin-top:4px;">{sent_kr}</div>
+                <div style="text-align:right;margin-top:6px;font-size:0.85rem;color:#44ff88;font-weight:700;">✅ 저장완료!</div>
+            </div>''', unsafe_allow_html=True)
         else:
-            if st.button("💾 저장", key=f"p7sv_{bi}", type="primary", use_container_width=True):
-                save_expressions(exprs, step_data=s)
-                st.session_state[save_key] = True
+            st.markdown(f'''<div style="background:#1a1a2e;border:1px solid #444;border-radius:12px;padding:12px 14px;margin-bottom:6px;">
+                <div style="font-size:1.0rem;font-weight:700;color:#ffffff;line-height:1.7;">{_hl}</div>
+                <div style="font-size:0.85rem;color:#aaaaaa;margin-top:4px;">{sent_kr}</div>
+            </div>''', unsafe_allow_html=True)
+            if st.button("📌 저장", key=f"br_sv_{bi}_{si}", use_container_width=True):
+                sent_data = dict(s)
+                sent_data["sentences"] = [sent]
+                sent_data["kr"] = sent_kr
+                save_expressions(s.get("expressions", []), step_data=sent_data)
+                st.session_state[sent_key] = True
                 st.rerun()
-            components.html(f"""<script>
-            (function(){{
-                function styleBtn(){{
-                    var d=window.parent.document;
-                    d.querySelectorAll('button[kind="primary"]').forEach(function(b){{
-                        if(b.innerText.includes("저장")){{ 
-                            b.style.setProperty("border","2px solid #ffd700","important");
-                            b.style.setProperty("color","#ffd700","important");
-                            b.style.setProperty("animation","savePulse 1.2s ease-in-out infinite","important");
-                            b.querySelectorAll("p").forEach(function(p){{p.style.setProperty("color","#ffd700","important");}});
-                        }}
-                    }});
-                }}
-                if(!window.parent.document.getElementById("savePulseStyle_{bi}")){{ 
-                    var s=window.parent.document.createElement("style");
-                    s.id="savePulseStyle_{bi}";
-                    s.textContent="@keyframes savePulse{{0%,100%{{box-shadow:0 0 10px rgba(255,215,0,0.4);border-color:#ffd700;}} 50%{{box-shadow:0 0 35px rgba(255,215,0,1);border-color:#ffaa00;}}}}";
-                    window.parent.document.head.appendChild(s);
-                }}
-                setTimeout(styleBtn,100);setTimeout(styleBtn,400);setTimeout(styleBtn,900);
-                new MutationObserver(styleBtn).observe(window.parent.document.body,{{childList:true,subtree:true}});
-            }})();
-            </script>""", height=0)
-    with bc2:
-        if st.button("🔄 다시", key="p7retry", type="primary", use_container_width=True):
-            for k in D: st.session_state[k] = D[k]
-            st.rerun()
+
     bc5, bc6 = st.columns(2)
     with bc5:
         if st.button("◀ 이전", key="p7brp", type="secondary", disabled=bi<=0, use_container_width=True):
@@ -1275,7 +1202,6 @@ elif st.session_state.p7_phase == "briefing":
     with bc6:
         if st.button("▶ 다음", key="p7brn", type="secondary", disabled=bi>=num_steps-1, use_container_width=True):
             st.session_state.p7_br_idx = bi + 1; st.rerun()
-    st.markdown('<style>button[data-testid="baseButton-secondary"]#p7store,button[data-testid="baseButton-secondary"]#p7lobby{border:2px solid #ffffff!important;} div[data-testid="column"]:has(button[kind="secondary"]) button{border:2px solid #ffffff!important;color:#ffffff!important;border-radius:10px!important;} div[data-testid="column"]:has(button[kind="secondary"]) button p{color:#ffffff!important;}</style>', unsafe_allow_html=True)
     bc3, bc4 = st.columns(2)
     with bc3:
         if st.button("🔥 오답전장", key="p7store", type="secondary", use_container_width=True):
