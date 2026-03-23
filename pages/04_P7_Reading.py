@@ -150,8 +150,8 @@ button[kind="secondary"] p{font-size:1.2rem!important;font-weight:900!important;
 
 /* P7 지문 카드 */
 .p7-pass{background:linear-gradient(145deg,#13112a,#1a1535);border:2px solid rgba(155,89,182,0.7);border-radius:18px;padding:1.5rem;margin:0.5rem 0;box-shadow:0 0 20px rgba(155,89,182,0.15);}
-.p7-sent{color:#dde0ee;font-size:clamp(0.85rem,3vw,1rem);font-weight:500;line-height:1.75;}
-.p7-new{color:#dde0ee;font-weight:500;font-size:clamp(0.85rem,3vw,1rem);}
+.p7-sent{color:#e8e0cc;font-size:0.82rem;font-weight:400;line-height:1.55;}
+.p7-new{color:#9aa5b4;font-weight:400;font-size:0.82rem;}
 .p7-qbox{background:linear-gradient(145deg,#1e1040,#2a1555);border:2px solid rgba(155,89,182,0.8);border-radius:18px;padding:1.5rem;margin:0.5rem 0;box-shadow:0 0 15px rgba(155,89,182,0.2);}
 .p7-q{color:#ffffff;font-size:clamp(0.85rem,3vw,1rem);font-weight:800;line-height:1.8;}
 
@@ -874,21 +874,22 @@ elif st.session_state.p7_phase == "battle":
         else:
             pass_html += f'{s} '
     pass_html += '</div>'
-    st.markdown(f'<div style="background:{pass_bg};border:2px solid {pass_border};border-radius:14px;padding:0.8rem 1rem;margin:0.3rem 0;box-shadow:{pass_shadow};transition:border-color 1s,background 1s;">{pass_html}</div>', unsafe_allow_html=True)
+    _p_border = "#ff2200" if rem<=10 else "#ff6600" if rem<=20 else "#ffaa00" if rem<=30 else "#d4af37"
+    st.markdown(f'<div style="background:{pass_bg};border:1.5px solid {_p_border};border-left:4px solid {_p_border};border-radius:10px;padding:0.6rem 0.8rem 0.6rem 0.9rem;margin:0.2rem 0;box-shadow:{pass_shadow};transition:border-color 1s,background 1s;">{pass_html}</div>', unsafe_allow_html=True)
 
     # 질문 - [Q1] 형식 + 최소 패딩
-    st.markdown(f'<div style="background:linear-gradient(145deg,#1a0a20,#2a1030);border:2px solid rgba(255,255,255,0.55);border-radius:14px;padding:0.6rem 1rem;margin:0.3rem 0;text-align:center;"><div style="color:#ffcc00;font-size:clamp(0.9rem,3.5vw,1.3rem);font-weight:900;line-height:1.6;">[Q{step+1}] {cur["question"]}</div></div>', unsafe_allow_html=True)
+    st.markdown(f'<div style="background:#10101e;border:1px solid #9aa5b4;border-radius:8px;padding:5px 10px;margin:0.2rem 0;"><span style="color:#9aa5b4;font-size:0.78rem;font-weight:900;">[Q{step+1}]</span> <span style="color:#e8e0cc;font-size:0.85rem;font-weight:700;">{cur["question"]}</span></div>', unsafe_allow_html=True)
 
     # 선택지 - 2x2 격자 (공간 절약)
     st.markdown("""<style>
-    button[kind="primary"]{font-size:clamp(0.8rem,3vw,1rem)!important;padding:0.4rem 0.3rem!important;min-height:46px!important;border-radius:8px!important;font-weight:900!important;line-height:1.2!important;color:#ffffff!important;margin:0!important;}
-    button[kind="primary"] p{font-size:clamp(0.8rem,3vw,1rem)!important;font-weight:900!important;line-height:1.2!important;white-space:normal!important;word-break:break-word!important;}
+    button[kind="primary"]{font-size:0.82rem!important;padding:2px 8px 2px 12px!important;min-height:30px!important;max-height:34px!important;border-radius:8px!important;font-weight:600!important;line-height:1.1!important;color:#e8e0cc!important;margin:0!important;text-align:left!important;background:#0f0f1e!important;}
+    button[kind="primary"] p{font-size:0.82rem!important;font-weight:600!important;line-height:1.1!important;white-space:nowrap!important;overflow:hidden!important;text-overflow:ellipsis!important;text-align:left!important;color:#e8e0cc!important;}
     </style>""", unsafe_allow_html=True)
     st.markdown("""<style>.stVerticalBlock{gap:0!important;}.stHorizontalBlock{gap:4px!important;}
-    div[data-testid="stVerticalBlock"] > div:nth-child(1) button[kind="primary"]{background:#0f0f1e!important;border:1.5px solid #4455aa!important;}
-    div[data-testid="stVerticalBlock"] > div:nth-child(2) button[kind="primary"]{background:#0f0f1e!important;border:1.5px solid #4455aa!important;}
-    div[data-testid="stVerticalBlock"] > div:nth-child(3) button[kind="primary"]{background:#0f0f1e!important;border:1.5px solid #4455aa!important;}
-    div[data-testid="stVerticalBlock"] > div:nth-child(4) button[kind="primary"]{background:#0f0f1e!important;border:1.5px solid #4455aa!important;}</style>""", unsafe_allow_html=True)
+    div[data-testid="stVerticalBlock"] > div:nth-child(1) button[kind="primary"]{background:#0f0f1e!important;border:1px solid #1a1a2a!important;border-left:4px solid #d4af37!important;}
+    div[data-testid="stVerticalBlock"] > div:nth-child(2) button[kind="primary"]{background:#0f0f1e!important;border:1px solid #1a1a2a!important;border-left:4px solid #9aa5b4!important;}
+    div[data-testid="stVerticalBlock"] > div:nth-child(3) button[kind="primary"]{background:#0f0f1e!important;border:1px solid #1a1a2a!important;border-left:4px solid #50c878!important;}
+    div[data-testid="stVerticalBlock"] > div:nth-child(4) button[kind="primary"]{background:#0f0f1e!important;border:1px solid #1a1a2a!important;border-left:4px solid #4488cc!important;}</style>""", unsafe_allow_html=True)
     for i, ch in enumerate(cur["choices"]):
         if st.button(ch, key=f"p7ch{step}_{i}", type="primary", use_container_width=True):
             ok = (i == cur["answer"])
@@ -921,10 +922,10 @@ elif st.session_state.p7_phase == "battle":
         const doc=window.parent.document;
         const btns=doc.querySelectorAll('button[kind="primary"]');
         const colors=[
-            {bg:'#0f0f1e',bd:'1.5px solid #4455aa'},
-            {bg:'#0f0f1e',bd:'1.5px solid #4455aa'},
-            {bg:'#0f0f1e',bd:'1.5px solid #4455aa'},
-            {bg:'#0f0f1e',bd:'1.5px solid #4455aa'}
+            {bg:'#0f0f1e',bd:'1px solid #1a1a2a',bl:'4px solid #d4af37'},
+            {bg:'#0f0f1e',bd:'1px solid #1a1a2a',bl:'4px solid #9aa5b4'},
+            {bg:'#0f0f1e',bd:'1px solid #1a1a2a',bl:'4px solid #50c878'},
+            {bg:'#0f0f1e',bd:'1px solid #1a1a2a',bl:'4px solid #4488cc'}
         ];
         let ci=0;
         btns.forEach(btn=>{
@@ -933,7 +934,8 @@ elif st.session_state.p7_phase == "battle":
                 const c=colors[ci%4];
                 btn.style.background=c.bg;
                 btn.style.border=c.bd;
-                btn.style.color='#ffffff';
+                btn.style.borderLeft=c.bl||c.bd;
+                btn.style.color='#e8e0cc';
                 ci++;
             }
         });
