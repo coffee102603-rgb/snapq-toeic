@@ -695,11 +695,12 @@ elif st.session_state.sg_phase == "p5_exam":
     if bg_css:
         st.markdown(f'<style>.stApp{{{bg_css}}}</style>', unsafe_allow_html=True)
     st.markdown(f'<div style="text-align:center;margin:2px 0;padding:4px;"><span style="font-size:{tsz};font-weight:900;color:{tcl};font-family:Impact,Arial Black,sans-serif;{tglow}">{rem}</span><span style="font-size:0.8rem;color:{tcl};opacity:0.7;">s</span><div style="font-size:1rem;color:#888;font-weight:700;margin-top:4px;">Q{qi+1} / 5 · 남은 {left}문제</div></div>', unsafe_allow_html=True)
-    st.markdown(f'<div style="background:rgba(255,255,255,0.06);border-radius:12px;padding:3px;margin:4px 0;"><div style="background:linear-gradient(90deg,{tcl},#4488ff);height:12px;border-radius:10px;width:{tpct}%;"></div></div>', unsafe_allow_html=True)
+    bar_color = tcl if rem <= 15 else "#44ff88"
+    st.markdown(f'<div style="background:rgba(255,255,255,0.06);border-radius:12px;padding:3px;margin:4px 0;"><div style="background:linear-gradient(90deg,{bar_color},{tcl});height:12px;border-radius:10px;width:{tpct}%;transition:width 0.5s;"></div></div>', unsafe_allow_html=True)
     if twarn:
         st.markdown(twarn, unsafe_allow_html=True)
     blank_text = q["text"].replace("_______", '<span style="border-bottom:3px solid #66aaff;padding:0 16px;color:#88bbff;">________</span>')
-    st.markdown(f'<div style="background:linear-gradient(145deg,#141435,#1c1c4a);border:2.5px solid {q_border};border-radius:20px;padding:1.8rem 1.4rem;margin:10px 0;box-shadow:{q_shadow};"><div style="font-size:1.1rem;font-weight:900;color:#e8e8ff;line-height:1.5;font-family:Georgia,serif;">{blank_text}</div></div>', unsafe_allow_html=True)
+    st.markdown(f'<div style="background:linear-gradient(145deg,#141435,#1c1c4a);border:2.5px solid {q_border};border-radius:20px;padding:1.4rem 1.2rem;margin:8px 0;box-shadow:{q_shadow};"><div style="font-size:1.15rem;font-weight:900;color:#ffffff;line-height:1.7;">{blank_text}</div></div>', unsafe_allow_html=True)
     for i, ch in enumerate(q["ch"]):
         if st.button(ch, key=f"ex_{qi}_{i}", type="secondary", use_container_width=True):
             ok = (i == q["a"])
