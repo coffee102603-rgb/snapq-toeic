@@ -1124,6 +1124,7 @@ elif st.session_state.p7_phase == "briefing":
     }
     </style>''', unsafe_allow_html=True)
     # 배너만 표시
+    st.markdown('<div style="text-align:center;font-size:1.1rem;font-weight:900;color:#ffd700;letter-spacing:3px;padding:4px 0 2px 0;">📖 전투 브리핑</div>', unsafe_allow_html=True)
     st.markdown(f'<div class="p7-ban {v_cls}" style="margin-top:0!important;padding:6px 10px!important;">{data["title"]} — {v_label} ✅{ok_cnt} ❌{len(answers)-ok_cnt}</div>', unsafe_allow_html=True)
 
     # ─── 탭 [1][2][3] ───
