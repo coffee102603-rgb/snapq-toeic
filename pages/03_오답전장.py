@@ -745,13 +745,25 @@ elif st.session_state.sg_phase == "p5_exam_result":
         </div>''', unsafe_allow_html=True)
         if st.button("⚔️ 설욕전! 다시 싸운다!", key="retry_exam", type="primary", use_container_width=True):
             st.session_state.sg_phase = "lobby"; st.session_state.rv_battle = None; st.session_state.rv_mode = None; st.rerun()
+        st.markdown('''<style>
+        div[data-testid="stHorizontalBlock"]:last-of-type button{
+            border:1.5px solid rgba(255,255,255,0.5)!important;
+            background:#0a0a0a!important;
+            color:rgba(255,255,255,0.6)!important;
+            font-weight:400!important;font-size:0.85rem!important;
+        }
+        div[data-testid="stHorizontalBlock"]:last-of-type button p{
+            color:rgba(255,255,255,0.6)!important;
+            font-weight:400!important;font-size:0.85rem!important;
+        }
+        </style>''', unsafe_allow_html=True)
         _c1, _c2 = st.columns(2)
         with _c1:
-            if st.button("📖 오답 격파", key="retry_study", use_container_width=True):
-                st.session_state.sg_phase = "p5_study"; st.session_state.sg_idx = 0; st.rerun()
-        with _c2:
             if st.button("🔥 오답전장", key="retry_lobby", use_container_width=True):
                 st.session_state.sg_phase = "lobby"; st.session_state.rv_battle = None; st.session_state.rv_mode = None; st.rerun()
+        with _c2:
+            if st.button("🏠 메인", key="retry_main", use_container_width=True):
+                st.switch_page("main_hub.py")
     else:
         st.markdown('''<style>.stApp{background:#000a00!important;}</style>''', unsafe_allow_html=True)
         st.markdown('''<div style="text-align:center;padding:1rem 0 0.5rem 0;">
@@ -768,13 +780,25 @@ elif st.session_state.sg_phase == "p5_exam_result":
         </div>''', unsafe_allow_html=True)
         if st.button("⚡ 한 번 더! 완전 정복!", key="retry_exam", type="primary", use_container_width=True):
             st.session_state.sg_phase = "lobby"; st.session_state.rv_battle = None; st.session_state.rv_mode = None; st.rerun()
+        st.markdown('''<style>
+        div[data-testid="stHorizontalBlock"]:last-of-type button{
+            border:1.5px solid rgba(255,255,255,0.5)!important;
+            background:#0a0a0a!important;
+            color:rgba(255,255,255,0.6)!important;
+            font-weight:400!important;font-size:0.85rem!important;
+        }
+        div[data-testid="stHorizontalBlock"]:last-of-type button p{
+            color:rgba(255,255,255,0.6)!important;
+            font-weight:400!important;font-size:0.85rem!important;
+        }
+        </style>''', unsafe_allow_html=True)
         _c1, _c2 = st.columns(2)
         with _c1:
-            if st.button("📖 오답 격파", key="retry_study", use_container_width=True):
-                st.session_state.sg_phase = "p5_study"; st.session_state.sg_idx = 0; st.rerun()
-        with _c2:
             if st.button("🔥 오답전장", key="retry_lobby", use_container_width=True):
                 st.session_state.sg_phase = "lobby"; st.session_state.rv_battle = None; st.session_state.rv_mode = None; st.rerun()
+        with _c2:
+            if st.button("🏠 메인", key="retry_main", use_container_width=True):
+                st.switch_page("main_hub.py")
 
 
 # ════════════════════════════════
