@@ -621,11 +621,11 @@ if st.session_state.p7_phase == "lobby":
     @keyframes p7float{0%,100%{transform:translateY(0);box-shadow:0 0 12px rgba(212,175,55,0.3);}50%{transform:translateY(-4px);box-shadow:0 0 25px rgba(212,175,55,0.7);}}
     button[kind="secondary"]{
         background:#0a0a14!important;border:1.5px solid #333!important;
-        border-radius:10px!important;font-size:0.82rem!important;font-weight:600!important;
-        padding:6px!important;color:#aaa!important;min-height:46px!important;
+        border-radius:10px!important;font-size:0.9rem!important;font-weight:600!important;
+        padding:6px!important;color:#aaa!important;min-height:53px!important;
         animation:none!important;transform:none!important;box-shadow:none!important;
     }
-    button[kind="secondary"] p{font-size:0.82rem!important;font-weight:600!important;color:#aaa!important;}
+    button[kind="secondary"] p{font-size:0.9rem!important;font-weight:600!important;color:#aaa!important;}
     button[data-testid="stBaseButton-primary"]{
         background:#0c0c00!important;border:2px solid #d4af37!important;
         border-left:4px solid #d4af37!important;
