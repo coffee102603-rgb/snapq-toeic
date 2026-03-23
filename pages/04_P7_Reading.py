@@ -638,7 +638,7 @@ if st.session_state.p7_phase == "lobby":
     # 타이틀
     st.markdown('''<div style="text-align:center;padding:6px 0 4px 0;">
         <div style="font-size:1.2rem;font-weight:900;color:#d4af37;letter-spacing:3px;">📖 P7 독해 전투</div>
-        <div style="font-size:0.7rem;color:#555;letter-spacing:2px;margin-top:2px;">TOEIC PART 7 · 지금 바로 싸운다!</div>
+        <div style="font-size:0.7rem;color:#aaa;letter-spacing:2px;margin-top:2px;font-weight:600;">TOEIC PART 7 · 지금 바로 싸운다!</div>
     </div>''', unsafe_allow_html=True)
 
 
@@ -764,17 +764,15 @@ if st.session_state.p7_phase == "lobby":
             var btns=lastRow.querySelectorAll('button');
             if(btns[0]){
                 btns[0].style.setProperty('animation','none','important');
-                btns[0].style.setProperty('border','1px solid #1a1a2a','important');
-                btns[0].style.setProperty('border-left','4px solid #cc2244','important');
+                btns[0].style.setProperty('border','1.5px solid rgba(255,255,255,0.5)','important');
                 btns[0].style.setProperty('background','#0f0f1e','important');
-                btns[0].style.setProperty('color','#888','important');
+                btns[0].style.setProperty('color','#bbb','important');
             }
             if(btns[1]){
                 btns[1].style.setProperty('animation','none','important');
-                btns[1].style.setProperty('border','1px solid #1a1a2a','important');
-                btns[1].style.setProperty('border-left','4px solid #4488cc','important');
+                btns[1].style.setProperty('border','1.5px solid rgba(255,255,255,0.5)','important');
                 btns[1].style.setProperty('background','#0f0f1e','important');
-                btns[1].style.setProperty('color','#888','important');
+                btns[1].style.setProperty('color','#bbb','important');
             }
         }
         setTimeout(styleNavBtns,150);setTimeout(styleNavBtns,500);setTimeout(styleNavBtns,1200);
