@@ -426,18 +426,34 @@ if st.session_state.sg_phase == "lobby":
     # ━━━ 항상 고정 네비게이션 ━━━
     if st.session_state.get("rv_mode") != "p7_vault":
         st.markdown('<div style="height:1px;background:#2a2a2a;margin:14px 0 10px 0;"></div>', unsafe_allow_html=True)
+        st.markdown('''<style>
+        div[data-testid="stHorizontalBlock"]:last-of-type button{
+            font-size:0.75rem!important;
+            font-weight:400!important;
+            border:1px solid #333!important;
+            background:#0a0a0a!important;
+            color:#666!important;
+            min-height:32px!important;
+            padding:4px!important;
+        }
+        div[data-testid="stHorizontalBlock"]:last-of-type button p{
+            font-size:0.75rem!important;
+            font-weight:400!important;
+            color:#666!important;
+        }
+        </style>''', unsafe_allow_html=True)
         mn1, mn2, mn3 = st.columns(3)
         with mn1:
             if st.button("🏠 홈", key="sg_nav1", use_container_width=True):
                 st.session_state.rv_mode = None; st.session_state.rv_battle = None
                 st.switch_page("main_hub.py")
         with mn2:
-            if st.button("⚔️ P5전장", key="sg_nav2", use_container_width=True):
+            if st.button("P5전장", key="sg_nav2", use_container_width=True):
                 st.session_state.rv_mode = None; st.session_state.rv_battle = None
                 st.session_state._p5_active=False
                 st.switch_page("pages/02_P5_Arena.py")
         with mn3:
-            if st.button("📖 P7전장", key="sg_nav3", use_container_width=True):
+            if st.button("P7전장", key="sg_nav3", use_container_width=True):
                 st.session_state.rv_mode = None; st.session_state.rv_battle = None
                 st.switch_page("pages/04_P7_Reading.py")
     import streamlit.components.v1 as _cmp
