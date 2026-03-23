@@ -140,7 +140,7 @@ def save_expressions(exprs, step_data=None):
 st.markdown("""<style>
 .stApp{background:#0d0d1a!important;}
 section[data-testid="stSidebar"]{background:#0a0a1a!important;}
-.block-container{max-width:100%!important;padding-left:1rem!important;padding-right:1rem!important;padding-top:0.2rem!important;}
+.block-container{padding-top:0.2rem!important;padding-bottom:1rem!important;max-width:100%!important;padding-left:1rem!important;padding-right:1rem!important;}
 header[data-testid="stHeader"]{height:0!important;min-height:0!important;visibility:hidden!important;}
 div[data-testid="stDecoration"]{display:none!important;}
 div[data-testid="stToolbar"]{display:none!important;}
