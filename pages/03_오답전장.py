@@ -583,6 +583,16 @@ elif st.session_state.sg_phase == "p5_study":
     st.markdown('''<style>
     div[data-testid="stHorizontalBlock"] button{
         animation:none!important;transform:none!important;box-shadow:none!important;
+        border:1.5px solid rgba(255,255,255,0.5)!important;
+        color:rgba(255,255,255,0.7)!important;
+        background:#111!important;
+        font-weight:400!important;
+        font-size:0.9rem!important;
+    }
+    div[data-testid="stHorizontalBlock"] button p{
+        color:rgba(255,255,255,0.7)!important;
+        font-weight:400!important;
+        font-size:0.9rem!important;
     }
     </style>''', unsafe_allow_html=True)
 
