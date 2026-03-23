@@ -551,34 +551,63 @@ elif st.session_state.sg_phase == "p5_study":
     exk = q.get("exk","")
     cat = q.get("cat","")
 
-    st.markdown(f'''<div class="note">
-        <div style="display:flex;justify-content:space-between;">
-            <div style="font-size:1rem;font-weight:800;color:#cc6600;">✏️ {bi+1} / {len(p5_data)}</div>
-            <div style="font-size:1rem;font-weight:900;color:#cc0000;border:2px solid #cc0000;border-radius:50px;padding:0.1rem 0.6rem;">{cat}</div>
+    # 진행바
+    _prog = int((bi / max(len(p5_data),1)) * 100)
+    st.markdown(f'''<div style="margin-bottom:6px;">
+        <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:3px;">
+            <span style="font-size:0.75rem;color:#4488ff;font-weight:700;">📖 P5 학습모드</span>
+            <span style="font-size:0.75rem;color:#4488ff;font-weight:700;">{bi+1}/{len(p5_data)}</span>
         </div>
-        <div class="note-sent">{sent}</div>
-        <div style="border-top:2px dashed #ccc;margin:0.6rem 0;"></div>
-        <div class="note-kr">📖 {kr}</div>
-        <div class="note-ex">💡 {exk}</div>
+        <div style="background:#1a1a2a;border-radius:3px;height:4px;">
+            <div style="background:#4488ff;height:4px;border-radius:3px;width:{_prog}%;"></div>
+        </div>
     </div>''', unsafe_allow_html=True)
 
-    r1c1, r1c2 = st.columns(2)
-    with r1c1:
+    # 카테고리 배지
+    st.markdown(f'<div style="text-align:right;margin-bottom:4px;"><span style="background:#1a0808;border:1.5px solid #cc3333;border-radius:20px;padding:3px 12px;font-size:0.75rem;font-weight:900;color:#ff8866;">{cat}</span></div>', unsafe_allow_html=True)
+
+    # 메인 카드 — 세련된 노트
+    st.markdown(f'''<div style="background:#fafaf2;border-radius:16px;padding:1.2rem 1rem 1rem 1.4rem;border:1.5px solid #d4d0b8;
+        background-image:repeating-linear-gradient(transparent,transparent 31px,#e8e4d0 31px,#e8e4d0 32px);
+        background-position:0 1.2rem;
+        border-left:4px solid #ffaaaa;
+        min-height:200px;">
+        <div style="font-size:1.1rem;font-weight:900;color:#111111;line-height:1.8;">{sent}</div>
+        <div style="border-top:1.5px dashed #ccc;margin:0.7rem 0;"></div>
+        <div style="font-size:0.95rem;font-weight:800;color:#222222;line-height:1.7;">📖 {kr}</div>
+        <div style="background:#fffbe8;border-left:4px solid #ccaa00;border-radius:0 8px 8px 0;padding:0.4rem 0.8rem;margin-top:0.5rem;">
+            <span style="font-size:0.88rem;font-weight:800;color:#664400;">💡 {exk}</span>
+        </div>
+    </div>''', unsafe_allow_html=True)
+
+    st.markdown('''<style>
+    div[data-testid="stHorizontalBlock"] button[kind="secondary"]{
+        animation:none!important;transform:none!important;box-shadow:none!important;
+        font-size:0.85rem!important;font-weight:600!important;
+        min-height:34px!important;padding:4px!important;
+    }
+    </style>''', unsafe_allow_html=True)
+
+    # 이전/삭제/다음 — 한 줄
+    _rb1, _rb2, _rb3 = st.columns([1,1,1])
+    with _rb1:
         if st.button("◀ 이전", key="st_p", disabled=bi<=0, use_container_width=True):
             st.session_state.sg_idx = bi-1; st.rerun()
-    with r1c2:
-        if st.button("다음 ▶", key="st_n", disabled=bi>=len(p5_data)-1, use_container_width=True):
-            st.session_state.sg_idx = bi+1; st.rerun()
-    r2c1, r2c2 = st.columns(2)
-    with r2c1:
+    with _rb2:
         if st.button("🗑 삭제", key="del_q", type="secondary", use_container_width=True):
             p5_data.pop(bi)
             storage["saved_questions"] = p5_data
             save_storage(storage)
             if bi >= len(p5_data): st.session_state.sg_idx = max(0, len(p5_data)-1)
             st.rerun()
-    with r2c2:
-        if st.button("📝 시험", key="go_exam", type="primary", use_container_width=True):
+    with _rb3:
+        if st.button("다음 ▶", key="st_n", disabled=bi>=len(p5_data)-1, use_container_width=True):
+            st.session_state.sg_idx = bi+1; st.rerun()
+
+    # 시험 + 돌아가기
+    _rb4, _rb5 = st.columns([2,1])
+    with _rb4:
+        if st.button("💣 시험 바로 도전!", key="go_exam", type="primary", use_container_width=True):
             if len(p5_data) >= 5:
                 qs = random.sample(p5_data, 5)
                 st.session_state.sg_exam_qs = qs
@@ -588,13 +617,9 @@ elif st.session_state.sg_phase == "p5_study":
                 st.session_state.sg_exam_wrong = False
                 st.session_state.sg_phase = "p5_exam"; st.rerun()
             else: st.warning("최소 5문제 필요!")
-    r3c1, r3c2 = st.columns(2)
-    with r3c1:
-        if st.button("📦 로비", key="back_lobby", type="secondary", use_container_width=True):
+    with _rb5:
+        if st.button("↩ 돌아가기", key="back_lobby", type="secondary", use_container_width=True):
             st.session_state.sg_phase = "lobby"; st.session_state.rv_battle = None; st.session_state.rv_mode = None; st.rerun()
-    with r3c2:
-        if st.button("🏠 메인", key="go_main_p5s", type="secondary", use_container_width=True):
-            st.switch_page("main_hub.py")
 
 # ════════════════════════════════
 # P5 시험모드 — 33초 타임폭탄
