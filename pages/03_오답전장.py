@@ -581,10 +581,8 @@ elif st.session_state.sg_phase == "p5_study":
     </div>''', unsafe_allow_html=True)
 
     st.markdown('''<style>
-    div[data-testid="stHorizontalBlock"] button[kind="secondary"]{
+    div[data-testid="stHorizontalBlock"] button{
         animation:none!important;transform:none!important;box-shadow:none!important;
-        font-size:0.85rem!important;font-weight:600!important;
-        min-height:34px!important;padding:4px!important;
     }
     </style>''', unsafe_allow_html=True)
 
@@ -594,7 +592,8 @@ elif st.session_state.sg_phase == "p5_study":
         if st.button("◀ 이전", key="st_p", disabled=bi<=0, use_container_width=True):
             st.session_state.sg_idx = bi-1; st.rerun()
     with _rb2:
-        if st.button("🗑 삭제", key="del_q", type="secondary", use_container_width=True):
+        st.markdown('''<style>button[data-testid="stBaseButton-secondary"]{background:#111!important;border:1px solid #333!important;color:#444!important;}button[data-testid="stBaseButton-secondary"] p{color:#444!important;}</style>''', unsafe_allow_html=True)
+        if st.button("🗑 삭제", key="del_q", use_container_width=True):
             p5_data.pop(bi)
             storage["saved_questions"] = p5_data
             save_storage(storage)
@@ -618,7 +617,8 @@ elif st.session_state.sg_phase == "p5_study":
                 st.session_state.sg_phase = "p5_exam"; st.rerun()
             else: st.warning("최소 5문제 필요!")
     with _rb5:
-        if st.button("↩ 돌아가기", key="back_lobby", type="secondary", use_container_width=True):
+        st.markdown('<div style="margin-top:2px;"></div>', unsafe_allow_html=True)
+        if st.button("↩ 돌아가기", key="back_lobby", use_container_width=True):
             st.session_state.sg_phase = "lobby"; st.session_state.rv_battle = None; st.session_state.rv_mode = None; st.rerun()
 
 # ════════════════════════════════
