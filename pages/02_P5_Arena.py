@@ -44,7 +44,7 @@ header[data-testid="stHeader"]{background:transparent!important;height:0!importa
 @keyframes titleShine{0%{background-position:200% center}100%{background-position:-200% center}}
 @keyframes p5bounce{0%,100%{transform:translateY(0);}30%{transform:translateY(-6px);}60%{transform:translateY(-3px);}80%{transform:translateY(-5px);}}
 @keyframes p5flash{0%,75%,100%{box-shadow:0 0 12px rgba(0,212,255,0.15);}88%{box-shadow:0 0 45px rgba(0,255,255,1),0 0 90px rgba(0,212,255,0.7);}}
-button[kind="primary"],button[kind="secondary"]{background:#0d0d0d!important;color:#fff!important;border:1.5px solid rgba(0,212,255,0.5)!important;border-radius:8px!important;font-family:'Rajdhani',sans-serif!important;font-size:2.1rem!important;font-weight:700!important;padding:1.2rem 1.4rem!important;text-align:center!important;transition:none!important;animation:p5bounce 1.4s ease-in-out infinite,p5flash 3s ease-in-out infinite!important;}
+button[kind="primary"],button[kind="secondary"]{background:#0d0d0d!important;color:#fff!important;border:1.5px solid rgba(0,212,255,0.5)!important;border-radius:8px!important;font-family:'Rajdhani',sans-serif!important;font-size:2.1rem!important;font-weight:700!important;padding:1.2rem 1.4rem!important;text-align:center!important;transition:none!important;animation:none!important;transform:none!important;box-shadow:none!important;}
 button[kind="primary"] p,button[kind="primary"] span,button[kind="secondary"] p,button[kind="secondary"] span{font-family:'Rajdhani',sans-serif!important;font-size:2.1rem!important;font-weight:700!important;text-align:center!important;}
 button[kind="primary"]:hover,button[kind="secondary"]:hover{background:rgba(0,212,255,0.08)!important;border-color:#00d4ff!important;box-shadow:0 0 25px rgba(0,212,255,0.4)!important;transform:translateY(-2px)!important;}
 .qb{border-radius:12px;padding:0.6rem 0.8rem;margin:0.1rem 0 0.2rem 0;background:#0d0d0d;}
@@ -433,7 +433,7 @@ header[data-testid="stHeader"]{background:transparent!important;height:0!importa
 @keyframes titleShine{0%{background-position:200% center}100%{background-position:-200% center}}
 @keyframes p5bounce{0%,100%{transform:translateY(0);}30%{transform:translateY(-6px);}60%{transform:translateY(-3px);}80%{transform:translateY(-5px);}}
 @keyframes p5flash{0%,75%,100%{box-shadow:0 0 12px rgba(0,212,255,0.15);}88%{box-shadow:0 0 45px rgba(0,255,255,1),0 0 90px rgba(0,212,255,0.7);}}
-button[kind="primary"],button[kind="secondary"]{background:#0d0d0d!important;color:#fff!important;border:1.5px solid rgba(0,212,255,0.5)!important;border-radius:8px!important;font-family:'Rajdhani',sans-serif!important;font-size:2.1rem!important;font-weight:700!important;padding:1.2rem 1.4rem!important;text-align:center!important;transition:none!important;animation:p5bounce 1.4s ease-in-out infinite,p5flash 3s ease-in-out infinite!important;}
+button[kind="primary"],button[kind="secondary"]{background:#0d0d0d!important;color:#fff!important;border:1.5px solid rgba(0,212,255,0.5)!important;border-radius:8px!important;font-family:'Rajdhani',sans-serif!important;font-size:2.1rem!important;font-weight:700!important;padding:1.2rem 1.4rem!important;text-align:center!important;transition:none!important;animation:none!important;transform:none!important;box-shadow:none!important;}
 button[kind="primary"] p,button[kind="primary"] span,button[kind="secondary"] p,button[kind="secondary"] span{font-family:'Rajdhani',sans-serif!important;font-size:2.1rem!important;font-weight:700!important;text-align:center!important;}
 button[kind="primary"]:hover,button[kind="secondary"]:hover{background:rgba(0,212,255,0.08)!important;border-color:#00d4ff!important;box-shadow:0 0 25px rgba(0,212,255,0.4)!important;transform:translateY(-2px)!important;}
 .qb{border-radius:12px;padding:0.6rem 0.8rem;margin:0.1rem 0 0.2rem 0;background:#0d0d0d;}
@@ -633,7 +633,7 @@ header[data-testid="stHeader"]{background:transparent!important;height:0!importa
 @keyframes titleShine{0%{background-position:200% center}100%{background-position:-200% center}}
 @keyframes p5bounce{0%,100%{transform:translateY(0);}30%{transform:translateY(-6px);}60%{transform:translateY(-3px);}80%{transform:translateY(-5px);}}
 @keyframes p5flash{0%,75%,100%{box-shadow:0 0 12px rgba(0,212,255,0.15);}88%{box-shadow:0 0 45px rgba(0,255,255,1),0 0 90px rgba(0,212,255,0.7);}}
-button[kind="primary"],button[kind="secondary"]{background:#0d0d0d!important;color:#fff!important;border:1.5px solid rgba(0,212,255,0.5)!important;border-radius:8px!important;font-family:'Rajdhani',sans-serif!important;font-size:2.1rem!important;font-weight:700!important;padding:1.2rem 1.4rem!important;text-align:center!important;transition:none!important;animation:p5bounce 1.4s ease-in-out infinite,p5flash 3s ease-in-out infinite!important;}
+button[kind="primary"],button[kind="secondary"]{background:#0d0d0d!important;color:#fff!important;border:1.5px solid rgba(0,212,255,0.5)!important;border-radius:8px!important;font-family:'Rajdhani',sans-serif!important;font-size:2.1rem!important;font-weight:700!important;padding:1.2rem 1.4rem!important;text-align:center!important;transition:none!important;animation:none!important;transform:none!important;box-shadow:none!important;}
 button[kind="primary"] p,button[kind="primary"] span,button[kind="secondary"] p,button[kind="secondary"] span{font-family:'Rajdhani',sans-serif!important;font-size:2.1rem!important;font-weight:700!important;text-align:center!important;}
 button[kind="primary"]:hover,button[kind="secondary"]:hover{background:rgba(0,212,255,0.08)!important;border-color:#00d4ff!important;box-shadow:0 0 25px rgba(0,212,255,0.4)!important;transform:translateY(-2px)!important;}
 .qb{border-radius:12px;padding:0.6rem 0.8rem;margin:0.1rem 0 0.2rem 0;background:#0d0d0d;}
@@ -707,7 +707,7 @@ summary{color:#aaa!important;font-weight:700!important;}
         background:#060e18!important;border:2px solid rgba(0,212,255,0.35)!important;
         border-radius:10px!important;font-size:0.85rem!important;font-weight:900!important;
         padding:10px 4px!important;color:#e0e0e0!important;min-height:52px!important;
-        animation:p5bounce 1.4s ease-in-out infinite,p5flash 3s ease-in-out infinite!important;
+        animation:none!important;transform:none!important;box-shadow:none!important;
     }
     button[kind="secondary"] p{font-size:0.85rem!important;font-weight:900!important;white-space:pre-line!important;line-height:1.0!important;text-align:center!important;}
 
