@@ -941,7 +941,7 @@ elif st.session_state.p7_phase == "battle":
             }
         });
     }
-    setTimeout(p7choiceColors,200);setTimeout(p7choiceColors,800);setTimeout(p7choiceColors,2000);
+    setTimeout(p7choiceColors,100);setTimeout(p7choiceColors,300);setTimeout(p7choiceColors,600);setTimeout(p7choiceColors,1000);setTimeout(p7choiceColors,2000);setTimeout(p7choiceColors,3000);
     </script>
     """, height=0)
 
