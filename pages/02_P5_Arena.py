@@ -408,15 +408,15 @@ elif st.session_state.phase=="lost":
     _is_timeout = (time.time()-st.session_state.qst > st.session_state.tsec)
     _reason = "시간초과" if _is_timeout else f"오답 {_wrong}개"
     if _pct == 0:
-        _taunt = "0점?? 혹시 눈 감고 했어?"; _sub = "이건 진짜 다시 처음부터 해야 할 수준..."
+        _taunt = "문법책 한 번이라도 펴봤어? 📚"; _sub = "수일치도 모르면서 토익 점수 바라지 마 😶"
+    elif _is_timeout:
+        _taunt = "시간이 부족했다고? 그게 실력이야 ⏰"; _sub = "토익은 느린 사람 기다려주지 않아 🐢"
     elif _pct <= 20:
-        _taunt = f"100점 만점에 고작 {_pct}점?"; _sub = "이 정도면 토익 포기각 아닌가요? 🤔"
+        _taunt = "찍어서 맞춘 거 다 알아 😂"; _sub = "운도 실력이라고? 그건 토익엔 없어 🙃"
     elif _pct <= 40:
-        _taunt = f"{_pct}점... 열심히 했다고요?"; _sub = "이걸로 취업하겠다는 건 꿈도 꾸지 마세요 😂"
-    elif _pct <= 60:
-        _taunt = f"겨우 {_pct}점이요?"; _sub = "평균도 못 미치는데 자신감은 만점이시네 👀"
+        _taunt = f"겨우 {_sc}개... 어법이 이 정도면 문장도 못 읽겠다 😤"; _sub = "접속사? 수일치? 기초부터 다시 해"
     else:
-        _taunt = f"{_pct}점... 아깝다!"; _sub = "조금만 더 했으면 됐는데, 결국 패배자 😤"
+        _taunt = "딱 한 문제 차이야. 억울하지? 😭"; _sub = "그 한 문제가 토익 점수 50점 차이야"
     components.html(f"""
     <style>
     *{{margin:0;padding:0;box-sizing:border-box;}}
