@@ -464,185 +464,155 @@ elif st.session_state.phase=="lost":
 # PHASE: BRIEFING
 # ════════════════════════════════════════
 elif st.session_state.phase=="briefing":
-    # 브리핑 하단 버튼 10% 작게 + 화살표 작게
-    st.markdown("""
-<style>
-@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@700;900&family=Rajdhani:wght@600;700&display=swap');
-.stApp{background:#06060e!important;color:#eeeeff!important;}
-section[data-testid="stSidebar"]{display:none!important;}
-header[data-testid="stHeader"]{background:transparent!important;height:0!important;min-height:0!important;overflow:hidden!important;}
-.block-container{padding-top:0!important;padding-bottom:0!important;margin-top:-8px!important;}
-.ah{text-align:center;padding:0 0 0 0;}
-.ah h1{font-family:'Orbitron',monospace!important;font-size:2rem;font-weight:900;margin:0;background:linear-gradient(90deg,#00d4ff,#ffffff,#00d4ff);background-size:200%;-webkit-background-clip:text;-webkit-text-fill-color:transparent;animation:titleShine 3s linear infinite;letter-spacing:4px;}
-@keyframes titleShine{0%{background-position:200% center}100%{background-position:-200% center}}
-@keyframes p5bounce{0%,100%{transform:translateY(0);}30%{transform:translateY(-6px);}60%{transform:translateY(-3px);}80%{transform:translateY(-5px);}}
-@keyframes p5flash{0%,75%,100%{box-shadow:0 0 12px rgba(0,212,255,0.15);}88%{box-shadow:0 0 45px rgba(0,255,255,1),0 0 90px rgba(0,212,255,0.7);}}
-button[kind="primary"],button[kind="secondary"]{background:#0d0d0d!important;color:#fff!important;border:1.5px solid rgba(0,212,255,0.5)!important;border-radius:8px!important;font-size:1.0rem!important;font-weight:500!important;padding:0.5rem 0.8rem!important;text-align:left!important;transition:none!important;animation:none!important;transform:none!important;box-shadow:none!important;min-height:38px!important;}
-button[kind="primary"] p,button[kind="secondary"] p{font-size:1.05rem!important;font-weight:700!important;color:#ddd8c8!important;text-align:left!important;}
-button[kind="primary"]:hover,button[kind="secondary"]:hover{background:rgba(0,212,255,0.08)!important;border-color:#00d4ff!important;box-shadow:0 0 25px rgba(0,212,255,0.4)!important;transform:translateY(-2px)!important;}
-.qb{border-radius:12px;padding:0.3rem 0.5rem;margin:0.05rem 0;background:#0d0d0d;}
-.qb-g,.qb-v{background:#0d0d0d!important;border:none!important;animation:none;}
-@keyframes borderGlow{0%{box-shadow:0 0 0 2px #00d4ff,0 0 15px rgba(0,212,255,0.4);}50%{box-shadow:0 0 0 2px #fff,0 0 25px rgba(0,212,255,0.6);}100%{box-shadow:0 0 0 2px #00d4ff,0 0 15px rgba(0,212,255,0.4);}}
-.qc{font-family:'Orbitron',monospace;font-size:0.72rem;font-weight:400;margin-bottom:0.3rem;letter-spacing:2px;color:#555!important;}
-.qc-g,.qc-v{color:#444;text-shadow:none;}
-.qt{font-family:'Rajdhani',sans-serif;color:#fff;font-size:0.95rem;font-weight:700;line-height:1.5;word-break:keep-all;}
-.qk{color:#00d4ff;font-weight:900;font-size:0.95rem;border-bottom:2px solid #00d4ff;text-shadow:0 0 10px rgba(0,212,255,0.8);}
-.bt{display:flex;align-items:center;justify-content:space-between;padding:0.01rem 0.8rem;border-radius:6px;margin-bottom:0;transform:scale(0.85);transform-origin:top center;margin-top:-8px;}
-.bt-g,.bt-v{background:#0d0d0d;border:1px solid rgba(0,212,255,0.4);box-shadow:0 0 15px rgba(0,212,255,0.1);}
-.bq{font-family:'Orbitron',monospace;font-size:1.6rem;font-weight:900;}
-.bq-g,.bq-v{color:#00d4ff;text-shadow:0 0 10px rgba(0,212,255,0.8);}
-.bs{font-family:'Orbitron',monospace;font-size:1.1rem;font-weight:800;color:#fff;}
-.rd-dots{display:flex;justify-content:center;gap:0.6rem;margin:0 0;}
-.rd-dot{width:22px;height:22px;border-radius:50%;border:2px solid #333;display:flex;align-items:center;justify-content:center;font-size:0.7rem;font-weight:900;}
-.rd-cur{border-color:#00d4ff!important;color:#00d4ff!important;box-shadow:0 0 10px #00d4ff!important;}
-.rd-ok{background:#00d4ff;border-color:#00d4ff;color:#000;}
-.rd-no{background:#ff2244;border-color:#ff2244;color:#fff;}
-.rd-wait{background:transparent;border-color:#333;color:#444;}
-.cg,.cv{border-radius:18px;padding:1.5rem 1.2rem;margin-bottom:0.8rem;min-height:190px;display:flex;flex-direction:column;justify-content:center;animation:none;}
-@keyframes fl{0%,100%{transform:translateY(0)}50%{transform:translateY(-6px)}}
-.cg{background:#0d0d0d;border:1.5px solid rgba(0,212,255,0.3);}
-.cv{background:#0d0d0d;border:1.5px solid rgba(0,212,255,0.2);}
-.ct{font-size:1.7rem;font-weight:900;margin-bottom:0.4rem;font-family:'Orbitron',monospace;}
-.cg .ct{color:#00d4ff;}.cv .ct{color:#88ddff;}
-.cd{font-size:1.3rem;font-weight:800;color:#ccc;line-height:1.5;}
-.wb{background:#0d0d0d;border-radius:16px;padding:1.8rem 1.5rem;margin:0.5rem 0;border:1px solid rgba(0,212,255,0.3);min-height:250px;}
-.wb-qn-ok{color:#00d4ff;}.wb-qn-no{color:#ff2244;}
-.wb-s{font-size:2.15rem;font-weight:700;color:#f0f0f0;line-height:2;margin-bottom:1rem;word-break:keep-all;}
-.wb-h{color:#00d4ff;font-weight:900;font-size:2.3rem;text-decoration:underline;text-decoration-color:#00d4ff;}
-.wb-hn{color:#ff2244;font-weight:900;font-size:2.3rem;text-decoration:underline;text-decoration-color:#ff2244;}
-.wb-k{font-size:1.6rem;font-weight:600;color:#ccc;line-height:1.7;}
-.wb-e{font-size:1.5rem;color:#aaa;padding:0.6rem 0.8rem;background:rgba(0,212,255,0.06);border-left:4px solid #00d4ff;border-radius:0 10px 10px 0;}
-.br-ban-v{border:1.5px solid #00d4ff;color:#00d4ff;}
-.br-ban-l{border:1.5px solid #ff2244;color:#ff2244;}
-.zl{color:#00d4ff!important;font-family:'Orbitron',monospace!important;letter-spacing:4px!important;}
-details{background:rgba(0,212,255,0.03)!important;border-radius:12px!important;}
-summary{color:#aaa!important;font-weight:700!important;}
-::-webkit-scrollbar{width:4px;}::-webkit-scrollbar-track{background:#0a0a0a;}
-::-webkit-scrollbar-thumb{background:rgba(0,212,255,0.4);border-radius:2px;}
-</style>
-""", unsafe_allow_html=True)
-    was_victory = st.session_state.sc>=4
-    if "br_idx" not in st.session_state: st.session_state.br_idx=0
+    st.markdown("""<style>
+    section[data-testid="stSidebar"]{display:none!important;}
+    header[data-testid="stHeader"]{height:0!important;visibility:hidden!important;}
+    .block-container{padding-top:0.2rem!important;padding-bottom:0!important;}
+    button[kind="primary"],button[kind="secondary"]{
+        background:#0c0c14!important;border:1px solid #1a1a28!important;
+        border-radius:8px!important;font-size:0.9rem!important;font-weight:600!important;
+        color:#ddd8c8!important;min-height:38px!important;
+        animation:none!important;transform:none!important;box-shadow:none!important;
+    }
+    button[kind="primary"] p,button[kind="secondary"] p{font-size:0.9rem!important;font-weight:600!important;color:#ddd8c8!important;}
+    </style>""", unsafe_allow_html=True)
+
+    was_victory = st.session_state.sc >= 3
+    if "br_idx" not in st.session_state: st.session_state.br_idx = 0
     bi = st.session_state.br_idx
     rqs = st.session_state.round_qs
     rrs = st.session_state.round_results
     num_qs = min(len(rqs), len(rrs))
     if bi >= num_qs: bi = num_qs - 1
     if bi < 0: bi = 0
-
-    def full_sent(qq, is_ok):
-        ans = qq["ch"][qq["a"]]
-        clean = ans.split(") ",1)[-1] if ") " in ans else ans
-        cls = "wb-h" if is_ok else "wb-hn"
-        return qq["text"].replace("_______", '<span class="'+cls+'">'+clean+'</span>')
-
     rn = st.session_state.round_num
     sc_v = st.session_state.sc
     wr_v = st.session_state.wrong
-    v_cls = "br-ban-v" if was_victory else "br-ban-l"
-    v_label = "VICTORY!" if was_victory else "YOU LOST"
-    ban_emoji = "\U0001f3c6"
-    st.markdown(f'<div class="br-ban {v_cls}">{ban_emoji} \ub77c\uc6b4\ub4dc {rn} \u2014 {v_label} \u2705{sc_v} \u274c{wr_v}</div>', unsafe_allow_html=True)
 
-    nc1, nc2, nc3 = st.columns([0.7, 8, 0.7])
-    with nc1:
-        if st.button("\u25c0", key="br_p", disabled=bi<=0, use_container_width=True):
+    # 상단 배너
+    if was_victory:
+        st.markdown(f'''<div style="background:#0c0c00;border:2px solid #d4af37;border-left:5px solid #d4af37;border-radius:10px;padding:8px 12px;margin-bottom:6px;">
+            <div style="font-size:1.0rem;font-weight:900;color:#d4af37;">🏆 라운드 {rn} — VICTORY!</div>
+            <div style="font-size:0.75rem;color:#886600;margin-top:2px;">✅{sc_v}문제 격파! ❌{wr_v}개 놓침</div>
+        </div>''', unsafe_allow_html=True)
+    else:
+        st.markdown(f'''<div style="background:#0c0008;border:2px solid #cc2244;border-left:5px solid #cc2244;border-radius:10px;padding:8px 12px;margin-bottom:6px;">
+            <div style="font-size:1.0rem;font-weight:900;color:#cc2244;">💀 라운드 {rn} — GAME OVER</div>
+            <div style="font-size:0.75rem;color:#661122;margin-top:2px;">✅{sc_v}문제 / ❌{wr_v}개 틀림</div>
+        </div>''', unsafe_allow_html=True)
+
+    # 네비 — ◀ 도트(클릭) ▶
+    _nc1, _nc2, _nc3 = st.columns([1, 6, 1])
+    with _nc1:
+        if st.button("◀", key="br_p", disabled=bi<=0, use_container_width=True):
             st.session_state.br_idx = bi - 1; st.rerun()
-    with nc2:
-        dots = ""
+    with _nc2:
+        _dc = st.columns(num_qs)
         for i in range(num_qs):
-            dcls = "br-dot-ok" if rrs[i] else "br-dot-no"
-            if i == bi: dcls += " br-dot-cur"
-            dots += '<div class="br-dot '+dcls+'"></div>'
-        st.markdown('<div class="br-nav">'+dots+'</div>', unsafe_allow_html=True)
-    with nc3:
-        if st.button("\u25b6", key="br_n", disabled=bi>=num_qs-1, use_container_width=True):
+            with _dc[i]:
+                _sym = "✅" if rrs[i] else "❌"
+                if st.button(f"{_sym}", key=f"dot_{i}", use_container_width=True):
+                    st.session_state.br_idx = i; st.rerun()
+    with _nc3:
+        if st.button("▶", key="br_n", disabled=bi>=num_qs-1, use_container_width=True):
             st.session_state.br_idx = bi + 1; st.rerun()
 
+    # 문제 카드
     q = rqs[bi]
     ok = rrs[bi]
-    ncls = "wb-qn-ok" if ok else "wb-qn-no"
-    sym = "\u2705" if ok else "\u274c"
-    sent = full_sent(q, ok)
-    kr = q.get("kr","")
-    exk = q.get("exk","")
+    ans_clean = q["ch"][q["a"]].split(") ",1)[-1] if ") " in q["ch"][q["a"]] else q["ch"][q["a"]]
+    if ok:
+        sent_html = q["text"].replace("_______", f'<span style="color:#50c878;font-weight:900;border-bottom:2px solid #50c878;">{ans_clean}</span>')
+        card_border = "#00d4ff"
+        qnum_color = "#50c878"
+        qnum_sym = "✅"
+    else:
+        sent_html = q["text"].replace("_______", f'<span style="color:#ff4466;font-weight:900;text-decoration:line-through;margin-right:4px;">?</span><span style="color:#50c878;font-weight:900;border-bottom:2px solid #50c878;">{ans_clean}</span>')
+        card_border = "#cc2244"
+        qnum_color = "#ff4466"
+        qnum_sym = "❌"
 
-    wb = f'<div class="wb">'
-    wb += f'<div class="wb-qn {ncls}">{sym} Q{bi+1} / {num_qs}</div>'
-    wb += f'<div class="wb-s">{sent}</div>'
-    wb += f'<div class="wb-d"></div>'
-    wb += f'<div class="wb-k">\U0001f4d6 {kr}</div>'
-    wb += f'<div class="wb-e">\U0001f4a1 {exk}</div>'
-    wb += f'</div>'
-    st.markdown(wb, unsafe_allow_html=True)
+    kr = q.get("kr", "")
+    exk = q.get("exk", "")
+    cat = q.get("cat", "")
 
-    sv_c1, sv_c2, sv_c3 = st.columns([1, 2, 1])
-    with sv_c2:
-        if st.button("\U0001f4be \uc774 \ubb38\uc81c \uc800\uc7a5", key=f"sv_{q['id']}_{bi}", type="primary", use_container_width=True):
+    st.markdown(f'''<div style="background:#0c0c18;border:1.5px solid {card_border};border-left:4px solid {card_border};border-radius:12px;padding:10px 12px;margin:4px 0;">
+        <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:6px;">
+            <span style="background:#0a0a20;border:1px solid #222;border-radius:10px;padding:2px 10px;font-size:0.78rem;font-weight:700;color:{qnum_color};">{qnum_sym} Q{bi+1}/{num_qs}</span>
+            <span style="font-size:0.7rem;color:#444;">{cat}</span>
+        </div>
+        <div style="font-size:1.0rem;font-weight:700;color:#eeeeff;line-height:1.7;margin-bottom:8px;">{sent_html}</div>
+        <div style="font-size:0.8rem;color:#9aa5b4;margin-bottom:6px;">📖 {kr}</div>
+        <div style="background:#081008;border-left:3px solid #50c878;border-radius:0 8px 8px 0;padding:6px 10px;">
+            <div style="font-size:0.8rem;color:#50c878;font-weight:700;">💡 {exk}</div>
+        </div>
+    </div>''', unsafe_allow_html=True)
+
+    # 저장 버튼
+    _sv1, _sv2 = st.columns([2, 1])
+    with _sv2:
+        if st.button("⚔️ 오답전장 저장", key=f"sv_{q['id']}_{bi}", use_container_width=True):
             item = {"id":q["id"],"text":q["text"],"ch":q["ch"],"a":q["a"],"ex":q.get("ex",""),"exk":q.get("exk",""),"cat":q.get("cat",""),"kr":q.get("kr",""),"tp":q.get("tp","grammar")}
             save_to_storage([item])
-            st.success("\u2705 \uc800\uc7a5 \uc644\ub8cc!")
+            st.success("✅ 오답전장에 저장!")
 
-    dot_cols = st.columns(num_qs)
-    for i in range(num_qs):
-        with dot_cols[i]:
-            oi = rrs[i]
-            si = "\u2705" if oi else "\u274c"
-            bt = "primary" if i == bi else "secondary"
-            if st.button(f"{si}{i+1}", key=f"brd_{i}", type=bt, use_container_width=True):
-                st.session_state.br_idx = i; st.rerun()
+    st.markdown('<div style="height:1px;background:#1a1a2a;margin:8px 0;"></div>', unsafe_allow_html=True)
 
-    st.markdown("---")
+    # 하단 버튼
     if was_victory:
-        bc = st.columns(3)
-        with bc[0]:
-            nrd = st.session_state.round_num + 1
-            if st.button(f"\u2694\ufe0f \ub77c\uc6b4\ub4dc {nrd}!", type="primary", use_container_width=True):
-                st.session_state.round_num += 1
-                for k in ["cq","qi","sc","wrong","ta","ans","sel","round_qs","round_results","br_idx"]:
-                    if k in st.session_state: del st.session_state[k]
-                for k,v in D.items():
-                    if k not in st.session_state: st.session_state[k]=v
-                qs = pick5(st.session_state.mode)
-                st.session_state.round_qs = qs; st.session_state.cq = qs[0]
-                st.session_state.qst = time.time(); st.session_state.phase = "battle"; st.rerun()
-        with bc[1]:
-            if st.button("\U0001f3e0 \ub85c\ube44", type="secondary", use_container_width=True):
-                for k in ["cq","qi","sc","wrong","ta","ans","sel","round_qs","round_results","br_idx"]:
-                    if k in st.session_state: del st.session_state[k]
-                for k,v in D.items():
-                    if k not in st.session_state: st.session_state[k]=v
-                st.session_state.phase = "lobby"; st.rerun()
-        with bc[2]:
-            if st.button("\U0001f30d \uba54\uc778\ud5c8\ube0c", type="secondary", use_container_width=True):
-                st.session_state._p5_just_left = True
-                st.session_state.ans = False
-                st.session_state["_battle_entry_ans_reset"] = True
-                st.switch_page("main_hub.py")
+        nrd = st.session_state.round_num + 1
+        st.markdown('''<style>
+        button[data-testid="stBaseButton-primary"]{
+            background:#0c0c00!important;border:2px solid #d4af37!important;
+            border-left:4px solid #d4af37!important;color:#d4af37!important;
+            font-size:1.0rem!important;font-weight:900!important;
+            min-height:44px!important;animation:none!important;border-radius:12px!important;
+        }
+        button[data-testid="stBaseButton-primary"] p{color:#d4af37!important;font-size:1.0rem!important;font-weight:900!important;}
+        </style>''', unsafe_allow_html=True)
+        if st.button(f"⚔️ 라운드 {nrd}! 한 번 더 싸워서 완전 정복!", type="primary", use_container_width=True):
+            st.session_state.round_num += 1
+            for k in ["cq","qi","sc","wrong","ta","ans","sel","round_qs","round_results","br_idx"]:
+                if k in st.session_state: del st.session_state[k]
+            for k,v in D.items():
+                if k not in st.session_state: st.session_state[k]=v
+            qs = pick5(st.session_state.mode)
+            st.session_state.round_qs = qs; st.session_state.cq = qs[0]
+            st.session_state.qst = time.time(); st.session_state.phase = "battle"; st.rerun()
     else:
-        bc = st.columns(3)
-        with bc[0]:
-            if st.button("\U0001f504 \uc7ac\ub3c4\uc804", type="primary", use_container_width=True):
-                for k in ["cq","qi","sc","wrong","ta","ans","sel","round_qs","round_results","br_idx"]:
-                    if k in st.session_state: del st.session_state[k]
-                for k,v in D.items():
-                    if k not in st.session_state: st.session_state[k]=v
-                qs = pick5(st.session_state.mode)
-                st.session_state.round_qs = qs; st.session_state.cq = qs[0]
-                st.session_state.qst = time.time(); st.session_state.phase = "battle"; st.rerun()
-        with bc[1]:
-            if st.button("\U0001f3e0 \ub85c\ube44", type="secondary", use_container_width=True):
-                for k in ["cq","qi","sc","wrong","ta","ans","sel","round_qs","round_results","br_idx"]:
-                    if k in st.session_state: del st.session_state[k]
-                for k,v in D.items():
-                    if k not in st.session_state: st.session_state[k]=v
-                st.session_state.phase = "lobby"; st.rerun()
-        with bc[2]:
-            if st.button("\U0001f30d \uba54\uc778\ud5c8\ube0c", type="secondary", use_container_width=True):
-                st.session_state._p5_just_left = True
-                st.session_state.ans = False
-                st.session_state["_battle_entry_ans_reset"] = True
-                st.switch_page("main_hub.py")
+        st.markdown('''<style>
+        button[data-testid="stBaseButton-primary"]{
+            background:#0a0008!important;border:2px solid #cc2244!important;
+            border-left:4px solid #cc2244!important;color:#ff4466!important;
+            font-size:1.0rem!important;font-weight:900!important;
+            min-height:44px!important;animation:none!important;border-radius:12px!important;
+        }
+        button[data-testid="stBaseButton-primary"] p{color:#ff4466!important;font-size:1.0rem!important;font-weight:900!important;}
+        </style>''', unsafe_allow_html=True)
+        if st.button("🔥 설욕전! 다시 싸운다!", type="primary", use_container_width=True):
+            for k in ["cq","qi","sc","wrong","ta","ans","sel","round_qs","round_results","br_idx"]:
+                if k in st.session_state: del st.session_state[k]
+            for k,v in D.items():
+                if k not in st.session_state: st.session_state[k]=v
+            qs = pick5(st.session_state.mode)
+            st.session_state.round_qs = qs; st.session_state.cq = qs[0]
+            st.session_state.qst = time.time(); st.session_state.phase = "battle"; st.rerun()
+
+    _b1, _b2 = st.columns(2)
+    with _b1:
+        if st.button("🔄 로비", key="br_lobby", use_container_width=True):
+            for k in ["cq","qi","sc","wrong","ta","ans","sel","round_qs","round_results","br_idx"]:
+                if k in st.session_state: del st.session_state[k]
+            for k,v in D.items():
+                if k not in st.session_state: st.session_state[k]=v
+            st.session_state.phase = "lobby"; st.rerun()
+    with _b2:
+        if st.button("🏠 메인", key="br_main", use_container_width=True):
+            st.session_state._p5_just_left = True
+            st.session_state.ans = False
+            st.session_state["_battle_entry_ans_reset"] = True
+            st.switch_page("main_hub.py")
+
 
 # PHASE: LOBBY
 # ════════════════════════════════════════
