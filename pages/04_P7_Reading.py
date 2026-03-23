@@ -1098,15 +1098,31 @@ elif st.session_state.p7_phase == "briefing":
         padding:0!important;
     }
     </style>""", unsafe_allow_html=True)
+    st.markdown('''<style>
+    .block-container{padding-top:0.1rem!important;}
+    div[data-testid="stHorizontalBlock"] button{
+        border:2px solid #4488ff!important;
+        border-radius:8px!important;
+        background:#0a1a2e!important;
+        color:#4488ff!important;
+        font-size:1.1rem!important;
+        font-weight:900!important;
+    }
+    div[data-testid="stHorizontalBlock"] button p{
+        color:#4488ff!important;
+        font-size:1.1rem!important;
+        font-weight:900!important;
+    }
+    </style>''', unsafe_allow_html=True)
     # 배너만 표시
-    st.markdown(f'<div class="p7-ban {v_cls}">{data["title"]} — {v_label} ✅{ok_cnt} ❌{len(answers)-ok_cnt}</div>', unsafe_allow_html=True)
+    st.markdown(f'<div class="p7-ban {v_cls}" style="margin-top:0!important;padding:6px 10px!important;">{data["title"]} — {v_label} ✅{ok_cnt} ❌{len(answers)-ok_cnt}</div>', unsafe_allow_html=True)
 
     # ─── 탭 [1][2][3] ───
     tab_cols = st.columns(num_steps)
     for ti in range(num_steps):
         with tab_cols[ti]:
             if ti == bi:
-                st.markdown(f'<div style="background:#185FA5;color:#E6F1FB;border-radius:8px;padding:6px;text-align:center;font-size:1.1rem;font-weight:900;">{ti+1}</div>', unsafe_allow_html=True)
+                st.markdown(f'<div style="background:#185FA5;color:#ffffff;border:2px solid #4488ff;border-radius:8px;padding:6px;text-align:center;font-size:1.1rem;font-weight:900;">{ti+1}</div>', unsafe_allow_html=True)
             else:
                 if st.button(str(ti+1), key=f"br_tab_{ti}", use_container_width=True):
                     st.session_state.p7_br_idx = ti; st.rerun()
@@ -1193,20 +1209,24 @@ elif st.session_state.p7_phase == "briefing":
                 <div style="text-align:right;margin-top:6px;font-size:0.85rem;color:#44ff88;font-weight:700;">✅ 저장완료!</div>
             </div>''', unsafe_allow_html=True)
         else:
-            st.markdown(f'''<div style="background:#fffff5;border:1px solid #e8e0c8;border-radius:12px;padding:12px 14px;margin-bottom:2px;background-image:repeating-linear-gradient(transparent,transparent 27px,#e8e0c8 27px,#e8e0c8 28px);background-position:0 12px;">
+            save_btn_html = f'''<div style="background:#fffff5;border:1px solid #e8e0c8;border-radius:12px;padding:12px 14px;margin-bottom:6px;background-image:repeating-linear-gradient(transparent,transparent 27px,#e8e0c8 27px,#e8e0c8 28px);background-position:0 12px;">
                 <div style="font-size:1.0rem;font-weight:700;color:#1a1a1a;line-height:1.8;">{_hl}</div>
                 <div style="font-size:0.85rem;color:#666;margin-top:4px;">{sent_kr}</div>
-            </div>''', unsafe_allow_html=True)
-            st.markdown('''<style>
-            div[data-testid="stBaseButton-secondary"]{margin-top:0!important;}
-            </style>''', unsafe_allow_html=True)
-            if st.button("저장", key=f"br_sv_{bi}_{si}", use_container_width=True):
+                <div style="text-align:right;margin-top:8px;">
+                    <span style="display:inline-block;background:#1a1a2e;border:1.5px solid #ffd700;border-radius:8px;padding:4px 16px;color:#ffd700;font-size:0.85rem;font-weight:700;cursor:pointer;" id="fakebtn_{bi}_{si}">저장</span>
+                </div>
+            </div>'''
+            st.markdown(save_btn_html, unsafe_allow_html=True)
+            if st.button("저장", key=f"br_sv_{bi}_{si}", use_container_width=False):
                 sent_data = dict(s)
                 sent_data["sentences"] = [sent]
                 sent_data["kr"] = sent_kr
                 save_expressions(s.get("expressions", []), step_data=sent_data)
                 st.session_state[sent_key] = True
                 st.rerun()
+            st.markdown('''<style>
+            div[data-testid="stBaseButton-secondary"]{display:none!important;}
+            </style>''', unsafe_allow_html=True)
 
     st.markdown('''<style>
     div[data-testid="stHorizontalBlock"]:last-of-type button{
