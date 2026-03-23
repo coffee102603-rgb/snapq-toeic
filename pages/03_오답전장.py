@@ -722,18 +722,64 @@ elif st.session_state.sg_phase == "p5_exam_result":
     results = st.session_state.sg_exam_results
     ok_cnt = sum(results)
     passed = not st.session_state.sg_exam_wrong and ok_cnt == 5
-    # 승률 저장
+    import random as _rnd3
     if not passed:
-        st.markdown('<div style="text-align:center;font-size:3rem;font-weight:900;color:#ff4444;text-shadow:0 0 20px #ff0000;">💀 FAIL! 💀</div>', unsafe_allow_html=True)
-    else:
-        st.markdown('<div style="text-align:center;font-size:3rem;font-weight:900;color:#44ff88;text-shadow:0 0 20px #00ff66;">🎉 PASS! 🎉</div>', unsafe_allow_html=True)
-    st.markdown(f'<div style="text-align:center;font-size:1.5rem;color:#ccc;font-weight:700;">✅ {ok_cnt} / 5</div>', unsafe_allow_html=True)
-
-    c1, c2 = st.columns(2)
-    with c1:
-        if st.button("🔄 다시!", key="retry_exam", type="primary", use_container_width=True):
+        st.markdown('''<style>.stApp{background:#080000!important;}</style>''', unsafe_allow_html=True)
+        st.markdown('''<div style="text-align:center;padding:1rem 0 0.5rem 0;">
+            <div style="font-size:1rem;letter-spacing:4px;opacity:0.6;">💣 🔥 💥 ☠️ ⚡ 💣 🔥</div>
+            <div style="font-size:2.8rem;font-weight:900;color:#ff2200;margin:6px 0;">☠️ 전멸!</div>
+            <div style="font-size:0.95rem;color:#ff6600;font-weight:700;">폭탄이 터졌다... 넌 산산조각!</div>
+        </div>''', unsafe_allow_html=True)
+        st.markdown(f'''<div style="background:#1a0000;border:1.5px solid #ff4400;border-radius:12px;padding:10px;text-align:center;margin:8px 0;">
+            <div style="font-size:1.6rem;font-weight:900;color:#ff8888;">💀 {ok_cnt} / 5</div>
+        </div>''', unsafe_allow_html=True)
+        _nag = _rnd3.choice([
+            "🧠 에빙하우스: 복습 없이 24시간 후 80% 망각!",
+            "💀 인간은 틀린 문제를 또 틀릴 확률 72%",
+            "🔥 토익 990은 오답노트를 3번 본다...",
+            "⚡ 3번 반복하면 장기기억 전환율 3배!",
+            "💣 폭탄보다 무서운 건 복습 안 하는 것!",
+        ])
+        st.markdown(f'''<div style="background:#120000;border:1px solid #661100;border-radius:10px;padding:8px;text-align:center;margin-bottom:8px;">
+            <div style="font-size:0.85rem;color:#ff6644;font-weight:700;">{_nag}</div>
+        </div>''', unsafe_allow_html=True)
+        if st.button("⚔️ 설욕전! 다시 싸운다!", key="retry_exam", type="primary", use_container_width=True):
             st.session_state.sg_phase = "lobby"; st.session_state.rv_battle = None; st.session_state.rv_mode = None; st.rerun()
-    with c2:
+        _c1, _c2 = st.columns(2)
+        with _c1:
+            if st.button("📖 오답 격파", key="retry_study", use_container_width=True):
+                st.session_state.sg_phase = "p5_study"; st.session_state.sg_idx = 0; st.rerun()
+        with _c2:
+            if st.button("🔥 오답전장", key="retry_lobby", use_container_width=True):
+                st.session_state.sg_phase = "lobby"; st.session_state.rv_battle = None; st.session_state.rv_mode = None; st.rerun()
+    else:
+        st.markdown('''<style>.stApp{background:#000a00!important;}</style>''', unsafe_allow_html=True)
+        st.markdown('''<div style="text-align:center;padding:1rem 0 0.5rem 0;">
+            <div style="font-size:1rem;letter-spacing:4px;opacity:0.6;">🏆 ⭐ ✨ 🎖️ 🌟 🏆 ⭐</div>
+            <div style="font-size:2.8rem;font-weight:900;color:#44ff88;margin:6px 0;">🎖️ 생존!</div>
+            <div style="font-size:0.95rem;color:#88ffaa;font-weight:700;">폭탄을 이겨냈다! 진짜 전사!</div>
+        </div>''', unsafe_allow_html=True)
+        st.markdown(f'''<div style="background:#001a00;border:1.5px solid #44ff88;border-radius:12px;padding:10px;text-align:center;margin:8px 0;">
+            <div style="font-size:1.6rem;font-weight:900;color:#44ff88;">🏆 {ok_cnt} / 5</div>
+        </div>''', unsafe_allow_html=True)
+        st.markdown('''<div style="background:#001200;border:1px solid #226633;border-radius:10px;padding:8px;text-align:center;margin-bottom:8px;">
+            <div style="font-size:0.85rem;color:#66dd88;font-weight:700;">⚡ 3번 반복하면 장기기억 전환율 3배!</div>
+            <div style="font-size:0.75rem;color:#335533;margin-top:2px;">지금 이 기세로 한 번 더!</div>
+        </div>''', unsafe_allow_html=True)
+        if st.button("⚡ 한 번 더! 완전 정복!", key="retry_exam", type="primary", use_container_width=True):
+            st.session_state.sg_phase = "lobby"; st.session_state.rv_battle = None; st.session_state.rv_mode = None; st.rerun()
+        _c1, _c2 = st.columns(2)
+        with _c1:
+            if st.button("📖 오답 격파", key="retry_study", use_container_width=True):
+                st.session_state.sg_phase = "p5_study"; st.session_state.sg_idx = 0; st.rerun()
+        with _c2:
+            if st.button("🔥 오답전장", key="retry_lobby", use_container_width=True):
+                st.session_state.sg_phase = "lobby"; st.session_state.rv_battle = None; st.session_state.rv_mode = None; st.rerun()
+
+    _dummy_c1, _dummy_c2 = st.columns(2)
+    with _dummy_c1:
+        pass
+    with _dummy_c2:
         if st.button("🔥 오답전장", key="back_exam", type="secondary", use_container_width=True):
             st.session_state.sg_phase = "lobby"; st.session_state.rv_battle = None; st.session_state.rv_mode = None; st.rerun()
 # ════════════════════════════════
