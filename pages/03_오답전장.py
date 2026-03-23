@@ -295,10 +295,14 @@ if st.session_state.sg_phase == "lobby":
 
     button[data-testid="stBaseButton-primary"]{
         background:linear-gradient(135deg,#3a1500,#7a2a00,#aa4400)!important;
-        border:3px solid #ffd700!important;font-size:1.6rem!important;font-weight:900!important;
-        padding:1.2rem!important;color:#ffd700!important;border-radius:16px!important;
+        border:3px solid #ffd700!important;font-size:1.8rem!important;font-weight:900!important;
+        padding:1.2rem!important;color:#ffffff!important;border-radius:16px!important;
+        min-height:68px!important;
         animation:firePulse 1.5s ease infinite!important;
-        text-shadow:0 0 10px rgba(255,215,0,0.8)!important;
+        text-shadow:0 0 15px rgba(255,255,255,0.9)!important;
+    }
+    button[data-testid="stBaseButton-primary"] p{
+        font-size:1.8rem!important;font-weight:900!important;color:#ffffff!important;
     }
     #MainMenu{visibility:hidden!important;}header[data-testid="stHeader"]{height:0!important;visibility:hidden!important;}div[data-testid="stToolbar"]{visibility:hidden!important;}.block-container{padding-top:0.2rem!important;}
     </style>""", unsafe_allow_html=True)
