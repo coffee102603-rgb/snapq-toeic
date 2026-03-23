@@ -1,4 +1,4 @@
-"""P7 Reading Arena — 60초 독해 전투 (V2)"""
+﻿"""P7 Reading Arena — 60초 독해 전투 (V2)"""
 import streamlit as st
 import streamlit.components.v1 as components
 from streamlit_autorefresh import st_autorefresh
