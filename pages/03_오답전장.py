@@ -331,19 +331,19 @@ if st.session_state.sg_phase == "lobby":
             <div style="text-align:center;font-size:0.75rem;font-weight:900;color:#aa99ff;letter-spacing:2px;margin-bottom:8px;">📊 나의 전투 기록</div>
             <div style="display:grid;grid-template-columns:1fr 1fr 1fr 1fr;text-align:center;gap:4px;border-bottom:1px solid #2a2a3a;padding-bottom:8px;">
                 <div style="border-right:1px solid #2a2a3a;">
-                    <div style="font-size:0.65rem;color:#666;margin-bottom:3px;">P5 정답률</div>
+                    <div style="font-size:0.7rem;color:#aaa;margin-bottom:3px;">P5 정답률</div>
                     <div style="font-size:1.4rem;font-weight:900;color:#ffcc44;">{p5_rate_disp}</div>
                 </div>
                 <div style="border-right:1px solid #2a2a3a;">
-                    <div style="font-size:0.65rem;color:#666;margin-bottom:3px;">P5 저장</div>
+                    <div style="font-size:0.7rem;color:#aaa;margin-bottom:3px;">P5 저장</div>
                     <div style="font-size:1.4rem;font-weight:900;color:#44aaff;">{p5_save_cnt}개</div>
                 </div>
                 <div style="border-right:1px solid #2a2a3a;">
-                    <div style="font-size:0.65rem;color:#666;margin-bottom:3px;">P7 무기</div>
+                    <div style="font-size:0.7rem;color:#aaa;margin-bottom:3px;">P7 무기</div>
                     <div style="font-size:1.4rem;font-weight:900;color:#44aaff;">{p7_weapon_cnt}개</div>
                 </div>
                 <div>
-                    <div style="font-size:0.65rem;color:#666;margin-bottom:3px;">최고기록</div>
+                    <div style="font-size:0.7rem;color:#aaa;margin-bottom:3px;">최고기록</div>
                     <div style="font-size:1.4rem;font-weight:900;color:#ff8844;">{combo_disp}</div>
                 </div>
             </div>
@@ -351,7 +351,7 @@ if st.session_state.sg_phase == "lobby":
                 <div style="background:#1a1a2a;border-radius:4px;height:6px;">
                     <div style="background:#7766ff;height:6px;border-radius:4px;width:{p5_rate_val}%;opacity:0.8;"></div>
                 </div>
-                <div style="text-align:right;font-size:0.65rem;color:#555;margin-top:2px;">총 전투력 {p5_rate_val}%</div>
+                <div style="text-align:right;font-size:0.7rem;color:#888;margin-top:2px;">총 전투력 {p5_rate_val}%</div>
             </div>
         </div>''', unsafe_allow_html=True)
 
@@ -361,8 +361,8 @@ if st.session_state.sg_phase == "lobby":
                 <div style="background:#2a0808;padding:6px;text-align:center;font-size:0.8rem;font-weight:900;color:#ff8866;letter-spacing:1px;">P5 오답전장</div>
                 <div style="padding:14px 10px 10px 10px;text-align:center;">
                     <div style="font-size:2.2rem;">⚔️</div>
-                    <div style="font-size:0.95rem;color:#ffaa88;margin-top:4px;">문법 · 어휘</div>
-                    <div style="font-size:0.75rem;color:#666;margin-top:2px;">틀린 문제 박살!</div>
+                    <div style="font-size:1.0rem;color:#ffcc99;margin-top:4px;font-weight:700;">문법 · 어휘</div>
+                    <div style="font-size:0.8rem;color:#aaa;margin-top:2px;">틀린 문제 박살!</div>
                 </div>
             </div>''', unsafe_allow_html=True)
             if st.button("출격!", key="rv_p5", type="primary", use_container_width=True):
@@ -372,8 +372,8 @@ if st.session_state.sg_phase == "lobby":
                 <div style="background:#081428;padding:6px;text-align:center;font-size:0.8rem;font-weight:900;color:#66aaff;letter-spacing:1px;">P7 오답전장</div>
                 <div style="padding:14px 10px 10px 10px;text-align:center;">
                     <div style="font-size:2.2rem;">📖</div>
-                    <div style="font-size:0.95rem;color:#88ccff;margin-top:4px;">독해 · 무기 획득</div>
-                    <div style="font-size:0.75rem;color:#666;margin-top:2px;">문장으로 무기 장착!</div>
+                    <div style="font-size:1.0rem;color:#aaddff;margin-top:4px;font-weight:700;">독해 · 무기 획득</div>
+                    <div style="font-size:0.8rem;color:#aaa;margin-top:2px;">문장으로 무기 장착!</div>
                 </div>
             </div>''', unsafe_allow_html=True)
             if st.button("출격!", key="rv_p7", type="primary", use_container_width=True):
