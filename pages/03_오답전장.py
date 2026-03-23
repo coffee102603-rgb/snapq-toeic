@@ -505,15 +505,18 @@ if st.session_state.sg_phase == "lobby":
                     st.session_state.rv_mode="p7e"; st.session_state.sg_phase="combo_rush"; st.rerun()
                 else: st.warning("최소 3문장 필요!")
 
-        # 문장 무기고 — 작게
-        st.markdown(f'''<div style="background:#0a0814;border:1.5px solid #7766ff;border-radius:10px;padding:10px 14px;margin-top:10px;display:flex;justify-content:space-between;align-items:center;">
-            <div>
-                <div style="font-size:1.0rem;font-weight:900;color:#ccbbff;">📦 문장 무기고</div>
-                <div style="font-size:0.75rem;color:#777;margin-top:2px;">보유 {total_words}개 · 불필요한 무기 제거</div>
-            </div>
-        </div>''', unsafe_allow_html=True)
-        if st.button("관리 ▶", key="rv_vault", use_container_width=False):
-            st.session_state.rv_mode="p7_vault"; st.rerun()
+        # 문장 무기고 — 오른쪽 버튼
+        st.markdown('<div style="margin-top:10px;"></div>', unsafe_allow_html=True)
+        _p7c5, _p7c6 = st.columns([3, 1])
+        with _p7c5:
+            st.markdown(f'''<div style="background:#0a0814;border:2px solid #7766ff;border-radius:12px;padding:12px 14px;min-height:64px;">
+                <div style="font-size:1.05rem;font-weight:900;color:#ccbbff;">📦 문장 무기고</div>
+                <div style="font-size:0.82rem;color:#aaa;margin-top:4px;font-weight:600;">보유 {total_words}개 · 불필요한 무기 제거</div>
+            </div>''', unsafe_allow_html=True)
+        with _p7c6:
+            st.markdown('<div style="height:4px;"></div>', unsafe_allow_html=True)
+            if st.button("📦 관리", key="rv_vault", use_container_width=True):
+                st.session_state.rv_mode="p7_vault"; st.rerun()
 
     # ━━━ 항상 고정 네비게이션 ━━━
     if st.session_state.get("rv_mode") != "p7_vault":
