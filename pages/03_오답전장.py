@@ -1,4 +1,4 @@
-﻿"""통합 오답전장 — P5 학습/시험 + VOCA 학습/시험"""
+"""통합 오답전장 — P5 학습/시험 + VOCA 학습/시험"""
 import streamlit as st
 import streamlit.components.v1 as components
 import json, os, random, time, re
@@ -736,10 +736,21 @@ elif st.session_state.sg_phase == "survival":
                     "😂 이 문장이 웃겨? 외우면 더 웃길 거야!",
                 ]
                 msg=_rnd2.choice(funny_msgs)
-                st.markdown(f'''<div style="background:#1a0a00;border:2px solid #ff8844;border-radius:14px;padding:10px 14px;margin-bottom:8px;text-align:center;">
-                    <div style="font-size:1.05rem;font-weight:800;color:#ffaa55;">{msg}</div>
+                # 정답으로 채워진 문장 표시
+                correct_sent=sentence
+                ans_parts=correct_sent.split()
+                ans_html=""
+                for _w in ans_parts:
+                    _clean=_w.strip(".,!?;:()")
+                    if any(_clean.lower()==_b.lower() for _b in blank_order):
+                        ans_html+=f'<span style="background:#0a2a0a;border:2px solid #44ff88;border-radius:8px;padding:2px 10px;color:#44ff88;font-weight:900;margin:0 2px;">{_w}</span> '
+                    else:
+                        ans_html+=f'<span style="color:#ddddff;">{_w}</span> '
+                st.markdown(f'''<div style="background:#0a1a0a;border:2px solid #44ff88;border-radius:14px;padding:12px 14px;margin-bottom:8px;">
+                    <div style="font-size:0.7rem;color:#44ff88;letter-spacing:2px;margin-bottom:6px;">✅ 정답 문장</div>
+                    <div style="font-size:1.05rem;font-weight:600;line-height:2.0;">{ans_html}</div>
                 </div>''', unsafe_allow_html=True)
-                # 위 네모: 정답으로 채워진 문장
+                # 잔소리 멘트 (1번만)
                 st.markdown(f'''<div style="background:#1a0a00;border:2px solid #ff8844;border-radius:14px;padding:10px 14px;margin-bottom:8px;text-align:center;">
                     <div style="font-size:1.05rem;font-weight:800;color:#ffaa55;">{msg}</div>
                 </div>''', unsafe_allow_html=True)
@@ -1003,7 +1014,6 @@ elif st.session_state.sg_phase == "combo_result":
     with c3:
         if st.button("🔥 오답전장으로\\n귀환", key="cb_back", type="secondary", use_container_width=True):
             st.session_state.sg_phase = "lobby"; st.session_state.rv_battle = None; st.session_state.rv_mode = None; st.rerun()
-
 
 
 
