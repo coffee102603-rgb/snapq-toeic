@@ -647,6 +647,7 @@ elif st.session_state.sg_phase == "p5_study":
                 st.session_state.sg_phase = "p5_exam"; st.rerun()
             else: st.warning("최소 5문제 필요!")
     with _rb5:
+        st.markdown('<div style="height:2px;"></div>', unsafe_allow_html=True)
         if st.button("↩ 돌아가기", key="back_lobby", use_container_width=True):
             st.session_state.sg_phase = "lobby"; st.session_state.rv_battle = None; st.session_state.rv_mode = None; st.rerun()
 
