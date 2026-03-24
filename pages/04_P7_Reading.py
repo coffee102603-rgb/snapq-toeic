@@ -1304,7 +1304,7 @@ elif st.session_state.p7_phase == "briefing":
 
     st.markdown(f'''<div style="background:#0a2a0a;border:2px solid #44ff88;border-radius:12px;padding:10px 14px;margin-bottom:8px;">
         <div style="font-size:0.85rem;font-weight:700;color:#888;margin-bottom:4px;">[Q{bi+1}] {s["question"]}</div>
-        <div style="font-size:1.0rem;font-weight:900;color:#44ff88;">{sym} {correct_choice}</div>
+        <div style="font-size:1.0rem;font-weight:900;color:#4488cc;">{sym} {correct_choice}</div>
         ''' + (f'<div style="font-size:0.85rem;color:#88dd88;margin-top:2px;">{answer_kr}</div>' if answer_kr else "") + '''
     </div>''', unsafe_allow_html=True)
 
@@ -1324,15 +1324,15 @@ elif st.session_state.p7_phase == "briefing":
                 try: _hl = _re3.sub(f"(?i)({_re3.escape(_ex)})", f'<span style="{_mark_style}">\\1</span>', _hl)
                 except: pass
         if is_saved:
-            st.markdown(f'''<div style="background:#0a2a0a;border:1.5px solid #44ff88;border-radius:12px;padding:12px 14px;margin-bottom:6px;">
-                <div style="font-size:1.0rem;font-weight:700;color:#ffffff;line-height:1.7;">{_hl}</div>
-                <div style="font-size:0.85rem;color:#88dd88;margin-top:4px;">{sent_kr}</div>
-                <div style="text-align:right;margin-top:6px;font-size:0.9rem;color:#44ff88;font-weight:900;">🗡️ 무기 장착 완료!</div>
+            st.markdown(f'''<div style="background:#060c14;border:1.5px solid #4488cc;border-radius:12px;padding:12px 14px;margin-bottom:6px;">
+                <div style="font-size:1.0rem;font-weight:700;color:#e8eef8;line-height:1.7;">{_hl}</div>
+                <div style="font-size:0.85rem;color:#5a8aaa;margin-top:4px;">{sent_kr}</div>
+                <div style="text-align:right;margin-top:6px;font-size:0.9rem;color:#4488cc;font-weight:900;">🗡️ 무기 장착 완료!</div>
             </div>''', unsafe_allow_html=True)
         else:
-            save_btn_html = f'''<div style="background:#fffff5;border:1px solid #e8e0c8;border-radius:12px;padding:12px 14px;margin-bottom:2px;background-image:repeating-linear-gradient(transparent,transparent 27px,#e8e0c8 27px,#e8e0c8 28px);background-position:0 12px;">
-                <div style="font-size:1.0rem;font-weight:700;color:#1a1a1a;line-height:1.8;">{_hl}</div>
-                <div style="font-size:0.85rem;color:#666;margin-top:4px;">{sent_kr}</div>
+            save_btn_html = f'''<div style="background:#060c14;border:1px solid #1a2a3a;border-radius:12px;padding:12px 14px;margin-bottom:2px;background-image:repeating-linear-gradient(transparent,transparent 27px,#e8e0c8 27px,#e8e0c8 28px);background-position:0 12px;">
+                <div style="font-size:1.0rem;font-weight:700;color:#e8eef8;line-height:1.8;">{_hl}</div>
+                <div style="font-size:0.85rem;color:#5a7a9a;margin-top:4px;">{sent_kr}</div>
             </div>'''
             st.markdown(save_btn_html, unsafe_allow_html=True)
             _sv_key = f"br_sv_{bi}_{si}"
