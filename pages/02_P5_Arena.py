@@ -212,7 +212,7 @@ if st.session_state.phase=="battle":
     q=st.session_state.cq
     if not q: st.session_state.phase="lobby"; st.rerun()
     ig=q.get("tp")=="grammar"; th="g" if ig else "v"; bt="primary" if ig else "secondary"
-    ej="🔴" if ig else "🔵"; tn="어법" if ig else "어휘"
+    ej="🔴" if ig else "🔵"; tn="문법" if ig else "어휘"
 
     st.markdown(f'<div class="ah"><h1>⚔️ {tn} 전장 — 라운드 {st.session_state.round_num} ⚔️</h1></div>', unsafe_allow_html=True)
 
@@ -338,7 +338,7 @@ elif st.session_state.phase=="victory":
         if st.button("📋 브리핑 보기", type="primary", use_container_width=True):
             st.session_state.phase="briefing"; st.rerun()
     with vc[1]:
-        if st.button("🏠 메인", type="secondary", use_container_width=True):
+        if st.button("🏠 홈", type="secondary", use_container_width=True):
             st.session_state._p5_just_left = True
             st.session_state.ans = False
             st.session_state["_battle_entry_ans_reset"] = True
@@ -400,7 +400,7 @@ elif st.session_state.phase=="lost":
                 if k in D: st.session_state[k]=D[k]
             st.session_state.phase="lobby"; st.rerun()
     with bc[1]:
-        if st.button("🏃 도망가기", type="secondary", use_container_width=True):
+        if st.button("🏠 홈", type="secondary", use_container_width=True):
             st.session_state._p5_just_left = True
             st.session_state.ans = False
             st.session_state["_battle_entry_ans_reset"] = True
@@ -790,7 +790,7 @@ summary{color:#aaa!important;font-weight:700!important;}
         if st.button("🔥 오답전장", key="p5nav1", use_container_width=True):
             st.switch_page("pages/03_오답전장.py")
     with nc2:
-        if st.button("🏠 메인", key="p5nav2", use_container_width=True):
+        if st.button("🏠 홈", key="p5nav2", use_container_width=True):
             st.session_state._p5_just_left = True
             st.switch_page("main_hub.py")
 
