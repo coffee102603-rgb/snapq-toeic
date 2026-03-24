@@ -276,100 +276,47 @@ if st.session_state.phase=="battle":
     # 문제
     st.markdown(f'<div class="qb qb-{th}"><div class="qc qc-{th}">{ej} {tn} · {q.get("cat","")}</div><div class="qt">{fq(q["text"])}</div></div>', unsafe_allow_html=True)
 
-    # 선택지 보석 포인트바 JS
-    import streamlit.components.v1 as _p5cmp
-    _p5cmp.html('''<script>
-    (function(){
-        var colors=["#d4af37","#9aa5b4","#50c878","#4488cc"];
-        var styled = false;
-        function styleChoices(){
-            var doc=window.parent.document;
-            var btns=doc.querySelectorAll('button[kind="primary"],button[kind="secondary"]');
-            var ci=0; var found=0;
-            btns.forEach(function(b){
-                var t=(b.textContent||"").trim();
-                if(t.match(/^\(A\)|^\(B\)|^\(C\)|^\(D\)/)){found++;}
-            });
-            if(found<4){styled=false;return;}
-            btns.forEach(function(b){
-                var t=(b.textContent||"").trim();
-                if(t.match(/^\(A\)|^\(B\)|^\(C\)|^\(D\)/)){
-                    var c=colors[ci%4];
-                    b.style.setProperty("background","#0c0c14","important");
-                    b.style.setProperty("border","1px solid #1a1a28","important");
-                    b.style.setProperty("border-left","4px solid "+c,"important");
-                    b.style.setProperty("color","#ddd8c8","important");
-                    b.style.setProperty("animation","none","important");
-                    b.style.setProperty("transform","none","important");
-                    b.style.setProperty("min-height","38px","important");
-                    b.style.setProperty("text-align","left","important");
-                    b.querySelectorAll("p").forEach(function(p){
-                        p.style.setProperty("color","#ddd8c8","important");
-                        p.style.setProperty("font-size","1.05rem","important");
-                        p.style.setProperty("font-weight","700","important");
-                        p.style.setProperty("text-align","left","important");
-                    });
-                    ci++;
-                }
-            });
-            if(ci===4){styled=true;}
-        }
-        function tryStyle(){if(!styled){styleChoices();}}
-        setTimeout(tryStyle,100);
-        setTimeout(tryStyle,350);
-        setTimeout(tryStyle,700);
-        setTimeout(tryStyle,1200);
-        var obs=new MutationObserver(function(){styled=false;setTimeout(tryStyle,80);});
-        obs.observe(window.parent.document.body,{childList:true,subtree:true});
-    })();
-    </script>''', height=0)
-
-    # 선택지
+    # HTML card
     if not st.session_state.ans:
-        cc=st.columns(2)
-        for i,ch in enumerate(q["ch"]):
-            with cc[i%2]:
-                if st.button(ch,key=f"c{i}",type=bt,use_container_width=True):
-                    # 시간초과 재확인
-                    if time.time()-st.session_state.qst>st.session_state.tsec:
-                        st.session_state.phase="lost"; st.rerun()
-                    st.session_state.ans=True; st.session_state.sel=i
-                    ok=i==q["a"]
-                    st.session_state.round_results.append(ok)
-                    if ok: st.session_state.sc+=1
-                    else: st.session_state.wrong+=1
-                    st.session_state.ta+=1
-                    try:
-                        import sys as _sys, os as _os; _sys.path.insert(0, _os.path.dirname(_os.path.dirname(__file__)))
-                        from data_collector import DataCollector as _DC
-                        _DC(st.session_state.get('nickname','guest')).log_activity('P5', q.get('id','?'), i, ok, round(time.time()-st.session_state.qst,2))
-                    except: pass
-
-                    # 2문제 틀림 → 즉시 LOST
-                    if st.session_state.wrong>=2:
-                        st.session_state.phase="lost"; st.rerun()
-
-                    # 5문제 완료 체크 (마지막 문제였으면 결과로)
-                    if st.session_state.qi>=4:  # 0-indexed, 마지막 문제
-                        if st.session_state.sc>=4:
-                            st.session_state.phase="victory"
-                        else:
-                            st.session_state.phase="lost"
-                        st.rerun()
-
-                    # 다음 문제로 (qi가 4 미만일 때만 도달)
-                    nqi = st.session_state.qi + 1
-                    if nqi < len(st.session_state.round_qs):
-                        st.session_state.qi = nqi
-                        st.session_state.cq=st.session_state.round_qs[nqi]
-                        st.session_state.ans=False; st.session_state.sel=None
-                    else:
-                        # 안전장치: 범위 초과 시 결과로
-                        if st.session_state.sc>=4:
-                            st.session_state.phase="victory"
-                        else:
-                            st.session_state.phase="lost"
+        _qi = st.session_state.get('qi', 0)
+        _rn = st.session_state.get('round_num', 0)
+        _gem = ['#d4af37', '#9aa5b4', '#50c878', '#4488cc']
+        st.markdown('<style>.hbtn button{position:absolute!important;width:1px!important;height:1px!important;padding:0!important;margin:0!important;opacity:0!important;pointer-events:none!important;overflow:hidden!important;}.ccard{background:#0c0c14;border:1px solid #1a1a28;border-radius:8px;padding:0.65rem 0.9rem;margin-bottom:7px;cursor:pointer;font-size:1.05rem;font-weight:700;width:100%;box-sizing:border-box;text-align:left;display:block;}.ccard:active{opacity:0.7;}</style>', unsafe_allow_html=True)
+        for i, ch in enumerate(q['ch']):
+            gc = _gem[i]
+            bid = 'hbtn_%s_%s_%s' % (_rn, _qi, i)
+            card_html = '<button class="ccard" style="border-left:4px solid ' + gc + ';color:' + gc + ';" onclick="document.getElementById(\''+bid+'\'}).querySelector(\'button\').click();">' + ch + '</button>'
+            st.markdown(card_html, unsafe_allow_html=True)
+            st.markdown('<div class="hbtn" id="' + bid + '">', unsafe_allow_html=True)
+            if st.button(ch, key='hb_%s_%s_%s' % (_rn, _qi, i), type=bt, use_container_width=False):
+                if time.time()-st.session_state.qst>st.session_state.tsec:
+                    st.session_state.phase='lost'; st.rerun()
+                st.session_state.ans=True; st.session_state.sel=i
+                ok=i==q['a']
+                st.session_state.round_results.append(ok)
+                if ok: st.session_state.sc+=1
+                else: st.session_state.wrong+=1
+                st.session_state.ta+=1
+                try:
+                    import sys as _sys, os as _os
+                    _sys.path.insert(0, _os.path.dirname(_os.path.dirname(__file__)))
+                    from data_collector import DataCollector as _DC
+                    _DC(st.session_state.get('nickname','guest')).log_activity('P5', q.get('id','?'), i, ok, round(time.time()-st.session_state.qst,2))
+                except: pass
+                if st.session_state.wrong>=2:
+                    st.session_state.phase='lost'; st.rerun()
+                if st.session_state.qi>=4:
+                    st.session_state.phase='victory' if st.session_state.sc>=4 else 'lost'
                     st.rerun()
+                nqi = st.session_state.qi + 1
+                if nqi < len(st.session_state.round_qs):
+                    st.session_state.qi = nqi
+                    st.session_state.cq = st.session_state.round_qs[nqi]
+                    st.session_state.ans=False; st.session_state.sel=None
+                else:
+                    st.session_state.phase='victory' if st.session_state.sc>=4 else 'lost'
+                st.rerun()
+            st.markdown('</div>', unsafe_allow_html=True)
 # ════════════════════════════════════════
 elif st.session_state.phase=="victory":
     components.html("""
