@@ -689,7 +689,7 @@ if st.session_state.p7_phase == "lobby":
 
 
     st.markdown('''<style>@keyframes warningPulse{0%,100%{color:#ff4466;text-shadow:0 0 8px rgba(255,68,102,0.8);}50%{color:#ff8888;text-shadow:0 0 20px rgba(255,68,102,1),0 0 40px rgba(255,0,50,0.6);}}</style>''', unsafe_allow_html=True)
-    st.markdown('''<div style="background:#0a0000;border:1.5px solid #cc2244;border-left:4px solid #cc2244;border-radius:10px;padding:10px 14px;margin:4px 0 6px 0;text-align:center;"><span style="font-size:0.88rem;font-weight:900;animation:warningPulse 1.5s ease-in-out infinite;display:inline-block;color:#ff4466;">💀 생존 규칙: 오답 1개 즉사 · 시간초과 즉사</span></div>''', unsafe_allow_html=True)
+    st.markdown('<div style="text-align:center;padding:6px 0 2px 0;"><span style="font-size:0.88rem;font-weight:900;color:#ff4466;">💀 생존 규칙: 오답 1개 즉사 · 시간초과 즉사</span></div>', unsafe_allow_html=True)
 
     # 전투 시작 버튼
     _ready = _p7_tc and cat and cat in PASSAGES
@@ -708,9 +708,7 @@ if st.session_state.p7_phase == "lobby":
     else:
         st.markdown('<div style="background:#0a0a14;border:1px solid #222;border-radius:12px;padding:12px;text-align:center;color:#333;font-size:0.9rem;">시간 + 지문을 선택하면 시작!</div>', unsafe_allow_html=True)
 
-    st.markdown('''<style>@keyframes warningPulse{0%,100%{color:#ff4466;text-shadow:0 0 8px rgba(255,68,102,0.8);}50%{color:#ff8888;text-shadow:0 0 20px rgba(255,68,102,1),0 0 40px rgba(255,0,50,0.6);}}</style>''', unsafe_allow_html=True)
     st.markdown('''<div style="background:#0a0000;border:1.5px solid #cc2244;border-left:4px solid #cc2244;border-radius:10px;padding:10px 14px;margin:4px 0;text-align:center;">
-        <span style="font-size:0.88rem;font-weight:900;animation:warningPulse 1.5s ease-in-out infinite;display:inline-block;color:#ff4466;">💀 생존 규칙: 오답 1개 즉사 · 시간초과 즉사</span>
     </div>''', unsafe_allow_html=True)
 
     # 하단 네비
