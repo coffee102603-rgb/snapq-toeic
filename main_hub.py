@@ -1,4 +1,4 @@
-﻿"""
+"""
 SnapQ TOEIC V2 - Main Hub (새 디자인)
 C안: 상단배너 + P5/P7 나란히 + 역전장 전체 + 하단 서브메뉴
 """
@@ -872,7 +872,7 @@ else:
     _arm_s2_lbl = "정복률"
     _p5_s3  = _p5_rot[2]
     _p7_s3  = _p7_rot[2]
-    _arm_s3 = f"🔥 {arm_pending}개 남았다! 지금 없애라!" if arm_pending > 0 else "✅ 다 잡았다! 완벽!" 
+    _arm_s3 = f"🔥 {arm_pending}개 쌓이는 중! 또 도망쳐?" if arm_pending > 0 else "✅ 다 잡았다! 완벽!" 
 
 # ── 공통 CSS ──
 _CSS = """<style>
@@ -880,12 +880,12 @@ _CSS = """<style>
 @keyframes s1{0%,30%{opacity:1;}36%,100%{opacity:0;}}
 @keyframes s2{0%,30%{opacity:0;}36%,63%{opacity:1;}69%,100%{opacity:0;}}
 @keyframes s3{0%,63%{opacity:0;}69%,96%{opacity:1;}100%{opacity:0;}}
-.card{border-radius:18px 0 0 18px;padding:14px 18px 12px;position:relative;height:178px;overflow:hidden;}
+.card{border-radius:18px 0 0 18px;padding:14px 18px 12px;position:relative;height:178px;overflow:hidden;cursor:pointer;}
 .p5c{background:linear-gradient(145deg,#001f55,#0055bb,#0099ee);}
 .p7c{background:linear-gradient(145deg,#220044,#6600bb,#aa44ff);}
 .arc{background:linear-gradient(145deg,#551100,#bb5500,#ffaa00);}
-.ttl{font-size:0;height:0;margin:0;overflow:hidden;}
-.sl{position:absolute;left:18px;right:18px;top:10px;}
+.ttl{font-size:0.7rem;font-weight:900;letter-spacing:2px;color:rgba(255,255,255,0.55);margin:0 0 4px 0;padding:0;}
+.sl{position:absolute;left:18px;right:18px;top:26px;}
 .sl1{animation:s1 9s ease-in-out infinite;}
 .sl2{animation:s2 9s ease-in-out infinite;}
 .sl3{animation:s3 9s ease-in-out infinite;}
@@ -901,7 +901,7 @@ svg{display:block;overflow:visible;width:100%;}
   .ttl{font-size:0;height:0;}
   .big{font-size:1.3rem;}
   .mot{font-size:1.3rem;}
-  .sl{top:8px;}
+  .sl{top:24px;}
   .numbox{min-width:64px;}
 }
 @media(max-width:480px){
@@ -910,14 +910,15 @@ svg{display:block;overflow:visible;width:100%;}
   .big{font-size:1.1rem;}
   .lbl{font-size:0.82rem;}
   .mot{font-size:1.05rem;line-height:1.3;}
-  .sl{top:6px;left:10px;right:10px;}
+  .sl{top:22px;left:10px;right:10px;}
   .numbox{min-width:52px;}
   .row{gap:8px;}
 }
 </style>"""
 
-def _mk_card(cls, title, s1b, s1l, s1svg, s2b, s2l, s2svg, s3mot):
-    return f"""<div class="card {cls}">
+def _mk_card(cls, title, s1b, s1l, s1svg, s2b, s2l, s2svg, s3mot, go_target=""):
+    _onclick = f"window.parent.document.querySelectorAll('button').forEach(function(b){{if((b.innerText||'').trim()==='{go_target}')b.click();}})" if go_target else ""
+    return f"""<div class="card {cls}" onclick="{_onclick}" style="cursor:pointer;">
   <div class="ttl">{title}</div>
   <div class="sl sl1"><div class="row">
     <div class="numbox"><div class="big">{s1b}</div><div class="lbl">{s1l}</div></div>
@@ -959,10 +960,10 @@ _GO_STYLE = """
 """
 
 # ── P5 ──
-_hc.html(_CSS + _GO_STYLE + "<style>.p5c .go-btn{--go-bg:linear-gradient(270deg,#1565c0,#4fc3f7,#0d47a1,#29b6f6);--go-border:rgba(79,195,247,0.9);}</style>" + _mk_card("p5c","⚡ P5 전장",
+_hc.html(_CSS + _GO_STYLE + "<style>.p5c .go-btn{--go-bg:linear-gradient(270deg,#1565c0,#4fc3f7,#0d47a1,#29b6f6);--go-border:rgba(79,195,247,0.9);}</style>" + _mk_card("p5c","⚡ P5전장",
     _p5_s1_big,_p5_s1_lbl,_p5_rate_svg,
-    _p5_s2_big,_p5_s2_lbl,_p5_cnt_svg,_p5_s3) + """
-<button class="go-btn" style="background:linear-gradient(270deg,#1565c0,#4fc3f7,#0d47a1,#29b6f6);border-color:rgba(79,195,247,0.9);" onclick="window.parent.document.querySelectorAll('button').forEach(b=>{if((b.innerText||'').trim()==='P5_GO')b.click()})">⚡</button>
+    _p5_s2_big,_p5_s2_lbl,_p5_cnt_svg,_p5_s3,"P5_GO") + """
+<button class="go-btn" style="background:linear-gradient(270deg,#1565c0,#4fc3f7,#0d47a1,#29b6f6);border-color:rgba(79,195,247,0.9);" onclick="event.stopPropagation();window.parent.document.querySelectorAll('button').forEach(b=>{if((b.innerText||'').trim()==='P5_GO')b.click()})">⚡</button>
 <script>
 (function(){
   var h=window.innerWidth<=480?70:window.innerWidth<=768?100:140;
@@ -977,10 +978,10 @@ if _p5_go:
 
 
 # ── P7 ──
-_hc.html(_CSS + _GO_STYLE + "<style>.p7c .go-btn{--go-bg:linear-gradient(270deg,#6a1b9a,#ce93d8,#4a148c,#ab47bc);--go-border:rgba(155,127,212,0.9);}</style>" + _mk_card("p7c","📖 P7 전장",
+_hc.html(_CSS + _GO_STYLE + "<style>.p7c .go-btn{--go-bg:linear-gradient(270deg,#6a1b9a,#ce93d8,#4a148c,#ab47bc);--go-border:rgba(155,127,212,0.9);}</style>" + _mk_card("p7c","📖 P7전장",
     _p7_s1_big,_p7_s1_lbl,_p7_rate_svg,
-    _p7_s2_big,_p7_s2_lbl,_p7_cnt_svg,_p7_s3) + """
-<button class="go-btn" style="background:linear-gradient(270deg,#6a1b9a,#ce93d8,#4a148c,#ab47bc);border-color:rgba(155,127,212,0.9);" onclick="window.parent.document.querySelectorAll('button').forEach(b=>{if((b.innerText||'').trim()==='P7_GO')b.click()})">📖</button>
+    _p7_s2_big,_p7_s2_lbl,_p7_cnt_svg,_p7_s3,"P7_GO") + """
+<button class="go-btn" style="background:linear-gradient(270deg,#6a1b9a,#ce93d8,#4a148c,#ab47bc);border-color:rgba(155,127,212,0.9);" onclick="event.stopPropagation();window.parent.document.querySelectorAll('button').forEach(b=>{if((b.innerText||'').trim()==='P7_GO')b.click()})">📖</button>
 <script>
 (function(){
   var h=window.innerWidth<=480?70:window.innerWidth<=768?100:140;
@@ -997,8 +998,8 @@ if _p7_go:
 # ── 역전장 ──
 _hc.html(_CSS + _GO_STYLE + "<style>.arc .go-btn{--go-bg:linear-gradient(270deg,#e65100,#ffd54f,#bf360c,#ffca28);--go-border:rgba(255,215,0,0.95);}</style>" + _mk_card("arc","🔥 오답전장",
     _arm_s1_big,_arm_s1_lbl,_arm_p5_svg,
-    _arm_s2_big,_arm_s2_lbl,_arm_vc_svg,_arm_s3) + """
-<button class="go-btn" style="background:linear-gradient(270deg,#e65100,#ffd54f,#bf360c,#ffca28);border-color:rgba(255,215,0,0.95);" onclick="window.parent.document.querySelectorAll('button').forEach(b=>{if((b.innerText||'').trim()==='ARM_GO')b.click()})">🗡️</button>
+    _arm_s2_big,_arm_s2_lbl,_arm_vc_svg,_arm_s3,"ARM_GO") + """
+<button class="go-btn" style="background:linear-gradient(270deg,#e65100,#ffd54f,#bf360c,#ffca28);border-color:rgba(255,215,0,0.95);" onclick="event.stopPropagation();window.parent.document.querySelectorAll('button').forEach(b=>{if((b.innerText||'').trim()==='ARM_GO')b.click()})">🗡️</button>
 <script>
 (function(){
   var h=window.innerWidth<=480?70:window.innerWidth<=768?100:140;
