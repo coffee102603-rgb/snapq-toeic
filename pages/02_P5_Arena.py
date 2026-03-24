@@ -412,7 +412,7 @@ elif st.session_state.phase=="briefing":
     st.markdown("""<style>
     section[data-testid="stSidebar"]{display:none!important;}
     header[data-testid="stHeader"]{height:0!important;visibility:hidden!important;}
-    .block-container{padding-top:0.2rem!important;padding-bottom:0!important;}
+    .block-container{padding-top:0.1rem!important;padding-bottom:0!important;}
     div[data-testid="stHorizontalBlock"]{flex-wrap:nowrap!important;gap:6px!important;}
     div[data-testid="stHorizontalBlock"] div[data-testid="stColumn"]{min-width:0!important;flex:1!important;padding:0!important;}
     div[data-testid="stHorizontalBlock"] button{width:100%!important;min-height:40px!important;font-size:0.9rem!important;padding:4px 2px!important;animation:none!important;transform:none!important;}
@@ -446,11 +446,11 @@ elif st.session_state.phase=="briefing":
 
     # 네비 — 숫자만 (화살표 없음)
     st.markdown('''<style>
-    .nav-size [data-testid="stHorizontalBlock"] button{font-size:0.72rem!important;min-height:32px!important;padding:2px!important;}
+    .nav-size [data-testid="stHorizontalBlock"] button{font-size:0.72rem!important;min-height:28px!important;padding:1px!important;}
     .nav-size [data-testid="stHorizontalBlock"] button p{font-size:0.72rem!important;}
     .sv-size [data-testid="stColumn"]:last-child button{font-size:0.72rem!important;min-height:32px!important;}
     .sv-size [data-testid="stColumn"]:last-child button p{font-size:0.72rem!important;}
-    .br-size [data-testid="stHorizontalBlock"] button{font-size:0.66rem!important;min-height:36px!important;}
+    .br-size [data-testid="stHorizontalBlock"] button{font-size:0.66rem!important;min-height:36px!important;padding:4px!important;}
     .br-size [data-testid="stHorizontalBlock"] button p{font-size:0.66rem!important;}
     </style>''', unsafe_allow_html=True)
     st.markdown('<div class="nav-size">', unsafe_allow_html=True)
@@ -519,7 +519,7 @@ elif st.session_state.phase=="briefing":
             st.rerun()
     st.markdown('</div>', unsafe_allow_html=True)
 
-    st.markdown('<div style="height:1px;background:#1a1a2a;margin:8px 0;"></div>', unsafe_allow_html=True)
+    st.markdown('<div style="height:1px;background:#1a1a2a;margin:2px 0;"></div>', unsafe_allow_html=True)
 
     # 하단 버튼
     st.markdown('''<style>
@@ -783,7 +783,7 @@ summary{color:#aaa!important;font-weight:700!important;}
         st.markdown('<div style="background:#0a0a14;border:1px solid #222;border-radius:12px;padding:10px;text-align:center;color:#333;font-size:0.9rem;">시간 + 전장을 선택하면 시작!</div>', unsafe_allow_html=True)
 
     # ━━━ 하단 네비게이션 ━━━
-    st.markdown('<div style="height:1px;background:#1a1a2a;margin:8px 0;"></div>', unsafe_allow_html=True)
+    st.markdown('<div style="height:1px;background:#1a1a2a;margin:2px 0;"></div>', unsafe_allow_html=True)
     nc1,nc2 = st.columns(2)
     with nc1:
         if st.button("🔥 오답전장", key="p5nav1", use_container_width=True):
