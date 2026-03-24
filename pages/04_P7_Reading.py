@@ -1302,7 +1302,7 @@ elif st.session_state.p7_phase == "briefing":
     c_kr = s.get("choices_kr", [])
     answer_kr = c_kr[s["answer"]] if c_kr and s["answer"] < len(c_kr) else ""
 
-    st.markdown(f'''<div style="background:#020408;border:0.5px solid #1a2a3a;border-left:1.5px solid #2a4a6a;border-radius:8px;padding:6px 10px;margin-bottom:6px;">
+    st.markdown(f'''<div style="background:#020408;border:1px solid #1a4a2a;border-left:2px solid #2a7a4a;border-radius:8px;padding:6px 10px;margin-bottom:6px;">
         <div style="font-size:0.85rem;font-weight:700;color:#888;margin-bottom:2px;">[Q{bi+1}] {s["question"]}</div>
         <div style="font-size:0.9rem;font-weight:900;color:#4488cc;">{sym} {correct_choice}</div>
         ''' + (f'<div style="font-size:0.85rem;color:#88dd88;margin-top:2px;">{answer_kr}</div>' if answer_kr else "") + '''
