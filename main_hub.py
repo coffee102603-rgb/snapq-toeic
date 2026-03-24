@@ -847,32 +847,51 @@ if _is_first:
     _p7_s1_lbl  = f"{_sn}! 읽는 뇌를 깨워라!"
     _arm_s1_big = f"🔥 오답전장"
     _arm_s1_lbl = f"{_sn}! 약점, 지금 박살낸다!"
-    _p5_s2_big  = "아직도 망설여?"
-    _p5_s2_lbl  = "전쟁터엔 핑계 없다!"
-    _p7_s2_big  = "읽지도 않고 찍어?"
-    _p7_s2_lbl  = "지문을 읽어라!"
-    _arm_s2_big = "틀린 문제가 웃는다"
-    _arm_s2_lbl = "네가 도망치는 중!"
-    _p5_s3  = "⚡ 문법·어휘 속도전!"
-    _p7_s3  = "📖 읽는 뇌를 깨워라!"
-    _arm_s3 = "🔥 약점, 지금 박살낸다!"
+    _p5_s2_big  = "30초 · 5문제"
+    _p5_s2_lbl  = "3개 이상 → 생존 · 미만 → 전멸!"
+    _p7_s2_big  = "60초 · 3문제"
+    _p7_s2_lbl  = "오답 1개 즉사 · 시간초과 즉사"
+    _arm_s2_big = "저장 → 반복"
+    _arm_s2_lbl = "틀린 문제가 무기가 된다"
+    _p5_s3  = f"⚡ {_sn}! 5문제 중 3개↑ 맞춰야 생존!"
+    _p7_s3  = f"📖 {_sn}! 오답 1개 즉사 · 시간초과 즉사"
+    _arm_s3 = f"🔥 {_sn}! 저장 → 반복 → 완전 정복!"
 else:
     _sn = student_name
     _p5_s1_big  = f"{p5_rate}%{_p5_trend}" if p5_rate is not None else f"{_sn}! 첫 도전"
     _p5_s1_lbl  = "7일 정답률"
     _p5_s2_big  = f"{p5_count}문제"
-    _p5_s2_lbl  = "이번달 풀이"
+    _p5_s2_lbl  = f"이번달 · {_p5_trend} 변화" if _p5_trend.strip() not in ["", "―", " ―"] else "이번달 풀이"
     _p7_s1_big  = f"{p7_rate}%{_p7_trend}" if p7_rate is not None else f"{_sn}! 첫 도전"
     _p7_s1_lbl  = "7일 정답률"
     _p7_s2_big  = f"{p7_count}문제"
-    _p7_s2_lbl  = "이번달 풀이"
+    _p7_s2_lbl  = f"이번달 · {_p7_trend} 변화" if _p7_trend.strip() not in ["", "―", " ―"] else "이번달 풀이"
     _arm_s1_big = f"{arm_pending}개" if arm_pending > 0 else "완벽!"
     _arm_s1_lbl = "🔥 오답 아직 남았다!" if arm_pending > 0 else "✅ 오답 제로!"
     _arm_s2_big = f"{arm_p5}%" if arm_p5 is not None else "—"
     _arm_s2_lbl = "정복률"
-    _p5_s3  = _p5_rot[2]
-    _p7_s3  = _p7_rot[2]
-    _arm_s3 = f"🔥 {arm_pending}개 쌓이는 중! 또 도망쳐?" if arm_pending > 0 else "✅ 다 잡았다! 완벽!" 
+    if p5_rate is None:
+        _p5_s3 = f"⚡ {_sn}! 첫 도전 기다리는 중!"
+    elif p5_rate >= 80:
+        _p5_s3 = f"🏆 {p5_rate}% · 상위 10%! 이 기세 유지해!"
+    elif p5_rate >= 60:
+        _p5_s3 = f"⚡ {p5_rate}% → 목표 80% · 지금 도전!"
+    else:
+        _p5_s3 = f"💀 {p5_rate}%?! 이게 실력이야? 당장 들어와!"
+    if p7_rate is None:
+        _p7_s3 = f"📖 {_sn}! 첫 독해 전투 시작해라!"
+    elif p7_rate >= 80:
+        _p7_s3 = f"🏆 {p7_rate}% · 독해 마스터! 계속 달려!"
+    elif p7_rate >= 60:
+        _p7_s3 = f"📖 {p7_rate}% → 지문 더 꼼꼼히 읽어라!"
+    else:
+        _p7_s3 = f"💀 {p7_rate}%?! 지문 읽긴 한 거야?!"
+    if arm_pending == 0:
+        _arm_s3 = "✅ 오답 제로! 완벽 정복! 진짜 전사!"
+    elif arm_pending <= 5:
+        _arm_s3 = f"🔥 {arm_pending}개 남았다! 거의 다 왔어!"
+    else:
+        _arm_s3 = f"💀 {arm_pending}개 쌓이는 중! 또 도망쳐?"
 
 # ── 공통 CSS ──
 _CSS = """<style>
@@ -880,12 +899,12 @@ _CSS = """<style>
 @keyframes s1{0%,30%{opacity:1;}36%,100%{opacity:0;}}
 @keyframes s2{0%,30%{opacity:0;}36%,63%{opacity:1;}69%,100%{opacity:0;}}
 @keyframes s3{0%,63%{opacity:0;}69%,96%{opacity:1;}100%{opacity:0;}}
-.card{border-radius:18px 0 0 18px;padding:14px 18px 12px;position:relative;height:178px;overflow:hidden;cursor:pointer;}
+.card{border-radius:18px 0 0 18px;padding:14px 18px 12px;position:relative;height:178px;overflow:hidden;}
 .p5c{background:linear-gradient(145deg,#001f55,#0055bb,#0099ee);}
 .p7c{background:linear-gradient(145deg,#220044,#6600bb,#aa44ff);}
 .arc{background:linear-gradient(145deg,#551100,#bb5500,#ffaa00);}
-.ttl{font-size:0.7rem;font-weight:900;letter-spacing:2px;color:rgba(255,255,255,0.55);margin:0 0 4px 0;padding:0;}
-.sl{position:absolute;left:18px;right:18px;top:26px;}
+.ttl{font-size:0;height:0;margin:0;overflow:hidden;}
+.sl{position:absolute;left:18px;right:18px;top:10px;}
 .sl1{animation:s1 9s ease-in-out infinite;}
 .sl2{animation:s2 9s ease-in-out infinite;}
 .sl3{animation:s3 9s ease-in-out infinite;}
@@ -901,7 +920,7 @@ svg{display:block;overflow:visible;width:100%;}
   .ttl{font-size:0;height:0;}
   .big{font-size:1.3rem;}
   .mot{font-size:1.3rem;}
-  .sl{top:24px;}
+  .sl{top:8px;}
   .numbox{min-width:64px;}
 }
 @media(max-width:480px){
@@ -910,15 +929,14 @@ svg{display:block;overflow:visible;width:100%;}
   .big{font-size:1.1rem;}
   .lbl{font-size:0.82rem;}
   .mot{font-size:1.05rem;line-height:1.3;}
-  .sl{top:22px;left:10px;right:10px;}
+  .sl{top:6px;left:10px;right:10px;}
   .numbox{min-width:52px;}
   .row{gap:8px;}
 }
 </style>"""
 
-def _mk_card(cls, title, s1b, s1l, s1svg, s2b, s2l, s2svg, s3mot, go_target=""):
-    _onclick = f"window.parent.document.querySelectorAll('button').forEach(function(b){{if((b.innerText||'').trim()==='{go_target}')b.click();}})" if go_target else ""
-    return f"""<div class="card {cls}" onclick="{_onclick}" style="cursor:pointer;">
+def _mk_card(cls, title, s1b, s1l, s1svg, s2b, s2l, s2svg, s3mot):
+    return f"""<div class="card {cls}">
   <div class="ttl">{title}</div>
   <div class="sl sl1"><div class="row">
     <div class="numbox"><div class="big">{s1b}</div><div class="lbl">{s1l}</div></div>
@@ -960,10 +978,10 @@ _GO_STYLE = """
 """
 
 # ── P5 ──
-_hc.html(_CSS + _GO_STYLE + "<style>.p5c .go-btn{--go-bg:linear-gradient(270deg,#1565c0,#4fc3f7,#0d47a1,#29b6f6);--go-border:rgba(79,195,247,0.9);}</style>" + _mk_card("p5c","⚡ P5전장",
+_hc.html(_CSS + _GO_STYLE + "<style>.p5c .go-btn{--go-bg:linear-gradient(270deg,#1565c0,#4fc3f7,#0d47a1,#29b6f6);--go-border:rgba(79,195,247,0.9);}</style>" + _mk_card("p5c","⚡ P5 전장",
     _p5_s1_big,_p5_s1_lbl,_p5_rate_svg,
-    _p5_s2_big,_p5_s2_lbl,_p5_cnt_svg,_p5_s3,"P5_GO") + """
-<button class="go-btn" style="background:linear-gradient(270deg,#1565c0,#4fc3f7,#0d47a1,#29b6f6);border-color:rgba(79,195,247,0.9);" onclick="event.stopPropagation();window.parent.document.querySelectorAll('button').forEach(b=>{if((b.innerText||'').trim()==='P5_GO')b.click()})">⚡</button>
+    _p5_s2_big,_p5_s2_lbl,_p5_cnt_svg,_p5_s3) + """
+<button class="go-btn" style="background:linear-gradient(270deg,#1565c0,#4fc3f7,#0d47a1,#29b6f6);border-color:rgba(79,195,247,0.9);" onclick="window.parent.document.querySelectorAll('button').forEach(b=>{if((b.innerText||'').trim()==='P5_GO')b.click()})">⚡</button>
 <script>
 (function(){
   var h=window.innerWidth<=480?70:window.innerWidth<=768?100:140;
@@ -978,10 +996,10 @@ if _p5_go:
 
 
 # ── P7 ──
-_hc.html(_CSS + _GO_STYLE + "<style>.p7c .go-btn{--go-bg:linear-gradient(270deg,#6a1b9a,#ce93d8,#4a148c,#ab47bc);--go-border:rgba(155,127,212,0.9);}</style>" + _mk_card("p7c","📖 P7전장",
+_hc.html(_CSS + _GO_STYLE + "<style>.p7c .go-btn{--go-bg:linear-gradient(270deg,#6a1b9a,#ce93d8,#4a148c,#ab47bc);--go-border:rgba(155,127,212,0.9);}</style>" + _mk_card("p7c","📖 P7 전장",
     _p7_s1_big,_p7_s1_lbl,_p7_rate_svg,
-    _p7_s2_big,_p7_s2_lbl,_p7_cnt_svg,_p7_s3,"P7_GO") + """
-<button class="go-btn" style="background:linear-gradient(270deg,#6a1b9a,#ce93d8,#4a148c,#ab47bc);border-color:rgba(155,127,212,0.9);" onclick="event.stopPropagation();window.parent.document.querySelectorAll('button').forEach(b=>{if((b.innerText||'').trim()==='P7_GO')b.click()})">📖</button>
+    _p7_s2_big,_p7_s2_lbl,_p7_cnt_svg,_p7_s3) + """
+<button class="go-btn" style="background:linear-gradient(270deg,#6a1b9a,#ce93d8,#4a148c,#ab47bc);border-color:rgba(155,127,212,0.9);" onclick="window.parent.document.querySelectorAll('button').forEach(b=>{if((b.innerText||'').trim()==='P7_GO')b.click()})">📖</button>
 <script>
 (function(){
   var h=window.innerWidth<=480?70:window.innerWidth<=768?100:140;
@@ -998,8 +1016,8 @@ if _p7_go:
 # ── 역전장 ──
 _hc.html(_CSS + _GO_STYLE + "<style>.arc .go-btn{--go-bg:linear-gradient(270deg,#e65100,#ffd54f,#bf360c,#ffca28);--go-border:rgba(255,215,0,0.95);}</style>" + _mk_card("arc","🔥 오답전장",
     _arm_s1_big,_arm_s1_lbl,_arm_p5_svg,
-    _arm_s2_big,_arm_s2_lbl,_arm_vc_svg,_arm_s3,"ARM_GO") + """
-<button class="go-btn" style="background:linear-gradient(270deg,#e65100,#ffd54f,#bf360c,#ffca28);border-color:rgba(255,215,0,0.95);" onclick="event.stopPropagation();window.parent.document.querySelectorAll('button').forEach(b=>{if((b.innerText||'').trim()==='ARM_GO')b.click()})">🗡️</button>
+    _arm_s2_big,_arm_s2_lbl,_arm_vc_svg,_arm_s3) + """
+<button class="go-btn" style="background:linear-gradient(270deg,#e65100,#ffd54f,#bf360c,#ffca28);border-color:rgba(255,215,0,0.95);" onclick="window.parent.document.querySelectorAll('button').forEach(b=>{if((b.innerText||'').trim()==='ARM_GO')b.click()})">🗡️</button>
 <script>
 (function(){
   var h=window.innerWidth<=480?70:window.innerWidth<=768?100:140;
