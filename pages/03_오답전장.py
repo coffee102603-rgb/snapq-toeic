@@ -539,6 +539,8 @@ if st.session_state.sg_phase == "lobby":
         mn1, mn2, mn3 = st.columns(3)
         with mn1:
             if st.button("⚔️ P5전장", key="sg_nav1", use_container_width=True):
+                for k in ["phase","cq","qi","sc","wrong","ta","ans","sel","round_qs","round_results","br_idx","br_saved"]: 
+                    if k in st.session_state: del st.session_state[k]
                 st.switch_page("pages/02_P5_Arena.py"); st.rerun()
         with mn2:
             if st.button("🏠 홈", key="sg_nav2", use_container_width=True):
