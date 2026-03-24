@@ -1223,33 +1223,24 @@ elif st.session_state.p7_phase == "briefing":
         font-weight:900!important;
     }
     </style>''', unsafe_allow_html=True)
-    # 배너만 표시
-    _saved_exprs = st.session_state.get("saved_expressions", [])
-    _weapon_count = len(_saved_exprs)
-    _gauge_max = max(_weapon_count, 10)
-    _gauge_pct = int((_weapon_count / _gauge_max) * 100)
-    st.markdown(f'''<div style="background:#0a0a1a;border:1.5px solid #ffd700;border-radius:14px;padding:8px 14px;margin-bottom:6px;">
-        <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:6px;">
-            <span style="font-size:0.9rem;font-weight:900;color:#ffd700;">⚔️ 무기 {_weapon_count}개 보유 중</span>
-            <span style="font-size:0.8rem;color:#888;font-weight:700;">오답전장 전투력</span>
-        </div>
-        <div style="background:#1a1a1a;border-radius:6px;height:10px;">
-            <div style="background:linear-gradient(90deg,#ffd700,#ff8800);height:10px;border-radius:6px;width:{_gauge_pct}%;"></div>
-        </div>
-        <div style="text-align:center;margin-top:4px;font-size:0.75rem;color:#555;">{"🔥 전투 준비 완료!" if _weapon_count >= 5 else "⚡ 무기를 더 모아라!"}</div>
-    </div>''', unsafe_allow_html=True)
-    st.markdown('<div style="text-align:center;font-size:1.1rem;font-weight:900;color:#ffd700;letter-spacing:3px;padding:2px 0;">📖 전투 브리핑</div>', unsafe_allow_html=True)
+    st.markdown('<div style="text-align:center;font-size:1.2rem;font-weight:900;color:#d4af37;letter-spacing:3px;padding:4px 0 2px 0;">📖 P7전투 브리핑</div>', unsafe_allow_html=True)
     st.markdown(f'<div class="p7-ban {v_cls}" style="margin-top:0!important;padding:6px 10px!important;">{data["title"]} — {v_label} ✅{ok_cnt} ❌{len(answers)-ok_cnt}</div>', unsafe_allow_html=True)
 
     # ─── 탭 [1][2][3] ───
+    st.markdown('''<style>
+    .tab-sel{background:#1a1a3a!important;border:2px solid #d4af37!important;color:#d4af37!important;border-radius:8px!important;padding:6px!important;text-align:center!important;font-size:1rem!important;font-weight:900!important;cursor:default!important;display:block!important;}
+    div[data-testid="stHorizontalBlock"] button{border:1px solid #3a3a5a!important;border-radius:8px!important;background:#0d0d1e!important;color:#7a7a9a!important;font-size:1rem!important;font-weight:700!important;min-height:36px!important;max-height:36px!important;padding:4px!important;}
+    div[data-testid="stHorizontalBlock"] button p{color:#7a7a9a!important;font-size:1rem!important;font-weight:700!important;}
+    </style>''', unsafe_allow_html=True)
     tab_cols = st.columns(num_steps)
     for ti in range(num_steps):
         with tab_cols[ti]:
             if ti == bi:
-                st.markdown(f'<div style="background:#185FA5;color:#ffffff;border:2px solid #4488ff;border-radius:8px;padding:6px;text-align:center;font-size:1.1rem;font-weight:900;">{ti+1}</div>', unsafe_allow_html=True)
+                st.markdown(f'<div class="tab-sel">{ti+1}</div>', unsafe_allow_html=True)
             else:
                 if st.button(str(ti+1), key=f"br_tab_{ti}", use_container_width=True):
                     st.session_state.p7_br_idx = ti; st.rerun()
+
 
     # ─── CT 피드백 + 데이터 패널 ───
     _an = st.session_state.get("p7_analytics", {})
