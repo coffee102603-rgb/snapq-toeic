@@ -314,25 +314,60 @@ if st.session_state.phase=="battle":
             st.rerun()
 # ════════════════════════════════════════
 elif st.session_state.phase=="victory":
-    components.html("""
+    _sc_v = st.session_state.sc
+    _wr_v = st.session_state.wrong
+    _rn_v = st.session_state.round_num
+    if _sc_v == 5:
+        _grade = "👑 PERFECT!"; _praise = "완벽해! 토익 만점도 따놓은 당상! 🔥"; _pcol = "#ffd700"
+    elif _sc_v == 4:
+        _grade = "⚔️ VICTORY!"; _praise = "강해! 이 기세면 토익 900+ 간다! 💪"; _pcol = "#44ff88"
+    else:
+        _grade = "✅ CLEAR!"; _praise = "아슬아슬하게 살아남았어. 더 갈고닦아! 😤"; _pcol = "#88ccff"
+    _stars_html = "".join([f'<div class="star" style="left:{random.randint(2,98)}%;top:{random.randint(2,98)}%;width:{random.randint(3,10)}px;height:{random.randint(3,10)}px;animation-delay:{random.random():.2f}s;animation-duration:{0.5+random.random()*1:.1f}s;background:{"#ffd700" if random.random()>0.4 else "#fff8cc"};border-radius:50%;position:absolute;"></div>' for _ in range(50)])
+    _coins_html = "".join([f'<div class="coin" style="left:{random.randint(5,95)}%;animation-delay:{random.random():.2f}s;animation-duration:{1.2+random.random():.1f}s;">{"💰" if random.random()>0.5 else "⭐"}</div>' for _ in range(10)])
+    components.html(f"""
     <style>
-    *{margin:0;padding:0;}body{background:#000;overflow:hidden;display:flex;align-items:center;justify-content:center;height:100vh;font-family:sans-serif;}
-    .v{text-align:center;animation:vi 0.8s ease-out;}
-    .v h1{font-size:2rem;font-weight:900;color:#ffcc00;text-shadow:0 0 20px #ffcc00,0 0 40px #ff8800;animation:glow 1.5s ease-in-out infinite alternate;}
-    .v p{font-size:0.8rem;color:#44ff88;font-weight:700;margin-top:0.2rem;}
-    .stars{position:absolute;width:100%;height:100%;}
-    .star{position:absolute;background:#ffcc00;border-radius:50%;animation:twinkle 1s ease-in-out infinite;}
-    @keyframes vi{0%{transform:scale(0);opacity:0}100%{transform:scale(1);opacity:1}}
-    @keyframes glow{0%{text-shadow:0 0 40px #ffcc00,0 0 80px #ff8800}100%{text-shadow:0 0 60px #ffcc00,0 0 120px #ff8800,0 0 180px #ff4400}}
-    @keyframes twinkle{0%,100%{opacity:1;transform:scale(1)}50%{opacity:0.3;transform:scale(0.5)}}
+    *{{margin:0;padding:0;box-sizing:border-box;}}
+    body{{background:linear-gradient(180deg,#080600 0%,#1a1200 100%);overflow:hidden;height:100vh;font-family:'Arial Black',sans-serif;display:flex;align-items:center;justify-content:center;}}
+    @keyframes vi{{0%{{transform:scale(0) rotate(-15deg);opacity:0;}}65%{{transform:scale(1.1) rotate(3deg);}}100%{{transform:scale(1) rotate(0deg);opacity:1;}}}}
+    @keyframes goldGlow{{0%,100%{{text-shadow:0 0 20px #ffd700,0 0 50px #ff8800;}}50%{{text-shadow:0 0 50px #ffd700,0 0 100px #ff8800,0 0 160px #ff4400;}}}}
+    @keyframes twinkle{{0%,100%{{opacity:1;transform:scale(1) rotate(0deg);}}50%{{opacity:0.15;transform:scale(0.2) rotate(180deg);}}}}
+    @keyframes coinFall{{0%{{transform:translateY(-20px) rotate(0deg) scale(1);opacity:1;}}100%{{transform:translateY(130px) rotate(540deg) scale(0.5);opacity:0;}}}}
+    @keyframes scoreIn{{0%{{transform:translateY(30px);opacity:0;}}100%{{transform:translateY(0);opacity:1;}}}}
+    @keyframes barFill{{0%{{width:0%;}}100%{{width:{int(_sc_v/5*100)}%;}}}}
+    @keyframes pulse{{0%,100%{{transform:scale(1);}}50%{{transform:scale(1.04);}}}}
+    .wrap{{text-align:center;animation:vi 0.8s cubic-bezier(0.34,1.56,0.64,1) forwards;position:relative;z-index:10;width:88%;}}
+    .round-tag{{font-size:0.7rem;color:#886600;font-weight:700;letter-spacing:3px;margin-bottom:6px;}}
+    .grade{{font-size:2.6rem;font-weight:900;color:#ffd700;animation:goldGlow 2s ease-in-out infinite, pulse 1.5s ease-in-out infinite;letter-spacing:2px;line-height:1.1;}}
+    .scorebox{{background:rgba(212,175,55,0.1);border:2px solid rgba(212,175,55,0.6);border-radius:14px;padding:12px 24px;margin:10px auto;display:inline-block;animation:scoreIn 0.6s ease 0.3s both;}}
+    .sc-num{{font-size:3rem;font-weight:900;color:#ffd700;line-height:1;text-shadow:0 0 20px rgba(255,215,0,0.6);}}
+    .sc-label{{font-size:0.72rem;color:#886600;font-weight:700;letter-spacing:1px;margin-top:2px;}}
+    .bar-wrap{{background:#1a1200;border-radius:20px;height:10px;margin:10px auto;width:82%;overflow:hidden;border:1px solid #443300;}}
+    .bar-fill{{height:100%;border-radius:20px;background:linear-gradient(90deg,#a07800,#ffd700,#fff8aa);box-shadow:0 0 8px #ffd700;animation:barFill 1s ease 0.6s both;}}
+    .praise{{font-size:0.9rem;color:{_pcol};font-weight:900;margin:8px 0 2px;animation:scoreIn 0.5s ease 0.8s both;}}
+    .star{{position:absolute;animation:twinkle var(--dur,1s) ease-in-out infinite;}}
+    .coin{{position:absolute;top:-10px;font-size:1.4rem;animation:coinFall var(--dur,1.5s) ease-in infinite;}}
     </style>
-    <div class="stars">
-    """ + "".join([f'<div class="star" style="left:{random.randint(5,95)}%;top:{random.randint(5,95)}%;width:{random.randint(3,8)}px;height:{random.randint(3,8)}px;animation-delay:{random.random():.1f}s;"></div>' for _ in range(30)]) + """
+    <div style="position:absolute;width:100%;height:100%;overflow:hidden;top:0;left:0;">{_stars_html}{_coins_html}</div>
+    <div class="wrap">
+        <div class="round-tag">⚔️ ROUND {_rn_v} CLEAR ⚔️</div>
+        <div class="grade">{_grade}</div>
+        <div class="scorebox">
+            <div class="sc-num">{_sc_v}<span style="font-size:1.4rem;color:#886600;"> / 5</span></div>
+            <div class="sc-label">✅ {_sc_v}격파 &nbsp;·&nbsp; ❌ {_wr_v}개 놓침</div>
+        </div>
+        <div class="bar-wrap"><div class="bar-fill"></div></div>
+        <div class="praise">{_praise}</div>
     </div>
-    <div class="v"><h1>⚔️ VICTORY ⚔️</h1><p>라운드 클리어!</p></div>
-    """, height=70)
+    """, height=230)
 
-    st.markdown("")
+    st.markdown("""<style>
+    button[kind="primary"]{background:#0c0c00!important;border:2px solid #d4af37!important;}
+    button[kind="primary"] p{color:#ffd700!important;font-size:1.1rem!important;font-weight:900!important;}
+    button[kind="primary"]:hover{background:rgba(212,175,55,0.12)!important;box-shadow:0 0 20px rgba(212,175,55,0.5)!important;}
+    button[kind="secondary"]{background:#0a0a0a!important;border:1.5px solid rgba(255,255,255,0.2)!important;}
+    button[kind="secondary"] p{color:#888!important;font-size:1.0rem!important;}
+    </style>""", unsafe_allow_html=True)
     vc=st.columns(2)
     with vc[0]:
         if st.button("📋 브리핑 보기", type="primary", use_container_width=True):
@@ -377,9 +412,9 @@ elif st.session_state.phase=="lost":
     .skull{{font-size:2rem;animation:shakeX 0.4s ease-in-out infinite;display:inline-block;margin-bottom:4px;}}
     .lost-txt{{font-size:1.5rem;font-weight:900;color:#ff0000;text-shadow:0 0 10px #ff0000;animation:flicker 0.3s infinite;letter-spacing:2px;}}
     .reason{{font-size:0.8rem;color:#ff6644;font-weight:700;margin:3px 0;letter-spacing:1px;}}
-    .score{{font-size:1.8rem;font-weight:900;color:#ffcc00;text-shadow:0 0 15px #ffaa00;margin:4px 0;}}
-    .taunt{{font-size:0.75rem;color:#ff8888;font-weight:700;margin:2px 0;}}
-    .sub{{font-size:0.7rem;color:#ff6666;margin-top:2px;}}
+    .score{{font-size:2.2rem;font-weight:900;color:#ffcc00;text-shadow:0 0 20px #ffaa00,0 0 40px #ff8800;margin:6px 0;}}
+    .taunt{{font-size:1.0rem;color:#ff8888;font-weight:900;margin:6px 0;animation:shakeX 3s ease-in-out infinite;}}
+    .sub{{font-size:0.8rem;color:#ff6666;margin-top:3px;font-weight:700;}}
     .embers{{position:absolute;width:100%;height:100%;top:0;left:0;pointer-events:none;}}
     .ember{{position:absolute;border-radius:50%;animation:rise 1.5s ease-in infinite;}}
     </style>
@@ -391,8 +426,14 @@ elif st.session_state.phase=="lost":
         <div class="score">{_pct}점</div>
         <div class="taunt">{_taunt}</div>
         <div class="sub">{_sub}</div>
-    </div>""", height=90)
-    st.markdown("")
+    </div>""", height=160)
+    st.markdown("""<style>
+    button[kind="primary"]{background:#0a0000!important;border:2px solid #cc2244!important;}
+    button[kind="primary"] p{color:#ff4466!important;font-size:1.1rem!important;font-weight:900!important;}
+    button[kind="primary"]:hover{background:rgba(204,34,68,0.15)!important;box-shadow:0 0 20px rgba(255,0,60,0.5)!important;}
+    button[kind="secondary"]{background:#0a0a0a!important;border:1.5px solid rgba(255,255,255,0.2)!important;}
+    button[kind="secondary"] p{color:#888!important;font-size:1.0rem!important;}
+    </style>""", unsafe_allow_html=True)
     bc=st.columns(2)
     with bc[0]:
         if st.button("🔥 설욕전! 다시 싸운다!", type="primary", use_container_width=True):
