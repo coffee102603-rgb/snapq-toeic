@@ -498,11 +498,26 @@ elif st.session_state.phase=="briefing":
     st.markdown('<div style="height:1px;background:#1a1a2a;margin:8px 0;"></div>', unsafe_allow_html=True)
 
     # 하단 버튼
+    st.markdown('''<style>
+    div[data-testid="stHorizontalBlock"] button{
+        background:transparent!important;
+        border:1px solid rgba(255,255,255,0.5)!important;
+        color:rgba(255,255,255,0.6)!important;
+        font-weight:400!important;
+        font-size:0.82rem!important;
+        border-radius:8px!important;
+        min-height:44px!important;
+    }
+    div[data-testid="stHorizontalBlock"] button p{
+        color:rgba(255,255,255,0.6)!important;
+        font-size:0.82rem!important;
+        font-weight:400!important;
+    }
+    </style>''', unsafe_allow_html=True)
     if was_victory:
         nrd = rn + 1
         _c1, _c2 = st.columns([2,1])
         with _c1:
-            st.markdown('''<style>div[data-testid="stColumn"]:nth-child(1) button[kind="secondary"]{background:transparent!important;border:1px solid rgba(255,255,255,0.5)!important;color:rgba(255,255,255,0.6)!important;font-weight:400!important;font-size:0.82rem!important;border-radius:8px!important;}</style>''', unsafe_allow_html=True)
             if st.button(f"⚔️ 라운드 {nrd}! 도전!", use_container_width=True):
                 st.session_state.round_num += 1
                 for k in ["cq","qi","sc","wrong","ta","ans","sel","round_qs","round_results","br_idx","br_saved"]:
@@ -513,7 +528,6 @@ elif st.session_state.phase=="briefing":
                 st.session_state.round_qs = qs; st.session_state.cq = qs[0]
                 st.session_state.qst = time.time(); st.session_state.phase = "battle"; st.rerun()
         with _c2:
-            st.markdown('''<style>div[data-testid="stColumn"]:nth-child(2) button[kind="secondary"]{background:transparent!important;border:1px solid rgba(255,255,255,0.5)!important;color:rgba(255,255,255,0.6)!important;font-weight:400!important;font-size:0.82rem!important;border-radius:8px!important;}</style>''', unsafe_allow_html=True)
             if st.button("🏠 홈", use_container_width=True):
                 st.session_state._p5_just_left = True
                 st.session_state.ans = False
@@ -522,7 +536,6 @@ elif st.session_state.phase=="briefing":
     else:
         _c1, _c2 = st.columns([2,1])
         with _c1:
-            st.markdown('''<style>div[data-testid="stColumn"]:nth-child(1) button[kind="secondary"]{background:transparent!important;border:1px solid rgba(255,255,255,0.5)!important;color:rgba(255,255,255,0.6)!important;font-weight:400!important;font-size:0.82rem!important;border-radius:8px!important;}</style>''', unsafe_allow_html=True)
             if st.button("🔥 설욕전! 다시 싸운다!", use_container_width=True):
                 for k in ["cq","qi","sc","wrong","ta","ans","sel","round_qs","round_results","br_idx","br_saved"]:
                     if k in st.session_state: del st.session_state[k]
