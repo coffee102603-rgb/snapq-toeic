@@ -669,7 +669,7 @@ if st.session_state.p7_phase == "lobby":
 
     # 지문 선택
     st.markdown('''<div style="display:flex;align-items:flex-end;margin-top:4px;margin-bottom:0;">
-        <div style="background:#081a10;border:1.5px solid #50c878;border-bottom:none;border-radius:8px 8px 0 0;padding:3px 12px;font-size:0.72rem;font-weight:900;color:#50c878;">📄 지문 선택</div>
+        <div style="background:#140008;border:1.5px solid #cc2244;border-bottom:none;border-radius:8px 8px 0 0;padding:3px 12px;font-size:0.72rem;font-weight:900;color:#cc2244;">⚔️ 지문 선택</div>
     </div>''', unsafe_allow_html=True)
     b1, b2 = st.columns(2)
     with b1:
@@ -715,7 +715,7 @@ if st.session_state.p7_phase == "lobby":
         if st.button("🔥 오답전장", key="p7nav1", use_container_width=True):
             st.switch_page("pages/03_오답전장.py")
     with nc2:
-        if st.button("🏠 메인", key="p7nav2", use_container_width=True):
+        if st.button("🏠 홈", key="p7nav2", use_container_width=True):
             st.session_state._p7_just_left = True
             st.switch_page("main_hub.py")
     import streamlit.components.v1 as _cmp
@@ -975,25 +975,25 @@ elif st.session_state.p7_phase == "victory":
     st.markdown('<style>.stApp{background:#08080f!important;}</style>', unsafe_allow_html=True)
     st.markdown('''<div style="text-align:center;padding:1.2rem 0 0.5rem 0;">
         <div style="font-size:0.9rem;letter-spacing:4px;opacity:0.6;margin-bottom:6px;">💎 ⭐ ✨ 🏆 🌟 💫 💎</div>
-        <div style="font-size:2.8rem;font-weight:900;color:#44ffcc;letter-spacing:3px;text-shadow:0 0 30px #44ffcc,0 0 60px #00aacc;">CLEAR!</div>
-        <div style="font-size:0.9rem;color:#50c878;font-weight:600;letter-spacing:2px;margin-top:4px;">독해 전투 클리어!</div>
+        <div style="font-size:2.8rem;font-weight:900;color:#ffd700;letter-spacing:3px;text-shadow:0 0 30px #ffd700,0 0 60px #ff8800;">CLEAR!</div>
+        <div style="font-size:0.9rem;color:#d4af37;font-weight:600;letter-spacing:2px;margin-top:4px;">독해 전투 클리어!</div>
     </div>''', unsafe_allow_html=True)
     st.markdown(f'''<div style="background:#0c0c1e;border:1.5px solid #d4af37;border-left:4px solid #d4af37;border-radius:12px;padding:10px;text-align:center;margin:8px 0;">
         <div style="font-size:0.75rem;color:#9aa5b4;margin-bottom:2px;">이번 결과</div>
         <div style="font-size:1.5rem;font-weight:900;color:#d4af37;">✅ {_ok} / 3</div>
     </div>''', unsafe_allow_html=True)
-    st.markdown('''<div style="background:#0a0a14;border:1px solid #50c878;border-radius:10px;padding:8px;text-align:center;margin-bottom:10px;">
-        <div style="font-size:0.82rem;color:#50c878;font-weight:700;">⚡ 3번 반복하면 장기기억 전환율 3배!</div>
+    st.markdown('''<div style="background:#0a0800;border:1px solid #d4af37;border-radius:10px;padding:8px;text-align:center;margin-bottom:10px;">
+        <div style="font-size:0.82rem;color:#d4af37;font-weight:700;">⚡ 3번 반복하면 장기기억 전환율 3배!</div>
         <div style="font-size:0.72rem;color:#555;margin-top:2px;">지금 브리핑에서 핵심표현 무기로 장착하라!</div>
     </div>''', unsafe_allow_html=True)
     st.markdown('''<style>
     button[data-testid="stBaseButton-primary"]{
-        background:#0a1a0f!important;border:2px solid #50c878!important;
-        border-left:4px solid #50c878!important;
-        color:#50c878!important;font-size:1.1rem!important;font-weight:900!important;
+        background:#0c0c00!important;border:2px solid #d4af37!important;
+        border-left:4px solid #d4af37!important;
+        color:#d4af37!important;font-size:1.1rem!important;font-weight:900!important;
         min-height:48px!important;animation:none!important;
     }
-    button[data-testid="stBaseButton-primary"] p{color:#50c878!important;font-size:1.1rem!important;font-weight:900!important;}
+    button[data-testid="stBaseButton-primary"] p{color:#ffd700!important;font-size:1.1rem!important;font-weight:900!important;}
     </style>''', unsafe_allow_html=True)
     if st.button("📋 브리핑 보기", type="primary", use_container_width=True):
         st.session_state.p7_phase = "briefing"; st.rerun()
@@ -1004,7 +1004,7 @@ elif st.session_state.p7_phase == "victory":
                 if k in st.session_state: del st.session_state[k]
             st.rerun()
     with _vc2:
-        if st.button("🏠 메인", key="v_main", use_container_width=True):
+        if st.button("🏠 홈", key="v_main", use_container_width=True):
             st.session_state._p7_just_left = True
             st.switch_page("main_hub.py")
     import streamlit.components.v1 as _vc
@@ -1087,7 +1087,7 @@ elif st.session_state.p7_phase == "lost":
         for k in ["p7_phase","p7_cat","p7_tsec","p7_tsec_chosen","p7_step","p7_started_at","p7_answers","p7_data","p7_phase_reason"]:
             if k in st.session_state: del st.session_state[k]
         st.rerun()
-    if st.button("🏠 도망가기! 홈으로!", key="lost_home", use_container_width=True):
+    if st.button("🏠 홈", key="lost_home", use_container_width=True):
         st.session_state._p7_just_left = True
         st.switch_page("main_hub.py")
     import streamlit.components.v1 as _lc
@@ -1098,10 +1098,10 @@ elif st.session_state.p7_phase == "lost":
             var btns=doc.querySelectorAll('button[kind="secondary"]');
             btns.forEach(function(b){
                 var t=b.textContent||"";
-                if(t.indexOf("도망")>-1){
+                if(t.indexOf("홈")>-1&&t.indexOf("설욕")==-1){
                     b.style.setProperty("background","#0f0f1e","important");
                     b.style.setProperty("border","1px solid #1a1a2a","important");
-                    b.style.setProperty("border-left","4px solid #4488cc","important");
+                    b.style.setProperty("border","1.5px solid rgba(255,255,255,0.3)","important");
                     b.style.setProperty("color","#666","important");
                     b.style.setProperty("animation","none","important");
                     b.style.setProperty("font-size","0.85rem","important");
@@ -1228,7 +1228,7 @@ elif st.session_state.p7_phase == "briefing":
         font-weight:900!important;
     }
     </style>''', unsafe_allow_html=True)
-    st.markdown('<div style="text-align:center;font-size:1.2rem;font-weight:900;color:#4488cc;letter-spacing:3px;padding:14px 0 10px 0;">📖 P7전투 브리핑</div>', unsafe_allow_html=True)
+    st.markdown('<div style="text-align:center;font-size:1.2rem;font-weight:900;color:#4488cc;letter-spacing:3px;padding:14px 0 10px 0;">📖 P7 브리핑</div>', unsafe_allow_html=True)
     st.markdown(f'<div class="p7-ban {v_cls}" style="margin-top:4px!important;margin-bottom:6px!important;padding:6px 10px!important;">{data["title"]} — {v_label} ✅{ok_cnt} ❌{len(answers)-ok_cnt}</div>', unsafe_allow_html=True)
 
     # ─── 탭 [1][2][3] ───
@@ -1340,7 +1340,7 @@ elif st.session_state.p7_phase == "briefing":
             </div>'''
             st.markdown(save_btn_html, unsafe_allow_html=True)
             _sv_key = f"br_sv_{bi}_{si}"
-            if st.button("💾 저장 → 오답전장!", key=_sv_key, use_container_width=False):
+            if st.button("💾 저장!", key=_sv_key, use_container_width=False):
                 sent_data = dict(s)
                 sent_data["sentences"] = [sent]
                 sent_data["kr"] = sent_kr
@@ -1371,7 +1371,7 @@ elif st.session_state.p7_phase == "briefing":
         if st.button("🔥 오답전장", key="p7store", use_container_width=True):
             st.switch_page("pages/03_오답전장.py")
     with bc4:
-        if st.button("🏠 본부", key="p7lobby", use_container_width=True):
+        if st.button("🏠 홈", key="p7lobby", use_container_width=True):
             for k in D: st.session_state[k] = D[k]
             st.switch_page("main_hub.py")
 
