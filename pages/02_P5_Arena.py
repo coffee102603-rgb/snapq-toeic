@@ -504,7 +504,7 @@ elif st.session_state.phase=="briefing":
     _sv1, _sv2 = st.columns([3, 1])
     with _sv2:
         _is_saved = bi in saved
-        _slabel = "✅ 저장됨" if _is_saved else "💾 저장"
+        _slabel = "✅ 저장됨" if _is_saved else "💾 저장해!"
         st.markdown('''<style>
         div[data-testid="stColumn"]:last-child button{
             border:2px solid #9aa5b4!important;
