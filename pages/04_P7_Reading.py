@@ -1313,7 +1313,7 @@ elif st.session_state.p7_phase == "briefing":
         ''' + (f'<div style="font-size:0.85rem;color:#88dd88;margin-top:2px;">{answer_kr}</div>' if answer_kr else "") + '''
     </div>''', unsafe_allow_html=True)
 
-    st.markdown('<div style="font-size:0.8rem;color:#ffd700;font-weight:900;text-align:center;margin:6px 0;">⚔️ P7예문=P5문제 — 저장! 오답전장에서 내 실력 UP!</div>', unsafe_allow_html=True)
+    st.markdown('<div style="font-size:0.8rem;color:#ffd700;font-weight:900;text-align:center;margin:6px 0;">⚔️ 📖 읽고 → 이해하고 → 저장! → 오답전장 반복!</div>', unsafe_allow_html=True)
 
     kr_full = s.get("kr", "")
     kr_sents = [x.strip() for x in kr_full.replace("!","!|").replace("?","?|").replace(".",".|").split("|") if x.strip()]
@@ -1341,7 +1341,7 @@ elif st.session_state.p7_phase == "briefing":
             </div>'''
             st.markdown(save_btn_html, unsafe_allow_html=True)
             _sv_key = f"br_sv_{bi}_{si}"
-            if st.button("💾 오답전장에 저장!", key=_sv_key, use_container_width=False):
+            if st.button("💾 저장 → 오답전장!", key=_sv_key, use_container_width=False):
                 sent_data = dict(s)
                 sent_data["sentences"] = [sent]
                 sent_data["kr"] = sent_kr
