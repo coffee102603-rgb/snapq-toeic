@@ -1331,7 +1331,7 @@ elif st.session_state.p7_phase == "briefing":
             st.markdown(f'''<div style="background:#0a0e1a;border:1px solid #2a3a5a;border-left:3px solid #4488cc;border-radius:12px;padding:12px 14px;margin-bottom:6px;">
                 <div style="font-size:1.0rem;font-weight:700;color:#e8eef8;line-height:1.7;">{_hl}</div>
                 <div style="font-size:0.85rem;color:#c0ccd8;margin-top:4px;">{sent_kr}</div>
-                <div style="text-align:right;margin-top:6px;font-size:0.9rem;color:#4488cc;font-weight:900;">🗡️ 무기 장착 완료!</div>
+                <div style="text-align:right;margin-top:6px;font-size:0.9rem;color:#4488cc;font-weight:900;">💾 저장완료!</div>
             </div>''', unsafe_allow_html=True)
         else:
             save_btn_html = f'''<div style="background:#0a0e1a;border:1px solid #1a2a3a;border-left:3px solid #4488cc;border-radius:12px;padding:12px 14px;margin-bottom:2px;background-image:repeating-linear-gradient(transparent,transparent 27px,#e8e0c8 27px,#e8e0c8 28px);background-position:0 12px;">
