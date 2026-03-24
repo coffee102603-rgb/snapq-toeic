@@ -1313,7 +1313,7 @@ elif st.session_state.p7_phase == "briefing":
         ''' + (f'<div style="font-size:0.85rem;color:#88dd88;margin-top:2px;">{answer_kr}</div>' if answer_kr else "") + '''
     </div>''', unsafe_allow_html=True)
 
-    st.markdown('<div style="font-size:0.8rem;color:#ffd700;font-weight:900;text-align:center;margin:6px 0;">⚔️ 📖 읽고 → 이해하고 → 저장! → 오답전장 반복!</div>', unsafe_allow_html=True)
+    st.markdown('<div style="font-size:0.85rem;font-weight:900;text-align:center;margin:10px 0;padding:8px 12px;background:#0a0800;border:1.5px solid #ffd700;border-radius:8px;color:#ffd700;animation:savePulse 2s ease-in-out infinite;">💾 이 문장 저장 → 오답전장 반복 → 실력 UP!</div><style>@keyframes savePulse{0%,100%{border-color:#ffd700;color:#ffd700;}50%{border-color:#ffaa00;color:#ffaa00;box-shadow:0 0 12px rgba(255,200,0,0.4);}}</style>', unsafe_allow_html=True)
 
     kr_full = s.get("kr", "")
     kr_sents = [x.strip() for x in kr_full.replace("!","!|").replace("?","?|").replace(".",".|").split("|") if x.strip()]
