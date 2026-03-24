@@ -551,7 +551,7 @@ elif st.session_state.phase=="briefing":
         nrd = rn + 1
         _c1, _c2 = st.columns([2,1])
         with _c1:
-            if st.button(f"⚔️ 라운드 {nrd}! 도전!", use_container_width=True):
+            if st.button("🔥 오답전장!", use_container_width=True):
                 st.session_state.round_num += 1
                 for k in ["cq","qi","sc","wrong","ta","ans","sel","round_qs","round_results","br_idx","br_saved"]:
                     if k in st.session_state: del st.session_state[k]
