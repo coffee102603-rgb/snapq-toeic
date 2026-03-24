@@ -448,13 +448,13 @@ elif st.session_state.phase=="briefing":
     _ncols = st.columns(num_qs)
     for _i in range(num_qs):
         with _ncols[_i]:
-            _bc = "#50c878" if rrs[_i] else "#cc2244"
-            _sel = "outline:2px solid #00d4ff;" if _i==bi else ""
+            _sel = "outline:2px solid #9aa5b4;outline-offset:2px;" if _i==bi else ""
+            _bg = "#1a1a2a" if _i==bi else "#0d0d18"
             st.markdown(f'''<style>
             div[data-testid="stHorizontalBlock"] div[data-testid="stColumn"]:nth-child({_i+1}) button{{
-                background:{"#0d2010" if rrs[_i] else "#200810"}!important;
-                border:2px solid {_bc}!important;
-                color:{_bc}!important;
+                background:{_bg}!important;
+                border:2px solid #9aa5b4!important;
+                color:#9aa5b4!important;
                 border-radius:50%!important;
                 {_sel}
             }}</style>''', unsafe_allow_html=True)
@@ -489,6 +489,18 @@ elif st.session_state.phase=="briefing":
     with _sv2:
         _is_saved = bi in saved
         _slabel = "✅ 저장됨" if _is_saved else "💾 저장"
+        st.markdown('''<style>
+        div[data-testid="stColumn"]:last-child button{
+            border:2px solid #9aa5b4!important;
+            color:#9aa5b4!important;
+            background:#0d0d18!important;
+            border-radius:50px!important;
+            font-size:0.85rem!important;
+        }
+        div[data-testid="stColumn"]:last-child button p{
+            color:#9aa5b4!important;
+        }
+        </style>''', unsafe_allow_html=True)
         if st.button(_slabel, key=f"sv_{q['id']}_{bi}", use_container_width=True, disabled=_is_saved):
             item = {"id":q["id"],"text":q["text"],"ch":q["ch"],"a":q["a"],"ex":q.get("ex",""),"exk":q.get("exk",""),"cat":q.get("cat",""),"kr":q.get("kr",""),"tp":q.get("tp","grammar")}
             save_to_storage([item])
@@ -499,21 +511,25 @@ elif st.session_state.phase=="briefing":
 
     # 하단 버튼
     st.markdown('''<style>
-    div[data-testid="stHorizontalBlock"] button{
+    .bottom-row [data-testid="stHorizontalBlock"]{flex-wrap:nowrap!important;gap:8px!important;}
+    .bottom-row [data-testid="stHorizontalBlock"] [data-testid="stColumn"]{min-width:0!important;flex:1!important;padding:0!important;}
+    .bottom-row button{
         background:transparent!important;
-        border:1px solid rgba(255,255,255,0.5)!important;
-        color:rgba(255,255,255,0.6)!important;
+        border:1px solid rgba(255,255,255,0.4)!important;
+        color:rgba(255,255,255,0.55)!important;
         font-weight:400!important;
         font-size:0.82rem!important;
         border-radius:8px!important;
         min-height:44px!important;
+        box-shadow:none!important;
     }
-    div[data-testid="stHorizontalBlock"] button p{
-        color:rgba(255,255,255,0.6)!important;
+    .bottom-row button p{
+        color:rgba(255,255,255,0.55)!important;
         font-size:0.82rem!important;
         font-weight:400!important;
     }
     </style>''', unsafe_allow_html=True)
+    st.markdown('<div class="bottom-row">', unsafe_allow_html=True)
     if was_victory:
         nrd = rn + 1
         _c1, _c2 = st.columns([2,1])
@@ -550,6 +566,7 @@ elif st.session_state.phase=="briefing":
                 st.session_state.ans = False
                 st.session_state["_battle_entry_ans_reset"] = True
                 st.switch_page("main_hub.py")
+    st.markdown('</div>', unsafe_allow_html=True)
 
 # PHASE: LOBBY
 # ════════════════════════════════════════
