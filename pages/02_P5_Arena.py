@@ -412,7 +412,12 @@ elif st.session_state.phase=="briefing":
     st.markdown("""<style>
     section[data-testid="stSidebar"]{display:none!important;}
     header[data-testid="stHeader"]{height:0!important;visibility:hidden!important;}
-    .block-container{padding-top:0.1rem!important;padding-bottom:0!important;}
+    .block-container{padding-top:0!important;padding-bottom:0!important;margin-top:0!important;}
+    .stMarkdown{margin:0!important;padding:0!important;}
+    div[data-testid="stVerticalBlock"]{gap:0rem!important;}
+    div[data-testid="stVerticalBlockBorderWrapper"]{padding:0!important;}
+    .element-container{margin:0!important;padding:0!important;}
+    div[data-testid="stHorizontalBlock"]{margin:0!important;padding:0!important;}
     div[data-testid="stHorizontalBlock"]{flex-wrap:nowrap!important;gap:6px!important;}
     div[data-testid="stHorizontalBlock"] div[data-testid="stColumn"]{min-width:0!important;flex:1!important;padding:0!important;}
     div[data-testid="stHorizontalBlock"] button{width:100%!important;min-height:40px!important;font-size:0.9rem!important;padding:4px 2px!important;animation:none!important;transform:none!important;}
