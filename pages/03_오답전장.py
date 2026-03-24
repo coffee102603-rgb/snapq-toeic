@@ -538,8 +538,8 @@ if st.session_state.sg_phase == "lobby":
         </style>''', unsafe_allow_html=True)
         mn1, mn2, mn3 = st.columns(3)
         with mn1:
-            if st.button("🔥 오답전장", key="sg_nav1", use_container_width=True):
-                st.session_state.rv_battle=None; st.rerun()
+            if st.button("⚔️ P5전장", key="sg_nav1", use_container_width=True):
+                st.switch_page("pages/02_P5_Arena.py"); st.rerun()
         with mn2:
             if st.button("🏠 홈", key="sg_nav2", use_container_width=True):
                 st.session_state.rv_mode=None; st.session_state.rv_battle=None
