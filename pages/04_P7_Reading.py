@@ -1116,7 +1116,7 @@ elif st.session_state.p7_phase == "lost":
 
 elif st.session_state.p7_phase == "briefing":
     st.markdown('''<style>
-    .block-container{padding-top:0!important;margin-top:-3rem!important;padding-bottom:0!important;}
+    .block-container{padding-top:0.5rem!important;margin-top:-1rem!important;padding-bottom:0!important;}
     div[data-testid="stVerticalBlock"]{gap:0.3rem!important;}
     .element-container{margin-bottom:0!important;}
         div[data-testid="stAppViewBlockContainer"]{padding-top:0.2rem!important;}
@@ -1223,14 +1223,20 @@ elif st.session_state.p7_phase == "briefing":
         font-weight:900!important;
     }
     </style>''', unsafe_allow_html=True)
-    st.markdown('<div style="text-align:center;font-size:1.2rem;font-weight:900;color:#d4af37;letter-spacing:3px;padding:4px 0 2px 0;">📖 P7전투 브리핑</div>', unsafe_allow_html=True)
+    st.markdown('<div style="text-align:center;font-size:1.2rem;font-weight:900;color:#4488cc;letter-spacing:3px;padding:4px 0 2px 0;">📖 P7전투 브리핑</div>', unsafe_allow_html=True)
     st.markdown(f'<div class="p7-ban {v_cls}" style="margin-top:0!important;padding:6px 10px!important;">{data["title"]} — {v_label} ✅{ok_cnt} ❌{len(answers)-ok_cnt}</div>', unsafe_allow_html=True)
 
     # ─── 탭 [1][2][3] ───
     st.markdown('''<style>
-    .tab-sel{background:#1a1a3a!important;border:2px solid #d4af37!important;color:#d4af37!important;border-radius:8px!important;padding:6px!important;text-align:center!important;font-size:1rem!important;font-weight:900!important;cursor:default!important;display:block!important;}
-    div[data-testid="stHorizontalBlock"] button{border:1px solid #3a3a5a!important;border-radius:8px!important;background:#0d0d1e!important;color:#7a7a9a!important;font-size:1rem!important;font-weight:700!important;min-height:36px!important;max-height:36px!important;padding:4px!important;}
-    div[data-testid="stHorizontalBlock"] button p{color:#7a7a9a!important;font-size:1rem!important;font-weight:700!important;}
+    .tab-sel{background:#0a1628!important;border:2px solid #4488cc!important;color:#4488cc!important;border-radius:8px!important;padding:6px!important;text-align:center!important;font-size:1rem!important;font-weight:900!important;cursor:default!important;display:block!important;}
+    div[data-testid="stHorizontalBlock"] button{border:1px solid #1a2a3a!important;border-radius:8px!important;background:#060c14!important;color:#3a4a5a!important;font-size:1rem!important;font-weight:700!important;min-height:36px!important;max-height:36px!important;padding:4px!important;}
+    div[data-testid="stHorizontalBlock"] button p{color:#3a4a5a!important;font-size:1rem!important;font-weight:700!important;}
+    div[data-testid="stHorizontalBlock"] button:hover{border-color:#4488cc!important;}
+    div[data-testid="stHorizontalBlock"] button:hover p{color:#4488cc!important;}
+    button[kind="secondary"]{border:1px solid #1a2a3a!important;color:#4a5a6a!important;background:#060c14!important;}
+    button[kind="secondary"] p{color:#4a5a6a!important;}
+    button[kind="primary"]{border:1px solid #4488cc!important;color:#4488cc!important;background:#060c14!important;}
+    button[kind="primary"] p{color:#4488cc!important;}
     </style>''', unsafe_allow_html=True)
     tab_cols = st.columns(num_steps)
     for ti in range(num_steps):
