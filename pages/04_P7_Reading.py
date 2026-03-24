@@ -1223,12 +1223,12 @@ elif st.session_state.p7_phase == "briefing":
         font-weight:900!important;
     }
     </style>''', unsafe_allow_html=True)
-    st.markdown('<div style="text-align:center;font-size:1.2rem;font-weight:900;color:#4488cc;letter-spacing:3px;padding:4px 0 2px 0;">📖 P7전투 브리핑</div>', unsafe_allow_html=True)
+    st.markdown('<div style="text-align:center;font-size:1.2rem;font-weight:900;color:#4488cc;letter-spacing:3px;padding:8px 0 6px 0;">📖 P7전투 브리핑</div>', unsafe_allow_html=True)
     st.markdown(f'<div class="p7-ban {v_cls}" style="margin-top:0!important;padding:6px 10px!important;">{data["title"]} — {v_label} ✅{ok_cnt} ❌{len(answers)-ok_cnt}</div>', unsafe_allow_html=True)
 
     # ─── 탭 [1][2][3] ───
     st.markdown('''<style>
-    .tab-sel{background:#0a1628!important;border:2px solid #4488cc!important;color:#4488cc!important;border-radius:8px!important;padding:6px!important;text-align:center!important;font-size:1rem!important;font-weight:900!important;cursor:default!important;display:block!important;}
+    .tab-sel{background:#0a1628!important;border:2px solid #4488cc!important;color:#4488cc!important;border-radius:8px!important;padding:4px!important;text-align:center!important;font-size:1rem!important;font-weight:900!important;cursor:default!important;display:block!important;min-height:36px!important;max-height:36px!important;line-height:1.8!important;}
     div[data-testid="stHorizontalBlock"] button{border:1px solid #1a2a3a!important;border-radius:8px!important;background:#060c14!important;color:#3a4a5a!important;font-size:1rem!important;font-weight:700!important;min-height:36px!important;max-height:36px!important;padding:4px!important;}
     div[data-testid="stHorizontalBlock"] button p{color:#3a4a5a!important;font-size:1rem!important;font-weight:700!important;}
     div[data-testid="stHorizontalBlock"] button:hover{border-color:#4488cc!important;}
