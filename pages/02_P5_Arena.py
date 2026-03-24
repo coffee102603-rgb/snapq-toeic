@@ -439,12 +439,12 @@ elif st.session_state.phase=="briefing":
 
     # 상단 배너
     if was_victory:
-        st.markdown(f'''<div style="background:#0c0c00;border:2px solid #d4af37;border-left:5px solid #d4af37;border-radius:10px;padding:8px 12px;margin-bottom:6px;">
+        st.markdown(f'''<div style="background:#0c0c00;border:2px solid #d4af37;border-left:5px solid #d4af37;border-radius:10px;padding:13px 12px;margin-bottom:6px;">
             <div style="font-size:1.0rem;font-weight:900;color:#d4af37;">🏆 라운드 {rn} — VICTORY!</div>
             <div style="font-size:0.75rem;color:#886600;margin-top:2px;">✅{sc_v}문제 격파! ❌{wr_v}개 놓침</div>
         </div>''', unsafe_allow_html=True)
     else:
-        st.markdown(f'''<div style="background:#0c0008;border:2px solid #cc2244;border-left:5px solid #cc2244;border-radius:10px;padding:8px 12px;margin-bottom:6px;">
+        st.markdown(f'''<div style="background:#0c0008;border:2px solid #cc2244;border-left:5px solid #cc2244;border-radius:10px;padding:13px 12px;margin-bottom:6px;">
             <div style="font-size:1.0rem;font-weight:900;color:#cc2244;">💀 라운드 {rn} — GAME OVER</div>
             <div style="font-size:0.75rem;color:#661122;margin-top:2px;">✅{sc_v}문제 / ❌{wr_v}개 틀림</div>
         </div>''', unsafe_allow_html=True)
