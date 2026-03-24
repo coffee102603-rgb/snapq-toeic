@@ -638,7 +638,7 @@ if st.session_state.p7_phase == "lobby":
     # 타이틀
     st.markdown('''<div style="text-align:center;padding:6px 0 4px 0;">
         <div style="font-size:1.2rem;font-weight:900;color:#d4af37;letter-spacing:3px;">📖 P7전장</div>
-        <div style="font-size:0.7rem;color:#aaa;letter-spacing:2px;margin-top:2px;font-weight:600;">TOEIC TOEIC PART 7 · 단 한 번의 실수 — 즉사</div>
+        <div style="font-size:0.7rem;color:#aaa;letter-spacing:2px;margin-top:2px;font-weight:600;">TOEIC Part 7 · 단 한 번의 실수 — 즉사</div>
     </div>''', unsafe_allow_html=True)
 
 

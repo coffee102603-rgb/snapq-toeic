@@ -313,7 +313,7 @@ if st.session_state.sg_phase == "lobby":
         <div style="font-size:0.65rem;color:#ff8800;letter-spacing:3px;margin-top:2px;">TOEIC WRONG ANSWER ARENA</div>
         <div style="display:flex;align-items:center;justify-content:center;gap:8px;margin-top:4px;">
             <div style="height:1px;width:60px;background:linear-gradient(90deg,transparent,#ff6600);"></div>
-            <div style="font-size:0.7rem;color:#ff6600;opacity:0.8;">오답을 무기로 — 실전에서 써먹어라!</div>
+            <div style="font-size:0.7rem;color:#ff6600;opacity:0.8;">틀린 문제가 무기가 된다 — 반복이 실력이다</div>
             <div style="height:1px;width:60px;background:linear-gradient(90deg,#ff6600,transparent);"></div>
         </div>
     </div>''', unsafe_allow_html=True)
