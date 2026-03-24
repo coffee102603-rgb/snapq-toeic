@@ -42,6 +42,7 @@ header[data-testid="stHeader"]{background:transparent!important;height:0!importa
 .ah{text-align:center;padding:0;margin:-4px 0 -4px 0;line-height:0.6;}
 .ah h1{font-family:'Orbitron',monospace!important;font-size:0.95rem;font-weight:900;margin:0;background:linear-gradient(90deg,#00d4ff,#ffffff,#00d4ff);background-size:200%;-webkit-background-clip:text;-webkit-text-fill-color:transparent;animation:titleShine 3s linear infinite;letter-spacing:4px;}
 @keyframes titleShine{0%{background-position:200% center}100%{background-position:-200% center}}
+@keyframes warningPulse{0%,100%{color:#ff4466;text-shadow:0 0 8px rgba(255,68,102,0.8);}50%{color:#ff8888;text-shadow:0 0 20px rgba(255,68,102,1),0 0 40px rgba(255,0,50,0.6);}}
 @keyframes p5bounce{0%,100%{transform:translateY(0);}30%{transform:translateY(-6px);}60%{transform:translateY(-3px);}80%{transform:translateY(-5px);}}
 @keyframes p5flash{0%,75%,100%{box-shadow:0 0 12px rgba(0,212,255,0.15);}88%{box-shadow:0 0 45px rgba(0,255,255,1),0 0 90px rgba(0,212,255,0.7);}}
 button[kind="primary"],button[kind="secondary"]{background:#0d0d0d!important;color:#fff!important;border:1.5px solid rgba(0,212,255,0.5)!important;border-radius:8px!important;font-size:1.0rem!important;font-weight:500!important;padding:0.5rem 0.8rem!important;text-align:left!important;transition:none!important;animation:none!important;transform:none!important;box-shadow:none!important;min-height:38px!important;}
@@ -609,6 +610,7 @@ header[data-testid="stHeader"]{background:transparent!important;height:0!importa
 .ah{text-align:center;padding:0 0 0 0;}
 .ah h1{font-family:'Orbitron',monospace!important;font-size:2rem;font-weight:900;margin:0;background:linear-gradient(90deg,#00d4ff,#ffffff,#00d4ff);background-size:200%;-webkit-background-clip:text;-webkit-text-fill-color:transparent;animation:titleShine 3s linear infinite;letter-spacing:4px;}
 @keyframes titleShine{0%{background-position:200% center}100%{background-position:-200% center}}
+@keyframes warningPulse{0%,100%{color:#ff4466;text-shadow:0 0 8px rgba(255,68,102,0.8);}50%{color:#ff8888;text-shadow:0 0 20px rgba(255,68,102,1),0 0 40px rgba(255,0,50,0.6);}}
 @keyframes p5bounce{0%,100%{transform:translateY(0);}30%{transform:translateY(-6px);}60%{transform:translateY(-3px);}80%{transform:translateY(-5px);}}
 @keyframes p5flash{0%,75%,100%{box-shadow:0 0 12px rgba(0,212,255,0.15);}88%{box-shadow:0 0 45px rgba(0,255,255,1),0 0 90px rgba(0,212,255,0.7);}}
 button[kind="primary"],button[kind="secondary"]{background:#0d0d0d!important;color:#fff!important;border:1.5px solid rgba(0,212,255,0.5)!important;border-radius:8px!important;font-size:1.0rem!important;font-weight:500!important;padding:0.5rem 0.8rem!important;text-align:left!important;transition:none!important;animation:none!important;transform:none!important;box-shadow:none!important;min-height:38px!important;}
@@ -747,7 +749,7 @@ summary{color:#aaa!important;font-weight:700!important;}
     st.markdown('<div style="height:6px;"></div>', unsafe_allow_html=True)
 
     st.markdown('''<div style="display:flex;align-items:flex-end;margin-bottom:0;">
-        <div style="background:#140800;border:1.5px solid #ff8800;border-bottom:none;border-radius:8px 8px 0 0;padding:3px 12px;font-size:0.72rem;font-weight:900;color:#ff8800;">⚔️ 전장 선택</div>
+        <div style="background:#140800;border:1.5px solid #cc2244;border-bottom:none;border-radius:8px 8px 0 0;padding:3px 12px;font-size:0.72rem;font-weight:900;color:#ff8800;">⚔️ 전장 선택</div>
     </div>''', unsafe_allow_html=True)
     b1,b2 = st.columns(2)
     with b1:
@@ -766,7 +768,7 @@ summary{color:#aaa!important;font-weight:700!important;}
     st.markdown('<div style="height:6px;"></div>', unsafe_allow_html=True)
 
     st.markdown('''<div style="background:#0a0500;border:1px solid #441100;border-radius:8px;padding:5px 10px;text-align:center;margin-bottom:6px;">
-        <span style="font-size:0.78rem;color:#884422;font-weight:600;">⚔️ 생존 규칙: 5문제 중 3개 이상 · 그 이하면 전멸!</span>
+        <span style="font-size:0.85rem;color:#ff4466;font-weight:900;animation:warningPulse 1.5s ease-in-out infinite;display:inline-block;">💀 생존 규칙: 5문제 중 3개 이상 · 그 이하면 전멸!</span>
     </div>''', unsafe_allow_html=True)
 
     _ready = _tsec_chosen and sm and sm in ["g1","g2","g3","vocab"]
