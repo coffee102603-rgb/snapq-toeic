@@ -1116,7 +1116,9 @@ elif st.session_state.p7_phase == "lost":
 
 elif st.session_state.p7_phase == "briefing":
     st.markdown('''<style>
-    .block-container{padding-top:0.2rem!important;margin-top:0!important;}
+    .block-container{padding-top:0!important;margin-top:-3rem!important;padding-bottom:0!important;}
+    div[data-testid="stVerticalBlock"]{gap:0.3rem!important;}
+    .element-container{margin-bottom:0!important;}
         div[data-testid="stAppViewBlockContainer"]{padding-top:0.2rem!important;}
     </style>''', unsafe_allow_html=True)
     data = st.session_state.p7_data
