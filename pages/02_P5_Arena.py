@@ -444,19 +444,14 @@ elif st.session_state.phase=="briefing":
             <div style="font-size:0.75rem;color:#661122;margin-top:2px;">✅{sc_v}문제 / ❌{wr_v}개 틀림</div>
         </div>''', unsafe_allow_html=True)
 
-    # 네비 — st.columns 가로 강제 CSS
-    _gem_colors = ["#d4af37","#9aa5b4","#50c878","#4488cc","#cc2244"]
-    _ncols = st.columns(num_qs + 2)
-    with _ncols[0]:
-        _bc = "rgba(255,255,255,0.3)" if bi > 0 else "rgba(255,255,255,0.1)"
-        if st.button("◀", key="br_p", disabled=bi<=0, use_container_width=True):
-            st.session_state.br_idx = bi - 1; st.rerun()
+    # 네비 — 숫자만 (화살표 없음)
+    _ncols = st.columns(num_qs)
     for _i in range(num_qs):
-        with _ncols[_i + 1]:
+        with _ncols[_i]:
             _bc = "#50c878" if rrs[_i] else "#cc2244"
             _sel = "outline:2px solid #00d4ff;" if _i==bi else ""
             st.markdown(f'''<style>
-            div[data-testid="stColumn"]:nth-child({_i+2}) button{{
+            div[data-testid="stHorizontalBlock"] div[data-testid="stColumn"]:nth-child({_i+1}) button{{
                 background:{"#0d2010" if rrs[_i] else "#200810"}!important;
                 border:2px solid {_bc}!important;
                 color:{_bc}!important;
@@ -465,9 +460,6 @@ elif st.session_state.phase=="briefing":
             }}</style>''', unsafe_allow_html=True)
             if st.button(str(_i+1), key=f"dot_{_i}", use_container_width=True):
                 st.session_state.br_idx = _i; st.rerun()
-    with _ncols[num_qs + 1]:
-        if st.button("▶", key="br_n", disabled=bi>=num_qs-1, use_container_width=True):
-            st.session_state.br_idx = bi + 1; st.rerun()
 
     # 문제 카드
     q  = rqs[bi]; ok = rrs[bi]
@@ -496,7 +488,7 @@ elif st.session_state.phase=="briefing":
     _sv1, _sv2 = st.columns([3, 1])
     with _sv2:
         _is_saved = bi in saved
-        _slabel = "✅ 저장됨" if _is_saved else "⚔️ 저장"
+        _slabel = "✅ 저장됨" if _is_saved else "💾 저장"
         if st.button(_slabel, key=f"sv_{q['id']}_{bi}", use_container_width=True, disabled=_is_saved):
             item = {"id":q["id"],"text":q["text"],"ch":q["ch"],"a":q["a"],"ex":q.get("ex",""),"exk":q.get("exk",""),"cat":q.get("cat",""),"kr":q.get("kr",""),"tp":q.get("tp","grammar")}
             save_to_storage([item])
@@ -510,8 +502,8 @@ elif st.session_state.phase=="briefing":
         nrd = rn + 1
         _c1, _c2 = st.columns([2,1])
         with _c1:
-            st.markdown('''<style>div[data-testid="stColumn"]:nth-child(1) button[kind="secondary"]{background:#0c0c00!important;border:2px solid #d4af37!important;color:#d4af37!important;font-weight:900!important;}</style>''', unsafe_allow_html=True)
-            if st.button(f"⚔️ 라운드 {nrd}! 완전 정복!", use_container_width=True):
+            st.markdown('''<style>div[data-testid="stColumn"]:nth-child(1) button[kind="secondary"]{background:#0c0c00!important;border:1px solid #d4af37!important;color:#d4af37!important;font-weight:400!important;font-size:0.82rem!important;}</style>''', unsafe_allow_html=True)
+            if st.button(f"⚔️ 라운드 {nrd}! 도전!", use_container_width=True):
                 st.session_state.round_num += 1
                 for k in ["cq","qi","sc","wrong","ta","ans","sel","round_qs","round_results","br_idx","br_saved"]:
                     if k in st.session_state: del st.session_state[k]
@@ -521,6 +513,7 @@ elif st.session_state.phase=="briefing":
                 st.session_state.round_qs = qs; st.session_state.cq = qs[0]
                 st.session_state.qst = time.time(); st.session_state.phase = "battle"; st.rerun()
         with _c2:
+            st.markdown('''<style>div[data-testid="stColumn"]:nth-child(2) button[kind="secondary"]{background:transparent!important;border:1px solid rgba(255,255,255,0.2)!important;color:rgba(255,255,255,0.4)!important;font-weight:400!important;font-size:0.82rem!important;}</style>''', unsafe_allow_html=True)
             if st.button("🏠 홈", use_container_width=True):
                 st.session_state._p5_just_left = True
                 st.session_state.ans = False
