@@ -842,20 +842,20 @@ _p7_trend = _trend(_logs, "p7_answer")
 if _is_first:
     _sn = student_name
     _p5_s1_big  = f"⚡ P5전장"
-    _p5_s1_lbl  = f"{_sn}! 문법·어휘 속도전!"
+    _p5_s1_lbl  = "문법·어휘 속도전!"
     _p7_s1_big  = f"📖 P7전장"
-    _p7_s1_lbl  = f"{_sn}! 읽는 뇌를 깨워라!"
+    _p7_s1_lbl  = "독해 · 읽는 뇌를 깨워라!"
     _arm_s1_big = f"🔥 오답전장"
-    _arm_s1_lbl = f"{_sn}! 약점, 지금 박살낸다!"
+    _arm_s1_lbl = "틀린 문제가 무기가 된다"
     _p5_s2_big  = "3개↑ 생존"
     _p5_s2_lbl  = "30초 · 5문제 · 미만 전멸"
     _p7_s2_big  = "1오답 즉사"
     _p7_s2_lbl  = "60초 · 3문제 · 시간초과 즉사"
     _arm_s2_big = "저장→반복"
     _arm_s2_lbl = "틀린 문제가 무기가 된다"
-    _p5_s3  = f"⚡ {_sn}! 5문제 중 3개↑ 맞춰야 생존!"
-    _p7_s3  = f"📖 {_sn}! 오답 1개 즉사 · 시간초과 즉사"
-    _arm_s3 = f"🔥 {_sn}! 저장 → 반복 → 완전 정복!"
+    _p5_s3  = "⚡ 5문제 중 3개↑ 맞춰야 생존!"
+    _p7_s3  = "📖 오답 1개 즉사 · 시간초과 즉사"
+    _arm_s3 = "🔥 저장 → 반복 → 완전 정복!"
 else:
     _sn = student_name
     _p5_s1_big  = f"{p5_rate}%{_p5_trend}" if p5_rate is not None else f"{_sn}! 첫 도전"
