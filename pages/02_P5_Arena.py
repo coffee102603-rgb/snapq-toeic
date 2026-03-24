@@ -451,7 +451,7 @@ elif st.session_state.phase=="briefing":
 
     # 네비 — 숫자만 (화살표 없음)
     st.markdown('''<style>
-    .nav-size [data-testid="stHorizontalBlock"] button{font-size:0.72rem!important;min-height:28px!important;padding:1px!important;}
+    .nav-size [data-testid="stHorizontalBlock"] button{font-size:0.58rem!important;min-height:22px!important;padding:1px 2px!important;line-height:1!important;}
     .nav-size [data-testid="stHorizontalBlock"] button p{font-size:0.72rem!important;}
     .sv-size [data-testid="stColumn"]:last-child button{font-size:0.72rem!important;min-height:32px!important;}
     .sv-size [data-testid="stColumn"]:last-child button p{font-size:0.72rem!important;}
