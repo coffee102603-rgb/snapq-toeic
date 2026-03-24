@@ -489,13 +489,13 @@ elif st.session_state.phase=="briefing":
 
     st.markdown(f'''<div style="background:#0c0c18;border:1.5px solid {card_border};border-left:4px solid {card_border};border-radius:12px;padding:10px 12px;margin:4px 0;">
         <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:6px;">
-            <span style="background:#0a0a20;border:1px solid #222;border-radius:10px;padding:2px 10px;font-size:0.78rem;font-weight:700;color:{qnum_color};">{qnum_sym} Q{bi+1}/{num_qs}</span>
+            <span style="background:#0a0a20;border:1px solid #222;border-radius:10px;padding:2px 10px;font-size:0.86rem;font-weight:700;color:{qnum_color};">{qnum_sym} Q{bi+1}/{num_qs}</span>
             <span style="font-size:0.7rem;color:#444;">{cat}</span>
         </div>
-        <div style="font-size:1.0rem;font-weight:700;color:#eeeeff;line-height:1.7;margin-bottom:8px;">{sent_html}</div>
-        <div style="font-size:0.8rem;color:#9aa5b4;margin-bottom:6px;">📖 {kr}</div>
+        <div style="font-size:1.1rem;font-weight:700;color:#eeeeff;line-height:1.7;margin-bottom:8px;">{sent_html}</div>
+        <div style="font-size:0.88rem;color:#9aa5b4;margin-bottom:6px;">📖 {kr}</div>
         <div style="background:#081008;border-left:3px solid #50c878;border-radius:0 8px 8px 0;padding:6px 10px;">
-            <div style="font-size:0.8rem;color:#50c878;font-weight:700;">💡 {exk}</div>
+            <div style="font-size:0.88rem;color:#50c878;font-weight:700;">💡 {exk}</div>
         </div>
     </div>''', unsafe_allow_html=True)
 
