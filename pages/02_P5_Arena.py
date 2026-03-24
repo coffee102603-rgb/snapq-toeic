@@ -552,14 +552,7 @@ elif st.session_state.phase=="briefing":
         _c1, _c2 = st.columns([2,1])
         with _c1:
             if st.button("🔥 오답전장!", use_container_width=True):
-                st.session_state.round_num += 1
-                for k in ["cq","qi","sc","wrong","ta","ans","sel","round_qs","round_results","br_idx","br_saved"]:
-                    if k in st.session_state: del st.session_state[k]
-                for k,v in D.items():
-                    if k not in st.session_state: st.session_state[k]=v
-                qs = pick5(st.session_state.mode)
-                st.session_state.round_qs = qs; st.session_state.cq = qs[0]
-                st.session_state.qst = time.time(); st.session_state.phase = "battle"; st.rerun()
+                st.switch_page("pages/03_오답전장.py")
         with _c2:
             if st.button("🏠 홈", use_container_width=True):
                 st.session_state._p5_just_left = True
