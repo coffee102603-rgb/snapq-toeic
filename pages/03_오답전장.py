@@ -927,7 +927,7 @@ elif st.session_state.sg_phase == "survival":
         candidates=[w.strip(".,!?;:()") for w in words if w.strip(".,!?;:()").lower() not in stopwords and len(w.strip(".,!?;:()"))>=3]
         rng=random.Random(hash(sentence))
         rng.shuffle(candidates)
-        blank_words=candidates[:3] if len(candidates)>=3 else candidates
+        blank_words=candidates[:2] if len(candidates)>=2 else candidates
         if len(blank_words)<2:
             blank_words=[w.strip(".,!?;:()") for w in words if len(w.strip(".,!?;:()"))>=3][:3]
         blanked=sentence
@@ -946,9 +946,9 @@ elif st.session_state.sg_phase == "survival":
             filtered=[w for w in cands if w.lower()!=bw.lower() and w.lower() not in [b.lower() for b in border]]
             filtered.sort(key=lambda w:abs(len(w)-len(bw)))
             if filtered: distractors.append(filtered[0])
-        while len(distractors)<2:
+        while len(distractors)<1:
             distractors.append(["process","indicate","establish","provide","conduct"][len(distractors)])
-        distractors=list(dict.fromkeys(distractors))[:2]
+        distractors=list(dict.fromkeys(distractors))[:1]
         all_choices=border+distractors
         rng.shuffle(all_choices)
         st.session_state.sb_blanked=blanked
