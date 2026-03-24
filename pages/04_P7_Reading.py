@@ -1173,8 +1173,13 @@ elif st.session_state.p7_phase == "briefing":
     div[data-testid="stExpander"] summary p,
     div[data-testid="stExpander"] summary span,
     div[data-testid="stExpander"] details summary{
-        color:white!important;
-        font-weight:900!important;
+        color:rgba(255,255,255,0.4)!important;
+        font-weight:400!important;
+        font-size:0.8rem!important;
+    }
+    div[data-testid="stExpander"]{
+        transform:scale(0.9)!important;
+        transform-origin:top left!important;
     }
     </style>""", unsafe_allow_html=True)
     # 브리핑 전용 버튼 CSS 강제 적용
@@ -1223,8 +1228,8 @@ elif st.session_state.p7_phase == "briefing":
         font-weight:900!important;
     }
     </style>''', unsafe_allow_html=True)
-    st.markdown('<div style="text-align:center;font-size:1.2rem;font-weight:900;color:#4488cc;letter-spacing:3px;padding:8px 0 6px 0;">📖 P7전투 브리핑</div>', unsafe_allow_html=True)
-    st.markdown(f'<div class="p7-ban {v_cls}" style="margin-top:0!important;padding:6px 10px!important;">{data["title"]} — {v_label} ✅{ok_cnt} ❌{len(answers)-ok_cnt}</div>', unsafe_allow_html=True)
+    st.markdown('<div style="text-align:center;font-size:1.2rem;font-weight:900;color:#4488cc;letter-spacing:3px;padding:14px 0 10px 0;">📖 P7전투 브리핑</div>', unsafe_allow_html=True)
+    st.markdown(f'<div class="p7-ban {v_cls}" style="margin-top:4px!important;margin-bottom:6px!important;padding:6px 10px!important;">{data["title"]} — {v_label} ✅{ok_cnt} ❌{len(answers)-ok_cnt}</div>', unsafe_allow_html=True)
 
     # ─── 탭 [1][2][3] ───
     st.markdown('''<style>
@@ -1302,7 +1307,7 @@ elif st.session_state.p7_phase == "briefing":
     c_kr = s.get("choices_kr", [])
     answer_kr = c_kr[s["answer"]] if c_kr and s["answer"] < len(c_kr) else ""
 
-    st.markdown(f'''<div style="background:#020408;border:1px solid #1a4a2a;border-left:2px solid #2a7a4a;border-radius:8px;padding:6px 10px;margin-bottom:6px;">
+    st.markdown(f'''<div style="background:#020408;border:1px solid #1a4a2a;border-left:2px solid #2a7a4a;border-radius:8px;padding:6px 10px;margin-bottom:12px;">
         <div style="font-size:0.85rem;font-weight:700;color:#888;margin-bottom:2px;">[Q{bi+1}] {s["question"]}</div>
         <div style="font-size:0.9rem;font-weight:900;color:#4488cc;">{sym} {correct_choice}</div>
         ''' + (f'<div style="font-size:0.85rem;color:#88dd88;margin-top:2px;">{answer_kr}</div>' if answer_kr else "") + '''
