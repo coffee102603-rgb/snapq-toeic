@@ -806,21 +806,21 @@ elif st.session_state.sg_phase == "p5_exam_result":
             if st.button("🔥 오답전장", key="retry_lobby", use_container_width=True):
                 st.session_state.sg_phase = "lobby"; st.session_state.rv_battle = None; st.session_state.rv_mode = None; st.rerun()
         with _c2:
-            if st.button("🏠 메인", key="retry_main", use_container_width=True):
+            if st.button("🏠 홈", key="retry_main", use_container_width=True):
                 st.switch_page("main_hub.py")
     else:
-        st.markdown('''<style>.stApp{background:#000a00!important;}</style>''', unsafe_allow_html=True)
+        st.markdown('''<style>.stApp{background:#080600!important;}</style>''', unsafe_allow_html=True)
         st.markdown('''<div style="text-align:center;padding:1rem 0 0.5rem 0;">
-            <div style="font-size:1rem;letter-spacing:4px;opacity:0.6;">🏆 ⭐ ✨ 🎖️ 🌟 🏆 ⭐</div>
-            <div style="font-size:2.8rem;font-weight:900;color:#44ff88;margin:6px 0;">🎖️ 생존!</div>
-            <div style="font-size:0.95rem;color:#88ffaa;font-weight:700;">폭탄을 이겨냈다! 진짜 전사!</div>
+            <div style="font-size:1rem;letter-spacing:4px;opacity:0.6;">🏆 💰 ✨ 👑 ⭐ 🏆 💛</div>
+            <div style="font-size:2.8rem;font-weight:900;color:#ffd700;margin:6px 0;">🏆 생존!</div>
+            <div style="font-size:0.95rem;color:#d4af37;font-weight:700;">폭탄을 이겨냈다! 진짜 전사!</div>
         </div>''', unsafe_allow_html=True)
-        st.markdown(f'''<div style="background:#001a00;border:1.5px solid #44ff88;border-radius:12px;padding:10px;text-align:center;margin:8px 0;">
-            <div style="font-size:1.6rem;font-weight:900;color:#44ff88;">🏆 {ok_cnt} / 5</div>
+        st.markdown(f'''<div style="background:#0c0c00;border:1.5px solid #d4af37;border-radius:12px;padding:10px;text-align:center;margin:8px 0;">
+            <div style="font-size:1.6rem;font-weight:900;color:#ffd700;">🏆 {ok_cnt} / 5</div>
         </div>''', unsafe_allow_html=True)
-        st.markdown('''<div style="background:#001200;border:1px solid #226633;border-radius:10px;padding:8px;text-align:center;margin-bottom:8px;">
-            <div style="font-size:0.85rem;color:#66dd88;font-weight:700;">⚡ 3번 반복하면 장기기억 전환율 3배!</div>
-            <div style="font-size:0.75rem;color:#335533;margin-top:2px;">지금 이 기세로 한 번 더!</div>
+        st.markdown('''<div style="background:#0a0800;border:1px solid #d4af37;border-radius:10px;padding:8px;text-align:center;margin-bottom:8px;">
+            <div style="font-size:0.85rem;color:#d4af37;font-weight:700;">⚡ 3번 반복하면 장기기억 전환율 3배!</div>
+            <div style="font-size:0.75rem;color:#886600;margin-top:2px;">지금 이 기세로 한 번 더!</div>
         </div>''', unsafe_allow_html=True)
         if st.button("⚡ 한 번 더! 완전 정복!", key="retry_exam", type="primary", use_container_width=True):
             st.session_state.sg_phase = "lobby"; st.session_state.rv_battle = None; st.session_state.rv_mode = None; st.rerun()
@@ -841,7 +841,7 @@ elif st.session_state.sg_phase == "p5_exam_result":
             if st.button("🔥 오답전장", key="retry_lobby", use_container_width=True):
                 st.session_state.sg_phase = "lobby"; st.session_state.rv_battle = None; st.session_state.rv_mode = None; st.rerun()
         with _c2:
-            if st.button("🏠 메인", key="retry_main", use_container_width=True):
+            if st.button("🏠 홈", key="retry_main", use_container_width=True):
                 st.switch_page("main_hub.py")
 
 
@@ -1126,7 +1126,7 @@ elif st.session_state.sg_phase == "survival_result":
             if "sg_combo_pool" in st.session_state: del st.session_state.sg_combo_pool
             st.session_state.sg_phase = "combo_rush"; st.rerun()
     with c3:
-        if st.button("🔥 오답전장으로\\n귀환", key="sv_back", type="secondary", use_container_width=True):
+        if st.button("🔥 오답전장 귀환", key="sv_back", type="secondary", use_container_width=True):
             st.session_state.sg_phase = "lobby"; st.session_state.rv_battle = None; st.session_state.rv_mode = None; st.rerun()
 
 # ════════════════════════════════
@@ -1272,36 +1272,49 @@ elif st.session_state.sg_phase == "combo_result":
     combo_pool = st.session_state.get("sg_combo_pool", [])
 
     if new_record:
-        st.markdown(f'''<div style="text-align:center;padding:1.5rem;">
-            <div style="font-size:3rem;font-weight:900;color:#ffcc00;text-shadow:0 0 30px #ffaa00;">🏆 신기록 달성! 🏆</div>
-            <div style="font-size:2.5rem;font-weight:900;color:#fff;margin-top:8px;">⭐ {score}</div>
+        st.markdown('<style>.stApp{background:#080600!important;}</style>', unsafe_allow_html=True)
+        st.markdown(f'''<div style="text-align:center;padding:1rem 0 0.5rem 0;">
+            <div style="font-size:0.9rem;letter-spacing:4px;opacity:0.7;">🏆 💰 ✨ 👑 ⭐ 🏆 💛</div>
+            <div style="font-size:2.8rem;font-weight:900;color:#ffd700;text-shadow:0 0 30px #ffd700,0 0 60px #ff8800;margin:6px 0;">🏆 신기록!</div>
+            <div style="font-size:0.9rem;color:#d4af37;font-weight:700;">새로운 최고 기록 달성!</div>
+        </div>''', unsafe_allow_html=True)
+        st.markdown(f'''<div style="background:#0c0c00;border:2px solid #d4af37;border-radius:14px;padding:14px;text-align:center;margin:8px 0;">
+            <div style="font-size:0.75rem;color:#886600;margin-bottom:4px;">🎉 NEW RECORD</div>
+            <div style="font-size:2.8rem;font-weight:900;color:#ffd700;text-shadow:0 0 20px rgba(255,215,0,0.5);">⭐ {score}</div>
         </div>''', unsafe_allow_html=True)
     else:
-        st.markdown(f'''<div style="text-align:center;padding:1.5rem;">
-            <div style="font-size:3rem;font-weight:900;color:#ff8800;text-shadow:0 0 20px #ff6600;">💪 여기까지! 💪</div>
-            <div style="font-size:2.5rem;font-weight:900;color:#fff;margin-top:8px;">⭐ {score}</div>
-            <div style="font-size:1.2rem;color:#888;font-weight:700;margin-top:4px;">최고기록: ⭐ {max(best, score)}</div>
+        st.markdown('<style>.stApp{background:#080000!important;}</style>', unsafe_allow_html=True)
+        st.markdown(f'''<div style="text-align:center;padding:1rem 0 0.5rem 0;">
+            <div style="font-size:0.9rem;letter-spacing:4px;opacity:0.5;">💣 🔥 💥 ☠️ ⚡ 💣 🔥</div>
+            <div style="font-size:2.8rem;font-weight:900;color:#ff2200;text-shadow:0 0 20px #ff0000;margin:6px 0;">💀 전멸!</div>
+            <div style="font-size:0.9rem;color:#ff6600;font-weight:700;">폭탄이 터졌다... 한 번 더 도전!</div>
+        </div>''', unsafe_allow_html=True)
+        st.markdown(f'''<div style="background:#1a0000;border:1.5px solid #cc2244;border-radius:12px;padding:10px;text-align:center;margin:8px 0;">
+            <div style="font-size:0.75rem;color:#884433;margin-bottom:2px;">이번 결과</div>
+            <div style="font-size:2rem;font-weight:900;color:#ff4466;">💀 {score}점 &nbsp;·&nbsp; 최고 {max(best,score)}점</div>
         </div>''', unsafe_allow_html=True)
 
-    c1, c2, c3 = st.columns(3)
-    with c1:
-        if st.button("💪 다시 덤벼,\n이번엔 안 진다!", key="cb_retry", type="primary", use_container_width=True):
-            st.session_state.sg_combo_score = 0; st.session_state.sg_combo_count = 0
-            st.session_state.sg_combo_idx = 0; st.session_state.sg_combo_start = time.time()
-            st.session_state.sg_combo_over = False
-            if "sg_combo_pool" in st.session_state: del st.session_state.sg_combo_pool
-            st.session_state.sg_phase = "combo_rush"; st.rerun()
-    with c2:
-        if st.button("🧠 단계부터\n다시 밟는다!", key="cb_wave", type="secondary", use_container_width=True):
-            st.session_state.sg_wave = 1; st.session_state.sg_wave_idx = 0
-            st.session_state.sg_wave_results = []; st.session_state.sg_wave_dead = False
-            st.session_state.sg_wave_start = time.time()
-            if "sg_sv_pool" in st.session_state: del st.session_state.sg_sv_pool
-            if "sg_wave_start" in st.session_state: del st.session_state.sg_wave_start
-            st.session_state.sg_phase = "survival"; st.rerun()
-    with c3:
-        if st.button("🔥 오답전장으로\\n귀환", key="cb_back", type="secondary", use_container_width=True):
-            st.session_state.sg_phase = "lobby"; st.session_state.rv_battle = None; st.session_state.rv_mode = None; st.rerun()
+    st.markdown("""<style>
+    button[data-testid="stBaseButton-primary"]{background:#0a0000!important;border:2px solid #cc2244!important;border-radius:12px!important;}
+    button[data-testid="stBaseButton-primary"] p{color:#ff4466!important;font-size:1.1rem!important;font-weight:900!important;}
+    button[data-testid="stBaseButton-secondary"]{background:#0a0a0a!important;border:1.5px solid rgba(255,255,255,0.2)!important;border-radius:12px!important;}
+    button[data-testid="stBaseButton-secondary"] p{color:#aaa!important;font-size:1.0rem!important;}
+    </style>""", unsafe_allow_html=True)
+    if st.button("💪 다시 덤벼! 이번엔 안 진다!", key="cb_retry", type="primary", use_container_width=True):
+        st.session_state.sg_combo_score = 0; st.session_state.sg_combo_count = 0
+        st.session_state.sg_combo_idx = 0; st.session_state.sg_combo_start = time.time()
+        st.session_state.sg_combo_over = False
+        if "sg_combo_pool" in st.session_state: del st.session_state.sg_combo_pool
+        st.session_state.sg_phase = "combo_rush"; st.rerun()
+    if st.button("🧠 단계부터 다시 밟는다!", key="cb_wave", use_container_width=True):
+        st.session_state.sg_wave = 1; st.session_state.sg_wave_idx = 0
+        st.session_state.sg_wave_results = []; st.session_state.sg_wave_dead = False
+        st.session_state.sg_wave_start = time.time()
+        if "sg_sv_pool" in st.session_state: del st.session_state.sg_sv_pool
+        if "sg_wave_start" in st.session_state: del st.session_state.sg_wave_start
+        st.session_state.sg_phase = "survival"; st.rerun()
+    if st.button("🔥 오답전장 귀환", key="cb_back", use_container_width=True):
+        st.session_state.sg_phase = "lobby"; st.session_state.rv_battle = None; st.session_state.rv_mode = None; st.rerun()
 
 
 
