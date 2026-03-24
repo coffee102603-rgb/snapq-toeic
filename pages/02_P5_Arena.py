@@ -708,7 +708,7 @@ summary{color:#aaa!important;font-weight:700!important;}
         round_txt = f'<p style="color:#cc6600;font-size:0.9rem;font-weight:800;margin:2px 0;">🏆 Round {rn}</p>'
     else:
         round_txt = ''
-    st.markdown(f'<div class="ms-title"><p>TOEIC Part 5 · 문법/어휘 5문제 서바이벌</p>{round_txt}</div>', unsafe_allow_html=True)
+    st.markdown(f'<div class="ms-title"><h1>⚔️ P5전장</h1><p>TOEIC Part 5 · 문법/어휘 5문제 서바이벌</p>{round_txt}</div>', unsafe_allow_html=True)
 
     _tsec = st.session_state.get('tsec', 30)
     _tsec_chosen = st.session_state.get('tsec_chosen', False)
