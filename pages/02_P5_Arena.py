@@ -413,9 +413,9 @@ elif st.session_state.phase=="briefing":
     section[data-testid="stSidebar"]{display:none!important;}
     header[data-testid="stHeader"]{height:0!important;visibility:hidden!important;}
     .block-container{padding-top:0.2rem!important;padding-bottom:0!important;}
-    div[data-testid="stHorizontalBlock"]{flex-wrap:nowrap!important;gap:6px!important;}
-    div[data-testid="stHorizontalBlock"] div[data-testid="stColumn"]{min-width:0!important;flex:1!important;padding:0!important;}
-    div[data-testid="stHorizontalBlock"] button{width:100%!important;min-height:40px!important;font-size:0.9rem!important;padding:4px 2px!important;animation:none!important;transform:none!important;}
+    .nav-wrap [data-testid="stHorizontalBlock"]{flex-wrap:nowrap!important;gap:6px!important;}
+    .nav-wrap [data-testid="stHorizontalBlock"] [data-testid="stColumn"]{min-width:0!important;flex:1!important;padding:0!important;}
+    .nav-wrap [data-testid="stHorizontalBlock"] button{width:100%!important;min-height:40px!important;font-size:0.9rem!important;padding:4px 2px!important;animation:none!important;transform:none!important;}
     </style>""", unsafe_allow_html=True)
 
     was_victory = st.session_state.sc >= 3
@@ -445,6 +445,7 @@ elif st.session_state.phase=="briefing":
         </div>''', unsafe_allow_html=True)
 
     # 네비 — 숫자만 (화살표 없음)
+    st.markdown('<div class="nav-wrap">', unsafe_allow_html=True)
     _ncols = st.columns(num_qs)
     for _i in range(num_qs):
         with _ncols[_i]:
@@ -460,6 +461,7 @@ elif st.session_state.phase=="briefing":
             }}</style>''', unsafe_allow_html=True)
             if st.button(str(_i+1), key=f"dot_{_i}", use_container_width=True):
                 st.session_state.br_idx = _i; st.rerun()
+    st.markdown('</div>', unsafe_allow_html=True)
 
     # 문제 카드
     q  = rqs[bi]; ok = rrs[bi]
@@ -499,21 +501,25 @@ elif st.session_state.phase=="briefing":
 
     # 하단 버튼
     st.markdown('''<style>
-    div[data-testid="stHorizontalBlock"] button{
+    .bottom-btns [data-testid="stHorizontalBlock"]{flex-wrap:nowrap!important;gap:8px!important;}
+    .bottom-btns [data-testid="stHorizontalBlock"] [data-testid="stColumn"]{min-width:0!important;flex:1!important;padding:0!important;}
+    .bottom-btns button{
         background:transparent!important;
-        border:1px solid rgba(255,255,255,0.5)!important;
-        color:rgba(255,255,255,0.6)!important;
+        border:1px solid rgba(255,255,255,0.3)!important;
+        color:rgba(255,255,255,0.5)!important;
         font-weight:400!important;
         font-size:0.82rem!important;
         border-radius:8px!important;
         min-height:44px!important;
+        box-shadow:none!important;
     }
-    div[data-testid="stHorizontalBlock"] button p{
-        color:rgba(255,255,255,0.6)!important;
+    .bottom-btns button p{
+        color:rgba(255,255,255,0.5)!important;
         font-size:0.82rem!important;
         font-weight:400!important;
     }
     </style>''', unsafe_allow_html=True)
+    st.markdown('<div class="bottom-btns">', unsafe_allow_html=True)
     if was_victory:
         nrd = rn + 1
         _c1, _c2 = st.columns([2,1])
@@ -550,6 +556,7 @@ elif st.session_state.phase=="briefing":
                 st.session_state.ans = False
                 st.session_state["_battle_entry_ans_reset"] = True
                 st.switch_page("main_hub.py")
+    st.markdown('</div>', unsafe_allow_html=True)
 
 # PHASE: LOBBY
 # ════════════════════════════════════════
