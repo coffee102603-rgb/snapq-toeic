@@ -204,50 +204,7 @@ def tcls(r,t):
 # ════════════════════════════════════════
 # PHASE: BATTLE
 # ════════════════════════════════════════
-_br_action = st.query_params.get("br_action", "")
-_br_val    = st.query_params.get("br_val", "")
-if _br_action == "nav" and _br_val.isdigit():
-    st.session_state.br_idx = int(_br_val)
-    st.query_params.clear(); st.rerun()
-elif _br_action == "save":
-    _bi2 = st.session_state.get("br_idx", 0)
-    _rqs2 = st.session_state.get("round_qs", [])
-    if "br_saved" not in st.session_state: st.session_state.br_saved = set()
-    if 0 <= _bi2 < len(_rqs2):
-        _q2 = _rqs2[_bi2]
-        _item = {"id":_q2["id"],"text":_q2["text"],"ch":_q2["ch"],"a":_q2["a"],
-                "ex":_q2.get("ex",""),"exk":_q2.get("exk",""),"cat":_q2.get("cat",""),
-                "kr":_q2.get("kr",""),"tp":_q2.get("tp","grammar")}
-        save_to_storage([_item])
-        st.session_state.br_saved.add(_bi2)
-    st.query_params.clear(); st.rerun()
-elif _br_action == "next_round":
-    st.session_state.round_num = st.session_state.get("round_num", 1) + 1
-    for _k in ["cq","qi","sc","wrong","ta","ans","sel","round_qs","round_results","br_idx","br_saved"]:
-        if _k in st.session_state: del st.session_state[_k]
-    for _k,_v in D.items():
-        if _k not in st.session_state: st.session_state[_k]=_v
-    _qs = pick5(st.session_state.mode)
-    st.session_state.round_qs = _qs; st.session_state.cq = _qs[0]
-    st.session_state.qst = time.time(); st.session_state.phase = "battle"
-    st.query_params.clear(); st.rerun()
-elif _br_action == "retry":
-    for _k in ["cq","qi","sc","wrong","ta","ans","sel","round_qs","round_results","br_idx","br_saved"]:
-        if _k in st.session_state: del st.session_state[_k]
-    for _k,_v in D.items():
-        if _k not in st.session_state: st.session_state[_k]=_v
-    _qs = pick5(st.session_state.mode)
-    st.session_state.round_qs = _qs; st.session_state.cq = _qs[0]
-    st.session_state.qst = time.time(); st.session_state.phase = "battle"
-    st.query_params.clear(); st.rerun()
-elif _br_action == "home":
-    st.session_state._p5_just_left = True
-    st.session_state.ans = False
-    st.session_state["_battle_entry_ans_reset"] = True
-    st.query_params.clear()
-    st.switch_page("main_hub.py")
-
-if st.session_state.phase=="battle"
+if st.session_state.phase=="battle":
     if st.session_state.get("_battle_entry_ans_reset", True):
         st.session_state.ans = False
         st.session_state["_battle_entry_ans_reset"] = False
