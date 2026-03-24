@@ -707,7 +707,6 @@ if st.session_state.p7_phase == "lobby":
             st.rerun()
     else:
         st.markdown('<div style="background:#0a0a14;border:1px solid #222;border-radius:12px;padding:12px;text-align:center;color:#333;font-size:0.9rem;">시간 + 지문을 선택하면 시작!</div>', unsafe_allow_html=True)
-
     st.markdown('''<div style="background:#0a0000;border:1.5px solid #cc2244;border-left:4px solid #cc2244;border-radius:10px;padding:10px 14px;margin:4px 0;text-align:center;">
     </div>''', unsafe_allow_html=True)
 
