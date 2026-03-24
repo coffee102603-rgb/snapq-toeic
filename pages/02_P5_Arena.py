@@ -445,6 +445,15 @@ elif st.session_state.phase=="briefing":
         </div>''', unsafe_allow_html=True)
 
     # 네비 — 숫자만 (화살표 없음)
+    st.markdown('''<style>
+    .nav-size [data-testid="stHorizontalBlock"] button{font-size:0.72rem!important;min-height:32px!important;padding:2px!important;}
+    .nav-size [data-testid="stHorizontalBlock"] button p{font-size:0.72rem!important;}
+    .sv-size [data-testid="stColumn"]:last-child button{font-size:0.72rem!important;min-height:32px!important;}
+    .sv-size [data-testid="stColumn"]:last-child button p{font-size:0.72rem!important;}
+    .br-size [data-testid="stHorizontalBlock"] button{font-size:0.66rem!important;min-height:36px!important;}
+    .br-size [data-testid="stHorizontalBlock"] button p{font-size:0.66rem!important;}
+    </style>''', unsafe_allow_html=True)
+    st.markdown('<div class="nav-size">', unsafe_allow_html=True)
     _ncols = st.columns(num_qs)
     for _i in range(num_qs):
         with _ncols[_i]:
@@ -460,6 +469,7 @@ elif st.session_state.phase=="briefing":
             }}</style>''', unsafe_allow_html=True)
             if st.button(str(_i+1), key=f"dot_{_i}", use_container_width=True):
                 st.session_state.br_idx = _i; st.rerun()
+    st.markdown('</div>', unsafe_allow_html=True)
 
     # 문제 카드
     q  = rqs[bi]; ok = rrs[bi]
@@ -485,6 +495,7 @@ elif st.session_state.phase=="briefing":
     </div>''', unsafe_allow_html=True)
 
     # 저장 버튼
+    st.markdown('<div class="sv-size">', unsafe_allow_html=True)
     _sv1, _sv2 = st.columns([3, 1])
     with _sv2:
         _is_saved = bi in saved
@@ -506,6 +517,7 @@ elif st.session_state.phase=="briefing":
             save_to_storage([item])
             st.session_state.br_saved.add(bi)
             st.rerun()
+    st.markdown('</div>', unsafe_allow_html=True)
 
     st.markdown('<div style="height:1px;background:#1a1a2a;margin:8px 0;"></div>', unsafe_allow_html=True)
 
@@ -529,7 +541,7 @@ elif st.session_state.phase=="briefing":
         font-weight:400!important;
     }
     </style>''', unsafe_allow_html=True)
-    st.markdown('<div class="bottom-row">', unsafe_allow_html=True)
+    st.markdown('<div class="bottom-row br-size">', unsafe_allow_html=True)
     if was_victory:
         nrd = rn + 1
         _c1, _c2 = st.columns([2,1])
