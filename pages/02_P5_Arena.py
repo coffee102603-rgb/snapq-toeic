@@ -616,8 +616,11 @@ elif st.session_state.phase=="victory":
             st.session_state._p5_just_left = True
             st.session_state.ans = False
             st.session_state["_battle_entry_ans_reset"] = True
-            st.markdown('<script>window.location.href="/";</script>', unsafe_allow_html=True)
-            st.stop()
+            _nick = st.session_state.get("battle_nickname") or st.session_state.get("nickname", "")
+            if _nick:
+                st.query_params["nick"] = _nick
+                st.query_params["ag"] = "1"
+            st.switch_page("main_hub.py")
 
 # ════════════════════════════════════════
 # PHASE: YOU LOST
@@ -755,8 +758,11 @@ elif st.session_state.phase=="lost":
             st.session_state._p5_just_left = True
             st.session_state.ans = False
             st.session_state["_battle_entry_ans_reset"] = True
-            st.markdown('<script>window.location.href="/";</script>', unsafe_allow_html=True)
-            st.stop()
+            _nick = st.session_state.get("battle_nickname") or st.session_state.get("nickname", "")
+            if _nick:
+                st.query_params["nick"] = _nick
+                st.query_params["ag"] = "1"
+            st.switch_page("main_hub.py")
 
 # ════════════════════════════════════════
 # PHASE: BRIEFING
@@ -911,8 +917,11 @@ elif st.session_state.phase=="briefing":
                 st.session_state._p5_just_left = True
                 st.session_state.ans = False
                 st.session_state["_battle_entry_ans_reset"] = True
-                st.markdown('<script>window.location.href="/";</script>', unsafe_allow_html=True)
-                st.stop()
+                _nick = st.session_state.get("battle_nickname") or st.session_state.get("nickname", "")
+                if _nick:
+                    st.query_params["nick"] = _nick
+                    st.query_params["ag"] = "1"
+                st.switch_page("main_hub.py")
     else:
         _c1, _c2 = st.columns([2,1])
         with _c1:
@@ -929,8 +938,11 @@ elif st.session_state.phase=="briefing":
                 st.session_state._p5_just_left = True
                 st.session_state.ans = False
                 st.session_state["_battle_entry_ans_reset"] = True
-                st.markdown('<script>window.location.href="/";</script>', unsafe_allow_html=True)
-                st.stop()
+                _nick = st.session_state.get("battle_nickname") or st.session_state.get("nickname", "")
+                if _nick:
+                    st.query_params["nick"] = _nick
+                    st.query_params["ag"] = "1"
+                st.switch_page("main_hub.py")
     st.markdown('</div>', unsafe_allow_html=True)
 
 # PHASE: LOBBY
@@ -1153,8 +1165,11 @@ summary{color:#aaa!important;font-weight:700!important;}
     with nc2:
         if st.button("🏠 홈", key="p5nav2", use_container_width=True):
             st.session_state._p5_just_left = True
-            st.markdown('<script>window.location.href="/";</script>', unsafe_allow_html=True)
-            st.stop()
+            _nick = st.session_state.get("battle_nickname") or st.session_state.get("nickname", "")
+            if _nick:
+                st.query_params["nick"] = _nick
+                st.query_params["ag"] = "1"
+            st.switch_page("main_hub.py")
 
     import streamlit.components.v1 as _cmp5
     _tsec_v = st.session_state.get("tsec", 30)

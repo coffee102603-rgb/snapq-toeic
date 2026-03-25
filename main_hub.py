@@ -686,6 +686,18 @@ def load_css():
 # =========================================================
 load_css()
 
+# ★ iOS Safari 세션 복원 — 전장에서 홈으로 돌아올 때 query_params로 전달된 닉네임 복원
+_qnick = st.query_params.get("nick", "")
+_qag   = st.query_params.get("ag", "")
+if _qnick and _qag == "1":
+    if not st.session_state.get("access_granted"):
+        st.session_state["battle_nickname"] = _qnick
+        st.session_state["nickname"]        = _qnick
+        st.session_state["access_granted"]  = True
+        st.session_state["_code_verified"]  = True
+        st.session_state["_id_verified"]    = True
+    st.query_params.clear()
+
 # 로그인 + 검사 체크
 nickname = require_access()
 require_pretest_gate()
