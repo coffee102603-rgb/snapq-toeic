@@ -993,11 +993,8 @@ svg{display:block;overflow:visible;width:100%;}
 
 def _mk_card(cls, title, s1b, s1l, s1svg, s2b, s2l, s2svg, s3mot, page=""):
     _js = f"window.parent.postMessage({{action:'goto',page:'{page}'}},'*')" if page else ""
-    return f"""<div class="card {cls}"
-  onclick="{_js}"
-  ontouchend="{_js};event.preventDefault();"
-  ontouchstart=""
-  style="cursor:pointer;touch-action:manipulation;-webkit-tap-highlight-color:transparent;">
+    _touch = f"ontouchend=\"{_js};event.preventDefault();\" ontouchstart=\"\"" if page else ""
+    return f"""<div class="card {cls}" onclick="{_js}" {_touch} style="cursor:pointer;touch-action:manipulation;-webkit-tap-highlight-color:transparent;">
   <div class="ttl">{title}</div>
   <div class="sl sl1"><div class="row">
     <div class="numbox"><div class="big">{s1b}</div><div class="lbl">{s1l}</div></div>
@@ -1055,26 +1052,27 @@ if _p5_go:
     st.session_state._p5_active = False
     st.switch_page("pages/02_P5_Arena.py")
 
-# ★ postMessage 리스너 — iOS Safari 포함 모든 기기에서 카드 클릭 수신
-import streamlit.components.v1 as _msg_cmp
-_msg_cmp.html("""<script>
+# ★ postMessage 리스너 — st.markdown으로 부모 창에 직접 (iOS 포함 전 기기)
+st.markdown("""<script>
 (function(){
+  if(window._snapq_msg_ready) return;
+  window._snapq_msg_ready = true;
   window.addEventListener('message', function(e){
     try {
-      var d = e.data;
-      if(!d || d.action !== 'goto') return;
-      var target = {p5:'P5_GO', p7:'P7_GO', arm:'ARM_GO'}[d.page];
+      var d = (typeof e.data==='string') ? JSON.parse(e.data) : e.data;
+      if(!d || d.action!=='goto') return;
+      var map = {p5:'P5_GO', p7:'P7_GO', arm:'ARM_GO'};
+      var target = map[d.page];
       if(!target) return;
-      var btns = window.parent.document.querySelectorAll('button');
+      var btns = document.querySelectorAll('button');
       for(var i=0;i<btns.length;i++){
-        if((btns[i].innerText||btns[i].textContent||'').trim()===target){
-          btns[i].click(); break;
-        }
+        var t=(btns[i].innerText||btns[i].textContent||'').trim();
+        if(t===target){ btns[i].click(); return; }
       }
-    } catch(err){}
+    }catch(err){}
   });
 })();
-</script>""", height=0)
+</script>""", unsafe_allow_html=True)
 
 
 # ── P7 ──
