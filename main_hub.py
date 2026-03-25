@@ -1135,23 +1135,24 @@ function hideBtn(){
         if(w) w.style.cssText='position:absolute;opacity:0;pointer-events:none;height:0;overflow:hidden;';
       }
     });
-    // iOS용 — 부모 창에 postMessage 리스너 직접 주입
-    if(!window.parent._snapq_ios_ready){
-      window.parent._snapq_ios_ready = true;
-      window.parent.addEventListener('message', function(e){
-        try {
-          var d = (typeof e.data==='string') ? JSON.parse(e.data) : e.data;
-          if(!d || d.action!=='goto') return;
-          var map = {p5:'P5_GO', p7:'P7_GO', arm:'ARM_GO'};
-          var target = map[d.page];
-          if(!target) return;
-          window.parent.document.querySelectorAll('button').forEach(function(b){
-            var t=(b.innerText||b.textContent||'').trim();
-            if(t===target){ b.style.pointerEvents='auto'; b.click(); }
-          });
-        } catch(err){}
-      });
+    // iOS용 — 이전 리스너 제거 후 매번 새로 등록 (홈 재진입 시에도 정상 동작)
+    if(window.parent._snapq_ios_handler){
+      window.parent.removeEventListener('message', window.parent._snapq_ios_handler);
     }
+    window.parent._snapq_ios_handler = function(e){
+      try {
+        var d = (typeof e.data==='string') ? JSON.parse(e.data) : e.data;
+        if(!d || d.action!=='goto') return;
+        var map = {p5:'P5_GO', p7:'P7_GO', arm:'ARM_GO'};
+        var target = map[d.page];
+        if(!target) return;
+        window.parent.document.querySelectorAll('button').forEach(function(b){
+          var t=(b.innerText||b.textContent||'').trim();
+          if(t===target){ b.style.pointerEvents='auto'; b.click(); }
+        });
+      } catch(err){}
+    };
+    window.parent.addEventListener('message', window.parent._snapq_ios_handler);
   } catch(ex){}
 }
 setTimeout(hideBtn,100);setTimeout(hideBtn,600);
