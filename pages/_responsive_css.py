@@ -42,7 +42,6 @@ button[kind="secondary"] p,
 button[data-testid="stBaseButton-primary"] p,
 button[data-testid="stBaseButton-secondary"] p {
     touch-action: manipulation !important;
-    pointer-events: none !important;   /* p태그가 클릭 흡수하는 현상 방지 */
 }
 
 /* radio, selectbox 등 기타 인터랙티브 요소 */
