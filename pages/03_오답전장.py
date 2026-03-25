@@ -551,6 +551,10 @@ if st.session_state.sg_phase == "lobby":
         with mn2:
             if st.button("🏠 홈", key="sg_nav2", use_container_width=True):
                 st.session_state.rv_mode=None; st.session_state.rv_battle=None
+                _nick = st.session_state.get("battle_nickname") or st.session_state.get("nickname", "")
+                if _nick:
+                    st.query_params["nick"] = _nick
+                    st.query_params["ag"] = "1"
                 st.switch_page("main_hub.py")
         with mn3:
             if st.button("📖 P7전장", key="sg_nav3", use_container_width=True):
@@ -906,6 +910,10 @@ elif st.session_state.sg_phase == "p5_exam_result":
                 st.session_state.sg_phase = "lobby"; st.session_state.rv_battle = None; st.session_state.rv_mode = None; st.rerun()
         with _c2:
             if st.button("🏠 홈", key="retry_main", use_container_width=True):
+                _nick = st.session_state.get("battle_nickname") or st.session_state.get("nickname", "")
+                if _nick:
+                    st.query_params["nick"] = _nick
+                    st.query_params["ag"] = "1"
                 st.switch_page("main_hub.py")
     else:
         st.markdown('''<style>.stApp{background:#080600!important;}</style>''', unsafe_allow_html=True)
@@ -941,6 +949,10 @@ elif st.session_state.sg_phase == "p5_exam_result":
                 st.session_state.sg_phase = "lobby"; st.session_state.rv_battle = None; st.session_state.rv_mode = None; st.rerun()
         with _c2:
             if st.button("🏠 홈", key="retry_main", use_container_width=True):
+                _nick = st.session_state.get("battle_nickname") or st.session_state.get("nickname", "")
+                if _nick:
+                    st.query_params["nick"] = _nick
+                    st.query_params["ag"] = "1"
                 st.switch_page("main_hub.py")
 
 

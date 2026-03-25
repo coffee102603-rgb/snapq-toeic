@@ -723,6 +723,10 @@ if st.session_state.p7_phase == "lobby":
     with nc2:
         if st.button("🏠 홈", key="p7nav2", use_container_width=True):
             st.session_state._p7_just_left = True
+            _nick = st.session_state.get("battle_nickname") or st.session_state.get("nickname", "")
+            if _nick:
+                st.query_params["nick"] = _nick
+                st.query_params["ag"] = "1"
             st.switch_page("main_hub.py")
     import streamlit.components.v1 as _cmp
     _p7_tsec_val = st.session_state.get("p7_tsec", 80)
@@ -1148,6 +1152,10 @@ elif st.session_state.p7_phase == "victory":
     with _vc2:
         if st.button("🏠 홈", key="v_main", use_container_width=True):
             st.session_state._p7_just_left = True
+            _nick = st.session_state.get("battle_nickname") or st.session_state.get("nickname", "")
+            if _nick:
+                st.query_params["nick"] = _nick
+                st.query_params["ag"] = "1"
             st.switch_page("main_hub.py")
     import streamlit.components.v1 as _vc
     _vc_js = '''<script>
@@ -1231,6 +1239,10 @@ elif st.session_state.p7_phase == "lost":
         st.rerun()
     if st.button("🏠 홈", key="lost_home", use_container_width=True):
         st.session_state._p7_just_left = True
+        _nick = st.session_state.get("battle_nickname") or st.session_state.get("nickname", "")
+        if _nick:
+            st.query_params["nick"] = _nick
+            st.query_params["ag"] = "1"
         st.switch_page("main_hub.py")
     import streamlit.components.v1 as _lc
     _lc_js = '''<script>
@@ -1298,6 +1310,10 @@ elif st.session_state.p7_phase == "briefing":
     elif _qp == "lobby":
         for k in D: st.session_state[k] = D[k]
         st.query_params.clear()
+        _nick = st.session_state.get("battle_nickname") or st.session_state.get("nickname", "")
+        if _nick:
+            st.query_params["nick"] = _nick
+            st.query_params["ag"] = "1"
         st.switch_page("main_hub.py")
 
     # 오답전장/본부귀환 골드 스타일
@@ -1515,6 +1531,10 @@ elif st.session_state.p7_phase == "briefing":
     with bc4:
         if st.button("🏠 홈", key="p7lobby", use_container_width=True):
             for k in D: st.session_state[k] = D[k]
+            _nick = st.session_state.get("battle_nickname") or st.session_state.get("nickname", "")
+            if _nick:
+                st.query_params["nick"] = _nick
+                st.query_params["ag"] = "1"
             st.switch_page("main_hub.py")
 
 
