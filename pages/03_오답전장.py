@@ -647,6 +647,48 @@ elif st.session_state.sg_phase == "p5_study":
             st.session_state.sg_idx = bi-1; st.rerun()
     with _rb2:
         if st.button("🗑 삭제", key="del_q", use_container_width=True):
+            # ★ 극복 기록 (forget_logs finally_correct=True)
+            try:
+                _dt2 = __import__("datetime")
+                _today2 = _dt2.datetime.now().strftime("%Y-%m-%d")
+                _uid2   = st.session_state.get("nickname", "guest")
+                _qid2   = q.get("id", "?")
+                _first2 = q.get("first_wrong_date", q.get("saved_date", _today2))
+                try:
+                    _days2 = (_dt2.datetime.strptime(_today2, "%Y-%m-%d") -
+                              _dt2.datetime.strptime(_first2, "%Y-%m-%d")).days
+                except:
+                    _days2 = 0
+                _st2 = load_storage()
+                # 최근 forget_log 중 이 문제를 finally_correct=True로 업데이트
+                _updated = False
+                for _lg in reversed(_st2.get("forget_logs", [])):
+                    if _lg.get("problem_id") == _qid2 and _lg.get("user_id") == _uid2:
+                        _lg["finally_correct"]  = True
+                        _lg["days_to_overcome"] = _days2
+                        _updated = True
+                        break
+                # 업데이트된 항목 없으면 새로 추가
+                if not _updated:
+                    _st2.setdefault("forget_logs", []).append({
+                        "user_id":          _uid2,
+                        "problem_id":       _qid2,
+                        "grammar_type":     q.get("cat", ""),
+                        "source":           "P5",
+                        "first_wrong_date": _first2,
+                        "revisit_date":     _today2,
+                        "interval_days":    _days2,
+                        "re_wrong":         False,
+                        "revisit_count":    st.session_state.get(f"revisit_{_qid2}", 0),
+                        "finally_correct":  True,
+                        "days_to_overcome": _days2,
+                        "timestamp":        _dt2.datetime.now().isoformat(),
+                    })
+                with open(STORAGE_FILE, "w", encoding="utf-8") as _ff2:
+                    json.dump(_st2, _ff2, ensure_ascii=False, indent=2)
+            except:
+                pass
+
             p5_data.pop(bi)
             storage["saved_questions"] = p5_data
             save_storage(storage)
@@ -749,6 +791,57 @@ elif st.session_state.sg_phase == "p5_exam":
         if st.button(ch, key=f"ex_{qi}_{i}", type="secondary", use_container_width=True):
             ok = (i == q["a"])
             st.session_state.sg_exam_results.append(ok)
+
+            # ══════════════════════════════════════════
+            # ★ forget_logs 저장 (논문 02 SSCI 핵심)
+            # ══════════════════════════════════════════
+            try:
+                _dt = __import__("datetime")
+                _today = _dt.datetime.now().strftime("%Y-%m-%d")
+                _uid  = st.session_state.get("nickname", "guest")
+                _qid  = q.get("id", "?")
+                _cat  = q.get("cat", "")
+                _src  = "P5"
+
+                # first_wrong_date: 문제에 저장된 날짜 사용, 없으면 오늘
+                _first_wrong = q.get("first_wrong_date", q.get("saved_date", _today))
+
+                # interval_days 계산
+                try:
+                    _interval = (_dt.datetime.strptime(_today, "%Y-%m-%d") -
+                                 _dt.datetime.strptime(_first_wrong, "%Y-%m-%d")).days
+                except:
+                    _interval = 0
+
+                # revisit_count 증가
+                _rv_key = f"revisit_{_qid}"
+                _rv_cnt = st.session_state.get(_rv_key, 0) + 1
+                st.session_state[_rv_key] = _rv_cnt
+
+                _st_f = load_storage()
+                _fl = {
+                    "user_id":          _uid,
+                    "problem_id":       _qid,
+                    "grammar_type":     _cat,
+                    "source":           _src,
+                    "first_wrong_date": _first_wrong,
+                    "revisit_date":     _today,
+                    "interval_days":    _interval,
+                    "re_wrong":         not ok,
+                    "revisit_count":    _rv_cnt,
+                    "finally_correct":  False,  # 삭제 시 True로 업데이트
+                    "days_to_overcome": None,
+                    "timestamp":        _dt.datetime.now().isoformat(),
+                }
+                if "forget_logs" not in _st_f:
+                    _st_f["forget_logs"] = []
+                _st_f["forget_logs"].append(_fl)
+
+                with open(STORAGE_FILE, "w", encoding="utf-8") as _ff:
+                    json.dump(_st_f, _ff, ensure_ascii=False, indent=2)
+            except:
+                pass
+
             if not ok:
                 st.session_state.sg_exam_wrong = True
                 st.session_state.sg_phase = "p5_exam_result"; st.rerun()
