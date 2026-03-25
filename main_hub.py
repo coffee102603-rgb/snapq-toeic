@@ -22,12 +22,6 @@ st.set_page_config(
     initial_sidebar_state='collapsed'
 )
 
-# ★ 공유 반응형 CSS (iOS Safari 수정 + PC 글씨 확대)
-import sys as _sys
-_sys.path.insert(0, os.path.join(os.path.dirname(__file__), 'pages'))
-from _responsive_css import inject_css as _inject_css
-_inject_css()
-
 # =========================================================
 # 데이터 헬퍼
 # =========================================================
@@ -997,8 +991,8 @@ svg{display:block;overflow:visible;width:100%;}
 }
 </style>"""
 
-def _mk_card(cls, title, s1b, s1l, s1svg, s2b, s2l, s2svg, s3mot):
-    return f"""<div class="card {cls}">
+def _mk_card(cls, title, s1b, s1l, s1svg, s2b, s2l, s2svg, s3mot, onclick=""):
+    return f"""<div class="card {cls}" onclick="{onclick}" style="cursor:pointer;">
   <div class="ttl">{title}</div>
   <div class="sl sl1"><div class="row">
     <div class="numbox"><div class="big">{s1b}</div><div class="lbl">{s1l}</div></div>
@@ -1042,7 +1036,8 @@ _GO_STYLE = """
 # ── P5 ──
 _hc.html(_CSS + _GO_STYLE + "<style>.p5c .go-btn{--go-bg:linear-gradient(270deg,#1565c0,#4fc3f7,#0d47a1,#29b6f6);--go-border:rgba(79,195,247,0.9);}</style>" + _mk_card("p5c","⚡ P5 전장",
     _p5_s1_big,_p5_s1_lbl,_p5_rate_svg,
-    _p5_s2_big,_p5_s2_lbl,_p5_cnt_svg,_p5_s3) + """
+    _p5_s2_big,_p5_s2_lbl,_p5_cnt_svg,_p5_s3,
+    onclick="window.parent.document.querySelectorAll('button').forEach(function(b){if((b.innerText||'').trim()==='P5_GO')b.click()})") + """
 <button class="go-btn" style="background:linear-gradient(270deg,#1565c0,#4fc3f7,#0d47a1,#29b6f6);border-color:rgba(79,195,247,0.9);" onclick="window.parent.document.querySelectorAll('button').forEach(b=>{if((b.innerText||'').trim()==='P5_GO')b.click()})">⚡</button>
 <script>
 (function(){
@@ -1060,7 +1055,8 @@ if _p5_go:
 # ── P7 ──
 _hc.html(_CSS + _GO_STYLE + "<style>.p7c .go-btn{--go-bg:linear-gradient(270deg,#6a1b9a,#ce93d8,#4a148c,#ab47bc);--go-border:rgba(155,127,212,0.9);}</style>" + _mk_card("p7c","📖 P7 전장",
     _p7_s1_big,_p7_s1_lbl,_p7_rate_svg,
-    _p7_s2_big,_p7_s2_lbl,_p7_cnt_svg,_p7_s3) + """
+    _p7_s2_big,_p7_s2_lbl,_p7_cnt_svg,_p7_s3,
+    onclick="window.parent.document.querySelectorAll('button').forEach(function(b){if((b.innerText||'').trim()==='P7_GO')b.click()})") + """
 <button class="go-btn" style="background:linear-gradient(270deg,#6a1b9a,#ce93d8,#4a148c,#ab47bc);border-color:rgba(155,127,212,0.9);" onclick="window.parent.document.querySelectorAll('button').forEach(b=>{if((b.innerText||'').trim()==='P7_GO')b.click()})">📖</button>
 <script>
 (function(){
@@ -1078,7 +1074,8 @@ if _p7_go:
 # ── 역전장 ──
 _hc.html(_CSS + _GO_STYLE + "<style>.arc .go-btn{--go-bg:linear-gradient(270deg,#e65100,#ffd54f,#bf360c,#ffca28);--go-border:rgba(255,215,0,0.95);}</style>" + _mk_card("arc","🔥 오답전장",
     _arm_s1_big,_arm_s1_lbl,_arm_p5_svg,
-    _arm_s2_big,_arm_s2_lbl,_arm_vc_svg,_arm_s3) + """
+    _arm_s2_big,_arm_s2_lbl,_arm_vc_svg,_arm_s3,
+    onclick="window.parent.document.querySelectorAll('button').forEach(function(b){if((b.innerText||'').trim()==='ARM_GO')b.click()})") + """
 <button class="go-btn" style="background:linear-gradient(270deg,#e65100,#ffd54f,#bf360c,#ffca28);border-color:rgba(255,215,0,0.95);" onclick="window.parent.document.querySelectorAll('button').forEach(b=>{if((b.innerText||'').trim()==='ARM_GO')b.click()})">🗡️</button>
 <script>
 (function(){
