@@ -728,39 +728,65 @@ if st.session_state.p7_phase == "lobby":
     _p7_tsec_val = st.session_state.get("p7_tsec", 80)
     _p7_tc_val = st.session_state.get("p7_tsec_chosen", False)
     _p7_cat_val = st.session_state.get("p7_cat", None)
-    _time_map = {"60": "🔥 60초", "80": "⚡ 80초", "100": "✅ 100초"}
-    _cat_map = {"article": "📰 Article", "letter": "✉️ Letter", "notice": "📋 Notice", "information": "ℹ️ Info"}
     _sel_time = str(_p7_tsec_val) if _p7_tc_val else ""
     _sel_cat = _p7_cat_val or ""
     _cmp.html(f'''<script>
-    (function(){{
-        var selTime = "{_sel_time}";
-        var selCat = "{_sel_cat}";
-        var timeMap = {{"60":"🔥 60초","80":"⚡ 80초","100":"✅ 100초"}};
-        var catMap = {{"article":"📰 Article","letter":"✉️ Letter","notice":"📋 Notice","information":"ℹ️ Info"}};
-        function styleAllBtns(){{
-            var doc=window.parent.document;
-            var btns=doc.querySelectorAll('button[kind="secondary"]');
-            btns.forEach(function(b){{
-                var t=(b.textContent||"").trim().replace(/\s+/g," ");
-                var isSelTime = selTime && t.indexOf(timeMap[selTime]&&timeMap[selTime].replace("🔥 ","").replace("⚡ ","").replace("✅ ",""))>-1;
-                var isSelCat = selCat && catMap[selCat] && t.indexOf(catMap[selCat].replace("📰 ","").replace("✉️ ","").replace("📋 ","").replace("ℹ️ ",""))>-1;
-                if(isSelTime||isSelCat){{
-                    b.style.setProperty("background","#1a1400","important");
-                    b.style.setProperty("border","2px solid #d4af37","important");
-                    b.style.setProperty("color","#d4af37","important");
-                    b.querySelectorAll("p").forEach(function(p){{p.style.setProperty("color","#d4af37","important");}});
-                }} else {{
-                    b.style.setProperty("animation","none","important");
-                    b.style.setProperty("transform","none","important");
-                    b.style.setProperty("box-shadow","none","important");
-                }}
-            }});
-        }}
-        setTimeout(styleAllBtns,100);setTimeout(styleAllBtns,400);setTimeout(styleAllBtns,900);
-        setInterval(styleAllBtns,800);
-    }})();
-    </script>''', height=0)
+(function(){{
+    var selTime = "{_sel_time}";
+    var selCat  = "{_sel_cat}";
+
+    function setGold(b){{
+        b.style.setProperty("background","#1a1400","important");
+        b.style.setProperty("border","2px solid #d4af37","important");
+        b.style.setProperty("border-left","4px solid #d4af37","important");
+        b.style.setProperty("color","#d4af37","important");
+        b.querySelectorAll("p,span").forEach(function(el){{
+            el.style.setProperty("color","#d4af37","important");
+        }});
+    }}
+    function setDefault(b){{
+        b.style.setProperty("background","#111111","important");
+        b.style.setProperty("border","2px solid #ffffff","important");
+        b.style.setProperty("border-left","2px solid #ffffff","important");
+        b.style.setProperty("color","#ffffff","important");
+        b.querySelectorAll("p,span").forEach(function(el){{
+            el.style.setProperty("color","#ffffff","important");
+        }});
+        b.style.setProperty("animation","none","important");
+        b.style.setProperty("transform","none","important");
+        b.style.setProperty("box-shadow","none","important");
+    }}
+
+    // 버튼 텍스트 → 고유 키로 식별
+    function getKey(t){{
+        if(t==="🔥 60초"||t==="60초") return "t60";
+        if(t==="⚡ 80초"||t==="80초") return "t80";
+        if(t==="✅ 100초"||t==="100초") return "t100";
+        if(t.indexOf("Article")>-1||t.indexOf("기사")>-1) return "article";
+        if(t.indexOf("Letter")>-1||t.indexOf("편지")>-1) return "letter";
+        if(t.indexOf("Notice")>-1||t.indexOf("공지")>-1) return "notice";
+        if(t.indexOf("Info")>-1||t.indexOf("정보")>-1) return "information";
+        return null;
+    }}
+    var timeSelected = {{"t60":selTime==="60","t80":selTime==="80","t100":selTime==="100"}};
+    var catSelected  = {{"article":selCat==="article","letter":selCat==="letter","notice":selCat==="notice","information":selCat==="information"}};
+
+    function styleAllBtns(){{
+        var doc = window.parent.document;
+        doc.querySelectorAll('button').forEach(function(b){{
+            var t = (b.innerText||b.textContent||"").trim().replace(/\\s+/g," ");
+            var key = getKey(t);
+            if(!key) return;
+            var isSelected = (timeSelected[key]===true)||(catSelected[key]===true);
+            isSelected ? setGold(b) : setDefault(b);
+        }});
+    }}
+    setTimeout(styleAllBtns,150);
+    setTimeout(styleAllBtns,500);
+    setTimeout(styleAllBtns,1000);
+    setInterval(styleAllBtns,1000);
+}})();
+</script>''', height=0)
     _cmp2 = _cmp
     _cmp2.html('''<script>
     (function(){
