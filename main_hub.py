@@ -22,6 +22,12 @@ st.set_page_config(
     initial_sidebar_state='collapsed'
 )
 
+# ★ 공유 반응형 CSS (iOS Safari 수정 + PC 글씨 확대)
+import sys as _sys
+_sys.path.insert(0, os.path.join(os.path.dirname(__file__), 'pages'))
+from _responsive_css import inject_css as _inject_css
+_inject_css()
+
 # =========================================================
 # 데이터 헬퍼
 # =========================================================

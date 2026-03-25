@@ -6,6 +6,12 @@ import random, time, json, os
 
 st.set_page_config(page_title="P5 Arena ⚔️", page_icon="⚔️", layout="wide", initial_sidebar_state="collapsed")
 
+# ★ 공유 반응형 CSS (iOS Safari 수정 + PC 글씨 확대)
+import sys as _sys
+_sys.path.insert(0, os.path.dirname(__file__))
+from _responsive_css import inject_css as _inject_css
+_inject_css()
+
 # ═══ STORAGE PATH ═══
 STORAGE_FILE = os.path.join(os.path.dirname(os.path.dirname(__file__)), "storage_data.json")
 

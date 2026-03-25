@@ -4,6 +4,12 @@ import streamlit.components.v1 as components
 from streamlit_autorefresh import st_autorefresh
 import random, time, json, os
 
+# ★ 공유 반응형 CSS (iOS Safari 수정 + PC 글씨 확대)
+import sys as _sys
+_sys.path.insert(0, os.path.dirname(__file__))
+from _responsive_css import inject_css as _inject_css
+_inject_css()
+
 # ═══ GOOGLE SHEETS 연동 ═══
 def save_to_sheets(record):
     """연구 데이터를 Google Sheets에 저장"""
