@@ -53,6 +53,18 @@ def save_to_sheets(record):
         st.error(f"Sheets 오류: {e}")
 
 st.set_page_config(page_title="P7 Reading ⚔️", page_icon="📖", layout="wide", initial_sidebar_state="collapsed")
+# ★★★ iOS Safari 세션 가드 — WebSocket 끊겨도 세션 자동 복원 ★★★
+_qs_nick = st.query_params.get("nick", "")
+_qs_ag   = st.query_params.get("ag", "")
+if _qs_nick and _qs_ag == "1":
+    if not st.session_state.get("access_granted"):
+        st.session_state["battle_nickname"] = _qs_nick
+        st.session_state["nickname"]        = _qs_nick
+        st.session_state["access_granted"]  = True
+        st.session_state["_code_verified"]  = True
+        st.session_state["_id_verified"]    = True
+    st.query_params.clear()
+
 
 
 # ═══ STORAGE ═══

@@ -5,6 +5,18 @@ import json, os, random, time, re
 from streamlit_autorefresh import st_autorefresh
 
 st.set_page_config(page_title="🔥 오답전장", page_icon="🔥", layout="wide", initial_sidebar_state="collapsed")
+# ★★★ iOS Safari 세션 가드 — WebSocket 끊겨도 세션 자동 복원 ★★★
+_qs_nick = st.query_params.get("nick", "")
+_qs_ag   = st.query_params.get("ag", "")
+if _qs_nick and _qs_ag == "1":
+    if not st.session_state.get("access_granted"):
+        st.session_state["battle_nickname"] = _qs_nick
+        st.session_state["nickname"]        = _qs_nick
+        st.session_state["access_granted"]  = True
+        st.session_state["_code_verified"]  = True
+        st.session_state["_id_verified"]    = True
+    st.query_params.clear()
+
 
 # ★ 공유 반응형 CSS (iOS Safari 수정 + PC 글씨 확대)
 import sys as _sys

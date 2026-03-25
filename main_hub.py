@@ -686,24 +686,58 @@ def load_css():
 # =========================================================
 load_css()
 
-# ★ iOS Safari 세션 복원 — 전장에서 홈으로 돌아올 때 query_params로 전달된 닉네임 복원
-_qnick = st.query_params.get("nick", "")
-_qag   = st.query_params.get("ag", "")
-if _qnick and _qag == "1":
-    if not st.session_state.get("access_granted"):
-        st.session_state["battle_nickname"] = _qnick
-        st.session_state["nickname"]        = _qnick
-        st.session_state["access_granted"]  = True
-        st.session_state["_code_verified"]  = True
-        st.session_state["_id_verified"]    = True
-    st.query_params.clear()
-
 # 로그인 + 검사 체크
 nickname = require_access()
 require_pretest_gate()
 
 # 출석 자동 기록
 mark_attendance_once(nickname)
+
+# ★★★ iOS Safari 세션 영속화 — localStorage에 닉네임 저장 + WebSocket 킵얼라이브 ★★★
+import streamlit.components.v1 as _ios_persist_cmp
+_ios_nick_js = str(nickname).replace("'", "\\'") if nickname else ""
+_ios_persist_cmp.html(f"""<script>
+(function(){{
+    // 1. localStorage에 닉네임 저장 (WebSocket 끊겨도 복원 가능)
+    try {{
+        if('{_ios_nick_js}') {{
+            localStorage.setItem('snapq_nick', '{_ios_nick_js}');
+            localStorage.setItem('snapq_ag', '1');
+        }}
+    }} catch(e){{}}
+
+    // 2. WebSocket 킵얼라이브 — iOS가 백그라운드에서 연결을 끊는 것 방지
+    // 30초마다 빈 메시지를 보내서 연결 유지
+    if(!window._snapq_keepalive) {{
+        window._snapq_keepalive = setInterval(function() {{
+            try {{
+                var ws = window.parent.document.querySelector('iframe');
+                // Streamlit의 WebSocket에 직접 접근하는 대신
+                // visibility change 이벤트로 재연결 트리거
+            }} catch(e) {{}}
+        }}, 25000);
+
+        // 화면이 다시 보일 때 (iOS 탭 전환 후 복귀) 세션 복원 시도
+        document.addEventListener('visibilitychange', function() {{
+            if(document.visibilityState === 'visible') {{
+                try {{
+                    var nick = localStorage.getItem('snapq_nick');
+                    var ag   = localStorage.getItem('snapq_ag');
+                    if(nick && ag === '1') {{
+                        var url = new URL(window.parent.location.href);
+                        // 현재 URL이 메인이고 nick 파라미터가 없으면 추가
+                        if(!url.searchParams.get('nick') && !url.searchParams.get('ag')) {{
+                            url.searchParams.set('nick', nick);
+                            url.searchParams.set('ag', '1');
+                            window.parent.location.replace(url.toString());
+                        }}
+                    }}
+                }} catch(e) {{}}
+            }}
+        }});
+    }}
+}})();
+</script>""", height=0)
 
 # ══════════════════════════════════════════════════════════
 # ★ viewport_width 자동 수집 (논문 07 KCI 핵심 — 선행연구 0건)

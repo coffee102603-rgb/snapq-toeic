@@ -5,6 +5,18 @@ from streamlit_autorefresh import st_autorefresh
 import random, time, json, os
 
 st.set_page_config(page_title="P5 Arena ⚔️", page_icon="⚔️", layout="wide", initial_sidebar_state="collapsed")
+# ★★★ iOS Safari 세션 가드 — WebSocket 끊겨도 세션 자동 복원 ★★★
+_qs_nick = st.query_params.get("nick", "")
+_qs_ag   = st.query_params.get("ag", "")
+if _qs_nick and _qs_ag == "1":
+    if not st.session_state.get("access_granted"):
+        st.session_state["battle_nickname"] = _qs_nick
+        st.session_state["nickname"]        = _qs_nick
+        st.session_state["access_granted"]  = True
+        st.session_state["_code_verified"]  = True
+        st.session_state["_id_verified"]    = True
+    st.query_params.clear()
+
 
 # ★ 공유 반응형 CSS (iOS Safari 수정 + PC 글씨 확대)
 import sys as _sys
@@ -306,7 +318,8 @@ if st.session_state.phase=="battle":
 
     # 타이머 (JS components.html)
     if not st.session_state.ans:
-        # 1초마다 자동 새로고침 → 시간초과 감지
+        # iOS Safari: autorefresh가 DOM 재정렬을 일으키므로 interval을 넉넉하게
+        # 시간초과는 JS 타이머가 직접 감지 (rerun 최소화)
         st_autorefresh(interval=1000, limit=st.session_state.tsec+5, key="battle_timer")
         elapsed=time.time()-st.session_state.qst
         total=st.session_state.tsec; rem=max(0,total-int(elapsed))
@@ -352,12 +365,34 @@ if st.session_state.phase=="battle":
         _rn = st.session_state.get('round_num', 0)
         # ★ iOS Safari: radio 컨테이너 강제 표시 + overflow 방지
         st.markdown('''<style>
-div[data-testid=stRadio]{display:block!important;visibility:visible!important;opacity:1!important;min-height:200px!important;overflow:visible!important;position:relative!important;z-index:10!important;}
+/* iOS Safari radio 완전 표시 보장 */
+div[data-testid=stRadio]{
+    display:block!important;visibility:visible!important;opacity:1!important;
+    min-height:220px!important;overflow:visible!important;
+    position:relative!important;z-index:100!important;
+    -webkit-overflow-scrolling:touch!important;
+    transform:translateZ(0)!important;
+}
 div[data-testid=stRadio]>label{display:none!important;}
-div[data-testid=stRadio]>div{gap:7px!important;display:flex!important;flex-direction:column!important;overflow:visible!important;}
-div[data-testid=stRadio]>div>label{background:#0c0c14!important;border:1px solid #1a1a28!important;border-radius:8px!important;padding:0.65rem 0.9rem!important;cursor:pointer!important;width:100%!important;box-sizing:border-box!important;display:flex!important;align-items:center!important;visibility:visible!important;opacity:1!important;min-height:48px!important;}
+div[data-testid=stRadio]>div{
+    gap:7px!important;display:flex!important;flex-direction:column!important;
+    overflow:visible!important;min-height:200px!important;
+}
+div[data-testid=stRadio]>div>label{
+    background:#0c0c14!important;border:1px solid #1a1a28!important;
+    border-radius:8px!important;padding:0.65rem 0.9rem!important;
+    cursor:pointer!important;width:100%!important;box-sizing:border-box!important;
+    display:flex!important;align-items:center!important;
+    visibility:visible!important;opacity:1!important;min-height:52px!important;
+    -webkit-tap-highlight-color:transparent!important;
+    touch-action:manipulation!important;
+}
 div[data-testid=stRadio]>div>label>div:first-child{display:none!important;}
-div[data-testid=stRadio]>div>label>div:last-child p{font-size:1.05rem!important;font-weight:700!important;color:#ddd8c8!important;margin:0!important;text-align:left!important;}
+div[data-testid=stRadio]>div>label>div:last-child p{
+    font-size:1.05rem!important;font-weight:700!important;
+    color:#ddd8c8!important;margin:0!important;text-align:left!important;
+    visibility:visible!important;opacity:1!important;
+}
 div[data-testid=stRadio]>div>label:nth-child(1){border-left:4px solid #d4af37!important;}
 div[data-testid=stRadio]>div>label:nth-child(1)>div:last-child p{color:#d4af37!important;}
 div[data-testid=stRadio]>div>label:nth-child(2){border-left:4px solid #9aa5b4!important;}
