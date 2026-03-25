@@ -616,8 +616,8 @@ elif st.session_state.phase=="victory":
             st.session_state._p5_just_left = True
             st.session_state.ans = False
             st.session_state["_battle_entry_ans_reset"] = True
-            import streamlit.components.v1 as _nav_cmp
-            _nav_cmp.html('<script>window.parent.location.href="/";</script>', height=0)
+            st.markdown('<script>window.location.href="/";</script>', unsafe_allow_html=True)
+            st.stop()
 
 # ════════════════════════════════════════
 # PHASE: YOU LOST
@@ -755,8 +755,8 @@ elif st.session_state.phase=="lost":
             st.session_state._p5_just_left = True
             st.session_state.ans = False
             st.session_state["_battle_entry_ans_reset"] = True
-            import streamlit.components.v1 as _nav_cmp
-            _nav_cmp.html('<script>window.parent.location.href="/";</script>', height=0)
+            st.markdown('<script>window.location.href="/";</script>', unsafe_allow_html=True)
+            st.stop()
 
 # ════════════════════════════════════════
 # PHASE: BRIEFING
@@ -911,8 +911,8 @@ elif st.session_state.phase=="briefing":
                 st.session_state._p5_just_left = True
                 st.session_state.ans = False
                 st.session_state["_battle_entry_ans_reset"] = True
-                import streamlit.components.v1 as _nav_cmp
-                _nav_cmp.html('<script>window.parent.location.href="/";</script>', height=0)
+                st.markdown('<script>window.location.href="/";</script>', unsafe_allow_html=True)
+                st.stop()
     else:
         _c1, _c2 = st.columns([2,1])
         with _c1:
@@ -929,8 +929,8 @@ elif st.session_state.phase=="briefing":
                 st.session_state._p5_just_left = True
                 st.session_state.ans = False
                 st.session_state["_battle_entry_ans_reset"] = True
-                import streamlit.components.v1 as _nav_cmp
-                _nav_cmp.html('<script>window.parent.location.href="/";</script>', height=0)
+                st.markdown('<script>window.location.href="/";</script>', unsafe_allow_html=True)
+                st.stop()
     st.markdown('</div>', unsafe_allow_html=True)
 
 # PHASE: LOBBY
@@ -1153,8 +1153,8 @@ summary{color:#aaa!important;font-weight:700!important;}
     with nc2:
         if st.button("🏠 홈", key="p5nav2", use_container_width=True):
             st.session_state._p5_just_left = True
-            import streamlit.components.v1 as _nav_cmp2
-            _nav_cmp2.html('<script>window.parent.location.href="/";</script>', height=0)
+            st.markdown('<script>window.location.href="/";</script>', unsafe_allow_html=True)
+            st.stop()
 
     import streamlit.components.v1 as _cmp5
     _tsec_v = st.session_state.get("tsec", 30)
