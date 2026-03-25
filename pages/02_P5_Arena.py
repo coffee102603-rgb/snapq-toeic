@@ -1137,41 +1137,62 @@ summary{color:#aaa!important;font-weight:700!important;}
 
     import streamlit.components.v1 as _cmp5
     _tsec_v = st.session_state.get("tsec", 30)
-    _tc_v = st.session_state.get("tsec_chosen", False)
-    _sm_v = st.session_state.get("sel_mode", None) or ""
+    _tc_v   = st.session_state.get("tsec_chosen", False)
+    _sm_v   = st.session_state.get("sel_mode", None) or ""
     _cmp5.html(f'''<script>
-    (function(){{
-        var selTime = "{_tsec_v if _tc_v else ""}";
-        var selMode = "{_sm_v}";
-        var timeMap = {{"30":"30초","40":"40초","50":"50초"}};
-        var modeMap = {{"g1":"문법력","g2":"구조력","g3":"연결력","vocab":"어휘력"}};
-        function styleBtns(){{
-            var doc=window.parent.document;
-            var btns=doc.querySelectorAll('button[kind="secondary"]');
-            btns.forEach(function(b){{
-                var t=(b.textContent||"").replace(/\\s+/g," ").trim();
-                var isTime=selTime&&t.indexOf(timeMap[selTime])>-1;
-                var isMode=selMode&&modeMap[selMode]&&t.indexOf(modeMap[selMode])>-1;
-                if(isTime||isMode){{
-                    b.style.setProperty("background","#1a1400","important");
-                    b.style.setProperty("border","2px solid #d4af37","important");
-                    b.querySelectorAll("p").forEach(function(p){{p.style.setProperty("color","#d4af37","important");}});
-                }}
-            }});
-            var rows=doc.querySelectorAll('[data-testid="stHorizontalBlock"]');
-            if(!rows.length) return;
-            var last=rows[rows.length-1];
-            last.querySelectorAll('button').forEach(function(b){{
-                b.style.setProperty("animation","none","important");
-                b.style.setProperty("border","1.5px solid rgba(255,255,255,0.5)","important");
-                b.style.setProperty("background","#0f0f1e","important");
-                b.style.setProperty("color","#bbb","important");
-            }});
-        }}
-        setTimeout(styleBtns,100);setTimeout(styleBtns,400);setTimeout(styleBtns,900);
-        setInterval(styleBtns,800);
-    }})();
-    </script>''', height=0)
+(function(){{
+    var selTime = "{_tsec_v if _tc_v else ""}";
+    var selMode = "{_sm_v}";
+
+    function setGold(b){{
+        b.style.setProperty("background","#1a1400","important");
+        b.style.setProperty("border","2px solid #d4af37","important");
+        b.style.setProperty("border-left","4px solid #d4af37","important");
+        b.style.setProperty("color","#d4af37","important");
+        b.querySelectorAll("p,span").forEach(function(el){{
+            el.style.setProperty("color","#d4af37","important");
+        }});
+    }}
+    function setDefault(b){{
+        b.style.setProperty("background","#0a0a14","important");
+        b.style.setProperty("border","1.5px solid #333","important");
+        b.style.setProperty("border-left","1.5px solid #333","important");
+        b.style.setProperty("color","#aaa","important");
+        b.querySelectorAll("p,span").forEach(function(el){{
+            el.style.setProperty("color","#aaa","important");
+        }});
+    }}
+
+    // 버튼 텍스트 → 고유 키워드로 정확히 식별 (indexOf 최소화)
+    function getKey(t){{
+        if(t==="🔥 30초"||t==="30초") return "t30";
+        if(t==="⚡ 40초"||t==="40초") return "t40";
+        if(t==="✅ 50초"||t==="50초") return "t50";
+        if(t.indexOf("수일치")>-1) return "g1";
+        if(t.indexOf("가정법")>-1) return "g2";
+        if(t.indexOf("접속사")>-1) return "g3";
+        if(t.indexOf("어휘력")>-1||t.indexOf("콜로케이션")>-1) return "vocab";
+        return null;
+    }}
+    var timeSelected = {{"t30":selTime==="30","t40":selTime==="40","t50":selTime==="50"}};
+    var modeSelected = {{"g1":selMode==="g1","g2":selMode==="g2","g3":selMode==="g3","vocab":selMode==="vocab"}};
+
+    function styleBtns(){{
+        var doc = window.parent.document;
+        doc.querySelectorAll('button').forEach(function(b){{
+            var t = (b.innerText||b.textContent||"").trim().replace(/\\s+/g," ");
+            var key = getKey(t);
+            if(!key) return;
+            var isSelected = (timeSelected[key]===true) || (modeSelected[key]===true);
+            isSelected ? setGold(b) : setDefault(b);
+        }});
+    }}
+    setTimeout(styleBtns,150);
+    setTimeout(styleBtns,500);
+    setTimeout(styleBtns,1000);
+    setInterval(styleBtns,1000);
+}})();
+</script>''', height=0)
 
 
 
