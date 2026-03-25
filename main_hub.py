@@ -18,7 +18,7 @@ from app.core.battle_state import load_profile
 st.set_page_config(
     page_title='SnapQ TOEIC',
     page_icon='⚡',
-    layout='centered',
+    layout='wide',
     initial_sidebar_state='collapsed'
 )
 
@@ -309,7 +309,7 @@ def load_css():
 
     .stApp { background: #0A0C15 !important; }
     #MainMenu, footer, header { visibility: hidden; }
-    .block-container { padding: 0 8px 40px 8px !important; max-width: 100% !important; margin: 0 auto !important; }
+    .block-container { padding: 0 8px 40px 8px !important; max-width: 860px !important; margin: 0 auto !important; }
     div[data-testid="stVerticalBlock"] > div { gap: 0 !important; margin: 0 !important; padding: 0 !important; }
     iframe { display: block !important; margin: 0 !important; padding: 0 !important; }
 
