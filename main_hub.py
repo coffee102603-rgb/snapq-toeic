@@ -693,6 +693,62 @@ require_pretest_gate()
 # 출석 자동 기록
 mark_attendance_once(nickname)
 
+# ══════════════════════════════════════════════════════════
+# ★ viewport_width 자동 수집 (논문 07 KCI 핵심 — 선행연구 0건)
+# window.innerWidth → URL query param → storage_data.json devices
+# ══════════════════════════════════════════════════════════
+import streamlit.components.v1 as _vp_cmp
+_vp_cmp.html("""
+<script>
+(function(){
+    try {
+        var vw = window.innerWidth;
+        var url = new URL(window.parent.location.href);
+        if(!url.searchParams.get('vw') || url.searchParams.get('vw') !== String(vw)){
+            url.searchParams.set('vw', vw);
+            window.parent.history.replaceState({}, '', url.toString());
+        }
+    } catch(e){}
+})();
+</script>
+""", height=0)
+
+# viewport_width를 devices storage에 저장
+try:
+    _vw_raw = st.query_params.get("vw", None)
+    if _vw_raw and not st.session_state.get("_vw_saved_" + nickname):
+        _vw_int = int(_vw_raw)
+        _STORAGE_FILE_HUB = os.path.join(os.path.dirname(__file__), "storage_data.json")
+        if os.path.exists(_STORAGE_FILE_HUB):
+            with open(_STORAGE_FILE_HUB, "r", encoding="utf-8") as _f_vw:
+                _st_vw = json.load(_f_vw)
+        else:
+            _st_vw = {}
+        # devices 리스트에서 이 학생 기록 찾아서 viewport_width 추가/업데이트
+        _devs = _st_vw.get("devices", [])
+        _updated = False
+        for _dev in _devs:
+            if isinstance(_dev, dict) and _dev.get("user_id") == nickname:
+                _dev["viewport_width"] = _vw_int
+                _updated = True
+                break
+        if not _updated:
+            # 없으면 새 레코드 추가
+            import platform as _plat
+            _devs.append({
+                "user_id":        nickname,
+                "viewport_width": _vw_int,
+                "screen_width":   _vw_int,   # 대리값 (JS에서 더 정확히 얻으려면 추가)
+                "device_type":    "mobile" if _vw_int < 768 else "desktop",
+                "timestamp":      datetime.now().isoformat(),
+            })
+        _st_vw["devices"] = _devs
+        with open(_STORAGE_FILE_HUB, "w", encoding="utf-8") as _f_vw2:
+            json.dump(_st_vw, _f_vw2, ensure_ascii=False, indent=2)
+        st.session_state["_vw_saved_" + nickname] = True
+except:
+    pass
+
 # 데이터 로드
 stats = _calc_stats(nickname)
 att_days = _get_attendance_days(nickname)
