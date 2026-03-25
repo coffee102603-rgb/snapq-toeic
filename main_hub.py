@@ -991,8 +991,13 @@ svg{display:block;overflow:visible;width:100%;}
 }
 </style>"""
 
-def _mk_card(cls, title, s1b, s1l, s1svg, s2b, s2l, s2svg, s3mot, onclick=""):
-    return f"""<div class="card {cls}" onclick="{onclick}" style="cursor:pointer;">
+def _mk_card(cls, title, s1b, s1l, s1svg, s2b, s2l, s2svg, s3mot, page=""):
+    _js = f"window.parent.postMessage({{action:'goto',page:'{page}'}},'*')" if page else ""
+    return f"""<div class="card {cls}"
+  onclick="{_js}"
+  ontouchend="{_js};event.preventDefault();"
+  ontouchstart=""
+  style="cursor:pointer;touch-action:manipulation;-webkit-tap-highlight-color:transparent;">
   <div class="ttl">{title}</div>
   <div class="sl sl1"><div class="row">
     <div class="numbox"><div class="big">{s1b}</div><div class="lbl">{s1l}</div></div>
@@ -1036,9 +1041,8 @@ _GO_STYLE = """
 # ── P5 ──
 _hc.html(_CSS + _GO_STYLE + "<style>.p5c .go-btn{--go-bg:linear-gradient(270deg,#1565c0,#4fc3f7,#0d47a1,#29b6f6);--go-border:rgba(79,195,247,0.9);}</style>" + _mk_card("p5c","⚡ P5 전장",
     _p5_s1_big,_p5_s1_lbl,_p5_rate_svg,
-    _p5_s2_big,_p5_s2_lbl,_p5_cnt_svg,_p5_s3,
-    onclick="window.parent.document.querySelectorAll('button').forEach(function(b){if((b.innerText||'').trim()==='P5_GO')b.click()})") + """
-<button class="go-btn" style="background:linear-gradient(270deg,#1565c0,#4fc3f7,#0d47a1,#29b6f6);border-color:rgba(79,195,247,0.9);" onclick="window.parent.document.querySelectorAll('button').forEach(b=>{if((b.innerText||'').trim()==='P5_GO')b.click()})">⚡</button>
+    _p5_s2_big,_p5_s2_lbl,_p5_cnt_svg,_p5_s3, page="p5") + """
+<button class="go-btn" style="background:linear-gradient(270deg,#1565c0,#4fc3f7,#0d47a1,#29b6f6);border-color:rgba(79,195,247,0.9);" onclick="window.parent.postMessage({action:'goto',page:'p5'},'*')" ontouchend="window.parent.postMessage({action:'goto',page:'p5'},'*');event.preventDefault();" ontouchstart="">⚡</button>
 <script>
 (function(){
   var h=window.innerWidth<=480?70:window.innerWidth<=768?100:140;
@@ -1051,13 +1055,33 @@ if _p5_go:
     st.session_state._p5_active = False
     st.switch_page("pages/02_P5_Arena.py")
 
+# ★ postMessage 리스너 — iOS Safari 포함 모든 기기에서 카드 클릭 수신
+import streamlit.components.v1 as _msg_cmp
+_msg_cmp.html("""<script>
+(function(){
+  window.addEventListener('message', function(e){
+    try {
+      var d = e.data;
+      if(!d || d.action !== 'goto') return;
+      var target = {p5:'P5_GO', p7:'P7_GO', arm:'ARM_GO'}[d.page];
+      if(!target) return;
+      var btns = window.parent.document.querySelectorAll('button');
+      for(var i=0;i<btns.length;i++){
+        if((btns[i].innerText||btns[i].textContent||'').trim()===target){
+          btns[i].click(); break;
+        }
+      }
+    } catch(err){}
+  });
+})();
+</script>""", height=0)
+
 
 # ── P7 ──
 _hc.html(_CSS + _GO_STYLE + "<style>.p7c .go-btn{--go-bg:linear-gradient(270deg,#6a1b9a,#ce93d8,#4a148c,#ab47bc);--go-border:rgba(155,127,212,0.9);}</style>" + _mk_card("p7c","📖 P7 전장",
     _p7_s1_big,_p7_s1_lbl,_p7_rate_svg,
-    _p7_s2_big,_p7_s2_lbl,_p7_cnt_svg,_p7_s3,
-    onclick="window.parent.document.querySelectorAll('button').forEach(function(b){if((b.innerText||'').trim()==='P7_GO')b.click()})") + """
-<button class="go-btn" style="background:linear-gradient(270deg,#6a1b9a,#ce93d8,#4a148c,#ab47bc);border-color:rgba(155,127,212,0.9);" onclick="window.parent.document.querySelectorAll('button').forEach(b=>{if((b.innerText||'').trim()==='P7_GO')b.click()})">📖</button>
+    _p7_s2_big,_p7_s2_lbl,_p7_cnt_svg,_p7_s3, page="p7") + """
+<button class="go-btn" style="background:linear-gradient(270deg,#6a1b9a,#ce93d8,#4a148c,#ab47bc);border-color:rgba(155,127,212,0.9);" onclick="window.parent.postMessage({action:'goto',page:'p7'},'*')" ontouchend="window.parent.postMessage({action:'goto',page:'p7'},'*');event.preventDefault();" ontouchstart="">📖</button>
 <script>
 (function(){
   var h=window.innerWidth<=480?70:window.innerWidth<=768?100:140;
@@ -1074,9 +1098,8 @@ if _p7_go:
 # ── 역전장 ──
 _hc.html(_CSS + _GO_STYLE + "<style>.arc .go-btn{--go-bg:linear-gradient(270deg,#e65100,#ffd54f,#bf360c,#ffca28);--go-border:rgba(255,215,0,0.95);}</style>" + _mk_card("arc","🔥 오답전장",
     _arm_s1_big,_arm_s1_lbl,_arm_p5_svg,
-    _arm_s2_big,_arm_s2_lbl,_arm_vc_svg,_arm_s3,
-    onclick="window.parent.document.querySelectorAll('button').forEach(function(b){if((b.innerText||'').trim()==='ARM_GO')b.click()})") + """
-<button class="go-btn" style="background:linear-gradient(270deg,#e65100,#ffd54f,#bf360c,#ffca28);border-color:rgba(255,215,0,0.95);" onclick="window.parent.document.querySelectorAll('button').forEach(b=>{if((b.innerText||'').trim()==='ARM_GO')b.click()})">🗡️</button>
+    _arm_s2_big,_arm_s2_lbl,_arm_vc_svg,_arm_s3, page="arm") + """
+<button class="go-btn" style="background:linear-gradient(270deg,#e65100,#ffd54f,#bf360c,#ffca28);border-color:rgba(255,215,0,0.95);" onclick="window.parent.postMessage({action:'goto',page:'arm'},'*')" ontouchend="window.parent.postMessage({action:'goto',page:'arm'},'*');event.preventDefault();" ontouchstart="">🗡️</button>
 <script>
 (function(){
   var h=window.innerWidth<=480?70:window.innerWidth<=768?100:140;
