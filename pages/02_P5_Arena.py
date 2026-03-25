@@ -293,12 +293,98 @@ if st.session_state.phase=="battle":
             if ok: st.session_state.sc+=1
             else: st.session_state.wrong+=1
             st.session_state.ta+=1
+
+            # ══════════════════════════════════════════════════
+            # ★ 논문·특허 데이터 수집 (rt_logs + zpd_logs + p5_logs)
+            # ══════════════════════════════════════════════════
+            try:
+                _elapsed_now = time.time() - st.session_state.qst
+                _tsec_now    = st.session_state.tsec
+                _sec_rem     = round(max(0.0, _tsec_now - _elapsed_now), 2)
+                _rt_proxy    = round(_tsec_now - _sec_rem, 2)
+                _rem_ratio   = _sec_rem / _tsec_now if _tsec_now > 0 else 0
+
+                # 오답 타이밍 유형 분류 (논문 03 핵심)
+                if ok:
+                    _err_type = "correct"
+                elif _rem_ratio > 0.8:
+                    _err_type = "fast_wrong"   # 빠른 오답 = 충동 반응
+                elif _rem_ratio < 0.2:
+                    _err_type = "slow_wrong"   # 느린 오답 = 인지부하
+                else:
+                    _err_type = "mid_wrong"
+
+                _uid  = st.session_state.get("nickname", "guest")
+                _cat  = q.get("cat", "")
+                _qid  = q.get("id", "?")
+                _today = datetime.now().strftime("%Y-%m-%d") if "datetime" in dir() else __import__("datetime").datetime.now().strftime("%Y-%m-%d")
+
+                # 세션 번호 (누적) — 없으면 초기화
+                if "p5_session_no" not in st.session_state:
+                    st.session_state.p5_session_no = 0
+                _sno = st.session_state.p5_session_no
+
+                # 주차 계산 (첫 접속일 기준)
+                if "p5_start_date" not in st.session_state:
+                    st.session_state.p5_start_date = _today
+                try:
+                    _dt = __import__("datetime")
+                    _days = (_dt.datetime.strptime(_today, "%Y-%m-%d") -
+                             _dt.datetime.strptime(st.session_state.p5_start_date, "%Y-%m-%d")).days
+                    _week = _days // 7 + 1
+                except:
+                    _week = 1
+
+                _st_data = load_storage()
+
+                # ── A. rt_logs (논문 01·03 핵심) ──────────────
+                _rt_log = {
+                    "user_id":          _uid,
+                    "session_date":     _today,
+                    "session_no":       _sno,
+                    "timer_setting":    _tsec_now,
+                    "question_no":      st.session_state.qi + 1,
+                    "question_id":      _qid,
+                    "seconds_remaining": _sec_rem,
+                    "rt_proxy":         _rt_proxy,
+                    "correct":          ok,
+                    "grammar_type":     _cat,
+                    "error_timing_type": _err_type,
+                    "week":             _week,
+                    "timestamp":        __import__("datetime").datetime.now().isoformat(),
+                }
+                if "rt_logs" not in _st_data:
+                    _st_data["rt_logs"] = []
+                _st_data["rt_logs"].append(_rt_log)
+
+                # ── B. zpd_logs — 게임오버 시 종료 지점 기록 (논문 06) ──
+                # (게임오버 직전 마지막 문제 번호를 기록 → 세션 끝날 때 저장)
+                if not ok:
+                    _st_data.setdefault("_zpd_pending", {})
+                    _st_data["_zpd_pending"][_uid] = {
+                        "session_date":   _today,
+                        "session_no":     _sno,
+                        "arena":          "P5",
+                        "timer_setting":  _tsec_now,
+                        "game_over_q_no": st.session_state.qi + 1,
+                        "max_q_reached":  st.session_state.qi + 1,
+                        "week":           _week,
+                    }
+
+                with open(STORAGE_FILE, "w", encoding="utf-8") as _f:
+                    json.dump(_st_data, _f, ensure_ascii=False, indent=2)
+
+            except Exception as _e:
+                pass  # 데이터 수집 실패해도 게임은 계속
+
+            # ── 기존 DataCollector 유지 ──
             try:
                 import sys as _sys, os as _os
                 _sys.path.insert(0, _os.path.dirname(_os.path.dirname(__file__)))
                 from data_collector import DataCollector as _DC
                 _DC(st.session_state.get('nickname','guest')).log_activity('P5', q.get('id','?'), i, ok, round(time.time()-st.session_state.qst,2))
             except: pass
+
             if st.session_state.wrong>=2:
                 st.session_state.phase='lost'; st.rerun()
             if st.session_state.qi>=4:
@@ -314,6 +400,64 @@ if st.session_state.phase=="battle":
             st.rerun()
 # ════════════════════════════════════════
 elif st.session_state.phase=="victory":
+    # ★ 세션 번호 증가 + ZPD VICTORY 기록
+    try:
+        st.session_state.p5_session_no = st.session_state.get("p5_session_no", 0) + 1
+        _st2 = load_storage()
+        _uid2 = st.session_state.get("nickname", "guest")
+        _today2 = __import__("datetime").datetime.now().strftime("%Y-%m-%d")
+        _sno2 = st.session_state.p5_session_no
+        if "p5_start_date" not in st.session_state:
+            st.session_state.p5_start_date = _today2
+        try:
+            _dt2 = __import__("datetime")
+            _days2 = (_dt2.datetime.strptime(_today2, "%Y-%m-%d") -
+                      _dt2.datetime.strptime(st.session_state.p5_start_date, "%Y-%m-%d")).days
+            _week2 = _days2 // 7 + 1
+        except:
+            _week2 = 1
+
+        # zpd_logs: VICTORY = 5번 문제까지 도달
+        _zpd_entry = {
+            "user_id":        _uid2,
+            "session_date":   _today2,
+            "session_no":     _sno2,
+            "arena":          "P5",
+            "timer_setting":  st.session_state.tsec,
+            "game_over_q_no": None,
+            "result":         "VICTORY",
+            "max_q_reached":  5,
+            "week":           _week2,
+            "timestamp":      __import__("datetime").datetime.now().isoformat(),
+        }
+        if "zpd_logs" not in _st2:
+            _st2["zpd_logs"] = []
+        _st2["zpd_logs"].append(_zpd_entry)
+
+        # p5_logs: 라운드 결과 요약
+        _p5_entry = {
+            "user_id":       _uid2,
+            "session_date":  _today2,
+            "session_no":    _sno2,
+            "timer_selected": st.session_state.tsec,
+            "mode":          st.session_state.mode,
+            "result":        "VICTORY",
+            "correct_count": st.session_state.sc,
+            "wrong_count":   st.session_state.wrong,
+            "week":          _week2,
+            "timestamp":     __import__("datetime").datetime.now().isoformat(),
+        }
+        if "p5_logs" not in _st2:
+            _st2["p5_logs"] = []
+        # 같은 세션 중복 방지
+        if not any(p.get("session_no") == _sno2 and p.get("user_id") == _uid2 and p.get("result") == "VICTORY"
+                   for p in _st2["p5_logs"]):
+            _st2["p5_logs"].append(_p5_entry)
+
+        with open(STORAGE_FILE, "w", encoding="utf-8") as _f2:
+            json.dump(_st2, _f2, ensure_ascii=False, indent=2)
+    except:
+        pass
     _sc_v = st.session_state.sc
     _wr_v = st.session_state.wrong
     _rn_v = st.session_state.round_num
@@ -383,6 +527,67 @@ elif st.session_state.phase=="victory":
 # PHASE: YOU LOST
 # ════════════════════════════════════════
 elif st.session_state.phase=="lost":
+    # ★ 세션 번호 증가 + ZPD GAME_OVER 기록
+    try:
+        st.session_state.p5_session_no = st.session_state.get("p5_session_no", 0) + 1
+        _st3 = load_storage()
+        _uid3 = st.session_state.get("nickname", "guest")
+        _today3 = __import__("datetime").datetime.now().strftime("%Y-%m-%d")
+        _sno3 = st.session_state.p5_session_no
+        if "p5_start_date" not in st.session_state:
+            st.session_state.p5_start_date = _today3
+        try:
+            _dt3 = __import__("datetime")
+            _days3 = (_dt3.datetime.strptime(_today3, "%Y-%m-%d") -
+                      _dt3.datetime.strptime(st.session_state.p5_start_date, "%Y-%m-%d")).days
+            _week3 = _days3 // 7 + 1
+        except:
+            _week3 = 1
+
+        # zpd_logs: _zpd_pending에서 꺼내서 저장
+        _pending = _st3.get("_zpd_pending", {}).get(_uid3, {})
+        _go_q = _pending.get("game_over_q_no", st.session_state.qi + 1)
+        _zpd3 = {
+            "user_id":        _uid3,
+            "session_date":   _today3,
+            "session_no":     _sno3,
+            "arena":          "P5",
+            "timer_setting":  st.session_state.tsec,
+            "game_over_q_no": _go_q,
+            "result":         "GAME_OVER",
+            "max_q_reached":  st.session_state.qi + 1,
+            "week":           _week3,
+            "timestamp":      __import__("datetime").datetime.now().isoformat(),
+        }
+        if "zpd_logs" not in _st3:
+            _st3["zpd_logs"] = []
+        if not any(z.get("session_no") == _sno3 and z.get("user_id") == _uid3
+                   for z in _st3["zpd_logs"]):
+            _st3["zpd_logs"].append(_zpd3)
+
+        # p5_logs: 라운드 결과 요약
+        _p5e3 = {
+            "user_id":        _uid3,
+            "session_date":   _today3,
+            "session_no":     _sno3,
+            "timer_selected": st.session_state.tsec,
+            "mode":           st.session_state.mode,
+            "result":         "GAME_OVER",
+            "correct_count":  st.session_state.sc,
+            "wrong_count":    st.session_state.wrong,
+            "week":           _week3,
+            "timestamp":      __import__("datetime").datetime.now().isoformat(),
+        }
+        if "p5_logs" not in _st3:
+            _st3["p5_logs"] = []
+        if not any(p.get("session_no") == _sno3 and p.get("user_id") == _uid3 and p.get("result") == "GAME_OVER"
+                   for p in _st3["p5_logs"]):
+            _st3["p5_logs"].append(_p5e3)
+
+        with open(STORAGE_FILE, "w", encoding="utf-8") as _f3:
+            json.dump(_st3, _f3, ensure_ascii=False, indent=2)
+    except:
+        pass
     _sc = st.session_state.sc
     _wrong = st.session_state.wrong
     _pct = int(_sc / 5 * 100)
