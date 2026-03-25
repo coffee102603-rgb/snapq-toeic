@@ -172,7 +172,10 @@ VQ=[
 # ═══ 세션 ═══
 D={"started":False,"cq":None,"qi":0,"sc":0,"wrong":0,"ta":0,"sk":0,"msk":0,
     "ans":False,"sel":None,"tsec":30,"qst":None,"round_qs":[],"round_results":[],
-    "round_num":1,"phase":"lobby","mode":None,"used":[]}
+    "round_num":1,"phase":"lobby","mode":None,"used":[],
+    "adp_level":"normal",       # 현재 난이도: easy / normal / hard
+    "adp_history":[],           # 라운드별 정답률 누적
+}
 for k,v in D.items():
     if k not in st.session_state: st.session_state[k]=v
 
@@ -189,15 +192,75 @@ if st.session_state.get("_p5_just_left", False):
 def pool(m): return GQ if m=="grammar" else VQ if m=="vocab" else GQ+VQ
 GRP={"g1":["수일치","수동태/수일치"],"g2":["가정법","가정법/당위","도치"],"g3":["접속사","동명사/준동사","분사구문","관계대명사"]}
 VGRP={"v1":"easy","v2":"hard"}
+
+def _calc_adp_level():
+    """최근 3라운드 정답률로 난이도 레벨 계산"""
+    hist = st.session_state.get("adp_history", [])
+    if len(hist) < 1:
+        return st.session_state.get("adp_level", "normal")
+    recent = hist[-3:]  # 최근 3라운드
+    avg = sum(recent) / len(recent)
+    cur = st.session_state.get("adp_level", "normal")
+    if avg >= 0.8:    # 80% 이상 → 난이도 상승
+        if cur == "easy": return "normal"
+        if cur == "normal": return "hard"
+        return "hard"
+    elif avg <= 0.4:  # 40% 이하 → 난이도 하강
+        if cur == "hard": return "normal"
+        if cur == "normal": return "easy"
+        return "easy"
+    return cur        # 유지
+
 def pick5(m, grp=None):
     p=pool(m)
     if grp and grp in GRP:
         cats=GRP[grp]
         p=[q for q in p if q.get("cat","") in cats]
+        # ★ 문법 문제 adaptive: 정답률 높으면 hard 카테고리(가정법·도치) 비중 증가
+        adp = _calc_adp_level()
+        st.session_state.adp_level = adp
+        if adp == "hard" and len(p) >= 5:
+            hard_cats = ["가정법","가정법/당위","도치","분사구문"]
+            hard_p = [q for q in p if q.get("cat","") in hard_cats]
+            easy_p = [q for q in p if q.get("cat","") not in hard_cats]
+            # hard 3 + easy 2 비율
+            if len(hard_p) >= 3 and len(easy_p) >= 2:
+                avail_h = [q for q in hard_p if q["id"] not in st.session_state.used]
+                avail_e = [q for q in easy_p if q["id"] not in st.session_state.used]
+                if len(avail_h) < 3: avail_h = hard_p.copy()
+                if len(avail_e) < 2: avail_e = easy_p.copy()
+                chosen = random.sample(avail_h, min(3,len(avail_h))) + random.sample(avail_e, min(2,len(avail_e)))
+                random.shuffle(chosen)
+                for q in chosen: st.session_state.used.append(q["id"]); q["tp"]="grammar"
+                return chosen
+        elif adp == "easy" and len(p) >= 5:
+            easy_cats = ["수일치","수동태/수일치","접속사","관계대명사"]
+            easy_p = [q for q in p if q.get("cat","") in easy_cats]
+            hard_p = [q for q in p if q.get("cat","") not in easy_cats]
+            # easy 4 + hard 1 비율
+            if len(easy_p) >= 4 and len(hard_p) >= 1:
+                avail_e = [q for q in easy_p if q["id"] not in st.session_state.used]
+                avail_h = [q for q in hard_p if q["id"] not in st.session_state.used]
+                if len(avail_e) < 4: avail_e = easy_p.copy()
+                if len(avail_h) < 1: avail_h = hard_p.copy()
+                chosen = random.sample(avail_e, min(4,len(avail_e))) + random.sample(avail_h, min(1,len(avail_h)))
+                random.shuffle(chosen)
+                for q in chosen: st.session_state.used.append(q["id"]); q["tp"]="grammar"
+                return chosen
     elif grp and grp in VGRP:
-        diff=VGRP[grp]
-        p=[q for q in p if q.get("diff","")==diff]
-        if len(p)<5: p=pool(m)
+        # ★ 어휘 문제 adaptive: easy/hard diff 태그 직접 활용
+        adp = _calc_adp_level()
+        st.session_state.adp_level = adp
+        if adp == "hard":
+            diff_p = [q for q in p if q.get("diff","") == "hard"]
+            if len(diff_p) >= 5: p = diff_p
+        elif adp == "easy":
+            diff_p = [q for q in p if q.get("diff","") == "easy"]
+            if len(diff_p) >= 5: p = diff_p
+        else:
+            diff = VGRP[grp]
+            p = [q for q in p if q.get("diff","") == diff]
+        if len(p) < 5: p = pool(m)
     avail=[q for q in p if q["id"] not in st.session_state.used]
     if len(avail)<5: st.session_state.used=[]; avail=p.copy()
     chosen=random.sample(avail,min(5,len(avail)))
@@ -356,6 +419,7 @@ if st.session_state.phase=="battle":
                     "correct":          ok,
                     "grammar_type":     _cat,
                     "error_timing_type": _err_type,
+                    "difficulty_level": st.session_state.get("adp_level", "normal"),  # ★ 난이도 기록
                     "week":             _week,
                     "timestamp":        __import__("datetime").datetime.now().isoformat(),
                 }
@@ -406,6 +470,15 @@ if st.session_state.phase=="battle":
             st.rerun()
 # ════════════════════════════════════════
 elif st.session_state.phase=="victory":
+    # ★ adaptive difficulty — 정답률 기록 후 다음 라운드 레벨 결정
+    try:
+        _sc_adp = st.session_state.get("sc", 0)
+        _rate_adp = _sc_adp / 5.0
+        _hist = st.session_state.get("adp_history", [])
+        _hist.append(_rate_adp)
+        st.session_state.adp_history = _hist
+        st.session_state.adp_level = _calc_adp_level()
+    except: pass
     # ★ 세션 번호 증가 + ZPD VICTORY 기록
     try:
         st.session_state.p5_session_no = st.session_state.get("p5_session_no", 0) + 1
@@ -533,6 +606,15 @@ elif st.session_state.phase=="victory":
 # PHASE: YOU LOST
 # ════════════════════════════════════════
 elif st.session_state.phase=="lost":
+    # ★ adaptive difficulty — 정답률 기록 후 다음 라운드 레벨 하향 고려
+    try:
+        _sc_adp = st.session_state.get("sc", 0)
+        _rate_adp = _sc_adp / 5.0
+        _hist = st.session_state.get("adp_history", [])
+        _hist.append(_rate_adp)
+        st.session_state.adp_history = _hist
+        st.session_state.adp_level = _calc_adp_level()
+    except: pass
     # ★ 세션 번호 증가 + ZPD GAME_OVER 기록
     try:
         st.session_state.p5_session_no = st.session_state.get("p5_session_no", 0) + 1
@@ -1025,6 +1107,13 @@ summary{color:#aaa!important;font-weight:700!important;}
 
     _ready = _tsec_chosen and sm and sm in ["g1","g2","g3","vocab"]
     if _ready:
+        # ★ 현재 적응 난이도 레벨 표시
+        _adp = st.session_state.get("adp_level", "normal")
+        _adp_info = {"easy":"🟢 입문", "normal":"🟡 표준", "hard":"🔴 심화"}
+        _adp_lbl = _adp_info.get(_adp, "🟡 표준")
+        _hist_len = len(st.session_state.get("adp_history", []))
+        if _hist_len > 0:
+            st.markdown(f'<div style="text-align:center;background:#0a0a14;border:1px solid #333;border-radius:8px;padding:4px 10px;margin-bottom:6px;font-size:0.82rem;color:#aaa;">🎯 현재 난이도: <span style="color:#d4af37;font-weight:900;">{_adp_lbl}</span> · {_hist_len}라운드 누적</div>', unsafe_allow_html=True)
         _cat = lbl_map.get(sm,"")
         if st.button("▶ 전투 시작!", key="go_start", type="primary", use_container_width=True):
             md,grp=mode_map[sm]
