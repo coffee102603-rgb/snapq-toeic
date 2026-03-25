@@ -350,7 +350,23 @@ if st.session_state.phase=="battle":
     if not st.session_state.ans:
         _qi = st.session_state.get('qi', 0)
         _rn = st.session_state.get('round_num', 0)
-        st.markdown('<style>div[data-testid=stRadio]>label{display:none!important;}div[data-testid=stRadio]>div{gap:7px!important;}div[data-testid=stRadio]>div>label{background:#0c0c14!important;border:1px solid #1a1a28!important;border-radius:8px!important;padding:0.65rem 0.9rem!important;cursor:pointer!important;width:100%!important;box-sizing:border-box!important;display:flex!important;align-items:center!important;}div[data-testid=stRadio]>div>label>div:first-child{display:none!important;}div[data-testid=stRadio]>div>label>div:last-child p{font-size:1.05rem!important;font-weight:700!important;color:#ddd8c8!important;margin:0!important;text-align:left!important;}div[data-testid=stRadio]>div>label:nth-child(1){border-left:4px solid #d4af37!important;}div[data-testid=stRadio]>div>label:nth-child(1)>div:last-child p{color:#d4af37!important;}div[data-testid=stRadio]>div>label:nth-child(2){border-left:4px solid #9aa5b4!important;}div[data-testid=stRadio]>div>label:nth-child(2)>div:last-child p{color:#9aa5b4!important;}div[data-testid=stRadio]>div>label:nth-child(3){border-left:4px solid #50c878!important;}div[data-testid=stRadio]>div>label:nth-child(3)>div:last-child p{color:#50c878!important;}div[data-testid=stRadio]>div>label:nth-child(4){border-left:4px solid #4488cc!important;}div[data-testid=stRadio]>div>label:nth-child(4)>div:last-child p{color:#4488cc!important;}</style>', unsafe_allow_html=True)
+        # ★ iOS Safari: radio 컨테이너 강제 표시 + overflow 방지
+        st.markdown('''<style>
+div[data-testid=stRadio]{display:block!important;visibility:visible!important;opacity:1!important;min-height:200px!important;overflow:visible!important;position:relative!important;z-index:10!important;}
+div[data-testid=stRadio]>label{display:none!important;}
+div[data-testid=stRadio]>div{gap:7px!important;display:flex!important;flex-direction:column!important;overflow:visible!important;}
+div[data-testid=stRadio]>div>label{background:#0c0c14!important;border:1px solid #1a1a28!important;border-radius:8px!important;padding:0.65rem 0.9rem!important;cursor:pointer!important;width:100%!important;box-sizing:border-box!important;display:flex!important;align-items:center!important;visibility:visible!important;opacity:1!important;min-height:48px!important;}
+div[data-testid=stRadio]>div>label>div:first-child{display:none!important;}
+div[data-testid=stRadio]>div>label>div:last-child p{font-size:1.05rem!important;font-weight:700!important;color:#ddd8c8!important;margin:0!important;text-align:left!important;}
+div[data-testid=stRadio]>div>label:nth-child(1){border-left:4px solid #d4af37!important;}
+div[data-testid=stRadio]>div>label:nth-child(1)>div:last-child p{color:#d4af37!important;}
+div[data-testid=stRadio]>div>label:nth-child(2){border-left:4px solid #9aa5b4!important;}
+div[data-testid=stRadio]>div>label:nth-child(2)>div:last-child p{color:#9aa5b4!important;}
+div[data-testid=stRadio]>div>label:nth-child(3){border-left:4px solid #50c878!important;}
+div[data-testid=stRadio]>div>label:nth-child(3)>div:last-child p{color:#50c878!important;}
+div[data-testid=stRadio]>div>label:nth-child(4){border-left:4px solid #4488cc!important;}
+div[data-testid=stRadio]>div>label:nth-child(4)>div:last-child p{color:#4488cc!important;}
+</style>''', unsafe_allow_html=True)
         _choice = st.radio('sel', options=q['ch'], index=None, key='ch_%s_%s' % (_rn, _qi), label_visibility='collapsed')
         if _choice is not None:
             if time.time()-st.session_state.qst>st.session_state.tsec:
@@ -600,7 +616,8 @@ elif st.session_state.phase=="victory":
             st.session_state._p5_just_left = True
             st.session_state.ans = False
             st.session_state["_battle_entry_ans_reset"] = True
-            st.switch_page("main_hub.py")
+            import streamlit.components.v1 as _nav_cmp
+            _nav_cmp.html('<script>window.parent.location.href="/";</script>', height=0)
 
 # ════════════════════════════════════════
 # PHASE: YOU LOST
@@ -738,7 +755,8 @@ elif st.session_state.phase=="lost":
             st.session_state._p5_just_left = True
             st.session_state.ans = False
             st.session_state["_battle_entry_ans_reset"] = True
-            st.switch_page("main_hub.py")
+            import streamlit.components.v1 as _nav_cmp
+            _nav_cmp.html('<script>window.parent.location.href="/";</script>', height=0)
 
 # ════════════════════════════════════════
 # PHASE: BRIEFING
@@ -893,7 +911,8 @@ elif st.session_state.phase=="briefing":
                 st.session_state._p5_just_left = True
                 st.session_state.ans = False
                 st.session_state["_battle_entry_ans_reset"] = True
-                st.switch_page("main_hub.py")
+                import streamlit.components.v1 as _nav_cmp
+                _nav_cmp.html('<script>window.parent.location.href="/";</script>', height=0)
     else:
         _c1, _c2 = st.columns([2,1])
         with _c1:
@@ -910,7 +929,8 @@ elif st.session_state.phase=="briefing":
                 st.session_state._p5_just_left = True
                 st.session_state.ans = False
                 st.session_state["_battle_entry_ans_reset"] = True
-                st.switch_page("main_hub.py")
+                import streamlit.components.v1 as _nav_cmp
+                _nav_cmp.html('<script>window.parent.location.href="/";</script>', height=0)
     st.markdown('</div>', unsafe_allow_html=True)
 
 # PHASE: LOBBY
@@ -1133,7 +1153,8 @@ summary{color:#aaa!important;font-weight:700!important;}
     with nc2:
         if st.button("🏠 홈", key="p5nav2", use_container_width=True):
             st.session_state._p5_just_left = True
-            st.switch_page("main_hub.py")
+            import streamlit.components.v1 as _nav_cmp2
+            _nav_cmp2.html('<script>window.parent.location.href="/";</script>', height=0)
 
     import streamlit.components.v1 as _cmp5
     _tsec_v = st.session_state.get("tsec", 30)
