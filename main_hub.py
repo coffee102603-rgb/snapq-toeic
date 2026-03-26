@@ -1088,7 +1088,16 @@ _GO_STYLE = """
 # 💀 단어 포로수용소 소형 카드 (전장 카드 위)
 # ═══════════════════════════════════════════
 try:
-    _pr_data = storage.get("word_prison", [])
+    # storage_data.json 직접 읽기
+    _pr_sf = os.path.join(os.path.dirname(__file__), "storage_data.json")
+    _pr_raw = {}
+    if os.path.exists(_pr_sf):
+        try:
+            with open(_pr_sf, "r", encoding="utf-8") as _pf:
+                _pr_raw = json.load(_pf)
+        except Exception:
+            _pr_raw = {}
+    _pr_data = _pr_raw.get("word_prison", [])
     _pr_total = len(_pr_data)
     import datetime as _pr_dt
     _pr_today_str = _pr_dt.datetime.now().strftime("%Y-%m-%d")
