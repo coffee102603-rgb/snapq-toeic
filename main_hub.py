@@ -1084,6 +1084,63 @@ _GO_STYLE = """
 </style>
 """
 
+# ═══════════════════════════════════════════
+# 💀 단어 포로수용소 소형 카드 (전장 카드 위)
+# ═══════════════════════════════════════════
+try:
+    _pr_data = storage.get("word_prison", [])
+    _pr_total = len(_pr_data)
+    import datetime as _pr_dt
+    _pr_today_str = _pr_dt.datetime.now().strftime("%Y-%m-%d")
+    _pr_danger = sum(1 for p in _pr_data
+                     if p.get("captured_date","") and
+                     (_pr_dt.datetime.now() - _pr_dt.datetime.strptime(p.get("captured_date",_pr_today_str),"%Y-%m-%d")).days >= 7)
+    _pr_warn   = sum(1 for p in _pr_data
+                     if p.get("captured_date","") and
+                     3 <= (_pr_dt.datetime.now() - _pr_dt.datetime.strptime(p.get("captured_date",_pr_today_str),"%Y-%m-%d")).days < 7)
+    _pr_new    = _pr_total - _pr_danger - _pr_warn
+    _pr_new    = max(0, _pr_new)
+except Exception:
+    _pr_total = 0; _pr_danger = 0; _pr_warn = 0; _pr_new = 0
+
+if _pr_total > 0:
+    _pr_badge = f"🚨 탈출 직전 {_pr_danger}명" if _pr_danger > 0 else (f"⚠️ 위험 {_pr_warn}명" if _pr_warn > 0 else f"🆕 신입 {_pr_new}명")
+    _pr_color = "#ff4040" if _pr_danger > 0 else ("#ff9040" if _pr_warn > 0 else "#c0a030")
+    _pr_card_html = f"""
+<div style="background:linear-gradient(135deg,#1a0a2e,#2d1060);
+     border:1.5px solid {_pr_color};border-radius:14px;
+     padding:12px 16px;margin-bottom:6px;
+     display:flex;align-items:center;justify-content:space-between;
+     cursor:pointer;touch-action:manipulation;"
+     onclick="window.parent.document.querySelectorAll('button').forEach(function(b){{if((b.innerText||'').trim()==='PRISON_GO')b.click()}})"
+     ontouchend="window.parent.document.querySelectorAll('button').forEach(function(b){{if((b.innerText||'').trim()==='PRISON_GO')b.click()}});event.preventDefault();"
+     ontouchstart="">
+  <div>
+    <span style="font-size:1.1rem;font-weight:900;color:#e8d0ff;">💀 단어 포로수용소</span>
+    <span style="font-size:0.85rem;color:{_pr_color};margin-left:10px;font-weight:700;">{_pr_badge}</span>
+  </div>
+  <div style="display:flex;align-items:center;gap:12px;">
+    <span style="font-size:1.4rem;font-weight:900;color:#fff;">포로 {_pr_total}명</span>
+    <span style="background:{_pr_color};color:#fff;font-size:0.85rem;font-weight:700;
+                 padding:4px 12px;border-radius:20px;">심문하기 →</span>
+  </div>
+</div>"""
+    _hc.html(_pr_card_html, height=58)
+    _prison_go = st.button("PRISON_GO", key="prison_btn")
+    if _prison_go:
+        st.session_state.sg_phase = "word_prison"
+        st.switch_page("pages/03_오답전장.py")
+else:
+    _pr_empty_html = """
+<div style="background:linear-gradient(135deg,#0a1a0a,#1a2a1a);
+     border:1px solid rgba(80,200,80,0.3);border-radius:14px;
+     padding:10px 16px;margin-bottom:6px;text-align:center;">
+  <span style="font-size:0.9rem;color:#50c870;font-weight:700;">
+    💀 단어 포로수용소 — 포로 없음! 완벽 정복 중 🏆
+  </span>
+</div>"""
+    _hc.html(_pr_empty_html, height=46)
+
 # ── P5 ──
 _hc.html(_CSS + _GO_STYLE + "<style>.p5c .go-btn{--go-bg:linear-gradient(270deg,#1565c0,#4fc3f7,#0d47a1,#29b6f6);--go-border:rgba(79,195,247,0.9);}</style>" + _mk_card("p5c","⚡ P5 전장",
     _p5_s1_big,_p5_s1_lbl,_p5_rate_svg,
