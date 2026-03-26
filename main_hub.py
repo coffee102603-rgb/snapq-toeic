@@ -1,6 +1,11 @@
 """
-SnapQ TOEIC V2 - Main Hub (새 디자인)
-C안: 상단배너 + P5/P7 나란히 + 역전장 전체 + 하단 서브메뉴
+FILE: main_hub.py
+ROLE: 작전사령부 (메인 허브/로비) — 닉네임 접속, 스탯 표시, 전장 선택
+PHASES: LOGIN → LOBBY (단어 포로수용소 카드 + 전장 3종 선택)
+DATA:   storage_data.json → word_prison, devices, research_logs
+LINKS:  02_Firepower.py (화력전) | 03_POW_HQ.py (포로사령부) | 04_Decrypt_Op.py (암호해독 작전)
+PAPERS: 논문D(rt_logs), 논문A(adp_logs) 연결 허브
+EXTEND: P4 청음전장 연동 예정 | 모바일 푸시 알림 예정
 """
 
 import streamlit as st
@@ -171,7 +176,7 @@ def _get_visit_count(nickname: str) -> int:
         return 0
 
 def _calc_stats(nickname: str):
-    """P5 정답률, P7 정답률, 역전장 P5/보카 정복률, 접속시간 계산"""
+    """P5 정답률, P7 정답률, 포로사령부 P5/보카 정복률, 접속시간 계산"""
     logs = _load_research_logs(nickname)
 
     # P5 정답률
@@ -184,15 +189,15 @@ def _calc_stats(nickname: str):
     p7_correct = sum(1 for l in p7_logs if l.get("is_correct"))
     p7_rate = round(p7_correct / len(p7_logs) * 100) if p7_logs else None
 
-    # 역전장 P5 정복률
+    # 포로사령부 P5 정복률
     armory_p5 = [l for l in logs if l.get("activity_type") == "armory_p5"]
     armory_p5_rate = round(sum(1 for l in armory_p5 if l.get("is_correct")) / len(armory_p5) * 100) if armory_p5 else None
 
-    # 역전장 보카 정복률
+    # 포로사령부 보카 정복률
     armory_voca = [l for l in logs if l.get("activity_type") == "armory_voca"]
     armory_voca_rate = round(sum(1 for l in armory_voca if l.get("is_correct")) / len(armory_voca) * 100) if armory_voca else None
 
-    # 역전장 전체 정복률
+    # 포로사령부 전체 정복률
     armory_all = armory_p5 + armory_voca
     armory_total_rate = round(sum(1 for l in armory_all if l.get("is_correct")) / len(armory_all) * 100) if armory_all else None
 
@@ -833,7 +838,7 @@ st.markdown(f"""
     <div class="hub-brand-text">
         <div class="hub-title-text">⚡ SnapQ TOEIC</div>
         <div class="hub-subtitle">by Crazy 최샘 · HACKERS</div>
-        <div class="hub-platform">BATTLE LOBBY · 전장을 선택하세요</div>
+        <div class="hub-platform">COMMAND CENTER · 작전을 선택하세요</div>
     </div>
 </div>
 """, unsafe_allow_html=True)
@@ -917,9 +922,9 @@ _P7_ROT = [
     ("지문을 읽지 않으면", "찍는 것과 다름없다!", "📖 60초 · 1지문 · 3문제 · 집중하라!"),
     ("독해는 속도가 아니다!", "이해가 전부다!", "📖 60초 · 1지문 · 3문제 · 완벽 이해!"),
 ]
-# 역전장 로테이션 멘트
+# 포로사령부 로테이션 멘트
 _ARM_ROT = [
-    ("반복 P5문제 · 33초 · 5문제", "반복 P7어휘 · 44초 · 10문제", "🗡️ 오답 설욕전! 토익 역전! 인생 역전!"),
+    ("P5 포로 · 33초 · 5문제", "P7 포로 · 44초 · 10문제", "💀 포로 심문! 오답 정복! 역전 인생!"),
     ("또 틀렸나?", "반복만이 살길이다!", "🗡️ 설욕 못 하면 역전도 없다!"),
     ("틀린 문제가", "너를 기다린다!", "🗡️ 이번엔 반드시 정복하라!"),
     ("오답은 기회다!", "다시 보면 반드시 안다!", "🗡️ 역전의 시작은 지금이다!"),
@@ -947,7 +952,7 @@ if _is_first:
     _p5_s1_lbl  = "문법·어휘 속도전!"
     _p7_s1_big  = f"📖 P7전장"
     _p7_s1_lbl  = "독해 · 읽는 뇌를 깨워라!"
-    _arm_s1_big = f"🔥 오답전장"
+    _arm_s1_big = f"💀 포로사령부"
     _arm_s1_lbl = "틀린 문제가 무기가 된다"
     _p5_s2_big  = "3개↑ 생존"
     _p5_s2_lbl  = "30초 · 5문제 · 미만 전멸"
@@ -955,9 +960,9 @@ if _is_first:
     _p7_s2_lbl  = "60초 · 3문제 · 시간초과 즉사"
     _arm_s2_big = "저장→반복"
     _arm_s2_lbl = "틀린 문제가 무기가 된다"
-    _p5_s3  = "⚡ 5문제 중 3개↑ 맞춰야 생존!"
-    _p7_s3  = "📖 오답 1개 즉사 · 시간초과 즉사"
-    _arm_s3 = "🔥 저장 → 반복 → 완전 정복!"
+    _p5_s3  = "⚡ 5문제 서바이벌 · 즉사룰"
+    _p7_s3  = "📡 독해 지문 정보전 · 1오답 즉사"
+    _arm_s3 = "💀 저장 → 반복 → 완전정복!"
 else:
     _sn = student_name
     _p5_s1_big  = f"{p5_rate}%{_p5_trend}" if p5_rate is not None else f"{_sn}! 첫 도전"
@@ -1138,7 +1143,7 @@ if _pr_total > 0:
     _prison_go = st.button("PRISON_GO", key="prison_btn")
     if _prison_go:
         st.session_state.sg_phase = "word_prison"
-        st.switch_page("pages/03_오답전장.py")
+        st.switch_page("pages/03_POW_HQ.py")
 else:
     _pr_empty_html = """
 <div style="background:linear-gradient(135deg,#0a1a0a,#1a2a1a);
@@ -1151,7 +1156,7 @@ else:
     _hc.html(_pr_empty_html, height=46)
 
 # ── P5 ──
-_hc.html(_CSS + _GO_STYLE + "<style>.p5c .go-btn{--go-bg:linear-gradient(270deg,#1565c0,#4fc3f7,#0d47a1,#29b6f6);--go-border:rgba(79,195,247,0.9);}</style>" + _mk_card("p5c","⚡ P5 전장",
+_hc.html(_CSS + _GO_STYLE + "<style>.p5c .go-btn{--go-bg:linear-gradient(270deg,#1565c0,#4fc3f7,#0d47a1,#29b6f6);--go-border:rgba(79,195,247,0.9);}</style>" + _mk_card("p5c","⚡ 화력전",
     _p5_s1_big,_p5_s1_lbl,_p5_rate_svg,
     _p5_s2_big,_p5_s2_lbl,_p5_cnt_svg,_p5_s3, go="P5_GO") + """
 <button class="go-btn" style="background:linear-gradient(270deg,#1565c0,#4fc3f7,#0d47a1,#29b6f6);border-color:rgba(79,195,247,0.9);" onclick="window.parent.document.querySelectorAll('button').forEach(b=>{if((b.innerText||'').trim()==='P5_GO')b.click()})" ontouchend="window.parent.postMessage({action:'goto',page:'p5'},'*');event.preventDefault();" ontouchstart="">⚡</button>
@@ -1165,11 +1170,11 @@ _p5_go = st.button("P5_GO", key="p5_btn")
 if _p5_go:
     st.session_state.phase = "lobby"
     st.session_state._p5_active = False
-    st.switch_page("pages/02_P5_Arena.py")
+    st.switch_page("pages/02_Firepower.py")
 
 
 # ── P7 ──
-_hc.html(_CSS + _GO_STYLE + "<style>.p7c .go-btn{--go-bg:linear-gradient(270deg,#6a1b9a,#ce93d8,#4a148c,#ab47bc);--go-border:rgba(155,127,212,0.9);}</style>" + _mk_card("p7c","📖 P7 전장",
+_hc.html(_CSS + _GO_STYLE + "<style>.p7c .go-btn{--go-bg:linear-gradient(270deg,#6a1b9a,#ce93d8,#4a148c,#ab47bc);--go-border:rgba(155,127,212,0.9);}</style>" + _mk_card("p7c","📡 암호해독 작전",
     _p7_s1_big,_p7_s1_lbl,_p7_rate_svg,
     _p7_s2_big,_p7_s2_lbl,_p7_cnt_svg,_p7_s3, go="P7_GO") + """
 <button class="go-btn" style="background:linear-gradient(270deg,#6a1b9a,#ce93d8,#4a148c,#ab47bc);border-color:rgba(155,127,212,0.9);" onclick="window.parent.document.querySelectorAll('button').forEach(b=>{if((b.innerText||'').trim()==='P7_GO')b.click()})" ontouchend="window.parent.postMessage({action:'goto',page:'p7'},'*');event.preventDefault();" ontouchstart="">📖</button>
@@ -1183,11 +1188,11 @@ _p7_go = st.button("P7_GO", key="p7_btn")
 if _p7_go:
     if "p7_phase" in st.session_state:
         st.session_state.p7_phase = "lobby"
-    st.switch_page("pages/04_P7_Reading.py")
+    st.switch_page("pages/04_Decrypt_Op.py")
 
 
 # ── 역전장 ──
-_hc.html(_CSS + _GO_STYLE + "<style>.arc .go-btn{--go-bg:linear-gradient(270deg,#e65100,#ffd54f,#bf360c,#ffca28);--go-border:rgba(255,215,0,0.95);}</style>" + _mk_card("arc","🔥 오답전장",
+_hc.html(_CSS + _GO_STYLE + "<style>.arc .go-btn{--go-bg:linear-gradient(270deg,#e65100,#ffd54f,#bf360c,#ffca28);--go-border:rgba(255,215,0,0.95);}</style>" + _mk_card("arc","💀 포로사령부",
     _arm_s1_big,_arm_s1_lbl,_arm_p5_svg,
     _arm_s2_big,_arm_s2_lbl,_arm_vc_svg,_arm_s3, go="ARM_GO") + """
 <button class="go-btn" style="background:linear-gradient(270deg,#e65100,#ffd54f,#bf360c,#ffca28);border-color:rgba(255,215,0,0.95);" onclick="window.parent.document.querySelectorAll('button').forEach(b=>{if((b.innerText||'').trim()==='ARM_GO')b.click()})" ontouchend="window.parent.postMessage({action:'goto',page:'arm'},'*');event.preventDefault();" ontouchstart="">🗡️</button>
@@ -1199,7 +1204,7 @@ _hc.html(_CSS + _GO_STYLE + "<style>.arc .go-btn{--go-bg:linear-gradient(270deg,
 </script>""", height=70)
 _arm_go = st.button("ARM_GO", key="armory_btn")
 if _arm_go:
-    st.switch_page("pages/03_오답전장.py")
+    st.switch_page("pages/03_POW_HQ.py")
 
 
 # ── 하단 박스 2개 ──
