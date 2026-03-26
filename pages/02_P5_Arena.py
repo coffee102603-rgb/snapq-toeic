@@ -492,37 +492,6 @@ div[data-testid=stRadio]>div>label:nth-child(4)>div:last-child p{color:#4488cc!i
                         "week":           _week,
                     }
 
-                # ── C. word_prison — 오답 or 느린 단어 자동 포로 수감 ★ ──
-                _should_capture = (not ok) or (_rem_ratio < 0.3 and ok)
-                if _should_capture:
-                    try:
-                        _ans_word = ""
-                        _ch = q.get("ch", [])
-                        _a_idx = q.get("a", 0)
-                        if _ch and _a_idx < len(_ch):
-                            _raw = _ch[_a_idx]
-                            _ans_word = _raw.split(") ", 1)[-1] if ") " in _raw else _raw
-                        _ans_word = _ans_word.strip()
-                        if _ans_word and len(_ans_word) >= 2:
-                            if "word_prison" not in _st_data:
-                                _st_data["word_prison"] = []
-                            _exists = any(p.get("word","").lower() == _ans_word.lower()
-                                          for p in _st_data["word_prison"])
-                            if not _exists:
-                                _prisoner = {
-                                    "word":            _ans_word,
-                                    "kr":              q.get("kr", ""),
-                                    "source":          "P5 오답" if not ok else "P5 느린정답",
-                                    "sentence":        q.get("text", ""),
-                                    "captured_date":   _today,
-                                    "correct_streak":  0,
-                                    "last_reviewed":   None,
-                                    "cat":             _cat,
-                                }
-                                _st_data["word_prison"].append(_prisoner)
-                    except Exception:
-                        pass
-
                 with open(STORAGE_FILE, "w", encoding="utf-8") as _f:
                     json.dump(_st_data, _f, ensure_ascii=False, indent=2)
 
