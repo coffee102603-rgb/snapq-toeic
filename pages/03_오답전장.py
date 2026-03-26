@@ -65,12 +65,11 @@ def _extract_prison_word(text, ex_field="", cat="", ch=None, a_idx=0):
             if len(w) >= 3 and w.lower() not in _PRISON_STOP:
                 return w
 
-    # 2순위: 문장에서 6자 이상 핵심 어휘
+    # 2순위: 문장에서 5자 이상 핵심 어휘 (6→5로 완화)
     if text:
-        words = re.findall(r"[a-zA-Z]{6,}", text)
+        words = re.findall(r"[a-zA-Z]{5,}", text)
         cands = [w for w in words if w.lower() not in _PRISON_STOP]
         if cands:
-            # 가장 드문 단어(긴 단어) 우선
             cands.sort(key=len, reverse=True)
             return cands[0]
 
@@ -79,16 +78,27 @@ def _extract_prison_word(text, ex_field="", cat="", ch=None, a_idx=0):
         raw = ch[a_idx]
         ans = raw.split(") ", 1)[-1] if ") " in raw else raw
         ans = ans.strip()
-        if len(ans) >= 4 and ans.lower() not in _PRISON_STOP:
+        if len(ans) >= 3 and ans.lower() not in _PRISON_STOP:
             return ans
+
+    # 4순위: 선택지 중 아무 단어라도 (마지막 보루)
+    if ch:
+        for _c in ch:
+            _w = (_c.split(") ", 1)[-1] if ") " in _c else _c).strip()
+            if len(_w) >= 3:
+                return _w
     return None
 
 def _add_to_prison(word, source, sentence="", kr="", cat=""):
     """포로수용소에 단어 추가 (중복 없이)"""
-    if not word or len(word) < 3:
+    if not word or len(word) < 2:
         return
     try:
-        st_data = load_storage()
+        # JSONDecodeError 안전 처리
+        try:
+            st_data = load_storage()
+        except Exception:
+            st_data = {"saved_questions": [], "saved_expressions": []}
         if "word_prison" not in st_data:
             st_data["word_prison"] = []
         # 중복 체크
