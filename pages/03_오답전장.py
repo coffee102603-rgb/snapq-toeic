@@ -39,6 +39,76 @@ def load_storage():
 def save_storage(data):
     with open(STORAGE_FILE,"w",encoding="utf-8") as f: json.dump(data,f,ensure_ascii=False,indent=2)
 
+# ★ 포로수용소 — 스마트 단어 1개 추출 함수
+_PRISON_STOP = {
+    "the","a","an","in","on","at","to","for","of","by","with","is","are","was","were",
+    "has","have","had","be","been","that","this","it","its","all","not","and","or","but",
+    "as","if","so","no","do","did","can","may","will","shall","would","could","should",
+    "must","from","into","upon","than","then","also","very","much","more","most","only",
+    "just","even","still","yet","each","every","both","few","many","some","any","other",
+    "such","what","which","who","whom","whose","where","when","how","why","its","their",
+    "our","your","his","her","my","they","we","he","she","i","you","it","us","him","them",
+    "been","being","had","have","next","last","new","first","one","two","three","take",
+    "make","said","says","will","was","were","are","is","not","also","than","then","there",
+    "these","those","about","after","before","between","during","since","while","within",
+    "without","across","against","along","among","around","behind","below","beside",
+    "beyond","down","up","off","out","over","past","through","under","until","upon"
+}
+
+def _extract_prison_word(text, ex_field="", cat="", ch=None, a_idx=0):
+    """P5 문제에서 포로 단어 1개 스마트 추출"""
+    # 1순위: ex 필드 "단어=설명" 패턴
+    if ex_field:
+        m = re.match(r"^([a-zA-Z_\-]+)\s*=", ex_field.strip())
+        if m:
+            w = m.group(1).strip()
+            if len(w) >= 3 and w.lower() not in _PRISON_STOP:
+                return w
+
+    # 2순위: 문장에서 6자 이상 핵심 어휘
+    if text:
+        words = re.findall(r"[a-zA-Z]{6,}", text)
+        cands = [w for w in words if w.lower() not in _PRISON_STOP]
+        if cands:
+            # 가장 드문 단어(긴 단어) 우선
+            cands.sort(key=len, reverse=True)
+            return cands[0]
+
+    # 3순위: 정답 선택지 단어 (기능어 아니면)
+    if ch and a_idx is not None and a_idx < len(ch):
+        raw = ch[a_idx]
+        ans = raw.split(") ", 1)[-1] if ") " in raw else raw
+        ans = ans.strip()
+        if len(ans) >= 4 and ans.lower() not in _PRISON_STOP:
+            return ans
+    return None
+
+def _add_to_prison(word, source, sentence="", kr="", cat=""):
+    """포로수용소에 단어 추가 (중복 없이)"""
+    if not word or len(word) < 3:
+        return
+    try:
+        st_data = load_storage()
+        if "word_prison" not in st_data:
+            st_data["word_prison"] = []
+        # 중복 체크
+        if any(p.get("word","").lower() == word.lower() for p in st_data["word_prison"]):
+            return
+        import datetime as _pdt
+        st_data["word_prison"].append({
+            "word":           word,
+            "kr":             kr,
+            "source":         source,
+            "sentence":       sentence,
+            "captured_date":  _pdt.datetime.now().strftime("%Y-%m-%d"),
+            "correct_streak": 0,
+            "last_reviewed":  None,
+            "cat":            cat,
+        })
+        save_storage(st_data)
+    except Exception:
+        pass
+
 def make_alt_question(q):
     ans = q["ch"][q["a"]]
     clean_ans = ans.split(") ",1)[-1] if ") " in ans else ans
@@ -866,6 +936,26 @@ elif st.session_state.sg_phase == "p5_exam":
                 pass
 
             if not ok:
+                # ★ 포로수용소 — 오답 시 핵심 단어 1개 자동 저장
+                try:
+                    _pw = _extract_prison_word(
+                        text=q.get("text",""),
+                        ex_field=q.get("ex",""),
+                        cat=q.get("cat",""),
+                        ch=q.get("ch",[]),
+                        a_idx=q.get("a",0)
+                    )
+                    if _pw:
+                        _sent = q.get("text","").replace("_______", _pw)
+                        _add_to_prison(
+                            word=_pw,
+                            source="P5 시험 오답",
+                            sentence=_sent,
+                            kr=q.get("kr",""),
+                            cat=q.get("cat","")
+                        )
+                except Exception:
+                    pass
                 st.session_state.sg_exam_wrong = True
                 st.session_state.sg_phase = "p5_exam_result"; st.rerun()
             else:
@@ -1183,33 +1273,15 @@ elif st.session_state.sg_phase == "survival":
                     st.session_state.puzzle_streak = 0
                     old_level = st.session_state.get("puzzle_blank_level", 2)
                     st.session_state.puzzle_blank_level = max(1, old_level - 1)
-                    # ★ 포로수용소 자동 저장 — 틀린 빈칸 단어들
+                    # ★ 포로수용소 — 퍼즐 오답: blank_order 중 1개 (가장 긴 단어)
                     try:
-                        _pr_storage = load_storage()
-                        if "word_prison" not in _pr_storage:
-                            _pr_storage["word_prison"] = []
-                        import datetime as _dt2
-                        _pr_today = _dt2.datetime.now().strftime("%Y-%m-%d")
-                        _pr_sent = item.get("sentences", [""])[0] if item.get("sentences") else item.get("expr", "")
-                        _pr_kr   = item.get("kr", item.get("meaning", ""))
-                        for _bw in blank_order:
-                            _bw_clean = _bw.strip(".,!?;:()")
-                            if not _bw_clean or len(_bw_clean) < 2:
-                                continue
-                            _exists = any(p.get("word","").lower() == _bw_clean.lower()
-                                          for p in _pr_storage["word_prison"])
-                            if not _exists:
-                                _pr_storage["word_prison"].append({
-                                    "word":           _bw_clean,
-                                    "kr":             _pr_kr,
-                                    "source":         "퍼즐 오답",
-                                    "sentence":       _pr_sent,
-                                    "captured_date":  _pr_today,
-                                    "correct_streak": 0,
-                                    "last_reviewed":  None,
-                                    "cat":            "vocabulary",
-                                })
-                        save_storage(_pr_storage)
+                        _pr_sent = item.get("sentences",[""])[0] if item.get("sentences") else item.get("expr","")
+                        _pr_kr   = item.get("kr", item.get("meaning",""))
+                        _bw_list = [w.strip(".,!?;:()") for w in blank_order if len(w.strip(".,!?;:()")) >= 3]
+                        if _bw_list:
+                            _best = max(_bw_list, key=len)
+                            if _best.lower() not in _PRISON_STOP:
+                                _add_to_prison(_best, "퍼즐 오답", _pr_sent, _pr_kr, "vocabulary")
                     except Exception:
                         pass
                     st.session_state.sb_idx=idx+1; st.session_state.sb_wrong_cnt=0
@@ -1245,32 +1317,15 @@ elif st.session_state.sg_phase == "survival":
     c1,c2=st.columns(2)
     with c1:
         if st.button("⏭ 건너뛰기",key=f"sv_skip_{idx}",use_container_width=True):
-            # ★ 건너뛴 문장 단어도 포로 수감
+            # ★ 포로수용소 — 건너뛴 문장 핵심 단어 1개
             try:
-                _sk_storage = load_storage()
-                if "word_prison" not in _sk_storage:
-                    _sk_storage["word_prison"] = []
-                import datetime as _dt3
-                _sk_today = _dt3.datetime.now().strftime("%Y-%m-%d")
-                _sk_sent = item.get("sentences", [""])[0] if item.get("sentences") else item.get("expr","")
+                _sk_sent = item.get("sentences",[""])[0] if item.get("sentences") else item.get("expr","")
                 _sk_kr   = item.get("kr", item.get("meaning",""))
-                _sk_words = st.session_state.get("sb_blank_order", [])
-                for _sw in _sk_words:
-                    _sw_c = _sw.strip(".,!?;:()")
-                    if not _sw_c or len(_sw_c) < 2: continue
-                    if not any(p.get("word","").lower() == _sw_c.lower()
-                               for p in _sk_storage["word_prison"]):
-                        _sk_storage["word_prison"].append({
-                            "word":           _sw_c,
-                            "kr":             _sk_kr,
-                            "source":         "퍼즐 건너뜀",
-                            "sentence":       _sk_sent,
-                            "captured_date":  _sk_today,
-                            "correct_streak": 0,
-                            "last_reviewed":  None,
-                            "cat":            "vocabulary",
-                        })
-                save_storage(_sk_storage)
+                _sk_words = [w.strip(".,!?;:()") for w in st.session_state.get("sb_blank_order",[]) if len(w.strip(".,!?;:()")) >= 3]
+                if _sk_words:
+                    _sk_best = max(_sk_words, key=len)
+                    if _sk_best.lower() not in _PRISON_STOP:
+                        _add_to_prison(_sk_best, "퍼즐 건너뜀", _sk_sent, _sk_kr, "vocabulary")
             except Exception:
                 pass
             st.session_state.sb_idx=idx+1
@@ -1410,8 +1465,25 @@ elif st.session_state.sg_phase == "combo_rush":
     for i,ch in enumerate(labeled):
         if st.button(ch,key=f"cb_{cidx}_{i}",type="secondary",use_container_width=True):
             results=st.session_state.sg_combo_results
-            if i==correct_idx: results.append(True); st.session_state.sg_combo_score=score+100; st.session_state.sg_combo_count=combo+1
-            else: results.append(False)
+            if i==correct_idx:
+                results.append(True); st.session_state.sg_combo_score=score+100; st.session_state.sg_combo_count=combo+1
+            else:
+                results.append(False)
+                # ★ 포로수용소 — P7 오답 시 key_word 자동 저장
+                try:
+                    _kw = correct_ans.strip(".,!?;:()")
+                    if _kw and len(_kw) >= 3 and _kw.lower() not in _PRISON_STOP:
+                        _pr_sent = sentences[0] if sentences else ""
+                        _pr_kr = q_item.get("meaning", q_item.get("kr",""))
+                        _add_to_prison(
+                            word=_kw,
+                            source="P7 어휘 오답",
+                            sentence=_pr_sent,
+                            kr=_pr_kr,
+                            cat="vocabulary"
+                        )
+                except Exception:
+                    pass
             st.session_state.sg_combo_results=results; st.session_state.sg_combo_idx=cidx+1
             wrong_cnt=sum(1 for r in results if not r)
             if wrong_cnt>(total_qs-3): st.session_state.sg_combo_over=True
