@@ -121,15 +121,24 @@ def build_research_record(result):
     }
 def load_storage():
     if os.path.exists(STORAGE_FILE):
-        with open(STORAGE_FILE,"r",encoding="utf-8") as f:
-            d = json.load(f)
+        try:
+            with open(STORAGE_FILE,"r",encoding="utf-8") as f:
+                content = f.read().strip()
+            if not content:
+                return {"saved_questions":[],"saved_expressions":[]}
+            d = json.loads(content)
             if isinstance(d, list): return {"saved_questions":d,"saved_expressions":[]}
             if "saved_questions" not in d: d["saved_questions"]=[]
             if "saved_expressions" not in d: d["saved_expressions"]=[]
             return d
+        except (json.JSONDecodeError, ValueError, Exception):
+            return {"saved_questions":[],"saved_expressions":[]}
     return {"saved_questions":[],"saved_expressions":[]}
 def save_storage(data):
-    with open(STORAGE_FILE,"w",encoding="utf-8") as f: json.dump(data,f,ensure_ascii=False,indent=2)
+    try:
+        with open(STORAGE_FILE,"w",encoding="utf-8") as f:
+            json.dump(data,f,ensure_ascii=False,indent=2)
+    except Exception: pass
 def save_expressions(exprs, step_data=None):
     data=load_storage()
     if "saved_expressions" not in data: data["saved_expressions"]=[]
