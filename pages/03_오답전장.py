@@ -246,7 +246,8 @@ div[data-testid="column"] button[kind="secondary"] p{
 for k,v in {"sg_phase":"lobby","sg_idx":0,"sg_mode":None,"rv_battle":None,"rv_mode":None,
     "sg_exam_qs":[],"sg_exam_idx":0,"sg_exam_results":[],"sg_exam_start":None,"sg_exam_wrong":False,
     "sg_wave":1,"sg_wave_idx":0,"sg_wave_results":[],"sg_wave_start":None,"sg_wave_dead":False,
-    "sg_combo_score":0,"sg_combo_count":0,"sg_combo_idx":0,"sg_combo_start":None,"sg_combo_over":False}.items():
+    "sg_combo_score":0,"sg_combo_count":0,"sg_combo_idx":0,"sg_combo_start":None,"sg_combo_over":False,
+    "puzzle_blank_level":2,"puzzle_streak":0}.items():  # ★ 적응형 빈칸: level 1=1개 2=2개 3=3개
     if k not in st.session_state: st.session_state[k]=v
 
 storage = load_storage()
@@ -1045,14 +1046,17 @@ elif st.session_state.sg_phase == "survival":
 
     # 블랭크 준비 (한 번만)
     if not st.session_state.sb_blanked:
+        # ★ 적응형 빈칸 개수 — 레벨에 따라 1~3개
+        _blank_level = st.session_state.get("puzzle_blank_level", 2)
+        _blank_count = max(1, min(3, _blank_level))  # 1~3 범위 보장
         words=sentence.split()
         stopwords={"the","a","an","in","on","at","to","for","of","by","with","is","are","was","were","has","have","had","be","been","that","this","it","its","and","or","but","as","if","so","not","do","did","will","shall","would","could","should","must","from","into","upon","than","then","also"}
         candidates=[w.strip(".,!?;:()") for w in words if w.strip(".,!?;:()").lower() not in stopwords and len(w.strip(".,!?;:()"))>=3]
         rng=random.Random(hash(sentence))
         rng.shuffle(candidates)
-        blank_words=candidates[:2] if len(candidates)>=2 else candidates
-        if len(blank_words)<2:
-            blank_words=[w.strip(".,!?;:()") for w in words if len(w.strip(".,!?;:()"))>=3][:3]
+        blank_words=candidates[:_blank_count] if len(candidates)>=_blank_count else candidates
+        if not blank_words:
+            blank_words=[w.strip(".,!?;:()") for w in words if len(w.strip(".,!?;:()"))>=3][:_blank_count]
         blanked=sentence
         border=[]
         for bw in blank_words:
@@ -1085,9 +1089,11 @@ elif st.session_state.sg_phase == "survival":
     done=st.session_state.sb_done
 
     # ── 헤더 ──
+    _cur_lv = st.session_state.get("puzzle_blank_level", 2)
+    _lv_label = ["", "🟢 기초(빈칸 1개)", "🟡 표준(빈칸 2개)", "🔴 심화(빈칸 3개)"][_cur_lv]
     st.markdown(f'''<div style="background:#1a1a2e;border:1.5px solid #4488ff;border-radius:14px;padding:8px 14px;text-align:center;margin-bottom:8px;">
         <div style="font-size:0.95rem;font-weight:700;color:#4488ff;">📖 문장 퍼즐 배틀</div>
-        <div style="font-size:0.8rem;color:#aaa;margin-top:2px;">{idx+1} / {total} 문장</div>
+        <div style="font-size:0.8rem;color:#aaa;margin-top:2px;">{idx+1} / {total} 문장 &nbsp;|&nbsp; {_lv_label}</div>
         <div style="background:#0a0a1a;border-radius:4px;height:5px;margin-top:5px;"><div style="background:linear-gradient(90deg,#4488ff,#44ccff);height:5px;border-radius:4px;width:{int((idx/max(total,1))*100)}%;"></div></div>
     </div>''', unsafe_allow_html=True)
 
@@ -1110,10 +1116,20 @@ elif st.session_state.sg_phase == "survival":
             st.rerun()
         wrong_cnt=st.session_state.sb_wrong_cnt
         if correct:
-            st.markdown('''<div style="background:#0a2a0a;border:2px solid #44ff88;border-radius:14px;padding:14px;text-align:center;margin-bottom:8px;">
+            # ★ 적응형 레벨 UP — 연속 2회 정답 시 빈칸 증가
+            st.session_state.puzzle_streak = st.session_state.get("puzzle_streak", 0) + 1
+            if st.session_state.puzzle_streak >= 2:
+                old_level = st.session_state.get("puzzle_blank_level", 2)
+                st.session_state.puzzle_blank_level = min(3, old_level + 1)
+                st.session_state.puzzle_streak = 0
+            _cur_level = st.session_state.get("puzzle_blank_level", 2)
+            _level_emoji = ["", "🟢 기초", "🟡 표준", "🔴 심화"][_cur_level]
+            _level_msg = ["", "빈칸 1개", "빈칸 2개", "빈칸 3개!"][_cur_level]
+            st.markdown(f'''<div style="background:#0a2a0a;border:2px solid #44ff88;border-radius:14px;padding:14px;text-align:center;margin-bottom:8px;">
                 <div style="font-size:2rem;">🎯</div>
-                <div style="font-size:1.3rem;font-weight:900;color:#44ff88;margin-top:4px;">완벽해! 바로 이거야!</div>
+                <div style="font-size:1.3rem;font-weight:900;color:#44ff88;margin-top:4px;">완벽해! 몸으로 익혔다!</div>
                 <div style="font-size:0.9rem;color:#88ddaa;margin-top:4px;">이 문장, 이제 완전히 네 것!</div>
+                <div style="font-size:0.8rem;color:#44ff88;margin-top:6px;opacity:0.8;">현재 난이도: {_level_emoji} ({_level_msg})</div>
             </div>''', unsafe_allow_html=True)
             if st.button("▶ 다음 문장!",key="sb_next",type="primary",use_container_width=True):
                 st.session_state.sb_idx=idx+1; st.session_state.sb_wrong_cnt=0
@@ -1163,6 +1179,10 @@ elif st.session_state.sg_phase == "survival":
                     <div style="font-size:1.05rem;font-weight:800;color:#ffaa55;">{msg}</div>
                 </div>''', unsafe_allow_html=True)
                 if st.button("▶ 다음 문장!",key="sb_next2",type="primary",use_container_width=True):
+                    # ★ 2번 틀리면 레벨 DOWN
+                    st.session_state.puzzle_streak = 0
+                    old_level = st.session_state.get("puzzle_blank_level", 2)
+                    st.session_state.puzzle_blank_level = max(1, old_level - 1)
                     st.session_state.sb_idx=idx+1; st.session_state.sb_wrong_cnt=0
                     for k in ["sb_selected","sb_done","sb_blanked","sb_blank_order","sb_blank_words","sb_wrong_counted"]:
                         if k in st.session_state: del st.session_state[k]
