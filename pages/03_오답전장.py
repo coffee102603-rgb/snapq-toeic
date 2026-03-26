@@ -1183,6 +1183,35 @@ elif st.session_state.sg_phase == "survival":
                     st.session_state.puzzle_streak = 0
                     old_level = st.session_state.get("puzzle_blank_level", 2)
                     st.session_state.puzzle_blank_level = max(1, old_level - 1)
+                    # ★ 포로수용소 자동 저장 — 틀린 빈칸 단어들
+                    try:
+                        _pr_storage = load_storage()
+                        if "word_prison" not in _pr_storage:
+                            _pr_storage["word_prison"] = []
+                        import datetime as _dt2
+                        _pr_today = _dt2.datetime.now().strftime("%Y-%m-%d")
+                        _pr_sent = item.get("sentences", [""])[0] if item.get("sentences") else item.get("expr", "")
+                        _pr_kr   = item.get("kr", item.get("meaning", ""))
+                        for _bw in blank_order:
+                            _bw_clean = _bw.strip(".,!?;:()")
+                            if not _bw_clean or len(_bw_clean) < 2:
+                                continue
+                            _exists = any(p.get("word","").lower() == _bw_clean.lower()
+                                          for p in _pr_storage["word_prison"])
+                            if not _exists:
+                                _pr_storage["word_prison"].append({
+                                    "word":           _bw_clean,
+                                    "kr":             _pr_kr,
+                                    "source":         "퍼즐 오답",
+                                    "sentence":       _pr_sent,
+                                    "captured_date":  _pr_today,
+                                    "correct_streak": 0,
+                                    "last_reviewed":  None,
+                                    "cat":            "vocabulary",
+                                })
+                        save_storage(_pr_storage)
+                    except Exception:
+                        pass
                     st.session_state.sb_idx=idx+1; st.session_state.sb_wrong_cnt=0
                     for k in ["sb_selected","sb_done","sb_blanked","sb_blank_order","sb_blank_words","sb_wrong_counted"]:
                         if k in st.session_state: del st.session_state[k]
@@ -1216,6 +1245,34 @@ elif st.session_state.sg_phase == "survival":
     c1,c2=st.columns(2)
     with c1:
         if st.button("⏭ 건너뛰기",key=f"sv_skip_{idx}",use_container_width=True):
+            # ★ 건너뛴 문장 단어도 포로 수감
+            try:
+                _sk_storage = load_storage()
+                if "word_prison" not in _sk_storage:
+                    _sk_storage["word_prison"] = []
+                import datetime as _dt3
+                _sk_today = _dt3.datetime.now().strftime("%Y-%m-%d")
+                _sk_sent = item.get("sentences", [""])[0] if item.get("sentences") else item.get("expr","")
+                _sk_kr   = item.get("kr", item.get("meaning",""))
+                _sk_words = st.session_state.get("sb_blank_order", [])
+                for _sw in _sk_words:
+                    _sw_c = _sw.strip(".,!?;:()")
+                    if not _sw_c or len(_sw_c) < 2: continue
+                    if not any(p.get("word","").lower() == _sw_c.lower()
+                               for p in _sk_storage["word_prison"]):
+                        _sk_storage["word_prison"].append({
+                            "word":           _sw_c,
+                            "kr":             _sk_kr,
+                            "source":         "퍼즐 건너뜀",
+                            "sentence":       _sk_sent,
+                            "captured_date":  _sk_today,
+                            "correct_streak": 0,
+                            "last_reviewed":  None,
+                            "cat":            "vocabulary",
+                        })
+                save_storage(_sk_storage)
+            except Exception:
+                pass
             st.session_state.sb_idx=idx+1
             for k in ["sb_selected","sb_done","sb_blanked","sb_blank_order","sb_blank_words"]:
                 if k in st.session_state: del st.session_state[k]
@@ -1469,3 +1526,154 @@ elif st.session_state.sg_phase == "combo_result":
 
 
 
+
+# ══════════════════════════════════════════════════════════════
+# 💀 단어 포로수용소 페이지
+# ══════════════════════════════════════════════════════════════
+elif st.session_state.sg_phase == "word_prison":
+    import datetime as _pr_dt2
+
+    # 홈 버튼
+    _nick = st.session_state.get("nickname", "")
+    if st.button("🏠 홈", key="prison_home", use_container_width=False):
+        if _nick:
+            st.query_params["nick"] = _nick
+            st.query_params["ag"] = "1"
+        st.switch_page("main_hub.py")
+
+    # 저장소 로드
+    _pr_st = load_storage()
+    if "word_prison" not in _pr_st:
+        _pr_st["word_prison"] = []
+    _prisoners = _pr_st["word_prison"]
+
+    # 헤더
+    st.markdown("""
+<div style="background:linear-gradient(135deg,#1a0a2e,#2d1060);
+     border:2px solid #7040c0;border-radius:18px;
+     padding:16px;text-align:center;margin-bottom:12px;">
+  <div style="font-size:2rem;margin-bottom:4px;">💀</div>
+  <div style="font-size:1.6rem;font-weight:900;color:#e8d0ff;letter-spacing:2px;">단어 포로수용소</div>
+  <div style="font-size:0.85rem;color:#9070c0;margin-top:4px;">틀린 단어들이 갇혀 있다 — 심문하고 석방하라!</div>
+</div>""", unsafe_allow_html=True)
+
+    if not _prisoners:
+        st.markdown("""
+<div style="background:#0a1a0a;border:2px solid #44ff88;border-radius:16px;
+     padding:24px;text-align:center;margin:20px 0;">
+  <div style="font-size:3rem;">🏆</div>
+  <div style="font-size:1.3rem;font-weight:900;color:#44ff88;margin-top:8px;">포로 전원 석방!</div>
+  <div style="font-size:0.9rem;color:#88ddaa;margin-top:6px;">모든 단어를 정복했다. 진짜 전사!</div>
+</div>""", unsafe_allow_html=True)
+        if st.button("🔥 오답전장으로", key="pr_back_empty", use_container_width=True):
+            st.session_state.sg_phase = "lobby"
+            st.session_state.rv_battle = None
+            st.session_state.rv_mode = None
+            st.rerun()
+    else:
+        _today_str2 = _pr_dt2.datetime.now().strftime("%Y-%m-%d")
+
+        def _days_since(d):
+            try:
+                return (_pr_dt2.datetime.now() - _pr_dt2.datetime.strptime(d, "%Y-%m-%d")).days
+            except Exception:
+                return 0
+
+        def _danger_level(p):
+            d = _days_since(p.get("captured_date", _today_str2))
+            if d >= 7: return 3
+            if d >= 3: return 2
+            return 1
+
+        # 위험도 순 정렬
+        _prisoners_sorted = sorted(_prisoners, key=lambda p: -_danger_level(p))
+
+        _total = len(_prisoners_sorted)
+        _d3 = sum(1 for p in _prisoners_sorted if _danger_level(p) == 3)
+        _d2 = sum(1 for p in _prisoners_sorted if _danger_level(p) == 2)
+        _d1 = sum(1 for p in _prisoners_sorted if _danger_level(p) == 1)
+
+        # 통계 배지
+        st.markdown(f"""
+<div style="display:flex;gap:8px;margin-bottom:10px;">
+  <div style="flex:1;background:#1a0505;border:1px solid #ff4040;border-radius:10px;padding:8px;text-align:center;">
+    <div style="font-size:1.3rem;font-weight:900;color:#ff4040;">{_d3}</div>
+    <div style="font-size:0.7rem;color:#ff8080;">🚨 탈출직전</div>
+  </div>
+  <div style="flex:1;background:#1a0a00;border:1px solid #ff9040;border-radius:10px;padding:8px;text-align:center;">
+    <div style="font-size:1.3rem;font-weight:900;color:#ff9040;">{_d2}</div>
+    <div style="font-size:0.7rem;color:#ffbb80;">⚠️ 위험</div>
+  </div>
+  <div style="flex:1;background:#1a1a00;border:1px solid #c0a030;border-radius:10px;padding:8px;text-align:center;">
+    <div style="font-size:1.3rem;font-weight:900;color:#c0a030;">{_d1}</div>
+    <div style="font-size:0.7rem;color:#e0c060;">🆕 신입</div>
+  </div>
+  <div style="flex:1;background:#0a0a1a;border:1px solid #7040c0;border-radius:10px;padding:8px;text-align:center;">
+    <div style="font-size:1.3rem;font-weight:900;color:#c080ff;">{_total}</div>
+    <div style="font-size:0.7rem;color:#9060c0;">총 포로</div>
+  </div>
+</div>""", unsafe_allow_html=True)
+
+        # 포로 카드 (최대 10개씩 표시)
+        _show_n = min(_total, 10)
+        st.markdown(f'<div style="font-size:0.8rem;color:#888;margin-bottom:6px;">📋 포로 현황 (상위 {_show_n}명)</div>', unsafe_allow_html=True)
+
+        _freed_indices = []
+
+        for _pi, _p in enumerate(_prisoners_sorted[:_show_n]):
+            _dl = _danger_level(_p)
+            _dc = "#ff4040" if _dl == 3 else ("#ff9040" if _dl == 2 else "#c0a030")
+            _dlabel = "🚨 탈출 직전" if _dl == 3 else ("⚠️ 위험" if _dl == 2 else "🆕 신입")
+            _days = _days_since(_p.get("captured_date", _today_str2))
+            _day_txt = f"{_days}일째" if _days > 0 else "오늘"
+            _src = _p.get("source", "")
+            _sent = _p.get("sentence", "")
+            _word = _p.get("word", "")
+            _kr = _p.get("kr", "")
+
+            st.markdown(f"""
+<div style="background:#1a1a2e;border:1.5px solid {_dc};border-radius:14px;
+     padding:12px 14px;margin-bottom:8px;">
+  <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:8px;">
+    <span style="background:{_dc}22;border:1px solid {_dc};color:{_dc};
+                 font-size:0.75rem;font-weight:700;padding:2px 8px;border-radius:8px;">{_dlabel}</span>
+    <span style="color:#666;font-size:0.75rem;">📌 {_src} · {_day_txt}</span>
+  </div>
+  <div style="font-size:1.5rem;font-weight:900;color:#ffffff;margin-bottom:4px;">{_word}</div>
+  <div style="font-size:0.85rem;color:#9090b0;margin-bottom:6px;">🔑 {_kr}</div>
+  {f'<div style="font-size:0.8rem;color:#6060a0;font-style:italic;line-height:1.5;">{_sent[:80]}{"..." if len(_sent) > 80 else ""}</div>' if _sent else ""}
+</div>""", unsafe_allow_html=True)
+
+            _c1, _c2 = st.columns(2)
+            with _c1:
+                if st.button(f"✅ 알았다! 석방!", key=f"pr_free_{_pi}", use_container_width=True):
+                    # 석방 → word_prison에서 제거
+                    _real_idx = next((i for i, x in enumerate(_pr_st["word_prison"])
+                                      if x.get("word","").lower() == _word.lower()), None)
+                    if _real_idx is not None:
+                        _pr_st["word_prison"].pop(_real_idx)
+                        save_storage(_pr_st)
+                    st.success(f"🎉 '{_word}' 석방! 완전 정복!")
+                    st.rerun()
+            with _c2:
+                if st.button(f"❌ 아직 몰라", key=f"pr_jail_{_pi}", use_container_width=True):
+                    # 복역 연장 — correct_streak 리셋
+                    _real_idx2 = next((i for i, x in enumerate(_pr_st["word_prison"])
+                                       if x.get("word","").lower() == _word.lower()), None)
+                    if _real_idx2 is not None:
+                        _pr_st["word_prison"][_real_idx2]["correct_streak"] = 0
+                        _pr_st["word_prison"][_real_idx2]["last_reviewed"] = _today_str2
+                        save_storage(_pr_st)
+                    st.info(f"🔒 '{_word}' 다시 수감. 다음에 또 심문!")
+                    st.rerun()
+
+        if _total > _show_n:
+            st.markdown(f'<div style="text-align:center;color:#666;font-size:0.8rem;margin-top:4px;">외 {_total - _show_n}명 더 있음...</div>',
+                        unsafe_allow_html=True)
+
+        st.markdown("---")
+        if st.button("🔥 오답전장으로 돌아가기", key="pr_back", use_container_width=True):
+            st.session_state.sg_phase = "lobby"
+            st.session_state.rv_battle = None
+            st.session_state.rv_mode = None
+            st.rerun()
