@@ -1176,7 +1176,7 @@ div[data-testid="stButton"] button p{
     </div>""", unsafe_allow_html=True)
 
     # ── 시간 선택 (심플 라벨) ──
-    st.markdown('<div style="text-align:center;margin:0 0 3px;"><span style="font-size:0.58rem;color:#4477bb;font-weight:900;letter-spacing:3px;font-family:Orbitron,monospace;opacity:0.85;">— ⏱ 전투 시간 —</span></div>', unsafe_allow_html=True)
+    st.markdown('<div style="text-align:center;margin:2px 0 6px;"><span style="font-size:0.58rem;color:#4477bb;font-weight:900;letter-spacing:3px;font-family:Orbitron,monospace;opacity:0.85;">— ⏱ 전투 시간 —</span></div>', unsafe_allow_html=True)
 
     tc1, tc2, tc3 = st.columns(3)
     with tc1:
@@ -1190,7 +1190,7 @@ div[data-testid="stButton"] button p{
             st.session_state.tsec=50; st.session_state.tsec_chosen=True; st.rerun()
 
     # ── 작전 선택 (박스 없이 심플 라벨) ──
-    st.markdown('<div style="text-align:center;margin:5px 0 3px;"><span style="font-size:0.58rem;color:#aa3344;font-weight:900;letter-spacing:3px;font-family:Orbitron,monospace;opacity:0.85;">— ⚔️ 작전 선택 —</span></div>', unsafe_allow_html=True)
+    st.markdown('<div style="text-align:center;margin:6px 0 6px;"><span style="font-size:0.58rem;color:#aa3344;font-weight:900;letter-spacing:3px;font-family:Orbitron,monospace;opacity:0.85;">— ⚔️ 작전 선택 —</span></div>', unsafe_allow_html=True)
 
     b1, b2 = st.columns(2)
     with b1:
@@ -1325,9 +1325,29 @@ function applyStyles(){{
           {{bg:mc.bg,border:mc.border,col:mc.col}});
         b.style.setProperty("min-height","86px","important");
         b.style.setProperty("text-align","left","important");
-        b.querySelectorAll("p,span").forEach(function(el){{
+        b.style.setProperty("vertical-align","top","important");
+        b.style.setProperty("padding","8px 10px","important");
+        // 줄별 스타일: 첫줄=제목(그대로), 둘째줄=부제목(작게+연하게)
+        var lines = b.querySelectorAll("p,span");
+        lines.forEach(function(el){{
           el.style.setProperty("text-align","left","important");
+          el.style.setProperty("display","block","important");
+          el.style.setProperty("width","100%","important");
+          el.style.setProperty("vertical-align","top","important");
         }});
+        // p 태그 전체 텍스트에서 줄바꿈 기준으로 스타일 분리
+        var pTags = b.querySelectorAll("p");
+        if(pTags.length > 0){{
+          var fullTxt = (pTags[0].innerText||pTags[0].textContent||"");
+          var parts = fullTxt.split("\n").filter(function(s){{return s.trim()!==""}});
+          if(parts.length >= 2){{
+            var titlePart = parts[0].trim();
+            var subPart   = parts.slice(1).join(" ").trim();
+            pTags[0].innerHTML = 
+              '<span style="font-size:0.85rem;font-weight:900;color:'+mc.col+';display:block;margin-bottom:4px;line-height:1.2;">'+titlePart+'</span>'+
+              '<span style="font-size:0.75rem;font-weight:400;color:'+mc.col+';opacity:0.65;display:block;line-height:1.3;">'+subPart+'</span>';
+          }}
+        }}
       }}
     }});
 
