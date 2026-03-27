@@ -313,21 +313,29 @@ def load_css():
     @import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Noto+Sans+KR:wght@400;700;900&display=swap');
 
     .stApp { background: #0A0C15 !important; }
-    #MainMenu, footer, header { visibility: hidden; }
-    .block-container { padding: 0 8px 10px 8px !important; max-width: 860px !important; margin: 0 auto !important; }
+    #MainMenu { display: none !important; }
+    footer { display: none !important; }
+    header { display: none !important; height: 0 !important; min-height: 0 !important; }
+    header[data-testid="stHeader"] { display: none !important; height: 0 !important; min-height: 0 !important; }
+    .stApp > header { display: none !important; }
+    /* 상단 패딩 완전 제거 */
+    .block-container {
+        padding-top: 0px !important;
+        padding-bottom: 0px !important;
+        margin-top: 0px !important;
+    }
+    section.main > div.block-container { padding-top: 0px !important; }
+    [data-testid="stAppViewBlockContainer"] { padding-top: 0px !important; margin-top: 0px !important; }
+    [data-testid="stAppViewContainer"] > section > div { padding-top: 0 !important; padding-bottom: 0 !important; margin-top: 0 !important; }
+    [data-testid="stAppViewContainer"] > section { padding-top: 0 !important; margin-top: 0 !important; }
+    .main > div { padding-top: 0px !important; margin-top: 0px !important; }
     div[data-testid="stVerticalBlock"] > div { gap: 0 !important; margin: 0 !important; padding: 0 !important; }
     div[data-testid="stVerticalBlock"] > div > div { margin: 0 !important; padding: 0 !important; }
     div[data-testid="element-container"] { margin: 0 !important; padding: 0 !important; }
     div[data-testid="stMarkdownContainer"] { margin: 0 !important; padding: 0 !important; }
     div.stMarkdown { margin: 0 !important; padding: 0 !important; }
     iframe { display: block !important; margin: 0 !important; padding: 0 !important; border: none !important; }
-    section[data-testid="stSidebar"] { display: none !important; }
-    /* Streamlit 요소 간 모든 여백 제거 */
     .stApp > div > div > div > div { gap: 0 !important; }
-    [data-testid="stAppViewContainer"] > section > div { padding-top: 0 !important; padding-bottom: 0 !important; }
-    [data-testid="stAppViewContainer"] > section { padding-top: 0 !important; }
-    .main > div { padding-top: 0 !important; }
-    header[data-testid="stHeader"] { height: 0 !important; display: none !important; }
 
     /* 상단 배너 - 형광 반짝 테두리 */
     .top-banner {
