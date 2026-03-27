@@ -1115,100 +1115,115 @@ else:
     tsec = st.session_state.tsec
     sm = st.session_state.sel_mode
     rn = st.session_state.round_num
+    _tsec_chosen = st.session_state.get('tsec_chosen', False)
+    lbl_map={"g1":"⚔️ 문법력","g2":"⚔️ 구조력","g3":"⚔️ 연결력","vocab":"📘 어휘력"}
+    mode_map={"g1":("grammar","g1"),"g2":("grammar","g2"),"g3":("grammar","g3"),"vocab":("vocab",None)}
+    _ready = _tsec_chosen and sm and sm in ["g1","g2","g3","vocab"]
 
-    # ─── 로비 전용 CSS ───
+    # ─── 로비 전용 CSS (한 화면 압축 버전) ───
     st.markdown("""
 <style>
 @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@700;900&family=Rajdhani:wght@600;700&display=swap');
 .stApp{background:#06060e!important;color:#eeeeff!important;}
 section[data-testid="stSidebar"]{display:none!important;}
 header[data-testid="stHeader"]{background:transparent!important;height:0!important;min-height:0!important;overflow:hidden!important;}
-.block-container{padding-top:0!important;padding-bottom:0!important;margin-top:-8px!important;}
+.block-container{padding-top:4px!important;padding-bottom:4px!important;margin-top:0!important;
+  padding-left:10px!important;padding-right:10px!important;}
+div[data-testid="stVerticalBlock"]{gap:0.18rem!important;}
+.element-container{margin-bottom:0!important;margin-top:0!important;}
+div[data-testid="stHorizontalBlock"]{gap:6px!important;margin:0!important;}
 
 @keyframes titleShine{0%{background-position:200% center}100%{background-position:-200% center}}
-@keyframes warningPulse{0%,100%{color:#FF2D55;text-shadow:0 0 10px rgba(255,45,85,0.9);}50%{color:#ff8888;text-shadow:0 0 25px rgba(255,45,85,1),0 0 50px rgba(255,0,50,0.7);}}
-@keyframes startGlow{0%,100%{box-shadow:0 0 25px rgba(255,100,0,0.7),0 0 60px rgba(255,60,0,0.4),inset 0 0 15px rgba(255,150,0,0.1);}50%{box-shadow:0 0 50px rgba(255,200,0,1),0 0 100px rgba(255,100,0,0.6),inset 0 0 30px rgba(255,200,0,0.15);}}
-@keyframes neonPulse{0%,100%{box-shadow:0 0 5px rgba(0,212,255,0.4);}50%{box-shadow:0 0 20px rgba(0,212,255,0.8),0 0 40px rgba(0,212,255,0.3);}}
-@keyframes goldBorder{0%,100%{border-color:#d4af37;box-shadow:0 0 10px rgba(212,175,55,0.5);}50%{border-color:#FFD600;box-shadow:0 0 25px rgba(255,214,0,0.8),0 0 50px rgba(255,214,0,0.3);}}
+@keyframes warningPulse{0%,100%{color:#FF2D55;text-shadow:0 0 8px rgba(255,45,85,0.9);}50%{color:#ff7799;text-shadow:0 0 18px rgba(255,45,85,1);}}
+@keyframes startGlow{0%,100%{box-shadow:0 0 20px rgba(255,100,0,0.6),inset 0 0 10px rgba(255,150,0,0.08);}50%{box-shadow:0 0 40px rgba(255,200,0,0.9),0 0 80px rgba(255,100,0,0.4);}}
 
-/* 기본 버튼 - 로비 */
+/* ── 로비 기본 버튼 (컴팩트) ── */
 div[data-testid="stButton"] button{
     background:#080c18!important;
-    border:2px solid rgba(0,212,255,0.3)!important;
-    border-radius:10px!important;
-    font-size:1.0rem!important;font-weight:700!important;
-    padding:0.55rem 0.8rem!important;
-    color:#ccc!important;
-    min-height:58px!important;
+    border:1.5px solid rgba(0,212,255,0.25)!important;
+    border-radius:8px!important;
+    font-size:0.88rem!important;font-weight:700!important;
+    padding:0.3rem 0.5rem!important;
+    color:#aaa!important;
+    min-height:42px!important;
     width:100%!important;
-    transition:all 0.15s ease!important;
+    transition:all 0.12s ease!important;
     animation:none!important;
+    line-height:1.2!important;
 }
 div[data-testid="stButton"] button p{
-    font-size:1.0rem!important;font-weight:700!important;color:#ccc!important;
-    white-space:pre-line!important;line-height:1.2!important;
+    font-size:0.88rem!important;font-weight:700!important;color:#aaa!important;
+    white-space:pre-line!important;line-height:1.15!important;
+    margin:0!important;
 }
 div[data-testid="stButton"] button:hover{
     background:rgba(0,212,255,0.06)!important;
     border-color:#00d4ff!important;
-    box-shadow:0 0 20px rgba(0,212,255,0.3)!important;
+    box-shadow:0 0 14px rgba(0,212,255,0.28)!important;
+    color:#fff!important;
 }
+div[data-testid="stButton"] button:hover p{color:#fff!important;}
 
-/* 출격 버튼 특별 스타일 */
+/* ── 출격 버튼 ── */
 .start-btn div[data-testid="stButton"] button{
-    background:linear-gradient(135deg,#300800,#200500)!important;
-    border:2px solid #ff6600!important;
-    border-radius:14px!important;
-    font-size:1.3rem!important;font-weight:900!important;
-    min-height:68px!important;
-    color:#ff8800!important;
+    background:linear-gradient(135deg,#280600,#180400)!important;
+    border:2px solid #ff5500!important;
+    border-radius:12px!important;
+    font-size:1.15rem!important;font-weight:900!important;
+    min-height:56px!important;
+    color:#ff7700!important;
     animation:startGlow 1.5s ease-in-out infinite!important;
-    letter-spacing:2px!important;
+    letter-spacing:1px!important;
 }
 .start-btn div[data-testid="stButton"] button p{
-    font-size:1.3rem!important;font-weight:900!important;color:#ff8800!important;
+    font-size:1.15rem!important;font-weight:900!important;color:#ff7700!important;
 }
+
+/* ── 네비 버튼 ── */
+.nav-bottom div[data-testid="stButton"] button{
+    background:#05050c!important;border:1px solid #151520!important;
+    border-radius:7px!important;min-height:32px!important;
+    font-size:0.78rem!important;color:#444!important;padding:3px!important;
+}
+.nav-bottom div[data-testid="stButton"] button p{font-size:0.78rem!important;color:#444!important;}
+.nav-bottom div[data-testid="stButton"] button:hover{border-color:#333!important;color:#777!important;}
+.nav-bottom div[data-testid="stButton"] button:hover p{color:#777!important;}
 </style>""", unsafe_allow_html=True)
 
-    # ── 로비 타이틀 ──
-    if rn > 1:
-        _round_badge = f'<div style="text-align:center;margin-bottom:2px;"><span style="background:#1a0800;border:1px solid #cc6600;border-radius:20px;padding:3px 14px;font-size:0.82rem;color:#cc6600;font-weight:800;">🏆 Round {rn}</span></div>'
-    else:
-        _round_badge = ''
-    st.markdown(f'''{_round_badge}
-    <div style="text-align:center;padding:6px 0 4px 0;">
-        <div style="font-family:Orbitron,monospace;font-size:2.2rem;font-weight:900;letter-spacing:5px;
-          background:linear-gradient(90deg,#00d4ff,#ffffff,#FFD600,#ff4400,#00d4ff);background-size:300%;
+    # ── 타이틀 (컴팩트) ──
+    _round_badge = f'<span style="background:#1a0800;border:1px solid #cc6600;border-radius:20px;padding:2px 10px;font-size:0.75rem;color:#cc6600;font-weight:800;margin-right:8px;">🏆 Round {rn}</span>' if rn > 1 else ''
+    st.markdown(f'''<div style="text-align:center;padding:4px 0 2px 0;">
+        <div style="font-family:Orbitron,monospace;font-size:1.85rem;font-weight:900;letter-spacing:5px;
+          background:linear-gradient(90deg,#00d4ff,#fff,#FFD600,#ff4400,#00d4ff);background-size:300%;
           -webkit-background-clip:text;-webkit-text-fill-color:transparent;
-          animation:titleShine 2s linear infinite;">⚡ 화력전</div>
-        <div style="font-size:0.78rem;color:#445;letter-spacing:3px;margin-top:2px;">5문제 서바이벌 · 문법·어휘 실전 포격전</div>
+          animation:titleShine 2s linear infinite;line-height:1.1;">{_round_badge}⚡ 화력전</div>
+        <div style="font-size:0.68rem;color:#334;letter-spacing:2px;margin-top:1px;">5문제 서바이벌 · 문법·어휘 실전 포격전</div>
     </div>''', unsafe_allow_html=True)
 
-    # ── 시간 선택 ──
-    st.markdown('''<div style="background:#080c18;border:1px solid #1a2030;border-bottom:none;
-        border-radius:8px 8px 0 0;padding:3px 12px;font-size:0.72rem;font-weight:900;
-        color:#6688aa;letter-spacing:3px;margin-bottom:0;">⏱ 전투 시간 선택</div>''', unsafe_allow_html=True)
+    # ── 구분선 + 섹션 라벨 (시간) ──
+    st.markdown('''<div style="display:flex;align-items:center;gap:8px;margin:4px 0 2px 0;">
+        <div style="height:1px;flex:1;background:linear-gradient(90deg,transparent,#1a2a3a,transparent);"></div>
+        <span style="font-size:0.65rem;font-weight:900;color:#4466aa;letter-spacing:3px;">⏱ 전투 시간</span>
+        <div style="height:1px;flex:1;background:linear-gradient(90deg,transparent,#1a2a3a,transparent);"></div>
+    </div>''', unsafe_allow_html=True)
 
-    _tsec_chosen = st.session_state.get('tsec_chosen', False)
     tc1,tc2,tc3 = st.columns(3)
     with tc1:
-        if st.button("🔥 30초\n빠른 포격", key="t30", use_container_width=True):
+        if st.button("🔥 30초  빠른 포격", key="t30", use_container_width=True):
             st.session_state.tsec=30; st.session_state.tsec_chosen=True; st.rerun()
     with tc2:
-        if st.button("⚡ 40초\n표준 전투", key="t40", use_container_width=True):
+        if st.button("⚡ 40초  표준 전투", key="t40", use_container_width=True):
             st.session_state.tsec=40; st.session_state.tsec_chosen=True; st.rerun()
     with tc3:
-        if st.button("🛡 50초\n신중 작전", key="t50", use_container_width=True):
+        if st.button("🛡 50초  신중 작전", key="t50", use_container_width=True):
             st.session_state.tsec=50; st.session_state.tsec_chosen=True; st.rerun()
-    st.markdown('<div style="height:8px;"></div>', unsafe_allow_html=True)
 
-    # ── 작전 선택 ──
-    st.markdown('''<div style="background:#0c0808;border:1px solid #301010;border-bottom:none;
-        border-radius:8px 8px 0 0;padding:3px 12px;font-size:0.72rem;font-weight:900;
-        color:#aa4455;letter-spacing:3px;margin-bottom:0;">⚔️ 작전 선택</div>''', unsafe_allow_html=True)
-
-    lbl_map={"g1":"⚔️ 문법력","g2":"⚔️ 구조력","g3":"⚔️ 연결력","vocab":"📘 어휘력"}
-    mode_map={"g1":("grammar","g1"),"g2":("grammar","g2"),"g3":("grammar","g3"),"vocab":("vocab",None)}
+    # ── 구분선 + 섹션 라벨 (작전) ──
+    st.markdown('''<div style="display:flex;align-items:center;gap:8px;margin:5px 0 2px 0;">
+        <div style="height:1px;flex:1;background:linear-gradient(90deg,transparent,#2a1a1a,transparent);"></div>
+        <span style="font-size:0.65rem;font-weight:900;color:#aa3344;letter-spacing:3px;">⚔️ 작전 선택</span>
+        <div style="height:1px;flex:1;background:linear-gradient(90deg,transparent,#2a1a1a,transparent);"></div>
+    </div>''', unsafe_allow_html=True)
 
     b1,b2 = st.columns(2)
     with b1:
@@ -1224,28 +1239,26 @@ div[data-testid="stButton"] button:hover{
     with b4:
         if st.button("📘 어휘력\n품사·동사·콜로케이션", key="svc", use_container_width=True):
             st.session_state.sel_mode="vocab"; st.rerun()
-    st.markdown('<div style="height:8px;"></div>', unsafe_allow_html=True)
 
-    # ── 생존 규칙 ──
-    st.markdown('''<div style="background:#0a0306;border:1px solid #330011;border-radius:10px;
-        padding:6px 12px;text-align:center;margin-bottom:8px;">
-        <span style="font-size:0.85rem;font-weight:900;animation:warningPulse 1.5s ease-in-out infinite;
-          display:inline-block;color:#FF2D55;">💀 생존 규칙: 5문제 중 3개 이상 · 그 이하면 전멸!</span>
+    # ── 생존 규칙 (인라인 한 줄) ──
+    st.markdown('''<div style="background:#0a0204;border:1px solid #2a0010;border-radius:8px;
+        padding:4px 10px;text-align:center;margin:4px 0;">
+        <span style="font-size:0.78rem;font-weight:900;color:#FF2D55;
+          animation:warningPulse 1.5s ease-in-out infinite;display:inline-block;">
+          💀 생존 규칙: 5문제 중 3개 이상 · 그 이하면 전멸!</span>
     </div>''', unsafe_allow_html=True)
 
-    # ── 난이도 표시 + 출격 버튼 ──
-    _ready = _tsec_chosen and sm and sm in ["g1","g2","g3","vocab"]
+    # ── 출격 버튼 or 안내 ──
     if _ready:
         _adp = st.session_state.get("adp_level", "normal")
         _adp_info = {"easy":"🟢 입문", "normal":"🟡 표준", "hard":"🔴 심화"}
         _adp_lbl = _adp_info.get(_adp, "🟡 표준")
         _hist_len = len(st.session_state.get("adp_history", []))
-        if _hist_len > 0:
-            st.markdown(f'<div style="text-align:center;background:#0a0a14;border:1px solid #222;border-radius:8px;'
-                        f'padding:4px 10px;margin-bottom:8px;font-size:0.82rem;color:#888;">'
-                        f'🎯 현재 난이도: <span style="color:#FFD600;font-weight:900;">{_adp_lbl}</span> · {_hist_len}라운드 누적</div>',
-                        unsafe_allow_html=True)
         _cat = lbl_map.get(sm,"")
+        # 난이도 + 출격을 한 줄에
+        _adp_txt = f' · 난이도 <b style="color:#FFD600;">{_adp_lbl}</b>' if _hist_len > 0 else ''
+        st.markdown(f'<div style="text-align:right;font-size:0.7rem;color:#555;margin-bottom:2px;">{_adp_txt}</div>',
+                    unsafe_allow_html=True)
         st.markdown('<div class="start-btn">', unsafe_allow_html=True)
         if st.button(f"🔥 출격! — {_cat}", key="go_start", use_container_width=True):
             md,grp=mode_map[sm]
@@ -1254,21 +1267,12 @@ div[data-testid="stButton"] button:hover{
             st.session_state.qst=time.time(); st.session_state.phase="battle"; st.rerun()
         st.markdown('</div>', unsafe_allow_html=True)
     else:
-        st.markdown('<div style="background:#0a0a12;border:1px solid #1a1a28;border-radius:12px;'
-                    'padding:14px;text-align:center;color:#333;font-size:0.9rem;font-weight:700;">'
-                    '⏱ 시간 + ⚔️ 작전을 선택하면 출격 가능!</div>', unsafe_allow_html=True)
+        st.markdown('<div style="background:#08080f;border:1px solid #151522;border-radius:10px;'
+                    'padding:8px;text-align:center;color:#2a2a44;font-size:0.82rem;font-weight:700;">'
+                    '⏱ 시간 + ⚔️ 작전 선택 → 출격!</div>', unsafe_allow_html=True)
 
     # ── 하단 네비게이션 ──
-    st.markdown('<div style="height:1px;background:#1a1a2a;margin:8px 0 4px 0;"></div>', unsafe_allow_html=True)
-    st.markdown('''<style>
-    .nav-bottom div[data-testid="stButton"] button{
-        background:#06060e!important;border:1px solid #1a1a28!important;
-        border-radius:8px!important;min-height:36px!important;
-        font-size:0.82rem!important;color:#555!important;padding:4px!important;
-    }
-    .nav-bottom div[data-testid="stButton"] button p{font-size:0.82rem!important;color:#555!important;}
-    .nav-bottom div[data-testid="stButton"] button:hover{border-color:#333!important;color:#888!important;}
-    </style>''', unsafe_allow_html=True)
+    st.markdown('<div style="height:1px;background:#111118;margin:5px 0 3px 0;"></div>', unsafe_allow_html=True)
     st.markdown('<div class="nav-bottom">', unsafe_allow_html=True)
     nc1,nc2 = st.columns(2)
     with nc1:
@@ -1295,18 +1299,19 @@ div[data-testid="stButton"] button:hover{
     var selMode = "{_sm_v}";
 
     function setGold(b){{
-        b.style.setProperty("background","#1a1400","important");
+        b.style.setProperty("background","#16100000","important");
+        b.style.setProperty("background","#120e00","important");
         b.style.setProperty("border","2px solid #FFD600","important");
         b.style.setProperty("border-left","4px solid #FFD600","important");
-        b.style.setProperty("box-shadow","0 0 20px rgba(255,214,0,0.5)","important");
+        b.style.setProperty("box-shadow","0 0 16px rgba(255,214,0,0.45)","important");
         b.querySelectorAll("p,span").forEach(function(el){{
             el.style.setProperty("color","#FFD600","important");
         }});
     }}
     function setDefault(b){{
         b.style.setProperty("background","#080c18","important");
-        b.style.setProperty("border","2px solid rgba(0,212,255,0.25)","important");
-        b.style.setProperty("border-left","2px solid rgba(0,212,255,0.25)","important");
+        b.style.setProperty("border","1.5px solid rgba(0,212,255,0.22)","important");
+        b.style.setProperty("border-left","1.5px solid rgba(0,212,255,0.22)","important");
         b.style.setProperty("box-shadow","none","important");
         b.querySelectorAll("p,span").forEach(function(el){{
             el.style.setProperty("color","#888","important");
@@ -1324,20 +1329,17 @@ div[data-testid="stButton"] button:hover{
     }}
     var timeSelected = {{"t30":selTime==="30","t40":selTime==="40","t50":selTime==="50"}};
     var modeSelected = {{"g1":selMode==="g1","g2":selMode==="g2","g3":selMode==="g3","vocab":selMode==="vocab"}};
-
     function styleBtns(){{
         var doc = window.parent.document;
         doc.querySelectorAll('button').forEach(function(b){{
             var t = (b.innerText||b.textContent||"").trim().replace(/\\s+/g," ");
             var key = getKey(t);
             if(!key) return;
-            var isSelected = (timeSelected[key]===true) || (modeSelected[key]===true);
-            isSelected ? setGold(b) : setDefault(b);
+            var isSel = (timeSelected[key]===true)||(modeSelected[key]===true);
+            isSel ? setGold(b) : setDefault(b);
         }});
     }}
-    setTimeout(styleBtns,150);
-    setTimeout(styleBtns,500);
-    setTimeout(styleBtns,1200);
-    setInterval(styleBtns,1200);
+    setTimeout(styleBtns,150);setTimeout(styleBtns,600);setTimeout(styleBtns,1400);
+    setInterval(styleBtns,1400);
 }})();
 </script>''', height=0)
