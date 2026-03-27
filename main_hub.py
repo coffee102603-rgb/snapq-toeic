@@ -314,7 +314,7 @@ def load_css():
 
     .stApp { background: #0A0C15 !important; }
     #MainMenu, footer, header { visibility: hidden; }
-    .block-container { padding: 0 8px 40px 8px !important; max-width: 860px !important; margin: 0 auto !important; }
+    .block-container { padding: 0 8px 10px 8px !important; max-width: 860px !important; margin: 0 auto !important; }
     div[data-testid="stVerticalBlock"] > div { gap: 0 !important; margin: 0 !important; padding: 0 !important; }
     iframe { display: block !important; margin: 0 !important; padding: 0 !important; }
 
@@ -323,8 +323,8 @@ def load_css():
         background: linear-gradient(135deg, rgba(124,92,255,0.2), rgba(0,229,160,0.15));
         border: 2px solid rgba(0,229,255,0.6);
         border-radius: 16px;
-        padding: 14px 18px;
-        margin: 12px 0 20px 0;
+        padding: 7px 12px;
+        margin: 6px 0 6px 0;
         display: flex;
         flex-wrap: wrap;
         gap: 10px;
@@ -371,11 +371,11 @@ def load_css():
         align-items: center;
         justify-content: center;
         gap: 16px;
-        padding: 14px 0 20px 0;
+        padding: 4px 0 6px 0;
     }
     .hub-teacher-photo {
-        width: 80px;
-        height: 80px;
+        width: 52px;
+        height: 52px;
         border-radius: 50%;
         object-fit: cover;
         object-position: center top;
@@ -388,7 +388,7 @@ def load_css():
     }
     .hub-title-text {
         font-family: 'Bebas Neue', sans-serif;
-        font-size: 46px;
+        font-size: 30px;
         letter-spacing: 4px;
         background: linear-gradient(135deg, #FF2D55, #7C5CFF, #00E5FF);
         -webkit-background-clip: text;
@@ -403,7 +403,7 @@ def load_css():
         font-weight: 900;
         color: #FFD600;
         letter-spacing: 1px;
-        margin-top: 4px;
+        margin-top: 1px;
     }
     .hub-platform {
         font-family: 'Noto Sans KR', sans-serif;
@@ -616,9 +616,9 @@ def load_css():
         .banner-name { font-size: 20px; }
         .banner-item { font-size: 14px; }
         .banner-rank { font-size: 16px; }
-        .hub-brand { gap: 10px; padding: 10px 0 14px 0; }
-        .hub-teacher-photo { width: 60px; height: 60px; }
-        .hub-title-text { font-size: 34px; letter-spacing: 2px; }
+        .hub-brand { gap: 6px; padding: 2px 0 4px 0; }
+        .hub-teacher-photo { width: 44px; height: 44px; }
+        .hub-title-text { font-size: 24px; letter-spacing: 1px; }
         .hub-subtitle { font-size: 12px; }
         .hub-platform { font-size: 10px; }
         .arena-icon-title { font-size: 22px; }
@@ -644,9 +644,9 @@ def load_css():
         .banner-item { font-size: 12px; }
         .banner-rank { font-size: 13px; }
         .banner-divider { font-size: 14px; }
-        .hub-brand { gap: 8px; padding: 8px 0 10px 0; }
-        .hub-teacher-photo { width: 48px; height: 48px; border-width: 2px; }
-        .hub-title-text { font-size: 26px; letter-spacing: 1px; }
+        .hub-brand { gap: 6px; padding: 2px 0 4px 0; }
+        .hub-teacher-photo { width: 40px; height: 40px; border-width: 2px; }
+        .hub-title-text { font-size: 22px; letter-spacing: 1px; }
         .hub-subtitle { font-size: 11px; }
         .hub-platform { font-size: 9px; letter-spacing: 1px; }
         .arena-icon-title { font-size: 18px; margin-bottom: 4px; }
@@ -884,7 +884,7 @@ if _is_first_check:
 <div class="wel">
   <div class="wt">👋 반가워요, {student_name}님!</div>
   <div class="ws">🔥 첫판 · 지금 바로 시작!</div>
-</div>""", height=36)
+</div>""", height=28)
 else:
     _total = p5_count + p7_count
     _hc.html(f"""
@@ -900,7 +900,7 @@ else:
 <div class="wel">
   <div class="wt">🔥 다시 왔군요, {student_name}님!</div>
   <div class="ws">💥 {_total}문제 완료 · 오늘도 한 판 더!</div>
-</div>""", height=36)
+</div>""", height=28)
 
 # ── 접속 횟수 기반 로테이션 멘트 ──
 _visit = _get_visit_count(nickname)
