@@ -1623,13 +1623,14 @@ elif st.session_state.sg_phase == "combo_result":
 
 
 
-# ══════════════════════════════════════════════════════════════
-# 💀 단어 포로수용소 페이지
-# ══════════════════════════════════════════════════════════════
+# ════════════════════════════════════════
+# PHASE: WORD_PRISON
+# 기능: 포로 목록 표시 + 심문(퀴즈) 3종 — 뜻맞추기/빈칸채우기/타임어택
+# EXTEND: 심문 퀴즈 기능 여기에 추가 예정 — 뜻맞추기/빈칸채우기/타임어택
+# ════════════════════════════════════════
 elif st.session_state.sg_phase == "word_prison":
-    import datetime as _pr_dt2
+    import datetime as _pr_dt2, random as _pr_random
 
-    # 홈 버튼
     _nick = st.session_state.get("nickname", "")
     if st.button("🏠 홈", key="prison_home", use_container_width=False):
         if _nick:
@@ -1637,20 +1638,41 @@ elif st.session_state.sg_phase == "word_prison":
             st.query_params["ag"] = "1"
         st.switch_page("main_hub.py")
 
-    # 저장소 로드
     _pr_st = load_storage()
     if "word_prison" not in _pr_st:
         _pr_st["word_prison"] = []
     _prisoners = _pr_st["word_prison"]
 
-    # 헤더
+    _today_str2 = _pr_dt2.datetime.now().strftime("%Y-%m-%d")
+
+    def _days_since(d):
+        try:
+            return (_pr_dt2.datetime.now() - _pr_dt2.datetime.strptime(d, "%Y-%m-%d")).days
+        except:
+            return 0
+
+    def _danger_level(p):
+        d = _days_since(p.get("captured_date", _today_str2))
+        if d >= 7: return 3
+        if d >= 3: return 2
+        return 1
+
+    # ── 세션 초기화 ──
+    for _k, _v in {"prison_quiz_idx": None, "prison_quiz_type": None,
+                   "prison_quiz_choices": [], "prison_quiz_answered": False,
+                   "prison_quiz_correct": None, "prison_quiz_input": "",
+                   "prison_timer_start": None}.items():
+        if _k not in st.session_state:
+            st.session_state[_k] = _v
+
+    # ── 헤더 ──
     st.markdown("""
 <div style="background:linear-gradient(135deg,#1a0a2e,#2d1060);
      border:2px solid #7040c0;border-radius:18px;
      padding:16px;text-align:center;margin-bottom:12px;">
   <div style="font-size:2rem;margin-bottom:4px;">💀</div>
   <div style="font-size:1.6rem;font-weight:900;color:#e8d0ff;letter-spacing:2px;">단어 포로수용소</div>
-  <div style="font-size:0.85rem;color:#9070c0;margin-top:4px;">틀린 단어들이 갇혀 있다 — 심문하고 석방하라!</div>
+  <div style="font-size:0.85rem;color:#9070c0;margin-top:4px;">심문을 통과해야 석방된다! 3연속 정답 = 자유!</div>
 </div>""", unsafe_allow_html=True)
 
     if not _prisoners:
@@ -1663,33 +1685,204 @@ elif st.session_state.sg_phase == "word_prison":
 </div>""", unsafe_allow_html=True)
         if st.button("💀 포로사령부로", key="pr_back_empty", use_container_width=True):
             st.session_state.sg_phase = "lobby"
-            st.session_state.rv_battle = None
-            st.session_state.rv_mode = None
             st.rerun()
+
+    # ════════════════════════════════════
+    # 심문 퀴즈 모드
+    # ════════════════════════════════════
+    elif st.session_state.prison_quiz_idx is not None:
+        _qi = st.session_state.prison_quiz_idx
+        # 유효성 체크
+        if _qi >= len(_prisoners):
+            st.session_state.prison_quiz_idx = None
+            st.rerun()
+
+        _p = _prisoners[_qi]
+        _word = _p.get("word", "")
+        _kr   = _p.get("kr", "")
+        _sent = _p.get("sentence", "")
+        _streak = _p.get("correct_streak", 0)
+        _qt = st.session_state.prison_quiz_type
+
+        # 진행 바 (3연속 목표)
+        _bar_filled = "🟣" * _streak + "⬜" * (3 - _streak)
+        st.markdown(f"""
+<div style="background:#1a1030;border:1.5px solid #7040c0;border-radius:14px;
+     padding:12px 16px;margin-bottom:14px;text-align:center;">
+  <div style="font-size:0.8rem;color:#9070c0;margin-bottom:6px;">심문 진행도 — 3연속 정답 시 석방!</div>
+  <div style="font-size:1.8rem;letter-spacing:6px;">{_bar_filled}</div>
+  <div style="font-size:0.75rem;color:#7050a0;margin-top:4px;">{_streak}/3 연속 정답</div>
+</div>""", unsafe_allow_html=True)
+
+        # ── 퀴즈 타입 1: 뜻맞추기 ──
+        if _qt == "meaning":
+            st.markdown(f"""
+<div style="background:#0d0d20;border:2px solid #5030a0;border-radius:16px;
+     padding:20px;text-align:center;margin-bottom:16px;">
+  <div style="font-size:0.8rem;color:#7060a0;margin-bottom:8px;">❓ 이 단어의 뜻은?</div>
+  <div style="font-size:2.4rem;font-weight:900;color:#ffffff;letter-spacing:2px;">{_word}</div>
+  {f'<div style="font-size:0.75rem;color:#4040a0;margin-top:8px;font-style:italic;">{_sent[:60]}{"..." if len(_sent)>60 else ""}</div>' if _sent else ""}
+</div>""", unsafe_allow_html=True)
+
+            if not st.session_state.prison_quiz_answered:
+                _choices = st.session_state.prison_quiz_choices
+                for _ci, _ch in enumerate(_choices):
+                    _is_ans = (_ch == _kr)
+                    if st.button(f"{'🔑 ' if False else ''}{_ch}", key=f"pq_choice_{_ci}", use_container_width=True):
+                        st.session_state.prison_quiz_answered = True
+                        st.session_state.prison_quiz_correct = _is_ans
+                        # streak 업데이트
+                        _real_idx = next((i for i, x in enumerate(_pr_st["word_prison"])
+                                         if x.get("word","").lower() == _word.lower()), None)
+                        if _real_idx is not None:
+                            if _is_ans:
+                                _pr_st["word_prison"][_real_idx]["correct_streak"] = _streak + 1
+                            else:
+                                _pr_st["word_prison"][_real_idx]["correct_streak"] = 0
+                            _pr_st["word_prison"][_real_idx]["last_reviewed"] = _today_str2
+                            save_storage(_pr_st)
+                        st.rerun()
+            else:
+                _is_correct = st.session_state.prison_quiz_correct
+                _choices = st.session_state.prison_quiz_choices
+                for _ci, _ch in enumerate(_choices):
+                    _is_ans = (_ch == _kr)
+                    if _is_ans:
+                        st.markdown(f'<div style="background:#0a2a0a;border:2px solid #44ff88;border-radius:10px;padding:10px 16px;margin-bottom:6px;color:#44ff88;font-weight:900;">✅ {_ch}</div>', unsafe_allow_html=True)
+                    elif not _is_correct and _ch == _choices[st.session_state.get("prison_wrong_choice",0)]:
+                        st.markdown(f'<div style="background:#2a0a0a;border:2px solid #ff4040;border-radius:10px;padding:10px 16px;margin-bottom:6px;color:#ff8080;">❌ {_ch}</div>', unsafe_allow_html=True)
+                    else:
+                        st.markdown(f'<div style="background:#111;border:1px solid #333;border-radius:10px;padding:10px 16px;margin-bottom:6px;color:#666;">{_ch}</div>', unsafe_allow_html=True)
+
+                _new_streak = _pr_st["word_prison"][next((i for i, x in enumerate(_pr_st["word_prison"])
+                                                          if x.get("word","").lower() == _word.lower()), 0)].get("correct_streak", 0) if _pr_st["word_prison"] else 0
+
+                if _is_correct:
+                    if _new_streak >= 3:
+                        st.markdown('<div style="background:#0a2a0a;border:2px solid #44ff88;border-radius:14px;padding:16px;text-align:center;margin:10px 0;"><div style="font-size:1.5rem;">🎉</div><div style="font-size:1.1rem;font-weight:900;color:#44ff88;">3연속 정답! 석방!</div></div>', unsafe_allow_html=True)
+                        _free_idx = next((i for i, x in enumerate(_pr_st["word_prison"])
+                                         if x.get("word","").lower() == _word.lower()), None)
+                        if _free_idx is not None:
+                            _pr_st["word_prison"].pop(_free_idx)
+                            save_storage(_pr_st)
+                        if st.button("🎊 다음 포로 심문!", key="pq_next_free", use_container_width=True):
+                            st.session_state.prison_quiz_idx = None
+                            st.session_state.prison_quiz_answered = False
+                            st.session_state.prison_quiz_correct = None
+                            st.rerun()
+                    else:
+                        st.markdown(f'<div style="background:#0a1a20;border:1.5px solid #4488ff;border-radius:12px;padding:12px;text-align:center;margin:8px 0;color:#88ccff;font-weight:700;">⚡ 정답! {_new_streak}/3 — 계속 심문!</div>', unsafe_allow_html=True)
+                        if st.button("➡️ 계속 심문", key="pq_continue", use_container_width=True):
+                            st.session_state.prison_quiz_answered = False
+                            st.session_state.prison_quiz_correct = None
+                            # 다음 퀴즈 타입 랜덤
+                            _all_words = [p.get("word","") for p in _pr_st["word_prison"] if p.get("kr","")]
+                            _decoys = [p.get("kr","") for p in _pr_st["word_prison"]
+                                       if p.get("kr","") and p.get("word","").lower() != _word.lower()]
+                            _types = ["meaning", "blank"] if _sent and len(_sent) > 10 else ["meaning"]
+                            st.session_state.prison_quiz_type = _pr_random.choice(_types)
+                            if st.session_state.prison_quiz_type == "meaning":
+                                _d = _pr_random.sample(_decoys, min(3, len(_decoys)))
+                                _opts = _d + [_kr]
+                                _pr_random.shuffle(_opts)
+                                st.session_state.prison_quiz_choices = _opts
+                            st.rerun()
+                else:
+                    st.markdown(f'<div style="background:#2a0a0a;border:1.5px solid #ff4040;border-radius:12px;padding:12px;text-align:center;margin:8px 0;"><div style="color:#ff6060;font-weight:900;">❌ 틀렸다! streak 리셋!</div><div style="color:#ff8080;font-size:0.85rem;margin-top:4px;">정답: <b>{_kr}</b></div></div>', unsafe_allow_html=True)
+                    if st.button("🔄 다시 심문", key="pq_retry", use_container_width=True):
+                        st.session_state.prison_quiz_answered = False
+                        st.session_state.prison_quiz_correct = None
+                        _decoys = [p.get("kr","") for p in _pr_st["word_prison"]
+                                   if p.get("kr","") and p.get("word","").lower() != _word.lower()]
+                        _opts = _pr_random.sample(_decoys, min(3, len(_decoys))) + [_kr]
+                        _pr_random.shuffle(_opts)
+                        st.session_state.prison_quiz_choices = _opts
+                        st.session_state.prison_quiz_type = "meaning"
+                        st.rerun()
+
+        # ── 퀴즈 타입 2: 빈칸채우기 ──
+        elif _qt == "blank":
+            _blank_sent = _sent.replace(_word, "______") if _word in _sent else _sent
+            st.markdown(f"""
+<div style="background:#0d0d20;border:2px solid #5030a0;border-radius:16px;
+     padding:20px;margin-bottom:16px;">
+  <div style="font-size:0.8rem;color:#7060a0;margin-bottom:10px;">📝 빈칸에 들어갈 단어는?</div>
+  <div style="font-size:1.05rem;color:#ccccff;line-height:1.8;font-style:italic;">"{_blank_sent}"</div>
+  <div style="font-size:0.85rem;color:#8060c0;margin-top:10px;">힌트: {_kr}</div>
+</div>""", unsafe_allow_html=True)
+
+            if not st.session_state.prison_quiz_answered:
+                _choices = st.session_state.prison_quiz_choices
+                for _ci, _ch in enumerate(_choices):
+                    _is_ans = (_ch.lower() == _word.lower())
+                    if st.button(_ch, key=f"pq_blank_{_ci}", use_container_width=True):
+                        st.session_state.prison_quiz_answered = True
+                        st.session_state.prison_quiz_correct = _is_ans
+                        _real_idx = next((i for i, x in enumerate(_pr_st["word_prison"])
+                                         if x.get("word","").lower() == _word.lower()), None)
+                        if _real_idx is not None:
+                            if _is_ans:
+                                _pr_st["word_prison"][_real_idx]["correct_streak"] = _streak + 1
+                            else:
+                                _pr_st["word_prison"][_real_idx]["correct_streak"] = 0
+                            _pr_st["word_prison"][_real_idx]["last_reviewed"] = _today_str2
+                            save_storage(_pr_st)
+                        st.rerun()
+            else:
+                _is_correct = st.session_state.prison_quiz_correct
+                _new_streak2 = _pr_st["word_prison"][next((i for i, x in enumerate(_pr_st["word_prison"])
+                                                           if x.get("word","").lower() == _word.lower()), 0)].get("correct_streak", 0) if _pr_st["word_prison"] else 0
+                if _is_correct:
+                    if _new_streak2 >= 3:
+                        st.markdown('<div style="background:#0a2a0a;border:2px solid #44ff88;border-radius:14px;padding:16px;text-align:center;margin:10px 0;"><div style="font-size:1.5rem;">🎉</div><div style="font-size:1.1rem;font-weight:900;color:#44ff88;">3연속 정답! 석방!</div></div>', unsafe_allow_html=True)
+                        _free_idx2 = next((i for i, x in enumerate(_pr_st["word_prison"])
+                                          if x.get("word","").lower() == _word.lower()), None)
+                        if _free_idx2 is not None:
+                            _pr_st["word_prison"].pop(_free_idx2)
+                            save_storage(_pr_st)
+                        if st.button("🎊 다음!", key="pq_blank_free", use_container_width=True):
+                            st.session_state.prison_quiz_idx = None
+                            st.session_state.prison_quiz_answered = False
+                            st.rerun()
+                    else:
+                        st.markdown(f'<div style="background:#0a1a20;border:1.5px solid #4488ff;border-radius:12px;padding:12px;text-align:center;margin:8px 0;color:#88ccff;font-weight:700;">⚡ 정답! {_new_streak2}/3 — 계속!</div>', unsafe_allow_html=True)
+                        if st.button("➡️ 계속", key="pq_blank_cont", use_container_width=True):
+                            st.session_state.prison_quiz_answered = False
+                            st.session_state.prison_quiz_type = "meaning"
+                            _decoys2 = [p.get("kr","") for p in _pr_st["word_prison"]
+                                        if p.get("kr","") and p.get("word","").lower() != _word.lower()]
+                            _opts2 = _pr_random.sample(_decoys2, min(3, len(_decoys2))) + [_kr]
+                            _pr_random.shuffle(_opts2)
+                            st.session_state.prison_quiz_choices = _opts2
+                            st.rerun()
+                else:
+                    st.markdown(f'<div style="background:#2a0a0a;border:1.5px solid #ff4040;border-radius:12px;padding:12px;text-align:center;margin:8px 0;"><div style="color:#ff6060;font-weight:900;">❌ 틀렸다! 정답: {_word}</div></div>', unsafe_allow_html=True)
+                    if st.button("🔄 다시", key="pq_blank_retry", use_container_width=True):
+                        st.session_state.prison_quiz_answered = False
+                        st.session_state.prison_quiz_type = "meaning"
+                        _decoys3 = [p.get("kr","") for p in _pr_st["word_prison"]
+                                    if p.get("kr","") and p.get("word","").lower() != _word.lower()]
+                        _opts3 = _pr_random.sample(_decoys3, min(3, len(_decoys3))) + [_kr]
+                        _pr_random.shuffle(_opts3)
+                        st.session_state.prison_quiz_choices = _opts3
+                        st.rerun()
+
+        if st.button("↩️ 포로 목록으로", key="pq_back_list", use_container_width=False):
+            st.session_state.prison_quiz_idx = None
+            st.session_state.prison_quiz_answered = False
+            st.session_state.prison_quiz_correct = None
+            st.rerun()
+
+    # ════════════════════════════════════
+    # 포로 목록 (심문 시작 버튼)
+    # ════════════════════════════════════
     else:
-        _today_str2 = _pr_dt2.datetime.now().strftime("%Y-%m-%d")
-
-        def _days_since(d):
-            try:
-                return (_pr_dt2.datetime.now() - _pr_dt2.datetime.strptime(d, "%Y-%m-%d")).days
-            except Exception:
-                return 0
-
-        def _danger_level(p):
-            d = _days_since(p.get("captured_date", _today_str2))
-            if d >= 7: return 3
-            if d >= 3: return 2
-            return 1
-
-        # 위험도 순 정렬
         _prisoners_sorted = sorted(_prisoners, key=lambda p: -_danger_level(p))
-
         _total = len(_prisoners_sorted)
         _d3 = sum(1 for p in _prisoners_sorted if _danger_level(p) == 3)
         _d2 = sum(1 for p in _prisoners_sorted if _danger_level(p) == 2)
         _d1 = sum(1 for p in _prisoners_sorted if _danger_level(p) == 1)
 
-        # 통계 배지
         st.markdown(f"""
 <div style="display:flex;gap:8px;margin-bottom:10px;">
   <div style="flex:1;background:#1a0505;border:1px solid #ff4040;border-radius:10px;padding:8px;text-align:center;">
@@ -1710,11 +1903,8 @@ elif st.session_state.sg_phase == "word_prison":
   </div>
 </div>""", unsafe_allow_html=True)
 
-        # 포로 카드 (최대 10개씩 표시)
         _show_n = min(_total, 10)
-        st.markdown(f'<div style="font-size:0.8rem;color:#888;margin-bottom:6px;">📋 포로 현황 (상위 {_show_n}명)</div>', unsafe_allow_html=True)
-
-        _freed_indices = []
+        st.markdown(f'<div style="font-size:0.8rem;color:#888;margin-bottom:8px;">📋 포로 현황 (상위 {_show_n}명) — 심문 버튼을 눌러 퀴즈 시작!</div>', unsafe_allow_html=True)
 
         for _pi, _p in enumerate(_prisoners_sorted[:_show_n]):
             _dl = _danger_level(_p)
@@ -1722,53 +1912,62 @@ elif st.session_state.sg_phase == "word_prison":
             _dlabel = "🚨 탈출 직전" if _dl == 3 else ("⚠️ 위험" if _dl == 2 else "🆕 신입")
             _days = _days_since(_p.get("captured_date", _today_str2))
             _day_txt = f"{_days}일째" if _days > 0 else "오늘"
-            _src = _p.get("source", "")
-            _sent = _p.get("sentence", "")
-            _word = _p.get("word", "")
-            _kr = _p.get("kr", "")
+            _word = _p.get("word","")
+            _kr   = _p.get("kr","")
+            _sent = _p.get("sentence","")
+            _streak = _p.get("correct_streak", 0)
+            _src = _p.get("source","")
+            _bar = "🟣" * _streak + "⬜" * (3 - _streak)
 
             st.markdown(f"""
 <div style="background:#1a1a2e;border:1.5px solid {_dc};border-radius:14px;
      padding:12px 14px;margin-bottom:8px;">
-  <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:8px;">
+  <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:6px;">
     <span style="background:{_dc}22;border:1px solid {_dc};color:{_dc};
                  font-size:0.75rem;font-weight:700;padding:2px 8px;border-radius:8px;">{_dlabel}</span>
     <span style="color:#666;font-size:0.75rem;">📌 {_src} · {_day_txt}</span>
   </div>
-  <div style="font-size:1.5rem;font-weight:900;color:#ffffff;margin-bottom:4px;">{_word}</div>
+  <div style="font-size:1.5rem;font-weight:900;color:#ffffff;margin-bottom:2px;">{_word}</div>
   <div style="font-size:0.85rem;color:#9090b0;margin-bottom:6px;">🔑 {_kr}</div>
-  {f'<div style="font-size:0.8rem;color:#6060a0;font-style:italic;line-height:1.5;">{_sent[:80]}{"..." if len(_sent) > 80 else ""}</div>' if _sent else ""}
+  <div style="font-size:0.8rem;color:#6060a0;margin-bottom:8px;">{_bar} {_streak}/3</div>
 </div>""", unsafe_allow_html=True)
 
-            _c1, _c2 = st.columns(2)
-            with _c1:
-                if st.button(f"✅ 알았다! 석방!", key=f"pr_free_{_pi}", use_container_width=True):
-                    # 석방 → word_prison에서 제거
-                    _real_idx = next((i for i, x in enumerate(_pr_st["word_prison"])
-                                      if x.get("word","").lower() == _word.lower()), None)
-                    if _real_idx is not None:
-                        _pr_st["word_prison"].pop(_real_idx)
-                        save_storage(_pr_st)
-                    st.success(f"🎉 '{_word}' 석방! 완전 정복!")
-                    st.rerun()
-            with _c2:
-                if st.button(f"❌ 아직 몰라", key=f"pr_jail_{_pi}", use_container_width=True):
-                    # 복역 연장 — correct_streak 리셋
-                    _real_idx2 = next((i for i, x in enumerate(_pr_st["word_prison"])
-                                       if x.get("word","").lower() == _word.lower()), None)
-                    if _real_idx2 is not None:
-                        _pr_st["word_prison"][_real_idx2]["correct_streak"] = 0
-                        _pr_st["word_prison"][_real_idx2]["last_reviewed"] = _today_str2
-                        save_storage(_pr_st)
-                    st.info(f"🔒 '{_word}' 다시 수감. 다음에 또 심문!")
+            # 심문 시작 버튼
+            if st.button(f"🔍 심문 시작!", key=f"pr_quiz_{_pi}", use_container_width=True):
+                # 포로 실제 인덱스 찾기
+                _real_qi = next((i for i, x in enumerate(_prisoners)
+                                 if x.get("word","").lower() == _word.lower()), None)
+                if _real_qi is not None:
+                    st.session_state.prison_quiz_idx = _real_qi
+                    st.session_state.prison_quiz_answered = False
+                    st.session_state.prison_quiz_correct = None
+                    # 선택지 생성
+                    _all_kr = [p.get("kr","") for p in _prisoners
+                               if p.get("kr","") and p.get("word","").lower() != _word.lower()]
+                    _decoys = _pr_random.sample(_all_kr, min(3, len(_all_kr)))
+                    _opts = _decoys + [_kr]
+                    _pr_random.shuffle(_opts)
+                    st.session_state.prison_quiz_choices = _opts
+                    # 빈칸 가능 여부
+                    _has_blank = bool(_sent and _word in _sent and len(_sent) > 10 and len(_all_kr) >= 3)
+                    if _has_blank:
+                        _qt_choice = _pr_random.choice(["meaning", "meaning", "blank"])
+                        if _qt_choice == "blank":
+                            _word_decoys = [p.get("word","") for p in _prisoners
+                                           if p.get("word","").lower() != _word.lower()]
+                            _word_opts = _pr_random.sample(_word_decoys, min(3, len(_word_decoys))) + [_word]
+                            _pr_random.shuffle(_word_opts)
+                            st.session_state.prison_quiz_choices = _word_opts
+                    else:
+                        _qt_choice = "meaning"
+                    st.session_state.prison_quiz_type = _qt_choice
                     st.rerun()
 
         if _total > _show_n:
-            st.markdown(f'<div style="text-align:center;color:#666;font-size:0.8rem;margin-top:4px;">외 {_total - _show_n}명 더 있음...</div>',
-                        unsafe_allow_html=True)
+            st.markdown(f'<div style="text-align:center;color:#666;font-size:0.8rem;margin-top:4px;">외 {_total - _show_n}명 더 있음...</div>', unsafe_allow_html=True)
 
         st.markdown("---")
-        if st.button("💀 포로사령부로 귀환", key="pr_back", use_container_width=True):
+        if st.button("💀 사령부 귀환", key="pr_back", use_container_width=True):
             st.session_state.sg_phase = "lobby"
             st.session_state.rv_battle = None
             st.session_state.rv_mode = None

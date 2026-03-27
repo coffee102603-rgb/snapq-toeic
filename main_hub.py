@@ -948,9 +948,9 @@ _p5_trend = _trend(_logs, "p5_answer")
 _p7_trend = _trend(_logs, "p7_answer")
 if _is_first:
     _sn = student_name
-    _p5_s1_big  = f"⚡ P5전장"
+    _p5_s1_big  = f"⚡ 화력전"
     _p5_s1_lbl  = "문법·어휘 속도전!"
-    _p7_s1_big  = f"📖 P7전장"
+    _p7_s1_big  = f"📡 암호해독 작전"
     _p7_s1_lbl  = "독해 · 읽는 뇌를 깨워라!"
     _arm_s1_big = f"💀 포로사령부"
     _arm_s1_lbl = "틀린 문제가 무기가 된다"
@@ -1090,127 +1090,294 @@ _GO_STYLE = """
 """
 
 # ═══════════════════════════════════════════
-# 💀 단어 포로수용소 소형 카드 (전장 카드 위)
+# 💀 C안 그리드 카드 — 포로수용소 + 화력전 + 암호해독 + 포로사령부
+# 한 iframe에 전부 → 스크롤 없이 한 화면에!
 # ═══════════════════════════════════════════
-try:
-    # storage_data.json 직접 읽기
-    _pr_sf = os.path.join(os.path.dirname(__file__), "storage_data.json")
-    _pr_raw = {}
-    if os.path.exists(_pr_sf):
-        try:
-            with open(_pr_sf, "r", encoding="utf-8") as _pf:
-                _pr_raw = json.load(_pf)
-        except Exception:
-            _pr_raw = {}
-    _pr_data = _pr_raw.get("word_prison", [])
-    _pr_total = len(_pr_data)
-    import datetime as _pr_dt
-    _pr_today_str = _pr_dt.datetime.now().strftime("%Y-%m-%d")
-    _pr_danger = sum(1 for p in _pr_data
-                     if p.get("captured_date","") and
-                     (_pr_dt.datetime.now() - _pr_dt.datetime.strptime(p.get("captured_date",_pr_today_str),"%Y-%m-%d")).days >= 7)
-    _pr_warn   = sum(1 for p in _pr_data
-                     if p.get("captured_date","") and
-                     3 <= (_pr_dt.datetime.now() - _pr_dt.datetime.strptime(p.get("captured_date",_pr_today_str),"%Y-%m-%d")).days < 7)
-    _pr_new    = _pr_total - _pr_danger - _pr_warn
-    _pr_new    = max(0, _pr_new)
-except Exception:
-    _pr_total = 0; _pr_danger = 0; _pr_warn = 0; _pr_new = 0
 
-if _pr_total > 0:
-    _pr_badge = f"🚨 탈출 직전 {_pr_danger}명" if _pr_danger > 0 else (f"⚠️ 위험 {_pr_warn}명" if _pr_warn > 0 else f"🆕 신입 {_pr_new}명")
-    _pr_color = "#ff4040" if _pr_danger > 0 else ("#ff9040" if _pr_warn > 0 else "#c0a030")
-    _pr_card_html = f"""
-<div style="background:linear-gradient(135deg,#1a0a2e,#2d1060);
-     border:1.5px solid {_pr_color};border-radius:14px;
-     padding:12px 16px;margin-bottom:6px;
-     display:flex;align-items:center;justify-content:space-between;
-     cursor:pointer;touch-action:manipulation;"
-     onclick="window.parent.document.querySelectorAll('button').forEach(function(b){{if((b.innerText||'').trim()==='PRISON_GO')b.click()}})"
-     ontouchend="window.parent.document.querySelectorAll('button').forEach(function(b){{if((b.innerText||'').trim()==='PRISON_GO')b.click()}});event.preventDefault();"
-     ontouchstart="">
-  <div>
-    <span style="font-size:1.1rem;font-weight:900;color:#e8d0ff;">💀 단어 포로수용소</span>
-    <span style="font-size:0.85rem;color:{_pr_color};margin-left:10px;font-weight:700;">{_pr_badge}</span>
-  </div>
-  <div style="display:flex;align-items:center;gap:12px;">
-    <span style="font-size:1.4rem;font-weight:900;color:#fff;">포로 {_pr_total}명</span>
-    <span style="background:{_pr_color};color:#fff;font-size:0.85rem;font-weight:700;
-                 padding:4px 12px;border-radius:20px;">심문하기 →</span>
-  </div>
-</div>"""
-    _hc.html(_pr_card_html, height=58)
-    _prison_go = st.button("PRISON_GO", key="prison_btn")
-    if _prison_go:
-        st.session_state.sg_phase = "word_prison"
-        st.switch_page("pages/03_POW_HQ.py")
-else:
-    _pr_empty_html = """
-<div style="background:linear-gradient(135deg,#0a1a0a,#1a2a1a);
-     border:1px solid rgba(80,200,80,0.3);border-radius:14px;
-     padding:10px 16px;margin-bottom:6px;text-align:center;">
-  <span style="font-size:0.9rem;color:#50c870;font-weight:700;">
-    💀 단어 포로수용소 — 포로 없음! 완벽 정복 중 🏆
-  </span>
-</div>"""
-    _hc.html(_pr_empty_html, height=46)
+# ── 숨김 버튼 (네비게이션용) ──
+_prison_go = st.button("PRISON_GO", key="prison_btn")
+if _prison_go:
+    st.session_state.sg_phase = "word_prison"
+    st.switch_page("pages/03_POW_HQ.py")
 
-# ── P5 ──
-_hc.html(_CSS + _GO_STYLE + "<style>.p5c .go-btn{--go-bg:linear-gradient(270deg,#1565c0,#4fc3f7,#0d47a1,#29b6f6);--go-border:rgba(79,195,247,0.9);}</style>" + _mk_card("p5c","⚡ 화력전",
-    _p5_s1_big,_p5_s1_lbl,_p5_rate_svg,
-    _p5_s2_big,_p5_s2_lbl,_p5_cnt_svg,_p5_s3, go="P5_GO") + """
-<button class="go-btn" style="background:linear-gradient(270deg,#1565c0,#4fc3f7,#0d47a1,#29b6f6);border-color:rgba(79,195,247,0.9);" onclick="window.parent.document.querySelectorAll('button').forEach(b=>{if((b.innerText||'').trim()==='P5_GO')b.click()})" ontouchend="window.parent.postMessage({action:'goto',page:'p5'},'*');event.preventDefault();" ontouchstart="">⚡</button>
-<script>
-(function(){
-  var h=window.innerWidth<=480?70:window.innerWidth<=768?100:140;
-  document.querySelector('.card').style.height=h+'px';
-})();
-</script>""", height=70)
 _p5_go = st.button("P5_GO", key="p5_btn")
 if _p5_go:
     st.session_state.phase = "lobby"
     st.session_state._p5_active = False
     st.switch_page("pages/02_Firepower.py")
 
-
-# ── P7 ──
-_hc.html(_CSS + _GO_STYLE + "<style>.p7c .go-btn{--go-bg:linear-gradient(270deg,#6a1b9a,#ce93d8,#4a148c,#ab47bc);--go-border:rgba(155,127,212,0.9);}</style>" + _mk_card("p7c","📡 암호해독 작전",
-    _p7_s1_big,_p7_s1_lbl,_p7_rate_svg,
-    _p7_s2_big,_p7_s2_lbl,_p7_cnt_svg,_p7_s3, go="P7_GO") + """
-<button class="go-btn" style="background:linear-gradient(270deg,#6a1b9a,#ce93d8,#4a148c,#ab47bc);border-color:rgba(155,127,212,0.9);" onclick="window.parent.document.querySelectorAll('button').forEach(b=>{if((b.innerText||'').trim()==='P7_GO')b.click()})" ontouchend="window.parent.postMessage({action:'goto',page:'p7'},'*');event.preventDefault();" ontouchstart="">📖</button>
-<script>
-(function(){
-  var h=window.innerWidth<=480?70:window.innerWidth<=768?100:140;
-  document.querySelector('.card').style.height=h+'px';
-})();
-</script>""", height=70)
 _p7_go = st.button("P7_GO", key="p7_btn")
 if _p7_go:
     if "p7_phase" in st.session_state:
         st.session_state.p7_phase = "lobby"
     st.switch_page("pages/04_Decrypt_Op.py")
 
-
-# ── 역전장 ──
-_hc.html(_CSS + _GO_STYLE + "<style>.arc .go-btn{--go-bg:linear-gradient(270deg,#e65100,#ffd54f,#bf360c,#ffca28);--go-border:rgba(255,215,0,0.95);}</style>" + _mk_card("arc","💀 포로사령부",
-    _arm_s1_big,_arm_s1_lbl,_arm_p5_svg,
-    _arm_s2_big,_arm_s2_lbl,_arm_vc_svg,_arm_s3, go="ARM_GO") + """
-<button class="go-btn" style="background:linear-gradient(270deg,#e65100,#ffd54f,#bf360c,#ffca28);border-color:rgba(255,215,0,0.95);" onclick="window.parent.document.querySelectorAll('button').forEach(b=>{if((b.innerText||'').trim()==='ARM_GO')b.click()})" ontouchend="window.parent.postMessage({action:'goto',page:'arm'},'*');event.preventDefault();" ontouchstart="">🗡️</button>
-<script>
-(function(){
-  var h=window.innerWidth<=480?70:window.innerWidth<=768?100:140;
-  document.querySelector('.card').style.height=h+'px';
-})();
-</script>""", height=70)
 _arm_go = st.button("ARM_GO", key="armory_btn")
 if _arm_go:
     st.switch_page("pages/03_POW_HQ.py")
 
-
-# ── 하단 박스 2개 ──
 _adm_go = st.button("ADMIN_GO", key="admin_go_btn")
 if _adm_go:
     st.switch_page("pages/01_Admin.py")
+
+# ── 포로수용소 데이터 로드 ──
+try:
+    _pr_sf = os.path.join(os.path.dirname(__file__), "storage_data.json")
+    _pr_raw = {}
+    if os.path.exists(_pr_sf):
+        with open(_pr_sf, "r", encoding="utf-8") as _pf:
+            _pr_raw = json.load(_pf)
+    _pr_data  = _pr_raw.get("word_prison", [])
+    _pr_total = len(_pr_data)
+    import datetime as _pr_dt
+    _pr_today_str = _pr_dt.datetime.now().strftime("%Y-%m-%d")
+    _pr_danger = sum(1 for p in _pr_data if p.get("captured_date","") and
+                     (_pr_dt.datetime.now() - _pr_dt.datetime.strptime(
+                         p.get("captured_date",_pr_today_str),"%Y-%m-%d")).days >= 7)
+    _pr_warn  = sum(1 for p in _pr_data if p.get("captured_date","") and
+                    3 <= (_pr_dt.datetime.now() - _pr_dt.datetime.strptime(
+                        p.get("captured_date",_pr_today_str),"%Y-%m-%d")).days < 7)
+    _pr_new   = max(0, _pr_total - _pr_danger - _pr_warn)
+except Exception:
+    _pr_total = 0; _pr_danger = 0; _pr_warn = 0; _pr_new = 0
+
+_pr_badge_txt = (f"🚨 탈출 직전 {_pr_danger}명" if _pr_danger > 0
+                 else (f"⚠️ 위험 {_pr_warn}명" if _pr_warn > 0
+                       else ("포로 없음! 완벽 정복 🏆" if _pr_total == 0
+                             else f"🆕 신입 {_pr_new}명")))
+_pr_color = ("#ff4040" if _pr_danger > 0
+             else ("#ff9040" if _pr_warn > 0
+                   else ("#44cc88" if _pr_total == 0 else "#c0a030")))
+_pr_border = ("rgba(255,64,64,0.7)" if _pr_danger > 0
+              else ("rgba(255,144,64,0.6)" if _pr_warn > 0
+                    else ("rgba(68,200,136,0.4)" if _pr_total == 0
+                          else "rgba(192,160,48,0.5)")))
+
+# ── P5 카드 슬라이드3 멘트 (한 줄 압축) ──
+_p5_mot  = _p5_s3[:28] + "..." if len(_p5_s3) > 28 else _p5_s3
+_p7_mot  = _p7_s3[:28] + "..." if len(_p7_s3) > 28 else _p7_s3
+_arm_mot = _arm_s3[:28] + "..." if len(_arm_s3) > 28 else _arm_s3
+
+# ── 통계 표시값 ──
+_p5_disp  = f"{p5_rate}%" if p5_rate is not None else "첫 도전!"
+_p7_disp  = f"{p7_rate}%" if p7_rate is not None else "첫 도전!"
+_arm_disp = f"포로 {_pr_total}명" if _pr_total > 0 else "포로 없음"
+
+def _goto(key):
+    return f"window.parent.document.querySelectorAll('button').forEach(function(b){{if((b.innerText||'').trim()==='{key}')b.click()}})"
+
+_GRID_HTML = f"""
+<style>
+*{{box-sizing:border-box;margin:0;padding:0;font-family:-apple-system,'Noto Sans KR',sans-serif;}}
+
+/* ── 포로수용소 바 ── */
+.pb{{
+  background:linear-gradient(90deg,#1a0a2e,#2a1050);
+  border:1.5px solid {_pr_border};
+  border-radius:14px;
+  padding:12px 14px;
+  display:flex;align-items:center;justify-content:space-between;
+  margin-bottom:8px;
+  min-height:52px;
+  cursor:pointer;
+  touch-action:manipulation;
+  -webkit-tap-highlight-color:transparent;
+  user-select:none;
+}}
+.pb:active{{opacity:0.8;transform:scale(0.98);}}
+.pb-left{{display:flex;align-items:center;gap:8px;}}
+.pb-icon{{font-size:20px;flex-shrink:0;}}
+.pb-name{{font-size:13px;font-weight:900;color:#e8d0ff;}}
+.pb-sub{{font-size:10px;color:{_pr_color};margin-top:1px;}}
+.pb-btn{{
+  background:{_pr_color};
+  border-radius:8px;padding:6px 12px;
+  font-size:11px;color:#fff;font-weight:700;
+  white-space:nowrap;flex-shrink:0;
+}}
+
+/* ── 전장 그리드 ── */
+.grid{{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  grid-template-rows:auto auto;
+  gap:8px;
+}}
+
+/* ── 공통 카드 ── */
+.card{{
+  border-radius:18px;
+  display:flex;flex-direction:column;
+  overflow:hidden;
+  cursor:pointer;
+  touch-action:manipulation;
+  -webkit-tap-highlight-color:transparent;
+  user-select:none;
+  position:relative;
+}}
+.card:active{{opacity:0.85;transform:scale(0.97);transition:transform 0.1s;}}
+
+.card-p5{{background:linear-gradient(160deg,#001840,#0044cc);}}
+.card-p7{{background:linear-gradient(160deg,#200040,#6600cc);}}
+.card-pow{{
+  grid-column:1/-1;
+  background:linear-gradient(135deg,#440d00,#cc3300);
+  flex-direction:row;align-items:center;
+}}
+
+/* ── 카드 내부 ── */
+.card-body{{
+  flex:1;
+  padding:14px 12px 8px;
+  display:flex;flex-direction:column;
+}}
+.badge{{
+  background:rgba(255,255,255,0.18);
+  border-radius:5px;padding:3px 7px;
+  font-size:9px;color:rgba(255,255,255,0.9);font-weight:700;
+  letter-spacing:1px;width:fit-content;margin-bottom:6px;
+}}
+.card-icon{{font-size:32px;margin-bottom:4px;}}
+.card-name{{font-size:18px;font-weight:900;color:#fff;line-height:1.1;}}
+.card-en{{font-size:8px;color:rgba(255,255,255,0.35);letter-spacing:1.5px;margin:3px 0 8px;}}
+.card-tags{{display:flex;gap:4px;flex-wrap:wrap;margin-bottom:6px;}}
+.tag{{
+  background:rgba(0,0,0,0.25);
+  border-radius:4px;padding:3px 6px;
+  font-size:9px;color:rgba(255,255,255,0.8);font-weight:600;
+}}
+.card-rule{{font-size:9px;color:rgba(255,255,255,0.5);margin-top:auto;}}
+
+/* ── 출격 버튼 바 ── */
+.go-bar{{
+  background:rgba(0,0,0,0.3);
+  padding:10px 12px;
+  display:flex;align-items:center;justify-content:space-between;
+}}
+.go-stat{{font-size:11px;color:rgba(255,255,255,0.6);font-weight:700;}}
+.go-btn{{
+  background:rgba(255,255,255,0.92);
+  border-radius:10px;
+  padding:8px 14px;
+  font-size:12px;font-weight:900;color:#111;
+  white-space:nowrap;
+}}
+
+/* ── 포로사령부 가로형 ── */
+.pow-left{{flex:1;padding:14px 12px;}}
+.pow-right{{
+  padding:12px 14px 12px 0;
+  display:flex;flex-direction:column;
+  align-items:flex-end;justify-content:center;gap:6px;
+}}
+.pow-n{{font-size:28px;font-weight:900;color:#fff;line-height:1;text-align:right;}}
+.pow-l{{font-size:8px;color:rgba(255,255,255,0.4);text-align:right;}}
+.pow-go{{
+  background:rgba(255,255,255,0.92);
+  border-radius:10px;padding:8px 14px;
+  font-size:12px;font-weight:900;color:#111;
+}}
+
+@keyframes pulse{{
+  0%,100%{{opacity:1;}} 50%{{opacity:0.7;}}
+}}
+.pb-btn{{animation:pulse 2s ease-in-out infinite;}}
+</style>
+
+<!-- 포로수용소 바 -->
+<div class="pb"
+  onclick="{_goto('PRISON_GO')}"
+  ontouchend="{_goto('PRISON_GO')};event.preventDefault();"
+  ontouchstart="">
+  <div class="pb-left">
+    <div class="pb-icon">💀</div>
+    <div>
+      <div class="pb-name">단어 포로수용소</div>
+      <div class="pb-sub">{_pr_badge_txt}</div>
+    </div>
+  </div>
+  <div class="pb-btn">심문 →</div>
+</div>
+
+<!-- 전장 그리드 -->
+<div class="grid">
+
+  <!-- ⚡ 화력전 -->
+  <div class="card card-p5"
+    onclick="{_goto('P5_GO')}"
+    ontouchend="{_goto('P5_GO')};event.preventDefault();"
+    ontouchstart="">
+    <div class="card-body">
+      <div class="badge">P5</div>
+      <div class="card-icon">⚡</div>
+      <div class="card-name">화력전</div>
+      <div class="card-en">FIREPOWER</div>
+      <div class="card-tags">
+        <span class="tag">문법</span>
+        <span class="tag">어휘</span>
+        <span class="tag">5문제</span>
+      </div>
+      <div class="card-rule">💀 3개↑ 생존 · 미만 전멸</div>
+    </div>
+    <div class="go-bar">
+      <div class="go-stat">{_p5_disp}</div>
+      <div class="go-btn">출격 ▶</div>
+    </div>
+  </div>
+
+  <!-- 📡 암호해독 -->
+  <div class="card card-p7"
+    onclick="{_goto('P7_GO')}"
+    ontouchend="{_goto('P7_GO')};event.preventDefault();"
+    ontouchstart="">
+    <div class="card-body">
+      <div class="badge">P7</div>
+      <div class="card-icon">📡</div>
+      <div class="card-name">암호해독</div>
+      <div class="card-en">DECRYPT OP</div>
+      <div class="card-tags">
+        <span class="tag">독해</span>
+        <span class="tag">3문제</span>
+        <span class="tag">즉사</span>
+      </div>
+      <div class="card-rule">💀 1오답 즉사 · 시간초과</div>
+    </div>
+    <div class="go-bar">
+      <div class="go-stat">{_p7_disp}</div>
+      <div class="go-btn">출격 ▶</div>
+    </div>
+  </div>
+
+  <!-- 💀 포로사령부 (BOSS) -->
+  <div class="card card-pow"
+    onclick="{_goto('ARM_GO')}"
+    ontouchend="{_goto('ARM_GO')};event.preventDefault();"
+    ontouchstart="">
+    <div class="pow-left">
+      <div class="badge" style="background:rgba(255,255,255,0.15);">BOSS STAGE</div>
+      <div style="font-size:22px;margin:4px 0 2px;">💀</div>
+      <div class="card-name">포로사령부</div>
+      <div class="card-en">POW HEADQUARTERS</div>
+      <div class="card-tags">
+        <span class="tag">오답 반복</span>
+        <span class="tag">심문 퀴즈</span>
+        <span class="tag">석방</span>
+      </div>
+    </div>
+    <div class="pow-right">
+      <div>
+        <div class="pow-n">{_pr_total}</div>
+        <div class="pow-l">포로 수감중</div>
+      </div>
+      <div class="pow-go">입장 ▶</div>
+    </div>
+  </div>
+
+</div>
+"""
+
+_hc.html(_GRID_HTML, height=520)
+
 
 _hc.html("""
 <style>
