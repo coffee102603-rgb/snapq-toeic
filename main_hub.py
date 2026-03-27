@@ -318,7 +318,7 @@ def load_css():
     header { display: none !important; height: 0 !important; }
     /* transform으로 레이아웃 무시하고 위로 이동 */
     .block-container {
-        transform: translateY(-6rem) !important;
+        transform: translateY(-9rem) !important;
         padding-left: 8px !important;
         padding-right: 8px !important;
         max-width: 860px !important;
