@@ -1205,15 +1205,15 @@ html,body{{
   position:relative;z-index:1;
   display:flex;flex-direction:column;
   height:100vh;
-  padding:8px 10px 6px;
-  gap:6px;
+  padding:5px 10px 4px;
+  gap:4px;
 }}
 
 /* ── 타이틀 ── */
 .title-wrap{{text-align:center;padding:0;flex-shrink:0;}}
 .title-main{{
   font-family:'Orbitron',monospace;
-  font-size:1.9rem;font-weight:900;letter-spacing:6px;
+  font-size:1.65rem;font-weight:900;letter-spacing:5px;
   background:linear-gradient(90deg,#00e5ff,#ffffff,#FFD600,#ff3300,#00e5ff);
   background-size:300%;
   -webkit-background-clip:text;-webkit-text-fill-color:transparent;
@@ -1222,7 +1222,7 @@ html,body{{
   filter:drop-shadow(0 0 12px rgba(0,200,255,0.4));
 }}
 .title-sub{{
-  font-size:0.65rem;color:#6688aa;letter-spacing:2px;
+  font-size:0.58rem;color:#6688aa;letter-spacing:2px;
   margin-top:1px;font-weight:600;
 }}
 .round-badge{{
@@ -1239,7 +1239,7 @@ html,body{{
 .sec-hdr .line{{flex:1;height:1px;}}
 .sec-hdr .txt{{
   font-family:'Orbitron',monospace;
-  font-size:0.6rem;font-weight:900;letter-spacing:3px;
+  font-size:0.55rem;font-weight:900;letter-spacing:3px;
   white-space:nowrap;
 }}
 .sec-hdr.time .line{{background:linear-gradient(90deg,transparent,#2255aa,transparent);}}
@@ -1248,24 +1248,24 @@ html,body{{
 .sec-hdr.mode .txt{{color:#ff5566;text-shadow:0 0 8px rgba(255,85,102,0.6);}}
 
 /* ── 시간 칩 3개 ── */
-.time-row{{display:grid;grid-template-columns:1fr 1fr 1fr;gap:5px;flex-shrink:0;}}
+.time-row{{display:grid;grid-template-columns:1fr 1fr 1fr;gap:4px;flex-shrink:0;}}
 .time-chip{{
   background:linear-gradient(160deg,#080e1e,#0a1228);
   border:1.5px solid rgba(0,180,255,0.25);
   border-radius:10px;
-  padding:5px 4px 4px;
+  padding:4px 4px 3px;
   text-align:center;
   cursor:pointer;
   transition:all 0.15s ease;
 }}
-.time-chip .tc-icon{{font-size:1.15rem;display:block;line-height:1;margin-bottom:2px;}}
+.time-chip .tc-icon{{font-size:1.05rem;display:block;line-height:1;margin-bottom:1px;}}
 .time-chip .tc-sec{{
-  font-family:'Orbitron',monospace;font-size:0.88rem;font-weight:900;
-  color:#c0d8ff;display:block;margin-bottom:1px;
+  font-family:'Orbitron',monospace;font-size:0.82rem;font-weight:900;
+  color:#c0d8ff;display:block;margin-bottom:0px;
   text-shadow:0 0 6px rgba(150,200,255,0.4);
 }}
 .time-chip .tc-sub{{
-  font-size:0.58rem;color:#7799bb;display:block;
+  font-size:0.54rem;color:#7799bb;display:block;
   font-weight:700;letter-spacing:0.5px;
 }}
 .time-chip:active{{transform:scale(0.95);}}
@@ -1281,10 +1281,10 @@ html,body{{
 .time-chip.selected .tc-sub{{color:#cc9900!important;}}
 
 /* ── 작전 카드 2x2 ── */
-.mode-grid{{display:grid;grid-template-columns:1fr 1fr;gap:5px;flex:1;min-height:0;}}
+.mode-grid{{display:grid;grid-template-columns:1fr 1fr;gap:4px;flex:1;min-height:0;}}
 .mode-card{{
-  border-radius:12px;
-  padding:7px 10px 6px;
+  border-radius:10px;
+  padding:6px 8px 5px;
   cursor:pointer;
   transition:all 0.15s ease;
   border:2px solid transparent;
@@ -1296,17 +1296,17 @@ html,body{{
 .mc-g3{{background:linear-gradient(145deg,#051a18,#072220);border-color:rgba(0,210,190,0.3);}}
 .mc-vc{{background:linear-gradient(145deg,#06180a,#081e0c);border-color:rgba(60,210,80,0.3);}}
 
-.mc-icon{{font-size:1.25rem;display:block;margin-bottom:3px;line-height:1;}}
+.mc-icon{{font-size:1.1rem;display:block;margin-bottom:2px;line-height:1;}}
 .mc-name{{
-  font-family:'Orbitron',monospace;font-size:0.72rem;font-weight:900;
-  display:block;letter-spacing:1.5px;margin-bottom:2px;
+  font-family:'Orbitron',monospace;font-size:0.68rem;font-weight:900;
+  display:block;letter-spacing:1px;margin-bottom:1px;
 }}
 .mc-g1 .mc-name{{color:#6aadff;text-shadow:0 0 8px rgba(100,170,255,0.5);}}
 .mc-g2 .mc-name{{color:#cc88ff;text-shadow:0 0 8px rgba(200,130,255,0.5);}}
 .mc-g3 .mc-name{{color:#00ddc8;text-shadow:0 0 8px rgba(0,210,190,0.5);}}
 .mc-vc .mc-name{{color:#55ee77;text-shadow:0 0 8px rgba(80,220,100,0.5);}}
 .mc-sub{{
-  font-size:0.6rem;color:#8899aa;display:block;
+  font-size:0.56rem;color:#8899aa;display:block;
   font-weight:700;letter-spacing:0.3px;line-height:1.3;
 }}
 
@@ -1346,9 +1346,9 @@ html,body{{
   background:linear-gradient(135deg,#0e0208,#120210);
   border:1.5px solid #550020;
   border-radius:8px;
-  padding:5px 10px;text-align:center;
+  padding:4px 10px;text-align:center;
   font-family:'Orbitron',monospace;
-  font-size:0.62rem;font-weight:900;
+  font-size:0.58rem;font-weight:900;
   letter-spacing:1px;
   color:#ff4466;
   animation:warnpulse 1.5s ease-in-out infinite;
@@ -1364,8 +1364,8 @@ html,body{{
 .launch-wrap{{flex-shrink:0;}}
 .launch-btn{{
   width:100%;border:none;border-radius:12px;
-  padding:13px 16px;
-  font-family:'Orbitron',monospace;font-size:1.0rem;font-weight:900;
+  padding:10px 16px;
+  font-family:'Orbitron',monospace;font-size:0.92rem;font-weight:900;
   letter-spacing:2px;cursor:pointer;
   display:flex;align-items:center;justify-content:center;gap:8px;
   transition:transform 0.1s;
@@ -1403,13 +1403,13 @@ html,body{{
 .launch-btn.ready:active{{transform:scale(0.97);}}
 
 /* ── 네비 ── */
-.nav-row{{display:grid;grid-template-columns:1fr 1fr;gap:5px;flex-shrink:0;}}
+.nav-row{{display:grid;grid-template-columns:1fr 1fr;gap:4px;flex-shrink:0;}}
 .nav-btn{{
   background:#060610;
   border:1px solid #1e1e30;
-  border-radius:7px;
-  padding:6px 4px;text-align:center;
-  font-size:0.7rem;color:#7788aa;font-weight:700;
+  border-radius:6px;
+  padding:5px 4px;text-align:center;
+  font-size:0.65rem;color:#7788aa;font-weight:700;
   cursor:pointer;letter-spacing:0.5px;
   transition:all 0.12s;
   font-family:'Rajdhani',sans-serif;
@@ -1570,4 +1570,4 @@ applySelections();
 </script>
 </body>
 </html>
-""", height=620, scrolling=False)
+""", height=700, scrolling=False)
