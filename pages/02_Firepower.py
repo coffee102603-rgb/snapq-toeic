@@ -1253,19 +1253,19 @@ html,body{{
   background:linear-gradient(160deg,#080e1e,#0a1228);
   border:1.5px solid rgba(0,180,255,0.25);
   border-radius:10px;
-  padding:7px 4px 6px;
+  padding:5px 4px 4px;
   text-align:center;
   cursor:pointer;
   transition:all 0.15s ease;
 }}
-.time-chip .tc-icon{{font-size:1.3rem;display:block;line-height:1;margin-bottom:3px;}}
+.time-chip .tc-icon{{font-size:1.15rem;display:block;line-height:1;margin-bottom:2px;}}
 .time-chip .tc-sec{{
-  font-family:'Orbitron',monospace;font-size:0.95rem;font-weight:900;
+  font-family:'Orbitron',monospace;font-size:0.88rem;font-weight:900;
   color:#c0d8ff;display:block;margin-bottom:1px;
   text-shadow:0 0 6px rgba(150,200,255,0.4);
 }}
 .time-chip .tc-sub{{
-  font-size:0.6rem;color:#7799bb;display:block;
+  font-size:0.58rem;color:#7799bb;display:block;
   font-weight:700;letter-spacing:0.5px;
 }}
 .time-chip:active{{transform:scale(0.95);}}
@@ -1284,7 +1284,7 @@ html,body{{
 .mode-grid{{display:grid;grid-template-columns:1fr 1fr;gap:5px;flex:1;min-height:0;}}
 .mode-card{{
   border-radius:12px;
-  padding:10px 10px 8px;
+  padding:7px 10px 6px;
   cursor:pointer;
   transition:all 0.15s ease;
   border:2px solid transparent;
@@ -1296,18 +1296,18 @@ html,body{{
 .mc-g3{{background:linear-gradient(145deg,#051a18,#072220);border-color:rgba(0,210,190,0.3);}}
 .mc-vc{{background:linear-gradient(145deg,#06180a,#081e0c);border-color:rgba(60,210,80,0.3);}}
 
-.mc-icon{{font-size:1.4rem;display:block;margin-bottom:4px;line-height:1;}}
+.mc-icon{{font-size:1.25rem;display:block;margin-bottom:3px;line-height:1;}}
 .mc-name{{
-  font-family:'Orbitron',monospace;font-size:0.75rem;font-weight:900;
-  display:block;letter-spacing:1.5px;margin-bottom:3px;
+  font-family:'Orbitron',monospace;font-size:0.72rem;font-weight:900;
+  display:block;letter-spacing:1.5px;margin-bottom:2px;
 }}
 .mc-g1 .mc-name{{color:#6aadff;text-shadow:0 0 8px rgba(100,170,255,0.5);}}
 .mc-g2 .mc-name{{color:#cc88ff;text-shadow:0 0 8px rgba(200,130,255,0.5);}}
 .mc-g3 .mc-name{{color:#00ddc8;text-shadow:0 0 8px rgba(0,210,190,0.5);}}
 .mc-vc .mc-name{{color:#55ee77;text-shadow:0 0 8px rgba(80,220,100,0.5);}}
 .mc-sub{{
-  font-size:0.62rem;color:#8899aa;display:block;
-  font-weight:700;letter-spacing:0.3px;line-height:1.4;
+  font-size:0.6rem;color:#8899aa;display:block;
+  font-weight:700;letter-spacing:0.3px;line-height:1.3;
 }}
 
 /* 선택됨 */
