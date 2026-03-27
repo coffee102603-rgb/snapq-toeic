@@ -312,30 +312,24 @@ def load_css():
     <style>
     @import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Noto+Sans+KR:wght@400;700;900&display=swap');
 
-    .stApp { background: #0A0C15 !important; }
+    .stApp { background: #0A0C15 !important; overflow-x: hidden; }
     #MainMenu { display: none !important; }
     footer { display: none !important; }
-    header { display: none !important; height: 0 !important; min-height: 0 !important; }
-    header[data-testid="stHeader"] { display: none !important; height: 0 !important; min-height: 0 !important; }
-    .stApp > header { display: none !important; }
-    /* 핵심: block-container 자체를 위로 당기기 */
+    header { display: none !important; height: 0 !important; }
+    /* transform으로 레이아웃 무시하고 위로 이동 */
     .block-container {
-        margin-top: -10rem !important;
-        padding-top: 1rem !important;
+        transform: translateY(-6rem) !important;
         padding-left: 8px !important;
         padding-right: 8px !important;
         max-width: 860px !important;
     }
-    section.main > div.block-container { margin-top: -10rem !important; padding-top: 1rem !important; }
-    [data-testid="stAppViewBlockContainer"] { padding-top: 0 !important; margin-top: -10rem !important; }
-    [data-testid="stAppViewContainer"] > section > div { padding-top: 0 !important; margin-top: 0 !important; }
-    [data-testid="stAppViewContainer"] > section { padding-top: 0 !important; margin-top: 0 !important; }
-    .main > div { padding-top: 0px !important; margin-top: 0px !important; }
     div[data-testid="stVerticalBlock"] > div { gap: 0 !important; margin: 0 !important; padding: 0 !important; }
     div[data-testid="stVerticalBlock"] > div > div { margin: 0 !important; padding: 0 !important; }
     div[data-testid="element-container"] { margin: 0 !important; padding: 0 !important; }
     div[data-testid="stMarkdownContainer"] { margin: 0 !important; padding: 0 !important; }
     div.stMarkdown { margin: 0 !important; padding: 0 !important; }
+    iframe { display: block !important; margin: 0 !important; padding: 0 !important; border: none !important; }
+    .stApp > div > div > div > div { gap: 0 !important; }
     iframe { display: block !important; margin: 0 !important; padding: 0 !important; border: none !important; }
     .stApp > div > div > div > div { gap: 0 !important; }
 
