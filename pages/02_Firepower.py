@@ -1186,6 +1186,11 @@ div[data-testid="stButton"] button p{
   font-size:0.85rem!important;font-weight:700!important;
   color:#99aacc!important;white-space:pre-line!important;line-height:1.2!important;
 }
+/* __LAUNCH__ 실제 버튼 완전히 숨김 */
+div[data-testid="stButton"] button:not([disabled])[kind="secondary"],
+div[data-testid="stButton"]:has(button p:empty) {
+  display:none!important;
+}
 /* 출격 버튼 직접 CSS 지정 (JS 보조) */
 button[kind="primary"], div[data-testid="stButton"]:has(button[data-testid="baseButton-secondary"]) button {
   transition:none!important;
@@ -1310,10 +1315,13 @@ div:has(#fp-go-active) ~ div[data-testid="stButton"] button p{{
     st.markdown('<div class="fp-warn">💀 3개 이상 격파해야 생존 · 그 이하면 전멸!</div>', unsafe_allow_html=True)
 
     # ── 출격 버튼 ──
+    _mode_col = {"g1":"#6aadff","g2":"#cc88ff","g3":"#00ddc8","vocab":"#55ee77"}.get(_cur_sm,"#ffffff")
+    _mode_name = {"g1":"문법력","g2":"구조력","g3":"연결력","vocab":"어휘력"}.get(_cur_sm,"")
+
     if _ready:
-        st.markdown('<div id="fp-go-active"></div>', unsafe_allow_html=True)
-        _cat = lbl_map.get(_cur_sm,"")
-        if st.button(f"🔥 출격! — {_cat}  ⏱{_cur_tsec}초", key="go_start", use_container_width=True):
+        # 실제 기능 버튼 (숨김용 — JS가 클릭 트리거)
+        _real_go = st.button("__LAUNCH__", key="go_start", use_container_width=True)
+        if _real_go:
             try:
                 _md, _grp = mode_map[_cur_sm]
                 _qs = pick5(_md, _grp)
@@ -1333,6 +1341,82 @@ div:has(#fp-go-active) ~ div[data-testid="stButton"] button p{{
                 st.rerun()
             except Exception as _e:
                 st.error(f"오류: {_e}")
+
+        # 커스텀 애니메이션 버튼 (시각용)
+        components.html(f"""
+<style>
+*{{margin:0;padding:0;box-sizing:border-box;}}
+html,body{{background:transparent;overflow:hidden;}}
+@keyframes borderFlare{{
+  0%  {{box-shadow:0 0 14px rgba(255,80,0,0.8), 0 0 0 1.5px #ff4400; border-color:#ff4400;}}
+  30% {{box-shadow:0 0 70px rgba(255,200,0,1), 0 0 130px rgba(255,80,0,0.6), 0 0 0 2.5px #FFD600; border-color:#FFD600;}}
+  60% {{box-shadow:0 0 40px rgba(255,30,0,1),  0 0 0 2px #ff1100; border-color:#ff1100;}}
+  100%{{box-shadow:0 0 14px rgba(255,80,0,0.8), 0 0 0 1.5px #ff4400; border-color:#ff4400;}}
+}}
+@keyframes shake{{
+  0%,100%{{transform:translate(0,0);}}
+  20%{{transform:translate(-2px,1px);}}
+  40%{{transform:translate(2px,-1px);}}
+  60%{{transform:translate(-1px,-2px);}}
+  80%{{transform:translate(1px,2px);}}
+}}
+@keyframes glowPulse{{
+  0%,100%{{opacity:1;filter:brightness(1);}}
+  50%{{opacity:0.8;filter:brightness(1.5) drop-shadow(0 0 6px currentColor);}}
+}}
+@keyframes timePulse{{
+  0%,100%{{color:#ff5533;text-shadow:0 0 6px rgba(255,80,50,0.8);}}
+  50%{{color:#ff2200;text-shadow:0 0 22px rgba(255,40,0,1),0 0 44px rgba(255,0,0,0.6);}}
+}}
+#go-btn{{
+  width:100%;height:58px;
+  background:linear-gradient(135deg,#260700,#1a0400);
+  border:2px solid #ff4400;
+  border-radius:10px;
+  cursor:pointer;
+  animation:borderFlare 0.9s ease-in-out infinite;
+  display:flex;align-items:center;justify-content:center;gap:8px;
+  font-family:'Orbitron',monospace;
+  letter-spacing:2px;
+  user-select:none;
+  -webkit-tap-highlight-color:transparent;
+}}
+#go-btn:active{{transform:scale(0.97);}}
+.go-word{{
+  font-size:1.0rem;font-weight:900;color:#ffbb44;
+  animation:shake 0.35s ease-in-out infinite;
+  display:inline-block;
+}}
+.go-mode{{
+  font-size:0.88rem;font-weight:900;
+  color:{_mode_col};
+  animation:glowPulse 0.9s ease-in-out infinite;
+  display:inline-block;
+  text-shadow:0 0 10px {_mode_col}88;
+}}
+.go-time{{
+  font-size:0.88rem;font-weight:900;
+  animation:timePulse 0.7s ease-in-out infinite;
+  display:inline-block;
+}}
+.go-sep{{font-size:0.75rem;color:#ff8844;font-weight:700;}}
+</style>
+<button id="go-btn" onclick="
+  var btns=window.parent.document.querySelectorAll('button');
+  for(var i=0;i<btns.length;i++){{
+    if((btns[i].innerText||btns[i].textContent||'').trim().indexOf('__LAUNCH__')>-1){{
+      btns[i].click(); break;
+    }}
+  }}
+">
+  <span class="go-word">🔥 출격!</span>
+  <span class="go-sep">—</span>
+  <span class="go-mode">{_mode_name}</span>
+  <span class="go-sep">⏱</span>
+  <span class="go-time">{_cur_tsec}초</span>
+</button>
+""", height=64)
+
     else:
         st.button("⏱ 시간 + ⚔️ 작전 선택 → 출격!", key="go_disabled", use_container_width=True, disabled=True)
 
@@ -1472,10 +1556,12 @@ function applyStyles(){{
       }}
     }});
 
-    // ── 출격 버튼 — JS는 색상만, animation은 CSS가 처리 ──
-    if(txt.indexOf("출격!")>-1 && txt.indexOf("시간")===-1){{
-      // animation은 CSS :has(#fp-go-active) 가 처리
-      // JS는 color/bg만 보조
+    // ── __LAUNCH__ 실제 버튼 숨김 ──
+    if(txt.indexOf("__LAUNCH__")>-1){{
+      b.style.setProperty("display","none","important");
+      b.style.setProperty("height","0","important");
+      b.style.setProperty("overflow","hidden","important");
+      if(b.parentElement) b.parentElement.style.setProperty("display","none","important");
     }}
 
     // ── 출격 버튼 (disabled) ──
