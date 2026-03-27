@@ -1445,6 +1445,7 @@ function flickerLaunch(){{
   doc.querySelectorAll("button").forEach(function(b){{
     var txt=(b.innerText||b.textContent||"").trim();
     if(txt.indexOf("출격!")>-1 && txt.indexOf("시간")===-1 && txt.indexOf("작전")===-1){{
+      b.style.setProperty("transition","none","important");
       b.style.setProperty("border","2.5px solid "+frame.border,"important");
       b.style.setProperty("box-shadow",frame.shadow,"important");
     }}
