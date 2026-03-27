@@ -855,64 +855,6 @@ _is_first_check = (p5_count == 0 and p7_count == 0)
 _total_solved = p5_count + p7_count
 _welcome_short = "🔥 첫판 · 바로 시작!" if _is_first_check else f"💥 {_total_solved}문제 완료!"
 
-# ═══════════════════════════════════════════════════════════════
-# ★ 폰게임 HUD — _hc.html로 렌더 (Streamlit 여백 제거)
-# ═══════════════════════════════════════════════════════════════
-_hc.html(f"""
-<style>
-*{{box-sizing:border-box;margin:0;padding:0;}}
-@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap');
-.topbar{{
-  display:flex;align-items:center;gap:7px;flex-wrap:wrap;
-  padding:4px 10px;
-  background:linear-gradient(135deg,rgba(124,92,255,0.18),rgba(0,229,160,0.12));
-  border:1.5px solid rgba(0,229,255,0.55);
-  border-radius:10px;
-  animation:tbGlow 2s ease-in-out infinite alternate;
-}}
-@keyframes tbGlow{{
-  from{{box-shadow:0 0 10px rgba(0,229,255,0.2);border-color:rgba(0,229,255,0.4);}}
-  to{{box-shadow:0 0 22px rgba(0,229,255,0.65);border-color:rgba(0,229,255,0.95);}}
-}}
-.tb-photo{{width:28px;height:28px;border-radius:50%;object-fit:cover;object-position:center top;
-  border:2px solid #00E5FF;box-shadow:0 0 8px rgba(0,229,255,0.55);flex-shrink:0;}}
-.tb-brand{{font-family:'Bebas Neue',sans-serif;font-size:15px;letter-spacing:2px;
-  background:linear-gradient(135deg,#FF2D55,#7C5CFF,#00E5FF);
-  -webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;
-  font-weight:900;white-space:nowrap;line-height:1;}}
-.tb-sep{{color:rgba(0,229,255,0.35);font-size:12px;line-height:1;}}
-.tb-name{{font-size:13px;font-weight:900;color:#fff;white-space:nowrap;
-  text-shadow:0 0 8px rgba(0,229,255,0.4);}}
-.tb-item{{font-size:12px;font-weight:700;color:rgba(255,255,255,0.82);white-space:nowrap;}}
-.tb-rank{{font-size:12px;font-weight:900;
-  background:linear-gradient(135deg,#FFD600,#FF6B35);
-  -webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;
-  white-space:nowrap;}}
-.tb-welcome{{font-size:11px;font-weight:700;color:rgba(255,255,255,0.52);white-space:nowrap;}}
-@media(max-width:480px){{
-  .topbar{{padding:3px 7px;gap:5px;}}
-  .tb-brand{{font-size:13px;letter-spacing:1px;}}
-  .tb-name{{font-size:12px;}}
-  .tb-item,.tb-rank{{font-size:11px;}}
-  .tb-welcome{{font-size:10px;}}
-}}
-</style>
-<div class="topbar">
-  <img class="tb-photo" src="data:image/jpeg;base64,{TEACHER_B64}" alt="최샘">
-  <span class="tb-brand">⚡ SNAPQ</span>
-  <span class="tb-sep">|</span>
-  <span class="tb-name">👤 {student_name}</span>
-  <span class="tb-sep">|</span>
-  <span class="tb-item">📅 {att_days}일</span>
-  <span class="tb-sep">|</span>
-  <span class="tb-item">⏱ {total_time}</span>
-  <span class="tb-sep">|</span>
-  <span class="tb-rank">🔥 {ranking}</span>
-  <span class="tb-sep">|</span>
-  <span class="tb-welcome">{_welcome_short}</span>
-</div>
-""", height=46)
-
 # ── 접속 횟수 기반 로테이션 멘트 ──
 _visit = _get_visit_count(nickname)
 _is_first = (p5_count == 0 and p7_count == 0)
@@ -1195,6 +1137,35 @@ _GRID_HTML = f"""
 <style>
 *{{box-sizing:border-box;margin:0;padding:0;font-family:-apple-system,'Noto Sans KR',sans-serif;}}
 
+/* ── 폰게임 HUD 상단바 ── */
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap');
+.topbar{{
+  display:flex;align-items:center;gap:6px;flex-wrap:wrap;
+  padding:4px 10px;margin-bottom:7px;
+  background:linear-gradient(135deg,rgba(124,92,255,0.18),rgba(0,229,160,0.12));
+  border:1.5px solid rgba(0,229,255,0.55);
+  border-radius:10px;
+  animation:tbGlow 2s ease-in-out infinite alternate;
+}}
+@keyframes tbGlow{{
+  from{{box-shadow:0 0 10px rgba(0,229,255,0.2);border-color:rgba(0,229,255,0.4);}}
+  to{{box-shadow:0 0 22px rgba(0,229,255,0.65);border-color:rgba(0,229,255,0.95);}}
+}}
+.tb-photo{{width:26px;height:26px;border-radius:50%;object-fit:cover;object-position:center top;
+  border:2px solid #00E5FF;flex-shrink:0;}}
+.tb-brand{{font-family:'Bebas Neue',sans-serif;font-size:14px;letter-spacing:2px;
+  background:linear-gradient(135deg,#FF2D55,#7C5CFF,#00E5FF);
+  -webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;
+  font-weight:900;white-space:nowrap;}}
+.tb-sep{{color:rgba(0,229,255,0.35);font-size:11px;}}
+.tb-name{{font-size:12px;font-weight:900;color:#fff;white-space:nowrap;}}
+.tb-item{{font-size:11px;font-weight:700;color:rgba(255,255,255,0.82);white-space:nowrap;}}
+.tb-rank{{font-size:11px;font-weight:900;
+  background:linear-gradient(135deg,#FFD600,#FF6B35);
+  -webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;
+  white-space:nowrap;}}
+.tb-msg{{font-size:10px;font-weight:700;color:rgba(255,255,255,0.45);white-space:nowrap;}}
+
 /* ── 포로수용소 바 ── */
 .pb{{
   background:linear-gradient(90deg,#1a0a2e,#2a1050);
@@ -1309,6 +1280,22 @@ _GRID_HTML = f"""
 .pb-btn{{animation:pulse 2s ease-in-out infinite;}}
 </style>
 
+<!-- ★ HUD 상단바 -->
+<div class="topbar">
+  <img class="tb-photo" src="data:image/jpeg;base64,{TEACHER_B64}" alt="최샘">
+  <span class="tb-brand">⚡ SNAPQ</span>
+  <span class="tb-sep">|</span>
+  <span class="tb-name">👤 {student_name}</span>
+  <span class="tb-sep">|</span>
+  <span class="tb-item">📅 {att_days}일</span>
+  <span class="tb-sep">|</span>
+  <span class="tb-item">⏱ {total_time}</span>
+  <span class="tb-sep">|</span>
+  <span class="tb-rank">🔥 {ranking}</span>
+  <span class="tb-sep">|</span>
+  <span class="tb-msg">{_welcome_short}</span>
+</div>
+
 <!-- 포로수용소 바 -->
 <div class="pb"
   onclick="{_goto('PRISON_GO')}"
@@ -1401,7 +1388,7 @@ _GRID_HTML = f"""
 </div>
 """
 
-_hc.html(_GRID_HTML, height=520)
+_hc.html(_GRID_HTML, height=580)
 
 
 _hc.html("""
