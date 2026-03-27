@@ -314,7 +314,7 @@ def load_css():
 
     .stApp { background: #0A0C15 !important; }
     #MainMenu, footer, header { visibility: hidden; }
-    .block-container { padding: 2px 8px 10px 8px !important; max-width: 860px !important; margin: 0 auto !important; }
+    .block-container { padding: 0 8px 10px 8px !important; max-width: 860px !important; margin: 0 auto !important; }
     div[data-testid="stVerticalBlock"] > div { gap: 0 !important; margin: 0 !important; padding: 0 !important; }
     div[data-testid="stVerticalBlock"] > div > div { margin: 0 !important; padding: 0 !important; }
     div[data-testid="element-container"] { margin: 0 !important; padding: 0 !important; }
@@ -324,7 +324,10 @@ def load_css():
     section[data-testid="stSidebar"] { display: none !important; }
     /* Streamlit 요소 간 모든 여백 제거 */
     .stApp > div > div > div > div { gap: 0 !important; }
-    [data-testid="stAppViewContainer"] > section > div { padding-top: 0 !important; }
+    [data-testid="stAppViewContainer"] > section > div { padding-top: 0 !important; padding-bottom: 0 !important; }
+    [data-testid="stAppViewContainer"] > section { padding-top: 0 !important; }
+    .main > div { padding-top: 0 !important; }
+    header[data-testid="stHeader"] { height: 0 !important; display: none !important; }
 
     /* 상단 배너 - 형광 반짝 테두리 */
     .top-banner {
@@ -698,6 +701,29 @@ def load_css():
 # 메인
 # =========================================================
 load_css()
+
+# ── Streamlit 상단 여백 JS로 강제 제거 ──
+st.markdown("""
+<script>
+(function(){
+  function removeTopPad(){
+    try{
+      // block-container 상단 padding 제거
+      var bc = window.parent.document.querySelector('.block-container');
+      if(bc) bc.style.paddingTop='0px';
+      // stAppViewContainer section
+      var sec = window.parent.document.querySelector('[data-testid="stAppViewContainer"] > section');
+      if(sec) sec.style.paddingTop='0px';
+      var secDiv = window.parent.document.querySelector('[data-testid="stAppViewContainer"] > section > div');
+      if(secDiv) secDiv.style.paddingTop='0px';
+    }catch(e){}
+  }
+  removeTopPad();
+  setTimeout(removeTopPad, 300);
+  setTimeout(removeTopPad, 800);
+})();
+</script>
+""", unsafe_allow_html=True)
 
 # 로그인 + 검사 체크
 nickname = require_access()
@@ -1141,7 +1167,7 @@ _GRID_HTML = f"""
 @import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap');
 .topbar{{
   display:flex;align-items:center;gap:6px;flex-wrap:wrap;
-  padding:4px 10px;margin-bottom:7px;
+  padding:4px 10px;margin-bottom:14px;
   background:linear-gradient(135deg,rgba(124,92,255,0.18),rgba(0,229,160,0.12));
   border:1.5px solid rgba(0,229,255,0.55);
   border-radius:10px;
