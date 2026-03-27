@@ -1112,9 +1112,9 @@ else:
     st.session_state.phase="lobby"
     if "sel_mode" not in st.session_state: st.session_state.sel_mode=None
 
-    tsec = st.session_state.tsec
-    sm   = st.session_state.sel_mode
-    rn   = st.session_state.round_num
+    tsec      = st.session_state.tsec
+    sm        = st.session_state.sel_mode
+    rn        = st.session_state.round_num
     _tsec_chosen = st.session_state.get('tsec_chosen', False)
     lbl_map  = {"g1":"⚔️ 문법력","g2":"⚔️ 구조력","g3":"⚔️ 연결력","vocab":"📘 어휘력"}
     mode_map = {"g1":("grammar","g1"),"g2":("grammar","g2"),"g3":("grammar","g3"),"vocab":("vocab",None)}
@@ -1126,69 +1126,249 @@ else:
     _adp_lbl = {"easy":"🟢 입문","normal":"🟡 표준","hard":"🔴 심화"}.get(_adp,"🟡 표준")
     _hist_len= len(st.session_state.get("adp_history",[]))
 
-    # ── 로비 CSS ──
+    # ══════════════════════════════════════════════════════
+    # 로비 CSS — JS 최소화, 클래스 기반 스타일링
+    # ══════════════════════════════════════════════════════
     st.markdown("""
 <style>
 @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@700;900&family=Rajdhani:wght@600;700&display=swap');
-.stApp{
-  background:#04040c!important;
-  background-image:
-    linear-gradient(rgba(0,180,255,0.03) 1px,transparent 1px),
-    linear-gradient(90deg,rgba(0,180,255,0.03) 1px,transparent 1px)!important;
-  background-size:32px 32px!important;
-}
-section[data-testid="stSidebar"]{display:none!important;}
-header[data-testid="stHeader"]{height:0!important;overflow:hidden!important;}
-.block-container{padding:14px 14px 28px!important;margin:0!important;}
-div[data-testid="stVerticalBlock"]{gap:0.7rem!important;}
-.element-container{margin:0!important;padding:0!important;}
-div[data-testid="stHorizontalBlock"]{gap:6px!important;margin:0!important;flex-wrap:nowrap!important;}
-div[data-testid="stHorizontalBlock"] div[data-testid="stColumn"]{padding:0!important;min-width:0!important;flex:1!important;}
 
-@keyframes titleShine{0%{background-position:200%}100%{background-position:-200%}}
-@keyframes warnP{0%,100%{color:#ff4466;}50%{color:#ff8899;text-shadow:0 0 12px rgba(255,68,102,1);}}
-
-/* ★ 출격 버튼 지글지글 — border 색상 keyframe */
-@keyframes launchG{
-  0%  {box-shadow:0 0 16px rgba(255,90,0,0.7), 0 0 0 1px #ff5500; border-color:#ff5500!important;}
-  33% {box-shadow:0 0 60px rgba(255,200,0,1),  0 0 100px rgba(255,80,0,0.5), 0 0 0 2px #FFD600; border-color:#FFD600!important;}
-  66% {box-shadow:0 0 30px rgba(255,40,0,0.8), 0 0 0 1px #ff2200; border-color:#ff3300!important;}
-  100%{box-shadow:0 0 16px rgba(255,90,0,0.7), 0 0 0 1px #ff5500; border-color:#ff5500!important;}
+/* ── 기반 ── */
+.stApp { background:#04040c !important; }
+section[data-testid="stSidebar"] { display:none !important; }
+header[data-testid="stHeader"]   { height:0 !important; overflow:hidden !important; }
+.block-container { padding:14px 14px 30px !important; margin:0 !important; }
+div[data-testid="stVerticalBlock"] { gap:0.55rem !important; }
+.element-container { margin:0 !important; padding:0 !important; }
+div[data-testid="stHorizontalBlock"] {
+  gap:8px !important; margin:0 !important; flex-wrap:nowrap !important;
 }
-/* ★ 유휴 카드 테두리 pulse */
-@keyframes fp-idle{
-  0%,100%{box-shadow:0 0 0 1px rgba(0,180,255,0.0);}
-  50%    {box-shadow:0 0 0 1px rgba(0,180,255,0.18), 0 0 10px rgba(0,180,255,0.06);}
-}
-/* ★ 경고 텍스트 blink */
-@keyframes warnBlink{
-  0%,100%{opacity:1;   text-shadow:0 0 8px rgba(255,50,80,0.5);}
-  50%    {opacity:0.65;text-shadow:0 0 22px rgba(255,50,80,1), 0 0 44px rgba(255,0,30,0.5);}
-}
-/* ★ 선택된 모드 카드 glow pulse */
-@keyframes selPulse{
-  0%,100%{filter:brightness(1);}
-  50%    {filter:brightness(1.12);}
+div[data-testid="stHorizontalBlock"] div[data-testid="stColumn"] {
+  padding:0 !important; min-width:0 !important; flex:1 !important;
 }
 
-div[data-testid="stButton"] button{
-  background:#070b17!important;
-  border:1.5px solid rgba(0,180,255,0.2)!important;
-  border-radius:10px!important;
-  font-family:'Rajdhani',sans-serif!important;
-  font-size:0.85rem!important;font-weight:700!important;
-  padding:5px 8px!important;color:#99aacc!important;
-  min-height:42px!important;width:100%!important;
-  white-space:pre-line!important;line-height:1.2!important;
-  transition:border-color 0.12s,box-shadow 0.12s!important;
+/* ── 애니메이션 ── */
+@keyframes titleShine {
+  0%   { background-position:200% center }
+  100% { background-position:-200% center }
 }
-div[data-testid="stButton"] button p{
-  font-size:0.85rem!important;font-weight:700!important;
-  color:#99aacc!important;white-space:pre-line!important;line-height:1.2!important;
+@keyframes warnBlink {
+  0%,100% { opacity:1;    color:#ff4466; text-shadow:0 0 8px rgba(255,68,102,0.5); }
+  50%     { opacity:0.65; color:#ff7788; text-shadow:0 0 20px rgba(255,68,102,1), 0 0 40px rgba(220,0,30,0.5); }
 }
-/* 출격 버튼 직접 CSS 지정 (JS 보조) */
-button[kind="primary"], div[data-testid="stButton"]:has(button[data-testid="baseButton-secondary"]) button {
-  transition:none!important;
+/* 출격 glow — box-shadow 에는 경쟁하는 !important 없음 -> CSS animation 정상 작동 */
+@keyframes launchGlow {
+  0%,100% { box-shadow: 0 0 14px rgba(255,70,0,0.7),  0 0 30px rgba(255,50,0,0.3); }
+  50%     { box-shadow: 0 0 55px rgba(255,210,0,1),    0 0 110px rgba(255,140,0,0.6); }
+}
+@keyframes selPulse {
+  0%,100% { filter:brightness(1); }
+  50%     { filter:brightness(1.1); }
+}
+
+/* ── 공통 버튼 기본값 ── */
+div[data-testid="stButton"] button {
+  background:#070b17 !important;
+  border:1.5px solid rgba(0,180,255,0.18) !important;
+  border-radius:12px !important;
+  font-family:'Rajdhani',sans-serif !important;
+  font-size:0.88rem !important; font-weight:700 !important;
+  padding:8px 10px !important; color:#6688aa !important;
+  min-height:46px !important; width:100% !important;
+  white-space:pre-line !important; line-height:1.3 !important;
+  transition:border-color 0.12s, box-shadow 0.12s !important;
+}
+div[data-testid="stButton"] button p {
+  font-size:0.88rem !important; font-weight:700 !important;
+  color:#6688aa !important; white-space:pre-line !important; line-height:1.3 !important;
+}
+
+/* ════ 시간 버튼 — 30초 주황/불꽃계 ════ */
+div[data-testid="stButton"] button.fp-t30 {
+  background:linear-gradient(145deg,#0e0700,#180b00) !important;
+  border-color:rgba(200,90,20,0.32) !important; color:#aa5520 !important;
+  min-height:58px !important; font-family:'Orbitron',monospace !important; font-size:0.8rem !important;
+}
+div[data-testid="stButton"] button.fp-t30 p { color:#aa5520 !important; }
+div[data-testid="stButton"] button.fp-t30:hover {
+  border-color:rgba(255,120,40,0.65) !important;
+  box-shadow:0 0 14px rgba(255,100,30,0.3) !important;
+}
+div[data-testid="stButton"] button.fp-t30.fp-sel {
+  background:linear-gradient(145deg,#220e00,#2e1400) !important;
+  border-color:#ff8833 !important; color:#ffaa44 !important;
+  box-shadow:0 0 22px rgba(255,130,50,0.55) !important;
+  animation:selPulse 1.6s ease-in-out infinite !important;
+}
+div[data-testid="stButton"] button.fp-t30.fp-sel p { color:#ffaa44 !important; }
+
+/* ════ 40초 파랑계 ════ */
+div[data-testid="stButton"] button.fp-t40 {
+  background:linear-gradient(145deg,#03091a,#060e26) !important;
+  border-color:rgba(40,110,230,0.32) !important; color:#2c5eaa !important;
+  min-height:58px !important; font-family:'Orbitron',monospace !important; font-size:0.8rem !important;
+}
+div[data-testid="stButton"] button.fp-t40 p { color:#2c5eaa !important; }
+div[data-testid="stButton"] button.fp-t40:hover {
+  border-color:rgba(60,140,255,0.65) !important;
+  box-shadow:0 0 14px rgba(50,110,255,0.3) !important;
+}
+div[data-testid="stButton"] button.fp-t40.fp-sel {
+  background:linear-gradient(145deg,#07152e,#0a1e42) !important;
+  border-color:#3388ff !important; color:#55aaff !important;
+  box-shadow:0 0 22px rgba(60,140,255,0.55) !important;
+  animation:selPulse 1.6s ease-in-out infinite !important;
+}
+div[data-testid="stButton"] button.fp-t40.fp-sel p { color:#55aaff !important; }
+
+/* ════ 50초 보라계 ════ */
+div[data-testid="stButton"] button.fp-t50 {
+  background:linear-gradient(145deg,#0a051e,#12082c) !important;
+  border-color:rgba(130,55,220,0.32) !important; color:#6e30bb !important;
+  min-height:58px !important; font-family:'Orbitron',monospace !important; font-size:0.8rem !important;
+}
+div[data-testid="stButton"] button.fp-t50 p { color:#6e30bb !important; }
+div[data-testid="stButton"] button.fp-t50:hover {
+  border-color:rgba(170,80,255,0.65) !important;
+  box-shadow:0 0 14px rgba(150,60,255,0.3) !important;
+}
+div[data-testid="stButton"] button.fp-t50.fp-sel {
+  background:linear-gradient(145deg,#180836,#22104c) !important;
+  border-color:#aa44ff !important; color:#cc77ff !important;
+  box-shadow:0 0 22px rgba(170,80,255,0.55) !important;
+  animation:selPulse 1.6s ease-in-out infinite !important;
+}
+div[data-testid="stButton"] button.fp-t50.fp-sel p { color:#cc77ff !important; }
+
+/* ════ 작전 카드 공통 ════ */
+div[data-testid="stButton"] button.fp-mode {
+  min-height:84px !important;
+  text-align:left !important; padding:13px 15px !important;
+  font-family:'Rajdhani',sans-serif !important; font-size:0.9rem !important;
+}
+
+/* 문법력 파랑 */
+div[data-testid="stButton"] button.fp-g1 {
+  background:linear-gradient(145deg,#05102a,#081630) !important;
+  border-color:rgba(55,130,255,0.35) !important; color:#4d8eee !important;
+}
+div[data-testid="stButton"] button.fp-g1 p { color:#4d8eee !important; }
+div[data-testid="stButton"] button.fp-g1:hover {
+  border-color:rgba(100,170,255,0.7) !important;
+  box-shadow:0 0 18px rgba(80,150,255,0.28) !important;
+}
+div[data-testid="stButton"] button.fp-g1.fp-sel {
+  background:linear-gradient(145deg,#091e44,#0d2a5a) !important;
+  border-color:#6aadff !important; color:#88ccff !important;
+  box-shadow:0 0 28px rgba(106,173,255,0.5) !important;
+  animation:selPulse 1.8s ease-in-out infinite !important;
+}
+div[data-testid="stButton"] button.fp-g1.fp-sel p { color:#88ccff !important; }
+
+/* 구조력 보라 */
+div[data-testid="stButton"] button.fp-g2 {
+  background:linear-gradient(145deg,#120520,#180830) !important;
+  border-color:rgba(158,68,248,0.35) !important; color:#9244dd !important;
+}
+div[data-testid="stButton"] button.fp-g2 p { color:#9244dd !important; }
+div[data-testid="stButton"] button.fp-g2:hover {
+  border-color:rgba(200,120,255,0.7) !important;
+  box-shadow:0 0 18px rgba(180,100,255,0.28) !important;
+}
+div[data-testid="stButton"] button.fp-g2.fp-sel {
+  background:linear-gradient(145deg,#200a3e,#2c1054) !important;
+  border-color:#cc88ff !important; color:#ddaaff !important;
+  box-shadow:0 0 28px rgba(200,136,255,0.5) !important;
+  animation:selPulse 1.8s ease-in-out infinite !important;
+}
+div[data-testid="stButton"] button.fp-g2.fp-sel p { color:#ddaaff !important; }
+
+/* 연결력 청록 */
+div[data-testid="stButton"] button.fp-g3 {
+  background:linear-gradient(145deg,#051a18,#072220) !important;
+  border-color:rgba(0,198,178,0.35) !important; color:#00a898 !important;
+}
+div[data-testid="stButton"] button.fp-g3 p { color:#00a898 !important; }
+div[data-testid="stButton"] button.fp-g3:hover {
+  border-color:rgba(0,220,200,0.7) !important;
+  box-shadow:0 0 18px rgba(0,200,180,0.28) !important;
+}
+div[data-testid="stButton"] button.fp-g3.fp-sel {
+  background:linear-gradient(145deg,#092a24,#0e362e) !important;
+  border-color:#00ddc8 !important; color:#00eecc !important;
+  box-shadow:0 0 28px rgba(0,220,200,0.5) !important;
+  animation:selPulse 1.8s ease-in-out infinite !important;
+}
+div[data-testid="stButton"] button.fp-g3.fp-sel p { color:#00eecc !important; }
+
+/* 어휘력 초록 */
+div[data-testid="stButton"] button.fp-vc {
+  background:linear-gradient(145deg,#061808,#091e0b) !important;
+  border-color:rgba(48,196,72,0.35) !important; color:#2faa50 !important;
+}
+div[data-testid="stButton"] button.fp-vc p { color:#2faa50 !important; }
+div[data-testid="stButton"] button.fp-vc:hover {
+  border-color:rgba(80,230,100,0.7) !important;
+  box-shadow:0 0 18px rgba(60,210,80,0.28) !important;
+}
+div[data-testid="stButton"] button.fp-vc.fp-sel {
+  background:linear-gradient(145deg,#0c2412,#102e16) !important;
+  border-color:#55ee77 !important; color:#77ff99 !important;
+  box-shadow:0 0 28px rgba(85,238,119,0.5) !important;
+  animation:selPulse 1.8s ease-in-out infinite !important;
+}
+div[data-testid="stButton"] button.fp-vc.fp-sel p { color:#77ff99 !important; }
+
+/* ════ 출격 버튼 (active) — CSS animation으로 box-shadow glow ════ */
+div[data-testid="stButton"] button.fp-launch {
+  background:linear-gradient(135deg,#280800,#1c0500) !important;
+  border:2.5px solid #ff4400 !important;
+  border-radius:14px !important;
+  color:#ffcc55 !important;
+  font-family:'Orbitron',monospace !important;
+  font-weight:900 !important; font-size:0.92rem !important;
+  letter-spacing:3px !important; min-height:58px !important;
+  transition:none !important;
+  animation:launchGlow 0.55s ease-in-out infinite !important;
+}
+div[data-testid="stButton"] button.fp-launch p {
+  color:#ffcc55 !important; font-family:'Orbitron',monospace !important;
+  font-size:0.92rem !important; font-weight:900 !important; letter-spacing:3px !important;
+}
+
+/* ════ 출격 버튼 (disabled) ════ */
+div[data-testid="stButton"] button.fp-launch-off {
+  background:#06060f !important;
+  border:1px solid #0e0e1c !important; border-radius:12px !important;
+  color:#18182a !important; font-family:'Orbitron',monospace !important;
+  font-size:0.8rem !important; min-height:52px !important;
+}
+div[data-testid="stButton"] button.fp-launch-off p { color:#18182a !important; }
+
+/* ════ 네비 버튼 ════ */
+div[data-testid="stButton"] button.fp-nav {
+  background:#05050e !important;
+  border:1px solid #151525 !important; border-radius:10px !important;
+  color:#3d5066 !important; min-height:42px !important; font-size:0.82rem !important;
+}
+div[data-testid="stButton"] button.fp-nav p { color:#3d5066 !important; }
+div[data-testid="stButton"] button.fp-nav:hover {
+  border-color:rgba(80,120,180,0.4) !important; color:#7799aa !important;
+}
+
+/* 모바일 반응형 */
+@media(max-width:768px) {
+  div[data-testid="stButton"] button.fp-t30,
+  div[data-testid="stButton"] button.fp-t40,
+  div[data-testid="stButton"] button.fp-t50  { min-height:64px !important; font-size:1.0rem !important; }
+  div[data-testid="stButton"] button.fp-mode { min-height:90px !important; font-size:1.1rem !important; }
+  div[data-testid="stButton"] button.fp-launch { min-height:66px !important; font-size:1.1rem !important; }
+}
+@media(max-width:480px) {
+  div[data-testid="stButton"] button.fp-t30,
+  div[data-testid="stButton"] button.fp-t40,
+  div[data-testid="stButton"] button.fp-t50  { min-height:56px !important; }
+  div[data-testid="stButton"] button.fp-mode { min-height:80px !important; }
 }
 </style>""", unsafe_allow_html=True)
 
@@ -1196,20 +1376,20 @@ button[kind="primary"], div[data-testid="stButton"]:has(button[data-testid="base
     _rb = f'<span style="background:#1a0800;border:1px solid #cc6600;border-radius:20px;padding:1px 10px;font-size:0.68rem;color:#ffaa44;font-weight:900;">🏆 ROUND {rn}</span> ' if rn > 1 else ''
     st.markdown(f"""<div style="text-align:center;padding:16px 0 20px;">
       <div style="font-family:Orbitron,monospace;font-size:2rem;font-weight:900;letter-spacing:6px;
-        background:linear-gradient(90deg,#00e5ff,#fff,#FFD600,#ff3300,#00e5ff);background-size:300%;
+        background:linear-gradient(90deg,#00e5ff,#ffffff,#FFD600,#ff3300,#00e5ff);background-size:300%;
         -webkit-background-clip:text;-webkit-text-fill-color:transparent;
         animation:titleShine 2s linear infinite;line-height:1.2;">{_rb}⚡ 화력전</div>
-      <div style="font-size:0.7rem;color:#5577aa;letter-spacing:2.5px;margin-top:8px;font-weight:500;">
+      <div style="font-size:0.7rem;color:#445577;letter-spacing:2.5px;margin-top:8px;font-weight:500;">
         5문제 서바이벌 · 문법·어휘 실전 포격전</div>
     </div>""", unsafe_allow_html=True)
 
-    # ── 시간 선택 (심플 라벨) ──
-    st.markdown('''<div style="text-align:center;margin:6px 0 12px;">
-      <div style="display:inline-flex;align-items:center;gap:10px;">
-        <div style="width:40px;height:1px;background:linear-gradient(90deg,transparent,#3388cc);"></div>
-        <span style="font-size:0.72rem;color:#55aaff;font-weight:900;letter-spacing:4px;font-family:Orbitron,monospace;text-shadow:0 0 10px rgba(85,170,255,0.8);">⏱ 전투 시간</span>
-        <div style="width:40px;height:1px;background:linear-gradient(90deg,#3388cc,transparent);"></div>
-      </div>
+    # ── 섹션: 전투 시간 ──
+    st.markdown('''<div style="display:flex;align-items:center;gap:10px;margin:4px 0 8px;">
+      <div style="flex:1;height:1px;background:linear-gradient(90deg,transparent,rgba(85,170,255,0.35));"></div>
+      <span style="font-size:0.68rem;color:#55aaff;font-weight:900;letter-spacing:4px;
+        font-family:Orbitron,monospace;white-space:nowrap;
+        text-shadow:0 0 10px rgba(85,170,255,0.7);">&#9201; 전투 시간</span>
+      <div style="flex:1;height:1px;background:linear-gradient(90deg,rgba(85,170,255,0.35),transparent);"></div>
     </div>''', unsafe_allow_html=True)
 
     tc1, tc2, tc3 = st.columns(3)
@@ -1223,13 +1403,13 @@ button[kind="primary"], div[data-testid="stButton"]:has(button[data-testid="base
         if st.button("🛡️ 50초\n정밀", key="t50", use_container_width=True):
             st.session_state.tsec=50; st.session_state.tsec_chosen=True; st.rerun()
 
-    # ── 작전 선택 (박스 없이 심플 라벨) ──
-    st.markdown('''<div style="text-align:center;margin:10px 0 12px;">
-      <div style="display:inline-flex;align-items:center;gap:10px;">
-        <div style="width:40px;height:1px;background:linear-gradient(90deg,transparent,#882233);"></div>
-        <span style="font-size:0.72rem;color:#ff5577;font-weight:900;letter-spacing:4px;font-family:Orbitron,monospace;text-shadow:0 0 10px rgba(255,85,119,0.8);">⚔ 작전 선택</span>
-        <div style="width:40px;height:1px;background:linear-gradient(90deg,#882233,transparent);"></div>
-      </div>
+    # ── 섹션: 작전 선택 ──
+    st.markdown('''<div style="display:flex;align-items:center;gap:10px;margin:8px 0 8px;">
+      <div style="flex:1;height:1px;background:linear-gradient(90deg,transparent,rgba(255,85,119,0.35));"></div>
+      <span style="font-size:0.68rem;color:#ff5577;font-weight:900;letter-spacing:4px;
+        font-family:Orbitron,monospace;white-space:nowrap;
+        text-shadow:0 0 10px rgba(255,85,119,0.7);">&#9876; 작전 선택</span>
+      <div style="flex:1;height:1px;background:linear-gradient(90deg,rgba(255,85,119,0.35),transparent);"></div>
     </div>''', unsafe_allow_html=True)
 
     b1, b2 = st.columns(2)
@@ -1248,7 +1428,13 @@ button[kind="primary"], div[data-testid="stButton"]:has(button[data-testid="base
             st.session_state.sel_mode="vocab"; st.rerun()
 
     # ── 생존 규칙 ──
-    st.markdown('<div style="text-align:center;margin:2px 0 4px;font-size:0.65rem;color:#ff4466;font-weight:900;letter-spacing:1.5px;font-family:Orbitron,monospace;text-shadow:0 0 8px rgba(255,68,102,0.6);">💀 3개 이상 격파해야 생존 · 그 이하면 전멸!</div>', unsafe_allow_html=True)
+    st.markdown(
+        '<div style="text-align:center;margin:2px 0 4px;font-size:0.65rem;font-weight:900;'
+        'letter-spacing:1.5px;font-family:Orbitron,monospace;'
+        'animation:warnBlink 1.4s ease-in-out infinite;">'
+        '&#128128; 3개 이상 격파해야 생존 · 그 이하면 전멸!</div>',
+        unsafe_allow_html=True
+    )
 
     # ── 출격 버튼 ──
     if _ready:
@@ -1277,7 +1463,7 @@ button[kind="primary"], div[data-testid="stButton"]:has(button[data-testid="base
         st.button("⏱ 시간 + ⚔️ 작전 선택 → 출격!", key="go_disabled", use_container_width=True, disabled=True)
 
     # ── 네비 ──
-    st.markdown('<div style="height:1px;background:#111118;margin:3px 0 2px 0;"></div>', unsafe_allow_html=True)
+    st.markdown('<div style="height:1px;background:#0e0e1e;margin:3px 0 2px;"></div>', unsafe_allow_html=True)
     nc1, nc2 = st.columns(2)
     with nc1:
         if st.button("💀 포로사령부", key="p5nav1", use_container_width=True):
@@ -1291,173 +1477,85 @@ button[kind="primary"], div[data-testid="stButton"]:has(button[data-testid="base
                 st.query_params["ag"]   = "1"
             st.switch_page("main_hub.py")
 
-    # ── JS: 색상 변화만 ──
+    # ═══════════════════════════════════════════════════════════════
+    # JS — 최소화 버전 (setInterval 1개 + setTimeout 2개)
+    # 역할: CSS 클래스 부여 + 출격 border-color 지글지글
+    # applyColors setInterval 완전 제거 → CSS animation 방해 없음
+    # border-color keyframe은 !important 충돌로 JS inline만 가능
+    # ═══════════════════════════════════════════════════════════════
     _sel_t = str(_cur_tsec) if _cur_tc else ""
     _sel_m = _cur_sm
+    _js_ready = "true" if _ready else "false"
     components.html(f"""<script>
 (function(){{
-var selT="{_sel_t}", selM="{_sel_m}";
-var doc=window.parent.document;
+  var selT="{_sel_t}", selM="{_sel_m}", isReady={_js_ready};
+  var doc=window.parent.document;
 
-var MODE_COLORS={{
-  "문법력":{{bg:"linear-gradient(145deg,#05102a,#081630)",border:"rgba(60,140,255,0.45)",col:"#6aadff",selBg:"linear-gradient(145deg,#091e42,#0d2a58)",selBorder:"#6aadff",sc:"rgba(100,170,255,0.6)"}},
-  "구조력":{{bg:"linear-gradient(145deg,#120520,#180830)",border:"rgba(170,80,255,0.45)",col:"#cc88ff",selBg:"linear-gradient(145deg,#200a3e,#2c1050)",selBorder:"#cc88ff",sc:"rgba(200,130,255,0.6)"}},
-  "연결력":{{bg:"linear-gradient(145deg,#051a18,#072220)",border:"rgba(0,210,190,0.45)",col:"#00ddc8",selBg:"linear-gradient(145deg,#092a24,#0e362e)",selBorder:"#00ddc8",sc:"rgba(0,210,190,0.6)"}},
-  "어휘력":{{bg:"linear-gradient(145deg,#06180a,#081e0c)",border:"rgba(60,210,80,0.45)",col:"#55ee77",selBg:"linear-gradient(145deg,#0c2412,#102e16)",selBorder:"#55ee77",sc:"rgba(80,220,100,0.6)"}}
-}};
+  function applyClasses(){{
+    doc.querySelectorAll("button").forEach(function(b){{
+      var txt=(b.innerText||b.textContent||"").trim();
+      if(!txt) return;
 
-// 출격 버튼 테두리 색상 순환 (JS가 직접 바꿈 — CSS animation 없음)
-var LAUNCH_FRAMES=[
-  {{border:"#ff4400", shadow:"0 0 18px rgba(255,80,0,0.9), 0 0 40px rgba(255,60,0,0.5)"}},
-  {{border:"#ff7700", shadow:"0 0 30px rgba(255,130,0,1), 0 0 60px rgba(255,80,0,0.6)"}},
-  {{border:"#FFD600", shadow:"0 0 50px rgba(255,210,0,1), 0 0 100px rgba(255,150,0,0.7)"}},
-  {{border:"#ff7700", shadow:"0 0 30px rgba(255,130,0,1), 0 0 60px rgba(255,80,0,0.6)"}},
-  {{border:"#ff4400", shadow:"0 0 18px rgba(255,80,0,0.9), 0 0 40px rgba(255,60,0,0.5)"}},
-  {{border:"#ff1100", shadow:"0 0 22px rgba(255,20,0,1), 0 0 50px rgba(200,0,0,0.6)"}},
-];
-var _lfi=0;
-
-function applyColors(){{
-  doc.querySelectorAll("button").forEach(function(b){{
-    var txt=(b.innerText||b.textContent||"").trim();
-
-    // 시간 버튼
-    var TIME_INFO=[
-      {{key:"30",sub:"속공",check:function(t){{return t.indexOf("30초")>-1;}}}},
-      {{key:"40",sub:"표준",check:function(t){{return t.indexOf("40초")>-1;}}}},
-      {{key:"50",sub:"정밀",check:function(t){{return t.indexOf("50초")>-1;}}}}
-    ];
-    var isTimeBtn=false;
-    for(var ti=0;ti<TIME_INFO.length;ti++){{
-      var info=TIME_INFO[ti];
-      if(info.check(txt)){{
-        isTimeBtn=true;
-        var isSel=(selT===info.key);
-        var col=isSel?"#FFD600":"#88bbee";
-        b.style.setProperty("background",isSel?"linear-gradient(160deg,#1c1300,#140e00)":"linear-gradient(160deg,#070c1a,#090e22)","important");
-        b.style.setProperty("border",isSel?"2px solid #FFD600":"1.5px solid rgba(0,160,255,0.22)","important");
-        b.style.setProperty("box-shadow",isSel?"0 0 28px rgba(255,214,0,0.6)":"none","important");
-        b.style.setProperty("color",col,"important");
-        b.style.setProperty("min-height","46px","important");
-        b.style.setProperty("display","flex","important");
-        b.style.setProperty("flex-direction","column","important");
-        b.style.setProperty("align-items","center","important");
-        b.style.setProperty("justify-content","center","important");
-        b.style.setProperty("font-family","'Orbitron',monospace","important");
-        var pTags=b.querySelectorAll("p");
-        if(pTags.length>0){{
-          var ft=pTags[0];
-          var raw=(ft.innerText||ft.textContent||"").trim();
-          var parts=raw.split(/\n/).map(function(x){{return x.trim();}}).filter(Boolean);
-          var main=parts[0]||""; var sub=parts[1]||info.sub;
-          ft.innerHTML=
-            '<span style="display:block;font-size:0.95rem;font-weight:900;color:'+col+';line-height:1.3;letter-spacing:1px;">'+main+'</span>'+
-            '<span style="display:block;font-size:0.62rem;font-weight:400;color:rgba(255,255,255,'+(isSel?'0.7':'0.4')+');line-height:1.2;margin-top:2px;letter-spacing:2px;">'+sub+'</span>';
-          ft.style.setProperty("text-align","center","important");
-        }}
-        break;
+      // 시간 버튼
+      if(txt.indexOf("30\ucd08")>-1 && txt.indexOf("\ucd9c\uaca9")===-1){{
+        b.classList.add("fp-t30");
+        if(selT==="30") b.classList.add("fp-sel"); else b.classList.remove("fp-sel");
       }}
-    }}
-    if(isTimeBtn) return;
+      if(txt.indexOf("40\ucd08")>-1 && txt.indexOf("\ucd9c\uaca9")===-1){{
+        b.classList.add("fp-t40");
+        if(selT==="40") b.classList.add("fp-sel"); else b.classList.remove("fp-sel");
+      }}
+      if(txt.indexOf("50\ucd08")>-1 && txt.indexOf("\ucd9c\uaca9")===-1){{
+        b.classList.add("fp-t50");
+        if(selT==="50") b.classList.add("fp-sel"); else b.classList.remove("fp-sel");
+      }}
 
-    // 작전 카드
-    var isModeBtn=false;
-    Object.keys(MODE_COLORS).forEach(function(k){{
-      if(txt.indexOf(k)>-1){{
-        isModeBtn=true;
-        var mc=MODE_COLORS[k];
-        var korMap={{"문법력":"g1","구조력":"g2","연결력":"g3","어휘력":"vocab"}};
-        var isSel=(selM===korMap[k]);
-        b.style.setProperty("background",isSel?mc.selBg:mc.bg,"important");
-        b.style.setProperty("border",isSel?"2.5px solid "+mc.selBorder:"1.5px solid "+mc.border,"important");
-        b.style.setProperty("box-shadow",isSel?"0 0 0 1px "+mc.selBorder+"55,0 0 30px "+mc.sc:"none","important");
-        b.style.setProperty("color",mc.col,"important");
-        b.style.setProperty("min-height","80px","important");
-        b.style.setProperty("padding","11px 13px","important");
-        b.style.setProperty("display","flex","important");
-        b.style.setProperty("flex-direction","column","important");
-        b.style.setProperty("align-items","flex-start","important");
-        b.style.setProperty("justify-content","flex-start","important");
-        b.style.setProperty("font-family","'Orbitron',monospace","important");
-        var pTags=b.querySelectorAll("p");
-        if(pTags.length>0){{
-          var ft=pTags[0];
-          var raw=(ft.innerText||ft.textContent||"");
-          var parts=raw.split("\n").filter(function(x){{return x.trim()!==""}});
-          if(parts.length>=2){{
-            var title=parts[0].trim();
-            var sub=parts.slice(1).join(" · ").trim();
-            var glow=isSel?"text-shadow:0 0 14px "+mc.col+"bb;":"";
-            ft.innerHTML=
-              '<span style="font-size:0.9rem;font-weight:900;color:'+mc.col+';display:block;margin-bottom:5px;line-height:1.2;'+glow+'">'+title+'</span>'+
-              '<span style="font-size:0.63rem;font-weight:400;color:rgba(255,255,255,0.42);display:block;line-height:1.5;letter-spacing:0.5px;">'+sub+'</span>';
-          }}
-          ft.style.setProperty("text-align","left","important");
-          ft.style.setProperty("width","100%","important");
-        }}
+      // 작전 카드
+      if(txt.indexOf("\ubb38\ubc95\ub825")>-1){{
+        b.classList.add("fp-mode","fp-g1");
+        if(selM==="g1") b.classList.add("fp-sel"); else b.classList.remove("fp-sel");
+      }}
+      if(txt.indexOf("\uad6c\uc870\ub825")>-1){{
+        b.classList.add("fp-mode","fp-g2");
+        if(selM==="g2") b.classList.add("fp-sel"); else b.classList.remove("fp-sel");
+      }}
+      if(txt.indexOf("\uc5f0\uacb0\ub825")>-1){{
+        b.classList.add("fp-mode","fp-g3");
+        if(selM==="g3") b.classList.add("fp-sel"); else b.classList.remove("fp-sel");
+      }}
+      if(txt.indexOf("\uc5b4\ud718\ub825")>-1){{
+        b.classList.add("fp-mode","fp-vc");
+        if(selM==="vocab") b.classList.add("fp-sel"); else b.classList.remove("fp-sel");
+      }}
+
+      // 출격 버튼
+      if(txt.indexOf("\ucd9c\uaca9!")>-1 && txt.indexOf("\uc2dc\uac04")===-1 && txt.indexOf("\uc791\uc804")===-1){{
+        if(isReady){{ b.classList.add("fp-launch"); b.classList.remove("fp-launch-off"); }}
+        else{{ b.classList.add("fp-launch-off"); b.classList.remove("fp-launch"); }}
+      }}
+
+      // 네비 버튼
+      if(txt.indexOf("\ud3ec\ub85c\uc0ac\ub839\ubd80")>-1||txt.indexOf("\ud648")>-1){{
+        b.classList.add("fp-nav");
       }}
     }});
-    if(isModeBtn) return;
+  }}
 
-    // 출격 active — 색상/배경만 (border는 아래 flicker가 처리)
-    if(txt.indexOf("출격!")>-1 && txt.indexOf("시간")===-1 && txt.indexOf("작전")===-1){{
-      b.style.setProperty("background","linear-gradient(135deg,#280800,#1c0500)","important");
-      b.style.setProperty("color","#ffcc55","important");
-      b.style.setProperty("min-height","54px","important");
-      b.style.setProperty("font-family","'Orbitron',monospace","important");
-      b.style.setProperty("font-weight","900","important");
-      b.style.setProperty("letter-spacing","3px","important");
-      b.querySelectorAll("p,span").forEach(function(el){{
-        el.style.setProperty("color","#ffcc55","important");
-        el.style.setProperty("font-size","0.92rem","important");
-        el.style.setProperty("font-weight","900","important");
-        el.style.setProperty("font-family","'Orbitron',monospace","important");
-        el.style.setProperty("letter-spacing","3px","important");
+  // 클래스 부여 2회 (Streamlit 렌더링 지연 대응)
+  setTimeout(applyClasses, 150);
+  setTimeout(applyClasses, 500);
+
+  // 출격 border-color 지글지글 (border-color는 CSS keyframe + !important 충돌 → JS만 가능)
+  if(isReady){{
+    var _fi=0;
+    var _fc=["#ff4400","#ff6600","#ff9900","#FFD600","#ff9900","#ff6600","#ff4400","#ff2200"];
+    setInterval(function(){{
+      doc.querySelectorAll("button.fp-launch").forEach(function(b){{
+        b.style.setProperty("border-color",_fc[_fi%_fc.length],"important");
       }});
-    }}
-
-    // 출격 disabled
-    if(txt.indexOf("시간")>-1&&txt.indexOf("작전")>-1&&txt.indexOf("출격!")>-1){{
-      b.style.setProperty("background","#08080f","important");
-      b.style.setProperty("border","1px solid #181822","important");
-      b.style.setProperty("box-shadow","none","important");
-      b.style.setProperty("color","#252530","important");
-      b.style.setProperty("min-height","54px","important");
-      b.querySelectorAll("p,span").forEach(function(el){{el.style.setProperty("color","#252530","important");}});
-    }}
-
-    // 네비
-    if(txt.indexOf("포로사령부")>-1||txt.indexOf("홈")>-1){{
-      b.style.setProperty("background","#05050e","important");
-      b.style.setProperty("border","1px solid #181828","important");
-      b.style.setProperty("color","#66778a","important");
-      b.style.setProperty("min-height","42px","important");
-      b.style.setProperty("box-shadow","none","important");
-      b.querySelectorAll("p,span").forEach(function(el){{el.style.setProperty("color","#66778a","important");}});
-    }}
-  }});
-}}
-
-// 출격 버튼 테두리 지글지글 — JS가 직접 색 바꿈
-function flickerLaunch(){{
-  var frame=LAUNCH_FRAMES[_lfi % LAUNCH_FRAMES.length];
-  _lfi++;
-  doc.querySelectorAll("button").forEach(function(b){{
-    var txt=(b.innerText||b.textContent||"").trim();
-    if(txt.indexOf("출격!")>-1 && txt.indexOf("시간")===-1 && txt.indexOf("작전")===-1){{
-      b.style.setProperty("transition","none","important");
-      b.style.setProperty("border","2.5px solid "+frame.border,"important");
-      b.style.setProperty("box-shadow",frame.shadow,"important");
-    }}
-  }});
-}}
-
-setTimeout(applyColors,80);
-setTimeout(applyColors,400);
-setTimeout(applyColors,900);
-setInterval(applyColors,1800);
-
-// 출격 테두리는 별도 빠른 루프
-setInterval(flickerLaunch, 130);
+      _fi++;
+    }}, 130);
+  }}
 }})();
 </script>""", height=0)
+
