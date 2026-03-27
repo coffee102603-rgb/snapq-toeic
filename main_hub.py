@@ -710,6 +710,9 @@ def load_css():
 # =========================================================
 load_css()
 
+# ★ 완전히 다른 방법: 첫 요소에 음수 마진으로 위로 당기기
+st.markdown('<div style="margin-top:-6rem;height:0;"></div>', unsafe_allow_html=True)
+
 # ── Streamlit 상단 여백 완전 제거 (MutationObserver로 지속 감시) ──
 import streamlit.components.v1 as _hc
 _hc.html("""
