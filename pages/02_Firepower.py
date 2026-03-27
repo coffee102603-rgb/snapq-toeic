@@ -1145,25 +1145,7 @@ else:
     _sel_time = str(_tsec_v) if _tc_v else ""
     _sel_mode = _sm_v
 
-    # ── 파티클 배경 (HTML, 클릭 없음) ──
-    components.html(f"""
-<style>
-body{{margin:0;background:transparent;overflow:hidden;}}
-.sp{{position:absolute;border-radius:50%;animation:sf linear infinite;opacity:0;}}
-@keyframes sf{{0%{{transform:translateY(100px) scale(0);opacity:0;}}10%{{opacity:0.7;}}90%{{opacity:0.2;}}100%{{transform:translateY(-120px) scale(2);opacity:0;}}}}
-</style>
-<div id="bg" style="position:fixed;inset:0;pointer-events:none;z-index:0;overflow:hidden;"></div>
-<script>
-var bg=document.getElementById('bg');
-var cols=['#00e5ff','#FFD600','#ff4400','#aa44ff','#00ff88'];
-for(var i=0;i<20;i++){{
-  var s=document.createElement('div');s.className='sp';
-  var sz=(1+Math.random()*2.5);
-  s.style.cssText='left:'+Math.random()*100+'%;bottom:0;width:'+sz+'px;height:'+sz+'px;background:'+cols[Math.floor(Math.random()*5)]+';animation-duration:'+(5+Math.random()*9)+'s;animation-delay:'+(Math.random()*10)+'s;';
-  bg.appendChild(s);
-}}
-</script>
-""", height=0)
+    # ── 파티클 배경 제거 (클릭 방해 가능성) ──
 
     # ── 로비 CSS ──
     st.markdown("""
@@ -1332,40 +1314,52 @@ div[data-testid="stButton"] button p{
     st.markdown('<div style="background:linear-gradient(135deg,#0e0208,#120210);border:1.5px solid #550020;border-radius:8px;padding:4px 10px;text-align:center;margin:1px 0;"><span style="font-family:Orbitron,monospace;font-size:0.6rem;font-weight:900;color:#ff4466;letter-spacing:1px;animation:warnP 1.5s ease-in-out infinite;display:inline-block;text-shadow:0 0 8px rgba(255,68,102,0.6);">💀 생존 규칙 — 5문제 중 3개 이상 · 그 이하면 전멸!</span></div>', unsafe_allow_html=True)
 
     # ── 출격 버튼 ──
-    if _ready:
-        _cat = lbl_map.get(sm,"")
+    _cur_sm = st.session_state.get("sel_mode","")
+    _cur_tc = st.session_state.get("tsec_chosen", False)
+    _cur_ready = _cur_tc and _cur_sm in ["g1","g2","g3","vocab"]
+
+    if _cur_ready:
+        _cat = lbl_map.get(_cur_sm,"")
         _time_badge = f"{st.session_state.tsec}초"
+        # 출격 버튼 - 직접 스타일 주입
         st.markdown("""<style>
-div[data-testid="stButton"]:has(button[data-testid="stBaseButton-secondary"]#go_start) button,
-button[key="go_start"]{
+div[data-testid="stButton"]:last-of-type button{
   background:linear-gradient(135deg,#2a0800,#200600)!important;
   border:2px solid #ff6600!important;border-radius:12px!important;
-  font-size:1.0rem!important;font-weight:900!important;
+  font-family:'Orbitron',monospace!important;
+  font-size:0.95rem!important;font-weight:900!important;
   color:#ffaa33!important;min-height:52px!important;
+  letter-spacing:1px!important;
+}
+div[data-testid="stButton"]:last-of-type button p{
+  color:#ffaa33!important;font-size:0.95rem!important;font-weight:900!important;
 }
 </style>""", unsafe_allow_html=True)
-        st.markdown('<div class="launch">', unsafe_allow_html=True)
         if st.button(f"🔥 출격! — {_cat}  ⏱{_time_badge}", key="go_start", use_container_width=True):
-            md, grp = mode_map[sm]
-            st.session_state.mode = md
-            qs = pick5(md, grp)
-            st.session_state.round_qs = qs
-            st.session_state.cq = qs[0]
-            st.session_state.qst = time.time()
-            st.session_state.ans = False
-            st.session_state.sel = None
-            st.session_state.qi = 0
-            st.session_state.sc = 0
-            st.session_state.wrong = 0
-            st.session_state.round_results = []
-            st.session_state["_battle_entry_ans_reset"] = False
-            st.session_state.phase = "battle"
-            st.rerun()
-        st.markdown('</div>', unsafe_allow_html=True)
+            try:
+                _md, _grp = mode_map[_cur_sm]
+                _qs = pick5(_md, _grp)
+                if not _qs:
+                    st.error("문제 로딩 실패! 다시 시도해주세요.")
+                    st.stop()
+                st.session_state.mode     = _md
+                st.session_state.round_qs = _qs
+                st.session_state.cq       = _qs[0]
+                st.session_state.qi       = 0
+                st.session_state.sc       = 0
+                st.session_state.wrong    = 0
+                st.session_state.ta       = 0
+                st.session_state.ans      = False
+                st.session_state.sel      = None
+                st.session_state.round_results = []
+                st.session_state.qst      = time.time()
+                st.session_state["_battle_entry_ans_reset"] = False
+                st.session_state.phase    = "battle"
+                st.rerun()
+            except Exception as _e:
+                st.error(f"오류: {_e}")
     else:
-        st.markdown('<div class="nolaunch">', unsafe_allow_html=True)
         st.button("⏱ 시간 + ⚔️ 작전 선택 → 출격!", key="go_disabled", use_container_width=True, disabled=True)
-        st.markdown('</div>', unsafe_allow_html=True)
 
     # ── 네비 ──
     st.markdown('<div style="height:1px;background:#111118;margin:2px 0;"></div>', unsafe_allow_html=True)
