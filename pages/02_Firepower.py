@@ -1147,9 +1147,28 @@ div[data-testid="stHorizontalBlock"] div[data-testid="stColumn"]{padding:0!impor
 
 @keyframes titleShine{0%{background-position:200%}100%{background-position:-200%}}
 @keyframes warnP{0%,100%{color:#ff4466;}50%{color:#ff8899;text-shadow:0 0 12px rgba(255,68,102,1);}}
+
+/* ★ 출격 버튼 지글지글 — border 색상 keyframe */
 @keyframes launchG{
-  0%,100%{box-shadow:0 0 20px rgba(255,100,0,0.5);border-color:#ff6600!important;}
-  50%{box-shadow:0 0 50px rgba(255,180,0,0.8),0 0 90px rgba(255,100,0,0.4);border-color:#FFD600!important;}
+  0%  {box-shadow:0 0 16px rgba(255,90,0,0.7), 0 0 0 1px #ff5500; border-color:#ff5500!important;}
+  33% {box-shadow:0 0 60px rgba(255,200,0,1),  0 0 100px rgba(255,80,0,0.5), 0 0 0 2px #FFD600; border-color:#FFD600!important;}
+  66% {box-shadow:0 0 30px rgba(255,40,0,0.8), 0 0 0 1px #ff2200; border-color:#ff3300!important;}
+  100%{box-shadow:0 0 16px rgba(255,90,0,0.7), 0 0 0 1px #ff5500; border-color:#ff5500!important;}
+}
+/* ★ 유휴 카드 테두리 pulse */
+@keyframes fp-idle{
+  0%,100%{box-shadow:0 0 0 1px rgba(0,180,255,0.0);}
+  50%    {box-shadow:0 0 0 1px rgba(0,180,255,0.18), 0 0 10px rgba(0,180,255,0.06);}
+}
+/* ★ 경고 텍스트 blink */
+@keyframes warnBlink{
+  0%,100%{opacity:1;   text-shadow:0 0 8px rgba(255,50,80,0.5);}
+  50%    {opacity:0.65;text-shadow:0 0 22px rgba(255,50,80,1), 0 0 44px rgba(255,0,30,0.5);}
+}
+/* ★ 선택된 모드 카드 glow pulse */
+@keyframes selPulse{
+  0%,100%{filter:brightness(1);}
+  50%    {filter:brightness(1.12);}
 }
 
 div[data-testid="stButton"] button{
@@ -1162,11 +1181,14 @@ div[data-testid="stButton"] button{
   min-height:42px!important;width:100%!important;
   white-space:pre-line!important;line-height:1.2!important;
   transition:border-color 0.12s,box-shadow 0.12s!important;
-  animation:none!important;
 }
 div[data-testid="stButton"] button p{
   font-size:0.85rem!important;font-weight:700!important;
   color:#99aacc!important;white-space:pre-line!important;line-height:1.2!important;
+}
+/* 출격 버튼 직접 CSS 지정 (JS 보조) */
+button[kind="primary"], div[data-testid="stButton"]:has(button[data-testid="baseButton-secondary"]) button {
+  transition:none!important;
 }
 </style>""", unsafe_allow_html=True)
 
@@ -1225,8 +1247,27 @@ div[data-testid="stButton"] button p{
         if st.button("📘 어휘력\n품사 · 동사 · 콜로케이션", key="svc", use_container_width=True):
             st.session_state.sel_mode="vocab"; st.rerun()
 
-    # ── 생존 규칙 (심플 한 줄) ──
-    st.markdown('<div style="text-align:center;margin:4px 0 2px;"><span style="font-size:0.62rem;color:#ff4466;font-weight:900;letter-spacing:1px;font-family:Orbitron,monospace;text-shadow:0 0 8px rgba(255,68,102,0.5);">💀 3개 이상 격파해야 생존 · 그 이하면 전멸!</span></div>', unsafe_allow_html=True)
+    # ── 스캔라인 오버레이 (CSS만, DOM injection 없이) ──
+    st.markdown("""
+<style>
+.fp-scan-wrap{position:fixed;top:0;left:0;width:100vw;height:100vh;pointer-events:none;z-index:9998;overflow:hidden;}
+.fp-scan-line{position:absolute;left:0;width:100%;height:2px;
+  background:linear-gradient(90deg,transparent 0%,rgba(0,212,255,0.15) 30%,rgba(0,212,255,0.3) 50%,rgba(0,212,255,0.15) 70%,transparent 100%);
+  animation:fp-scanMove 5s linear infinite;}
+@keyframes fp-scanMove{0%{top:-2px;opacity:0.8;}85%{opacity:0.25;}100%{top:100vh;opacity:0;}}
+.fp-warn{
+  text-align:center;margin:2px 0 4px;
+  font-size:0.65rem;color:#ff4466;font-weight:900;letter-spacing:1.5px;
+  font-family:Orbitron,monospace;
+  animation:warnBlink 1.4s ease-in-out infinite;
+  text-shadow:0 0 8px rgba(255,68,102,0.6);
+}
+</style>
+<div class="fp-scan-wrap"><div class="fp-scan-line"></div></div>
+""", unsafe_allow_html=True)
+
+    # ── 생존 규칙 ──
+    st.markdown('<div class="fp-warn">💀 3개 이상 격파해야 생존 · 그 이하면 전멸!</div>', unsafe_allow_html=True)
 
     # ── 출격 버튼 ──
     if _ready:
@@ -1277,103 +1318,28 @@ div[data-testid="stButton"] button p{
 var selT="{_sel_t}", selM="{_sel_m}";
 var doc=window.parent.document;
 
-// ══ 1. KEYFRAMES + 추가 CSS → parent document inject ══
+// ══ 1. KEYFRAMES → parent document inject (launchG 보장) ══
 if(!doc.getElementById('fp-styles')){{
   var s=doc.createElement('style');
   s.id='fp-styles';
   s.textContent=`
     @keyframes launchG {{
-      0%,100%   {{ box-shadow:0 0 18px rgba(255,90,0,0.7),0 0 0 1px #ff5500; border-color:#ff5500!important; }}
-      33%        {{ box-shadow:0 0 55px rgba(255,180,0,0.9),0 0 90px rgba(255,80,0,0.4),0 0 0 2px #FFD600; border-color:#FFD600!important; }}
-      66%        {{ box-shadow:0 0 30px rgba(255,50,0,0.8),0 0 0 1px #ff2200; border-color:#ff3300!important; }}
+      0%  {{ box-shadow:0 0 16px rgba(255,90,0,0.8), 0 0 0 1px #ff5500; border-color:#ff5500!important; }}
+      33% {{ box-shadow:0 0 65px rgba(255,210,0,1), 0 0 110px rgba(255,80,0,0.5), 0 0 0 2px #FFD600; border-color:#FFD600!important; }}
+      66% {{ box-shadow:0 0 32px rgba(255,40,0,0.9), 0 0 0 1px #ff2200; border-color:#ff2200!important; }}
+      100%{{ box-shadow:0 0 16px rgba(255,90,0,0.8), 0 0 0 1px #ff5500; border-color:#ff5500!important; }}
     }}
-    @keyframes fp-scan {{
-      0%   {{ top:-4px; opacity:0.7; }}
-      80%  {{ opacity:0.3; }}
-      100% {{ top:100vh; opacity:0; }}
+    @keyframes fp-idle {{
+      0%,100%{{ box-shadow:0 0 0 1px rgba(0,180,255,0.0); }}
+      50%    {{ box-shadow:0 0 0 1px rgba(0,180,255,0.2), 0 0 10px rgba(0,180,255,0.07); }}
     }}
-    @keyframes fp-titleGlow {{
-      0%,100% {{ filter:drop-shadow(0 0 8px rgba(0,229,255,0.5)); }}
-      50%     {{ filter:drop-shadow(0 0 22px rgba(0,229,255,0.9)) drop-shadow(0 0 40px rgba(255,214,0,0.25)); }}
-    }}
-    @keyframes fp-borderRun {{
-      0%   {{ box-shadow:0 0 0 1px rgba(0,180,255,0.0); }}
-      50%  {{ box-shadow:0 0 0 1px rgba(0,180,255,0.2),0 0 12px rgba(0,180,255,0.08); }}
-      100% {{ box-shadow:0 0 0 1px rgba(0,180,255,0.0); }}
-    }}
-    @keyframes fp-warnBlink {{
-      0%,100% {{ opacity:1; text-shadow:0 0 8px rgba(255,50,80,0.6); }}
-      50%     {{ opacity:0.7; text-shadow:0 0 20px rgba(255,50,80,1),0 0 40px rgba(255,0,30,0.5); }}
+    @keyframes selPulse {{
+      0%,100%{{ filter:brightness(1); }}
+      50%    {{ filter:brightness(1.15); }}
     }}
   `;
   doc.head.appendChild(s);
 }}
-
-// ══ 2. 스캔라인 ══
-if(!doc.getElementById('fp-scanline')){{
-  var sl=doc.createElement('div');
-  sl.id='fp-scanline';
-  sl.style.cssText='position:fixed;left:0;width:100%;height:2px;background:linear-gradient(90deg,transparent 0%,rgba(0,212,255,0.18) 30%,rgba(0,212,255,0.35) 50%,rgba(0,212,255,0.18) 70%,transparent 100%);pointer-events:none;z-index:9999;animation:fp-scan 5s linear infinite;';
-  doc.body.appendChild(sl);
-}}
-
-// ══ 3. 파티클 캔버스 ══
-var canvas=doc.getElementById('fp-canvas');
-if(!canvas){{
-  canvas=doc.createElement('canvas');
-  canvas.id='fp-canvas';
-  canvas.style.cssText='position:fixed;top:0;left:0;width:100%;height:100%;pointer-events:none;z-index:0;';
-  doc.body.insertBefore(canvas,doc.body.firstChild);
-  var W=canvas.width=window.parent.innerWidth;
-  var H=canvas.height=window.parent.innerHeight;
-  var ctx=canvas.getContext('2d');
-  var pts=[];
-  for(var i=0;i<55;i++){{
-    pts.push({{
-      x:Math.random()*W, y:Math.random()*H,
-      r:Math.random()*1.2+0.2,
-      vx:(Math.random()-0.5)*0.25,
-      vy:-Math.random()*0.4-0.05,
-      a:Math.random()*0.5+0.15,
-      c:Math.random()>0.6?'255,214,0':'0,200,255'
-    }});
-  }}
-  var lines=[];
-  for(var j=0;j<8;j++){{
-    lines.push({{
-      y:Math.random()*H, speed:Math.random()*0.3+0.1,
-      w:Math.random()*60+20, a:Math.random()*0.04+0.01
-    }});
-  }}
-  (function loop(){{
-    ctx.clearRect(0,0,W,H);
-    // 흐르는 가로선
-    lines.forEach(function(l){{
-      l.y-=l.speed;
-      if(l.y<0)l.y=H;
-      ctx.fillStyle='rgba(0,180,255,'+l.a+')';
-      ctx.fillRect(0,l.y,W,1);
-    }});
-    // 파티클
-    pts.forEach(function(p){{
-      p.x+=p.vx; p.y+=p.vy; p.a-=0.0015;
-      if(p.y<-5||p.a<=0){{
-        p.x=Math.random()*W; p.y=H+5;
-        p.a=Math.random()*0.5+0.15;
-        p.vy=-Math.random()*0.4-0.05;
-      }}
-      ctx.beginPath();
-      ctx.arc(p.x,p.y,p.r,0,6.28);
-      ctx.fillStyle='rgba('+p.c+','+p.a+')';
-      ctx.fill();
-    }});
-    window.parent.requestAnimationFrame(loop);
-  }})();
-}}
-
-// ══ 4. 타이틀 애니메이션 주입 ══
-var titleEl=doc.querySelector('[style*="화력전"]');
-if(titleEl){{ titleEl.style.animation='fp-titleGlow 2.5s ease-in-out infinite'; }}
 
 var MODE_COLORS={{
   "문법력":{{bg:"linear-gradient(145deg,#05102a,#081630)",border:"rgba(60,140,255,0.45)",col:"#6aadff",selBg:"linear-gradient(145deg,#091e42,#0d2a58)",selBorder:"#6aadff",selShadow:"rgba(100,170,255,0.55)"}},
@@ -1407,7 +1373,7 @@ function applyStyles(){{
         b.style.setProperty("align-items","center","important");
         b.style.setProperty("justify-content","center","important");
         b.style.setProperty("font-family","'Orbitron',monospace","important");
-        b.style.setProperty("animation",isSel?"":"fp-borderRun 3s ease-in-out infinite","important");
+        b.style.setProperty("animation",isSel?"":"fp-idle 3s ease-in-out infinite","important");
         var pTags=b.querySelectorAll("p");
         if(pTags.length>0){{
           var ft=pTags[0];
@@ -1437,7 +1403,7 @@ function applyStyles(){{
         b.style.setProperty("box-shadow",isSel?
           "0 0 0 1px "+mc.selBorder+"44,0 0 24px "+mc.selShadow+",inset 0 0 14px "+mc.selShadow.replace("0.55","0.06"):
           "none","important");
-        b.style.setProperty("animation",isSel?"":"fp-borderRun 4s ease-in-out infinite","important");
+        b.style.setProperty("animation",isSel?"selPulse 2s ease-in-out infinite":"fp-idle 4s ease-in-out infinite","important");
         b.style.setProperty("color",mc.col,"important");
         b.style.setProperty("min-height","80px","important");
         b.style.setProperty("padding","11px 13px","important");
@@ -1466,15 +1432,16 @@ function applyStyles(){{
     }});
 
     // ── 출격 버튼 (active) ──
-    if(txt.indexOf("출격!")>-1 && txt.indexOf("시간")===- 1){{
+    if(txt.indexOf("출격!")>-1 && txt.indexOf("시간")===-1){{
       b.style.setProperty("background","linear-gradient(135deg,#2a0800,#1e0500)","important");
       b.style.setProperty("border","2px solid #ff5500","important");
-      b.style.setProperty("color","#ffaa33","important");
+      b.style.setProperty("color","#ffbb44","important");
       b.style.setProperty("min-height","54px","important");
       b.style.setProperty("letter-spacing","3px","important");
       b.style.setProperty("font-family","'Orbitron',monospace","important");
       b.style.setProperty("font-weight","900","important");
-      b.style.setProperty("animation","launchG 1.0s ease-in-out infinite","important");
+      b.style.setProperty("animation","launchG 0.9s ease-in-out infinite","important");
+      b.style.setProperty("transition","none","important");
       b.querySelectorAll("p,span").forEach(function(el){{
         el.style.setProperty("color","#ffbb44","important");
         el.style.setProperty("font-size","0.95rem","important");
@@ -1486,14 +1453,15 @@ function applyStyles(){{
 
     // ── 출격 버튼 (disabled) ──
     if(txt.indexOf("시간")>-1 && txt.indexOf("작전")>-1 && txt.indexOf("출격!")>-1){{
-      b.style.setProperty("background","#0a0a12","important");
+      b.style.setProperty("background","#09090f","important");
       b.style.setProperty("border","1px solid #1a1a28","important");
-      b.style.setProperty("color","#333344","important");
+      b.style.setProperty("color","#2a2a38","important");
       b.style.setProperty("min-height","54px","important");
+      b.style.setProperty("box-shadow","none","important");
       b.style.setProperty("animation","none","important");
       b.querySelectorAll("p,span").forEach(function(el){{
-        el.style.setProperty("color","#333344","important");
-        el.style.setProperty("font-size","0.85rem","important");
+        el.style.setProperty("color","#2a2a38","important");
+        el.style.setProperty("font-size","0.82rem","important");
       }});
     }}
 
@@ -1503,6 +1471,7 @@ function applyStyles(){{
       b.style.setProperty("border","1px solid #181828","important");
       b.style.setProperty("color","#66778a","important");
       b.style.setProperty("min-height","42px","important");
+      b.style.setProperty("box-shadow","none","important");
       b.style.setProperty("animation","none","important");
       b.querySelectorAll("p,span").forEach(function(el){{
         el.style.setProperty("color","#66778a","important");
@@ -1511,20 +1480,9 @@ function applyStyles(){{
   }});
 }}
 
-// ── 경고 텍스트 애니메이션 ──
-function applyWarnAnim(){{
-  doc.querySelectorAll('span,div').forEach(function(el){{
-    var t=(el.innerText||el.textContent||"");
-    if(t.indexOf("3개 이상")>-1&&t.length<50){{
-      el.style.animation='fp-warnBlink 1.5s ease-in-out infinite';
-    }}
-  }});
-}}
-
 setTimeout(applyStyles,80);
 setTimeout(applyStyles,300);
 setTimeout(applyStyles,700);
-setTimeout(applyWarnAnim,500);
 setInterval(applyStyles,1400);
 }})();
 </script>""", height=0)
