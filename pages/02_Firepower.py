@@ -336,7 +336,7 @@ def tcls(r,t):
 # PHASE: BATTLE
 # ════════════════════════════════════════
 if st.session_state.phase=="battle":
-    if st.session_state.get("_battle_entry_ans_reset", True):
+    if st.session_state.get("_battle_entry_ans_reset", False):
         st.session_state.ans = False
         st.session_state["_battle_entry_ans_reset"] = False
     q=st.session_state.cq
@@ -1334,15 +1334,31 @@ div[data-testid="stButton"] button p{
     # ── 출격 버튼 ──
     if _ready:
         _cat = lbl_map.get(sm,"")
-        _adp_badge = f' [{_adp_lbl}]' if _hist_len > 0 else ''
+        _time_badge = f"{st.session_state.tsec}초"
+        st.markdown("""<style>
+div[data-testid="stButton"]:has(button[data-testid="stBaseButton-secondary"]#go_start) button,
+button[key="go_start"]{
+  background:linear-gradient(135deg,#2a0800,#200600)!important;
+  border:2px solid #ff6600!important;border-radius:12px!important;
+  font-size:1.0rem!important;font-weight:900!important;
+  color:#ffaa33!important;min-height:52px!important;
+}
+</style>""", unsafe_allow_html=True)
         st.markdown('<div class="launch">', unsafe_allow_html=True)
-        if st.button(f"🔥 출격! — {_cat}{_adp_badge}", key="go_start", use_container_width=True):
-            md,grp = mode_map[sm]
+        if st.button(f"🔥 출격! — {_cat}  ⏱{_time_badge}", key="go_start", use_container_width=True):
+            md, grp = mode_map[sm]
             st.session_state.mode = md
             qs = pick5(md, grp)
             st.session_state.round_qs = qs
             st.session_state.cq = qs[0]
             st.session_state.qst = time.time()
+            st.session_state.ans = False
+            st.session_state.sel = None
+            st.session_state.qi = 0
+            st.session_state.sc = 0
+            st.session_state.wrong = 0
+            st.session_state.round_results = []
+            st.session_state["_battle_entry_ans_reset"] = False
             st.session_state.phase = "battle"
             st.rerun()
         st.markdown('</div>', unsafe_allow_html=True)
