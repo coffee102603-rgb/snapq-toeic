@@ -1166,16 +1166,16 @@ div[data-testid="stButton"] button p{
 
     # ── 타이틀 ──
     _rb = f'<span style="background:#1a0800;border:1px solid #cc6600;border-radius:20px;padding:1px 10px;font-size:0.68rem;color:#ffaa44;font-weight:900;">🏆 ROUND {rn}</span> ' if rn > 1 else ''
-    st.markdown(f"""<div style="text-align:center;padding:3px 0 1px;">
+    st.markdown(f"""<div style="text-align:center;padding:3px 0 3px;">
       <div style="font-family:Orbitron,monospace;font-size:1.7rem;font-weight:900;letter-spacing:5px;
         background:linear-gradient(90deg,#00e5ff,#fff,#FFD600,#ff3300,#00e5ff);background-size:300%;
         -webkit-background-clip:text;-webkit-text-fill-color:transparent;
         animation:titleShine 2s linear infinite;">{_rb}⚡ 화력전</div>
-      <div style="font-size:0.6rem;color:#5566aa;letter-spacing:2px;">5문제 서바이벌 · 문법·어휘 실전 포격전</div>
+      <div style="font-size:0.62rem;color:#6688aa;letter-spacing:2px;margin-top:2px;">5문제 서바이벌 · 문법·어휘 실전 포격전</div>
     </div>""", unsafe_allow_html=True)
 
     # ── 시간 선택 ──
-    st.markdown('<div style="display:flex;align-items:center;gap:6px;margin:2px 0 1px;"><div style="flex:1;height:1px;background:linear-gradient(90deg,transparent,#2255aa,transparent);"></div><span style="font-family:Orbitron,monospace;font-size:0.55rem;font-weight:900;color:#55aaff;letter-spacing:2px;">⏱ 전투 시간</span><div style="flex:1;height:1px;background:linear-gradient(90deg,transparent,#2255aa,transparent);"></div></div>', unsafe_allow_html=True)
+    st.markdown('<div style="display:flex;align-items:center;gap:6px;margin:4px 0 2px;position:relative;z-index:10;"><div style="flex:1;height:1px;background:linear-gradient(90deg,transparent,#2255aa,transparent);"></div><span style="font-family:Orbitron,monospace;font-size:0.58rem;font-weight:900;color:#55aaff;letter-spacing:2px;text-shadow:0 0 8px rgba(85,170,255,0.6);">⏱ 전투 시간</span><div style="flex:1;height:1px;background:linear-gradient(90deg,transparent,#2255aa,transparent);"></div></div>', unsafe_allow_html=True)
 
     tc1, tc2, tc3 = st.columns(3)
     with tc1:
@@ -1189,7 +1189,7 @@ div[data-testid="stButton"] button p{
             st.session_state.tsec=50; st.session_state.tsec_chosen=True; st.rerun()
 
     # ── 작전 선택 ──
-    st.markdown('<div style="display:flex;align-items:center;gap:6px;margin:3px 0 1px;"><div style="flex:1;height:1px;background:linear-gradient(90deg,transparent,#aa2233,transparent);"></div><span style="font-family:Orbitron,monospace;font-size:0.55rem;font-weight:900;color:#ff5566;letter-spacing:2px;">⚔️ 작전 선택</span><div style="flex:1;height:1px;background:linear-gradient(90deg,transparent,#aa2233,transparent);"></div></div>', unsafe_allow_html=True)
+    st.markdown('<div style="display:flex;align-items:center;gap:6px;margin:5px 0 2px;position:relative;z-index:10;"><div style="flex:1;height:1px;background:linear-gradient(90deg,transparent,#aa2233,transparent);"></div><span style="font-family:Orbitron,monospace;font-size:0.58rem;font-weight:900;color:#ff5566;letter-spacing:2px;text-shadow:0 0 8px rgba(255,85,102,0.6);">⚔️ 작전 선택</span><div style="flex:1;height:1px;background:linear-gradient(90deg,transparent,#aa2233,transparent);"></div></div>', unsafe_allow_html=True)
 
     b1, b2 = st.columns(2)
     with b1:
@@ -1290,7 +1290,7 @@ function applyStyles(){{
       styleBtn(b,isSel?
         {{bg:"linear-gradient(160deg,#1a1200,#120d00)",border:"#FFD600",col:"#FFD600",shadow:"rgba(255,214,0,0.6)"}}:
         {{bg:"linear-gradient(160deg,#080e1e,#0a1228)",border:"rgba(0,180,255,0.3)",col:"#c0d8ff"}});
-      b.style.setProperty("min-height","58px","important");
+      b.style.setProperty("min-height","52px","important");
       b.style.setProperty("text-align","center","important");
       b.querySelectorAll("p,span").forEach(function(el){{el.style.setProperty("text-align","center","important");}});
     }}
@@ -1299,7 +1299,7 @@ function applyStyles(){{
       styleBtn(b,isSel?
         {{bg:"linear-gradient(160deg,#1a1200,#120d00)",border:"#FFD600",col:"#FFD600",shadow:"rgba(255,214,0,0.6)"}}:
         {{bg:"linear-gradient(160deg,#080e1e,#0a1228)",border:"rgba(0,180,255,0.3)",col:"#c0d8ff"}});
-      b.style.setProperty("min-height","58px","important");
+      b.style.setProperty("min-height","52px","important");
       b.style.setProperty("text-align","center","important");
       b.querySelectorAll("p,span").forEach(function(el){{el.style.setProperty("text-align","center","important");}});
     }}
@@ -1308,7 +1308,7 @@ function applyStyles(){{
       styleBtn(b,isSel?
         {{bg:"linear-gradient(160deg,#1a1200,#120d00)",border:"#FFD600",col:"#FFD600",shadow:"rgba(255,214,0,0.6)"}}:
         {{bg:"linear-gradient(160deg,#080e1e,#0a1228)",border:"rgba(0,180,255,0.3)",col:"#c0d8ff"}});
-      b.style.setProperty("min-height","58px","important");
+      b.style.setProperty("min-height","52px","important");
       b.style.setProperty("text-align","center","important");
       b.querySelectorAll("p,span").forEach(function(el){{el.style.setProperty("text-align","center","important");}});
     }}
@@ -1322,7 +1322,7 @@ function applyStyles(){{
         styleBtn(b,isSel?
           {{bg:mc.selBg,border:mc.selBorder,col:mc.col,shadow:mc.selShadow}}:
           {{bg:mc.bg,border:mc.border,col:mc.col}});
-        b.style.setProperty("min-height","78px","important");
+        b.style.setProperty("min-height","86px","important");
         b.style.setProperty("text-align","left","important");
         b.querySelectorAll("p,span").forEach(function(el){{
           el.style.setProperty("text-align","left","important");
