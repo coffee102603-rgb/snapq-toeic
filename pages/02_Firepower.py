@@ -1275,143 +1275,256 @@ div[data-testid="stButton"] button p{
     components.html(f"""<script>
 (function(){{
 var selT="{_sel_t}", selM="{_sel_m}";
-var MODE_COLORS={{
-  "문법력":{{bg:"linear-gradient(145deg,#05102a,#081630)",border:"rgba(60,140,255,0.5)",col:"#6aadff",selBg:"linear-gradient(145deg,#081e40,#0c2850)",selBorder:"#6aadff",selShadow:"rgba(100,170,255,0.5)"}},
-  "구조력":{{bg:"linear-gradient(145deg,#120520,#180830)",border:"rgba(170,80,255,0.5)",col:"#cc88ff",selBg:"linear-gradient(145deg,#1e0a38,#280e48)",selBorder:"#cc88ff",selShadow:"rgba(200,130,255,0.5)"}},
-  "연결력":{{bg:"linear-gradient(145deg,#051a18,#072220)",border:"rgba(0,210,190,0.5)",col:"#00ddc8",selBg:"linear-gradient(145deg,#082820,#0c3428)",selBorder:"#00ddc8",selShadow:"rgba(0,210,190,0.5)"}},
-  "어휘력":{{bg:"linear-gradient(145deg,#06180a,#081e0c)",border:"rgba(60,210,80,0.5)",col:"#55ee77",selBg:"linear-gradient(145deg,#0a2010,#0e2814)",selBorder:"#55ee77",selShadow:"rgba(80,220,100,0.5)"}}
-}};
-var TIME_KEYS={{"30":"t30","40":"t40","50":"t50"}};
+var doc=window.parent.document;
 
-function styleBtn(b, opts){{
-  b.style.setProperty("background", opts.bg,"important");
-  b.style.setProperty("border","2px solid "+opts.border,"important");
-  b.style.setProperty("color", opts.col,"important");
-  if(opts.shadow) b.style.setProperty("box-shadow","0 0 20px "+opts.shadow,"important");
-  else b.style.setProperty("box-shadow","none","important");
-  b.style.setProperty("font-family","'Orbitron',monospace","important");
-  b.style.setProperty("font-weight","900","important");
-  b.querySelectorAll("p,span").forEach(function(el){{
-    el.style.setProperty("color",opts.col,"important");
-    el.style.setProperty("font-family","'Orbitron',monospace","important");
-    el.style.setProperty("font-weight","900","important");
-  }});
+// ══ 1. KEYFRAMES + 추가 CSS → parent document inject ══
+if(!doc.getElementById('fp-styles')){{
+  var s=doc.createElement('style');
+  s.id='fp-styles';
+  s.textContent=`
+    @keyframes launchG {{
+      0%,100%   {{ box-shadow:0 0 18px rgba(255,90,0,0.7),0 0 0 1px #ff5500; border-color:#ff5500!important; }}
+      33%        {{ box-shadow:0 0 55px rgba(255,180,0,0.9),0 0 90px rgba(255,80,0,0.4),0 0 0 2px #FFD600; border-color:#FFD600!important; }}
+      66%        {{ box-shadow:0 0 30px rgba(255,50,0,0.8),0 0 0 1px #ff2200; border-color:#ff3300!important; }}
+    }}
+    @keyframes fp-scan {{
+      0%   {{ top:-4px; opacity:0.7; }}
+      80%  {{ opacity:0.3; }}
+      100% {{ top:100vh; opacity:0; }}
+    }}
+    @keyframes fp-titleGlow {{
+      0%,100% {{ filter:drop-shadow(0 0 8px rgba(0,229,255,0.5)); }}
+      50%     {{ filter:drop-shadow(0 0 22px rgba(0,229,255,0.9)) drop-shadow(0 0 40px rgba(255,214,0,0.25)); }}
+    }}
+    @keyframes fp-borderRun {{
+      0%   {{ box-shadow:0 0 0 1px rgba(0,180,255,0.0); }}
+      50%  {{ box-shadow:0 0 0 1px rgba(0,180,255,0.2),0 0 12px rgba(0,180,255,0.08); }}
+      100% {{ box-shadow:0 0 0 1px rgba(0,180,255,0.0); }}
+    }}
+    @keyframes fp-warnBlink {{
+      0%,100% {{ opacity:1; text-shadow:0 0 8px rgba(255,50,80,0.6); }}
+      50%     {{ opacity:0.7; text-shadow:0 0 20px rgba(255,50,80,1),0 0 40px rgba(255,0,30,0.5); }}
+    }}
+  `;
+  doc.head.appendChild(s);
 }}
 
+// ══ 2. 스캔라인 ══
+if(!doc.getElementById('fp-scanline')){{
+  var sl=doc.createElement('div');
+  sl.id='fp-scanline';
+  sl.style.cssText='position:fixed;left:0;width:100%;height:2px;background:linear-gradient(90deg,transparent 0%,rgba(0,212,255,0.18) 30%,rgba(0,212,255,0.35) 50%,rgba(0,212,255,0.18) 70%,transparent 100%);pointer-events:none;z-index:9999;animation:fp-scan 5s linear infinite;';
+  doc.body.appendChild(sl);
+}}
+
+// ══ 3. 파티클 캔버스 ══
+var canvas=doc.getElementById('fp-canvas');
+if(!canvas){{
+  canvas=doc.createElement('canvas');
+  canvas.id='fp-canvas';
+  canvas.style.cssText='position:fixed;top:0;left:0;width:100%;height:100%;pointer-events:none;z-index:0;';
+  doc.body.insertBefore(canvas,doc.body.firstChild);
+  var W=canvas.width=window.parent.innerWidth;
+  var H=canvas.height=window.parent.innerHeight;
+  var ctx=canvas.getContext('2d');
+  var pts=[];
+  for(var i=0;i<55;i++){{
+    pts.push({{
+      x:Math.random()*W, y:Math.random()*H,
+      r:Math.random()*1.2+0.2,
+      vx:(Math.random()-0.5)*0.25,
+      vy:-Math.random()*0.4-0.05,
+      a:Math.random()*0.5+0.15,
+      c:Math.random()>0.6?'255,214,0':'0,200,255'
+    }});
+  }}
+  var lines=[];
+  for(var j=0;j<8;j++){{
+    lines.push({{
+      y:Math.random()*H, speed:Math.random()*0.3+0.1,
+      w:Math.random()*60+20, a:Math.random()*0.04+0.01
+    }});
+  }}
+  (function loop(){{
+    ctx.clearRect(0,0,W,H);
+    // 흐르는 가로선
+    lines.forEach(function(l){{
+      l.y-=l.speed;
+      if(l.y<0)l.y=H;
+      ctx.fillStyle='rgba(0,180,255,'+l.a+')';
+      ctx.fillRect(0,l.y,W,1);
+    }});
+    // 파티클
+    pts.forEach(function(p){{
+      p.x+=p.vx; p.y+=p.vy; p.a-=0.0015;
+      if(p.y<-5||p.a<=0){{
+        p.x=Math.random()*W; p.y=H+5;
+        p.a=Math.random()*0.5+0.15;
+        p.vy=-Math.random()*0.4-0.05;
+      }}
+      ctx.beginPath();
+      ctx.arc(p.x,p.y,p.r,0,6.28);
+      ctx.fillStyle='rgba('+p.c+','+p.a+')';
+      ctx.fill();
+    }});
+    window.parent.requestAnimationFrame(loop);
+  }})();
+}}
+
+// ══ 4. 타이틀 애니메이션 주입 ══
+var titleEl=doc.querySelector('[style*="화력전"]');
+if(titleEl){{ titleEl.style.animation='fp-titleGlow 2.5s ease-in-out infinite'; }}
+
+var MODE_COLORS={{
+  "문법력":{{bg:"linear-gradient(145deg,#05102a,#081630)",border:"rgba(60,140,255,0.45)",col:"#6aadff",selBg:"linear-gradient(145deg,#091e42,#0d2a58)",selBorder:"#6aadff",selShadow:"rgba(100,170,255,0.55)"}},
+  "구조력":{{bg:"linear-gradient(145deg,#120520,#180830)",border:"rgba(170,80,255,0.45)",col:"#cc88ff",selBg:"linear-gradient(145deg,#200a3e,#2c1050)",selBorder:"#cc88ff",selShadow:"rgba(200,130,255,0.55)"}},
+  "연결력":{{bg:"linear-gradient(145deg,#051a18,#072220)",border:"rgba(0,210,190,0.45)",col:"#00ddc8",selBg:"linear-gradient(145deg,#092a24,#0e362e)",selBorder:"#00ddc8",selShadow:"rgba(0,210,190,0.55)"}},
+  "어휘력":{{bg:"linear-gradient(145deg,#06180a,#081e0c)",border:"rgba(60,210,80,0.45)",col:"#55ee77",selBg:"linear-gradient(145deg,#0c2412,#102e16)",selBorder:"#55ee77",selShadow:"rgba(80,220,100,0.55)"}}
+}};
+
 function applyStyles(){{
-  var doc=window.parent.document;
   doc.querySelectorAll("button").forEach(function(b){{
     var txt=(b.innerText||b.textContent||"").trim();
 
-    // 시간 버튼 — 핵심어(굵게+색상) / 부제(흰색 작게 보통굵기) 분리
+    // ── 시간 버튼 ──
     var TIME_INFO=[
       {{key:"30",sub:"속공",check:function(t){{return t.indexOf("30초")>-1;}}}},
       {{key:"40",sub:"표준",check:function(t){{return t.indexOf("40초")>-1;}}}},
       {{key:"50",sub:"정밀",check:function(t){{return t.indexOf("50초")>-1;}}}}
     ];
     for(var ti=0;ti<TIME_INFO.length;ti++){{
-      var ti_info=TIME_INFO[ti];
-      if(ti_info.check(txt)){{
-        var isSel=(selT===ti_info.key);
-        var accentCol=isSel?"#FFD600":"#88bbee";
-        styleBtn(b,isSel?
-          {{bg:"linear-gradient(160deg,#1a1200,#120d00)",border:"#FFD600",col:"#FFD600",shadow:"rgba(255,214,0,0.6)"}}:
-          {{bg:"linear-gradient(160deg,#070c1a,#090e20)",border:"rgba(0,160,255,0.25)",col:"#88bbee"}});
+      var info=TIME_INFO[ti];
+      if(info.check(txt)){{
+        var isSel=(selT===info.key);
+        var col=isSel?"#FFD600":"#88bbee";
+        b.style.setProperty("background",isSel?"linear-gradient(160deg,#1c1300,#140e00)":"linear-gradient(160deg,#070c1a,#090e22)","important");
+        b.style.setProperty("border",isSel?"2px solid #FFD600":"1.5px solid rgba(0,160,255,0.22)","important");
+        b.style.setProperty("box-shadow",isSel?"0 0 0 1px #FFD60044,0 0 28px rgba(255,214,0,0.55)":"0 0 12px rgba(0,180,255,0.04)","important");
+        b.style.setProperty("color",col,"important");
         b.style.setProperty("min-height","46px","important");
-        b.style.setProperty("text-align","center","important");
         b.style.setProperty("display","flex","important");
         b.style.setProperty("flex-direction","column","important");
         b.style.setProperty("align-items","center","important");
         b.style.setProperty("justify-content","center","important");
+        b.style.setProperty("font-family","'Orbitron',monospace","important");
+        b.style.setProperty("animation",isSel?"":"fp-borderRun 3s ease-in-out infinite","important");
         var pTags=b.querySelectorAll("p");
         if(pTags.length>0){{
           var ft=pTags[0];
-          var rawTxt=(ft.innerText||ft.textContent||"").trim();
-          // 2줄: "🔥 30초 / 속공"
-          var parts=rawTxt.split(/\n/).map(function(s){{return s.trim();}}).filter(function(s){{return s!==""}});
-          var mainPart=parts.length>=1?parts[0]:"";
-          var sub=parts.length>=2?parts[1]:ti_info.sub;
+          var raw=(ft.innerText||ft.textContent||"").trim();
+          var parts=raw.split(/\n/).map(function(x){{return x.trim();}}).filter(Boolean);
+          var main=parts[0]||"";
+          var sub=parts[1]||info.sub;
           ft.innerHTML=
-            '<span style="display:block;font-size:0.95rem;font-weight:900;color:'+accentCol+';line-height:1.3;letter-spacing:1px;">'+mainPart+'</span>'+
-            '<span style="display:block;font-size:0.65rem;font-weight:400;color:rgba(255,255,255,0.5);line-height:1.2;margin-top:2px;letter-spacing:2px;">'+sub+'</span>';
+            '<span style="display:block;font-size:0.95rem;font-weight:900;color:'+col+';line-height:1.3;letter-spacing:1px;">'
+            +main+'</span>'
+            +'<span style="display:block;font-size:0.62rem;font-weight:400;color:rgba(255,255,255,'+(isSel?'0.65':'0.4')+');line-height:1.2;margin-top:2px;letter-spacing:2px;">'
+            +sub+'</span>';
           ft.style.setProperty("text-align","center","important");
         }}
         break;
       }}
     }}
 
-    // 작전 카드 버튼
+    // ── 작전 카드 ──
     Object.keys(MODE_COLORS).forEach(function(k){{
       if(txt.indexOf(k)>-1){{
         var mc=MODE_COLORS[k];
         var korMap={{"문법력":"g1","구조력":"g2","연결력":"g3","어휘력":"vocab"}};
         var isSel=(selM===korMap[k]);
-        if(isSel){{
-          b.style.setProperty("background",mc.selBg,"important");
-          b.style.setProperty("border","2.5px solid "+mc.selBorder,"important");
-          b.style.setProperty("box-shadow","0 0 0 1px "+mc.selBorder+", 0 0 22px "+mc.selShadow+", inset 0 0 12px "+mc.selShadow.replace("0.5","0.08"),"important");
-        }} else {{
-          b.style.setProperty("background",mc.bg,"important");
-          b.style.setProperty("border","1.5px solid "+mc.border,"important");
-          b.style.setProperty("box-shadow","none","important");
-        }}
+        b.style.setProperty("background",isSel?mc.selBg:mc.bg,"important");
+        b.style.setProperty("border",isSel?"2.5px solid "+mc.selBorder:"1.5px solid "+mc.border,"important");
+        b.style.setProperty("box-shadow",isSel?
+          "0 0 0 1px "+mc.selBorder+"44,0 0 24px "+mc.selShadow+",inset 0 0 14px "+mc.selShadow.replace("0.55","0.06"):
+          "none","important");
+        b.style.setProperty("animation",isSel?"":"fp-borderRun 4s ease-in-out infinite","important");
         b.style.setProperty("color",mc.col,"important");
-        b.style.setProperty("min-height","82px","important");
-        b.style.setProperty("text-align","left","important");
+        b.style.setProperty("min-height","80px","important");
         b.style.setProperty("padding","11px 13px","important");
         b.style.setProperty("display","flex","important");
         b.style.setProperty("flex-direction","column","important");
         b.style.setProperty("align-items","flex-start","important");
         b.style.setProperty("justify-content","flex-start","important");
         b.style.setProperty("font-family","'Orbitron',monospace","important");
-        var pTags = b.querySelectorAll("p");
-        if(pTags.length > 0){{
-          var fullTxt = (pTags[0].innerText||pTags[0].textContent||"");
-          var parts = fullTxt.split("\n").filter(function(s){{return s.trim()!==""}});
-          if(parts.length >= 2){{
-            var titlePart = parts[0].trim();
-            var subPart   = parts.slice(1).join(" · ").trim();
-            var titleGlow = isSel ? "text-shadow:0 0 10px "+mc.col+"99;" : "";
-            pTags[0].innerHTML = 
-              '<span style="font-size:0.92rem;font-weight:900;color:'+mc.col+';display:block;margin-bottom:6px;line-height:1.2;'+titleGlow+'">'+titlePart+'</span>'+
-              '<span style="font-size:0.63rem;font-weight:400;color:rgba(255,255,255,0.42);display:block;line-height:1.5;letter-spacing:0.5px;">'+subPart+'</span>';
+        var pTags=b.querySelectorAll("p");
+        if(pTags.length>0){{
+          var ft=pTags[0];
+          var raw=(ft.innerText||ft.textContent||"");
+          var parts=raw.split("\n").filter(function(x){{return x.trim()!==""}});
+          if(parts.length>=2){{
+            var title=parts[0].trim();
+            var sub=parts.slice(1).join(" · ").trim();
+            var glow=isSel?"text-shadow:0 0 12px "+mc.col+"99;":"";
+            ft.innerHTML=
+              '<span style="font-size:0.9rem;font-weight:900;color:'+mc.col+';display:block;margin-bottom:5px;line-height:1.2;'+glow+'">'+title+'</span>'+
+              '<span style="font-size:0.63rem;font-weight:400;color:rgba(255,255,255,0.42);display:block;line-height:1.5;letter-spacing:0.5px;">'+sub+'</span>';
           }}
-          pTags[0].style.setProperty("text-align","left","important");
-          pTags[0].style.setProperty("width","100%","important");
+          ft.style.setProperty("text-align","left","important");
+          ft.style.setProperty("width","100%","important");
         }}
       }}
     }});
 
-    // 출격 버튼
-    if(txt.indexOf("출격!")>-1){{
-      b.style.setProperty("background","linear-gradient(135deg,#2a0800,#200600)","important");
-      b.style.setProperty("border","2px solid #ff6600","important");
+    // ── 출격 버튼 (active) ──
+    if(txt.indexOf("출격!")>-1 && txt.indexOf("시간")===- 1){{
+      b.style.setProperty("background","linear-gradient(135deg,#2a0800,#1e0500)","important");
+      b.style.setProperty("border","2px solid #ff5500","important");
       b.style.setProperty("color","#ffaa33","important");
-      b.style.setProperty("min-height","52px","important");
-      b.style.setProperty("letter-spacing","2px","important");
-      b.style.setProperty("animation","launchG 1.4s ease-in-out infinite","important");
+      b.style.setProperty("min-height","54px","important");
+      b.style.setProperty("letter-spacing","3px","important");
+      b.style.setProperty("font-family","'Orbitron',monospace","important");
+      b.style.setProperty("font-weight","900","important");
+      b.style.setProperty("animation","launchG 1.0s ease-in-out infinite","important");
       b.querySelectorAll("p,span").forEach(function(el){{
-        el.style.setProperty("color","#ffaa33","important");
-        el.style.setProperty("font-size","1.0rem","important");
+        el.style.setProperty("color","#ffbb44","important");
+        el.style.setProperty("font-size","0.95rem","important");
+        el.style.setProperty("font-weight","900","important");
+        el.style.setProperty("font-family","'Orbitron',monospace","important");
+        el.style.setProperty("letter-spacing","3px","important");
       }});
     }}
 
-    // 네비 버튼
-    if(txt.indexOf("포로사령부")>-1||txt.indexOf("홈")>-1){{
-      b.style.setProperty("background","#06060f","important");
-      b.style.setProperty("border","1px solid #1e1e30","important");
-      b.style.setProperty("color","#7788aa","important");
-      b.style.setProperty("min-height","44px","important");
+    // ── 출격 버튼 (disabled) ──
+    if(txt.indexOf("시간")>-1 && txt.indexOf("작전")>-1 && txt.indexOf("출격!")>-1){{
+      b.style.setProperty("background","#0a0a12","important");
+      b.style.setProperty("border","1px solid #1a1a28","important");
+      b.style.setProperty("color","#333344","important");
+      b.style.setProperty("min-height","54px","important");
+      b.style.setProperty("animation","none","important");
       b.querySelectorAll("p,span").forEach(function(el){{
-        el.style.setProperty("color","#7788aa","important");
+        el.style.setProperty("color","#333344","important");
+        el.style.setProperty("font-size","0.85rem","important");
+      }});
+    }}
+
+    // ── 네비 버튼 ──
+    if(txt.indexOf("포로사령부")>-1||txt.indexOf("홈")>-1){{
+      b.style.setProperty("background","#05050e","important");
+      b.style.setProperty("border","1px solid #181828","important");
+      b.style.setProperty("color","#66778a","important");
+      b.style.setProperty("min-height","42px","important");
+      b.style.setProperty("animation","none","important");
+      b.querySelectorAll("p,span").forEach(function(el){{
+        el.style.setProperty("color","#66778a","important");
       }});
     }}
   }});
 }}
 
-setTimeout(applyStyles,100);
-setTimeout(applyStyles,400);
-setTimeout(applyStyles,900);
-setInterval(applyStyles,1500);
+// ── 경고 텍스트 애니메이션 ──
+function applyWarnAnim(){{
+  doc.querySelectorAll('span,div').forEach(function(el){{
+    var t=(el.innerText||el.textContent||"");
+    if(t.indexOf("3개 이상")>-1&&t.length<50){{
+      el.style.animation='fp-warnBlink 1.5s ease-in-out infinite';
+    }}
+  }});
+}}
+
+setTimeout(applyStyles,80);
+setTimeout(applyStyles,300);
+setTimeout(applyStyles,700);
+setTimeout(applyWarnAnim,500);
+setInterval(applyStyles,1400);
 }})();
 </script>""", height=0)
