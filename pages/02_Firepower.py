@@ -42,7 +42,6 @@ def load_storage():
             d = json.load(f)
             if isinstance(d, dict):
                 return d
-            # 구버전 리스트 형태 → 신규 형태로 변환
             return {"saved_questions": d, "saved_expressions": []}
     return {"saved_questions": [], "saved_expressions": []}
 
@@ -58,92 +57,138 @@ def save_to_storage(items):
     with open(STORAGE_FILE, "w", encoding="utf-8") as f:
         json.dump(data, f, ensure_ascii=False, indent=2)
 
-# ═══ CSS ═══
+# ═══ 전역 CSS — 화력전 전용 폰게임 스타일 ═══
 st.markdown("""
 <style>
 @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@700;900&family=Rajdhani:wght@600;700&display=swap');
+
+/* ── 기반 ── */
 .stApp{background:#06060e!important;color:#eeeeff!important;}
 section[data-testid="stSidebar"]{display:none!important;}
 header[data-testid="stHeader"]{background:transparent!important;height:0!important;min-height:0!important;overflow:hidden!important;}
 .block-container{padding-top:0!important;padding-bottom:0!important;margin-top:-8px!important;}
-.ah{text-align:center;padding:0;margin:-4px 0 -4px 0;line-height:0.6;}
-.ah h1{font-family:'Orbitron',monospace!important;font-size:0.95rem;font-weight:900;margin:0;background:linear-gradient(90deg,#00d4ff,#ffffff,#00d4ff);background-size:200%;-webkit-background-clip:text;-webkit-text-fill-color:transparent;animation:titleShine 3s linear infinite;letter-spacing:4px;}
+
+/* ── 타이틀 헤더 ── */
+.ah{text-align:center;padding:0;margin:0 0 2px 0;line-height:1;}
+.ah h1{font-family:'Orbitron',monospace!important;font-size:1.0rem;font-weight:900;margin:0;
+  background:linear-gradient(90deg,#00d4ff,#ffffff,#FFD600,#00d4ff);background-size:300%;
+  -webkit-background-clip:text;-webkit-text-fill-color:transparent;
+  animation:titleShine 2s linear infinite;letter-spacing:4px;}
+
+/* ── 키프레임 ── */
 @keyframes titleShine{0%{background-position:200% center}100%{background-position:-200% center}}
 @keyframes warningPulse{0%,100%{color:#ff4466;text-shadow:0 0 8px rgba(255,68,102,0.8);}50%{color:#ff8888;text-shadow:0 0 20px rgba(255,68,102,1),0 0 40px rgba(255,0,50,0.6);}}
-@keyframes p5bounce{0%,100%{transform:translateY(0);}30%{transform:translateY(-6px);}60%{transform:translateY(-3px);}80%{transform:translateY(-5px);}}
-@keyframes p5flash{0%,75%,100%{box-shadow:0 0 12px rgba(0,212,255,0.15);}88%{box-shadow:0 0 45px rgba(0,255,255,1),0 0 90px rgba(0,212,255,0.7);}}
-button[kind="primary"],button[kind="secondary"]{background:#0d0d0d!important;color:#fff!important;border:1.5px solid rgba(0,212,255,0.5)!important;border-radius:8px!important;font-size:1.0rem!important;font-weight:500!important;padding:0.35rem 0.8rem!important;text-align:left!important;transition:none!important;animation:none!important;transform:none!important;box-shadow:none!important;min-height:38px!important;}
-button[kind="primary"] p,button[kind="secondary"] p{font-size:1.05rem!important;font-weight:700!important;color:#ddd8c8!important;text-align:left!important;}
-button[kind="primary"]:hover,button[kind="secondary"]:hover{background:rgba(0,212,255,0.08)!important;border-color:#00d4ff!important;box-shadow:0 0 25px rgba(0,212,255,0.4)!important;transform:none!important;}
-.qb{border-radius:12px;padding:0.3rem 0.5rem;margin:0.05rem 0;background:#0d0d0d;}
-.qb-g{background:#0d0d0d!important;border:1.5px solid rgba(0,212,255,0.35)!important;border-radius:12px!important;animation:none;}.qb-v{background:#0d0d0d!important;border:1.5px solid rgba(68,136,204,0.35)!important;border-radius:12px!important;animation:none;}
-@keyframes borderGlow{0%{box-shadow:0 0 0 2px #00d4ff,0 0 15px rgba(0,212,255,0.4);}50%{box-shadow:0 0 0 2px #fff,0 0 25px rgba(0,212,255,0.6);}100%{box-shadow:0 0 0 2px #00d4ff,0 0 15px rgba(0,212,255,0.4);}}
-.qc{font-family:'Orbitron',monospace;font-size:0.72rem;font-weight:400;margin-bottom:0.3rem;letter-spacing:2px;color:#555!important;}
-.qc-g,.qc-v{color:#444;text-shadow:none;}
-.qt{font-family:'Rajdhani',sans-serif;color:#fff;font-size:0.95rem;font-weight:700;line-height:1.5;word-break:keep-all;}
-.qk{color:#00d4ff;font-weight:900;font-size:0.95rem;border-bottom:2px solid #00d4ff;text-shadow:0 0 10px rgba(0,212,255,0.8);}
-.bt{display:flex;align-items:center;justify-content:space-between;padding:0.01rem 0.8rem;border-radius:6px;margin-bottom:0;transform:scale(0.85);transform-origin:top center;margin-top:-8px;}
-.bt-g,.bt-v{background:#0d0d0d;border:1px solid rgba(0,212,255,0.4);box-shadow:0 0 15px rgba(0,212,255,0.1);}
-.bq{font-family:'Orbitron',monospace;font-size:1.6rem;font-weight:900;}
-.bq-g,.bq-v{color:#00d4ff;text-shadow:0 0 10px rgba(0,212,255,0.8);}
-.bs{font-family:'Orbitron',monospace;font-size:1.1rem;font-weight:800;color:#fff;}
-.rd-dots{display:flex;justify-content:center;gap:0.6rem;margin:0 0;}
-.rd-dot{width:22px;height:22px;border-radius:50%;border:2px solid #333;display:flex;align-items:center;justify-content:center;font-size:0.7rem;font-weight:900;}
-.rd-cur{border-color:#00d4ff!important;color:#00d4ff!important;box-shadow:0 0 10px #00d4ff!important;}
+@keyframes neonPulse{0%,100%{box-shadow:0 0 5px #00d4ff,0 0 15px rgba(0,212,255,0.4);}50%{box-shadow:0 0 15px #00d4ff,0 0 40px rgba(0,212,255,0.7),0 0 60px rgba(0,212,255,0.3);}}
+@keyframes answerGlow{0%,100%{opacity:1;}50%{opacity:0.85;}}
+@keyframes shake{0%{transform:translate(0,0)}20%{transform:translate(-4px,2px)}40%{transform:translate(4px,-2px)}60%{transform:translate(-3px,3px)}80%{transform:translate(3px,-3px)}100%{transform:translate(0,0)}}
+
+/* ── HUD 배틀바 ── */
+.bt{display:flex;align-items:center;justify-content:space-between;
+  padding:0.15rem 0.8rem;border-radius:8px;margin-bottom:2px;
+  background:#0a0c18;border:1px solid rgba(0,212,255,0.4);
+  box-shadow:0 0 15px rgba(0,212,255,0.1);}
+.bt-g,.bt-v{background:#080c14;border:1px solid rgba(0,212,255,0.5);}
+.bq{font-family:'Orbitron',monospace;font-size:1.5rem;font-weight:900;}
+.bq-g,.bq-v{color:#00d4ff;text-shadow:0 0 12px rgba(0,212,255,0.9);}
+.bs{font-family:'Orbitron',monospace;font-size:1.0rem;font-weight:800;color:#fff;}
+
+/* ── 라운드 도트 ── */
+.rd-dots{display:flex;justify-content:center;gap:0.5rem;}
+.rd-dot{width:24px;height:24px;border-radius:50%;border:2px solid #333;
+  display:flex;align-items:center;justify-content:center;
+  font-size:0.72rem;font-weight:900;}
+.rd-cur{border-color:#00d4ff!important;color:#00d4ff!important;box-shadow:0 0 12px #00d4ff!important;animation:neonPulse 1s infinite;}
 .rd-ok{background:#00d4ff;border-color:#00d4ff;color:#000;}
 .rd-no{background:#ff2244;border-color:#ff2244;color:#fff;}
 .rd-wait{background:transparent;border-color:#333;color:#444;}
-.cg,.cv{border-radius:18px;padding:1.5rem 1.2rem;margin-bottom:0.8rem;min-height:190px;display:flex;flex-direction:column;justify-content:center;animation:none;}
-@keyframes fl{0%,100%{transform:translateY(0)}50%{transform:translateY(-6px)}}
-.cg{background:#0d0d0d;border:1.5px solid rgba(0,212,255,0.3);}
-.cv{background:#0d0d0d;border:1.5px solid rgba(0,212,255,0.2);}
-.ct{font-size:1.7rem;font-weight:900;margin-bottom:0.4rem;font-family:'Orbitron',monospace;}
-.cg .ct{color:#00d4ff;}.cv .ct{color:#88ddff;}
-.cd{font-size:1.3rem;font-weight:800;color:#ccc;line-height:1.5;}
-.wb{background:#0d0d0d;border-radius:16px;padding:1.8rem 1.5rem;margin:0.5rem 0;border:1px solid rgba(0,212,255,0.3);min-height:250px;}
+
+/* ── 문제 카드 ── */
+.qb{border-radius:14px;padding:0.5rem 0.7rem;margin:0.1rem 0;background:#0a0c18;}
+.qb-g{background:#080c18!important;border:2px solid rgba(0,212,255,0.5)!important;border-radius:14px!important;
+  box-shadow:0 0 20px rgba(0,212,255,0.08);}
+.qb-v{background:#08100c!important;border:2px solid rgba(0,180,100,0.4)!important;border-radius:14px!important;
+  box-shadow:0 0 20px rgba(0,180,100,0.06);}
+.qc{font-family:'Orbitron',monospace;font-size:0.7rem;font-weight:700;margin-bottom:4px;
+  letter-spacing:3px;color:#555!important;}
+.qc-g{color:#3388aa;}
+.qc-v{color:#2a8855;}
+.qt{font-family:'Rajdhani',sans-serif;color:#f0f0ff;font-size:1.05rem;font-weight:700;line-height:1.65;word-break:keep-all;}
+.qk{color:#00d4ff;font-weight:900;font-size:1.1rem;border-bottom:2px solid #00d4ff;
+  text-shadow:0 0 12px rgba(0,212,255,0.9);padding:0 2px;}
+
+/* ── 답 버튼 — 게임 스타일 ── */
+div[data-testid="stButton"] button{
+  background:#0a0c18!important;
+  border:2px solid rgba(0,212,255,0.35)!important;
+  border-radius:10px!important;
+  font-family:'Rajdhani',sans-serif!important;
+  font-size:1.05rem!important;font-weight:700!important;
+  padding:0.55rem 0.9rem!important;
+  text-align:left!important;
+  min-height:52px!important;
+  width:100%!important;
+  transition:box-shadow 0.15s ease,border-color 0.15s ease!important;
+  transform:none!important;
+  color:#ddd8c8!important;
+}
+div[data-testid="stButton"] button p{
+  font-size:1.05rem!important;font-weight:700!important;
+  color:#ddd8c8!important;text-align:left!important;
+}
+div[data-testid="stButton"] button:hover{
+  background:rgba(0,212,255,0.07)!important;
+  border-color:#00d4ff!important;
+  box-shadow:0 0 20px rgba(0,212,255,0.35)!important;
+}
+div[data-testid="stButton"] button:active{
+  transform:scale(0.98)!important;
+}
+
+/* ── 브리핑 카드 ── */
+.wb{background:#0a0c18;border-radius:16px;padding:1.2rem 1.2rem;margin:0.4rem 0;
+  border:1px solid rgba(0,212,255,0.3);}
 .wb-qn-ok{color:#00d4ff;}.wb-qn-no{color:#ff2244;}
-.wb-s{font-size:2.15rem;font-weight:700;color:#f0f0f0;line-height:2;margin-bottom:1rem;word-break:keep-all;}
-.wb-h{color:#00d4ff;font-weight:900;font-size:2.3rem;text-decoration:underline;text-decoration-color:#00d4ff;}
-.wb-hn{color:#ff2244;font-weight:900;font-size:2.3rem;text-decoration:underline;text-decoration-color:#ff2244;}
-.wb-k{font-size:1.6rem;font-weight:600;color:#ccc;line-height:1.7;}
-.wb-e{font-size:1.5rem;color:#aaa;padding:0.6rem 0.8rem;background:rgba(0,212,255,0.06);border-left:4px solid #00d4ff;border-radius:0 10px 10px 0;}
-.br-ban-v{border:1.5px solid #00d4ff;color:#00d4ff;}
-.br-ban-l{border:1.5px solid #ff2244;color:#ff2244;}
+.wb-s{font-size:1.8rem;font-weight:700;color:#f0f0f0;line-height:2;margin-bottom:0.8rem;word-break:keep-all;}
+.wb-h{color:#00d4ff;font-weight:900;font-size:2rem;text-decoration:underline;text-decoration-color:#00d4ff;}
+.wb-hn{color:#ff2244;font-weight:900;font-size:2rem;text-decoration:underline;text-decoration-color:#ff2244;}
+.wb-k{font-size:1.4rem;font-weight:600;color:#ccc;line-height:1.7;}
+.wb-e{font-size:1.3rem;color:#aaa;padding:0.5rem 0.8rem;background:rgba(0,212,255,0.06);
+  border-left:4px solid #00d4ff;border-radius:0 10px 10px 0;}
 .zl{color:#00d4ff!important;font-family:'Orbitron',monospace!important;letter-spacing:4px!important;}
 details{background:rgba(0,212,255,0.03)!important;border-radius:12px!important;}
 summary{color:#aaa!important;font-weight:700!important;}
-::-webkit-scrollbar{width:4px;}::-webkit-scrollbar-track{background:#0a0a0a;}
+
+/* ── 스크롤바 ── */
+::-webkit-scrollbar{width:4px;}
+::-webkit-scrollbar-track{background:#0a0a0a;}
 ::-webkit-scrollbar-thumb{background:rgba(0,212,255,0.4);border-radius:2px;}
+
+/* ── 모바일 반응형 ── */
 @media(max-width:768px){
-.block-container{padding-top:0.5rem!important;padding-bottom:2rem!important;padding-left:0.6rem!important;padding-right:0.6rem!important;}
-.ah h1{font-size:1.5rem!important;letter-spacing:2px!important;}
-button[kind="primary"],button[kind="secondary"]{font-size:1.6rem!important;padding:0.9rem 1rem!important;}
-button[kind="primary"] p,button[kind="primary"] span,button[kind="secondary"] p,button[kind="secondary"] span{font-size:1.6rem!important;}
-.qt{font-size:1.9rem!important;}.qk{font-size:2rem!important;}
-.wb-s{font-size:1.7rem!important;}.wb-h,.wb-hn{font-size:1.85rem!important;}
-.wb-k{font-size:1.3rem!important;}.wb-e{font-size:1.2rem!important;}
-.bq{font-size:1.3rem!important;}.ct{font-size:1.4rem!important;}.cd{font-size:1.1rem!important;}
+  .block-container{padding-top:0.5rem!important;padding-bottom:2rem!important;padding-left:0.6rem!important;padding-right:0.6rem!important;}
+  .ah h1{font-size:1.4rem!important;letter-spacing:2px!important;}
+  div[data-testid="stButton"] button{font-size:1.5rem!important;padding:0.8rem 1rem!important;min-height:64px!important;}
+  div[data-testid="stButton"] button p{font-size:1.5rem!important;}
+  .qt{font-size:1.75rem!important;}.qk{font-size:1.9rem!important;}
+  .wb-s{font-size:1.6rem!important;}.wb-h,.wb-hn{font-size:1.75rem!important;}
+  .wb-k{font-size:1.25rem!important;}.wb-e{font-size:1.15rem!important;}
+  .bq{font-size:1.2rem!important;}
 }
 @media(max-width:480px){
-.block-container{padding-top:0.3rem!important;padding-bottom:1.5rem!important;padding-left:0.3rem!important;padding-right:0.3rem!important;}
-.ah h1{font-size:0.95rem!important;letter-spacing:1px!important;}
-button[kind="primary"],button[kind="secondary"]{font-size:1rem!important;padding:0.5rem 0.5rem!important;border-radius:6px!important;}
-button[kind="primary"] p,button[kind="primary"] span,button[kind="secondary"] p,button[kind="secondary"] span{font-size:1rem!important;}
-.qt{font-size:1.2rem!important;line-height:1.6!important;}.qk{font-size:1.3rem!important;}
-.qb{padding:0.8rem 0.7rem!important;border-radius:12px!important;}
-.wb{padding:0.8rem 0.7rem!important;}.wb-s{font-size:1.1rem!important;line-height:1.6!important;}
-.wb-h,.wb-hn{font-size:1.2rem!important;}.wb-k{font-size:0.95rem!important;}.wb-e{font-size:0.9rem!important;}
-.bq{font-size:1rem!important;}.bs{font-size:0.85rem!important;}
-.ct{font-size:1rem!important;}.cd{font-size:0.88rem!important;}
-.rd-dot{width:16px!important;height:16px!important;}
-.cg,.cv{min-height:120px!important;padding:0.8rem!important;}
+  .block-container{padding-top:0.3rem!important;padding-bottom:1.5rem!important;padding-left:0.3rem!important;padding-right:0.3rem!important;}
+  .ah h1{font-size:0.95rem!important;letter-spacing:1px!important;}
+  div[data-testid="stButton"] button{font-size:0.98rem!important;padding:0.5rem 0.6rem!important;min-height:52px!important;border-radius:8px!important;}
+  div[data-testid="stButton"] button p{font-size:0.98rem!important;}
+  .qt{font-size:1.15rem!important;line-height:1.6!important;}.qk{font-size:1.25rem!important;}
+  .qb{padding:0.7rem!important;border-radius:10px!important;}
+  .bq{font-size:0.95rem!important;}.bs{font-size:0.82rem!important;}
+  .rd-dot{width:20px!important;height:20px!important;}
 }
 @media(max-width:360px){
-.ah h1{font-size:0.95rem!important;}
-button[kind="primary"],button[kind="secondary"]{font-size:1.05rem!important;}
-button[kind="primary"] p,button[kind="secondary"] p{font-size:1.05rem!important;}
-.qt{font-size:1.25rem!important;}.qk{font-size:1.35rem!important;}
-.wb-s{font-size:1.15rem!important;}
+  .ah h1{font-size:0.9rem!important;}
+  div[data-testid="stButton"] button{font-size:1.0rem!important;}
+  div[data-testid="stButton"] button p{font-size:1.0rem!important;}
+  .qt{font-size:1.2rem!important;}.qk{font-size:1.3rem!important;}
 }
 </style>
 """, unsafe_allow_html=True)
@@ -194,13 +239,12 @@ VQ=[
 D={"started":False,"cq":None,"qi":0,"sc":0,"wrong":0,"ta":0,"sk":0,"msk":0,
     "ans":False,"sel":None,"tsec":30,"qst":None,"round_qs":[],"round_results":[],
     "round_num":1,"phase":"lobby","mode":None,"used":[],
-    "adp_level":"normal",       # 현재 난이도: easy / normal / hard
-    "adp_history":[],           # 라운드별 정답률 누적
+    "adp_level":"normal",
+    "adp_history":[],
 }
 for k,v in D.items():
     if k not in st.session_state: st.session_state[k]=v
 
-# 메인허브에서 재진입 시에만 리셋 (_p5_just_left 플래그)
 if st.session_state.get("_p5_just_left", False):
     st.session_state._p5_just_left = False
     for k in ["cq","qi","sc","wrong","ta","ans","sel","round_qs","round_results","round_num","mode"]:
@@ -215,36 +259,33 @@ GRP={"g1":["수일치","수동태/수일치"],"g2":["가정법","가정법/당�
 VGRP={"v1":"easy","v2":"hard"}
 
 def _calc_adp_level():
-    """최근 3라운드 정답률로 난이도 레벨 계산"""
     hist = st.session_state.get("adp_history", [])
     if len(hist) < 1:
         return st.session_state.get("adp_level", "normal")
-    recent = hist[-3:]  # 최근 3라운드
+    recent = hist[-3:]
     avg = sum(recent) / len(recent)
     cur = st.session_state.get("adp_level", "normal")
-    if avg >= 0.8:    # 80% 이상 → 난이도 상승
+    if avg >= 0.8:
         if cur == "easy": return "normal"
         if cur == "normal": return "hard"
         return "hard"
-    elif avg <= 0.4:  # 40% 이하 → 난이도 하강
+    elif avg <= 0.4:
         if cur == "hard": return "normal"
         if cur == "normal": return "easy"
         return "easy"
-    return cur        # 유지
+    return cur
 
 def pick5(m, grp=None):
     p=pool(m)
     if grp and grp in GRP:
         cats=GRP[grp]
         p=[q for q in p if q.get("cat","") in cats]
-        # ★ 문법 문제 adaptive: 정답률 높으면 hard 카테고리(가정법·도치) 비중 증가
         adp = _calc_adp_level()
         st.session_state.adp_level = adp
         if adp == "hard" and len(p) >= 5:
             hard_cats = ["가정법","가정법/당위","도치","분사구문"]
             hard_p = [q for q in p if q.get("cat","") in hard_cats]
             easy_p = [q for q in p if q.get("cat","") not in hard_cats]
-            # hard 3 + easy 2 비율
             if len(hard_p) >= 3 and len(easy_p) >= 2:
                 avail_h = [q for q in hard_p if q["id"] not in st.session_state.used]
                 avail_e = [q for q in easy_p if q["id"] not in st.session_state.used]
@@ -258,7 +299,6 @@ def pick5(m, grp=None):
             easy_cats = ["수일치","수동태/수일치","접속사","관계대명사"]
             easy_p = [q for q in p if q.get("cat","") in easy_cats]
             hard_p = [q for q in p if q.get("cat","") not in easy_cats]
-            # easy 4 + hard 1 비율
             if len(easy_p) >= 4 and len(hard_p) >= 1:
                 avail_e = [q for q in easy_p if q["id"] not in st.session_state.used]
                 avail_h = [q for q in hard_p if q["id"] not in st.session_state.used]
@@ -269,7 +309,6 @@ def pick5(m, grp=None):
                 for q in chosen: st.session_state.used.append(q["id"]); q["tp"]="grammar"
                 return chosen
     elif grp and grp in VGRP:
-        # ★ 어휘 문제 adaptive: easy/hard diff 태그 직접 활용
         adp = _calc_adp_level()
         st.session_state.adp_level = adp
         if adp == "hard":
@@ -287,17 +326,14 @@ def pick5(m, grp=None):
     chosen=random.sample(avail,min(5,len(avail)))
     for q in chosen: st.session_state.used.append(q["id"]); q["tp"]="grammar" if q["id"].startswith("G") else "vocab"
     return chosen
+
 def fq(t): return t.replace("_______",'<span class="qk">________</span>')
 def tcls(r,t):
     x=r/t if t>0 else 0
     return "safe" if x>0.6 else "warn" if x>0.35 else "danger" if x>0.15 else "critical"
 
 # ════════════════════════════════════════
-# ════════════════════════════════════════
 # PHASE: BATTLE
-# 기능: 문법·어휘 5문제 서바이벌 전투 (30초 타이머, 즉사룰)
-# 관련함수: run_battle_phase(), save_rt_log(), save_adp_log()
-# ════════════════════════════════════════
 # ════════════════════════════════════════
 if st.session_state.phase=="battle":
     if st.session_state.get("_battle_entry_ans_reset", True):
@@ -310,7 +346,7 @@ if st.session_state.phase=="battle":
 
     st.markdown(f'<div class="ah"><h1>⚡ {tn} 화력전 — 라운드 {st.session_state.round_num} ⚔️</h1></div>', unsafe_allow_html=True)
 
-    # 상단바 + 라운드 진행 dots
+    # ── HUD 배틀바 ──
     qi=st.session_state.qi; results=st.session_state.round_results
     dots=""
     for i in range(5):
@@ -329,10 +365,8 @@ if st.session_state.phase=="battle":
         <span class="bs">✅{st.session_state.sc} ❌{st.session_state.wrong}</span>
     </div>''', unsafe_allow_html=True)
 
-    # 타이머 (JS components.html)
+    # ── 타이머 ──
     if not st.session_state.ans:
-        # iOS Safari: autorefresh가 DOM 재정렬을 일으키므로 interval을 넉넉하게
-        # 시간초과는 JS 타이머가 직접 감지 (rerun 최소화)
         st_autorefresh(interval=1000, limit=st.session_state.tsec+5, key="battle_timer")
         elapsed=time.time()-st.session_state.qst
         total=st.session_state.tsec; rem=max(0,total-int(elapsed))
@@ -340,86 +374,113 @@ if st.session_state.phase=="battle":
 
         components.html(f"""
         <style>
-        *{{margin:0;padding:0;box-sizing:border-box;}}body{{background:transparent;overflow:hidden;font-family:sans-serif;margin:0;padding:0;}}
-        #w{{text-align:center;padding:0;margin:0;line-height:1;}}
-        #n{{font-size:1.8rem;font-weight:900;animation:p 1s ease-in-out infinite;}}
-        #bw{{background:#1a1a2e;border-radius:8px;height:10px;margin:0.1rem 0.3rem;overflow:hidden;border:1px solid #333;}}
+        *{{margin:0;padding:0;box-sizing:border-box;}}
+        body{{background:transparent;overflow:hidden;font-family:'Arial Black',monospace;margin:0;padding:0;}}
+        #w{{text-align:center;padding:0 4px;margin:0;line-height:1;}}
+        #n{{font-size:2.4rem;font-weight:900;animation:pulse 1s ease-in-out infinite;letter-spacing:2px;}}
+        #bw{{background:#111;border-radius:10px;height:12px;margin:3px 4px 0;overflow:hidden;border:1px solid #222;}}
         #b{{height:100%;border-radius:10px;transition:width 1s linear;}}
-        .safe{{color:#44ff88;text-shadow:0 0 20px #44ff88;}}
-        .warn{{color:#ffcc00;text-shadow:0 0 25px #ffcc00,0 0 50px #ff8800;}}
-        .danger{{color:#ff4444;text-shadow:0 0 35px #ff4444,0 0 70px #ff0000;}}
-        .critical{{color:#ff0000;text-shadow:0 0 50px #ff0000;font-size:1.8rem!important;}}
+        .safe{{color:#44ff88;text-shadow:0 0 20px #44ff88,0 0 40px #22cc66;}}
+        .warn{{color:#FFD600;text-shadow:0 0 25px #FFD600,0 0 50px #ff8800;}}
+        .danger{{color:#ff4444;text-shadow:0 0 35px #ff4444,0 0 70px #ff0000;animation:shakeNum 0.3s infinite!important;}}
+        .critical{{color:#ff0000;text-shadow:0 0 50px #ff0000,0 0 100px #ff0000;font-size:2.8rem!important;animation:shakeNum 0.15s infinite!important;}}
         .bs{{background:linear-gradient(90deg,#22cc66,#44ff88);box-shadow:0 0 10px #44ff88;}}
-        .bw{{background:linear-gradient(90deg,#cc8800,#ffcc00);box-shadow:0 0 10px #ffcc00;}}
-        .bd{{background:linear-gradient(90deg,#cc2200,#ff4444);box-shadow:0 0 15px #ff4444;animation:bp 0.5s infinite;}}
-        .bc{{background:linear-gradient(90deg,#ff0000,#ff4444);box-shadow:0 0 25px #ff0000;animation:bp 0.25s infinite;}}
-        @keyframes p{{0%,100%{{transform:scale(1);opacity:1}}50%{{transform:scale(1.07);opacity:0.8}}}}
-        @keyframes bp{{0%,100%{{opacity:1}}50%{{opacity:0.4}}}}@keyframes shake{{0%{{transform:translate(0,0)}}20%{{transform:translate(-3px,2px)}}40%{{transform:translate(3px,-2px)}}60%{{transform:translate(-2px,3px)}}80%{{transform:translate(2px,-3px)}}100%{{transform:translate(0,0)}}}}
+        .bw{{background:linear-gradient(90deg,#cc8800,#FFD600);box-shadow:0 0 10px #FFD600;}}
+        .bd{{background:linear-gradient(90deg,#cc2200,#ff4444);box-shadow:0 0 15px #ff4444;animation:bpulse 0.5s infinite;}}
+        .bc{{background:linear-gradient(90deg,#ff0000,#ff4444);box-shadow:0 0 25px #ff0000;animation:bpulse 0.2s infinite;}}
+        @keyframes pulse{{0%,100%{{transform:scale(1);opacity:1}}50%{{transform:scale(1.08);opacity:0.85}}}}
+        @keyframes shakeNum{{0%{{transform:translate(0,0)}}25%{{transform:translate(-4px,0)}}75%{{transform:translate(4px,0)}}100%{{transform:translate(0,0)}}}}
+        @keyframes bpulse{{0%,100%{{opacity:1}}50%{{opacity:0.5}}}}
         </style>
-        <div id="w"><div id="n" class="{tcl}">{rem}</div>
-        <div id="bw"><div id="b" class="b{'s' if tcl=='safe' else 'w' if tcl=='warn' else 'd' if tcl=='danger' else 'c'}" style="width:{pct}%"></div></div></div>
+        <div id="w">
+          <div id="n" class="{tcl}">{rem}</div>
+          <div id="bw"><div id="b" class="b{'s' if tcl=='safe' else 'w' if tcl=='warn' else 'd' if tcl=='danger' else 'c'}" style="width:{pct}%"></div></div>
+        </div>
         <script>
-        var l={rem},t={total};var e=document.getElementById("n"),b=document.getElementById("b");
-        setInterval(function(){{l--;if(l<0)l=0;e.textContent=l;var r=l/t;
-        var c=r>0.6?"safe":r>0.35?"warn":r>0.15?"danger":"critical";e.className=c;
-        b.className="b"+(r>0.6?"s":r>0.35?"w":r>0.15?"d":"c");b.style.width=(r*100)+"%";}},1000);
-        </script>""", height=44)
+        var l={rem},t={total};
+        var e=document.getElementById("n"),b=document.getElementById("b");
+        setInterval(function(){{
+            l--;if(l<0)l=0;
+            e.textContent=l;
+            var r=l/t;
+            var c=r>0.6?"safe":r>0.35?"warn":r>0.15?"danger":"critical";
+            e.className=c;
+            b.className="b"+(r>0.6?"s":r>0.35?"w":r>0.15?"d":"c");
+            b.style.width=(r*100)+"%";
+        }},1000);
+        </script>""", height=52)
 
-        # 시간초과 → YOU LOST
         if rem<=0:
             st.session_state.phase="lost"; st.rerun()
 
-    # 문제
+    # ── 문제 카드 ──
     st.markdown(f'<div class="qb qb-{th}"><div class="qc qc-{th}">{ej} {tn} · {q.get("cat","")}</div><div class="qt">{fq(q["text"])}</div></div>', unsafe_allow_html=True)
 
-    # st.radio
+    # ── 답 버튼 4개 — A/B/C/D 네온 스타일 ──
     if not st.session_state.ans:
         _qi = st.session_state.get('qi', 0)
         _rn = st.session_state.get('round_num', 0)
-        # ★ iOS Safari: radio 컨테이너 강제 표시 + overflow 방지
-        st.markdown('''<style>
-/* iOS Safari radio 완전 표시 보장 */
-div[data-testid=stRadio]{
-    display:block!important;visibility:visible!important;opacity:1!important;
-    min-height:220px!important;overflow:visible!important;
-    position:relative!important;z-index:100!important;
-    -webkit-overflow-scrolling:touch!important;
-    transform:translateZ(0)!important;
-}
-div[data-testid=stRadio]>label{display:none!important;}
-div[data-testid=stRadio]>div{
-    gap:7px!important;display:flex!important;flex-direction:column!important;
-    overflow:visible!important;min-height:200px!important;
-}
-div[data-testid=stRadio]>div>label{
-    background:#0c0c14!important;border:1px solid #1a1a28!important;
-    border-radius:8px!important;padding:0.65rem 0.9rem!important;
-    cursor:pointer!important;width:100%!important;box-sizing:border-box!important;
-    display:flex!important;align-items:center!important;
-    visibility:visible!important;opacity:1!important;min-height:52px!important;
-    -webkit-tap-highlight-color:transparent!important;
-    touch-action:manipulation!important;
-}
-div[data-testid=stRadio]>div>label>div:first-child{display:none!important;}
-div[data-testid=stRadio]>div>label>div:last-child p{
-    font-size:1.05rem!important;font-weight:700!important;
-    color:#ddd8c8!important;margin:0!important;text-align:left!important;
-    visibility:visible!important;opacity:1!important;
-}
-div[data-testid=stRadio]>div>label:nth-child(1){border-left:4px solid #d4af37!important;}
-div[data-testid=stRadio]>div>label:nth-child(1)>div:last-child p{color:#d4af37!important;}
-div[data-testid=stRadio]>div>label:nth-child(2){border-left:4px solid #9aa5b4!important;}
-div[data-testid=stRadio]>div>label:nth-child(2)>div:last-child p{color:#9aa5b4!important;}
-div[data-testid=stRadio]>div>label:nth-child(3){border-left:4px solid #50c878!important;}
-div[data-testid=stRadio]>div>label:nth-child(3)>div:last-child p{color:#50c878!important;}
-div[data-testid=stRadio]>div>label:nth-child(4){border-left:4px solid #4488cc!important;}
-div[data-testid=stRadio]>div>label:nth-child(4)>div:last-child p{color:#4488cc!important;}
-</style>''', unsafe_allow_html=True)
-        _choice = st.radio('sel', options=q['ch'], index=None, key='ch_%s_%s' % (_rn, _qi), label_visibility='collapsed')
-        if _choice is not None:
-            if time.time()-st.session_state.qst>st.session_state.tsec:
+
+        # A/B/C/D 각각 다른 네온 색상
+        _btn_colors = [
+            ("#FFD600", "#1a1600"),   # A — 골드
+            ("#00E5FF", "#001a1f"),   # B — 시안
+            ("#FF2D55", "#1a0010"),   # C — 레드
+            ("#44FF88", "#001a0d"),   # D — 그린
+        ]
+        _labels = ["A", "B", "C", "D"]
+
+        st.markdown("""<style>
+        /* 답 버튼 개별 색상 오버라이드 */
+        div[data-testid="stButton"]:nth-of-type(1) button{
+            border-left:5px solid #FFD600!important;
+            background:#100e00!important;
+        }
+        div[data-testid="stButton"]:nth-of-type(1) button p{color:#FFD600!important;}
+        div[data-testid="stButton"]:nth-of-type(1) button:hover{box-shadow:0 0 25px rgba(255,214,0,0.5)!important;border-color:#FFD600!important;}
+        div[data-testid="stButton"]:nth-of-type(2) button{
+            border-left:5px solid #00E5FF!important;
+            background:#001518!important;
+        }
+        div[data-testid="stButton"]:nth-of-type(2) button p{color:#00E5FF!important;}
+        div[data-testid="stButton"]:nth-of-type(2) button:hover{box-shadow:0 0 25px rgba(0,229,255,0.5)!important;border-color:#00E5FF!important;}
+        div[data-testid="stButton"]:nth-of-type(3) button{
+            border-left:5px solid #FF2D55!important;
+            background:#140008!important;
+        }
+        div[data-testid="stButton"]:nth-of-type(3) button p{color:#FF2D55!important;}
+        div[data-testid="stButton"]:nth-of-type(3) button:hover{box-shadow:0 0 25px rgba(255,45,85,0.5)!important;border-color:#FF2D55!important;}
+        div[data-testid="stButton"]:nth-of-type(4) button{
+            border-left:5px solid #44FF88!important;
+            background:#001408!important;
+        }
+        div[data-testid="stButton"]:nth-of-type(4) button p{color:#44FF88!important;}
+        div[data-testid="stButton"]:nth-of-type(4) button:hover{box-shadow:0 0 25px rgba(68,255,136,0.5)!important;border-color:#44FF88!important;}
+        div[data-testid="stButton"] button{
+            min-height:62px!important;
+            font-size:1.05rem!important;
+            font-weight:800!important;
+            border-radius:10px!important;
+            text-align:left!important;
+            padding:0.6rem 1rem!important;
+            margin-bottom:2px!important;
+        }
+        div[data-testid="stButton"] button p{
+            font-size:1.05rem!important;
+            font-weight:800!important;
+        }
+        </style>""", unsafe_allow_html=True)
+
+        _clicked = None
+        for _ii, _ch in enumerate(q['ch']):
+            _display = f"【{_labels[_ii]}】  {_ch}"
+            if st.button(_display, key=f"ans_{_rn}_{_qi}_{_ii}", use_container_width=True):
+                _clicked = _ii
+
+        if _clicked is not None:
+            if time.time()-st.session_state.qst > st.session_state.tsec:
                 st.session_state.phase='lost'; st.rerun()
-            i = q['ch'].index(_choice)
+            i = _clicked
             st.session_state.ans=True; st.session_state.sel=i
             ok=i==q['a']
             st.session_state.round_results.append(ok)
@@ -427,37 +488,28 @@ div[data-testid=stRadio]>div>label:nth-child(4)>div:last-child p{color:#4488cc!i
             else: st.session_state.wrong+=1
             st.session_state.ta+=1
 
-            # ══════════════════════════════════════════════════
-            # ★ 논문·특허 데이터 수집 (rt_logs + zpd_logs + p5_logs)
-            # ══════════════════════════════════════════════════
+            # ── 데이터 수집 (rt_logs + zpd_logs + p5_logs) ──
             try:
                 _elapsed_now = time.time() - st.session_state.qst
                 _tsec_now    = st.session_state.tsec
                 _sec_rem     = round(max(0.0, _tsec_now - _elapsed_now), 2)
                 _rt_proxy    = round(_tsec_now - _sec_rem, 2)
                 _rem_ratio   = _sec_rem / _tsec_now if _tsec_now > 0 else 0
-
-                # 오답 타이밍 유형 분류 (논문 03 핵심)
                 if ok:
                     _err_type = "correct"
                 elif _rem_ratio > 0.8:
-                    _err_type = "fast_wrong"   # 빠른 오답 = 충동 반응
+                    _err_type = "fast_wrong"
                 elif _rem_ratio < 0.2:
-                    _err_type = "slow_wrong"   # 느린 오답 = 인지부하
+                    _err_type = "slow_wrong"
                 else:
                     _err_type = "mid_wrong"
-
                 _uid  = st.session_state.get("nickname", "guest")
                 _cat  = q.get("cat", "")
                 _qid  = q.get("id", "?")
-                _today = datetime.now().strftime("%Y-%m-%d") if "datetime" in dir() else __import__("datetime").datetime.now().strftime("%Y-%m-%d")
-
-                # 세션 번호 (누적) — 없으면 초기화
+                _today = __import__("datetime").datetime.now().strftime("%Y-%m-%d")
                 if "p5_session_no" not in st.session_state:
                     st.session_state.p5_session_no = 0
                 _sno = st.session_state.p5_session_no
-
-                # 주차 계산 (첫 접속일 기준)
                 if "p5_start_date" not in st.session_state:
                     st.session_state.p5_start_date = _today
                 try:
@@ -467,10 +519,7 @@ div[data-testid=stRadio]>div>label:nth-child(4)>div:last-child p{color:#4488cc!i
                     _week = _days // 7 + 1
                 except:
                     _week = 1
-
                 _st_data = load_storage()
-
-                # ── A. rt_logs (논문 01·03 핵심) ──────────────
                 _rt_log = {
                     "user_id":          _uid,
                     "session_date":     _today,
@@ -483,16 +532,13 @@ div[data-testid=stRadio]>div>label:nth-child(4)>div:last-child p{color:#4488cc!i
                     "correct":          ok,
                     "grammar_type":     _cat,
                     "error_timing_type": _err_type,
-                    "difficulty_level": st.session_state.get("adp_level", "normal"),  # ★ 난이도 기록
+                    "difficulty_level": st.session_state.get("adp_level", "normal"),
                     "week":             _week,
                     "timestamp":        __import__("datetime").datetime.now().isoformat(),
                 }
                 if "rt_logs" not in _st_data:
                     _st_data["rt_logs"] = []
                 _st_data["rt_logs"].append(_rt_log)
-
-                # ── B. zpd_logs — 게임오버 시 종료 지점 기록 (논문 06) ──
-                # (게임오버 직전 마지막 문제 번호를 기록 → 세션 끝날 때 저장)
                 if not ok:
                     _st_data.setdefault("_zpd_pending", {})
                     _st_data["_zpd_pending"][_uid] = {
@@ -504,14 +550,11 @@ div[data-testid=stRadio]>div>label:nth-child(4)>div:last-child p{color:#4488cc!i
                         "max_q_reached":  st.session_state.qi + 1,
                         "week":           _week,
                     }
-
                 with open(STORAGE_FILE, "w", encoding="utf-8") as _f:
                     json.dump(_st_data, _f, ensure_ascii=False, indent=2)
-
             except Exception as _e:
-                pass  # 데이터 수집 실패해도 게임은 계속
+                pass
 
-            # ── 기존 DataCollector 유지 ──
             try:
                 import sys as _sys, os as _os
                 _sys.path.insert(0, _os.path.dirname(_os.path.dirname(__file__)))
@@ -532,9 +575,58 @@ div[data-testid=stRadio]>div>label:nth-child(4)>div:last-child p{color:#4488cc!i
             else:
                 st.session_state.phase='victory' if st.session_state.sc>=4 else 'lost'
             st.rerun()
+
+    else:
+        # ── 정답/오답 피드백 (답 선택 후) ──
+        _sel = st.session_state.sel
+        _correct_idx = q['a']
+        _ok = (_sel == _correct_idx)
+        if _ok:
+            components.html("""
+            <style>
+            *{margin:0;padding:0;box-sizing:border-box;}
+            body{background:transparent;display:flex;align-items:center;justify-content:center;height:60px;}
+            @keyframes popIn{0%{transform:scale(0.5);opacity:0;}60%{transform:scale(1.15);}100%{transform:scale(1);opacity:1;}}
+            .hit{font-family:'Arial Black',sans-serif;font-size:1.6rem;font-weight:900;color:#44FF88;
+              text-shadow:0 0 20px #44FF88,0 0 50px #22cc66;letter-spacing:4px;
+              animation:popIn 0.4s cubic-bezier(0.34,1.56,0.64,1) forwards;}
+            </style>
+            <div class="hit">💥 격파!</div>""", height=60)
+        else:
+            _ans_text = q['ch'][_correct_idx]
+            components.html(f"""
+            <style>
+            *{{margin:0;padding:0;box-sizing:border-box;}}
+            body{{background:transparent;display:flex;align-items:center;justify-content:center;height:60px;}}
+            @keyframes shk{{0%{{transform:translate(0,0)}}20%{{transform:translate(-5px,0)}}40%{{transform:translate(5px,0)}}60%{{transform:translate(-4px,0)}}80%{{transform:translate(4px,0)}}100%{{transform:translate(0,0)}}}}
+            .miss{{font-family:'Arial Black',sans-serif;font-size:1.4rem;font-weight:900;color:#FF2D55;
+              text-shadow:0 0 20px #FF2D55,0 0 50px #cc0033;letter-spacing:3px;
+              animation:shk 0.4s ease-in-out;}}
+            </style>
+            <div class="miss">💀 피격! &nbsp;<span style="font-size:1rem;color:#aaa;">정답: {_ans_text}</span></div>""", height=60)
+
+        st.markdown(f'<div style="background:#0a0c14;border-left:4px solid {"#44FF88" if _ok else "#FF2D55"};border-radius:0 10px 10px 0;padding:8px 12px;margin:4px 0;">'
+                    f'<span style="font-size:0.85rem;color:{"#44FF88" if _ok else "#FF2D55"};font-weight:700;">💡 {q.get("exk","")}</span></div>', unsafe_allow_html=True)
+
+        if st.button("▶ 다음 문제", key="next_q", use_container_width=True):
+            if st.session_state.wrong>=2:
+                st.session_state.phase='lost'; st.rerun()
+            if st.session_state.qi>=4:
+                st.session_state.phase='victory' if st.session_state.sc>=4 else 'lost'; st.rerun()
+            nqi = st.session_state.qi + 1
+            if nqi < len(st.session_state.round_qs):
+                st.session_state.qi = nqi
+                st.session_state.cq = st.session_state.round_qs[nqi]
+                st.session_state.ans=False; st.session_state.sel=None
+            else:
+                st.session_state.phase='victory' if st.session_state.sc>=4 else 'lost'
+            st.rerun()
+
+# ════════════════════════════════════════
+# PHASE: VICTORY
 # ════════════════════════════════════════
 elif st.session_state.phase=="victory":
-    # ★ adaptive difficulty — 정답률 기록 후 다음 라운드 레벨 결정
+    # ── adaptive difficulty 기록 ──
     try:
         _sc_adp = st.session_state.get("sc", 0)
         _rate_adp = _sc_adp / 5.0
@@ -543,7 +635,7 @@ elif st.session_state.phase=="victory":
         st.session_state.adp_history = _hist
         st.session_state.adp_level = _calc_adp_level()
     except: pass
-    # ★ 세션 번호 증가 + ZPD VICTORY 기록
+    # ── zpd_logs + p5_logs ──
     try:
         st.session_state.p5_session_no = st.session_state.get("p5_session_no", 0) + 1
         _st2 = load_storage()
@@ -559,108 +651,121 @@ elif st.session_state.phase=="victory":
             _week2 = _days2 // 7 + 1
         except:
             _week2 = 1
-
-        # zpd_logs: VICTORY = 5번 문제까지 도달
         _zpd_entry = {
-            "user_id":        _uid2,
-            "session_date":   _today2,
-            "session_no":     _sno2,
-            "arena":          "P5",
-            "timer_setting":  st.session_state.tsec,
-            "game_over_q_no": None,
-            "result":         "VICTORY",
-            "max_q_reached":  5,
-            "week":           _week2,
-            "timestamp":      __import__("datetime").datetime.now().isoformat(),
+            "user_id":        _uid2,"session_date":   _today2,"session_no":     _sno2,
+            "arena":          "P5","timer_setting":  st.session_state.tsec,
+            "game_over_q_no": None,"result":         "VICTORY","max_q_reached":  5,
+            "week":           _week2,"timestamp":      __import__("datetime").datetime.now().isoformat(),
         }
-        if "zpd_logs" not in _st2:
-            _st2["zpd_logs"] = []
+        if "zpd_logs" not in _st2: _st2["zpd_logs"] = []
         _st2["zpd_logs"].append(_zpd_entry)
-
-        # p5_logs: 라운드 결과 요약
         _p5_entry = {
-            "user_id":       _uid2,
-            "session_date":  _today2,
-            "session_no":    _sno2,
-            "timer_selected": st.session_state.tsec,
-            "mode":          st.session_state.mode,
-            "result":        "VICTORY",
-            "correct_count": st.session_state.sc,
-            "wrong_count":   st.session_state.wrong,
-            "week":          _week2,
+            "user_id":       _uid2,"session_date":  _today2,"session_no":    _sno2,
+            "timer_selected": st.session_state.tsec,"mode":          st.session_state.mode,
+            "result":        "VICTORY","correct_count": st.session_state.sc,
+            "wrong_count":   st.session_state.wrong,"week":          _week2,
             "timestamp":     __import__("datetime").datetime.now().isoformat(),
         }
-        if "p5_logs" not in _st2:
-            _st2["p5_logs"] = []
-        # 같은 세션 중복 방지
+        if "p5_logs" not in _st2: _st2["p5_logs"] = []
         if not any(p.get("session_no") == _sno2 and p.get("user_id") == _uid2 and p.get("result") == "VICTORY"
                    for p in _st2["p5_logs"]):
             _st2["p5_logs"].append(_p5_entry)
-
         with open(STORAGE_FILE, "w", encoding="utf-8") as _f2:
             json.dump(_st2, _f2, ensure_ascii=False, indent=2)
-    except:
-        pass
+    except: pass
+
     _sc_v = st.session_state.sc
     _wr_v = st.session_state.wrong
     _rn_v = st.session_state.round_num
     if _sc_v == 5:
-        _grade = "👑 PERFECT!"; _praise = "완벽해! 토익 만점도 따놓은 당상! 🔥"; _pcol = "#ffd700"
+        _grade = "👑 PERFECT!"; _praise = "완벽해! 토익 만점도 따놓은 당상! 🔥"; _pcol = "#FFD600"
     elif _sc_v == 4:
-        _grade = "⚔️ VICTORY!"; _praise = "강해! 이 기세면 토익 900+ 간다! 💪"; _pcol = "#44ff88"
+        _grade = "⚔️ VICTORY!"; _praise = "강해! 이 기세면 토익 900+ 간다! 💪"; _pcol = "#44FF88"
     else:
-        _grade = "✅ CLEAR!"; _praise = "아슬아슬하게 살아남았어. 더 갈고닦아! 😤"; _pcol = "#88ccff"
-    _stars_html = "".join([f'<div class="star" style="left:{random.randint(2,98)}%;top:{random.randint(2,98)}%;width:{random.randint(3,10)}px;height:{random.randint(3,10)}px;animation-delay:{random.random():.2f}s;animation-duration:{0.5+random.random()*1:.1f}s;background:{"#ffd700" if random.random()>0.4 else "#fff8cc"};border-radius:50%;position:absolute;"></div>' for _ in range(50)])
-    _coins_html = "".join([f'<div class="coin" style="left:{random.randint(5,95)}%;animation-delay:{random.random():.2f}s;animation-duration:{1.2+random.random():.1f}s;">{"💰" if random.random()>0.5 else "⭐"}</div>' for _ in range(10)])
+        _grade = "✅ CLEAR!"; _praise = "아슬아슬 살아남았어. 더 갈고닦아! 😤"; _pcol = "#88ccff"
+
+    _stars_html = "".join([
+        f'<div style="position:absolute;left:{random.randint(2,98)}%;top:{random.randint(2,98)}%;'
+        f'width:{random.randint(3,10)}px;height:{random.randint(3,10)}px;'
+        f'border-radius:50%;background:{"#FFD600" if random.random()>0.4 else "#fff8cc"};'
+        f'animation:twinkle {0.5+random.random()*1:.1f}s ease-in-out infinite {random.random():.2f}s both;"></div>'
+        for _ in range(60)])
+    _coins_html = "".join([
+        f'<div style="position:absolute;top:-10px;left:{random.randint(5,95)}%;font-size:1.4rem;'
+        f'animation:coinFall {1.2+random.random():.1f}s ease-in infinite {random.random():.2f}s;">{"💰" if random.random()>0.5 else "⭐"}</div>'
+        for _ in range(14)])
+    _lightning_html = "".join([
+        f'<div style="position:absolute;left:{random.randint(5,90)}%;top:{random.randint(5,85)}%;'
+        f'font-size:{random.randint(20,40)}px;opacity:0.15;'
+        f'animation:twinkle {0.3+random.random()*0.5:.1f}s ease-in-out infinite {random.random():.2f}s;">⚡</div>'
+        for _ in range(8)])
+
     components.html(f"""
     <style>
     *{{margin:0;padding:0;box-sizing:border-box;}}
-    body{{background:linear-gradient(180deg,#080600 0%,#1a1200 100%);overflow:hidden;height:100vh;font-family:'Arial Black',sans-serif;display:flex;align-items:center;justify-content:center;}}
-    @keyframes vi{{0%{{transform:scale(0) rotate(-15deg);opacity:0;}}65%{{transform:scale(1.1) rotate(3deg);}}100%{{transform:scale(1) rotate(0deg);opacity:1;}}}}
-    @keyframes goldGlow{{0%,100%{{text-shadow:0 0 20px #ffd700,0 0 50px #ff8800;}}50%{{text-shadow:0 0 50px #ffd700,0 0 100px #ff8800,0 0 160px #ff4400;}}}}
-    @keyframes twinkle{{0%,100%{{opacity:1;transform:scale(1) rotate(0deg);}}50%{{opacity:0.15;transform:scale(0.2) rotate(180deg);}}}}
-    @keyframes coinFall{{0%{{transform:translateY(-20px) rotate(0deg) scale(1);opacity:1;}}100%{{transform:translateY(130px) rotate(540deg) scale(0.5);opacity:0;}}}}
-    @keyframes scoreIn{{0%{{transform:translateY(30px);opacity:0;}}100%{{transform:translateY(0);opacity:1;}}}}
+    body{{background:linear-gradient(180deg,#060400 0%,#1a1000 50%,#060400 100%);
+      overflow:hidden;height:100vh;font-family:'Arial Black',sans-serif;
+      display:flex;align-items:center;justify-content:center;}}
+    @keyframes vi{{0%{{transform:scale(0) rotate(-20deg);opacity:0;}}65%{{transform:scale(1.12) rotate(3deg);}}100%{{transform:scale(1) rotate(0deg);opacity:1;}}}}
+    @keyframes goldGlow{{0%,100%{{text-shadow:0 0 20px #FFD600,0 0 60px #ff8800,0 0 120px #ff4400;}}50%{{text-shadow:0 0 60px #FFD600,0 0 120px #ff8800,0 0 200px #ff4400;}}}}
+    @keyframes twinkle{{0%,100%{{opacity:1;transform:scale(1) rotate(0deg);}}50%{{opacity:0.1;transform:scale(0.2) rotate(180deg);}}}}
+    @keyframes coinFall{{0%{{transform:translateY(-20px) rotate(0deg) scale(1);opacity:1;}}100%{{transform:translateY(160px) rotate(540deg) scale(0.4);opacity:0;}}}}
+    @keyframes scoreIn{{0%{{transform:translateY(40px);opacity:0;}}100%{{transform:translateY(0);opacity:1;}}}}
     @keyframes barFill{{0%{{width:0%;}}100%{{width:{int(_sc_v/5*100)}%;}}}}
-    @keyframes pulse{{0%,100%{{transform:scale(1);}}50%{{transform:scale(1.04);}}}}
-    .wrap{{text-align:center;animation:vi 0.8s cubic-bezier(0.34,1.56,0.64,1) forwards;position:relative;z-index:10;width:88%;}}
-    .round-tag{{font-size:0.7rem;color:#886600;font-weight:700;letter-spacing:3px;margin-bottom:6px;}}
-    .grade{{font-size:2.6rem;font-weight:900;color:#ffd700;animation:goldGlow 2s ease-in-out infinite, pulse 1.5s ease-in-out infinite;letter-spacing:2px;line-height:1.1;}}
-    .scorebox{{background:rgba(212,175,55,0.1);border:2px solid rgba(212,175,55,0.6);border-radius:14px;padding:12px 24px;margin:10px auto;display:inline-block;animation:scoreIn 0.6s ease 0.3s both;}}
-    .sc-num{{font-size:3rem;font-weight:900;color:#ffd700;line-height:1;text-shadow:0 0 20px rgba(255,215,0,0.6);}}
-    .sc-label{{font-size:0.72rem;color:#886600;font-weight:700;letter-spacing:1px;margin-top:2px;}}
-    .bar-wrap{{background:#1a1200;border-radius:20px;height:10px;margin:10px auto;width:82%;overflow:hidden;border:1px solid #443300;}}
-    .bar-fill{{height:100%;border-radius:20px;background:linear-gradient(90deg,#a07800,#ffd700,#fff8aa);box-shadow:0 0 8px #ffd700;animation:barFill 1s ease 0.6s both;}}
-    .praise{{font-size:0.9rem;color:{_pcol};font-weight:900;margin:8px 0 2px;animation:scoreIn 0.5s ease 0.8s both;}}
-    .star{{position:absolute;animation:twinkle var(--dur,1s) ease-in-out infinite;}}
-    .coin{{position:absolute;top:-10px;font-size:1.4rem;animation:coinFall var(--dur,1.5s) ease-in infinite;}}
+    @keyframes pulse{{0%,100%{{transform:scale(1);}}50%{{transform:scale(1.05);}}}}
+    @keyframes borderPulse{{0%,100%{{box-shadow:0 0 20px rgba(255,214,0,0.4),inset 0 0 20px rgba(255,214,0,0.05);}}50%{{box-shadow:0 0 50px rgba(255,214,0,0.8),inset 0 0 40px rgba(255,214,0,0.1);}}}}
+    .wrap{{text-align:center;animation:vi 0.8s cubic-bezier(0.34,1.56,0.64,1) forwards;position:relative;z-index:10;width:90%;}}
+    .round-tag{{font-size:0.72rem;color:#886600;font-weight:700;letter-spacing:4px;margin-bottom:8px;}}
+    .grade{{font-size:3rem;font-weight:900;color:#FFD600;
+      animation:goldGlow 1.5s ease-in-out infinite, pulse 1.5s ease-in-out infinite;
+      letter-spacing:3px;line-height:1.1;}}
+    .scorebox{{background:rgba(255,214,0,0.08);border:2px solid rgba(255,214,0,0.5);
+      border-radius:16px;padding:14px 28px;margin:12px auto;display:inline-block;
+      animation:scoreIn 0.6s ease 0.3s both, borderPulse 2s ease-in-out infinite;}}
+    .sc-num{{font-size:3.5rem;font-weight:900;color:#FFD600;line-height:1;
+      text-shadow:0 0 30px rgba(255,214,0,0.8);}}
+    .sc-label{{font-size:0.78rem;color:#aa8800;font-weight:700;letter-spacing:2px;margin-top:4px;}}
+    .bar-wrap{{background:#1a1100;border-radius:20px;height:12px;margin:12px auto;width:85%;
+      overflow:hidden;border:1px solid #443300;}}
+    .bar-fill{{height:100%;border-radius:20px;
+      background:linear-gradient(90deg,#886600,#FFD600,#fff8aa);
+      box-shadow:0 0 12px #FFD600;animation:barFill 1.2s ease 0.6s both;}}
+    .praise{{font-size:1.0rem;color:{_pcol};font-weight:900;margin:10px 0 4px;
+      animation:scoreIn 0.5s ease 0.8s both;letter-spacing:1px;}}
     </style>
-    <div style="position:absolute;width:100%;height:100%;overflow:hidden;top:0;left:0;">{_stars_html}{_coins_html}</div>
+    <div style="position:absolute;width:100%;height:100%;overflow:hidden;top:0;left:0;">
+      {_stars_html}{_coins_html}{_lightning_html}
+    </div>
     <div class="wrap">
         <div class="round-tag">⚔️ ROUND {_rn_v} CLEAR ⚔️</div>
         <div class="grade">{_grade}</div>
         <div class="scorebox">
-            <div class="sc-num">{_sc_v}<span style="font-size:1.4rem;color:#886600;"> / 5</span></div>
+            <div class="sc-num">{_sc_v}<span style="font-size:1.6rem;color:#886600;"> / 5</span></div>
             <div class="sc-label">✅ {_sc_v}격파 &nbsp;·&nbsp; ❌ {_wr_v}개 놓침</div>
         </div>
         <div class="bar-wrap"><div class="bar-fill"></div></div>
         <div class="praise">{_praise}</div>
     </div>
-    """, height=230)
+    """, height=290)
 
     st.markdown("""<style>
-    button[kind="primary"]{background:#0c0c00!important;border:2px solid #d4af37!important;}
-    button[kind="primary"] p{color:#ffd700!important;font-size:1.1rem!important;font-weight:900!important;}
-    button[kind="primary"]:hover{background:rgba(212,175,55,0.12)!important;box-shadow:0 0 20px rgba(212,175,55,0.5)!important;}
-    button[kind="secondary"]{background:#0a0a0a!important;border:1.5px solid rgba(255,255,255,0.2)!important;}
-    button[kind="secondary"] p{color:#888!important;font-size:1.0rem!important;}
+    div[data-testid="stButton"]:nth-of-type(1) button{
+      background:#0c0c00!important;border:2px solid #FFD600!important;
+      border-left:5px solid #FFD600!important;border-radius:12px!important;
+    }
+    div[data-testid="stButton"]:nth-of-type(1) button p{color:#FFD600!important;font-size:1.1rem!important;font-weight:900!important;}
+    div[data-testid="stButton"]:nth-of-type(1) button:hover{box-shadow:0 0 25px rgba(255,214,0,0.6)!important;}
+    div[data-testid="stButton"]:nth-of-type(2) button{
+      background:#0a0a0a!important;border:1.5px solid rgba(255,255,255,0.2)!important;
+    }
+    div[data-testid="stButton"]:nth-of-type(2) button p{color:#777!important;font-size:0.95rem!important;}
     </style>""", unsafe_allow_html=True)
     vc=st.columns(2)
     with vc[0]:
-        if st.button("📋 브리핑 보기", type="primary", use_container_width=True):
+        if st.button("📋 브리핑 보기", use_container_width=True):
             st.session_state.phase="briefing"; st.rerun()
     with vc[1]:
-        if st.button("🏠 홈", type="secondary", use_container_width=True):
+        if st.button("🏠 홈", use_container_width=True):
             st.session_state._p5_just_left = True
             st.session_state.ans = False
             st.session_state["_battle_entry_ans_reset"] = True
@@ -674,7 +779,6 @@ elif st.session_state.phase=="victory":
 # PHASE: YOU LOST
 # ════════════════════════════════════════
 elif st.session_state.phase=="lost":
-    # ★ adaptive difficulty — 정답률 기록 후 다음 라운드 레벨 하향 고려
     try:
         _sc_adp = st.session_state.get("sc", 0)
         _rate_adp = _sc_adp / 5.0
@@ -683,7 +787,6 @@ elif st.session_state.phase=="lost":
         st.session_state.adp_history = _hist
         st.session_state.adp_level = _calc_adp_level()
     except: pass
-    # ★ 세션 번호 증가 + ZPD GAME_OVER 기록
     try:
         st.session_state.p5_session_no = st.session_state.get("p5_session_no", 0) + 1
         _st3 = load_storage()
@@ -699,56 +802,39 @@ elif st.session_state.phase=="lost":
             _week3 = _days3 // 7 + 1
         except:
             _week3 = 1
-
-        # zpd_logs: _zpd_pending에서 꺼내서 저장
         _pending = _st3.get("_zpd_pending", {}).get(_uid3, {})
         _go_q = _pending.get("game_over_q_no", st.session_state.qi + 1)
         _zpd3 = {
-            "user_id":        _uid3,
-            "session_date":   _today3,
-            "session_no":     _sno3,
-            "arena":          "P5",
-            "timer_setting":  st.session_state.tsec,
-            "game_over_q_no": _go_q,
-            "result":         "GAME_OVER",
-            "max_q_reached":  st.session_state.qi + 1,
-            "week":           _week3,
+            "user_id":        _uid3,"session_date":   _today3,"session_no":     _sno3,
+            "arena":          "P5","timer_setting":  st.session_state.tsec,
+            "game_over_q_no": _go_q,"result":         "GAME_OVER",
+            "max_q_reached":  st.session_state.qi + 1,"week":           _week3,
             "timestamp":      __import__("datetime").datetime.now().isoformat(),
         }
-        if "zpd_logs" not in _st3:
-            _st3["zpd_logs"] = []
+        if "zpd_logs" not in _st3: _st3["zpd_logs"] = []
         if not any(z.get("session_no") == _sno3 and z.get("user_id") == _uid3
                    for z in _st3["zpd_logs"]):
             _st3["zpd_logs"].append(_zpd3)
-
-        # p5_logs: 라운드 결과 요약
         _p5e3 = {
-            "user_id":        _uid3,
-            "session_date":   _today3,
-            "session_no":     _sno3,
-            "timer_selected": st.session_state.tsec,
-            "mode":           st.session_state.mode,
-            "result":         "GAME_OVER",
-            "correct_count":  st.session_state.sc,
-            "wrong_count":    st.session_state.wrong,
-            "week":           _week3,
+            "user_id":        _uid3,"session_date":   _today3,"session_no":     _sno3,
+            "timer_selected": st.session_state.tsec,"mode":           st.session_state.mode,
+            "result":         "GAME_OVER","correct_count":  st.session_state.sc,
+            "wrong_count":    st.session_state.wrong,"week":           _week3,
             "timestamp":      __import__("datetime").datetime.now().isoformat(),
         }
-        if "p5_logs" not in _st3:
-            _st3["p5_logs"] = []
+        if "p5_logs" not in _st3: _st3["p5_logs"] = []
         if not any(p.get("session_no") == _sno3 and p.get("user_id") == _uid3 and p.get("result") == "GAME_OVER"
                    for p in _st3["p5_logs"]):
             _st3["p5_logs"].append(_p5e3)
-
         with open(STORAGE_FILE, "w", encoding="utf-8") as _f3:
             json.dump(_st3, _f3, ensure_ascii=False, indent=2)
-    except:
-        pass
+    except: pass
+
     _sc = st.session_state.sc
     _wrong = st.session_state.wrong
     _pct = int(_sc / 5 * 100)
     _is_timeout = (time.time()-st.session_state.qst > st.session_state.tsec)
-    _reason = "시간초과" if _is_timeout else f"오답 {_wrong}개"
+    _reason = "시간초과 ⏰" if _is_timeout else f"오답 {_wrong}개 💀"
     if _pct == 0:
         _taunt = "문법책 한 번이라도 펴봤어? 📚"; _sub = "수일치도 모르면서 토익 점수 바라지 마 😶"
     elif _is_timeout:
@@ -759,27 +845,51 @@ elif st.session_state.phase=="lost":
         _taunt = f"겨우 {_sc}개... 어법이 이 정도면 문장도 못 읽겠다 😤"; _sub = "접속사? 수일치? 기초부터 다시 해"
     else:
         _taunt = "딱 한 문제 차이야. 억울하지? 😭"; _sub = "그 한 문제가 토익 점수 50점 차이야"
+
+    _embers = "".join([
+        f'<div style="position:absolute;left:{random.randint(5,95)}%;bottom:{random.randint(0,30)}%;'
+        f'width:{random.randint(4,12)}px;height:{random.randint(4,12)}px;border-radius:50%;'
+        f'background:{"#ff4400" if random.random()>0.4 else "#ff8800"};'
+        f'animation:rise {1+random.random():.1f}s ease-in infinite {random.random():.1f}s;"></div>'
+        for _ in range(50)])
+    _skulls = "".join([
+        f'<div style="position:absolute;left:{random.randint(5,90)}%;top:{random.randint(5,80)}%;'
+        f'font-size:{random.randint(12,28)}px;opacity:{random.random()*0.15:.2f};'
+        f'animation:fadeFloat {1.5+random.random():.1f}s ease-in-out infinite {random.random():.1f}s;">💀</div>'
+        for _ in range(10)])
+
     components.html(f"""
     <style>
     *{{margin:0;padding:0;box-sizing:border-box;}}
-    body{{background:#0a0000;overflow:hidden;display:flex;align-items:center;justify-content:center;height:100vh;font-family:'Arial Black',sans-serif;}}
-    @keyframes redPulse{{0%,100%{{background:#0a0000;}}50%{{background:#1a0000;}}}}
-    @keyframes crashIn{{0%{{transform:scale(4) rotate(-5deg);opacity:0;}}60%{{transform:scale(0.9) rotate(2deg);}}100%{{transform:scale(1) rotate(0deg);opacity:1;}}}}
-    @keyframes shakeX{{0%,100%{{transform:translateX(0);}}20%{{transform:translateX(-8px);}}40%{{transform:translateX(8px);}}60%{{transform:translateX(-5px);}}80%{{transform:translateX(5px);}}}}
-    @keyframes rise{{0%{{opacity:1;transform:translateY(0) scale(1);}}100%{{opacity:0;transform:translateY(-300px) scale(0.3);}}}}
-    @keyframes flicker{{0%,100%{{opacity:1;}}50%{{opacity:0.7;}}}}
-    body{{animation:redPulse 0.8s ease-in-out infinite;}}
-    .wrap{{text-align:center;animation:crashIn 0.6s cubic-bezier(0.34,1.56,0.64,1) forwards;z-index:10;position:relative;padding:6px;}}
-    .skull{{font-size:2rem;animation:shakeX 0.4s ease-in-out infinite;display:inline-block;margin-bottom:4px;}}
-    .lost-txt{{font-size:1.5rem;font-weight:900;color:#ff0000;text-shadow:0 0 10px #ff0000;animation:flicker 0.3s infinite;letter-spacing:2px;}}
-    .reason{{font-size:0.8rem;color:#ff6644;font-weight:700;margin:3px 0;letter-spacing:1px;}}
-    .score{{font-size:2.2rem;font-weight:900;color:#ffcc00;text-shadow:0 0 20px #ffaa00,0 0 40px #ff8800;margin:6px 0;}}
-    .taunt{{font-size:1.0rem;color:#ff8888;font-weight:900;margin:6px 0;animation:shakeX 3s ease-in-out infinite;}}
-    .sub{{font-size:0.8rem;color:#ff6666;margin-top:3px;font-weight:700;}}
-    .embers{{position:absolute;width:100%;height:100%;top:0;left:0;pointer-events:none;}}
-    .ember{{position:absolute;border-radius:50%;animation:rise 1.5s ease-in infinite;}}
+    body{{background:#0a0000;overflow:hidden;display:flex;align-items:center;justify-content:center;
+      height:100vh;font-family:'Arial Black',sans-serif;}}
+    @keyframes redPulse{{0%,100%{{background:#0a0000;}}50%{{background:#180000;}}}}
+    @keyframes crashIn{{0%{{transform:scale(4) rotate(-8deg);opacity:0;}}60%{{transform:scale(0.92) rotate(2deg);}}100%{{transform:scale(1) rotate(0deg);opacity:1;}}}}
+    @keyframes shakeX{{0%,100%{{transform:translateX(0);}}20%{{transform:translateX(-10px);}}40%{{transform:translateX(10px);}}60%{{transform:translateX(-7px);}}80%{{transform:translateX(7px);}}}}
+    @keyframes rise{{0%{{opacity:1;transform:translateY(0) scale(1);}}100%{{opacity:0;transform:translateY(-350px) scale(0.3);}}}}
+    @keyframes flicker{{0%,100%{{opacity:1;}}30%{{opacity:0.6;}}60%{{opacity:0.9;}}}}
+    @keyframes fadeFloat{{0%,100%{{opacity:0;transform:translateY(0);}}50%{{opacity:0.15;transform:translateY(-20px);}}}}
+    @keyframes scoreIn{{0%{{transform:translateY(30px);opacity:0;}}100%{{transform:translateY(0);opacity:1;}}}}
+    body{{animation:redPulse 0.6s ease-in-out infinite;}}
+    .wrap{{text-align:center;animation:crashIn 0.6s cubic-bezier(0.34,1.56,0.64,1) forwards;
+      z-index:10;position:relative;padding:10px;}}
+    .skull{{font-size:2.8rem;animation:shakeX 0.5s ease-in-out infinite;display:inline-block;margin-bottom:6px;}}
+    .lost-txt{{font-size:2.2rem;font-weight:900;color:#ff0000;
+      text-shadow:0 0 20px #ff0000,0 0 60px #cc0000;
+      animation:flicker 0.25s infinite;letter-spacing:4px;}}
+    .reason{{font-size:0.9rem;color:#ff6644;font-weight:700;margin:5px 0;letter-spacing:2px;
+      background:rgba(255,100,0,0.1);border:1px solid rgba(255,100,0,0.3);
+      border-radius:20px;display:inline-block;padding:3px 16px;}}
+    .score{{font-size:2.8rem;font-weight:900;color:#ffcc00;
+      text-shadow:0 0 30px #ffaa00,0 0 60px #ff8800;margin:8px 0;
+      animation:scoreIn 0.5s ease 0.3s both;}}
+    .taunt{{font-size:1.05rem;color:#ff8888;font-weight:900;margin:8px 0;
+      animation:shakeX 4s ease-in-out infinite;}}
+    .sub{{font-size:0.82rem;color:#ff6666;margin-top:4px;font-weight:700;opacity:0.9;}}
     </style>
-    <div class="embers">""" + "".join([f'<div class="ember" style="left:{random.randint(5,95)}%;bottom:{random.randint(0,20)}%;width:{random.randint(4,10)}px;height:{random.randint(4,10)}px;background:{"#ff4400" if random.random()>0.5 else "#ff8800"};animation-delay:{random.random():.1f}s;animation-duration:{1+random.random():.1f}s;"></div>' for _ in range(40)]) + f"""</div>
+    <div style="position:absolute;width:100%;height:100%;overflow:hidden;top:0;left:0;">
+      {_embers}{_skulls}
+    </div>
     <div class="wrap">
         <div class="skull">💀</div>
         <div class="lost-txt">GAME OVER</div>
@@ -787,22 +897,28 @@ elif st.session_state.phase=="lost":
         <div class="score">{_pct}점</div>
         <div class="taunt">{_taunt}</div>
         <div class="sub">{_sub}</div>
-    </div>""", height=160)
+    </div>""", height=240)
+
     st.markdown("""<style>
-    button[kind="primary"]{background:#0a0000!important;border:2px solid #cc2244!important;}
-    button[kind="primary"] p{color:#ff4466!important;font-size:1.1rem!important;font-weight:900!important;}
-    button[kind="primary"]:hover{background:rgba(204,34,68,0.15)!important;box-shadow:0 0 20px rgba(255,0,60,0.5)!important;}
-    button[kind="secondary"]{background:#0a0a0a!important;border:1.5px solid rgba(255,255,255,0.2)!important;}
-    button[kind="secondary"] p{color:#888!important;font-size:1.0rem!important;}
+    div[data-testid="stButton"]:nth-of-type(1) button{
+      background:#0a0000!important;border:2px solid #FF2D55!important;
+      border-left:5px solid #FF2D55!important;border-radius:12px!important;
+    }
+    div[data-testid="stButton"]:nth-of-type(1) button p{color:#FF2D55!important;font-size:1.1rem!important;font-weight:900!important;}
+    div[data-testid="stButton"]:nth-of-type(1) button:hover{box-shadow:0 0 25px rgba(255,45,85,0.6)!important;}
+    div[data-testid="stButton"]:nth-of-type(2) button{
+      background:#0a0a0a!important;border:1.5px solid rgba(255,255,255,0.15)!important;
+    }
+    div[data-testid="stButton"]:nth-of-type(2) button p{color:#666!important;font-size:0.95rem!important;}
     </style>""", unsafe_allow_html=True)
     bc=st.columns(2)
     with bc[0]:
-        if st.button("🔥 설욕전! 다시 싸운다!", type="primary", use_container_width=True):
+        if st.button("🔥 설욕전! 다시 싸운다!", use_container_width=True):
             for k in ["cq","qi","sc","wrong","ta","ans","sel","round_qs","round_results","round_num"]:
                 if k in D: st.session_state[k]=D[k]
             st.session_state.phase="lobby"; st.rerun()
     with bc[1]:
-        if st.button("🏠 홈", type="secondary", use_container_width=True):
+        if st.button("🏠 홈", use_container_width=True):
             st.session_state._p5_just_left = True
             st.session_state.ans = False
             st.session_state["_battle_entry_ans_reset"] = True
@@ -824,10 +940,9 @@ elif st.session_state.phase=="briefing":
     div[data-testid="stVerticalBlock"]{gap:0rem!important;}
     div[data-testid="stVerticalBlockBorderWrapper"]{padding:0!important;}
     .element-container{margin:0!important;padding:0!important;}
-    div[data-testid="stHorizontalBlock"]{margin:0!important;padding:0!important;}
-    div[data-testid="stHorizontalBlock"]{flex-wrap:nowrap!important;gap:6px!important;}
+    div[data-testid="stHorizontalBlock"]{margin:0!important;padding:0!important;flex-wrap:nowrap!important;gap:6px!important;}
     div[data-testid="stHorizontalBlock"] div[data-testid="stColumn"]{min-width:0!important;flex:1!important;padding:0!important;}
-    div[data-testid="stHorizontalBlock"] button{width:100%!important;min-height:40px!important;font-size:0.9rem!important;padding:4px 2px!important;animation:none!important;transform:none!important;}
+    div[data-testid="stButton"] button{width:100%!important;min-height:44px!important;font-size:0.88rem!important;padding:6px 4px!important;}
     </style>""", unsafe_allow_html=True)
 
     was_victory = st.session_state.sc >= 3
@@ -846,38 +961,35 @@ elif st.session_state.phase=="briefing":
 
     # 상단 배너
     if was_victory:
-        st.markdown(f'''<div style="background:#0c0c00;border:2px solid #d4af37;border-left:5px solid #d4af37;border-radius:10px;padding:13px 12px;margin-bottom:6px;">
-            <div style="font-size:1.0rem;font-weight:900;color:#d4af37;">🏆 라운드 {rn} — VICTORY!</div>
+        st.markdown(f'''<div style="background:#0c0c00;border:2px solid #FFD600;border-left:5px solid #FFD600;
+            border-radius:10px;padding:12px;margin-bottom:6px;">
+            <div style="font-size:1.0rem;font-weight:900;color:#FFD600;">🏆 라운드 {rn} — VICTORY!</div>
             <div style="font-size:0.75rem;color:#886600;margin-top:2px;">✅{sc_v}문제 격파! ❌{wr_v}개 놓침</div>
         </div>''', unsafe_allow_html=True)
     else:
-        st.markdown(f'''<div style="background:#0c0008;border:2px solid #cc2244;border-left:5px solid #cc2244;border-radius:10px;padding:13px 12px;margin-bottom:6px;">
-            <div style="font-size:1.0rem;font-weight:900;color:#cc2244;">💀 라운드 {rn} — GAME OVER</div>
+        st.markdown(f'''<div style="background:#0c0008;border:2px solid #FF2D55;border-left:5px solid #FF2D55;
+            border-radius:10px;padding:12px;margin-bottom:6px;">
+            <div style="font-size:1.0rem;font-weight:900;color:#FF2D55;">💀 라운드 {rn} — GAME OVER</div>
             <div style="font-size:0.75rem;color:#661122;margin-top:2px;">✅{sc_v}문제 / ❌{wr_v}개 틀림</div>
         </div>''', unsafe_allow_html=True)
 
-    # 네비 — 숫자만 (화살표 없음)
+    # 문제 번호 네비
     st.markdown('''<style>
-    .nav-size [data-testid="stHorizontalBlock"] button{font-size:0.58rem!important;min-height:22px!important;padding:1px 2px!important;line-height:1!important;}
-    .nav-size [data-testid="stHorizontalBlock"] button p{font-size:0.72rem!important;}
-    .sv-size [data-testid="stColumn"]:last-child button{font-size:0.72rem!important;min-height:32px!important;}
-    .sv-size [data-testid="stColumn"]:last-child button p{font-size:0.72rem!important;}
-    .br-size [data-testid="stHorizontalBlock"] button{font-size:0.66rem!important;min-height:36px!important;padding:4px!important;}
-    .br-size [data-testid="stHorizontalBlock"] button p{font-size:0.66rem!important;}
+    .nav-size div[data-testid="stButton"] button{font-size:0.7rem!important;min-height:26px!important;padding:2px!important;border-radius:50%!important;}
+    .nav-size div[data-testid="stButton"] button p{font-size:0.7rem!important;}
     </style>''', unsafe_allow_html=True)
     st.markdown('<div class="nav-size">', unsafe_allow_html=True)
     _ncols = st.columns(num_qs)
     for _i in range(num_qs):
         with _ncols[_i]:
-            _sel = "outline:2px solid #9aa5b4;outline-offset:2px;" if _i==bi else ""
-            _bg = "#1a1a2a" if _i==bi else "#0d0d18"
+            _ok_i = rrs[_i] if _i < len(rrs) else None
+            _border = "#50c878" if _ok_i else "#ff4466" if _ok_i is not None else "#9aa5b4"
+            _bg = "#001a00" if _ok_i else "#1a0008" if _ok_i is not None else "#0d0d18"
+            _sel = "outline:3px solid #9aa5b4;outline-offset:2px;" if _i==bi else ""
             st.markdown(f'''<style>
             div[data-testid="stHorizontalBlock"] div[data-testid="stColumn"]:nth-child({_i+1}) button{{
-                background:{_bg}!important;
-                border:2px solid #9aa5b4!important;
-                color:#9aa5b4!important;
-                border-radius:50%!important;
-                {_sel}
+                background:{_bg}!important;border:2px solid {_border}!important;
+                color:{_border}!important;border-radius:50%!important;{_sel}
             }}</style>''', unsafe_allow_html=True)
             if st.button(str(_i+1), key=f"dot_{_i}", use_container_width=True):
                 st.session_state.br_idx = _i; st.rerun()
@@ -887,75 +999,65 @@ elif st.session_state.phase=="briefing":
     q  = rqs[bi]; ok = rrs[bi]
     ans_clean = q["ch"][q["a"]].split(") ",1)[-1] if ") " in q["ch"][q["a"]] else q["ch"][q["a"]]
     if ok:
-        sent_html = q["text"].replace("_______", '<span style="color:#50c878;font-weight:900;border-bottom:2px solid #50c878;">'+ans_clean+'</span>')
+        sent_html = q["text"].replace("_______", f'<span style="color:#50c878;font-weight:900;border-bottom:2px solid #50c878;">{ans_clean}</span>')
         card_border="#00d4ff"; qnum_color="#50c878"; qnum_sym="✅"
     else:
-        sent_html = q["text"].replace("_______", '<span style="color:#ff4466;font-weight:900;text-decoration:line-through;margin-right:4px;">?</span><span style="color:#50c878;font-weight:900;border-bottom:2px solid #50c878;">'+ans_clean+'</span>')
-        card_border="#cc2244"; qnum_color="#ff4466"; qnum_sym="❌"
+        sent_html = q["text"].replace("_______",
+            f'<span style="color:#ff4466;font-weight:900;text-decoration:line-through;margin-right:4px;">?</span>'
+            f'<span style="color:#50c878;font-weight:900;border-bottom:2px solid #50c878;">{ans_clean}</span>')
+        card_border="#FF2D55"; qnum_color="#ff4466"; qnum_sym="❌"
     kr=q.get("kr",""); exk=q.get("exk",""); cat=q.get("cat","")
 
-    st.markdown(f'''<div style="background:#0c0c18;border:1.5px solid {card_border};border-left:4px solid {card_border};border-radius:12px;padding:10px 12px;margin:4px 0;">
-        <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:6px;">
-            <span style="background:#0a0a20;border:1px solid #222;border-radius:10px;padding:2px 10px;font-size:0.86rem;font-weight:700;color:{qnum_color};">{qnum_sym} Q{bi+1}/{num_qs}</span>
-            <span style="font-size:0.7rem;color:#444;">{cat}</span>
+    st.markdown(f'''<div style="background:#0a0c18;border:2px solid {card_border};
+        border-left:5px solid {card_border};border-radius:12px;padding:12px;margin:5px 0;">
+        <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:8px;">
+            <span style="background:#0a0a20;border:1px solid #222;border-radius:10px;
+              padding:3px 12px;font-size:0.9rem;font-weight:800;color:{qnum_color};">{qnum_sym} Q{bi+1}/{num_qs}</span>
+            <span style="font-size:0.72rem;color:#444;letter-spacing:2px;">{cat}</span>
         </div>
-        <div style="font-size:1.1rem;font-weight:700;color:#eeeeff;line-height:1.7;margin-bottom:8px;">{sent_html}</div>
-        <div style="font-size:0.88rem;color:#9aa5b4;margin-bottom:6px;">📖 {kr}</div>
-        <div style="background:#081008;border-left:3px solid #50c878;border-radius:0 8px 8px 0;padding:6px 10px;">
+        <div style="font-size:1.1rem;font-weight:700;color:#eeeeff;line-height:1.75;margin-bottom:10px;">{sent_html}</div>
+        <div style="font-size:0.88rem;color:#7a8a9a;margin-bottom:8px;">📖 {kr}</div>
+        <div style="background:#050f05;border-left:4px solid #50c878;border-radius:0 10px 10px 0;padding:8px 12px;">
             <div style="font-size:0.88rem;color:#50c878;font-weight:700;">💡 {exk}</div>
         </div>
     </div>''', unsafe_allow_html=True)
 
     # 저장 버튼
-    st.markdown('<div class="sv-size">', unsafe_allow_html=True)
     _sv1, _sv2 = st.columns([3, 1])
     with _sv2:
         _is_saved = bi in saved
-        _slabel = "✅ 저장됨" if _is_saved else "💾 저장해!"
+        _slabel = "✅ 저장됨" if _is_saved else "💾 저장!"
         st.markdown('''<style>
-        div[data-testid="stColumn"]:last-child button{
-            border:2px solid #9aa5b4!important;
-            color:#9aa5b4!important;
-            background:#0d0d18!important;
-            border-radius:50px!important;
-            font-size:0.85rem!important;
+        div[data-testid="stHorizontalBlock"] div[data-testid="stColumn"]:last-child button{
+            border:2px solid #9aa5b4!important;color:#9aa5b4!important;
+            background:#0d0d18!important;border-radius:50px!important;font-size:0.82rem!important;
         }
-        div[data-testid="stColumn"]:last-child button p{
-            color:#9aa5b4!important;
-        }
+        div[data-testid="stHorizontalBlock"] div[data-testid="stColumn"]:last-child button p{color:#9aa5b4!important;}
         </style>''', unsafe_allow_html=True)
         if st.button(_slabel, key=f"sv_{q['id']}_{bi}", use_container_width=True, disabled=_is_saved):
-            item = {"id":q["id"],"text":q["text"],"ch":q["ch"],"a":q["a"],"ex":q.get("ex",""),"exk":q.get("exk",""),"cat":q.get("cat",""),"kr":q.get("kr",""),"tp":q.get("tp","grammar")}
+            item = {"id":q["id"],"text":q["text"],"ch":q["ch"],"a":q["a"],"ex":q.get("ex",""),
+                    "exk":q.get("exk",""),"cat":q.get("cat",""),"kr":q.get("kr",""),"tp":q.get("tp","grammar")}
             save_to_storage([item])
             st.session_state.br_saved.add(bi)
             st.rerun()
-    st.markdown('</div>', unsafe_allow_html=True)
 
-    st.markdown('<div style="height:1px;background:#1a1a2a;margin:2px 0;"></div>', unsafe_allow_html=True)
+    st.markdown('<div style="height:1px;background:#1a1a2a;margin:4px 0;"></div>', unsafe_allow_html=True)
 
     # 하단 버튼
     st.markdown('''<style>
-    .bottom-row [data-testid="stHorizontalBlock"]{flex-wrap:nowrap!important;gap:8px!important;}
-    .bottom-row [data-testid="stHorizontalBlock"] [data-testid="stColumn"]{min-width:0!important;flex:1!important;padding:0!important;}
-    .bottom-row button{
-        background:transparent!important;
-        border:1px solid rgba(255,255,255,0.4)!important;
-        color:rgba(255,255,255,0.55)!important;
-        font-weight:400!important;
-        font-size:0.82rem!important;
-        border-radius:8px!important;
-        min-height:44px!important;
-        box-shadow:none!important;
+    .bottom-row div[data-testid="stButton"] button{
+        background:transparent!important;border:1px solid rgba(255,255,255,0.3)!important;
+        color:rgba(255,255,255,0.6)!important;font-weight:600!important;
+        font-size:0.85rem!important;border-radius:10px!important;min-height:46px!important;
     }
-    .bottom-row button p{
-        color:rgba(255,255,255,0.55)!important;
-        font-size:0.82rem!important;
-        font-weight:400!important;
+    .bottom-row div[data-testid="stButton"] button p{color:rgba(255,255,255,0.6)!important;font-size:0.85rem!important;}
+    .bottom-row div[data-testid="stButton"]:nth-of-type(1) button{
+        border-color:rgba(0,212,255,0.5)!important;color:#00d4ff!important;
     }
+    .bottom-row div[data-testid="stButton"]:nth-of-type(1) button p{color:#00d4ff!important;}
     </style>''', unsafe_allow_html=True)
-    st.markdown('<div class="bottom-row br-size">', unsafe_allow_html=True)
+    st.markdown('<div class="bottom-row">', unsafe_allow_html=True)
     if was_victory:
-        nrd = rn + 1
         _c1, _c2 = st.columns([2,1])
         with _c1:
             if st.button("💀 포로사령부!", use_container_width=True):
@@ -995,8 +1097,6 @@ elif st.session_state.phase=="briefing":
 
 # ════════════════════════════════════════
 # PHASE: LOBBY
-# 기능: 전장 선택, 시간 설정, 난이도 표시
-# ════════════════════════════════════════
 # ════════════════════════════════════════
 else:
     _nav = st.query_params.get('nav', '')
@@ -1016,7 +1116,7 @@ else:
     sm = st.session_state.sel_mode
     rn = st.session_state.round_num
 
-    # ─── 밝은 리모컨 CSS ───
+    # ─── 로비 전용 CSS ───
     st.markdown("""
 <style>
 @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@700;900&family=Rajdhani:wght@600;700&display=swap');
@@ -1024,150 +1124,92 @@ else:
 section[data-testid="stSidebar"]{display:none!important;}
 header[data-testid="stHeader"]{background:transparent!important;height:0!important;min-height:0!important;overflow:hidden!important;}
 .block-container{padding-top:0!important;padding-bottom:0!important;margin-top:-8px!important;}
-.ah{text-align:center;padding:0 0 0 0;}
-.ah h1{font-family:'Orbitron',monospace!important;font-size:2rem;font-weight:900;margin:0;background:linear-gradient(90deg,#00d4ff,#ffffff,#00d4ff);background-size:200%;-webkit-background-clip:text;-webkit-text-fill-color:transparent;animation:titleShine 3s linear infinite;letter-spacing:4px;}
+
 @keyframes titleShine{0%{background-position:200% center}100%{background-position:-200% center}}
-@keyframes warningPulse{0%,100%{color:#ff4466;text-shadow:0 0 8px rgba(255,68,102,0.8);}50%{color:#ff8888;text-shadow:0 0 20px rgba(255,68,102,1),0 0 40px rgba(255,0,50,0.6);}}
-@keyframes p5bounce{0%,100%{transform:translateY(0);}30%{transform:translateY(-6px);}60%{transform:translateY(-3px);}80%{transform:translateY(-5px);}}
-@keyframes p5flash{0%,75%,100%{box-shadow:0 0 12px rgba(0,212,255,0.15);}88%{box-shadow:0 0 45px rgba(0,255,255,1),0 0 90px rgba(0,212,255,0.7);}}
-button[kind="primary"],button[kind="secondary"]{background:#0d0d0d!important;color:#fff!important;border:1.5px solid rgba(0,212,255,0.5)!important;border-radius:8px!important;font-size:1.0rem!important;font-weight:500!important;padding:0.35rem 0.8rem!important;text-align:left!important;transition:none!important;animation:none!important;transform:none!important;box-shadow:none!important;min-height:38px!important;}
-button[kind="primary"] p,button[kind="secondary"] p{font-size:1.05rem!important;font-weight:700!important;color:#ddd8c8!important;text-align:left!important;}
-button[kind="primary"]:hover,button[kind="secondary"]:hover{background:rgba(0,212,255,0.08)!important;border-color:#00d4ff!important;box-shadow:0 0 25px rgba(0,212,255,0.4)!important;transform:none!important;}
-.qb{border-radius:12px;padding:0.3rem 0.5rem;margin:0.05rem 0;background:#0d0d0d;}
-.qb-g{background:#0d0d0d!important;border:1.5px solid rgba(0,212,255,0.35)!important;border-radius:12px!important;animation:none;}.qb-v{background:#0d0d0d!important;border:1.5px solid rgba(68,136,204,0.35)!important;border-radius:12px!important;animation:none;}
-@keyframes borderGlow{0%{box-shadow:0 0 0 2px #00d4ff,0 0 15px rgba(0,212,255,0.4);}50%{box-shadow:0 0 0 2px #fff,0 0 25px rgba(0,212,255,0.6);}100%{box-shadow:0 0 0 2px #00d4ff,0 0 15px rgba(0,212,255,0.4);}}
-.qc{font-family:'Orbitron',monospace;font-size:0.72rem;font-weight:400;margin-bottom:0.3rem;letter-spacing:2px;color:#555!important;}
-.qc-g,.qc-v{color:#444;text-shadow:none;}
-.qt{font-family:'Rajdhani',sans-serif;color:#fff;font-size:0.95rem;font-weight:700;line-height:1.5;word-break:keep-all;}
-.qk{color:#00d4ff;font-weight:900;font-size:0.95rem;border-bottom:2px solid #00d4ff;text-shadow:0 0 10px rgba(0,212,255,0.8);}
-.bt{display:flex;align-items:center;justify-content:space-between;padding:0.01rem 0.8rem;border-radius:6px;margin-bottom:0;transform:scale(0.85);transform-origin:top center;margin-top:-8px;}
-.bt-g,.bt-v{background:#0d0d0d;border:1px solid rgba(0,212,255,0.4);box-shadow:0 0 15px rgba(0,212,255,0.1);}
-.bq{font-family:'Orbitron',monospace;font-size:1.6rem;font-weight:900;}
-.bq-g,.bq-v{color:#00d4ff;text-shadow:0 0 10px rgba(0,212,255,0.8);}
-.bs{font-family:'Orbitron',monospace;font-size:1.1rem;font-weight:800;color:#fff;}
-.rd-dots{display:flex;justify-content:center;gap:0.6rem;margin:0 0;}
-.rd-dot{width:22px;height:22px;border-radius:50%;border:2px solid #333;display:flex;align-items:center;justify-content:center;font-size:0.7rem;font-weight:900;}
-.rd-cur{border-color:#00d4ff!important;color:#00d4ff!important;box-shadow:0 0 10px #00d4ff!important;}
-.rd-ok{background:#00d4ff;border-color:#00d4ff;color:#000;}
-.rd-no{background:#ff2244;border-color:#ff2244;color:#fff;}
-.rd-wait{background:transparent;border-color:#333;color:#444;}
-.cg,.cv{border-radius:18px;padding:1.5rem 1.2rem;margin-bottom:0.8rem;min-height:190px;display:flex;flex-direction:column;justify-content:center;animation:none;}
-@keyframes fl{0%,100%{transform:translateY(0)}50%{transform:translateY(-6px)}}
-.cg{background:#0d0d0d;border:1.5px solid rgba(0,212,255,0.3);}
-.cv{background:#0d0d0d;border:1.5px solid rgba(0,212,255,0.2);}
-.ct{font-size:1.7rem;font-weight:900;margin-bottom:0.4rem;font-family:'Orbitron',monospace;}
-.cg .ct{color:#00d4ff;}.cv .ct{color:#88ddff;}
-.cd{font-size:1.3rem;font-weight:800;color:#ccc;line-height:1.5;}
-.wb{background:#0d0d0d;border-radius:16px;padding:1.8rem 1.5rem;margin:0.5rem 0;border:1px solid rgba(0,212,255,0.3);min-height:250px;}
-.wb-qn-ok{color:#00d4ff;}.wb-qn-no{color:#ff2244;}
-.wb-s{font-size:2.15rem;font-weight:700;color:#f0f0f0;line-height:2;margin-bottom:1rem;word-break:keep-all;}
-.wb-h{color:#00d4ff;font-weight:900;font-size:2.3rem;text-decoration:underline;text-decoration-color:#00d4ff;}
-.wb-hn{color:#ff2244;font-weight:900;font-size:2.3rem;text-decoration:underline;text-decoration-color:#ff2244;}
-.wb-k{font-size:1.6rem;font-weight:600;color:#ccc;line-height:1.7;}
-.wb-e{font-size:1.5rem;color:#aaa;padding:0.6rem 0.8rem;background:rgba(0,212,255,0.06);border-left:4px solid #00d4ff;border-radius:0 10px 10px 0;}
-.br-ban-v{border:1.5px solid #00d4ff;color:#00d4ff;}
-.br-ban-l{border:1.5px solid #ff2244;color:#ff2244;}
-.zl{color:#00d4ff!important;font-family:'Orbitron',monospace!important;letter-spacing:4px!important;}
-details{background:rgba(0,212,255,0.03)!important;border-radius:12px!important;}
-summary{color:#aaa!important;font-weight:700!important;}
-::-webkit-scrollbar{width:4px;}::-webkit-scrollbar-track{background:#0a0a0a;}
-::-webkit-scrollbar-thumb{background:rgba(0,212,255,0.4);border-radius:2px;}
-</style>
-""", unsafe_allow_html=True)
+@keyframes warningPulse{0%,100%{color:#FF2D55;text-shadow:0 0 10px rgba(255,45,85,0.9);}50%{color:#ff8888;text-shadow:0 0 25px rgba(255,45,85,1),0 0 50px rgba(255,0,50,0.7);}}
+@keyframes startGlow{0%,100%{box-shadow:0 0 25px rgba(255,100,0,0.7),0 0 60px rgba(255,60,0,0.4),inset 0 0 15px rgba(255,150,0,0.1);}50%{box-shadow:0 0 50px rgba(255,200,0,1),0 0 100px rgba(255,100,0,0.6),inset 0 0 30px rgba(255,200,0,0.15);}}
+@keyframes neonPulse{0%,100%{box-shadow:0 0 5px rgba(0,212,255,0.4);}50%{box-shadow:0 0 20px rgba(0,212,255,0.8),0 0 40px rgba(0,212,255,0.3);}}
+@keyframes goldBorder{0%,100%{border-color:#d4af37;box-shadow:0 0 10px rgba(212,175,55,0.5);}50%{border-color:#FFD600;box-shadow:0 0 25px rgba(255,214,0,0.8),0 0 50px rgba(255,214,0,0.3);}}
 
-    # ═══ 뮤지컬 3막 로비 CSS ═══
-    st.markdown("""<style>
-    @keyframes titleGlow{0%,100%{text-shadow:0 0 20px #00d4ff,0 0 40px #00d4ff;}50%{text-shadow:0 0 30px #00ffaa,0 0 60px #00ffaa;}}
-    @keyframes stageIn{from{opacity:0;transform:translateY(30px);}to{opacity:1;transform:translateY(0);}}
-    @keyframes pulse{0%,100%{box-shadow:0 0 20px rgba(0,212,255,0.4);}50%{box-shadow:0 0 40px rgba(0,212,255,0.8),0 0 60px rgba(0,212,255,0.3);}}
-    @keyframes startPulse{0%,100%{box-shadow:0 0 25px rgba(255,136,0,0.6),0 0 50px rgba(255,68,0,0.3);}50%{box-shadow:0 0 40px rgba(255,200,0,0.9),0 0 80px rgba(255,100,0,0.5);}}
-    @keyframes navGlow{0%,100%{opacity:0.7;}50%{opacity:1;}}
+/* 기본 버튼 - 로비 */
+div[data-testid="stButton"] button{
+    background:#080c18!important;
+    border:2px solid rgba(0,212,255,0.3)!important;
+    border-radius:10px!important;
+    font-size:1.0rem!important;font-weight:700!important;
+    padding:0.55rem 0.8rem!important;
+    color:#ccc!important;
+    min-height:58px!important;
+    width:100%!important;
+    transition:all 0.15s ease!important;
+    animation:none!important;
+}
+div[data-testid="stButton"] button p{
+    font-size:1.0rem!important;font-weight:700!important;color:#ccc!important;
+    white-space:pre-line!important;line-height:1.2!important;
+}
+div[data-testid="stButton"] button:hover{
+    background:rgba(0,212,255,0.06)!important;
+    border-color:#00d4ff!important;
+    box-shadow:0 0 20px rgba(0,212,255,0.3)!important;
+}
 
-    .ms-title{text-align:center;padding:18px 8px 8px 8px;animation:stageIn 0.6s ease;}
-    .ms-title h1{font-size:2.2rem;font-weight:900;color:#00d4ff;letter-spacing:3px;animation:titleGlow 3s ease infinite;margin:0;}
-    .ms-title p{font-size:0.9rem;color:#666;letter-spacing:2px;margin:4px 0 0 0;}
+/* 출격 버튼 특별 스타일 */
+.start-btn div[data-testid="stButton"] button{
+    background:linear-gradient(135deg,#300800,#200500)!important;
+    border:2px solid #ff6600!important;
+    border-radius:14px!important;
+    font-size:1.3rem!important;font-weight:900!important;
+    min-height:68px!important;
+    color:#ff8800!important;
+    animation:startGlow 1.5s ease-in-out infinite!important;
+    letter-spacing:2px!important;
+}
+.start-btn div[data-testid="stButton"] button p{
+    font-size:1.3rem!important;font-weight:900!important;color:#ff8800!important;
+}
+</style>""", unsafe_allow_html=True)
 
-    .stage{animation:stageIn 0.5s ease;border-radius:14px;padding:10px 12px;margin:4px 0;}
-    .stage-act{background:linear-gradient(145deg,#050d15,#0a1520);border:2px solid rgba(0,212,255,0.5);box-shadow:0 0 20px rgba(0,212,255,0.1);}
-    .stage-dim{background:#050505;border:2px solid #111;opacity:0.3;pointer-events:none;}
-
-    .act-label{font-size:0.7rem;font-weight:900;letter-spacing:3px;color:#00d4ff;margin-bottom:4px;text-align:center;}
-    .act-msg{font-size:0.85rem;font-weight:900;color:#fff;text-align:center;margin-bottom:4px;line-height:1.2;}
-    .act-msg span.hi{color:#00d4ff;}
-    .act-msg span.gold{color:#ffd700;}
-    .act-msg span.go{color:#00ff88;}
-
-    .confirmed{text-align:center;padding:8px;margin-bottom:10px;}
-    .confirmed span{font-size:1rem;color:#ffd700;font-weight:900;background:rgba(255,215,0,0.1);padding:6px 16px;border-radius:20px;border:1px solid rgba(255,215,0,0.4);}
-
-    button[kind="secondary"]{
-        background:#060e18!important;border:2px solid rgba(0,212,255,0.35)!important;
-        border-radius:10px!important;font-size:0.85rem!important;font-weight:900!important;
-        padding:10px 4px!important;color:#e0e0e0!important;min-height:52px!important;
-        animation:none!important;transform:none!important;box-shadow:none!important;
-    }
-    button[kind="secondary"] p{font-size:0.85rem!important;font-weight:900!important;white-space:pre-line!important;line-height:1.0!important;text-align:center!important;}
-
-    button[data-testid="stBaseButton-primary"]{
-        background:linear-gradient(135deg,#ff4400,#ff8800,#ffaa00)!important;
-        border:2px solid #ffd700!important;font-size:1.05rem!important;font-weight:900!important;
-        padding:0.6rem!important;color:#fff!important;border-radius:12px!important;
-        animation:startPulse 1.5s ease infinite!important;
-        text-shadow:0 2px 8px rgba(0,0,0,0.5)!important;
-    }
-
-    .nav-bar{display:flex;gap:8px;margin-top:16px;padding:12px 4px 4px 4px;border-top:1px solid #111;}
-    .nav-bar-label{font-size:0.7rem;color:#333;text-align:center;letter-spacing:3px;margin-bottom:6px;}[data-testid="stHorizontalBlock"]{flex-wrap:nowrap!important;}[data-testid="stHorizontalBlock"] [data-testid="stColumn"]{min-width:0!important;flex:1!important;}
-    </style>""", unsafe_allow_html=True)
-
-    # 타이틀
+    # ── 로비 타이틀 ──
     if rn > 1:
-        round_txt = f'<p style="color:#cc6600;font-size:0.9rem;font-weight:800;margin:2px 0;">🏆 Round {rn}</p>'
+        _round_badge = f'<div style="text-align:center;margin-bottom:2px;"><span style="background:#1a0800;border:1px solid #cc6600;border-radius:20px;padding:3px 14px;font-size:0.82rem;color:#cc6600;font-weight:800;">🏆 Round {rn}</span></div>'
     else:
-        round_txt = ''
-    st.markdown(f'<div class="ms-title"><h1>⚡ 화력전</h1><p>5문제 서바이벌 · 문법·어휘 실전 포격전</p>{round_txt}</div>', unsafe_allow_html=True)
+        _round_badge = ''
+    st.markdown(f'''{_round_badge}
+    <div style="text-align:center;padding:6px 0 4px 0;">
+        <div style="font-family:Orbitron,monospace;font-size:2.2rem;font-weight:900;letter-spacing:5px;
+          background:linear-gradient(90deg,#00d4ff,#ffffff,#FFD600,#ff4400,#00d4ff);background-size:300%;
+          -webkit-background-clip:text;-webkit-text-fill-color:transparent;
+          animation:titleShine 2s linear infinite;">⚡ 화력전</div>
+        <div style="font-size:0.78rem;color:#445;letter-spacing:3px;margin-top:2px;">5문제 서바이벌 · 문법·어휘 실전 포격전</div>
+    </div>''', unsafe_allow_html=True)
 
-    _tsec = st.session_state.get('tsec', 30)
+    # ── 시간 선택 ──
+    st.markdown('''<div style="background:#080c18;border:1px solid #1a2030;border-bottom:none;
+        border-radius:8px 8px 0 0;padding:3px 12px;font-size:0.72rem;font-weight:900;
+        color:#6688aa;letter-spacing:3px;margin-bottom:0;">⏱ 전투 시간 선택</div>''', unsafe_allow_html=True)
+
     _tsec_chosen = st.session_state.get('tsec_chosen', False)
+    tc1,tc2,tc3 = st.columns(3)
+    with tc1:
+        if st.button("🔥 30초\n빠른 포격", key="t30", use_container_width=True):
+            st.session_state.tsec=30; st.session_state.tsec_chosen=True; st.rerun()
+    with tc2:
+        if st.button("⚡ 40초\n표준 전투", key="t40", use_container_width=True):
+            st.session_state.tsec=40; st.session_state.tsec_chosen=True; st.rerun()
+    with tc3:
+        if st.button("🛡 50초\n신중 작전", key="t50", use_container_width=True):
+            st.session_state.tsec=50; st.session_state.tsec_chosen=True; st.rerun()
+    st.markdown('<div style="height:8px;"></div>', unsafe_allow_html=True)
+
+    # ── 작전 선택 ──
+    st.markdown('''<div style="background:#0c0808;border:1px solid #301010;border-bottom:none;
+        border-radius:8px 8px 0 0;padding:3px 12px;font-size:0.72rem;font-weight:900;
+        color:#aa4455;letter-spacing:3px;margin-bottom:0;">⚔️ 작전 선택</div>''', unsafe_allow_html=True)
+
     lbl_map={"g1":"⚔️ 문법력","g2":"⚔️ 구조력","g3":"⚔️ 연결력","vocab":"📘 어휘력"}
     mode_map={"g1":("grammar","g1"),"g2":("grammar","g2"),"g3":("grammar","g3"),"vocab":("vocab",None)}
 
-    # ━━━ 1화면 통합 로비 ━━━
-    st.markdown('''<style>
-    button[kind="secondary"]{
-        background:#0a0a14!important;border:1.5px solid #333!important;
-        border-radius:10px!important;font-size:1.0rem!important;font-weight:600!important;
-        padding:6px!important;color:#aaa!important;min-height:61px!important;
-        animation:none!important;transform:none!important;box-shadow:none!important;
-    }
-    button[kind="secondary"] p{font-size:1.0rem!important;font-weight:600!important;color:#aaa!important;white-space:pre-line!important;line-height:1.2!important;}
-    button[data-testid="stBaseButton-primary"]{
-        background:#0c0c00!important;border:2px solid #d4af37!important;
-        border-left:4px solid #d4af37!important;
-        color:#d4af37!important;font-size:1.0rem!important;font-weight:900!important;
-        min-height:43px!important;animation:none!important;border-radius:12px!important;
-    }
-    button[data-testid="stBaseButton-primary"] p{color:#d4af37!important;font-size:1.0rem!important;font-weight:900!important;}
-    </style>''', unsafe_allow_html=True)
-
-    st.markdown('''<div style="display:flex;align-items:flex-end;margin-bottom:0;">
-        <div style="background:#0c0c1e;border:1.5px solid #9aa5b4;border-bottom:none;border-radius:8px 8px 0 0;padding:3px 12px;font-size:0.72rem;font-weight:900;color:#9aa5b4;">⏱ 시간 선택</div>
-    </div>''', unsafe_allow_html=True)
-    tc1,tc2,tc3 = st.columns(3)
-    with tc1:
-        if st.button("🔥 30초", key="t30", use_container_width=True):
-            st.session_state.tsec=30; st.session_state.tsec_chosen=True; st.rerun()
-    with tc2:
-        if st.button("⚡ 40초", key="t40", use_container_width=True):
-            st.session_state.tsec=40; st.session_state.tsec_chosen=True; st.rerun()
-    with tc3:
-        if st.button("✅ 50초", key="t50", use_container_width=True):
-            st.session_state.tsec=50; st.session_state.tsec_chosen=True; st.rerun()
-    st.markdown('<div style="height:6px;"></div>', unsafe_allow_html=True)
-
-    st.markdown('''<div style="display:flex;align-items:flex-end;margin-bottom:0;">
-        <div style="background:#140800;border:1.5px solid #cc2244;border-bottom:none;border-radius:8px 8px 0 0;padding:3px 12px;font-size:0.72rem;font-weight:900;color:#ff8800;">⚡ 작전 선택</div>
-    </div>''', unsafe_allow_html=True)
     b1,b2 = st.columns(2)
     with b1:
         if st.button("⚔️ 문법력\n수일치·시제·수동", key="sg1", use_container_width=True):
@@ -1182,33 +1224,52 @@ summary{color:#aaa!important;font-weight:700!important;}
     with b4:
         if st.button("📘 어휘력\n품사·동사·콜로케이션", key="svc", use_container_width=True):
             st.session_state.sel_mode="vocab"; st.rerun()
-    st.markdown('<div style="height:6px;"></div>', unsafe_allow_html=True)
+    st.markdown('<div style="height:8px;"></div>', unsafe_allow_html=True)
 
-    st.markdown('''<div style="background:#0a0500;border:1px solid #441100;border-radius:8px;padding:5px 10px;text-align:center;margin-bottom:6px;">
-        <span style="font-size:0.85rem;color:#ff4466;font-weight:900;animation:warningPulse 1.5s ease-in-out infinite;display:inline-block;">💀 생존 규칙: 5문제 중 3개 이상 · 그 이하면 전멸!</span>
+    # ── 생존 규칙 ──
+    st.markdown('''<div style="background:#0a0306;border:1px solid #330011;border-radius:10px;
+        padding:6px 12px;text-align:center;margin-bottom:8px;">
+        <span style="font-size:0.85rem;font-weight:900;animation:warningPulse 1.5s ease-in-out infinite;
+          display:inline-block;color:#FF2D55;">💀 생존 규칙: 5문제 중 3개 이상 · 그 이하면 전멸!</span>
     </div>''', unsafe_allow_html=True)
 
+    # ── 난이도 표시 + 출격 버튼 ──
     _ready = _tsec_chosen and sm and sm in ["g1","g2","g3","vocab"]
     if _ready:
-        # ★ 현재 적응 난이도 레벨 표시
         _adp = st.session_state.get("adp_level", "normal")
         _adp_info = {"easy":"🟢 입문", "normal":"🟡 표준", "hard":"🔴 심화"}
         _adp_lbl = _adp_info.get(_adp, "🟡 표준")
         _hist_len = len(st.session_state.get("adp_history", []))
         if _hist_len > 0:
-            st.markdown(f'<div style="text-align:center;background:#0a0a14;border:1px solid #333;border-radius:8px;padding:4px 10px;margin-bottom:6px;font-size:0.82rem;color:#aaa;">🎯 현재 난이도: <span style="color:#d4af37;font-weight:900;">{_adp_lbl}</span> · {_hist_len}라운드 누적</div>', unsafe_allow_html=True)
+            st.markdown(f'<div style="text-align:center;background:#0a0a14;border:1px solid #222;border-radius:8px;'
+                        f'padding:4px 10px;margin-bottom:8px;font-size:0.82rem;color:#888;">'
+                        f'🎯 현재 난이도: <span style="color:#FFD600;font-weight:900;">{_adp_lbl}</span> · {_hist_len}라운드 누적</div>',
+                        unsafe_allow_html=True)
         _cat = lbl_map.get(sm,"")
-        if st.button("▶ 전투 시작!", key="go_start", type="primary", use_container_width=True):
+        st.markdown('<div class="start-btn">', unsafe_allow_html=True)
+        if st.button(f"🔥 출격! — {_cat}", key="go_start", use_container_width=True):
             md,grp=mode_map[sm]
             st.session_state.mode=md; qs=pick5(md,grp)
             st.session_state.round_qs=qs; st.session_state.cq=qs[0]
             st.session_state.qst=time.time(); st.session_state.phase="battle"; st.rerun()
+        st.markdown('</div>', unsafe_allow_html=True)
     else:
-        st.markdown('<div style="background:#0a0a14;border:1px solid #222;border-radius:12px;padding:10px;text-align:center;color:#333;font-size:0.9rem;">시간 + 전장을 선택하면 시작!</div>', unsafe_allow_html=True)
+        st.markdown('<div style="background:#0a0a12;border:1px solid #1a1a28;border-radius:12px;'
+                    'padding:14px;text-align:center;color:#333;font-size:0.9rem;font-weight:700;">'
+                    '⏱ 시간 + ⚔️ 작전을 선택하면 출격 가능!</div>', unsafe_allow_html=True)
 
-    # ━━━ 하단 네비게이션 ━━━
-    st.markdown('<div style="height:1px;background:#1a1a2a;margin:2px 0;"></div>', unsafe_allow_html=True)
-    st.markdown('<style>div[data-testid="stHorizontalBlock"]:last-of-type button{padding:0.18rem 0.6rem!important;min-height:32px!important;font-size:0.82rem!important;}div[data-testid="stHorizontalBlock"]:last-of-type button p{font-size:0.82rem!important;}</style>', unsafe_allow_html=True)
+    # ── 하단 네비게이션 ──
+    st.markdown('<div style="height:1px;background:#1a1a2a;margin:8px 0 4px 0;"></div>', unsafe_allow_html=True)
+    st.markdown('''<style>
+    .nav-bottom div[data-testid="stButton"] button{
+        background:#06060e!important;border:1px solid #1a1a28!important;
+        border-radius:8px!important;min-height:36px!important;
+        font-size:0.82rem!important;color:#555!important;padding:4px!important;
+    }
+    .nav-bottom div[data-testid="stButton"] button p{font-size:0.82rem!important;color:#555!important;}
+    .nav-bottom div[data-testid="stButton"] button:hover{border-color:#333!important;color:#888!important;}
+    </style>''', unsafe_allow_html=True)
+    st.markdown('<div class="nav-bottom">', unsafe_allow_html=True)
     nc1,nc2 = st.columns(2)
     with nc1:
         if st.button("💀 포로사령부", key="p5nav1", use_container_width=True):
@@ -1221,7 +1282,9 @@ summary{color:#aaa!important;font-weight:700!important;}
                 st.query_params["nick"] = _nick
                 st.query_params["ag"] = "1"
             st.switch_page("main_hub.py")
+    st.markdown('</div>', unsafe_allow_html=True)
 
+    # ── JS 선택 버튼 하이라이트 ──
     import streamlit.components.v1 as _cmp5
     _tsec_v = st.session_state.get("tsec", 30)
     _tc_v   = st.session_state.get("tsec_chosen", False)
@@ -1233,28 +1296,26 @@ summary{color:#aaa!important;font-weight:700!important;}
 
     function setGold(b){{
         b.style.setProperty("background","#1a1400","important");
-        b.style.setProperty("border","2px solid #d4af37","important");
-        b.style.setProperty("border-left","4px solid #d4af37","important");
-        b.style.setProperty("color","#d4af37","important");
+        b.style.setProperty("border","2px solid #FFD600","important");
+        b.style.setProperty("border-left","4px solid #FFD600","important");
+        b.style.setProperty("box-shadow","0 0 20px rgba(255,214,0,0.5)","important");
         b.querySelectorAll("p,span").forEach(function(el){{
-            el.style.setProperty("color","#d4af37","important");
+            el.style.setProperty("color","#FFD600","important");
         }});
     }}
     function setDefault(b){{
-        b.style.setProperty("background","#0a0a14","important");
-        b.style.setProperty("border","1.5px solid #333","important");
-        b.style.setProperty("border-left","1.5px solid #333","important");
-        b.style.setProperty("color","#aaa","important");
+        b.style.setProperty("background","#080c18","important");
+        b.style.setProperty("border","2px solid rgba(0,212,255,0.25)","important");
+        b.style.setProperty("border-left","2px solid rgba(0,212,255,0.25)","important");
+        b.style.setProperty("box-shadow","none","important");
         b.querySelectorAll("p,span").forEach(function(el){{
-            el.style.setProperty("color","#aaa","important");
+            el.style.setProperty("color","#888","important");
         }});
     }}
-
-    // 버튼 텍스트 → 고유 키워드로 정확히 식별 (indexOf 최소화)
     function getKey(t){{
-        if(t==="🔥 30초"||t==="30초") return "t30";
-        if(t==="⚡ 40초"||t==="40초") return "t40";
-        if(t==="✅ 50초"||t==="50초") return "t50";
+        if(t.indexOf("30초")>-1) return "t30";
+        if(t.indexOf("40초")>-1) return "t40";
+        if(t.indexOf("50초")>-1) return "t50";
         if(t.indexOf("수일치")>-1) return "g1";
         if(t.indexOf("가정법")>-1) return "g2";
         if(t.indexOf("접속사")>-1) return "g3";
@@ -1276,13 +1337,7 @@ summary{color:#aaa!important;font-weight:700!important;}
     }}
     setTimeout(styleBtns,150);
     setTimeout(styleBtns,500);
-    setTimeout(styleBtns,1000);
-    setInterval(styleBtns,1000);
+    setTimeout(styleBtns,1200);
+    setInterval(styleBtns,1200);
 }})();
 </script>''', height=0)
-
-
-
-
-
-
