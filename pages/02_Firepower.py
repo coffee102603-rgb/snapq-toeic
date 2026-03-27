@@ -1133,10 +1133,10 @@ else:
 .stApp{background:#04040c!important;}
 section[data-testid="stSidebar"]{display:none!important;}
 header[data-testid="stHeader"]{height:0!important;overflow:hidden!important;}
-.block-container{padding:4px 10px 4px!important;margin:0!important;}
-div[data-testid="stVerticalBlock"]{gap:0.12rem!important;}
+.block-container{padding:8px 12px 8px!important;margin:0!important;}
+div[data-testid="stVerticalBlock"]{gap:0.35rem!important;}
 .element-container{margin:0!important;padding:0!important;}
-div[data-testid="stHorizontalBlock"]{gap:4px!important;margin:0!important;flex-wrap:nowrap!important;}
+div[data-testid="stHorizontalBlock"]{gap:6px!important;margin:0!important;flex-wrap:nowrap!important;}
 div[data-testid="stHorizontalBlock"] div[data-testid="stColumn"]{padding:0!important;min-width:0!important;flex:1!important;}
 
 @keyframes titleShine{0%{background-position:200%}100%{background-position:-200%}}
@@ -1166,16 +1166,25 @@ div[data-testid="stButton"] button p{
 
     # ── 타이틀 ──
     _rb = f'<span style="background:#1a0800;border:1px solid #cc6600;border-radius:20px;padding:1px 10px;font-size:0.68rem;color:#ffaa44;font-weight:900;">🏆 ROUND {rn}</span> ' if rn > 1 else ''
-    st.markdown(f"""<div style="text-align:center;padding:3px 0 3px;">
-      <div style="font-family:Orbitron,monospace;font-size:1.7rem;font-weight:900;letter-spacing:5px;
+    st.markdown(f"""<div style="text-align:center;padding:4px 0 6px;">
+      <div style="font-family:Orbitron,monospace;font-size:2rem;font-weight:900;letter-spacing:6px;
         background:linear-gradient(90deg,#00e5ff,#fff,#FFD600,#ff3300,#00e5ff);background-size:300%;
         -webkit-background-clip:text;-webkit-text-fill-color:transparent;
-        animation:titleShine 2s linear infinite;">{_rb}⚡ 화력전</div>
-      <div style="font-size:0.62rem;color:#6688aa;letter-spacing:2px;margin-top:2px;">5문제 서바이벌 · 문법·어휘 실전 포격전</div>
+        animation:titleShine 2s linear infinite;line-height:1.1;">{_rb}⚡ 화력전</div>
+      <div style="font-size:0.68rem;color:#6688aa;letter-spacing:2px;margin-top:4px;font-weight:600;">
+        5문제 서바이벌 · 문법·어휘 실전 포격전</div>
     </div>""", unsafe_allow_html=True)
 
     # ── 시간 선택 ──
-    st.markdown('<div style="display:flex;align-items:center;gap:6px;margin:4px 0 2px;position:relative;z-index:10;"><div style="flex:1;height:1px;background:linear-gradient(90deg,transparent,#2255aa,transparent);"></div><span style="font-family:Orbitron,monospace;font-size:0.58rem;font-weight:900;color:#55aaff;letter-spacing:2px;text-shadow:0 0 8px rgba(85,170,255,0.6);">⏱ 전투 시간</span><div style="flex:1;height:1px;background:linear-gradient(90deg,transparent,#2255aa,transparent);"></div></div>', unsafe_allow_html=True)
+    st.markdown('''<div style="
+      background:linear-gradient(90deg,#060e1e,#0a1428,#060e1e);
+      border:1px solid rgba(85,170,255,0.4);border-radius:8px;
+      padding:5px 12px;text-align:center;
+      font-family:Orbitron,monospace;font-size:0.65rem;font-weight:900;
+      color:#55aaff;letter-spacing:3px;
+      text-shadow:0 0 10px rgba(85,170,255,0.7);">
+      ⏱ 전투 시간 선택
+    </div>''', unsafe_allow_html=True)
 
     tc1, tc2, tc3 = st.columns(3)
     with tc1:
@@ -1189,7 +1198,15 @@ div[data-testid="stButton"] button p{
             st.session_state.tsec=50; st.session_state.tsec_chosen=True; st.rerun()
 
     # ── 작전 선택 ──
-    st.markdown('<div style="display:flex;align-items:center;gap:6px;margin:5px 0 2px;position:relative;z-index:10;"><div style="flex:1;height:1px;background:linear-gradient(90deg,transparent,#aa2233,transparent);"></div><span style="font-family:Orbitron,monospace;font-size:0.58rem;font-weight:900;color:#ff5566;letter-spacing:2px;text-shadow:0 0 8px rgba(255,85,102,0.6);">⚔️ 작전 선택</span><div style="flex:1;height:1px;background:linear-gradient(90deg,transparent,#aa2233,transparent);"></div></div>', unsafe_allow_html=True)
+    st.markdown('''<div style="
+      background:linear-gradient(90deg,#120508,#1e0810,#120508);
+      border:1px solid rgba(255,85,102,0.4);border-radius:8px;
+      padding:5px 12px;text-align:center;
+      font-family:Orbitron,monospace;font-size:0.65rem;font-weight:900;
+      color:#ff5566;letter-spacing:3px;
+      text-shadow:0 0 10px rgba(255,85,102,0.7);">
+      ⚔️ 작전 선택
+    </div>''', unsafe_allow_html=True)
 
     b1, b2 = st.columns(2)
     with b1:
@@ -1207,7 +1224,16 @@ div[data-testid="stButton"] button p{
             st.session_state.sel_mode="vocab"; st.rerun()
 
     # ── 생존 규칙 ──
-    st.markdown('<div style="background:linear-gradient(135deg,#0e0208,#120210);border:1.5px solid #550020;border-radius:8px;padding:4px 10px;text-align:center;"><span style="font-family:Orbitron,monospace;font-size:0.6rem;font-weight:900;color:#ff4466;letter-spacing:1px;animation:warnP 1.5s ease-in-out infinite;display:inline-block;">💀 생존 규칙 — 5문제 중 3개 이상 · 그 이하면 전멸!</span></div>', unsafe_allow_html=True)
+    st.markdown('''<div style="
+      background:linear-gradient(135deg,#150208,#200310);
+      border:1.5px solid #660022;border-radius:10px;
+      padding:6px 12px;text-align:center;">
+      <span style="font-family:Orbitron,monospace;font-size:0.65rem;font-weight:900;
+        color:#ff4466;letter-spacing:1.5px;
+        text-shadow:0 0 10px rgba(255,68,102,0.8);">
+        💀 생존 규칙 — 5문제 중 3개 이상 · 그 이하면 전멸!
+      </span>
+    </div>''', unsafe_allow_html=True)
 
     # ── 출격 버튼 ──
     if _ready:
