@@ -1133,8 +1133,8 @@ else:
 .stApp{background:#04040c!important;}
 section[data-testid="stSidebar"]{display:none!important;}
 header[data-testid="stHeader"]{height:0!important;overflow:hidden!important;}
-.block-container{padding:8px 12px 8px!important;margin:0!important;}
-div[data-testid="stVerticalBlock"]{gap:0.35rem!important;}
+.block-container{padding:14px 14px 28px!important;margin:0!important;}
+div[data-testid="stVerticalBlock"]{gap:0.7rem!important;}
 .element-container{margin:0!important;padding:0!important;}
 div[data-testid="stHorizontalBlock"]{gap:6px!important;margin:0!important;flex-wrap:nowrap!important;}
 div[data-testid="stHorizontalBlock"] div[data-testid="stColumn"]{padding:0!important;min-width:0!important;flex:1!important;}
@@ -1166,17 +1166,17 @@ div[data-testid="stButton"] button p{
 
     # ── 타이틀 ──
     _rb = f'<span style="background:#1a0800;border:1px solid #cc6600;border-radius:20px;padding:1px 10px;font-size:0.68rem;color:#ffaa44;font-weight:900;">🏆 ROUND {rn}</span> ' if rn > 1 else ''
-    st.markdown(f"""<div style="text-align:center;padding:4px 0 6px;">
+    st.markdown(f"""<div style="text-align:center;padding:16px 0 20px;">
       <div style="font-family:Orbitron,monospace;font-size:2rem;font-weight:900;letter-spacing:6px;
         background:linear-gradient(90deg,#00e5ff,#fff,#FFD600,#ff3300,#00e5ff);background-size:300%;
         -webkit-background-clip:text;-webkit-text-fill-color:transparent;
-        animation:titleShine 2s linear infinite;line-height:1.1;">{_rb}⚡ 화력전</div>
-      <div style="font-size:0.68rem;color:#6688aa;letter-spacing:2px;margin-top:4px;font-weight:600;">
+        animation:titleShine 2s linear infinite;line-height:1.2;">{_rb}⚡ 화력전</div>
+      <div style="font-size:0.7rem;color:#5577aa;letter-spacing:2.5px;margin-top:8px;font-weight:500;">
         5문제 서바이벌 · 문법·어휘 실전 포격전</div>
     </div>""", unsafe_allow_html=True)
 
     # ── 시간 선택 (심플 라벨) ──
-    st.markdown('<div style="text-align:center;margin:2px 0 6px;"><span style="font-size:0.58rem;color:#4477bb;font-weight:900;letter-spacing:3px;font-family:Orbitron,monospace;opacity:0.85;">— ⏱ 전투 시간 —</span></div>', unsafe_allow_html=True)
+    st.markdown('<div style="text-align:center;margin:6px 0 10px;"><span style="font-size:0.58rem;color:#4477bb;font-weight:900;letter-spacing:3px;font-family:Orbitron,monospace;opacity:0.85;">— ⏱ 전투 시간 —</span></div>', unsafe_allow_html=True)
 
     tc1, tc2, tc3 = st.columns(3)
     with tc1:
@@ -1190,7 +1190,7 @@ div[data-testid="stButton"] button p{
             st.session_state.tsec=50; st.session_state.tsec_chosen=True; st.rerun()
 
     # ── 작전 선택 (박스 없이 심플 라벨) ──
-    st.markdown('<div style="text-align:center;margin:6px 0 6px;"><span style="font-size:0.58rem;color:#aa3344;font-weight:900;letter-spacing:3px;font-family:Orbitron,monospace;opacity:0.85;">— ⚔️ 작전 선택 —</span></div>', unsafe_allow_html=True)
+    st.markdown('<div style="text-align:center;margin:10px 0 10px;"><span style="font-size:0.58rem;color:#aa3344;font-weight:900;letter-spacing:3px;font-family:Orbitron,monospace;opacity:0.85;">— ⚔️ 작전 선택 —</span></div>', unsafe_allow_html=True)
 
     b1, b2 = st.columns(2)
     with b1:
@@ -1285,33 +1285,51 @@ function applyStyles(){{
   doc.querySelectorAll("button").forEach(function(b){{
     var txt=(b.innerText||b.textContent||"").trim();
 
-    // 시간 버튼
-    if(txt.indexOf("30초")>-1||txt.indexOf("빠른포격")>-1){{
-      var isSel=(selT==="30");
-      styleBtn(b,isSel?
-        {{bg:"linear-gradient(160deg,#1a1200,#120d00)",border:"#FFD600",col:"#FFD600",shadow:"rgba(255,214,0,0.6)"}}:
-        {{bg:"linear-gradient(160deg,#080e1e,#0a1228)",border:"rgba(0,180,255,0.3)",col:"#c0d8ff"}});
-      b.style.setProperty("min-height","52px","important");
-      b.style.setProperty("text-align","center","important");
-      b.querySelectorAll("p,span").forEach(function(el){{el.style.setProperty("text-align","center","important");}});
-    }}
-    else if(txt.indexOf("40초")>-1||txt.indexOf("표준전투")>-1){{
-      var isSel=(selT==="40");
-      styleBtn(b,isSel?
-        {{bg:"linear-gradient(160deg,#1a1200,#120d00)",border:"#FFD600",col:"#FFD600",shadow:"rgba(255,214,0,0.6)"}}:
-        {{bg:"linear-gradient(160deg,#080e1e,#0a1228)",border:"rgba(0,180,255,0.3)",col:"#c0d8ff"}});
-      b.style.setProperty("min-height","52px","important");
-      b.style.setProperty("text-align","center","important");
-      b.querySelectorAll("p,span").forEach(function(el){{el.style.setProperty("text-align","center","important");}});
-    }}
-    else if(txt.indexOf("50초")>-1||txt.indexOf("신중작전")>-1){{
-      var isSel=(selT==="50");
-      styleBtn(b,isSel?
-        {{bg:"linear-gradient(160deg,#1a1200,#120d00)",border:"#FFD600",col:"#FFD600",shadow:"rgba(255,214,0,0.6)"}}:
-        {{bg:"linear-gradient(160deg,#080e1e,#0a1228)",border:"rgba(0,180,255,0.3)",col:"#c0d8ff"}});
-      b.style.setProperty("min-height","52px","important");
-      b.style.setProperty("text-align","center","important");
-      b.querySelectorAll("p,span").forEach(function(el){{el.style.setProperty("text-align","center","important");}});
+    // 시간 버튼 — 핵심어(굵게+색상) / 부제(흰색 작게 보통굵기) 분리
+    var TIME_INFO=[
+      {{key:"30",sub:"빠른포격",check:function(t){{return t.indexOf("30초")>-1||t.indexOf("빠른포격")>-1;}}}},
+      {{key:"40",sub:"표준전투",check:function(t){{return t.indexOf("40초")>-1||t.indexOf("표준전투")>-1;}}}},
+      {{key:"50",sub:"신중작전",check:function(t){{return t.indexOf("50초")>-1||t.indexOf("신중작전")>-1;}}}}
+    ];
+    for(var ti=0;ti<TIME_INFO.length;ti++){{
+      var ti_info=TIME_INFO[ti];
+      if(ti_info.check(txt)){{
+        var isSel=(selT===ti_info.key);
+        var accentCol=isSel?"#FFD600":"#c0d8ff";
+        styleBtn(b,isSel?
+          {{bg:"linear-gradient(160deg,#1a1200,#120d00)",border:"#FFD600",col:"#FFD600",shadow:"rgba(255,214,0,0.6)"}}:
+          {{bg:"linear-gradient(160deg,#080e1e,#0a1228)",border:"rgba(0,180,255,0.3)",col:"#c0d8ff"}});
+        b.style.setProperty("min-height","58px","important");
+        b.style.setProperty("text-align","center","important");
+        b.style.setProperty("align-items","center","important");
+        // 텍스트 분리: 핵심어(초 숫자) 굵게, 부제 흰색 작게
+        var pTags=b.querySelectorAll("p");
+        if(pTags.length>0){{
+          var ft=pTags[0];
+          var rawTxt=(ft.innerText||ft.textContent||"").trim();
+          // 형태: "🔥\n30초  빠른포격" 또는 "🔥 30초  빠른포격"
+          var parts=rawTxt.split(/\n/).filter(function(s){{return s.trim()!==""}});
+          if(parts.length>=2){{
+            var mainPart=parts.slice(0,2).join(" ").trim();
+            var subPart=parts.slice(2).join(" ").trim()||ti_info.sub;
+            // mainPart: emoji + 초수 (굵게, 색상)
+            // subPart: 작전명 (흰색, 작게, 보통굵기)
+            ft.innerHTML=
+              '<span style="display:block;font-size:0.92rem;font-weight:900;color:'+accentCol+';line-height:1.3;letter-spacing:1px;">'+mainPart+'</span>'+
+              '<span style="display:block;font-size:0.72rem;font-weight:400;color:rgba(255,255,255,0.65);line-height:1.2;margin-top:2px;">'+subPart+'</span>';
+          }} else {{
+            // 한 줄인 경우: 앞부분 굵게 뒷부분 흰색
+            var m=rawTxt.match(/^(.+?초)\s+(.+)$/);
+            if(m){{
+              ft.innerHTML=
+                '<span style="display:block;font-size:0.92rem;font-weight:900;color:'+accentCol+';line-height:1.3;">'+m[1]+'</span>'+
+                '<span style="display:block;font-size:0.72rem;font-weight:400;color:rgba(255,255,255,0.65);line-height:1.2;margin-top:2px;">'+m[2]+'</span>';
+            }}
+          }}
+          ft.style.setProperty("text-align","center","important");
+        }}
+        break;
+      }}
     }}
 
     // 작전 카드 버튼
@@ -1323,10 +1341,12 @@ function applyStyles(){{
         styleBtn(b,isSel?
           {{bg:mc.selBg,border:mc.selBorder,col:mc.col,shadow:mc.selShadow}}:
           {{bg:mc.bg,border:mc.border,col:mc.col}});
-        b.style.setProperty("min-height","86px","important");
+        b.style.setProperty("min-height","90px","important");
         b.style.setProperty("text-align","left","important");
         b.style.setProperty("vertical-align","top","important");
-        b.style.setProperty("padding","8px 10px","important");
+        b.style.setProperty("padding","10px 12px","important");
+        b.style.setProperty("align-items","flex-start","important");
+        b.style.setProperty("justify-content","flex-start","important");
         // 줄별 스타일: 첫줄=제목(그대로), 둘째줄=부제목(작게+연하게)
         var lines = b.querySelectorAll("p,span");
         lines.forEach(function(el){{
@@ -1344,8 +1364,8 @@ function applyStyles(){{
             var titlePart = parts[0].trim();
             var subPart   = parts.slice(1).join(" ").trim();
             pTags[0].innerHTML = 
-              '<span style="font-size:0.85rem;font-weight:900;color:'+mc.col+';display:block;margin-bottom:4px;line-height:1.2;">'+titlePart+'</span>'+
-              '<span style="font-size:0.75rem;font-weight:400;color:'+mc.col+';opacity:0.65;display:block;line-height:1.3;">'+subPart+'</span>';
+              '<span style="font-size:0.88rem;font-weight:900;color:'+mc.col+';display:block;margin-bottom:5px;line-height:1.2;">'+titlePart+'</span>'+
+              '<span style="font-size:0.72rem;font-weight:400;color:rgba(255,255,255,0.6);display:block;line-height:1.35;">'+subPart+'</span>';
           }}
         }}
       }}
