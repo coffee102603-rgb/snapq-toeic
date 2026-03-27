@@ -316,7 +316,15 @@ def load_css():
     #MainMenu, footer, header { visibility: hidden; }
     .block-container { padding: 2px 8px 10px 8px !important; max-width: 860px !important; margin: 0 auto !important; }
     div[data-testid="stVerticalBlock"] > div { gap: 0 !important; margin: 0 !important; padding: 0 !important; }
-    iframe { display: block !important; margin: 0 !important; padding: 0 !important; }
+    div[data-testid="stVerticalBlock"] > div > div { margin: 0 !important; padding: 0 !important; }
+    div[data-testid="element-container"] { margin: 0 !important; padding: 0 !important; }
+    div[data-testid="stMarkdownContainer"] { margin: 0 !important; padding: 0 !important; }
+    div.stMarkdown { margin: 0 !important; padding: 0 !important; }
+    iframe { display: block !important; margin: 0 !important; padding: 0 !important; border: none !important; }
+    section[data-testid="stSidebar"] { display: none !important; }
+    /* Streamlit 요소 간 모든 여백 제거 */
+    .stApp > div > div > div > div { gap: 0 !important; }
+    [data-testid="stAppViewContainer"] > section > div { padding-top: 0 !important; }
 
     /* 상단 배너 - 형광 반짝 테두리 */
     .top-banner {
@@ -848,17 +856,18 @@ _total_solved = p5_count + p7_count
 _welcome_short = "🔥 첫판 · 바로 시작!" if _is_first_check else f"💥 {_total_solved}문제 완료!"
 
 # ═══════════════════════════════════════════════════════════════
-# ★ 폰게임 HUD — 단 한 줄로 전부! 높이 약 44px
+# ★ 폰게임 HUD — _hc.html로 렌더 (Streamlit 여백 제거)
 # ═══════════════════════════════════════════════════════════════
-st.markdown(f"""
+_hc.html(f"""
 <style>
+*{{box-sizing:border-box;margin:0;padding:0;}}
 @import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap');
 .topbar{{
   display:flex;align-items:center;gap:7px;flex-wrap:wrap;
   padding:4px 10px;
   background:linear-gradient(135deg,rgba(124,92,255,0.18),rgba(0,229,160,0.12));
   border:1.5px solid rgba(0,229,255,0.55);
-  border-radius:10px;margin:3px 0 4px;
+  border-radius:10px;
   animation:tbGlow 2s ease-in-out infinite alternate;
 }}
 @keyframes tbGlow{{
@@ -902,7 +911,7 @@ st.markdown(f"""
   <span class="tb-sep">|</span>
   <span class="tb-welcome">{_welcome_short}</span>
 </div>
-""", unsafe_allow_html=True)
+""", height=46)
 
 # ── 접속 횟수 기반 로테이션 멘트 ──
 _visit = _get_visit_count(nickname)
