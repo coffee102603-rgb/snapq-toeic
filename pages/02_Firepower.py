@@ -1130,7 +1130,13 @@ else:
     st.markdown("""
 <style>
 @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@700;900&family=Rajdhani:wght@600;700&display=swap');
-.stApp{background:#04040c!important;}
+.stApp{
+  background:#04040c!important;
+  background-image:
+    linear-gradient(rgba(0,180,255,0.03) 1px,transparent 1px),
+    linear-gradient(90deg,rgba(0,180,255,0.03) 1px,transparent 1px)!important;
+  background-size:32px 32px!important;
+}
 section[data-testid="stSidebar"]{display:none!important;}
 header[data-testid="stHeader"]{height:0!important;overflow:hidden!important;}
 .block-container{padding:14px 14px 28px!important;margin:0!important;}
@@ -1147,9 +1153,9 @@ div[data-testid="stHorizontalBlock"] div[data-testid="stColumn"]{padding:0!impor
 }
 
 div[data-testid="stButton"] button{
-  background:#080c18!important;
-  border:1.5px solid rgba(0,180,255,0.22)!important;
-  border-radius:9px!important;
+  background:#070b17!important;
+  border:1.5px solid rgba(0,180,255,0.2)!important;
+  border-radius:10px!important;
   font-family:'Rajdhani',sans-serif!important;
   font-size:0.85rem!important;font-weight:700!important;
   padding:5px 8px!important;color:#99aacc!important;
@@ -1176,21 +1182,33 @@ div[data-testid="stButton"] button p{
     </div>""", unsafe_allow_html=True)
 
     # ── 시간 선택 (심플 라벨) ──
-    st.markdown('<div style="text-align:center;margin:6px 0 10px;"><span style="font-size:0.58rem;color:#4477bb;font-weight:900;letter-spacing:3px;font-family:Orbitron,monospace;opacity:0.85;">— ⏱ 전투 시간 —</span></div>', unsafe_allow_html=True)
+    st.markdown('''<div style="text-align:center;margin:6px 0 12px;">
+      <div style="display:inline-flex;align-items:center;gap:10px;">
+        <div style="width:40px;height:1px;background:linear-gradient(90deg,transparent,#3388cc);"></div>
+        <span style="font-size:0.72rem;color:#55aaff;font-weight:900;letter-spacing:4px;font-family:Orbitron,monospace;text-shadow:0 0 10px rgba(85,170,255,0.8);">⏱ 전투 시간</span>
+        <div style="width:40px;height:1px;background:linear-gradient(90deg,#3388cc,transparent);"></div>
+      </div>
+    </div>''', unsafe_allow_html=True)
 
     tc1, tc2, tc3 = st.columns(3)
     with tc1:
-        if st.button("🔥\n30초  빠른포격", key="t30", use_container_width=True):
+        if st.button("🔥\n30초\n속공", key="t30", use_container_width=True):
             st.session_state.tsec=30; st.session_state.tsec_chosen=True; st.rerun()
     with tc2:
-        if st.button("⚡\n40초  표준전투", key="t40", use_container_width=True):
+        if st.button("⚡\n40초\n표준", key="t40", use_container_width=True):
             st.session_state.tsec=40; st.session_state.tsec_chosen=True; st.rerun()
     with tc3:
-        if st.button("🛡️\n50초  신중작전", key="t50", use_container_width=True):
+        if st.button("🛡️\n50초\n정밀", key="t50", use_container_width=True):
             st.session_state.tsec=50; st.session_state.tsec_chosen=True; st.rerun()
 
     # ── 작전 선택 (박스 없이 심플 라벨) ──
-    st.markdown('<div style="text-align:center;margin:10px 0 10px;"><span style="font-size:0.58rem;color:#aa3344;font-weight:900;letter-spacing:3px;font-family:Orbitron,monospace;opacity:0.85;">— ⚔️ 작전 선택 —</span></div>', unsafe_allow_html=True)
+    st.markdown('''<div style="text-align:center;margin:10px 0 12px;">
+      <div style="display:inline-flex;align-items:center;gap:10px;">
+        <div style="width:40px;height:1px;background:linear-gradient(90deg,transparent,#882233);"></div>
+        <span style="font-size:0.72rem;color:#ff5577;font-weight:900;letter-spacing:4px;font-family:Orbitron,monospace;text-shadow:0 0 10px rgba(255,85,119,0.8);">⚔ 작전 선택</span>
+        <div style="width:40px;height:1px;background:linear-gradient(90deg,#882233,transparent);"></div>
+      </div>
+    </div>''', unsafe_allow_html=True)
 
     b1, b2 = st.columns(2)
     with b1:
@@ -1287,45 +1305,37 @@ function applyStyles(){{
 
     // 시간 버튼 — 핵심어(굵게+색상) / 부제(흰색 작게 보통굵기) 분리
     var TIME_INFO=[
-      {{key:"30",sub:"빠른포격",check:function(t){{return t.indexOf("30초")>-1||t.indexOf("빠른포격")>-1;}}}},
-      {{key:"40",sub:"표준전투",check:function(t){{return t.indexOf("40초")>-1||t.indexOf("표준전투")>-1;}}}},
-      {{key:"50",sub:"신중작전",check:function(t){{return t.indexOf("50초")>-1||t.indexOf("신중작전")>-1;}}}}
+      {{key:"30",sub:"속공",check:function(t){{return t.indexOf("30초")>-1;}}}},
+      {{key:"40",sub:"표준",check:function(t){{return t.indexOf("40초")>-1;}}}},
+      {{key:"50",sub:"정밀",check:function(t){{return t.indexOf("50초")>-1;}}}}
     ];
     for(var ti=0;ti<TIME_INFO.length;ti++){{
       var ti_info=TIME_INFO[ti];
       if(ti_info.check(txt)){{
         var isSel=(selT===ti_info.key);
-        var accentCol=isSel?"#FFD600":"#c0d8ff";
+        var accentCol=isSel?"#FFD600":"#88bbee";
         styleBtn(b,isSel?
           {{bg:"linear-gradient(160deg,#1a1200,#120d00)",border:"#FFD600",col:"#FFD600",shadow:"rgba(255,214,0,0.6)"}}:
-          {{bg:"linear-gradient(160deg,#080e1e,#0a1228)",border:"rgba(0,180,255,0.3)",col:"#c0d8ff"}});
-        b.style.setProperty("min-height","58px","important");
+          {{bg:"linear-gradient(160deg,#070c1a,#090e20)",border:"rgba(0,160,255,0.25)",col:"#88bbee"}});
+        b.style.setProperty("min-height","64px","important");
         b.style.setProperty("text-align","center","important");
         b.style.setProperty("align-items","center","important");
-        // 텍스트 분리: 핵심어(초 숫자) 굵게, 부제 흰색 작게
+        b.style.setProperty("display","flex","important");
+        b.style.setProperty("flex-direction","column","important");
+        b.style.setProperty("justify-content","center","important");
         var pTags=b.querySelectorAll("p");
         if(pTags.length>0){{
           var ft=pTags[0];
           var rawTxt=(ft.innerText||ft.textContent||"").trim();
-          // 형태: "🔥\n30초  빠른포격" 또는 "🔥 30초  빠른포격"
-          var parts=rawTxt.split(/\n/).filter(function(s){{return s.trim()!==""}});
-          if(parts.length>=2){{
-            var mainPart=parts.slice(0,2).join(" ").trim();
-            var subPart=parts.slice(2).join(" ").trim()||ti_info.sub;
-            // mainPart: emoji + 초수 (굵게, 색상)
-            // subPart: 작전명 (흰색, 작게, 보통굵기)
-            ft.innerHTML=
-              '<span style="display:block;font-size:0.92rem;font-weight:900;color:'+accentCol+';line-height:1.3;letter-spacing:1px;">'+mainPart+'</span>'+
-              '<span style="display:block;font-size:0.72rem;font-weight:400;color:rgba(255,255,255,0.65);line-height:1.2;margin-top:2px;">'+subPart+'</span>';
-          }} else {{
-            // 한 줄인 경우: 앞부분 굵게 뒷부분 흰색
-            var m=rawTxt.match(/^(.+?초)\s+(.+)$/);
-            if(m){{
-              ft.innerHTML=
-                '<span style="display:block;font-size:0.92rem;font-weight:900;color:'+accentCol+';line-height:1.3;">'+m[1]+'</span>'+
-                '<span style="display:block;font-size:0.72rem;font-weight:400;color:rgba(255,255,255,0.65);line-height:1.2;margin-top:2px;">'+m[2]+'</span>';
-            }}
-          }}
+          var parts=rawTxt.split(/\n/).map(function(s){{return s.trim();}}).filter(function(s){{return s!==""}});
+          // parts[0]=이모지, parts[1]=30초, parts[2]=속공
+          var emoji=parts.length>=1?parts[0]:"";
+          var sec=parts.length>=2?parts[1]:"";
+          var sub=parts.length>=3?parts[2]:ti_info.sub;
+          ft.innerHTML=
+            '<span style="display:block;font-size:1.1rem;line-height:1.1;margin-bottom:1px;">'+emoji+'</span>'+
+            '<span style="display:block;font-size:1.0rem;font-weight:900;color:'+accentCol+';line-height:1.2;letter-spacing:1px;">'+sec+'</span>'+
+            '<span style="display:block;font-size:0.65rem;font-weight:400;color:rgba(255,255,255,0.5);line-height:1.2;margin-top:2px;letter-spacing:2px;">'+sub+'</span>';
           ft.style.setProperty("text-align","center","important");
         }}
         break;
@@ -1341,10 +1351,11 @@ function applyStyles(){{
         styleBtn(b,isSel?
           {{bg:mc.selBg,border:mc.selBorder,col:mc.col,shadow:mc.selShadow}}:
           {{bg:mc.bg,border:mc.border,col:mc.col}});
-        b.style.setProperty("min-height","90px","important");
+        b.style.setProperty("min-height","92px","important");
         b.style.setProperty("text-align","left","important");
-        b.style.setProperty("vertical-align","top","important");
-        b.style.setProperty("padding","10px 12px","important");
+        b.style.setProperty("padding","12px 14px","important");
+        b.style.setProperty("display","flex","important");
+        b.style.setProperty("flex-direction","column","important");
         b.style.setProperty("align-items","flex-start","important");
         b.style.setProperty("justify-content","flex-start","important");
         // 줄별 스타일: 첫줄=제목(그대로), 둘째줄=부제목(작게+연하게)
@@ -1353,7 +1364,6 @@ function applyStyles(){{
           el.style.setProperty("text-align","left","important");
           el.style.setProperty("display","block","important");
           el.style.setProperty("width","100%","important");
-          el.style.setProperty("vertical-align","top","important");
         }});
         // p 태그 전체 텍스트에서 줄바꿈 기준으로 스타일 분리
         var pTags = b.querySelectorAll("p");
@@ -1362,10 +1372,10 @@ function applyStyles(){{
           var parts = fullTxt.split("\n").filter(function(s){{return s.trim()!==""}});
           if(parts.length >= 2){{
             var titlePart = parts[0].trim();
-            var subPart   = parts.slice(1).join(" ").trim();
+            var subPart   = parts.slice(1).join(" · ").trim();
             pTags[0].innerHTML = 
-              '<span style="font-size:0.88rem;font-weight:900;color:'+mc.col+';display:block;margin-bottom:5px;line-height:1.2;">'+titlePart+'</span>'+
-              '<span style="font-size:0.72rem;font-weight:400;color:rgba(255,255,255,0.6);display:block;line-height:1.35;">'+subPart+'</span>';
+              '<span style="font-size:0.92rem;font-weight:900;color:'+mc.col+';display:block;margin-bottom:6px;line-height:1.2;text-shadow:0 0 8px '+mc.col+'55;">'+titlePart+'</span>'+
+              '<span style="font-size:0.7rem;font-weight:400;color:rgba(255,255,255,0.45);display:block;line-height:1.5;letter-spacing:0.5px;">'+subPart+'</span>';
           }}
         }}
       }}
