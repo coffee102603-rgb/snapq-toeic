@@ -1094,7 +1094,21 @@ _GO_STYLE = """
 # 한 iframe에 전부 → 스크롤 없이 한 화면에!
 # ═══════════════════════════════════════════
 
-# ── 숨김 버튼 (네비게이션용) ──
+# ── 숨김 버튼 CSS (JS 실행 전 즉시 숨기기) ──
+st.markdown("""
+<style>
+/* 네비게이션 숨김 버튼 — 화면에 절대 보이지 않게 */
+div[data-testid="stButton"]:has(button[kind="secondary"]) {
+    position: absolute !important;
+    opacity: 0 !important;
+    pointer-events: none !important;
+    height: 0 !important;
+    overflow: hidden !important;
+    margin: 0 !important;
+    padding: 0 !important;
+}
+</style>
+""", unsafe_allow_html=True)
 _prison_go = st.button("PRISON_GO", key="prison_btn")
 if _prison_go:
     st.session_state.sg_phase = "word_prison"
@@ -1414,7 +1428,7 @@ function hideBtn(){
   try {
     window.parent.document.querySelectorAll('button').forEach(b=>{
       const t=(b.innerText||'').trim();
-      if(t==='ADMIN_GO'||t==='P5_GO'||t==='P7_GO'||t==='ARM_GO'){
+      if(t==='ADMIN_GO'||t==='P5_GO'||t==='P7_GO'||t==='ARM_GO'||t==='PRISON_GO'){
         const w=b.closest('[data-testid="stButton"]');
         if(w) w.style.cssText='position:absolute;opacity:0;pointer-events:none;height:0;overflow:hidden;';
       }
