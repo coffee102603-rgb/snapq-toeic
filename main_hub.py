@@ -320,14 +320,14 @@ def load_css():
     .stApp > header { display: none !important; }
     /* 핵심: block-container 자체를 위로 당기기 */
     .block-container {
-        margin-top: -6rem !important;
+        margin-top: -10rem !important;
         padding-top: 1rem !important;
         padding-left: 8px !important;
         padding-right: 8px !important;
         max-width: 860px !important;
     }
-    section.main > div.block-container { margin-top: -6rem !important; padding-top: 1rem !important; }
-    [data-testid="stAppViewBlockContainer"] { padding-top: 0 !important; margin-top: -6rem !important; }
+    section.main > div.block-container { margin-top: -10rem !important; padding-top: 1rem !important; }
+    [data-testid="stAppViewBlockContainer"] { padding-top: 0 !important; margin-top: -10rem !important; }
     [data-testid="stAppViewContainer"] > section > div { padding-top: 0 !important; margin-top: 0 !important; }
     [data-testid="stAppViewContainer"] > section { padding-top: 0 !important; margin-top: 0 !important; }
     .main > div { padding-top: 0px !important; margin-top: 0px !important; }
