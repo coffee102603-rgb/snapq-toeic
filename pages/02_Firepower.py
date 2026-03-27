@@ -1137,16 +1137,26 @@ else:
         st.session_state.sel_mode = _qp_smode
         st.query_params.clear()
         st.rerun()
-    if _qp_action == "start" and _ready:
-        md,grp = mode_map[sm]
-        st.session_state.mode = md
-        qs = pick5(md, grp)
-        st.session_state.round_qs = qs
-        st.session_state.cq = qs[0]
-        st.session_state.qst = time.time()
-        st.session_state.phase = "battle"
-        st.query_params.clear()
-        st.rerun()
+    if _qp_action == "start":
+        # session state 또는 query param에서 tsec/smode 확보
+        _start_tsec  = st.query_params.get("tsec", str(st.session_state.get("tsec", 30)))
+        _start_smode = st.query_params.get("smode", st.session_state.get("sel_mode", ""))
+        if _start_tsec in ["30","40","50"]:
+            st.session_state.tsec = int(_start_tsec)
+            st.session_state.tsec_chosen = True
+        if _start_smode in ["g1","g2","g3","vocab"]:
+            st.session_state.sel_mode = _start_smode
+        if st.session_state.get("tsec_chosen") and st.session_state.get("sel_mode") in ["g1","g2","g3","vocab"]:
+            _sm2 = st.session_state.sel_mode
+            md, grp = mode_map[_sm2]
+            st.session_state.mode = md
+            qs = pick5(md, grp)
+            st.session_state.round_qs = qs
+            st.session_state.cq = qs[0]
+            st.session_state.qst = time.time()
+            st.session_state.phase = "battle"
+            st.query_params.clear()
+            st.rerun()
     if _qp_action == "pow":
         st.query_params.clear()
         st.switch_page("pages/03_POW_HQ.py")
@@ -1562,7 +1572,7 @@ function selMode(m){{
 }}
 function launch(){{
   if(!selTime_val||!selMode_val)return;
-  window.parent.location.search='?action=start';
+  window.parent.location.search='?action=start&tsec='+selTime_val+'&smode='+selMode_val;
 }}
 function go(dest){{window.parent.location.search='?action='+dest;}}
 
