@@ -1183,21 +1183,21 @@ else:
 *{{margin:0;padding:0;box-sizing:border-box;-webkit-tap-highlight-color:transparent;}}
 html,body{{
   height:100%;width:100%;
-  background:#06060e;
+  background:#04040c;
   font-family:'Rajdhani',sans-serif;
   overflow:hidden;
   user-select:none;
+  color:#eee;
 }}
 
-/* ── 배경 파티클 ── */
+/* ── 배경 ── */
 .bg{{position:fixed;inset:0;overflow:hidden;pointer-events:none;z-index:0;}}
-.spark{{position:absolute;width:2px;height:2px;border-radius:50%;background:#00d4ff;
-  animation:sparkFloat linear infinite;opacity:0;}}
+.spark{{position:absolute;border-radius:50%;animation:sparkFloat linear infinite;opacity:0;}}
 @keyframes sparkFloat{{
-  0%{{transform:translateY(100vh) scale(0);opacity:0;}}
-  10%{{opacity:0.6;}}
-  90%{{opacity:0.2;}}
-  100%{{transform:translateY(-10vh) scale(1.5);opacity:0;}}
+  0%{{transform:translateY(110vh) scale(0);opacity:0;}}
+  8%{{opacity:0.8;}}
+  92%{{opacity:0.3;}}
+  100%{{transform:translateY(-10vh) scale(2);opacity:0;}}
 }}
 
 /* ── 전체 레이아웃 ── */
@@ -1205,164 +1205,220 @@ html,body{{
   position:relative;z-index:1;
   display:flex;flex-direction:column;
   height:100vh;
-  padding:10px 12px 6px;
-  gap:7px;
+  padding:8px 10px 6px;
+  gap:6px;
 }}
 
 /* ── 타이틀 ── */
-.title-wrap{{text-align:center;padding:2px 0;}}
+.title-wrap{{text-align:center;padding:0;flex-shrink:0;}}
 .title-main{{
   font-family:'Orbitron',monospace;
-  font-size:2rem;font-weight:900;letter-spacing:6px;
-  background:linear-gradient(90deg,#00d4ff,#fff,#FFD600,#ff5500,#00d4ff);
+  font-size:1.9rem;font-weight:900;letter-spacing:6px;
+  background:linear-gradient(90deg,#00e5ff,#ffffff,#FFD600,#ff3300,#00e5ff);
   background-size:300%;
   -webkit-background-clip:text;-webkit-text-fill-color:transparent;
-  animation:shine 2.5s linear infinite;
-  line-height:1;
+  animation:shine 2s linear infinite;
+  line-height:1.1;
+  filter:drop-shadow(0 0 12px rgba(0,200,255,0.4));
 }}
-.title-sub{{font-size:0.62rem;color:#334;letter-spacing:2.5px;margin-top:2px;}}
+.title-sub{{
+  font-size:0.65rem;color:#6688aa;letter-spacing:2px;
+  margin-top:1px;font-weight:600;
+}}
 .round-badge{{
   display:inline-block;background:#1a0800;border:1px solid #cc6600;
-  border-radius:20px;padding:2px 12px;font-size:0.7rem;color:#cc6600;
-  font-weight:800;margin-bottom:3px;
+  border-radius:20px;padding:2px 10px;font-size:0.68rem;color:#ffaa44;
+  font-weight:900;margin-bottom:2px;letter-spacing:1px;
 }}
 @keyframes shine{{0%{{background-position:200%}}100%{{background-position:-200%}}}}
 
 /* ── 섹션 헤더 ── */
 .sec-hdr{{
-  display:flex;align-items:center;gap:6px;
-  font-size:0.6rem;font-weight:900;letter-spacing:3px;
+  display:flex;align-items:center;gap:8px;flex-shrink:0;
 }}
 .sec-hdr .line{{flex:1;height:1px;}}
-.sec-hdr.time .line{{background:linear-gradient(90deg,transparent,#1a3a5a,transparent);}}
-.sec-hdr.time .txt{{color:#4488bb;}}
-.sec-hdr.mode .line{{background:linear-gradient(90deg,transparent,#3a1a1a,transparent);}}
-.sec-hdr.mode .txt{{color:#aa3344;}}
+.sec-hdr .txt{{
+  font-family:'Orbitron',monospace;
+  font-size:0.6rem;font-weight:900;letter-spacing:3px;
+  white-space:nowrap;
+}}
+.sec-hdr.time .line{{background:linear-gradient(90deg,transparent,#2255aa,transparent);}}
+.sec-hdr.time .txt{{color:#55aaff;text-shadow:0 0 8px rgba(85,170,255,0.6);}}
+.sec-hdr.mode .line{{background:linear-gradient(90deg,transparent,#aa2233,transparent);}}
+.sec-hdr.mode .txt{{color:#ff5566;text-shadow:0 0 8px rgba(255,85,102,0.6);}}
 
 /* ── 시간 칩 3개 ── */
-.time-row{{display:grid;grid-template-columns:1fr 1fr 1fr;gap:6px;}}
+.time-row{{display:grid;grid-template-columns:1fr 1fr 1fr;gap:5px;flex-shrink:0;}}
 .time-chip{{
-  background:#080c18;
-  border:1.5px solid rgba(0,212,255,0.2);
+  background:linear-gradient(160deg,#080e1e,#0a1228);
+  border:1.5px solid rgba(0,180,255,0.25);
   border-radius:10px;
-  padding:8px 4px;
+  padding:7px 4px 6px;
   text-align:center;
   cursor:pointer;
   transition:all 0.15s ease;
-  position:relative;
-  overflow:hidden;
 }}
-.time-chip .tc-icon{{font-size:1.2rem;display:block;line-height:1;}}
-.time-chip .tc-sec{{font-family:'Orbitron',monospace;font-size:0.88rem;font-weight:900;color:#aaa;display:block;margin:2px 0 1px;}}
-.time-chip .tc-sub{{font-size:0.58rem;color:#555;display:block;letter-spacing:1px;}}
+.time-chip .tc-icon{{font-size:1.3rem;display:block;line-height:1;margin-bottom:3px;}}
+.time-chip .tc-sec{{
+  font-family:'Orbitron',monospace;font-size:0.95rem;font-weight:900;
+  color:#c0d8ff;display:block;margin-bottom:1px;
+  text-shadow:0 0 6px rgba(150,200,255,0.4);
+}}
+.time-chip .tc-sub{{
+  font-size:0.6rem;color:#7799bb;display:block;
+  font-weight:700;letter-spacing:0.5px;
+}}
+.time-chip:active{{transform:scale(0.95);}}
 .time-chip.selected{{
-  background:#120e00!important;
-  border-color:#FFD600!important;
-  border-width:2px!important;
-  box-shadow:0 0 18px rgba(255,214,0,0.5)!important;
+  background:linear-gradient(160deg,#1a1200,#120d00)!important;
+  border:2px solid #FFD600!important;
+  box-shadow:0 0 22px rgba(255,214,0,0.55),inset 0 0 12px rgba(255,214,0,0.06)!important;
 }}
-.time-chip.selected .tc-sec{{color:#FFD600!important;text-shadow:0 0 8px rgba(255,214,0,0.6);}}
-.time-chip.selected .tc-sub{{color:#aa8800!important;}}
-.time-chip:active{{transform:scale(0.96);}}
+.time-chip.selected .tc-sec{{
+  color:#FFD600!important;
+  text-shadow:0 0 10px rgba(255,214,0,0.8)!important;
+}}
+.time-chip.selected .tc-sub{{color:#cc9900!important;}}
 
 /* ── 작전 카드 2x2 ── */
-.mode-grid{{display:grid;grid-template-columns:1fr 1fr;gap:6px;}}
+.mode-grid{{display:grid;grid-template-columns:1fr 1fr;gap:5px;flex:1;min-height:0;}}
 .mode-card{{
   border-radius:12px;
   padding:10px 10px 8px;
   cursor:pointer;
   transition:all 0.15s ease;
-  position:relative;
-  overflow:hidden;
   border:2px solid transparent;
+  display:flex;flex-direction:column;justify-content:flex-start;
 }}
-/* 각 작전별 색상 */
-.mc-g1{{background:linear-gradient(145deg,#040e1e,#071428);border-color:rgba(0,140,255,0.2);}}
-.mc-g2{{background:linear-gradient(145deg,#0e0418,#14062a);border-color:rgba(160,80,255,0.2);}}
-.mc-g3{{background:linear-gradient(145deg,#041814,#071e18);border-color:rgba(0,200,180,0.2);}}
-.mc-vc{{background:linear-gradient(145deg,#061408,#08180a);border-color:rgba(60,200,80,0.2);}}
+/* 각 색상 */
+.mc-g1{{background:linear-gradient(145deg,#05102a,#081630);border-color:rgba(60,140,255,0.3);}}
+.mc-g2{{background:linear-gradient(145deg,#120520,#180830);border-color:rgba(170,80,255,0.3);}}
+.mc-g3{{background:linear-gradient(145deg,#051a18,#072220);border-color:rgba(0,210,190,0.3);}}
+.mc-vc{{background:linear-gradient(145deg,#06180a,#081e0c);border-color:rgba(60,210,80,0.3);}}
 
-.mode-card .mc-icon{{font-size:1.5rem;display:block;margin-bottom:4px;}}
-.mode-card .mc-name{{
-  font-family:'Orbitron',monospace;font-size:0.7rem;font-weight:900;
-  display:block;letter-spacing:1px;
+.mc-icon{{font-size:1.4rem;display:block;margin-bottom:4px;line-height:1;}}
+.mc-name{{
+  font-family:'Orbitron',monospace;font-size:0.75rem;font-weight:900;
+  display:block;letter-spacing:1.5px;margin-bottom:3px;
 }}
-.mc-g1 .mc-name{{color:#4499ff;}}
-.mc-g2 .mc-name{{color:#bb77ff;}}
-.mc-g3 .mc-name{{color:#00ccbb;}}
-.mc-vc .mc-name{{color:#44ee66;}}
-.mode-card .mc-sub{{font-size:0.58rem;color:#556;display:block;margin-top:2px;letter-spacing:0.5px;}}
+.mc-g1 .mc-name{{color:#6aadff;text-shadow:0 0 8px rgba(100,170,255,0.5);}}
+.mc-g2 .mc-name{{color:#cc88ff;text-shadow:0 0 8px rgba(200,130,255,0.5);}}
+.mc-g3 .mc-name{{color:#00ddc8;text-shadow:0 0 8px rgba(0,210,190,0.5);}}
+.mc-vc .mc-name{{color:#55ee77;text-shadow:0 0 8px rgba(80,220,100,0.5);}}
+.mc-sub{{
+  font-size:0.62rem;color:#8899aa;display:block;
+  font-weight:700;letter-spacing:0.3px;line-height:1.4;
+}}
 
 /* 선택됨 */
-.mc-g1.selected{{background:linear-gradient(145deg,#071a30,#0a2040)!important;border-color:#4499ff!important;box-shadow:0 0 20px rgba(68,153,255,0.45)!important;}}
-.mc-g2.selected{{background:linear-gradient(145deg,#160828,#1e0a38)!important;border-color:#bb77ff!important;box-shadow:0 0 20px rgba(187,119,255,0.45)!important;}}
-.mc-g3.selected{{background:linear-gradient(145deg,#062018,#083025)!important;border-color:#00ccbb!important;box-shadow:0 0 20px rgba(0,200,187,0.45)!important;}}
-.mc-vc.selected{{background:linear-gradient(145deg,#081808,#0c2410)!important;border-color:#44ee66!important;box-shadow:0 0 20px rgba(68,238,102,0.45)!important;}}
-.mc-g1.selected .mc-name{{color:#66bbff!important;text-shadow:0 0 8px rgba(100,180,255,0.6);}}
-.mc-g2.selected .mc-name{{color:#dd99ff!important;text-shadow:0 0 8px rgba(220,150,255,0.6);}}
-.mc-g3.selected .mc-name{{color:#00eedd!important;text-shadow:0 0 8px rgba(0,220,200,0.6);}}
-.mc-vc.selected .mc-name{{color:#66ff88!important;text-shadow:0 0 8px rgba(100,255,130,0.6);}}
+.mc-g1.selected{{
+  background:linear-gradient(145deg,#081e40,#0c2850)!important;
+  border-color:#6aadff!important;
+  box-shadow:0 0 24px rgba(100,170,255,0.5),inset 0 0 16px rgba(80,140,255,0.06)!important;
+}}
+.mc-g2.selected{{
+  background:linear-gradient(145deg,#1e0a38,#280e48)!important;
+  border-color:#cc88ff!important;
+  box-shadow:0 0 24px rgba(200,130,255,0.5),inset 0 0 16px rgba(160,80,255,0.06)!important;
+}}
+.mc-g3.selected{{
+  background:linear-gradient(145deg,#082820,#0c3428)!important;
+  border-color:#00ddc8!important;
+  box-shadow:0 0 24px rgba(0,210,190,0.5),inset 0 0 16px rgba(0,180,160,0.06)!important;
+}}
+.mc-vc.selected{{
+  background:linear-gradient(145deg,#0a2010,#0e2814)!important;
+  border-color:#55ee77!important;
+  box-shadow:0 0 24px rgba(80,220,100,0.5),inset 0 0 16px rgba(60,200,80,0.06)!important;
+}}
+.mc-g1.selected .mc-name{{color:#88ccff!important;text-shadow:0 0 12px rgba(120,200,255,0.9)!important;}}
+.mc-g2.selected .mc-name{{color:#ddaaff!important;text-shadow:0 0 12px rgba(220,170,255,0.9)!important;}}
+.mc-g3.selected .mc-name{{color:#00ffee!important;text-shadow:0 0 12px rgba(0,240,220,0.9)!important;}}
+.mc-vc.selected .mc-name{{color:#88ff99!important;text-shadow:0 0 12px rgba(130,255,150,0.9)!important;}}
+.mc-g1.selected .mc-sub{{color:#aaccee!important;}}
+.mc-g2.selected .mc-sub{{color:#ccaaee!important;}}
+.mc-g3.selected .mc-sub{{color:#88ddcc!important;}}
+.mc-vc.selected .mc-sub{{color:#88cc99!important;}}
 .mode-card:active{{transform:scale(0.97);}}
 
 /* ── 생존 규칙 ── */
 .survival{{
-  background:#0a0204;border:1px solid #2a0010;border-radius:8px;
+  background:linear-gradient(135deg,#0e0208,#120210);
+  border:1.5px solid #550020;
+  border-radius:8px;
   padding:5px 10px;text-align:center;
-  font-size:0.72rem;font-weight:900;color:#FF2D55;
+  font-family:'Orbitron',monospace;
+  font-size:0.62rem;font-weight:900;
+  letter-spacing:1px;
+  color:#ff4466;
   animation:warnpulse 1.5s ease-in-out infinite;
   flex-shrink:0;
+  text-shadow:0 0 8px rgba(255,68,102,0.6);
 }}
 @keyframes warnpulse{{
-  0%,100%{{color:#FF2D55;text-shadow:0 0 6px rgba(255,45,85,0.7);}}
-  50%{{color:#ff7799;text-shadow:0 0 14px rgba(255,45,85,1);}}
+  0%,100%{{color:#ff4466;border-color:#550020;box-shadow:0 0 8px rgba(255,50,80,0.2);}}
+  50%{{color:#ff8899;border-color:#aa0030;box-shadow:0 0 18px rgba(255,50,80,0.5);}}
 }}
 
 /* ── 출격 버튼 ── */
 .launch-wrap{{flex-shrink:0;}}
 .launch-btn{{
   width:100%;border:none;border-radius:12px;
-  padding:14px 16px;
-  font-family:'Orbitron',monospace;font-size:1.05rem;font-weight:900;
+  padding:13px 16px;
+  font-family:'Orbitron',monospace;font-size:1.0rem;font-weight:900;
   letter-spacing:2px;cursor:pointer;
-  transition:all 0.15s ease;
-  display:flex;align-items:center;justify-content:center;gap:10px;
+  display:flex;align-items:center;justify-content:center;gap:8px;
+  transition:transform 0.1s;
 }}
 .launch-btn.ready{{
-  background:linear-gradient(135deg,#2a0800,#1a0500);
-  border:2px solid #ff5500;color:#ff7700;
-  animation:launchglow 1.5s ease-in-out infinite;
-  box-shadow:0 0 30px rgba(255,85,0,0.4);
+  background:linear-gradient(135deg,#300a00,#200600,#301000);
+  border:2px solid #ff6600;
+  color:#ffaa33;
+  animation:launchglow 1.4s ease-in-out infinite;
+  text-shadow:0 0 10px rgba(255,160,50,0.7);
 }}
 .launch-btn.notready{{
-  background:#09090f;border:1.5px solid #1a1a28;color:#2a2a44;
-  cursor:default;font-size:0.85rem;letter-spacing:1px;
+  background:#080810;
+  border:1.5px solid #1e1e30;
+  color:#3a3a55;
+  cursor:default;
+  font-size:0.78rem;letter-spacing:0.5px;
 }}
-.launch-btn .adp-tag{{
-  font-size:0.62rem;color:#886600;font-weight:700;
-  background:rgba(255,200,0,0.1);border:1px solid rgba(255,200,0,0.2);
-  border-radius:10px;padding:1px 8px;letter-spacing:0;
+.adp-tag{{
+  font-size:0.58rem;color:#cc9900;font-weight:700;
+  background:rgba(255,200,0,0.12);border:1px solid rgba(255,180,0,0.3);
+  border-radius:10px;padding:1px 7px;letter-spacing:0;font-family:'Rajdhani',sans-serif;
 }}
 @keyframes launchglow{{
-  0%,100%{{box-shadow:0 0 20px rgba(255,85,0,0.4),inset 0 0 10px rgba(255,120,0,0.05);}}
-  50%{{box-shadow:0 0 50px rgba(255,180,0,0.7),0 0 80px rgba(255,85,0,0.3),inset 0 0 20px rgba(255,150,0,0.08);}}
+  0%,100%{{
+    box-shadow:0 0 20px rgba(255,100,0,0.5),0 0 40px rgba(255,60,0,0.2);
+    border-color:#ff6600;
+  }}
+  50%{{
+    box-shadow:0 0 40px rgba(255,180,0,0.8),0 0 80px rgba(255,100,0,0.4),0 0 120px rgba(255,60,0,0.2);
+    border-color:#FFD600;
+    color:#FFD600;
+  }}
 }}
-.launch-btn.ready:active{{transform:scale(0.97);box-shadow:0 0 10px rgba(255,85,0,0.3);}}
+.launch-btn.ready:active{{transform:scale(0.97);}}
 
 /* ── 네비 ── */
-.nav-row{{display:grid;grid-template-columns:1fr 1fr;gap:6px;flex-shrink:0;}}
+.nav-row{{display:grid;grid-template-columns:1fr 1fr;gap:5px;flex-shrink:0;}}
 .nav-btn{{
-  background:#05050b;border:1px solid #141420;border-radius:7px;
-  padding:7px 4px;text-align:center;
-  font-size:0.72rem;color:#444;font-weight:700;cursor:pointer;
-  transition:all 0.12s;letter-spacing:0.5px;
+  background:#060610;
+  border:1px solid #1e1e30;
+  border-radius:7px;
+  padding:6px 4px;text-align:center;
+  font-size:0.7rem;color:#7788aa;font-weight:700;
+  cursor:pointer;letter-spacing:0.5px;
+  transition:all 0.12s;
+  font-family:'Rajdhani',sans-serif;
 }}
-.nav-btn:hover{{background:#0a0a16;border-color:#282838;color:#777;}}
-.nav-btn:active{{transform:scale(0.97);}}
+.nav-btn:active{{background:#0c0c1e;color:#aabbcc;transform:scale(0.97);}}
 </style>
 </head>
 <body>
 
-<!-- 배경 파티클 -->
 <div class="bg" id="bg"></div>
 
 <div class="lobby">
@@ -1374,9 +1430,11 @@ html,body{{
     <div class="title-sub">5문제 서바이벌 · 문법·어휘 실전 포격전</div>
   </div>
 
-  <!-- 시간 선택 -->
+  <!-- 시간 -->
   <div class="sec-hdr time">
-    <div class="line"></div><span class="txt">⏱ 전투 시간</span><div class="line"></div>
+    <div class="line"></div>
+    <span class="txt">⏱ 전투 시간</span>
+    <div class="line"></div>
   </div>
   <div class="time-row">
     <div class="time-chip" id="tc30" onclick="selTime('30')">
@@ -1390,15 +1448,17 @@ html,body{{
       <span class="tc-sub">표준 전투</span>
     </div>
     <div class="time-chip" id="tc50" onclick="selTime('50')">
-      <span class="tc-icon">🛡</span>
+      <span class="tc-icon">🛡️</span>
       <span class="tc-sec">50초</span>
       <span class="tc-sub">신중 작전</span>
     </div>
   </div>
 
-  <!-- 작전 선택 -->
+  <!-- 작전 -->
   <div class="sec-hdr mode">
-    <div class="line"></div><span class="txt">⚔️ 작전 선택</span><div class="line"></div>
+    <div class="line"></div>
+    <span class="txt">⚔️ 작전 선택</span>
+    <div class="line"></div>
   </div>
   <div class="mode-grid">
     <div class="mode-card mc-g1" id="mc-g1" onclick="selMode('g1')">
@@ -1407,7 +1467,7 @@ html,body{{
       <span class="mc-sub">수일치 · 시제 · 수동</span>
     </div>
     <div class="mode-card mc-g2" id="mc-g2" onclick="selMode('g2')">
-      <span class="mc-icon">🏛</span>
+      <span class="mc-icon">🏛️</span>
       <span class="mc-name">구조력</span>
       <span class="mc-sub">가정법 · 도치 · 당위</span>
     </div>
@@ -1424,9 +1484,9 @@ html,body{{
   </div>
 
   <!-- 생존 규칙 -->
-  <div class="survival">💀 생존 규칙: 5문제 중 3개 이상 · 그 이하면 전멸!</div>
+  <div class="survival">💀 생존 규칙 — 5문제 중 3개 이상 · 그 이하면 전멸!</div>
 
-  <!-- 출격 버튼 -->
+  <!-- 출격 -->
   <div class="launch-wrap" id="launch-wrap"></div>
 
   <!-- 네비 -->
@@ -1442,85 +1502,69 @@ var selTime_val = "{_sel_time}";
 var selMode_val = "{_sel_mode}";
 var adpLabel   = "{_adp_lbl}";
 var histLen    = {_hist_len};
-var catLabel   = "{_cat_lbl}";
 
 var modeNames = {{
-  g1:"⚔️ 문법력", g2:"🏛 구조력",
+  g1:"⚔️ 문법력", g2:"🏛️ 구조력",
   g3:"🔗 연결력", vocab:"📘 어휘력"
 }};
 
-// ── 배경 파티클 생성 ──
+/* 배경 파티클 */
 (function(){{
   var bg = document.getElementById('bg');
-  for(var i=0;i<25;i++){{
+  var cols = ['#00e5ff','#FFD600','#ff4400','#aa44ff','#00ff88'];
+  for(var i=0;i<30;i++){{
     var s = document.createElement('div');
     s.className = 'spark';
-    s.style.left = Math.random()*100+'%';
-    s.style.animationDuration = (4+Math.random()*8)+'s';
-    s.style.animationDelay = (Math.random()*8)+'s';
-    s.style.width = s.style.height = (1+Math.random()*2)+'px';
-    s.style.background = Math.random()>0.5?'#00d4ff':Math.random()>0.5?'#FFD600':'#ff5500';
+    var sz = (1+Math.random()*2.5);
+    s.style.cssText = [
+      'left:'+Math.random()*100+'%',
+      'width:'+sz+'px','height:'+sz+'px',
+      'background:'+cols[Math.floor(Math.random()*cols.length)],
+      'animation-duration:'+(5+Math.random()*9)+'s',
+      'animation-delay:'+(Math.random()*10)+'s',
+      'box-shadow:0 0 4px currentColor'
+    ].join(';');
     bg.appendChild(s);
   }}
 }})();
 
-// ── 초기 선택 복원 ──
 function applySelections(){{
-  // 시간
   ['30','40','50'].forEach(function(t){{
-    var el = document.getElementById('tc'+t);
-    if(el) el.className = 'time-chip' + (selTime_val===t?' selected':'');
+    var el=document.getElementById('tc'+t);
+    if(el) el.className='time-chip'+(selTime_val===t?' selected':'');
   }});
-  // 모드
   [['g1','mc-g1'],['g2','mc-g2'],['g3','mc-g3'],['vocab','mc-vc']].forEach(function(p){{
-    var el = document.getElementById(p[1]);
-    if(el){{
-      el.className = 'mode-card '+(p[1])+(selMode_val===p[0]?' selected':'');
-    }}
+    var el=document.getElementById(p[1]);
+    if(el) el.className='mode-card '+p[1]+(selMode_val===p[0]?' selected':'');
   }});
   renderLaunch();
 }}
 
 function renderLaunch(){{
-  var wrap = document.getElementById('launch-wrap');
-  var ready = selTime_val && selMode_val;
+  var wrap=document.getElementById('launch-wrap');
+  var ready=selTime_val&&selMode_val;
   if(ready){{
-    var mname = modeNames[selMode_val]||selMode_val;
-    var adpHtml = histLen>0? '<span class="adp-tag">'+adpLabel+'</span>':'' ;
-    wrap.innerHTML = '<button class="launch-btn ready" onclick="launch()">'
-      +'🔥 출격! — '+mname+' '+adpHtml
-      +'</button>';
-  }} else {{
-    wrap.innerHTML = '<button class="launch-btn notready">⏱ 시간 + ⚔️ 작전을 선택하면 출격!</button>';
+    var mn=modeNames[selMode_val]||selMode_val;
+    var adp=histLen>0?'<span class="adp-tag">'+adpLabel+'</span>':'';
+    wrap.innerHTML='<button class="launch-btn ready" onclick="launch()">🔥 출격! — '+mn+' '+adp+'</button>';
+  }}else{{
+    wrap.innerHTML='<button class="launch-btn notready">⏱ 시간 + ⚔️ 작전 선택 → 출격!</button>';
   }}
 }}
 
-// ── 클릭 핸들러 ──
 function selTime(t){{
-  selTime_val = t;
-  applySelections();
-  // Streamlit에 전달
-  setTimeout(function(){{
-    window.parent.location.search = '?tsec='+t;
-  }},120);
+  selTime_val=t; applySelections();
+  setTimeout(function(){{window.parent.location.search='?tsec='+t;}},130);
 }}
-
 function selMode(m){{
-  selMode_val = m;
-  applySelections();
-  setTimeout(function(){{
-    window.parent.location.search = '?smode='+m;
-  }},120);
+  selMode_val=m; applySelections();
+  setTimeout(function(){{window.parent.location.search='?smode='+m;}},130);
 }}
-
 function launch(){{
-  if(!selTime_val||!selMode_val) return;
-  window.parent.location.search = '?action=start';
+  if(!selTime_val||!selMode_val)return;
+  window.parent.location.search='?action=start';
 }}
-
-function go(dest){{
-  window.parent.location.search = '?action='+dest;
-}}
+function go(dest){{window.parent.location.search='?action='+dest;}}
 
 applySelections();
 </script>
