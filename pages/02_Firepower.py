@@ -1136,8 +1136,8 @@ header[data-testid="stHeader"]{height:0!important;overflow:hidden!important;}
 .block-container{padding:4px 10px 4px!important;margin:0!important;}
 div[data-testid="stVerticalBlock"]{gap:0.12rem!important;}
 .element-container{margin:0!important;padding:0!important;}
-div[data-testid="stHorizontalBlock"]{gap:4px!important;margin:0!important;}
-div[data-testid="stHorizontalBlock"] div[data-testid="stColumn"]{padding:0!important;}
+div[data-testid="stHorizontalBlock"]{gap:4px!important;margin:0!important;flex-wrap:nowrap!important;}
+div[data-testid="stHorizontalBlock"] div[data-testid="stColumn"]{padding:0!important;min-width:0!important;flex:1!important;}
 
 @keyframes titleShine{0%{background-position:200%}100%{background-position:-200%}}
 @keyframes warnP{0%,100%{color:#ff4466;}50%{color:#ff8899;text-shadow:0 0 12px rgba(255,68,102,1);}}
@@ -1290,21 +1290,27 @@ function applyStyles(){{
       styleBtn(b,isSel?
         {{bg:"linear-gradient(160deg,#1a1200,#120d00)",border:"#FFD600",col:"#FFD600",shadow:"rgba(255,214,0,0.6)"}}:
         {{bg:"linear-gradient(160deg,#080e1e,#0a1228)",border:"rgba(0,180,255,0.3)",col:"#c0d8ff"}});
-      b.style.setProperty("min-height","52px","important");
+      b.style.setProperty("min-height","58px","important");
+      b.style.setProperty("text-align","center","important");
+      b.querySelectorAll("p,span").forEach(function(el){{el.style.setProperty("text-align","center","important");}});
     }}
     else if(txt.indexOf("40초")>-1||txt.indexOf("표준전투")>-1){{
       var isSel=(selT==="40");
       styleBtn(b,isSel?
         {{bg:"linear-gradient(160deg,#1a1200,#120d00)",border:"#FFD600",col:"#FFD600",shadow:"rgba(255,214,0,0.6)"}}:
         {{bg:"linear-gradient(160deg,#080e1e,#0a1228)",border:"rgba(0,180,255,0.3)",col:"#c0d8ff"}});
-      b.style.setProperty("min-height","52px","important");
+      b.style.setProperty("min-height","58px","important");
+      b.style.setProperty("text-align","center","important");
+      b.querySelectorAll("p,span").forEach(function(el){{el.style.setProperty("text-align","center","important");}});
     }}
     else if(txt.indexOf("50초")>-1||txt.indexOf("신중작전")>-1){{
       var isSel=(selT==="50");
       styleBtn(b,isSel?
         {{bg:"linear-gradient(160deg,#1a1200,#120d00)",border:"#FFD600",col:"#FFD600",shadow:"rgba(255,214,0,0.6)"}}:
         {{bg:"linear-gradient(160deg,#080e1e,#0a1228)",border:"rgba(0,180,255,0.3)",col:"#c0d8ff"}});
-      b.style.setProperty("min-height","52px","important");
+      b.style.setProperty("min-height","58px","important");
+      b.style.setProperty("text-align","center","important");
+      b.querySelectorAll("p,span").forEach(function(el){{el.style.setProperty("text-align","center","important");}});
     }}
 
     // 작전 카드 버튼
@@ -1316,7 +1322,7 @@ function applyStyles(){{
         styleBtn(b,isSel?
           {{bg:mc.selBg,border:mc.selBorder,col:mc.col,shadow:mc.selShadow}}:
           {{bg:mc.bg,border:mc.border,col:mc.col}});
-        b.style.setProperty("min-height","82px","important");
+        b.style.setProperty("min-height","78px","important");
         b.style.setProperty("text-align","left","important");
         b.querySelectorAll("p,span").forEach(function(el){{
           el.style.setProperty("text-align","left","important");
