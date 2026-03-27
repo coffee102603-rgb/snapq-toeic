@@ -702,28 +702,46 @@ def load_css():
 # =========================================================
 load_css()
 
-# ── Streamlit 상단 여백 JS로 강제 제거 ──
-st.markdown("""
+# ── Streamlit 상단 여백 완전 제거 (MutationObserver로 지속 감시) ──
+import streamlit.components.v1 as _hc
+_hc.html("""
 <script>
 (function(){
-  function removeTopPad(){
+  function killPad(){
     try{
-      // block-container 상단 padding 제거
-      var bc = window.parent.document.querySelector('.block-container');
-      if(bc) bc.style.paddingTop='0px';
-      // stAppViewContainer section
-      var sec = window.parent.document.querySelector('[data-testid="stAppViewContainer"] > section');
-      if(sec) sec.style.paddingTop='0px';
-      var secDiv = window.parent.document.querySelector('[data-testid="stAppViewContainer"] > section > div');
-      if(secDiv) secDiv.style.paddingTop='0px';
+      var pd=window.parent.document;
+      var targets=[
+        '.block-container',
+        '[data-testid="stAppViewBlockContainer"]',
+        '[data-testid="block-container"]',
+        '.main .block-container',
+        '[data-testid="stAppViewContainer"] > section > div'
+      ];
+      targets.forEach(function(sel){
+        pd.querySelectorAll(sel).forEach(function(el){
+          el.style.setProperty('padding-top','0px','important');
+          el.style.setProperty('margin-top','0px','important');
+        });
+      });
+      // header 완전 제거
+      var hdr=pd.querySelector('header[data-testid="stHeader"]');
+      if(hdr){hdr.style.setProperty('display','none','important');}
     }catch(e){}
   }
-  removeTopPad();
-  setTimeout(removeTopPad, 300);
-  setTimeout(removeTopPad, 800);
+  killPad();
+  setTimeout(killPad,200);
+  setTimeout(killPad,600);
+  setTimeout(killPad,1200);
+  // 변화 감지해서 계속 적용
+  try{
+    new MutationObserver(killPad).observe(
+      window.parent.document.body,
+      {childList:true,subtree:true,attributes:true}
+    );
+  }catch(e){}
 })();
 </script>
-""", unsafe_allow_html=True)
+""", height=0)
 
 # 로그인 + 검사 체크
 nickname = require_access()
