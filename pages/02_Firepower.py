@@ -1408,7 +1408,7 @@ html,body{{
   background:#060610;
   border:1px solid #1e1e30;
   border-radius:6px;
-  padding:5px 4px;text-align:center;
+  padding:9px 4px;text-align:center;
   font-size:0.65rem;color:#7788aa;font-weight:700;
   cursor:pointer;letter-spacing:0.5px;
   transition:all 0.12s;
