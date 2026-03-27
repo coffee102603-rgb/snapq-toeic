@@ -1247,21 +1247,61 @@ button[kind="primary"], div[data-testid="stButton"]:has(button[data-testid="base
         if st.button("📘 어휘력\n품사 · 동사 · 콜로케이션", key="svc", use_container_width=True):
             st.session_state.sel_mode="vocab"; st.rerun()
 
-    # ── 스캔라인 오버레이 (CSS만, DOM injection 없이) ──
-    st.markdown("""
+    # ── 스캔라인 + 애니메이션 CSS (순수 st.markdown, JS 없음) ──
+    _sel_t_css   = str(_cur_tsec) if _cur_tc else ""
+    _sel_m_css   = _cur_sm or ""
+    st.markdown(f"""
 <style>
-.fp-scan-wrap{position:fixed;top:0;left:0;width:100vw;height:100vh;pointer-events:none;z-index:9998;overflow:hidden;}
-.fp-scan-line{position:absolute;left:0;width:100%;height:2px;
-  background:linear-gradient(90deg,transparent 0%,rgba(0,212,255,0.15) 30%,rgba(0,212,255,0.3) 50%,rgba(0,212,255,0.15) 70%,transparent 100%);
-  animation:fp-scanMove 5s linear infinite;}
-@keyframes fp-scanMove{0%{top:-2px;opacity:0.8;}85%{opacity:0.25;}100%{top:100vh;opacity:0;}}
-.fp-warn{
+/* ── 스캔라인 ── */
+.fp-scan-wrap{{position:fixed;top:0;left:0;width:100vw;height:100vh;pointer-events:none;z-index:9998;overflow:hidden;}}
+.fp-scan-line{{position:absolute;left:0;width:100%;height:3px;
+  background:linear-gradient(90deg,transparent 0%,rgba(0,220,255,0.0) 10%,rgba(0,220,255,0.45) 40%,rgba(0,220,255,0.7) 50%,rgba(0,220,255,0.45) 60%,rgba(0,220,255,0.0) 90%,transparent 100%);
+  box-shadow:0 0 12px rgba(0,220,255,0.6);
+  animation:fp-scanMove 4s linear infinite;}}
+@keyframes fp-scanMove{{0%{{top:-4px;opacity:1;}}90%{{opacity:0.4;}}100%{{top:100vh;opacity:0;}}}}
+
+/* ── 경고 텍스트 ── */
+.fp-warn{{
   text-align:center;margin:2px 0 4px;
   font-size:0.65rem;color:#ff4466;font-weight:900;letter-spacing:1.5px;
   font-family:Orbitron,monospace;
   animation:warnBlink 1.4s ease-in-out infinite;
   text-shadow:0 0 8px rgba(255,68,102,0.6);
-}
+}}
+
+/* ── 출격 버튼 애니메이션 (마커 → 다음 버튼 타겟) ── */
+@keyframes launchG{{
+  0%  {{box-shadow:0 0 18px rgba(255,90,0,0.8),0 0 0 1.5px #ff5500;border-color:#ff5500!important;}}
+  33% {{box-shadow:0 0 70px rgba(255,210,0,1),0 0 120px rgba(255,80,0,0.5),0 0 0 2.5px #FFD600;border-color:#FFD600!important;background:linear-gradient(135deg,#2e0c00,#241000)!important;}}
+  66% {{box-shadow:0 0 35px rgba(255,40,0,1),0 0 0 1.5px #ff1100;border-color:#ff1100!important;}}
+  100%{{box-shadow:0 0 18px rgba(255,90,0,0.8),0 0 0 1.5px #ff5500;border-color:#ff5500!important;}}
+}}
+div:has(#fp-go-active) + div[data-testid="stButton"] button,
+div:has(#fp-go-active) ~ div[data-testid="stButton"] button{{
+  animation:launchG 0.85s ease-in-out infinite!important;
+  background:linear-gradient(135deg,#280800,#1c0500)!important;
+  border:2px solid #ff5500!important;
+  color:#ffbb44!important;
+  font-family:'Orbitron',monospace!important;
+  font-weight:900!important;
+  letter-spacing:3px!important;
+  min-height:54px!important;
+  transition:none!important;
+}}
+div:has(#fp-go-active) + div[data-testid="stButton"] button p,
+div:has(#fp-go-active) ~ div[data-testid="stButton"] button p{{
+  color:#ffbb44!important;
+  font-size:0.92rem!important;
+  font-weight:900!important;
+  font-family:'Orbitron',monospace!important;
+  letter-spacing:3px!important;
+}}
+
+/* ── 모드 카드 선택 glow ── */
+@keyframes selPulse{{
+  0%,100%{{filter:brightness(1);}}
+  50%{{filter:brightness(1.18);}}
+}}
 </style>
 <div class="fp-scan-wrap"><div class="fp-scan-line"></div></div>
 """, unsafe_allow_html=True)
@@ -1271,6 +1311,7 @@ button[kind="primary"], div[data-testid="stButton"]:has(button[data-testid="base
 
     # ── 출격 버튼 ──
     if _ready:
+        st.markdown('<div id="fp-go-active"></div>', unsafe_allow_html=True)
         _cat = lbl_map.get(_cur_sm,"")
         if st.button(f"🔥 출격! — {_cat}  ⏱{_cur_tsec}초", key="go_start", use_container_width=True):
             try:
@@ -1431,24 +1472,10 @@ function applyStyles(){{
       }}
     }});
 
-    // ── 출격 버튼 (active) ──
+    // ── 출격 버튼 — JS는 색상만, animation은 CSS가 처리 ──
     if(txt.indexOf("출격!")>-1 && txt.indexOf("시간")===-1){{
-      b.style.setProperty("background","linear-gradient(135deg,#2a0800,#1e0500)","important");
-      b.style.setProperty("border","2px solid #ff5500","important");
-      b.style.setProperty("color","#ffbb44","important");
-      b.style.setProperty("min-height","54px","important");
-      b.style.setProperty("letter-spacing","3px","important");
-      b.style.setProperty("font-family","'Orbitron',monospace","important");
-      b.style.setProperty("font-weight","900","important");
-      b.style.setProperty("animation","launchG 0.9s ease-in-out infinite","important");
-      b.style.setProperty("transition","none","important");
-      b.querySelectorAll("p,span").forEach(function(el){{
-        el.style.setProperty("color","#ffbb44","important");
-        el.style.setProperty("font-size","0.95rem","important");
-        el.style.setProperty("font-weight","900","important");
-        el.style.setProperty("font-family","'Orbitron',monospace","important");
-        el.style.setProperty("letter-spacing","3px","important");
-      }});
+      // animation은 CSS :has(#fp-go-active) 가 처리
+      // JS는 color/bg만 보조
     }}
 
     // ── 출격 버튼 (disabled) ──
