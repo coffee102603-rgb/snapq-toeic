@@ -318,15 +318,17 @@ def load_css():
     header { display: none !important; height: 0 !important; min-height: 0 !important; }
     header[data-testid="stHeader"] { display: none !important; height: 0 !important; min-height: 0 !important; }
     .stApp > header { display: none !important; }
-    /* 상단 패딩 완전 제거 */
+    /* 핵심: block-container 자체를 위로 당기기 */
     .block-container {
-        padding-top: 0px !important;
-        padding-bottom: 0px !important;
-        margin-top: 0px !important;
+        margin-top: -6rem !important;
+        padding-top: 1rem !important;
+        padding-left: 8px !important;
+        padding-right: 8px !important;
+        max-width: 860px !important;
     }
-    section.main > div.block-container { padding-top: 0px !important; }
-    [data-testid="stAppViewBlockContainer"] { padding-top: 0px !important; margin-top: 0px !important; }
-    [data-testid="stAppViewContainer"] > section > div { padding-top: 0 !important; padding-bottom: 0 !important; margin-top: 0 !important; }
+    section.main > div.block-container { margin-top: -6rem !important; padding-top: 1rem !important; }
+    [data-testid="stAppViewBlockContainer"] { padding-top: 0 !important; margin-top: -6rem !important; }
+    [data-testid="stAppViewContainer"] > section > div { padding-top: 0 !important; margin-top: 0 !important; }
     [data-testid="stAppViewContainer"] > section { padding-top: 0 !important; margin-top: 0 !important; }
     .main > div { padding-top: 0px !important; margin-top: 0px !important; }
     div[data-testid="stVerticalBlock"] > div { gap: 0 !important; margin: 0 !important; padding: 0 !important; }
@@ -709,9 +711,6 @@ def load_css():
 # 메인
 # =========================================================
 load_css()
-
-# ★ 완전히 다른 방법: 첫 요소에 음수 마진으로 위로 당기기
-st.markdown('<div style="margin-top:-6rem;height:0;"></div>', unsafe_allow_html=True)
 
 # ── Streamlit 상단 여백 완전 제거 (MutationObserver로 지속 감시) ──
 import streamlit.components.v1 as _hc
