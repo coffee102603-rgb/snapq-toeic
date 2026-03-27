@@ -1291,36 +1291,13 @@ button[kind="primary"], div[data-testid="stButton"]:has(button[data-testid="base
                 st.query_params["ag"]   = "1"
             st.switch_page("main_hub.py")
 
-    # ── JS: 버튼 스타일 (색상/배경만) + 출격버튼 animation 1회 설정 ──
+    # ── JS: 색상 변화만 ──
     _sel_t = str(_cur_tsec) if _cur_tc else ""
     _sel_m = _cur_sm
     components.html(f"""<script>
 (function(){{
 var selT="{_sel_t}", selM="{_sel_m}";
 var doc=window.parent.document;
-
-// ══ keyframes를 parent head에 inject (한 번만) ══
-if(!doc.getElementById('fp-kf')){{
-  var s=doc.createElement('style');
-  s.id='fp-kf';
-  s.textContent=`
-    @keyframes fp-launchG {{
-      0%  {{ box-shadow:0 0 18px rgba(255,90,0,0.9), 0 0 0 2px #ff4400; border-color:#ff4400 !important; }}
-      33% {{ box-shadow:0 0 80px rgba(255,210,0,1), 0 0 140px rgba(255,80,0,0.6), 0 0 0 3px #FFD600; border-color:#FFD600 !important; }}
-      66% {{ box-shadow:0 0 45px rgba(255,30,0,1), 0 0 0 2px #ff1100; border-color:#ff1100 !important; }}
-      100%{{ box-shadow:0 0 18px rgba(255,90,0,0.9), 0 0 0 2px #ff4400; border-color:#ff4400 !important; }}
-    }}
-    @keyframes fp-selPulse {{
-      0%,100% {{ box-shadow:0 0 15px var(--fp-sc,rgba(100,170,255,0.5)); }}
-      50%     {{ box-shadow:0 0 35px var(--fp-sc,rgba(100,170,255,0.8)), 0 0 60px var(--fp-sc,rgba(100,170,255,0.3)); }}
-    }}
-    @keyframes fp-idle {{
-      0%,100%{{ opacity:1; }}
-      50%    {{ opacity:0.88; }}
-    }}
-  `;
-  doc.head.appendChild(s);
-}}
 
 var MODE_COLORS={{
   "문법력":{{bg:"linear-gradient(145deg,#05102a,#081630)",border:"rgba(60,140,255,0.45)",col:"#6aadff",selBg:"linear-gradient(145deg,#091e42,#0d2a58)",selBorder:"#6aadff",sc:"rgba(100,170,255,0.6)"}},
@@ -1329,7 +1306,17 @@ var MODE_COLORS={{
   "어휘력":{{bg:"linear-gradient(145deg,#06180a,#081e0c)",border:"rgba(60,210,80,0.45)",col:"#55ee77",selBg:"linear-gradient(145deg,#0c2412,#102e16)",selBorder:"#55ee77",sc:"rgba(80,220,100,0.6)"}}
 }};
 
-// ── 색상/배경만 업데이트 (animation은 건드리지 않음) ──
+// 출격 버튼 테두리 색상 순환 (JS가 직접 바꿈 — CSS animation 없음)
+var LAUNCH_FRAMES=[
+  {{border:"#ff4400", shadow:"0 0 18px rgba(255,80,0,0.9), 0 0 40px rgba(255,60,0,0.5)"}},
+  {{border:"#ff7700", shadow:"0 0 30px rgba(255,130,0,1), 0 0 60px rgba(255,80,0,0.6)"}},
+  {{border:"#FFD600", shadow:"0 0 50px rgba(255,210,0,1), 0 0 100px rgba(255,150,0,0.7)"}},
+  {{border:"#ff7700", shadow:"0 0 30px rgba(255,130,0,1), 0 0 60px rgba(255,80,0,0.6)"}},
+  {{border:"#ff4400", shadow:"0 0 18px rgba(255,80,0,0.9), 0 0 40px rgba(255,60,0,0.5)"}},
+  {{border:"#ff1100", shadow:"0 0 22px rgba(255,20,0,1), 0 0 50px rgba(200,0,0,0.6)"}},
+];
+var _lfi=0;
+
 function applyColors(){{
   doc.querySelectorAll("button").forEach(function(b){{
     var txt=(b.innerText||b.textContent||"").trim();
@@ -1383,7 +1370,7 @@ function applyColors(){{
         var isSel=(selM===korMap[k]);
         b.style.setProperty("background",isSel?mc.selBg:mc.bg,"important");
         b.style.setProperty("border",isSel?"2.5px solid "+mc.selBorder:"1.5px solid "+mc.border,"important");
-        b.style.setProperty("box-shadow",isSel?"0 0 0 1px "+mc.selBorder+"55,0 0 30px "+mc.sc+",inset 0 0 15px "+mc.sc.replace("0.6","0.07"):"none","important");
+        b.style.setProperty("box-shadow",isSel?"0 0 0 1px "+mc.selBorder+"55,0 0 30px "+mc.sc:"none","important");
         b.style.setProperty("color",mc.col,"important");
         b.style.setProperty("min-height","80px","important");
         b.style.setProperty("padding","11px 13px","important");
@@ -1412,10 +1399,9 @@ function applyColors(){{
     }});
     if(isModeBtn) return;
 
-    // 출격 active — animation은 아래 setAnim에서 1회만 설정
+    // 출격 active — 색상/배경만 (border는 아래 flicker가 처리)
     if(txt.indexOf("출격!")>-1 && txt.indexOf("시간")===-1 && txt.indexOf("작전")===-1){{
       b.style.setProperty("background","linear-gradient(135deg,#280800,#1c0500)","important");
-      b.style.setProperty("border","2px solid #ff4400","important");
       b.style.setProperty("color","#ffcc55","important");
       b.style.setProperty("min-height","54px","important");
       b.style.setProperty("font-family","'Orbitron',monospace","important");
@@ -1434,12 +1420,10 @@ function applyColors(){{
     if(txt.indexOf("시간")>-1&&txt.indexOf("작전")>-1&&txt.indexOf("출격!")>-1){{
       b.style.setProperty("background","#08080f","important");
       b.style.setProperty("border","1px solid #181822","important");
+      b.style.setProperty("box-shadow","none","important");
       b.style.setProperty("color","#252530","important");
       b.style.setProperty("min-height","54px","important");
-      b.style.setProperty("box-shadow","none","important");
-      b.querySelectorAll("p,span").forEach(function(el){{
-        el.style.setProperty("color","#252530","important");
-      }});
+      b.querySelectorAll("p,span").forEach(function(el){{el.style.setProperty("color","#252530","important");}});
     }}
 
     // 네비
@@ -1449,36 +1433,30 @@ function applyColors(){{
       b.style.setProperty("color","#66778a","important");
       b.style.setProperty("min-height","42px","important");
       b.style.setProperty("box-shadow","none","important");
-      b.querySelectorAll("p,span").forEach(function(el){{
-        el.style.setProperty("color","#66778a","important");
-      }});
+      b.querySelectorAll("p,span").forEach(function(el){{el.style.setProperty("color","#66778a","important");}});
     }}
   }});
 }}
 
-// ── animation은 딱 한 번만 (setInterval에서 건드리지 않음) ──
-function setAnim(){{
+// 출격 버튼 테두리 지글지글 — JS가 직접 색 바꿈
+function flickerLaunch(){{
+  var frame=LAUNCH_FRAMES[_lfi % LAUNCH_FRAMES.length];
+  _lfi++;
   doc.querySelectorAll("button").forEach(function(b){{
     var txt=(b.innerText||b.textContent||"").trim();
-    // 출격 active 버튼에만 animation
     if(txt.indexOf("출격!")>-1 && txt.indexOf("시간")===-1 && txt.indexOf("작전")===-1){{
-      if(b.style.animationName!=="fp-launchG"){{
-        b.style.setProperty("animation","fp-launchG 0.85s ease-in-out infinite","important");
-        b.style.setProperty("transition","none","important");
-      }}
+      b.style.setProperty("border","2.5px solid "+frame.border,"important");
+      b.style.setProperty("box-shadow",frame.shadow,"important");
     }}
   }});
 }}
 
 setTimeout(applyColors,80);
-setTimeout(applyColors,350);
-setTimeout(applyColors,800);
-setTimeout(setAnim,150);
-setTimeout(setAnim,500);
-setTimeout(setAnim,1000);
-// 색상은 주기적으로, animation은 절대 건드리지 않음
-setInterval(applyColors,1500);
-// animation 확인만 (이미 있으면 skip)
-setInterval(setAnim,2000);
+setTimeout(applyColors,400);
+setTimeout(applyColors,900);
+setInterval(applyColors,1800);
+
+// 출격 테두리는 별도 빠른 루프
+setInterval(flickerLaunch, 130);
 }})();
 </script>""", height=0)
