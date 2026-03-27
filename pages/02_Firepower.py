@@ -1123,29 +1123,20 @@ else:
     # ─── 로비: Streamlit 버튼 완전 숨기고 HTML UI로 대체 ───
     # HTML 컴포넌트에서 클릭 → query param → Streamlit rerun 방식
 
-    # query param 처리 (HTML에서 넘어온 값)
+    # query param 처리 — action=start 먼저 체크해야 tsec/smode rerun에 막히지 않음
     _qp_tsec = st.query_params.get("tsec","")
     _qp_smode = st.query_params.get("smode","")
     _qp_action = st.query_params.get("action","")
 
-    if _qp_tsec in ["30","40","50"]:
-        st.session_state.tsec = int(_qp_tsec)
-        st.session_state.tsec_chosen = True
-        st.query_params.clear()
-        st.rerun()
-    if _qp_smode in ["g1","g2","g3","vocab"]:
-        st.session_state.sel_mode = _qp_smode
-        st.query_params.clear()
-        st.rerun()
     if _qp_action == "start":
-        # session state 또는 query param에서 tsec/smode 확보
-        _start_tsec  = st.query_params.get("tsec", str(st.session_state.get("tsec", 30)))
-        _start_smode = st.query_params.get("smode", st.session_state.get("sel_mode", ""))
+        _start_tsec  = _qp_tsec if _qp_tsec in ["30","40","50"] else str(st.session_state.get("tsec", 30))
+        _start_smode = _qp_smode if _qp_smode in ["g1","g2","g3","vocab"] else (st.session_state.get("sel_mode") or "")
         if _start_tsec in ["30","40","50"]:
             st.session_state.tsec = int(_start_tsec)
             st.session_state.tsec_chosen = True
         if _start_smode in ["g1","g2","g3","vocab"]:
             st.session_state.sel_mode = _start_smode
+        st.query_params.clear()
         if st.session_state.get("tsec_chosen") and st.session_state.get("sel_mode") in ["g1","g2","g3","vocab"]:
             _sm2 = st.session_state.sel_mode
             md, grp = mode_map[_sm2]
@@ -1155,12 +1146,11 @@ else:
             st.session_state.cq = qs[0]
             st.session_state.qst = time.time()
             st.session_state.phase = "battle"
-            st.query_params.clear()
             st.rerun()
-    if _qp_action == "pow":
+    elif _qp_action == "pow":
         st.query_params.clear()
         st.switch_page("pages/03_POW_HQ.py")
-    if _qp_action == "home":
+    elif _qp_action == "home":
         st.query_params.clear()
         st.session_state._p5_just_left = True
         _nick = st.session_state.get("battle_nickname") or st.session_state.get("nickname","")
@@ -1168,6 +1158,15 @@ else:
             st.query_params["nick"] = _nick
             st.query_params["ag"] = "1"
         st.switch_page("main_hub.py")
+    elif _qp_tsec in ["30","40","50"]:
+        st.session_state.tsec = int(_qp_tsec)
+        st.session_state.tsec_chosen = True
+        st.query_params.clear()
+        st.rerun()
+    elif _qp_smode in ["g1","g2","g3","vocab"]:
+        st.session_state.sel_mode = _qp_smode
+        st.query_params.clear()
+        st.rerun()
 
     _tsec_v  = st.session_state.get("tsec", 30)
     _tc_v    = st.session_state.get("tsec_chosen", False)
