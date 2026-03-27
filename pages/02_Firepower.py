@@ -1281,7 +1281,7 @@ html,body{{
 .time-chip.selected .tc-sub{{color:#cc9900!important;}}
 
 /* ── 작전 카드 2x2 ── */
-.mode-grid{{display:grid;grid-template-columns:1fr 1fr;gap:4px;flex:1;min-height:0;}}
+.mode-grid{{display:grid;grid-template-columns:1fr 1fr;grid-template-rows:1fr 1fr;gap:4px;flex-shrink:0;height:200px;}}
 .mode-card{{
   border-radius:10px;
   padding:6px 8px 5px;
