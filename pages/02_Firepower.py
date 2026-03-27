@@ -1192,13 +1192,13 @@ div[data-testid="stButton"] button p{
 
     tc1, tc2, tc3 = st.columns(3)
     with tc1:
-        if st.button("🔥\n30초\n속공", key="t30", use_container_width=True):
+        if st.button("🔥 30초\n속공", key="t30", use_container_width=True):
             st.session_state.tsec=30; st.session_state.tsec_chosen=True; st.rerun()
     with tc2:
-        if st.button("⚡\n40초\n표준", key="t40", use_container_width=True):
+        if st.button("⚡ 40초\n표준", key="t40", use_container_width=True):
             st.session_state.tsec=40; st.session_state.tsec_chosen=True; st.rerun()
     with tc3:
-        if st.button("🛡️\n50초\n정밀", key="t50", use_container_width=True):
+        if st.button("🛡️ 50초\n정밀", key="t50", use_container_width=True):
             st.session_state.tsec=50; st.session_state.tsec_chosen=True; st.rerun()
 
     # ── 작전 선택 (박스 없이 심플 라벨) ──
@@ -1317,24 +1317,22 @@ function applyStyles(){{
         styleBtn(b,isSel?
           {{bg:"linear-gradient(160deg,#1a1200,#120d00)",border:"#FFD600",col:"#FFD600",shadow:"rgba(255,214,0,0.6)"}}:
           {{bg:"linear-gradient(160deg,#070c1a,#090e20)",border:"rgba(0,160,255,0.25)",col:"#88bbee"}});
-        b.style.setProperty("min-height","64px","important");
+        b.style.setProperty("min-height","46px","important");
         b.style.setProperty("text-align","center","important");
-        b.style.setProperty("align-items","center","important");
         b.style.setProperty("display","flex","important");
         b.style.setProperty("flex-direction","column","important");
+        b.style.setProperty("align-items","center","important");
         b.style.setProperty("justify-content","center","important");
         var pTags=b.querySelectorAll("p");
         if(pTags.length>0){{
           var ft=pTags[0];
           var rawTxt=(ft.innerText||ft.textContent||"").trim();
+          // 2줄: "🔥 30초 / 속공"
           var parts=rawTxt.split(/\n/).map(function(s){{return s.trim();}}).filter(function(s){{return s!==""}});
-          // parts[0]=이모지, parts[1]=30초, parts[2]=속공
-          var emoji=parts.length>=1?parts[0]:"";
-          var sec=parts.length>=2?parts[1]:"";
-          var sub=parts.length>=3?parts[2]:ti_info.sub;
+          var mainPart=parts.length>=1?parts[0]:"";
+          var sub=parts.length>=2?parts[1]:ti_info.sub;
           ft.innerHTML=
-            '<span style="display:block;font-size:1.1rem;line-height:1.1;margin-bottom:1px;">'+emoji+'</span>'+
-            '<span style="display:block;font-size:1.0rem;font-weight:900;color:'+accentCol+';line-height:1.2;letter-spacing:1px;">'+sec+'</span>'+
+            '<span style="display:block;font-size:0.95rem;font-weight:900;color:'+accentCol+';line-height:1.3;letter-spacing:1px;">'+mainPart+'</span>'+
             '<span style="display:block;font-size:0.65rem;font-weight:400;color:rgba(255,255,255,0.5);line-height:1.2;margin-top:2px;letter-spacing:2px;">'+sub+'</span>';
           ft.style.setProperty("text-align","center","important");
         }}
@@ -1348,24 +1346,24 @@ function applyStyles(){{
         var mc=MODE_COLORS[k];
         var korMap={{"문법력":"g1","구조력":"g2","연결력":"g3","어휘력":"vocab"}};
         var isSel=(selM===korMap[k]);
-        styleBtn(b,isSel?
-          {{bg:mc.selBg,border:mc.selBorder,col:mc.col,shadow:mc.selShadow}}:
-          {{bg:mc.bg,border:mc.border,col:mc.col}});
-        b.style.setProperty("min-height","92px","important");
+        if(isSel){{
+          b.style.setProperty("background",mc.selBg,"important");
+          b.style.setProperty("border","2.5px solid "+mc.selBorder,"important");
+          b.style.setProperty("box-shadow","0 0 0 1px "+mc.selBorder+", 0 0 22px "+mc.selShadow+", inset 0 0 12px "+mc.selShadow.replace("0.5","0.08"),"important");
+        }} else {{
+          b.style.setProperty("background",mc.bg,"important");
+          b.style.setProperty("border","1.5px solid "+mc.border,"important");
+          b.style.setProperty("box-shadow","none","important");
+        }}
+        b.style.setProperty("color",mc.col,"important");
+        b.style.setProperty("min-height","82px","important");
         b.style.setProperty("text-align","left","important");
-        b.style.setProperty("padding","12px 14px","important");
+        b.style.setProperty("padding","11px 13px","important");
         b.style.setProperty("display","flex","important");
         b.style.setProperty("flex-direction","column","important");
         b.style.setProperty("align-items","flex-start","important");
         b.style.setProperty("justify-content","flex-start","important");
-        // 줄별 스타일: 첫줄=제목(그대로), 둘째줄=부제목(작게+연하게)
-        var lines = b.querySelectorAll("p,span");
-        lines.forEach(function(el){{
-          el.style.setProperty("text-align","left","important");
-          el.style.setProperty("display","block","important");
-          el.style.setProperty("width","100%","important");
-        }});
-        // p 태그 전체 텍스트에서 줄바꿈 기준으로 스타일 분리
+        b.style.setProperty("font-family","'Orbitron',monospace","important");
         var pTags = b.querySelectorAll("p");
         if(pTags.length > 0){{
           var fullTxt = (pTags[0].innerText||pTags[0].textContent||"");
@@ -1373,10 +1371,13 @@ function applyStyles(){{
           if(parts.length >= 2){{
             var titlePart = parts[0].trim();
             var subPart   = parts.slice(1).join(" · ").trim();
+            var titleGlow = isSel ? "text-shadow:0 0 10px "+mc.col+"99;" : "";
             pTags[0].innerHTML = 
-              '<span style="font-size:0.92rem;font-weight:900;color:'+mc.col+';display:block;margin-bottom:6px;line-height:1.2;text-shadow:0 0 8px '+mc.col+'55;">'+titlePart+'</span>'+
-              '<span style="font-size:0.7rem;font-weight:400;color:rgba(255,255,255,0.45);display:block;line-height:1.5;letter-spacing:0.5px;">'+subPart+'</span>';
+              '<span style="font-size:0.92rem;font-weight:900;color:'+mc.col+';display:block;margin-bottom:6px;line-height:1.2;'+titleGlow+'">'+titlePart+'</span>'+
+              '<span style="font-size:0.63rem;font-weight:400;color:rgba(255,255,255,0.42);display:block;line-height:1.5;letter-spacing:0.5px;">'+subPart+'</span>';
           }}
+          pTags[0].style.setProperty("text-align","left","important");
+          pTags[0].style.setProperty("width","100%","important");
         }}
       }}
     }});
