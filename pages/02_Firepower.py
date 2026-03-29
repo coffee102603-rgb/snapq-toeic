@@ -665,28 +665,55 @@ elif st.session_state.phase=="victory":
     _sc_v = st.session_state.sc
     _wr_v = st.session_state.wrong
     _rn_v = st.session_state.round_num
+
+    _PERFECT_list = [
+        ("👑 PERFECT!", "천재 등장!! 토익 990은 그냥 따놓은 당상이잖아 👑", "#FFD600"),
+        ("👑 PERFECT!", "5/5?? 실화냐?? 나도 이제 너한테 배워야겠다 🙇", "#FFD600"),
+        ("👑 PERFECT!", "오답이 없어... 이거 혹시 커닝한 거 아니지?? 😏", "#FFD600"),
+        ("👑 PERFECT!", "인간 문법 사전 등장!! 토익은 그냥 산책이겠네 🚶", "#FFD600"),
+        ("👑 PERFECT!", "이 실력이면 교재 써도 되겠는데?? 진심으로 🏆", "#FFD600"),
+        ("👑 PERFECT!", "와... 진짜야? 완벽해!! 토익 만점도 그냥 따놓은 거지? 🔥", "#FFD600"),
+        ("👑 PERFECT!", "5개 전부 격파!! 넌 공부하러 온 게 아니라 자랑하러 온 거지?? 💥", "#FFD600"),
+        ("👑 PERFECT!", "문법 강사 해도 되는 거 아니야?? 이 정도면 진심 🎓", "#FFD600"),
+        ("👑 PERFECT!", "만점이잖아!! 토익 시험장 가면 이름만 써도 되겠는데? 😂", "#FFD600"),
+        ("👑 PERFECT!", "완벽 그 자체!! 오늘 이 실력 그대로 시험장 가면 990점 🎯", "#FFD600"),
+    ]
+    _VICTORY_list = [
+        ("⚔️ VICTORY!", "강해!! 이 기세면 토익 900+ 그냥 간다! 💪", "#44FF88"),
+        ("⚔️ VICTORY!", "4/5!! 딱 하나 방심한 거지? 다음엔 PERFECT 각이야 🔥", "#44FF88"),
+        ("⚔️ VICTORY!", "아깝다 하나!! 그 하나만 잡으면 토익 고득점 확정이야 🎯", "#44FF88"),
+        ("⚔️ VICTORY!", "90점짜리 실력!! 조금만 더 갈면 진짜 된다 💥", "#44FF88"),
+        ("⚔️ VICTORY!", "거의 다 왔어!! 완벽까지 딱 한 걸음이야 😤", "#44FF88"),
+    ]
+    _CLEAR_list = [
+        ("✅ CLEAR!", "아슬아슬 살아남았어... 겨우겨우지만 그래도 살았잖아 😅", "#88ccff"),
+        ("✅ CLEAR!", "3개... 딱 생존선이네. 운이 좋았어 🍀", "#88ccff"),
+        ("✅ CLEAR!", "살긴 살았는데, 이게 실력이야? 솔직히 말해봐 😐", "#88ccff"),
+        ("✅ CLEAR!", "통과는 했는데... 토익은 이렇게 안 되거든? 알지? 😬", "#88ccff"),
+        ("✅ CLEAR!", "3/5... 기초는 됐어. 근데 딱 기초만이야 😑", "#88ccff"),
+    ]
     if _sc_v == 5:
-        _grade = "👑 PERFECT!"; _praise = "완벽해! 토익 만점도 따놓은 당상! 🔥"; _pcol = "#FFD600"
+        _grade, _praise, _pcol = random.choice(_PERFECT_list)
     elif _sc_v == 4:
-        _grade = "⚔️ VICTORY!"; _praise = "강해! 이 기세면 토익 900+ 간다! 💪"; _pcol = "#44FF88"
+        _grade, _praise, _pcol = random.choice(_VICTORY_list)
     else:
-        _grade = "✅ CLEAR!"; _praise = "아슬아슬 살아남았어. 더 갈고닦아! 😤"; _pcol = "#88ccff"
+        _grade, _praise, _pcol = random.choice(_CLEAR_list)
 
     _stars_html = "".join([
         f'<div style="position:absolute;left:{random.randint(2,98)}%;top:{random.randint(2,98)}%;'
-        f'width:{random.randint(3,10)}px;height:{random.randint(3,10)}px;'
+        f'width:{random.randint(3,12)}px;height:{random.randint(3,12)}px;'
         f'border-radius:50%;background:{"#FFD600" if random.random()>0.4 else "#fff8cc"};'
-        f'animation:twinkle {0.5+random.random()*1:.1f}s ease-in-out infinite {random.random():.2f}s both;"></div>'
-        for _ in range(60)])
+        f'animation:twinkle {0.3+random.random()*0.8:.1f}s ease-in-out infinite {random.random():.2f}s both;"></div>'
+        for _ in range(90)])
     _coins_html = "".join([
-        f'<div style="position:absolute;top:-10px;left:{random.randint(5,95)}%;font-size:1.4rem;'
-        f'animation:coinFall {1.2+random.random():.1f}s ease-in infinite {random.random():.2f}s;">{"💰" if random.random()>0.5 else "⭐"}</div>'
-        for _ in range(14)])
+        f'<div style="position:absolute;top:-10px;left:{random.randint(2,98)}%;font-size:{1.0+random.random()*0.8:.1f}rem;'
+        f'animation:coinFall {0.8+random.random()*1.2:.1f}s ease-in infinite {random.random():.2f}s;">{"💰" if random.random()>0.5 else "⭐" if random.random()>0.5 else "🏆"}</div>'
+        for _ in range(22)])
     _lightning_html = "".join([
-        f'<div style="position:absolute;left:{random.randint(5,90)}%;top:{random.randint(5,85)}%;'
-        f'font-size:{random.randint(20,40)}px;opacity:0.15;'
-        f'animation:twinkle {0.3+random.random()*0.5:.1f}s ease-in-out infinite {random.random():.2f}s;">⚡</div>'
-        for _ in range(8)])
+        f'<div style="position:absolute;left:{random.randint(2,95)}%;top:{random.randint(2,90)}%;'
+        f'font-size:{random.randint(18,45)}px;opacity:0.18;'
+        f'animation:twinkle {0.2+random.random()*0.4:.1f}s ease-in-out infinite {random.random():.2f}s;">{"⚡" if random.random()>0.5 else "✨"}</div>'
+        for _ in range(14)])
 
     components.html(f"""
     <style>
@@ -734,7 +761,7 @@ elif st.session_state.phase=="victory":
         <div class="bar-wrap"><div class="bar-fill"></div></div>
         <div class="praise">{_praise}</div>
     </div>
-    """, height=290)
+    """, height=320)
 
     st.markdown("""<style>
     div[data-testid="stButton"]:nth-of-type(1) button{
@@ -823,28 +850,55 @@ elif st.session_state.phase=="lost":
     _pct = int(_sc / 5 * 100)
     _is_timeout = (time.time()-st.session_state.qst > st.session_state.tsec)
     _reason = "시간초과 ⏰" if _is_timeout else f"오답 {_wrong}개 💀"
+
+    _ZERO_list = [
+        ("0개?? 이건 운도 안 따라줬네... 그냥 전멸이잖아 💀", "문법책 한 번이라도 펴봐. 딱 한 번만"),
+        ("0점이야. 전멸. 진짜 전멸. 할 말이 없다 😶", "수일치도 모르면서 토익 점수 바라지 마"),
+        ("하나도 못 맞혔어?? 찍어도 하나는 맞아야 하는데 😂", "랜덤으로 찍는 원숭이도 1개는 맞힌다고"),
+        ("이건 실력 문제가 아니라 공부를 안 한 거야 📚", "교재 한 번이라도 펴봤어? 솔직히 말해봐"),
+        ("0개 격파... 격파당한 건 본인이잖아 💥", "이 정도면 진짜 기초부터 다시 시작해야 해"),
+    ]
+    _TIMEOUT_list = [
+        ("느려도 너무 느려!! 토익은 스피드도 실력이야 🐢", "시간 관리가 안 되면 토익 절대 못 올려"),
+        ("시간이 부족했다고? 그게 실력이야 ⏰", "토익은 느린 사람 기다려주지 않아"),
+        ("30초도 모자라?? 50초로 해봐... 그래도 빠듯할 것 같지만 😂", "생각이 느린 게 아니라 감각이 없는 거야"),
+        ("시간초과!! 토익 시험장에서도 이럴 거야?? 😱", "실전에선 시간이 2배 빠르게 느껴진다"),
+        ("타이머 보이지?? 그게 적이야. 지금 적한테 진 거야 ⏰", "속도 없이 정확도만? 토익엔 통하지 않아"),
+    ]
+    _LOW_list = [
+        (f"찍어서 {_sc}개 맞춘 거 다 알아 😂", "운도 실력이라고? 그건 토익엔 없어"),
+        (f"겨우 {_sc}개... 어법이 이 정도면 문장도 못 읽겠다 😤", "접속사? 수일치? 기초부터 다시 해"),
+        (f"{_sc}개?? 이러고 토익 점수 올리길 바라는 거야?? 🙃", "기대치를 낮추거나 공부량을 늘려"),
+        (f"진짜야? {_sc}개?? 오늘 컨디션 문제인 거 맞지?? 😬", "컨디션 탓은 딱 한 번만 허용해줄게"),
+        (f"문법 감각이 없는 게 아니라 없애버린 것 같아 💀", f"{_sc}개로는 토익 600점도 힘들어"),
+    ]
+    _CLOSE_list = [
+        ("딱 한 문제 차이야. 억울하지?? 😭", "그 한 문제가 토익 점수 50점 차이야"),
+        ("2개 모자라서 전멸이라니... 진짜 아깝다 😤", "아깝다고 점수 올라가진 않아. 다시 해"),
+        ("이 정도 실력이면 왜 졌어?? 집중력 문제야 😡", "실력 있는데 지면 더 억울한 거 알지?"),
+        ("아깝다!! 근데 토익은 아까운 거 안 봐줘 😂", "다음엔 이 분한 마음 그대로 시험장 가"),
+        ("거의 다 됐는데 왜 무너진 거야!! 😱", "2개 차이면 실력은 있어. 멘탈이 문제야"),
+    ]
     if _pct == 0:
-        _taunt = "문법책 한 번이라도 펴봤어? 📚"; _sub = "수일치도 모르면서 토익 점수 바라지 마 😶"
+        _taunt, _sub = random.choice(_ZERO_list)
     elif _is_timeout:
-        _taunt = "시간이 부족했다고? 그게 실력이야 ⏰"; _sub = "토익은 느린 사람 기다려주지 않아 🐢"
-    elif _pct <= 20:
-        _taunt = "찍어서 맞춘 거 다 알아 😂"; _sub = "운도 실력이라고? 그건 토익엔 없어 🙃"
+        _taunt, _sub = random.choice(_TIMEOUT_list)
     elif _pct <= 40:
-        _taunt = f"겨우 {_sc}개... 어법이 이 정도면 문장도 못 읽겠다 😤"; _sub = "접속사? 수일치? 기초부터 다시 해"
+        _taunt, _sub = random.choice(_LOW_list)
     else:
-        _taunt = "딱 한 문제 차이야. 억울하지? 😭"; _sub = "그 한 문제가 토익 점수 50점 차이야"
+        _taunt, _sub = random.choice(_CLOSE_list)
 
     _embers = "".join([
-        f'<div style="position:absolute;left:{random.randint(5,95)}%;bottom:{random.randint(0,30)}%;'
-        f'width:{random.randint(4,12)}px;height:{random.randint(4,12)}px;border-radius:50%;'
-        f'background:{"#ff4400" if random.random()>0.4 else "#ff8800"};'
-        f'animation:rise {1+random.random():.1f}s ease-in infinite {random.random():.1f}s;"></div>'
-        for _ in range(50)])
+        f'<div style="position:absolute;left:{random.randint(2,98)}%;bottom:{random.randint(0,40)}%;'
+        f'width:{random.randint(3,14)}px;height:{random.randint(3,14)}px;border-radius:50%;'
+        f'background:{"#ff4400" if random.random()>0.4 else "#ff8800" if random.random()>0.5 else "#ff0000"};'
+        f'animation:rise {0.6+random.random():.1f}s ease-in infinite {random.random():.1f}s;"></div>'
+        for _ in range(80)])
     _skulls = "".join([
-        f'<div style="position:absolute;left:{random.randint(5,90)}%;top:{random.randint(5,80)}%;'
-        f'font-size:{random.randint(12,28)}px;opacity:{random.random()*0.15:.2f};'
-        f'animation:fadeFloat {1.5+random.random():.1f}s ease-in-out infinite {random.random():.1f}s;">💀</div>'
-        for _ in range(10)])
+        f'<div style="position:absolute;left:{random.randint(2,95)}%;top:{random.randint(2,85)}%;'
+        f'font-size:{random.randint(10,32)}px;opacity:{random.random()*0.2:.2f};'
+        f'animation:fadeFloat {0.8+random.random()*1.2:.1f}s ease-in-out infinite {random.random():.1f}s;">{"💀" if random.random()>0.3 else "☠️"}</div>'
+        for _ in range(18)])
 
     components.html(f"""
     <style>
@@ -858,7 +912,7 @@ elif st.session_state.phase=="lost":
     @keyframes flicker{{0%,100%{{opacity:1;}}30%{{opacity:0.6;}}60%{{opacity:0.9;}}}}
     @keyframes fadeFloat{{0%,100%{{opacity:0;transform:translateY(0);}}50%{{opacity:0.15;transform:translateY(-20px);}}}}
     @keyframes scoreIn{{0%{{transform:translateY(30px);opacity:0;}}100%{{transform:translateY(0);opacity:1;}}}}
-    body{{animation:redPulse 0.6s ease-in-out infinite;}}
+    body{{animation:redPulse 0.35s ease-in-out infinite;}}
     .wrap{{text-align:center;animation:crashIn 0.6s cubic-bezier(0.34,1.56,0.64,1) forwards;
       z-index:10;position:relative;padding:10px;}}
     .skull{{font-size:2.8rem;animation:shakeX 0.5s ease-in-out infinite;display:inline-block;margin-bottom:6px;}}
@@ -885,7 +939,7 @@ elif st.session_state.phase=="lost":
         <div class="score">{_pct}점</div>
         <div class="taunt">{_taunt}</div>
         <div class="sub">{_sub}</div>
-    </div>""", height=240)
+    </div>""", height=300)
 
     st.markdown("""<style>
     div[data-testid="stButton"]:nth-of-type(1) button{
