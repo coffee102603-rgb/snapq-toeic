@@ -103,17 +103,17 @@ header[data-testid="stHeader"]{background:transparent!important;height:0!importa
 .rd-wait{background:transparent;border-color:#333;color:#444;}
 
 /* ── 문제 카드 ── */
-.qb{border-radius:14px;padding:0.5rem 0.7rem;margin:0.1rem 0;background:#0a0c18;}
-.qb-g{background:#080c18!important;border:2px solid rgba(0,212,255,0.5)!important;border-radius:14px!important;
+.qb{border-radius:12px;padding:0.35rem 0.6rem;margin:0.05rem 0;background:#0a0c18;}
+.qb-g{background:#080c18!important;border:2px solid rgba(0,212,255,0.5)!important;border-radius:12px!important;
   box-shadow:0 0 20px rgba(0,212,255,0.08);}
-.qb-v{background:#08100c!important;border:2px solid rgba(0,180,100,0.4)!important;border-radius:14px!important;
+.qb-v{background:#08100c!important;border:2px solid rgba(0,180,100,0.4)!important;border-radius:12px!important;
   box-shadow:0 0 20px rgba(0,180,100,0.06);}
-.qc{font-family:'Orbitron',monospace;font-size:0.7rem;font-weight:700;margin-bottom:4px;
+.qc{font-family:'Orbitron',monospace;font-size:0.65rem;font-weight:700;margin-bottom:2px;
   letter-spacing:3px;color:#555!important;}
 .qc-g{color:#3388aa;}
 .qc-v{color:#2a8855;}
-.qt{font-family:'Rajdhani',sans-serif;color:#f0f0ff;font-size:1.05rem;font-weight:700;line-height:1.65;word-break:keep-all;}
-.qk{color:#00d4ff;font-weight:900;font-size:1.1rem;border-bottom:2px solid #00d4ff;
+.qt{font-family:'Rajdhani',sans-serif;color:#f0f0ff;font-size:0.95rem;font-weight:700;line-height:1.55;word-break:keep-all;}
+.qk{color:#00d4ff;font-weight:900;font-size:1.0rem;border-bottom:2px solid #00d4ff;
   text-shadow:0 0 12px rgba(0,212,255,0.9);padding:0 2px;}
 
 /* ── 답 버튼 — 게임 스타일 ── */
@@ -421,23 +421,23 @@ if st.session_state.phase=="battle":
         _qi = st.session_state.get('qi', 0)
         _rn = st.session_state.get('round_num', 0)
 
-        # A/B/C/D 각각 다른 네온 색상
+        # A/B/C/D 각각 다른 네온 색상 (A=파이어오렌지, B=시안, C=레드, D=그린)
         _btn_colors = [
-            ("#FFD600", "#1a1600"),   # A — 골드
-            ("#00E5FF", "#001a1f"),   # B — 시안
-            ("#FF2D55", "#1a0010"),   # C — 레드
-            ("#44FF88", "#001a0d"),   # D — 그린
+            ("#ff6633", "#160800"),   # A — 파이어 오렌지
+            ("#00E5FF", "#001518"),   # B — 시안
+            ("#FF2D55", "#140008"),   # C — 레드
+            ("#44FF88", "#001408"),   # D — 그린
         ]
         _labels = ["A", "B", "C", "D"]
 
         st.markdown("""<style>
         /* 답 버튼 개별 색상 오버라이드 */
         div[data-testid="stButton"]:nth-of-type(1) button{
-            border-left:5px solid #FFD600!important;
-            background:#100e00!important;
+            border-left:5px solid #ff6633!important;
+            background:#160800!important;
         }
-        div[data-testid="stButton"]:nth-of-type(1) button p{color:#FFD600!important;}
-        div[data-testid="stButton"]:nth-of-type(1) button:hover{box-shadow:0 0 25px rgba(255,214,0,0.5)!important;border-color:#FFD600!important;}
+        div[data-testid="stButton"]:nth-of-type(1) button p{color:#ff6633!important;}
+        div[data-testid="stButton"]:nth-of-type(1) button:hover{box-shadow:0 0 25px rgba(255,102,51,0.5)!important;border-color:#ff6633!important;}
         div[data-testid="stButton"]:nth-of-type(2) button{
             border-left:5px solid #00E5FF!important;
             background:#001518!important;
@@ -457,23 +457,25 @@ if st.session_state.phase=="battle":
         div[data-testid="stButton"]:nth-of-type(4) button p{color:#44FF88!important;}
         div[data-testid="stButton"]:nth-of-type(4) button:hover{box-shadow:0 0 25px rgba(68,255,136,0.5)!important;border-color:#44FF88!important;}
         div[data-testid="stButton"] button{
-            min-height:62px!important;
-            font-size:1.05rem!important;
+            min-height:50px!important;
+            font-size:0.95rem!important;
             font-weight:800!important;
             border-radius:10px!important;
             text-align:left!important;
-            padding:0.6rem 1rem!important;
+            padding:0.45rem 0.9rem!important;
             margin-bottom:2px!important;
         }
         div[data-testid="stButton"] button p{
-            font-size:1.05rem!important;
+            font-size:0.95rem!important;
             font-weight:800!important;
         }
         </style>""", unsafe_allow_html=True)
 
         _clicked = None
         for _ii, _ch in enumerate(q['ch']):
-            _display = f"【{_labels[_ii]}】  {_ch}"
+            # (A) (B) 등 중복 제거 — 선택지에서 앞의 "(X) " 패턴 제거
+            _ch_clean = _ch.split(") ", 1)[-1] if ") " in _ch else _ch
+            _display = f"【{_labels[_ii]}】  {_ch_clean}"
             if st.button(_display, key=f"ans_{_rn}_{_qi}_{_ii}", use_container_width=True):
                 _clicked = _ii
 
