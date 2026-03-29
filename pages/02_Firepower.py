@@ -421,41 +421,11 @@ if st.session_state.phase=="battle":
         _qi = st.session_state.get('qi', 0)
         _rn = st.session_state.get('round_num', 0)
 
-        # A/B/C/D 각각 다른 네온 색상 (A=파이어오렌지, B=시안, C=레드, D=그린)
-        _btn_colors = [
-            ("#ff6633", "#160800"),   # A — 파이어 오렌지
-            ("#00E5FF", "#001518"),   # B — 시안
-            ("#FF2D55", "#140008"),   # C — 레드
-            ("#44FF88", "#001408"),   # D — 그린
-        ]
         _labels = ["A", "B", "C", "D"]
 
+        # 답 버튼 공통 CSS + 클래스별 색상
+        # nth-of-type 방식 제거 → JS 클래스 부여 방식으로 교체 (번호 밀림 버그 해결)
         st.markdown("""<style>
-        /* 답 버튼 개별 색상 오버라이드 */
-        div[data-testid="stButton"]:nth-of-type(1) button{
-            border-left:5px solid #ff6633!important;
-            background:#160800!important;
-        }
-        div[data-testid="stButton"]:nth-of-type(1) button p{color:#ff6633!important;}
-        div[data-testid="stButton"]:nth-of-type(1) button:hover{box-shadow:0 0 25px rgba(255,102,51,0.5)!important;border-color:#ff6633!important;}
-        div[data-testid="stButton"]:nth-of-type(2) button{
-            border-left:5px solid #00E5FF!important;
-            background:#001518!important;
-        }
-        div[data-testid="stButton"]:nth-of-type(2) button p{color:#00E5FF!important;}
-        div[data-testid="stButton"]:nth-of-type(2) button:hover{box-shadow:0 0 25px rgba(0,229,255,0.5)!important;border-color:#00E5FF!important;}
-        div[data-testid="stButton"]:nth-of-type(3) button{
-            border-left:5px solid #FF2D55!important;
-            background:#140008!important;
-        }
-        div[data-testid="stButton"]:nth-of-type(3) button p{color:#FF2D55!important;}
-        div[data-testid="stButton"]:nth-of-type(3) button:hover{box-shadow:0 0 25px rgba(255,45,85,0.5)!important;border-color:#FF2D55!important;}
-        div[data-testid="stButton"]:nth-of-type(4) button{
-            border-left:5px solid #44FF88!important;
-            background:#001408!important;
-        }
-        div[data-testid="stButton"]:nth-of-type(4) button p{color:#44FF88!important;}
-        div[data-testid="stButton"]:nth-of-type(4) button:hover{box-shadow:0 0 25px rgba(68,255,136,0.5)!important;border-color:#44FF88!important;}
         div[data-testid="stButton"] button{
             min-height:50px!important;
             font-size:0.95rem!important;
@@ -469,6 +439,22 @@ if st.session_state.phase=="battle":
             font-size:0.95rem!important;
             font-weight:800!important;
         }
+        /* ── 답 버튼 클래스별 색상 ── */
+        button.ans-a{border-left:5px solid #ff6633!important;background:#160800!important;}
+        button.ans-a p{color:#ff6633!important;}
+        button.ans-a:hover{box-shadow:0 0 25px rgba(255,102,51,0.5)!important;border-color:#ff6633!important;}
+
+        button.ans-b{border-left:5px solid #00E5FF!important;background:#001518!important;}
+        button.ans-b p{color:#00E5FF!important;}
+        button.ans-b:hover{box-shadow:0 0 25px rgba(0,229,255,0.5)!important;border-color:#00E5FF!important;}
+
+        button.ans-c{border-left:5px solid #FF2D55!important;background:#140008!important;}
+        button.ans-c p{color:#FF2D55!important;}
+        button.ans-c:hover{box-shadow:0 0 25px rgba(255,45,85,0.5)!important;border-color:#FF2D55!important;}
+
+        button.ans-d{border-left:5px solid #44FF88!important;background:#001408!important;}
+        button.ans-d p{color:#44FF88!important;}
+        button.ans-d:hover{box-shadow:0 0 25px rgba(68,255,136,0.5)!important;border-color:#44FF88!important;}
         </style>""", unsafe_allow_html=True)
 
         _clicked = None
@@ -478,6 +464,29 @@ if st.session_state.phase=="battle":
             _display = f"【{_labels[_ii]}】  {_ch_clean}"
             if st.button(_display, key=f"ans_{_rn}_{_qi}_{_ii}", use_container_width=True):
                 _clicked = _ii
+
+        # JS: 텍스트 기반으로 답 버튼에 클래스 부여 (nth-of-type 대신)
+        components.html("""<script>
+(function(){
+  var doc=window.parent.document;
+  var MAP={"A":"ans-a","B":"ans-b","C":"ans-c","D":"ans-d"};
+  function tag(){
+    doc.querySelectorAll("button").forEach(function(b){
+      var txt=(b.innerText||b.textContent||"").trim();
+      Object.keys(MAP).forEach(function(k){
+        if(txt.indexOf("\u3010"+k+"\u3011")===0){
+          b.classList.add(MAP[k]);
+          b.querySelectorAll("p").forEach(function(p){
+            p.classList.add(MAP[k]);
+          });
+        }
+      });
+    });
+  }
+  setTimeout(tag,80);
+  setTimeout(tag,350);
+})();
+</script>""", height=0)
 
         if _clicked is not None:
             if time.time()-st.session_state.qst > st.session_state.tsec:
