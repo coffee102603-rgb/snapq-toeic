@@ -423,68 +423,81 @@ if st.session_state.phase=="battle":
 
         _labels = ["A", "B", "C", "D"]
 
-        # 답 버튼 공통 CSS + 클래스별 색상
-        # nth-of-type 방식 제거 → JS 클래스 부여 방식으로 교체 (번호 밀림 버그 해결)
+        # ★ 특이도 높인 CSS + MutationObserver JS → 확실한 색상 적용
         st.markdown("""<style>
         div[data-testid="stButton"] button{
             min-height:50px!important;
-            font-size:0.95rem!important;
-            font-weight:800!important;
-            border-radius:10px!important;
-            text-align:left!important;
-            padding:0.45rem 0.9rem!important;
-            margin-bottom:2px!important;
+            font-size:0.95rem!important;font-weight:800!important;
+            border-radius:10px!important;text-align:left!important;
+            padding:0.45rem 0.9rem!important;margin-bottom:2px!important;
         }
         div[data-testid="stButton"] button p{
-            font-size:0.95rem!important;
-            font-weight:800!important;
+            font-size:0.95rem!important;font-weight:800!important;
         }
-        /* ── 답 버튼 클래스별 색상 ── */
-        button.ans-a{border-left:5px solid #ff6633!important;background:#160800!important;}
-        button.ans-a p{color:#ff6633!important;}
-        button.ans-a:hover{box-shadow:0 0 25px rgba(255,102,51,0.5)!important;border-color:#ff6633!important;}
-
-        button.ans-b{border-left:5px solid #00E5FF!important;background:#001518!important;}
-        button.ans-b p{color:#00E5FF!important;}
-        button.ans-b:hover{box-shadow:0 0 25px rgba(0,229,255,0.5)!important;border-color:#00E5FF!important;}
-
-        button.ans-c{border-left:5px solid #FF2D55!important;background:#140008!important;}
-        button.ans-c p{color:#FF2D55!important;}
-        button.ans-c:hover{box-shadow:0 0 25px rgba(255,45,85,0.5)!important;border-color:#FF2D55!important;}
-
-        button.ans-d{border-left:5px solid #44FF88!important;background:#001408!important;}
-        button.ans-d p{color:#44FF88!important;}
-        button.ans-d:hover{box-shadow:0 0 25px rgba(68,255,136,0.5)!important;border-color:#44FF88!important;}
+        div[data-testid="stButton"] button.ans-a{
+            border-left:5px solid #ff6633!important;background:#160800!important;
+            border-color:#ff6633!important;color:#ff6633!important;}
+        div[data-testid="stButton"] button.ans-a p{color:#ff6633!important;}
+        div[data-testid="stButton"] button.ans-a:hover{box-shadow:0 0 25px rgba(255,102,51,0.55)!important;}
+        div[data-testid="stButton"] button.ans-b{
+            border-left:5px solid #00E5FF!important;background:#001518!important;
+            border-color:#00E5FF!important;color:#00E5FF!important;}
+        div[data-testid="stButton"] button.ans-b p{color:#00E5FF!important;}
+        div[data-testid="stButton"] button.ans-b:hover{box-shadow:0 0 25px rgba(0,229,255,0.55)!important;}
+        div[data-testid="stButton"] button.ans-c{
+            border-left:5px solid #FF2D55!important;background:#140008!important;
+            border-color:#FF2D55!important;color:#FF2D55!important;}
+        div[data-testid="stButton"] button.ans-c p{color:#FF2D55!important;}
+        div[data-testid="stButton"] button.ans-c:hover{box-shadow:0 0 25px rgba(255,45,85,0.55)!important;}
+        div[data-testid="stButton"] button.ans-d{
+            border-left:5px solid #44FF88!important;background:#001408!important;
+            border-color:#44FF88!important;color:#44FF88!important;}
+        div[data-testid="stButton"] button.ans-d p{color:#44FF88!important;}
+        div[data-testid="stButton"] button.ans-d:hover{box-shadow:0 0 25px rgba(68,255,136,0.55)!important;}
         </style>""", unsafe_allow_html=True)
 
         _clicked = None
         for _ii, _ch in enumerate(q['ch']):
-            # (A) (B) 등 중복 제거 — 선택지에서 앞의 "(X) " 패턴 제거
             _ch_clean = _ch.split(") ", 1)[-1] if ") " in _ch else _ch
             _display = f"【{_labels[_ii]}】  {_ch_clean}"
             if st.button(_display, key=f"ans_{_rn}_{_qi}_{_ii}", use_container_width=True):
                 _clicked = _ii
 
-        # JS: 텍스트 기반으로 답 버튼에 클래스 부여 (nth-of-type 대신)
+        # JS: MutationObserver + 다중 retry → 확실하게 클래스 부여
         components.html("""<script>
 (function(){
   var doc=window.parent.document;
-  var MAP={"A":"ans-a","B":"ans-b","C":"ans-c","D":"ans-d"};
   function tag(){
+    var n=0;
     doc.querySelectorAll("button").forEach(function(b){
-      var txt=(b.innerText||b.textContent||"").trim();
-      Object.keys(MAP).forEach(function(k){
-        if(txt.indexOf("\u3010"+k+"\u3011")===0){
-          b.classList.add(MAP[k]);
-          b.querySelectorAll("p").forEach(function(p){
-            p.classList.add(MAP[k]);
+      var txt=(b.innerText||b.textContent||"").split(/[ \t\n]+/).join(" ").trim();
+      var m=txt.match(/^[\u3010\x5B]([A-D])[\u3011\x5D]/);
+      if(m){
+        var cls="ans-"+m[1].toLowerCase();
+        if(!b.classList.contains(cls)){
+          b.classList.remove("ans-a","ans-b","ans-c","ans-d");
+          b.classList.add(cls);
+          b.querySelectorAll("p,span").forEach(function(el){
+            el.classList.remove("ans-a","ans-b","ans-c","ans-d");
+            el.classList.add(cls);
           });
         }
-      });
+        n++;
+      }
     });
+    return n;
   }
-  setTimeout(tag,80);
-  setTimeout(tag,350);
+  var attempts=0;
+  function retry(){
+    var n=tag(); attempts++;
+    if(n<4 && attempts<15) setTimeout(retry, attempts<5?150:400);
+  }
+  setTimeout(retry,80);
+  try{
+    var obs=new MutationObserver(function(){ tag(); });
+    obs.observe(doc.body,{childList:true,subtree:true});
+    setTimeout(function(){ obs.disconnect(); },30000);
+  }catch(e){}
 })();
 </script>""", height=0)
 
