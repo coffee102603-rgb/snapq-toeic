@@ -416,90 +416,43 @@ if st.session_state.phase=="battle":
     # ── 문제 카드 ──
     st.markdown(f'<div class="qb qb-{th}"><div class="qc qc-{th}">{ej} {tn} · {q.get("cat","")}</div><div class="qt">{fq(q["text"])}</div></div>', unsafe_allow_html=True)
 
-    # ── 답 버튼 4개 — A/B/C/D 네온 스타일 ──
+    # ── 답 버튼 4개 — div id 래퍼로 CSS 직접 타겟 (JS 불필요) ──
     if not st.session_state.ans:
         _qi = st.session_state.get('qi', 0)
         _rn = st.session_state.get('round_num', 0)
-
         _labels = ["A", "B", "C", "D"]
 
-        # ★ 특이도 높인 CSS + MutationObserver JS → 확실한 색상 적용
-        st.markdown("""<style>
-        div[data-testid="stButton"] button{
-            min-height:50px!important;
-            font-size:0.95rem!important;font-weight:800!important;
-            border-radius:10px!important;text-align:left!important;
-            padding:0.45rem 0.9rem!important;margin-bottom:2px!important;
-        }
-        div[data-testid="stButton"] button p{
-            font-size:0.95rem!important;font-weight:800!important;
-        }
-        div[data-testid="stButton"] button.ans-a{
-            border-left:5px solid #ff6633!important;background:#160800!important;
-            border-color:#ff6633!important;color:#ff6633!important;}
-        div[data-testid="stButton"] button.ans-a p{color:#ff6633!important;}
-        div[data-testid="stButton"] button.ans-a:hover{box-shadow:0 0 25px rgba(255,102,51,0.55)!important;}
-        div[data-testid="stButton"] button.ans-b{
-            border-left:5px solid #00E5FF!important;background:#001518!important;
-            border-color:#00E5FF!important;color:#00E5FF!important;}
-        div[data-testid="stButton"] button.ans-b p{color:#00E5FF!important;}
-        div[data-testid="stButton"] button.ans-b:hover{box-shadow:0 0 25px rgba(0,229,255,0.55)!important;}
-        div[data-testid="stButton"] button.ans-c{
-            border-left:5px solid #FF2D55!important;background:#140008!important;
-            border-color:#FF2D55!important;color:#FF2D55!important;}
-        div[data-testid="stButton"] button.ans-c p{color:#FF2D55!important;}
-        div[data-testid="stButton"] button.ans-c:hover{box-shadow:0 0 25px rgba(255,45,85,0.55)!important;}
-        div[data-testid="stButton"] button.ans-d{
-            border-left:5px solid #44FF88!important;background:#001408!important;
-            border-color:#44FF88!important;color:#44FF88!important;}
-        div[data-testid="stButton"] button.ans-d p{color:#44FF88!important;}
-        div[data-testid="stButton"] button.ans-d:hover{box-shadow:0 0 25px rgba(68,255,136,0.55)!important;}
-        </style>""", unsafe_allow_html=True)
+        # ★ 핵심: 각 버튼을 고유 id div로 감싸서 CSS로 직접 타겟
+        # JS/nth-of-type 모두 불필요 → 가장 확실한 방법
+        _ans_cfg = [
+            ("fp-ans-a", "#ff6633", "#160800", "rgba(255,102,51,0.55)"),
+            ("fp-ans-b", "#00E5FF", "#001518", "rgba(0,229,255,0.55)"),
+            ("fp-ans-c", "#FF2D55", "#140008", "rgba(255,45,85,0.55)"),
+            ("fp-ans-d", "#44FF88", "#001408", "rgba(68,255,136,0.55)"),
+        ]
+
+        # CSS: id 기반 → 특이도 최고, 절대 밀릴 일 없음
+        _css = "<style>div[data-testid=\"stButton\"] button{min-height:50px!important;font-size:0.95rem!important;font-weight:800!important;border-radius:10px!important;text-align:left!important;padding:0.45rem 0.9rem!important;margin-bottom:2px!important;}div[data-testid=\"stButton\"] button p{font-size:0.95rem!important;font-weight:800!important;}"
+        for _aid, _col, _bg, _sh in _ans_cfg:
+            _css += (
+                f"#btn-{_aid} div[data-testid=\"stButton\"] button{{"
+                f"border-left:5px solid {_col}!important;background:{_bg}!important;"
+                f"border-color:{_col}!important;color:{_col}!important;}}"
+                f"#btn-{_aid} div[data-testid=\"stButton\"] button p{{color:{_col}!important;}}"
+                f"#btn-{_aid} div[data-testid=\"stButton\"] button:hover{{box-shadow:0 0 25px {_sh}!important;}}"
+            )
+        _css += "</style>"
+        st.markdown(_css, unsafe_allow_html=True)
 
         _clicked = None
         for _ii, _ch in enumerate(q['ch']):
             _ch_clean = _ch.split(") ", 1)[-1] if ") " in _ch else _ch
             _display = f"【{_labels[_ii]}】  {_ch_clean}"
+            _aid = _ans_cfg[_ii][0]
+            st.markdown(f'<div id="btn-{_aid}">', unsafe_allow_html=True)
             if st.button(_display, key=f"ans_{_rn}_{_qi}_{_ii}", use_container_width=True):
                 _clicked = _ii
-
-        # JS: MutationObserver + 다중 retry → 확실하게 클래스 부여
-        components.html("""<script>
-(function(){
-  var doc=window.parent.document;
-  function tag(){
-    var n=0;
-    doc.querySelectorAll("button").forEach(function(b){
-      var txt=(b.innerText||b.textContent||"").split(/[ \t\n]+/).join(" ").trim();
-      var m=txt.match(/^[\u3010\x5B]([A-D])[\u3011\x5D]/);
-      if(m){
-        var cls="ans-"+m[1].toLowerCase();
-        if(!b.classList.contains(cls)){
-          b.classList.remove("ans-a","ans-b","ans-c","ans-d");
-          b.classList.add(cls);
-          b.querySelectorAll("p,span").forEach(function(el){
-            el.classList.remove("ans-a","ans-b","ans-c","ans-d");
-            el.classList.add(cls);
-          });
-        }
-        n++;
-      }
-    });
-    return n;
-  }
-  var attempts=0;
-  function retry(){
-    var n=tag(); attempts++;
-    if(n<4 && attempts<15) setTimeout(retry, attempts<5?150:400);
-  }
-  setTimeout(retry,80);
-  try{
-    var obs=new MutationObserver(function(){ tag(); });
-    obs.observe(doc.body,{childList:true,subtree:true});
-    setTimeout(function(){ obs.disconnect(); },30000);
-  }catch(e){}
-})();
-</script>""", height=0)
+            st.markdown('</div>', unsafe_allow_html=True)
 
         if _clicked is not None:
             if time.time()-st.session_state.qst > st.session_state.tsec:
