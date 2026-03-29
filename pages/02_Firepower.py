@@ -416,30 +416,41 @@ if st.session_state.phase=="battle":
     # ── 문제 카드 ──
     st.markdown(f'<div class="qb qb-{th}"><div class="qc qc-{th}">{ej} {tn} · {q.get("cat","")}</div><div class="qt">{fq(q["text"])}</div></div>', unsafe_allow_html=True)
 
-    # ── 답 버튼 4개 — div id 래퍼로 CSS 직접 타겟 (JS 불필요) ──
+    # ── 답 버튼 4개 — A/B/C/D 네온 스타일 ──
     if not st.session_state.ans:
         _qi = st.session_state.get('qi', 0)
         _rn = st.session_state.get('round_num', 0)
-        _labels = ["A", "B", "C", "D"]
 
-        # ★ 핵심: 각 버튼을 고유 id div로 감싸서 CSS로 직접 타겟
-        # JS/nth-of-type 모두 불필요 → 가장 확실한 방법
+        _labels = ["A", "B", "C", "D"]
+        # ★ div id 래퍼로 버튼 색상 확실히 고정
+        # ★ .stMarkdown/.element-container 여백 0으로 → 버튼 간격 밀림 방지
         _ans_cfg = [
             ("fp-ans-a", "#ff6633", "#160800", "rgba(255,102,51,0.55)"),
             ("fp-ans-b", "#00E5FF", "#001518", "rgba(0,229,255,0.55)"),
             ("fp-ans-c", "#FF2D55", "#140008", "rgba(255,45,85,0.55)"),
             ("fp-ans-d", "#44FF88", "#001408", "rgba(68,255,136,0.55)"),
         ]
-
-        # CSS: id 기반 → 특이도 최고, 절대 밀릴 일 없음
-        _css = "<style>div[data-testid=\"stButton\"] button{min-height:50px!important;font-size:0.95rem!important;font-weight:800!important;border-radius:10px!important;text-align:left!important;padding:0.45rem 0.9rem!important;margin-bottom:2px!important;}div[data-testid=\"stButton\"] button p{font-size:0.95rem!important;font-weight:800!important;}"
+        _css = """<style>
+        /* ── 전장 버튼 래퍼 여백 완전 제거 ── */
+        .stMarkdown{margin:0!important;padding:0!important;}
+        .element-container{margin:0!important;padding:0!important;}
+        div[data-testid="stVerticalBlock"]{gap:3px!important;}
+        /* ── 답 버튼 공통 ── */
+        div[data-testid="stButton"] button{
+            min-height:50px!important;font-size:0.95rem!important;
+            font-weight:800!important;border-radius:10px!important;
+            text-align:left!important;padding:0.45rem 0.9rem!important;
+            margin:0!important;
+        }
+        div[data-testid="stButton"] button p{font-size:0.95rem!important;font-weight:800!important;}
+        """
         for _aid, _col, _bg, _sh in _ans_cfg:
             _css += (
-                f"#btn-{_aid} div[data-testid=\"stButton\"] button{{"
-                f"border-left:5px solid {_col}!important;background:{_bg}!important;"
-                f"border-color:{_col}!important;color:{_col}!important;}}"
-                f"#btn-{_aid} div[data-testid=\"stButton\"] button p{{color:{_col}!important;}}"
-                f"#btn-{_aid} div[data-testid=\"stButton\"] button:hover{{box-shadow:0 0 25px {_sh}!important;}}"
+                f'#btn-{_aid} div[data-testid="stButton"] button{{'
+                f'border-left:5px solid {_col}!important;background:{_bg}!important;'
+                f'border-color:{_col}!important;color:{_col}!important;}}'
+                f'#btn-{_aid} div[data-testid="stButton"] button p{{color:{_col}!important;}}'
+                f'#btn-{_aid} div[data-testid="stButton"] button:hover{{box-shadow:0 0 22px {_sh}!important;}}'
             )
         _css += "</style>"
         st.markdown(_css, unsafe_allow_html=True)
