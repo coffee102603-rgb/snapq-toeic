@@ -1760,8 +1760,8 @@ div[data-testid="stButton"] button p{color:#c0c8e0!important;font-size:0.9rem!im
 #btn-no div[data-testid="stButton"] button p{color:#ff5544!important;font-size:1.05rem!important;font-weight:900!important;}
 #btn-flip div[data-testid="stButton"] button{background:#10102a!important;border:2.5px solid #6655ee!important;color:#cc99ff!important;min-height:58px!important;font-size:1rem!important;}
 #btn-flip div[data-testid="stButton"] button p{color:#cc99ff!important;font-size:1rem!important;font-weight:900!important;}
-#btn-start div[data-testid="stButton"] button{background:#1a0808!important;border:2.5px solid #ff3300!important;color:#ff6644!important;min-height:64px!important;font-size:1.05rem!important;box-shadow:0 0 18px #ff330066!important;}
-#btn-start div[data-testid="stButton"] button p{color:#ff6644!important;font-size:1.05rem!important;font-weight:900!important;}
+#btn-start div[data-testid="stButton"] button{background:#1a0505!important;border:3px solid #ff1100!important;color:#ff4422!important;min-height:64px!important;font-size:1.05rem!important;box-shadow:0 0 24px #ff110088,inset 0 0 12px #ff110022!important;}
+#btn-start div[data-testid="stButton"] button p{color:#ff5533!important;font-size:1.05rem!important;font-weight:900!important;}
 #btn-home div[data-testid="stButton"] button{background:#08080f!important;border:1px solid #1a1d2a!important;color:#3a4455!important;min-height:38px!important;font-size:0.8rem!important;}
 #btn-home div[data-testid="stButton"] button p{color:#3a4455!important;font-size:0.8rem!important;}
 #btn-back div[data-testid="stButton"] button{background:#08080f!important;border:1px solid #1a1d2a!important;color:#3a4455!important;min-height:36px!important;font-size:0.78rem!important;}
@@ -1980,11 +1980,13 @@ div[data-testid="stButton"] button p{color:#c0c8e0!important;font-size:0.9rem!im
           <div style="font-size:38px;margin-bottom:6px;filter:drop-shadow(0 0 12px #8833ff);">🚔</div>
           <div style="font-family:'Orbitron',monospace;font-size:15px;font-weight:900;color:#ddaaff;letter-spacing:3px;margin-bottom:4px;">WORD PRISON</div>
           <div style="font-size:14px;color:#cc99ff;font-weight:700;margin-bottom:2px;">단어 심문실</div>
-          <div style="font-size:14px;color:#ff4488;font-weight:900;margin-top:10px;line-height:1.7;letter-spacing:0.3px;text-shadow:0 0 10px #ff336688;">
+          <div style="font-size:14px;color:#ff3377;font-weight:900;margin-top:10px;line-height:1.8;letter-spacing:0.3px;
+               text-shadow:0 0 14px #ff335599,0 0 6px #ff000055;padding:6px 4px;
+               border-top:1px solid #ff337744;">
             🚨 기억하면 석방, 잊으면 재투옥,<br>방심하면 공범까지 소환된다.
           </div>
         </div>
-        """, height=168)
+        """, height=210)
 
         st.markdown(f"""<div style="display:flex;gap:5px;margin:5px 0;">
           <div style="flex:1;background:#110820;border:1.5px solid #6633aa;border-radius:14px;padding:12px;text-align:center;">
