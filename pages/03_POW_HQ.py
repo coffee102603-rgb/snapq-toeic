@@ -1705,6 +1705,9 @@ elif st.session_state.sg_phase == "combo_result":
 # ════════════════════════════════════════
 # PHASE: WORD_PRISON — 극적인 심문실
 # ════════════════════════════════════════
+# ════════════════════════════════════════
+# PHASE: WORD_PRISON — 극적인 심문실
+# ════════════════════════════════════════
 elif st.session_state.sg_phase == "word_prison":
     import datetime as _pr_dt2, random as _pr_random
 
@@ -1934,7 +1937,24 @@ div[data-testid="stButton"] button p{color:#c0c8e0!important;font-size:0.9rem!im
             _p=_deck[_idx]; _raw_word=_p.get("word",""); _word=_lemma(_raw_word)
             _raw_kr=_p.get("kr","") or ""; _kr=_clean_kr(_raw_kr) or "뜻 없음"
             _sent=_p.get("sentence",""); _streak=_p.get("correct_streak",0)
-            _src=_p.get("source",""); _ch,_col,_lbl=_get_char(_p); _flipped=st.session_state.wp_flipped
+            _src=_p.get("source",""); _ch,_col,_lbl=_get_char(_p)
+            # 진입 시 앞면 보장
+            if st.session_state.get("_wp_last_idx") != _idx:
+                st.session_state.wp_flipped = False
+                st.session_state["_wp_last_idx"] = _idx
+            _flipped=st.session_state.wp_flipped
+
+            # 재밌는 심문 멘트 (순환)
+            _catchphrases=[
+                "이 단어... 뜻 알아? 솔직히 말해! 🔦",
+                "눈 감고 뜻이 떠오르면 석방이다! 💡",
+                "도망 못 간다! 뒤집어! 👇",
+                "3초 안에 뜻 생각해봐! ⏱",
+                "뜻 모르면 재투옥이야! 각오해! ⛓",
+                "오늘 뒤집어볼까? 슬쩍 봐봐! 👀",
+                "이 단어 놓치면 토익 망한다! 뒤집어! 🚨",
+            ]
+            _catchphrase = _catchphrases[_idx % len(_catchphrases)]
 
             # HUD
             st.markdown(
@@ -1946,34 +1966,30 @@ div[data-testid="stButton"] button p{color:#c0c8e0!important;font-size:0.9rem!im
                 f'</div>', unsafe_allow_html=True)
 
             if not _flipped:
-                # ── 앞면 ──
+                # ── 앞면: 영어 단어 하나만 + 심문 멘트 버튼 ──
                 _dots="".join([f'<span style="display:inline-block;width:24px;height:8px;border-radius:4px;margin:0 4px;background:{""+_col+"" if i<_streak else "#1e2235"};"></span>' for i in range(3)])
                 components.html(f"""
                 <style>
                 @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@900&display=swap');
-                *{{margin:0;padding:0;box-sizing:border-box;}}body{{background:transparent;font-family:sans-serif;}}
+                *{{margin:0;padding:0;box-sizing:border-box;}}body{{background:transparent;font-family:sans-serif;text-align:center;}}
+                .flicker{{animation:flicker 3s infinite;}}
+                @keyframes flicker{{0%,95%,100%{{opacity:1}}96%{{opacity:0.4}}97%{{opacity:1}}98%{{opacity:0.6}}}}
                 </style>
-                <div style="background:radial-gradient(ellipse at 50% 30%,#1a1040 0%,#08080f 80%);
-                     border:2.5px solid {_col};border-radius:20px;padding:24px 16px 20px;text-align:center;
-                     box-shadow:inset 0 0 30px {_col}22, 0 0 20px {_col}33;">
-                  <div style="background:{_col}18;border:1px solid {_col}44;border-radius:20px;
-                       display:inline-block;padding:4px 14px;font-size:9px;font-weight:700;
-                       color:{_col};letter-spacing:2px;margin-bottom:16px;">{_lbl}</div>
-                  <div style="font-size:60px;margin-bottom:14px;filter:drop-shadow(0 0 10px {_col}88);">{_ch}</div>
-                  <div style="font-family:'Orbitron',monospace;font-size:30px;font-weight:900;color:#ffffff;
-                       letter-spacing:2px;margin-bottom:6px;text-shadow:0 0 24px {_col}cc,0 0 8px #fff;">{_word}</div>
-                  <div style="margin-bottom:16px;">
-                    <span style="background:#0c1020;border:1px solid #2a3040;border-radius:8px;
-                      padding:3px 12px;font-family:'Orbitron',monospace;font-size:9px;color:#445566;">
-                      {_src} · {_streak}/3 STREAK</span>
-                  </div>
-                  <div style="display:flex;justify-content:center;gap:4px;">{_dots}</div>
-                  <div style="font-size:11px;color:#445566;margin-top:8px;">뜻을 알면 뒤집어!</div>
+                <div style="background:radial-gradient(ellipse at 50% 20%,#1a1040 0%,#06060e 80%);
+                     border:2.5px solid {_col};border-radius:20px;padding:28px 16px 24px;
+                     box-shadow:inset 0 0 40px {_col}18, 0 0 24px {_col}44;">
+                  <div style="font-size:64px;margin-bottom:14px;filter:drop-shadow(0 0 16px {_col}aa);">{_ch}</div>
+                  <div style="font-family:'Orbitron',monospace;font-size:34px;font-weight:900;color:#ffffff;
+                       letter-spacing:3px;text-shadow:0 0 30px {_col},0 0 12px #fff,0 2px 4px #000;
+                       margin-bottom:16px;" class="flicker">{_word}</div>
+                  <div style="display:flex;justify-content:center;gap:4px;margin-bottom:10px;">{_dots}</div>
+                  <div style="font-size:11px;color:#445566;">{_streak}/3 연속 정답</div>
                 </div>
-                """, height=320)
+                """, height=295)
 
+                # 심문 멘트 = 클릭 버튼
                 st.markdown('<div id="btn-flip">', unsafe_allow_html=True)
-                if st.button("👁  뜻 확인하기!", key=f"wp_flip_{_idx}", use_container_width=True):
+                if st.button(f"{_catchphrase}", key=f"wp_flip_{_idx}", use_container_width=True):
                     st.session_state.wp_flipped=True; st.rerun()
                 st.markdown('</div>', unsafe_allow_html=True)
 
@@ -1983,14 +1999,22 @@ div[data-testid="stButton"] button p{color:#c0c8e0!important;font-size:0.9rem!im
                 _sent_short = _sent[:90]+"..." if len(_sent)>90 else _sent
                 _sent_block = ""
                 if _sent:
+                    # 예문에서 단어 형광 하이라이트
+                    import re as _re_hl
+                    _hl_sent = _re_hl.sub(
+                        f"(?i)({_re_hl.escape(_raw_word)}|{_re_hl.escape(_word)})",
+                        f'<span style="color:#ffee44;font-weight:900;text-shadow:0 0 12px #ffee44,0 0 4px #ff8800;border-bottom:2px solid #ffee44;padding:0 2px;">\\1</span>',
+                        _sent_short
+                    )
                     _sent_block = (
-                        f'<div style="background:#0a1020;border:1px solid #1e3040;border-radius:12px;'
-                        f'padding:12px 14px;margin:12px 0 6px;">'
-                        f'<div style="font-size:9px;font-family:Orbitron,monospace;color:#334455;letter-spacing:2px;margin-bottom:6px;">예문</div>'
-                        f'<div style="font-size:13px;color:#aabbd0;line-height:1.7;font-style:italic;">"{_sent_short}"</div>'
+                        f'<div style="background:#08100a;border:1.5px solid #1a3020;border-radius:14px;'
+                        f'padding:14px;margin:10px 0 6px;text-align:left;">'
+                        f'<div style="font-size:9px;color:#336644;letter-spacing:2px;margin-bottom:8px;text-align:center;">📝 예문</div>'
+                        f'<div style="font-size:14px;color:#c8d8e0;line-height:1.75;font-style:italic;">&ldquo;{_hl_sent}&rdquo;</div>'
+                        f'<div style="font-size:11px;color:#445566;margin-top:8px;line-height:1.6;text-align:left;">'
+                        f'🇰🇷 <span style="color:#aabbc0;">{_word if _raw_word!=_word else _word}</span> = '
+                        f'<span style="color:#ddeecc;font-weight:700;">{_kr}</span></div>'
                         f'</div>'
-                        f'<div style="font-size:11px;color:#4a5a6a;text-align:center;margin-bottom:8px;">'
-                        f'💡 이 문장에서 <span style="color:#ffee55;font-weight:900;font-size:13px;">{_word}</span> = <span style="color:#ffffff;font-weight:900;">{_kr}</span></div>'
                     )
                 _dots2="".join([f'<span style="display:inline-block;width:24px;height:8px;border-radius:4px;margin:0 4px;background:{"#33cc55" if i<_streak else "#1e2a1e"};"></span>' for i in range(3)])
                 components.html(f"""
