@@ -1560,7 +1560,11 @@ div[data-testid="stButton"] button.br-home p{color:#3d5066!important;}
     c_kr = s.get("choices_kr", [])
     answer_kr = c_kr[s["answer"]] if c_kr and s["answer"] < len(c_kr) else ""
     kr_full = s.get("kr", "")
-    kr_sents = [x.strip() for x in kr_full.replace("!","!|").replace("?","?|").replace(".",".|").split("|") if x.strip()]
+    # 문장 분리 — 숫자 뒤 마침표(2.3 등)는 분리 안 함
+    import re as _re_kr
+    _kr_tmp = _re_kr.sub(r'(?<![0-9])[.](?![0-9])', '.|', kr_full)
+    _kr_tmp = _kr_tmp.replace("!","!|").replace("?","?|")
+    kr_sents = [x.strip() for x in _kr_tmp.split("|") if x.strip()]
 
     # ── 문제 + 정답 카드 ──
     _q_border = "#44cc88" if ok else "#ff4466"
