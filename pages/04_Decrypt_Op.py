@@ -1586,7 +1586,7 @@ div[data-testid="stButton"] button.br-home p{color:#3d5066!important;}
     </div>''', unsafe_allow_html=True)
 
     # ── KEY EXPRESSIONS 섹션 라벨 ──
-    st.markdown(f'''<div style="display:flex;align-items:center;gap:6px;">
+    st.markdown(f'''<div style="display:flex;align-items:center;gap:6px;margin-top:10px;margin-bottom:4px;">
       <div style="font-size:10px;color:#4488aa;letter-spacing:3px;font-weight:700;">🎯 KEY EXPRESSIONS</div>
       <div style="flex:1;height:1px;background:#0e1020;"></div>
       <div style="font-size:10px;color:#336688;letter-spacing:1px;font-weight:600;">{len(s["sentences"])}문장</div>
