@@ -1502,19 +1502,19 @@ div[data-testid="stButton"] button.br-qtab-on p{color:#00ccee!important;}
 
 /* 저장 버튼 */
 div[data-testid="stButton"] button.br-save{
-  background:#0c1800!important;border:2px solid #44ee66!important;
-  border-radius:10px!important;color:#44ee66!important;
+  background:#001520!important;border:1.5px solid rgba(0,180,220,0.5)!important;
+  border-radius:10px!important;color:#00ccee!important;
   font-size:0.88rem!important;font-weight:900!important;min-height:44px!important;
 }
-div[data-testid="stButton"] button.br-save p{color:#44ee66!important;font-size:0.88rem!important;font-weight:900!important;}
+div[data-testid="stButton"] button.br-save p{color:#00ccee!important;font-size:0.88rem!important;font-weight:900!important;}
 
 /* 오답 문장 저장 버튼 (빨강 강조) */
 div[data-testid="stButton"] button.br-save-wrong{
-  background:#1a0600!important;border:2px solid #ff6633!important;
-  border-radius:10px!important;color:#ff8855!important;
+  background:#100008!important;border:1.5px solid rgba(255,80,80,0.5)!important;
+  border-radius:10px!important;color:#ff6666!important;
   font-size:0.88rem!important;font-weight:900!important;min-height:44px!important;
 }
-div[data-testid="stButton"] button.br-save-wrong p{color:#ff8855!important;font-size:0.88rem!important;font-weight:900!important;}
+div[data-testid="stButton"] button.br-save-wrong p{color:#ff6666!important;font-size:0.88rem!important;font-weight:900!important;}
 
 /* 포로사령부 CTA */
 div[data-testid="stButton"] button.br-pow{
@@ -1538,7 +1538,7 @@ div[data-testid="stButton"] button.br-home p{color:#3d5066!important;}
             border-radius:10px;padding:9px 12px;">
           <div style="font-family:Orbitron,monospace;font-size:11px;font-weight:900;
             color:#00ccee;letter-spacing:2px;">📡 OP.1 · MISSION COMPLETE</div>
-          <div style="font-size:9px;color:#886600;margin-top:2px;letter-spacing:1px;">
+          <div style="font-size:10px;color:#55aacc;font-weight:700;margin-top:3px;letter-spacing:1px;">
             ✅ {ok_cnt} CAPTURED &nbsp;·&nbsp; ❌ {miss_cnt} MISSED &nbsp;·&nbsp; 📋 {data.get("title","")}</div>
         </div>''', unsafe_allow_html=True)
     else:
@@ -1546,7 +1546,7 @@ div[data-testid="stButton"] button.br-home p{color:#3d5066!important;}
             border-radius:10px;padding:9px 12px;">
           <div style="font-family:Orbitron,monospace;font-size:11px;font-weight:900;
             color:#FF2D55;letter-spacing:2px;">📡 OP.1 · MISSION FAILED</div>
-          <div style="font-size:9px;color:#661122;margin-top:2px;letter-spacing:1px;">
+          <div style="font-size:10px;color:#ee6688;font-weight:700;margin-top:3px;letter-spacing:1px;">
             ✅ {ok_cnt} CAPTURED &nbsp;·&nbsp; ❌ {miss_cnt} MISSED &nbsp;·&nbsp; 📋 {data.get("title","")}</div>
         </div>''', unsafe_allow_html=True)
 
@@ -1579,17 +1579,17 @@ div[data-testid="stButton"] button.br-home p{color:#3d5066!important;}
     _q_border = "#00ccee" if ok else "#ff4466"
     st.markdown(f'''<div style="background:#06090f;border:1px solid #1a2240;
         border-left:3px solid {_q_border};border-radius:10px;padding:8px 10px;">
-      <div style="font-size:8px;color:#334466;letter-spacing:2px;margin-bottom:4px;">[ Q{bi+1} ] RESULT</div>
-      <div style="font-size:12px;color:#7a9a8a;margin-bottom:3px;">{s["question"]}</div>
+      <div style="font-size:10px;color:#5588aa;font-weight:700;letter-spacing:2px;margin-bottom:4px;">[ Q{bi+1} ] RESULT</div>
+      <div style="font-size:13px;color:#aaccdd;font-weight:600;margin-bottom:4px;">{s["question"]}</div>
       <div style="font-size:13px;font-weight:700;color:{_q_border};">{sym} {correct_choice}</div>
-      {f'<div style="font-size:10px;color:#557766;margin-top:2px;">{answer_kr}</div>' if answer_kr else ""}
+      {f'<div style="font-size:11px;color:#88bbcc;font-weight:600;margin-top:3px;">{answer_kr}</div>' if answer_kr else ""}
     </div>''', unsafe_allow_html=True)
 
     # ── KEY EXPRESSIONS 섹션 라벨 ──
     st.markdown(f'''<div style="display:flex;align-items:center;gap:6px;">
-      <div style="font-size:8px;color:#334466;letter-spacing:3px;font-weight:700;">🎯 KEY EXPRESSIONS</div>
+      <div style="font-size:10px;color:#4488aa;letter-spacing:3px;font-weight:700;">🎯 KEY EXPRESSIONS</div>
       <div style="flex:1;height:1px;background:#0e1020;"></div>
-      <div style="font-size:8px;color:#223344;letter-spacing:1px;">{len(s["sentences"])}문장</div>
+      <div style="font-size:10px;color:#336688;letter-spacing:1px;font-weight:600;">{len(s["sentences"])}문장</div>
     </div>''', unsafe_allow_html=True)
 
     # ── 문장 카드들 ──
@@ -1619,7 +1619,7 @@ div[data-testid="stButton"] button.br-home p{color:#3d5066!important;}
             st.markdown(
                 f'<div style="background:#04080a;border:1.5px solid rgba(0,150,100,0.25);border-left:4px solid #336644;border-radius:12px;padding:10px;opacity:0.85;">' +
                 f'<div style="font-size:13px;font-weight:800;color:#ddeeff;line-height:1.75;margin-bottom:5px;">{_hl}</div>' +
-                f'<div style="font-size:11px;color:#5a7a6a;margin-bottom:6px;">{sent_kr}</div>' +
+                f'<div style="font-size:12px;color:#99bbcc;font-weight:600;margin-bottom:6px;">{sent_kr}</div>' +
                 '<span style="background:#001520;border:1px solid #006688;border-radius:6px;padding:2px 8px;font-size:8px;color:#00ccee;font-weight:700;">✅ 포로 등록 완료 · 포로사령부 대기중</span>' +
                 '</div>',
                 unsafe_allow_html=True)
@@ -1628,7 +1628,7 @@ div[data-testid="stButton"] button.br-home p{color:#3d5066!important;}
             st.markdown(
                 f'<div style="background:#06090f;border:1.5px solid rgba(0,180,255,0.25);border-left:4px solid {_card_border};border-radius:12px;padding:10px;margin-bottom:2px;">' +
                 f'<div style="font-size:13px;font-weight:800;color:#ddeeff;line-height:1.75;margin-bottom:5px;">{_hl}</div>' +
-                f'<div style="font-size:11px;color:#5a7a6a;margin-bottom:6px;">{sent_kr}</div>' +
+                f'<div style="font-size:12px;color:#99bbcc;font-weight:600;margin-bottom:6px;">{sent_kr}</div>' +
                 '</div>',
                 unsafe_allow_html=True)
 
