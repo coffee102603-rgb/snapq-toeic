@@ -1132,6 +1132,7 @@ if _arm_go:
     st.session_state.sg_phase = "lobby"
     st.session_state["_wp_guard"] = False
 
+    st.switch_page("pages/03_POW_HQ.py")
 _adm_go = st.button("ADMIN_GO", key="admin_go_btn")
 if _adm_go:
     st.switch_page("pages/01_Admin.py")
