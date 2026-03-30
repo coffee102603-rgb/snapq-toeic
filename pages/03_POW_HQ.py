@@ -2171,12 +2171,22 @@ div[data-testid="stButton"] button p{color:#c0c8e0!important;font-size:0.9rem!im
                         f'<span style="color:#ffee44;font-weight:900;text-shadow:0 0 12px #ffee44,0 0 4px #ff8800;border-bottom:2px solid #ffee44;padding:0 2px;">\\1</span>',
                         _sent_short
                     )
-                    # 문장 한글 해석만 (단어=뜻 중복 제거)
+                    # 문장 한글 해석 (sent_kr 없으면 단어 뜻으로 힌트 제공)
                     _kr_line = ""
                     if _sent_kr:
                         _kr_line = f'<div style="font-size:14px;color:#ddeedd;font-weight:800;line-height:1.7;margin-top:8px;padding-top:8px;border-top:1px solid #224422;">🇰🇷 {_sent_kr}</div>'
+                    elif _has_meaning:
+                        _kr_line = (
+                            f'<div style="margin-top:8px;padding-top:8px;border-top:1px solid #1a2a1a;">'
+                            f'<div style="font-size:11px;color:#336655;letter-spacing:1px;margin-bottom:4px;">💡 단어 힌트</div>'
+                            f'<div style="font-size:15px;color:#88ffbb;font-weight:900;">'
+                            f'<span style="color:#ffee44;font-weight:900;">{_word}</span>'
+                            f' = {_kr}</div>'
+                            f'<div style="font-size:11px;color:#335544;margin-top:3px;">위 문장에서 이 뜻을 찾아봐!</div>'
+                            f'</div>'
+                        )
                     else:
-                        _kr_line = f'<div style="font-size:12px;color:#778899;margin-top:8px;padding-top:8px;border-top:1px solid #1a2a1a;">💬 예문에서 이 단어의 역할을 찾아봐!</div>'
+                        _kr_line = f'<div style="font-size:12px;color:#445566;margin-top:8px;padding-top:8px;border-top:1px solid #1a2a1a;">💬 예문에서 단어 역할을 파악해봐!</div>'
                     _sent_block = (
                         f'<div style="background:#08100a;border:1.5px solid #1a3020;border-radius:14px;'
                         f'padding:14px;margin:10px 0 6px;text-align:left;">'
@@ -2207,7 +2217,7 @@ div[data-testid="stButton"] button p{color:#c0c8e0!important;font-size:0.9rem!im
                   <div style="font-size:11px;color:#335544;margin-top:5px;">
                     {_streak}/3 STREAK · {'다음엔 석방!' if _streak==2 else '한 번 더!' if _streak==1 else '첫 정답 도전!'}</div>
                 </div>
-                """, height=310 if _sent else 220)
+                """, height=340 if (_sent and _sent_kr) else 310 if _sent else 220)
 
                 _c1,_c2=st.columns(2)
                 with _c1:
