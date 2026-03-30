@@ -1437,20 +1437,14 @@ elif st.session_state.p7_phase == "lost":
 
 
 elif st.session_state.p7_phase == "briefing":
-    st.markdown('''<style>
-    .block-container{padding-top:0.5rem!important;margin-top:-1rem!important;padding-bottom:0!important;}
-    div[data-testid="stVerticalBlock"]{gap:0.3rem!important;}
-    .element-container{margin-bottom:0!important;}
-        div[data-testid="stAppViewBlockContainer"]{padding-top:0.2rem!important;}
-    </style>''', unsafe_allow_html=True)
-    data = st.session_state.p7_data
-    steps = data["steps"]
-    answers = st.session_state.p7_answers
-    was_victory = len(answers) == 3 and all(answers)
+    import re as _re3
 
-    v_cls = "p7-ban-v" if was_victory else "p7-ban-l"
-    v_label = "CLEAR!" if was_victory else "YOU LOST"
-    ok_cnt = len([a for a in answers if a])
+    data    = st.session_state.p7_data
+    steps   = data["steps"]
+    answers = st.session_state.p7_answers
+    ok_cnt  = len([a for a in answers if a])
+    miss_cnt= len(answers) - ok_cnt
+    was_victory = len(answers) == 3 and all(answers)
 
     if "p7_br_idx" not in st.session_state: st.session_state.p7_br_idx = 0
     bi = st.session_state.p7_br_idx
@@ -1458,23 +1452,10 @@ elif st.session_state.p7_phase == "briefing":
     if num_steps == 0: num_steps = 1
     if bi >= num_steps: bi = num_steps - 1
 
-    # query_params 버튼 처리
+    # query_params 처리
     _qp = st.query_params.get("p7action", "")
-    if _qp == "prev" and bi > 0:
-        st.session_state.p7_br_idx = bi - 1
-        st.query_params.clear()
-        st.rerun()
-    elif _qp == "next" and bi < num_steps - 1:
-        st.session_state.p7_br_idx = bi + 1
-        st.query_params.clear()
-        st.rerun()
-    elif _qp == "retry":
-        for k in D: st.session_state[k] = D[k]
-        st.query_params.clear()
-        st.rerun()
-    elif _qp == "store":
-        st.query_params.clear()
-        st.switch_page("pages/03_POW_HQ.py")
+    if _qp == "store":
+        st.query_params.clear(); st.switch_page("pages/03_POW_HQ.py")
     elif _qp == "lobby":
         for k in D: st.session_state[k] = D[k]
         st.query_params.clear()
@@ -1484,219 +1465,181 @@ elif st.session_state.p7_phase == "briefing":
             st.query_params["ag"] = "1"
         st.switch_page("main_hub.py")
 
-    # 오답전장/본부귀환 골드 스타일
+    # ── CSS ──
     st.markdown("""<style>
-    button[kind="secondary"]{
-        border:2px solid #FFD700!important;
-        color:#ffffff!important;
-    }
-    button[kind="secondary"] p{
-        color:#ffffff!important;
-    }
-    </style>""", unsafe_allow_html=True)
-    # CT expander 글자 흰색
-    st.markdown("""<style>
-    div[data-testid="stExpander"] summary p,
-    div[data-testid="stExpander"] summary span,
-    div[data-testid="stExpander"] details summary{
-        color:rgba(255,255,255,0.4)!important;
-        font-weight:400!important;
-        font-size:0.8rem!important;
-    }
-    div[data-testid="stExpander"]{
-        transform:scale(0.9)!important;
-        transform-origin:top left!important;
-    }
-    </style>""", unsafe_allow_html=True)
-    # 브리핑 전용 버튼 CSS 강제 적용
-    st.markdown("""<style>
-    div[data-testid="stVerticalBlockBorderWrapper"] button[kind="primary"] p,
-    div[data-testid="stVerticalBlock"] button[kind="primary"] p{
-        text-align:center!important;
-        color:#ffdd44!important;
-    }
-    div[data-testid="stVerticalBlockBorderWrapper"] button[kind="secondary"] p,
-    div[data-testid="stVerticalBlock"] button[kind="secondary"] p{
-        text-align:center!important;
-        color:#44ffcc!important;
-    }
-    </style>""", unsafe_allow_html=True)
-    st.markdown("""<style>
-    div[data-testid="stVerticalBlockBorderWrapper"] button[kind],
-    div[data-testid="stVerticalBlock"] button[kind]{
-        padding:1px 2px!important;
-        min-height:36px!important;
-        max-height:36px!important;
-        font-size:0.7rem!important;
-        line-height:1!important;
-    }
-    div[data-testid="stVerticalBlockBorderWrapper"] button[kind] p,
-    div[data-testid="stVerticalBlock"] button[kind] p{
-        font-size:0.7rem!important;
-        line-height:1!important;
-        margin:0!important;
-        padding:0!important;
-    }
-    </style>""", unsafe_allow_html=True)
-    st.markdown('''<style>
-    .block-container{padding-top:0.1rem!important;}
-    div[data-testid="stHorizontalBlock"] button{
-        border:2px solid #4488ff!important;
-        border-radius:8px!important;
-        background:#0a1a2e!important;
-        color:#4488ff!important;
-        font-size:1.1rem!important;
-        font-weight:900!important;
-    }
-    div[data-testid="stHorizontalBlock"] button p{
-        color:#4488ff!important;
-        font-size:1.1rem!important;
-        font-weight:900!important;
-    }
-    </style>''', unsafe_allow_html=True)
-    st.markdown('<div style="text-align:center;font-size:1.2rem;font-weight:900;color:#4488cc;letter-spacing:3px;padding:14px 0 10px 0;">📖 P7 브리핑</div>', unsafe_allow_html=True)
-    st.markdown(f'<div class="p7-ban {v_cls}" style="margin-top:4px!important;margin-bottom:6px!important;padding:6px 10px!important;">{data["title"]} — {v_label} ✅{ok_cnt} ❌{len(answers)-ok_cnt}</div>', unsafe_allow_html=True)
+@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@700;900&display=swap');
+#MainMenu{visibility:hidden!important;}
+header[data-testid="stHeader"]{height:0!important;overflow:hidden!important;}
+.block-container{padding:8px 12px 20px!important;margin:0!important;}
+div[data-testid="stVerticalBlock"]{gap:6px!important;}
+.element-container{margin:0!important;padding:0!important;}
+div[data-testid="stHorizontalBlock"]{gap:5px!important;margin:0!important;flex-wrap:nowrap!important;}
+div[data-testid="stHorizontalBlock"] div[data-testid="stColumn"]{padding:0!important;min-width:0!important;flex:1!important;}
 
-    # ─── 탭 [1][2][3] ───
-    st.markdown('''<style>
-    .tab-sel{background:#0a1628!important;border:2px solid #4488cc!important;color:#4488cc!important;border-radius:8px!important;padding:4px!important;text-align:center!important;font-size:1rem!important;font-weight:900!important;cursor:default!important;display:block!important;min-height:36px!important;max-height:36px!important;line-height:1.8!important;}
-    div[data-testid="stHorizontalBlock"] button{border:1px solid #1a2a3a!important;border-radius:8px!important;background:#060c14!important;color:#3a4a5a!important;font-size:1rem!important;font-weight:700!important;min-height:36px!important;max-height:36px!important;padding:4px!important;}
-    div[data-testid="stHorizontalBlock"] button p{color:#3a4a5a!important;font-size:1rem!important;font-weight:700!important;}
-    div[data-testid="stHorizontalBlock"] button:hover{border-color:#4488cc!important;}
-    div[data-testid="stHorizontalBlock"] button:hover p{color:#4488cc!important;}
-    button[kind="secondary"]{border:1px solid #1a2a3a!important;color:#4a5a6a!important;background:#060c14!important;}
-    button[kind="secondary"] p{color:#4a5a6a!important;}
-    button[kind="primary"]{border:1px solid #4488cc!important;color:#4488cc!important;background:#060c14!important;}
-    button[kind="primary"] p{color:#4488cc!important;}
-    </style>''', unsafe_allow_html=True)
+/* Q탭 버튼 */
+div[data-testid="stButton"] button{
+  background:#07090f!important;border:1px solid #1a2240!important;
+  border-radius:8px!important;color:#334466!important;
+  font-size:0.88rem!important;font-weight:700!important;
+  padding:6px 4px!important;min-height:38px!important;width:100%!important;
+  transition:all .12s!important;
+}
+div[data-testid="stButton"] button p{color:#334466!important;font-size:0.88rem!important;font-weight:700!important;}
+
+/* Q탭 선택됨 */
+div[data-testid="stButton"] button.br-qtab-on{
+  background:#0d1a2a!important;border-color:#00aacc!important;color:#00ccee!important;}
+div[data-testid="stButton"] button.br-qtab-on p{color:#00ccee!important;}
+
+/* 저장 버튼 */
+div[data-testid="stButton"] button.br-save{
+  background:#0c1800!important;border:2px solid #44ee66!important;
+  border-radius:10px!important;color:#44ee66!important;
+  font-size:0.88rem!important;font-weight:900!important;min-height:44px!important;
+}
+div[data-testid="stButton"] button.br-save p{color:#44ee66!important;font-size:0.88rem!important;font-weight:900!important;}
+
+/* 오답 문장 저장 버튼 (빨강 강조) */
+div[data-testid="stButton"] button.br-save-wrong{
+  background:#1a0600!important;border:2px solid #ff6633!important;
+  border-radius:10px!important;color:#ff8855!important;
+  font-size:0.88rem!important;font-weight:900!important;min-height:44px!important;
+}
+div[data-testid="stButton"] button.br-save-wrong p{color:#ff8855!important;font-size:0.88rem!important;font-weight:900!important;}
+
+/* 포로사령부 CTA */
+div[data-testid="stButton"] button.br-pow{
+  background:#0a0000!important;border:2px solid #ff4444!important;
+  border-radius:12px!important;color:#ff6644!important;
+  font-size:0.9rem!important;font-weight:900!important;min-height:48px!important;
+}
+div[data-testid="stButton"] button.br-pow p{color:#ff6644!important;font-size:0.9rem!important;font-weight:900!important;}
+
+/* 홈 버튼 */
+div[data-testid="stButton"] button.br-home{
+  background:#05050e!important;border:1px solid #151525!important;
+  border-radius:10px!important;color:#3d5066!important;min-height:40px!important;
+}
+div[data-testid="stButton"] button.br-home p{color:#3d5066!important;}
+</style>""", unsafe_allow_html=True)
+
+    # ── 배너 ──
+    if was_victory:
+        st.markdown(f'''<div style="background:#0c0c00;border:2px solid #FFD600;border-left:5px solid #FFD600;
+            border-radius:10px;padding:9px 12px;">
+          <div style="font-family:Orbitron,monospace;font-size:11px;font-weight:900;
+            color:#FFD600;letter-spacing:2px;">⚡ ROUND 1 · VICTORY</div>
+          <div style="font-size:9px;color:#886600;margin-top:2px;letter-spacing:1px;">
+            ✅ {ok_cnt} CAPTURED &nbsp;·&nbsp; ❌ {miss_cnt} MISSED &nbsp;·&nbsp; 📋 {data.get("title","")}</div>
+        </div>''', unsafe_allow_html=True)
+    else:
+        st.markdown(f'''<div style="background:#0c0008;border:2px solid #FF2D55;border-left:5px solid #FF2D55;
+            border-radius:10px;padding:9px 12px;">
+          <div style="font-family:Orbitron,monospace;font-size:11px;font-weight:900;
+            color:#FF2D55;letter-spacing:2px;">💀 ROUND 1 · MISSION FAILED</div>
+          <div style="font-size:9px;color:#661122;margin-top:2px;letter-spacing:1px;">
+            ✅ {ok_cnt} CAPTURED &nbsp;·&nbsp; ❌ {miss_cnt} MISSED &nbsp;·&nbsp; 📋 {data.get("title","")}</div>
+        </div>''', unsafe_allow_html=True)
+
+    # ── Q 탭 ──
     tab_cols = st.columns(num_steps)
     for ti in range(num_steps):
         with tab_cols[ti]:
-            if ti == bi:
-                st.markdown(f'<div class="tab-sel">{ti+1}</div>', unsafe_allow_html=True)
-            else:
-                if st.button(str(ti+1), key=f"br_tab_{ti}", use_container_width=True):
-                    st.session_state.p7_br_idx = ti; st.rerun()
+            _ok_i = answers[ti] if ti < len(answers) else None
+            _dot  = "✅" if _ok_i else "❌" if _ok_i is not None else ""
+            if st.button(f"Q{ti+1} {_dot}", key=f"br_tab_{ti}", use_container_width=True):
+                st.session_state.p7_br_idx = ti; st.rerun()
 
-
-    # ─── CT 피드백 + 데이터 패널 ───
-    _an = st.session_state.get("p7_analytics", {})
-    _times = _an.get("step_times", [])
-    _corrects = _an.get("step_correct", [])
-    num_steps = min(len(steps), len(answers))
-
-    # CT 알고리즘 안내 (전체 결과 요약 - 한 번만 표시)
-    if bi == 0:
-        _ct_html = '<div style="background:#030a12;border:2px solid rgba(68,255,204,0.4);border-radius:14px;padding:0.8rem 1rem;margin:0.3rem 0;">'
-        _ct_html += '<div style="color:#44ffcc;font-size:0.9rem;font-weight:900;margin-bottom:0.3rem;">🧠 내 전투 분석</div>'
-
-        ct_step_labels = ["🎯 분해", "🔍 패턴인식", "✂️ 추상화"]
-        ct_type_map = {"purpose":"주제/목적","detail":"세부사항","inference":"추론","not":"NOT문제","synonym":"동의어"}
-        for si in range(num_steps):
-            _c = _corrects[si] if si < len(_corrects) else None
-            _t = f"{_times[si]}초" if si < len(_times) else "-"
-            _sym = "✅" if _c else ("❌" if _c is False else "⬜")
-            _color = "#44ff88" if _c else ("#ff4444" if _c is False else "#888")
-            _qtype = steps[si].get("q_type","detail")
-            _type_kr = ct_type_map.get(_qtype, _qtype)
-            _ct_html += f'<div style="display:flex;justify-content:space-between;align-items:center;padding:0.3rem 0;border-bottom:1px solid rgba(255,255,255,0.07);">'
-            _ct_html += f'<span style="color:{_color};font-size:0.85rem;font-weight:700;">{_sym} Step {si+1} · {ct_step_labels[si]} <span style="color:#aaa;font-size:0.75rem;">[{_type_kr}]</span></span>'
-            _ct_html += f'<span style="color:#aaa;font-size:0.8rem;">⏱ {_t}</span></div>'
-
-        # 4단계: 알고리즘화 메시지
-        _all_ok = all(_corrects[:num_steps]) if _corrects else False
-        if _all_ok:
-            _algo_msg = "🎯 완벽! 이 흐름을 기억해!"
-            _algo_color = "#44ffcc"
-        elif len(_corrects) > 0 and _corrects[0]:
-            _algo_msg = "⚡ 분해 OK. 패턴인식·추상화 더 연습!"
-            _algo_color = "#ffcc44"
-        else:
-            _algo_msg = "💡 Step1부터 다시: 2문장→핵심단어→주제가설"
-            _algo_color = "#ff8844"
-        _ct_html += f'<div style="color:{_algo_color};font-size:0.85rem;font-weight:900;margin-top:0.3rem;padding-top:0.3rem;">📌 {_algo_msg}</div>'
-        _ct_html += '</div>'
-        with st.expander("🧠 전투 분석", expanded=False):
-            st.markdown(_ct_html, unsafe_allow_html=True)
-
-    # 현재 스텝 데이터
+    # ── 현재 스텝 데이터 ──
     s = steps[bi]
     ok = answers[bi] if bi < len(answers) else False
     sym = "✅" if ok else "❌"
     correct_choice = s["choices"][s["answer"]]
-
-    # ─── 문제 + 정답 카드 ───
-    import re as _re3
-    _mark_style = "color:#008855;font-weight:900;text-decoration:underline;text-underline-offset:3px;"
+    _mark_style = "color:#00ffaa;font-weight:900;border-bottom:2px solid #00ffaa;padding:0 2px;"
     _exprs_list = [e.get("expr","") for e in s.get("expressions", []) if e.get("expr")]
-    q_kr = s.get("question_kr", "")
     c_kr = s.get("choices_kr", [])
     answer_kr = c_kr[s["answer"]] if c_kr and s["answer"] < len(c_kr) else ""
-
-    st.markdown(f'''<div style="background:#020408;border:1px solid #1a4a2a;border-left:2px solid #2a7a4a;border-radius:8px;padding:6px 10px;margin-bottom:12px;">
-        <div style="font-size:0.85rem;font-weight:700;color:#888;margin-bottom:2px;">[Q{bi+1}] {s["question"]}</div>
-        <div style="font-size:0.9rem;font-weight:900;color:#4488cc;">{sym} {correct_choice}</div>
-        ''' + (f'<div style="font-size:0.85rem;color:#88dd88;margin-top:2px;">{answer_kr}</div>' if answer_kr else "") + '''
-    </div>''', unsafe_allow_html=True)
-    st.markdown('<div style="font-size:0.85rem;font-weight:900;text-align:center;margin:10px 0;padding:8px 12px;background:#0a0800;border:1.5px solid #ffd700;border-radius:8px;color:#ffd700;">💾 이 문장 저장 → 포로사령부 반복 → 실력 UP!</div>', unsafe_allow_html=True)
-
     kr_full = s.get("kr", "")
     kr_sents = [x.strip() for x in kr_full.replace("!","!|").replace("?","?|").replace(".",".|").split("|") if x.strip()]
 
+    # ── 문제 + 정답 카드 ──
+    _q_border = "#44cc88" if ok else "#ff4466"
+    st.markdown(f'''<div style="background:#06090f;border:1px solid #1a2240;
+        border-left:3px solid {_q_border};border-radius:10px;padding:8px 10px;">
+      <div style="font-size:8px;color:#334466;letter-spacing:2px;margin-bottom:4px;">[ Q{bi+1} ] RESULT</div>
+      <div style="font-size:10px;color:#7a9a8a;margin-bottom:3px;">{s["question"]}</div>
+      <div style="font-size:11px;font-weight:700;color:{_q_border};">{sym} {correct_choice}</div>
+      {f'<div style="font-size:9px;color:#557766;margin-top:2px;">{answer_kr}</div>' if answer_kr else ""}
+    </div>''', unsafe_allow_html=True)
+
+    # ── KEY EXPRESSIONS 섹션 라벨 ──
+    st.markdown(f'''<div style="display:flex;align-items:center;gap:6px;">
+      <div style="font-size:8px;color:#334466;letter-spacing:3px;font-weight:700;">🎯 KEY EXPRESSIONS</div>
+      <div style="flex:1;height:1px;background:#0e1020;"></div>
+      <div style="font-size:8px;color:#223344;letter-spacing:1px;">{len(s["sentences"])}문장</div>
+    </div>''', unsafe_allow_html=True)
+
+    # ── 문장 카드들 ──
     for si, sent in enumerate(s["sentences"]):
         sent_key = f"br_sent_saved_{bi}_{si}"
         if sent_key not in st.session_state: st.session_state[sent_key] = False
         is_saved = st.session_state[sent_key]
         sent_kr = kr_sents[si] if si < len(kr_sents) else kr_full
+
+        # 표현 하이라이트
         _hl = sent
         for _ex in _exprs_list:
             if _ex.lower() in _hl.lower():
                 try: _hl = _re3.sub(f"(?i)({_re3.escape(_ex)})", f'<span style="{_mark_style}">\\1</span>', _hl)
                 except: pass
+
+        # 표현 태그 HTML
+        _expr_tags = "".join([
+            f'<span style="background:#001a12;border:1px solid #00aa66;border-radius:4px;'
+            f'padding:1px 7px;font-size:8px;color:#44cc88;margin-right:4px;">{e.get("expr","")}</span>'
+            for e in s.get("expressions", []) if e.get("expr")
+        ]) if not is_saved else ""
+
+        _card_border = "#00aacc" if ok else "#ff4466"
+
         if is_saved:
-            st.markdown(f'''<div style="background:#0a0e1a;border:1px solid #2a3a5a;border-left:3px solid #4488cc;border-radius:12px;padding:12px 14px;margin-bottom:6px;">
-                <div style="font-size:1.0rem;font-weight:700;color:#e8eef8;line-height:1.7;">{_hl}</div>
-                <div style="font-size:0.85rem;color:#c0ccd8;margin-top:4px;">{sent_kr}</div>
-                <div style="text-align:right;margin-top:6px;font-size:0.9rem;color:#4488cc;font-weight:900;">💾 저장완료!</div>
+            # 저장 완료 상태
+            st.markdown(f'''<div style="background:#04080a;border:1.5px solid rgba(0,150,100,0.25);
+                border-left:4px solid #336644;border-radius:12px;padding:10px;opacity:0.85;">
+              <div style="font-size:11px;font-weight:800;color:#ddeeff;line-height:1.75;margin-bottom:5px;">{_hl}</div>
+              <div style="font-size:9px;color:#5a7a6a;margin-bottom:4px;">{sent_kr}</div>
+              <span style="background:#0a1808;border:1px solid #226633;border-radius:6px;
+                padding:2px 8px;font-size:8px;color:#44cc88;font-weight:700;">✅ 포로 등록 완료 · 포로사령부 대기중</span>
             </div>''', unsafe_allow_html=True)
         else:
-            save_btn_html = f'''<div style="background:#0a0e1a;border:1px solid #1a2a3a;border-left:3px solid #4488cc;border-radius:12px;padding:12px 14px;margin-bottom:2px;background-image:repeating-linear-gradient(transparent,transparent 27px,#e8e0c8 27px,#e8e0c8 28px);background-position:0 12px;">
-                <div style="font-size:1.0rem;font-weight:700;color:#ffffff;line-height:1.8;">{_hl}</div>
-                <div style="font-size:0.85rem;color:#c0ccd8;margin-top:4px;">{sent_kr}</div>
-            </div>'''
-            st.markdown(save_btn_html, unsafe_allow_html=True)
+            # 미저장 상태
+            st.markdown(f'''<div style="background:#06090f;border:1.5px solid rgba(0,180,255,0.25);
+                border-left:4px solid {_card_border};border-radius:12px;padding:10px;margin-bottom:2px;">
+              <div style="font-size:11px;font-weight:800;color:#ddeeff;line-height:1.75;margin-bottom:5px;">{_hl}</div>
+              <div style="font-size:9px;color:#5a7a6a;margin-bottom:5px;">{sent_kr}</div>
+              {f'<div style="margin-bottom:6px;">{_expr_tags}</div>' if _expr_tags else ""}
+            </div>''', unsafe_allow_html=True)
+
+            # 저장 버튼
             _sv_key = f"br_sv_{bi}_{si}"
-            if st.button("💾 저장!", key=_sv_key, use_container_width=False):
+            _btn_label = "💾 포로로 잡아라! → 저장" if ok else "💾 오답 문장 — 반드시 포로로!"
+            if st.button(_btn_label, key=_sv_key, use_container_width=True):
                 sent_data = dict(s)
                 sent_data["sentences"] = [sent]
                 sent_data["kr"] = sent_kr
                 save_expressions(s.get("expressions", []), step_data=sent_data)
                 st.session_state[sent_key] = True
                 st.rerun()
-            st.markdown(f'''<style>
-            div[data-testid="stBaseButton-secondary"] button{{display:none!important;height:0!important;min-height:0!important;padding:0!important;margin:0!important;border:none!important;}}
-            div[data-testid="stBaseButton-secondary"]{{height:0!important;min-height:0!important;padding:0!important;margin:0!important;overflow:hidden!important;}}
-            </style>''', unsafe_allow_html=True)
 
-    st.markdown('''<style>
-    div[data-testid="stHorizontalBlock"]:last-of-type button{
-        background:#000000!important;
-        border:1.5px solid rgba(255,255,255,0.5)!important;
-        border-radius:12px!important;
-        color:rgba(255,255,255,0.5)!important;
-        font-size:0.85rem!important;
-        font-weight:500!important;
-    }
-    div[data-testid="stHorizontalBlock"]:last-of-type button p{
-        color:rgba(255,255,255,0.5)!important;
-        font-size:0.85rem!important;
-    }
-    </style>''', unsafe_allow_html=True)
-    bc3, bc4 = st.columns(2)
-    with bc3:
-        if st.button("💀 포로사령부", key="p7store", use_container_width=True):
+    # ── 구분선 ──
+    st.markdown('<div style="height:1px;background:#0e0e1e;margin:4px 0;"></div>', unsafe_allow_html=True)
+
+    # ── 하단 네비 ──
+    _nc1, _nc2 = st.columns([3, 1])
+    with _nc1:
+        if st.button("⚔️  포로사령부!", key="p7store", use_container_width=True):
             st.switch_page("pages/03_POW_HQ.py")
-    with bc4:
+    with _nc2:
         if st.button("🏠 홈", key="p7lobby", use_container_width=True):
             for k in D: st.session_state[k] = D[k]
             _nick = st.session_state.get("battle_nickname") or st.session_state.get("nickname", "")
@@ -1705,8 +1648,30 @@ elif st.session_state.p7_phase == "briefing":
                 st.query_params["ag"] = "1"
             st.switch_page("main_hub.py")
 
-
-
-
-
+    # ── JS: 버튼 클래스 부여 ──
+    import streamlit.components.v1 as _br_cmp
+    _br_cmp.html(f"""<script>
+(function(){{
+  var doc=window.parent.document;
+  function applyBrClasses(){{
+    doc.querySelectorAll("button").forEach(function(b){{
+      var txt=(b.innerText||b.textContent||"").trim();
+      if(!txt) return;
+      if(txt.startsWith("Q") && (txt.indexOf("✅")>-1||txt.indexOf("❌")>-1||txt.match(/^Q\d/)))
+        b.classList.add("br-qtab");
+      if(txt.indexOf("포로로 잡아라")>-1) b.classList.add("br-save");
+      if(txt.indexOf("오답 문장")>-1) b.classList.add("br-save-wrong");
+      if(txt.indexOf("포로사령부!")>-1) b.classList.add("br-pow");
+      if(txt.indexOf("홈")>-1 && txt.length<5) b.classList.add("br-home");
+    }});
+    // 현재 Q탭 on 표시
+    doc.querySelectorAll("button.br-qtab").forEach(function(b,i){{
+      if(i==={bi}) b.classList.add("br-qtab-on");
+      else b.classList.remove("br-qtab-on");
+    }});
+  }}
+  setTimeout(applyBrClasses,120);
+  setTimeout(applyBrClasses,450);
+}})();
+</script>""", height=0)
 
