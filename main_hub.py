@@ -1161,7 +1161,7 @@ except Exception:
 
 _pr_badge_txt = (f"🚨 탈출 직전 {_pr_danger}명" if _pr_danger > 0
                  else (f"⚠️ 위험 {_pr_warn}명" if _pr_warn > 0
-                       else ("포로 없음! 완벽 정복 🏆" if _pr_total == 0
+                       else ("" if _pr_total == 0
                              else f"🆕 신입 {_pr_new}명")))
 _pr_color = ("#ff4040" if _pr_danger > 0
              else ("#ff9040" if _pr_warn > 0
@@ -1357,7 +1357,11 @@ _GRID_HTML = f"""
     <div>
       <div class="pb-name">단어 포로수용소</div>
       <div class="pb-sub">{_pr_badge_txt}</div>
-      <div style="font-size:9px;color:#556677;margin-top:2px;letter-spacing:0.5px;">⚡ 화력전 포로 {_pr_p5}명 &nbsp;·&nbsp; 📡 암호해독 포로 {_pr_p7}명</div>
+      <div style="font-size:10px;margin-top:3px;">
+        <span style="color:#ff8833;font-weight:700;">⚡ 화력전 {_pr_p5}명</span>
+        <span style="color:#445566;margin:0 4px;">·</span>
+        <span style="color:#00ccee;font-weight:700;">📡 암호해독 {_pr_p7}명</span>
+      </div>
     </div>
   </div>
   <div class="pb-btn">심문 →</div>
