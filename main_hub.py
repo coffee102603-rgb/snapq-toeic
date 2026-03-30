@@ -1,4 +1,4 @@
-"""
+﻿"""
 FILE: main_hub.py
 ROLE: 작전사령부 (메인 허브/로비) — 닉네임 접속, 스탯 표시, 전장 선택
 PHASES: LOGIN → LOBBY (단어 포로수용소 카드 + 전장 3종 선택)
@@ -1129,7 +1129,8 @@ if _p7_go:
 
 _arm_go = st.button("ARM_GO", key="armory_btn")
 if _arm_go:
-    st.switch_page("pages/03_POW_HQ.py")
+    st.session_state.sg_phase = "lobby"
+    st.session_state["_wp_guard"] = False
 
 _adm_go = st.button("ADMIN_GO", key="admin_go_btn")
 if _adm_go:
