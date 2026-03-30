@@ -1720,6 +1720,12 @@ elif st.session_state.sg_phase == "combo_result":
 # ════════════════════════════════════════
 # PHASE: WORD_PRISON — 극적인 심문실
 # ════════════════════════════════════════
+# ════════════════════════════════════════
+# PHASE: WORD_PRISON — 극적인 심문실
+# ════════════════════════════════════════
+# ════════════════════════════════════════
+# PHASE: WORD_PRISON — 극적인 심문실
+# ════════════════════════════════════════
 elif st.session_state.sg_phase == "word_prison":
     import datetime as _pr_dt2, random as _pr_random
 
@@ -1989,7 +1995,12 @@ div[data-testid="stButton"] button p{color:#c0c8e0!important;font-size:0.9rem!im
 
         for _p in _prisoners[:3]:
             _ch,_col,_lbl = _get_char(_p)
-            _w=_p.get("word",""); _kr=_p.get("kr","") or "?"; _streak=_p.get("correct_streak",0)
+            _w_raw = _p.get("word",""); _w = _lemma(_w_raw)
+            _raw_kr = _p.get("kr","") or ""
+            _kr = _clean_kr(_raw_kr)
+            if not _kr or _kr in ("?","뜻 없음",""):
+                _kr = _VOCAB_DICT.get(_w.lower(),"") or _VOCAB_DICT.get(_w_raw.lower(),"") or "?"
+            _streak = _p.get("correct_streak",0)
             st.markdown(
                 f'<div style="background:#0c0e1a;border:1px solid #1e2235;border-left:3px solid {_col};'
                 f'border-radius:10px;padding:7px 12px;display:flex;align-items:center;gap:8px;margin-bottom:3px;">'
@@ -2130,9 +2141,9 @@ div[data-testid="stButton"] button p{color:#c0c8e0!important;font-size:0.9rem!im
                         _kr_line += f' = <span style="color:#ccffaa;font-weight:900;">{_kr}</span></div>'
                     # 문장 한글 해석 (있으면 표시, 없으면 안내)
                     if _sent_kr:
-                        _kr_line += f'<div style="font-size:13px;color:#aaccbb;font-weight:700;line-height:1.6;margin-top:5px;padding-top:5px;border-top:1px solid #1a3020;">🇰🇷 {_sent_kr}</div>'
+                        _kr_line += f'<div style="font-size:13px;color:#cceecc;font-weight:800;line-height:1.65;margin-top:6px;padding-top:6px;border-top:1px solid #224422;">🇰🇷 {_sent_kr}</div>'
                     else:
-                        _kr_line += f'<div style="font-size:11px;color:#445566;margin-top:5px;padding-top:5px;border-top:1px solid #1a2a1a;">💬 예문에서 이 단어의 역할을 파악해봐!</div>'
+                        _kr_line += f'<div style="font-size:12px;color:#667788;margin-top:5px;padding-top:5px;border-top:1px solid #1a2a1a;">💬 예문에서 이 단어의 역할을 찾아봐!</div>'
                     _sent_block = (
                         f'<div style="background:#08100a;border:1.5px solid #1a3020;border-radius:14px;'
                         f'padding:14px;margin:10px 0 6px;text-align:left;">'
@@ -2163,7 +2174,7 @@ div[data-testid="stButton"] button p{color:#c0c8e0!important;font-size:0.9rem!im
                   <div style="font-size:11px;color:#335544;margin-top:5px;">
                     {_streak}/3 STREAK · {'다음엔 석방!' if _streak==2 else '한 번 더!' if _streak==1 else '첫 정답 도전!'}</div>
                 </div>
-                """, height=260 if _sent else 200)
+                """, height=310 if _sent else 220)
 
                 _c1,_c2=st.columns(2)
                 with _c1:
