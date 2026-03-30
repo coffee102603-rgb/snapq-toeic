@@ -1965,33 +1965,33 @@ div[data-testid="stButton"] button p{color:#c0c8e0!important;font-size:0.9rem!im
         <div style="background:radial-gradient(ellipse at top,#1e0a35 0%,#08080f 70%);
              border:2px solid #8833ff;border-radius:16px;padding:14px 16px;text-align:center;
              box-shadow:inset 0 0 40px rgba(136,51,255,0.15);">
-          <div style="font-family:'Orbitron',monospace;font-size:9px;color:#55337a;
-               letter-spacing:5px;margin-bottom:10px;">☠ INTERROGATION ROOM ☠</div>
+          <div style="font-family:'Orbitron',monospace;font-size:11px;font-weight:700;color:#aa66ee;
+               letter-spacing:4px;margin-bottom:10px;">☠ INTERROGATION ROOM ☠</div>
           <div style="font-size:38px;margin-bottom:6px;filter:drop-shadow(0 0 12px #8833ff);">🚔</div>
-          <div style="font-family:'Orbitron',monospace;font-size:15px;font-weight:900;color:#ddaaff;letter-spacing:3px;margin-bottom:3px;">WORD PRISON</div>
-          <div style="font-size:13px;color:#9966cc;margin-bottom:2px;">단어 심문실</div>
-          <div style="font-size:11px;color:#554477;margin-top:6px;letter-spacing:1px;">
-            3연속 정답 = 석방 🔑 · 틀리면 재투옥 ⛓
+          <div style="font-family:'Orbitron',monospace;font-size:15px;font-weight:900;color:#ddaaff;letter-spacing:3px;margin-bottom:4px;">WORD PRISON</div>
+          <div style="font-size:14px;color:#cc99ff;font-weight:700;margin-bottom:2px;">단어 심문실</div>
+          <div style="font-size:13px;color:#bb88ee;font-weight:600;margin-top:8px;letter-spacing:0.5px;">
+            3연속 정답 = 석방 🔑 &nbsp;·&nbsp; 틀리면 재투옥 ⛓
           </div>
         </div>
-        """, height=162)
+        """, height=168)
 
         st.markdown(f"""<div style="display:flex;gap:5px;margin:5px 0;">
           <div style="flex:1;background:#110820;border:1.5px solid #6633aa;border-radius:14px;padding:12px;text-align:center;">
-            <div style="font-family:Orbitron,monospace;font-size:8px;color:#553388;letter-spacing:2px;margin-bottom:4px;">PRISONERS</div>
-            <div style="font-size:24px;font-weight:900;color:#ddaaff;">{_total}</div>
-            <div style="font-size:10px;color:#664488;margin-top:2px;">수감중</div>
+            <div style="font-family:Orbitron,monospace;font-size:10px;font-weight:700;color:#aa77dd;letter-spacing:2px;margin-bottom:4px;">PRISONERS</div>
+            <div style="font-size:26px;font-weight:900;color:#ddaaff;">{_total}</div>
+            <div style="font-size:12px;color:#bb88ee;font-weight:600;margin-top:3px;">수감중</div>
           </div>
           <div style="flex:1;background:#081508;border:1.5px solid #228844;border-radius:14px;padding:12px;text-align:center;">
-            <div style="font-family:Orbitron,monospace;font-size:8px;color:#224433;letter-spacing:2px;margin-bottom:4px;">RELEASED</div>
-            <div style="font-size:24px;font-weight:900;color:#44ff88;">{_freed}</div>
-            <div style="font-size:10px;color:#336644;margin-top:2px;">오늘 석방</div>
+            <div style="font-family:Orbitron,monospace;font-size:10px;font-weight:700;color:#44aa66;letter-spacing:2px;margin-bottom:4px;">RELEASED</div>
+            <div style="font-size:26px;font-weight:900;color:#44ff88;">{_freed}</div>
+            <div style="font-size:12px;color:#66dd99;font-weight:600;margin-top:3px;">오늘 석방</div>
           </div>
-          <div style="flex:1;background:#0c1018;border:1.5px solid #223344;border-radius:14px;padding:10px;text-align:center;">
-            <div style="font-size:12px;font-weight:700;color:#ff9944;">⚡ P5 · {_p5}</div>
-            <div style="font-size:9px;color:#333;margin-bottom:6px;">화력전</div>
-            <div style="font-size:12px;font-weight:700;color:#00ddee;">📡 P7 · {_p7}</div>
-            <div style="font-size:9px;color:#333;">암호해독</div>
+          <div style="flex:1;background:#0c1018;border:1.5px solid #334455;border-radius:14px;padding:10px;text-align:center;">
+            <div style="font-size:13px;font-weight:800;color:#ff9944;">⚡ P5 · {_p5}</div>
+            <div style="font-size:11px;color:#cc7733;font-weight:600;margin-bottom:8px;">화력전</div>
+            <div style="font-size:13px;font-weight:800;color:#00ddee;">📡 P7 · {_p7}</div>
+            <div style="font-size:11px;color:#22aabb;font-weight:600;">암호해독</div>
           </div>
         </div>""", unsafe_allow_html=True)
 
@@ -2035,19 +2035,19 @@ div[data-testid="stButton"] button p{color:#c0c8e0!important;font-size:0.9rem!im
             _streak = _p.get("correct_streak",0)
             st.markdown(
                 f'<div style="background:#0c0e1a;border:1px solid #1e2235;border-left:3px solid {_col};'
-                f'border-radius:10px;padding:7px 12px;display:flex;align-items:center;gap:8px;margin-bottom:3px;">'
-                f'<span style="font-size:20px;">{_ch}</span>'
+                f'border-radius:10px;padding:8px 12px;display:flex;align-items:center;gap:8px;margin-bottom:3px;">'
+                f'<span style="font-size:22px;">{_ch}</span>'
                 f'<div style="flex:1;">'
-                f'<div style="font-size:14px;font-weight:900;color:#ffffff;">{_w}</div>'
-                f'<div style="font-size:11px;color:#8899bb;">{_kr}</div>'
+                f'<div style="font-size:15px;font-weight:900;color:#ffffff;">{_w}</div>'
+                f'<div style="font-size:13px;color:#aabbcc;font-weight:600;">{_kr}</div>'
                 f'</div>'
                 f'<div style="text-align:right;">'
-                f'<div style="font-size:11px;color:{_col};font-weight:700;">{"●"*_streak}{"○"*(3-_streak)}</div>'
+                f'<div style="font-size:13px;color:{_col};font-weight:700;">{"●"*_streak}{"○"*(3-_streak)}</div>'
                 f'</div></div>',
                 unsafe_allow_html=True)
 
         if _total>3:
-            st.markdown(f'<div style="text-align:center;font-size:11px;color:#2a3040;margin-top:2px;">+ {_total-3}명 더 수감중...</div>', unsafe_allow_html=True)
+            st.markdown(f'<div style="text-align:center;font-size:13px;color:#8899bb;font-weight:600;margin-top:4px;">+ {_total-3}명 더 수감중...</div>', unsafe_allow_html=True)
 
         st.markdown('<div style="height:2px;"></div>', unsafe_allow_html=True)
         st.markdown('<div id="btn-start">', unsafe_allow_html=True)
