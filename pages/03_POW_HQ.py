@@ -1699,6 +1699,12 @@ elif st.session_state.sg_phase == "combo_result":
 # ════════════════════════════════════════
 # PHASE: WORD_PRISON — 극적인 심문실
 # ════════════════════════════════════════
+# ════════════════════════════════════════
+# PHASE: WORD_PRISON — 극적인 심문실
+# ════════════════════════════════════════
+# ════════════════════════════════════════
+# PHASE: WORD_PRISON — 극적인 심문실
+# ════════════════════════════════════════
 elif st.session_state.sg_phase == "word_prison":
     import datetime as _pr_dt2, random as _pr_random
 
@@ -1738,6 +1744,67 @@ div[data-testid="stButton"] button p{color:#c0c8e0!important;font-size:0.9rem!im
     _today_str2 = _pr_dt2.datetime.now().strftime("%Y-%m-%d")
 
     # 카테고리별 캐릭터 + 영/한 라벨
+    def _lemma(w):
+        """단어 원형 복원: members→member, policies→policy, founded→found"""
+        import re as _re_l
+        w = w.strip()
+        if not w or " " in w: return w  # 구문은 그대로
+        lw = w.lower()
+        # 불규칙 → 그대로 유지 (already base form)
+        irreg_ok = {"have","make","take","give","find","build","hold","lead",
+                    "meet","run","see","sell","send","set","show","speak","spend",
+                    "stand","teach","tell","think","understand","write"}
+        if lw in irreg_ok: return lw
+        # ies → y  (policies→policy, companies→company)
+        if lw.endswith("ies") and len(lw) > 4:
+            return lw[:-3] + "y"
+        # ves → f  (leaves→leaf) - 간단 처리
+        if lw.endswith("ves") and len(lw) > 4:
+            return lw[:-3] + "f"
+        # ed → 원형 (founded→found, approved→approve)
+        if lw.endswith("ed") and len(lw) > 4:
+            base = lw[:-2]
+            # 중복자음 제거 (planned→plan, stopped→stop)
+            if len(base) >= 3 and base[-1] == base[-2]:
+                base = base[:-1]
+            # 모음+d 패턴: approved→approve, announced→announce
+            elif len(base) >= 3 and base[-1] in "aeiou":
+                pass  # 그대로
+            # 자음으로 끝나면 e 복원 시도 (approv→approve)
+            elif len(base) >= 4 and base[-1] not in "aeiou" and base[-2] in "aeiou":
+                base = base + "e"
+            return base
+        # ing → 원형 (reviewing→review, planning→plan)
+        if lw.endswith("ing") and len(lw) > 5:
+            base = lw[:-3]
+            if len(base) >= 3 and base[-1] == base[-2]:
+                base = base[:-1]
+            if not base.endswith("e"):
+                base = base  # enhance→enhanc? 아니면 e 붙이기
+            return base
+        # s → 단수 (members→member, regulations→regulation)
+        if lw.endswith("s") and not lw.endswith("ss") and not lw.endswith("us") and len(lw) > 3:
+            return lw[:-1]
+        return lw
+
+    def _clean_kr(kr):
+        """뜻 정제: exk 찌꺼기 제거, 순수 뜻만 추출"""
+        if not kr or kr == "?": return ""
+        import re as _re_k
+        # → 화살표 패턴 제거 (복수 → were)
+        if "→" in kr:
+            # 화살표 앞부분이 진짜 뜻인지 확인
+            parts = kr.split("→")
+            # 영어 단어만 있으면 뜻이 아님
+            if _re_k.match(r'^[A-Za-z\s]+$', parts[0].strip()):
+                return parts[-1].strip() if len(parts) > 1 else kr
+            return parts[0].strip()
+        # 괄호 제거
+        kr = _re_k.sub(r'\(.*?\)', '', kr).strip()
+        # 20자 초과면 앞부분만
+        if len(kr) > 25: kr = kr[:22] + "..."
+        return kr.strip()
+
     def _get_char(p):
         src = p.get("source",""); cat = p.get("cat","")
         if "수동태" in cat: return "🤖","#5599ff","PASSIVE · 수동태 포로"
@@ -1755,7 +1822,7 @@ div[data-testid="stButton"] button p{color:#c0c8e0!important;font-size:0.9rem!im
         if _k not in st.session_state: st.session_state[_k] = _v
 
     st.markdown('<div id="btn-home">', unsafe_allow_html=True)
-    if st.button("🏠 HOME · 홈", key="wp_home"):
+    if st.button("🏠 홈", key="wp_home"):
         if _nick: st.query_params["nick"]=_nick; st.query_params["ag"]="1"
         st.switch_page("main_hub.py")
     st.markdown('</div>', unsafe_allow_html=True)
@@ -1764,10 +1831,10 @@ div[data-testid="stButton"] button p{color:#c0c8e0!important;font-size:0.9rem!im
         components.html("""
         <style>*{margin:0;padding:0;}body{background:transparent;font-family:sans-serif;text-align:center;padding:40px 16px;}</style>
         <div style="font-size:56px;margin-bottom:12px;">🏆</div>
-        <div style="font-family:'Orbitron',monospace;font-size:14px;color:#33ff77;letter-spacing:4px;margin-bottom:6px;">ALL CLEARED · 전원 석방</div>
+        <div style="font-family:'Orbitron',monospace;font-size:14px;color:#33ff77;letter-spacing:4px;margin-bottom:6px;">전원 석방 🏆</div>
         <div style="font-size:13px;color:#448866;margin-top:8px;line-height:1.7;">모든 단어를 정복! 진짜 어휘 전사!</div>
         """, height=180)
-        if st.button("💀 HQ · 사령부 귀환", key="wp_back_empty", use_container_width=True):
+        if st.button("💀 사령부 귀환", key="wp_back_empty", use_container_width=True):
             st.session_state.sg_phase="lobby"; st.rerun()
 
     elif st.session_state.wp_mode == "lobby":
@@ -1835,11 +1902,11 @@ div[data-testid="stButton"] button p{color:#c0c8e0!important;font-size:0.9rem!im
 
         st.markdown('<div style="height:6px;"></div>', unsafe_allow_html=True)
         st.markdown('<div id="btn-start">', unsafe_allow_html=True)
-        if st.button("🔍  START INTERROGATION · 심문 시작!", key="wp_start", use_container_width=True):
+        if st.button("🔍  심문 시작!", key="wp_start", use_container_width=True):
             st.session_state.wp_idx=0; st.session_state.wp_flipped=False; st.session_state.wp_mode="card"; st.rerun()
         st.markdown('</div>', unsafe_allow_html=True)
         st.markdown('<div id="btn-back" style="margin-top:4px;">', unsafe_allow_html=True)
-        if st.button("↩️ HQ · 사령부 귀환", key="wp_back_lobby", use_container_width=True):
+        if st.button("↩️ 사령부 귀환", key="wp_back_lobby", use_container_width=True):
             st.session_state.sg_phase="lobby"; st.rerun()
         st.markdown('</div>', unsafe_allow_html=True)
 
@@ -1853,18 +1920,19 @@ div[data-testid="stButton"] button p{color:#c0c8e0!important;font-size:0.9rem!im
             <div style="font-size:52px;margin-bottom:10px;">{'🎉' if _freed>0 else '💪'}</div>
             <div style="font-family:'Orbitron',monospace;font-size:13px;letter-spacing:3px;
                  color:#{'33ff77' if _freed>0 else 'ffcc44'};margin-bottom:6px;">
-              SESSION COMPLETE · 심문 완료</div>
+              심문 완료</div>
             <div style="font-size:14px;color:#7788aa;">석방 {_freed}명 🔓 · 계속 훈련하면 다 풀어줄 수 있어!</div>
             """, height=155)
             _r1,_r2=st.columns(2)
             with _r1:
-                if st.button("🔁 RETRY · 다시 심문", key="wp_restart", use_container_width=True):
+                if st.button("🔁 다시 심문", key="wp_restart", use_container_width=True):
                     st.session_state.wp_idx=0; st.session_state.wp_flipped=False; st.session_state.wp_freed=0; st.rerun()
             with _r2:
-                if st.button("↩️ LOBBY · 로비", key="wp_done_back", use_container_width=True):
+                if st.button("↩️ LOBBY", key="wp_done_back", use_container_width=True):
                     st.session_state.wp_mode="lobby"; st.session_state.wp_freed=0; st.rerun()
         else:
-            _p=_deck[_idx]; _word=_p.get("word",""); _kr=_p.get("kr","") or "?"
+            _p=_deck[_idx]; _raw_word=_p.get("word",""); _word=_lemma(_raw_word)
+            _raw_kr=_p.get("kr","") or ""; _kr=_clean_kr(_raw_kr) or "뜻 없음"
             _sent=_p.get("sentence",""); _streak=_p.get("correct_streak",0)
             _src=_p.get("source",""); _ch,_col,_lbl=_get_char(_p); _flipped=st.session_state.wp_flipped
 
@@ -1905,7 +1973,7 @@ div[data-testid="stButton"] button p{color:#c0c8e0!important;font-size:0.9rem!im
                 """, height=320)
 
                 st.markdown('<div id="btn-flip">', unsafe_allow_html=True)
-                if st.button("👁  REVEAL · 뜻 확인하기!", key=f"wp_flip_{_idx}", use_container_width=True):
+                if st.button("👁  뜻 확인하기!", key=f"wp_flip_{_idx}", use_container_width=True):
                     st.session_state.wp_flipped=True; st.rerun()
                 st.markdown('</div>', unsafe_allow_html=True)
 
@@ -1918,11 +1986,11 @@ div[data-testid="stButton"] button p{color:#c0c8e0!important;font-size:0.9rem!im
                     _sent_block = (
                         f'<div style="background:#0a1020;border:1px solid #1e3040;border-radius:12px;'
                         f'padding:12px 14px;margin:12px 0 6px;">'
-                        f'<div style="font-size:9px;font-family:Orbitron,monospace;color:#334455;letter-spacing:2px;margin-bottom:6px;">EXAMPLE · 예문</div>'
+                        f'<div style="font-size:9px;font-family:Orbitron,monospace;color:#334455;letter-spacing:2px;margin-bottom:6px;">예문</div>'
                         f'<div style="font-size:13px;color:#aabbd0;line-height:1.7;font-style:italic;">"{_sent_short}"</div>'
                         f'</div>'
                         f'<div style="font-size:11px;color:#4a5a6a;text-align:center;margin-bottom:8px;">'
-                        f'💡 이 문장에서 <span style="color:#ffee55;font-weight:900;font-size:13px;">{_word}</span> = <span style="color:#ffffff;font-weight:900;">{_kr if _kr != "?" else "(뜻 없음)"}</span></div>'
+                        f'💡 이 문장에서 <span style="color:#ffee55;font-weight:900;font-size:13px;">{_word}</span> = <span style="color:#ffffff;font-weight:900;">{_kr}</span></div>'
                     )
                 _dots2="".join([f'<span style="display:inline-block;width:24px;height:8px;border-radius:4px;margin:0 4px;background:{"#33cc55" if i<_streak else "#1e2a1e"};"></span>' for i in range(3)])
                 components.html(f"""
@@ -1934,13 +2002,13 @@ div[data-testid="stButton"] button p{color:#c0c8e0!important;font-size:0.9rem!im
                      border:2.5px solid #22cc55;border-radius:20px;padding:20px 16px;text-align:center;
                      box-shadow:inset 0 0 30px rgba(34,204,85,0.12),0 0 20px rgba(34,204,85,0.2);">
                   <div style="font-size:40px;margin-bottom:6px;filter:drop-shadow(0 0 8px #22cc5588);">{_ch}</div>
-                  <div style="font-family:'Orbitron',monospace;font-size:16px;color:#ffffff;
+                  <div style="font-family:'Orbitron',monospace;font-size:16px;color:#ccffdd;
                        letter-spacing:3px;margin-bottom:10px;font-weight:900;
-                       text-shadow:0 0 12px #44ff88cc,0 1px 3px #000;">{_word}</div>
+                       text-shadow:0 0 16px #44ff88,0 2px 4px #000;">{_word}</div>
                   <div style="font-size:38px;font-weight:900;
-                       color:#{'#ffee55' if _kr=='?' else '#ffffff'};
+                       color:#ffffff;
                        text-shadow:0 0 24px #44ff8899,0 2px 6px #000;
-                       margin-bottom:4px;">{_kr if _kr != '?' else '뜻 미등록'}</div>
+                       margin-bottom:4px;">{_kr if _kr != '?' else '뜻 없음'}</div>
                   {_sent_block}
                   <div style="display:flex;justify-content:center;gap:4px;margin-top:8px;">{_dots2}</div>
                   <div style="font-size:11px;color:#335544;margin-top:5px;">
@@ -1951,7 +2019,7 @@ div[data-testid="stButton"] button p{color:#c0c8e0!important;font-size:0.9rem!im
                 _c1,_c2=st.columns(2)
                 with _c1:
                     st.markdown('<div id="btn-know">', unsafe_allow_html=True)
-                    if st.button("✅ KNOWN!\n알았어 · 석방 +1", key=f"wp_know_{_idx}", use_container_width=True):
+                    if st.button("✅ 알았어! 석방 +1", key=f"wp_know_{_idx}", use_container_width=True):
                         _ri=next((i for i,x in enumerate(_pr_st["word_prison"]) if x.get("word","").lower()==_word.lower()),None)
                         if _ri is not None:
                             _ns=_streak+1
@@ -1963,7 +2031,7 @@ div[data-testid="stButton"] button p{color:#c0c8e0!important;font-size:0.9rem!im
                     st.markdown('</div>', unsafe_allow_html=True)
                 with _c2:
                     st.markdown('<div id="btn-no">', unsafe_allow_html=True)
-                    if st.button("❌ UNKNOWN\n모르겠어 · 재투옥!", key=f"wp_no_{_idx}", use_container_width=True):
+                    if st.button("❌ 모르겠어! 재투옥!", key=f"wp_no_{_idx}", use_container_width=True):
                         _ri=next((i for i,x in enumerate(_pr_st["word_prison"]) if x.get("word","").lower()==_word.lower()),None)
                         if _ri is not None:
                             _pr_st["word_prison"][_ri]["correct_streak"]=0
@@ -1973,7 +2041,7 @@ div[data-testid="stButton"] button p{color:#c0c8e0!important;font-size:0.9rem!im
                     st.markdown('</div>', unsafe_allow_html=True)
 
             st.markdown('<div id="btn-back" style="margin-top:4px;">', unsafe_allow_html=True)
-            if st.button("↩️ LOBBY · 로비", key=f"wp_back_{_idx}", use_container_width=True):
+            if st.button("↩️ LOBBY", key=f"wp_back_{_idx}", use_container_width=True):
                 st.session_state.wp_mode="lobby"; st.session_state.wp_flipped=False; st.rerun()
             st.markdown('</div>', unsafe_allow_html=True)
 
