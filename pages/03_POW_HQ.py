@@ -1717,6 +1717,9 @@ elif st.session_state.sg_phase == "combo_result":
 # ════════════════════════════════════════
 # PHASE: WORD_PRISON — 극적인 심문실
 # ════════════════════════════════════════
+# ════════════════════════════════════════
+# PHASE: WORD_PRISON — 극적인 심문실
+# ════════════════════════════════════════
 elif st.session_state.sg_phase == "word_prison":
     import datetime as _pr_dt2, random as _pr_random
 
@@ -1915,6 +1918,13 @@ div[data-testid="stButton"] button p{color:#c0c8e0!important;font-size:0.9rem!im
         if src == "P7":     return "👽","#00eedd","READING · 독해 포로"
         return "🦁","#ffbb44","VOCAB · 어휘 포로"
 
+    # ★ word_prison 진입 시 항상 lobby로 리셋 (이전 세션 card 상태 방지)
+    if st.session_state.get("_wp_prev_phase") != "word_prison":
+        st.session_state.wp_mode    = "lobby"
+        st.session_state.wp_idx     = 0
+        st.session_state.wp_flipped = False
+        st.session_state.wp_freed   = 0
+    st.session_state["_wp_prev_phase"] = "word_prison"
     for _k,_v in {"wp_mode":"lobby","wp_idx":0,"wp_flipped":False,"wp_freed":0}.items():
         if _k not in st.session_state: st.session_state[_k] = _v
 
@@ -2118,9 +2128,11 @@ div[data-testid="stButton"] button p{color:#c0c8e0!important;font-size:0.9rem!im
                         _kr_line += f'<div style="font-size:12px;color:#88bbaa;margin-top:6px;">'
                         _kr_line += f'💡 <span style="color:#ffee55;font-weight:800;">{_word}</span>'
                         _kr_line += f' = <span style="color:#ccffaa;font-weight:900;">{_kr}</span></div>'
-                    # 문장 한글 해석 (항상 표시)
+                    # 문장 한글 해석 (있으면 표시, 없으면 안내)
                     if _sent_kr:
                         _kr_line += f'<div style="font-size:13px;color:#aaccbb;font-weight:700;line-height:1.6;margin-top:5px;padding-top:5px;border-top:1px solid #1a3020;">🇰🇷 {_sent_kr}</div>'
+                    else:
+                        _kr_line += f'<div style="font-size:11px;color:#445566;margin-top:5px;padding-top:5px;border-top:1px solid #1a2a1a;">💬 예문에서 이 단어의 역할을 파악해봐!</div>'
                     _sent_block = (
                         f'<div style="background:#08100a;border:1.5px solid #1a3020;border-radius:14px;'
                         f'padding:14px;margin:10px 0 6px;text-align:left;">'
