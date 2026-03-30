@@ -2142,7 +2142,7 @@ div[data-testid="stButton"] button p{color:#c0c8e0!important;font-size:0.9rem!im
                        letter-spacing:3px;text-shadow:0 0 30px {_col},0 0 12px #fff,0 2px 4px #000;
                        margin-bottom:16px;" class="flicker">{_word}</div>
                   <div style="display:flex;justify-content:center;gap:4px;margin-bottom:10px;">{_dots}</div>
-                  <div style="font-size:11px;color:#445566;">{_streak}/3 연속 정답</div>
+                  <div style="font-size:13px;font-weight:700;color:#8899aa;">{_streak}/3 연속 정답</div>
                 </div>
                 """, height=260)
 
@@ -2193,7 +2193,7 @@ div[data-testid="stButton"] button p{color:#c0c8e0!important;font-size:0.9rem!im
                     _sent_block = (
                         f'<div style="background:#08100a;border:1.5px solid #1a3020;border-radius:12px;'
                         f'padding:9px 12px;margin:8px 0 4px;text-align:left;">'
-                        f'<div style="font-size:9px;color:#336644;letter-spacing:2px;margin-bottom:5px;text-align:center;">📝 예문</div>'
+                        f'<div style="font-size:11px;font-weight:700;color:#66aa88;letter-spacing:2px;margin-bottom:5px;text-align:center;">📝 예문</div>'
                         f'<div style="font-size:13px;color:#c8d8e0;line-height:1.65;font-style:italic;">&ldquo;{_hl_sent}&rdquo;</div>'
                         f'</div>'
                     )
@@ -2216,7 +2216,7 @@ div[data-testid="stButton"] button p{color:#c0c8e0!important;font-size:0.9rem!im
                             _is_cur = _mw.lower() in [_word.lower(), _raw_word.lower(), _lemma(_raw_word).lower()]
                             _rbg = "#1a1030" if _is_cur else "#110e1a"
                             _wc  = "#ffee44" if _is_cur else "#c8d0e0"
-                            _krc = "#ccaa44" if _is_cur else "#667788"
+                            _krc = "#ffdd66" if _is_cur else "#99aabb"
                             _fw  = "900"     if _is_cur else "600"
                             _star = "★ "    if _is_cur else ""
                             _rows_html += (
@@ -2224,7 +2224,7 @@ div[data-testid="stButton"] button p{color:#c0c8e0!important;font-size:0.9rem!im
                                 f'<div style="width:40px;flex-shrink:0;font-size:8px;font-weight:900;letter-spacing:1px;'
                                 f'padding:5px 3px;text-align:center;background:{_pbg};color:{_pcol};">{_pkr}</div>'
                                 f'<div style="flex:1;font-size:12px;font-weight:{_fw};padding:5px 8px;background:{_rbg};color:{_wc};">{_star}{_mw}</div>'
-                                f'<div style="font-size:10px;color:{_krc};padding:5px 7px;background:{_rbg};text-align:right;white-space:nowrap;">{_mkr}</div>'
+                                f'<div style="font-size:12px;font-weight:600;color:{_krc};padding:5px 7px;background:{_rbg};text-align:right;white-space:nowrap;">{_mkr}</div>'
                                 f'</div>'
                             )
                             _shown += 1
@@ -2234,8 +2234,8 @@ div[data-testid="stButton"] button p{color:#c0c8e0!important;font-size:0.9rem!im
                             f'padding:10px 12px;margin:5px 0 4px;text-align:left;">'
                             f'<div style="display:flex;align-items:center;gap:6px;margin-bottom:8px;'
                             f'padding-bottom:6px;border-bottom:1px solid #2a1544;">'
-                            f'<span style="font-family:Orbitron,monospace;font-size:8px;color:#8833ff;letter-spacing:3px;">⛓ 공범 소환</span>'
-                            f'<span style="font-size:8px;background:#3a1a66;color:#bb88ff;padding:2px 6px;border-radius:6px;">WORD FAMILY</span>'
+                            f'<span style="font-family:Orbitron,monospace;font-size:10px;font-weight:700;color:#aa55ff;letter-spacing:3px;">⛓ 공범 소환</span>'
+                            f'<span style="font-size:10px;font-weight:700;background:#3a1a66;color:#cc99ff;padding:2px 8px;border-radius:6px;">WORD FAMILY</span>'
                             f'</div>'
                             f'{_rows_html}'
                             f'</div>'
@@ -2265,7 +2265,7 @@ div[data-testid="stButton"] button p{color:#c0c8e0!important;font-size:0.9rem!im
                   {_sent_block}
                   {_family_block}
                   <div style="display:flex;justify-content:center;gap:4px;margin-top:8px;">{_dots2}</div>
-                  <div style="font-size:11px;color:#335544;margin-top:4px;">
+                  <div style="font-size:13px;font-weight:700;color:#66aa88;margin-top:4px;">
                     {_streak}/3 STREAK · {'다음엔 석방!' if _streak==2 else '한 번 더!' if _streak==1 else '첫 정답 도전!'}</div>
                 </div>
                 """, height=_card_h)
