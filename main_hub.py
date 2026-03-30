@@ -952,7 +952,7 @@ if _is_first:
     _p5_s1_big  = f"⚡ 화력전"
     _p5_s1_lbl  = "문법·어휘 속도전!"
     _p7_s1_big  = f"📡 암호해독 작전"
-    _p7_s1_lbl  = "독해 · 읽는 뇌를 깨워라!"
+    _p7_s1_lbl  = "해독 작전 · 암호를 풀어라!"
     _arm_s1_big = f"💀 포로사령부"
     _arm_s1_lbl = "틀린 문제가 무기가 된다"
     _p5_s2_big  = "3개↑ 생존"
@@ -1406,11 +1406,11 @@ _GRID_HTML = f"""
       <div class="card-name">암호해독</div>
       <div class="card-en">DECRYPT OP</div>
       <div class="card-tags">
-        <span class="tag">독해</span>
+        <span class="tag">해독</span>
         <span class="tag">3문제</span>
         <span class="tag">즉사</span>
       </div>
-      <div class="card-rule">💀 1오답 즉사 · 시간초과</div>
+      <div class="card-rule">☠ 오판 1회 = 즉시 철수</div>
     </div>
     <div class="go-bar">
       <div class="go-stat">{_p7_disp}</div>
