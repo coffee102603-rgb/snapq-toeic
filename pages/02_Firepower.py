@@ -1222,6 +1222,7 @@ elif st.session_state.phase=="briefing":
                         "kr":             _w_kr,
                         "source":         "P5",
                         "sentence":       _fp_sent,
+                        "sent_kr":        _fp_kr,
                         "captured_date":  _fdt.datetime.now().strftime("%Y-%m-%d"),
                         "correct_streak": 0,
                         "last_reviewed":  None,

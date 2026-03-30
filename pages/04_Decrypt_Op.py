@@ -1659,6 +1659,7 @@ div[data-testid="stButton"] button.br-home p{color:#3d5066!important;}
                             "kr":             _w_kr,
                             "source":         "P7",
                             "sentence":       sent,
+                            "sent_kr":        sent_kr,
                             "captured_date":  _bdt.datetime.now().strftime("%Y-%m-%d"),
                             "correct_streak": 0,
                             "last_reviewed":  None,

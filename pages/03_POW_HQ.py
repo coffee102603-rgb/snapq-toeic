@@ -1708,6 +1708,9 @@ elif st.session_state.sg_phase == "combo_result":
 # ════════════════════════════════════════
 # PHASE: WORD_PRISON — 극적인 심문실
 # ════════════════════════════════════════
+# ════════════════════════════════════════
+# PHASE: WORD_PRISON — 극적인 심문실
+# ════════════════════════════════════════
 elif st.session_state.sg_phase == "word_prison":
     import datetime as _pr_dt2, random as _pr_random
 
@@ -1936,7 +1939,8 @@ div[data-testid="stButton"] button p{color:#c0c8e0!important;font-size:0.9rem!im
         else:
             _p=_deck[_idx]; _raw_word=_p.get("word",""); _word=_lemma(_raw_word)
             _raw_kr=_p.get("kr","") or ""; _kr=_clean_kr(_raw_kr) or "뜻 없음"
-            _sent=_p.get("sentence",""); _streak=_p.get("correct_streak",0)
+            _sent=_p.get("sentence",""); _sent_kr=_p.get("sent_kr","")
+            _streak=_p.get("correct_streak",0)
             _src=_p.get("source",""); _ch,_col,_lbl=_get_char(_p)
             # 진입 시 앞면 보장
             if st.session_state.get("_wp_last_idx") != _idx:
@@ -1946,13 +1950,20 @@ div[data-testid="stButton"] button p{color:#c0c8e0!important;font-size:0.9rem!im
 
             # 재밌는 심문 멘트 (순환)
             _catchphrases=[
-                "이 단어... 뜻 알아? 솔직히 말해! 🔦",
-                "눈 감고 뜻이 떠오르면 석방이다! 💡",
-                "도망 못 간다! 뒤집어! 👇",
-                "3초 안에 뜻 생각해봐! ⏱",
-                "뜻 모르면 재투옥이야! 각오해! ⛓",
-                "오늘 뒤집어볼까? 슬쩍 봐봐! 👀",
-                "이 단어 놓치면 토익 망한다! 뒤집어! 🚨",
+                "이 단어 아냐고?? 뒤집어! 👊",
+                "알긴 아냐고? 아는척? 뒤집어! 🕵️",
+                "어디 쳐다봐! 뒤집어봐봐! 👀",
+                "도망 못 간다! 뒤집어! ⛓",
+                "눈 똑바로 떠! 뜻 알면 뒤집어! 🔦",
+                "솔직히 몰라? 그럼 빨리 뒤집어! 😤",
+                "3초 안에 뜻 생각해봐! ⏱ 뒤집어!",
+                "이 단어 또 나왔네... 이번엔 뒤집어! 😏",
+                "아는척하지 마! 진짜로 뒤집어봐! 😈",
+                "심문관이 기다린다! 뒤집어! 🚔",
+                "긴장돼? 정상이야. 뒤집어! 💀",
+                "이 단어 토익 단골! 뒤집어봐! 📋",
+                "모른다고? 일단 뒤집어! 용기내! 💪",
+                "뒤집으면 답 나와! 어서! 👇",
             ]
             _catchphrase = _catchphrases[_idx % len(_catchphrases)]
 
@@ -2006,14 +2017,18 @@ div[data-testid="stButton"] button p{color:#c0c8e0!important;font-size:0.9rem!im
                         f'<span style="color:#ffee44;font-weight:900;text-shadow:0 0 12px #ffee44,0 0 4px #ff8800;border-bottom:2px solid #ffee44;padding:0 2px;">\\1</span>',
                         _sent_short
                     )
+                    # sent_kr: 문장 한글해석 (없으면 word=뜻 fallback)
+                    _kr_line = ""
+                    if _sent_kr:
+                        _kr_line = f'<div style="font-size:13px;color:#aaccbb;line-height:1.65;margin-top:8px;padding-top:8px;border-top:1px solid #1a3020;">{_sent_kr}</div>'
+                    else:
+                        _kr_line = f'<div style="font-size:12px;color:#557766;margin-top:8px;">💡 <span style="color:#ffee55;font-weight:700;">{_word}</span> = <span style="color:#ddeecc;font-weight:700;">{_kr}</span></div>'
                     _sent_block = (
                         f'<div style="background:#08100a;border:1.5px solid #1a3020;border-radius:14px;'
                         f'padding:14px;margin:10px 0 6px;text-align:left;">'
                         f'<div style="font-size:9px;color:#336644;letter-spacing:2px;margin-bottom:8px;text-align:center;">📝 예문</div>'
                         f'<div style="font-size:14px;color:#c8d8e0;line-height:1.75;font-style:italic;">&ldquo;{_hl_sent}&rdquo;</div>'
-                        f'<div style="font-size:11px;color:#445566;margin-top:8px;line-height:1.6;text-align:left;">'
-                        f'🇰🇷 <span style="color:#aabbc0;">{_word if _raw_word!=_word else _word}</span> = '
-                        f'<span style="color:#ddeecc;font-weight:700;">{_kr}</span></div>'
+                        f'{_kr_line}'
                         f'</div>'
                     )
                 _dots2="".join([f'<span style="display:inline-block;width:24px;height:8px;border-radius:4px;margin:0 4px;background:{"#33cc55" if i<_streak else "#1e2a1e"};"></span>' for i in range(3)])
