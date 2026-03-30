@@ -1364,7 +1364,7 @@ div[data-testid="stButton"] button.fp-nav p { color:#3d5066 !important; }
 
     # ── 타이틀 ──
     _rb = f'<span style="background:#1a0800;border:1px solid #cc6600;border-radius:20px;padding:1px 10px;font-size:0.68rem;color:#ffaa44;font-weight:900;">🏆 ROUND {rn}</span> ' if rn > 1 else ''
-    st.markdown(f"""<div style="text-align:center;padding:10px 0 8px;">
+    st.markdown(f"""<div style="text-align:center;padding:10px 0 14px;">
       <div style="font-size:8px;color:#442200;letter-spacing:4px;margin-bottom:4px;font-weight:700;">FIREPOWER BATTLE</div>
       <div style="font-family:Orbitron,monospace;font-size:2rem;font-weight:900;letter-spacing:6px;
         background:linear-gradient(90deg,#00e5ff,#ffffff,#FFD600,#ff3300,#00e5ff);background-size:300%;
@@ -1375,7 +1375,7 @@ div[data-testid="stButton"] button.fp-nav p { color:#3d5066 !important; }
     </div>""", unsafe_allow_html=True)
 
     # ── COMBAT TIME 섹션 ──
-    st.markdown('<div style="font-size:9px;color:#cc6633;letter-spacing:4px;padding:5px 0 5px;font-weight:700;">⚡  COMBAT TIME</div>', unsafe_allow_html=True)
+    st.markdown('<div style="font-size:9px;color:#cc6633;letter-spacing:4px;padding:8px 0 6px;font-weight:700;">⚡  COMBAT TIME</div>', unsafe_allow_html=True)
     tc1, tc2, tc3 = st.columns(3)
     with tc1:
         if st.button("🔥 30s\nBLITZ", key="t30", use_container_width=True):
@@ -1388,7 +1388,7 @@ div[data-testid="stButton"] button.fp-nav p { color:#3d5066 !important; }
             st.session_state.tsec=50; st.session_state.tsec_chosen=True; st.rerun()
 
     # ── MISSION SELECT 섹션 ──
-    st.markdown('<div style="font-size:9px;color:#cc3355;letter-spacing:4px;padding:6px 0 5px;font-weight:700;">🎯  MISSION SELECT</div>', unsafe_allow_html=True)
+    st.markdown('<div style="font-size:9px;color:#cc3355;letter-spacing:4px;padding:10px 0 6px;font-weight:700;">🎯  MISSION SELECT</div>', unsafe_allow_html=True)
     b1, b2, b3, b4 = st.columns(4)
     with b1:
         if st.button("⚔️\n문법력\n수일치·시제\nG1-GRM", key="sg1", use_container_width=True):
@@ -1405,7 +1405,7 @@ div[data-testid="stButton"] button.fp-nav p { color:#3d5066 !important; }
 
     # ── 생존 규칙 ──
     st.markdown(
-        '<div style="text-align:center;margin:8px 0 4px;font-size:0.82rem;font-weight:900;'
+        '<div style="text-align:center;margin:16px 0 4px;font-size:0.82rem;font-weight:900;'
         'color:#cc3333;letter-spacing:1px;'
         'animation:warnBlink 1.4s ease-in-out infinite;">'
         '💀 3개 이상 격파해야 생존 · 그 이하면 전멸!</div>',
