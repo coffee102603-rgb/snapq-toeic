@@ -1130,34 +1130,66 @@ elif st.session_state.phase=="briefing":
     # ── 저장 버튼 (최우선 CTA) ──
     if not _is_saved:
         st.markdown('<div class="br-save-btn">', unsafe_allow_html=True)
-        if st.button("💾  저장! → 포로사령부에서 다시 훈련하기", key=f"sv_{q['id']}_{bi}", use_container_width=True):
+        if st.button("💾  저장! → 포로사령부 + 단어수용소 자동 등록!", key=f"sv_{q['id']}_{bi}", use_container_width=True):
             item = {"id":q["id"],"text":q["text"],"ch":q["ch"],"a":q["a"],"ex":q.get("ex",""),
                     "exk":q.get("exk",""),"cat":q.get("cat",""),"kr":q.get("kr",""),"tp":q.get("tp","grammar")}
             save_to_storage([item])
-            # ── 핵심어(정답) → 단어 포로 수용소 자동 저장 ──
+            # ── Claude API로 내용 핵심어 추출 → 단어 포로 수용소 ──
             try:
-                import datetime as _fdt
-                _fp_data = load_storage()
-                if "word_prison" not in _fp_data: _fp_data["word_prison"] = []
-                _fp_word = ans_clean.strip()
+                import datetime as _fdt, json as _jfp, requests as _rfp
+                _fp_sent = q.get("text","").replace("_______", ans_clean)
                 _fp_kr   = q.get("kr","")
                 _fp_cat  = q.get("cat","")
-                _fp_sent = q.get("text","").replace("_______", ans_clean)
-                if _fp_word and len(_fp_word) >= 2:
-                    if not any(p.get("word","").lower() == _fp_word.lower() for p in _fp_data["word_prison"]):
-                        _fp_data["word_prison"].append({
-                            "word":           _fp_word,
-                            "kr":             _fp_kr,
-                            "source":         "P5",
-                            "sentence":       _fp_sent,
-                            "captured_date":  _fdt.datetime.now().strftime("%Y-%m-%d"),
-                            "correct_streak": 0,
-                            "last_reviewed":  None,
-                            "cat":            _fp_cat,
-                        })
-                        with open(STORAGE_FILE, "w", encoding="utf-8") as _ffp:
-                            import json as _json_fp
-                            _json_fp.dump(_fp_data, _ffp, ensure_ascii=False, indent=2)
+                # Claude API 호출
+                _prompt = f"""다음 토익 문장에서 내용 핵심어(동사구/명사구 2~3개)를 JSON으로 추출하세요.
+문장: {_fp_sent}
+한글해석: {_fp_kr}
+
+규칙:
+- 문장의 의미를 담는 내용어만 (문법 조동사/관사 제외)
+- 동사구: "comply with", "submit to" 등
+- 명사구: "safety training", "environmental regulation" 등
+- 각 단어/표현의 한글 뜻 포함
+
+반드시 JSON만 반환:
+[{{"word":"comply with","kr":"준수하다"}},{{"word":"environmental regulation","kr":"환경 규정"}}]"""
+                _resp = _rfp.post("https://api.anthropic.com/v1/messages",
+                    headers={"Content-Type":"application/json"},
+                    json={"model":"claude-haiku-4-5-20251001","max_tokens":200,
+                          "messages":[{"role":"user","content":_prompt}]},
+                    timeout=10)
+                _words = []
+                if _resp.status_code == 200:
+                    _txt = _resp.json().get("content",[{}])[0].get("text","")
+                    try:
+                        _start = _txt.find("["); _end = _txt.rfind("]")+1
+                        if _start>=0 and _end>0:
+                            _words = _jfp.loads(_txt[_start:_end])
+                    except Exception:
+                        pass
+                # word_prison에 저장
+                _fp_data = load_storage()
+                if "word_prison" not in _fp_data: _fp_data["word_prison"] = []
+                _changed = False
+                for _w_item in _words:
+                    _w = _w_item.get("word","").strip()
+                    _w_kr = _w_item.get("kr","")
+                    if not _w or len(_w) < 2: continue
+                    if any(p.get("word","").lower()==_w.lower() for p in _fp_data["word_prison"]): continue
+                    _fp_data["word_prison"].append({
+                        "word":           _w,
+                        "kr":             _w_kr,
+                        "source":         "P5",
+                        "sentence":       _fp_sent,
+                        "captured_date":  _fdt.datetime.now().strftime("%Y-%m-%d"),
+                        "correct_streak": 0,
+                        "last_reviewed":  None,
+                        "cat":            _fp_cat,
+                    })
+                    _changed = True
+                if _changed:
+                    with open(STORAGE_FILE,"w",encoding="utf-8") as _ffp:
+                        _jfp.dump(_fp_data,_ffp,ensure_ascii=False,indent=2)
             except Exception:
                 pass
             st.session_state.br_saved.add(bi)
