@@ -1980,8 +1980,8 @@ div[data-testid="stButton"] button p{color:#c0c8e0!important;font-size:0.9rem!im
           <div style="font-size:38px;margin-bottom:6px;filter:drop-shadow(0 0 12px #8833ff);">🚔</div>
           <div style="font-family:'Orbitron',monospace;font-size:15px;font-weight:900;color:#ddaaff;letter-spacing:3px;margin-bottom:4px;">WORD PRISON</div>
           <div style="font-size:14px;color:#cc99ff;font-weight:700;margin-bottom:2px;">단어 심문실</div>
-          <div style="font-size:13px;color:#bb88ee;font-weight:600;margin-top:8px;letter-spacing:0.5px;">
-            3연속 정답 = 석방 🔑 &nbsp;·&nbsp; 틀리면 재투옥 ⛓
+          <div style="font-size:14px;color:#ff6699;font-weight:800;margin-top:10px;line-height:1.7;letter-spacing:0.3px;">
+            🚨 기억하면 석방, 잊으면 재투옥,<br>방심하면 공범까지 소환된다.
           </div>
         </div>
         """, height=168)
