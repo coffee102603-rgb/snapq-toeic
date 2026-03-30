@@ -1448,6 +1448,15 @@ elif st.session_state.p7_phase == "briefing":
 
     if "p7_br_idx" not in st.session_state: st.session_state.p7_br_idx = 0
     bi = st.session_state.p7_br_idx
+
+    # ── 지문이 바뀌면 저장 상태 초기화 ──
+    _passage_uid = data.get("title","") + str(len(steps))
+    if st.session_state.get("p7_br_passage_uid") != _passage_uid:
+        # 이전 지문의 br_sent_saved_* 키 전부 삭제
+        for _k in list(st.session_state.keys()):
+            if _k.startswith("br_sent_saved_") or _k.startswith("br_sv_"):
+                del st.session_state[_k]
+        st.session_state["p7_br_passage_uid"] = _passage_uid
     num_steps = min(len(steps), len(answers))
     if num_steps == 0: num_steps = 1
     if bi >= num_steps: bi = num_steps - 1
