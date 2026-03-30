@@ -1177,8 +1177,6 @@ _hc.html(_CSS + _GO_STYLE + "<style>.arc .go-btn{--go-bg:linear-gradient(270deg,
 </script>""", height=70)
 _arm_go = st.button("ARM_GO", key="armory_btn")
 if _arm_go:
-    st.session_state.sg_phase = "lobby"
-    st.session_state["_wp_guard"] = False
     st.switch_page("pages/03_?¤ë‹µ?„ìž¥.py")
 
 
@@ -1193,6 +1191,8 @@ _hc.html("""
 .row{display:flex;gap:8px;padding:2px 0 6px;}
 .box{flex:1;border-radius:10px;padding:6px 0;display:flex;flex-direction:column;
      align-items:center;justify-content:center;gap:3px;}
+    st.session_state.sg_phase = "lobby"
+    st.session_state["_wp_guard"] = False
 .box-p4{background:rgba(255,255,255,0.05);border:1.5px solid rgba(255,255,255,0.1);cursor:default;}
 .box-adm{background:rgba(255,255,255,0.07);border:1.5px solid rgba(255,255,255,0.18);
          cursor:pointer;transition:background 0.2s;}
