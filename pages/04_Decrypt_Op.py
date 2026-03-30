@@ -1567,9 +1567,9 @@ div[data-testid="stButton"] button.br-home p{color:#3d5066!important;}
     st.markdown(f'''<div style="background:#06090f;border:1px solid #1a2240;
         border-left:3px solid {_q_border};border-radius:10px;padding:8px 10px;">
       <div style="font-size:8px;color:#334466;letter-spacing:2px;margin-bottom:4px;">[ Q{bi+1} ] RESULT</div>
-      <div style="font-size:10px;color:#7a9a8a;margin-bottom:3px;">{s["question"]}</div>
-      <div style="font-size:11px;font-weight:700;color:{_q_border};">{sym} {correct_choice}</div>
-      {f'<div style="font-size:9px;color:#557766;margin-top:2px;">{answer_kr}</div>' if answer_kr else ""}
+      <div style="font-size:12px;color:#7a9a8a;margin-bottom:3px;">{s["question"]}</div>
+      <div style="font-size:13px;font-weight:700;color:{_q_border};">{sym} {correct_choice}</div>
+      {f'<div style="font-size:10px;color:#557766;margin-top:2px;">{answer_kr}</div>' if answer_kr else ""}
     </div>''', unsafe_allow_html=True)
 
     # ── KEY EXPRESSIONS 섹션 라벨 ──
@@ -1596,7 +1596,7 @@ div[data-testid="stButton"] button.br-home p{color:#3d5066!important;}
         # 표현 태그 HTML
         _expr_tags = "".join([
             f'<span style="background:#001a12;border:1px solid #00aa66;border-radius:4px;'
-            f'padding:1px 7px;font-size:8px;color:#44cc88;margin-right:4px;">{e.get("expr","")}</span>'
+            f'padding:1px 7px;font-size:9px;color:#44cc88;margin-right:4px;">{e.get("expr","")}</span>'
             for e in s.get("expressions", []) if e.get("expr")
         ]) if not is_saved else ""
 
@@ -1606,8 +1606,8 @@ div[data-testid="stButton"] button.br-home p{color:#3d5066!important;}
             # 저장 완료 상태
             st.markdown(f'''<div style="background:#04080a;border:1.5px solid rgba(0,150,100,0.25);
                 border-left:4px solid #336644;border-radius:12px;padding:10px;opacity:0.85;">
-              <div style="font-size:11px;font-weight:800;color:#ddeeff;line-height:1.75;margin-bottom:5px;">{_hl}</div>
-              <div style="font-size:9px;color:#5a7a6a;margin-bottom:4px;">{sent_kr}</div>
+              <div style="font-size:13px;font-weight:800;color:#ddeeff;line-height:1.75;margin-bottom:5px;">{_hl}</div>
+              <div style="font-size:11px;color:#5a7a6a;margin-bottom:4px;">{sent_kr}</div>
               <span style="background:#0a1808;border:1px solid #226633;border-radius:6px;
                 padding:2px 8px;font-size:8px;color:#44cc88;font-weight:700;">✅ 포로 등록 완료 · 포로사령부 대기중</span>
             </div>''', unsafe_allow_html=True)
@@ -1615,8 +1615,8 @@ div[data-testid="stButton"] button.br-home p{color:#3d5066!important;}
             # 미저장 상태
             st.markdown(f'''<div style="background:#06090f;border:1.5px solid rgba(0,180,255,0.25);
                 border-left:4px solid {_card_border};border-radius:12px;padding:10px;margin-bottom:2px;">
-              <div style="font-size:11px;font-weight:800;color:#ddeeff;line-height:1.75;margin-bottom:5px;">{_hl}</div>
-              <div style="font-size:9px;color:#5a7a6a;margin-bottom:5px;">{sent_kr}</div>
+              <div style="font-size:13px;font-weight:800;color:#ddeeff;line-height:1.75;margin-bottom:5px;">{_hl}</div>
+              <div style="font-size:11px;color:#5a7a6a;margin-bottom:5px;">{sent_kr}</div>
               {f'<div style="margin-bottom:6px;">{_expr_tags}</div>' if _expr_tags else ""}
             </div>''', unsafe_allow_html=True)
 
