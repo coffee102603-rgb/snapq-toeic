@@ -1639,8 +1639,34 @@ div[data-testid="stButton"] button.br-home p{color:#3d5066!important;}
                 sent_data = dict(s)
                 sent_data["sentences"] = [sent]
                 sent_data["kr"] = sent_kr
-                # 이 문장의 표현만 단어 수용소에 저장
+                # 1. 문장 → 포로사령부 (saved_expressions)
                 save_expressions(_sent_exprs, step_data=sent_data)
+                # 2. 이 문장의 핵심 표현 → 단어 수용소 (word_prison)
+                try:
+                    _storage_br = load_storage()
+                    if "word_prison" not in _storage_br: _storage_br["word_prison"] = []
+                    import datetime as _bdt
+                    _cat_br = st.session_state.get("p7_cat", "P7")
+                    for _ex in _sent_exprs:
+                        _w = _ex.get("expr", "").strip()
+                        _w_kr = _ex.get("expr_kr", "") or _ex.get("kr", "")
+                        if not _w or len(_w) < 2: continue
+                        # 중복 체크
+                        if any(p.get("word","").lower() == _w.lower() for p in _storage_br["word_prison"]):
+                            continue
+                        _storage_br["word_prison"].append({
+                            "word":           _w,
+                            "kr":             _w_kr,
+                            "source":         "P7",
+                            "sentence":       sent,
+                            "captured_date":  _bdt.datetime.now().strftime("%Y-%m-%d"),
+                            "correct_streak": 0,
+                            "last_reviewed":  None,
+                            "cat":            _cat_br,
+                        })
+                    save_storage(_storage_br)
+                except Exception:
+                    pass
                 st.session_state[sent_key] = True
                 st.rerun()
 
