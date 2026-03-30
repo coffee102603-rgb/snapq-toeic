@@ -946,143 +946,178 @@ div[data-testid="stButton"] button.p7nav:hover{
 # ════════════════════════════════════════
 # ═══════════════════════════════════════
 elif st.session_state.p7_phase == "battle":
-    # 전투에서만 상단 여백 줄이기
-    st.markdown('<style>.block-container{padding-top:0.5rem!important;}</style>', unsafe_allow_html=True)
+    st.markdown("""<style>
+    @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@700;900&display=swap');
+    #MainMenu{visibility:hidden!important;}
+    header[data-testid="stHeader"]{height:0!important;overflow:hidden!important;}
+    .block-container{padding:6px 10px 16px!important;margin:0!important;}
+    div[data-testid="stVerticalBlock"]{gap:4px!important;}
+    .element-container{margin:0!important;padding:0!important;}
+    div[data-testid="stHorizontalBlock"]{gap:6px!important;margin:0!important;flex-wrap:nowrap!important;}
+    div[data-testid="stHorizontalBlock"] div[data-testid="stColumn"]{padding:0!important;min-width:0!important;flex:1!important;}
+
+    /* 답 버튼 */
+    div[data-testid="stButton"] button{
+      background:#07090f!important;border:1.5px solid rgba(100,140,200,0.3)!important;
+      border-radius:10px!important;color:#8899bb!important;
+      font-size:0.88rem!important;font-weight:700!important;
+      padding:0.5rem 0.8rem!important;min-height:46px!important;
+      text-align:left!important;width:100%!important;
+      transition:border-color .12s,box-shadow .12s!important;
+    }
+    div[data-testid="stButton"] button p{color:#8899bb!important;font-size:0.88rem!important;font-weight:700!important;}
+    div[data-testid="stButton"] button:hover{border-color:rgba(100,180,255,0.7)!important;color:#aaccff!important;}
+
+    /* A/B/C/D 색상 */
+    #btn-p7a div[data-testid="stButton"] button{border-left:4px solid #ff6633!important;background:#160800!important;color:#ff8855!important;}
+    #btn-p7a div[data-testid="stButton"] button p{color:#ff8855!important;}
+    #btn-p7b div[data-testid="stButton"] button{border-left:4px solid #00E5FF!important;background:#001518!important;color:#00ccee!important;}
+    #btn-p7b div[data-testid="stButton"] button p{color:#00ccee!important;}
+    #btn-p7c div[data-testid="stButton"] button{border-left:4px solid #FF2D55!important;background:#140008!important;color:#ee4466!important;}
+    #btn-p7c div[data-testid="stButton"] button p{color:#ee4466!important;}
+    #btn-p7d div[data-testid="stButton"] button{border-left:4px solid #44FF88!important;background:#001408!important;color:#44ee77!important;}
+    #btn-p7d div[data-testid="stButton"] button p{color:#44ee77!important;}
+    </style>""", unsafe_allow_html=True)
+
     data = st.session_state.p7_data
-    step = st.session_state.p7_step  # 0, 1, 2
+    step = st.session_state.p7_step
     steps = data["steps"]
     cur = steps[step]
 
-    # 전투 전용 CSS - 상단 패딩 줄이기
-    st.markdown("""<style>
-    .block-container{padding-top:0.5rem!important;}
-    </style>""", unsafe_allow_html=True)
-
-    # autorefresh
     st_autorefresh(interval=1000, limit=st.session_state.p7_tsec+10, key="p7_timer")
 
-    # 타이머 계산
     elapsed = time.time() - st.session_state.p7_started_at
-    total = st.session_state.p7_tsec
-    rem = max(0, total - int(elapsed))
+    total   = st.session_state.p7_tsec
+    rem     = max(0, total - int(elapsed))
 
-    # 시간초과
     if rem <= 0:
         try: save_research_record(build_research_record("timeout"))
         except: pass
         st.session_state.p7_phase = "lost"; st.rerun()
 
-    # 위기 단계
     pct = rem / total if total > 0 else 0
-    if pct > 0.6: stage = "safe"
-    elif pct > 0.3: stage = "warn"
-    elif pct > 0.1: stage = "danger"
-    else: stage = "critical"
+    if pct > 0.6:   stage, bar_col = "safe",     "#44ff88"
+    elif pct > 0.3: stage, bar_col = "warn",     "#ffcc00"
+    elif pct > 0.1: stage, bar_col = "danger",   "#ff4444"
+    else:           stage, bar_col = "critical",  "#ff0000"
 
-    # 지문 테두리 색상 (10초 남으면 붉어짐)
     if rem <= 10:
-        pass_border = "#ff2200"
-        pass_bg = "linear-gradient(145deg,#1a0505,#2a0a0a)"
-        pass_shadow = "0 0 20px rgba(255,0,0,0.4)"
+        pass_border = "#ff2200"; pass_bg = "linear-gradient(145deg,#1a0505,#2a0a0a)"
     elif rem <= 20:
-        pass_border = "#ff6600"
-        pass_bg = "linear-gradient(145deg,#1a0f05,#2a1508)"
-        pass_shadow = "0 0 15px rgba(255,100,0,0.3)"
+        pass_border = "#ff6600"; pass_bg = "linear-gradient(145deg,#1a0f05,#2a1508)"
     elif rem <= 30:
-        pass_border = "#ffaa00"
-        pass_bg = "linear-gradient(145deg,#1a1505,#2a1a08)"
-        pass_shadow = "0 0 10px rgba(255,170,0,0.2)"
+        pass_border = "#ffaa00"; pass_bg = "linear-gradient(145deg,#1a1505,#2a1a08)"
     else:
-        pass_border = "#00aacc"
-        pass_bg = "linear-gradient(145deg,#0a1520,#101a2a)"
-        pass_shadow = "none"
+        pass_border = "#00aacc"; pass_bg = "linear-gradient(145deg,#0a1520,#101a2a)"
 
-    # HUD + 타이머 (바 안에 큰 숫자 + 위기감)
-    bar_color = {"safe":"#44ff88","warn":"#ffcc00","danger":"#ff4444","critical":"#ff0000"}[stage]
-    bar_glow = {"safe":"rgba(68,255,136,0.3)","warn":"rgba(255,204,0,0.4)","danger":"rgba(255,68,68,0.5)","critical":"rgba(255,0,0,0.7)"}[stage]
-    shake_css = "animation:shake 0.3s infinite;" if stage=="critical" else "animation:shake 0.8s infinite;" if stage=="danger" else ""
-    components.html(f"""
-    <style>
-    *{{margin:0;padding:0;}}body{{background:transparent;overflow:hidden;font-family:sans-serif;}}
-    .hud-row{{display:flex;align-items:center;gap:6px;}}
-    .hud-l{{font-size:1rem;font-weight:900;color:#44ffcc;white-space:nowrap;}}
-    .hud-r{{font-size:0.95rem;font-weight:800;color:#ffcc00;white-space:nowrap;}}
-    .timer-box{{flex:1;position:relative;height:38px;background:#0a0a1a;border-radius:19px;border:2px solid {bar_color};overflow:hidden;box-shadow:0 0 12px {bar_glow};{shake_css}}}
-    .timer-fill{{height:100%;border-radius:19px;background:linear-gradient(90deg,{bar_color}88,{bar_color});transition:width 1s linear;}}
-    .timer-num{{position:absolute;top:0;left:0;right:0;bottom:0;display:flex;align-items:center;justify-content:center;
-        font-size:1.5rem;font-weight:900;color:#fff;text-shadow:0 0 8px {bar_color},0 0 16px {bar_color},0 2px 4px #000;letter-spacing:3px;}}
-    @keyframes shake{{0%,100%{{transform:translateX(0)}}25%{{transform:translateX(-4px)}}75%{{transform:translateX(4px)}}}}
-    </style>
-    <div class="hud-row">
-        <span class="hud-l">📖 {step+1}/3</span>
-        <div class="timer-box" id="tbox">
-            <div class="timer-fill" id="tf" style="width:{pct*100}%"></div>
-            <div class="timer-num" id="tn">{rem}</div>
+    q_type = cur.get("q_type", "detail")
+    correct_cnt = len([a for a in st.session_state.p7_answers if a])
+    wrong_cnt   = len([a for a in st.session_state.p7_answers if not a])
+
+    # ── 좌측 세로 타이머 + 우측 컨텐츠 ──
+    _left, _right = st.columns([1, 11])
+
+    with _left:
+        components.html(f"""
+        <style>
+        *{{margin:0;padding:0;box-sizing:border-box;}}
+        body{{background:transparent;overflow:hidden;font-family:'Orbitron',monospace;}}
+        .wrap{{display:flex;flex-direction:column;align-items:center;gap:4px;height:100%;padding:2px 0;}}
+        .label{{font-size:7px;color:#334455;letter-spacing:2px;font-weight:700;writing-mode:vertical-rl;transform:rotate(180deg);}}
+        .bar-wrap{{width:12px;flex:1;background:#0a0c14;border-radius:6px;border:1px solid #1a2240;overflow:hidden;position:relative;min-height:200px;}}
+        .bar-fill{{position:absolute;bottom:0;width:100%;border-radius:6px;transition:height 1s linear;box-shadow:0 0 8px {bar_col};background:linear-gradient(to top,{bar_col}cc,{bar_col});}}
+        .num{{font-size:13px;font-weight:900;color:{bar_col};text-shadow:0 0 8px {bar_col};font-family:'Orbitron',monospace;}}
+        @keyframes shake{{0%,100%{{transform:translateX(0)}}25%{{transform:translateX(-3px)}}75%{{transform:translateX(3px)}}}}
+        </style>
+        <div class="wrap">
+          <div class="label">TIME</div>
+          <div class="bar-wrap" id="bw" style="{'animation:shake 0.3s infinite' if stage=='critical' else 'animation:shake 0.8s infinite' if stage=='danger' else ''}">
+            <div class="bar-fill" id="bf" style="height:{pct*100:.1f}%"></div>
+          </div>
+          <div class="num" id="num">{rem}</div>
         </div>
-        <span class="hud-r">✅{len([a for a in st.session_state.p7_answers if a])} ❌{len([a for a in st.session_state.p7_answers if not a])}</span>
-    </div>
-    <script>
-    var r={rem},t={total};
-    var tn=document.getElementById('tn'),tf=document.getElementById('tf'),tb=document.getElementById('tbox');
-    setInterval(function(){{r--;if(r<0)r=0;tn.textContent=r;
-    var p=r/t;tf.style.width=(p*100)+'%';
-    var c=p>0.6?'#44ff88':p>0.3?'#ffcc00':p>0.1?'#ff4444':'#ff0000';
-    var g=p>0.6?'rgba(68,255,136,0.3)':p>0.3?'rgba(255,204,0,0.4)':p>0.1?'rgba(255,68,68,0.5)':'rgba(255,0,0,0.7)';
-    tb.style.borderColor=c;tb.style.boxShadow='0 0 12px '+g;
-    tn.style.textShadow='0 0 8px '+c+',0 0 16px '+c+',0 2px 4px #000';
-    tf.style.background='linear-gradient(90deg,'+c+'88,'+c+')';
-    if(r<=10){{tb.style.animation='shake 0.3s infinite';tn.style.fontSize='1.8rem';}}
-    else if(r<=20){{tb.style.animation='shake 0.8s infinite';tn.style.fontSize='1.6rem';}}
-    else{{tb.style.animation='none';tn.style.fontSize='1.5rem';}}}},1000);
-    </script>
-    """, height=46)
+        <script>
+        var r={rem},t={total};
+        var bf=document.getElementById('bf'),num=document.getElementById('num'),bw=document.getElementById('bw');
+        setInterval(function(){{
+          r--;if(r<0)r=0;
+          var p=r/t;
+          bf.style.height=(p*100)+'%';
+          num.textContent=r;
+          var c=p>0.6?'#44ff88':p>0.3?'#ffcc00':p>0.1?'#ff4444':'#ff0000';
+          bf.style.background='linear-gradient(to top,'+c+'cc,'+c+')';
+          bf.style.boxShadow='0 0 8px '+c;
+          num.style.color=c;num.style.textShadow='0 0 8px '+c;
+          bw.style.animation=r<=10?'shake 0.3s infinite':r<=20?'shake 0.8s infinite':'none';
+        }},1000);
+        </script>
+        """, height=320)
 
-    # 지문 (누적) - 공간 절약 패딩
+    with _right:
+        # ── 상단 HUD ──
+        st.markdown(f"""<div style="display:flex;justify-content:space-between;align-items:center;
+            background:#06080f;border:1px solid #1a2240;border-radius:10px;
+            padding:6px 10px;margin-bottom:4px;">
+          <div style="font-family:Orbitron,monospace;font-size:8px;color:#334466;
+            letter-spacing:3px;font-weight:700;">DECRYPT OP</div>
+          <div style="display:flex;gap:8px;align-items:center;">
+            <span style="background:#0a1808;border:1px solid #226633;border-radius:6px;
+              padding:2px 8px;font-size:9px;color:#44cc88;font-weight:700;">Q{step+1}/3</span>
+            <span style="font-size:11px;font-weight:700;">✅{correct_cnt} ❌{wrong_cnt}</span>
+          </div>
+        </div>""", unsafe_allow_html=True)
+
+    # 지문 (누적)
     all_sents = []
     for i in range(step + 1):
         all_sents.extend(steps[i]["sentences"])
     new_start = len(all_sents) - len(cur["sentences"])
 
-    # ─── q_type: analytics 기록용 (화면 표시 없음) ───
-    q_type = cur.get("q_type", "detail")
-
-    pass_html = '<div class="p7-sent">'
+    pass_html = ''
     for i, s in enumerate(all_sents):
         if i >= new_start:
-            pass_html += f'<span class="p7-new">{s}</span> '
+            pass_html += f'<span style="color:#ffffff;font-weight:800;">{s}</span> '
         else:
-            pass_html += f'{s} '
-    pass_html += '</div>'
-    _p_border = "#ff2200" if rem<=10 else "#ff6600" if rem<=20 else "#ffaa00" if rem<=30 else "#d4af37"
-    st.markdown(f'<div style="background:{pass_bg};border:1.5px solid {_p_border};border-left:4px solid {_p_border};border-radius:10px;padding:0.6rem 0.8rem 0.6rem 0.9rem;margin:0.2rem 0;box-shadow:{pass_shadow};transition:border-color 1s,background 1s;">{pass_html}</div>', unsafe_allow_html=True)
+            pass_html += f'<span style="color:#7a8a9a;">{s}</span> '
 
-    # 질문 - [Q1] 형식 + 최소 패딩
-    st.markdown(f'<div style="background:#10101e;border:1px solid #9aa5b4;border-radius:8px;padding:6px 10px;margin:0.3rem 0 0.5rem 0;"><span style="color:#9aa5b4;font-size:0.78rem;font-weight:900;">[Q{step+1}]</span> <span style="color:#e8e0cc;font-size:0.85rem;font-weight:700;">{cur["question"]}</span></div>', unsafe_allow_html=True)
+    _btn_ids = ["p7a","p7b","p7c","p7d"]
+    _btn_labels = ["A","B","C","D"]
 
-    # 선택지 - 2x2 격자 (공간 절약)
-    st.markdown("""<style>
-    button[kind="primary"]{font-size:0.82rem!important;padding:2px 8px 2px 12px!important;min-height:32px!important;max-height:36px!important;border-radius:8px!important;font-weight:600!important;line-height:1.1!important;color:#e8e0cc!important;margin:2px 0!important;text-align:left!important;background:#0f0f1e!important;}
-    button[kind="primary"] p{font-size:0.82rem!important;font-weight:600!important;line-height:1.1!important;white-space:nowrap!important;overflow:hidden!important;text-overflow:ellipsis!important;text-align:left!important;color:#e8e0cc!important;}
-    </style>""", unsafe_allow_html=True)
-    st.markdown("""<style>.stVerticalBlock{gap:0!important;}.stHorizontalBlock{gap:4px!important;}
-    div[data-testid="stVerticalBlock"] > div:nth-child(1) button[kind="primary"]{background:#0f0f1e!important;border:1px solid #1a1a2a!important;border-left:4px solid #d4af37!important;}
-    div[data-testid="stVerticalBlock"] > div:nth-child(2) button[kind="primary"]{background:#0f0f1e!important;border:1px solid #1a1a2a!important;border-left:4px solid #9aa5b4!important;}
-    div[data-testid="stVerticalBlock"] > div:nth-child(3) button[kind="primary"]{background:#0f0f1e!important;border:1px solid #1a1a2a!important;border-left:4px solid #50c878!important;}
-    div[data-testid="stVerticalBlock"] > div:nth-child(4) button[kind="primary"]{background:#0f0f1e!important;border:1px solid #1a1a2a!important;border-left:4px solid #4488cc!important;}</style>""", unsafe_allow_html=True)
-    for i, ch in enumerate(cur["choices"]):
-        if st.button(ch, key=f"p7ch{step}_{i}", type="primary", use_container_width=True):
-            ok = (i == cur["answer"])
-            st.session_state.p7_answers.append(ok)
-            # ─── analytics 기록 ───
-            _an = st.session_state.p7_analytics
-            _step_t = time.time() - (_an.get("step_started_at") or time.time())
-            _an["step_times"].append(round(_step_t, 1))
-            _an["step_correct"].append(ok)
-            _an["step_started_at"] = time.time()
-            st.session_state.p7_analytics = _an
-            # Step 3 유형선택 상태 리셋
-            st.session_state.p7_type_guessed = False
-            st.session_state.p7_type_correct = None
+    # 지문 카드
+    with _right:
+        st.markdown(f'''<div style="background:{pass_bg};border:1.5px solid {pass_border};
+            border-left:4px solid {pass_border};border-radius:12px;
+            padding:0.65rem 0.85rem;margin:2px 0;
+            transition:border-color 1s,background 1s;font-size:0.88rem;
+            font-weight:600;line-height:1.7;color:#aab8cc;">{pass_html}</div>''', unsafe_allow_html=True)
+
+        # 질문
+        st.markdown(f'''<div style="background:#08090f;border:1px solid #1a2240;
+            border-left:3px solid #7799bb;border-radius:10px;
+            padding:7px 10px;margin:3px 0;">
+          <span style="font-family:Orbitron,monospace;font-size:8px;color:#4466aa;
+            font-weight:700;letter-spacing:2px;">[Q{step+1}] </span>
+          <span style="color:#dde8f0;font-size:0.85rem;font-weight:700;">{cur["question"]}</span>
+        </div>''', unsafe_allow_html=True)
+
+        # 답 버튼 — div id 래퍼로 색상 고정
+        for i, ch in enumerate(cur["choices"]):
+            _ch_clean = ch.split(") ",1)[-1] if ") " in ch else ch
+            _bid = _btn_ids[i]
+            st.markdown(f'<div id="btn-{_bid}">', unsafe_allow_html=True)
+            if st.button(f"【{_btn_labels[i]}】  {_ch_clean}", key=f"p7ch{step}_{i}", use_container_width=True):
+                ok = (i == cur["answer"])
+                st.session_state.p7_answers.append(ok)
+                # ─── analytics 기록 ───
+                _an = st.session_state.p7_analytics
+                _step_t = time.time() - (_an.get("step_started_at") or time.time())
+                _an["step_times"].append(round(_step_t, 1))
+                _an["step_correct"].append(ok)
+                _an["step_started_at"] = time.time()
+                st.session_state.p7_analytics = _an
+                # Step 3 유형선택 상태 리셋
+                st.session_state.p7_type_guessed = False
+                st.session_state.p7_type_correct = None
 
             # ══════════════════════════════════════════════════
             # ★ cross_logs + p7_logs 저장 (논문 04 SSCI + 특허)
