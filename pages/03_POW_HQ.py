@@ -1711,6 +1711,9 @@ elif st.session_state.sg_phase == "combo_result":
 # ════════════════════════════════════════
 # PHASE: WORD_PRISON — 극적인 심문실
 # ════════════════════════════════════════
+# ════════════════════════════════════════
+# PHASE: WORD_PRISON — 극적인 심문실
+# ════════════════════════════════════════
 elif st.session_state.sg_phase == "word_prison":
     import datetime as _pr_dt2, random as _pr_random
 
@@ -1854,29 +1857,28 @@ div[data-testid="stButton"] button p{color:#c0c8e0!important;font-size:0.9rem!im
         *{{margin:0;padding:0;box-sizing:border-box;}}body{{background:transparent;}}
         </style>
         <div style="background:radial-gradient(ellipse at top,#1e0a35 0%,#08080f 70%);
-             border:2px solid #8833ff;border-radius:20px;padding:22px 16px;text-align:center;
+             border:2px solid #8833ff;border-radius:16px;padding:14px 16px;text-align:center;
              box-shadow:inset 0 0 40px rgba(136,51,255,0.15);">
           <div style="font-family:'Orbitron',monospace;font-size:9px;color:#55337a;
                letter-spacing:5px;margin-bottom:10px;">☠ INTERROGATION ROOM ☠</div>
-          <div style="font-size:48px;margin-bottom:10px;filter:drop-shadow(0 0 12px #8833ff);">🚔</div>
-          <div style="font-family:'Orbitron',monospace;font-size:17px;font-weight:900;
-               color:#ddaaff;letter-spacing:3px;margin-bottom:4px;">WORD PRISON</div>
+          <div style="font-size:38px;margin-bottom:6px;filter:drop-shadow(0 0 12px #8833ff);">🚔</div>
+          <div style="font-family:'Orbitron',monospace;font-size:15px;font-weight:900;color:#ddaaff;letter-spacing:3px;margin-bottom:3px;">WORD PRISON</div>
           <div style="font-size:13px;color:#9966cc;margin-bottom:2px;">단어 심문실</div>
           <div style="font-size:11px;color:#554477;margin-top:6px;letter-spacing:1px;">
             3연속 정답 = 석방 🔑 · 틀리면 재투옥 ⛓
           </div>
         </div>
-        """, height=200)
+        """, height=162)
 
-        st.markdown(f"""<div style="display:flex;gap:6px;margin:8px 0;">
+        st.markdown(f"""<div style="display:flex;gap:5px;margin:5px 0;">
           <div style="flex:1;background:#110820;border:1.5px solid #6633aa;border-radius:14px;padding:12px;text-align:center;">
             <div style="font-family:Orbitron,monospace;font-size:8px;color:#553388;letter-spacing:2px;margin-bottom:4px;">PRISONERS</div>
-            <div style="font-size:28px;font-weight:900;color:#ddaaff;">{_total}</div>
+            <div style="font-size:24px;font-weight:900;color:#ddaaff;">{_total}</div>
             <div style="font-size:10px;color:#664488;margin-top:2px;">수감중</div>
           </div>
           <div style="flex:1;background:#081508;border:1.5px solid #228844;border-radius:14px;padding:12px;text-align:center;">
             <div style="font-family:Orbitron,monospace;font-size:8px;color:#224433;letter-spacing:2px;margin-bottom:4px;">RELEASED</div>
-            <div style="font-size:28px;font-weight:900;color:#44ff88;">{_freed}</div>
+            <div style="font-size:24px;font-weight:900;color:#44ff88;">{_freed}</div>
             <div style="font-size:10px;color:#336644;margin-top:2px;">오늘 석방</div>
           </div>
           <div style="flex:1;background:#0c1018;border:1.5px solid #223344;border-radius:14px;padding:10px;text-align:center;">
@@ -1892,11 +1894,11 @@ div[data-testid="stButton"] button p{color:#c0c8e0!important;font-size:0.9rem!im
             _w=_p.get("word",""); _kr=_p.get("kr","") or "?"; _streak=_p.get("correct_streak",0)
             st.markdown(
                 f'<div style="background:#0c0e1a;border:1px solid #1e2235;border-left:3px solid {_col};'
-                f'border-radius:12px;padding:10px 14px;display:flex;align-items:center;gap:10px;margin-bottom:4px;">'
-                f'<span style="font-size:24px;">{_ch}</span>'
+                f'border-radius:10px;padding:7px 12px;display:flex;align-items:center;gap:8px;margin-bottom:3px;">'
+                f'<span style="font-size:20px;">{_ch}</span>'
                 f'<div style="flex:1;">'
-                f'<div style="font-size:16px;font-weight:900;color:#ffffff;">{_w}</div>'
-                f'<div style="font-size:12px;color:#8899bb;margin-top:2px;">{_kr}</div>'
+                f'<div style="font-size:14px;font-weight:900;color:#ffffff;">{_w}</div>'
+                f'<div style="font-size:11px;color:#8899bb;">{_kr}</div>'
                 f'</div>'
                 f'<div style="text-align:right;">'
                 f'<div style="font-size:11px;color:{_col};font-weight:700;">{"●"*_streak}{"○"*(3-_streak)}</div>'
@@ -1906,7 +1908,7 @@ div[data-testid="stButton"] button p{color:#c0c8e0!important;font-size:0.9rem!im
         if _total>3:
             st.markdown(f'<div style="text-align:center;font-size:11px;color:#2a3040;margin-top:2px;">+ {_total-3}명 더 수감중...</div>', unsafe_allow_html=True)
 
-        st.markdown('<div style="height:6px;"></div>', unsafe_allow_html=True)
+        st.markdown('<div style="height:2px;"></div>', unsafe_allow_html=True)
         st.markdown('<div id="btn-start">', unsafe_allow_html=True)
         if st.button("🔍  심문 시작!", key="wp_start", use_container_width=True):
             st.session_state.wp_idx=0; st.session_state.wp_flipped=False; st.session_state.wp_mode="card"; st.rerun()
@@ -1928,7 +1930,7 @@ div[data-testid="stButton"] button p{color:#c0c8e0!important;font-size:0.9rem!im
                  color:#{'33ff77' if _freed>0 else 'ffcc44'};margin-bottom:6px;">
               심문 완료</div>
             <div style="font-size:14px;color:#7788aa;">석방 {_freed}명 🔓 · 계속 훈련하면 다 풀어줄 수 있어!</div>
-            """, height=155)
+            """, height=130)
             _r1,_r2=st.columns(2)
             with _r1:
                 if st.button("🔁 다시 심문", key="wp_restart", use_container_width=True):
@@ -1989,16 +1991,16 @@ div[data-testid="stButton"] button p{color:#c0c8e0!important;font-size:0.9rem!im
                 @keyframes flicker{{0%,95%,100%{{opacity:1}}96%{{opacity:0.4}}97%{{opacity:1}}98%{{opacity:0.6}}}}
                 </style>
                 <div style="background:radial-gradient(ellipse at 50% 20%,#1a1040 0%,#06060e 80%);
-                     border:2.5px solid {_col};border-radius:20px;padding:28px 16px 24px;
+                     border:2.5px solid {_col};border-radius:18px;padding:18px 16px 16px;
                      box-shadow:inset 0 0 40px {_col}18, 0 0 24px {_col}44;">
-                  <div style="font-size:64px;margin-bottom:14px;filter:drop-shadow(0 0 16px {_col}aa);">{_ch}</div>
-                  <div style="font-family:'Orbitron',monospace;font-size:34px;font-weight:900;color:#ffffff;
+                  <div style="font-size:52px;margin-bottom:10px;filter:drop-shadow(0 0 14px {_col}aa);">{_ch}</div>
+                  <div style="font-family:'Orbitron',monospace;font-size:28px;font-weight:900;color:#ffffff;
                        letter-spacing:3px;text-shadow:0 0 30px {_col},0 0 12px #fff,0 2px 4px #000;
                        margin-bottom:16px;" class="flicker">{_word}</div>
                   <div style="display:flex;justify-content:center;gap:4px;margin-bottom:10px;">{_dots}</div>
                   <div style="font-size:11px;color:#445566;">{_streak}/3 연속 정답</div>
                 </div>
-                """, height=295)
+                """, height=260)
 
                 # 심문 멘트 = 클릭 버튼
                 st.markdown('<div id="btn-flip">', unsafe_allow_html=True)
@@ -2019,13 +2021,16 @@ div[data-testid="stButton"] button p{color:#c0c8e0!important;font-size:0.9rem!im
                         f'<span style="color:#ffee44;font-weight:900;text-shadow:0 0 12px #ffee44,0 0 4px #ff8800;border-bottom:2px solid #ffee44;padding:0 2px;">\\1</span>',
                         _sent_short
                     )
-                    # sent_kr: 문장 한글해석 + kr 없을 때 더 강조
+                    # 항상 보여줄 것: 단어 뜻 + 문장 한글 해석 (둘 다)
                     _kr_line = ""
+                    # 단어 뜻 (있을 때만)
+                    if _has_meaning:
+                        _kr_line += f'<div style="font-size:12px;color:#88bbaa;margin-top:6px;">'
+                        _kr_line += f'💡 <span style="color:#ffee55;font-weight:800;">{_word}</span>'
+                        _kr_line += f' = <span style="color:#ccffaa;font-weight:900;">{_kr}</span></div>'
+                    # 문장 한글 해석 (항상 표시)
                     if _sent_kr:
-                        _sent_kr_style = "font-size:14px;color:#ccddbb;font-weight:700;" if not _has_meaning else "font-size:13px;color:#aaccbb;"
-                        _kr_line = f'<div style="{_sent_kr_style}line-height:1.65;margin-top:8px;padding-top:8px;border-top:1px solid #1a3020;">{_sent_kr}</div>'
-                    elif _has_meaning:
-                        _kr_line = f'<div style="font-size:12px;color:#557766;margin-top:8px;">💡 <span style="color:#ffee55;font-weight:700;">{_word}</span> = <span style="color:#ddeecc;font-weight:700;">{_kr}</span></div>'
+                        _kr_line += f'<div style="font-size:13px;color:#aaccbb;font-weight:700;line-height:1.6;margin-top:5px;padding-top:5px;border-top:1px solid #1a3020;">🇰🇷 {_sent_kr}</div>'
                     _sent_block = (
                         f'<div style="background:#08100a;border:1.5px solid #1a3020;border-radius:14px;'
                         f'padding:14px;margin:10px 0 6px;text-align:left;">'
@@ -2056,7 +2061,7 @@ div[data-testid="stButton"] button p{color:#c0c8e0!important;font-size:0.9rem!im
                   <div style="font-size:11px;color:#335544;margin-top:5px;">
                     {_streak}/3 STREAK · {'다음엔 석방!' if _streak==2 else '한 번 더!' if _streak==1 else '첫 정답 도전!'}</div>
                 </div>
-                """, height=310 if _sent else 240)
+                """, height=260 if _sent else 200)
 
                 _c1,_c2=st.columns(2)
                 with _c1:
