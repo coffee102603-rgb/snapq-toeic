@@ -1729,6 +1729,12 @@ elif st.session_state.sg_phase == "combo_result":
 # ════════════════════════════════════════
 # PHASE: WORD_PRISON — 극적인 심문실
 # ════════════════════════════════════════
+# ════════════════════════════════════════
+# PHASE: WORD_PRISON — 극적인 심문실
+# ════════════════════════════════════════
+# ════════════════════════════════════════
+# PHASE: WORD_PRISON — 극적인 심문실
+# ════════════════════════════════════════
 elif st.session_state.sg_phase == "word_prison":
     import datetime as _pr_dt2, random as _pr_random
 
@@ -1854,45 +1860,16 @@ div[data-testid="stButton"] button p{color:#c0c8e0!important;font-size:0.9rem!im
     }
 
     def _lemma(w):
-        """단어 원형 복원: members→member, policies→policy, founded→found"""
-        import re as _re_l
+        """단어 원형 복원: 안전한 패턴만 처리"""
         w = w.strip()
-        if not w or " " in w: return w  # 구문은 그대로
+        if not w or " " in w: return w
         lw = w.lower()
-        # 불규칙 → 그대로 유지 (already base form)
-        irreg_ok = {"have","make","take","give","find","build","hold","lead",
-                    "meet","run","see","sell","send","set","show","speak","spend",
-                    "stand","teach","tell","think","understand","write"}
-        if lw in irreg_ok: return lw
-        # ies → y  (policies→policy, companies→company)
-        if lw.endswith("ies") and len(lw) > 4:
-            return lw[:-3] + "y"
-        # ves → f  (leaves→leaf) - 간단 처리
-        if lw.endswith("ves") and len(lw) > 4:
-            return lw[:-3] + "f"
-        # ed → 원형 (founded→found, approved→approve)
-        if lw.endswith("ed") and len(lw) > 4:
-            base = lw[:-2]
-            # 중복자음 제거 (planned→plan, stopped→stop)
-            if len(base) >= 3 and base[-1] == base[-2]:
-                base = base[:-1]
-            # 모음+d 패턴: approved→approve, announced→announce
-            elif len(base) >= 3 and base[-1] in "aeiou":
-                pass  # 그대로
-            # 자음으로 끝나면 e 복원 시도 (approv→approve)
-            elif len(base) >= 4 and base[-1] not in "aeiou" and base[-2] in "aeiou":
-                base = base + "e"
-            return base
-        # ing → 원형 (reviewing→review, planning→plan)
-        if lw.endswith("ing") and len(lw) > 5:
-            base = lw[:-3]
-            if len(base) >= 3 and base[-1] == base[-2]:
-                base = base[:-1]
-            if not base.endswith("e"):
-                base = base  # enhance→enhanc? 아니면 e 붙이기
-            return base
-        # s → 단수 (members→member, regulations→regulation)
-        if lw.endswith("s") and not lw.endswith("ss") and not lw.endswith("us") and len(lw) > 3:
+        # ies → y  (policies→policy)
+        if lw.endswith('ies') and len(lw) > 4: return lw[:-3] + 'y'
+        # s → 단수 (members→member)
+        if (lw.endswith('s') and len(lw) > 3
+                and not lw.endswith('ss') and not lw.endswith('us')
+                and not lw.endswith('ous') and not lw.endswith('ness')):
             return lw[:-1]
         return lw
 
@@ -2119,6 +2096,31 @@ div[data-testid="stButton"] button p{color:#c0c8e0!important;font-size:0.9rem!im
                 # 심문 멘트 = 클릭 버튼
                 st.markdown('<div id="btn-flip">', unsafe_allow_html=True)
                 if st.button(f"{_catchphrase}", key=f"wp_flip_{_idx}", use_container_width=True):
+                    # sent_kr 없으면 API로 번역 시도 후 저장
+                    if _sent and not _sent_kr:
+                        try:
+                            import streamlit as _st3, requests as _rtr, json as _jtr
+                            _api_key = _st3.secrets.get("ANTHROPIC_API_KEY","")
+                            if _api_key:
+                                _tr_resp = _rtr.post("https://api.anthropic.com/v1/messages",
+                                    headers={"Content-Type":"application/json","x-api-key":_api_key,
+                                             "anthropic-version":"2023-06-01"},
+                                    json={"model":"claude-haiku-4-5-20251001","max_tokens":100,
+                                          "messages":[{"role":"user","content":
+                                            f"다음 영어 문장을 자연스러운 한국어로만 번역해줘 (설명 없이): {_sent}"}]},
+                                    timeout=5)
+                                if _tr_resp.status_code == 200:
+                                    _tr_txt = _tr_resp.json().get("content",[{}])[0].get("text","").strip()
+                                    if _tr_txt:
+                                        _pr_st2 = load_storage()
+                                        for _pi2, _px in enumerate(_pr_st2.get("word_prison",[])):
+                                            if _px.get("sentence","") == _sent:
+                                                _pr_st2["word_prison"][_pi2]["sent_kr"] = _tr_txt
+                                        save_storage(_pr_st2)
+                                        # 현재 포로에도 즉시 반영
+                                        _p["sent_kr"] = _tr_txt
+                        except Exception:
+                            pass
                     st.session_state.wp_flipped=True; st.rerun()
                 st.markdown('</div>', unsafe_allow_html=True)
 
