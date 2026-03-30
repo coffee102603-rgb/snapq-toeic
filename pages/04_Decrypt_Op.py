@@ -1119,126 +1119,127 @@ elif st.session_state.p7_phase == "battle":
                 st.session_state.p7_type_guessed = False
                 st.session_state.p7_type_correct = None
 
-            # ══════════════════════════════════════════════════
-            # ★ cross_logs + p7_logs 저장 (논문 04 SSCI + 특허)
-            # ══════════════════════════════════════════════════
-            try:
-                _dt_p7 = __import__("datetime")
-                _today_p7 = _dt_p7.datetime.now().strftime("%Y-%m-%d")
-                _uid_p7   = st.session_state.get("nickname", "guest")
-                _cat_p7   = st.session_state.get("p7_cat", "unknown")
-                _tsec_p7  = st.session_state.get("p7_tsec", 80)
-
-                # 지문 고유 ID (카테고리 + 스텝)
-                _passage_id  = f"{_cat_p7}_step{step+1}"
-                # 이 지문에서 파생될 P5 문제 ID들 (expressions 기반)
-                _expressions = cur.get("expressions", [])
-                _derived_ids = [f"P5_from_{_cat_p7}_{e.get('expr','?').replace(' ','_')[:20]}"
-                                for e in _expressions]
-
-                # 세션 번호
-                if "p7_session_no" not in st.session_state:
-                    st.session_state.p7_session_no = 0
-
-                # 주차 계산
-                if "p7_start_date" not in st.session_state:
-                    st.session_state.p7_start_date = _today_p7
+                # ══════════════════════════════════════════════════
+                # ★ cross_logs + p7_logs 저장 (논문 04 SSCI + 특허)
+                # ══════════════════════════════════════════════════
                 try:
-                    _days_p7 = (_dt_p7.datetime.strptime(_today_p7, "%Y-%m-%d") -
-                                _dt_p7.datetime.strptime(st.session_state.p7_start_date, "%Y-%m-%d")).days
-                    _week_p7 = _days_p7 // 7 + 1
-                except:
-                    _week_p7 = 1
+                    _dt_p7 = __import__("datetime")
+                    _today_p7 = _dt_p7.datetime.now().strftime("%Y-%m-%d")
+                    _uid_p7   = st.session_state.get("nickname", "guest")
+                    _cat_p7   = st.session_state.get("p7_cat", "unknown")
+                    _tsec_p7  = st.session_state.get("p7_tsec", 80)
 
-                _st_p7 = load_storage()
+                    # 지문 고유 ID (카테고리 + 스텝)
+                    _passage_id  = f"{_cat_p7}_step{step+1}"
+                    # 이 지문에서 파생될 P5 문제 ID들 (expressions 기반)
+                    _expressions = cur.get("expressions", [])
+                    _derived_ids = [f"P5_from_{_cat_p7}_{e.get('expr','?').replace(' ','_')[:20]}"
+                                    for e in _expressions]
 
-                # ── A. cross_logs: P7→P5 크로스스킬 전이 (논문 04 핵심) ──
-                for _did in _derived_ids:
-                    _cl = {
-                        "user_id":          _uid_p7,
-                        "p7_passage_id":    _passage_id,
-                        "p7_category":      _cat_p7,
-                        "p7_step":          step + 1,
-                        "p7_q_type":        cur.get("q_type", "detail"),
-                        "p7_correct":       ok,
-                        "p7_session_date":  _today_p7,
-                        "p7_session_no":    st.session_state.p7_session_no,
-                        "derived_p5_id":    _did,
-                        "p5_correct":       None,   # P5 풀이 시 업데이트
-                        "p5_session_date":  None,
-                        "p7_first_exposed": True,
-                        "days_gap":         0,
-                        "week":             _week_p7,
-                        "timer_setting":    _tsec_p7,
-                        "timestamp":        _dt_p7.datetime.now().isoformat(),
+                    # 세션 번호
+                    if "p7_session_no" not in st.session_state:
+                        st.session_state.p7_session_no = 0
+
+                    # 주차 계산
+                    if "p7_start_date" not in st.session_state:
+                        st.session_state.p7_start_date = _today_p7
+                    try:
+                        _days_p7 = (_dt_p7.datetime.strptime(_today_p7, "%Y-%m-%d") -
+                                    _dt_p7.datetime.strptime(st.session_state.p7_start_date, "%Y-%m-%d")).days
+                        _week_p7 = _days_p7 // 7 + 1
+                    except:
+                        _week_p7 = 1
+
+                    _st_p7 = load_storage()
+
+                    # ── A. cross_logs: P7→P5 크로스스킬 전이 (논문 04 핵심) ──
+                    for _did in _derived_ids:
+                        _cl = {
+                            "user_id":          _uid_p7,
+                            "p7_passage_id":    _passage_id,
+                            "p7_category":      _cat_p7,
+                            "p7_step":          step + 1,
+                            "p7_q_type":        cur.get("q_type", "detail"),
+                            "p7_correct":       ok,
+                            "p7_session_date":  _today_p7,
+                            "p7_session_no":    st.session_state.p7_session_no,
+                            "derived_p5_id":    _did,
+                            "p5_correct":       None,   # P5 풀이 시 업데이트
+                            "p5_session_date":  None,
+                            "p7_first_exposed": True,
+                            "days_gap":         0,
+                            "week":             _week_p7,
+                            "timer_setting":    _tsec_p7,
+                            "timestamp":        _dt_p7.datetime.now().isoformat(),
+                        }
+                        if "cross_logs" not in _st_p7:
+                            _st_p7["cross_logs"] = []
+                        _st_p7["cross_logs"].append(_cl)
+
+                    # ── B. p7_logs: 세션 단계 기록 ──
+                    _p7l = {
+                        "user_id":       _uid_p7,
+                        "session_date":  _today_p7,
+                        "session_no":    st.session_state.p7_session_no,
+                        "category":      _cat_p7,
+                        "timer_setting": _tsec_p7,
+                        "step":          step + 1,
+                        "q_type":        cur.get("q_type", "detail"),
+                        "correct":       ok,
+                        "response_sec":  round(_step_t, 1),
+                        "week":          _week_p7,
+                        "timestamp":     _dt_p7.datetime.now().isoformat(),
                     }
-                    if "cross_logs" not in _st_p7:
-                        _st_p7["cross_logs"] = []
-                    _st_p7["cross_logs"].append(_cl)
+                    if "p7_logs" not in _st_p7:
+                        _st_p7["p7_logs"] = []
+                    _st_p7["p7_logs"].append(_p7l)
 
-                # ── B. p7_logs: 세션 단계 기록 ──
-                _p7l = {
-                    "user_id":       _uid_p7,
-                    "session_date":  _today_p7,
-                    "session_no":    st.session_state.p7_session_no,
-                    "category":      _cat_p7,
-                    "timer_setting": _tsec_p7,
-                    "step":          step + 1,
-                    "q_type":        cur.get("q_type", "detail"),
-                    "correct":       ok,
-                    "response_sec":  round(_step_t, 1),
-                    "week":          _week_p7,
-                    "timestamp":     _dt_p7.datetime.now().isoformat(),
-                }
-                if "p7_logs" not in _st_p7:
-                    _st_p7["p7_logs"] = []
-                _st_p7["p7_logs"].append(_p7l)
+                    # ZPD: LOST 시 종료 지점 기록
+                    if not ok:
+                        _st_p7.setdefault("zpd_logs", []).append({
+                            "user_id":        _uid_p7,
+                            "session_date":   _today_p7,
+                            "session_no":     st.session_state.p7_session_no,
+                            "arena":          "P7",
+                            "timer_setting":  _tsec_p7,
+                            "game_over_q_no": step + 1,
+                            "result":         "GAME_OVER",
+                            "max_q_reached":  step + 1,
+                            "week":           _week_p7,
+                            "timestamp":      _dt_p7.datetime.now().isoformat(),
+                        })
+                    elif step >= 2:
+                        _st_p7.setdefault("zpd_logs", []).append({
+                            "user_id":        _uid_p7,
+                            "session_date":   _today_p7,
+                            "session_no":     st.session_state.p7_session_no,
+                            "arena":          "P7",
+                            "timer_setting":  _tsec_p7,
+                            "game_over_q_no": None,
+                            "result":         "VICTORY",
+                            "max_q_reached":  3,
+                            "week":           _week_p7,
+                            "timestamp":      _dt_p7.datetime.now().isoformat(),
+                        })
+                        st.session_state.p7_session_no += 1
 
-                # ZPD: LOST 시 종료 지점 기록
+                    with open(STORAGE_FILE, "w", encoding="utf-8") as _fp7:
+                        json.dump(_st_p7, _fp7, ensure_ascii=False, indent=2)
+                except:
+                    pass
+
                 if not ok:
-                    _st_p7.setdefault("zpd_logs", []).append({
-                        "user_id":        _uid_p7,
-                        "session_date":   _today_p7,
-                        "session_no":     st.session_state.p7_session_no,
-                        "arena":          "P7",
-                        "timer_setting":  _tsec_p7,
-                        "game_over_q_no": step + 1,
-                        "result":         "GAME_OVER",
-                        "max_q_reached":  step + 1,
-                        "week":           _week_p7,
-                        "timestamp":      _dt_p7.datetime.now().isoformat(),
-                    })
-                elif step >= 2:
-                    _st_p7.setdefault("zpd_logs", []).append({
-                        "user_id":        _uid_p7,
-                        "session_date":   _today_p7,
-                        "session_no":     st.session_state.p7_session_no,
-                        "arena":          "P7",
-                        "timer_setting":  _tsec_p7,
-                        "game_over_q_no": None,
-                        "result":         "VICTORY",
-                        "max_q_reached":  3,
-                        "week":           _week_p7,
-                        "timestamp":      _dt_p7.datetime.now().isoformat(),
-                    })
-                    st.session_state.p7_session_no += 1
-
-                with open(STORAGE_FILE, "w", encoding="utf-8") as _fp7:
-                    json.dump(_st_p7, _fp7, ensure_ascii=False, indent=2)
-            except:
-                pass
-
-            if not ok:
-                try: save_research_record(build_research_record("lost"))
-                except: pass
-                st.session_state.p7_phase = "lost"; st.rerun()
-            if step >= 2:
-                try: save_research_record(build_research_record("victory"))
-                except: pass
-                st.session_state.p7_phase = "victory"; st.rerun()
-            else:
-                st.session_state.p7_step += 1
+                    try: save_research_record(build_research_record("lost"))
+                    except: pass
+                    st.session_state.p7_phase = "lost"; st.rerun()
+                if step >= 2:
+                    try: save_research_record(build_research_record("victory"))
+                    except: pass
+                    st.session_state.p7_phase = "victory"; st.rerun()
+                else:
+                    st.session_state.p7_step += 1
                 st.rerun()
+            st.markdown('</div>', unsafe_allow_html=True)
 
     components.html("""
     <script>
