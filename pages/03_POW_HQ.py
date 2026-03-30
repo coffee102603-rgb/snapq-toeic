@@ -1922,7 +1922,7 @@ div[data-testid="stButton"] button p{color:#c0c8e0!important;font-size:0.9rem!im
                         f'<div style="font-size:13px;color:#aabbd0;line-height:1.7;font-style:italic;">"{_sent_short}"</div>'
                         f'</div>'
                         f'<div style="font-size:11px;color:#4a5a6a;text-align:center;margin-bottom:8px;">'
-                        f'💡 이 문장에서 <span style="color:#ffcc44;font-weight:700;">{_word}</span> = {_kr}</div>'
+                        f'💡 이 문장에서 <span style="color:#ffee55;font-weight:900;font-size:13px;">{_word}</span> = <span style="color:#ffffff;font-weight:900;">{_kr if _kr != "?" else "(뜻 없음)"}</span></div>'
                     )
                 _dots2="".join([f'<span style="display:inline-block;width:24px;height:8px;border-radius:4px;margin:0 4px;background:{"#33cc55" if i<_streak else "#1e2a1e"};"></span>' for i in range(3)])
                 components.html(f"""
@@ -1934,10 +1934,13 @@ div[data-testid="stButton"] button p{color:#c0c8e0!important;font-size:0.9rem!im
                      border:2.5px solid #22cc55;border-radius:20px;padding:20px 16px;text-align:center;
                      box-shadow:inset 0 0 30px rgba(34,204,85,0.12),0 0 20px rgba(34,204,85,0.2);">
                   <div style="font-size:40px;margin-bottom:6px;filter:drop-shadow(0 0 8px #22cc5588);">{_ch}</div>
-                  <div style="font-family:'Orbitron',monospace;font-size:13px;color:#55aa77;
-                       letter-spacing:2px;margin-bottom:8px;">{_word}</div>
-                  <div style="font-size:34px;font-weight:900;color:#ffffff;
-                       text-shadow:0 0 20px #44ff8899,0 2px 4px #000;margin-bottom:4px;">{_kr}</div>
+                  <div style="font-family:'Orbitron',monospace;font-size:16px;color:#ffffff;
+                       letter-spacing:3px;margin-bottom:10px;font-weight:900;
+                       text-shadow:0 0 12px #44ff88cc,0 1px 3px #000;">{_word}</div>
+                  <div style="font-size:38px;font-weight:900;
+                       color:#{'#ffee55' if _kr=='?' else '#ffffff'};
+                       text-shadow:0 0 24px #44ff8899,0 2px 6px #000;
+                       margin-bottom:4px;">{_kr if _kr != '?' else '뜻 미등록'}</div>
                   {_sent_block}
                   <div style="display:flex;justify-content:center;gap:4px;margin-top:8px;">{_dots2}</div>
                   <div style="font-size:11px;color:#335544;margin-top:5px;">
