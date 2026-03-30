@@ -1040,7 +1040,17 @@ elif st.session_state.phase=="briefing":
 
     was_victory = st.session_state.sc >= 3
     if "br_idx" not in st.session_state: st.session_state.br_idx = 0
-    if "br_saved" not in st.session_state: st.session_state.br_saved = set()
+
+    # ── 새 게임이면 br_saved 초기화 ──
+    rqs_temp = st.session_state.get("round_qs", [])
+    _br_game_uid = rqs_temp[0].get("id","") if rqs_temp else ""
+    if st.session_state.get("_br_game_uid") != _br_game_uid:
+        st.session_state.br_saved = set()
+        st.session_state.br_idx   = 0
+        st.session_state["_br_game_uid"] = _br_game_uid
+    elif "br_saved" not in st.session_state:
+        st.session_state.br_saved = set()
+
     bi     = st.session_state.br_idx
     rqs    = st.session_state.round_qs
     rrs    = st.session_state.round_results
@@ -1136,37 +1146,37 @@ elif st.session_state.phase=="briefing":
             save_to_storage([item])
             # ── Claude API로 내용 핵심어 추출 → 단어 포로 수용소 ──
             try:
-                import datetime as _fdt, json as _jfp, requests as _rfp
+                import datetime as _fdt, json as _jfp, requests as _rfp, re as _rep
                 _fp_sent = q.get("text","").replace("_______", ans_clean)
                 _fp_kr   = q.get("kr","")
                 _fp_cat  = q.get("cat","")
-                # Claude API 호출
-                _prompt = f"""다음 토익 문장에서 내용 핵심어(동사구/명사구 2~3개)를 JSON으로 추출하세요.
-문장: {_fp_sent}
-한글해석: {_fp_kr}
-
-규칙:
-- 문장의 의미를 담는 내용어만 (문법 조동사/관사 제외)
-- 동사구: "comply with", "submit to" 등
-- 명사구: "safety training", "environmental regulation" 등
-- 각 단어/표현의 한글 뜻 포함
-
-반드시 JSON만 반환:
-[{{"word":"comply with","kr":"준수하다"}},{{"word":"environmental regulation","kr":"환경 규정"}}]"""
-                _resp = _rfp.post("https://api.anthropic.com/v1/messages",
-                    headers={"Content-Type":"application/json"},
-                    json={"model":"claude-haiku-4-5-20251001","max_tokens":200,
-                          "messages":[{"role":"user","content":_prompt}]},
-                    timeout=10)
+                _fp_exk  = q.get("exk","")
                 _words = []
-                if _resp.status_code == 200:
-                    _txt = _resp.json().get("content",[{}])[0].get("text","")
-                    try:
-                        _start = _txt.find("["); _end = _txt.rfind("]")+1
-                        if _start>=0 and _end>0:
-                            _words = _jfp.loads(_txt[_start:_end])
-                    except Exception:
-                        pass
+                # Claude API 호출
+                try:
+                    _prompt = (f"다음 토익 문장에서 내용 핵심어(동사구/명사구 2~3개)를 JSON으로만 반환하세요.\n"
+                               f"문장: {_fp_sent}\n한글해석: {_fp_kr}\n"
+                               f"규칙: 문장 의미를 담는 내용어만. 문법 조동사/관사 제외.\n"
+                               f'반드시 JSON만: [{{"word":"comply with","kr":"준수하다"}}]')
+                    _resp = _rfp.post("https://api.anthropic.com/v1/messages",
+                        headers={"Content-Type":"application/json"},
+                        json={"model":"claude-haiku-4-5-20251001","max_tokens":300,
+                              "messages":[{"role":"user","content":_prompt}]},
+                        timeout=8)
+                    if _resp.status_code == 200:
+                        _txt = _resp.json().get("content",[{}])[0].get("text","")
+                        _s = _txt.find("["); _e = _txt.rfind("]")+1
+                        if _s>=0 and _e>0:
+                            _words = _jfp.loads(_txt[_s:_e])
+                except Exception:
+                    pass
+                # API 실패 시 exk에서 "단어=뜻" 패턴 fallback 추출
+                if not _words and _fp_exk:
+                    for _m in _rep.finditer(r'([a-zA-Z][a-zA-Z\s]{1,30})=([^\!\,\.]+)', _fp_exk):
+                        _ww = _m.group(1).strip()
+                        _wkr = _m.group(2).strip()
+                        if len(_ww) >= 2:
+                            _words.append({"word":_ww,"kr":_wkr})
                 # word_prison에 저장
                 _fp_data = load_storage()
                 if "word_prison" not in _fp_data: _fp_data["word_prison"] = []
