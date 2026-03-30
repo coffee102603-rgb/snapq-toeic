@@ -1144,90 +1144,26 @@ elif st.session_state.phase=="briefing":
             item = {"id":q["id"],"text":q["text"],"ch":q["ch"],"a":q["a"],"ex":q.get("ex",""),
                     "exk":q.get("exk",""),"cat":q.get("cat",""),"kr":q.get("kr",""),"tp":q.get("tp","grammar")}
             save_to_storage([item])
-            # ── 핵심어 추출 → 단어 포로 수용소 (API 없이 항상 작동) ──
+            # ── 단어 패밀리 DB 스캔 → word_prison 자동 등록 ──
             try:
-                import datetime as _fdt, json as _jfp, re as _rep
+                import datetime as _fdt, sys as _sys2, os as _os2
+                _sys2.path.insert(0, _os2.path.dirname(__file__))
+                from _word_family_db import find_words_in_sentence as _find_words
                 _fp_sent = q.get("text","").replace("_______", ans_clean)
-                _fp_kr   = q.get("kr","")
                 _fp_cat  = q.get("cat","")
-                _fp_exk  = q.get("exk","")
-                _words = []
-                _is_vocab   = q.get("tp","grammar") == "vocab"
-
-                # 문법 기능어 목록 (저장 금지)
-                _GRAMMAR_STOP = {
-                    "is","are","was","were","be","been","being","have","has","had",
-                    "do","does","did","will","would","shall","should","may","might",
-                    "can","could","must","need","a","an","the","who","whom","whose",
-                    "which","that","it","its","not","only","having","both","either",
-                    "neither","each","every","all","this","these","those","had"
-                }
-
-                # 1순위: API 키 있으면 Claude API (가장 정확)
-                try:
-                    import streamlit as _st2
-                    _api_key = _st2.secrets.get("ANTHROPIC_API_KEY","")
-                    if _api_key:
-                        import requests as _rfp
-                        _prompt = (f"토익 문장의 내용 핵심어(동사구/명사구 2~3개)를 JSON으로만 반환. 문장: {_fp_sent} 해석: {_fp_kr} " +
-                                   'JSON만: [{"word":"comply with","kr":"준수하다"}]')
-                        _resp = _rfp.post("https://api.anthropic.com/v1/messages",
-                            headers={"Content-Type":"application/json","x-api-key":_api_key,
-                                     "anthropic-version":"2023-06-01"},
-                            json={"model":"claude-haiku-4-5-20251001","max_tokens":200,
-                                  "messages":[{"role":"user","content":_prompt}]},
-                            timeout=8)
-                        if _resp.status_code == 200:
-                            _txt = _resp.json().get("content",[{}])[0].get("text","")
-                            _s = _txt.find("["); _e = _txt.rfind("]")+1
-                            if _s>=0 and _e>0:
-                                _words = _jfp.loads(_txt[_s:_e])
-                except Exception:
-                    pass
-
-                # 2순위: exk에서 "단어=뜻" 패턴 추출 (문법 라벨 필터링)
-                _KR_GRAM_LABELS = {"복수","단수","수동태","능동태","주격","목적격","소유격",
-                                   "도치","가정법","분사","동명사","관계사","접속사","수일치",
-                                   "과거","현재","미래","완료","진행","원형","비교급","최상급"}
-                if not _words and _fp_exk:
-                    for _m in _rep.finditer(r'([A-Za-z][A-Za-z ]{1,25})=([^!,.]{2,20})', _fp_exk):
-                        _ww = _m.group(1).strip()
-                        _wkr = _m.group(2).strip()
-                        # 문법 라벨(복수, 단수 등)이 뜻으로 오면 제외
-                        _wkr_clean = _wkr.strip()
-                        _is_gram_label = any(lb in _wkr_clean for lb in _KR_GRAM_LABELS)
-                        if len(_ww) >= 2 and _ww.lower() not in _GRAMMAR_STOP and not _is_gram_label:
-                            _words.append({"word":_ww,"kr":_wkr_clean})
-
-                # 3순위: vocab → ans_clean / grammar → 문장 내 내용어 추출
-                if not _words:
-                    if _is_vocab:
-                        _words = [{"word": ans_clean, "kr": _fp_kr[:20] if _fp_kr else ""}]
-                    else:
-                        _SENT_STOP = {"which","their","there","these","those","would","could",
-                                      "should","might","where","while","after","before","until",
-                                      "since","about","under","above","along","among","between",
-                                      "through","during","having","being","given","other","every"}
-                        _sent_words = _rep.findall(r'[A-Za-z]{5,}', _fp_sent)
-                        for _sw in _sent_words:
-                            if _sw.lower() not in _SENT_STOP and _sw.lower() not in _GRAMMAR_STOP:
-                                # sent_kr(문장 한글해석)에서 단어 위치 기반 뜻 힌트 추출 불가
-                                # → kr은 비워두고 sent_kr로 표시
-                                _words.append({"word":_sw,"kr":""})
-                                if len(_words) >= 2: break
-
-                # word_prison에 저장
+                _matched = _find_words(_fp_sent, max_words=3)
                 _fp_data = load_storage()
                 if "word_prison" not in _fp_data: _fp_data["word_prison"] = []
                 _changed = False
-                for _w_item in _words:
-                    _w = _w_item.get("word","").strip()
-                    _w_kr = _w_item.get("kr","")
-                    if not _w or len(_w) < 2: continue
+                for _m in _matched:
+                    _w = _m["word"].strip()
+                    if not _w or len(_w) < 3: continue
                     if any(p.get("word","").lower()==_w.lower() for p in _fp_data["word_prison"]): continue
                     _fp_data["word_prison"].append({
                         "word":           _w,
-                        "kr":             _w_kr,
+                        "kr":             _m["kr"],
+                        "pos":            _m["pos"],
+                        "family_root":    _m["family_root"],
                         "source":         "P5",
                         "sentence":       _fp_sent,
                         "captured_date":  _fdt.datetime.now().strftime("%Y-%m-%d"),
@@ -1237,8 +1173,9 @@ elif st.session_state.phase=="briefing":
                     })
                     _changed = True
                 if _changed:
+                    import json as _jfp2
                     with open(STORAGE_FILE,"w",encoding="utf-8") as _ffp:
-                        _jfp.dump(_fp_data,_ffp,ensure_ascii=False,indent=2)
+                        _jfp2.dump(_fp_data,_ffp,ensure_ascii=False,indent=2)
             except Exception:
                 pass
             st.session_state.br_saved.add(bi)

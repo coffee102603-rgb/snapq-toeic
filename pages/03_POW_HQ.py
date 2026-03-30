@@ -1904,101 +1904,25 @@ div[data-testid="stButton"] button p{color:#c0c8e0!important;font-size:0.9rem!im
         if src == "P7":     return "👽","#00eedd","READING · 독해 포로"
         return "🦁","#ffbb44","VOCAB · 어휘 포로"
 
-    # ═══ 토익 단어 패밀리 DB (75개 핵심 단어군) ═══
-    _FAMILY_DB = {
-        "employ":     {"V":[("employ","고용하다")],"N":[("employee","직원"),("employer","고용주"),("employment","고용"),("unemployment","실업")],"ADJ":[("employed","고용된"),("unemployed","실직한")],"ADV":[]},
-        "apply":      {"V":[("apply","지원하다/적용하다")],"N":[("applicant","지원자"),("application","지원서/신청")],"ADJ":[("applicable","적용 가능한")],"ADV":[]},
-        "approve":    {"V":[("approve","승인하다"),("disapprove","반대하다")],"N":[("approval","승인")],"ADJ":[("approved","승인된")],"ADV":[]},
-        "require":    {"V":[("require","요구하다")],"N":[("requirement","요구사항")],"ADJ":[("required","필수의")],"ADV":[]},
-        "provide":    {"V":[("provide","제공하다")],"N":[("provision","제공"),("provider","제공자")],"ADJ":[],"ADV":[]},
-        "maintain":   {"V":[("maintain","유지하다")],"N":[("maintenance","유지/관리")],"ADJ":[],"ADV":[]},
-        "establish":  {"V":[("establish","설립하다")],"N":[("establishment","설립/기관")],"ADJ":[("established","확립된")],"ADV":[]},
-        "consider":   {"V":[("consider","고려하다")],"N":[("consideration","고려")],"ADJ":[("considerable","상당한"),("considerate","사려 깊은")],"ADV":[("considerably","상당히")]},
-        "complete":   {"V":[("complete","완료하다")],"N":[("completion","완료")],"ADJ":[("complete","완전한")],"ADV":[("completely","완전히")]},
-        "notify":     {"V":[("notify","통지하다")],"N":[("notification","통지")],"ADJ":[],"ADV":[]},
-        "indicate":   {"V":[("indicate","나타내다")],"N":[("indication","표시"),("indicator","지표")],"ADJ":[("indicative","나타내는")],"ADV":[]},
-        "announce":   {"V":[("announce","발표하다")],"N":[("announcement","발표")],"ADJ":[],"ADV":[]},
-        "confirm":    {"V":[("confirm","확인하다")],"N":[("confirmation","확인")],"ADJ":[("confirmed","확인된")],"ADV":[]},
-        "manage":     {"V":[("manage","관리하다")],"N":[("manager","관리자"),("management","관리")],"ADJ":[("managerial","관리의")],"ADV":[]},
-        "promote":    {"V":[("promote","홍보하다/승진시키다")],"N":[("promotion","홍보/승진"),("promoter","홍보자")],"ADJ":[("promotional","홍보의")],"ADV":[]},
-        "submit":     {"V":[("submit","제출하다")],"N":[("submission","제출")],"ADJ":[("submitted","제출된")],"ADV":[]},
-        "conduct":    {"V":[("conduct","수행하다")],"N":[("conduct","행동"),("conductor","지휘자")],"ADJ":[],"ADV":[]},
-        "operate":    {"V":[("operate","운영하다")],"N":[("operation","운영"),("operator","운영자")],"ADJ":[("operational","운영의")],"ADV":[]},
-        "evaluate":   {"V":[("evaluate","평가하다")],"N":[("evaluation","평가")],"ADJ":[],"ADV":[]},
-        "distribute": {"V":[("distribute","배포하다")],"N":[("distribution","배포"),("distributor","배포자")],"ADJ":[],"ADV":[]},
-        "organize":   {"V":[("organize","조직하다")],"N":[("organization","조직"),("organizer","주최자")],"ADJ":[("organizational","조직의")],"ADV":[]},
-        "implement":  {"V":[("implement","시행하다")],"N":[("implementation","시행")],"ADJ":[],"ADV":[]},
-        "participate":{"V":[("participate","참가하다")],"N":[("participation","참가"),("participant","참가자")],"ADJ":[],"ADV":[]},
-        "contribute": {"V":[("contribute","기여하다")],"N":[("contribution","기여"),("contributor","기여자")],"ADJ":[],"ADV":[]},
-        "negotiate":  {"V":[("negotiate","협상하다")],"N":[("negotiation","협상"),("negotiator","협상가")],"ADJ":[],"ADV":[]},
-        "inspect":    {"V":[("inspect","검사하다")],"N":[("inspection","검사"),("inspector","검사관")],"ADJ":[],"ADV":[]},
-        "transfer":   {"V":[("transfer","이전하다")],"N":[("transfer","이전")],"ADJ":[("transferable","이전 가능한")],"ADV":[]},
-        "renovate":   {"V":[("renovate","개조하다")],"N":[("renovation","개조")],"ADJ":[],"ADV":[]},
-        "retire":     {"V":[("retire","은퇴하다")],"N":[("retirement","은퇴"),("retiree","은퇴자")],"ADJ":[("retired","은퇴한")],"ADV":[]},
-        "reduce":     {"V":[("reduce","줄이다")],"N":[("reduction","감소")],"ADJ":[],"ADV":[]},
-        "increase":   {"V":[("increase","증가시키다")],"N":[("increase","증가")],"ADJ":[("increased","증가된")],"ADV":[]},
-        "respond":    {"V":[("respond","응답하다")],"N":[("response","응답"),("responsibility","책임")],"ADJ":[("responsible","책임 있는"),("responsive","반응하는")],"ADV":[("responsibly","책임감 있게")]},
-        "train":      {"V":[("train","교육하다")],"N":[("training","교육"),("trainer","강사"),("trainee","교육생")],"ADJ":[],"ADV":[]},
-        "produce":    {"V":[("produce","생산하다")],"N":[("production","생산"),("producer","생산자"),("product","제품"),("productivity","생산성")],"ADJ":[("productive","생산적인")],"ADV":[("productively","생산적으로")]},
-        "achieve":    {"V":[("achieve","달성하다")],"N":[("achievement","업적/달성")],"ADJ":[],"ADV":[]},
-        "develop":    {"V":[("develop","개발하다")],"N":[("development","개발"),("developer","개발자")],"ADJ":[("developed","선진의"),("developing","개발 중인")],"ADV":[]},
-        "invest":     {"V":[("invest","투자하다")],"N":[("investment","투자"),("investor","투자자")],"ADJ":[],"ADV":[]},
-        "expand":     {"V":[("expand","확장하다")],"N":[("expansion","확장")],"ADJ":[("expandable","확장 가능한")],"ADV":[]},
-        "register":   {"V":[("register","등록하다")],"N":[("registration","등록"),("registrant","등록자")],"ADJ":[],"ADV":[]},
-        "attend":     {"V":[("attend","참석하다")],"N":[("attendance","참석"),("attendee","참석자"),("attendant","안내원")],"ADJ":[],"ADV":[]},
-        "assist":     {"V":[("assist","도와주다")],"N":[("assistance","도움"),("assistant","보조")],"ADJ":[],"ADV":[]},
-        "supervise":  {"V":[("supervise","감독하다")],"N":[("supervisor","감독자"),("supervision","감독")],"ADJ":[("supervisory","감독의")],"ADV":[]},
-        "authorize":  {"V":[("authorize","승인하다")],"N":[("authorization","승인")],"ADJ":[("authorized","승인된")],"ADV":[]},
-        "inform":     {"V":[("inform","알리다")],"N":[("information","정보")],"ADJ":[("informative","유익한")],"ADV":[]},
-        "qualify":    {"V":[("qualify","자격 갖추다")],"N":[("qualification","자격"),("qualifier","예선")],"ADJ":[("qualified","자격 있는")],"ADV":[]},
-        "specify":    {"V":[("specify","명시하다")],"N":[("specification","사양/명세")],"ADJ":[("specific","특정한")],"ADV":[("specifically","특히")]},
-        "select":     {"V":[("select","선택하다")],"N":[("selection","선택")],"ADJ":[("selective","선택적인")],"ADV":[]},
-        "present":    {"V":[("present","발표하다")],"N":[("presentation","발표"),("presenter","발표자")],"ADJ":[("present","현재의")],"ADV":[("presently","현재")]},
-        "replace":    {"V":[("replace","교체하다")],"N":[("replacement","교체")],"ADJ":[],"ADV":[]},
-        "extend":     {"V":[("extend","연장하다")],"N":[("extension","연장")],"ADJ":[("extensive","광범위한")],"ADV":[("extensively","광범위하게")]},
-        "comply":     {"V":[("comply","준수하다")],"N":[("compliance","준수")],"ADJ":[("compliant","순응하는")],"ADV":[]},
-        "enhance":    {"V":[("enhance","향상시키다")],"N":[("enhancement","향상")],"ADJ":[],"ADV":[]},
-        "acquire":    {"V":[("acquire","취득하다")],"N":[("acquisition","취득")],"ADJ":[],"ADV":[]},
-        "launch":     {"V":[("launch","출시하다")],"N":[("launch","출시")],"ADJ":[],"ADV":[]},
-        "schedule":   {"V":[("schedule","일정 잡다")],"N":[("schedule","일정")],"ADJ":[("scheduled","예정된")],"ADV":[]},
-        "access":     {"V":[("access","접근하다")],"N":[("access","접근")],"ADJ":[("accessible","접근 가능한")],"ADV":[]},
-        "coordinate": {"V":[("coordinate","조율하다")],"N":[("coordination","조율"),("coordinator","조율자")],"ADJ":[],"ADV":[]},
-        "assign":     {"V":[("assign","배정하다")],"N":[("assignment","과제/배정")],"ADJ":[],"ADV":[]},
-        "facilitate": {"V":[("facilitate","촉진하다")],"N":[("facilitation","촉진"),("facility","시설")],"ADJ":[],"ADV":[]},
-        "process":    {"V":[("process","처리하다")],"N":[("process","과정"),("processing","처리")],"ADJ":[],"ADV":[]},
-        "review":     {"V":[("review","검토하다")],"N":[("review","검토"),("reviewer","검토자")],"ADJ":[],"ADV":[]},
-        "advance":    {"V":[("advance","진전하다")],"N":[("advance","진전"),("advancement","발전")],"ADJ":[("advanced","고급의")],"ADV":[]},
-        "purchase":   {"V":[("purchase","구매하다")],"N":[("purchase","구매"),("purchaser","구매자")],"ADJ":[],"ADV":[]},
-        "improve":    {"V":[("improve","개선하다")],"N":[("improvement","개선")],"ADJ":[("improved","개선된")],"ADV":[]},
-        "announce":   {"V":[("announce","발표하다")],"N":[("announcement","발표")],"ADJ":[],"ADV":[]},
-        "request":    {"V":[("request","요청하다")],"N":[("request","요청")],"ADJ":[],"ADV":[]},
-        "contact":    {"V":[("contact","연락하다")],"N":[("contact","연락"),("contractor","계약자")],"ADJ":[],"ADV":[]},
-        "recruit":    {"V":[("recruit","채용하다")],"N":[("recruitment","채용"),("recruiter","채용 담당자")],"ADJ":[],"ADV":[]},
-        "allocate":   {"V":[("allocate","배분하다")],"N":[("allocation","배분")],"ADJ":[],"ADV":[]},
-        "revise":     {"V":[("revise","수정하다")],"N":[("revision","수정")],"ADJ":[("revised","수정된")],"ADV":[]},
-        "exceed":     {"V":[("exceed","초과하다")],"N":[("excess","초과")],"ADJ":[("excessive","과도한")],"ADV":[("excessively","과도하게")]},
-        "accept":     {"V":[("accept","수락하다")],"N":[("acceptance","수락")],"ADJ":[("acceptable","수락 가능한")],"ADV":[("acceptably","허용 가능하게")]},
-        "permit":     {"V":[("permit","허가하다")],"N":[("permit","허가증"),("permission","허가")],"ADJ":[("permissible","허용 가능한")],"ADV":[]},
-        "install":    {"V":[("install","설치하다")],"N":[("installation","설치")],"ADJ":[],"ADV":[]},
-        "deliver":    {"V":[("deliver","배송하다")],"N":[("delivery","배송")],"ADJ":[],"ADV":[]},
-        "estimate":   {"V":[("estimate","추정하다")],"N":[("estimate","견적"),("estimation","추정")],"ADJ":[],"ADV":[]},
-    }
-    # word → root 역방향 매핑 자동 생성
-    _ROOT_MAP = {}
-    for _rt, _fm in _FAMILY_DB.items():
-        _ROOT_MAP[_rt] = _rt
-        for _pl in _fm.values():
-            for _ww, _ in _pl:
-                _ROOT_MAP[_ww.lower()] = _rt
+    # ═══ 공유 단어 패밀리 DB import ═══
+    import sys as _wp_sys, os as _wp_os
+    _wp_sys.path.insert(0, _wp_os.path.dirname(__file__))
+    try:
+        from _word_family_db import get_family as _get_family_db, FAMILY_DB as _FAMILY_DB_EXT, lookup as _wp_lookup
+        def _get_family(word, raw_word=""):
+            """단어 패밀리 반환 — 공유 DB 사용"""
+            for _w in [word, raw_word, _lemma(word)]:
+                if not _w: continue
+                fam = _get_family_db(_w)
+                if fam: return fam
+            return {}
+    except Exception:
+        # fallback: DB import 실패 시 빈 함수
+        def _get_family(word, raw_word=""):
+            return {}
 
-    def _get_family(word, raw_word=""):
-        """단어 패밀리 반환 — 없으면 {}"""
-        for _w in [word.lower(), (raw_word.lower() if raw_word else ""), _lemma(word).lower()]:
-            if not _w: continue
-            _r = _ROOT_MAP.get(_w)
-            if _r: return _FAMILY_DB[_r]
-        return {}
-
+    # ★ word_prison 진입 감지: _wp_guard=False면 외부에서 새로 진입 → lobby 강제
+    # 나갈 때 _wp_guard=False 설정, 들어올 때 True로 잠금 → 재진입시 항상 로비
     # ★ word_prison 진입 감지: _wp_guard=False면 외부에서 새로 진입 → lobby 강제
     # 나갈 때 _wp_guard=False 설정, 들어올 때 True로 잠금 → 재진입시 항상 로비
     if not st.session_state.get("_wp_guard", False):

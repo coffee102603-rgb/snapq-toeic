@@ -1641,22 +1641,25 @@ div[data-testid="stButton"] button.br-home p{color:#3d5066!important;}
                 sent_data["kr"] = sent_kr
                 # 1. 문장 → 포로사령부 (saved_expressions)
                 save_expressions(_sent_exprs, step_data=sent_data)
-                # 2. 이 문장의 핵심 표현 → 단어 수용소 (word_prison)
+                # 2. 문장 핵심 단어 → word_prison (DB 스캔)
                 try:
+                    import sys as _sys4, os as _os4, datetime as _bdt
+                    _sys4.path.insert(0, _os4.path.dirname(__file__))
+                    from _word_family_db import find_words_in_sentence as _find_w
                     _storage_br = load_storage()
                     if "word_prison" not in _storage_br: _storage_br["word_prison"] = []
-                    import datetime as _bdt
                     _cat_br = st.session_state.get("p7_cat", "P7")
-                    for _ex in _sent_exprs:
-                        _w = _ex.get("expr", "").strip()
-                        _w_kr = _ex.get("expr_kr", "") or _ex.get("kr", "")
-                        if not _w or len(_w) < 2: continue
-                        # 중복 체크
-                        if any(p.get("word","").lower() == _w.lower() for p in _storage_br["word_prison"]):
-                            continue
+                    _matched_br = _find_w(sent, max_words=3)
+                    _br_changed = False
+                    for _m in _matched_br:
+                        _w = _m["word"].strip()
+                        if not _w or len(_w) < 3: continue
+                        if any(p.get("word","").lower()==_w.lower() for p in _storage_br["word_prison"]): continue
                         _storage_br["word_prison"].append({
                             "word":           _w,
-                            "kr":             _w_kr,
+                            "kr":             _m["kr"],
+                            "pos":            _m["pos"],
+                            "family_root":    _m["family_root"],
                             "source":         "P7",
                             "sentence":       sent,
                             "sent_kr":        sent_kr,
@@ -1665,7 +1668,9 @@ div[data-testid="stButton"] button.br-home p{color:#3d5066!important;}
                             "last_reviewed":  None,
                             "cat":            _cat_br,
                         })
-                    save_storage(_storage_br)
+                        _br_changed = True
+                    if _br_changed:
+                        save_storage(_storage_br)
                 except Exception:
                     pass
                 st.session_state[sent_key] = True
