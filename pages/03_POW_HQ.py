@@ -512,7 +512,7 @@ if st.session_state.sg_phase == "lobby":
         with _c1:
             st.markdown(f'''<div style="background:#081a14;border:2px solid #22cc88;border-top:none;border-radius:0 12px 12px 12px;padding:12px 14px;min-height:82px;">
                 <div style="font-size:1.05rem;font-weight:900;color:#ffffff;letter-spacing:1px;">🗡️ 오답 격파</div>
-                <div style="font-size:0.9rem;color:#55ffbb;margin-top:5px;font-weight:700;">틀린 문제만 골라 완전히 내 것으로!</div>
+                <div style="font-size:0.9rem;color:#55ffbb;margin-top:5px;font-weight:700;">틀린 문제만 골라<br>완전히 내 것으로!</div>
                 <div style="font-size:0.78rem;color:#aaa;margin-top:3px;">{len(p5_data)}문제 · 해설 · 정답 확인</div>
             </div>''', unsafe_allow_html=True)
         with _c2:
@@ -531,7 +531,7 @@ if st.session_state.sg_phase == "lobby":
         with _c3:
             st.markdown(f'''<div style="background:#1a0800;border:2px solid #ff8800;border-top:none;border-radius:0 12px 12px 12px;padding:12px 14px;min-height:82px;">
                 <div style="font-size:1.05rem;font-weight:900;color:#ffffff;letter-spacing:1px;">5문제 생존전투!</div>
-                <div style="font-size:0.9rem;color:#ffdd66;margin-top:5px;font-weight:700;">못 맞추면 💥 폭파 — 살아남아라!</div>
+                <div style="font-size:0.9rem;color:#ffdd66;margin-top:5px;font-weight:700;">못 맞추면 💥 폭파 —<br>살아남아라!</div>
                 <div style="font-size:0.78rem;color:#aaa;margin-top:3px;">3개 이상 → 생존 · 최고 {p5_rate}</div>
             </div>''', unsafe_allow_html=True)
         with _c4:
@@ -603,7 +603,7 @@ if st.session_state.sg_phase == "lobby":
             st.markdown(f'''<div style="background:#1a0800;border:2px solid #ff8800;border-top:none;border-radius:0 12px 12px 12px;padding:12px 14px;min-height:90px;">
                 <div style="font-size:1.05rem;font-weight:900;color:#ffffff;">5문제 생존전투!</div>
                 <div style="font-size:0.9rem;color:#ffdd66;margin-top:5px;font-weight:700;">문장 속 빈칸 — 33초 안에 맞춰라!</div>
-                <div style="font-size:0.82rem;color:#ffcc88;margin-top:3px;font-weight:600;">못 맞추면 💥 폭파 — 살아남아라!</div>
+                <div style="font-size:0.82rem;color:#ffcc88;margin-top:3px;font-weight:600;">못 맞추면 💥 폭파 —<br>살아남아라!</div>
                 <div style="font-size:0.72rem;color:#888;margin-top:2px;">3개 이상 → 생존 · 최고 {combo_label}</div>
             </div>''', unsafe_allow_html=True)
         with _p7c4:
