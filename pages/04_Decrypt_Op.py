@@ -733,9 +733,9 @@ div[data-testid="stButton"] button.p7art{
 div[data-testid="stButton"] button.p7art p{color:#33aa66!important;}
 div[data-testid="stButton"] button.p7art.p7sel{
   background:#081a10!important;border-color:#00cc66!important;border-width:2px!important;
-  color:#00ff88!important;box-shadow:0 0 20px rgba(0,204,102,0.5)!important;
+  color:#00ccee!important;box-shadow:0 0 20px rgba(0,200,238,0.5)!important;
 }
-div[data-testid="stButton"] button.p7art.p7sel p{color:#00ff88!important;}
+div[data-testid="stButton"] button.p7art.p7sel p{color:#00ccee!important;}
 
 /* CIPHER LV.2 노랑 */
 div[data-testid="stButton"] button.p7let{
@@ -863,7 +863,7 @@ div[data-testid="stButton"] button.p7nav:hover{
     st.markdown('<div style="height:1px;background:#0e0e1e;margin:4px 0 3px;"></div>', unsafe_allow_html=True)
     nc1, nc2 = st.columns(2)
     with nc1:
-        if st.button("💀 포로사령부", key="p7nav1", use_container_width=True):
+        if st.button("💀  사령부 귀환", key="p7nav1", use_container_width=True):
             st.switch_page("pages/03_POW_HQ.py")
     with nc2:
         if st.button("🏠 홈", key="p7nav2", use_container_width=True):
@@ -975,8 +975,8 @@ elif st.session_state.p7_phase == "battle":
     #btn-p7b div[data-testid="stButton"] button p{color:#00ccee!important;}
     #btn-p7c div[data-testid="stButton"] button{border-left:4px solid #FF2D55!important;background:#140008!important;color:#ee4466!important;}
     #btn-p7c div[data-testid="stButton"] button p{color:#ee4466!important;}
-    #btn-p7d div[data-testid="stButton"] button{border-left:4px solid #44FF88!important;background:#001408!important;color:#44ee77!important;}
-    #btn-p7d div[data-testid="stButton"] button p{color:#44ee77!important;}
+    #btn-p7d div[data-testid="stButton"] button{border-left:4px solid #00ccee!important;background:#001520!important;color:#00ccee!important;}
+    #btn-p7d div[data-testid="stButton"] button p{color:#00ccee!important;}
     </style>""", unsafe_allow_html=True)
 
     data = st.session_state.p7_data
@@ -996,7 +996,7 @@ elif st.session_state.p7_phase == "battle":
         st.session_state.p7_phase = "lost"; st.rerun()
 
     pct = rem / total if total > 0 else 0
-    if pct > 0.6:   stage, bar_col = "safe",     "#44ff88"
+    if pct > 0.6:   stage, bar_col = "safe",     "#00ccee"
     elif pct > 0.3: stage, bar_col = "warn",     "#ffcc00"
     elif pct > 0.1: stage, bar_col = "danger",   "#ff4444"
     else:           stage, bar_col = "critical",  "#ff0000"
@@ -1022,7 +1022,7 @@ elif st.session_state.p7_phase == "battle":
         letter-spacing:3px;font-weight:700;">DECRYPT OP</div>
       <div style="display:flex;gap:8px;align-items:center;">
         <span style="background:#0a1808;border:1px solid #226633;border-radius:5px;
-          padding:2px 8px;font-size:9px;color:#44cc88;font-weight:700;">Q{step+1}/3</span>
+          padding:2px 8px;font-size:9px;color:#00ccee;font-weight:700;">Q{step+1}/3</span>
         <span style="font-size:11px;font-weight:700;">✅{correct_cnt} ❌{wrong_cnt}</span>
       </div>
     </div>""", unsafe_allow_html=True)
@@ -1080,7 +1080,7 @@ elif st.session_state.p7_phase == "battle":
         setInterval(function(){{
           r--;if(r<0)r=0;
           var p=r/t,pct=(p*100)+'%';
-          var c=p>0.6?'#44ff88':p>0.3?'#ffcc00':p>0.1?'#ff4444':'#ff0000';
+          var c=p>0.6?'#00ccee':p>0.3?'#ffcc00':p>0.1?'#ff4444':'#ff0000';
           lf.style.height=pct;
           lf.style.background='linear-gradient(to bottom,'+c+','+c+'88)';
           lf.style.boxShadow='0 0 6px '+c;
@@ -1103,7 +1103,7 @@ elif st.session_state.p7_phase == "battle":
 
     # 질문
     st.markdown(f'''<div style="background:#08090f;border:1px solid #1a2240;
-        border-left:3px solid #7799bb;border-radius:10px;
+        border-left:3px solid #00ccee;border-radius:10px;
         padding:7px 10px;margin:3px 0;">
       <span style="font-family:Orbitron,monospace;font-size:8px;color:#4466aa;
         font-weight:700;letter-spacing:2px;">[Q{step+1}] </span>
@@ -1257,7 +1257,7 @@ elif st.session_state.p7_phase == "battle":
         const doc=window.parent.document;
         const btns=doc.querySelectorAll('button[kind="primary"]');
         const colors=[
-            {bg:'#0f0f1e',bd:'1px solid #1a1a2a',bl:'4px solid #d4af37'},
+            {bg:'#0f0f1e',bd:'1px solid #1a1a2a',bl:'4px solid #00ccee'},
             {bg:'#0f0f1e',bd:'1px solid #1a1a2a',bl:'4px solid #9aa5b4'},
             {bg:'#0f0f1e',bd:'1px solid #1a1a2a',bl:'4px solid #50c878'},
             {bg:'#0f0f1e',bd:'1px solid #1a1a2a',bl:'4px solid #4488cc'}
@@ -1290,21 +1290,21 @@ elif st.session_state.p7_phase == "victory":
     st.markdown('''<div style="text-align:center;padding:1.2rem 0 0.5rem 0;">
         <div style="font-size:0.9rem;letter-spacing:4px;opacity:0.6;margin-bottom:6px;">💎 ⭐ ✨ 🏆 🌟 💫 💎</div>
         <div style="font-size:2.8rem;font-weight:900;color:#ffd700;letter-spacing:3px;text-shadow:0 0 30px #ffd700,0 0 60px #ff8800;">CLEAR!</div>
-        <div style="font-size:0.9rem;color:#d4af37;font-weight:600;letter-spacing:2px;margin-top:4px;">독해 전투 클리어!</div>
+        <div style="font-size:0.9rem;color:#00ccee;font-weight:600;letter-spacing:2px;margin-top:4px;">📡 암호해독 작전 클리어!</div>
     </div>''', unsafe_allow_html=True)
-    st.markdown(f'''<div style="background:#0c0c1e;border:1.5px solid #d4af37;border-left:4px solid #d4af37;border-radius:12px;padding:10px;text-align:center;margin:8px 0;">
+    st.markdown(f'''<div style="background:#0c0c1e;border:1.5px solid #00ccee;border-left:4px solid #00ccee;border-radius:12px;padding:10px;text-align:center;margin:8px 0;">
         <div style="font-size:0.75rem;color:#9aa5b4;margin-bottom:2px;">이번 결과</div>
-        <div style="font-size:1.5rem;font-weight:900;color:#d4af37;">✅ {_ok} / 3</div>
+        <div style="font-size:1.5rem;font-weight:900;color:#00ccee;">✅ {_ok} / 3</div>
     </div>''', unsafe_allow_html=True)
-    st.markdown('''<div style="background:#0a0800;border:1px solid #d4af37;border-radius:10px;padding:8px;text-align:center;margin-bottom:10px;">
-        <div style="font-size:0.82rem;color:#d4af37;font-weight:700;">⚡ 3번 반복하면 장기기억 전환율 3배!</div>
+    st.markdown('''<div style="background:#0a0800;border:1px solid #00ccee;border-radius:10px;padding:8px;text-align:center;margin-bottom:10px;">
+        <div style="font-size:0.82rem;color:#00ccee;font-weight:700;">⚡ 3번 반복하면 장기기억 전환율 3배!</div>
         <div style="font-size:0.72rem;color:#555;margin-top:2px;">지금 브리핑에서 핵심표현 무기로 장착하라!</div>
     </div>''', unsafe_allow_html=True)
     st.markdown('''<style>
     button[data-testid="stBaseButton-primary"]{
-        background:#0c0c00!important;border:2px solid #d4af37!important;
-        border-left:4px solid #d4af37!important;
-        color:#d4af37!important;font-size:1.1rem!important;font-weight:900!important;
+        background:#0c0c00!important;border:2px solid #00ccee!important;
+        border-left:4px solid #00ccee!important;
+        color:#00ccee!important;font-size:1.1rem!important;font-weight:900!important;
         min-height:48px!important;animation:none!important;
     }
     button[data-testid="stBaseButton-primary"] p{color:#ffd700!important;font-size:1.1rem!important;font-weight:900!important;}
@@ -1337,7 +1337,7 @@ elif st.session_state.p7_phase == "victory":
             if(btns[0]){
                 btns[0].style.setProperty('background','#0f0f1e','important');
                 btns[0].style.setProperty('border','1px solid #1a1a2a','important');
-                btns[0].style.setProperty('border-left','4px solid #d4af37','important');
+                btns[0].style.setProperty('border-left','4px solid #00ccee','important');
                 btns[0].style.setProperty('color','#e8e0cc','important');
                 btns[0].style.setProperty('animation','none','important');
             }
@@ -1518,11 +1518,11 @@ div[data-testid="stButton"] button.br-save-wrong p{color:#ff8855!important;font-
 
 /* 포로사령부 CTA */
 div[data-testid="stButton"] button.br-pow{
-  background:#0a0000!important;border:2px solid #ff4444!important;
-  border-radius:12px!important;color:#ff6644!important;
+  background:#0e0020!important;border:2px solid #8833ff!important;
+  border-radius:12px!important;color:#aa66ff!important;
   font-size:0.9rem!important;font-weight:900!important;min-height:48px!important;
 }
-div[data-testid="stButton"] button.br-pow p{color:#ff6644!important;font-size:0.9rem!important;font-weight:900!important;}
+div[data-testid="stButton"] button.br-pow p{color:#aa66ff!important;font-size:0.9rem!important;font-weight:900!important;}
 
 /* 홈 버튼 */
 div[data-testid="stButton"] button.br-home{
@@ -1534,10 +1534,10 @@ div[data-testid="stButton"] button.br-home p{color:#3d5066!important;}
 
     # ── 배너 ──
     if was_victory:
-        st.markdown(f'''<div style="background:#0c0c00;border:2px solid #FFD600;border-left:5px solid #FFD600;
+        st.markdown(f'''<div style="background:#001520;border:2px solid #00ccee;border-left:5px solid #00ccee;
             border-radius:10px;padding:9px 12px;">
           <div style="font-family:Orbitron,monospace;font-size:11px;font-weight:900;
-            color:#FFD600;letter-spacing:2px;">📡 OP.1 · MISSION COMPLETE</div>
+            color:#00ccee;letter-spacing:2px;">📡 OP.1 · MISSION COMPLETE</div>
           <div style="font-size:9px;color:#886600;margin-top:2px;letter-spacing:1px;">
             ✅ {ok_cnt} CAPTURED &nbsp;·&nbsp; ❌ {miss_cnt} MISSED &nbsp;·&nbsp; 📋 {data.get("title","")}</div>
         </div>''', unsafe_allow_html=True)
@@ -1576,7 +1576,7 @@ div[data-testid="stButton"] button.br-home p{color:#3d5066!important;}
     kr_sents = [x.strip() for x in _kr_tmp.split("|") if x.strip()]
 
     # ── 문제 + 정답 카드 ──
-    _q_border = "#44cc88" if ok else "#ff4466"
+    _q_border = "#00ccee" if ok else "#ff4466"
     st.markdown(f'''<div style="background:#06090f;border:1px solid #1a2240;
         border-left:3px solid {_q_border};border-radius:10px;padding:8px 10px;">
       <div style="font-size:8px;color:#334466;letter-spacing:2px;margin-bottom:4px;">[ Q{bi+1} ] RESULT</div>
@@ -1620,7 +1620,7 @@ div[data-testid="stButton"] button.br-home p{color:#3d5066!important;}
                 f'<div style="background:#04080a;border:1.5px solid rgba(0,150,100,0.25);border-left:4px solid #336644;border-radius:12px;padding:10px;opacity:0.85;">' +
                 f'<div style="font-size:13px;font-weight:800;color:#ddeeff;line-height:1.75;margin-bottom:5px;">{_hl}</div>' +
                 f'<div style="font-size:11px;color:#5a7a6a;margin-bottom:6px;">{sent_kr}</div>' +
-                '<span style="background:#0a1808;border:1px solid #226633;border-radius:6px;padding:2px 8px;font-size:8px;color:#44cc88;font-weight:700;">✅ 포로 등록 완료 · 포로사령부 대기중</span>' +
+                '<span style="background:#001520;border:1px solid #006688;border-radius:6px;padding:2px 8px;font-size:8px;color:#00ccee;font-weight:700;">✅ 포로 등록 완료 · 포로사령부 대기중</span>' +
                 '</div>',
                 unsafe_allow_html=True)
         else:
