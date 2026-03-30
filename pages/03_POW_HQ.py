@@ -703,59 +703,66 @@ elif st.session_state.sg_phase == "p5_study":
     if bi < 0: bi = 0
     q = p5_data[bi]
 
-    st.markdown('<div style="text-align:center;"><span style="font-size:1.5rem;font-weight:900;color:#44cc88;">📖 P5 학습모드</span></div>', unsafe_allow_html=True)
-
     ans = q["ch"][q["a"]]
     clean = ans.split(") ",1)[-1] if ") " in ans else ans
-    sent = q["text"].replace("_______", f'<span class="note-hl">{clean}</span>')
-    kr = q.get("kr","")
-    exk = q.get("exk","")
-    cat = q.get("cat","")
-
-    # 진행바
+    sent = q["text"].replace("_______", f'<span style="color:#00ffaa;font-weight:900;border-bottom:2px solid #00ffaa;padding:0 3px;text-shadow:0 0 8px rgba(0,255,170,0.6);">{clean}</span>')
+    kr   = q.get("kr","")
+    exk  = q.get("exk","")
+    cat  = q.get("cat","")
     _prog = int((bi / max(len(p5_data),1)) * 100)
-    st.markdown(f'''<div style="margin-bottom:6px;">
-        <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:3px;">
-            <span style="font-size:0.75rem;color:#4488ff;font-weight:700;">📖 P5 학습모드</span>
-            <span style="font-size:0.75rem;color:#4488ff;font-weight:700;">{bi+1}/{len(p5_data)}</span>
-        </div>
-        <div style="background:#1a1a2a;border-radius:3px;height:4px;">
-            <div style="background:#4488ff;height:4px;border-radius:3px;width:{_prog}%;"></div>
-        </div>
-    </div>''', unsafe_allow_html=True)
+    _rem  = len(p5_data) - bi - 1
 
-    # 카테고리 배지
-    st.markdown(f'<div style="text-align:right;margin-bottom:4px;"><span style="background:#1a0808;border:1.5px solid #cc3333;border-radius:20px;padding:3px 12px;font-size:0.75rem;font-weight:900;color:#ff8866;">{cat}</span></div>', unsafe_allow_html=True)
-
-    # 메인 카드 — 세련된 노트
-    st.markdown(f'''<div style="background:#fafaf2;border-radius:16px;padding:1.2rem 1rem 1rem 1.4rem;border:1.5px solid #d4d0b8;
-        background-image:repeating-linear-gradient(transparent,transparent 31px,#e8e4d0 31px,#e8e4d0 32px);
-        background-position:0 1.2rem;
-        border-left:4px solid #ffaaaa;
-        min-height:200px;">
-        <div style="font-size:1.1rem;font-weight:900;color:#111111;line-height:1.8;">{sent}</div>
-        <div style="border-top:1.5px dashed #ccc;margin:0.7rem 0;"></div>
-        <div style="font-size:0.95rem;font-weight:800;color:#222222;line-height:1.7;">📖 {kr}</div>
-        <div style="background:#fffbe8;border-left:4px solid #ccaa00;border-radius:0 8px 8px 0;padding:0.4rem 0.8rem;margin-top:0.5rem;">
-            <span style="font-size:0.88rem;font-weight:800;color:#664400;">💡 {exk}</span>
-        </div>
-    </div>''', unsafe_allow_html=True)
-
-    st.markdown('''<style>
+    st.markdown("""<style>
+    @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@700;900&display=swap');
     div[data-testid="stHorizontalBlock"] button{
-        animation:none!important;transform:none!important;box-shadow:none!important;
-        border:1.5px solid rgba(255,255,255,0.5)!important;
-        color:rgba(255,255,255,0.7)!important;
-        background:#111!important;
-        font-weight:400!important;
-        font-size:0.9rem!important;
+        animation:none!important;transform:none!important;
+        border:1.5px solid rgba(100,150,200,0.35)!important;
+        color:#4a6688!important;background:#07090f!important;
+        font-weight:700!important;font-size:0.88rem!important;
+        border-radius:10px!important;min-height:44px!important;
     }
     div[data-testid="stHorizontalBlock"] button p{
-        color:rgba(255,255,255,0.7)!important;
-        font-weight:400!important;
-        font-size:0.9rem!important;
+        color:#4a6688!important;font-weight:700!important;font-size:0.88rem!important;
     }
-    </style>''', unsafe_allow_html=True)
+    div[data-testid="stHorizontalBlock"] button:hover{
+        border-color:rgba(100,180,255,0.6)!important;color:#88aacc!important;
+    }
+    div[data-testid="stHorizontalBlock"] button:disabled{opacity:0.25!important;}
+    </style>""", unsafe_allow_html=True)
+
+    st.markdown(f'''<div style="text-align:center;padding:6px 0 4px;">
+      <div style="font-size:7px;color:#224433;letter-spacing:4px;margin-bottom:3px;font-weight:700;">POW HEADQUARTERS · INTEL FILE</div>
+      <div style="font-family:Orbitron,monospace;font-size:1.1rem;font-weight:900;color:#44cc88;letter-spacing:3px;">☠️ STUDY MODE · DEBRIEFING</div>
+    </div>''', unsafe_allow_html=True)
+
+    st.markdown(f'''<div style="margin:3px 0 6px;">
+      <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:4px;">
+        <span style="font-size:8px;color:#336655;letter-spacing:3px;font-weight:700;">PRISONER {bi+1} / {len(p5_data)}</span>
+        <span style="background:#0a1a10;border:1px solid #226633;border-radius:20px;
+          padding:2px 10px;font-size:8px;color:#44cc88;font-weight:700;letter-spacing:1px;">
+          ⚔ {_rem} 포로 대기중</span>
+      </div>
+      <div style="background:#0a0c10;border-radius:4px;height:7px;border:1px solid #112211;">
+        <div style="background:linear-gradient(90deg,#226633,#44cc88);height:5px;margin:1px;
+          border-radius:3px;width:{_prog}%;box-shadow:0 0 8px rgba(68,204,136,0.5);"></div>
+      </div>
+    </div>''', unsafe_allow_html=True)
+
+    st.markdown(f'''<div style="background:#06090f;border:1.5px solid rgba(0,212,150,0.35);
+        border-left:4px solid #00cc88;border-radius:14px;padding:14px 14px 12px;margin:3px 0;">
+      <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:10px;">
+        <span style="font-size:7px;color:#336655;letter-spacing:3px;font-weight:700;">◈ INTEL FILE #{bi+1:03d}</span>
+        <span style="background:#0a1808;border:1px solid #226633;border-radius:6px;
+          padding:2px 10px;font-size:8px;color:#44cc88;font-weight:900;letter-spacing:1px;">{cat}</span>
+      </div>
+      <div style="font-size:1.0rem;font-weight:900;color:#ddeeff;line-height:1.75;
+        margin-bottom:10px;word-break:keep-all;">{sent}</div>
+      <div style="height:1px;background:linear-gradient(90deg,#00cc88,transparent);margin:8px 0;opacity:0.3;"></div>
+      <div style="font-size:0.85rem;font-weight:600;color:#7a9a8a;line-height:1.65;margin-bottom:8px;">📖 {kr}</div>
+      <div style="background:#040d06;border-left:3px solid #44cc88;border-radius:0 8px 8px 0;padding:7px 10px;">
+        <span style="font-size:0.82rem;font-weight:700;color:#44cc88;">💡 {exk}</span>
+      </div>
+    </div>''', unsafe_allow_html=True)
 
     # 이전/삭제/다음 — 한 줄 (이전/다음 좁게)
     _rb1, _rb2, _rb3 = st.columns([0.85, 1, 0.85])
@@ -816,29 +823,21 @@ elif st.session_state.sg_phase == "p5_study":
             st.session_state.sg_idx = bi+1; st.rerun()
 
     # 시험 + 돌아가기
-    st.markdown('''<style>
-    div[data-testid="stHorizontalBlock"]:last-of-type button{
-        min-height:46px!important;
-        height:46px!important;
-    }
-    </style>''', unsafe_allow_html=True)
-    _rb4, _rb5 = st.columns([2, 1])
+    st.markdown("""<style>
+    .exam-btn div[data-testid="stButton"] button{
+        background:#1a0600!important;border:2px solid #ff6600!important;
+        border-radius:12px!important;color:#ff9944!important;
+        font-size:0.92rem!important;font-weight:900!important;min-height:50px!important;}
+    .exam-btn div[data-testid="stButton"] button p{color:#ff9944!important;font-size:0.92rem!important;font-weight:900!important;}
+    .back-btn div[data-testid="stButton"] button{
+        background:#05050e!important;border:1px solid #151525!important;
+        border-radius:10px!important;color:#3d5066!important;
+        font-size:0.82rem!important;min-height:44px!important;}
+    .back-btn div[data-testid="stButton"] button p{color:#3d5066!important;}
+    </style>""", unsafe_allow_html=True)
+    _rb4, _rb5 = st.columns([3, 1])
     with _rb4:
-        st.markdown('''<style>
-        div[data-testid="column"]:first-child button[data-testid="stBaseButton-secondary"]{
-            background:linear-gradient(135deg,#5a0800,#cc2200,#ff4400)!important;
-            border:3px solid #ff6600!important;
-            color:#ffffff!important;
-            font-size:1.05rem!important;
-            font-weight:900!important;
-            min-height:52px!important;
-            text-shadow:0 0 8px rgba(255,200,0,0.8)!important;
-            box-shadow:0 0 18px rgba(255,80,0,0.7),inset 0 0 10px rgba(255,150,0,0.2)!important;
-        }
-        div[data-testid="column"]:first-child button[data-testid="stBaseButton-secondary"] p{
-            color:#ffffff!important;font-size:1.05rem!important;font-weight:900!important;
-        }
-        </style>''', unsafe_allow_html=True)
+        st.markdown('<div class="exam-btn">', unsafe_allow_html=True)
         if st.button("🔥 시험 당장 도전!", key="go_exam", use_container_width=True):
             if len(p5_data) >= 5:
                 qs = random.sample(p5_data, 5)
@@ -849,10 +848,12 @@ elif st.session_state.sg_phase == "p5_study":
                 st.session_state.sg_exam_wrong = False
                 st.session_state.sg_phase = "p5_exam"; st.rerun()
             else: st.warning("최소 5문제 필요!")
+        st.markdown('</div>', unsafe_allow_html=True)
     with _rb5:
-        st.markdown('<div style="height:2px;"></div>', unsafe_allow_html=True)
+        st.markdown('<div class="back-btn">', unsafe_allow_html=True)
         if st.button("↩ 돌아가기", key="back_lobby", use_container_width=True):
             st.session_state.sg_phase = "lobby"; st.session_state.rv_battle = None; st.session_state.rv_mode = None; st.rerun()
+        st.markdown('</div>', unsafe_allow_html=True)
 
 # ════════════════════════════════
 # P5 시험모드 — 33초 타임폭탄
