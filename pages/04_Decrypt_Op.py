@@ -185,15 +185,15 @@ button[kind="secondary"]{background:#111111!important;color:#ffffff!important;bo
 button[kind="secondary"] p{font-size:1.2rem!important;font-weight:900!important;text-align:center!important;color:#ffffff!important;}
 
 /* P7 지문 카드 */
-.p7-pass{background:linear-gradient(145deg,#13112a,#1a1535);border:2px solid rgba(155,89,182,0.7);border-radius:18px;padding:1.5rem;margin:0.5rem 0;box-shadow:0 0 20px rgba(155,89,182,0.15);}
+.p7-pass{background:linear-gradient(145deg,#001a22,#002233);border:2px solid rgba(0,180,220,0.7);border-radius:18px;padding:1.5rem;margin:0.5rem 0;box-shadow:0 0 20px rgba(0,180,220,0.15);}
 .p7-sent{color:#e8e0cc;font-size:0.82rem;font-weight:400;line-height:1.55;}
 .p7-new{color:#9aa5b4;font-weight:400;font-size:0.82rem;}
-.p7-qbox{background:linear-gradient(145deg,#1e1040,#2a1555);border:2px solid rgba(155,89,182,0.8);border-radius:18px;padding:1.5rem;margin:0.5rem 0;box-shadow:0 0 15px rgba(155,89,182,0.2);}
+.p7-qbox{background:linear-gradient(145deg,#001822,#002a38);border:2px solid rgba(0,200,238,0.8);border-radius:18px;padding:1.5rem;margin:0.5rem 0;box-shadow:0 0 15px rgba(0,200,238,0.2);}
 .p7-q{color:#ffffff;font-size:clamp(0.85rem,3vw,1rem);font-weight:800;line-height:1.8;}
 
 /* 진행 표시 */
 .p7-step{text-align:center;font-size:1.2rem;font-weight:900;color:#44ffcc;margin:0.3rem 0;}
-#MainMenu{visibility:hidden!important;}olbar"]{visibility:hidden!important;}.block-container{padding-top:0!important;}.p7-hud{background:#000000;border:2px solid rgba(255,255,255,0.55);border-radius:14px;padding:0.8rem 1.2rem;margin:0.3rem 0;display:flex;justify-content:space-between;align-items:center;}
+#MainMenu{visibility:hidden!important;}olbar"]{visibility:hidden!important;}.block-container{padding-top:0!important;}.p7-hud{background:#000000;border:2px solid rgba(0,200,238,0.7);border-radius:14px;padding:0.8rem 1.2rem;margin:0.3rem 0;display:flex;justify-content:space-between;align-items:center;}
 .p7-hud-l{font-size:1.3rem;font-weight:900;color:#44ffcc;}
 .p7-hud-r{font-size:1.1rem;font-weight:800;color:#ffcc00;}
 
@@ -202,11 +202,11 @@ button[kind="secondary"] p{font-size:1.2rem!important;font-weight:900!important;
 .p7-br-s{font-size:2rem;font-weight:700;color:#1a1a1a;line-height:2;margin-bottom:0.8rem;}
 .p7-br-hl{color:#00aa88;font-weight:900;font-size:2.1rem;text-decoration:underline;text-underline-offset:5px;text-decoration-thickness:3px;}
 .p7-br-kr{font-size:1.5rem;font-weight:600;color:#333;line-height:1.7;margin-bottom:0.5rem;}
-.p7-br-ex{font-size:1.4rem;color:#444;line-height:1.6;padding:0.5rem 0.7rem;background:rgba(0,180,150,0.1);border-left:4px solid #00aa88;border-radius:0 10px 10px 0;}
+.p7-br-ex{font-size:1.4rem;color:#444;line-height:1.6;padding:0.5rem 0.7rem;background:rgba(0,180,150,0.1);border-left:4px solid #00ccee;border-radius:0 10px 10px 0;}
 
 /* VICTORY/LOST 배너 */
 .p7-ban{text-align:center;padding:3px 6px!important;border-radius:10px;margin:1px 0;font-size:0.85rem!important;font-weight:900;}
-.p7-ban-v{background:#000000;color:#fff;border:2px solid rgba(255,255,255,0.55);}
+.p7-ban-v{background:#000000;color:#fff;border:2px solid rgba(0,200,238,0.7);}
 .p7-ban-l{background:linear-gradient(135deg,#550000,#aa0000);color:#fff;border:2px solid rgba(255,255,255,0.55);}
 @media(max-width:768px){
 .block-container{padding-left:0.6rem!important;padding-right:0.6rem!important;}
@@ -1704,8 +1704,8 @@ div[data-testid="stButton"] button.br-home p{color:#3d5066!important;}
       if(!txt) return;
       if(txt.startsWith("Q") && (txt.indexOf("✅")>-1||txt.indexOf("❌")>-1||txt.match(/^Q\d/)))
         b.classList.add("br-qtab");
-      if(txt.indexOf("포로로 잡아라")>-1) b.classList.add("br-save");
-      if(txt.indexOf("오답 문장")>-1) b.classList.add("br-save-wrong");
+      if(txt.indexOf("증거 확보")>-1) b.classList.add("br-save");
+      if(txt.indexOf("오답 증거")>-1) b.classList.add("br-save-wrong");
       if(txt.indexOf("포로사령부!")>-1) b.classList.add("br-pow");
       if(txt.indexOf("홈")>-1 && txt.length<5) b.classList.add("br-home");
     }});
