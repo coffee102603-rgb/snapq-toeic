@@ -1144,39 +1144,49 @@ elif st.session_state.phase=="briefing":
             item = {"id":q["id"],"text":q["text"],"ch":q["ch"],"a":q["a"],"ex":q.get("ex",""),
                     "exk":q.get("exk",""),"cat":q.get("cat",""),"kr":q.get("kr",""),"tp":q.get("tp","grammar")}
             save_to_storage([item])
-            # ── Claude API로 내용 핵심어 추출 → 단어 포로 수용소 ──
+            # ── 핵심어 추출 → 단어 포로 수용소 (API 없이 항상 작동) ──
             try:
-                import datetime as _fdt, json as _jfp, requests as _rfp, re as _rep
+                import datetime as _fdt, json as _jfp, re as _rep
                 _fp_sent = q.get("text","").replace("_______", ans_clean)
                 _fp_kr   = q.get("kr","")
                 _fp_cat  = q.get("cat","")
                 _fp_exk  = q.get("exk","")
                 _words = []
-                # Claude API 호출
+
+                # 1순위: Streamlit secrets에 API 키 있으면 Claude API 사용
                 try:
-                    _prompt = (f"다음 토익 문장에서 내용 핵심어(동사구/명사구 2~3개)를 JSON으로만 반환하세요.\n"
-                               f"문장: {_fp_sent}\n한글해석: {_fp_kr}\n"
-                               f"규칙: 문장 의미를 담는 내용어만. 문법 조동사/관사 제외.\n"
-                               f'반드시 JSON만: [{{"word":"comply with","kr":"준수하다"}}]')
-                    _resp = _rfp.post("https://api.anthropic.com/v1/messages",
-                        headers={"Content-Type":"application/json"},
-                        json={"model":"claude-haiku-4-5-20251001","max_tokens":300,
-                              "messages":[{"role":"user","content":_prompt}]},
-                        timeout=8)
-                    if _resp.status_code == 200:
-                        _txt = _resp.json().get("content",[{}])[0].get("text","")
-                        _s = _txt.find("["); _e = _txt.rfind("]")+1
-                        if _s>=0 and _e>0:
-                            _words = _jfp.loads(_txt[_s:_e])
+                    import streamlit as _st2
+                    _api_key = _st2.secrets.get("ANTHROPIC_API_KEY","")
+                    if _api_key:
+                        import requests as _rfp
+                        _prompt = (f"토익 문장의 내용 핵심어(동사구/명사구 2~3개)를 JSON으로만 반환. 문장: {_fp_sent} 해석: {_fp_kr} " +
+                                   'JSON만: [{"word":"comply with","kr":"준수하다"}]')
+                        _resp = _rfp.post("https://api.anthropic.com/v1/messages",
+                            headers={"Content-Type":"application/json","x-api-key":_api_key,
+                                     "anthropic-version":"2023-06-01"},
+                            json={"model":"claude-haiku-4-5-20251001","max_tokens":200,
+                                  "messages":[{"role":"user","content":_prompt}]},
+                            timeout=8)
+                        if _resp.status_code == 200:
+                            _txt = _resp.json().get("content",[{}])[0].get("text","")
+                            _s = _txt.find("["); _e = _txt.rfind("]")+1
+                            if _s>=0 and _e>0:
+                                _words = _jfp.loads(_txt[_s:_e])
                 except Exception:
                     pass
-                # API 실패 시 exk에서 "단어=뜻" 패턴 fallback 추출
+
+                # 2순위: exk에서 "단어=뜻" 패턴 추출 (항상 작동)
                 if not _words and _fp_exk:
-                    for _m in _rep.finditer(r'([a-zA-Z][a-zA-Z\s]{1,30})=([^\!\,\.]+)', _fp_exk):
+                    for _m in _rep.finditer(r'([A-Za-z][A-Za-z ]{1,25})=([^!,.]{2,20})', _fp_exk):
                         _ww = _m.group(1).strip()
                         _wkr = _m.group(2).strip()
                         if len(_ww) >= 2:
                             _words.append({"word":_ww,"kr":_wkr})
+
+                # 3순위: ans_clean 자체를 저장 (항상 보장)
+                if not _words:
+                    _words = [{"word": ans_clean, "kr": _fp_kr[:20] if _fp_kr else ""}]
+
                 # word_prison에 저장
                 _fp_data = load_storage()
                 if "word_prison" not in _fp_data: _fp_data["word_prison"] = []
