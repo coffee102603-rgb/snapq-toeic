@@ -840,7 +840,7 @@ div[data-testid="stButton"] button.p7nav:hover{
             st.session_state.p7_cat="information"; st.rerun()
 
     # ── 생존 규칙 ──
-    st.markdown('<div style="text-align:center;padding:16px 0 3px;font-size:0.82rem;font-weight:900;color:#cc3333;letter-spacing:1px;">☠ 오판 1회 = 작전 종료 · 통신 두절 = 즉시 철수</div>', unsafe_allow_html=True)
+    st.markdown('<div style="text-align:center;padding:16px 0 3px;font-size:0.82rem;font-weight:900;color:#00ffcc;letter-spacing:1px;text-shadow:0 0 10px #00ffcc88;">☠ 오판 1회 = 작전 종료 · 통신 두절 = 즉시 철수</div>', unsafe_allow_html=True)
 
     # ── 출격 버튼 ──
     if _ready:
