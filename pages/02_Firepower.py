@@ -70,7 +70,7 @@ header[data-testid="stHeader"]{background:transparent!important;height:0!importa
 
 /* ── 타이틀 헤더 ── */
 .ah{text-align:center;padding:0;margin:0 0 2px 0;line-height:1;}
-.ah h1{font-family:'Orbitron',monospace!important;font-size:1.0rem;font-weight:900;margin:0;
+.ah h1{font-family:'Orbitron',monospace!important;font-size:0.85rem;font-weight:900;margin:0;
   background:linear-gradient(90deg,#00d4ff,#ffffff,#FFD600,#00d4ff);background-size:300%;
   -webkit-background-clip:text;-webkit-text-fill-color:transparent;
   animation:titleShine 2s linear infinite;letter-spacing:4px;}
@@ -92,27 +92,35 @@ header[data-testid="stHeader"]{background:transparent!important;height:0!importa
 .bq-g,.bq-v{color:#00d4ff;text-shadow:0 0 12px rgba(0,212,255,0.9);}
 .bs{font-family:'Orbitron',monospace;font-size:1.0rem;font-weight:800;color:#fff;}
 
-/* ── 라운드 도트 ── */
-.rd-dots{display:flex;justify-content:center;gap:0.5rem;}
-.rd-dot{width:24px;height:24px;border-radius:50%;border:2px solid #333;
+/* ── 라운드 도트 → 전투 프로그레스 pill ── */
+.rd-dots{display:flex;justify-content:center;gap:0.3rem;}
+.rd-dot{width:38px;height:22px;border-radius:5px;border:1.5px solid #1e2030;
   display:flex;align-items:center;justify-content:center;
-  font-size:0.72rem;font-weight:900;}
-.rd-cur{border-color:#00d4ff!important;color:#00d4ff!important;box-shadow:0 0 12px #00d4ff!important;animation:neonPulse 1s infinite;}
-.rd-ok{background:#00d4ff;border-color:#00d4ff;color:#000;}
+  font-size:0.62rem;font-weight:900;letter-spacing:0.5px;}
+.rd-cur{border-color:#00d4ff!important;color:#00d4ff!important;
+  box-shadow:0 0 10px rgba(0,212,255,0.6)!important;
+  background:rgba(0,212,255,0.08)!important;animation:neonPulse 1s infinite;}
+.rd-ok{background:#ff6600;border-color:#ff8800;color:#fff;}
 .rd-no{background:#ff2244;border-color:#ff2244;color:#fff;}
-.rd-wait{background:transparent;border-color:#333;color:#444;}
+.rd-wait{background:#0a0c18;border-color:#1e2030;color:#2a2a3a;}
 
 /* ── 문제 카드 ── */
-.qb{border-radius:12px;padding:0.35rem 0.6rem;margin:0.05rem 0;background:#0a0c18;}
-.qb-g{background:#080c18!important;border:2px solid rgba(0,212,255,0.5)!important;border-radius:12px!important;
-  box-shadow:0 0 20px rgba(0,212,255,0.08);}
-.qb-v{background:#08100c!important;border:2px solid rgba(0,180,100,0.4)!important;border-radius:12px!important;
-  box-shadow:0 0 20px rgba(0,180,100,0.06);}
-.qc{font-family:'Orbitron',monospace;font-size:0.65rem;font-weight:700;margin-bottom:2px;
-  letter-spacing:3px;color:#555!important;}
-.qc-g{color:#3388aa;}
-.qc-v{color:#2a8855;}
-.qt{font-family:'Rajdhani',sans-serif;color:#f0f0ff;font-size:0.95rem;font-weight:700;line-height:1.55;word-break:keep-all;}
+.qb{border-radius:14px;padding:0.55rem 0.75rem;margin:0.05rem 0;background:#080c1a;}
+.qb-g{background:#07091a!important;
+  border:1.5px solid rgba(0,212,255,0.35)!important;
+  border-left:4px solid rgba(0,212,255,0.75)!important;
+  border-radius:14px!important;
+  box-shadow:0 0 24px rgba(0,212,255,0.07);}
+.qb-v{background:#07100a!important;
+  border:1.5px solid rgba(0,190,100,0.35)!important;
+  border-left:4px solid rgba(0,190,100,0.75)!important;
+  border-radius:14px!important;
+  box-shadow:0 0 24px rgba(0,190,100,0.07);}
+.qc{font-family:'Orbitron',monospace;font-size:0.6rem;font-weight:700;margin-bottom:3px;
+  letter-spacing:3px;}
+.qc-g{color:#2288bb;}
+.qc-v{color:#228855;}
+.qt{font-family:'Rajdhani',sans-serif;color:#eeeeff;font-size:0.95rem;font-weight:700;line-height:1.6;word-break:keep-all;}
 .qk{color:#00d4ff;font-weight:900;font-size:1.0rem;border-bottom:2px solid #00d4ff;
   text-shadow:0 0 12px rgba(0,212,255,0.9);padding:0 2px;}
 
@@ -344,7 +352,9 @@ if st.session_state.phase=="battle":
     ig=q.get("tp")=="grammar"; th="g" if ig else "v"; bt="primary" if ig else "secondary"
     ej="🔴" if ig else "🔵"; tn="문법" if ig else "어휘"
 
-    st.markdown(f'<div class="ah"><h1>⚡ {tn} 화력전 — 라운드 {st.session_state.round_num} ⚔️</h1></div>', unsafe_allow_html=True)
+    _en_mode = "GRAMMAR" if ig else "VOCAB"
+    _rn_str  = f"R.{st.session_state.round_num}" if st.session_state.round_num > 1 else "ROUND 1"
+    st.markdown(f'<div class="ah"><h1>⚡ {_en_mode} FIREPOWER · {_rn_str}</h1></div>', unsafe_allow_html=True)
 
     # ── HUD 배틀바 ──
     qi=st.session_state.qi; results=st.session_state.round_results
