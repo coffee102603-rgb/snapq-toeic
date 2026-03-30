@@ -895,99 +895,166 @@ elif st.session_state.sg_phase == "p5_exam":
     tpct = int(rem / 33 * 100)
     q_border = "rgba(255,50,50,0.6)" if rem <= 10 else "rgba(100,140,255,0.4)"
     q_shadow = "0 0 40px rgba(255,0,0,0.2)" if rem <= 10 else "0 0 30px rgba(100,140,255,0.15)"
+    _exam_labels = ["A","B","C","D"]
+    _exam_cfg = [
+        ("ex-ans-a","#ff6633","#160800","rgba(255,102,51,0.55)"),
+        ("ex-ans-b","#00E5FF","#001518","rgba(0,229,255,0.55)"),
+        ("ex-ans-c","#FF2D55","#140008","rgba(255,45,85,0.55)"),
+        ("ex-ans-d","#44FF88","#001408","rgba(68,255,136,0.55)"),
+    ]
+
     if bg_css:
         st.markdown(f'<style>.stApp{{{bg_css}}}</style>', unsafe_allow_html=True)
-    st.markdown(f'<div style="text-align:center;margin:2px 0;padding:4px;"><span style="font-size:{tsz};font-weight:900;color:{tcl};font-family:Impact,Arial Black,sans-serif;{tglow}">{rem}</span><span style="font-size:0.8rem;color:{tcl};opacity:0.7;">s</span><div style="font-size:1rem;color:#888;font-weight:700;margin-top:4px;">Q{qi+1} / 5 · 남은 {left}문제</div></div>', unsafe_allow_html=True)
+
+    # ── CSS: 버튼 공통 + id 래퍼 색상 ──
+    _exam_css = """<style>
+    .stMarkdown{margin:0!important;padding:0!important;}
+    .element-container{margin:0!important;padding:0!important;}
+    div[data-testid="stVerticalBlock"]{gap:3px!important;}
+    div[data-testid="stButton"] button{
+        min-height:46px!important;font-size:0.9rem!important;
+        font-weight:800!important;border-radius:12px!important;
+        text-align:left!important;padding:0.4rem 0.9rem!important;margin:0!important;
+    }
+    div[data-testid="stButton"] button p{font-size:0.9rem!important;font-weight:800!important;}
+    """
+    for _eid,_ecol,_ebg,_esh in _exam_cfg:
+        _exam_css += (
+            f'#btn-{_eid} div[data-testid="stButton"] button{{'
+            f'border-left:5px solid {_ecol}!important;background:{_ebg}!important;'
+            f'border-color:{_ecol}!important;color:{_ecol}!important;}}'
+            f'#btn-{_eid} div[data-testid="stButton"] button p{{color:{_ecol}!important;}}'
+            f'#btn-{_eid} div[data-testid="stButton"] button:hover{{box-shadow:0 0 22px {_esh}!important;}}'
+        )
+    _exam_css += "</style>"
+    st.markdown(_exam_css, unsafe_allow_html=True)
+
+    # ── HUD: 문제 진행 도트 ──
+    _dots = '<div style="display:flex;justify-content:center;gap:8px;margin:2px 0 4px;">'
+    for _di in range(len(qs)):
+        if _di < qi:
+            _dc="#44ff88"; _db="rgba(68,255,136,0.15)"; _ds="0 0 10px #44ff88"; _dd="✓"
+        elif _di == qi:
+            _dc=tcl; _db="rgba(100,140,255,0.12)"; _ds=f"0 0 14px {tcl}"; _dd=str(_di+1)
+        else:
+            _dc="#333"; _db="transparent"; _ds="none"; _dd=str(_di+1)
+        _dots += (
+            f'<div style="width:26px;height:26px;border-radius:50%;border:2px solid {_dc};'
+            f'background:{_db};box-shadow:{_ds};display:flex;align-items:center;'
+            f'justify-content:center;font-size:0.7rem;font-weight:900;color:{_dc};">{_dd}</div>'
+        )
+    _dots += '</div>'
+
+    # ── 타이머 + 도트 + 바 + 경고 ──
+    st.markdown(
+        f'<div style="text-align:center;margin:2px 0;padding:2px;">'
+        f'<span style="font-size:{tsz};font-weight:900;color:{tcl};'
+        f'font-family:Impact,Arial Black,sans-serif;{tglow}">{rem}</span>'
+        f'<span style="font-size:0.75rem;color:{tcl};opacity:0.7;">s</span></div>',
+        unsafe_allow_html=True)
+    st.markdown(_dots, unsafe_allow_html=True)
     bar_color = tcl if rem <= 15 else "#44ff88"
-    st.markdown(f'<div style="background:rgba(255,255,255,0.06);border-radius:12px;padding:3px;margin:4px 0;"><div style="background:linear-gradient(90deg,{bar_color},{tcl});height:12px;border-radius:10px;width:{tpct}%;transition:width 0.5s;"></div></div>', unsafe_allow_html=True)
+    st.markdown(
+        f'<div style="background:rgba(255,255,255,0.06);border-radius:10px;padding:2px;margin:2px 0;">'
+        f'<div style="background:linear-gradient(90deg,{bar_color},{tcl});height:10px;'
+        f'border-radius:8px;width:{tpct}%;transition:width 0.5s;"></div></div>',
+        unsafe_allow_html=True)
     if twarn:
         st.markdown(twarn, unsafe_allow_html=True)
-    blank_text = q["text"].replace("_______", '<span style="border-bottom:3px solid #66aaff;padding:0 16px;color:#88bbff;">________</span>')
-    st.markdown(f'<div style="background:linear-gradient(145deg,#141435,#1c1c4a);border:2.5px solid {q_border};border-radius:20px;padding:1.4rem 1.2rem;margin:8px 0;box-shadow:{q_shadow};"><div style="font-size:1.15rem;font-weight:900;color:#ffffff;line-height:1.7;">{blank_text}</div></div>', unsafe_allow_html=True)
+
+    # ── 문제 카드 (사이즈 축소) ──
+    blank_text = q["text"].replace("_______", '<span style="border-bottom:3px solid #66aaff;padding:0 10px;color:#88bbff;">________</span>')
+    st.markdown(
+        f'<div style="background:linear-gradient(145deg,#141435,#1c1c4a);'
+        f'border:2px solid {q_border};border-radius:14px;padding:0.65rem 0.85rem;'
+        f'margin:4px 0;box-shadow:{q_shadow};">'
+        f'<div style="font-size:0.95rem;font-weight:900;color:#ffffff;line-height:1.55;">'
+        f'{blank_text}</div></div>',
+        unsafe_allow_html=True)
+
+    # ── 답 버튼 4개 — div id 래퍼 + 클릭 로직 ──
+    _prev_result_len = len(st.session_state.sg_exam_results)
     for i, ch in enumerate(q["ch"]):
-        if st.button(ch, key=f"ex_{qi}_{i}", type="secondary", use_container_width=True):
+        _ch_clean = ch.split(") ",1)[-1] if ") " in ch else ch
+        _display  = f"【{_exam_labels[i]}】  {_ch_clean}"
+        _eid      = _exam_cfg[i][0]
+        st.markdown(f'<div id="btn-{_eid}">', unsafe_allow_html=True)
+        if st.button(_display, key=f"ex_{qi}_{i}", use_container_width=True):
             ok = (i == q["a"])
             st.session_state.sg_exam_results.append(ok)
+        st.markdown('</div>', unsafe_allow_html=True)
 
-            # ══════════════════════════════════════════
-            # ★ forget_logs 저장 (논문 02 SSCI 핵심)
-            # ══════════════════════════════════════════
+    # ── forget_logs + phase 처리 (div-래퍼 루프에서 ok가 append된 경우) ──
+    if len(st.session_state.sg_exam_results) > _prev_result_len:
+        ok = st.session_state.sg_exam_results[-1]
+        # ══════════════════════════════════════════
+        # ★ forget_logs 저장 (논문 02 SSCI 핵심)
+        # ══════════════════════════════════════════
+        try:
+            _dt = __import__("datetime")
+            _today = _dt.datetime.now().strftime("%Y-%m-%d")
+            _uid  = st.session_state.get("nickname", "guest")
+            _qid  = q.get("id", "?")
+            _cat  = q.get("cat", "")
+            _src  = "P5"
+            _first_wrong = q.get("first_wrong_date", q.get("saved_date", _today))
             try:
-                _dt = __import__("datetime")
-                _today = _dt.datetime.now().strftime("%Y-%m-%d")
-                _uid  = st.session_state.get("nickname", "guest")
-                _qid  = q.get("id", "?")
-                _cat  = q.get("cat", "")
-                _src  = "P5"
-
-                # first_wrong_date: 문제에 저장된 날짜 사용, 없으면 오늘
-                _first_wrong = q.get("first_wrong_date", q.get("saved_date", _today))
-
-                # interval_days 계산
-                try:
-                    _interval = (_dt.datetime.strptime(_today, "%Y-%m-%d") -
-                                 _dt.datetime.strptime(_first_wrong, "%Y-%m-%d")).days
-                except:
-                    _interval = 0
-
-                # revisit_count 증가
-                _rv_key = f"revisit_{_qid}"
-                _rv_cnt = st.session_state.get(_rv_key, 0) + 1
-                st.session_state[_rv_key] = _rv_cnt
-
-                _st_f = load_storage()
-                _fl = {
-                    "user_id":          _uid,
-                    "problem_id":       _qid,
-                    "grammar_type":     _cat,
-                    "source":           _src,
-                    "first_wrong_date": _first_wrong,
-                    "revisit_date":     _today,
-                    "interval_days":    _interval,
-                    "re_wrong":         not ok,
-                    "revisit_count":    _rv_cnt,
-                    "finally_correct":  False,  # 삭제 시 True로 업데이트
-                    "days_to_overcome": None,
-                    "timestamp":        _dt.datetime.now().isoformat(),
-                }
-                if "forget_logs" not in _st_f:
-                    _st_f["forget_logs"] = []
-                _st_f["forget_logs"].append(_fl)
-
-                with open(STORAGE_FILE, "w", encoding="utf-8") as _ff:
-                    json.dump(_st_f, _ff, ensure_ascii=False, indent=2)
+                _interval = (_dt.datetime.strptime(_today, "%Y-%m-%d") -
+                             _dt.datetime.strptime(_first_wrong, "%Y-%m-%d")).days
             except:
-                pass
+                _interval = 0
+            _rv_key = f"revisit_{_qid}"
+            _rv_cnt = st.session_state.get(_rv_key, 0) + 1
+            st.session_state[_rv_key] = _rv_cnt
+            _st_f = load_storage()
+            _fl = {
+                "user_id":          _uid,
+                "problem_id":       _qid,
+                "grammar_type":     _cat,
+                "source":           _src,
+                "first_wrong_date": _first_wrong,
+                "revisit_date":     _today,
+                "interval_days":    _interval,
+                "re_wrong":         not ok,
+                "revisit_count":    _rv_cnt,
+                "finally_correct":  False,
+                "days_to_overcome": None,
+                "timestamp":        _dt.datetime.now().isoformat(),
+            }
+            if "forget_logs" not in _st_f:
+                _st_f["forget_logs"] = []
+            _st_f["forget_logs"].append(_fl)
+            with open(STORAGE_FILE, "w", encoding="utf-8") as _ff:
+                json.dump(_st_f, _ff, ensure_ascii=False, indent=2)
+        except:
+            pass
 
-            if not ok:
-                # ★ 포로수용소 — 오답 시 핵심 단어 1개 자동 저장
-                try:
-                    _pw = _extract_prison_word(
-                        text=q.get("text",""),
-                        ex_field=q.get("ex",""),
-                        cat=q.get("cat",""),
-                        ch=q.get("ch",[]),
-                        a_idx=q.get("a",0)
+        if not ok:
+            try:
+                _pw = _extract_prison_word(
+                    text=q.get("text",""),
+                    ex_field=q.get("ex",""),
+                    cat=q.get("cat",""),
+                    ch=q.get("ch",[]),
+                    a_idx=q.get("a",0)
+                )
+                if _pw:
+                    _sent = q.get("text","").replace("_______", _pw)
+                    _add_to_prison(
+                        word=_pw,
+                        source="P5 시험 오답",
+                        sentence=_sent,
+                        kr=q.get("kr",""),
+                        cat=q.get("cat","")
                     )
-                    if _pw:
-                        _sent = q.get("text","").replace("_______", _pw)
-                        _add_to_prison(
-                            word=_pw,
-                            source="P5 시험 오답",
-                            sentence=_sent,
-                            kr=q.get("kr",""),
-                            cat=q.get("cat","")
-                        )
-                except Exception:
-                    pass
-                st.session_state.sg_exam_wrong = True
-                st.session_state.sg_phase = "p5_exam_result"; st.rerun()
-            else:
-                st.session_state.sg_exam_idx += 1
-                st.rerun()
-    components.html("""<script>
-    function stP(){const d=window.parent.document;d.querySelectorAll('button[kind="secondary"]').forEach(b=>{const t=(b.textContent||'').trim();if(/^\([A-D]\)/.test(t)){b.style.cssText='background:linear-gradient(135deg,rgba(100,140,200,0.25),rgba(100,140,200,0.12))!important;color:#ffffff!important;border:2px solid rgba(100,140,200,0.5)!important;border-radius:16px!important;font-size:1.0rem!important;font-weight:900!important;padding:0.45rem 0.5rem!important;min-height:auto!important;box-shadow:0 3px 15px rgba(100,140,200,0.15)!important;font-family:Georgia,serif!important;';b.querySelectorAll('p').forEach(p=>p.style.cssText='font-size:1.0rem!important;font-weight:900!important;font-family:Georgia,serif!important;');}});};setTimeout(stP,80);setTimeout(stP,300);setTimeout(stP,700);new MutationObserver(stP).observe(window.parent.document.body,{childList:true,subtree:true});
-    </script>""", height=0)
+            except Exception:
+                pass
+            st.session_state.sg_exam_wrong = True
+            st.session_state.sg_phase = "p5_exam_result"; st.rerun()
+        else:
+            st.session_state.sg_exam_idx += 1
+            st.rerun()
+    # JS 스타일 주입 제거 — CSS id 래퍼 방식으로 대체
 
 # ════════════════════════════════
 # P5 시험 결과
