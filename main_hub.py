@@ -1008,7 +1008,7 @@ _CSS = """<style>
 @keyframes s2{0%,30%{opacity:0;}36%,63%{opacity:1;}69%,100%{opacity:0;}}
 @keyframes s3{0%,63%{opacity:0;}69%,96%{opacity:1;}100%{opacity:0;}}
 .card{border-radius:18px 0 0 18px;padding:14px 18px 12px;position:relative;height:178px;overflow:hidden;}
-.p5c{background:linear-gradient(145deg,#001f55,#0055bb,#0099ee);}
+.p5c{background:linear-gradient(145deg,#1a0500,#aa3300,#ff6600);}
 .p7c{background:linear-gradient(145deg,#002233,#005577,#00aacc);}
 .arc{background:linear-gradient(145deg,#551100,#bb5500,#ffaa00);}
 .ttl{font-size:0;height:0;margin:0;overflow:hidden;}
@@ -1221,7 +1221,7 @@ _GRID_HTML = f"""
 
 /* ── 포로수용소 바 ── */
 .pb{{
-  background:linear-gradient(90deg,#1a0a2e,#2a1050);
+  background:linear-gradient(90deg,#110820,#2a0e55);
   border:1.5px solid {_pr_border};
   border-radius:14px;
   padding:12px 14px;
@@ -1266,11 +1266,11 @@ _GRID_HTML = f"""
 }}
 .card:active{{opacity:0.85;transform:scale(0.97);transition:transform 0.1s;}}
 
-.card-p5{{background:linear-gradient(160deg,#001840,#0044cc);}}
+.card-p5{{background:linear-gradient(160deg,#1a0800,#cc4400,#ff6600);}}
 .card-p7{{background:linear-gradient(160deg,#001a2a,#005577,#00aacc);}}
 .card-pow{{
   grid-column:1/-1;
-  background:linear-gradient(135deg,#440d00,#cc3300);
+  background:linear-gradient(135deg,#1a0035,#440088);
   flex-direction:row;align-items:center;
 }}
 
