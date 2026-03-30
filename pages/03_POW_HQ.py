@@ -1760,8 +1760,11 @@ div[data-testid="stButton"] button p{color:#c0c8e0!important;font-size:0.9rem!im
 #btn-no div[data-testid="stButton"] button p{color:#ff5544!important;font-size:1.05rem!important;font-weight:900!important;}
 #btn-flip div[data-testid="stButton"] button{background:#10102a!important;border:2.5px solid #6655ee!important;color:#cc99ff!important;min-height:58px!important;font-size:1rem!important;}
 #btn-flip div[data-testid="stButton"] button p{color:#cc99ff!important;font-size:1rem!important;font-weight:900!important;}
-#btn-start div[data-testid="stButton"] button{background:#1a0505!important;border:3px solid #ff1100!important;color:#ff4422!important;min-height:64px!important;font-size:1.05rem!important;box-shadow:0 0 24px #ff110088,inset 0 0 12px #ff110022!important;}
-#btn-start div[data-testid="stButton"] button p{color:#ff5533!important;font-size:1.05rem!important;font-weight:900!important;}
+#btn-start div[data-testid="stButton"] button{background:#200000!important;border:3px solid #ff0000!important;color:#ff3300!important;min-height:64px!important;font-size:1.1rem!important;
+  animation:btnPulse 1.2s ease infinite!important;
+  box-shadow:0 0 20px #ff000099,0 0 40px #ff000044!important;}
+#btn-start div[data-testid="stButton"] button p{color:#ff4422!important;font-size:1.1rem!important;font-weight:900!important;}
+@keyframes btnPulse{0%,100%{box-shadow:0 0 20px #ff000099,0 0 40px #ff000044}50%{box-shadow:0 0 40px #ff0000cc,0 0 80px #ff000077}}
 #btn-home div[data-testid="stButton"] button{background:#08080f!important;border:1px solid #1a1d2a!important;color:#3a4455!important;min-height:38px!important;font-size:0.8rem!important;}
 #btn-home div[data-testid="stButton"] button p{color:#3a4455!important;font-size:0.8rem!important;}
 #btn-back div[data-testid="stButton"] button{background:#08080f!important;border:1px solid #1a1d2a!important;color:#3a4455!important;min-height:36px!important;font-size:0.78rem!important;}
@@ -1980,10 +1983,11 @@ div[data-testid="stButton"] button p{color:#c0c8e0!important;font-size:0.9rem!im
           <div style="font-size:38px;margin-bottom:6px;filter:drop-shadow(0 0 12px #8833ff);">🚔</div>
           <div style="font-family:'Orbitron',monospace;font-size:15px;font-weight:900;color:#ddaaff;letter-spacing:3px;margin-bottom:4px;">WORD PRISON</div>
           <div style="font-size:14px;color:#cc99ff;font-weight:700;margin-bottom:2px;">단어 심문실</div>
-          <div style="font-size:14px;color:#ff3377;font-weight:900;margin-top:10px;line-height:1.8;letter-spacing:0.3px;
-               text-shadow:0 0 14px #ff335599,0 0 6px #ff000055;padding:6px 4px;
+          <div style="font-size:14px;color:#ffffff;font-weight:800;margin-top:10px;line-height:1.8;letter-spacing:0.3px;
+               text-shadow:none;padding:6px 4px;
                border-top:1px solid #ff337744;">
-            🚨 기억하면 석방, 잊으면 재투옥,<br>방심하면 공범까지 소환된다.
+            🚨 기억하면 <span style="color:#ff2244;font-weight:900;">석방</span>, 잊으면 <span style="color:#ff2244;font-weight:900;">재투옥</span>,<br>
+            <span style="color:#ff2244;font-weight:900;">방심</span>하면 <span style="color:#ff2244;font-weight:900;">공범</span>까지 소환된다.
           </div>
         </div>
         """, height=210)
@@ -2235,8 +2239,8 @@ div[data-testid="stButton"] button p{color:#c0c8e0!important;font-size:0.9rem!im
                                 f'<div style="display:flex;align-items:center;margin-bottom:3px;border-radius:7px;overflow:hidden;">'
                                 f'<div style="width:40px;flex-shrink:0;font-size:8px;font-weight:900;letter-spacing:1px;'
                                 f'padding:5px 3px;text-align:center;background:{_pbg};color:{_pcol};">{_pkr}</div>'
-                                f'<div style="flex:1;font-size:12px;font-weight:{_fw};padding:5px 8px;background:{_rbg};color:{_wc};">{_star}{_mw}</div>'
-                                f'<div style="font-size:12px;font-weight:600;color:{_krc};padding:5px 7px;background:{_rbg};text-align:right;white-space:nowrap;">{_mkr}</div>'
+                                f'<div style="flex:1;font-size:13px;font-weight:{_fw};padding:5px 8px;background:{_rbg};color:{_wc};">{_star}{_mw}</div>'
+                                f'<div style="font-size:13px;font-weight:600;color:{_krc};padding:5px 7px;background:{_rbg};text-align:right;white-space:nowrap;">{_mkr}</div>'
                                 f'</div>'
                             )
                             _shown += 1
@@ -2259,7 +2263,7 @@ div[data-testid="stButton"] button p{color:#c0c8e0!important;font-size:0.9rem!im
                     for i in range(3)
                 ])
                 # 동적 높이: base + 예문 + 패밀리행
-                _card_h = 150 + (90 if _sent else 0) + (55 + _shown*32 if _family_block else 0) + 50
+                _card_h = 150 + (90 if _sent else 0) + (55 + _shown*35 if _family_block else 0) + 50
                 components.html(f"""
                 <style>
                 @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@900&display=swap');
@@ -2271,7 +2275,7 @@ div[data-testid="stButton"] button p{color:#c0c8e0!important;font-size:0.9rem!im
                   <div style="font-size:36px;margin-bottom:4px;">{_ch}</div>
                   <div style="font-family:'Orbitron',monospace;font-size:15px;color:#ccffdd;
                        letter-spacing:3px;margin-bottom:8px;font-weight:900;">{_word}</div>
-                  <div style="font-size:{'36' if _has_meaning else '16'}px;font-weight:900;
+                  <div style="font-size:{'29' if _has_meaning else '16'}px;font-weight:900;
                        color:#{'ffffff' if _has_meaning else '668877'};
                        margin-bottom:2px;">{''+_kr+'' if _has_meaning else '아래 예문에서 뜻을 찾아봐! 💡'}</div>
                   {_sent_block}
