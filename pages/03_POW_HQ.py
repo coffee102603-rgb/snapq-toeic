@@ -2142,7 +2142,7 @@ div[data-testid="stButton"] button p{color:#c0c8e0!important;font-size:0.9rem!im
                        letter-spacing:3px;text-shadow:0 0 30px {_col},0 0 12px #fff,0 2px 4px #000;
                        margin-bottom:16px;" class="flicker">{_word}</div>
                   <div style="display:flex;justify-content:center;gap:4px;margin-bottom:10px;">{_dots}</div>
-                  <div style="font-size:13px;font-weight:700;color:#8899aa;">{_streak}/3 연속 정답</div>
+                  <div style="font-size:13px;font-weight:700;color:#8899aa;">{'🔓 석방 완료!' if _streak>=3 else '🔑 탈출까지 ' + str(3-_streak) + '번 남았어!'}</div>
                 </div>
                 """, height=260)
 
@@ -2247,11 +2247,11 @@ div[data-testid="stButton"] button p{color:#c0c8e0!important;font-size:0.9rem!im
                     for i in range(3)
                 ])
                 # 동적 높이: base + 예문 + 패밀리행
-                _card_h = 130 + (80 if _sent else 0) + (45 + _shown*27 if _family_block else 0) + 40
+                _card_h = 150 + (90 if _sent else 0) + (55 + _shown*32 if _family_block else 0) + 50
                 components.html(f"""
                 <style>
                 @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@900&display=swap');
-                *{{margin:0;padding:0;box-sizing:border-box;}}body{{background:transparent;font-family:sans-serif;}}
+                *{{margin:0;padding:0;box-sizing:border-box;}}body{{background:transparent;font-family:sans-serif;overflow-y:auto;}}
                 </style>
                 <div style="background:radial-gradient(ellipse at 50% 20%,#0a2016 0%,#08080f 75%);
                      border:2.5px solid #22cc55;border-radius:20px;padding:18px 14px;text-align:center;
@@ -2266,7 +2266,7 @@ div[data-testid="stButton"] button p{color:#c0c8e0!important;font-size:0.9rem!im
                   {_family_block}
                   <div style="display:flex;justify-content:center;gap:4px;margin-top:8px;">{_dots2}</div>
                   <div style="font-size:13px;font-weight:700;color:#66aa88;margin-top:4px;">
-                    {_streak}/3 STREAK · {'다음엔 석방!' if _streak==2 else '한 번 더!' if _streak==1 else '첫 정답 도전!'}</div>
+                    {'🔑 탈출까지 1번 남았어!' if _streak==2 else '💪 한 번 더 맞히면 인정!' if _streak==1 else '⛓ 첫 번째 도전!'}</div>
                 </div>
                 """, height=_card_h)
 
