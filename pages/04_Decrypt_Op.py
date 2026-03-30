@@ -1014,58 +1014,18 @@ elif st.session_state.p7_phase == "battle":
     correct_cnt = len([a for a in st.session_state.p7_answers if a])
     wrong_cnt   = len([a for a in st.session_state.p7_answers if not a])
 
-    # ── 좌측 세로 타이머 + 우측 컨텐츠 ──
-    _left, _right = st.columns([1, 11])
-
-    with _left:
-        components.html(f"""
-        <style>
-        *{{margin:0;padding:0;box-sizing:border-box;}}
-        body{{background:transparent;overflow:hidden;font-family:'Orbitron',monospace;}}
-        .wrap{{display:flex;flex-direction:column;align-items:center;gap:4px;height:100%;padding:2px 0;}}
-        .label{{font-size:7px;color:#334455;letter-spacing:2px;font-weight:700;writing-mode:vertical-rl;transform:rotate(180deg);}}
-        .bar-wrap{{width:12px;flex:1;background:#0a0c14;border-radius:6px;border:1px solid #1a2240;overflow:hidden;position:relative;min-height:200px;}}
-        .bar-fill{{position:absolute;bottom:0;width:100%;border-radius:6px;transition:height 1s linear;box-shadow:0 0 8px {bar_col};background:linear-gradient(to top,{bar_col}cc,{bar_col});}}
-        .num{{font-size:13px;font-weight:900;color:{bar_col};text-shadow:0 0 8px {bar_col};font-family:'Orbitron',monospace;}}
-        @keyframes shake{{0%,100%{{transform:translateX(0)}}25%{{transform:translateX(-3px)}}75%{{transform:translateX(3px)}}}}
-        </style>
-        <div class="wrap">
-          <div class="label">TIME</div>
-          <div class="bar-wrap" id="bw" style="{'animation:shake 0.3s infinite' if stage=='critical' else 'animation:shake 0.8s infinite' if stage=='danger' else ''}">
-            <div class="bar-fill" id="bf" style="height:{pct*100:.1f}%"></div>
-          </div>
-          <div class="num" id="num">{rem}</div>
-        </div>
-        <script>
-        var r={rem},t={total};
-        var bf=document.getElementById('bf'),num=document.getElementById('num'),bw=document.getElementById('bw');
-        setInterval(function(){{
-          r--;if(r<0)r=0;
-          var p=r/t;
-          bf.style.height=(p*100)+'%';
-          num.textContent=r;
-          var c=p>0.6?'#44ff88':p>0.3?'#ffcc00':p>0.1?'#ff4444':'#ff0000';
-          bf.style.background='linear-gradient(to top,'+c+'cc,'+c+')';
-          bf.style.boxShadow='0 0 8px '+c;
-          num.style.color=c;num.style.textShadow='0 0 8px '+c;
-          bw.style.animation=r<=10?'shake 0.3s infinite':r<=20?'shake 0.8s infinite':'none';
-        }},1000);
-        </script>
-        """, height=320)
-
-    with _right:
-        # ── 상단 HUD ──
-        st.markdown(f"""<div style="display:flex;justify-content:space-between;align-items:center;
-            background:#06080f;border:1px solid #1a2240;border-radius:10px;
-            padding:6px 10px;margin-bottom:4px;">
-          <div style="font-family:Orbitron,monospace;font-size:8px;color:#334466;
-            letter-spacing:3px;font-weight:700;">DECRYPT OP</div>
-          <div style="display:flex;gap:8px;align-items:center;">
-            <span style="background:#0a1808;border:1px solid #226633;border-radius:6px;
-              padding:2px 8px;font-size:9px;color:#44cc88;font-weight:700;">Q{step+1}/3</span>
-            <span style="font-size:11px;font-weight:700;">✅{correct_cnt} ❌{wrong_cnt}</span>
-          </div>
-        </div>""", unsafe_allow_html=True)
+    # ── 상단 HUD (컴팩트) ──
+    st.markdown(f"""<div style="display:flex;justify-content:space-between;align-items:center;
+        background:#06080f;border:1px solid #1a2240;border-radius:10px;
+        padding:5px 10px;margin-bottom:4px;">
+      <div style="font-family:Orbitron,monospace;font-size:8px;color:#334466;
+        letter-spacing:3px;font-weight:700;">DECRYPT OP</div>
+      <div style="display:flex;gap:8px;align-items:center;">
+        <span style="background:#0a1808;border:1px solid #226633;border-radius:5px;
+          padding:2px 8px;font-size:9px;color:#44cc88;font-weight:700;">Q{step+1}/3</span>
+        <span style="font-size:11px;font-weight:700;">✅{correct_cnt} ❌{wrong_cnt}</span>
+      </div>
+    </div>""", unsafe_allow_html=True)
 
     # 지문 (누적)
     all_sents = []
@@ -1083,162 +1043,200 @@ elif st.session_state.p7_phase == "battle":
     _btn_ids = ["p7a","p7b","p7c","p7d"]
     _btn_labels = ["A","B","C","D"]
 
-    # 지문 카드
-    with _right:
-        st.markdown(f'''<div style="background:{pass_bg};border:1.5px solid {pass_border};
-            border-left:4px solid {pass_border};border-radius:12px;
-            padding:0.65rem 0.85rem;margin:2px 0;
-            transition:border-color 1s,background 1s;font-size:0.88rem;
-            font-weight:600;line-height:1.7;color:#aab8cc;">{pass_html}</div>''', unsafe_allow_html=True)
+    # ── 지문 카드 + 좌우 테두리 타이머 (components.html) ──
+    _shake = "animation:shake 0.3s infinite;" if stage=="critical" else "animation:shake 0.8s infinite;" if stage=="danger" else ""
+    components.html(f"""
+    <style>
+    *{{margin:0;padding:0;box-sizing:border-box;}}
+    body{{background:transparent;overflow:hidden;font-family:sans-serif;}}
+    .card-wrap{{position:relative;margin:0 0 4px;}}
+    .lbar,.rbar{{position:absolute;top:0;bottom:0;width:5px;border-radius:3px;background:#0a0c14;overflow:hidden;z-index:2;}}
+    .lbar{{left:0;border-radius:3px 0 0 3px;}}
+    .rbar{{right:0;border-radius:0 3px 3px 0;}}
+    .lbar-fill{{position:absolute;top:0;width:100%;border-radius:3px 0 0 3px;transition:height 1s linear;}}
+    .rbar-fill{{position:absolute;bottom:0;width:100%;border-radius:0 3px 3px 0;transition:height 1s linear;}}
+    .card-inner{{margin:0 5px;padding:10px 12px;background:{pass_bg};
+      border-top:1.5px solid {bar_col};border-bottom:1.5px solid {bar_col};
+      font-size:13px;font-weight:600;color:#aab8cc;line-height:1.75;
+      transition:border-color 1s;{_shake}}}
+    .new-s{{color:#ffffff;font-weight:800;}}
+    .old-s{{color:#6a7a8a;}}
+    @keyframes shake{{0%,100%{{transform:translateX(0)}}25%{{transform:translateX(-3px)}}75%{{transform:translateX(3px)}}}}
+    </style>
+    <div class="card-wrap">
+      <div class="lbar"><div class="lbar-fill" id="lb" style="height:{pct*100:.1f}%;background:linear-gradient(to bottom,{bar_col},{bar_col}88);box-shadow:0 0 6px {bar_col};"></div></div>
+      <div class="rbar"><div class="rbar-fill" id="rb" style="height:{pct*100:.1f}%;background:linear-gradient(to top,{bar_col},{bar_col}88);box-shadow:0 0 6px {bar_col};"></div></div>
+      <div class="card-inner" id="ci">{pass_html}</div>
+    </div>
+    <script>
+    var r={rem},t={total};
+    var lb=document.getElementById('lb'),rb=document.getElementById('rb'),ci=document.getElementById('ci');
+    setInterval(function(){{
+      r--;if(r<0)r=0;
+      var p=r/t;
+      var pct=(p*100)+'%';
+      lb.style.height=pct; rb.style.height=pct;
+      var c=p>0.6?'#44ff88':p>0.3?'#ffcc00':p>0.1?'#ff4444':'#ff0000';
+      lb.style.background='linear-gradient(to bottom,'+c+','+c+'88)';
+      lb.style.boxShadow='0 0 6px '+c;
+      rb.style.background='linear-gradient(to top,'+c+','+c+'88)';
+      rb.style.boxShadow='0 0 6px '+c;
+      ci.style.borderTopColor=c; ci.style.borderBottomColor=c;
+      if(r<=10)ci.style.animation='shake 0.3s infinite';
+      else if(r<=20)ci.style.animation='shake 0.8s infinite';
+      else ci.style.animation='none';
+    }},1000);
+    </script>
+    """, height=220)
 
-        # 질문
-        st.markdown(f'''<div style="background:#08090f;border:1px solid #1a2240;
-            border-left:3px solid #7799bb;border-radius:10px;
-            padding:7px 10px;margin:3px 0;">
-          <span style="font-family:Orbitron,monospace;font-size:8px;color:#4466aa;
-            font-weight:700;letter-spacing:2px;">[Q{step+1}] </span>
-          <span style="color:#dde8f0;font-size:0.85rem;font-weight:700;">{cur["question"]}</span>
-        </div>''', unsafe_allow_html=True)
+    # 질문 + 답 버튼
+    st.markdown(f'''<div style="background:#08090f;border:1px solid #1a2240;
+        border-left:3px solid #7799bb;border-radius:10px;
+        padding:7px 10px;margin:3px 0;">
+      <span style="font-family:Orbitron,monospace;font-size:8px;color:#4466aa;
+        font-weight:700;letter-spacing:2px;">[Q{step+1}] </span>
+      <span style="color:#dde8f0;font-size:0.85rem;font-weight:700;">{cur["question"]}</span>
+    </div>''', unsafe_allow_html=True)
 
-        # 답 버튼 — div id 래퍼로 색상 고정
-        for i, ch in enumerate(cur["choices"]):
-            _ch_clean = ch.split(") ",1)[-1] if ") " in ch else ch
-            _bid = _btn_ids[i]
-            st.markdown(f'<div id="btn-{_bid}">', unsafe_allow_html=True)
-            if st.button(f"【{_btn_labels[i]}】  {_ch_clean}", key=f"p7ch{step}_{i}", use_container_width=True):
-                ok = (i == cur["answer"])
-                st.session_state.p7_answers.append(ok)
-                # ─── analytics 기록 ───
-                _an = st.session_state.p7_analytics
-                _step_t = time.time() - (_an.get("step_started_at") or time.time())
-                _an["step_times"].append(round(_step_t, 1))
-                _an["step_correct"].append(ok)
-                _an["step_started_at"] = time.time()
-                st.session_state.p7_analytics = _an
-                # Step 3 유형선택 상태 리셋
-                st.session_state.p7_type_guessed = False
-                st.session_state.p7_type_correct = None
+    # 답 버튼 — div id 래퍼로 색상 고정
+    for i, ch in enumerate(cur["choices"]):
+        _ch_clean = ch.split(") ",1)[-1] if ") " in ch else ch
+        _bid = _btn_ids[i]
+        st.markdown(f'<div id="btn-{_bid}">', unsafe_allow_html=True)
+        if st.button(f"【{_btn_labels[i]}】  {_ch_clean}", key=f"p7ch{step}_{i}", use_container_width=True):
+            ok = (i == cur["answer"])
+            st.session_state.p7_answers.append(ok)
+            # ─── analytics 기록 ───
+            _an = st.session_state.p7_analytics
+            _step_t = time.time() - (_an.get("step_started_at") or time.time())
+            _an["step_times"].append(round(_step_t, 1))
+            _an["step_correct"].append(ok)
+            _an["step_started_at"] = time.time()
+            st.session_state.p7_analytics = _an
+            # Step 3 유형선택 상태 리셋
+            st.session_state.p7_type_guessed = False
+            st.session_state.p7_type_correct = None
 
-                # ══════════════════════════════════════════════════
-                # ★ cross_logs + p7_logs 저장 (논문 04 SSCI + 특허)
-                # ══════════════════════════════════════════════════
+            # ══════════════════════════════════════════════════
+            # ★ cross_logs + p7_logs 저장 (논문 04 SSCI + 특허)
+            # ══════════════════════════════════════════════════
+            try:
+                _dt_p7 = __import__("datetime")
+                _today_p7 = _dt_p7.datetime.now().strftime("%Y-%m-%d")
+                _uid_p7   = st.session_state.get("nickname", "guest")
+                _cat_p7   = st.session_state.get("p7_cat", "unknown")
+                _tsec_p7  = st.session_state.get("p7_tsec", 80)
+
+                # 지문 고유 ID (카테고리 + 스텝)
+                _passage_id  = f"{_cat_p7}_step{step+1}"
+                # 이 지문에서 파생될 P5 문제 ID들 (expressions 기반)
+                _expressions = cur.get("expressions", [])
+                _derived_ids = [f"P5_from_{_cat_p7}_{e.get('expr','?').replace(' ','_')[:20]}"
+                                for e in _expressions]
+
+                # 세션 번호
+                if "p7_session_no" not in st.session_state:
+                    st.session_state.p7_session_no = 0
+
+                # 주차 계산
+                if "p7_start_date" not in st.session_state:
+                    st.session_state.p7_start_date = _today_p7
                 try:
-                    _dt_p7 = __import__("datetime")
-                    _today_p7 = _dt_p7.datetime.now().strftime("%Y-%m-%d")
-                    _uid_p7   = st.session_state.get("nickname", "guest")
-                    _cat_p7   = st.session_state.get("p7_cat", "unknown")
-                    _tsec_p7  = st.session_state.get("p7_tsec", 80)
-
-                    # 지문 고유 ID (카테고리 + 스텝)
-                    _passage_id  = f"{_cat_p7}_step{step+1}"
-                    # 이 지문에서 파생될 P5 문제 ID들 (expressions 기반)
-                    _expressions = cur.get("expressions", [])
-                    _derived_ids = [f"P5_from_{_cat_p7}_{e.get('expr','?').replace(' ','_')[:20]}"
-                                    for e in _expressions]
-
-                    # 세션 번호
-                    if "p7_session_no" not in st.session_state:
-                        st.session_state.p7_session_no = 0
-
-                    # 주차 계산
-                    if "p7_start_date" not in st.session_state:
-                        st.session_state.p7_start_date = _today_p7
-                    try:
-                        _days_p7 = (_dt_p7.datetime.strptime(_today_p7, "%Y-%m-%d") -
-                                    _dt_p7.datetime.strptime(st.session_state.p7_start_date, "%Y-%m-%d")).days
-                        _week_p7 = _days_p7 // 7 + 1
-                    except:
-                        _week_p7 = 1
-
-                    _st_p7 = load_storage()
-
-                    # ── A. cross_logs: P7→P5 크로스스킬 전이 (논문 04 핵심) ──
-                    for _did in _derived_ids:
-                        _cl = {
-                            "user_id":          _uid_p7,
-                            "p7_passage_id":    _passage_id,
-                            "p7_category":      _cat_p7,
-                            "p7_step":          step + 1,
-                            "p7_q_type":        cur.get("q_type", "detail"),
-                            "p7_correct":       ok,
-                            "p7_session_date":  _today_p7,
-                            "p7_session_no":    st.session_state.p7_session_no,
-                            "derived_p5_id":    _did,
-                            "p5_correct":       None,   # P5 풀이 시 업데이트
-                            "p5_session_date":  None,
-                            "p7_first_exposed": True,
-                            "days_gap":         0,
-                            "week":             _week_p7,
-                            "timer_setting":    _tsec_p7,
-                            "timestamp":        _dt_p7.datetime.now().isoformat(),
-                        }
-                        if "cross_logs" not in _st_p7:
-                            _st_p7["cross_logs"] = []
-                        _st_p7["cross_logs"].append(_cl)
-
-                    # ── B. p7_logs: 세션 단계 기록 ──
-                    _p7l = {
-                        "user_id":       _uid_p7,
-                        "session_date":  _today_p7,
-                        "session_no":    st.session_state.p7_session_no,
-                        "category":      _cat_p7,
-                        "timer_setting": _tsec_p7,
-                        "step":          step + 1,
-                        "q_type":        cur.get("q_type", "detail"),
-                        "correct":       ok,
-                        "response_sec":  round(_step_t, 1),
-                        "week":          _week_p7,
-                        "timestamp":     _dt_p7.datetime.now().isoformat(),
-                    }
-                    if "p7_logs" not in _st_p7:
-                        _st_p7["p7_logs"] = []
-                    _st_p7["p7_logs"].append(_p7l)
-
-                    # ZPD: LOST 시 종료 지점 기록
-                    if not ok:
-                        _st_p7.setdefault("zpd_logs", []).append({
-                            "user_id":        _uid_p7,
-                            "session_date":   _today_p7,
-                            "session_no":     st.session_state.p7_session_no,
-                            "arena":          "P7",
-                            "timer_setting":  _tsec_p7,
-                            "game_over_q_no": step + 1,
-                            "result":         "GAME_OVER",
-                            "max_q_reached":  step + 1,
-                            "week":           _week_p7,
-                            "timestamp":      _dt_p7.datetime.now().isoformat(),
-                        })
-                    elif step >= 2:
-                        _st_p7.setdefault("zpd_logs", []).append({
-                            "user_id":        _uid_p7,
-                            "session_date":   _today_p7,
-                            "session_no":     st.session_state.p7_session_no,
-                            "arena":          "P7",
-                            "timer_setting":  _tsec_p7,
-                            "game_over_q_no": None,
-                            "result":         "VICTORY",
-                            "max_q_reached":  3,
-                            "week":           _week_p7,
-                            "timestamp":      _dt_p7.datetime.now().isoformat(),
-                        })
-                        st.session_state.p7_session_no += 1
-
-                    with open(STORAGE_FILE, "w", encoding="utf-8") as _fp7:
-                        json.dump(_st_p7, _fp7, ensure_ascii=False, indent=2)
+                    _days_p7 = (_dt_p7.datetime.strptime(_today_p7, "%Y-%m-%d") -
+                                _dt_p7.datetime.strptime(st.session_state.p7_start_date, "%Y-%m-%d")).days
+                    _week_p7 = _days_p7 // 7 + 1
                 except:
-                    pass
+                    _week_p7 = 1
 
+                _st_p7 = load_storage()
+
+                # ── A. cross_logs: P7→P5 크로스스킬 전이 (논문 04 핵심) ──
+                for _did in _derived_ids:
+                    _cl = {
+                        "user_id":          _uid_p7,
+                        "p7_passage_id":    _passage_id,
+                        "p7_category":      _cat_p7,
+                        "p7_step":          step + 1,
+                        "p7_q_type":        cur.get("q_type", "detail"),
+                        "p7_correct":       ok,
+                        "p7_session_date":  _today_p7,
+                        "p7_session_no":    st.session_state.p7_session_no,
+                        "derived_p5_id":    _did,
+                        "p5_correct":       None,   # P5 풀이 시 업데이트
+                        "p5_session_date":  None,
+                        "p7_first_exposed": True,
+                        "days_gap":         0,
+                        "week":             _week_p7,
+                        "timer_setting":    _tsec_p7,
+                        "timestamp":        _dt_p7.datetime.now().isoformat(),
+                    }
+                    if "cross_logs" not in _st_p7:
+                        _st_p7["cross_logs"] = []
+                    _st_p7["cross_logs"].append(_cl)
+
+                # ── B. p7_logs: 세션 단계 기록 ──
+                _p7l = {
+                    "user_id":       _uid_p7,
+                    "session_date":  _today_p7,
+                    "session_no":    st.session_state.p7_session_no,
+                    "category":      _cat_p7,
+                    "timer_setting": _tsec_p7,
+                    "step":          step + 1,
+                    "q_type":        cur.get("q_type", "detail"),
+                    "correct":       ok,
+                    "response_sec":  round(_step_t, 1),
+                    "week":          _week_p7,
+                    "timestamp":     _dt_p7.datetime.now().isoformat(),
+                }
+                if "p7_logs" not in _st_p7:
+                    _st_p7["p7_logs"] = []
+                _st_p7["p7_logs"].append(_p7l)
+
+                # ZPD: LOST 시 종료 지점 기록
                 if not ok:
-                    try: save_research_record(build_research_record("lost"))
-                    except: pass
-                    st.session_state.p7_phase = "lost"; st.rerun()
-                if step >= 2:
-                    try: save_research_record(build_research_record("victory"))
-                    except: pass
-                    st.session_state.p7_phase = "victory"; st.rerun()
-                else:
-                    st.session_state.p7_step += 1
-                st.rerun()
+                    _st_p7.setdefault("zpd_logs", []).append({
+                        "user_id":        _uid_p7,
+                        "session_date":   _today_p7,
+                        "session_no":     st.session_state.p7_session_no,
+                        "arena":          "P7",
+                        "timer_setting":  _tsec_p7,
+                        "game_over_q_no": step + 1,
+                        "result":         "GAME_OVER",
+                        "max_q_reached":  step + 1,
+                        "week":           _week_p7,
+                        "timestamp":      _dt_p7.datetime.now().isoformat(),
+                    })
+                elif step >= 2:
+                    _st_p7.setdefault("zpd_logs", []).append({
+                        "user_id":        _uid_p7,
+                        "session_date":   _today_p7,
+                        "session_no":     st.session_state.p7_session_no,
+                        "arena":          "P7",
+                        "timer_setting":  _tsec_p7,
+                        "game_over_q_no": None,
+                        "result":         "VICTORY",
+                        "max_q_reached":  3,
+                        "week":           _week_p7,
+                        "timestamp":      _dt_p7.datetime.now().isoformat(),
+                    })
+                    st.session_state.p7_session_no += 1
+
+                with open(STORAGE_FILE, "w", encoding="utf-8") as _fp7:
+                    json.dump(_st_p7, _fp7, ensure_ascii=False, indent=2)
+            except:
+                pass
+
+            if not ok:
+                try: save_research_record(build_research_record("lost"))
+                except: pass
+                st.session_state.p7_phase = "lost"; st.rerun()
+            if step >= 2:
+                try: save_research_record(build_research_record("victory"))
+                except: pass
+                st.session_state.p7_phase = "victory"; st.rerun()
+            else:
+                st.session_state.p7_step += 1
+            st.rerun()
             st.markdown('</div>', unsafe_allow_html=True)
 
     components.html("""
