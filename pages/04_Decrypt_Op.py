@@ -667,7 +667,7 @@ div[data-testid="stToolbar"]{visibility:hidden!important;}
 .block-container{padding-top:0.3rem!important;padding-bottom:1rem!important;}
 .stMarkdown{margin:0!important;padding:0!important;}
 .element-container{margin:0!important;padding:0!important;}
-div[data-testid="stVerticalBlock"]{gap:5px!important;}
+div[data-testid="stVerticalBlock"]{gap:8px!important;}
 div[data-testid="stHorizontalBlock"]{gap:5px!important;margin:0!important;}
 div[data-testid="stHorizontalBlock"] div[data-testid="stColumn"]{padding:0!important;min-width:0!important;flex:1!important;}
 
@@ -688,7 +688,7 @@ div[data-testid="stButton"] button p{
 /* ── 시간: 60s ── */
 div[data-testid="stButton"] button.p7t60{
   background:#0a0d1c!important;border-color:rgba(204,68,0,0.22)!important;color:#886644!important;
-  min-height:54px!important;font-family:'Orbitron',monospace!important;font-size:0.78rem!important;
+  min-height:58px!important;font-family:'Orbitron',monospace!important;font-size:0.78rem!important;
 }
 div[data-testid="stButton"] button.p7t60 p{color:#886644!important;}
 div[data-testid="stButton"] button.p7t60.p7sel{
@@ -700,7 +700,7 @@ div[data-testid="stButton"] button.p7t60.p7sel p{color:#ff7733!important;}
 /* ── 시간: 80s ── */
 div[data-testid="stButton"] button.p7t80{
   background:#0a0d1c!important;border-color:rgba(0,85,187,0.22)!important;color:#446688!important;
-  min-height:54px!important;font-family:'Orbitron',monospace!important;font-size:0.78rem!important;
+  min-height:58px!important;font-family:'Orbitron',monospace!important;font-size:0.78rem!important;
 }
 div[data-testid="stButton"] button.p7t80 p{color:#446688!important;}
 div[data-testid="stButton"] button.p7t80.p7sel{
@@ -712,7 +712,7 @@ div[data-testid="stButton"] button.p7t80.p7sel p{color:#44aaff!important;}
 /* ── 시간: 100s ── */
 div[data-testid="stButton"] button.p7t100{
   background:#0a0d1c!important;border-color:rgba(102,34,204,0.22)!important;color:#775599!important;
-  min-height:54px!important;font-family:'Orbitron',monospace!important;font-size:0.78rem!important;
+  min-height:58px!important;font-family:'Orbitron',monospace!important;font-size:0.78rem!important;
 }
 div[data-testid="stButton"] button.p7t100 p{color:#775599!important;}
 div[data-testid="stButton"] button.p7t100.p7sel{
@@ -723,7 +723,7 @@ div[data-testid="stButton"] button.p7t100.p7sel p{color:#aa55ff!important;}
 
 /* ── 지문 카드 공통 ── */
 div[data-testid="stButton"] button.p7pass{
-  min-height:82px!important;text-align:center!important;
+  min-height:92px!important;text-align:center!important;padding:10px 4px!important;
 }
 
 /* Article */
@@ -809,7 +809,7 @@ div[data-testid="stButton"] button.p7nav:hover{
     </div>''', unsafe_allow_html=True)
 
     # ── 시간 선택 (A안: SIGNAL FREQUENCY 세그먼트) ──
-    st.markdown('''<div style="font-size:9px;color:#6688aa;letter-spacing:4px;padding:2px 0 4px;font-weight:700;">
+    st.markdown('''<div style="font-size:9px;color:#6688aa;letter-spacing:4px;padding:6px 0 7px;font-weight:700;">
       ⏱  SIGNAL FREQUENCY</div>''', unsafe_allow_html=True)
     tc1, tc2, tc3 = st.columns(3)
     with tc1:
@@ -823,7 +823,7 @@ div[data-testid="stButton"] button.p7nav:hover{
             st.session_state.p7_tsec=100; st.session_state.p7_tsec_chosen=True; st.rerun()
 
     # ── 지문 선택 (C안: 4개 한 줄 — 아이콘+이름+설명+코드) ──
-    st.markdown('''<div style="font-size:9px;color:#bb7799;letter-spacing:4px;padding:2px 0 4px;font-weight:700;">
+    st.markdown('''<div style="font-size:9px;color:#bb7799;letter-spacing:4px;padding:6px 0 7px;font-weight:700;">
       ⚔  TARGET CLASSIFICATION</div>''', unsafe_allow_html=True)
     pc1, pc2, pc3, pc4 = st.columns(4)
     with pc1:
