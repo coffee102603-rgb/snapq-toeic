@@ -1904,18 +1904,20 @@ div[data-testid="stButton"] button p{color:#c0c8e0!important;font-size:0.9rem!im
         if src == "P7":     return "👽","#00eedd","READING · 독해 포로"
         return "🦁","#ffbb44","VOCAB · 어휘 포로"
 
-    # ★ word_prison 진입 시 항상 lobby로 리셋 (이전 세션 card 상태 방지)
-    if st.session_state.get("_wp_prev_phase") != "word_prison":
+    # ★ word_prison 진입 감지: _wp_guard=False면 외부에서 새로 진입 → lobby 강제
+    # 나갈 때 _wp_guard=False 설정, 들어올 때 True로 잠금 → 재진입시 항상 로비
+    if not st.session_state.get("_wp_guard", False):
         st.session_state.wp_mode    = "lobby"
         st.session_state.wp_idx     = 0
         st.session_state.wp_flipped = False
         st.session_state.wp_freed   = 0
-    st.session_state["_wp_prev_phase"] = "word_prison"
+        st.session_state["_wp_guard"] = True
     for _k,_v in {"wp_mode":"lobby","wp_idx":0,"wp_flipped":False,"wp_freed":0}.items():
         if _k not in st.session_state: st.session_state[_k] = _v
 
     st.markdown('<div id="btn-home">', unsafe_allow_html=True)
     if st.button("🏠 홈", key="wp_home"):
+        st.session_state["_wp_guard"] = False  # ★ 나갈 때 guard 해제 → 다음 진입시 로비 강제
         if _nick: st.query_params["nick"]=_nick; st.query_params["ag"]="1"
         st.switch_page("main_hub.py")
     st.markdown('</div>', unsafe_allow_html=True)
@@ -1928,6 +1930,7 @@ div[data-testid="stButton"] button p{color:#c0c8e0!important;font-size:0.9rem!im
         <div style="font-size:13px;color:#448866;margin-top:8px;line-height:1.7;">모든 단어를 정복! 진짜 어휘 전사!</div>
         """, height=180)
         if st.button("💀 사령부 귀환", key="wp_back_empty", use_container_width=True):
+            st.session_state["_wp_guard"] = False  # ★ guard 해제
             st.session_state.sg_phase="lobby"; st.rerun()
 
     elif st.session_state.wp_mode == "lobby":
@@ -1973,6 +1976,36 @@ div[data-testid="stButton"] button p{color:#c0c8e0!important;font-size:0.9rem!im
           </div>
         </div>""", unsafe_allow_html=True)
 
+        # ★ Bug 1: 로비 진입 시 sent_kr 없는 단어들 API 일괄 번역 후 저장
+        _needs_tr = [p for p in _prisoners if p.get("sentence","") and not p.get("sent_kr","")]
+        if _needs_tr:
+            try:
+                import requests as _rq_bulk
+                _api_key_bulk = st.secrets.get("ANTHROPIC_API_KEY","")
+                if _api_key_bulk:
+                    _bulk_updated = False
+                    for _pi_item in _needs_tr:
+                        _sent_item = _pi_item.get("sentence","")
+                        _tr_resp2 = _rq_bulk.post("https://api.anthropic.com/v1/messages",
+                            headers={"Content-Type":"application/json","x-api-key":_api_key_bulk,
+                                     "anthropic-version":"2023-06-01"},
+                            json={"model":"claude-haiku-4-5-20251001","max_tokens":100,
+                                  "messages":[{"role":"user","content":
+                                    f"다음 영어 문장을 자연스러운 한국어로만 번역해줘 (설명 없이): {_sent_item}"}]},
+                            timeout=5)
+                        if _tr_resp2.status_code == 200:
+                            _tr_txt2 = _tr_resp2.json().get("content",[{}])[0].get("text","").strip()
+                            if _tr_txt2:
+                                for _pj, _px2 in enumerate(_pr_st.get("word_prison",[])):
+                                    if _px2.get("sentence","") == _sent_item:
+                                        _pr_st["word_prison"][_pj]["sent_kr"] = _tr_txt2
+                                        _bulk_updated = True
+                    if _bulk_updated:
+                        save_storage(_pr_st)
+                        _prisoners = _pr_st["word_prison"]  # 갱신된 리스트 반영
+            except Exception:
+                pass
+
         for _p in _prisoners[:3]:
             _ch,_col,_lbl = _get_char(_p)
             _w_raw = _p.get("word",""); _w = _lemma(_w_raw)
@@ -2004,6 +2037,7 @@ div[data-testid="stButton"] button p{color:#c0c8e0!important;font-size:0.9rem!im
         st.markdown('</div>', unsafe_allow_html=True)
         st.markdown('<div id="btn-back" style="margin-top:4px;">', unsafe_allow_html=True)
         if st.button("↩️ 사령부 귀환", key="wp_back_lobby", use_container_width=True):
+            st.session_state["_wp_guard"] = False  # ★ guard 해제 → 다음 진입시 로비 강제
             st.session_state.sg_phase="lobby"; st.rerun()
         st.markdown('</div>', unsafe_allow_html=True)
 
