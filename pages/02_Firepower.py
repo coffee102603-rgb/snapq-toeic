@@ -985,25 +985,66 @@ elif st.session_state.phase=="lost":
 # ════════════════════════════════════════
 elif st.session_state.phase=="briefing":
     st.markdown("""<style>
+    @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@700;900&display=swap');
     section[data-testid="stSidebar"]{display:none!important;}
     header[data-testid="stHeader"]{height:0!important;visibility:hidden!important;}
-    .block-container{padding-top:0!important;padding-bottom:0!important;margin-top:0!important;}
+    .block-container{padding-top:0.3rem!important;padding-bottom:1rem!important;margin-top:0!important;}
     .stMarkdown{margin:0!important;padding:0!important;}
-    div[data-testid="stVerticalBlock"]{gap:0rem!important;}
-    div[data-testid="stVerticalBlockBorderWrapper"]{padding:0!important;}
+    div[data-testid="stVerticalBlock"]{gap:5px!important;}
     .element-container{margin:0!important;padding:0!important;}
-    div[data-testid="stHorizontalBlock"]{margin:0!important;padding:0!important;flex-wrap:nowrap!important;gap:6px!important;}
+    div[data-testid="stHorizontalBlock"]{margin:0!important;padding:0!important;flex-wrap:nowrap!important;gap:5px!important;}
     div[data-testid="stHorizontalBlock"] div[data-testid="stColumn"]{min-width:0!important;flex:1!important;padding:0!important;}
-    div[data-testid="stButton"] button{width:100%!important;min-height:44px!important;font-size:0.88rem!important;padding:6px 4px!important;}
+    div[data-testid="stButton"] button{width:100%!important;min-height:44px!important;
+        font-size:0.88rem!important;padding:6px 4px!important;border-radius:10px!important;}
+
+    /* ── 도트 pill 스타일 ── */
+    .br-dots div[data-testid="stButton"] button{
+        font-size:0.68rem!important;min-height:28px!important;max-height:28px!important;
+        padding:2px!important;border-radius:5px!important;font-weight:900!important;}
+    .br-dots div[data-testid="stButton"] button p{font-size:0.68rem!important;font-weight:900!important;}
+
+    /* ── 저장 버튼 ── */
+    .br-save-btn div[data-testid="stButton"] button{
+        background:#0c1800!important;border:2.5px solid #44ee66!important;
+        border-radius:12px!important;color:#44ee66!important;
+        font-size:1.0rem!important;font-weight:900!important;min-height:52px!important;
+        letter-spacing:1px!important;}
+    .br-save-btn div[data-testid="stButton"] button p{color:#44ee66!important;font-size:1.0rem!important;font-weight:900!important;}
+    .br-saved-btn div[data-testid="stButton"] button{
+        background:#050f05!important;border:1.5px solid #226633!important;
+        border-radius:12px!important;color:#336644!important;
+        font-size:0.88rem!important;min-height:44px!important;}
+    .br-saved-btn div[data-testid="stButton"] button p{color:#336644!important;}
+
+    /* ── POW HQ CTA 버튼 ── */
+    .br-pow-btn div[data-testid="stButton"] button{
+        background:#0a0000!important;border:2px solid #ff4444!important;
+        border-radius:12px!important;color:#ff6644!important;
+        font-size:0.92rem!important;font-weight:900!important;min-height:48px!important;
+        letter-spacing:0.5px!important;}
+    .br-pow-btn div[data-testid="stButton"] button p{color:#ff6644!important;font-size:0.92rem!important;font-weight:900!important;}
+
+    /* ── 재전투 버튼 ── */
+    .br-retry-btn div[data-testid="stButton"] button{
+        background:#1a0600!important;border:2px solid #ff6600!important;
+        border-radius:12px!important;color:#ff9944!important;
+        font-size:0.92rem!important;font-weight:900!important;min-height:48px!important;}
+    .br-retry-btn div[data-testid="stButton"] button p{color:#ff9944!important;font-size:0.92rem!important;font-weight:900!important;}
+
+    /* ── 홈 버튼 ── */
+    .br-home-btn div[data-testid="stButton"] button{
+        background:#05050e!important;border:1px solid #151525!important;
+        border-radius:10px!important;color:#3d5066!important;min-height:40px!important;font-size:0.82rem!important;}
+    .br-home-btn div[data-testid="stButton"] button p{color:#3d5066!important;}
     </style>""", unsafe_allow_html=True)
 
     was_victory = st.session_state.sc >= 3
     if "br_idx" not in st.session_state: st.session_state.br_idx = 0
     if "br_saved" not in st.session_state: st.session_state.br_saved = set()
-    bi    = st.session_state.br_idx
-    rqs   = st.session_state.round_qs
-    rrs   = st.session_state.round_results
-    saved = st.session_state.br_saved
+    bi     = st.session_state.br_idx
+    rqs    = st.session_state.round_qs
+    rrs    = st.session_state.round_results
+    saved  = st.session_state.br_saved
     num_qs = min(len(rqs), len(rrs))
     if bi >= num_qs: bi = num_qs - 1
     if bi < 0: bi = 0
@@ -1011,43 +1052,44 @@ elif st.session_state.phase=="briefing":
     sc_v  = st.session_state.sc
     wr_v  = st.session_state.wrong
 
-    # 상단 배너
+    # ── 상단 배너 (영문) ──
     if was_victory:
         st.markdown(f'''<div style="background:#0c0c00;border:2px solid #FFD600;border-left:5px solid #FFD600;
-            border-radius:10px;padding:12px;margin-bottom:6px;">
-            <div style="font-size:1.0rem;font-weight:900;color:#FFD600;">🏆 라운드 {rn} — VICTORY!</div>
-            <div style="font-size:0.75rem;color:#886600;margin-top:2px;">✅{sc_v}문제 격파! ❌{wr_v}개 놓침</div>
+            border-radius:10px;padding:10px 12px;margin-bottom:2px;">
+            <div style="font-family:Orbitron,monospace;font-size:0.85rem;font-weight:900;
+              color:#FFD600;letter-spacing:2px;">⚡ ROUND {rn} · VICTORY</div>
+            <div style="font-size:0.72rem;color:#886600;margin-top:3px;letter-spacing:1px;">
+              ✅ {sc_v} ELIMINATED &nbsp;·&nbsp; ❌ {wr_v} MISSED</div>
         </div>''', unsafe_allow_html=True)
     else:
         st.markdown(f'''<div style="background:#0c0008;border:2px solid #FF2D55;border-left:5px solid #FF2D55;
-            border-radius:10px;padding:12px;margin-bottom:6px;">
-            <div style="font-size:1.0rem;font-weight:900;color:#FF2D55;">💀 라운드 {rn} — GAME OVER</div>
-            <div style="font-size:0.75rem;color:#661122;margin-top:2px;">✅{sc_v}문제 / ❌{wr_v}개 틀림</div>
+            border-radius:10px;padding:10px 12px;margin-bottom:2px;">
+            <div style="font-family:Orbitron,monospace;font-size:0.85rem;font-weight:900;
+              color:#FF2D55;letter-spacing:2px;">💀 ROUND {rn} · MISSION FAILED</div>
+            <div style="font-size:0.72rem;color:#661122;margin-top:3px;letter-spacing:1px;">
+              ✅ {sc_v} ELIMINATED &nbsp;·&nbsp; ❌ {wr_v} MISSED</div>
         </div>''', unsafe_allow_html=True)
 
-    # 문제 번호 네비
-    st.markdown('''<style>
-    .nav-size div[data-testid="stButton"] button{font-size:0.7rem!important;min-height:26px!important;padding:2px!important;border-radius:50%!important;}
-    .nav-size div[data-testid="stButton"] button p{font-size:0.7rem!important;}
-    </style>''', unsafe_allow_html=True)
-    st.markdown('<div class="nav-size">', unsafe_allow_html=True)
+    # ── 문제 번호 도트 — pill 스타일 ──
+    st.markdown('<div class="br-dots">', unsafe_allow_html=True)
     _ncols = st.columns(num_qs)
     for _i in range(num_qs):
         with _ncols[_i]:
-            _ok_i = rrs[_i] if _i < len(rrs) else None
-            _border = "#50c878" if _ok_i else "#ff4466" if _ok_i is not None else "#9aa5b4"
-            _bg = "#001a00" if _ok_i else "#1a0008" if _ok_i is not None else "#0d0d18"
-            _sel = "outline:3px solid #9aa5b4;outline-offset:2px;" if _i==bi else ""
+            _ok_i  = rrs[_i] if _i < len(rrs) else None
+            _col   = "#ff6600" if _ok_i else "#ff2244" if _ok_i is not None else "#2a2a3a"
+            _bg    = "#1a0800" if _ok_i else "#1a0008" if _ok_i is not None else "#0a0c18"
+            _sym   = "✓" if _ok_i else "✗" if _ok_i is not None else str(_i+1)
+            _sel   = f"box-shadow:0 0 0 2px #aaa;outline:2px solid #aaa;" if _i==bi else ""
             st.markdown(f'''<style>
             div[data-testid="stHorizontalBlock"] div[data-testid="stColumn"]:nth-child({_i+1}) button{{
-                background:{_bg}!important;border:2px solid {_border}!important;
-                color:{_border}!important;border-radius:50%!important;{_sel}
+                background:{_bg}!important;border:1.5px solid {_col}!important;
+                color:{_col}!important;border-radius:5px!important;{_sel}
             }}</style>''', unsafe_allow_html=True)
-            if st.button(str(_i+1), key=f"dot_{_i}", use_container_width=True):
+            if st.button(_sym, key=f"dot_{_i}", use_container_width=True):
                 st.session_state.br_idx = _i; st.rerun()
     st.markdown('</div>', unsafe_allow_html=True)
 
-    # 문제 카드
+    # ── 문제 카드 ──
     q  = rqs[bi]; ok = rrs[bi]
     ans_clean = q["ch"][q["a"]].split(") ",1)[-1] if ") " in q["ch"][q["a"]] else q["ch"][q["a"]]
     if ok:
@@ -1060,82 +1102,84 @@ elif st.session_state.phase=="briefing":
         card_border="#FF2D55"; qnum_color="#ff4466"; qnum_sym="❌"
     kr=q.get("kr",""); exk=q.get("exk",""); cat=q.get("cat","")
 
-    st.markdown(f'''<div style="background:#0a0c18;border:2px solid {card_border};
-        border-left:5px solid {card_border};border-radius:12px;padding:12px;margin:5px 0;">
+    _is_saved = bi in saved
+    _prisoner_badge = '' if ok else (
+        '<span style="background:#1a0000;border:1px solid #ff4444;border-radius:6px;'
+        'padding:2px 8px;font-size:0.65rem;color:#ff6644;font-weight:900;margin-left:8px;">'
+        '💀 포로 등록됨</span>' if _is_saved else
+        '<span style="background:#001a00;border:1px solid #44ee66;border-radius:6px;'
+        'padding:2px 8px;font-size:0.65rem;color:#44ee66;font-weight:900;margin-left:8px;">'
+        '→ 저장하면 포로 등록!</span>'
+    )
+
+    st.markdown(f'''<div style="background:#080c1a;border:1.5px solid {card_border};
+        border-left:4px solid {card_border};border-radius:14px;padding:12px;margin:3px 0;">
         <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:8px;">
-            <span style="background:#0a0a20;border:1px solid #222;border-radius:10px;
-              padding:3px 12px;font-size:0.9rem;font-weight:800;color:{qnum_color};">{qnum_sym} Q{bi+1}/{num_qs}</span>
-            <span style="font-size:0.72rem;color:#444;letter-spacing:2px;">{cat}</span>
+            <span style="background:#0a0a20;border:1px solid #222;border-radius:8px;
+              padding:3px 10px;font-size:0.82rem;font-weight:800;color:{qnum_color};">
+              {qnum_sym} Q{bi+1}/{num_qs}</span>
+            <span style="font-size:0.65rem;color:#444;letter-spacing:2px;">{cat}{_prisoner_badge}</span>
         </div>
-        <div style="font-size:1.1rem;font-weight:700;color:#eeeeff;line-height:1.75;margin-bottom:10px;">{sent_html}</div>
-        <div style="font-size:0.88rem;color:#7a8a9a;margin-bottom:8px;">📖 {kr}</div>
-        <div style="background:#050f05;border-left:4px solid #50c878;border-radius:0 10px 10px 0;padding:8px 12px;">
-            <div style="font-size:0.88rem;color:#50c878;font-weight:700;">💡 {exk}</div>
+        <div style="font-size:1.05rem;font-weight:700;color:#eeeeff;line-height:1.7;margin-bottom:8px;">{sent_html}</div>
+        <div style="font-size:0.82rem;color:#6a7a8a;margin-bottom:7px;">📖 {kr}</div>
+        <div style="background:#040d04;border-left:3px solid #50c878;border-radius:0 8px 8px 0;padding:7px 10px;">
+            <div style="font-size:0.82rem;color:#50c878;font-weight:700;">💡 {exk}</div>
         </div>
     </div>''', unsafe_allow_html=True)
 
-    # 저장 버튼
-    _sv1, _sv2 = st.columns([3, 1])
-    with _sv2:
-        _is_saved = bi in saved
-        _slabel = "✅ 저장됨" if _is_saved else "💾 저장!"
-        st.markdown('''<style>
-        div[data-testid="stHorizontalBlock"] div[data-testid="stColumn"]:last-child button{
-            border:2px solid #9aa5b4!important;color:#9aa5b4!important;
-            background:#0d0d18!important;border-radius:50px!important;font-size:0.82rem!important;
-        }
-        div[data-testid="stHorizontalBlock"] div[data-testid="stColumn"]:last-child button p{color:#9aa5b4!important;}
-        </style>''', unsafe_allow_html=True)
-        if st.button(_slabel, key=f"sv_{q['id']}_{bi}", use_container_width=True, disabled=_is_saved):
+    # ── 저장 버튼 (최우선 CTA) ──
+    if not _is_saved:
+        st.markdown('<div class="br-save-btn">', unsafe_allow_html=True)
+        if st.button("💾  저장! → 포로사령부에서 다시 훈련하기", key=f"sv_{q['id']}_{bi}", use_container_width=True):
             item = {"id":q["id"],"text":q["text"],"ch":q["ch"],"a":q["a"],"ex":q.get("ex",""),
                     "exk":q.get("exk",""),"cat":q.get("cat",""),"kr":q.get("kr",""),"tp":q.get("tp","grammar")}
             save_to_storage([item])
             st.session_state.br_saved.add(bi)
             st.rerun()
-
-    st.markdown('<div style="height:1px;background:#1a1a2a;margin:4px 0;"></div>', unsafe_allow_html=True)
-
-    # 하단 버튼
-    st.markdown('''<style>
-    .bottom-row div[data-testid="stButton"] button{
-        background:transparent!important;border:1px solid rgba(255,255,255,0.3)!important;
-        color:rgba(255,255,255,0.6)!important;font-weight:600!important;
-        font-size:0.85rem!important;border-radius:10px!important;min-height:46px!important;
-    }
-    .bottom-row div[data-testid="stButton"] button p{color:rgba(255,255,255,0.6)!important;font-size:0.85rem!important;}
-    .bottom-row div[data-testid="stButton"]:nth-of-type(1) button{
-        border-color:rgba(0,212,255,0.5)!important;color:#00d4ff!important;
-    }
-    .bottom-row div[data-testid="stButton"]:nth-of-type(1) button p{color:#00d4ff!important;}
-    </style>''', unsafe_allow_html=True)
-    st.markdown('<div class="bottom-row">', unsafe_allow_html=True)
-    if was_victory:
-        _c1, _c2 = st.columns([2,1])
-        with _c1:
-            if st.button("💀 포로사령부!", use_container_width=True):
-                st.switch_page("pages/03_POW_HQ.py")
-        with _c2:
-            if st.button("🏠 홈", use_container_width=True):
-                st.session_state._p5_just_left = True
-                st.session_state.ans = False
-                st.session_state["_battle_entry_ans_reset"] = True
-                _nick = st.session_state.get("battle_nickname") or st.session_state.get("nickname", "")
-                if _nick:
-                    st.query_params["nick"] = _nick
-                    st.query_params["ag"] = "1"
-                st.switch_page("main_hub.py")
+        st.markdown('</div>', unsafe_allow_html=True)
     else:
-        _c1, _c2 = st.columns([2,1])
-        with _c1:
-            if st.button("🔥 설욕전! 다시 싸운다!", use_container_width=True):
-                for k in ["cq","qi","sc","wrong","ta","ans","sel","round_qs","round_results","br_idx","br_saved"]:
-                    if k in st.session_state: del st.session_state[k]
-                for k,v in D.items():
-                    if k not in st.session_state: st.session_state[k]=v
-                qs = pick5(st.session_state.mode)
-                st.session_state.round_qs = qs; st.session_state.cq = qs[0]
-                st.session_state.qst = time.time(); st.session_state.phase = "battle"; st.rerun()
-        with _c2:
+        st.markdown('<div class="br-saved-btn">', unsafe_allow_html=True)
+        st.button("✅  저장 완료 — 포로사령부 대기중", key=f"sv_{q['id']}_{bi}", use_container_width=True, disabled=True)
+        st.markdown('</div>', unsafe_allow_html=True)
+
+    st.markdown('<div style="height:1px;background:#111122;margin:3px 0;"></div>', unsafe_allow_html=True)
+
+    # ── 하단 버튼 ──
+    if was_victory:
+        st.markdown('<div class="br-pow-btn">', unsafe_allow_html=True)
+        if st.button("⚔️  포로사령부 → 오답 반복 훈련 시작!", use_container_width=True):
+            st.switch_page("pages/03_POW_HQ.py")
+        st.markdown('</div>', unsafe_allow_html=True)
+        st.markdown('<div class="br-home-btn">', unsafe_allow_html=True)
+        if st.button("🏠 홈", use_container_width=True):
+            st.session_state._p5_just_left = True
+            st.session_state.ans = False
+            st.session_state["_battle_entry_ans_reset"] = True
+            _nick = st.session_state.get("battle_nickname") or st.session_state.get("nickname", "")
+            if _nick:
+                st.query_params["nick"] = _nick
+                st.query_params["ag"] = "1"
+            st.switch_page("main_hub.py")
+        st.markdown('</div>', unsafe_allow_html=True)
+    else:
+        st.markdown('<div class="br-retry-btn">', unsafe_allow_html=True)
+        if st.button("🔥  설욕전! 다시 싸운다!", use_container_width=True):
+            for k in ["cq","qi","sc","wrong","ta","ans","sel","round_qs","round_results","br_idx","br_saved"]:
+                if k in st.session_state: del st.session_state[k]
+            for k,v in D.items():
+                if k not in st.session_state: st.session_state[k]=v
+            qs = pick5(st.session_state.mode)
+            st.session_state.round_qs = qs; st.session_state.cq = qs[0]
+            st.session_state.qst = time.time(); st.session_state.phase = "battle"; st.rerun()
+        st.markdown('</div>', unsafe_allow_html=True)
+        _rc1, _rc2 = st.columns([2,1])
+        with _rc1:
+            st.markdown('<div class="br-pow-btn">', unsafe_allow_html=True)
+            if st.button("⚔️  포로사령부 → 다시 훈련!", use_container_width=True):
+                st.switch_page("pages/03_POW_HQ.py")
+            st.markdown('</div>', unsafe_allow_html=True)
+        with _rc2:
+            st.markdown('<div class="br-home-btn">', unsafe_allow_html=True)
             if st.button("🏠 홈", use_container_width=True):
                 st.session_state._p5_just_left = True
                 st.session_state.ans = False
@@ -1145,9 +1189,9 @@ elif st.session_state.phase=="briefing":
                     st.query_params["nick"] = _nick
                     st.query_params["ag"] = "1"
                 st.switch_page("main_hub.py")
-    st.markdown('</div>', unsafe_allow_html=True)
+            st.markdown('</div>', unsafe_allow_html=True)
 
-# ════════════════════════════════════════
+
 # PHASE: LOBBY
 # ════════════════════════════════════════
 else:
