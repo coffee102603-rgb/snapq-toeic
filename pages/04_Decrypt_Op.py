@@ -1597,34 +1597,29 @@ div[data-testid="stButton"] button.br-home p{color:#3d5066!important;}
                 try: _hl = _re3.sub(f"(?i)({_re3.escape(_ex)})", f'<span style="{_mark_style}">\\1</span>', _hl)
                 except: pass
 
-        # 표현 태그 — 이 문장에 실제로 포함된 표현만 필터링
+        # 이 문장에 포함된 표현만 추출 (저장용 + 하이라이트용)
         _sent_lower = sent.lower()
-        _expr_tags = "".join([
-            f'<span style="background:#001a12;border:1px solid #00aa66;border-radius:4px;'
-            f'padding:1px 7px;font-size:9px;color:#44cc88;margin-right:4px;">{e.get("expr","")}</span>'
-            for e in s.get("expressions", [])
+        _sent_exprs = [
+            e for e in s.get("expressions", [])
             if e.get("expr") and e.get("expr","").lower() in _sent_lower
-        ]) if not is_saved else ""
-
+        ]
         _card_border = "#00aacc" if ok else "#ff4466"
 
         if is_saved:
-            # 저장 완료 상태 — 한 줄 HTML (줄바꿈 없어야 </div> 텍스트 버그 방지)
+            # 저장 완료 — 태그 없이 하이라이트만
             st.markdown(
                 f'<div style="background:#04080a;border:1.5px solid rgba(0,150,100,0.25);border-left:4px solid #336644;border-radius:12px;padding:10px;opacity:0.85;">' +
                 f'<div style="font-size:13px;font-weight:800;color:#ddeeff;line-height:1.75;margin-bottom:5px;">{_hl}</div>' +
-                f'<div style="font-size:11px;color:#5a7a6a;margin-bottom:4px;">{sent_kr}</div>' +
+                f'<div style="font-size:11px;color:#5a7a6a;margin-bottom:6px;">{sent_kr}</div>' +
                 '<span style="background:#0a1808;border:1px solid #226633;border-radius:6px;padding:2px 8px;font-size:8px;color:#44cc88;font-weight:700;">✅ 포로 등록 완료 · 포로사령부 대기중</span>' +
                 '</div>',
                 unsafe_allow_html=True)
         else:
-            # 미저장 상태 — 한 줄 HTML
-            _expr_div = f'<div style="margin-bottom:6px;">{_expr_tags}</div>' if _expr_tags else ""
+            # 미저장 — 태그 없이 하이라이트만
             st.markdown(
                 f'<div style="background:#06090f;border:1.5px solid rgba(0,180,255,0.25);border-left:4px solid {_card_border};border-radius:12px;padding:10px;margin-bottom:2px;">' +
                 f'<div style="font-size:13px;font-weight:800;color:#ddeeff;line-height:1.75;margin-bottom:5px;">{_hl}</div>' +
-                f'<div style="font-size:11px;color:#5a7a6a;margin-bottom:5px;">{sent_kr}</div>' +
-                _expr_div +
+                f'<div style="font-size:11px;color:#5a7a6a;margin-bottom:6px;">{sent_kr}</div>' +
                 '</div>',
                 unsafe_allow_html=True)
 
@@ -1635,7 +1630,8 @@ div[data-testid="stButton"] button.br-home p{color:#3d5066!important;}
                 sent_data = dict(s)
                 sent_data["sentences"] = [sent]
                 sent_data["kr"] = sent_kr
-                save_expressions(s.get("expressions", []), step_data=sent_data)
+                # 이 문장의 표현만 단어 수용소에 저장
+                save_expressions(_sent_exprs, step_data=sent_data)
                 st.session_state[sent_key] = True
                 st.rerun()
 
