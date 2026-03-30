@@ -1605,22 +1605,24 @@ div[data-testid="stButton"] button.br-home p{color:#3d5066!important;}
         _card_border = "#00aacc" if ok else "#ff4466"
 
         if is_saved:
-            # 저장 완료 상태
-            st.markdown(f'''<div style="background:#04080a;border:1.5px solid rgba(0,150,100,0.25);
-                border-left:4px solid #336644;border-radius:12px;padding:10px;opacity:0.85;">
-              <div style="font-size:13px;font-weight:800;color:#ddeeff;line-height:1.75;margin-bottom:5px;">{_hl}</div>
-              <div style="font-size:11px;color:#5a7a6a;margin-bottom:4px;">{sent_kr}</div>
-              <span style="background:#0a1808;border:1px solid #226633;border-radius:6px;
-                padding:2px 8px;font-size:8px;color:#44cc88;font-weight:700;">✅ 포로 등록 완료 · 포로사령부 대기중</span>
-            </div>''', unsafe_allow_html=True)
+            # 저장 완료 상태 — 한 줄 HTML (줄바꿈 없어야 </div> 텍스트 버그 방지)
+            st.markdown(
+                f'<div style="background:#04080a;border:1.5px solid rgba(0,150,100,0.25);border-left:4px solid #336644;border-radius:12px;padding:10px;opacity:0.85;">' +
+                f'<div style="font-size:13px;font-weight:800;color:#ddeeff;line-height:1.75;margin-bottom:5px;">{_hl}</div>' +
+                f'<div style="font-size:11px;color:#5a7a6a;margin-bottom:4px;">{sent_kr}</div>' +
+                '<span style="background:#0a1808;border:1px solid #226633;border-radius:6px;padding:2px 8px;font-size:8px;color:#44cc88;font-weight:700;">✅ 포로 등록 완료 · 포로사령부 대기중</span>' +
+                '</div>',
+                unsafe_allow_html=True)
         else:
-            # 미저장 상태
-            st.markdown(f'''<div style="background:#06090f;border:1.5px solid rgba(0,180,255,0.25);
-                border-left:4px solid {_card_border};border-radius:12px;padding:10px;margin-bottom:2px;">
-              <div style="font-size:13px;font-weight:800;color:#ddeeff;line-height:1.75;margin-bottom:5px;">{_hl}</div>
-              <div style="font-size:11px;color:#5a7a6a;margin-bottom:5px;">{sent_kr}</div>
-              {f'<div style="margin-bottom:6px;">{_expr_tags}</div>' if _expr_tags else ""}
-            </div>''', unsafe_allow_html=True)
+            # 미저장 상태 — 한 줄 HTML
+            _expr_div = f'<div style="margin-bottom:6px;">{_expr_tags}</div>' if _expr_tags else ""
+            st.markdown(
+                f'<div style="background:#06090f;border:1.5px solid rgba(0,180,255,0.25);border-left:4px solid {_card_border};border-radius:12px;padding:10px;margin-bottom:2px;">' +
+                f'<div style="font-size:13px;font-weight:800;color:#ddeeff;line-height:1.75;margin-bottom:5px;">{_hl}</div>' +
+                f'<div style="font-size:11px;color:#5a7a6a;margin-bottom:5px;">{sent_kr}</div>' +
+                _expr_div +
+                '</div>',
+                unsafe_allow_html=True)
 
             # 저장 버튼
             _sv_key = f"br_sv_{bi}_{si}"
