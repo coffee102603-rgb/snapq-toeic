@@ -1153,11 +1153,12 @@ elif st.session_state.phase=="briefing":
                 _fp_exk  = q.get("exk","")
                 _words = []
 
-                # 1순위: Streamlit secrets에 API 키 있으면 Claude API 사용
+                # 1순위: grammar 문제 → Claude API로 내용 핵심어 추출
+                _is_grammar = q.get("tp","grammar") == "grammar"
                 try:
                     import streamlit as _st2
                     _api_key = _st2.secrets.get("ANTHROPIC_API_KEY","")
-                    if _api_key:
+                    if _api_key and _is_grammar:
                         import requests as _rfp
                         _prompt = (f"토익 문장의 내용 핵심어(동사구/명사구 2~3개)를 JSON으로만 반환. 문장: {_fp_sent} 해석: {_fp_kr} " +
                                    'JSON만: [{"word":"comply with","kr":"준수하다"}]')
@@ -1175,17 +1176,24 @@ elif st.session_state.phase=="briefing":
                 except Exception:
                     pass
 
-                # 2순위: exk에서 "단어=뜻" 패턴 추출 (항상 작동)
-                if not _words and _fp_exk:
+                # 2순위: grammar 문제 → exk에서 "단어=뜻" 패턴 추출
+                if not _words and _fp_exk and _is_grammar:
                     for _m in _rep.finditer(r'([A-Za-z][A-Za-z ]{1,25})=([^!,.]{2,20})', _fp_exk):
                         _ww = _m.group(1).strip()
                         _wkr = _m.group(2).strip()
                         if len(_ww) >= 2:
                             _words.append({"word":_ww,"kr":_wkr})
 
-                # 3순위: ans_clean 자체를 저장 (항상 보장)
-                if not _words:
-                    _words = [{"word": ans_clean, "kr": _fp_kr[:20] if _fp_kr else ""}]
+                # 3순위: vocab 문제만 ans_clean 저장 (grammar 기능어 제외)
+                _is_vocab = q.get("tp","grammar") == "vocab"
+                if not _words and _is_vocab:
+                    # 원형 복원: submitted→submit, requiring→require 등
+                    _base = ans_clean.rstrip("edings").rstrip("ed").rstrip("ing") if not " " in ans_clean else ans_clean
+                    _base = ans_clean  # 어휘 문제는 그대로 저장
+                    _words = [{"word": _base, "kr": _fp_kr[:20] if _fp_kr else ""}]
+                elif not _words and not _is_vocab:
+                    # 문법 문제 + API/exk 모두 실패 → 저장 안 함 (기능어 차단)
+                    pass
 
                 # word_prison에 저장
                 _fp_data = load_storage()
