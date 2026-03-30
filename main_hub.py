@@ -1,4 +1,4 @@
-﻿"""
+"""
 FILE: main_hub.py
 ROLE: 작전사령부 (메인 허브/로비) — 닉네임 접속, 스탯 표시, 전장 선택
 PHASES: LOGIN → LOBBY (단어 포로수용소 카드 + 전장 3종 선택)
@@ -1009,7 +1009,7 @@ _CSS = """<style>
 @keyframes s3{0%,63%{opacity:0;}69%,96%{opacity:1;}100%{opacity:0;}}
 .card{border-radius:18px 0 0 18px;padding:14px 18px 12px;position:relative;height:178px;overflow:hidden;}
 .p5c{background:linear-gradient(145deg,#001f55,#0055bb,#0099ee);}
-.p7c{background:linear-gradient(145deg,#220044,#6600bb,#aa44ff);}
+.p7c{background:linear-gradient(145deg,#002233,#005577,#00aacc);}
 .arc{background:linear-gradient(145deg,#551100,#bb5500,#ffaa00);}
 .ttl{font-size:0;height:0;margin:0;overflow:hidden;}
 .sl{position:absolute;left:18px;right:18px;top:10px;}
@@ -1267,7 +1267,7 @@ _GRID_HTML = f"""
 .card:active{{opacity:0.85;transform:scale(0.97);transition:transform 0.1s;}}
 
 .card-p5{{background:linear-gradient(160deg,#001840,#0044cc);}}
-.card-p7{{background:linear-gradient(160deg,#200040,#6600cc);}}
+.card-p7{{background:linear-gradient(160deg,#001a2a,#005577,#00aacc);}}
 .card-pow{{
   grid-column:1/-1;
   background:linear-gradient(135deg,#440d00,#cc3300);

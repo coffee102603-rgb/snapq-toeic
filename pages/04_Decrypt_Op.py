@@ -833,7 +833,7 @@ div[data-testid="stButton"] button.p7nav:hover{
         if st.button("✉️\nCIPHER\n편지·이메일\n▂▄░░", key="p7c2", use_container_width=True):
             st.session_state.p7_cat="letter"; st.rerun()
     with pc3:
-        if st.button("📰\nDECRYPT\n기사·안내\n▂▄▆░", key="p7c3", use_container_width=True):
+        if st.button("📰\nINTERCEPT\n기사·안내\n▂▄▆░", key="p7c3", use_container_width=True):
             st.session_state.p7_cat="notice"; st.rerun()
     with pc4:
         if st.button("☠️\nBLACKOUT\n고난도\n▂▄▆█", key="p7c4", use_container_width=True):
@@ -914,7 +914,7 @@ div[data-testid="stButton"] button.p7nav:hover{
         if(selC==="letter") b.classList.add("p7sel"); else b.classList.remove("p7sel");
         b.querySelectorAll("p").forEach(function(p){{p.classList.add("p7let");if(selC==="letter")p.classList.add("p7sel");else p.classList.remove("p7sel");}});
       }}
-      if(txt.indexOf("DECRYPT")>-1 && txt.indexOf("\ucd9c\uaca9")===-1){{
+      if(txt.indexOf("INTERCEPT")>-1 && txt.indexOf("\ucd9c\uaca9")===-1){{
         b.classList.add("p7pass","p7not");
         if(selC==="notice") b.classList.add("p7sel"); else b.classList.remove("p7sel");
         b.querySelectorAll("p").forEach(function(p){{p.classList.add("p7not");if(selC==="notice")p.classList.add("p7sel");else p.classList.remove("p7sel");}});
@@ -1537,7 +1537,7 @@ div[data-testid="stButton"] button.br-home p{color:#3d5066!important;}
         st.markdown(f'''<div style="background:#0c0c00;border:2px solid #FFD600;border-left:5px solid #FFD600;
             border-radius:10px;padding:9px 12px;">
           <div style="font-family:Orbitron,monospace;font-size:11px;font-weight:900;
-            color:#FFD600;letter-spacing:2px;">⚡ ROUND 1 · VICTORY</div>
+            color:#FFD600;letter-spacing:2px;">📡 OP.1 · MISSION COMPLETE</div>
           <div style="font-size:9px;color:#886600;margin-top:2px;letter-spacing:1px;">
             ✅ {ok_cnt} CAPTURED &nbsp;·&nbsp; ❌ {miss_cnt} MISSED &nbsp;·&nbsp; 📋 {data.get("title","")}</div>
         </div>''', unsafe_allow_html=True)
@@ -1545,7 +1545,7 @@ div[data-testid="stButton"] button.br-home p{color:#3d5066!important;}
         st.markdown(f'''<div style="background:#0c0008;border:2px solid #FF2D55;border-left:5px solid #FF2D55;
             border-radius:10px;padding:9px 12px;">
           <div style="font-family:Orbitron,monospace;font-size:11px;font-weight:900;
-            color:#FF2D55;letter-spacing:2px;">💀 ROUND 1 · MISSION FAILED</div>
+            color:#FF2D55;letter-spacing:2px;">📡 OP.1 · MISSION FAILED</div>
           <div style="font-size:9px;color:#661122;margin-top:2px;letter-spacing:1px;">
             ✅ {ok_cnt} CAPTURED &nbsp;·&nbsp; ❌ {miss_cnt} MISSED &nbsp;·&nbsp; 📋 {data.get("title","")}</div>
         </div>''', unsafe_allow_html=True)
@@ -1634,7 +1634,7 @@ div[data-testid="stButton"] button.br-home p{color:#3d5066!important;}
 
             # 저장 버튼
             _sv_key = f"br_sv_{bi}_{si}"
-            _btn_label = "💾 포로로 잡아라! → 저장" if ok else "💾 오답 문장 — 반드시 포로로!"
+            _btn_label = "💾 증거 확보! → 포로 등록" if ok else "💾 오답 증거 — 반드시 확보!"
             if st.button(_btn_label, key=_sv_key, use_container_width=True):
                 sent_data = dict(s)
                 sent_data["sentences"] = [sent]
@@ -1682,7 +1682,7 @@ div[data-testid="stButton"] button.br-home p{color:#3d5066!important;}
     # ── 하단 네비 ──
     _nc1, _nc2 = st.columns([3, 1])
     with _nc1:
-        if st.button("⚔️  포로사령부!", key="p7store", use_container_width=True):
+        if st.button("📡  포로사령부!", key="p7store", use_container_width=True):
             st.switch_page("pages/03_POW_HQ.py")
     with _nc2:
         if st.button("🏠 홈", key="p7lobby", use_container_width=True):
