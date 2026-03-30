@@ -1714,6 +1714,9 @@ elif st.session_state.sg_phase == "combo_result":
 # ════════════════════════════════════════
 # PHASE: WORD_PRISON — 극적인 심문실
 # ════════════════════════════════════════
+# ════════════════════════════════════════
+# PHASE: WORD_PRISON — 극적인 심문실
+# ════════════════════════════════════════
 elif st.session_state.sg_phase == "word_prison":
     import datetime as _pr_dt2, random as _pr_random
 
@@ -1753,6 +1756,91 @@ div[data-testid="stButton"] button p{color:#c0c8e0!important;font-size:0.9rem!im
     _today_str2 = _pr_dt2.datetime.now().strftime("%Y-%m-%d")
 
     # 카테고리별 캐릭터 + 영/한 라벨
+    # 기본 토익 어휘 사전 (kr 없을 때 fallback)
+    _VOCAB_DICT = {
+        "submit":"제출하다","submission":"제출","submitted":"제출된",
+        "approve":"승인하다","approval":"승인","approved":"승인된",
+        "policy":"정책","policies":"정책들",
+        "regulation":"규정","regulations":"규정들",
+        "comply":"준수하다","compliance":"준수",
+        "enhance":"향상시키다","improvement":"개선","improve":"개선하다",
+        "efficiency":"효율성","efficient":"효율적인",
+        "establish":"설립하다","establishment":"설립",
+        "maintain":"유지하다","maintenance":"유지",
+        "implement":"시행하다","implementation":"시행",
+        "evaluate":"평가하다","evaluation":"평가",
+        "facilitate":"촉진하다","facilitate":"용이하게 하다",
+        "require":"요구하다","requirement":"요구사항",
+        "provide":"제공하다","provision":"제공",
+        "ensure":"보장하다","guarantee":"보증하다",
+        "announce":"발표하다","announcement":"발표",
+        "consider":"고려하다","consideration":"고려",
+        "conduct":"수행하다","procedure":"절차",
+        "confirm":"확인하다","confirmation":"확인",
+        "complete":"완료하다","completion":"완료",
+        "notify":"통지하다","notification":"통지",
+        "indicate":"나타내다","indication":"표시",
+        "significant":"상당한","significantly":"상당히",
+        "temporary":"임시의","temporarily":"일시적으로",
+        "permanent":"영구적인","permanently":"영구적으로",
+        "available":"이용 가능한","availability":"가용성",
+        "efficient":"효율적인","effectively":"효과적으로",
+        "effective":"효과적인","effectively":"효과적으로",
+        "primary":"주요한","primarily":"주로",
+        "additional":"추가적인","additionally":"추가로",
+        "appropriate":"적절한","appropriately":"적절히",
+        "responsible":"책임있는","responsibility":"책임",
+        "opportunity":"기회","challenge":"도전",
+        "strategy":"전략","strategic":"전략적인",
+        "performance":"성과","perform":"수행하다",
+        "analysis":"분석","analyze":"분석하다",
+        "process":"과정/처리","proceed":"진행하다",
+        "schedule":"일정","scheduled":"예정된",
+        "deadline":"마감일","extension":"연장",
+        "reduction":"감소","reduce":"줄이다",
+        "increase":"증가/증가시키다","decrease":"감소/감소하다",
+        "receive":"받다","provide":"제공하다",
+        "request":"요청","respond":"응답하다",
+        "application":"지원/신청","apply":"지원하다/적용하다",
+        "candidate":"지원자","applicant":"지원자",
+        "participate":"참가하다","participation":"참가",
+        "contribute":"기여하다","contribution":"기여",
+        "distribute":"배포하다","distribution":"배포",
+        "operate":"운영하다","operation":"운영",
+        "manage":"관리하다","management":"관리",
+        "organize":"조직하다","organization":"조직",
+        "promote":"홍보하다/승진시키다","promotion":"홍보/승진",
+        "purchase":"구매","acquire":"취득하다",
+        "supply":"공급","demand":"수요",
+        "negotiate":"협상하다","negotiation":"협상",
+        "contract":"계약","agreement":"합의",
+        "project":"프로젝트","proposal":"제안",
+        "budget":"예산","invest":"투자하다",
+        "efficient":"효율적인","productivity":"생산성",
+        "retire":"은퇴하다","retirement":"은퇴",
+        "relocate":"이전하다","relocation":"이전",
+        "renovate":"개조하다","renovation":"개조",
+        "suspend":"중단하다","suspension":"중단",
+        "transfer":"이전/이동","transport":"운송",
+        "launch":"출시/시작","introduce":"소개하다",
+        "update":"업데이트","upgrade":"업그레이드",
+        "inspect":"검사하다","inspection":"검사",
+        "report":"보고하다/보고서","document":"문서",
+        "member":"구성원","committee":"위원회",
+        "board":"이사회","director":"이사/감독",
+        "department":"부서","division":"부문",
+        "employee":"직원","staff":"직원",
+        "customer":"고객","client":"고객",
+        "company":"회사","corporation":"기업",
+        "office":"사무실","facility":"시설",
+        "meeting":"회의","conference":"회의",
+        "training":"교육","workshop":"워크샵",
+        "policy":"정책","procedure":"절차",
+        "number":"수","amount":"양","total":"합계",
+        "endure":"견디다","retain":"유지하다",
+        "considerable":"상당한","significant":"중요한",
+    }
+
     def _lemma(w):
         """단어 원형 복원: members→member, policies→policy, founded→found"""
         import re as _re_l
@@ -1942,8 +2030,10 @@ div[data-testid="stButton"] button p{color:#c0c8e0!important;font-size:0.9rem!im
             _p=_deck[_idx]; _raw_word=_p.get("word",""); _word=_lemma(_raw_word)
             _raw_kr=_p.get("kr","") or ""; _kr=_clean_kr(_raw_kr)
             _sent=_p.get("sentence",""); _sent_kr=_p.get("sent_kr","")
-            # kr 없으면 sent_kr 기반으로 표시 전략 결정
-            _has_meaning = bool(_kr and _kr not in ("뜻 없음","뜻 없음","?",""))
+            # kr 없으면 사전 fallback 시도
+            if not _kr or _kr in ("?","뜻 없음",""):
+                _kr = _VOCAB_DICT.get(_word.lower(), "") or _VOCAB_DICT.get(_raw_word.lower(), "")
+            _has_meaning = bool(_kr and _kr not in ("뜻 없음","?",""))
             _streak=_p.get("correct_streak",0)
             _src=_p.get("source",""); _ch,_col,_lbl=_get_char(_p)
             # 진입 시 앞면 보장
