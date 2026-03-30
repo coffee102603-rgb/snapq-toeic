@@ -1926,12 +1926,22 @@ div[data-testid="stButton"] button p{color:#c0c8e0!important;font-size:0.9rem!im
     # ★ word_prison 진입 감지: _wp_guard=False면 외부에서 새로 진입 → lobby 강제
     # 나갈 때 _wp_guard=False 설정, 들어올 때 True로 잠금 → 재진입시 항상 로비
     if not st.session_state.get("_wp_guard", False):
+        import random as _wp_rnd2
         st.session_state.wp_mode    = "lobby"
         st.session_state.wp_idx     = 0
         st.session_state.wp_flipped = False
         st.session_state.wp_freed   = 0
+        st.session_state["wp_quiz_trigger"]  = _wp_rnd2.randint(3, 5)
+        st.session_state["wp_interrogator"]  = _wp_rnd2.randint(0, 4)
+        st.session_state["wp_seen_words"]    = []
+        st.session_state["wp_quiz_qs"]       = []
+        st.session_state["wp_quiz_idx"]      = 0
+        st.session_state["wp_quiz_score"]    = 0
+        st.session_state["wp_quiz_feedback"] = None
         st.session_state["_wp_guard"] = True
-    for _k,_v in {"wp_mode":"lobby","wp_idx":0,"wp_flipped":False,"wp_freed":0}.items():
+    for _k,_v in {"wp_mode":"lobby","wp_idx":0,"wp_flipped":False,"wp_freed":0,
+                  "wp_seen_words":[],"wp_quiz_qs":[],"wp_quiz_idx":0,
+                  "wp_quiz_score":0,"wp_quiz_feedback":None}.items():
         if _k not in st.session_state: st.session_state[_k] = _v
 
     st.markdown('<div id="btn-home">', unsafe_allow_html=True)
@@ -2281,7 +2291,16 @@ div[data-testid="stButton"] button p{color:#c0c8e0!important;font-size:0.9rem!im
                             _pr_st["word_prison"][_ri]["last_reviewed"]=_today_str2
                             if _ns>=3: _pr_st["word_prison"].pop(_ri); st.session_state.wp_freed+=1
                             save_storage(_pr_st)
-                        st.session_state.wp_idx+=1; st.session_state.wp_flipped=False; st.rerun()
+                        # 본 단어 기록
+                        _sw = st.session_state.get("wp_seen_words",[])
+                        if not any(s["word"]==_word for s in _sw):
+                            _sw.append({"word":_word,"kr":_kr if _has_meaning else ""})
+                            st.session_state.wp_seen_words = _sw
+                        st.session_state.wp_idx+=1; st.session_state.wp_flipped=False
+                        # 긴급 소환 트리거 체크
+                        if len(st.session_state.wp_seen_words) >= st.session_state.get("wp_quiz_trigger",5):
+                            st.session_state.wp_mode = "flash_intro"
+                        st.rerun()
                     st.markdown('</div>', unsafe_allow_html=True)
                 with _c2:
                     st.markdown('<div id="btn-no">', unsafe_allow_html=True)
@@ -2291,11 +2310,289 @@ div[data-testid="stButton"] button p{color:#c0c8e0!important;font-size:0.9rem!im
                             _pr_st["word_prison"][_ri]["correct_streak"]=0
                             _pr_st["word_prison"][_ri]["last_reviewed"]=_today_str2
                             save_storage(_pr_st)
-                        st.session_state.wp_idx+=1; st.session_state.wp_flipped=False; st.rerun()
+                        # 본 단어 기록
+                        _sw = st.session_state.get("wp_seen_words",[])
+                        if not any(s["word"]==_word for s in _sw):
+                            _sw.append({"word":_word,"kr":_kr if _has_meaning else ""})
+                            st.session_state.wp_seen_words = _sw
+                        st.session_state.wp_idx+=1; st.session_state.wp_flipped=False
+                        # 긴급 소환 트리거 체크
+                        if len(st.session_state.wp_seen_words) >= st.session_state.get("wp_quiz_trigger",5):
+                            st.session_state.wp_mode = "flash_intro"
+                        st.rerun()
                     st.markdown('</div>', unsafe_allow_html=True)
 
             st.markdown('<div id="btn-back" style="margin-top:4px;">', unsafe_allow_html=True)
             if st.button("↩️ LOBBY", key=f"wp_back_{_idx}", use_container_width=True):
                 st.session_state.wp_mode="lobby"; st.session_state.wp_flipped=False; st.rerun()
             st.markdown('</div>', unsafe_allow_html=True)
+
+    # ════════════════════════════════════════
+    # PHASE: FLASH_INTRO — 🚨 긴급 소환 전환 화면
+    # ════════════════════════════════════════
+    elif st.session_state.wp_mode == "flash_intro":
+        import random as _fi_rnd
+
+        # 수사관 5종
+        _INTERROGATORS = [
+            {"name":"박형사","emoji":"👮","color":"#ff6633","title":"강력계 형사",
+             "enter":"야!! 책상 탁!!! 솔직하게 말해!!",
+             "correct":"좋아, 인정한다! 다음!!","wrong":"딱 걸렸어!! 거짓말하지 마!!",
+             "done":"이번엔 봐준다... 다음엔 없어."},
+            {"name":"Agent K","emoji":"🕵️","color":"#00ccff","title":"CIA 냉철 요원",
+             "enter":"우리는... 이미 알고 있어.",
+             "correct":"예상대로군.","wrong":"거짓말은 데이터가 증명한다.",
+             "done":"임무 완료. 철수."},
+            {"name":"여우씨","emoji":"🦊","color":"#ffaa33","title":"교활한 탐정",
+             "enter":"어머~ 방심했지? 이건 함정이야~ 🦊",
+             "correct":"흠... 맞추다니. 예상 밖인걸?","wrong":"역시~ 내 함정에 딱 걸렸네~",
+             "done":"오늘은 봐줄게. 다음엔 더 교활해질 거야."},
+            {"name":"UNIT-7","emoji":"🤖","color":"#44ffcc","title":"AI 수사관",
+             "enter":"분석 완료. 즉시 응답하라.",
+             "correct":"정답 확인됨. 다음 항목.","wrong":"오답 감지. 재투옥 처리 중...",
+             "done":"오늘 정확도 분석 완료. 데이터 저장."},
+            {"name":"대부","emoji":"👹","color":"#ff3366","title":"보스",
+             "enter":"내가... 직접 나왔어.",
+             "correct":"...이번만 봐준다.","wrong":"내 앞에서 틀려?! 각오해!!",
+             "done":"살아남았군. 오늘은."},
+        ]
+        st.session_state.setdefault("_fi_interrogators", _INTERROGATORS)
+
+        _inq_idx = st.session_state.get("wp_interrogator", 0)
+        _inq = _INTERROGATORS[_inq_idx % len(_INTERROGATORS)]
+        _ic = _inq["color"]
+
+        # 문제 아직 생성 안 됐으면 생성
+        if not st.session_state.get("wp_quiz_qs"):
+            _seen = st.session_state.get("wp_seen_words", [])
+            _pool = [s for s in _seen if s.get("kr") and s["kr"] not in ("?","뜻 없음","")]
+            if len(_pool) < 2:
+                # seen words가 부족하면 word_prison 전체에서 보충
+                for _pp in _prisoners:
+                    _pw = _pp.get("word",""); _pk = _pp.get("kr","")
+                    if _pk and _pk not in ("?","뜻 없음","") and not any(s["word"]==_pw for s in _pool):
+                        _pool.append({"word":_pw,"kr":_pk})
+                    if len(_pool) >= 5: break
+            _q_words = _fi_rnd.sample(_pool, min(5, len(_pool)))
+            _qs = []
+            for _qi, _qw in enumerate(_q_words):
+                _qtype = "ox" if _qi % 2 == 0 else "choice4"
+                if _qtype == "ox":
+                    _is_cor = _fi_rnd.choice([True, False])
+                    if _is_cor:
+                        _show_kr = _qw["kr"]
+                    else:
+                        _wrongs = [s["kr"] for s in _pool if s["word"]!=_qw["word"] and s.get("kr")]
+                        _show_kr = _fi_rnd.choice(_wrongs) if _wrongs else _qw["kr"]
+                        if _show_kr == _qw["kr"]: _is_cor = True
+                    _qs.append({"type":"ox","word":_qw["word"],"kr":_qw["kr"],
+                                "show_kr":_show_kr,"correct":_is_cor})
+                else:
+                    _dists = list({s["kr"] for s in _pool if s["word"]!=_qw["word"] and s.get("kr")
+                                   and s["kr"] not in ("?","뜻 없음","")})
+                    _fb = ["고용하다","제출하다","준수하다","평가하다","승인하다","관리하다","연장하다","참가하다","발표하다","검토하다"]
+                    for _fk in _fb:
+                        if _fk not in _dists and _fk != _qw["kr"]: _dists.append(_fk)
+                    _dists = [d for d in _dists if d != _qw["kr"]]
+                    _fi_rnd.shuffle(_dists)
+                    _ch4 = _dists[:3] + [_qw["kr"]]
+                    _fi_rnd.shuffle(_ch4)
+                    _qs.append({"type":"choice4","word":_qw["word"],"kr":_qw["kr"],
+                                "choices":_ch4,"answer_idx":_ch4.index(_qw["kr"])})
+            st.session_state.wp_quiz_qs = _qs
+            st.session_state.wp_quiz_idx = 0
+            st.session_state.wp_quiz_score = 0
+            st.session_state.wp_quiz_feedback = None
+
+        components.html(f"""
+        <style>
+        @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@900&display=swap');
+        *{{margin:0;padding:0;box-sizing:border-box;}}body{{background:transparent;font-family:sans-serif;text-align:center;overflow:hidden;}}
+        @keyframes redFlash{{0%{{opacity:1}}30%{{opacity:0.3}}60%{{opacity:1}}80%{{opacity:0.6}}100%{{opacity:1}}}}
+        @keyframes slideUp{{from{{transform:translateY(80px);opacity:0}}to{{transform:translateY(0);opacity:1}}}}
+        @keyframes thud{{0%{{transform:scale(1)}}20%{{transform:scale(1.4)}}40%{{transform:scale(0.9)}}60%{{transform:scale(1.15)}}100%{{transform:scale(1)}}}}
+        @keyframes alarmPulse{{0%,100%{{box-shadow:0 0 30px {_ic},0 0 60px {_ic}44}}50%{{box-shadow:0 0 60px {_ic},0 0 120px {_ic}88}}}}
+        @keyframes blink{{0%,100%{{opacity:1}}50%{{opacity:0.3}}}}
+        .container{{background:radial-gradient(ellipse at 50% 30%,#2a0010 0%,#06080f 70%);
+            border:3px solid {_ic};border-radius:20px;padding:24px 16px;
+            animation:alarmPulse 1.2s ease infinite;}}
+        .alarm{{font-family:'Orbitron',monospace;font-size:13px;font-weight:900;
+            color:{_ic};letter-spacing:4px;animation:blink 0.8s ease infinite;margin-bottom:12px;}}
+        .emoji{{font-size:64px;animation:slideUp 0.6s ease;display:block;margin-bottom:10px;filter:drop-shadow(0 0 20px {_ic});}}
+        .title{{font-family:'Orbitron',monospace;font-size:11px;color:{_ic};letter-spacing:3px;margin-bottom:4px;}}
+        .name{{font-family:'Orbitron',monospace;font-size:20px;font-weight:900;color:#ffffff;margin-bottom:14px;}}
+        .enter{{font-size:18px;font-weight:900;color:#ffffff;line-height:1.6;animation:slideUp 0.8s ease;margin-bottom:8px;}}
+        .sub{{font-size:13px;color:{_ic};font-weight:700;animation:blink 1.5s ease infinite;}}
+        </style>
+        <div class="container">
+          <div class="alarm">🚨 EMERGENCY RECALL 🚨</div>
+          <span class="emoji">{_inq["emoji"]}</span>
+          <div class="title">{_inq["title"]}</div>
+          <div class="name">{_inq["name"]}</div>
+          <div class="enter">"{_inq["enter"]}"</div>
+          <div class="sub">방금 본 단어들... 진짜 알아?</div>
+        </div>
+        """, height=330)
+
+        st.markdown(f'<div id="btn-start" style="margin-top:8px;">', unsafe_allow_html=True)
+        if st.button(f"⚡ 긴급 심문 돌입!", key="flash_go", use_container_width=True):
+            st.session_state.wp_mode = "flash_quiz"; st.rerun()
+        st.markdown('</div>', unsafe_allow_html=True)
+
+    # ════════════════════════════════════════
+    # PHASE: FLASH_QUIZ — ⚡ 긴급 소환 퀴즈
+    # ════════════════════════════════════════
+    elif st.session_state.wp_mode == "flash_quiz":
+        _INTERROGATORS = st.session_state.get("_fi_interrogators", [
+            {"name":"박형사","emoji":"👮","color":"#ff6633","title":"강력계 형사",
+             "enter":"야!!","correct":"좋아!","wrong":"딱 걸렸어!!","done":"이번엔 봐준다."},
+        ])
+        _inq_idx = st.session_state.get("wp_interrogator", 0)
+        _inq = _INTERROGATORS[_inq_idx % len(_INTERROGATORS)]
+        _ic = _inq["color"]
+        _qs = st.session_state.get("wp_quiz_qs", [])
+        _qi = st.session_state.get("wp_quiz_idx", 0)
+        _score = st.session_state.get("wp_quiz_score", 0)
+        _fb = st.session_state.get("wp_quiz_feedback", None)
+
+        if _qi >= len(_qs):
+            st.session_state.wp_mode = "flash_result"; st.rerun()
+        else:
+            _q = _qs[_qi]
+            _qword = _q["word"]; _qkr = _q["kr"]
+            _total_q = len(_qs)
+
+            # HUD
+            components.html(f"""
+            <style>@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@900&display=swap');
+            *{{margin:0;padding:0;box-sizing:border-box;}}body{{background:transparent;font-family:sans-serif;}}
+            @keyframes shake{{0%,100%{{transform:translateX(0)}}20%{{transform:translateX(-8px)}}40%{{transform:translateX(8px)}}60%{{transform:translateX(-5px)}}80%{{transform:translateX(5px)}}}}
+            @keyframes popIn{{from{{transform:scale(0.7);opacity:0}}to{{transform:scale(1);opacity:1}}}}
+            .hud{{background:#06080f;border:2px solid {_ic};border-radius:14px;padding:10px 14px;
+                display:flex;justify-content:space-between;align-items:center;margin-bottom:2px;}}
+            .inq{{font-size:22px;}} .inq-name{{font-family:'Orbitron',monospace;font-size:10px;color:{_ic};font-weight:900;}}
+            .prog{{font-family:'Orbitron',monospace;font-size:14px;font-weight:900;color:#ffffff;}}
+            .star{{font-size:16px;}}
+            .card{{background:radial-gradient(ellipse at top,#1a0820 0%,#06080f 70%);
+                border:2.5px solid {_ic};border-radius:18px;padding:20px 16px;text-align:center;
+                {'animation:shake 0.5s ease;' if _fb and not _fb["correct"] else 'animation:popIn 0.4s ease;'}}}
+            .qtype{{font-family:'Orbitron',monospace;font-size:9px;color:{_ic};letter-spacing:3px;margin-bottom:10px;}}
+            .word{{font-family:'Orbitron',monospace;font-size:24px;font-weight:900;color:#ffffff;
+                text-shadow:0 0 20px {_ic};margin-bottom:4px;}}
+            .kr-show{{font-size:22px;font-weight:900;color:#ffee44;margin:8px 0;}}
+            .fb-ok{{font-size:28px;font-weight:900;color:#33ff77;animation:popIn 0.3s ease;}}
+            .fb-ng{{font-size:22px;font-weight:900;color:#ff4444;}}
+            .fb-ans{{font-size:14px;color:#aabbcc;margin-top:4px;}}
+            .inq-msg{{font-size:15px;font-weight:800;color:#ffffff;margin-top:8px;line-height:1.5;}}
+            </style>
+            <div class="hud">
+              <div><div class="inq">{_inq["emoji"]}</div><div class="inq-name">{_inq["name"]}</div></div>
+              <div class="prog">Q{_qi+1} / {_total_q}</div>
+              <div class="star">{"⭐"*_score}{"☆"*(_qi-_score)}</div>
+            </div>
+            <div class="card">
+              {'<div class="fb-ok">✅ 탁!!</div><div class="inq-msg">' + _inq["correct"] + '</div>' if _fb and _fb["correct"]
+               else '<div class="fb-ng">❌ 딱 걸렸어!</div><div class="fb-ans">정답: ' + _qkr + '</div><div class="inq-msg">' + _inq["wrong"] + '</div>' if _fb and not _fb["correct"]
+               else ('<div class="qtype">' + ('🔎 OX 심문' if _q["type"]=="ox" else '🎯 4지선다') + '</div>'
+               + ('<div class="word">' + _qword + '</div><div class="kr-show">' + _q.get("show_kr","") + '</div>'
+                  if _q["type"]=="ox" else '<div style="font-size:14px;color:#aabbcc;margin-bottom:6px;">아래 중 맞는 한국어 뜻은?</div><div class="word">' + _qword + '</div>'))}
+            </div>
+            """, height=210 if _fb else 190)
+
+            if _fb:
+                st.markdown('<div id="btn-start">', unsafe_allow_html=True)
+                _next_label = "🏁 결과 보기!" if _qi+1 >= _total_q else "다음 → "
+                if st.button(_next_label, key=f"fq_next_{_qi}", use_container_width=True):
+                    st.session_state.wp_quiz_idx += 1
+                    st.session_state.wp_quiz_feedback = None
+                    st.rerun()
+                st.markdown('</div>', unsafe_allow_html=True)
+            elif _q["type"] == "ox":
+                _ox1, _ox2 = st.columns(2)
+                with _ox1:
+                    st.markdown('<div id="btn-know">', unsafe_allow_html=True)
+                    if st.button("⭕ 맞아!", key=f"fq_ox_y_{_qi}", use_container_width=True):
+                        _ok = _q["correct"]
+                        if _ok: st.session_state.wp_quiz_score += 1
+                        st.session_state.wp_quiz_feedback = {"correct": _ok}; st.rerun()
+                    st.markdown('</div>', unsafe_allow_html=True)
+                with _ox2:
+                    st.markdown('<div id="btn-no">', unsafe_allow_html=True)
+                    if st.button("❌ 아니야!", key=f"fq_ox_n_{_qi}", use_container_width=True):
+                        _ok = not _q["correct"]
+                        if _ok: st.session_state.wp_quiz_score += 1
+                        st.session_state.wp_quiz_feedback = {"correct": _ok}; st.rerun()
+                    st.markdown('</div>', unsafe_allow_html=True)
+            else:
+                _choices = _q["choices"]
+                for _ci, _ch in enumerate(_choices):
+                    if st.button(f"{chr(9312+_ci)} {_ch}", key=f"fq_ch_{_qi}_{_ci}", use_container_width=True):
+                        _ok = (_ci == _q["answer_idx"])
+                        if _ok: st.session_state.wp_quiz_score += 1
+                        st.session_state.wp_quiz_feedback = {"correct": _ok}; st.rerun()
+
+    # ════════════════════════════════════════
+    # PHASE: FLASH_RESULT — 🏆 긴급 소환 결과
+    # ════════════════════════════════════════
+    elif st.session_state.wp_mode == "flash_result":
+        _INTERROGATORS = st.session_state.get("_fi_interrogators", [
+            {"name":"박형사","emoji":"👮","color":"#ff6633",
+             "done":"이번엔 봐준다."},
+        ])
+        _inq_idx = st.session_state.get("wp_interrogator", 0)
+        _inq = _INTERROGATORS[_inq_idx % len(_INTERROGATORS)]
+        _ic = _inq["color"]
+        _score = st.session_state.get("wp_quiz_score", 0)
+        _total = len(st.session_state.get("wp_quiz_qs", [1,2,3,4,5]))
+
+        _done_msg = _inq["done"].replace("{score}", str(_score))
+        if _score == _total:
+            _grade_emoji, _grade_msg, _grade_color = "🏆", "완전 석방 확정! 넌 자유야!", "#ffdd00"
+        elif _score >= _total * 0.8:
+            _grade_emoji, _grade_msg, _grade_color = "⭐", "거의 다! 한 놈만 더 잡자!", "#44ff88"
+        elif _score >= _total * 0.6:
+            _grade_emoji, _grade_msg, _grade_color = "💪", "절반 인정. 나머지 재심문!", "#ffaa33"
+        else:
+            _grade_emoji, _grade_msg, _grade_color = "💀", "전원 재투옥! 다시 시작해!", "#ff4444"
+
+        components.html(f"""
+        <style>
+        @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@900&display=swap');
+        *{{margin:0;padding:0;box-sizing:border-box;}}body{{background:transparent;font-family:sans-serif;text-align:center;}}
+        @keyframes popIn{{from{{transform:scale(0.5);opacity:0}}to{{transform:scale(1);opacity:1}}}}
+        @keyframes pulse{{0%,100%{{box-shadow:0 0 20px {_ic}44}}50%{{box-shadow:0 0 50px {_ic}99}}}}
+        .card{{background:radial-gradient(ellipse at top,#150a25 0%,#06080f 70%);
+            border:2.5px solid {_ic};border-radius:20px;padding:22px 16px;animation:pulse 2s ease infinite;}}
+        .inq-big{{font-size:52px;margin-bottom:6px;filter:drop-shadow(0 0 16px {_ic});animation:popIn 0.6s ease;}}
+        .inq-msg{{font-size:15px;font-weight:800;color:#cccccc;margin-bottom:14px;line-height:1.5;font-style:italic;}}
+        .grade{{font-size:48px;animation:popIn 0.5s 0.2s both ease;}}
+        .score{{font-family:'Orbitron',monospace;font-size:32px;font-weight:900;color:{_grade_color};
+            text-shadow:0 0 20px {_grade_color};margin:6px 0;}}
+        .grade-msg{{font-size:16px;font-weight:900;color:{_grade_color};margin-top:4px;}}
+        .stars{{font-size:20px;letter-spacing:4px;margin-top:8px;}}
+        </style>
+        <div class="card">
+          <div class="inq-big">{_inq["emoji"]}</div>
+          <div class="inq-msg">"{_done_msg}"</div>
+          <div class="grade">{_grade_emoji}</div>
+          <div class="score">{_score} / {_total}</div>
+          <div class="grade-msg">{_grade_msg}</div>
+          <div class="stars">{"⭐"*_score}{"☆"*(_total-_score)}</div>
+        </div>
+        """, height=320)
+
+        st.markdown("<div style='height:6px'></div>", unsafe_allow_html=True)
+        _r1, _r2 = st.columns(2)
+        with _r1:
+            if st.button("🔁 심문 계속!", key="fl_resume", use_container_width=True):
+                import random as _fr_rnd
+                st.session_state.wp_mode = "card"
+                st.session_state.wp_quiz_trigger = 9999  # 다시 발동 안 함
+                st.session_state.wp_quiz_feedback = None
+                st.rerun()
+        with _r2:
+            if st.button("↩️ 로비", key="fl_lobby", use_container_width=True):
+                st.session_state["_wp_guard"] = False
+                st.session_state.wp_mode = "lobby"; st.rerun()
+
 
