@@ -1760,8 +1760,8 @@ div[data-testid="stButton"] button p{color:#c0c8e0!important;font-size:0.9rem!im
 #btn-no div[data-testid="stButton"] button p{color:#ff5544!important;font-size:1.05rem!important;font-weight:900!important;}
 #btn-flip div[data-testid="stButton"] button{background:#10102a!important;border:2.5px solid #6655ee!important;color:#cc99ff!important;min-height:58px!important;font-size:1rem!important;}
 #btn-flip div[data-testid="stButton"] button p{color:#cc99ff!important;font-size:1rem!important;font-weight:900!important;}
-#btn-start div[data-testid="stButton"] button{background:#18082a!important;border:2.5px solid #bb44ff!important;color:#dd99ff!important;min-height:64px!important;font-size:1.05rem!important;}
-#btn-start div[data-testid="stButton"] button p{color:#dd99ff!important;font-size:1.05rem!important;font-weight:900!important;}
+#btn-start div[data-testid="stButton"] button{background:#1a0808!important;border:2.5px solid #ff3300!important;color:#ff6644!important;min-height:64px!important;font-size:1.05rem!important;box-shadow:0 0 18px #ff330066!important;}
+#btn-start div[data-testid="stButton"] button p{color:#ff6644!important;font-size:1.05rem!important;font-weight:900!important;}
 #btn-home div[data-testid="stButton"] button{background:#08080f!important;border:1px solid #1a1d2a!important;color:#3a4455!important;min-height:38px!important;font-size:0.8rem!important;}
 #btn-home div[data-testid="stButton"] button p{color:#3a4455!important;font-size:0.8rem!important;}
 #btn-back div[data-testid="stButton"] button{background:#08080f!important;border:1px solid #1a1d2a!important;color:#3a4455!important;min-height:36px!important;font-size:0.78rem!important;}
@@ -1980,7 +1980,7 @@ div[data-testid="stButton"] button p{color:#c0c8e0!important;font-size:0.9rem!im
           <div style="font-size:38px;margin-bottom:6px;filter:drop-shadow(0 0 12px #8833ff);">🚔</div>
           <div style="font-family:'Orbitron',monospace;font-size:15px;font-weight:900;color:#ddaaff;letter-spacing:3px;margin-bottom:4px;">WORD PRISON</div>
           <div style="font-size:14px;color:#cc99ff;font-weight:700;margin-bottom:2px;">단어 심문실</div>
-          <div style="font-size:14px;color:#ff6699;font-weight:800;margin-top:10px;line-height:1.7;letter-spacing:0.3px;">
+          <div style="font-size:14px;color:#ff4488;font-weight:900;margin-top:10px;line-height:1.7;letter-spacing:0.3px;text-shadow:0 0 10px #ff336688;">
             🚨 기억하면 석방, 잊으면 재투옥,<br>방심하면 공범까지 소환된다.
           </div>
         </div>
@@ -2035,7 +2035,7 @@ div[data-testid="stButton"] button p{color:#c0c8e0!important;font-size:0.9rem!im
             except Exception:
                 pass
 
-        for _p in _prisoners[:3]:
+        for _p in _prisoners[:2]:
             _ch,_col,_lbl = _get_char(_p)
             _w_raw = _p.get("word",""); _w = _lemma(_w_raw)
             _raw_kr = _p.get("kr","") or ""
@@ -2045,23 +2045,23 @@ div[data-testid="stButton"] button p{color:#c0c8e0!important;font-size:0.9rem!im
             _streak = _p.get("correct_streak",0)
             st.markdown(
                 f'<div style="background:#0c0e1a;border:1px solid #1e2235;border-left:3px solid {_col};'
-                f'border-radius:10px;padding:8px 12px;display:flex;align-items:center;gap:8px;margin-bottom:3px;">'
-                f'<span style="font-size:22px;">{_ch}</span>'
+                f'border-radius:9px;padding:6px 10px;display:flex;align-items:center;gap:7px;margin-bottom:3px;">'
+                f'<span style="font-size:19px;">{_ch}</span>'
                 f'<div style="flex:1;">'
-                f'<div style="font-size:15px;font-weight:900;color:#ffffff;">{_w}</div>'
-                f'<div style="font-size:13px;color:#aabbcc;font-weight:600;">{_kr}</div>'
+                f'<div style="font-size:13px;font-weight:900;color:#ffffff;">{_w}</div>'
+                f'<div style="font-size:11px;color:#aabbcc;font-weight:600;">{_kr}</div>'
                 f'</div>'
                 f'<div style="text-align:right;">'
-                f'<div style="font-size:13px;color:{_col};font-weight:700;">{"●"*_streak}{"○"*(3-_streak)}</div>'
+                f'<div style="font-size:11px;color:{_col};font-weight:700;">{"●"*_streak}{"○"*(3-_streak)}</div>'
                 f'</div></div>',
                 unsafe_allow_html=True)
 
-        if _total>3:
-            st.markdown(f'<div style="text-align:center;font-size:13px;color:#8899bb;font-weight:600;margin-top:4px;">+ {_total-3}명 더 수감중...</div>', unsafe_allow_html=True)
+        if _total>2:
+            st.markdown(f'<div style="text-align:center;font-size:13px;color:#8899bb;font-weight:600;margin-top:4px;">+ {_total-2}명 더 수감중...</div>', unsafe_allow_html=True)
 
         st.markdown('<div style="height:2px;"></div>', unsafe_allow_html=True)
         st.markdown('<div id="btn-start">', unsafe_allow_html=True)
-        if st.button("🔍  심문 시작!", key="wp_start", use_container_width=True):
+        if st.button("💥 탕!! 심문실 돌입!!", key="wp_start", use_container_width=True):
             st.session_state.wp_idx=0; st.session_state.wp_flipped=False; st.session_state.wp_mode="card"; st.rerun()
         st.markdown('</div>', unsafe_allow_html=True)
         st.markdown('<div id="btn-back" style="margin-top:4px;">', unsafe_allow_html=True)
