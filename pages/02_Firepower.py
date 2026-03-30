@@ -1185,13 +1185,19 @@ elif st.session_state.phase=="briefing":
                 except Exception:
                     pass
 
-                # 2순위: exk에서 "단어=뜻" 패턴 추출
+                # 2순위: exk에서 "단어=뜻" 패턴 추출 (문법 라벨 필터링)
+                _KR_GRAM_LABELS = {"복수","단수","수동태","능동태","주격","목적격","소유격",
+                                   "도치","가정법","분사","동명사","관계사","접속사","수일치",
+                                   "과거","현재","미래","완료","진행","원형","비교급","최상급"}
                 if not _words and _fp_exk:
                     for _m in _rep.finditer(r'([A-Za-z][A-Za-z ]{1,25})=([^!,.]{2,20})', _fp_exk):
                         _ww = _m.group(1).strip()
                         _wkr = _m.group(2).strip()
-                        if len(_ww) >= 2 and _ww.lower() not in _GRAMMAR_STOP:
-                            _words.append({"word":_ww,"kr":_wkr})
+                        # 문법 라벨(복수, 단수 등)이 뜻으로 오면 제외
+                        _wkr_clean = _wkr.strip()
+                        _is_gram_label = any(lb in _wkr_clean for lb in _KR_GRAM_LABELS)
+                        if len(_ww) >= 2 and _ww.lower() not in _GRAMMAR_STOP and not _is_gram_label:
+                            _words.append({"word":_ww,"kr":_wkr_clean})
 
                 # 3순위: vocab → ans_clean / grammar → 문장 내 내용어 추출
                 if not _words:
@@ -1205,6 +1211,8 @@ elif st.session_state.phase=="briefing":
                         _sent_words = _rep.findall(r'[A-Za-z]{5,}', _fp_sent)
                         for _sw in _sent_words:
                             if _sw.lower() not in _SENT_STOP and _sw.lower() not in _GRAMMAR_STOP:
+                                # sent_kr(문장 한글해석)에서 단어 위치 기반 뜻 힌트 추출 불가
+                                # → kr은 비워두고 sent_kr로 표시
                                 _words.append({"word":_sw,"kr":""})
                                 if len(_words) >= 2: break
 
@@ -1222,7 +1230,6 @@ elif st.session_state.phase=="briefing":
                         "kr":             _w_kr,
                         "source":         "P5",
                         "sentence":       _fp_sent,
-                        "sent_kr":        _fp_kr,
                         "captured_date":  _fdt.datetime.now().strftime("%Y-%m-%d"),
                         "correct_streak": 0,
                         "last_reviewed":  None,

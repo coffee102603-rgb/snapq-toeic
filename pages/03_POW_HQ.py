@@ -1938,8 +1938,10 @@ div[data-testid="stButton"] button p{color:#c0c8e0!important;font-size:0.9rem!im
                     st.session_state.wp_mode="lobby"; st.session_state.wp_freed=0; st.rerun()
         else:
             _p=_deck[_idx]; _raw_word=_p.get("word",""); _word=_lemma(_raw_word)
-            _raw_kr=_p.get("kr","") or ""; _kr=_clean_kr(_raw_kr) or "뜻 없음"
+            _raw_kr=_p.get("kr","") or ""; _kr=_clean_kr(_raw_kr)
             _sent=_p.get("sentence",""); _sent_kr=_p.get("sent_kr","")
+            # kr 없으면 sent_kr 기반으로 표시 전략 결정
+            _has_meaning = bool(_kr and _kr not in ("뜻 없음","뜻 없음","?",""))
             _streak=_p.get("correct_streak",0)
             _src=_p.get("source",""); _ch,_col,_lbl=_get_char(_p)
             # 진입 시 앞면 보장
@@ -2017,11 +2019,12 @@ div[data-testid="stButton"] button p{color:#c0c8e0!important;font-size:0.9rem!im
                         f'<span style="color:#ffee44;font-weight:900;text-shadow:0 0 12px #ffee44,0 0 4px #ff8800;border-bottom:2px solid #ffee44;padding:0 2px;">\\1</span>',
                         _sent_short
                     )
-                    # sent_kr: 문장 한글해석 (없으면 word=뜻 fallback)
+                    # sent_kr: 문장 한글해석 + kr 없을 때 더 강조
                     _kr_line = ""
                     if _sent_kr:
-                        _kr_line = f'<div style="font-size:13px;color:#aaccbb;line-height:1.65;margin-top:8px;padding-top:8px;border-top:1px solid #1a3020;">{_sent_kr}</div>'
-                    else:
+                        _sent_kr_style = "font-size:14px;color:#ccddbb;font-weight:700;" if not _has_meaning else "font-size:13px;color:#aaccbb;"
+                        _kr_line = f'<div style="{_sent_kr_style}line-height:1.65;margin-top:8px;padding-top:8px;border-top:1px solid #1a3020;">{_sent_kr}</div>'
+                    elif _has_meaning:
                         _kr_line = f'<div style="font-size:12px;color:#557766;margin-top:8px;">💡 <span style="color:#ffee55;font-weight:700;">{_word}</span> = <span style="color:#ddeecc;font-weight:700;">{_kr}</span></div>'
                     _sent_block = (
                         f'<div style="background:#08100a;border:1.5px solid #1a3020;border-radius:14px;'
@@ -2044,10 +2047,10 @@ div[data-testid="stButton"] button p{color:#c0c8e0!important;font-size:0.9rem!im
                   <div style="font-family:'Orbitron',monospace;font-size:16px;color:#ccffdd;
                        letter-spacing:3px;margin-bottom:10px;font-weight:900;
                        text-shadow:0 0 16px #44ff88,0 2px 4px #000;">{_word}</div>
-                  <div style="font-size:38px;font-weight:900;
-                       color:#ffffff;
+                  <div style="font-size:{'38' if _has_meaning else '18'}px;font-weight:900;
+                       color:#{'ffffff' if _has_meaning else '668877'};
                        text-shadow:0 0 24px #44ff8899,0 2px 6px #000;
-                       margin-bottom:4px;">{_kr if _kr != '?' else '뜻 없음'}</div>
+                       margin-bottom:4px;">{''+_kr+'' if _has_meaning else '아래 예문에서 뜻을 찾아봐! 💡'}</div>
                   {_sent_block}
                   <div style="display:flex;justify-content:center;gap:4px;margin-top:8px;">{_dots2}</div>
                   <div style="font-size:11px;color:#335544;margin-top:5px;">
