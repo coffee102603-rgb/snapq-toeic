@@ -1138,32 +1138,41 @@ elif st.session_state.phase=="briefing":
             st.rerun()
         st.markdown('</div>', unsafe_allow_html=True)
     else:
-        st.markdown('<div class="br-saved-btn">', unsafe_allow_html=True)
-        st.button("✅  저장 완료 — 포로사령부 대기중", key=f"sv_{q['id']}_{bi}", use_container_width=True, disabled=True)
-        st.markdown('</div>', unsafe_allow_html=True)
+        # 저장됨: 작은 뱃지로 표시 (버튼 제거)
+        st.markdown(
+            '<div style="text-align:center;padding:4px 0;font-size:0.78rem;color:#336644;'
+            'font-weight:700;letter-spacing:1px;">✅ 저장 완료 · 포로사령부 대기중</div>',
+            unsafe_allow_html=True)
 
-    st.markdown('<div style="height:1px;background:#111122;margin:3px 0;"></div>', unsafe_allow_html=True)
+    st.markdown('<div style="height:1px;background:#111122;margin:4px 0;"></div>', unsafe_allow_html=True)
 
-    # ── 하단 버튼 ──
+    # ── 하단 버튼 (포로사령부:홈 = 3:1) ──
+    def _go_home():
+        st.session_state._p5_just_left = True
+        st.session_state.ans = False
+        st.session_state["_battle_entry_ans_reset"] = True
+        _nick = st.session_state.get("battle_nickname") or st.session_state.get("nickname", "")
+        if _nick:
+            st.query_params["nick"] = _nick
+            st.query_params["ag"] = "1"
+        st.switch_page("main_hub.py")
+
     if was_victory:
-        st.markdown('<div class="br-pow-btn">', unsafe_allow_html=True)
-        if st.button("⚔️  포로사령부 → 오답 반복 훈련 시작!", use_container_width=True):
-            st.switch_page("pages/03_POW_HQ.py")
-        st.markdown('</div>', unsafe_allow_html=True)
-        st.markdown('<div class="br-home-btn">', unsafe_allow_html=True)
-        if st.button("🏠 홈", use_container_width=True):
-            st.session_state._p5_just_left = True
-            st.session_state.ans = False
-            st.session_state["_battle_entry_ans_reset"] = True
-            _nick = st.session_state.get("battle_nickname") or st.session_state.get("nickname", "")
-            if _nick:
-                st.query_params["nick"] = _nick
-                st.query_params["ag"] = "1"
-            st.switch_page("main_hub.py")
-        st.markdown('</div>', unsafe_allow_html=True)
+        _bc1, _bc2 = st.columns([3, 1])
+        with _bc1:
+            st.markdown('<div class="br-pow-btn">', unsafe_allow_html=True)
+            if st.button("⚔️  포로사령부!", use_container_width=True):
+                st.switch_page("pages/03_POW_HQ.py")
+            st.markdown('</div>', unsafe_allow_html=True)
+        with _bc2:
+            st.markdown('<div class="br-home-btn">', unsafe_allow_html=True)
+            if st.button("🏠 홈", use_container_width=True):
+                _go_home()
+            st.markdown('</div>', unsafe_allow_html=True)
     else:
+        # 게임오버: 설욕전 크게 + 포로사령부·홈 작게
         st.markdown('<div class="br-retry-btn">', unsafe_allow_html=True)
-        if st.button("🔥  설욕전! 다시 싸운다!", use_container_width=True):
+        if st.button("🔥  설욕전!", use_container_width=True):
             for k in ["cq","qi","sc","wrong","ta","ans","sel","round_qs","round_results","br_idx","br_saved"]:
                 if k in st.session_state: del st.session_state[k]
             for k,v in D.items():
@@ -1172,23 +1181,16 @@ elif st.session_state.phase=="briefing":
             st.session_state.round_qs = qs; st.session_state.cq = qs[0]
             st.session_state.qst = time.time(); st.session_state.phase = "battle"; st.rerun()
         st.markdown('</div>', unsafe_allow_html=True)
-        _rc1, _rc2 = st.columns([2,1])
+        _rc1, _rc2 = st.columns([3, 1])
         with _rc1:
             st.markdown('<div class="br-pow-btn">', unsafe_allow_html=True)
-            if st.button("⚔️  포로사령부 → 다시 훈련!", use_container_width=True):
+            if st.button("⚔️  포로사령부!", use_container_width=True):
                 st.switch_page("pages/03_POW_HQ.py")
             st.markdown('</div>', unsafe_allow_html=True)
         with _rc2:
             st.markdown('<div class="br-home-btn">', unsafe_allow_html=True)
             if st.button("🏠 홈", use_container_width=True):
-                st.session_state._p5_just_left = True
-                st.session_state.ans = False
-                st.session_state["_battle_entry_ans_reset"] = True
-                _nick = st.session_state.get("battle_nickname") or st.session_state.get("nickname", "")
-                if _nick:
-                    st.query_params["nick"] = _nick
-                    st.query_params["ag"] = "1"
-                st.switch_page("main_hub.py")
+                _go_home()
             st.markdown('</div>', unsafe_allow_html=True)
 
 
