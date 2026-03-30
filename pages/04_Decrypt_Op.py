@@ -805,7 +805,7 @@ div[data-testid="stButton"] button.p7nav:hover{
     st.markdown('''<div style="text-align:center;padding:6px 0 4px;">
       <div style="font-size:9px;color:#6699bb;letter-spacing:4px;margin-bottom:3px;font-weight:900;">DECRYPT OPERATION</div>
       <div style="font-size:1.32rem;font-weight:900;color:#aaccff;letter-spacing:3px;">📡 암호해독 작전</div>
-      <div style="font-size:0.72rem;color:#8899aa;letter-spacing:1.5px;margin-top:3px;font-weight:700;">TOEIC PART 7 · 단 한 번의 실수 — 즉사</div>
+      <div style="font-size:0.72rem;color:#8899aa;letter-spacing:1.5px;margin-top:3px;font-weight:700;">CLASSIFIED · PRIORITY LEVEL 7</div>
     </div>''', unsafe_allow_html=True)
 
     # ── 시간 선택 (A안: SIGNAL FREQUENCY 세그먼트) ──
@@ -819,7 +819,7 @@ div[data-testid="stButton"] button.p7nav:hover{
         if st.button("⚡ 80s\nSTANDARD", key="p7t80", use_container_width=True):
             st.session_state.p7_tsec=80; st.session_state.p7_tsec_chosen=True; st.rerun()
     with tc3:
-        if st.button("🛡 100s\nPRECISION", key="p7t100", use_container_width=True):
+        if st.button("💎 100s\nPRECISION", key="p7t100", use_container_width=True):
             st.session_state.p7_tsec=100; st.session_state.p7_tsec_chosen=True; st.rerun()
 
     # ── 지문 선택 (SIGNAL/CIPHER/DECRYPT/BLACKOUT 4개 한 줄) ──
@@ -840,12 +840,12 @@ div[data-testid="stButton"] button.p7nav:hover{
             st.session_state.p7_cat="information"; st.rerun()
 
     # ── 생존 규칙 ──
-    st.markdown('<div style="text-align:center;padding:16px 0 3px;font-size:0.82rem;font-weight:900;color:#cc3333;letter-spacing:1px;">💀 오답 1개 즉사 · 시간초과 즉사</div>', unsafe_allow_html=True)
+    st.markdown('<div style="text-align:center;padding:16px 0 3px;font-size:0.82rem;font-weight:900;color:#cc3333;letter-spacing:1px;">☠ 오판 1회 = 작전 종료 · 통신 두절 = 즉시 철수</div>', unsafe_allow_html=True)
 
     # ── 출격 버튼 ──
     if _ready:
         _cat_name = PASSAGES[cat]["title"]
-        _tlabel = {"60":"🔥 60s RAPID","80":"⚡ 80s STANDARD","100":"🛡 100s PRECISION"}.get(str(_p7_tsec), str(_p7_tsec)+"초")
+        _tlabel = {"60":"🔥 60s RAPID","80":"⚡ 80s STANDARD","100":"💎 100s PRECISION"}.get(str(_p7_tsec), str(_p7_tsec)+"초")
         if st.button(f"▶ 출격! — {_cat_name}  ⏱ {_tlabel}", key="p7go", use_container_width=True):
             st.session_state.p7_data = PASSAGES[cat]
             st.session_state.p7_step = 0
