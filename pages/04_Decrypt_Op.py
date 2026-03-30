@@ -804,12 +804,12 @@ div[data-testid="stButton"] button.p7nav:hover{
     # ── 타이틀 ──
     st.markdown('''<div style="text-align:center;padding:6px 0 4px;">
       <div style="font-size:9px;color:#6699bb;letter-spacing:4px;margin-bottom:3px;font-weight:900;">DECRYPT OPERATION</div>
-      <div style="font-size:1.2rem;font-weight:900;color:#aaccff;letter-spacing:3px;">📡 암호해독 작전</div>
+      <div style="font-size:1.32rem;font-weight:900;color:#aaccff;letter-spacing:3px;">📡 암호해독 작전</div>
       <div style="font-size:0.72rem;color:#8899aa;letter-spacing:1.5px;margin-top:3px;font-weight:700;">TOEIC PART 7 · 단 한 번의 실수 — 즉사</div>
     </div>''', unsafe_allow_html=True)
 
     # ── 시간 선택 (A안: SIGNAL FREQUENCY 세그먼트) ──
-    st.markdown('''<div style="font-size:10px;color:#88aacc;letter-spacing:4px;padding:6px 0 7px;font-weight:900;">
+    st.markdown('''<div style="font-size:10px;color:#88aacc;letter-spacing:4px;padding:14px 0 7px;font-weight:900;">
       ⏱  SIGNAL FREQUENCY</div>''', unsafe_allow_html=True)
     tc1, tc2, tc3 = st.columns(3)
     with tc1:
@@ -823,24 +823,24 @@ div[data-testid="stButton"] button.p7nav:hover{
             st.session_state.p7_tsec=100; st.session_state.p7_tsec_chosen=True; st.rerun()
 
     # ── 지문 선택 (SIGNAL/CIPHER/DECRYPT/BLACKOUT 4개 한 줄) ──
-    st.markdown('''<div style="font-size:10px;color:#dd88aa;letter-spacing:4px;padding:6px 0 7px;font-weight:900;">
+    st.markdown('''<div style="font-size:10px;color:#dd88aa;letter-spacing:4px;padding:14px 0 7px;font-weight:900;">
       ⚔  TARGET CLASSIFICATION</div>''', unsafe_allow_html=True)
     pc1, pc2, pc3, pc4 = st.columns(4)
     with pc1:
-        if st.button("📢\nSIGNAL\n광고·공지\n●○○○ LV.1", key="p7c1", use_container_width=True):
+        if st.button("📢\nSIGNAL\n광고·공지\n▂░░░", key="p7c1", use_container_width=True):
             st.session_state.p7_cat="article"; st.rerun()
     with pc2:
-        if st.button("✉️\nCIPHER\n편지·이메일\n●●○○ LV.2", key="p7c2", use_container_width=True):
+        if st.button("✉️\nCIPHER\n편지·이메일\n▂▄░░", key="p7c2", use_container_width=True):
             st.session_state.p7_cat="letter"; st.rerun()
     with pc3:
-        if st.button("📰\nDECRYPT\n기사·안내\n●●●○ LV.3", key="p7c3", use_container_width=True):
+        if st.button("📰\nDECRYPT\n기사·안내\n▂▄▆░", key="p7c3", use_container_width=True):
             st.session_state.p7_cat="notice"; st.rerun()
     with pc4:
-        if st.button("☠️\nBLACKOUT\n고난도\n●●●● LV.4", key="p7c4", use_container_width=True):
+        if st.button("☠️\nBLACKOUT\n고난도\n▂▄▆█", key="p7c4", use_container_width=True):
             st.session_state.p7_cat="information"; st.rerun()
 
     # ── 생존 규칙 ──
-    st.markdown('<div style="text-align:center;padding:14px 0 3px;font-size:0.82rem;font-weight:900;color:#cc3333;letter-spacing:1px;">💀 오답 1개 즉사 · 시간초과 즉사</div>', unsafe_allow_html=True)
+    st.markdown('<div style="text-align:center;padding:16px 0 3px;font-size:0.82rem;font-weight:900;color:#cc3333;letter-spacing:1px;">💀 오답 1개 즉사 · 시간초과 즉사</div>', unsafe_allow_html=True)
 
     # ── 출격 버튼 ──
     if _ready:
