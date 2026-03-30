@@ -726,49 +726,49 @@ div[data-testid="stButton"] button.p7pass{
   min-height:92px!important;text-align:center!important;padding:10px 4px!important;
 }
 
-/* Article */
+/* SIGNAL LV.1 초록 */
 div[data-testid="stButton"] button.p7art{
-  background:#090f22!important;border-color:#1e3060!important;color:#4477bb!important;
+  background:#060e0a!important;border-color:#1a6633!important;color:#33aa66!important;
 }
-div[data-testid="stButton"] button.p7art p{color:#4477bb!important;}
+div[data-testid="stButton"] button.p7art p{color:#33aa66!important;}
 div[data-testid="stButton"] button.p7art.p7sel{
-  background:#0d1830!important;border-color:#2266cc!important;border-width:2px!important;
-  color:#5588ee!important;box-shadow:0 0 20px rgba(34,102,204,0.45)!important;
+  background:#081a10!important;border-color:#00cc66!important;border-width:2px!important;
+  color:#00ff88!important;box-shadow:0 0 20px rgba(0,204,102,0.5)!important;
 }
-div[data-testid="stButton"] button.p7art.p7sel p{color:#5588ee!important;}
+div[data-testid="stButton"] button.p7art.p7sel p{color:#00ff88!important;}
 
-/* Letter */
+/* CIPHER LV.2 노랑 */
 div[data-testid="stButton"] button.p7let{
-  background:#071818!important;border-color:#0f3838!important;color:#228888!important;
+  background:#0e0e06!important;border-color:#666600!important;color:#aaaa33!important;
 }
-div[data-testid="stButton"] button.p7let p{color:#228888!important;}
+div[data-testid="stButton"] button.p7let p{color:#aaaa33!important;}
 div[data-testid="stButton"] button.p7let.p7sel{
-  background:#081c20!important;border-color:#0a8888!important;border-width:2px!important;
-  color:#22cccc!important;box-shadow:0 0 20px rgba(10,136,136,0.45)!important;
+  background:#1a1800!important;border-color:#cccc00!important;border-width:2px!important;
+  color:#ffff44!important;box-shadow:0 0 20px rgba(204,204,0,0.5)!important;
 }
-div[data-testid="stButton"] button.p7let.p7sel p{color:#22cccc!important;}
+div[data-testid="stButton"] button.p7let.p7sel p{color:#ffff44!important;}
 
-/* Notice */
+/* DECRYPT LV.3 주황 */
 div[data-testid="stButton"] button.p7not{
-  background:#161000!important;border-color:#383000!important;color:#aa8800!important;
+  background:#0e0700!important;border-color:#663300!important;color:#aa6622!important;
 }
-div[data-testid="stButton"] button.p7not p{color:#aa8800!important;}
+div[data-testid="stButton"] button.p7not p{color:#aa6622!important;}
 div[data-testid="stButton"] button.p7not.p7sel{
-  background:#201400!important;border-color:#bb7700!important;border-width:2px!important;
-  color:#eebb22!important;box-shadow:0 0 20px rgba(187,119,0,0.45)!important;
+  background:#1e0e00!important;border-color:#ff8800!important;border-width:2px!important;
+  color:#ffaa33!important;box-shadow:0 0 20px rgba(255,136,0,0.5)!important;
 }
-div[data-testid="stButton"] button.p7not.p7sel p{color:#eebb22!important;}
+div[data-testid="stButton"] button.p7not.p7sel p{color:#ffaa33!important;}
 
-/* Info */
+/* BLACKOUT LV.4 빨강 */
 div[data-testid="stButton"] button.p7inf{
-  background:#100820!important;border-color:#281848!important;color:#7744cc!important;
+  background:#120008!important;border-color:#660022!important;color:#aa2244!important;
 }
-div[data-testid="stButton"] button.p7inf p{color:#7744cc!important;}
+div[data-testid="stButton"] button.p7inf p{color:#aa2244!important;}
 div[data-testid="stButton"] button.p7inf.p7sel{
-  background:#180830!important;border-color:#8833cc!important;border-width:2px!important;
-  color:#bb66ff!important;box-shadow:0 0 20px rgba(136,51,204,0.45)!important;
+  background:#200010!important;border-color:#cc0033!important;border-width:2px!important;
+  color:#ff4466!important;box-shadow:0 0 20px rgba(204,0,51,0.5)!important;
 }
-div[data-testid="stButton"] button.p7inf.p7sel p{color:#bb66ff!important;}
+div[data-testid="stButton"] button.p7inf.p7sel p{color:#ff4466!important;}
 
 /* ── 출격 버튼 ── */
 div[data-testid="stButton"] button.p7launch{
@@ -803,13 +803,13 @@ div[data-testid="stButton"] button.p7nav:hover{
 
     # ── 타이틀 ──
     st.markdown('''<div style="text-align:center;padding:6px 0 4px;">
-      <div style="font-size:8px;color:#4a6688;letter-spacing:4px;margin-bottom:3px;font-weight:700;">DECRYPT OPERATION</div>
-      <div style="font-size:1.2rem;font-weight:700;color:#7799cc;letter-spacing:3px;">📡 암호해독 작전</div>
-      <div style="font-size:0.65rem;color:#445566;letter-spacing:1.5px;margin-top:2px;">TOEIC PART 7 · 단 한 번의 실수 — 즉사</div>
+      <div style="font-size:9px;color:#6699bb;letter-spacing:4px;margin-bottom:3px;font-weight:900;">DECRYPT OPERATION</div>
+      <div style="font-size:1.2rem;font-weight:900;color:#aaccff;letter-spacing:3px;">📡 암호해독 작전</div>
+      <div style="font-size:0.72rem;color:#8899aa;letter-spacing:1.5px;margin-top:3px;font-weight:700;">TOEIC PART 7 · 단 한 번의 실수 — 즉사</div>
     </div>''', unsafe_allow_html=True)
 
     # ── 시간 선택 (A안: SIGNAL FREQUENCY 세그먼트) ──
-    st.markdown('''<div style="font-size:9px;color:#6688aa;letter-spacing:4px;padding:6px 0 7px;font-weight:700;">
+    st.markdown('''<div style="font-size:10px;color:#88aacc;letter-spacing:4px;padding:6px 0 7px;font-weight:900;">
       ⏱  SIGNAL FREQUENCY</div>''', unsafe_allow_html=True)
     tc1, tc2, tc3 = st.columns(3)
     with tc1:
@@ -822,21 +822,21 @@ div[data-testid="stButton"] button.p7nav:hover{
         if st.button("🛡 100s\nPRECISION", key="p7t100", use_container_width=True):
             st.session_state.p7_tsec=100; st.session_state.p7_tsec_chosen=True; st.rerun()
 
-    # ── 지문 선택 (C안: 4개 한 줄 — 아이콘+이름+설명+코드) ──
-    st.markdown('''<div style="font-size:9px;color:#bb7799;letter-spacing:4px;padding:6px 0 7px;font-weight:700;">
+    # ── 지문 선택 (SIGNAL/CIPHER/DECRYPT/BLACKOUT 4개 한 줄) ──
+    st.markdown('''<div style="font-size:10px;color:#dd88aa;letter-spacing:4px;padding:6px 0 7px;font-weight:900;">
       ⚔  TARGET CLASSIFICATION</div>''', unsafe_allow_html=True)
     pc1, pc2, pc3, pc4 = st.columns(4)
     with pc1:
-        if st.button("📰\nArticle\n기사·보도\nP7-ART", key="p7c1", use_container_width=True):
+        if st.button("📢\nSIGNAL\n광고·공지\n●○○○ LV.1", key="p7c1", use_container_width=True):
             st.session_state.p7_cat="article"; st.rerun()
     with pc2:
-        if st.button("✉️\nLetter\n편지·서신\nP7-LTR", key="p7c2", use_container_width=True):
+        if st.button("✉️\nCIPHER\n편지·이메일\n●●○○ LV.2", key="p7c2", use_container_width=True):
             st.session_state.p7_cat="letter"; st.rerun()
     with pc3:
-        if st.button("📋\nNotice\n공지·안내\nP7-NTC", key="p7c3", use_container_width=True):
+        if st.button("📰\nDECRYPT\n기사·안내\n●●●○ LV.3", key="p7c3", use_container_width=True):
             st.session_state.p7_cat="notice"; st.rerun()
     with pc4:
-        if st.button("ℹ️\nInfo\n정보·안내\nP7-INF", key="p7c4", use_container_width=True):
+        if st.button("☠️\nBLACKOUT\n고난도\n●●●● LV.4", key="p7c4", use_container_width=True):
             st.session_state.p7_cat="information"; st.rerun()
 
     # ── 생존 규칙 ──
@@ -857,7 +857,7 @@ div[data-testid="stButton"] button.p7nav:hover{
             st.session_state.p7_phase = "battle"
             st.rerun()
     else:
-        st.markdown('<div style="background:#0a0a18;border:1.5px solid #181830;border-radius:12px;color:#2a3a50;font-size:0.88rem;font-weight:700;padding:14px;text-align:center;letter-spacing:1px;">시간 + 지문 선택 → 출격!</div>', unsafe_allow_html=True)
+        st.markdown('<div style="background:#0a0a18;border:1.5px solid #334466;border-radius:12px;color:#6688aa;font-size:0.88rem;font-weight:800;padding:14px;text-align:center;letter-spacing:1px;">⏱ 시간 + 🎯 지문 선택 → 출격!</div>', unsafe_allow_html=True)
 
     # ── 네비 ──
     st.markdown('<div style="height:1px;background:#0e0e1e;margin:4px 0 3px;"></div>', unsafe_allow_html=True)
@@ -904,22 +904,22 @@ div[data-testid="stButton"] button.p7nav:hover{
       }}
 
       // 지문 카드
-      if(txt.indexOf("Article")>-1 && txt.indexOf("\ucd9c\uaca9")===-1){{
+      if(txt.indexOf("SIGNAL")>-1 && txt.indexOf("\ucd9c\uaca9")===-1){{
         b.classList.add("p7pass","p7art");
         if(selC==="article") b.classList.add("p7sel"); else b.classList.remove("p7sel");
         b.querySelectorAll("p").forEach(function(p){{p.classList.add("p7art");if(selC==="article")p.classList.add("p7sel");else p.classList.remove("p7sel");}});
       }}
-      if(txt.indexOf("Letter")>-1 && txt.indexOf("\ucd9c\uaca9")===-1){{
+      if(txt.indexOf("CIPHER")>-1 && txt.indexOf("\ucd9c\uaca9")===-1){{
         b.classList.add("p7pass","p7let");
         if(selC==="letter") b.classList.add("p7sel"); else b.classList.remove("p7sel");
         b.querySelectorAll("p").forEach(function(p){{p.classList.add("p7let");if(selC==="letter")p.classList.add("p7sel");else p.classList.remove("p7sel");}});
       }}
-      if(txt.indexOf("Notice")>-1 && txt.indexOf("\ucd9c\uaca9")===-1){{
+      if(txt.indexOf("DECRYPT")>-1 && txt.indexOf("\ucd9c\uaca9")===-1){{
         b.classList.add("p7pass","p7not");
         if(selC==="notice") b.classList.add("p7sel"); else b.classList.remove("p7sel");
         b.querySelectorAll("p").forEach(function(p){{p.classList.add("p7not");if(selC==="notice")p.classList.add("p7sel");else p.classList.remove("p7sel");}});
       }}
-      if(txt.indexOf("Info")>-1 && txt.indexOf("\ucd9c\uaca9")===-1 && txt.indexOf("Notice")===-1){{
+      if(txt.indexOf("BLACKOUT")>-1 && txt.indexOf("\ucd9c\uaca9")===-1){{
         b.classList.add("p7pass","p7inf");
         if(selC==="information") b.classList.add("p7sel"); else b.classList.remove("p7sel");
         b.querySelectorAll("p").forEach(function(p){{p.classList.add("p7inf");if(selC==="information")p.classList.add("p7sel");else p.classList.remove("p7sel");}});
