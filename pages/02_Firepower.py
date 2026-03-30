@@ -1134,6 +1134,32 @@ elif st.session_state.phase=="briefing":
             item = {"id":q["id"],"text":q["text"],"ch":q["ch"],"a":q["a"],"ex":q.get("ex",""),
                     "exk":q.get("exk",""),"cat":q.get("cat",""),"kr":q.get("kr",""),"tp":q.get("tp","grammar")}
             save_to_storage([item])
+            # ── 핵심어(정답) → 단어 포로 수용소 자동 저장 ──
+            try:
+                import datetime as _fdt
+                _fp_data = load_storage()
+                if "word_prison" not in _fp_data: _fp_data["word_prison"] = []
+                _fp_word = ans_clean.strip()
+                _fp_kr   = q.get("kr","")
+                _fp_cat  = q.get("cat","")
+                _fp_sent = q.get("text","").replace("_______", ans_clean)
+                if _fp_word and len(_fp_word) >= 2:
+                    if not any(p.get("word","").lower() == _fp_word.lower() for p in _fp_data["word_prison"]):
+                        _fp_data["word_prison"].append({
+                            "word":           _fp_word,
+                            "kr":             _fp_kr,
+                            "source":         "P5",
+                            "sentence":       _fp_sent,
+                            "captured_date":  _fdt.datetime.now().strftime("%Y-%m-%d"),
+                            "correct_streak": 0,
+                            "last_reviewed":  None,
+                            "cat":            _fp_cat,
+                        })
+                        with open(STORAGE_FILE, "w", encoding="utf-8") as _ffp:
+                            import json as _json_fp
+                            _json_fp.dump(_fp_data, _ffp, ensure_ascii=False, indent=2)
+            except Exception:
+                pass
             st.session_state.br_saved.add(bi)
             st.rerun()
         st.markdown('</div>', unsafe_allow_html=True)
