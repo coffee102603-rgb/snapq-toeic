@@ -840,7 +840,7 @@ div[data-testid="stButton"] button.p7nav:hover{
             st.session_state.p7_cat="information"; st.rerun()
 
     # ── 생존 규칙 ──
-    st.markdown('<div style="text-align:center;padding:3px 0;font-size:0.82rem;font-weight:900;color:#cc3333;letter-spacing:1px;">💀 오답 1개 즉사 · 시간초과 즉사</div>', unsafe_allow_html=True)
+    st.markdown('<div style="text-align:center;padding:14px 0 3px;font-size:0.82rem;font-weight:900;color:#cc3333;letter-spacing:1px;">💀 오답 1개 즉사 · 시간초과 즉사</div>', unsafe_allow_html=True)
 
     # ── 출격 버튼 ──
     if _ready:
