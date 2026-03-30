@@ -650,91 +650,203 @@ if st.session_state.get("_p7_just_left", False):
 # ═══════════════════════════════════════
 if st.session_state.p7_phase == "lobby":
     tsec = st.session_state.p7_tsec
-    cat = st.session_state.p7_cat
+    cat  = st.session_state.p7_cat
     _p7_tsec = st.session_state.get("p7_tsec", 80)
-    _p7_tc = st.session_state.get("p7_tsec_chosen", False)
+    _p7_tc   = st.session_state.get("p7_tsec_chosen", False)
+    _p7_cat  = st.session_state.get("p7_cat", None)
+    _ready   = _p7_tc and cat and cat in PASSAGES
+    _sel_time = str(_p7_tsec) if _p7_tc else ""
+    _sel_cat  = _p7_cat or ""
 
-    st.markdown('''<style>
-    #MainMenu{visibility:hidden!important;}header[data-testid="stHeader"]{height:0!important;visibility:hidden!important;}
-    div[data-testid="stToolbar"]{visibility:hidden!important;}.block-container{padding-top:0.2rem!important;}
-    @keyframes p7float{0%,100%{transform:translateY(0);box-shadow:0 0 12px rgba(212,175,55,0.3);}50%{transform:translateY(-4px);box-shadow:0 0 25px rgba(212,175,55,0.7);}}
-    button[kind="secondary"]{
-        background:#0a0a14!important;border:1.5px solid #333!important;
-        border-radius:10px!important;font-size:1.0rem!important;font-weight:600!important;
-        padding:6px!important;color:#aaa!important;min-height:61px!important;
-        animation:none!important;transform:none!important;box-shadow:none!important;
-    }
-    button[kind="secondary"] p{font-size:1.0rem!important;font-weight:600!important;color:#aaa!important;}
-    button[data-testid="stBaseButton-primary"]{
-        background:#0c0c00!important;border:2px solid #d4af37!important;
-        border-left:4px solid #d4af37!important;
-        color:#d4af37!important;font-size:1.0rem!important;font-weight:900!important;
-        min-height:43px!important;animation:none!important;border-radius:12px!important;
-    }
-    button[data-testid="stBaseButton-primary"] p{color:#d4af37!important;font-size:1.1rem!important;font-weight:900!important;}
-    </style>''', unsafe_allow_html=True)
+    # ── CSS ──
+    st.markdown("""<style>
+@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@700;900&display=swap');
+#MainMenu{visibility:hidden!important;}
+header[data-testid="stHeader"]{height:0!important;visibility:hidden!important;}
+div[data-testid="stToolbar"]{visibility:hidden!important;}
+.block-container{padding-top:0.3rem!important;padding-bottom:1rem!important;}
+.stMarkdown{margin:0!important;padding:0!important;}
+.element-container{margin:0!important;padding:0!important;}
+div[data-testid="stVerticalBlock"]{gap:5px!important;}
+div[data-testid="stHorizontalBlock"]{gap:5px!important;margin:0!important;}
+div[data-testid="stHorizontalBlock"] div[data-testid="stColumn"]{padding:0!important;min-width:0!important;flex:1!important;}
 
-    # 타이틀
-    st.markdown('''<div style="text-align:center;padding:6px 0 4px 0;">
-        <div style="font-size:1.2rem;font-weight:900;color:#d4af37;letter-spacing:3px;">📡 암호해독 작전</div>
-        <div style="font-size:0.7rem;color:#aaa;letter-spacing:2px;margin-top:2px;font-weight:600;">TOEIC Part 7 · 단 한 번의 실수 — 즉사</div>
+/* ── 공통 버튼 ── */
+div[data-testid="stButton"] button{
+  background:#0a0d1c!important;border:1px solid #1a2248!important;
+  border-radius:9px!important;color:#334466!important;
+  font-size:0.85rem!important;font-weight:700!important;
+  padding:6px 4px!important;min-height:46px!important;width:100%!important;
+  white-space:pre-line!important;line-height:1.3!important;
+  transition:border-color .12s,box-shadow .12s!important;
+}
+div[data-testid="stButton"] button p{
+  font-size:0.85rem!important;font-weight:700!important;
+  color:#334466!important;white-space:pre-line!important;line-height:1.3!important;
+}
+
+/* ── 시간: 60s ── */
+div[data-testid="stButton"] button.p7t60{
+  background:#0a0d1c!important;border-color:rgba(204,68,0,0.22)!important;color:#3a2818!important;
+  min-height:54px!important;font-family:'Orbitron',monospace!important;font-size:0.78rem!important;
+}
+div[data-testid="stButton"] button.p7t60 p{color:#3a2818!important;}
+div[data-testid="stButton"] button.p7t60.p7sel{
+  background:#1c0800!important;border-color:#cc4400!important;color:#ff7733!important;
+  box-shadow:0 0 18px rgba(204,68,0,0.45)!important;
+}
+div[data-testid="stButton"] button.p7t60.p7sel p{color:#ff7733!important;}
+
+/* ── 시간: 80s ── */
+div[data-testid="stButton"] button.p7t80{
+  background:#0a0d1c!important;border-color:rgba(0,85,187,0.22)!important;color:#182840!important;
+  min-height:54px!important;font-family:'Orbitron',monospace!important;font-size:0.78rem!important;
+}
+div[data-testid="stButton"] button.p7t80 p{color:#182840!important;}
+div[data-testid="stButton"] button.p7t80.p7sel{
+  background:#00081c!important;border-color:#0055bb!important;color:#44aaff!important;
+  box-shadow:0 0 18px rgba(0,85,187,0.45)!important;
+}
+div[data-testid="stButton"] button.p7t80.p7sel p{color:#44aaff!important;}
+
+/* ── 시간: 100s ── */
+div[data-testid="stButton"] button.p7t100{
+  background:#0a0d1c!important;border-color:rgba(102,34,204,0.22)!important;color:#281840!important;
+  min-height:54px!important;font-family:'Orbitron',monospace!important;font-size:0.78rem!important;
+}
+div[data-testid="stButton"] button.p7t100 p{color:#281840!important;}
+div[data-testid="stButton"] button.p7t100.p7sel{
+  background:#0e0018!important;border-color:#6622cc!important;color:#aa55ff!important;
+  box-shadow:0 0 18px rgba(102,34,204,0.45)!important;
+}
+div[data-testid="stButton"] button.p7t100.p7sel p{color:#aa55ff!important;}
+
+/* ── 지문 카드 공통 ── */
+div[data-testid="stButton"] button.p7pass{
+  min-height:82px!important;text-align:center!important;
+}
+
+/* Article */
+div[data-testid="stButton"] button.p7art{
+  background:#090f22!important;border-color:#1e3060!important;color:#4477bb!important;
+}
+div[data-testid="stButton"] button.p7art p{color:#4477bb!important;}
+div[data-testid="stButton"] button.p7art.p7sel{
+  background:#0d1830!important;border-color:#2266cc!important;border-width:2px!important;
+  color:#5588ee!important;box-shadow:0 0 20px rgba(34,102,204,0.45)!important;
+}
+div[data-testid="stButton"] button.p7art.p7sel p{color:#5588ee!important;}
+
+/* Letter */
+div[data-testid="stButton"] button.p7let{
+  background:#071818!important;border-color:#0f3838!important;color:#228888!important;
+}
+div[data-testid="stButton"] button.p7let p{color:#228888!important;}
+div[data-testid="stButton"] button.p7let.p7sel{
+  background:#081c20!important;border-color:#0a8888!important;border-width:2px!important;
+  color:#22cccc!important;box-shadow:0 0 20px rgba(10,136,136,0.45)!important;
+}
+div[data-testid="stButton"] button.p7let.p7sel p{color:#22cccc!important;}
+
+/* Notice */
+div[data-testid="stButton"] button.p7not{
+  background:#161000!important;border-color:#383000!important;color:#aa8800!important;
+}
+div[data-testid="stButton"] button.p7not p{color:#aa8800!important;}
+div[data-testid="stButton"] button.p7not.p7sel{
+  background:#201400!important;border-color:#bb7700!important;border-width:2px!important;
+  color:#eebb22!important;box-shadow:0 0 20px rgba(187,119,0,0.45)!important;
+}
+div[data-testid="stButton"] button.p7not.p7sel p{color:#eebb22!important;}
+
+/* Info */
+div[data-testid="stButton"] button.p7inf{
+  background:#100820!important;border-color:#281848!important;color:#7744cc!important;
+}
+div[data-testid="stButton"] button.p7inf p{color:#7744cc!important;}
+div[data-testid="stButton"] button.p7inf.p7sel{
+  background:#180830!important;border-color:#8833cc!important;border-width:2px!important;
+  color:#bb66ff!important;box-shadow:0 0 20px rgba(136,51,204,0.45)!important;
+}
+div[data-testid="stButton"] button.p7inf.p7sel p{color:#bb66ff!important;}
+
+/* ── 출격 버튼 ── */
+div[data-testid="stButton"] button.p7launch{
+  background:#1a0600!important;border:2px solid #cc4400!important;border-radius:12px!important;
+  color:#ffaa44!important;font-size:0.88rem!important;font-weight:900!important;
+  min-height:54px!important;letter-spacing:2px!important;
+  font-family:'Orbitron',monospace!important;
+}
+div[data-testid="stButton"] button.p7launch p{
+  color:#ffaa44!important;font-size:0.88rem!important;
+  font-weight:900!important;letter-spacing:2px!important;
+}
+
+/* ── 네비 버튼 ── */
+div[data-testid="stButton"] button.p7nav{
+  background:#05050e!important;border:1px solid #151525!important;
+  border-radius:10px!important;color:#3d5066!important;
+  min-height:40px!important;font-size:0.82rem!important;
+}
+div[data-testid="stButton"] button.p7nav p{color:#3d5066!important;}
+div[data-testid="stButton"] button.p7nav:hover{
+  border-color:rgba(80,120,180,0.4)!important;color:#7799aa!important;
+}
+
+@media(max-width:480px){
+  div[data-testid="stButton"] button.p7pass{min-height:76px!important;}
+  div[data-testid="stButton"] button.p7t60,
+  div[data-testid="stButton"] button.p7t80,
+  div[data-testid="stButton"] button.p7t100{min-height:50px!important;}
+}
+</style>""", unsafe_allow_html=True)
+
+    # ── 타이틀 ──
+    st.markdown('''<div style="text-align:center;padding:6px 0 4px;">
+      <div style="font-size:7px;color:#223344;letter-spacing:4px;margin-bottom:3px;">DECRYPT OPERATION</div>
+      <div style="font-size:1.2rem;font-weight:700;color:#7799cc;letter-spacing:3px;">📡 암호해독 작전</div>
+      <div style="font-size:0.65rem;color:#223344;letter-spacing:1.5px;margin-top:2px;">TOEIC PART 7 · 단 한 번의 실수 — 즉사</div>
     </div>''', unsafe_allow_html=True)
 
-
-
-    # 시간 선택
-    st.markdown('''<style>
-    div[data-testid="stHorizontalBlock"] button[kind="secondary"]{
-        min-height:46px!important;font-size:0.82rem!important;
-    }
-    div[data-testid="stHorizontalBlock"] button[kind="secondary"] p{
-        font-size:0.82rem!important;
-    }
-    </style>''', unsafe_allow_html=True)
-    st.markdown('''<div style="display:flex;align-items:flex-end;margin-bottom:0;">
-        <div style="background:#0c0c1e;border:1.5px solid #9aa5b4;border-bottom:none;border-radius:8px 8px 0 0;padding:3px 12px;font-size:0.72rem;font-weight:900;color:#9aa5b4;">⏱ 시간 선택</div>
-    </div>''', unsafe_allow_html=True)
+    # ── 시간 선택 (A안: SIGNAL FREQUENCY 세그먼트) ──
+    st.markdown('''<div style="font-size:7px;color:#334466;letter-spacing:4px;padding:2px 0 4px;">
+      ⏱  SIGNAL FREQUENCY</div>''', unsafe_allow_html=True)
     tc1, tc2, tc3 = st.columns(3)
     with tc1:
-        if st.button("🔥 60초", key="p7t60", use_container_width=True):
+        if st.button("🔥 60s\nRAPID", key="p7t60", use_container_width=True):
             st.session_state.p7_tsec=60; st.session_state.p7_tsec_chosen=True; st.rerun()
     with tc2:
-        if st.button("⚡ 80초", key="p7t80", use_container_width=True):
+        if st.button("⚡ 80s\nSTANDARD", key="p7t80", use_container_width=True):
             st.session_state.p7_tsec=80; st.session_state.p7_tsec_chosen=True; st.rerun()
     with tc3:
-        if st.button("✅ 100초", key="p7t100", use_container_width=True):
+        if st.button("🛡 100s\nPRECISION", key="p7t100", use_container_width=True):
             st.session_state.p7_tsec=100; st.session_state.p7_tsec_chosen=True; st.rerun()
-    st.markdown('<div style="height:4px;"></div>', unsafe_allow_html=True)
 
-    # 지문 선택
-    st.markdown('''<div style="display:flex;align-items:flex-end;margin-top:4px;margin-bottom:0;">
-        <div style="background:#140008;border:1.5px solid #cc2244;border-bottom:none;border-radius:8px 8px 0 0;padding:3px 12px;font-size:0.72rem;font-weight:900;color:#cc2244;">⚔️ 지문 선택</div>
-    </div>''', unsafe_allow_html=True)
-    b1, b2 = st.columns(2)
-    with b1:
-        if st.button("📰 Article\n기사·보도", key="p7c1", use_container_width=True):
+    # ── 지문 선택 (C안: 4개 한 줄 — 아이콘+이름+설명+코드) ──
+    st.markdown('''<div style="font-size:7px;color:#553344;letter-spacing:4px;padding:2px 0 4px;">
+      ⚔  TARGET CLASSIFICATION</div>''', unsafe_allow_html=True)
+    pc1, pc2, pc3, pc4 = st.columns(4)
+    with pc1:
+        if st.button("📰\nArticle\n기사·보도\nP7-ART", key="p7c1", use_container_width=True):
             st.session_state.p7_cat="article"; st.rerun()
-    with b2:
-        if st.button("✉️ Letter\n편지·서신", key="p7c2", use_container_width=True):
+    with pc2:
+        if st.button("✉️\nLetter\n편지·서신\nP7-LTR", key="p7c2", use_container_width=True):
             st.session_state.p7_cat="letter"; st.rerun()
-    b3, b4 = st.columns(2)
-    with b3:
-        if st.button("📋 Notice\n공지·안내", key="p7c3", use_container_width=True):
+    with pc3:
+        if st.button("📋\nNotice\n공지·안내\nP7-NTC", key="p7c3", use_container_width=True):
             st.session_state.p7_cat="notice"; st.rerun()
-    with b4:
-        if st.button("ℹ️ Info\n정보·안내문", key="p7c4", use_container_width=True):
+    with pc4:
+        if st.button("ℹ️\nInfo\n정보·안내\nP7-INF", key="p7c4", use_container_width=True):
             st.session_state.p7_cat="information"; st.rerun()
-    st.markdown('<div style="height:4px;"></div>', unsafe_allow_html=True)
 
+    # ── 생존 규칙 ──
+    st.markdown('<div style="text-align:center;padding:3px 0;font-size:0.82rem;font-weight:900;color:#cc3333;letter-spacing:1px;">💀 오답 1개 즉사 · 시간초과 즉사</div>', unsafe_allow_html=True)
 
-    st.markdown('''<style>@keyframes warningPulse{0%,100%{color:#ff4466;text-shadow:0 0 8px rgba(255,68,102,0.8);}50%{color:#ff8888;text-shadow:0 0 20px rgba(255,68,102,1),0 0 40px rgba(255,0,50,0.6);}}</style>''', unsafe_allow_html=True)
-    st.markdown('<div style="text-align:center;padding:6px 0 2px 0;"><span style="font-size:0.88rem;font-weight:900;color:#ff4466;">💀 생존 규칙: 오답 1개 즉사 · 시간초과 즉사</span></div>', unsafe_allow_html=True)
-
-    # 전투 시작 버튼
-    _ready = _p7_tc and cat and cat in PASSAGES
+    # ── 출격 버튼 ──
     if _ready:
         _cat_name = PASSAGES[cat]["title"]
-        if st.button(f"▶ 전투 시작!", key="p7go", type="primary", use_container_width=True):
+        _tlabel = {"60":"🔥 60s RAPID","80":"⚡ 80s STANDARD","100":"🛡 100s PRECISION"}.get(str(_p7_tsec), str(_p7_tsec)+"초")
+        if st.button(f"▶ 출격! — {_cat_name}  ⏱ {_tlabel}", key="p7go", use_container_width=True):
             st.session_state.p7_data = PASSAGES[cat]
             st.session_state.p7_step = 0
             st.session_state.p7_answers = []
@@ -745,10 +857,10 @@ if st.session_state.p7_phase == "lobby":
             st.session_state.p7_phase = "battle"
             st.rerun()
     else:
-        st.markdown('<div style="background:#0a0a14;border:1px solid #222;border-radius:12px;padding:12px;text-align:center;color:#333;font-size:0.9rem;">시간 + 지문을 선택하면 시작!</div>', unsafe_allow_html=True)
+        st.markdown('<div style="background:#0a0a18;border:1.5px solid #181830;border-radius:12px;color:#2a3a50;font-size:0.88rem;font-weight:700;padding:14px;text-align:center;letter-spacing:1px;">시간 + 지문 선택 → 출격!</div>', unsafe_allow_html=True)
 
-    # 하단 네비
-    st.markdown('<div style="height:1px;background:#1a1a2a;margin:8px 0;"></div>', unsafe_allow_html=True)
+    # ── 네비 ──
+    st.markdown('<div style="height:1px;background:#0e0e1e;margin:4px 0 3px;"></div>', unsafe_allow_html=True)
     nc1, nc2 = st.columns(2)
     with nc1:
         if st.button("💀 포로사령부", key="p7nav1", use_container_width=True):
@@ -761,97 +873,70 @@ if st.session_state.p7_phase == "lobby":
                 st.query_params["nick"] = _nick
                 st.query_params["ag"] = "1"
             st.switch_page("main_hub.py")
+
+    # ── JS: 클래스 부여 (setTimeout 2회, setInterval 없음) ──
     import streamlit.components.v1 as _cmp
-    _p7_tsec_val = st.session_state.get("p7_tsec", 80)
-    _p7_tc_val = st.session_state.get("p7_tsec_chosen", False)
-    _p7_cat_val = st.session_state.get("p7_cat", None)
-    _sel_time = str(_p7_tsec_val) if _p7_tc_val else ""
-    _sel_cat = _p7_cat_val or ""
-    _cmp.html(f'''<script>
+    _cmp.html(f"""<script>
 (function(){{
-    var selTime = "{_sel_time}";
-    var selCat  = "{_sel_cat}";
+  var selT="{_sel_time}", selC="{_sel_cat}";
+  var doc=window.parent.document;
 
-    function setGold(b){{
-        b.style.setProperty("background","#1a1400","important");
-        b.style.setProperty("border","2px solid #d4af37","important");
-        b.style.setProperty("border-left","4px solid #d4af37","important");
-        b.style.setProperty("color","#d4af37","important");
-        b.querySelectorAll("p,span").forEach(function(el){{
-            el.style.setProperty("color","#d4af37","important");
-        }});
-    }}
-    function setDefault(b){{
-        b.style.setProperty("background","#111111","important");
-        b.style.setProperty("border","2px solid #ffffff","important");
-        b.style.setProperty("border-left","2px solid #ffffff","important");
-        b.style.setProperty("color","#ffffff","important");
-        b.querySelectorAll("p,span").forEach(function(el){{
-            el.style.setProperty("color","#ffffff","important");
-        }});
-        b.style.setProperty("animation","none","important");
-        b.style.setProperty("transform","none","important");
-        b.style.setProperty("box-shadow","none","important");
-    }}
+  function applyClasses(){{
+    doc.querySelectorAll("button").forEach(function(b){{
+      var txt=(b.innerText||b.textContent||"").trim();
+      if(!txt) return;
 
-    // 버튼 텍스트 → 고유 키로 식별
-    function getKey(t){{
-        if(t==="🔥 60초"||t==="60초") return "t60";
-        if(t==="⚡ 80초"||t==="80초") return "t80";
-        if(t==="✅ 100초"||t==="100초") return "t100";
-        if(t.indexOf("Article")>-1||t.indexOf("기사")>-1) return "article";
-        if(t.indexOf("Letter")>-1||t.indexOf("편지")>-1) return "letter";
-        if(t.indexOf("Notice")>-1||t.indexOf("공지")>-1) return "notice";
-        if(t.indexOf("Info")>-1||t.indexOf("정보")>-1) return "information";
-        return null;
-    }}
-    var timeSelected = {{"t60":selTime==="60","t80":selTime==="80","t100":selTime==="100"}};
-    var catSelected  = {{"article":selCat==="article","letter":selCat==="letter","notice":selCat==="notice","information":selCat==="information"}};
+      // 시간 버튼
+      if(txt.indexOf("60s")>-1 && txt.indexOf("\ucd9c\uaca9")===-1){{
+        b.classList.add("p7t60");
+        if(selT==="60") b.classList.add("p7sel"); else b.classList.remove("p7sel");
+        b.querySelectorAll("p").forEach(function(p){{p.classList.add("p7t60");if(selT==="60")p.classList.add("p7sel");else p.classList.remove("p7sel");}});
+      }}
+      if(txt.indexOf("80s")>-1 && txt.indexOf("\ucd9c\uaca9")===-1){{
+        b.classList.add("p7t80");
+        if(selT==="80") b.classList.add("p7sel"); else b.classList.remove("p7sel");
+        b.querySelectorAll("p").forEach(function(p){{p.classList.add("p7t80");if(selT==="80")p.classList.add("p7sel");else p.classList.remove("p7sel");}});
+      }}
+      if(txt.indexOf("100s")>-1 && txt.indexOf("\ucd9c\uaca9")===-1){{
+        b.classList.add("p7t100");
+        if(selT==="100") b.classList.add("p7sel"); else b.classList.remove("p7sel");
+        b.querySelectorAll("p").forEach(function(p){{p.classList.add("p7t100");if(selT==="100")p.classList.add("p7sel");else p.classList.remove("p7sel");}});
+      }}
 
-    function styleAllBtns(){{
-        var doc = window.parent.document;
-        doc.querySelectorAll('button').forEach(function(b){{
-            var t = (b.innerText||b.textContent||"").trim().replace(/\\s+/g," ");
-            var key = getKey(t);
-            if(!key) return;
-            var isSelected = (timeSelected[key]===true)||(catSelected[key]===true);
-            isSelected ? setGold(b) : setDefault(b);
-        }});
-    }}
-    setTimeout(styleAllBtns,150);
-    setTimeout(styleAllBtns,500);
-    setTimeout(styleAllBtns,1000);
-    setInterval(styleAllBtns,1000);
+      // 지문 카드
+      if(txt.indexOf("Article")>-1 && txt.indexOf("\ucd9c\uaca9")===-1){{
+        b.classList.add("p7pass","p7art");
+        if(selC==="article") b.classList.add("p7sel"); else b.classList.remove("p7sel");
+        b.querySelectorAll("p").forEach(function(p){{p.classList.add("p7art");if(selC==="article")p.classList.add("p7sel");else p.classList.remove("p7sel");}});
+      }}
+      if(txt.indexOf("Letter")>-1 && txt.indexOf("\ucd9c\uaca9")===-1){{
+        b.classList.add("p7pass","p7let");
+        if(selC==="letter") b.classList.add("p7sel"); else b.classList.remove("p7sel");
+        b.querySelectorAll("p").forEach(function(p){{p.classList.add("p7let");if(selC==="letter")p.classList.add("p7sel");else p.classList.remove("p7sel");}});
+      }}
+      if(txt.indexOf("Notice")>-1 && txt.indexOf("\ucd9c\uaca9")===-1){{
+        b.classList.add("p7pass","p7not");
+        if(selC==="notice") b.classList.add("p7sel"); else b.classList.remove("p7sel");
+        b.querySelectorAll("p").forEach(function(p){{p.classList.add("p7not");if(selC==="notice")p.classList.add("p7sel");else p.classList.remove("p7sel");}});
+      }}
+      if(txt.indexOf("Info")>-1 && txt.indexOf("\ucd9c\uaca9")===-1 && txt.indexOf("Notice")===-1){{
+        b.classList.add("p7pass","p7inf");
+        if(selC==="information") b.classList.add("p7sel"); else b.classList.remove("p7sel");
+        b.querySelectorAll("p").forEach(function(p){{p.classList.add("p7inf");if(selC==="information")p.classList.add("p7sel");else p.classList.remove("p7sel");}});
+      }}
+
+      // 출격 버튼
+      if(txt.indexOf("\ucd9c\uaca9!")>-1) b.classList.add("p7launch");
+
+      // 네비
+      if(txt.indexOf("\ud3ec\ub85c\uc0ac\ub839\ubd80")>-1||txt.indexOf("\ud648")>-1) b.classList.add("p7nav");
+    }});
+  }}
+
+  setTimeout(applyClasses, 120);
+  setTimeout(applyClasses, 450);
 }})();
-</script>''', height=0)
-    _cmp2 = _cmp
-    _cmp2.html('''<script>
-    (function(){
-        function styleNavBtns(){
-            var doc=window.parent.document;
-            var rows=doc.querySelectorAll('[data-testid="stHorizontalBlock"]');
-            if(!rows.length) return;
-            var lastRow=rows[rows.length-1];
-            var btns=lastRow.querySelectorAll('button');
-            if(btns[0]){
-                btns[0].style.setProperty('animation','none','important');
-                btns[0].style.setProperty('border','1.5px solid rgba(255,255,255,0.5)','important');
-                btns[0].style.setProperty('background','#0f0f1e','important');
-                btns[0].style.setProperty('color','#bbb','important');
-            }
-            if(btns[1]){
-                btns[1].style.setProperty('animation','none','important');
-                btns[1].style.setProperty('border','1.5px solid rgba(255,255,255,0.5)','important');
-                btns[1].style.setProperty('background','#0f0f1e','important');
-                btns[1].style.setProperty('color','#bbb','important');
-            }
-        }
-        setTimeout(styleNavBtns,150);setTimeout(styleNavBtns,500);setTimeout(styleNavBtns,1200);
-        new MutationObserver(function(){setTimeout(styleNavBtns,100);}).observe(
-            window.parent.document.body,{childList:true,subtree:true});
-    })();
-    </script>''', height=0)
-
+</script>""", height=0)
 
 # ═══════════════════════════════════════
 # ════════════════════════════════════════
