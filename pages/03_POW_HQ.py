@@ -1726,6 +1726,9 @@ elif st.session_state.sg_phase == "combo_result":
 # ════════════════════════════════════════
 # PHASE: WORD_PRISON — 극적인 심문실
 # ════════════════════════════════════════
+# ════════════════════════════════════════
+# PHASE: WORD_PRISON — 극적인 심문실
+# ════════════════════════════════════════
 elif st.session_state.sg_phase == "word_prison":
     import datetime as _pr_dt2, random as _pr_random
 
@@ -2132,18 +2135,12 @@ div[data-testid="stButton"] button p{color:#c0c8e0!important;font-size:0.9rem!im
                         f'<span style="color:#ffee44;font-weight:900;text-shadow:0 0 12px #ffee44,0 0 4px #ff8800;border-bottom:2px solid #ffee44;padding:0 2px;">\\1</span>',
                         _sent_short
                     )
-                    # 항상 보여줄 것: 단어 뜻 + 문장 한글 해석 (둘 다)
+                    # 문장 한글 해석만 (단어=뜻 중복 제거)
                     _kr_line = ""
-                    # 단어 뜻 (있을 때만)
-                    if _has_meaning:
-                        _kr_line += f'<div style="font-size:12px;color:#88bbaa;margin-top:6px;">'
-                        _kr_line += f'💡 <span style="color:#ffee55;font-weight:800;">{_word}</span>'
-                        _kr_line += f' = <span style="color:#ccffaa;font-weight:900;">{_kr}</span></div>'
-                    # 문장 한글 해석 (있으면 표시, 없으면 안내)
                     if _sent_kr:
-                        _kr_line += f'<div style="font-size:13px;color:#cceecc;font-weight:800;line-height:1.65;margin-top:6px;padding-top:6px;border-top:1px solid #224422;">🇰🇷 {_sent_kr}</div>'
+                        _kr_line = f'<div style="font-size:14px;color:#ddeedd;font-weight:800;line-height:1.7;margin-top:8px;padding-top:8px;border-top:1px solid #224422;">🇰🇷 {_sent_kr}</div>'
                     else:
-                        _kr_line += f'<div style="font-size:12px;color:#667788;margin-top:5px;padding-top:5px;border-top:1px solid #1a2a1a;">💬 예문에서 이 단어의 역할을 찾아봐!</div>'
+                        _kr_line = f'<div style="font-size:12px;color:#778899;margin-top:8px;padding-top:8px;border-top:1px solid #1a2a1a;">💬 예문에서 이 단어의 역할을 찾아봐!</div>'
                     _sent_block = (
                         f'<div style="background:#08100a;border:1.5px solid #1a3020;border-radius:14px;'
                         f'padding:14px;margin:10px 0 6px;text-align:left;">'
