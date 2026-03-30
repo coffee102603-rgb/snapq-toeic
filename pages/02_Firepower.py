@@ -1169,319 +1169,254 @@ else:
     _hist_len= len(st.session_state.get("adp_history",[]))
 
     # ══════════════════════════════════════════════════════
-    # 로비 CSS — JS 최소화, 클래스 기반 스타일링
+    # 로비 CSS + 렌더링 — 암호해독 수준 고급화
     # ══════════════════════════════════════════════════════
+    _tlabel_map = {"30":"🔥 BLITZ 30s","40":"⚡ STANDARD 40s","50":"🛡 SNIPER 50s"}
+
     st.markdown("""
 <style>
 @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@700;900&family=Rajdhani:wght@600;700&display=swap');
 
-/* ── 기반 ── */
 .stApp { background:#04040c !important; }
 section[data-testid="stSidebar"] { display:none !important; }
 header[data-testid="stHeader"]   { height:0 !important; overflow:hidden !important; }
 .block-container { padding:14px 14px 30px !important; margin:0 !important; }
-div[data-testid="stVerticalBlock"] { gap:0.55rem !important; }
+div[data-testid="stVerticalBlock"] { gap:5px !important; }
 .element-container { margin:0 !important; padding:0 !important; }
 div[data-testid="stHorizontalBlock"] {
-  gap:8px !important; margin:0 !important; flex-wrap:nowrap !important;
+  gap:5px !important; margin:0 !important; flex-wrap:nowrap !important;
 }
 div[data-testid="stHorizontalBlock"] div[data-testid="stColumn"] {
   padding:0 !important; min-width:0 !important; flex:1 !important;
 }
 
-/* ── 애니메이션 ── */
 @keyframes titleShine {
   0%   { background-position:200% center }
   100% { background-position:-200% center }
 }
 @keyframes warnBlink {
-  0%,100% { opacity:1;    color:#ff4466; text-shadow:0 0 8px rgba(255,68,102,0.5); }
-  50%     { opacity:0.65; color:#ff7788; text-shadow:0 0 20px rgba(255,68,102,1), 0 0 40px rgba(220,0,30,0.5); }
+  0%,100% { opacity:1; color:#ff4466; }
+  50%     { opacity:0.65; color:#ff8888; }
 }
-/* 출격 glow — box-shadow 에는 경쟁하는 !important 없음 -> CSS animation 정상 작동 */
 @keyframes launchGlow {
-  0%,100% { box-shadow: 0 0 14px rgba(255,70,0,0.7),  0 0 30px rgba(255,50,0,0.3); }
-  50%     { box-shadow: 0 0 55px rgba(255,210,0,1),    0 0 110px rgba(255,140,0,0.6); }
+  0%,100% { box-shadow:0 0 14px rgba(255,70,0,0.7), 0 0 30px rgba(255,50,0,0.3); }
+  50%     { box-shadow:0 0 55px rgba(255,210,0,1),  0 0 110px rgba(255,140,0,0.6); }
 }
 @keyframes selPulse {
   0%,100% { filter:brightness(1); }
-  50%     { filter:brightness(1.1); }
+  50%     { filter:brightness(1.12); }
 }
 
-/* ── 공통 버튼 기본값 ── */
+/* 공통 버튼 */
 div[data-testid="stButton"] button {
   background:#070b17 !important;
   border:1.5px solid rgba(0,180,255,0.18) !important;
-  border-radius:12px !important;
+  border-radius:10px !important;
   font-family:'Rajdhani',sans-serif !important;
   font-size:0.88rem !important; font-weight:700 !important;
-  padding:8px 10px !important; color:#6688aa !important;
+  padding:8px 6px !important; color:#4a6688 !important;
   min-height:46px !important; width:100% !important;
   white-space:pre-line !important; line-height:1.3 !important;
   transition:border-color 0.12s, box-shadow 0.12s !important;
 }
 div[data-testid="stButton"] button p {
   font-size:0.88rem !important; font-weight:700 !important;
-  color:#6688aa !important; white-space:pre-line !important; line-height:1.3 !important;
+  color:#4a6688 !important; white-space:pre-line !important; line-height:1.3 !important;
 }
 
-/* ════ 시간 버튼 — 30초 주황/불꽃계 ════ */
+/* 시간: BLITZ 30s 오렌지/불꽃 */
 div[data-testid="stButton"] button.fp-t30 {
-  background:linear-gradient(145deg,#0e0700,#180b00) !important;
-  border-color:rgba(200,90,20,0.32) !important; color:#aa5520 !important;
-  min-height:58px !important; font-family:'Orbitron',monospace !important; font-size:0.8rem !important;
+  background:#0e0700 !important;
+  border-color:rgba(200,90,20,0.3) !important; color:#886644 !important;
+  min-height:56px !important; font-family:'Orbitron',monospace !important; font-size:0.78rem !important;
 }
-div[data-testid="stButton"] button.fp-t30 p { color:#aa5520 !important; }
-div[data-testid="stButton"] button.fp-t30:hover {
-  border-color:rgba(255,120,40,0.65) !important;
-  box-shadow:0 0 14px rgba(255,100,30,0.3) !important;
-}
+div[data-testid="stButton"] button.fp-t30 p { color:#886644 !important; }
 div[data-testid="stButton"] button.fp-t30.fp-sel {
-  background:linear-gradient(145deg,#220e00,#2e1400) !important;
+  background:#220e00 !important;
   border-color:#ff8833 !important; color:#ffaa44 !important;
   box-shadow:0 0 22px rgba(255,130,50,0.55) !important;
   animation:selPulse 1.6s ease-in-out infinite !important;
 }
 div[data-testid="stButton"] button.fp-t30.fp-sel p { color:#ffaa44 !important; }
 
-/* ════ 40초 파랑계 ════ */
+/* 시간: STANDARD 40s 파랑 */
 div[data-testid="stButton"] button.fp-t40 {
-  background:linear-gradient(145deg,#03091a,#060e26) !important;
-  border-color:rgba(40,110,230,0.32) !important; color:#2c5eaa !important;
-  min-height:58px !important; font-family:'Orbitron',monospace !important; font-size:0.8rem !important;
+  background:#03091a !important;
+  border-color:rgba(40,110,230,0.3) !important; color:#335577 !important;
+  min-height:56px !important; font-family:'Orbitron',monospace !important; font-size:0.78rem !important;
 }
-div[data-testid="stButton"] button.fp-t40 p { color:#2c5eaa !important; }
-div[data-testid="stButton"] button.fp-t40:hover {
-  border-color:rgba(60,140,255,0.65) !important;
-  box-shadow:0 0 14px rgba(50,110,255,0.3) !important;
-}
+div[data-testid="stButton"] button.fp-t40 p { color:#335577 !important; }
 div[data-testid="stButton"] button.fp-t40.fp-sel {
-  background:linear-gradient(145deg,#07152e,#0a1e42) !important;
+  background:#07152e !important;
   border-color:#3388ff !important; color:#55aaff !important;
   box-shadow:0 0 22px rgba(60,140,255,0.55) !important;
   animation:selPulse 1.6s ease-in-out infinite !important;
 }
 div[data-testid="stButton"] button.fp-t40.fp-sel p { color:#55aaff !important; }
 
-/* ════ 50초 보라계 ════ */
+/* 시간: SNIPER 50s 보라 */
 div[data-testid="stButton"] button.fp-t50 {
-  background:linear-gradient(145deg,#0a051e,#12082c) !important;
-  border-color:rgba(130,55,220,0.32) !important; color:#6e30bb !important;
-  min-height:58px !important; font-family:'Orbitron',monospace !important; font-size:0.8rem !important;
+  background:#0a051e !important;
+  border-color:rgba(130,55,220,0.3) !important; color:#664488 !important;
+  min-height:56px !important; font-family:'Orbitron',monospace !important; font-size:0.78rem !important;
 }
-div[data-testid="stButton"] button.fp-t50 p { color:#6e30bb !important; }
-div[data-testid="stButton"] button.fp-t50:hover {
-  border-color:rgba(170,80,255,0.65) !important;
-  box-shadow:0 0 14px rgba(150,60,255,0.3) !important;
-}
+div[data-testid="stButton"] button.fp-t50 p { color:#664488 !important; }
 div[data-testid="stButton"] button.fp-t50.fp-sel {
-  background:linear-gradient(145deg,#180836,#22104c) !important;
+  background:#180836 !important;
   border-color:#aa44ff !important; color:#cc77ff !important;
   box-shadow:0 0 22px rgba(170,80,255,0.55) !important;
   animation:selPulse 1.6s ease-in-out infinite !important;
 }
 div[data-testid="stButton"] button.fp-t50.fp-sel p { color:#cc77ff !important; }
 
-/* ════ 작전 카드 공통 ════ */
+/* 작전 카드 공통 — 4열 한 줄 */
 div[data-testid="stButton"] button.fp-mode {
-  min-height:84px !important;
-  text-align:left !important; padding:13px 15px !important;
-  font-family:'Rajdhani',sans-serif !important; font-size:0.9rem !important;
+  min-height:90px !important;
+  text-align:center !important; padding:10px 3px !important;
+  font-family:'Rajdhani',sans-serif !important; font-size:0.82rem !important;
 }
 
 /* 문법력 파랑 */
 div[data-testid="stButton"] button.fp-g1 {
-  background:linear-gradient(145deg,#05102a,#081630) !important;
-  border-color:rgba(55,130,255,0.35) !important; color:#4d8eee !important;
+  background:#05102a !important; border-color:rgba(55,130,255,0.35) !important; color:#4d8eee !important;
 }
 div[data-testid="stButton"] button.fp-g1 p { color:#4d8eee !important; }
-div[data-testid="stButton"] button.fp-g1:hover {
-  border-color:rgba(100,170,255,0.7) !important;
-  box-shadow:0 0 18px rgba(80,150,255,0.28) !important;
-}
 div[data-testid="stButton"] button.fp-g1.fp-sel {
-  background:linear-gradient(145deg,#091e44,#0d2a5a) !important;
-  border-color:#6aadff !important; color:#88ccff !important;
-  box-shadow:0 0 28px rgba(106,173,255,0.5) !important;
+  background:#091e44 !important; border-color:#6aadff !important; color:#88ccff !important;
+  box-shadow:0 0 22px rgba(106,173,255,0.5) !important; border-width:2px !important;
   animation:selPulse 1.8s ease-in-out infinite !important;
 }
 div[data-testid="stButton"] button.fp-g1.fp-sel p { color:#88ccff !important; }
 
 /* 구조력 보라 */
 div[data-testid="stButton"] button.fp-g2 {
-  background:linear-gradient(145deg,#120520,#180830) !important;
-  border-color:rgba(158,68,248,0.35) !important; color:#9244dd !important;
+  background:#120520 !important; border-color:rgba(158,68,248,0.35) !important; color:#9244dd !important;
 }
 div[data-testid="stButton"] button.fp-g2 p { color:#9244dd !important; }
-div[data-testid="stButton"] button.fp-g2:hover {
-  border-color:rgba(200,120,255,0.7) !important;
-  box-shadow:0 0 18px rgba(180,100,255,0.28) !important;
-}
 div[data-testid="stButton"] button.fp-g2.fp-sel {
-  background:linear-gradient(145deg,#200a3e,#2c1054) !important;
-  border-color:#cc88ff !important; color:#ddaaff !important;
-  box-shadow:0 0 28px rgba(200,136,255,0.5) !important;
+  background:#200a3e !important; border-color:#cc88ff !important; color:#ddaaff !important;
+  box-shadow:0 0 22px rgba(200,136,255,0.5) !important; border-width:2px !important;
   animation:selPulse 1.8s ease-in-out infinite !important;
 }
 div[data-testid="stButton"] button.fp-g2.fp-sel p { color:#ddaaff !important; }
 
 /* 연결력 청록 */
 div[data-testid="stButton"] button.fp-g3 {
-  background:linear-gradient(145deg,#051a18,#072220) !important;
-  border-color:rgba(0,198,178,0.35) !important; color:#00a898 !important;
+  background:#051a18 !important; border-color:rgba(0,198,178,0.35) !important; color:#00a898 !important;
 }
 div[data-testid="stButton"] button.fp-g3 p { color:#00a898 !important; }
-div[data-testid="stButton"] button.fp-g3:hover {
-  border-color:rgba(0,220,200,0.7) !important;
-  box-shadow:0 0 18px rgba(0,200,180,0.28) !important;
-}
 div[data-testid="stButton"] button.fp-g3.fp-sel {
-  background:linear-gradient(145deg,#092a24,#0e362e) !important;
-  border-color:#00ddc8 !important; color:#00eecc !important;
-  box-shadow:0 0 28px rgba(0,220,200,0.5) !important;
+  background:#092a24 !important; border-color:#00ddc8 !important; color:#00eecc !important;
+  box-shadow:0 0 22px rgba(0,220,200,0.5) !important; border-width:2px !important;
   animation:selPulse 1.8s ease-in-out infinite !important;
 }
 div[data-testid="stButton"] button.fp-g3.fp-sel p { color:#00eecc !important; }
 
 /* 어휘력 초록 */
 div[data-testid="stButton"] button.fp-vc {
-  background:linear-gradient(145deg,#061808,#091e0b) !important;
-  border-color:rgba(48,196,72,0.35) !important; color:#2faa50 !important;
+  background:#061808 !important; border-color:rgba(48,196,72,0.35) !important; color:#2faa50 !important;
 }
 div[data-testid="stButton"] button.fp-vc p { color:#2faa50 !important; }
-div[data-testid="stButton"] button.fp-vc:hover {
-  border-color:rgba(80,230,100,0.7) !important;
-  box-shadow:0 0 18px rgba(60,210,80,0.28) !important;
-}
 div[data-testid="stButton"] button.fp-vc.fp-sel {
-  background:linear-gradient(145deg,#0c2412,#102e16) !important;
-  border-color:#55ee77 !important; color:#77ff99 !important;
-  box-shadow:0 0 28px rgba(85,238,119,0.5) !important;
+  background:#0c2412 !important; border-color:#55ee77 !important; color:#77ff99 !important;
+  box-shadow:0 0 22px rgba(85,238,119,0.5) !important; border-width:2px !important;
   animation:selPulse 1.8s ease-in-out infinite !important;
 }
 div[data-testid="stButton"] button.fp-vc.fp-sel p { color:#77ff99 !important; }
 
-/* ════ 출격 버튼 (active) — CSS animation으로 box-shadow glow ════ */
+/* 출격 버튼 */
 div[data-testid="stButton"] button.fp-launch {
-  background:linear-gradient(135deg,#280800,#1c0500) !important;
-  border:2.5px solid #ff4400 !important;
-  border-radius:14px !important;
-  color:#ffcc55 !important;
+  background:#280800 !important; border:2.5px solid #ff4400 !important;
+  border-radius:14px !important; color:#ffcc55 !important;
   font-family:'Orbitron',monospace !important;
-  font-weight:900 !important; font-size:0.92rem !important;
-  letter-spacing:3px !important; min-height:58px !important;
-  transition:none !important;
-  animation:launchGlow 0.55s ease-in-out infinite !important;
+  font-weight:900 !important; font-size:0.88rem !important;
+  letter-spacing:2px !important; min-height:56px !important;
+  transition:none !important; animation:launchGlow 0.55s ease-in-out infinite !important;
 }
 div[data-testid="stButton"] button.fp-launch p {
   color:#ffcc55 !important; font-family:'Orbitron',monospace !important;
-  font-size:0.92rem !important; font-weight:900 !important; letter-spacing:3px !important;
+  font-size:0.88rem !important; font-weight:900 !important; letter-spacing:2px !important;
 }
-
-/* ════ 출격 버튼 (disabled) ════ */
 div[data-testid="stButton"] button.fp-launch-off {
-  background:#06060f !important;
-  border:1px solid #0e0e1c !important; border-radius:12px !important;
-  color:#18182a !important; font-family:'Orbitron',monospace !important;
-  font-size:0.8rem !important; min-height:52px !important;
+  background:#06060f !important; border:1px solid #0e0e1c !important;
+  border-radius:12px !important; color:#18182a !important;
+  font-family:'Orbitron',monospace !important;
+  font-size:0.8rem !important; min-height:50px !important;
 }
 div[data-testid="stButton"] button.fp-launch-off p { color:#18182a !important; }
 
-/* ════ 네비 버튼 ════ */
+/* 네비 버튼 */
 div[data-testid="stButton"] button.fp-nav {
-  background:#05050e !important;
-  border:1px solid #151525 !important; border-radius:10px !important;
-  color:#3d5066 !important; min-height:42px !important; font-size:0.82rem !important;
+  background:#05050e !important; border:1px solid #151525 !important;
+  border-radius:10px !important; color:#3d5066 !important;
+  min-height:40px !important; font-size:0.82rem !important;
 }
 div[data-testid="stButton"] button.fp-nav p { color:#3d5066 !important; }
-div[data-testid="stButton"] button.fp-nav:hover {
-  border-color:rgba(80,120,180,0.4) !important; color:#7799aa !important;
-}
 
-/* 모바일 반응형 */
-@media(max-width:768px) {
-  div[data-testid="stButton"] button.fp-t30,
-  div[data-testid="stButton"] button.fp-t40,
-  div[data-testid="stButton"] button.fp-t50  { min-height:64px !important; font-size:1.0rem !important; }
-  div[data-testid="stButton"] button.fp-mode { min-height:90px !important; font-size:1.1rem !important; }
-  div[data-testid="stButton"] button.fp-launch { min-height:66px !important; font-size:1.1rem !important; }
-}
 @media(max-width:480px) {
   div[data-testid="stButton"] button.fp-t30,
   div[data-testid="stButton"] button.fp-t40,
-  div[data-testid="stButton"] button.fp-t50  { min-height:56px !important; }
-  div[data-testid="stButton"] button.fp-mode { min-height:80px !important; }
+  div[data-testid="stButton"] button.fp-t50 { min-height:52px !important; }
+  div[data-testid="stButton"] button.fp-mode { min-height:82px !important; }
+  div[data-testid="stButton"] button.fp-launch { min-height:52px !important; }
 }
 </style>""", unsafe_allow_html=True)
 
     # ── 타이틀 ──
     _rb = f'<span style="background:#1a0800;border:1px solid #cc6600;border-radius:20px;padding:1px 10px;font-size:0.68rem;color:#ffaa44;font-weight:900;">🏆 ROUND {rn}</span> ' if rn > 1 else ''
-    st.markdown(f"""<div style="text-align:center;padding:16px 0 20px;">
+    st.markdown(f"""<div style="text-align:center;padding:10px 0 8px;">
+      <div style="font-size:8px;color:#442200;letter-spacing:4px;margin-bottom:4px;font-weight:700;">FIREPOWER BATTLE</div>
       <div style="font-family:Orbitron,monospace;font-size:2rem;font-weight:900;letter-spacing:6px;
         background:linear-gradient(90deg,#00e5ff,#ffffff,#FFD600,#ff3300,#00e5ff);background-size:300%;
         -webkit-background-clip:text;-webkit-text-fill-color:transparent;
         animation:titleShine 2s linear infinite;line-height:1.2;">{_rb}⚡ 화력전</div>
-      <div style="font-size:0.7rem;color:#445577;letter-spacing:2.5px;margin-top:8px;font-weight:500;">
+      <div style="font-size:0.65rem;color:#334455;letter-spacing:2px;margin-top:5px;">
         5문제 서바이벌 · 문법·어휘 실전 포격전</div>
     </div>""", unsafe_allow_html=True)
 
-    # ── 섹션: 전투 시간 ──
-    st.markdown('''<div style="display:flex;align-items:center;gap:10px;margin:4px 0 8px;">
-      <div style="flex:1;height:1px;background:linear-gradient(90deg,transparent,rgba(85,170,255,0.35));"></div>
-      <span style="font-size:0.68rem;color:#55aaff;font-weight:900;letter-spacing:4px;
-        font-family:Orbitron,monospace;white-space:nowrap;
-        text-shadow:0 0 10px rgba(85,170,255,0.7);">&#9201; 전투 시간</span>
-      <div style="flex:1;height:1px;background:linear-gradient(90deg,rgba(85,170,255,0.35),transparent);"></div>
-    </div>''', unsafe_allow_html=True)
-
+    # ── COMBAT TIME 섹션 ──
+    st.markdown('<div style="font-size:9px;color:#cc6633;letter-spacing:4px;padding:5px 0 5px;font-weight:700;">⚡  COMBAT TIME</div>', unsafe_allow_html=True)
     tc1, tc2, tc3 = st.columns(3)
     with tc1:
-        if st.button("🔥 30초\n속공", key="t30", use_container_width=True):
+        if st.button("🔥 30s\nBLITZ", key="t30", use_container_width=True):
             st.session_state.tsec=30; st.session_state.tsec_chosen=True; st.rerun()
     with tc2:
-        if st.button("⚡ 40초\n표준", key="t40", use_container_width=True):
+        if st.button("⚡ 40s\nSTANDARD", key="t40", use_container_width=True):
             st.session_state.tsec=40; st.session_state.tsec_chosen=True; st.rerun()
     with tc3:
-        if st.button("🛡️ 50초\n정밀", key="t50", use_container_width=True):
+        if st.button("🛡️ 50s\nSNIPER", key="t50", use_container_width=True):
             st.session_state.tsec=50; st.session_state.tsec_chosen=True; st.rerun()
 
-    # ── 섹션: 작전 선택 ──
-    st.markdown('''<div style="display:flex;align-items:center;gap:10px;margin:8px 0 8px;">
-      <div style="flex:1;height:1px;background:linear-gradient(90deg,transparent,rgba(255,85,119,0.35));"></div>
-      <span style="font-size:0.68rem;color:#ff5577;font-weight:900;letter-spacing:4px;
-        font-family:Orbitron,monospace;white-space:nowrap;
-        text-shadow:0 0 10px rgba(255,85,119,0.7);">&#9876; 작전 선택</span>
-      <div style="flex:1;height:1px;background:linear-gradient(90deg,rgba(255,85,119,0.35),transparent);"></div>
-    </div>''', unsafe_allow_html=True)
-
-    b1, b2 = st.columns(2)
+    # ── MISSION SELECT 섹션 ──
+    st.markdown('<div style="font-size:9px;color:#cc3355;letter-spacing:4px;padding:6px 0 5px;font-weight:700;">🎯  MISSION SELECT</div>', unsafe_allow_html=True)
+    b1, b2, b3, b4 = st.columns(4)
     with b1:
-        if st.button("⚔️ 문법력\n수일치 · 시제 · 수동", key="sg1", use_container_width=True):
+        if st.button("⚔️\n문법력\n수일치·시제\nG1-GRM", key="sg1", use_container_width=True):
             st.session_state.sel_mode="g1"; st.rerun()
     with b2:
-        if st.button("🏛️ 구조력\n가정법 · 도치 · 당위", key="sg2", use_container_width=True):
+        if st.button("🏛️\n구조력\n가정법·도치\nG2-STR", key="sg2", use_container_width=True):
             st.session_state.sel_mode="g2"; st.rerun()
-    b3, b4 = st.columns(2)
     with b3:
-        if st.button("🔗 연결력\n접속사 · 관계사 · 분사", key="sg3", use_container_width=True):
+        if st.button("🔗\n연결력\n접속사·분사\nG3-CON", key="sg3", use_container_width=True):
             st.session_state.sel_mode="g3"; st.rerun()
     with b4:
-        if st.button("📘 어휘력\n품사 · 동사 · 콜로케이션", key="svc", use_container_width=True):
+        if st.button("📘\n어휘력\n품사·동사\nVOCAB", key="svc", use_container_width=True):
             st.session_state.sel_mode="vocab"; st.rerun()
 
     # ── 생존 규칙 ──
     st.markdown(
-        '<div style="text-align:center;margin:2px 0 4px;font-size:0.65rem;font-weight:900;'
-        'letter-spacing:1.5px;font-family:Orbitron,monospace;'
+        '<div style="text-align:center;margin:8px 0 4px;font-size:0.82rem;font-weight:900;'
+        'color:#cc3333;letter-spacing:1px;'
         'animation:warnBlink 1.4s ease-in-out infinite;">'
-        '&#128128; 3개 이상 격파해야 생존 · 그 이하면 전멸!</div>',
+        '💀 3개 이상 격파해야 생존 · 그 이하면 전멸!</div>',
         unsafe_allow_html=True
     )
 
     # ── 출격 버튼 ──
     if _ready:
         _cat = lbl_map.get(_cur_sm,"")
-        if st.button(f"🔥 출격! — {_cat}  ⏱{_cur_tsec}초", key="go_start", use_container_width=True):
+        _tl  = _tlabel_map.get(str(_cur_tsec), str(_cur_tsec)+"s")
+        if st.button(f"🔥 출격! — {_cat}  ⏱ {_tl}", key="go_start", use_container_width=True):
             try:
                 _md, _grp = mode_map[_cur_sm]
                 _qs = pick5(_md, _grp)
@@ -1502,10 +1437,10 @@ div[data-testid="stButton"] button.fp-nav:hover {
             except Exception as _e:
                 st.error(f"오류: {_e}")
     else:
-        st.button("⏱ 시간 + ⚔️ 작전 선택 → 출격!", key="go_disabled", use_container_width=True, disabled=True)
+        st.button("⏱ COMBAT TIME + 🎯 MISSION → 출격!", key="go_disabled", use_container_width=True, disabled=True)
 
     # ── 네비 ──
-    st.markdown('<div style="height:1px;background:#0e0e1e;margin:3px 0 2px;"></div>', unsafe_allow_html=True)
+    st.markdown('<div style="height:1px;background:#0e0e1e;margin:4px 0 3px;"></div>', unsafe_allow_html=True)
     nc1, nc2 = st.columns(2)
     with nc1:
         if st.button("💀 포로사령부", key="p5nav1", use_container_width=True):
@@ -1519,14 +1454,9 @@ div[data-testid="stButton"] button.fp-nav:hover {
                 st.query_params["ag"]   = "1"
             st.switch_page("main_hub.py")
 
-    # ═══════════════════════════════════════════════════════════════
-    # JS — 최소화 버전 (setInterval 1개 + setTimeout 2개)
-    # 역할: CSS 클래스 부여 + 출격 border-color 지글지글
-    # applyColors setInterval 완전 제거 → CSS animation 방해 없음
-    # border-color keyframe은 !important 충돌로 JS inline만 가능
-    # ═══════════════════════════════════════════════════════════════
-    _sel_t = str(_cur_tsec) if _cur_tc else ""
-    _sel_m = _cur_sm
+    # ── JS: 클래스 부여 (setTimeout 2회 + 출격 border-color flicker) ──
+    _sel_t  = str(_cur_tsec) if _cur_tc else ""
+    _sel_m  = _cur_sm
     _js_ready = "true" if _ready else "false"
     components.html(f"""<script>
 (function(){{
@@ -1538,56 +1468,60 @@ div[data-testid="stButton"] button.fp-nav:hover {
       var txt=(b.innerText||b.textContent||"").trim();
       if(!txt) return;
 
-      // 시간 버튼
-      if(txt.indexOf("30\ucd08")>-1 && txt.indexOf("\ucd9c\uaca9")===-1){{
+      // 시간 버튼 (영문 라벨)
+      if(txt.indexOf("30s")>-1 && txt.indexOf("\ucd9c\uaca9")===-1){{
         b.classList.add("fp-t30");
         if(selT==="30") b.classList.add("fp-sel"); else b.classList.remove("fp-sel");
+        b.querySelectorAll("p").forEach(function(p){{p.classList.add("fp-t30");if(selT==="30")p.classList.add("fp-sel");else p.classList.remove("fp-sel");}});
       }}
-      if(txt.indexOf("40\ucd08")>-1 && txt.indexOf("\ucd9c\uaca9")===-1){{
+      if(txt.indexOf("40s")>-1 && txt.indexOf("\ucd9c\uaca9")===-1){{
         b.classList.add("fp-t40");
         if(selT==="40") b.classList.add("fp-sel"); else b.classList.remove("fp-sel");
+        b.querySelectorAll("p").forEach(function(p){{p.classList.add("fp-t40");if(selT==="40")p.classList.add("fp-sel");else p.classList.remove("fp-sel");}});
       }}
-      if(txt.indexOf("50\ucd08")>-1 && txt.indexOf("\ucd9c\uaca9")===-1){{
+      if(txt.indexOf("50s")>-1 && txt.indexOf("\ucd9c\uaca9")===-1){{
         b.classList.add("fp-t50");
         if(selT==="50") b.classList.add("fp-sel"); else b.classList.remove("fp-sel");
+        b.querySelectorAll("p").forEach(function(p){{p.classList.add("fp-t50");if(selT==="50")p.classList.add("fp-sel");else p.classList.remove("fp-sel");}});
       }}
 
       // 작전 카드
       if(txt.indexOf("\ubb38\ubc95\ub825")>-1){{
         b.classList.add("fp-mode","fp-g1");
         if(selM==="g1") b.classList.add("fp-sel"); else b.classList.remove("fp-sel");
+        b.querySelectorAll("p").forEach(function(p){{p.classList.add("fp-g1");if(selM==="g1")p.classList.add("fp-sel");else p.classList.remove("fp-sel");}});
       }}
       if(txt.indexOf("\uad6c\uc870\ub825")>-1){{
         b.classList.add("fp-mode","fp-g2");
         if(selM==="g2") b.classList.add("fp-sel"); else b.classList.remove("fp-sel");
+        b.querySelectorAll("p").forEach(function(p){{p.classList.add("fp-g2");if(selM==="g2")p.classList.add("fp-sel");else p.classList.remove("fp-sel");}});
       }}
       if(txt.indexOf("\uc5f0\uacb0\ub825")>-1){{
         b.classList.add("fp-mode","fp-g3");
         if(selM==="g3") b.classList.add("fp-sel"); else b.classList.remove("fp-sel");
+        b.querySelectorAll("p").forEach(function(p){{p.classList.add("fp-g3");if(selM==="g3")p.classList.add("fp-sel");else p.classList.remove("fp-sel");}});
       }}
       if(txt.indexOf("\uc5b4\ud718\ub825")>-1){{
         b.classList.add("fp-mode","fp-vc");
         if(selM==="vocab") b.classList.add("fp-sel"); else b.classList.remove("fp-sel");
+        b.querySelectorAll("p").forEach(function(p){{p.classList.add("fp-vc");if(selM==="vocab")p.classList.add("fp-sel");else p.classList.remove("fp-sel");}});
       }}
 
       // 출격 버튼
-      if(txt.indexOf("\ucd9c\uaca9!")>-1 && txt.indexOf("\uc2dc\uac04")===-1 && txt.indexOf("\uc791\uc804")===-1){{
+      if(txt.indexOf("\ucd9c\uaca9!")>-1 && txt.indexOf("COMBAT")===-1){{
         if(isReady){{ b.classList.add("fp-launch"); b.classList.remove("fp-launch-off"); }}
         else{{ b.classList.add("fp-launch-off"); b.classList.remove("fp-launch"); }}
       }}
-
-      // 네비 버튼
+      // 네비
       if(txt.indexOf("\ud3ec\ub85c\uc0ac\ub839\ubd80")>-1||txt.indexOf("\ud648")>-1){{
         b.classList.add("fp-nav");
       }}
     }});
   }}
 
-  // 클래스 부여 2회 (Streamlit 렌더링 지연 대응)
-  setTimeout(applyClasses, 150);
-  setTimeout(applyClasses, 500);
+  setTimeout(applyClasses, 120);
+  setTimeout(applyClasses, 450);
 
-  // 출격 border-color 지글지글 (border-color는 CSS keyframe + !important 충돌 → JS만 가능)
   if(isReady){{
     var _fi=0;
     var _fc=["#ff4400","#ff6600","#ff9900","#FFD600","#ff9900","#ff6600","#ff4400","#ff2200"];
@@ -1600,4 +1534,3 @@ div[data-testid="stButton"] button.fp-nav:hover {
   }}
 }})();
 </script>""", height=0)
-
