@@ -1014,7 +1014,7 @@ elif st.session_state.p7_phase == "battle":
     correct_cnt = len([a for a in st.session_state.p7_answers if a])
     wrong_cnt   = len([a for a in st.session_state.p7_answers if not a])
 
-    # ── 상단 HUD (컴팩트) ──
+    # ── 상단 HUD ──
     st.markdown(f"""<div style="display:flex;justify-content:space-between;align-items:center;
         background:#06080f;border:1px solid #1a2240;border-radius:10px;
         padding:5px 10px;margin-bottom:4px;">
@@ -1043,53 +1043,65 @@ elif st.session_state.p7_phase == "battle":
     _btn_ids = ["p7a","p7b","p7c","p7d"]
     _btn_labels = ["A","B","C","D"]
 
-    # ── 지문 카드 + 좌우 테두리 타이머 (components.html) ──
-    _shake = "animation:shake 0.3s infinite;" if stage=="critical" else "animation:shake 0.8s infinite;" if stage=="danger" else ""
-    components.html(f"""
-    <style>
-    *{{margin:0;padding:0;box-sizing:border-box;}}
-    body{{background:transparent;overflow:hidden;font-family:sans-serif;}}
-    .card-wrap{{position:relative;margin:0 0 4px;}}
-    .lbar,.rbar{{position:absolute;top:0;bottom:0;width:5px;border-radius:3px;background:#0a0c14;overflow:hidden;z-index:2;}}
-    .lbar{{left:0;border-radius:3px 0 0 3px;}}
-    .rbar{{right:0;border-radius:0 3px 3px 0;}}
-    .lbar-fill{{position:absolute;top:0;width:100%;border-radius:3px 0 0 3px;transition:height 1s linear;}}
-    .rbar-fill{{position:absolute;bottom:0;width:100%;border-radius:0 3px 3px 0;transition:height 1s linear;}}
-    .card-inner{{margin:0 5px;padding:10px 12px;background:{pass_bg};
-      border-top:1.5px solid {bar_col};border-bottom:1.5px solid {bar_col};
-      font-size:13px;font-weight:600;color:#aab8cc;line-height:1.75;
-      transition:border-color 1s;{_shake}}}
-    .new-s{{color:#ffffff;font-weight:800;}}
-    .old-s{{color:#6a7a8a;}}
-    @keyframes shake{{0%,100%{{transform:translateX(0)}}25%{{transform:translateX(-3px)}}75%{{transform:translateX(3px)}}}}
-    </style>
-    <div class="card-wrap">
-      <div class="lbar"><div class="lbar-fill" id="lb" style="height:{pct*100:.1f}%;background:linear-gradient(to bottom,{bar_col},{bar_col}88);box-shadow:0 0 6px {bar_col};"></div></div>
-      <div class="rbar"><div class="rbar-fill" id="rb" style="height:{pct*100:.1f}%;background:linear-gradient(to top,{bar_col},{bar_col}88);box-shadow:0 0 6px {bar_col};"></div></div>
-      <div class="card-inner" id="ci">{pass_html}</div>
-    </div>
-    <script>
-    var r={rem},t={total};
-    var lb=document.getElementById('lb'),rb=document.getElementById('rb'),ci=document.getElementById('ci');
-    setInterval(function(){{
-      r--;if(r<0)r=0;
-      var p=r/t;
-      var pct=(p*100)+'%';
-      lb.style.height=pct; rb.style.height=pct;
-      var c=p>0.6?'#44ff88':p>0.3?'#ffcc00':p>0.1?'#ff4444':'#ff0000';
-      lb.style.background='linear-gradient(to bottom,'+c+','+c+'88)';
-      lb.style.boxShadow='0 0 6px '+c;
-      rb.style.background='linear-gradient(to top,'+c+','+c+'88)';
-      rb.style.boxShadow='0 0 6px '+c;
-      ci.style.borderTopColor=c; ci.style.borderBottomColor=c;
-      if(r<=10)ci.style.animation='shake 0.3s infinite';
-      else if(r<=20)ci.style.animation='shake 0.8s infinite';
-      else ci.style.animation='none';
-    }},1000);
-    </script>
-    """, height=220)
+    # ── 지문 카드 — 좌우 테두리 타이머 (st.markdown 자동 높이) ──
+    st.markdown(f'''<div id="p7-pass" style="position:relative;
+        background:{pass_bg};
+        border-top:2px solid {bar_col};border-bottom:2px solid {bar_col};
+        border-radius:12px;padding:0.7rem 14px;margin:2px 0;
+        transition:border-color 1s;font-size:0.9rem;
+        font-weight:600;line-height:1.75;color:#aab8cc;">
+      <div id="p7-lbar" style="position:absolute;left:0;top:0;bottom:0;width:6px;
+        background:#0a0c14;border-radius:3px 0 0 3px;overflow:hidden;">
+        <div id="p7-lfill" style="position:absolute;bottom:0;width:100%;
+          height:{pct*100:.1f}%;border-radius:3px 0 0 3px;
+          background:linear-gradient(to bottom,{bar_col},{bar_col}88);
+          box-shadow:0 0 6px {bar_col};transition:height 1s linear;"></div>
+      </div>
+      <div id="p7-rbar" style="position:absolute;right:0;top:0;bottom:0;width:6px;
+        background:#0a0c14;border-radius:0 3px 3px 0;overflow:hidden;">
+        <div id="p7-rfill" style="position:absolute;top:0;width:100%;
+          height:{pct*100:.1f}%;border-radius:0 3px 3px 0;
+          background:linear-gradient(to top,{bar_col},{bar_col}88);
+          box-shadow:0 0 6px {bar_col};transition:height 1s linear;"></div>
+      </div>
+      {pass_html}
+    </div>''', unsafe_allow_html=True)
 
-    # 질문 + 답 버튼
+    # ── 타이머 JS (height=0, 지문 아래 즉시) ──
+    components.html(f"""<script>
+    (function(){{
+      var doc=window.parent.document;
+      var r={rem},t={total};
+      function run(){{
+        var lf=doc.getElementById('p7-lfill');
+        var rf=doc.getElementById('p7-rfill');
+        var card=doc.getElementById('p7-pass');
+        if(!lf||!rf){{setTimeout(run,100);return;}}
+        setInterval(function(){{
+          r--;if(r<0)r=0;
+          var p=r/t,pct=(p*100)+'%';
+          var c=p>0.6?'#44ff88':p>0.3?'#ffcc00':p>0.1?'#ff4444':'#ff0000';
+          lf.style.height=pct;
+          lf.style.background='linear-gradient(to bottom,'+c+','+c+'88)';
+          lf.style.boxShadow='0 0 6px '+c;
+          rf.style.height=pct;
+          rf.style.background='linear-gradient(to top,'+c+','+c+'88)';
+          rf.style.boxShadow='0 0 6px '+c;
+          if(card){{
+            card.style.borderTopColor=c;
+            card.style.borderBottomColor=c;
+            card.style.animation=r<=10?'p7sk 0.3s infinite':r<=20?'p7sk 0.8s infinite':'none';
+          }}
+        }},1000);
+      }}
+      var st2=doc.createElement('style');
+      st2.textContent='@keyframes p7sk{{0%,100%{{transform:translateX(0)}}25%{{transform:translateX(-4px)}}75%{{transform:translateX(4px)}}}}';
+      doc.head.appendChild(st2);
+      run();
+    }})();
+    </script>""", height=0)
+
+    # 질문
     st.markdown(f'''<div style="background:#08090f;border:1px solid #1a2240;
         border-left:3px solid #7799bb;border-radius:10px;
         padding:7px 10px;margin:3px 0;">
