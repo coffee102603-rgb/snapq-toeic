@@ -1593,11 +1593,13 @@ div[data-testid="stButton"] button.br-home p{color:#3d5066!important;}
                 try: _hl = _re3.sub(f"(?i)({_re3.escape(_ex)})", f'<span style="{_mark_style}">\\1</span>', _hl)
                 except: pass
 
-        # 표현 태그 HTML
+        # 표현 태그 — 이 문장에 실제로 포함된 표현만 필터링
+        _sent_lower = sent.lower()
         _expr_tags = "".join([
             f'<span style="background:#001a12;border:1px solid #00aa66;border-radius:4px;'
             f'padding:1px 7px;font-size:9px;color:#44cc88;margin-right:4px;">{e.get("expr","")}</span>'
-            for e in s.get("expressions", []) if e.get("expr")
+            for e in s.get("expressions", [])
+            if e.get("expr") and e.get("expr","").lower() in _sent_lower
         ]) if not is_saved else ""
 
         _card_border = "#00aacc" if ok else "#ff4466"
