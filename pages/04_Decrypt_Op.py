@@ -1090,12 +1090,12 @@ elif st.session_state.p7_phase == "battle":
           if(card){{
             card.style.borderTopColor=c;
             card.style.borderBottomColor=c;
-            card.style.animation=r<=10?'p7sk 0.3s infinite':r<=20?'p7sk 0.8s infinite':'none';
+            /* 지문 흔들림 제거 — 테두리 색상 변화만 유지 */
           }}
         }},1000);
       }}
       var st2=doc.createElement('style');
-      st2.textContent='@keyframes p7sk{{0%,100%{{transform:translateX(0)}}25%{{transform:translateX(-4px)}}75%{{transform:translateX(4px)}}}}';
+      st2.textContent='/* shake removed */';
       doc.head.appendChild(st2);
       run();
     }})();
