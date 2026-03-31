@@ -1,0 +1,3627 @@
+[
+  {
+    "id": "GRM_876",
+    "category": "GRAMMAR",
+    "cat": "수동태",
+    "word_count": 10,
+    "diff": "easy",
+    "sentence": "The synthetic biology research lab _______ accredited by the national biosafety authority.",
+    "choices": [
+      "(A) were",
+      "(B) has been",
+      "(C) are",
+      "(D) have been"
+    ],
+    "answer": 1,
+    "answer_word": "has been",
+    "explanation": "lab(단수) + 현재완료 수동 → has been accredited.",
+    "explanation_kr": "연구소가 인증 당한 거야! 단수! 최근 인증 → 현재완료 수동! has been accredited!",
+    "kr": "합성 생물학 연구소가 국가 생물 안전 당국에 의해 인증을 받았다.",
+    "expressions": [
+      {
+        "expr": "synthetic biology",
+        "meaning": "합성 생물학"
+      },
+      {
+        "expr": "biosafety authority",
+        "meaning": "생물 안전 당국"
+      }
+    ]
+  },
+  {
+    "id": "GRM_877",
+    "category": "GRAMMAR",
+    "cat": "수동태",
+    "word_count": 10,
+    "diff": "easy",
+    "sentence": "The new virtual reality training module _______ deployed to all employee devices this week.",
+    "choices": [
+      "(A) is being",
+      "(B) are being",
+      "(C) was being",
+      "(D) were being"
+    ],
+    "answer": 0,
+    "answer_word": "is being",
+    "explanation": "module(단수) + this week(현재 진행) + 수동태 → is being deployed.",
+    "explanation_kr": "this week! 지금 이번 주 배포 중! module = 단수! 현재진행 수동 → is being deployed!",
+    "kr": "새로운 가상 현실 교육 모듈이 이번 주 모든 직원 기기에 배포되고 있다.",
+    "expressions": [
+      {
+        "expr": "virtual reality training module",
+        "meaning": "가상 현실 교육 모듈"
+      },
+      {
+        "expr": "is being deployed",
+        "meaning": "현재진행 수동!"
+      }
+    ]
+  },
+  {
+    "id": "GRM_878",
+    "category": "GRAMMAR",
+    "cat": "수동태",
+    "word_count": 11,
+    "diff": "easy",
+    "sentence": "The green hydrogen production facility _______ built near the offshore wind farm.",
+    "choices": [
+      "(A) is",
+      "(B) is being",
+      "(C) are",
+      "(D) are being"
+    ],
+    "answer": 1,
+    "answer_word": "is being",
+    "explanation": "facility(단수) + 현재 건설 중 수동태 → is being built.",
+    "explanation_kr": "시설이 건설 당하고 있는 거야! 단수! 현재진행 수동 → is being built!",
+    "kr": "그린 수소 생산 시설이 해상 풍력 발전 단지 근처에 건설되고 있다.",
+    "expressions": [
+      {
+        "expr": "green hydrogen",
+        "meaning": "그린 수소"
+      },
+      {
+        "expr": "offshore wind farm",
+        "meaning": "해상 풍력 발전 단지"
+      }
+    ]
+  },
+  {
+    "id": "GRM_879",
+    "category": "GRAMMAR",
+    "cat": "수동태",
+    "word_count": 10,
+    "diff": "easy",
+    "sentence": "The impact investment fund _______ launched by a group of social entrepreneurs last month.",
+    "choices": [
+      "(A) is",
+      "(B) were",
+      "(C) was",
+      "(D) are"
+    ],
+    "answer": 2,
+    "answer_word": "was",
+    "explanation": "fund(단수) + 수동태 + last month(과거) → was launched.",
+    "explanation_kr": "펀드가 출시 당한 거잖아! last month → 과거! 단수 → was launched!",
+    "kr": "그 임팩트 투자 펀드가 지난달 사회적 기업가 그룹에 의해 출시되었다.",
+    "expressions": [
+      {
+        "expr": "impact investment fund",
+        "meaning": "임팩트 투자 펀드"
+      },
+      {
+        "expr": "social entrepreneurs",
+        "meaning": "사회적 기업가"
+      }
+    ]
+  },
+  {
+    "id": "GRM_880",
+    "category": "GRAMMAR",
+    "cat": "수동태",
+    "word_count": 10,
+    "diff": "easy",
+    "sentence": "The longevity research institute _______ founded with support from major biotech companies.",
+    "choices": [
+      "(A) is",
+      "(B) were",
+      "(C) was",
+      "(D) are"
+    ],
+    "answer": 2,
+    "answer_word": "was",
+    "explanation": "institute(단수) + 수동태 + 과거 → was founded.",
+    "explanation_kr": "연구소가 설립 당한 거야! 단수 + 과거 수동 → was founded!",
+    "kr": "그 장수 연구소는 주요 바이오테크 기업들의 지원을 받아 설립되었다.",
+    "expressions": [
+      {
+        "expr": "longevity research institute",
+        "meaning": "장수 연구소"
+      },
+      {
+        "expr": "biotech companies",
+        "meaning": "바이오테크 기업"
+      }
+    ]
+  },
+  {
+    "id": "GRM_881",
+    "category": "GRAMMAR",
+    "cat": "수동태",
+    "word_count": 10,
+    "diff": "easy",
+    "sentence": "The autonomous delivery robot _______ tested on public streets last Tuesday.",
+    "choices": [
+      "(A) is",
+      "(B) were",
+      "(C) was",
+      "(D) has been"
+    ],
+    "answer": 2,
+    "answer_word": "was",
+    "explanation": "robot(단수) + 수동태 + last Tuesday(과거) → was tested.",
+    "explanation_kr": "로봇이 테스트 당한 거야! last Tuesday → 과거! 단수 → was tested!",
+    "kr": "그 자율 배달 로봇이 지난 화요일 공공 도로에서 테스트되었다.",
+    "expressions": [
+      {
+        "expr": "autonomous delivery robot",
+        "meaning": "자율 배달 로봇"
+      },
+      {
+        "expr": "public streets",
+        "meaning": "공공 도로"
+      }
+    ]
+  },
+  {
+    "id": "GRM_882",
+    "category": "GRAMMAR",
+    "cat": "수동태",
+    "word_count": 10,
+    "diff": "easy",
+    "sentence": "The carbon offset credits _______ verified by an independent third-party organization.",
+    "choices": [
+      "(A) was",
+      "(B) were",
+      "(C) is",
+      "(D) has been"
+    ],
+    "answer": 1,
+    "answer_word": "were",
+    "explanation": "credits(복수) + 수동태 + 과거 → were verified.",
+    "explanation_kr": "크레딧들이 검증 당한 거야! credits = 복수 + 과거 수동 → were verified!",
+    "kr": "탄소 상쇄 크레딧이 독립적인 제3자 기관에 의해 검증되었다.",
+    "expressions": [
+      {
+        "expr": "carbon offset credits",
+        "meaning": "탄소 상쇄 크레딧 (복수!)"
+      },
+      {
+        "expr": "third-party organization",
+        "meaning": "제3자 기관"
+      }
+    ]
+  },
+  {
+    "id": "GRM_883",
+    "category": "GRAMMAR",
+    "cat": "수동태",
+    "word_count": 10,
+    "diff": "easy",
+    "sentence": "The biosecurity protocol _______ updated following the emergence of a new pathogen.",
+    "choices": [
+      "(A) is",
+      "(B) were",
+      "(C) was",
+      "(D) are"
+    ],
+    "answer": 2,
+    "answer_word": "was",
+    "explanation": "protocol(단수) + 수동태 + 과거 → was updated.",
+    "explanation_kr": "프로토콜이 업데이트 당한 거야! 단수 + 과거 수동 → was updated!",
+    "kr": "새로운 병원체의 출현에 따라 생물 안보 프로토콜이 업데이트되었다.",
+    "expressions": [
+      {
+        "expr": "biosecurity protocol",
+        "meaning": "생물 안보 프로토콜"
+      },
+      {
+        "expr": "pathogen",
+        "meaning": "병원체"
+      }
+    ]
+  },
+  {
+    "id": "GRM_884",
+    "category": "GRAMMAR",
+    "cat": "수동태",
+    "word_count": 10,
+    "diff": "easy",
+    "sentence": "The gig economy platform _______ fined for misclassifying workers as independent contractors.",
+    "choices": [
+      "(A) is",
+      "(B) were",
+      "(C) was",
+      "(D) are"
+    ],
+    "answer": 2,
+    "answer_word": "was",
+    "explanation": "platform(단수) + 수동태 + 과거 → was fined.",
+    "explanation_kr": "플랫폼이 벌금 당한 거야! 단수 + 과거 수동 → was fined!",
+    "kr": "그 긱 이코노미 플랫폼은 근로자를 독립 계약자로 잘못 분류한 것으로 벌금을 받았다.",
+    "expressions": [
+      {
+        "expr": "gig economy platform",
+        "meaning": "긱 이코노미 플랫폼"
+      },
+      {
+        "expr": "independent contractor",
+        "meaning": "독립 계약자"
+      }
+    ]
+  },
+  {
+    "id": "GRM_885",
+    "category": "GRAMMAR",
+    "cat": "수동태",
+    "word_count": 11,
+    "diff": "easy",
+    "sentence": "The nudge-based public health campaign _______ designed by behavioral economists and policymakers.",
+    "choices": [
+      "(A) is",
+      "(B) are",
+      "(C) were",
+      "(D) was"
+    ],
+    "answer": 3,
+    "answer_word": "was",
+    "explanation": "campaign(단수) + 수동태 + 과거 → was designed.",
+    "explanation_kr": "캠페인이 설계 당한 거야! 단수 + 과거 수동 → was designed!",
+    "kr": "넛지 기반 공중 보건 캠페인은 행동 경제학자와 정책 입안자들에 의해 설계되었다.",
+    "expressions": [
+      {
+        "expr": "nudge-based campaign",
+        "meaning": "넛지 기반 캠페인"
+      },
+      {
+        "expr": "behavioral economists",
+        "meaning": "행동 경제학자"
+      }
+    ]
+  },
+  {
+    "id": "GRM_886",
+    "category": "GRAMMAR",
+    "cat": "수일치",
+    "word_count": 11,
+    "diff": "easy",
+    "sentence": "The number of gig workers demanding formal employment rights _______ increased dramatically.",
+    "choices": [
+      "(A) have",
+      "(B) has",
+      "(C) are",
+      "(D) were"
+    ],
+    "answer": 1,
+    "answer_word": "has",
+    "explanation": "The number of = 단수 + 현재완료 → has increased.",
+    "explanation_kr": "The number of gig workers! 단수야! has increased! 고용 권리를 요구하는 긱 노동자 수가 크게 늘었다는 거야~",
+    "kr": "공식 고용 권리를 요구하는 긱 노동자의 수가 크게 증가했다.",
+    "expressions": [
+      {
+        "expr": "the number of → has",
+        "meaning": "단수!"
+      },
+      {
+        "expr": "gig workers",
+        "meaning": "긱 노동자"
+      }
+    ]
+  },
+  {
+    "id": "GRM_887",
+    "category": "GRAMMAR",
+    "cat": "수일치",
+    "word_count": 11,
+    "diff": "easy",
+    "sentence": "Both the metaverse platform developers and the regulatory authorities _______ negotiating new content standards.",
+    "choices": [
+      "(A) is",
+      "(B) was",
+      "(C) are",
+      "(D) has been"
+    ],
+    "answer": 2,
+    "answer_word": "are",
+    "explanation": "Both A and B = 복수 → are.",
+    "explanation_kr": "Both A and B! 둘 다! 무조건 복수! → are! 메타버스 개발사와 규제 당국 모두 협상 중이야~",
+    "kr": "메타버스 플랫폼 개발자와 규제 당국 모두 새로운 콘텐츠 기준을 협상하고 있다.",
+    "expressions": [
+      {
+        "expr": "both A and B → are",
+        "meaning": "무조건 복수!"
+      },
+      {
+        "expr": "content standards",
+        "meaning": "콘텐츠 기준"
+      }
+    ]
+  },
+  {
+    "id": "GRM_888",
+    "category": "GRAMMAR",
+    "cat": "수일치",
+    "word_count": 11,
+    "diff": "easy",
+    "sentence": "Each of the synthetic biology protocols _______ reviewed annually by biosafety experts.",
+    "choices": [
+      "(A) are",
+      "(B) is",
+      "(C) were",
+      "(D) have been"
+    ],
+    "answer": 1,
+    "answer_word": "is",
+    "explanation": "Each of = 단수 → is.",
+    "explanation_kr": "Each of! 각 프로토콜 하나하나! 단수! → is reviewed! 매년 전문가들이 검토한다는 현재 절차야~",
+    "kr": "각 합성 생물학 프로토콜은 생물 안전 전문가에 의해 매년 검토된다.",
+    "expressions": [
+      {
+        "expr": "each of",
+        "meaning": "각각의 (단수!)"
+      },
+      {
+        "expr": "biosafety experts",
+        "meaning": "생물 안전 전문가"
+      }
+    ]
+  },
+  {
+    "id": "GRM_889",
+    "category": "GRAMMAR",
+    "cat": "수일치",
+    "word_count": 11,
+    "diff": "easy",
+    "sentence": "A growing number of pension funds _______ incorporating climate risk into their investment decisions.",
+    "choices": [
+      "(A) is",
+      "(B) was",
+      "(C) are",
+      "(D) has been"
+    ],
+    "answer": 2,
+    "answer_word": "are",
+    "explanation": "A growing number of = 복수 → are.",
+    "explanation_kr": "A growing number of funds! 복수! → are! 점점 많은 연금 펀드가 기후 리스크를 투자 결정에 반영 중이야~",
+    "kr": "점점 더 많은 연금 펀드들이 기후 위험을 투자 결정에 통합하고 있다.",
+    "expressions": [
+      {
+        "expr": "a growing number of",
+        "meaning": "점점 더 많은 (복수!)"
+      },
+      {
+        "expr": "climate risk",
+        "meaning": "기후 위험"
+      }
+    ]
+  },
+  {
+    "id": "GRM_890",
+    "category": "GRAMMAR",
+    "cat": "수일치",
+    "word_count": 11,
+    "diff": "easy",
+    "sentence": "Neither the robotics manufacturer nor the liability insurers _______ willing to cover all operational risks.",
+    "choices": [
+      "(A) are",
+      "(B) were",
+      "(C) is",
+      "(D) was"
+    ],
+    "answer": 0,
+    "answer_word": "are",
+    "explanation": "Neither A nor B → B에 수 일치. B = liability insurers(복수) → are.",
+    "explanation_kr": "neither nor! 뒤(B)에 맞추기! liability insurers = 복수! → are! 제조사도 보험사도 모든 운영 위험을 커버하려 하지 않는다는 거야~",
+    "kr": "로보틱스 제조업체도 책임 보험사들도 모든 운영 위험을 커버하려 하지 않는다.",
+    "expressions": [
+      {
+        "expr": "neither A nor B → B 복수",
+        "meaning": "are!"
+      },
+      {
+        "expr": "liability insurers",
+        "meaning": "책임 보험사"
+      }
+    ]
+  },
+  {
+    "id": "GRM_891",
+    "category": "GRAMMAR",
+    "cat": "수일치",
+    "word_count": 10,
+    "diff": "easy",
+    "sentence": "The majority of impact investment returns _______ reinvested into new social ventures.",
+    "choices": [
+      "(A) is",
+      "(B) are",
+      "(C) was",
+      "(D) has been"
+    ],
+    "answer": 1,
+    "answer_word": "are",
+    "explanation": "majority of + 복수명사(returns) → 복수 → are.",
+    "explanation_kr": "majority of returns! returns = 복수! → are! 임팩트 투자 수익의 대부분이 새 소셜 벤처에 재투자된다는 거야~",
+    "kr": "임팩트 투자 수익의 대부분은 새로운 사회적 벤처에 재투자된다.",
+    "expressions": [
+      {
+        "expr": "majority of + 복수",
+        "meaning": "복수 → are!"
+      },
+      {
+        "expr": "social ventures",
+        "meaning": "사회적 벤처"
+      }
+    ]
+  },
+  {
+    "id": "GRM_892",
+    "category": "GRAMMAR",
+    "cat": "수일치",
+    "word_count": 11,
+    "diff": "easy",
+    "sentence": "Not a single fuel cell unit _______ failed the rigorous operational stress test.",
+    "choices": [
+      "(A) have",
+      "(B) has",
+      "(C) were",
+      "(D) are"
+    ],
+    "answer": 1,
+    "answer_word": "has",
+    "explanation": "Not a single + 단수명사(unit) + 현재완료 → has.",
+    "explanation_kr": "Not a single unit! 단수! 현재완료 → has! 하나도 실패하지 않은 완벽한 성능이야~",
+    "kr": "단 하나의 연료 전지 유닛도 엄격한 운영 스트레스 테스트에 실패하지 않았다.",
+    "expressions": [
+      {
+        "expr": "not a single unit",
+        "meaning": "단 하나도 없는 (단수!)"
+      },
+      {
+        "expr": "fuel cell",
+        "meaning": "연료 전지"
+      }
+    ]
+  },
+  {
+    "id": "GRM_893",
+    "category": "GRAMMAR",
+    "cat": "수일치",
+    "word_count": 11,
+    "diff": "easy",
+    "sentence": "Everyone enrolled in the longevity wellness program _______ assigned a personalized health coach.",
+    "choices": [
+      "(A) were",
+      "(B) was",
+      "(C) are",
+      "(D) have been"
+    ],
+    "answer": 1,
+    "answer_word": "was",
+    "explanation": "Everyone = 단수 + 과거 수동 → was assigned.",
+    "explanation_kr": "Everyone! 단수야! every+ONE! 과거 수동 → was assigned! 장수 웰니스 프로그램 등록자 모두 건강 코치 배정받았어~",
+    "kr": "장수 웰니스 프로그램에 등록한 모든 사람은 맞춤형 건강 코치를 배정받았다.",
+    "expressions": [
+      {
+        "expr": "everyone → was",
+        "meaning": "단수! 과거 수동!"
+      },
+      {
+        "expr": "longevity wellness program",
+        "meaning": "장수 웰니스 프로그램"
+      }
+    ]
+  },
+  {
+    "id": "GRM_894",
+    "category": "GRAMMAR",
+    "cat": "수일치",
+    "word_count": 11,
+    "diff": "easy",
+    "sentence": "Either the carbon market regulator or the trading platforms _______ required to maintain full audit trails.",
+    "choices": [
+      "(A) is",
+      "(B) are",
+      "(C) was",
+      "(D) were"
+    ],
+    "answer": 1,
+    "answer_word": "are",
+    "explanation": "Either A or B → B에 수 일치. B = trading platforms(복수) → are.",
+    "explanation_kr": "either or! 뒤(B)에 맞추기! trading platforms = 복수! → are! 탄소 시장 거래 감사 추적 의무화야~",
+    "kr": "탄소 시장 규제 기관 또는 거래 플랫폼이 완전한 감사 추적을 유지하도록 요구된다.",
+    "expressions": [
+      {
+        "expr": "either A or B → B 복수",
+        "meaning": "are!"
+      },
+      {
+        "expr": "audit trails",
+        "meaning": "감사 추적"
+      }
+    ]
+  },
+  {
+    "id": "GRM_895",
+    "category": "GRAMMAR",
+    "cat": "수일치",
+    "word_count": 11,
+    "diff": "easy",
+    "sentence": "A series of behavioral nudge interventions _______ successfully reduced energy consumption.",
+    "choices": [
+      "(A) have",
+      "(B) has",
+      "(C) are",
+      "(D) were"
+    ],
+    "answer": 1,
+    "answer_word": "has",
+    "explanation": "A series of = 단수 + 현재완료 → has reduced.",
+    "explanation_kr": "A series of! '일련의 개입들' = 하나의 시리즈! 단수! → has reduced! 넛지 개입으로 에너지 소비를 줄였다는 거야~",
+    "kr": "일련의 행동 넛지 개입들이 에너지 소비를 성공적으로 줄였다.",
+    "expressions": [
+      {
+        "expr": "a series of",
+        "meaning": "일련의 (단수!)"
+      },
+      {
+        "expr": "nudge interventions",
+        "meaning": "넛지 개입"
+      }
+    ]
+  },
+  {
+    "id": "GRM_896",
+    "category": "GRAMMAR",
+    "cat": "시제",
+    "word_count": 10,
+    "diff": "easy",
+    "sentence": "The biotech firm _______ lab-grown meat products since receiving regulatory approval.",
+    "choices": [
+      "(A) commercialized",
+      "(B) commercializes",
+      "(C) has been commercializing",
+      "(D) had commercialized"
+    ],
+    "answer": 2,
+    "answer_word": "has been commercializing",
+    "explanation": "since receiving + 현재까지 → 현재완료 진행 has been commercializing.",
+    "explanation_kr": "since receiving regulatory approval! 승인 이후 지금까지 쭉! 현재완료 진행! has been commercializing!",
+    "kr": "그 바이오테크 회사는 규제 승인을 받은 이후 실험실 배양 육류 제품을 상업화해오고 있다.",
+    "expressions": [
+      {
+        "expr": "lab-grown meat",
+        "meaning": "실험실 배양 육류"
+      },
+      {
+        "expr": "since receiving",
+        "meaning": "현재완료 진행!"
+      }
+    ]
+  },
+  {
+    "id": "GRM_897",
+    "category": "GRAMMAR",
+    "cat": "시제",
+    "word_count": 10,
+    "diff": "easy",
+    "sentence": "The metaverse architect _______ the virtual campus when the server maintenance began.",
+    "choices": [
+      "(A) designed",
+      "(B) was designing",
+      "(C) had designed",
+      "(D) has designed"
+    ],
+    "answer": 1,
+    "answer_word": "was designing",
+    "explanation": "when + 과거 사건(began) → 그때 진행 중 = 과거진행 was designing.",
+    "explanation_kr": "서버 유지보수가 시작됐을 때(when) 가상 캠퍼스 설계 '중'이었던 거야! → was designing!",
+    "kr": "메타버스 설계자가 가상 캠퍼스를 설계하고 있을 때 서버 유지보수가 시작되었다.",
+    "expressions": [
+      {
+        "expr": "metaverse architect",
+        "meaning": "메타버스 설계자"
+      },
+      {
+        "expr": "server maintenance",
+        "meaning": "서버 유지보수"
+      }
+    ]
+  },
+  {
+    "id": "GRM_898",
+    "category": "GRAMMAR",
+    "cat": "시제",
+    "word_count": 11,
+    "diff": "easy",
+    "sentence": "By next year, the autonomous vehicle company _______ in twelve cities across five countries.",
+    "choices": [
+      "(A) operated",
+      "(B) will operate",
+      "(C) will have been operating",
+      "(D) has operated"
+    ],
+    "answer": 2,
+    "answer_word": "will have been operating",
+    "explanation": "By next year(미래 시점) + 계속 → 미래완료 진행 will have been operating.",
+    "explanation_kr": "By next year! 내년까지 계속 운영! → 미래완료 진행! will have been operating!",
+    "kr": "내년까지 그 자율주행차 회사는 5개국 12개 도시에서 운영하고 있는 것이 된다.",
+    "expressions": [
+      {
+        "expr": "by next year",
+        "meaning": "미래완료 진행 신호!"
+      },
+      {
+        "expr": "autonomous vehicle company",
+        "meaning": "자율주행차 회사"
+      }
+    ]
+  },
+  {
+    "id": "GRM_899",
+    "category": "GRAMMAR",
+    "cat": "시제",
+    "word_count": 11,
+    "diff": "easy",
+    "sentence": "The aging population specialist _______ longevity policies for the government since 2017.",
+    "choices": [
+      "(A) advised",
+      "(B) advises",
+      "(C) has been advising",
+      "(D) had advised"
+    ],
+    "answer": 2,
+    "answer_word": "has been advising",
+    "explanation": "since 2017 + 현재까지 → 현재완료 진행 has been advising.",
+    "explanation_kr": "since 2017! 2017년부터 지금까지 쭉! 현재완료 진행! has been advising!",
+    "kr": "그 고령화 인구 전문가는 2017년부터 정부를 위해 장수 정책을 자문해오고 있다.",
+    "expressions": [
+      {
+        "expr": "aging population specialist",
+        "meaning": "고령화 인구 전문가"
+      },
+      {
+        "expr": "since 2017",
+        "meaning": "현재완료 진행!"
+      }
+    ]
+  },
+  {
+    "id": "GRM_900",
+    "category": "GRAMMAR",
+    "cat": "시제",
+    "word_count": 10,
+    "diff": "easy",
+    "sentence": "The carbon market analyst _______ trading patterns for a year before the major price crash.",
+    "choices": [
+      "(A) studied",
+      "(B) was studying",
+      "(C) had been studying",
+      "(D) has studied"
+    ],
+    "answer": 2,
+    "answer_word": "had been studying",
+    "explanation": "before + 과거 사건(crash) → 그때까지 계속 = 과거완료 진행 had been studying.",
+    "explanation_kr": "가격 폭락(과거 기준) 전에 1년 동안 쭉 연구 중이었던 거야! 과거완료 진행! had been studying!",
+    "kr": "탄소 시장 분석가가 대규모 가격 폭락 전 1년 동안 거래 패턴을 연구하고 있었다.",
+    "expressions": [
+      {
+        "expr": "before the price crash",
+        "meaning": "과거완료 신호!"
+      },
+      {
+        "expr": "trading patterns",
+        "meaning": "거래 패턴"
+      }
+    ]
+  },
+  {
+    "id": "GRM_901",
+    "category": "GRAMMAR",
+    "cat": "시제",
+    "word_count": 10,
+    "diff": "easy",
+    "sentence": "The robotics engineer _______ the new safety algorithm when the system malfunctioned.",
+    "choices": [
+      "(A) tested",
+      "(B) was testing",
+      "(C) had tested",
+      "(D) has tested"
+    ],
+    "answer": 1,
+    "answer_word": "was testing",
+    "explanation": "when + 과거 사건(malfunctioned) → 그때 진행 중 = 과거진행 was testing.",
+    "explanation_kr": "시스템이 오작동했을 때(when) 알고리즘 테스트 '중'이었던 거야! → was testing!",
+    "kr": "로보틱스 엔지니어가 새로운 안전 알고리즘을 테스트하고 있을 때 시스템이 오작동했다.",
+    "expressions": [
+      {
+        "expr": "safety algorithm",
+        "meaning": "안전 알고리즘"
+      },
+      {
+        "expr": "malfunction",
+        "meaning": "오작동하다"
+      }
+    ]
+  },
+  {
+    "id": "GRM_902",
+    "category": "GRAMMAR",
+    "cat": "시제",
+    "word_count": 10,
+    "diff": "easy",
+    "sentence": "By the end of the decade, researchers _______ the aging process in laboratory settings.",
+    "choices": [
+      "(A) reversed",
+      "(B) will reverse",
+      "(C) will have reversed",
+      "(D) have reversed"
+    ],
+    "answer": 2,
+    "answer_word": "will have reversed",
+    "explanation": "By the end of the decade(미래 완료 시점) → 미래완료 will have reversed.",
+    "explanation_kr": "By the end of the decade! 10년 말까지 완료! → 미래완료! will have reversed! 노화 과정 역전이라니 놀랍네~",
+    "kr": "이 10년이 끝날 때까지 연구자들은 실험실 환경에서 노화 과정을 역전시킨 것이 될 것이다.",
+    "expressions": [
+      {
+        "expr": "by the end of the decade",
+        "meaning": "미래완료 신호!"
+      },
+      {
+        "expr": "aging process",
+        "meaning": "노화 과정"
+      }
+    ]
+  },
+  {
+    "id": "GRM_903",
+    "category": "GRAMMAR",
+    "cat": "시제",
+    "word_count": 10,
+    "diff": "easy",
+    "sentence": "The behavioral economist _______ workplace nudge strategies since publishing her landmark study.",
+    "choices": [
+      "(A) refined",
+      "(B) refines",
+      "(C) has been refining",
+      "(D) had refined"
+    ],
+    "answer": 2,
+    "answer_word": "has been refining",
+    "explanation": "since publishing + 현재까지 → 현재완료 진행 has been refining.",
+    "explanation_kr": "since publishing! 연구 발표 이후 지금까지 쭉! 현재완료 진행! has been refining!",
+    "kr": "그 행동 경제학자는 획기적인 연구를 발표한 이후 직장 넛지 전략을 개선해오고 있다.",
+    "expressions": [
+      {
+        "expr": "nudge strategies",
+        "meaning": "넛지 전략"
+      },
+      {
+        "expr": "since publishing",
+        "meaning": "현재완료 진행!"
+      }
+    ]
+  },
+  {
+    "id": "GRM_904",
+    "category": "GRAMMAR",
+    "cat": "시제",
+    "word_count": 10,
+    "diff": "easy",
+    "sentence": "The biosecurity team discovered that the lab _______ below minimum containment standards for months.",
+    "choices": [
+      "(A) operated",
+      "(B) was operating",
+      "(C) had been operating",
+      "(D) has operated"
+    ],
+    "answer": 2,
+    "answer_word": "had been operating",
+    "explanation": "discovered(과거) → 그 이전에 계속 = 과거완료 진행 had been operating.",
+    "explanation_kr": "발견했을 때(과거) 이미 수개월 최소 격리 기준 이하로 운영 중이었던 거야! 과거완료 진행! had been operating!",
+    "kr": "생물 안보 팀은 연구소가 몇 달 동안 최소 격리 기준 이하로 운영되고 있었다는 것을 발견했다.",
+    "expressions": [
+      {
+        "expr": "containment standards",
+        "meaning": "격리 기준"
+      },
+      {
+        "expr": "discovered that + 과거완료 진행",
+        "meaning": "발견 이전에 계속!"
+      }
+    ]
+  },
+  {
+    "id": "GRM_905",
+    "category": "GRAMMAR",
+    "cat": "시제",
+    "word_count": 11,
+    "diff": "easy",
+    "sentence": "The green hydrogen startup _______ cost reduction milestones every year since it launched.",
+    "choices": [
+      "(A) achieved",
+      "(B) achieves",
+      "(C) has achieved",
+      "(D) had achieved"
+    ],
+    "answer": 2,
+    "answer_word": "has achieved",
+    "explanation": "since it launched + 현재까지 → 현재완료 has achieved.",
+    "explanation_kr": "since it launched! 출시 이후 지금까지 매년! 현재완료 경험! has achieved! 매년 비용 절감 이정표를 달성했다는 거야~",
+    "kr": "그 그린 수소 스타트업은 출시 이후 매년 비용 절감 이정표를 달성해왔다.",
+    "expressions": [
+      {
+        "expr": "cost reduction milestones",
+        "meaning": "비용 절감 이정표"
+      },
+      {
+        "expr": "since it launched",
+        "meaning": "현재완료!"
+      }
+    ]
+  },
+  {
+    "id": "GRM_906",
+    "category": "GRAMMAR",
+    "cat": "가정법",
+    "word_count": 12,
+    "diff": "easy",
+    "sentence": "If the biosecurity measures _______ stronger, the lab leak could have been prevented.",
+    "choices": [
+      "(A) are",
+      "(B) were",
+      "(C) had been",
+      "(D) has been"
+    ],
+    "answer": 2,
+    "answer_word": "had been",
+    "explanation": "could have been prevented → 가정법 과거완료 → if절 had been.",
+    "explanation_kr": "could have been prevented! 가정법 과거완료 주절! if절엔 had been! 더 강력한 생물 안보 조치가 있었더라면 연구소 유출을~",
+    "kr": "생물 안보 조치가 더 강력했더라면 연구소 유출을 예방할 수 있었을 것이다.",
+    "expressions": [
+      {
+        "expr": "lab leak",
+        "meaning": "연구소 유출"
+      },
+      {
+        "expr": "could have been prevented → had been",
+        "meaning": "가정법 과거완료!"
+      }
+    ]
+  },
+  {
+    "id": "GRM_907",
+    "category": "GRAMMAR",
+    "cat": "가정법",
+    "word_count": 12,
+    "diff": "easy",
+    "sentence": "Were the green hydrogen technology more affordable, adoption rates _______ be much higher.",
+    "choices": [
+      "(A) will",
+      "(B) can",
+      "(C) would",
+      "(D) had"
+    ],
+    "answer": 2,
+    "answer_word": "would",
+    "explanation": "Were 도치 가정법 → 주절 would.",
+    "explanation_kr": "Were 도치! 그린 수소가 실제로 비싸다는 현실~ 반대 가정! 주절 would! 더 저렴하다면 채택률이 높을 텐데~",
+    "kr": "그린 수소 기술이 더 저렴하다면 채택률이 훨씬 높을 것이다.",
+    "expressions": [
+      {
+        "expr": "were + 주어 → would",
+        "meaning": "Were 도치 가정법!"
+      },
+      {
+        "expr": "adoption rates",
+        "meaning": "채택률"
+      }
+    ]
+  },
+  {
+    "id": "GRM_908",
+    "category": "GRAMMAR",
+    "cat": "가정법",
+    "word_count": 12,
+    "diff": "easy",
+    "sentence": "Had the autonomous vehicle _______ the pedestrian correctly, the accident would not have occurred.",
+    "choices": [
+      "(A) detect",
+      "(B) detected",
+      "(C) detecting",
+      "(D) to detect"
+    ],
+    "answer": 1,
+    "answer_word": "detected",
+    "explanation": "Had + S + p.p. 가정법 과거완료 도치.",
+    "explanation_kr": "Had 도치! Had + the vehicle + p.p.! detected! would not have occurred가 주절! 보행자를 제대로 감지했더라면~",
+    "kr": "자율주행차가 보행자를 올바르게 감지했더라면 사고가 발생하지 않았을 것이다.",
+    "expressions": [
+      {
+        "expr": "had + S + p.p.",
+        "meaning": "가정법 과거완료 도치!"
+      },
+      {
+        "expr": "pedestrian",
+        "meaning": "보행자"
+      }
+    ]
+  },
+  {
+    "id": "GRM_909",
+    "category": "GRAMMAR",
+    "cat": "가정법",
+    "word_count": 11,
+    "diff": "easy",
+    "sentence": "If only the carbon market regulations _______ stricter, prices would have been more stable.",
+    "choices": [
+      "(A) were",
+      "(B) had been",
+      "(C) are",
+      "(D) will be"
+    ],
+    "answer": 1,
+    "answer_word": "had been",
+    "explanation": "if only + 과거에 대한 후회 → 가정법 과거완료 had been.",
+    "explanation_kr": "if only! 강한 후회! '더 엄격했더라면!' → 과거완료! had been! 탄소 시장 가격이 더 안정적이었을 텐데~",
+    "kr": "탄소 시장 규제가 더 엄격했더라면 가격이 더 안정적이었을 것이다.",
+    "expressions": [
+      {
+        "expr": "if only + had p.p.",
+        "meaning": "과거 후회!"
+      },
+      {
+        "expr": "carbon market regulations",
+        "meaning": "탄소 시장 규제"
+      }
+    ]
+  },
+  {
+    "id": "GRM_910",
+    "category": "GRAMMAR",
+    "cat": "가정법",
+    "word_count": 12,
+    "diff": "easy",
+    "sentence": "The longevity treatment would be more accessible if costs _______ reduced through mass production.",
+    "choices": [
+      "(A) are",
+      "(B) were",
+      "(C) will be",
+      "(D) had been"
+    ],
+    "answer": 1,
+    "answer_word": "were",
+    "explanation": "현재 반사실(would be more accessible) → if절 수동 were reduced.",
+    "explanation_kr": "would be more accessible! 현재 가정법! if절엔 수동 were reduced! 실제로 비용이 너무 높다는 현실이야~",
+    "kr": "대량 생산을 통해 비용이 절감된다면 장수 치료가 더 접근하기 쉬울 것이다.",
+    "expressions": [
+      {
+        "expr": "mass production",
+        "meaning": "대량 생산"
+      },
+      {
+        "expr": "were reduced",
+        "meaning": "가정법 수동!"
+      }
+    ]
+  },
+  {
+    "id": "GRM_911",
+    "category": "GRAMMAR",
+    "cat": "가정법",
+    "word_count": 12,
+    "diff": "easy",
+    "sentence": "Should the metaverse platform experience a major data breach, users _______ immediately notified.",
+    "choices": [
+      "(A) will be",
+      "(B) would be",
+      "(C) are",
+      "(D) were"
+    ],
+    "answer": 1,
+    "answer_word": "would be",
+    "explanation": "Should + S(조건 가정법) → 주절 would be (수동).",
+    "explanation_kr": "Should! 조건 가정법! 데이터 침해 발생 시 → 주절 would be notified! 사용자들이 알림 받을 거라는 가정~",
+    "kr": "메타버스 플랫폼에 주요 데이터 침해가 발생한다면 사용자들이 즉시 통보될 것이다.",
+    "expressions": [
+      {
+        "expr": "should + S, would be p.p.",
+        "meaning": "조건 가정법 + 수동 주절!"
+      }
+    ]
+  },
+  {
+    "id": "GRM_912",
+    "category": "GRAMMAR",
+    "cat": "가정법",
+    "word_count": 12,
+    "diff": "easy",
+    "sentence": "If the gig economy _______ regulated earlier, fewer workers would face precarious conditions now.",
+    "choices": [
+      "(A) was",
+      "(B) were",
+      "(C) had been",
+      "(D) has been"
+    ],
+    "answer": 2,
+    "answer_word": "had been",
+    "explanation": "would face now(현재 결과) + 과거 원인 → 혼합 가정법 had been regulated.",
+    "explanation_kr": "would face now(현재 결과)! 과거에 규제 안 했다는 거잖아! 혼합 가정법! had been regulated!",
+    "kr": "긱 이코노미가 더 일찍 규제되었더라면 지금 더 적은 노동자들이 불안정한 상황에 처할 것이다.",
+    "expressions": [
+      {
+        "expr": "혼합 가정법 (had been + would now)",
+        "meaning": "과거 원인 + 현재 결과!"
+      },
+      {
+        "expr": "precarious conditions",
+        "meaning": "불안정한 상황"
+      }
+    ]
+  },
+  {
+    "id": "GRM_913",
+    "category": "GRAMMAR",
+    "cat": "가정법",
+    "word_count": 11,
+    "diff": "easy",
+    "sentence": "Were the impact investment market better standardized, more capital _______ flow into it.",
+    "choices": [
+      "(A) will",
+      "(B) can",
+      "(C) would",
+      "(D) had"
+    ],
+    "answer": 2,
+    "answer_word": "would",
+    "explanation": "Were 도치 가정법 → 주절 would.",
+    "explanation_kr": "Were 도치! 임팩트 투자 시장이 아직 표준화가 덜 됐다는 현실~ 주절 would! 표준화된다면 자본이 더 많이 유입될 텐데~",
+    "kr": "임팩트 투자 시장이 더 잘 표준화된다면 더 많은 자본이 유입될 것이다.",
+    "expressions": [
+      {
+        "expr": "impact investment market",
+        "meaning": "임팩트 투자 시장"
+      },
+      {
+        "expr": "were + 주어 → would",
+        "meaning": "Were 도치 가정법!"
+      }
+    ]
+  },
+  {
+    "id": "GRM_914",
+    "category": "GRAMMAR",
+    "cat": "가정법",
+    "word_count": 12,
+    "diff": "easy",
+    "sentence": "Had the pandemic early warning system _______ properly funded, containment could have been faster.",
+    "choices": [
+      "(A) be",
+      "(B) been",
+      "(C) being",
+      "(D) is"
+    ],
+    "answer": 1,
+    "answer_word": "been",
+    "explanation": "Had + S + been properly funded → 가정법 과거완료 수동 도치.",
+    "explanation_kr": "Had 도치! Had + the system + been properly funded! 수동 가정법! 제대로 자금 지원됐더라면 더 빨리 억제할 수 있었을 텐데~",
+    "kr": "팬데믹 조기 경보 시스템이 적절하게 자금 지원되었더라면 억제가 더 빨랐을 것이다.",
+    "expressions": [
+      {
+        "expr": "had + S + been p.p.",
+        "meaning": "가정법 과거완료 수동 도치!"
+      },
+      {
+        "expr": "containment",
+        "meaning": "억제, 봉쇄"
+      }
+    ]
+  },
+  {
+    "id": "GRM_915",
+    "category": "GRAMMAR",
+    "cat": "가정법",
+    "word_count": 12,
+    "diff": "easy",
+    "sentence": "Should the synthetic biology lab _______ a containment failure, operations will be suspended.",
+    "choices": [
+      "(A) experience",
+      "(B) experienced",
+      "(C) experiencing",
+      "(D) has experienced"
+    ],
+    "answer": 0,
+    "answer_word": "experience",
+    "explanation": "Should + S + 동사원형 (조건 가정법).",
+    "explanation_kr": "Should! 조건 가정법 도치! Should + the lab + 동사원형! experience! 격리 실패 발생 시 운영 중단이라는 규정~",
+    "kr": "합성 생물학 연구소에 격리 실패가 발생한다면 운영이 중단될 것이다.",
+    "expressions": [
+      {
+        "expr": "should + S + 동사원형",
+        "meaning": "조건 가정법!"
+      },
+      {
+        "expr": "containment failure",
+        "meaning": "격리 실패"
+      }
+    ]
+  },
+  {
+    "id": "GRM_916",
+    "category": "GRAMMAR",
+    "cat": "도치",
+    "word_count": 10,
+    "diff": "easy",
+    "sentence": "Never before _______ synthetic meat products been sold in mainstream supermarkets globally.",
+    "choices": [
+      "(A) have",
+      "(B) has",
+      "(C) had",
+      "(D) did"
+    ],
+    "answer": 0,
+    "answer_word": "have",
+    "explanation": "Never before 문두 + 복수주어(synthetic meat products) + 현재완료 → have.",
+    "explanation_kr": "Never before 도치! synthetic meat products = 복수! 현재완료 → have! 합성 육류가 일반 슈퍼마켓에서 판매된 건 전례 없어~",
+    "kr": "합성 육류 제품이 이전에 전 세계 일반 슈퍼마켓에서 판매된 적이 없었다.",
+    "expressions": [
+      {
+        "expr": "never before have + 복수 + p.p.",
+        "meaning": "Never before 도치 + 복수!"
+      },
+      {
+        "expr": "synthetic meat products",
+        "meaning": "합성 육류 제품"
+      }
+    ]
+  },
+  {
+    "id": "GRM_917",
+    "category": "GRAMMAR",
+    "cat": "도치",
+    "word_count": 10,
+    "diff": "easy",
+    "sentence": "So significant _______ the potential of green hydrogen that major oil companies began investing.",
+    "choices": [
+      "(A) the potential was",
+      "(B) was the potential",
+      "(C) the potential is",
+      "(D) is the potential"
+    ],
+    "answer": 1,
+    "answer_word": "was the potential",
+    "explanation": "So + 형용사 문두 도치 → was + the potential (단수 + 과거).",
+    "explanation_kr": "So significant 도치! was + the potential 순서! 대형 석유 회사들이 투자하기 시작했다는 과거 얘기 → was!",
+    "kr": "그린 수소의 잠재력이 너무 중요해서 주요 석유 회사들이 투자하기 시작했다.",
+    "expressions": [
+      {
+        "expr": "so + 형용사 + was + 주어 that",
+        "meaning": "So 도치!"
+      },
+      {
+        "expr": "green hydrogen potential",
+        "meaning": "그린 수소 잠재력"
+      }
+    ]
+  },
+  {
+    "id": "GRM_918",
+    "category": "GRAMMAR",
+    "cat": "도치",
+    "word_count": 10,
+    "diff": "easy",
+    "sentence": "Not only _______ the robotic surgery system more precise, but it also reduced recovery time.",
+    "choices": [
+      "(A) is the system",
+      "(B) the system is",
+      "(C) was the system",
+      "(D) the system was"
+    ],
+    "answer": 0,
+    "answer_word": "is the system",
+    "explanation": "Not only 문두 + 형용사 도치 → is + the system (현재 사실).",
+    "explanation_kr": "Not only 도치! 현재 사실이니까 is + the system! 로봇 수술 시스템이 더 정밀하고 회복 시간도 줄였다는 거야~",
+    "kr": "로봇 수술 시스템은 더 정밀할 뿐만 아니라 회복 시간도 줄였다.",
+    "expressions": [
+      {
+        "expr": "not only is + 주어 + 형용사",
+        "meaning": "Not only 현재 도치!"
+      },
+      {
+        "expr": "robotic surgery",
+        "meaning": "로봇 수술"
+      }
+    ]
+  },
+  {
+    "id": "GRM_919",
+    "category": "GRAMMAR",
+    "cat": "도치",
+    "word_count": 10,
+    "diff": "easy",
+    "sentence": "Rarely _______ a biosecurity breach been contained so quickly and effectively.",
+    "choices": [
+      "(A) a breach has",
+      "(B) has a breach",
+      "(C) a breach had",
+      "(D) had a breach"
+    ],
+    "answer": 1,
+    "answer_word": "has a breach",
+    "explanation": "Rarely 문두 + 단수주어 + 현재완료 → has.",
+    "explanation_kr": "Rarely 도치! a breach = 단수! 현재완료 경험 → has! 이렇게 빨리 봉쇄된 생물 안보 침해는 거의 없었다는 거야~",
+    "kr": "어떤 생물 안보 침해도 이렇게 빠르고 효과적으로 봉쇄된 적이 거의 없다.",
+    "expressions": [
+      {
+        "expr": "rarely has + 단수 + p.p.",
+        "meaning": "Rarely 도치 + 현재완료!"
+      },
+      {
+        "expr": "biosecurity breach",
+        "meaning": "생물 안보 침해"
+      }
+    ]
+  },
+  {
+    "id": "GRM_920",
+    "category": "GRAMMAR",
+    "cat": "도치",
+    "word_count": 10,
+    "diff": "easy",
+    "sentence": "Only after the carbon offset credits _______ verified did the transaction proceed.",
+    "choices": [
+      "(A) are",
+      "(B) were",
+      "(C) had been",
+      "(D) have been"
+    ],
+    "answer": 2,
+    "answer_word": "had been",
+    "explanation": "Only after 절 → 과거완료 수동 had been verified.",
+    "explanation_kr": "Only after 절 안! 크레딧 검증(먼저)이 거래 진행(나중)보다 앞서! 과거완료 수동! had been verified!",
+    "kr": "탄소 상쇄 크레딧이 검증된 후에야 거래가 진행되었다.",
+    "expressions": [
+      {
+        "expr": "only after + had been p.p., did",
+        "meaning": "Only after 과거완료 수동!"
+      },
+      {
+        "expr": "verified",
+        "meaning": "검증된"
+      }
+    ]
+  },
+  {
+    "id": "GRM_921",
+    "category": "GRAMMAR",
+    "cat": "도치",
+    "word_count": 10,
+    "diff": "easy",
+    "sentence": "Little _______ that their longevity drug would extend human lifespan by two decades.",
+    "choices": [
+      "(A) the scientists knew",
+      "(B) did the scientists know",
+      "(C) the scientists know",
+      "(D) knew the scientists"
+    ],
+    "answer": 1,
+    "answer_word": "did the scientists know",
+    "explanation": "Little 문두 도치 → did + 주어 + 동사원형.",
+    "explanation_kr": "Little 도치! 과학자들이 거의 몰랐다! did + the scientists + know! 장수 약이 인간 수명을 20년 연장할 줄이야~",
+    "kr": "그들의 장수 약이 인간 수명을 20년 연장할 것이라는 것을 과학자들은 거의 알지 못했다.",
+    "expressions": [
+      {
+        "expr": "little did + 주어 + 동사원형",
+        "meaning": "Little 도치!"
+      },
+      {
+        "expr": "lifespan",
+        "meaning": "수명"
+      }
+    ]
+  },
+  {
+    "id": "GRM_922",
+    "category": "GRAMMAR",
+    "cat": "도치",
+    "word_count": 9,
+    "diff": "easy",
+    "sentence": "Such _______ the buzz around the metaverse that investors rushed to fund startups.",
+    "choices": [
+      "(A) is",
+      "(B) were",
+      "(C) was",
+      "(D) has been"
+    ],
+    "answer": 2,
+    "answer_word": "was",
+    "explanation": "Such + was + 주어 도치. 과거이므로 was.",
+    "explanation_kr": "Such 도치! Such was the buzz! 메타버스를 둘러싼 열기가 너무 커서 투자자들이 스타트업에 자금을 쏟아부었다는 과거 얘기 → was!",
+    "kr": "메타버스를 둘러싼 열기가 너무 커서 투자자들이 스타트업에 자금을 지원하기 위해 몰려들었다.",
+    "expressions": [
+      {
+        "expr": "such was + 주어 that",
+        "meaning": "Such 도치!"
+      },
+      {
+        "expr": "buzz",
+        "meaning": "열기, 화제"
+      }
+    ]
+  },
+  {
+    "id": "GRM_923",
+    "category": "GRAMMAR",
+    "cat": "도치",
+    "word_count": 10,
+    "diff": "easy",
+    "sentence": "No sooner _______ the new gig economy law passed than companies restructured their workforce.",
+    "choices": [
+      "(A) was the law",
+      "(B) had the law been",
+      "(C) the law was",
+      "(D) the law had been"
+    ],
+    "answer": 1,
+    "answer_word": "had the law been",
+    "explanation": "No sooner 문두 + 과거완료 수동 도치 had + 주어 + been passed.",
+    "explanation_kr": "No sooner 도치! 법이 '통과된' 수동태! had + the law + been passed! 통과되자마자 기업들이 인력 구조조정했다는 거야~",
+    "kr": "새로운 긱 이코노미 법이 통과되자마자 기업들이 인력을 재편했다.",
+    "expressions": [
+      {
+        "expr": "no sooner had + 주어 + been p.p. than",
+        "meaning": "No sooner 수동 도치!"
+      },
+      {
+        "expr": "restructure workforce",
+        "meaning": "인력 재편하다"
+      }
+    ]
+  },
+  {
+    "id": "GRM_924",
+    "category": "GRAMMAR",
+    "cat": "도치",
+    "word_count": 10,
+    "diff": "easy",
+    "sentence": "Under no circumstances _______ unverified carbon credits be sold on regulated exchanges.",
+    "choices": [
+      "(A) should",
+      "(B) would",
+      "(C) will",
+      "(D) can"
+    ],
+    "answer": 0,
+    "answer_word": "should",
+    "explanation": "Under no circumstances → 도치 should + 주어.",
+    "explanation_kr": "Under no circumstances! 절대 안 된다! should! 미검증 탄소 크레딧은 규제 거래소에서 절대 판매 금지야!",
+    "kr": "어떤 경우에도 검증되지 않은 탄소 크레딧이 규제 거래소에서 판매되어서는 안 된다.",
+    "expressions": [
+      {
+        "expr": "under no circumstances should",
+        "meaning": "절대 ~해서는 안 된다!"
+      },
+      {
+        "expr": "regulated exchanges",
+        "meaning": "규제 거래소"
+      }
+    ]
+  },
+  {
+    "id": "GRM_925",
+    "category": "GRAMMAR",
+    "cat": "도치",
+    "word_count": 10,
+    "diff": "easy",
+    "sentence": "Not until the nudge intervention _______ piloted did the government scale it nationally.",
+    "choices": [
+      "(A) is",
+      "(B) was",
+      "(C) had been",
+      "(D) has been"
+    ],
+    "answer": 2,
+    "answer_word": "had been",
+    "explanation": "Not until 절 → 과거완료 수동 had been piloted.",
+    "explanation_kr": "Not until 절 안! 시범 운영(먼저)이 전국 확대(나중)보다 앞서! 과거완료 수동! had been piloted!",
+    "kr": "넛지 개입이 시범 운영될 때까지 정부는 그것을 전국적으로 확대하지 않았다.",
+    "expressions": [
+      {
+        "expr": "not until + had been p.p., did",
+        "meaning": "Not until 과거완료 수동!"
+      },
+      {
+        "expr": "pilot",
+        "meaning": "시범 운영하다"
+      }
+    ]
+  },
+  {
+    "id": "GRM_926",
+    "category": "GRAMMAR",
+    "cat": "수동태",
+    "word_count": 17,
+    "diff": "normal",
+    "sentence": "The revolutionary CRISPR-based gene therapy for treating rare hereditary blood disorders _______ approved for clinical use in three countries simultaneously.",
+    "choices": [
+      "(A) was",
+      "(B) were",
+      "(C) has been",
+      "(D) is being"
+    ],
+    "answer": 2,
+    "answer_word": "has been",
+    "explanation": "therapy(단수) + 현재완료 수동(최근 승인) → has been approved.",
+    "explanation_kr": "therapy = 단수! 최근 3개국 동시 승인 → 현재완료 수동! has been approved!",
+    "kr": "희귀 유전성 혈액 질환 치료를 위한 혁신적인 CRISPR 기반 유전자 치료가 세 개 국가에서 동시에 임상 사용 승인을 받았다.",
+    "expressions": [
+      {
+        "expr": "CRISPR-based gene therapy",
+        "meaning": "CRISPR 기반 유전자 치료"
+      },
+      {
+        "expr": "hereditary blood disorders",
+        "meaning": "유전성 혈액 질환"
+      }
+    ]
+  },
+  {
+    "id": "GRM_927",
+    "category": "GRAMMAR",
+    "cat": "수동태",
+    "word_count": 17,
+    "diff": "normal",
+    "sentence": "All immersive virtual reality workplace training experiences developed by the company _______ currently being updated to include haptic feedback technology.",
+    "choices": [
+      "(A) is",
+      "(B) are",
+      "(C) was",
+      "(D) were"
+    ],
+    "answer": 1,
+    "answer_word": "are",
+    "explanation": "experiences(복수) + 현재진행 수동 → are being updated.",
+    "explanation_kr": "experiences = 복수! 현재 업데이트 중이야! 현재진행 수동 → are being updated!",
+    "kr": "회사가 개발한 모든 몰입형 가상 현실 직장 교육 경험은 현재 햅틱 피드백 기술을 포함하도록 업데이트되고 있다.",
+    "expressions": [
+      {
+        "expr": "immersive VR training",
+        "meaning": "몰입형 가상 현실 교육"
+      },
+      {
+        "expr": "haptic feedback",
+        "meaning": "햅틱 피드백"
+      }
+    ]
+  },
+  {
+    "id": "GRM_928",
+    "category": "GRAMMAR",
+    "cat": "수동태",
+    "word_count": 17,
+    "diff": "normal",
+    "sentence": "The mandatory carbon footprint disclosure requirements for all companies listed on major stock exchanges _______ introduced following years of pressure from institutional investors.",
+    "choices": [
+      "(A) was",
+      "(B) were",
+      "(C) has been",
+      "(D) had been"
+    ],
+    "answer": 1,
+    "answer_word": "were",
+    "explanation": "requirements(복수) + 수동태 + 과거 → were introduced.",
+    "explanation_kr": "requirements = 복수! 기관 투자자들의 압박 끝에 도입된 과거 수동 → were introduced!",
+    "kr": "주요 증권 거래소에 상장된 모든 기업들의 탄소 발자국 공시 의무 요건이 기관 투자자들의 수년간의 압박 끝에 도입되었다.",
+    "expressions": [
+      {
+        "expr": "mandatory disclosure requirements",
+        "meaning": "의무 공시 요건 (복수!)"
+      },
+      {
+        "expr": "institutional investors",
+        "meaning": "기관 투자자"
+      }
+    ]
+  },
+  {
+    "id": "GRM_929",
+    "category": "GRAMMAR",
+    "cat": "수동태",
+    "word_count": 17,
+    "diff": "normal",
+    "sentence": "The entire workforce reclassification framework designed to extend labor protections to gig economy workers _______ challenged in court by major platform companies.",
+    "choices": [
+      "(A) has been",
+      "(B) have been",
+      "(C) was",
+      "(D) were"
+    ],
+    "answer": 0,
+    "answer_word": "has been",
+    "explanation": "framework(단수) + 현재완료 수동 → has been challenged.",
+    "explanation_kr": "framework = 단수! 최근 대형 플랫폼 기업들이 소송 제기 → 현재완료 수동! has been challenged!",
+    "kr": "긱 이코노미 노동자에 대한 노동 보호를 확대하기 위해 설계된 전체 인력 재분류 프레임워크가 주요 플랫폼 기업들에 의해 법원에서 이의 제기를 받았다.",
+    "expressions": [
+      {
+        "expr": "workforce reclassification",
+        "meaning": "인력 재분류"
+      },
+      {
+        "expr": "labor protections",
+        "meaning": "노동 보호"
+      }
+    ]
+  },
+  {
+    "id": "GRM_930",
+    "category": "GRAMMAR",
+    "cat": "수동태",
+    "word_count": 16,
+    "diff": "normal",
+    "sentence": "The biosafety level four containment protocols at the newly constructed pandemic research facility _______ designed to exceed the most rigorous international safety standards.",
+    "choices": [
+      "(A) was",
+      "(B) were",
+      "(C) has been",
+      "(D) have been"
+    ],
+    "answer": 1,
+    "answer_word": "were",
+    "explanation": "protocols(복수) + 수동태 + 과거 → were designed.",
+    "explanation_kr": "protocols = 복수! 최고 수준 안전 기준 초과하도록 설계 당한 거야! 복수 과거 수동 → were designed!",
+    "kr": "새로 건설된 팬데믹 연구 시설의 생물 안전 4등급 격리 프로토콜이 가장 엄격한 국제 안전 기준을 초과하도록 설계되었다.",
+    "expressions": [
+      {
+        "expr": "biosafety level four",
+        "meaning": "생물 안전 4등급"
+      },
+      {
+        "expr": "containment protocols",
+        "meaning": "격리 프로토콜 (복수!)"
+      }
+    ]
+  },
+  {
+    "id": "GRM_931",
+    "category": "GRAMMAR",
+    "cat": "수동태",
+    "word_count": 17,
+    "diff": "normal",
+    "sentence": "The comprehensive new regulatory framework governing the commercial deployment of humanoid robots in public spaces _______ currently being drafted by an intergovernmental working group.",
+    "choices": [
+      "(A) is",
+      "(B) are",
+      "(C) was",
+      "(D) were"
+    ],
+    "answer": 0,
+    "answer_word": "is",
+    "explanation": "framework(단수) + 현재진행 수동 → is being drafted.",
+    "explanation_kr": "framework = 단수! 현재 초안 작성 중이야! is being drafted!",
+    "kr": "공공 장소에서 인형 로봇의 상업적 배치를 관리하는 포괄적인 새 규제 프레임워크가 현재 정부 간 실무 그룹에 의해 작성되고 있다.",
+    "expressions": [
+      {
+        "expr": "humanoid robots",
+        "meaning": "인형 로봇"
+      },
+      {
+        "expr": "intergovernmental working group",
+        "meaning": "정부 간 실무 그룹"
+      }
+    ]
+  },
+  {
+    "id": "GRM_932",
+    "category": "GRAMMAR",
+    "cat": "수동태",
+    "word_count": 17,
+    "diff": "normal",
+    "sentence": "The groundbreaking longevity intervention combining cellular reprogramming and targeted senolytics _______ tested on human subjects in a controlled clinical trial.",
+    "choices": [
+      "(A) is being",
+      "(B) are being",
+      "(C) was being",
+      "(D) were being"
+    ],
+    "answer": 0,
+    "answer_word": "is being",
+    "explanation": "intervention(단수) + 현재진행 수동 → is being tested.",
+    "explanation_kr": "intervention = 단수! 현재 임상 시험 중이야! is being tested!",
+    "kr": "세포 재프로그래밍과 표적 노화 세포 제거를 결합한 획기적인 장수 개입이 현재 통제된 임상 시험에서 인간 피험자를 대상으로 테스트되고 있다.",
+    "expressions": [
+      {
+        "expr": "cellular reprogramming",
+        "meaning": "세포 재프로그래밍"
+      },
+      {
+        "expr": "senolytics",
+        "meaning": "노화 세포 제거제"
+      }
+    ]
+  },
+  {
+    "id": "GRM_933",
+    "category": "GRAMMAR",
+    "cat": "수동태",
+    "word_count": 16,
+    "diff": "normal",
+    "sentence": "The comprehensive impact measurement framework used to evaluate social return on investment for community-based initiatives _______ revised to better capture long-term systemic change.",
+    "choices": [
+      "(A) has been",
+      "(B) have been",
+      "(C) was",
+      "(D) were"
+    ],
+    "answer": 0,
+    "answer_word": "has been",
+    "explanation": "framework(단수) + 현재완료 수동 → has been revised.",
+    "explanation_kr": "framework = 단수! 최근 개정 → 현재완료 수동! has been revised!",
+    "kr": "지역사회 기반 계획의 사회적 투자 수익을 평가하는 데 사용되는 포괄적인 임팩트 측정 프레임워크가 장기적인 구조적 변화를 더 잘 포착하도록 개정되었다.",
+    "expressions": [
+      {
+        "expr": "social return on investment",
+        "meaning": "사회적 투자 수익"
+      },
+      {
+        "expr": "impact measurement framework",
+        "meaning": "임팩트 측정 프레임워크"
+      }
+    ]
+  },
+  {
+    "id": "GRM_934",
+    "category": "GRAMMAR",
+    "cat": "수동태",
+    "word_count": 17,
+    "diff": "normal",
+    "sentence": "All data generated by autonomous vehicle fleet operations on public roads _______ required to be anonymized and shared with municipal transportation authorities.",
+    "choices": [
+      "(A) is",
+      "(B) are",
+      "(C) was",
+      "(D) were"
+    ],
+    "answer": 0,
+    "answer_word": "is",
+    "explanation": "data(불가산 단수) + 현재 규정 수동 → is required.",
+    "explanation_kr": "data = 불가산 단수! 현재 규정으로 익명화·공유 의무! is required!",
+    "kr": "공공 도로에서 자율주행차 차량 운행으로 생성된 모든 데이터는 익명화되어 시 교통 당국과 공유되도록 요구된다.",
+    "expressions": [
+      {
+        "expr": "data",
+        "meaning": "데이터 (불가산 단수!)"
+      },
+      {
+        "expr": "autonomous vehicle fleet",
+        "meaning": "자율주행차 차량"
+      }
+    ]
+  },
+  {
+    "id": "GRM_935",
+    "category": "GRAMMAR",
+    "cat": "수동태",
+    "word_count": 17,
+    "diff": "normal",
+    "sentence": "The new behavioral intervention program combining AI-powered nudge technology with personalized financial incentives _______ piloted in three major cities.",
+    "choices": [
+      "(A) was",
+      "(B) were",
+      "(C) has been",
+      "(D) is being"
+    ],
+    "answer": 2,
+    "answer_word": "has been",
+    "explanation": "program(단수) + 현재완료 수동 → has been piloted.",
+    "explanation_kr": "program = 단수! 최근 시범 운영 완료 → 현재완료 수동! has been piloted!",
+    "kr": "AI 기반 넛지 기술과 맞춤형 금전적 인센티브를 결합한 새로운 행동 개입 프로그램이 세 개의 주요 도시에서 시범 운영되었다.",
+    "expressions": [
+      {
+        "expr": "nudge technology",
+        "meaning": "넛지 기술"
+      },
+      {
+        "expr": "behavioral intervention",
+        "meaning": "행동 개입"
+      }
+    ]
+  },
+  {
+    "id": "GRM_936",
+    "category": "GRAMMAR",
+    "cat": "수일치",
+    "word_count": 17,
+    "diff": "normal",
+    "sentence": "The total number of verified carbon credits traded on international voluntary markets _______ grown exponentially over the past three years.",
+    "choices": [
+      "(A) have",
+      "(B) has",
+      "(C) are",
+      "(D) were"
+    ],
+    "answer": 1,
+    "answer_word": "has",
+    "explanation": "The total number(단수) + 현재완료 → has grown.",
+    "explanation_kr": "The total number가 주어! 단수! of verified carbon credits 이하 수식어! has grown! 자발적 탄소 시장 급성장이야~",
+    "kr": "국제 자발적 시장에서 거래된 검증된 탄소 크레딧의 총 수가 지난 3년간 기하급수적으로 증가했다.",
+    "expressions": [
+      {
+        "expr": "the total number of → has",
+        "meaning": "단수!"
+      },
+      {
+        "expr": "voluntary carbon markets",
+        "meaning": "자발적 탄소 시장"
+      }
+    ]
+  },
+  {
+    "id": "GRM_937",
+    "category": "GRAMMAR",
+    "cat": "수일치",
+    "word_count": 17,
+    "diff": "normal",
+    "sentence": "Neither the chief longevity scientist nor the independent ethics board members _______ reached consensus on the appropriate age for commencing preventive intervention treatments.",
+    "choices": [
+      "(A) have",
+      "(B) has",
+      "(C) were",
+      "(D) are"
+    ],
+    "answer": 0,
+    "answer_word": "have",
+    "explanation": "Neither A nor B → B에 수 일치. B = ethics board members(복수) → have.",
+    "explanation_kr": "neither nor! 뒤(B)에 맞추기! ethics board members = 복수! → have! 과학자도 위원회도 합의 못 했다는 거야~",
+    "kr": "수석 장수 과학자도 독립 윤리 위원회 구성원들도 예방적 개입 치료를 시작하기에 적절한 연령에 대한 합의에 도달하지 못했다.",
+    "expressions": [
+      {
+        "expr": "neither A nor B → B 복수",
+        "meaning": "have!"
+      },
+      {
+        "expr": "preventive intervention",
+        "meaning": "예방적 개입"
+      }
+    ]
+  },
+  {
+    "id": "GRM_938",
+    "category": "GRAMMAR",
+    "cat": "수일치",
+    "word_count": 17,
+    "diff": "normal",
+    "sentence": "The proportion of household spending allocated to immersive digital entertainment and virtual reality experiences _______ increased dramatically across all demographic groups.",
+    "choices": [
+      "(A) have",
+      "(B) has",
+      "(C) are",
+      "(D) were"
+    ],
+    "answer": 1,
+    "answer_word": "has",
+    "explanation": "The proportion(단수) + 현재완료 → has increased.",
+    "explanation_kr": "The proportion이 주어! 단수! of household spending 이하 수식어! has increased! 가계 지출 중 몰입형 디지털 엔터테인먼트 비중이 증가했다는 거야~",
+    "kr": "몰입형 디지털 엔터테인먼트와 가상 현실 경험에 배분된 가계 지출 비율이 모든 인구 통계 그룹에 걸쳐 크게 증가했다.",
+    "expressions": [
+      {
+        "expr": "the proportion of → has",
+        "meaning": "단수!"
+      },
+      {
+        "expr": "immersive digital entertainment",
+        "meaning": "몰입형 디지털 엔터테인먼트"
+      }
+    ]
+  },
+  {
+    "id": "GRM_939",
+    "category": "GRAMMAR",
+    "cat": "수일치",
+    "word_count": 17,
+    "diff": "normal",
+    "sentence": "Not only the autonomous vehicle software team but also the entire hardware validation and testing division _______ been working around the clock to resolve the critical safety recall.",
+    "choices": [
+      "(A) have",
+      "(B) has",
+      "(C) were",
+      "(D) are"
+    ],
+    "answer": 1,
+    "answer_word": "has",
+    "explanation": "Not only A but also B → B에 수 일치. B = division(단수) → has.",
+    "explanation_kr": "not only but also! B에 맞추기! hardware validation and testing division = 단수! has been working! 소프트웨어팀도 하드웨어팀도 밤새 일하고 있어~",
+    "kr": "자율주행차 소프트웨어팀뿐만 아니라 전체 하드웨어 검증 및 테스트 부서도 중요한 안전 리콜을 해결하기 위해 24시간 내내 일해오고 있다.",
+    "expressions": [
+      {
+        "expr": "not only A but also B → B 단수",
+        "meaning": "has!"
+      },
+      {
+        "expr": "safety recall",
+        "meaning": "안전 리콜"
+      }
+    ]
+  },
+  {
+    "id": "GRM_940",
+    "category": "GRAMMAR",
+    "cat": "수일치",
+    "word_count": 17,
+    "diff": "normal",
+    "sentence": "The diversity of synthetic biology applications ranging from biodegradable plastics to carbon-negative materials _______ accelerated investment in the field.",
+    "choices": [
+      "(A) have",
+      "(B) has",
+      "(C) are",
+      "(D) were"
+    ],
+    "answer": 1,
+    "answer_word": "has",
+    "explanation": "The diversity(단수) + 현재완료 → has accelerated.",
+    "explanation_kr": "The diversity가 주어! 단수! of synthetic biology applications 이하 수식어! has accelerated! 생분해성 플라스틱부터 탄소 음성 소재까지 다양한 응용이 투자를 가속화시켰다는 거야~",
+    "kr": "생분해성 플라스틱부터 탄소 음성 소재에 이르는 합성 생물학 응용의 다양성이 이 분야에 대한 투자를 가속화시켰다.",
+    "expressions": [
+      {
+        "expr": "the diversity of → has",
+        "meaning": "단수!"
+      },
+      {
+        "expr": "biodegradable plastics",
+        "meaning": "생분해성 플라스틱"
+      }
+    ]
+  },
+  {
+    "id": "GRM_941",
+    "category": "GRAMMAR",
+    "cat": "수일치",
+    "word_count": 17,
+    "diff": "normal",
+    "sentence": "A significant proportion of the carbon credits currently traded on voluntary markets _______ been criticized for failing to represent genuine additional emissions reductions.",
+    "choices": [
+      "(A) has",
+      "(B) have",
+      "(C) was",
+      "(D) is"
+    ],
+    "answer": 1,
+    "answer_word": "have",
+    "explanation": "A significant proportion of + 가산복수명사(credits) → 복수 → have.",
+    "explanation_kr": "A significant proportion of credits! credits = 복수! → have been criticized! 진정한 추가 감축을 나타내지 못한다는 비판을 받고 있다는 거야~",
+    "kr": "자발적 시장에서 현재 거래되는 탄소 크레딧의 상당 비율이 진정한 추가적 배출 감소를 나타내지 못한다는 비판을 받아왔다.",
+    "expressions": [
+      {
+        "expr": "a significant proportion of + 복수",
+        "meaning": "복수 → have!"
+      },
+      {
+        "expr": "emissions reductions",
+        "meaning": "배출 감소"
+      }
+    ]
+  },
+  {
+    "id": "GRM_942",
+    "category": "GRAMMAR",
+    "cat": "수일치",
+    "word_count": 18,
+    "diff": "normal",
+    "sentence": "The growing body of evidence from longitudinal behavioral economics research on the long-term effectiveness of financial nudge interventions _______ challenged traditional economic models.",
+    "choices": [
+      "(A) have",
+      "(B) has",
+      "(C) are",
+      "(D) were"
+    ],
+    "answer": 1,
+    "answer_word": "has",
+    "explanation": "The growing body(단수) + 현재완료 → has challenged.",
+    "explanation_kr": "The growing body가 주어! 단수! of evidence 이하 수식어! has challenged! 금융 넛지의 장기 효과 연구가 전통 경제 모델에 도전장을 냈다는 거야~",
+    "kr": "금융 넛지 개입의 장기적 효과에 관한 종단적 행동 경제학 연구에서 나온 증가하는 증거 체계가 전통적인 경제 모델에 도전해왔다.",
+    "expressions": [
+      {
+        "expr": "the growing body of evidence → has",
+        "meaning": "단수!"
+      },
+      {
+        "expr": "longitudinal research",
+        "meaning": "종단 연구"
+      }
+    ]
+  },
+  {
+    "id": "GRM_943",
+    "category": "GRAMMAR",
+    "cat": "수일치",
+    "word_count": 17,
+    "diff": "normal",
+    "sentence": "Neither the biosafety committee chair nor the pandemic preparedness division heads _______ informed of the unauthorized dual-use research being conducted at the facility.",
+    "choices": [
+      "(A) were",
+      "(B) was",
+      "(C) have been",
+      "(D) has been"
+    ],
+    "answer": 0,
+    "answer_word": "were",
+    "explanation": "Neither A nor B → B에 수 일치. B = division heads(복수) → were.",
+    "explanation_kr": "neither nor! 뒤(B)에 맞추기! division heads = 복수! → were! 위원장도 부서장들도 무단 이중 사용 연구를 몰랐다는 거야~",
+    "kr": "생물 안전 위원회 위원장도 팬데믹 대비 부서장들도 시설에서 실시되고 있는 무단 이중 사용 연구에 대해 통보받지 못했다.",
+    "expressions": [
+      {
+        "expr": "neither A nor B → B 복수",
+        "meaning": "were!"
+      },
+      {
+        "expr": "dual-use research",
+        "meaning": "이중 사용 연구"
+      }
+    ]
+  },
+  {
+    "id": "GRM_944",
+    "category": "GRAMMAR",
+    "cat": "수일치",
+    "word_count": 17,
+    "diff": "normal",
+    "sentence": "The cumulative experience of workers who have transitioned between multiple gig platforms and traditional employment arrangements _______ informed the design of the new portable benefits system.",
+    "choices": [
+      "(A) have",
+      "(B) has",
+      "(C) are",
+      "(D) were"
+    ],
+    "answer": 1,
+    "answer_word": "has",
+    "explanation": "The cumulative experience(단수) + 현재완료 → has informed.",
+    "explanation_kr": "The cumulative experience가 주어! 단수! of workers who have transitioned 이하 수식어! has informed!",
+    "kr": "여러 긱 플랫폼과 전통적인 고용 형태 사이를 전환한 근로자들의 누적 경험이 새로운 이동식 복리후생 시스템 설계에 반영되었다.",
+    "expressions": [
+      {
+        "expr": "cumulative experience → has",
+        "meaning": "단수!"
+      },
+      {
+        "expr": "portable benefits system",
+        "meaning": "이동식 복리후생 시스템"
+      }
+    ]
+  },
+  {
+    "id": "GRM_945",
+    "category": "GRAMMAR",
+    "cat": "수일치",
+    "word_count": 17,
+    "diff": "normal",
+    "sentence": "The scope of gerontological research now spanning neuroscience, genetics, and computational biology _______ expanded dramatically to address the challenges of an aging global population.",
+    "choices": [
+      "(A) have",
+      "(B) has",
+      "(C) are",
+      "(D) were"
+    ],
+    "answer": 1,
+    "answer_word": "has",
+    "explanation": "The scope(단수) + 현재완료 → has expanded.",
+    "explanation_kr": "The scope가 주어! 단수! of gerontological research 이하 수식어! has expanded! 노인학 연구 범위가 신경과학·유전학·계산생물학까지 확대됐다는 거야~",
+    "kr": "현재 신경과학, 유전학 및 계산 생물학에 걸쳐 있는 노인학 연구의 범위가 고령화되는 세계 인구의 과제를 해결하기 위해 크게 확대되었다.",
+    "expressions": [
+      {
+        "expr": "the scope of → has",
+        "meaning": "단수!"
+      },
+      {
+        "expr": "gerontological research",
+        "meaning": "노인학 연구"
+      }
+    ]
+  },
+  {
+    "id": "GRM_946",
+    "category": "GRAMMAR",
+    "cat": "시제",
+    "word_count": 16,
+    "diff": "normal",
+    "sentence": "The synthetic biology startup _______ novel biofuels derived from engineered microorganisms that can thrive in extreme environments since its founding six years ago.",
+    "choices": [
+      "(A) developed",
+      "(B) develops",
+      "(C) has been developing",
+      "(D) had developed"
+    ],
+    "answer": 2,
+    "answer_word": "has been developing",
+    "explanation": "since its founding six years ago + 현재까지 → 현재완료 진행 has been developing.",
+    "explanation_kr": "since its founding six years ago! 6년 전 창업 이후 지금까지 쭉! 현재완료 진행! has been developing!",
+    "kr": "그 합성 생물학 스타트업은 6년 전 창업 이후 극한 환경에서 번성할 수 있는 조작된 미생물에서 유래한 새로운 바이오 연료를 개발해오고 있다.",
+    "expressions": [
+      {
+        "expr": "engineered microorganisms",
+        "meaning": "조작된 미생물"
+      },
+      {
+        "expr": "biofuels",
+        "meaning": "바이오 연료"
+      }
+    ]
+  },
+  {
+    "id": "GRM_947",
+    "category": "GRAMMAR",
+    "cat": "시제",
+    "word_count": 17,
+    "diff": "normal",
+    "sentence": "By the time the first fully autonomous commercial aircraft service _______ operational, aviation safety regulators will have updated their entire certification framework.",
+    "choices": [
+      "(A) becomes",
+      "(B) will become",
+      "(C) became",
+      "(D) has become"
+    ],
+    "answer": 0,
+    "answer_word": "becomes",
+    "explanation": "By the time + 시간 부사절 → 현재형 becomes.",
+    "explanation_kr": "By the time 뒤 시간 부사절엔 현재형!! becomes! 완전 자율 상업 항공 서비스 운영 시 항공 안전 규정 전면 업데이트!",
+    "kr": "최초의 완전 자율 상업 항공 서비스가 운영될 때쯤이면 항공 안전 규제 기관들은 전체 인증 프레임워크를 업데이트한 것이 될 것이다.",
+    "expressions": [
+      {
+        "expr": "by the time + 현재형",
+        "meaning": "시간 부사절 → 현재형!"
+      },
+      {
+        "expr": "autonomous commercial aircraft",
+        "meaning": "자율 상업 항공기"
+      }
+    ]
+  },
+  {
+    "id": "GRM_948",
+    "category": "GRAMMAR",
+    "cat": "시제",
+    "word_count": 16,
+    "diff": "normal",
+    "sentence": "The impact investment fund manager _______ portfolio companies meeting both financial and social impact thresholds for the past eight years without compromising returns.",
+    "choices": [
+      "(A) selected",
+      "(B) selects",
+      "(C) has been selecting",
+      "(D) had selected"
+    ],
+    "answer": 2,
+    "answer_word": "has been selecting",
+    "explanation": "for the past eight years + 현재까지 → 현재완료 진행 has been selecting.",
+    "explanation_kr": "for the past eight years! 8년 전부터 지금까지 쭉! 현재완료 진행! has been selecting!",
+    "kr": "그 임팩트 투자 펀드 매니저는 지난 8년간 수익을 타협하지 않고 재무적 및 사회적 임팩트 임계값을 모두 충족하는 포트폴리오 기업들을 선별해오고 있다.",
+    "expressions": [
+      {
+        "expr": "social impact thresholds",
+        "meaning": "사회적 임팩트 임계값"
+      },
+      {
+        "expr": "for the past eight years",
+        "meaning": "현재완료 진행!"
+      }
+    ]
+  },
+  {
+    "id": "GRM_949",
+    "category": "GRAMMAR",
+    "cat": "시제",
+    "word_count": 16,
+    "diff": "normal",
+    "sentence": "The gig economy platform _______ worker classification policies across its twenty major markets for three years when the landmark court ruling fundamentally changed the legal landscape.",
+    "choices": [
+      "(A) revised",
+      "(B) was revising",
+      "(C) had been revising",
+      "(D) has revised"
+    ],
+    "answer": 2,
+    "answer_word": "had been revising",
+    "explanation": "when + 과거 사건(changed) → 그때까지 계속 = 과거완료 진행 had been revising.",
+    "explanation_kr": "획기적인 판결(과거)까지 3년 동안 쭉 정책 개정 중이었던 거야! 과거완료 진행! had been revising!",
+    "kr": "획기적인 법원 판결이 법적 환경을 근본적으로 바꿨을 때 긱 이코노미 플랫폼은 3년 동안 20개 주요 시장에 걸쳐 근로자 분류 정책을 개정하고 있었다.",
+    "expressions": [
+      {
+        "expr": "worker classification policies",
+        "meaning": "근로자 분류 정책"
+      },
+      {
+        "expr": "legal landscape",
+        "meaning": "법적 환경"
+      }
+    ]
+  },
+  {
+    "id": "GRM_950",
+    "category": "GRAMMAR",
+    "cat": "시제",
+    "word_count": 16,
+    "diff": "normal",
+    "sentence": "By the time the green hydrogen economy reaches commercial scale, the total investment in production and distribution infrastructure _______ hundreds of billions of dollars.",
+    "choices": [
+      "(A) exceeded",
+      "(B) will exceed",
+      "(C) has exceeded",
+      "(D) will have exceeded"
+    ],
+    "answer": 3,
+    "answer_word": "will have exceeded",
+    "explanation": "By the time + 현재형(reaches) → 미래완료 will have exceeded.",
+    "explanation_kr": "By the time + reaches(현재형)! 그린 수소 상업화 시점까지 → 미래완료! will have exceeded! 수천억 달러 투자를 초과!",
+    "kr": "그린 수소 경제가 상업적 규모에 도달할 때쯤이면 생산 및 유통 인프라에 대한 총 투자가 수천억 달러를 초과한 것이 될 것이다.",
+    "expressions": [
+      {
+        "expr": "will have exceeded",
+        "meaning": "미래완료!"
+      },
+      {
+        "expr": "commercial scale",
+        "meaning": "상업적 규모"
+      }
+    ]
+  },
+  {
+    "id": "GRM_951",
+    "category": "GRAMMAR",
+    "cat": "시제",
+    "word_count": 16,
+    "diff": "normal",
+    "sentence": "The behavioral economics research team _______ the long-term effectiveness of default option nudges in workplace pension enrollment for over a decade.",
+    "choices": [
+      "(A) studied",
+      "(B) studies",
+      "(C) has been studying",
+      "(D) had studied"
+    ],
+    "answer": 2,
+    "answer_word": "has been studying",
+    "explanation": "for over a decade + 현재까지 → 현재완료 진행 has been studying.",
+    "explanation_kr": "for over a decade! 10년 이상 지금까지 쭉! 현재완료 진행! has been studying!",
+    "kr": "그 행동 경제학 연구팀은 10년 이상 직장 연금 등록에서 기본 옵션 넛지의 장기적 효과를 연구해오고 있다.",
+    "expressions": [
+      {
+        "expr": "default option nudges",
+        "meaning": "기본 옵션 넛지"
+      },
+      {
+        "expr": "pension enrollment",
+        "meaning": "연금 등록"
+      }
+    ]
+  },
+  {
+    "id": "GRM_952",
+    "category": "GRAMMAR",
+    "cat": "시제",
+    "word_count": 16,
+    "diff": "normal",
+    "sentence": "The robotic surgery company _______ minimally invasive procedure platforms for twelve hospitals across four countries simultaneously when the FDA issued an unexpected safety warning.",
+    "choices": [
+      "(A) installed",
+      "(B) was installing",
+      "(C) had been installing",
+      "(D) has installed"
+    ],
+    "answer": 1,
+    "answer_word": "was installing",
+    "explanation": "when + 과거 사건(issued) → 그때 진행 중 = 과거진행 was installing.",
+    "explanation_kr": "FDA가 안전 경고를 발령했을 때(when) 플랫폼 설치 '중'이었던 거야! → was installing!",
+    "kr": "로봇 수술 회사가 4개국 12개 병원에 동시에 최소 침습 시술 플랫폼을 설치하고 있을 때 FDA가 예상치 못한 안전 경고를 발령했다.",
+    "expressions": [
+      {
+        "expr": "minimally invasive procedure",
+        "meaning": "최소 침습 시술"
+      },
+      {
+        "expr": "was installing when issued",
+        "meaning": "설치 중에 발령!"
+      }
+    ]
+  },
+  {
+    "id": "GRM_953",
+    "category": "GRAMMAR",
+    "cat": "시제",
+    "word_count": 16,
+    "diff": "normal",
+    "sentence": "The carbon accounting specialist realized that her client _______ scope three emissions from supply chain activities for the entire previous reporting cycle.",
+    "choices": [
+      "(A) excluded",
+      "(B) was excluding",
+      "(C) had been excluding",
+      "(D) has excluded"
+    ],
+    "answer": 2,
+    "answer_word": "had been excluding",
+    "explanation": "realized(과거) → 그 이전에 계속 = 과거완료 진행 had been excluding.",
+    "explanation_kr": "깨달았을 때(과거) 이미 이전 보고 주기 내내 범위 3 배출량을 제외하고 있었던 거야! 과거완료 진행! had been excluding!",
+    "kr": "탄소 회계 전문가는 고객이 이전 전체 보고 주기 동안 공급망 활동에서 발생하는 범위 3 배출량을 제외하고 있었다는 것을 깨달았다.",
+    "expressions": [
+      {
+        "expr": "scope three emissions",
+        "meaning": "범위 3 배출량"
+      },
+      {
+        "expr": "realized that + 과거완료 진행",
+        "meaning": "발견 이전에 계속!"
+      }
+    ]
+  },
+  {
+    "id": "GRM_954",
+    "category": "GRAMMAR",
+    "cat": "시제",
+    "word_count": 16,
+    "diff": "normal",
+    "sentence": "By the time the international longevity research consortium publishes its final findings, scientists _______ the biological mechanisms of aging in over five thousand subjects.",
+    "choices": [
+      "(A) studied",
+      "(B) will study",
+      "(C) has studied",
+      "(D) will have studied"
+    ],
+    "answer": 3,
+    "answer_word": "will have studied",
+    "explanation": "By the time + 현재형(publishes) → 미래완료 will have studied.",
+    "explanation_kr": "By the time + publishes(현재형)! 최종 결과 발표 시점까지 → 미래완료! will have studied!",
+    "kr": "국제 장수 연구 컨소시엄이 최종 결과를 발표할 때쯤이면 과학자들은 5천 명 이상의 피험자에서 노화의 생물학적 메커니즘을 연구한 것이 될 것이다.",
+    "expressions": [
+      {
+        "expr": "will have studied",
+        "meaning": "미래완료!"
+      },
+      {
+        "expr": "biological mechanisms of aging",
+        "meaning": "노화의 생물학적 메커니즘"
+      }
+    ]
+  },
+  {
+    "id": "GRM_955",
+    "category": "GRAMMAR",
+    "cat": "시제",
+    "word_count": 16,
+    "diff": "normal",
+    "sentence": "The biosecurity intelligence analyst _______ pathogen surveillance data from over ninety countries simultaneously when the novel outbreak was first detected.",
+    "choices": [
+      "(A) analyzed",
+      "(B) was analyzing",
+      "(C) had been analyzing",
+      "(D) has analyzed"
+    ],
+    "answer": 1,
+    "answer_word": "was analyzing",
+    "explanation": "when + 과거 사건(was detected) → 그때 진행 중 = 과거진행 was analyzing.",
+    "explanation_kr": "최초 발생 감지됐을 때(when) 데이터 분석 '중'이었던 거야! → was analyzing!",
+    "kr": "생물 안보 정보 분석가가 새로운 발병이 처음 감지되었을 때 90개 이상의 국가에서 동시에 병원체 감시 데이터를 분석하고 있었다.",
+    "expressions": [
+      {
+        "expr": "pathogen surveillance",
+        "meaning": "병원체 감시"
+      },
+      {
+        "expr": "novel outbreak",
+        "meaning": "새로운 발병"
+      }
+    ]
+  },
+  {
+    "id": "GRM_956",
+    "category": "GRAMMAR",
+    "cat": "가정법",
+    "word_count": 16,
+    "diff": "normal",
+    "sentence": "If the global biosurveillance network _______ operational earlier, the pandemic could have been contained within its region of origin.",
+    "choices": [
+      "(A) became",
+      "(B) had become",
+      "(C) becomes",
+      "(D) would become"
+    ],
+    "answer": 1,
+    "answer_word": "had become",
+    "explanation": "could have been contained → 가정법 과거완료 → if절 had become.",
+    "explanation_kr": "could have been contained! 가정법 과거완료! if절엔 had become! 더 일찍 운영됐더라면 팬데믹을 발원지에서 억제할 수 있었을 텐데~",
+    "kr": "글로벌 생물 감시 네트워크가 더 일찍 운영되었더라면 팬데믹이 발원지 지역 내에서 억제될 수 있었을 것이다.",
+    "expressions": [
+      {
+        "expr": "biosurveillance network",
+        "meaning": "생물 감시 네트워크"
+      },
+      {
+        "expr": "region of origin",
+        "meaning": "발원지 지역"
+      }
+    ]
+  },
+  {
+    "id": "GRM_957",
+    "category": "GRAMMAR",
+    "cat": "가정법",
+    "word_count": 17,
+    "diff": "normal",
+    "sentence": "Were the metaverse to achieve mainstream adoption within the next five years, traditional retail and entertainment businesses _______ face unprecedented disruption.",
+    "choices": [
+      "(A) will",
+      "(B) would",
+      "(C) can",
+      "(D) shall"
+    ],
+    "answer": 1,
+    "answer_word": "would",
+    "explanation": "Were the metaverse to achieve → 가정법. 주절 would.",
+    "explanation_kr": "Were the metaverse to achieve! 고급 가정법 도치! 주절 would! 메타버스가 5년 내 주류가 되면 소매·엔터테인먼트 업계 대격변이라는 가정~",
+    "kr": "메타버스가 향후 5년 내에 주류 채택을 달성한다면 전통적인 소매 및 엔터테인먼트 사업이 전례 없는 혼란에 직면할 것이다.",
+    "expressions": [
+      {
+        "expr": "were + to achieve → would",
+        "meaning": "고급 가정법 도치!"
+      },
+      {
+        "expr": "mainstream adoption",
+        "meaning": "주류 채택"
+      }
+    ]
+  },
+  {
+    "id": "GRM_958",
+    "category": "GRAMMAR",
+    "cat": "가정법",
+    "word_count": 17,
+    "diff": "normal",
+    "sentence": "Had regulators _______ comprehensive platform liability frameworks for gig economy companies earlier, many exploitative labor practices could have been prevented.",
+    "choices": [
+      "(A) establish",
+      "(B) established",
+      "(C) establishing",
+      "(D) to establish"
+    ],
+    "answer": 1,
+    "answer_word": "established",
+    "explanation": "Had + S + p.p. 가정법 과거완료 도치.",
+    "explanation_kr": "Had 도치! Had + regulators + p.p.! established! could have been prevented가 주절! 더 일찍 책임 프레임워크를 만들었더라면~",
+    "kr": "규제 기관들이 긱 이코노미 기업들을 위한 포괄적인 플랫폼 책임 프레임워크를 더 일찍 구축했더라면 많은 착취적 노동 관행을 예방할 수 있었을 것이다.",
+    "expressions": [
+      {
+        "expr": "had + S + p.p.",
+        "meaning": "가정법 과거완료 도치!"
+      },
+      {
+        "expr": "exploitative labor practices",
+        "meaning": "착취적 노동 관행"
+      }
+    ]
+  },
+  {
+    "id": "GRM_959",
+    "category": "GRAMMAR",
+    "cat": "가정법",
+    "word_count": 16,
+    "diff": "normal",
+    "sentence": "If only carbon markets _______ sufficiently robust price signals from their inception, corporate decarbonization would have accelerated far more rapidly.",
+    "choices": [
+      "(A) sent",
+      "(B) had sent",
+      "(C) send",
+      "(D) would send"
+    ],
+    "answer": 1,
+    "answer_word": "had sent",
+    "explanation": "if only + 과거 후회 → 가정법 과거완료 had sent.",
+    "explanation_kr": "if only! 강한 후회! '처음부터 충분한 가격 신호를 보냈더라면!' → 과거완료! had sent! 기업 탈탄소화가 더 빨리 진행됐을 텐데~",
+    "kr": "탄소 시장이 처음부터 충분히 강력한 가격 신호를 보냈더라면 기업 탈탄소화가 훨씬 더 빠르게 가속화되었을 것이다.",
+    "expressions": [
+      {
+        "expr": "if only + had p.p.",
+        "meaning": "과거 후회!"
+      },
+      {
+        "expr": "decarbonization",
+        "meaning": "탈탄소화"
+      }
+    ]
+  },
+  {
+    "id": "GRM_960",
+    "category": "GRAMMAR",
+    "cat": "가정법",
+    "word_count": 17,
+    "diff": "normal",
+    "sentence": "The longevity biotech company would currently be leading global clinical trials if it _______ the strategic partnership with the major research hospital five years ago.",
+    "choices": [
+      "(A) secured",
+      "(B) had secured",
+      "(C) secures",
+      "(D) would secure"
+    ],
+    "answer": 1,
+    "answer_word": "had secured",
+    "explanation": "would currently be(현재 결과) + 과거 가정 → 혼합 가정법 had secured.",
+    "explanation_kr": "would currently be(현재 상황)! 5년 전에 파트너십을 확보하지 못했다는 거잖아! 혼합 가정법! had secured!",
+    "kr": "5년 전에 주요 연구 병원과의 전략적 파트너십을 확보했더라면 그 장수 바이오테크 회사는 현재 글로벌 임상 시험을 선도하고 있을 것이다.",
+    "expressions": [
+      {
+        "expr": "혼합 가정법",
+        "meaning": "if had p.p.(과거) + would currently(현재)"
+      },
+      {
+        "expr": "strategic partnership",
+        "meaning": "전략적 파트너십"
+      }
+    ]
+  },
+  {
+    "id": "GRM_961",
+    "category": "GRAMMAR",
+    "cat": "가정법",
+    "word_count": 17,
+    "diff": "normal",
+    "sentence": "Should the new international biosafety treaty on gain-of-function research _______ adequate enforcement mechanisms, it will represent a meaningful step forward.",
+    "choices": [
+      "(A) include",
+      "(B) includes",
+      "(C) included",
+      "(D) has included"
+    ],
+    "answer": 0,
+    "answer_word": "include",
+    "explanation": "Should + S + 동사원형 (조건 가정법).",
+    "explanation_kr": "Should! 조건 가정법 도치! Should + the treaty + 동사원형! include! 기능 강화 연구 생물안보 조약에 집행 메커니즘이 포함된다면~",
+    "kr": "기능 강화 연구에 관한 새로운 국제 생물 안보 조약이 적절한 집행 메커니즘을 포함한다면 의미 있는 진전을 나타낼 것이다.",
+    "expressions": [
+      {
+        "expr": "gain-of-function research",
+        "meaning": "기능 강화 연구"
+      },
+      {
+        "expr": "should + S + 동사원형",
+        "meaning": "조건 가정법!"
+      }
+    ]
+  },
+  {
+    "id": "GRM_962",
+    "category": "GRAMMAR",
+    "cat": "가정법",
+    "word_count": 17,
+    "diff": "normal",
+    "sentence": "If the autonomous vehicle industry _______ a unified safety certification standard earlier, public trust could have been established far more rapidly.",
+    "choices": [
+      "(A) adopted",
+      "(B) had adopted",
+      "(C) adopts",
+      "(D) would adopt"
+    ],
+    "answer": 1,
+    "answer_word": "had adopted",
+    "explanation": "could have been established → 가정법 과거완료 → if절 had adopted.",
+    "explanation_kr": "could have been established! 가정법 과거완료! if절엔 had adopted! 더 일찍 통합 안전 기준을 채택했더라면 신뢰가 더 빨리 형성됐을 텐데~",
+    "kr": "자율주행차 업계가 더 일찍 통합 안전 인증 기준을 채택했더라면 공공 신뢰가 훨씬 더 빠르게 형성될 수 있었을 것이다.",
+    "expressions": [
+      {
+        "expr": "safety certification standard",
+        "meaning": "안전 인증 기준"
+      },
+      {
+        "expr": "public trust",
+        "meaning": "공공 신뢰"
+      }
+    ]
+  },
+  {
+    "id": "GRM_963",
+    "category": "GRAMMAR",
+    "cat": "가정법",
+    "word_count": 16,
+    "diff": "normal",
+    "sentence": "Were impact investing to _______ a standardized global reporting framework, it could unlock trillions in institutional capital currently held back by measurement uncertainty.",
+    "choices": [
+      "(A) adopt",
+      "(B) adopted",
+      "(C) adopting",
+      "(D) have adopted"
+    ],
+    "answer": 0,
+    "answer_word": "adopt",
+    "explanation": "Were + 주어 + to 동사원형 → 가정법. to adopt.",
+    "explanation_kr": "Were impact investing to adopt! 고급 가정법 도치! 동사원형 adopt! 표준화된 보고 프레임워크를 채택한다면 수조 달러의 기관 자본이 풀릴 텐데~",
+    "kr": "임팩트 투자가 표준화된 글로벌 보고 프레임워크를 채택한다면 현재 측정 불확실성으로 억제된 수조 달러의 기관 자본을 풀어낼 수 있을 것이다.",
+    "expressions": [
+      {
+        "expr": "were + to adopt",
+        "meaning": "고급 가정법 도치!"
+      },
+      {
+        "expr": "institutional capital",
+        "meaning": "기관 자본"
+      }
+    ]
+  },
+  {
+    "id": "GRM_964",
+    "category": "GRAMMAR",
+    "cat": "가정법",
+    "word_count": 17,
+    "diff": "normal",
+    "sentence": "Had the carbon credit certification body _______ more rigorous verification standards from the outset, the credibility of voluntary carbon markets could have been established sooner.",
+    "choices": [
+      "(A) implement",
+      "(B) implemented",
+      "(C) implementing",
+      "(D) to implement"
+    ],
+    "answer": 1,
+    "answer_word": "implemented",
+    "explanation": "Had + S + p.p. 가정법 과거완료 도치.",
+    "explanation_kr": "Had 도치! Had + the certification body + p.p.! implemented! 처음부터 더 엄격한 검증 기준을 시행했더라면 신뢰성이 더 일찍 구축됐을 텐데~",
+    "kr": "탄소 크레딧 인증 기관이 처음부터 더 엄격한 검증 기준을 시행했더라면 자발적 탄소 시장의 신뢰성이 더 일찍 확립될 수 있었을 것이다.",
+    "expressions": [
+      {
+        "expr": "had + S + p.p.",
+        "meaning": "가정법 과거완료 도치!"
+      },
+      {
+        "expr": "certification body",
+        "meaning": "인증 기관"
+      }
+    ]
+  },
+  {
+    "id": "GRM_965",
+    "category": "GRAMMAR",
+    "cat": "가정법",
+    "word_count": 17,
+    "diff": "normal",
+    "sentence": "If only the global community _______ more decisively on establishing international norms for the development of autonomous lethal weapons before the technology became widely available.",
+    "choices": [
+      "(A) acted",
+      "(B) had acted",
+      "(C) acts",
+      "(D) would act"
+    ],
+    "answer": 1,
+    "answer_word": "had acted",
+    "explanation": "if only + 과거 후회 → 가정법 과거완료 had acted.",
+    "explanation_kr": "if only! 강한 후회! 기술이 널리 보급되기 전에 더 단호하게 행동했더라면! 과거완료! had acted!",
+    "kr": "기술이 널리 이용 가능하게 되기 전에 자율 살상 무기 개발을 위한 국제 규범 수립에 국제 사회가 더 단호하게 행동했더라면 좋았을 텐데.",
+    "expressions": [
+      {
+        "expr": "if only + had p.p.",
+        "meaning": "과거 후회!"
+      },
+      {
+        "expr": "international norms",
+        "meaning": "국제 규범"
+      }
+    ]
+  },
+  {
+    "id": "GRM_966",
+    "category": "GRAMMAR",
+    "cat": "도치",
+    "word_count": 17,
+    "diff": "normal",
+    "sentence": "Never before in the history of medical science _______ a single intervention shown the potential to simultaneously address multiple hallmarks of aging in living organisms.",
+    "choices": [
+      "(A) had",
+      "(B) has",
+      "(C) have",
+      "(D) did"
+    ],
+    "answer": 1,
+    "answer_word": "has",
+    "explanation": "Never before 문두 + 단수주어(a single intervention) + 현재완료 → has.",
+    "explanation_kr": "Never before 도치! a single intervention = 단수! 현재완료 경험 → has! 노화의 여러 특징을 동시에 다루는 개입은 전례 없어~",
+    "kr": "의학 역사상 단 하나의 개입이 살아 있는 유기체에서 노화의 여러 특징을 동시에 다룰 잠재력을 보인 적이 없었다.",
+    "expressions": [
+      {
+        "expr": "never before has + 단수 + p.p.",
+        "meaning": "Never before 도치!"
+      },
+      {
+        "expr": "hallmarks of aging",
+        "meaning": "노화의 특징"
+      }
+    ]
+  },
+  {
+    "id": "GRM_967",
+    "category": "GRAMMAR",
+    "cat": "도치",
+    "word_count": 17,
+    "diff": "normal",
+    "sentence": "Not only _______ the metaverse platform's new spatial computing features transformed user engagement, but they also created entirely new forms of digital commerce.",
+    "choices": [
+      "(A) have the features",
+      "(B) the features have",
+      "(C) had the features",
+      "(D) the features had"
+    ],
+    "answer": 0,
+    "answer_word": "have the features",
+    "explanation": "Not only 문두 + 복수주어(the features) + 현재완료 도치 → have + 주어.",
+    "explanation_kr": "Not only 도치! features = 복수! 현재완료! have + the features! 공간 컴퓨팅 기능이 사용자 참여와 디지털 상거래를 변화시켰다는 거야~",
+    "kr": "메타버스 플랫폼의 새로운 공간 컴퓨팅 기능은 사용자 참여를 변화시켰을 뿐만 아니라 완전히 새로운 형태의 디지털 상거래도 만들어냈다.",
+    "expressions": [
+      {
+        "expr": "not only have + 복수주어 + p.p.",
+        "meaning": "Not only 복수 현재완료 도치!"
+      },
+      {
+        "expr": "spatial computing",
+        "meaning": "공간 컴퓨팅"
+      }
+    ]
+  },
+  {
+    "id": "GRM_968",
+    "category": "GRAMMAR",
+    "cat": "도치",
+    "word_count": 17,
+    "diff": "normal",
+    "sentence": "Seldom in the history of financial markets _______ a new asset class grown from virtually nothing to representing trillions in market value within such a short timeframe.",
+    "choices": [
+      "(A) has",
+      "(B) have",
+      "(C) had",
+      "(D) did"
+    ],
+    "answer": 0,
+    "answer_word": "has",
+    "explanation": "Seldom 문두 + 단수주어(a new asset class) + 현재완료 → has.",
+    "explanation_kr": "Seldom 도치! a new asset class = 단수! 현재완료 경험 → has! 암호화폐처럼 이렇게 빠르게 성장한 자산 클래스는 역사에 거의 없어~",
+    "kr": "금융 시장 역사에서 새로운 자산 클래스가 이렇게 짧은 기간 내에 사실상 아무것도 없는 상태에서 수조 달러의 시장 가치를 나타내도록 성장한 적이 거의 없다.",
+    "expressions": [
+      {
+        "expr": "seldom has + 단수 + p.p.",
+        "meaning": "Seldom 도치 + 현재완료!"
+      },
+      {
+        "expr": "asset class",
+        "meaning": "자산 클래스"
+      }
+    ]
+  },
+  {
+    "id": "GRM_969",
+    "category": "GRAMMAR",
+    "cat": "도치",
+    "word_count": 16,
+    "diff": "normal",
+    "sentence": "Only after the independent biosafety investigation panel _______ fully reviewed all evidence did the facility receive clearance to resume research operations.",
+    "choices": [
+      "(A) has",
+      "(B) had",
+      "(C) is",
+      "(D) was"
+    ],
+    "answer": 1,
+    "answer_word": "had",
+    "explanation": "Only after 절 내부 → 과거완료 had reviewed.",
+    "explanation_kr": "Only after 절 안! 검토(먼저)가 재개 허가(나중)보다 앞서! 과거완료! had reviewed!",
+    "kr": "독립 생물 안전 조사 패널이 모든 증거를 완전히 검토한 후에야 시설이 연구 운영 재개 허가를 받았다.",
+    "expressions": [
+      {
+        "expr": "only after + had p.p., did",
+        "meaning": "Only after 과거완료!"
+      },
+      {
+        "expr": "clearance to resume",
+        "meaning": "재개 허가"
+      }
+    ]
+  },
+  {
+    "id": "GRM_970",
+    "category": "GRAMMAR",
+    "cat": "도치",
+    "word_count": 16,
+    "diff": "normal",
+    "sentence": "So rapidly _______ the field of synthetic biology progressed that capabilities once requiring years of specialized expertise can now be performed by automated platforms.",
+    "choices": [
+      "(A) has the field",
+      "(B) the field has",
+      "(C) had the field",
+      "(D) the field had"
+    ],
+    "answer": 0,
+    "answer_word": "has the field",
+    "explanation": "So rapidly 문두 + 현재완료 도치 → has + the field.",
+    "explanation_kr": "So rapidly 도치! 현재완료 결과 강조! has + the field! 합성 생물학이 너무 빠르게 발전해서 전문 지식이 필요했던 작업을 자동화 플랫폼이 수행한다는 거야~",
+    "kr": "합성 생물학 분야가 너무 빠르게 발전하여 한때 수년간의 전문 지식이 필요했던 역량들이 이제 자동화 플랫폼에 의해 수행될 수 있다.",
+    "expressions": [
+      {
+        "expr": "so rapidly has + 주어 + p.p.",
+        "meaning": "So 도치 + 현재완료!"
+      },
+      {
+        "expr": "automated platforms",
+        "meaning": "자동화 플랫폼"
+      }
+    ]
+  },
+  {
+    "id": "GRM_971",
+    "category": "GRAMMAR",
+    "cat": "도치",
+    "word_count": 16,
+    "diff": "normal",
+    "sentence": "Not until the landmark longevity clinical trial data _______ independently validated did the medical community accept the intervention as genuinely effective.",
+    "choices": [
+      "(A) is",
+      "(B) was",
+      "(C) had been",
+      "(D) has been"
+    ],
+    "answer": 2,
+    "answer_word": "had been",
+    "explanation": "Not until 절 → 과거완료 수동 had been validated.",
+    "explanation_kr": "Not until 절 안! 검증(먼저)이 의료계 수용(나중)보다 앞서! 과거완료 수동! had been validated!",
+    "kr": "획기적인 장수 임상 시험 데이터가 독립적으로 검증될 때까지 의료계는 그 개입이 진정으로 효과적이라는 것을 받아들이지 않았다.",
+    "expressions": [
+      {
+        "expr": "not until + had been p.p., did",
+        "meaning": "Not until 과거완료 수동!"
+      },
+      {
+        "expr": "independently validated",
+        "meaning": "독립적으로 검증된"
+      }
+    ]
+  },
+  {
+    "id": "GRM_972",
+    "category": "GRAMMAR",
+    "cat": "도치",
+    "word_count": 16,
+    "diff": "normal",
+    "sentence": "Little _______ when they first deployed large-scale nudge interventions in national pension systems that the long-term behavioral changes would exceed all economic modeling projections.",
+    "choices": [
+      "(A) policymakers knew",
+      "(B) did policymakers know",
+      "(C) policymakers did know",
+      "(D) knew policymakers"
+    ],
+    "answer": 1,
+    "answer_word": "did policymakers know",
+    "explanation": "Little 문두 도치 → did + 주어 + 동사원형.",
+    "explanation_kr": "Little 도치! 정책 입안자들이 거의 몰랐다! did + policymakers + know! 대규모 넛지 개입의 장기 행동 변화가 모든 예측을 초과할 줄이야~",
+    "kr": "정책 입안자들이 국가 연금 시스템에 대규모 넛지 개입을 처음 배치했을 때 장기적인 행동 변화가 모든 경제 모델링 예측을 초과할 것이라는 것을 거의 알지 못했다.",
+    "expressions": [
+      {
+        "expr": "little did + 주어 + 동사원형",
+        "meaning": "Little 도치!"
+      },
+      {
+        "expr": "economic modeling projections",
+        "meaning": "경제 모델링 예측"
+      }
+    ]
+  },
+  {
+    "id": "GRM_973",
+    "category": "GRAMMAR",
+    "cat": "도치",
+    "word_count": 16,
+    "diff": "normal",
+    "sentence": "Under no circumstances _______ genetic data collected through consumer longevity testing services be shared with insurance companies or used for actuarial risk assessment.",
+    "choices": [
+      "(A) should",
+      "(B) would",
+      "(C) will",
+      "(D) can"
+    ],
+    "answer": 0,
+    "answer_word": "should",
+    "explanation": "Under no circumstances → 도치 should + 주어.",
+    "explanation_kr": "Under no circumstances! 절대 안 된다! should! 장수 테스트 유전자 데이터를 보험사 공유나 보험계리 위험 평가에 사용하는 건 절대 금지야!",
+    "kr": "어떤 경우에도 소비자 장수 테스트 서비스를 통해 수집된 유전자 데이터가 보험 회사와 공유되거나 보험계리 위험 평가에 사용되어서는 안 된다.",
+    "expressions": [
+      {
+        "expr": "under no circumstances should",
+        "meaning": "절대 ~해서는 안 된다!"
+      },
+      {
+        "expr": "actuarial risk assessment",
+        "meaning": "보험계리 위험 평가"
+      }
+    ]
+  },
+  {
+    "id": "GRM_974",
+    "category": "GRAMMAR",
+    "cat": "도치",
+    "word_count": 16,
+    "diff": "normal",
+    "sentence": "No sooner _______ the revolutionary green hydrogen electrolyzer technology announced than energy companies began revising their entire long-term decarbonization strategies.",
+    "choices": [
+      "(A) was the technology",
+      "(B) had the technology been",
+      "(C) the technology was",
+      "(D) the technology had been"
+    ],
+    "answer": 1,
+    "answer_word": "had the technology been",
+    "explanation": "No sooner 문두 + 과거완료 수동 도치.",
+    "explanation_kr": "No sooner 도치! 기술이 '발표된' 수동태! had + the technology + been announced! 발표되자마자 에너지 기업들이 탈탄소화 전략을 수정했다는 거야~",
+    "kr": "혁신적인 그린 수소 전해조 기술이 발표되자마자 에너지 기업들이 전체 장기 탈탄소화 전략을 수정하기 시작했다.",
+    "expressions": [
+      {
+        "expr": "no sooner had + 주어 + been p.p. than",
+        "meaning": "No sooner 수동 도치!"
+      },
+      {
+        "expr": "electrolyzer technology",
+        "meaning": "전해조 기술"
+      }
+    ]
+  },
+  {
+    "id": "GRM_975",
+    "category": "GRAMMAR",
+    "cat": "도치",
+    "word_count": 16,
+    "diff": "normal",
+    "sentence": "Only when the comprehensive independent review of carbon market governance _______ completed did multilateral institutions commit to the necessary regulatory overhaul.",
+    "choices": [
+      "(A) is",
+      "(B) was",
+      "(C) had been",
+      "(D) has been"
+    ],
+    "answer": 2,
+    "answer_word": "had been",
+    "explanation": "Only when 절 → 과거완료 수동 had been completed.",
+    "explanation_kr": "Only when 절 안! 검토 완료(먼저)가 규제 개편 결의(나중)보다 앞서! 과거완료 수동! had been completed!",
+    "kr": "탄소 시장 거버넌스에 대한 포괄적인 독립 검토가 완료된 후에야 다자 기관들이 필요한 규제 개편에 헌신했다.",
+    "expressions": [
+      {
+        "expr": "only when + had been p.p., did",
+        "meaning": "Only when 과거완료 수동!"
+      },
+      {
+        "expr": "regulatory overhaul",
+        "meaning": "규제 개편"
+      }
+    ]
+  },
+  {
+    "id": "GRM_976",
+    "category": "GRAMMAR",
+    "cat": "수동태",
+    "word_count": 22,
+    "diff": "hard",
+    "sentence": "The comprehensive international regulatory framework governing the dual-use potential of advanced synthetic biology tools capable of creating novel pathogens _______ finalized after three years of intensive negotiations.",
+    "choices": [
+      "(A) was",
+      "(B) were",
+      "(C) has been",
+      "(D) had been"
+    ],
+    "answer": 2,
+    "answer_word": "has been",
+    "explanation": "framework(단수) + 현재완료 수동 → has been finalized.",
+    "explanation_kr": "The comprehensive international regulatory framework가 주어! 단수! governing 이하 수식어! has been finalized! 3년 협상 끝에 최종 확정!",
+    "kr": "신규 병원체 생성이 가능한 첨단 합성 생물학 도구의 이중 사용 잠재력을 관리하는 포괄적인 국제 규제 프레임워크가 3년간의 집중 협상 끝에 최종 확정되었다.",
+    "expressions": [
+      {
+        "expr": "dual-use potential",
+        "meaning": "이중 사용 잠재력"
+      },
+      {
+        "expr": "novel pathogens",
+        "meaning": "신규 병원체"
+      }
+    ]
+  },
+  {
+    "id": "GRM_977",
+    "category": "GRAMMAR",
+    "cat": "수동태",
+    "word_count": 22,
+    "diff": "hard",
+    "sentence": "All gig economy platforms operating across multiple jurisdictions _______ required to provide workers with detailed algorithmic transparency reports explaining how their pay and task allocation decisions are made.",
+    "choices": [
+      "(A) is",
+      "(B) are",
+      "(C) was",
+      "(D) were"
+    ],
+    "answer": 1,
+    "answer_word": "are",
+    "explanation": "platforms(복수) + 현재 규정 수동 → are required.",
+    "explanation_kr": "platforms = 복수! 현재 규정으로 투명성 보고서 제공 의무! are required!",
+    "kr": "여러 관할권에서 운영되는 모든 긱 이코노미 플랫폼은 임금 및 업무 배분 결정 방식을 설명하는 상세한 알고리즘 투명성 보고서를 근로자에게 제공하도록 요구된다.",
+    "expressions": [
+      {
+        "expr": "algorithmic transparency",
+        "meaning": "알고리즘 투명성"
+      },
+      {
+        "expr": "task allocation decisions",
+        "meaning": "업무 배분 결정"
+      }
+    ]
+  },
+  {
+    "id": "GRM_978",
+    "category": "GRAMMAR",
+    "cat": "수동태",
+    "word_count": 22,
+    "diff": "hard",
+    "sentence": "The entire global network of robotic warehouse automation systems operated by the logistics company _______ retrofitted with advanced human-robot collision avoidance technology.",
+    "choices": [
+      "(A) has been",
+      "(B) have been",
+      "(C) was",
+      "(D) were"
+    ],
+    "answer": 0,
+    "answer_word": "has been",
+    "explanation": "network(단수) + 현재완료 수동 → has been retrofitted.",
+    "explanation_kr": "The entire global network가 주어! 단수! of robotic warehouse automation systems 이하 수식어! has been retrofitted!",
+    "kr": "물류 회사가 운영하는 전체 글로벌 로봇 창고 자동화 시스템 네트워크가 첨단 인간-로봇 충돌 방지 기술로 개조되었다.",
+    "expressions": [
+      {
+        "expr": "collision avoidance technology",
+        "meaning": "충돌 방지 기술"
+      },
+      {
+        "expr": "retrofit",
+        "meaning": "개조하다"
+      }
+    ]
+  },
+  {
+    "id": "GRM_979",
+    "category": "GRAMMAR",
+    "cat": "수동태",
+    "word_count": 22,
+    "diff": "hard",
+    "sentence": "The innovative carbon removal technology combining direct air capture with enhanced ocean alkalinity that _______ scaled to commercial viability represents the most promising pathway to net negative emissions.",
+    "choices": [
+      "(A) was",
+      "(B) were",
+      "(C) has been",
+      "(D) had been"
+    ],
+    "answer": 2,
+    "answer_word": "has been",
+    "explanation": "관계절 내 technology(단수) + 현재완료 수동 → has been scaled.",
+    "explanation_kr": "관계절 that 안! technology = 단수! 최근 상업 규모 달성 → 현재완료 수동! has been scaled!",
+    "kr": "직접 공기 포집과 강화된 해양 알칼리도를 결합한 혁신적인 탄소 제거 기술이 상업적 실용 규모로 확장된 것은 순 음성 배출로의 가장 유망한 경로를 나타낸다.",
+    "expressions": [
+      {
+        "expr": "direct air capture",
+        "meaning": "직접 공기 포집"
+      },
+      {
+        "expr": "net negative emissions",
+        "meaning": "순 음성 배출"
+      }
+    ]
+  },
+  {
+    "id": "GRM_980",
+    "category": "GRAMMAR",
+    "cat": "수동태",
+    "word_count": 22,
+    "diff": "hard",
+    "sentence": "All digital assets and tokenized securities traded on decentralized finance platforms operating within regulated jurisdictions _______ subject to the same anti-money laundering and know-your-customer requirements.",
+    "choices": [
+      "(A) is",
+      "(B) are",
+      "(C) was",
+      "(D) were"
+    ],
+    "answer": 1,
+    "answer_word": "are",
+    "explanation": "assets and securities(복수) + 현재 규정 수동 → are subject to.",
+    "explanation_kr": "digital assets and tokenized securities! and로 연결 → 복수! 현재 규정 → are subject to! AML·KYC 의무화야~",
+    "kr": "규제 관할권 내에서 운영되는 분산형 금융 플랫폼에서 거래되는 모든 디지털 자산과 토큰화 증권은 동일한 자금세탁방지 및 고객확인 요건의 적용을 받는다.",
+    "expressions": [
+      {
+        "expr": "digital assets",
+        "meaning": "디지털 자산"
+      },
+      {
+        "expr": "know-your-customer (KYC)",
+        "meaning": "고객 확인 제도"
+      }
+    ]
+  },
+  {
+    "id": "GRM_981",
+    "category": "GRAMMAR",
+    "cat": "수일치",
+    "word_count": 22,
+    "diff": "hard",
+    "sentence": "The convergence of quantum computing capabilities, advanced machine learning, and exponential improvements in protein structure prediction _______ fundamentally transformed the pace of drug discovery.",
+    "choices": [
+      "(A) have",
+      "(B) has",
+      "(C) are",
+      "(D) were"
+    ],
+    "answer": 1,
+    "answer_word": "has",
+    "explanation": "The convergence(단수) + 현재완료 → has transformed.",
+    "explanation_kr": "The convergence가 주어! 단수! of quantum computing, machine learning, protein prediction 다 수식어! has transformed!",
+    "kr": "양자 컴퓨팅 역량, 첨단 머신러닝, 단백질 구조 예측의 기하급수적 개선의 수렴이 신약 발견의 속도를 근본적으로 변화시켰다.",
+    "expressions": [
+      {
+        "expr": "the convergence of → has",
+        "meaning": "단수!"
+      },
+      {
+        "expr": "protein structure prediction",
+        "meaning": "단백질 구조 예측"
+      }
+    ]
+  },
+  {
+    "id": "GRM_982",
+    "category": "GRAMMAR",
+    "cat": "수일치",
+    "word_count": 22,
+    "diff": "hard",
+    "sentence": "Neither the algorithmic accountability framework developed by the AI ethics consortium nor the voluntary disclosure standards adopted by major platform companies _______ proven sufficient to address systemic bias.",
+    "choices": [
+      "(A) have",
+      "(B) has",
+      "(C) were",
+      "(D) are"
+    ],
+    "answer": 0,
+    "answer_word": "have",
+    "explanation": "Neither A nor B → B에 수 일치. B = voluntary disclosure standards(복수) → have.",
+    "explanation_kr": "neither nor! 뒤(B)에 맞추기! voluntary disclosure standards = 복수! → have proven! 두 가지 모두 시스템적 편향을 다루기에 충분하지 않다는 거야~",
+    "kr": "AI 윤리 컨소시엄이 개발한 알고리즘 책임 프레임워크도 주요 플랫폼 기업들이 채택한 자발적 공시 기준도 시스템적 편향을 해결하기에 충분한 것으로 입증되지 않았다.",
+    "expressions": [
+      {
+        "expr": "neither A nor B → B 복수",
+        "meaning": "have!"
+      },
+      {
+        "expr": "systemic bias",
+        "meaning": "시스템적 편향"
+      }
+    ]
+  },
+  {
+    "id": "GRM_983",
+    "category": "GRAMMAR",
+    "cat": "수일치",
+    "word_count": 22,
+    "diff": "hard",
+    "sentence": "The entire body of longitudinal research on the relationship between virtual reality immersion and long-term psychological wellbeing outcomes in adults _______ still limited and methodologically inconsistent.",
+    "choices": [
+      "(A) are",
+      "(B) is",
+      "(C) were",
+      "(D) have been"
+    ],
+    "answer": 1,
+    "answer_word": "is",
+    "explanation": "The entire body(단수) + 현재 상태 → is.",
+    "explanation_kr": "The entire body가 주어! 단수! of longitudinal research 이하 수식어! is still limited! VR 몰입과 장기 심리적 웰빙에 관한 연구가 아직 제한적이라는 거야~",
+    "kr": "성인의 가상 현실 몰입과 장기적 심리적 웰빙 결과 사이의 관계에 관한 전체 종단 연구 체계는 여전히 제한적이고 방법론적으로 일관성이 없다.",
+    "expressions": [
+      {
+        "expr": "the entire body of → is",
+        "meaning": "단수!"
+      },
+      {
+        "expr": "methodologically inconsistent",
+        "meaning": "방법론적으로 일관성 없는"
+      }
+    ]
+  },
+  {
+    "id": "GRM_984",
+    "category": "GRAMMAR",
+    "cat": "수일치",
+    "word_count": 22,
+    "diff": "hard",
+    "sentence": "Not only the carbon credit verification methodology but also the entire blockchain-based tracking infrastructure and independent monitoring network _______ been independently audited and validated.",
+    "choices": [
+      "(A) have",
+      "(B) has",
+      "(C) were",
+      "(D) are"
+    ],
+    "answer": 1,
+    "answer_word": "has",
+    "explanation": "Not only A but also B → B에 수 일치. B = network(단수) → has.",
+    "explanation_kr": "not only but also! B에 맞추기! independent monitoring network = 단수! has been audited! 방법론도 인프라도 네트워크도 감사받았다는 거야~",
+    "kr": "탄소 크레딧 검증 방법론뿐만 아니라 전체 블록체인 기반 추적 인프라와 독립 모니터링 네트워크도 독립적으로 감사 및 검증되었다.",
+    "expressions": [
+      {
+        "expr": "not only A but also B → B 단수",
+        "meaning": "has!"
+      },
+      {
+        "expr": "blockchain-based tracking",
+        "meaning": "블록체인 기반 추적"
+      }
+    ]
+  },
+  {
+    "id": "GRM_985",
+    "category": "GRAMMAR",
+    "cat": "수일치",
+    "word_count": 22,
+    "diff": "hard",
+    "sentence": "The scope of social and economic disruption attributable to the accelerating displacement of routine cognitive tasks by large language models and generative AI systems _______ only beginning to be understood.",
+    "choices": [
+      "(A) are",
+      "(B) is",
+      "(C) were",
+      "(D) have been"
+    ],
+    "answer": 1,
+    "answer_word": "is",
+    "explanation": "The scope(단수) → is.",
+    "explanation_kr": "The scope가 주어! 단수! of social and economic disruption 이하 수식어! is only beginning! 대형 언어 모델과 생성형 AI에 의한 인지 업무 대체의 사회경제적 혼란이 이제서야 이해되기 시작한다는 거야~",
+    "kr": "대형 언어 모델과 생성형 AI 시스템에 의한 일상적인 인지 업무의 가속화되는 대체에 기인하는 사회적 및 경제적 혼란의 범위는 이제 막 이해되기 시작했다.",
+    "expressions": [
+      {
+        "expr": "the scope of → is",
+        "meaning": "단수!"
+      },
+      {
+        "expr": "cognitive task displacement",
+        "meaning": "인지 업무 대체"
+      }
+    ]
+  },
+  {
+    "id": "GRM_986",
+    "category": "GRAMMAR",
+    "cat": "시제",
+    "word_count": 22,
+    "diff": "hard",
+    "sentence": "The pioneering longevity researcher _______ the molecular mechanisms underlying cellular senescence across multiple model organisms for nearly two decades before the first viable intervention was identified.",
+    "choices": [
+      "(A) investigated",
+      "(B) was investigating",
+      "(C) has been investigating",
+      "(D) had been investigating"
+    ],
+    "answer": 3,
+    "answer_word": "had been investigating",
+    "explanation": "before + 과거 사건(was identified) → 그때까지 계속 = 과거완료 진행 had been investigating.",
+    "explanation_kr": "개입 방법 발견(과거 기준) 전에 20년 가까이 쭉 연구 중이었던 거야! 과거완료 진행! had been investigating!",
+    "kr": "그 선구적인 장수 연구자가 첫 번째 실용적인 개입 방법이 발견되기 전 거의 20년 동안 여러 모델 유기체에 걸쳐 세포 노화를 기반으로 하는 분자 메커니즘을 조사하고 있었다.",
+    "expressions": [
+      {
+        "expr": "cellular senescence",
+        "meaning": "세포 노화"
+      },
+      {
+        "expr": "before identified",
+        "meaning": "과거완료 신호!"
+      }
+    ]
+  },
+  {
+    "id": "GRM_987",
+    "category": "GRAMMAR",
+    "cat": "시제",
+    "word_count": 22,
+    "diff": "hard",
+    "sentence": "By the time the comprehensive international gig economy labor standards framework _______ fully ratified and implemented, the global gig workforce will have grown to over five hundred million workers.",
+    "choices": [
+      "(A) is",
+      "(B) will be",
+      "(C) was",
+      "(D) has been"
+    ],
+    "answer": 0,
+    "answer_word": "is",
+    "explanation": "By the time + 시간 부사절 → 현재형 is.",
+    "explanation_kr": "By the time 뒤 시간 부사절엔 현재형!! is ratified! 긱 노동 기준 완전 시행 시 전 세계 긱 노동자 5억 명 돌파!",
+    "kr": "포괄적인 국제 긱 이코노미 노동 기준 프레임워크가 완전히 비준되고 시행될 때쯤이면 전 세계 긱 노동력이 5억 명 이상으로 성장한 것이 될 것이다.",
+    "expressions": [
+      {
+        "expr": "by the time + 현재형",
+        "meaning": "시간 부사절 → 현재형!"
+      },
+      {
+        "expr": "gig workforce",
+        "meaning": "긱 노동자"
+      }
+    ]
+  },
+  {
+    "id": "GRM_988",
+    "category": "GRAMMAR",
+    "cat": "시제",
+    "word_count": 22,
+    "diff": "hard",
+    "sentence": "The quantum computing specialist _______ novel error correction algorithms capable of dramatically improving qubit coherence times for nearly four years when the laboratory secured its first major commercial contract.",
+    "choices": [
+      "(A) developed",
+      "(B) was developing",
+      "(C) has been developing",
+      "(D) had been developing"
+    ],
+    "answer": 3,
+    "answer_word": "had been developing",
+    "explanation": "when + 과거 사건(secured) → 그때까지 계속 = 과거완료 진행 had been developing.",
+    "explanation_kr": "첫 상업 계약 확보(과거)까지 4년 가까이 쭉 개발 중이었던 거야! 과거완료 진행! had been developing!",
+    "kr": "양자 컴퓨팅 전문가는 연구소가 첫 번째 주요 상업 계약을 확보했을 때 거의 4년 동안 큐비트 결맞음 시간을 크게 향상시킬 수 있는 새로운 오류 수정 알고리즘을 개발하고 있었다.",
+    "expressions": [
+      {
+        "expr": "error correction algorithms",
+        "meaning": "오류 수정 알고리즘"
+      },
+      {
+        "expr": "qubit coherence",
+        "meaning": "큐비트 결맞음"
+      }
+    ]
+  },
+  {
+    "id": "GRM_989",
+    "category": "GRAMMAR",
+    "cat": "시제",
+    "word_count": 22,
+    "diff": "hard",
+    "sentence": "By the time all major carbon market participants _______ transitioned to the standardized reporting protocols required under the new international climate disclosure framework, corporate emissions transparency will have improved dramatically.",
+    "choices": [
+      "(A) have",
+      "(B) will have",
+      "(C) had",
+      "(D) has"
+    ],
+    "answer": 0,
+    "answer_word": "have",
+    "explanation": "By the time + 시간 부사절(현재완료형) → have transitioned.",
+    "explanation_kr": "By the time + 시간 부사절! 여기선 현재완료형(have)을 쓰는 케이스! 완료의 뉘앙스가 있지만 미래 시점 → have! 탄소 시장 참여자들이 표준 보고 프로토콜로 전환 완료 시 기업 배출 투명성 향상!",
+    "kr": "모든 주요 탄소 시장 참여자들이 새로운 국제 기후 공시 프레임워크에서 요구하는 표준화된 보고 프로토콜로 전환할 때쯤이면 기업 배출 투명성이 크게 향상된 것이 될 것이다.",
+    "expressions": [
+      {
+        "expr": "by the time + have p.p.",
+        "meaning": "시간 부사절!"
+      },
+      {
+        "expr": "emissions transparency",
+        "meaning": "배출 투명성"
+      }
+    ]
+  },
+  {
+    "id": "GRM_990",
+    "category": "GRAMMAR",
+    "cat": "시제",
+    "word_count": 22,
+    "diff": "hard",
+    "sentence": "The behavioral economist _______ the behavioral mechanisms underpinning long-term green consumer choices in collaboration with environmental psychologists for over twelve years when her work received the prestigious Nobel Memorial Prize.",
+    "choices": [
+      "(A) studied",
+      "(B) was studying",
+      "(C) has been studying",
+      "(D) had been studying"
+    ],
+    "answer": 3,
+    "answer_word": "had been studying",
+    "explanation": "when + 과거 사건(received) → 그때까지 계속 = 과거완료 진행 had been studying.",
+    "explanation_kr": "노벨상 수상(과거)까지 12년 이상 쭉 연구 중이었던 거야! 과거완료 진행! had been studying!",
+    "kr": "행동 경제학자가 환경 심리학자들과 협력하여 장기적인 친환경 소비자 선택의 기저를 이루는 행동 메커니즘을 12년 이상 연구하고 있을 때 그녀의 연구가 권위 있는 노벨 기념상을 받았다.",
+    "expressions": [
+      {
+        "expr": "behavioral mechanisms",
+        "meaning": "행동 메커니즘"
+      },
+      {
+        "expr": "green consumer choices",
+        "meaning": "친환경 소비자 선택"
+      }
+    ]
+  },
+  {
+    "id": "GRM_991",
+    "category": "GRAMMAR",
+    "cat": "가정법",
+    "word_count": 22,
+    "diff": "hard",
+    "sentence": "If the international community _______ a legally binding framework for governing the use of autonomous weapons systems before their widespread military deployment, countless civilian casualties could have been prevented.",
+    "choices": [
+      "(A) established",
+      "(B) had established",
+      "(C) establishes",
+      "(D) would establish"
+    ],
+    "answer": 1,
+    "answer_word": "had established",
+    "explanation": "could have been prevented → 가정법 과거완료 → if절 had established.",
+    "explanation_kr": "could have been prevented! 가정법 과거완료 주절! if절엔 had established! 광범위한 군사 배치 전에 프레임워크를 만들었더라면~",
+    "kr": "국제 사회가 광범위한 군사 배치 전에 자율 무기 시스템 사용을 관리하기 위한 법적 구속력 있는 프레임워크를 구축했더라면 수많은 민간인 사상을 예방할 수 있었을 것이다.",
+    "expressions": [
+      {
+        "expr": "autonomous weapons systems",
+        "meaning": "자율 무기 시스템"
+      },
+      {
+        "expr": "civilian casualties",
+        "meaning": "민간인 사상"
+      }
+    ]
+  },
+  {
+    "id": "GRM_992",
+    "category": "GRAMMAR",
+    "cat": "가정법",
+    "word_count": 22,
+    "diff": "hard",
+    "sentence": "Were the proposed global carbon tax to _______ unanimous support from all major emitting nations, it would represent the most consequential international climate policy development in the post-Paris Agreement era.",
+    "choices": [
+      "(A) receive",
+      "(B) received",
+      "(C) receiving",
+      "(D) have received"
+    ],
+    "answer": 0,
+    "answer_word": "receive",
+    "explanation": "Were + 주어 + to 동사원형 → 가정법. to receive.",
+    "explanation_kr": "Were the carbon tax to receive! 고급 가정법 도치! 동사원형 receive! 모든 주요 배출국의 만장일치 지지를 받는다면 파리 협약 이후 가장 중요한 기후 정책이 될 거라는 가정~",
+    "kr": "제안된 글로벌 탄소세가 모든 주요 배출국의 만장일치 지지를 받는다면 파리 협약 이후 시대에 가장 중요한 국제 기후 정책 발전을 나타낼 것이다.",
+    "expressions": [
+      {
+        "expr": "were + to receive",
+        "meaning": "고급 가정법 도치!"
+      },
+      {
+        "expr": "post-Paris Agreement era",
+        "meaning": "파리 협약 이후 시대"
+      }
+    ]
+  },
+  {
+    "id": "GRM_993",
+    "category": "GRAMMAR",
+    "cat": "가정법",
+    "word_count": 22,
+    "diff": "hard",
+    "sentence": "Had global pandemic preparedness infrastructure _______ adequately funded and maintained across all income levels in the years preceding the outbreak, the catastrophic health and economic impacts could have been substantially mitigated.",
+    "choices": [
+      "(A) be",
+      "(B) been",
+      "(C) being",
+      "(D) is"
+    ],
+    "answer": 1,
+    "answer_word": "been",
+    "explanation": "Had + S + been p.p. → 가정법 과거완료 수동 도치.",
+    "explanation_kr": "Had 도치! Had + infrastructure + been funded! 수동 가정법 과거완료! 제대로 자금 지원됐더라면 팬데믹 충격을 줄일 수 있었을 텐데~",
+    "kr": "전 세계 팬데믹 대비 인프라가 발병 전 수년간 모든 소득 수준에서 적절하게 자금 지원되고 유지되었더라면 재앙적인 건강 및 경제적 충격을 상당히 완화할 수 있었을 것이다.",
+    "expressions": [
+      {
+        "expr": "had + S + been p.p.",
+        "meaning": "가정법 과거완료 수동 도치!"
+      },
+      {
+        "expr": "pandemic preparedness infrastructure",
+        "meaning": "팬데믹 대비 인프라"
+      }
+    ]
+  },
+  {
+    "id": "GRM_994",
+    "category": "GRAMMAR",
+    "cat": "가정법",
+    "word_count": 22,
+    "diff": "hard",
+    "sentence": "If only policymakers around the world _______ the profound long-term implications of the gig economy's growth for social insurance systems before the model became deeply entrenched.",
+    "choices": [
+      "(A) anticipated",
+      "(B) had anticipated",
+      "(C) anticipate",
+      "(D) would anticipate"
+    ],
+    "answer": 1,
+    "answer_word": "had anticipated",
+    "explanation": "if only + 과거 후회 → 가정법 과거완료 had anticipated.",
+    "explanation_kr": "if only! 강한 후회! '모델이 뿌리내리기 전에 예상했더라면!' → 과거완료! had anticipated! 사회 보험 시스템에 미치는 영향을 미리 알았더라면~",
+    "kr": "세계 각국 정책 입안자들이 긱 이코노미의 성장이 사회 보험 시스템에 미치는 심오한 장기적 영향을 그 모델이 깊이 뿌리내리기 전에 예상했더라면 좋았을 텐데.",
+    "expressions": [
+      {
+        "expr": "if only + had p.p.",
+        "meaning": "과거 후회!"
+      },
+      {
+        "expr": "social insurance systems",
+        "meaning": "사회 보험 시스템"
+      }
+    ]
+  },
+  {
+    "id": "GRM_995",
+    "category": "GRAMMAR",
+    "cat": "가정법",
+    "word_count": 22,
+    "diff": "hard",
+    "sentence": "Should the revolutionary longevity interventions currently in late-stage clinical trials _______ the rigorous efficacy and safety thresholds required for regulatory approval, they could transform global healthcare within a generation.",
+    "choices": [
+      "(A) meet",
+      "(B) meets",
+      "(C) met",
+      "(D) has met"
+    ],
+    "answer": 0,
+    "answer_word": "meet",
+    "explanation": "Should + S + 동사원형 (조건 가정법).",
+    "explanation_kr": "Should! 조건 가정법 도치! Should + the interventions + 동사원형! meet! 효능·안전성 기준을 충족한다면 한 세대 내에 글로벌 헬스케어를 변화시킬 수 있을 거라는 가정~",
+    "kr": "현재 후기 임상 시험 중인 혁신적인 장수 개입들이 규제 승인에 필요한 엄격한 효능 및 안전성 임계값을 충족한다면 한 세대 내에 글로벌 의료를 변화시킬 수 있을 것이다.",
+    "expressions": [
+      {
+        "expr": "should + S + 동사원형",
+        "meaning": "조건 가정법!"
+      },
+      {
+        "expr": "efficacy and safety thresholds",
+        "meaning": "효능 및 안전성 임계값"
+      }
+    ]
+  },
+  {
+    "id": "GRM_996",
+    "category": "GRAMMAR",
+    "cat": "도치",
+    "word_count": 22,
+    "diff": "hard",
+    "sentence": "Never before in the history of financial regulation _______ a single technology simultaneously disrupted the entire architecture of banking, securities trading, insurance, and cross-border payments.",
+    "choices": [
+      "(A) had",
+      "(B) has",
+      "(C) have",
+      "(D) did"
+    ],
+    "answer": 1,
+    "answer_word": "has",
+    "explanation": "Never before 문두 + 단수주어(a single technology) + 현재완료 → has.",
+    "explanation_kr": "Never before 도치! a single technology = 단수! 현재완료 경험 → has! 금융 규제 역사상 이처럼 전방위적으로 혼란을 일으킨 기술은 전례 없어~",
+    "kr": "금융 규제 역사상 단 하나의 기술이 은행, 증권 거래, 보험, 국경 간 결제의 전체 아키텍처를 동시에 혼란시킨 적이 없었다.",
+    "expressions": [
+      {
+        "expr": "never before has + 단수 + p.p.",
+        "meaning": "Never before 도치!"
+      },
+      {
+        "expr": "financial architecture",
+        "meaning": "금융 아키텍처"
+      }
+    ]
+  },
+  {
+    "id": "GRM_997",
+    "category": "GRAMMAR",
+    "cat": "도치",
+    "word_count": 22,
+    "diff": "hard",
+    "sentence": "So transformative _______ the societal implications of longevity biotechnology that philosophers, ethicists, and policymakers began questioning fundamental assumptions about work, retirement, and intergenerational resource allocation.",
+    "choices": [
+      "(A) was the implication",
+      "(B) were the implications",
+      "(C) the implications were",
+      "(D) the implications are"
+    ],
+    "answer": 1,
+    "answer_word": "were the implications",
+    "explanation": "So + 형용사 문두 도치 → were + the implications (복수 + 과거).",
+    "explanation_kr": "So transformative 도치! implications = 복수! 과거의 충격 → were + the implications! 장수 바이오테크의 사회적 시사점이 세상을 바꿨다는 거야~",
+    "kr": "장수 바이오테크의 사회적 시사점이 너무 변혁적이어서 철학자, 윤리학자, 정책 입안자들이 일, 은퇴, 세대 간 자원 배분에 관한 근본적인 가정들을 의문시하기 시작했다.",
+    "expressions": [
+      {
+        "expr": "so + 형용사 + were + 복수주어 that",
+        "meaning": "복수 So 도치!"
+      },
+      {
+        "expr": "intergenerational resource allocation",
+        "meaning": "세대 간 자원 배분"
+      }
+    ]
+  },
+  {
+    "id": "GRM_998",
+    "category": "GRAMMAR",
+    "cat": "도치",
+    "word_count": 22,
+    "diff": "hard",
+    "sentence": "Not until the comprehensive independent forensic analysis of the carbon credit fraud _______ completed and all evidence submitted to regulators did the voluntary carbon market participants agree to implement mandatory verification requirements.",
+    "choices": [
+      "(A) is",
+      "(B) was",
+      "(C) had been",
+      "(D) has been"
+    ],
+    "answer": 2,
+    "answer_word": "had been",
+    "explanation": "Not until 절 → 과거완료 수동 had been completed.",
+    "explanation_kr": "Not until 절 안! 분석 완료(먼저)가 의무 검증 합의(나중)보다 앞서! 과거완료 수동! had been completed!",
+    "kr": "탄소 크레딧 사기에 대한 포괄적인 독립 법의학 분석이 완료되고 모든 증거가 규제 기관에 제출될 때까지 자발적 탄소 시장 참여자들이 의무 검증 요건 시행에 합의하지 않았다.",
+    "expressions": [
+      {
+        "expr": "not until + had been p.p., did",
+        "meaning": "Not until 과거완료 수동!"
+      },
+      {
+        "expr": "mandatory verification requirements",
+        "meaning": "의무 검증 요건"
+      }
+    ]
+  },
+  {
+    "id": "GRM_999",
+    "category": "GRAMMAR",
+    "cat": "도치",
+    "word_count": 22,
+    "diff": "hard",
+    "sentence": "Only after representatives of all major gig economy platforms, independent labor organizations, and national government authorities _______ reached a trilateral framework agreement did the comprehensive worker protection legislation come into force.",
+    "choices": [
+      "(A) have",
+      "(B) had",
+      "(C) are",
+      "(D) were"
+    ],
+    "answer": 1,
+    "answer_word": "had",
+    "explanation": "Only after 절 내부 → 과거완료 had reached.",
+    "explanation_kr": "Only after 절 안! 3자 합의(먼저)가 법률 발효(나중)보다 앞서! 과거완료! had reached! 플랫폼, 노동단체, 정부 3자 합의 끝에 노동자 보호 법률 발효!",
+    "kr": "모든 주요 긱 이코노미 플랫폼, 독립 노동 단체, 국가 정부 당국 대표들이 3자 프레임워크 협약에 도달한 후에야 포괄적인 노동자 보호 법안이 발효되었다.",
+    "expressions": [
+      {
+        "expr": "only after + had p.p., did",
+        "meaning": "Only after 과거완료!"
+      },
+      {
+        "expr": "trilateral framework agreement",
+        "meaning": "3자 프레임워크 협약"
+      }
+    ]
+  },
+  {
+    "id": "GRM_1000",
+    "category": "GRAMMAR",
+    "cat": "도치",
+    "word_count": 22,
+    "diff": "hard",
+    "sentence": "Little _______ when they first began their modest research into the biochemistry of aging that their discoveries would ultimately challenge the fundamental premise that biological aging is inevitable, potentially redefining what it means to be human.",
+    "choices": [
+      "(A) did the researchers realize",
+      "(B) the researchers realized",
+      "(C) have the researchers realized",
+      "(D) realized the researchers"
+    ],
+    "answer": 0,
+    "answer_word": "did the researchers realize",
+    "explanation": "Little 문두 도치 → did + 주어 + 동사원형.",
+    "explanation_kr": "Little 도치! 연구자들이 거의 몰랐다! did + the researchers + realize! 🏆 GRM_1000 마지막 문제! 노화 생화학 연구가 인간이 된다는 것의 의미를 재정의할 줄이야~",
+    "kr": "연구자들이 노화의 생화학에 대한 소박한 연구를 처음 시작했을 때 그들의 발견이 궁극적으로 생물학적 노화가 불가피하다는 근본 전제에 도전하여 잠재적으로 인간이 된다는 것의 의미를 재정의할 것이라는 것을 거의 알지 못했다.",
+    "expressions": [
+      {
+        "expr": "little did + 주어 + 동사원형",
+        "meaning": "Little 도치! 🏆 GRM_1000 COMPLETE!"
+      },
+      {
+        "expr": "biological aging",
+        "meaning": "생물학적 노화"
+      },
+      {
+        "expr": "redefining what it means to be human",
+        "meaning": "인간이 된다는 것의 의미를 재정의하기"
+      }
+    ]
+  }
+]
