@@ -228,6 +228,45 @@ GQ=[
 {"id":"G23","word_count":10,"diff":"easy","text":"The team is proud of _______ the project under budget.","ch":["(A) complete","(B) completed","(C) having completed","(D) to complete"],"a":2,"ex":"전치사 of 뒤 + 완료 → having+p.p.","exk":"쉽게: of 뒤=동명사! 이미 완료된 일=having completed!","cat":"동명사/준동사","kr":"팀은 예산 내에서 프로젝트를 완료한 것을 자랑스러워한다."},
 {"id":"G24","word_count":12,"diff":"easy","text":"_______ all the data, the analyst presented her findings to the board.","ch":["(A) Having reviewed","(B) Have reviewed","(C) Reviewed","(D) To reviewing"],"a":0,"ex":"앞선 동작 분사구문 → Having+p.p.","exk":"쉽게: 먼저 한 일+나중 한 일 → Having p.p.가 먼저!","cat":"분사구문","kr":"모든 데이터를 검토한 후 분석가는 이사회에 결과를 발표했다."},
 ]
+
+# ═══ GRAMMAR BATCH JSON 자동 로드 ═══
+import glob as _glob
+
+def _load_grammar_batches():
+    """data/ 폴더의 firepower_grammar_batch*.json 전부 읽어서 GQ 포맷으로 변환"""
+    DATA_DIR = os.path.join(os.path.dirname(os.path.dirname(__file__)), "data")
+    batch_files = sorted(_glob.glob(os.path.join(DATA_DIR, "firepower_grammar_batch*.json")))
+    loaded = []
+    existing_ids = {q["id"] for q in GQ}
+    for fpath in batch_files:
+        try:
+            with open(fpath, "r", encoding="utf-8") as f:
+                items = json.load(f)
+            for q in items:
+                if q.get("id") in existing_ids:
+                    continue  # 중복 방지
+                # 배치 포맷 → GQ 포맷 변환
+                converted = {
+                    "id":       q.get("id", ""),
+                    "word_count": q.get("word_count", 10),
+                    "diff":     q.get("diff", "easy"),
+                    "text":     q.get("sentence", q.get("text", "")),
+                    "ch":       q.get("choices",  q.get("ch", [])),
+                    "a":        q.get("answer",   q.get("a", 0)),
+                    "ex":       q.get("explanation",    q.get("ex", "")),
+                    "exk":      q.get("explanation_kr", q.get("exk", "")),
+                    "cat":      q.get("cat", "GRAMMAR"),
+                    "kr":       q.get("kr", ""),
+                    "tp":       "grammar",
+                }
+                loaded.append(converted)
+                existing_ids.add(converted["id"])
+        except Exception:
+            pass
+    return loaded
+
+GQ.extend(_load_grammar_batches())
+
 VQ=[
 {"id":"V1","diff":"easy","text":"The company plans to _______ its operations to three new countries next year.","ch":["(A) expand","(B) expend","(C) expect","(D) expose"],"a":0,"ex":"expand=확장하다. 사업을 새 나라로 확장.","exk":"쉽게: expand=넓히다! expend=쓰다, expect=기대, expose=노출 → 소거법!","cat":"동사 어휘","kr":"그 회사는 내년에 3개 신규 국가로 사업을 확장할 계획이다.","diff":"easy"},
 {"id":"V2","diff":"hard","text":"Please _______ your receipt as proof of purchase for warranty claims.","ch":["(A) retain","(B) attain","(C) obtain","(D) contain"],"a":0,"ex":"retain=보유하다. 영수증을 보관하라는 맥락.","exk":"쉽게: retain=re(다시)+tain(잡다)=계속 잡고 있다=보관!","cat":"동사 어휘","kr":"보증 청구를 위한 구매 증빙으로 영수증을 보관해 주세요."},
