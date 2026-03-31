@@ -1,0 +1,3627 @@
+[
+  {
+    "id": "LINK_126",
+    "category": "LINK",
+    "cat": "전치사",
+    "word_count": 12,
+    "diff": "easy",
+    "sentence": "_______ its high price, the new software was adopted by over five hundred companies.",
+    "choices": [
+      "(A) Although",
+      "(B) Because",
+      "(C) Despite",
+      "(D) However"
+    ],
+    "answer": 2,
+    "answer_word": "Despite",
+    "explanation_kr": "빈칸 뒤 명사구(its high price) → 전치사 자리! despite = '~에도 불구하고'! although는 절(S+V) 앞에!",
+    "explanation": "명사구 앞 → 전치사. 양보 의미 → despite.",
+    "kr": "높은 가격에도 불구하고, 새로운 소프트웨어는 500개 이상의 회사에 채택되었다.",
+    "expressions": [
+      {
+        "expr": "Despite + 명사구",
+        "meaning": "~에도 불구하고 (전치사)"
+      },
+      {
+        "expr": "despite vs although",
+        "meaning": "despite + 명사구 / although + S+V"
+      }
+    ]
+  },
+  {
+    "id": "LINK_127",
+    "category": "LINK",
+    "cat": "전치사",
+    "word_count": 11,
+    "diff": "easy",
+    "sentence": "The project was delayed _______ unexpected supply chain issues.",
+    "choices": [
+      "(A) because",
+      "(B) due to",
+      "(C) although",
+      "(D) whereas"
+    ],
+    "answer": 1,
+    "answer_word": "due to",
+    "explanation_kr": "빈칸 뒤 명사구 → 전치사! 이유 의미 → due to = '~때문에'! because는 절 앞에!",
+    "explanation": "명사구 앞 → 전치사. 이유 의미 → due to.",
+    "kr": "예상치 못한 공급망 문제로 인해 프로젝트가 지연되었다.",
+    "expressions": [
+      {
+        "expr": "due to + 명사구",
+        "meaning": "~때문에 (이유 전치사)"
+      },
+      {
+        "expr": "due to vs because",
+        "meaning": "due to + 명사구 / because + S+V"
+      }
+    ]
+  },
+  {
+    "id": "LINK_128",
+    "category": "LINK",
+    "cat": "전치사",
+    "word_count": 12,
+    "diff": "easy",
+    "sentence": "_______ the merger announcement, the company's shares rose sharply.",
+    "choices": [
+      "(A) Although",
+      "(B) Following",
+      "(C) Because",
+      "(D) However"
+    ],
+    "answer": 1,
+    "answer_word": "Following",
+    "explanation_kr": "빈칸 뒤 명사구 → 전치사! 시간 순서(~후) → following = '~에 뒤이어'!",
+    "explanation": "명사구 앞 → 전치사. 순서 의미 → following.",
+    "kr": "합병 발표에 뒤이어, 회사의 주식이 급격히 상승했다.",
+    "expressions": [
+      {
+        "expr": "Following + 명사구",
+        "meaning": "~에 뒤이어 (시간 전치사)"
+      },
+      {
+        "expr": "following = after (격식)",
+        "meaning": "공식 문서에서 자주 등장!"
+      }
+    ]
+  },
+  {
+    "id": "LINK_129",
+    "category": "LINK",
+    "cat": "전치사",
+    "word_count": 12,
+    "diff": "easy",
+    "sentence": "The new benefits package was developed _______ employee feedback.",
+    "choices": [
+      "(A) although",
+      "(B) however",
+      "(C) based on",
+      "(D) whereas"
+    ],
+    "answer": 2,
+    "answer_word": "based on",
+    "explanation_kr": "빈칸 뒤 명사구 → 전치사! 근거 의미 → based on = '~을 기준으로'!",
+    "explanation": "명사구 앞 → 전치사. 근거 의미 → based on.",
+    "kr": "새로운 복리후생 패키지는 직원 피드백을 기준으로 개발되었다.",
+    "expressions": [
+      {
+        "expr": "based on + 명사구",
+        "meaning": "~을 기준으로, ~에 근거하여"
+      },
+      {
+        "expr": "기준 전치사",
+        "meaning": "based on/according to/in accordance with"
+      }
+    ]
+  },
+  {
+    "id": "LINK_130",
+    "category": "LINK",
+    "cat": "전치사",
+    "word_count": 11,
+    "diff": "easy",
+    "sentence": "_______ the budget cuts, the team still delivered an excellent product.",
+    "choices": [
+      "(A) Because",
+      "(B) Although",
+      "(C) In spite of",
+      "(D) However"
+    ],
+    "answer": 2,
+    "answer_word": "In spite of",
+    "explanation_kr": "빈칸 뒤 명사구 → 전치사! 양보 의미 → in spite of = '~에도 불구하고'!",
+    "explanation": "명사구 앞 → 전치사. 양보 의미 → in spite of.",
+    "kr": "예산 삭감에도 불구하고, 팀은 여전히 훌륭한 제품을 납품했다.",
+    "expressions": [
+      {
+        "expr": "In spite of + 명사구",
+        "meaning": "~에도 불구하고 (전치사)"
+      },
+      {
+        "expr": "despite = in spite of",
+        "meaning": "완전히 같은 의미!"
+      }
+    ]
+  },
+  {
+    "id": "LINK_131",
+    "category": "LINK",
+    "cat": "전치사",
+    "word_count": 12,
+    "diff": "easy",
+    "sentence": "The conference will proceed as scheduled _______ the forecasted bad weather.",
+    "choices": [
+      "(A) although",
+      "(B) regardless of",
+      "(C) because",
+      "(D) since"
+    ],
+    "answer": 1,
+    "answer_word": "regardless of",
+    "explanation_kr": "빈칸 뒤 명사구 → 전치사! 무관 의미 → regardless of = '~에 상관없이'!",
+    "explanation": "명사구 앞 → 전치사. 무관 의미 → regardless of.",
+    "kr": "예보된 악천후에 상관없이 컨퍼런스는 예정대로 진행될 것이다.",
+    "expressions": [
+      {
+        "expr": "regardless of + 명사구",
+        "meaning": "~에 상관없이 (전치사)"
+      },
+      {
+        "expr": "regardless of = irrespective of",
+        "meaning": "동의어!"
+      }
+    ]
+  },
+  {
+    "id": "LINK_132",
+    "category": "LINK",
+    "cat": "전치사",
+    "word_count": 11,
+    "diff": "easy",
+    "sentence": "All attendees must register _______ attending the annual summit.",
+    "choices": [
+      "(A) before",
+      "(B) prior to",
+      "(C) although",
+      "(D) however"
+    ],
+    "answer": 1,
+    "answer_word": "prior to",
+    "explanation_kr": "빈칸 뒤 동명사/명사구 → 전치사! 시간(~전) → prior to = '~에 앞서'! before도 가능하지만 prior to가 더 격식적!",
+    "explanation": "동명사구 앞 → 전치사. 격식 시간 → prior to.",
+    "kr": "모든 참석자는 연례 정상 회담에 참석하기에 앞서 등록해야 한다.",
+    "expressions": [
+      {
+        "expr": "prior to + 명사/동명사",
+        "meaning": "~에 앞서 (격식 전치사)"
+      },
+      {
+        "expr": "prior to > before",
+        "meaning": "prior to가 더 격식체!"
+      }
+    ]
+  },
+  {
+    "id": "LINK_133",
+    "category": "LINK",
+    "cat": "전치사",
+    "word_count": 12,
+    "diff": "easy",
+    "sentence": "The report was prepared _______ the request of the board of directors.",
+    "choices": [
+      "(A) although",
+      "(B) at",
+      "(C) because",
+      "(D) however"
+    ],
+    "answer": 1,
+    "answer_word": "at",
+    "explanation_kr": "at the request of = '~의 요청으로' 관용 전치사구!",
+    "explanation": "관용 전치사구 → at the request of.",
+    "kr": "보고서는 이사회의 요청으로 작성되었다.",
+    "expressions": [
+      {
+        "expr": "at the request of",
+        "meaning": "~의 요청으로 (관용 전치사구)"
+      },
+      {
+        "expr": "at the + 명사 + of 패턴",
+        "meaning": "at the request/direction/suggestion of"
+      }
+    ]
+  },
+  {
+    "id": "LINK_134",
+    "category": "LINK",
+    "cat": "전치사",
+    "word_count": 11,
+    "diff": "easy",
+    "sentence": "The new platform was built _______ input from over two thousand users.",
+    "choices": [
+      "(A) although",
+      "(B) with",
+      "(C) however",
+      "(D) whereas"
+    ],
+    "answer": 1,
+    "answer_word": "with",
+    "explanation_kr": "빈칸 뒤 명사구 → 전치사! 수반/방식 → with = '~을 바탕으로'!",
+    "explanation": "명사구 앞 → 전치사. 수반 의미 → with.",
+    "kr": "새로운 플랫폼은 2천 명 이상의 사용자들의 입력을 바탕으로 구축되었다.",
+    "expressions": [
+      {
+        "expr": "with + 명사구",
+        "meaning": "~을 바탕으로, ~와 함께"
+      },
+      {
+        "expr": "수반 전치사",
+        "meaning": "with/along with/together with"
+      }
+    ]
+  },
+  {
+    "id": "LINK_135",
+    "category": "LINK",
+    "cat": "전치사",
+    "word_count": 12,
+    "diff": "easy",
+    "sentence": "_______ the strong demand, the company decided to extend the product's availability.",
+    "choices": [
+      "(A) Although",
+      "(B) Given",
+      "(C) Because",
+      "(D) However"
+    ],
+    "answer": 1,
+    "answer_word": "Given",
+    "explanation_kr": "빈칸 뒤 명사구 → 전치사! 근거/고려 → given = '~을 고려하면'! although/because는 절 앞에!",
+    "explanation": "명사구 앞 → 전치사. 근거 의미 → given.",
+    "kr": "강한 수요를 고려하면, 회사는 제품의 이용 가능성을 연장하기로 결정했다.",
+    "expressions": [
+      {
+        "expr": "Given + 명사구",
+        "meaning": "~을 고려하면 (전치사)"
+      },
+      {
+        "expr": "given = in light of = considering",
+        "meaning": "상황/근거 제시!"
+      }
+    ]
+  },
+  {
+    "id": "LINK_136",
+    "category": "LINK",
+    "cat": "전치사",
+    "word_count": 11,
+    "diff": "easy",
+    "sentence": "The manager acted _______ the instructions provided by headquarters.",
+    "choices": [
+      "(A) although",
+      "(B) in accordance with",
+      "(C) however",
+      "(D) whereas"
+    ],
+    "answer": 1,
+    "answer_word": "in accordance with",
+    "explanation_kr": "빈칸 뒤 명사구 → 전치사! 준수 의미 → in accordance with = '~에 따라서'!",
+    "explanation": "명사구 앞 → 전치사. 준수 의미 → in accordance with.",
+    "kr": "매니저는 본사에서 제공한 지시에 따라서 행동했다.",
+    "expressions": [
+      {
+        "expr": "in accordance with",
+        "meaning": "~에 따라서 (준수 전치사)"
+      },
+      {
+        "expr": "in accordance with = in compliance with",
+        "meaning": "규정/지침 준수 의미!"
+      }
+    ]
+  },
+  {
+    "id": "LINK_137",
+    "category": "LINK",
+    "cat": "전치사",
+    "word_count": 11,
+    "diff": "easy",
+    "sentence": "The event was cancelled _______ low ticket sales.",
+    "choices": [
+      "(A) although",
+      "(B) because of",
+      "(C) however",
+      "(D) whereas"
+    ],
+    "answer": 1,
+    "answer_word": "because of",
+    "explanation_kr": "빈칸 뒤 명사구 → 전치사! 이유 → because of = '~때문에'! = due to, owing to!",
+    "explanation": "명사구 앞 → 전치사. 이유 의미 → because of.",
+    "kr": "낮은 티켓 판매 때문에 행사가 취소되었다.",
+    "expressions": [
+      {
+        "expr": "because of + 명사구",
+        "meaning": "~때문에 (이유 전치사)"
+      },
+      {
+        "expr": "이유 전치사 3형제",
+        "meaning": "due to = owing to = because of!"
+      }
+    ]
+  },
+  {
+    "id": "LINK_138",
+    "category": "LINK",
+    "cat": "전치사",
+    "word_count": 12,
+    "diff": "easy",
+    "sentence": "Employees are encouraged to submit suggestions _______ the company's official feedback portal.",
+    "choices": [
+      "(A) although",
+      "(B) through",
+      "(C) however",
+      "(D) whereas"
+    ],
+    "answer": 1,
+    "answer_word": "through",
+    "explanation_kr": "빈칸 뒤 명사구 → 전치사! 수단 → through = '~을 통해'!",
+    "explanation": "명사구 앞 → 전치사. 수단 의미 → through.",
+    "kr": "직원들은 회사의 공식 피드백 포털을 통해 제안을 제출하도록 권장된다.",
+    "expressions": [
+      {
+        "expr": "through + 명사구",
+        "meaning": "~을 통해 (수단 전치사)"
+      },
+      {
+        "expr": "수단 전치사",
+        "meaning": "through/via/by means of"
+      }
+    ]
+  },
+  {
+    "id": "LINK_139",
+    "category": "LINK",
+    "cat": "전치사",
+    "word_count": 11,
+    "diff": "easy",
+    "sentence": "The committee reviewed the proposal _______ the CEO's recommendation.",
+    "choices": [
+      "(A) according to",
+      "(B) although",
+      "(C) however",
+      "(D) whereas"
+    ],
+    "answer": 0,
+    "answer_word": "according to",
+    "explanation_kr": "빈칸 뒤 명사구 → 전치사! 근거 → according to = '~에 따르면'!",
+    "explanation": "명사구 앞 → 전치사. 근거 의미 → according to.",
+    "kr": "CEO의 추천에 따르면 위원회는 제안을 검토했다.",
+    "expressions": [
+      {
+        "expr": "according to + 명사구",
+        "meaning": "~에 따르면 (근거 전치사)"
+      },
+      {
+        "expr": "according to 용법",
+        "meaning": "출처/근거 명시!"
+      }
+    ]
+  },
+  {
+    "id": "LINK_140",
+    "category": "LINK",
+    "cat": "전치사",
+    "word_count": 12,
+    "diff": "easy",
+    "sentence": "The factory operated at full capacity _______ the annual maintenance shutdown.",
+    "choices": [
+      "(A) although",
+      "(B) except for",
+      "(C) however",
+      "(D) whereas"
+    ],
+    "answer": 1,
+    "answer_word": "except for",
+    "explanation_kr": "빈칸 뒤 명사구 → 전치사! 예외 → except for = '~을 제외하고'!",
+    "explanation": "명사구 앞 → 전치사. 예외 의미 → except for.",
+    "kr": "연례 유지 보수 중단을 제외하고 공장은 최대 용량으로 가동되었다.",
+    "expressions": [
+      {
+        "expr": "except for + 명사구",
+        "meaning": "~을 제외하고 (예외 전치사)"
+      },
+      {
+        "expr": "except for = apart from = aside from",
+        "meaning": "예외 전치사 그룹!"
+      }
+    ]
+  },
+  {
+    "id": "LINK_141",
+    "category": "LINK",
+    "cat": "전치사",
+    "word_count": 12,
+    "diff": "easy",
+    "sentence": "The new recycling program was implemented _______ the efforts of local volunteers.",
+    "choices": [
+      "(A) although",
+      "(B) thanks to",
+      "(C) however",
+      "(D) whereas"
+    ],
+    "answer": 1,
+    "answer_word": "thanks to",
+    "explanation_kr": "빈칸 뒤 명사구 → 전치사! 긍정적 이유 → thanks to = '~덕분에'!",
+    "explanation": "명사구 앞 → 전치사. 긍정 이유 → thanks to.",
+    "kr": "지역 자원봉사자들의 노력 덕분에 새로운 재활용 프로그램이 시행되었다.",
+    "expressions": [
+      {
+        "expr": "thanks to + 명사구",
+        "meaning": "~덕분에 (긍정 이유 전치사)"
+      },
+      {
+        "expr": "thanks to vs due to",
+        "meaning": "thanks to = 긍정, due to = 중립!"
+      }
+    ]
+  },
+  {
+    "id": "LINK_142",
+    "category": "LINK",
+    "cat": "전치사",
+    "word_count": 11,
+    "diff": "easy",
+    "sentence": "The training session was held _______ normal business hours.",
+    "choices": [
+      "(A) although",
+      "(B) outside of",
+      "(C) however",
+      "(D) whereas"
+    ],
+    "answer": 1,
+    "answer_word": "outside of",
+    "explanation_kr": "빈칸 뒤 명사구 → 전치사! 범위 밖 → outside of = '~외에서, ~을 벗어나서'!",
+    "explanation": "명사구 앞 → 전치사. 범위 밖 의미 → outside of.",
+    "kr": "교육 세션은 정규 업무 시간 외에 개최되었다.",
+    "expressions": [
+      {
+        "expr": "outside of + 명사구",
+        "meaning": "~외에서, ~을 벗어나서"
+      },
+      {
+        "expr": "outside of normal hours",
+        "meaning": "정규 시간 외!"
+      }
+    ]
+  },
+  {
+    "id": "LINK_143",
+    "category": "LINK",
+    "cat": "전치사",
+    "word_count": 12,
+    "diff": "easy",
+    "sentence": "The survey was conducted _______ all departments to ensure comprehensive feedback.",
+    "choices": [
+      "(A) although",
+      "(B) across",
+      "(C) however",
+      "(D) whereas"
+    ],
+    "answer": 1,
+    "answer_word": "across",
+    "explanation_kr": "빈칸 뒤 명사구 → 전치사! 범위 전체 → across = '~전반에 걸쳐'!",
+    "explanation": "명사구 앞 → 전치사. 범위 전체 의미 → across.",
+    "kr": "포괄적인 피드백을 보장하기 위해 모든 부서에 걸쳐 설문 조사가 실시되었다.",
+    "expressions": [
+      {
+        "expr": "across + 명사구",
+        "meaning": "~전반에 걸쳐 (범위 전치사)"
+      },
+      {
+        "expr": "across all departments/sectors",
+        "meaning": "전체 범위 표현!"
+      }
+    ]
+  },
+  {
+    "id": "LINK_144",
+    "category": "LINK",
+    "cat": "전치사",
+    "word_count": 12,
+    "diff": "easy",
+    "sentence": "The new policy was developed _______ consultation with legal experts.",
+    "choices": [
+      "(A) although",
+      "(B) in",
+      "(C) however",
+      "(D) whereas"
+    ],
+    "answer": 1,
+    "answer_word": "in",
+    "explanation_kr": "in consultation with = '~와의 협의를 통해' 관용 전치사구!",
+    "explanation": "관용 전치사구 → in consultation with.",
+    "kr": "새로운 정책은 법률 전문가들과의 협의를 통해 개발되었다.",
+    "expressions": [
+      {
+        "expr": "in consultation with",
+        "meaning": "~와의 협의를 통해"
+      },
+      {
+        "expr": "in + 명사 + with 패턴",
+        "meaning": "in consultation/cooperation/partnership with!"
+      }
+    ]
+  },
+  {
+    "id": "LINK_145",
+    "category": "LINK",
+    "cat": "전치사",
+    "word_count": 11,
+    "diff": "easy",
+    "sentence": "The decision was made _______ the interests of all stakeholders.",
+    "choices": [
+      "(A) although",
+      "(B) in the interest of",
+      "(C) however",
+      "(D) whereas"
+    ],
+    "answer": 1,
+    "answer_word": "in the interest of",
+    "explanation_kr": "in the interest of = '~의 이익을 위해' 관용 전치사구!",
+    "explanation": "관용 전치사구 → in the interest of.",
+    "kr": "결정은 모든 이해관계자들의 이익을 위해 이루어졌다.",
+    "expressions": [
+      {
+        "expr": "in the interest of",
+        "meaning": "~의 이익을 위해"
+      },
+      {
+        "expr": "in the interest of = for the sake of",
+        "meaning": "~을 위하여!"
+      }
+    ]
+  },
+  {
+    "id": "LINK_146",
+    "category": "LINK",
+    "cat": "전치사",
+    "word_count": 12,
+    "diff": "easy",
+    "sentence": "Sales increased by twenty percent _______ the same period last year.",
+    "choices": [
+      "(A) although",
+      "(B) compared to",
+      "(C) however",
+      "(D) whereas"
+    ],
+    "answer": 1,
+    "answer_word": "compared to",
+    "explanation_kr": "빈칸 뒤 명사구 → 전치사! 비교 → compared to = '~와 비교하여'!",
+    "explanation": "명사구 앞 → 전치사. 비교 의미 → compared to.",
+    "kr": "전년도 같은 기간에 비교하여 판매가 20% 증가했다.",
+    "expressions": [
+      {
+        "expr": "compared to + 명사구",
+        "meaning": "~와 비교하여 (비교 전치사)"
+      },
+      {
+        "expr": "compared to = in comparison with",
+        "meaning": "비교 표현!"
+      }
+    ]
+  },
+  {
+    "id": "LINK_147",
+    "category": "LINK",
+    "cat": "전치사",
+    "word_count": 11,
+    "diff": "easy",
+    "sentence": "The new product was launched _______ the holiday season to maximize sales.",
+    "choices": [
+      "(A) although",
+      "(B) during",
+      "(C) however",
+      "(D) whereas"
+    ],
+    "answer": 1,
+    "answer_word": "during",
+    "explanation_kr": "빈칸 뒤 명사구 → 전치사! 특정 기간 동안 → during = '~하는 동안'!",
+    "explanation": "명사구 앞 → 전치사. 기간 의미 → during.",
+    "kr": "판매를 극대화하기 위해 새로운 제품은 휴일 시즌 동안 출시되었다.",
+    "expressions": [
+      {
+        "expr": "during + 명사구",
+        "meaning": "~하는 동안 (기간 전치사)"
+      },
+      {
+        "expr": "during vs while",
+        "meaning": "during + 명사구 / while + S+V!"
+      }
+    ]
+  },
+  {
+    "id": "LINK_148",
+    "category": "LINK",
+    "cat": "전치사",
+    "word_count": 12,
+    "diff": "easy",
+    "sentence": "The chairman signed the agreement _______ the company.",
+    "choices": [
+      "(A) although",
+      "(B) on behalf of",
+      "(C) however",
+      "(D) whereas"
+    ],
+    "answer": 1,
+    "answer_word": "on behalf of",
+    "explanation_kr": "on behalf of = '~을 대신하여, ~을 대표하여' 관용 전치사구!",
+    "explanation": "관용 전치사구 → on behalf of.",
+    "kr": "의장은 회사를 대신하여 협약에 서명했다.",
+    "expressions": [
+      {
+        "expr": "on behalf of",
+        "meaning": "~을 대신하여, ~을 대표하여"
+      },
+      {
+        "expr": "on behalf of 용법",
+        "meaning": "공식 문서/계약에서 자주 등장!"
+      }
+    ]
+  },
+  {
+    "id": "LINK_149",
+    "category": "LINK",
+    "cat": "전치사",
+    "word_count": 12,
+    "diff": "easy",
+    "sentence": "The new office was equipped _______ state-of-the-art technology.",
+    "choices": [
+      "(A) although",
+      "(B) with",
+      "(C) however",
+      "(D) whereas"
+    ],
+    "answer": 1,
+    "answer_word": "with",
+    "explanation_kr": "be equipped with = '~을 갖추다' 관용 전치사구!",
+    "explanation": "관용 동사구 → be equipped with.",
+    "kr": "새로운 사무실은 최첨단 기술을 갖추었다.",
+    "expressions": [
+      {
+        "expr": "equipped with",
+        "meaning": "~을 갖추다, ~으로 구비되다"
+      },
+      {
+        "expr": "be + p.p. + with",
+        "meaning": "be provided/equipped/supplied with!"
+      }
+    ]
+  },
+  {
+    "id": "LINK_150",
+    "category": "LINK",
+    "cat": "전치사",
+    "word_count": 12,
+    "diff": "easy",
+    "sentence": "The renovation project was completed _______ schedule.",
+    "choices": [
+      "(A) although",
+      "(B) ahead of",
+      "(C) however",
+      "(D) whereas"
+    ],
+    "answer": 1,
+    "answer_word": "ahead of",
+    "explanation_kr": "ahead of schedule = '일정보다 앞서' 관용 전치사구!",
+    "explanation": "관용 전치사구 → ahead of schedule.",
+    "kr": "리노베이션 프로젝트는 일정보다 앞서 완료되었다.",
+    "expressions": [
+      {
+        "expr": "ahead of schedule",
+        "meaning": "일정보다 앞서"
+      },
+      {
+        "expr": "ahead of vs behind",
+        "meaning": "ahead of schedule = 일찍, behind schedule = 늦게!"
+      }
+    ]
+  },
+  {
+    "id": "LINK_151",
+    "category": "LINK",
+    "cat": "전치사",
+    "word_count": 12,
+    "diff": "easy",
+    "sentence": "The team achieved its targets _______ a number of significant challenges.",
+    "choices": [
+      "(A) because",
+      "(B) despite",
+      "(C) however",
+      "(D) since"
+    ],
+    "answer": 1,
+    "answer_word": "despite",
+    "explanation_kr": "빈칸 뒤 명사구 → 전치사! 양보 → despite = '~에도 불구하고'!",
+    "explanation": "명사구 앞 → 전치사. 양보 의미 → despite.",
+    "kr": "여러 가지 상당한 도전에도 불구하고, 팀은 목표를 달성했다.",
+    "expressions": [
+      {
+        "expr": "despite + 명사구",
+        "meaning": "~에도 불구하고 (전치사)"
+      },
+      {
+        "expr": "핵심 토익 함정",
+        "meaning": "despite + 명사구 vs although + S+V!"
+      }
+    ]
+  },
+  {
+    "id": "LINK_152",
+    "category": "LINK",
+    "cat": "전치사",
+    "word_count": 11,
+    "diff": "easy",
+    "sentence": "The bonus will be distributed _______ all eligible employees.",
+    "choices": [
+      "(A) although",
+      "(B) among",
+      "(C) however",
+      "(D) whereas"
+    ],
+    "answer": 1,
+    "answer_word": "among",
+    "explanation_kr": "빈칸 뒤 명사구 → 전치사! 분배 대상 → among = '~사이에서 (셋 이상)'!",
+    "explanation": "명사구 앞 → 전치사. 분배 의미 → among.",
+    "kr": "보너스는 모든 자격 있는 직원들 사이에서 분배될 것이다.",
+    "expressions": [
+      {
+        "expr": "among + 명사구(복수)",
+        "meaning": "~사이에서 (셋 이상)"
+      },
+      {
+        "expr": "among vs between",
+        "meaning": "among = 셋 이상, between = 둘!"
+      }
+    ]
+  },
+  {
+    "id": "LINK_153",
+    "category": "LINK",
+    "cat": "전치사",
+    "word_count": 12,
+    "diff": "easy",
+    "sentence": "The policy was introduced _______ the growing concern about data privacy.",
+    "choices": [
+      "(A) although",
+      "(B) in response to",
+      "(C) however",
+      "(D) whereas"
+    ],
+    "answer": 1,
+    "answer_word": "in response to",
+    "explanation_kr": "빈칸 뒤 명사구 → 전치사! 대응 → in response to = '~에 대한 대응으로'!",
+    "explanation": "명사구 앞 → 전치사. 대응 의미 → in response to.",
+    "kr": "데이터 개인정보 보호에 대한 증가하는 우려에 대한 대응으로 정책이 도입되었다.",
+    "expressions": [
+      {
+        "expr": "in response to + 명사구",
+        "meaning": "~에 대한 대응으로"
+      },
+      {
+        "expr": "in response to = as a response to",
+        "meaning": "반응/대응 표현!"
+      }
+    ]
+  },
+  {
+    "id": "LINK_154",
+    "category": "LINK",
+    "cat": "전치사",
+    "word_count": 11,
+    "diff": "easy",
+    "sentence": "The organization raised funds _______ the construction of a new community center.",
+    "choices": [
+      "(A) although",
+      "(B) for",
+      "(C) however",
+      "(D) whereas"
+    ],
+    "answer": 1,
+    "answer_word": "for",
+    "explanation_kr": "빈칸 뒤 명사구 → 전치사! 목적 → for = '~을 위해'!",
+    "explanation": "명사구 앞 → 전치사. 목적 의미 → for.",
+    "kr": "조직은 새로운 지역 사회 센터 건설을 위해 자금을 모았다.",
+    "expressions": [
+      {
+        "expr": "for + 명사구",
+        "meaning": "~을 위해 (목적 전치사)"
+      },
+      {
+        "expr": "for vs in order to",
+        "meaning": "for + 명사구 / in order to + V원형!"
+      }
+    ]
+  },
+  {
+    "id": "LINK_155",
+    "category": "LINK",
+    "cat": "전치사",
+    "word_count": 12,
+    "diff": "easy",
+    "sentence": "All candidates will be evaluated _______ their technical skills and leadership potential.",
+    "choices": [
+      "(A) although",
+      "(B) in terms of",
+      "(C) however",
+      "(D) whereas"
+    ],
+    "answer": 1,
+    "answer_word": "in terms of",
+    "explanation_kr": "빈칸 뒤 명사구 → 전치사! 측면/기준 → in terms of = '~의 측면에서'!",
+    "explanation": "명사구 앞 → 전치사. 측면 의미 → in terms of.",
+    "kr": "모든 후보자들은 기술 역량과 리더십 잠재력의 측면에서 평가될 것이다.",
+    "expressions": [
+      {
+        "expr": "in terms of + 명사구",
+        "meaning": "~의 측면에서 (관점 전치사)"
+      },
+      {
+        "expr": "in terms of 용법",
+        "meaning": "평가/비교 기준 제시!"
+      }
+    ]
+  },
+  {
+    "id": "LINK_156",
+    "category": "LINK",
+    "cat": "접속사",
+    "word_count": 12,
+    "diff": "easy",
+    "sentence": "_______ the salary was lower than expected, she accepted the job offer.",
+    "choices": [
+      "(A) Despite",
+      "(B) Although",
+      "(C) Due to",
+      "(D) However"
+    ],
+    "answer": 1,
+    "answer_word": "Although",
+    "explanation_kr": "빈칸 뒤 절(S+V) → 접속사! 양보 → although = '비록~이지만'! despite는 전치사야~",
+    "explanation": "절(S+V) 앞 → 접속사. 양보 의미 → although.",
+    "kr": "비록 급여가 예상보다 낮았지만, 그녀는 취업 제안을 받아들였다.",
+    "expressions": [
+      {
+        "expr": "Although + S+V",
+        "meaning": "비록 ~이지만 (양보 접속사)"
+      },
+      {
+        "expr": "Although vs Despite",
+        "meaning": "although + S+V / despite + 명사구!"
+      }
+    ]
+  },
+  {
+    "id": "LINK_157",
+    "category": "LINK",
+    "cat": "접속사",
+    "word_count": 12,
+    "diff": "easy",
+    "sentence": "The company will reimburse travel expenses _______ employees submit receipts within thirty days.",
+    "choices": [
+      "(A) despite",
+      "(B) provided that",
+      "(C) however",
+      "(D) due to"
+    ],
+    "answer": 1,
+    "answer_word": "provided that",
+    "explanation_kr": "빈칸 뒤 절(S+V) → 접속사! 조건 → provided that = '~하는 조건으로'!",
+    "explanation": "절(S+V) 앞 → 접속사. 조건 의미 → provided that.",
+    "kr": "직원들이 30일 이내에 영수증을 제출하는 조건으로 회사는 출장 비용을 환급할 것이다.",
+    "expressions": [
+      {
+        "expr": "provided that + S+V",
+        "meaning": "~하는 조건으로 (조건 접속사)"
+      },
+      {
+        "expr": "조건 접속사",
+        "meaning": "if/unless/provided that/as long as"
+      }
+    ]
+  },
+  {
+    "id": "LINK_158",
+    "category": "LINK",
+    "cat": "접속사",
+    "word_count": 12,
+    "diff": "easy",
+    "sentence": "_______ the new system was implemented, customer complaints dropped by half.",
+    "choices": [
+      "(A) Despite",
+      "(B) Once",
+      "(C) Due to",
+      "(D) However"
+    ],
+    "answer": 1,
+    "answer_word": "Once",
+    "explanation_kr": "빈칸 뒤 절(S+V) → 접속사! 시간(완료 후 즉시) → once = '일단 ~하면'!",
+    "explanation": "절(S+V) 앞 → 접속사. 시간 순서 → once.",
+    "kr": "새로운 시스템이 시행되자, 고객 불만이 절반으로 줄었다.",
+    "expressions": [
+      {
+        "expr": "Once + S+V",
+        "meaning": "일단 ~하면, ~하자마자 (시간 접속사)"
+      },
+      {
+        "expr": "once의 뉘앙스",
+        "meaning": "이전 조건 완료 → 다음 단계!"
+      }
+    ]
+  },
+  {
+    "id": "LINK_159",
+    "category": "LINK",
+    "cat": "접속사",
+    "word_count": 11,
+    "diff": "easy",
+    "sentence": "The office will remain open _______ all clients have been served.",
+    "choices": [
+      "(A) despite",
+      "(B) until",
+      "(C) however",
+      "(D) due to"
+    ],
+    "answer": 1,
+    "answer_word": "until",
+    "explanation_kr": "빈칸 뒤 절(S+V) → 접속사! 시간 한계 → until = '~할 때까지'!",
+    "explanation": "절(S+V) 앞 → 접속사. 시간 한계 → until.",
+    "kr": "모든 고객이 응대를 받을 때까지 사무실은 계속 열려 있을 것이다.",
+    "expressions": [
+      {
+        "expr": "until + S+V",
+        "meaning": "~할 때까지 (시간 접속사)"
+      },
+      {
+        "expr": "remain/stay + 형용사 + until",
+        "meaning": "~할 때까지 ~인 상태 유지!"
+      }
+    ]
+  },
+  {
+    "id": "LINK_160",
+    "category": "LINK",
+    "cat": "접속사",
+    "word_count": 12,
+    "diff": "easy",
+    "sentence": "The team leader will finalize the report _______ all members submit their sections.",
+    "choices": [
+      "(A) despite",
+      "(B) after",
+      "(C) however",
+      "(D) due to"
+    ],
+    "answer": 1,
+    "answer_word": "after",
+    "explanation_kr": "빈칸 뒤 절(S+V) → 접속사! 시간 순서 → after = '~한 후에'!",
+    "explanation": "절(S+V) 앞 → 접속사. 시간 순서 → after.",
+    "kr": "모든 구성원들이 각자의 섹션을 제출한 후에 팀 리더가 보고서를 최종 확정할 것이다.",
+    "expressions": [
+      {
+        "expr": "after + S+V",
+        "meaning": "~한 후에 (시간 접속사)"
+      },
+      {
+        "expr": "after vs following",
+        "meaning": "after + S+V / following + 명사구!"
+      }
+    ]
+  },
+  {
+    "id": "LINK_161",
+    "category": "LINK",
+    "cat": "접속사",
+    "word_count": 11,
+    "diff": "easy",
+    "sentence": "The alarm will sound _______ the temperature exceeds forty degrees.",
+    "choices": [
+      "(A) despite",
+      "(B) whenever",
+      "(C) however",
+      "(D) due to"
+    ],
+    "answer": 1,
+    "answer_word": "whenever",
+    "explanation_kr": "빈칸 뒤 절(S+V) → 접속사! 반복 시간 조건 → whenever = '~할 때마다'!",
+    "explanation": "절(S+V) 앞 → 접속사. 반복 시간 → whenever.",
+    "kr": "온도가 40도를 초과할 때마다 알람이 울릴 것이다.",
+    "expressions": [
+      {
+        "expr": "whenever + S+V",
+        "meaning": "~할 때마다 (반복 시간 접속사)"
+      },
+      {
+        "expr": "whenever = every time",
+        "meaning": "반복 조건!"
+      }
+    ]
+  },
+  {
+    "id": "LINK_162",
+    "category": "LINK",
+    "cat": "접속사",
+    "word_count": 12,
+    "diff": "easy",
+    "sentence": "The store will offer a full refund _______ the product is returned within thirty days.",
+    "choices": [
+      "(A) despite",
+      "(B) as long as",
+      "(C) however",
+      "(D) due to"
+    ],
+    "answer": 1,
+    "answer_word": "as long as",
+    "explanation_kr": "빈칸 뒤 절(S+V) → 접속사! 조건 한정 → as long as = '~하는 한'!",
+    "explanation": "절(S+V) 앞 → 접속사. 조건 한정 → as long as.",
+    "kr": "제품이 30일 이내에 반품되는 한 매장은 전액 환불을 제공할 것이다.",
+    "expressions": [
+      {
+        "expr": "as long as + S+V",
+        "meaning": "~하는 한 (조건 접속사)"
+      },
+      {
+        "expr": "as long as vs provided that",
+        "meaning": "둘 다 조건! 뉘앙스 거의 동일!"
+      }
+    ]
+  },
+  {
+    "id": "LINK_163",
+    "category": "LINK",
+    "cat": "접속사",
+    "word_count": 11,
+    "diff": "easy",
+    "sentence": "_______ demand continues to grow, the factory will expand its production capacity.",
+    "choices": [
+      "(A) Despite",
+      "(B) As long as",
+      "(C) Due to",
+      "(D) However"
+    ],
+    "answer": 1,
+    "answer_word": "As long as",
+    "explanation_kr": "빈칸 뒤 절(S+V) → 접속사! 조건 → as long as = '~하는 한'!",
+    "explanation": "절(S+V) 앞 → 접속사. 조건 의미 → as long as.",
+    "kr": "수요가 계속 증가하는 한, 공장은 생산 능력을 확대할 것이다.",
+    "expressions": [
+      {
+        "expr": "As long as + S+V",
+        "meaning": "~하는 한 (조건 접속사)"
+      },
+      {
+        "expr": "조건 접속사",
+        "meaning": "if/unless/as long as/provided that!"
+      }
+    ]
+  },
+  {
+    "id": "LINK_164",
+    "category": "LINK",
+    "cat": "접속사",
+    "word_count": 12,
+    "diff": "easy",
+    "sentence": "The intern completed all assigned tasks _______ he had no prior work experience.",
+    "choices": [
+      "(A) due to",
+      "(B) even though",
+      "(C) however",
+      "(D) in spite of"
+    ],
+    "answer": 1,
+    "answer_word": "even though",
+    "explanation_kr": "빈칸 뒤 절(S+V) → 접속사! 강한 양보 → even though = '비록~임에도 불구하고'!",
+    "explanation": "절(S+V) 앞 → 접속사. 강한 양보 → even though.",
+    "kr": "비록 이전 업무 경험이 없었음에도 불구하고, 인턴은 배정된 모든 업무를 완료했다.",
+    "expressions": [
+      {
+        "expr": "even though + S+V",
+        "meaning": "비록 ~임에도 (강한 양보 접속사)"
+      },
+      {
+        "expr": "even though > although",
+        "meaning": "even though가 더 강조적!"
+      }
+    ]
+  },
+  {
+    "id": "LINK_165",
+    "category": "LINK",
+    "cat": "접속사",
+    "word_count": 11,
+    "diff": "easy",
+    "sentence": "The seminar will be recorded _______ those who cannot attend in person can view it later.",
+    "choices": [
+      "(A) despite",
+      "(B) so that",
+      "(C) however",
+      "(D) due to"
+    ],
+    "answer": 1,
+    "answer_word": "so that",
+    "explanation_kr": "빈칸 뒤 절(S+V) → 접속사! 목적 → so that = '~하기 위해, ~하도록'!",
+    "explanation": "절(S+V) 앞 → 접속사. 목적 의미 → so that.",
+    "kr": "직접 참석할 수 없는 사람들이 나중에 볼 수 있도록 세미나는 녹화될 것이다.",
+    "expressions": [
+      {
+        "expr": "so that + S+V",
+        "meaning": "~하기 위해, ~하도록 (목적 접속사)"
+      },
+      {
+        "expr": "so that + can/could/will/would",
+        "meaning": "목적절에 조동사 자주 등장!"
+      }
+    ]
+  },
+  {
+    "id": "LINK_166",
+    "category": "LINK",
+    "cat": "접속사",
+    "word_count": 12,
+    "diff": "easy",
+    "sentence": "_______ the online version is more convenient, many customers still prefer the physical store.",
+    "choices": [
+      "(A) Due to",
+      "(B) While",
+      "(C) Therefore",
+      "(D) In spite of"
+    ],
+    "answer": 1,
+    "answer_word": "While",
+    "explanation_kr": "빈칸 뒤 절(S+V) → 접속사! 대조 → while = '~인 반면에'!",
+    "explanation": "절(S+V) 앞 → 접속사. 대조 의미 → while.",
+    "kr": "온라인 버전이 더 편리한 반면에, 많은 고객들은 여전히 실물 매장을 선호한다.",
+    "expressions": [
+      {
+        "expr": "While + S+V",
+        "meaning": "~인 반면에 (대조 접속사)"
+      },
+      {
+        "expr": "while의 두 의미",
+        "meaning": "대조(whereas) + 시간(during) 둘 다 가능!"
+      }
+    ]
+  },
+  {
+    "id": "LINK_167",
+    "category": "LINK",
+    "cat": "접속사",
+    "word_count": 11,
+    "diff": "easy",
+    "sentence": "The applicant was hired _______ she had limited experience.",
+    "choices": [
+      "(A) due to",
+      "(B) even though",
+      "(C) however",
+      "(D) in spite of"
+    ],
+    "answer": 1,
+    "answer_word": "even though",
+    "explanation_kr": "빈칸 뒤 절(S+V) → 접속사! 강한 양보 → even though = '비록~임에도 불구하고'!",
+    "explanation": "절(S+V) 앞 → 접속사. 강한 양보 → even though.",
+    "kr": "비록 경험이 부족했음에도 불구하고, 지원자는 채용되었다.",
+    "expressions": [
+      {
+        "expr": "even though + S+V",
+        "meaning": "비록 ~임에도 (강한 양보)"
+      },
+      {
+        "expr": "even though vs although",
+        "meaning": "even though가 더 강조적!"
+      }
+    ]
+  },
+  {
+    "id": "LINK_168",
+    "category": "LINK",
+    "cat": "접속사",
+    "word_count": 12,
+    "diff": "easy",
+    "sentence": "The client will not sign the contract _______ all conditions are clearly specified.",
+    "choices": [
+      "(A) despite",
+      "(B) unless",
+      "(C) however",
+      "(D) due to"
+    ],
+    "answer": 1,
+    "answer_word": "unless",
+    "explanation_kr": "빈칸 뒤 절(S+V) → 접속사! 조건(부정) → unless = '~하지 않는다면'!",
+    "explanation": "절(S+V) 앞 → 접속사. 부정 조건 → unless.",
+    "kr": "모든 조건이 명확하게 명시되지 않으면 고객은 계약서에 서명하지 않을 것이다.",
+    "expressions": [
+      {
+        "expr": "unless + S+V",
+        "meaning": "~하지 않는다면 (조건 접속사)"
+      },
+      {
+        "expr": "unless = if ~ not",
+        "meaning": "부정 조건!"
+      }
+    ]
+  },
+  {
+    "id": "LINK_169",
+    "category": "LINK",
+    "cat": "접속사",
+    "word_count": 11,
+    "diff": "easy",
+    "sentence": "_______ the new regulations take effect, businesses must update their data storage policies.",
+    "choices": [
+      "(A) Despite",
+      "(B) Before",
+      "(C) Due to",
+      "(D) However"
+    ],
+    "answer": 1,
+    "answer_word": "Before",
+    "explanation_kr": "빈칸 뒤 절(S+V) → 접속사! 시간(~전) → before = '~하기 전에'!",
+    "explanation": "절(S+V) 앞 → 접속사. 시간 순서 → before.",
+    "kr": "새로운 규정이 발효되기 전에, 기업들은 데이터 저장 정책을 업데이트해야 한다.",
+    "expressions": [
+      {
+        "expr": "Before + S+V",
+        "meaning": "~하기 전에 (시간 접속사)"
+      },
+      {
+        "expr": "before vs prior to",
+        "meaning": "before + S+V / prior to + 명사구!"
+      }
+    ]
+  },
+  {
+    "id": "LINK_170",
+    "category": "LINK",
+    "cat": "접속사",
+    "word_count": 12,
+    "diff": "easy",
+    "sentence": "The report must be submitted _______ the committee finishes reviewing all applications.",
+    "choices": [
+      "(A) despite",
+      "(B) by the time",
+      "(C) however",
+      "(D) due to"
+    ],
+    "answer": 1,
+    "answer_word": "by the time",
+    "explanation_kr": "빈칸 뒤 절(S+V) → 접속사! 시간 기한 → by the time = '~할 때쯤'!",
+    "explanation": "절(S+V) 앞 → 접속사. 기한 시간 → by the time.",
+    "kr": "위원회가 모든 지원서 검토를 마칠 때쯤 보고서가 제출되어야 한다.",
+    "expressions": [
+      {
+        "expr": "by the time + S+V",
+        "meaning": "~할 때쯤 (기한 시간 접속사)"
+      },
+      {
+        "expr": "by the time 뉘앙스",
+        "meaning": "A가 완료될 시점에 B도 완료!"
+      }
+    ]
+  },
+  {
+    "id": "LINK_171",
+    "category": "LINK",
+    "cat": "접속사",
+    "word_count": 11,
+    "diff": "easy",
+    "sentence": "_______ the market has matured, competition has intensified significantly.",
+    "choices": [
+      "(A) Despite",
+      "(B) As",
+      "(C) Due to",
+      "(D) However"
+    ],
+    "answer": 1,
+    "answer_word": "As",
+    "explanation_kr": "빈칸 뒤 절(S+V) → 접속사! 시간/이유 → as = '~함에 따라, ~이므로'!",
+    "explanation": "절(S+V) 앞 → 접속사. 시간/이유 의미 → as.",
+    "kr": "시장이 성숙함에 따라, 경쟁이 현저하게 심화되었다.",
+    "expressions": [
+      {
+        "expr": "As + S+V",
+        "meaning": "~함에 따라, ~이므로 (시간/이유 접속사)"
+      },
+      {
+        "expr": "as의 다양한 의미",
+        "meaning": "이유/시간/비례 모두 가능!"
+      }
+    ]
+  },
+  {
+    "id": "LINK_172",
+    "category": "LINK",
+    "cat": "접속사",
+    "word_count": 12,
+    "diff": "easy",
+    "sentence": "The project was completed on time _______ the team faced several unexpected obstacles.",
+    "choices": [
+      "(A) due to",
+      "(B) even though",
+      "(C) however",
+      "(D) in spite of"
+    ],
+    "answer": 1,
+    "answer_word": "even though",
+    "explanation_kr": "빈칸 뒤 절(S+V) → 접속사! 강한 양보 → even though = '비록~임에도 불구하고'!",
+    "explanation": "절(S+V) 앞 → 접속사. 강한 양보 → even though.",
+    "kr": "비록 팀이 여러 예상치 못한 장애물에 직면했음에도 불구하고, 프로젝트는 제때 완료되었다.",
+    "expressions": [
+      {
+        "expr": "even though + S+V",
+        "meaning": "비록 ~임에도 (강한 양보)"
+      },
+      {
+        "expr": "even though 위치",
+        "meaning": "문장 앞 or 중간 둘 다 가능!"
+      }
+    ]
+  },
+  {
+    "id": "LINK_173",
+    "category": "LINK",
+    "cat": "접속사",
+    "word_count": 11,
+    "diff": "easy",
+    "sentence": "_______ the CEO announced his retirement, the board has been searching for a successor.",
+    "choices": [
+      "(A) Despite",
+      "(B) Since",
+      "(C) Due to",
+      "(D) However"
+    ],
+    "answer": 1,
+    "answer_word": "Since",
+    "explanation_kr": "빈칸 뒤 절(S+V) → 접속사! 시간 기점 → since = '~한 이후로'! 현재완료와 함께!",
+    "explanation": "절(S+V) 앞 → 접속사. 시간 기점 → since.",
+    "kr": "CEO가 은퇴를 발표한 이후로, 이사회는 후계자를 찾고 있다.",
+    "expressions": [
+      {
+        "expr": "Since + S+V",
+        "meaning": "~한 이후로 (시간 기점 접속사)"
+      },
+      {
+        "expr": "since + 현재완료",
+        "meaning": "과거 기점 → 현재까지!"
+      }
+    ]
+  },
+  {
+    "id": "LINK_174",
+    "category": "LINK",
+    "cat": "접속부사",
+    "word_count": 12,
+    "diff": "easy",
+    "sentence": "The product received mixed reviews; _______, it sold out within three days.",
+    "choices": [
+      "(A) although",
+      "(B) nevertheless",
+      "(C) due to",
+      "(D) despite"
+    ],
+    "answer": 1,
+    "answer_word": "nevertheless",
+    "explanation_kr": "세미콜론 뒤 역접 접속부사! 엇갈린 리뷰(부정적) ↔ 그래도 매진(긍정). nevertheless = '그럼에도 불구하고'!",
+    "explanation": "세미콜론 뒤 → 접속부사. 역접 의미 → nevertheless.",
+    "kr": "제품은 엇갈린 리뷰를 받았다; 그럼에도 불구하고, 3일 만에 매진되었다.",
+    "expressions": [
+      {
+        "expr": "; nevertheless,",
+        "meaning": "그럼에도 불구하고 (역접 접속부사)"
+      },
+      {
+        "expr": "세미콜론 + 접속부사",
+        "meaning": "; however / ; nevertheless / ; therefore!"
+      }
+    ]
+  },
+  {
+    "id": "LINK_175",
+    "category": "LINK",
+    "cat": "접속부사",
+    "word_count": 12,
+    "diff": "easy",
+    "sentence": "The new policy reduces administrative costs. _______, it improves employee satisfaction.",
+    "choices": [
+      "(A) Although",
+      "(B) Furthermore",
+      "(C) Due to",
+      "(D) Despite"
+    ],
+    "answer": 1,
+    "answer_word": "Furthermore",
+    "explanation_kr": "앞 문장에 정보 추가! 비용 절감 + 직원 만족도 향상(추가). Furthermore = '더욱이' 추가 접속부사!",
+    "explanation": "앞 문장에 추가 → 접속부사. 추가 의미 → furthermore.",
+    "kr": "새로운 정책은 관리 비용을 줄인다. 더욱이, 직원 만족도를 향상시킨다.",
+    "expressions": [
+      {
+        "expr": "Furthermore,",
+        "meaning": "더욱이 (추가 접속부사)"
+      },
+      {
+        "expr": "추가 접속부사",
+        "meaning": "furthermore/moreover/additionally/in addition!"
+      }
+    ]
+  },
+  {
+    "id": "LINK_176",
+    "category": "LINK",
+    "cat": "전치사",
+    "word_count": 16,
+    "diff": "normal",
+    "sentence": "_______ his lack of formal qualifications, the candidate was offered the senior position based on his extensive industry experience.",
+    "choices": [
+      "(A) Although",
+      "(B) Notwithstanding",
+      "(C) Because",
+      "(D) Since"
+    ],
+    "answer": 1,
+    "answer_word": "Notwithstanding",
+    "explanation_kr": "빈칸 뒤 명사구 → 전치사! 양보 → notwithstanding = '~에도 불구하고' (very formal) despite와 동의어!",
+    "explanation": "명사구 앞 → 전치사. 격식 양보 → notwithstanding.",
+    "kr": "공식 자격의 부족에도 불구하고, 광범위한 업계 경험을 바탕으로 후보자에게 고위직이 제공되었다.",
+    "expressions": [
+      {
+        "expr": "Notwithstanding + 명사구",
+        "meaning": "~에도 불구하고 (격식 전치사)"
+      },
+      {
+        "expr": "notwithstanding = despite",
+        "meaning": "더 격식체! 법률/계약 문서에 자주!"
+      }
+    ]
+  },
+  {
+    "id": "LINK_177",
+    "category": "LINK",
+    "cat": "전치사",
+    "word_count": 15,
+    "diff": "normal",
+    "sentence": "_______ the significant upfront investment, the renewable energy project is expected to deliver substantial returns within five years.",
+    "choices": [
+      "(A) Although",
+      "(B) Despite",
+      "(C) Because",
+      "(D) Since"
+    ],
+    "answer": 1,
+    "answer_word": "Despite",
+    "explanation_kr": "빈칸 뒤 명사구(the significant upfront investment) → 전치사! 양보 → despite! although는 절 앞에!",
+    "explanation": "명사구 앞 → 전치사. 양보 의미 → despite.",
+    "kr": "상당한 초기 투자에도 불구하고, 재생에너지 프로젝트는 5년 이내에 상당한 수익을 창출할 것으로 예상된다.",
+    "expressions": [
+      {
+        "expr": "Despite + 명사구",
+        "meaning": "~에도 불구하고 (전치사)"
+      },
+      {
+        "expr": "핵심 구별",
+        "meaning": "despite + 명사구 vs although + S+V!"
+      }
+    ]
+  },
+  {
+    "id": "LINK_178",
+    "category": "LINK",
+    "cat": "전치사",
+    "word_count": 16,
+    "diff": "normal",
+    "sentence": "The company redesigned its packaging _______ consumer complaints about excessive plastic waste.",
+    "choices": [
+      "(A) although",
+      "(B) however",
+      "(C) in response to",
+      "(D) whereas"
+    ],
+    "answer": 2,
+    "answer_word": "in response to",
+    "explanation_kr": "빈칸 뒤 명사구 → 전치사! 대응 → in response to = '~에 대한 대응으로'!",
+    "explanation": "명사구 앞 → 전치사. 대응 의미 → in response to.",
+    "kr": "과도한 플라스틱 낭비에 대한 소비자 불만에 대한 대응으로 회사는 포장을 재설계했다.",
+    "expressions": [
+      {
+        "expr": "in response to + 명사구",
+        "meaning": "~에 대한 대응으로"
+      },
+      {
+        "expr": "in response to = as a response to",
+        "meaning": "반응/대응 표현!"
+      }
+    ]
+  },
+  {
+    "id": "LINK_179",
+    "category": "LINK",
+    "cat": "전치사",
+    "word_count": 16,
+    "diff": "normal",
+    "sentence": "_______ recent advances in battery technology, the cost of electric vehicles has fallen dramatically.",
+    "choices": [
+      "(A) Although",
+      "(B) Because",
+      "(C) Owing to",
+      "(D) Since"
+    ],
+    "answer": 2,
+    "answer_word": "Owing to",
+    "explanation_kr": "빈칸 뒤 명사구 → 전치사! 이유 → owing to = '~때문에' = due to!",
+    "explanation": "명사구 앞 → 전치사. 이유 의미 → owing to.",
+    "kr": "배터리 기술의 최근 발전 때문에, 전기차 비용이 급격히 하락했다.",
+    "expressions": [
+      {
+        "expr": "Owing to + 명사구",
+        "meaning": "~때문에 (이유 전치사)"
+      },
+      {
+        "expr": "owing to = due to = because of",
+        "meaning": "이유 전치사 3형제!"
+      }
+    ]
+  },
+  {
+    "id": "LINK_180",
+    "category": "LINK",
+    "cat": "전치사",
+    "word_count": 16,
+    "diff": "normal",
+    "sentence": "All employees are required to act _______ the company's code of conduct at all times.",
+    "choices": [
+      "(A) although",
+      "(B) in accordance with",
+      "(C) however",
+      "(D) whereas"
+    ],
+    "answer": 1,
+    "answer_word": "in accordance with",
+    "explanation_kr": "빈칸 뒤 명사구 → 전치사! 준수 → in accordance with = '~에 따라서'!",
+    "explanation": "명사구 앞 → 전치사. 준수 의미 → in accordance with.",
+    "kr": "모든 직원들은 항상 회사의 행동 강령에 따라서 행동하도록 요구된다.",
+    "expressions": [
+      {
+        "expr": "in accordance with + 명사구",
+        "meaning": "~에 따라서 (준수 전치사)"
+      },
+      {
+        "expr": "in accordance with = in compliance with",
+        "meaning": "규정/지침 준수!"
+      }
+    ]
+  },
+  {
+    "id": "LINK_181",
+    "category": "LINK",
+    "cat": "전치사",
+    "word_count": 16,
+    "diff": "normal",
+    "sentence": "The AI company expanded its research team _______ growing demand for machine learning expertise.",
+    "choices": [
+      "(A) although",
+      "(B) however",
+      "(C) in response to",
+      "(D) whereas"
+    ],
+    "answer": 2,
+    "answer_word": "in response to",
+    "explanation_kr": "빈칸 뒤 명사구 → 전치사! 대응 → in response to = '~에 대한 대응으로'!",
+    "explanation": "명사구 앞 → 전치사. 대응 의미 → in response to.",
+    "kr": "머신러닝 전문성에 대한 증가하는 수요에 대한 대응으로 AI 회사는 연구팀을 확장했다.",
+    "expressions": [
+      {
+        "expr": "in response to + 명사구",
+        "meaning": "~에 대한 대응으로"
+      },
+      {
+        "expr": "in response to 패턴",
+        "meaning": "demand/pressure/concern/request + in response to!"
+      }
+    ]
+  },
+  {
+    "id": "LINK_182",
+    "category": "LINK",
+    "cat": "전치사",
+    "word_count": 15,
+    "diff": "normal",
+    "sentence": "_______ the tight deadline, the development team delivered a fully functional prototype.",
+    "choices": [
+      "(A) Although",
+      "(B) Because",
+      "(C) Given",
+      "(D) Since"
+    ],
+    "answer": 2,
+    "answer_word": "Given",
+    "explanation_kr": "빈칸 뒤 명사구 → 전치사! 근거/상황 → given = '~을 고려하면'!",
+    "explanation": "명사구 앞 → 전치사. 근거/상황 의미 → given.",
+    "kr": "촉박한 마감일을 고려하면, 개발팀은 완전히 기능하는 프로토타입을 납품했다.",
+    "expressions": [
+      {
+        "expr": "Given + 명사구",
+        "meaning": "~을 고려하면 (전치사)"
+      },
+      {
+        "expr": "given = in light of = considering",
+        "meaning": "상황/근거 제시 전치사!"
+      }
+    ]
+  },
+  {
+    "id": "LINK_183",
+    "category": "LINK",
+    "cat": "전치사",
+    "word_count": 16,
+    "diff": "normal",
+    "sentence": "The startup secured additional funding _______ the strong performance in its first two quarters.",
+    "choices": [
+      "(A) although",
+      "(B) however",
+      "(C) owing to",
+      "(D) whereas"
+    ],
+    "answer": 2,
+    "answer_word": "owing to",
+    "explanation_kr": "빈칸 뒤 명사구 → 전치사! 이유 → owing to = '~때문에'!",
+    "explanation": "명사구 앞 → 전치사. 이유 의미 → owing to.",
+    "kr": "첫 두 분기의 강력한 성과 때문에 스타타트업은 추가 자금을 확보했다.",
+    "expressions": [
+      {
+        "expr": "owing to + 명사구",
+        "meaning": "~때문에 (이유 전치사)"
+      },
+      {
+        "expr": "이유 전치사",
+        "meaning": "due to/owing to/because of/thanks to!"
+      }
+    ]
+  },
+  {
+    "id": "LINK_184",
+    "category": "LINK",
+    "cat": "전치사",
+    "word_count": 15,
+    "diff": "normal",
+    "sentence": "_______ its proven track record, the consultancy was awarded the government contract.",
+    "choices": [
+      "(A) Although",
+      "(B) Because",
+      "(C) Given",
+      "(D) Since"
+    ],
+    "answer": 2,
+    "answer_word": "Given",
+    "explanation_kr": "빈칸 뒤 명사구 → 전치사! 근거 → given = '~을 고려하면'!",
+    "explanation": "명사구 앞 → 전치사. 근거 의미 → given.",
+    "kr": "검증된 실적을 고려하면, 컨설팅 회사는 정부 계약을 받았다.",
+    "expressions": [
+      {
+        "expr": "Given + 명사구",
+        "meaning": "~을 고려하면 (전치사)"
+      },
+      {
+        "expr": "given its track record",
+        "meaning": "실적/이력을 근거로!"
+      }
+    ]
+  },
+  {
+    "id": "LINK_185",
+    "category": "LINK",
+    "cat": "전치사",
+    "word_count": 16,
+    "diff": "normal",
+    "sentence": "The safety inspector approved the facility _______ a number of minor issues that were quickly resolved.",
+    "choices": [
+      "(A) because",
+      "(B) in spite of",
+      "(C) however",
+      "(D) since"
+    ],
+    "answer": 1,
+    "answer_word": "in spite of",
+    "explanation_kr": "빈칸 뒤 명사구 → 전치사! 양보 → in spite of = '~에도 불구하고'!",
+    "explanation": "명사구 앞 → 전치사. 양보 의미 → in spite of.",
+    "kr": "신속하게 해결된 여러 가지 사소한 문제들에도 불구하고, 안전 검사관은 시설을 승인했다.",
+    "expressions": [
+      {
+        "expr": "in spite of + 명사구",
+        "meaning": "~에도 불구하고 (전치사)"
+      },
+      {
+        "expr": "despite = in spite of",
+        "meaning": "완전히 동의어!"
+      }
+    ]
+  },
+  {
+    "id": "LINK_186",
+    "category": "LINK",
+    "cat": "전치사",
+    "word_count": 16,
+    "diff": "normal",
+    "sentence": "The sustainability report was prepared _______ international environmental disclosure standards.",
+    "choices": [
+      "(A) although",
+      "(B) however",
+      "(C) in accordance with",
+      "(D) whereas"
+    ],
+    "answer": 2,
+    "answer_word": "in accordance with",
+    "explanation_kr": "빈칸 뒤 명사구 → 전치사! 준수 → in accordance with = '~에 따라서'!",
+    "explanation": "명사구 앞 → 전치사. 준수 의미 → in accordance with.",
+    "kr": "지속가능성 보고서는 국제 환경 공시 기준에 따라서 작성되었다.",
+    "expressions": [
+      {
+        "expr": "in accordance with + 명사구",
+        "meaning": "~에 따라서 (준수 전치사)"
+      },
+      {
+        "expr": "보고서 작성 기준",
+        "meaning": "in accordance with standards/guidelines/regulations!"
+      }
+    ]
+  },
+  {
+    "id": "LINK_187",
+    "category": "LINK",
+    "cat": "전치사",
+    "word_count": 15,
+    "diff": "normal",
+    "sentence": "The merger was approved by regulators _______ some conditions related to market competition.",
+    "choices": [
+      "(A) although",
+      "(B) subject to",
+      "(C) however",
+      "(D) whereas"
+    ],
+    "answer": 1,
+    "answer_word": "subject to",
+    "explanation_kr": "빈칸 뒤 명사구 → 전치사! 조건 → subject to = '~을 조건으로'!",
+    "explanation": "명사구 앞 → 전치사. 조건 의미 → subject to.",
+    "kr": "시장 경쟁과 관련된 몇 가지 조건을 조건으로 규제 기관들이 합병을 승인했다.",
+    "expressions": [
+      {
+        "expr": "subject to + 명사구",
+        "meaning": "~을 조건으로, ~에 따라 (전치사)"
+      },
+      {
+        "expr": "subject to change/approval/conditions",
+        "meaning": "조건부 승인/변경 가능!"
+      }
+    ]
+  },
+  {
+    "id": "LINK_188",
+    "category": "LINK",
+    "cat": "전치사",
+    "word_count": 15,
+    "diff": "normal",
+    "sentence": "The new vaccine was approved _______ expedited regulatory review procedures.",
+    "choices": [
+      "(A) although",
+      "(B) however",
+      "(C) through",
+      "(D) whereas"
+    ],
+    "answer": 2,
+    "answer_word": "through",
+    "explanation_kr": "빈칸 뒤 명사구 → 전치사! 수단 → through = '~을 통해'!",
+    "explanation": "명사구 앞 → 전치사. 수단 의미 → through.",
+    "kr": "새로운 백신은 신속화된 규제 검토 절차를 통해 승인되었다.",
+    "expressions": [
+      {
+        "expr": "through + 명사구",
+        "meaning": "~을 통해 (수단 전치사)"
+      },
+      {
+        "expr": "through expedited procedures",
+        "meaning": "신속 절차를 통한!"
+      }
+    ]
+  },
+  {
+    "id": "LINK_189",
+    "category": "LINK",
+    "cat": "전치사",
+    "word_count": 16,
+    "diff": "normal",
+    "sentence": "The annual performance review will be conducted _______ the end of the third quarter.",
+    "choices": [
+      "(A) although",
+      "(B) prior to",
+      "(C) however",
+      "(D) whereas"
+    ],
+    "answer": 1,
+    "answer_word": "prior to",
+    "explanation_kr": "빈칸 뒤 명사구 → 전치사! 시간(~전) 격식 → prior to = '~에 앞서'!",
+    "explanation": "명사구 앞 → 전치사. 격식 시간 → prior to.",
+    "kr": "연례 성과 검토는 3분기 말에 앞서 실시될 것이다.",
+    "expressions": [
+      {
+        "expr": "prior to + 명사구",
+        "meaning": "~에 앞서 (격식 시간 전치사)"
+      },
+      {
+        "expr": "prior to vs before",
+        "meaning": "prior to가 더 격식적!"
+      }
+    ]
+  },
+  {
+    "id": "LINK_190",
+    "category": "LINK",
+    "cat": "전치사",
+    "word_count": 16,
+    "diff": "normal",
+    "sentence": "_______ the increased operating costs, the company managed to maintain its profit margins.",
+    "choices": [
+      "(A) Although",
+      "(B) Despite",
+      "(C) Because",
+      "(D) Since"
+    ],
+    "answer": 1,
+    "answer_word": "Despite",
+    "explanation_kr": "빈칸 뒤 명사구(the increased operating costs) → 전치사! 양보 → despite!",
+    "explanation": "명사구 앞 → 전치사. 양보 의미 → despite.",
+    "kr": "증가한 운영 비용에도 불구하고, 회사는 수익 마진을 유지했다.",
+    "expressions": [
+      {
+        "expr": "Despite + 명사구",
+        "meaning": "~에도 불구하고 (전치사)"
+      },
+      {
+        "expr": "TOEIC 1위 함정",
+        "meaning": "despite + 명사구 vs although + S+V!"
+      }
+    ]
+  },
+  {
+    "id": "LINK_191",
+    "category": "LINK",
+    "cat": "전치사",
+    "word_count": 16,
+    "diff": "normal",
+    "sentence": "The annual conference will be held _______ the regional offices, connecting employees from all locations.",
+    "choices": [
+      "(A) although",
+      "(B) across",
+      "(C) however",
+      "(D) whereas"
+    ],
+    "answer": 1,
+    "answer_word": "across",
+    "explanation_kr": "빈칸 뒤 명사구 → 전치사! 범위 전체 → across = '~전반에 걸쳐'!",
+    "explanation": "명사구 앞 → 전치사. 범위 전체 의미 → across.",
+    "kr": "모든 위치의 직원들을 연결하면서, 연례 컨퍼런스는 지역 사무소 전반에 걸쳐 개최될 것이다.",
+    "expressions": [
+      {
+        "expr": "across + 명사구",
+        "meaning": "~전반에 걸쳐 (범위 전치사)"
+      },
+      {
+        "expr": "across all locations/offices",
+        "meaning": "전체 범위!"
+      }
+    ]
+  },
+  {
+    "id": "LINK_192",
+    "category": "LINK",
+    "cat": "전치사",
+    "word_count": 15,
+    "diff": "normal",
+    "sentence": "The financial results varied considerably _______ the different regional markets.",
+    "choices": [
+      "(A) although",
+      "(B) across",
+      "(C) however",
+      "(D) whereas"
+    ],
+    "answer": 1,
+    "answer_word": "across",
+    "explanation_kr": "빈칸 뒤 명사구 → 전치사! 범위 전체 → across = '~전반에 걸쳐'!",
+    "explanation": "명사구 앞 → 전치사. 범위 전체 의미 → across.",
+    "kr": "재무 결과는 다른 지역 시장들 전반에 걸쳐 상당히 달랐다.",
+    "expressions": [
+      {
+        "expr": "across different markets",
+        "meaning": "다른 시장들 전반에 걸쳐"
+      },
+      {
+        "expr": "vary across",
+        "meaning": "~전반에 걸쳐 다양하다!"
+      }
+    ]
+  },
+  {
+    "id": "LINK_193",
+    "category": "LINK",
+    "cat": "전치사",
+    "word_count": 16,
+    "diff": "normal",
+    "sentence": "The product launch exceeded expectations _______ a challenging economic environment and supply constraints.",
+    "choices": [
+      "(A) because",
+      "(B) despite",
+      "(C) since",
+      "(D) whereas"
+    ],
+    "answer": 1,
+    "answer_word": "despite",
+    "explanation_kr": "빈칸 뒤 명사구 → 전치사! 양보 → despite = '~에도 불구하고'!",
+    "explanation": "명사구 앞 → 전치사. 양보 의미 → despite.",
+    "kr": "어려운 경제 환경과 공급 제약에도 불구하고, 제품 출시는 기대를 초과했다.",
+    "expressions": [
+      {
+        "expr": "despite + 명사구",
+        "meaning": "~에도 불구하고 (전치사)"
+      },
+      {
+        "expr": "despite + 복합 명사구",
+        "meaning": "despite A and B도 가능!"
+      }
+    ]
+  },
+  {
+    "id": "LINK_194",
+    "category": "LINK",
+    "cat": "전치사",
+    "word_count": 15,
+    "diff": "normal",
+    "sentence": "The assistant was promoted _______ the director's personal recommendation.",
+    "choices": [
+      "(A) although",
+      "(B) based on",
+      "(C) however",
+      "(D) whereas"
+    ],
+    "answer": 1,
+    "answer_word": "based on",
+    "explanation_kr": "빈칸 뒤 명사구 → 전치사! 근거 → based on = '~을 기준으로'!",
+    "explanation": "명사구 앞 → 전치사. 근거 의미 → based on.",
+    "kr": "이사의 개인 추천을 기준으로 어시스턴트가 승진되었다.",
+    "expressions": [
+      {
+        "expr": "based on + 명사구",
+        "meaning": "~을 기준으로 (근거 전치사)"
+      },
+      {
+        "expr": "based on vs according to",
+        "meaning": "based on = 근거, according to = 출처/권위!"
+      }
+    ]
+  },
+  {
+    "id": "LINK_195",
+    "category": "LINK",
+    "cat": "전치사",
+    "word_count": 15,
+    "diff": "normal",
+    "sentence": "The board reached a unanimous decision _______ considerable debate among members.",
+    "choices": [
+      "(A) because",
+      "(B) despite",
+      "(C) since",
+      "(D) since"
+    ],
+    "answer": 1,
+    "answer_word": "despite",
+    "explanation_kr": "빈칸 뒤 명사구 → 전치사! 양보 → despite = '~에도 불구하고'!",
+    "explanation": "명사구 앞 → 전치사. 양보 의미 → despite.",
+    "kr": "구성원들 사이의 상당한 토론에도 불구하고, 이사회는 만장일치 결정에 도달했다.",
+    "expressions": [
+      {
+        "expr": "despite + 명사구",
+        "meaning": "~에도 불구하고 (전치사)"
+      },
+      {
+        "expr": "despite debate/opposition/challenges",
+        "meaning": "반대/도전 양보!"
+      }
+    ]
+  },
+  {
+    "id": "LINK_196",
+    "category": "LINK",
+    "cat": "전치사",
+    "word_count": 16,
+    "diff": "normal",
+    "sentence": "The marketing campaign succeeded _______ its relatively small budget.",
+    "choices": [
+      "(A) although",
+      "(B) in spite of",
+      "(C) however",
+      "(D) since"
+    ],
+    "answer": 1,
+    "answer_word": "in spite of",
+    "explanation_kr": "빈칸 뒤 명사구 → 전치사! 양보 → in spite of = '~에도 불구하고'!",
+    "explanation": "명사구 앞 → 전치사. 양보 의미 → in spite of.",
+    "kr": "비교적 적은 예산에도 불구하고, 마케팅 캠페인은 성공했다.",
+    "expressions": [
+      {
+        "expr": "in spite of + 명사구",
+        "meaning": "~에도 불구하고 (전치사)"
+      },
+      {
+        "expr": "despite = in spite of",
+        "meaning": "완전히 동의어!"
+      }
+    ]
+  },
+  {
+    "id": "LINK_197",
+    "category": "LINK",
+    "cat": "전치사",
+    "word_count": 15,
+    "diff": "normal",
+    "sentence": "The medication must be stored _______ direct sunlight and moisture.",
+    "choices": [
+      "(A) although",
+      "(B) away from",
+      "(C) however",
+      "(D) whereas"
+    ],
+    "answer": 1,
+    "answer_word": "away from",
+    "explanation_kr": "away from = '~에서 멀리, ~을 피하여' 관용 전치사구!",
+    "explanation": "관용 전치사구 → away from.",
+    "kr": "약물은 직사광선과 습기에서 멀리 보관되어야 한다.",
+    "expressions": [
+      {
+        "expr": "away from + 명사구",
+        "meaning": "~에서 멀리, ~을 피하여"
+      },
+      {
+        "expr": "store/keep + away from",
+        "meaning": "의약품 보관 지침에 자주!"
+      }
+    ]
+  },
+  {
+    "id": "LINK_198",
+    "category": "LINK",
+    "cat": "전치사",
+    "word_count": 16,
+    "diff": "normal",
+    "sentence": "The management team introduced several key initiatives _______ employee wellbeing.",
+    "choices": [
+      "(A) although",
+      "(B) aimed at",
+      "(C) however",
+      "(D) whereas"
+    ],
+    "answer": 1,
+    "answer_word": "aimed at",
+    "explanation_kr": "aimed at = '~을 목표로 한' 관용 전치사구!",
+    "explanation": "관용 전치사구 → aimed at.",
+    "kr": "경영진은 직원 웰빙을 목표로 한 여러 핵심 계획을 도입했다.",
+    "expressions": [
+      {
+        "expr": "aimed at + 명사/동명사",
+        "meaning": "~을 목표로 한"
+      },
+      {
+        "expr": "aimed at improving/reducing",
+        "meaning": "목표 동명사구와 자주!"
+      }
+    ]
+  },
+  {
+    "id": "LINK_199",
+    "category": "LINK",
+    "cat": "전치사",
+    "word_count": 15,
+    "diff": "normal",
+    "sentence": "The contract terms remain unchanged _______ a formal written agreement by both parties.",
+    "choices": [
+      "(A) although",
+      "(B) absent",
+      "(C) however",
+      "(D) whereas"
+    ],
+    "answer": 1,
+    "answer_word": "absent",
+    "explanation_kr": "absent = '~이 없으면, ~이 없는 상태에서' 격식 전치사!",
+    "explanation": "명사구 앞 → 전치사. 부재 의미 → absent.",
+    "kr": "양 당사자의 공식적인 서면 합의가 없으면 계약 조건은 변경되지 않은 채로 유지된다.",
+    "expressions": [
+      {
+        "expr": "absent + 명사구",
+        "meaning": "~이 없으면 (격식 전치사)"
+      },
+      {
+        "expr": "absent a formal agreement",
+        "meaning": "법률 문서에서 자주!"
+      }
+    ]
+  },
+  {
+    "id": "LINK_200",
+    "category": "LINK",
+    "cat": "전치사",
+    "word_count": 16,
+    "diff": "normal",
+    "sentence": "The company's strong Q3 results were achieved _______ adverse market conditions.",
+    "choices": [
+      "(A) because",
+      "(B) despite",
+      "(C) since",
+      "(D) whereas"
+    ],
+    "answer": 1,
+    "answer_word": "despite",
+    "explanation_kr": "빈칸 뒤 명사구 → 전치사! 양보 → despite = '~에도 불구하고'!",
+    "explanation": "명사구 앞 → 전치사. 양보 의미 → despite.",
+    "kr": "불리한 시장 상황에도 불구하고 회사의 강력한 3분기 결과가 달성되었다.",
+    "expressions": [
+      {
+        "expr": "despite + 명사구",
+        "meaning": "~에도 불구하고"
+      },
+      {
+        "expr": "despite adverse conditions",
+        "meaning": "불리한 조건에도!"
+      }
+    ]
+  },
+  {
+    "id": "LINK_201",
+    "category": "LINK",
+    "cat": "전치사",
+    "word_count": 15,
+    "diff": "normal",
+    "sentence": "The firm continued to invest in R&D _______ short-term profitability.",
+    "choices": [
+      "(A) although",
+      "(B) at the expense of",
+      "(C) however",
+      "(D) whereas"
+    ],
+    "answer": 1,
+    "answer_word": "at the expense of",
+    "explanation_kr": "빈칸 뒤 명사구 → 전치사! 희생 → at the expense of = '~을 희생하여'!",
+    "explanation": "명사구 앞 → 전치사. 희생 의미 → at the expense of.",
+    "kr": "회사는 단기 수익성을 희생하여 R&D에 계속 투자했다.",
+    "expressions": [
+      {
+        "expr": "at the expense of + 명사구",
+        "meaning": "~을 희생하여"
+      },
+      {
+        "expr": "at the expense of vs at the cost of",
+        "meaning": "둘 다 비슷한 의미!"
+      }
+    ]
+  },
+  {
+    "id": "LINK_202",
+    "category": "LINK",
+    "cat": "전치사",
+    "word_count": 16,
+    "diff": "normal",
+    "sentence": "The proposal was rejected _______ its innovative approach and projected long-term benefits.",
+    "choices": [
+      "(A) because",
+      "(B) despite",
+      "(C) since",
+      "(D) as"
+    ],
+    "answer": 1,
+    "answer_word": "despite",
+    "explanation_kr": "빈칸 뒤 명사구 → 전치사! 양보 → despite! 혁신적 접근에도 거부당했다!",
+    "explanation": "명사구 앞 → 전치사. 양보 의미 → despite.",
+    "kr": "혁신적인 접근 방식과 예상되는 장기적 이점에도 불구하고 제안이 거부되었다.",
+    "expressions": [
+      {
+        "expr": "despite + 명사구",
+        "meaning": "~에도 불구하고"
+      },
+      {
+        "expr": "despite its advantages",
+        "meaning": "장점에도 불구하고 거부!"
+      }
+    ]
+  },
+  {
+    "id": "LINK_203",
+    "category": "LINK",
+    "cat": "전치사",
+    "word_count": 16,
+    "diff": "normal",
+    "sentence": "The software update will be rolled out _______ all users by the end of the week.",
+    "choices": [
+      "(A) although",
+      "(B) to",
+      "(C) however",
+      "(D) whereas"
+    ],
+    "answer": 1,
+    "answer_word": "to",
+    "explanation_kr": "roll out to = '~에게 배포하다' 관용 전치사구!",
+    "explanation": "관용 동사구 → roll out to.",
+    "kr": "소프트웨어 업데이트는 이번 주 말까지 모든 사용자에게 배포될 것이다.",
+    "expressions": [
+      {
+        "expr": "roll out to + 명사구",
+        "meaning": "~에게 배포하다"
+      },
+      {
+        "expr": "roll out 패턴",
+        "meaning": "be rolled out to all users/customers!"
+      }
+    ]
+  },
+  {
+    "id": "LINK_204",
+    "category": "LINK",
+    "cat": "전치사",
+    "word_count": 16,
+    "diff": "normal",
+    "sentence": "The board approved the expansion plan _______ the unanimous recommendation of the finance committee.",
+    "choices": [
+      "(A) although",
+      "(B) following",
+      "(C) however",
+      "(D) whereas"
+    ],
+    "answer": 1,
+    "answer_word": "following",
+    "explanation_kr": "빈칸 뒤 명사구 → 전치사! 시간 순서(~후) → following = '~에 뒤이어'!",
+    "explanation": "명사구 앞 → 전치사. 순서 의미 → following.",
+    "kr": "재무 위원회의 만장일치 추천에 뒤이어 이사회는 확장 계획을 승인했다.",
+    "expressions": [
+      {
+        "expr": "following + 명사구",
+        "meaning": "~에 뒤이어 (전치사)"
+      },
+      {
+        "expr": "following the recommendation",
+        "meaning": "추천/승인 후!"
+      }
+    ]
+  },
+  {
+    "id": "LINK_205",
+    "category": "LINK",
+    "cat": "전치사",
+    "word_count": 15,
+    "diff": "normal",
+    "sentence": "The charity distributed medical supplies _______ the affected communities.",
+    "choices": [
+      "(A) although",
+      "(B) throughout",
+      "(C) however",
+      "(D) whereas"
+    ],
+    "answer": 1,
+    "answer_word": "throughout",
+    "explanation_kr": "빈칸 뒤 명사구 → 전치사! 전체 범위 → throughout = '~전역에 걸쳐'!",
+    "explanation": "명사구 앞 → 전치사. 전체 범위 의미 → throughout.",
+    "kr": "자선단체는 영향받은 지역 사회 전역에 걸쳐 의료 용품을 배포했다.",
+    "expressions": [
+      {
+        "expr": "throughout + 명사구",
+        "meaning": "~전역에 걸쳐 (전치사)"
+      },
+      {
+        "expr": "throughout vs across",
+        "meaning": "둘 다 전체 범위! throughout = 기간+공간 모두!"
+      }
+    ]
+  },
+  {
+    "id": "LINK_206",
+    "category": "LINK",
+    "cat": "접속사",
+    "word_count": 16,
+    "diff": "normal",
+    "sentence": "_______ the pharmaceutical company invested heavily in clinical trials, the drug failed to secure regulatory approval.",
+    "choices": [
+      "(A) Due to",
+      "(B) Even though",
+      "(C) However",
+      "(D) In spite of"
+    ],
+    "answer": 1,
+    "answer_word": "Even though",
+    "explanation_kr": "빈칸 뒤 절(S+V) → 접속사! 강한 양보 → even though = '비록~임에도 불구하고'! despite/in spite of는 명사구 앞에!",
+    "explanation": "절(S+V) 앞 → 접속사. 강한 양보 → even though.",
+    "kr": "비록 제약 회사가 임상 시험에 많은 투자를 했음에도 불구하고, 약물은 규제 승인을 확보하는 데 실패했다.",
+    "expressions": [
+      {
+        "expr": "Even though + S+V",
+        "meaning": "비록 ~임에도 (강한 양보 접속사)"
+      },
+      {
+        "expr": "even though vs despite",
+        "meaning": "even though + S+V / despite + 명사구!"
+      }
+    ]
+  },
+  {
+    "id": "LINK_207",
+    "category": "LINK",
+    "cat": "접속사",
+    "word_count": 16,
+    "diff": "normal",
+    "sentence": "The AI governance framework will be updated annually _______ significant technological advances require more frequent revisions.",
+    "choices": [
+      "(A) despite",
+      "(B) unless",
+      "(C) however",
+      "(D) due to"
+    ],
+    "answer": 1,
+    "answer_word": "unless",
+    "explanation_kr": "빈칸 뒤 절(S+V) → 접속사! 조건(부정) → unless = '~하지 않는다면'!",
+    "explanation": "절(S+V) 앞 → 접속사. 부정 조건 → unless.",
+    "kr": "상당한 기술 발전이 더 자주 수정을 요구하지 않는 한 AI 거버넌스 프레임워크는 매년 업데이트될 것이다.",
+    "expressions": [
+      {
+        "expr": "unless + S+V",
+        "meaning": "~하지 않는다면 (조건 접속사)"
+      },
+      {
+        "expr": "unless의 핵심",
+        "meaning": "unless에는 부정어 쓰지 않기!"
+      }
+    ]
+  },
+  {
+    "id": "LINK_208",
+    "category": "LINK",
+    "cat": "접속사",
+    "word_count": 16,
+    "diff": "normal",
+    "sentence": "The startup outperformed established rivals _______ it had significantly fewer resources and less brand recognition.",
+    "choices": [
+      "(A) due to",
+      "(B) although",
+      "(C) however",
+      "(D) in spite of"
+    ],
+    "answer": 1,
+    "answer_word": "although",
+    "explanation_kr": "빈칸 뒤 절(S+V) → 접속사! 양보 → although = '비록~이지만'! despite/in spite of는 명사구 앞에!",
+    "explanation": "절(S+V) 앞 → 접속사. 양보 의미 → although.",
+    "kr": "비록 훨씬 더 적은 자원과 브랜드 인지도를 가졌지만, 스타트업은 기성 경쟁자들을 능가했다.",
+    "expressions": [
+      {
+        "expr": "although + S+V",
+        "meaning": "비록 ~이지만 (양보 접속사)"
+      },
+      {
+        "expr": "although vs despite",
+        "meaning": "although + S+V / despite + 명사구!"
+      }
+    ]
+  },
+  {
+    "id": "LINK_209",
+    "category": "LINK",
+    "cat": "접속사",
+    "word_count": 16,
+    "diff": "normal",
+    "sentence": "The clinical trial will be extended _______ the initial results confirm the drug's safety profile.",
+    "choices": [
+      "(A) despite",
+      "(B) once",
+      "(C) however",
+      "(D) due to"
+    ],
+    "answer": 1,
+    "answer_word": "once",
+    "explanation_kr": "빈칸 뒤 절(S+V) → 접속사! 시간 순서(완료 후) → once = '일단 ~하면'!",
+    "explanation": "절(S+V) 앞 → 접속사. 시간 순서 → once.",
+    "kr": "초기 결과가 약물의 안전성 프로필을 확인하면, 임상 시험이 확대될 것이다.",
+    "expressions": [
+      {
+        "expr": "once + S+V",
+        "meaning": "일단 ~하면 (시간 접속사)"
+      },
+      {
+        "expr": "once = as soon as",
+        "meaning": "조건 완료 후 다음 단계!"
+      }
+    ]
+  },
+  {
+    "id": "LINK_210",
+    "category": "LINK",
+    "cat": "접속사",
+    "word_count": 17,
+    "diff": "normal",
+    "sentence": "The government will provide subsidies to clean energy companies _______ they meet specific emissions reduction targets.",
+    "choices": [
+      "(A) despite",
+      "(B) provided that",
+      "(C) however",
+      "(D) due to"
+    ],
+    "answer": 1,
+    "answer_word": "provided that",
+    "explanation_kr": "빈칸 뒤 절(S+V) → 접속사! 조건 → provided that = '~하는 조건으로'!",
+    "explanation": "절(S+V) 앞 → 접속사. 조건 의미 → provided that.",
+    "kr": "특정 배출 감소 목표를 달성하는 조건으로 정부는 청정에너지 회사들에게 보조금을 제공할 것이다.",
+    "expressions": [
+      {
+        "expr": "provided that + S+V",
+        "meaning": "~하는 조건으로 (조건 접속사)"
+      },
+      {
+        "expr": "provided that = on the condition that",
+        "meaning": "공식적인 조건 접속사!"
+      }
+    ]
+  },
+  {
+    "id": "LINK_211",
+    "category": "LINK",
+    "cat": "접속사",
+    "word_count": 16,
+    "diff": "normal",
+    "sentence": "_______ the company increased its headcount by twenty percent, overall productivity per employee declined.",
+    "choices": [
+      "(A) Due to",
+      "(B) Even though",
+      "(C) However",
+      "(D) In spite of"
+    ],
+    "answer": 1,
+    "answer_word": "Even though",
+    "explanation_kr": "빈칸 뒤 절(S+V) → 접속사! 강한 양보 → even though! 인원 증가 → 그럼에도 생산성 하락!",
+    "explanation": "절(S+V) 앞 → 접속사. 강한 양보 → even though.",
+    "kr": "비록 회사가 인원을 20% 늘렸음에도 불구하고, 직원당 전반적인 생산성은 하락했다.",
+    "expressions": [
+      {
+        "expr": "Even though + S+V",
+        "meaning": "비록 ~임에도 (강한 양보)"
+      },
+      {
+        "expr": "강조 양보",
+        "meaning": "even though > although in strength!"
+      }
+    ]
+  },
+  {
+    "id": "LINK_212",
+    "category": "LINK",
+    "cat": "접속사",
+    "word_count": 16,
+    "diff": "normal",
+    "sentence": "The CEO will finalize the acquisition terms _______ the due diligence process has been completed satisfactorily.",
+    "choices": [
+      "(A) despite",
+      "(B) once",
+      "(C) however",
+      "(D) due to"
+    ],
+    "answer": 1,
+    "answer_word": "once",
+    "explanation_kr": "빈칸 뒤 절(S+V) → 접속사! 시간(완료 후 즉시) → once = '일단 ~하면'!",
+    "explanation": "절(S+V) 앞 → 접속사. 시간 순서 → once.",
+    "kr": "실사 프로세스가 만족스럽게 완료되면, CEO는 인수 조건을 최종 확정할 것이다.",
+    "expressions": [
+      {
+        "expr": "once + S+V",
+        "meaning": "일단 ~하면 (시간 접속사)"
+      },
+      {
+        "expr": "once the process is completed",
+        "meaning": "프로세스 완료 후!"
+      }
+    ]
+  },
+  {
+    "id": "LINK_213",
+    "category": "LINK",
+    "cat": "접속사",
+    "word_count": 16,
+    "diff": "normal",
+    "sentence": "The smartphone market leader retained its position _______ several competitors launched aggressive promotional campaigns.",
+    "choices": [
+      "(A) due to",
+      "(B) while",
+      "(C) however",
+      "(D) in spite of"
+    ],
+    "answer": 1,
+    "answer_word": "while",
+    "explanation_kr": "빈칸 뒤 절(S+V) → 접속사! 대조 → while = '~인 반면에'! 시장 선두 유지 vs 경쟁자들의 공격적 캠페인!",
+    "explanation": "절(S+V) 앞 → 접속사. 대조 의미 → while.",
+    "kr": "여러 경쟁자들이 공격적인 프로모션 캠페인을 출시한 반면에, 스마트폰 시장 선두주자는 위치를 유지했다.",
+    "expressions": [
+      {
+        "expr": "while + S+V",
+        "meaning": "~인 반면에 (대조 접속사)"
+      },
+      {
+        "expr": "while의 대조 용법",
+        "meaning": "두 상황의 동시 대조!"
+      }
+    ]
+  },
+  {
+    "id": "LINK_214",
+    "category": "LINK",
+    "cat": "접속사",
+    "word_count": 17,
+    "diff": "normal",
+    "sentence": "Employees are entitled to additional compensation _______ they are required to work during designated public holidays.",
+    "choices": [
+      "(A) despite",
+      "(B) whenever",
+      "(C) however",
+      "(D) due to"
+    ],
+    "answer": 1,
+    "answer_word": "whenever",
+    "explanation_kr": "빈칸 뒤 절(S+V) → 접속사! 반복 조건 → whenever = '~할 때마다'!",
+    "explanation": "절(S+V) 앞 → 접속사. 반복 조건 → whenever.",
+    "kr": "지정된 공휴일에 근무하도록 요구될 때마다 직원들은 추가 보상을 받을 자격이 있다.",
+    "expressions": [
+      {
+        "expr": "whenever + S+V",
+        "meaning": "~할 때마다 (반복 시간 접속사)"
+      },
+      {
+        "expr": "whenever = every time that",
+        "meaning": "반복 조건!"
+      }
+    ]
+  },
+  {
+    "id": "LINK_215",
+    "category": "LINK",
+    "cat": "접속사",
+    "word_count": 16,
+    "diff": "normal",
+    "sentence": "The data analysis platform will alert users _______ an anomaly is detected in the financial transactions.",
+    "choices": [
+      "(A) despite",
+      "(B) as soon as",
+      "(C) however",
+      "(D) due to"
+    ],
+    "answer": 1,
+    "answer_word": "as soon as",
+    "explanation_kr": "빈칸 뒤 절(S+V) → 접속사! 즉시 시간 → as soon as = '~하자마자'!",
+    "explanation": "절(S+V) 앞 → 접속사. 즉시 시간 → as soon as.",
+    "kr": "금융 거래에서 이상이 감지되자마자 데이터 분석 플랫폼이 사용자들에게 경고할 것이다.",
+    "expressions": [
+      {
+        "expr": "as soon as + S+V",
+        "meaning": "~하자마자 (즉시 시간 접속사)"
+      },
+      {
+        "expr": "as soon as = once (강조)",
+        "meaning": "즉시성 강조!"
+      }
+    ]
+  },
+  {
+    "id": "LINK_216",
+    "category": "LINK",
+    "cat": "접속사",
+    "word_count": 17,
+    "diff": "normal",
+    "sentence": "The fintech startup will continue to operate in the European market _______ it can maintain full compliance with GDPR requirements.",
+    "choices": [
+      "(A) despite",
+      "(B) as long as",
+      "(C) however",
+      "(D) due to"
+    ],
+    "answer": 1,
+    "answer_word": "as long as",
+    "explanation_kr": "빈칸 뒤 절(S+V) → 접속사! 조건 한정 → as long as = '~하는 한'!",
+    "explanation": "절(S+V) 앞 → 접속사. 조건 한정 → as long as.",
+    "kr": "GDPR 요건을 완전히 준수할 수 있는 한 핀테크 스타트업은 유럽 시장에서 계속 운영할 것이다.",
+    "expressions": [
+      {
+        "expr": "as long as + S+V",
+        "meaning": "~하는 한 (조건 접속사)"
+      },
+      {
+        "expr": "as long as = provided that",
+        "meaning": "조건 충족 동안 계속!"
+      }
+    ]
+  },
+  {
+    "id": "LINK_217",
+    "category": "LINK",
+    "cat": "접속사",
+    "word_count": 17,
+    "diff": "normal",
+    "sentence": "The pharmaceutical company will delay the drug launch _______ independent safety reviewers confirm the long-term efficacy data.",
+    "choices": [
+      "(A) despite",
+      "(B) until",
+      "(C) however",
+      "(D) due to"
+    ],
+    "answer": 1,
+    "answer_word": "until",
+    "explanation_kr": "빈칸 뒤 절(S+V) → 접속사! 시간 한계 → until = '~할 때까지'!",
+    "explanation": "절(S+V) 앞 → 접속사. 시간 한계 → until.",
+    "kr": "독립적인 안전 심사관들이 장기 효능 데이터를 확인할 때까지 제약 회사는 약물 출시를 연기할 것이다.",
+    "expressions": [
+      {
+        "expr": "until + S+V",
+        "meaning": "~할 때까지 (시간 접속사)"
+      },
+      {
+        "expr": "delay + until",
+        "meaning": "특정 조건 충족까지 연기!"
+      }
+    ]
+  },
+  {
+    "id": "LINK_218",
+    "category": "LINK",
+    "cat": "접속사",
+    "word_count": 16,
+    "diff": "normal",
+    "sentence": "_______ the technology performed well in controlled trials, real-world results have been less impressive.",
+    "choices": [
+      "(A) Due to",
+      "(B) Although",
+      "(C) However",
+      "(D) In spite of"
+    ],
+    "answer": 1,
+    "answer_word": "Although",
+    "explanation_kr": "빈칸 뒤 절(S+V) → 접속사! 양보 → although = '비록~이지만'! 통제 실험 우수 → 실제 결과 부진!",
+    "explanation": "절(S+V) 앞 → 접속사. 양보 의미 → although.",
+    "kr": "비록 기술이 통제된 실험에서 잘 수행되었지만, 실제 결과는 덜 인상적이었다.",
+    "expressions": [
+      {
+        "expr": "Although + S+V",
+        "meaning": "비록 ~이지만 (양보 접속사)"
+      },
+      {
+        "expr": "although의 대조 패턴",
+        "meaning": "긍정 상황 → although → 부정 반전!"
+      }
+    ]
+  },
+  {
+    "id": "LINK_219",
+    "category": "LINK",
+    "cat": "접속사",
+    "word_count": 17,
+    "diff": "normal",
+    "sentence": "The health app will sync data automatically _______ users have granted permission to access their wearable devices.",
+    "choices": [
+      "(A) despite",
+      "(B) once",
+      "(C) however",
+      "(D) due to"
+    ],
+    "answer": 1,
+    "answer_word": "once",
+    "explanation_kr": "빈칸 뒤 절(S+V) → 접속사! 시간(완료 후) → once = '일단 ~하면'!",
+    "explanation": "절(S+V) 앞 → 접속사. 시간 순서 → once.",
+    "kr": "사용자들이 웨어러블 기기에 접근 권한을 부여하면, 건강 앱이 자동으로 데이터를 동기화할 것이다.",
+    "expressions": [
+      {
+        "expr": "once + S+V",
+        "meaning": "일단 ~하면 (시간 접속사)"
+      },
+      {
+        "expr": "once permission is granted",
+        "meaning": "권한 부여 후 자동 실행!"
+      }
+    ]
+  },
+  {
+    "id": "LINK_220",
+    "category": "LINK",
+    "cat": "접속사",
+    "word_count": 16,
+    "diff": "normal",
+    "sentence": "The supply chain disruptions continued _______ the company had implemented contingency measures months earlier.",
+    "choices": [
+      "(A) due to",
+      "(B) even though",
+      "(C) however",
+      "(D) in spite of"
+    ],
+    "answer": 1,
+    "answer_word": "even though",
+    "explanation_kr": "빈칸 뒤 절(S+V) → 접속사! 강한 양보 → even though! 비상 대책 있음에도 혼란 지속!",
+    "explanation": "절(S+V) 앞 → 접속사. 강한 양보 → even though.",
+    "kr": "비록 회사가 몇 달 전에 비상 조치를 시행했음에도 불구하고, 공급망 혼란은 지속되었다.",
+    "expressions": [
+      {
+        "expr": "even though + S+V",
+        "meaning": "비록 ~임에도 (강한 양보)"
+      },
+      {
+        "expr": "even though vs although",
+        "meaning": "even though가 더 강조적!"
+      }
+    ]
+  },
+  {
+    "id": "LINK_221",
+    "category": "LINK",
+    "cat": "접속사",
+    "word_count": 17,
+    "diff": "normal",
+    "sentence": "The software system will automatically flag any transaction _______ the amount exceeds the pre-approved limit.",
+    "choices": [
+      "(A) despite",
+      "(B) whenever",
+      "(C) however",
+      "(D) due to"
+    ],
+    "answer": 1,
+    "answer_word": "whenever",
+    "explanation_kr": "빈칸 뒤 절(S+V) → 접속사! 반복 조건 → whenever = '~할 때마다'!",
+    "explanation": "절(S+V) 앞 → 접속사. 반복 조건 → whenever.",
+    "kr": "금액이 사전 승인된 한도를 초과할 때마다 소프트웨어 시스템이 자동으로 해당 거래를 표시할 것이다.",
+    "expressions": [
+      {
+        "expr": "whenever + S+V",
+        "meaning": "~할 때마다 (반복 접속사)"
+      },
+      {
+        "expr": "flag + whenever",
+        "meaning": "조건 충족 시 자동 표시!"
+      }
+    ]
+  },
+  {
+    "id": "LINK_222",
+    "category": "LINK",
+    "cat": "접속사",
+    "word_count": 16,
+    "diff": "normal",
+    "sentence": "The investor will commit additional capital _______ the startup demonstrates a clear path to profitability.",
+    "choices": [
+      "(A) despite",
+      "(B) provided that",
+      "(C) however",
+      "(D) due to"
+    ],
+    "answer": 1,
+    "answer_word": "provided that",
+    "explanation_kr": "빈칸 뒤 절(S+V) → 접속사! 조건 → provided that = '~하는 조건으로'!",
+    "explanation": "절(S+V) 앞 → 접속사. 조건 의미 → provided that.",
+    "kr": "스타트업이 수익성으로 가는 명확한 경로를 보여주는 조건으로 투자자는 추가 자본을 투입할 것이다.",
+    "expressions": [
+      {
+        "expr": "provided that + S+V",
+        "meaning": "~하는 조건으로 (조건 접속사)"
+      },
+      {
+        "expr": "조건 접속사 패턴",
+        "meaning": "if/unless/as long as/provided that!"
+      }
+    ]
+  },
+  {
+    "id": "LINK_223",
+    "category": "LINK",
+    "cat": "접속부사",
+    "word_count": 16,
+    "diff": "normal",
+    "sentence": "The new platform reduced operational costs by thirty percent; _______, it significantly improved customer satisfaction scores.",
+    "choices": [
+      "(A) although",
+      "(B) furthermore",
+      "(C) due to",
+      "(D) despite"
+    ],
+    "answer": 1,
+    "answer_word": "furthermore",
+    "explanation_kr": "세미콜론 뒤 추가 접속부사! 비용 절감(성과1) + 고객 만족도 향상(성과2). furthermore = '더욱이' 추가 접속부사!",
+    "explanation": "세미콜론 뒤 → 접속부사. 추가 의미 → furthermore.",
+    "kr": "새로운 플랫폼은 운영 비용을 30% 줄였다; 더욱이, 고객 만족도 점수를 크게 향상시켰다.",
+    "expressions": [
+      {
+        "expr": "; furthermore,",
+        "meaning": "더욱이 (추가 접속부사)"
+      },
+      {
+        "expr": "추가 접속부사",
+        "meaning": "furthermore/moreover/additionally!"
+      }
+    ]
+  },
+  {
+    "id": "LINK_224",
+    "category": "LINK",
+    "cat": "접속부사",
+    "word_count": 16,
+    "diff": "normal",
+    "sentence": "The board approved the proposed acquisition. _______, it authorized a share buyback program worth two hundred million dollars.",
+    "choices": [
+      "(A) Although",
+      "(B) In addition",
+      "(C) Due to",
+      "(D) Despite"
+    ],
+    "answer": 1,
+    "answer_word": "In addition",
+    "explanation_kr": "앞 문장에 추가 정보! 인수 승인 + 자사주 매입(추가). In addition = '또한' 추가 접속부사!",
+    "explanation": "앞 문장에 추가 → 접속부사. 추가 의미 → in addition.",
+    "kr": "이사회는 제안된 인수를 승인했다. 또한, 2억 달러 규모의 자사주 매입 프로그램을 승인했다.",
+    "expressions": [
+      {
+        "expr": "In addition,",
+        "meaning": "또한 (추가 접속부사)"
+      },
+      {
+        "expr": "in addition vs in addition to",
+        "meaning": "in addition = 부사구, in addition to = 전치사!"
+      }
+    ]
+  },
+  {
+    "id": "LINK_225",
+    "category": "LINK",
+    "cat": "접속부사",
+    "word_count": 15,
+    "diff": "normal",
+    "sentence": "The fintech startup secured a record funding round. _______, it announced plans to expand into three new Asian markets.",
+    "choices": [
+      "(A) However",
+      "(B) Moreover",
+      "(C) Due to",
+      "(D) Although"
+    ],
+    "answer": 1,
+    "answer_word": "Moreover",
+    "explanation_kr": "앞 문장에 추가 정보! 기록적 펀딩(성과1) + 아시아 시장 확장(성과2). Moreover = '더욱이' 추가 접속부사!",
+    "explanation": "앞 문장에 추가 → 접속부사. 추가 의미 → moreover.",
+    "kr": "핀테크 스타트업은 기록적인 자금 조달 라운드를 확보했다. 더욱이, 세 개의 새로운 아시아 시장으로 확장할 계획을 발표했다.",
+    "expressions": [
+      {
+        "expr": "Moreover,",
+        "meaning": "더욱이 (추가 접속부사)"
+      },
+      {
+        "expr": "moreover vs furthermore",
+        "meaning": "둘 다 추가 접속부사로 완전히 동의어!"
+      }
+    ]
+  },
+  {
+    "id": "LINK_226",
+    "category": "LINK",
+    "cat": "전치사",
+    "word_count": 20,
+    "diff": "hard",
+    "sentence": "_______ its limited market share and relatively short operating history, the biotech startup secured a strategic investment from one of the world's largest pharmaceutical companies.",
+    "choices": [
+      "(A) Although",
+      "(B) Notwithstanding",
+      "(C) Because",
+      "(D) Since"
+    ],
+    "answer": 1,
+    "answer_word": "Notwithstanding",
+    "explanation_kr": "빈칸 뒤 명사구 → 전치사! 격식 양보 → notwithstanding = '~에도 불구하고' (despite의 격식체, 주로 법률/계약 문서)!",
+    "explanation": "명사구 앞 → 전치사. 격식 양보 → notwithstanding.",
+    "kr": "제한된 시장 점유율과 비교적 짧은 운영 이력에도 불구하고, 바이오테크 스타트업은 세계 최대 제약 회사 중 하나로부터 전략적 투자를 확보했다.",
+    "expressions": [
+      {
+        "expr": "Notwithstanding + 명사구",
+        "meaning": "~에도 불구하고 (격식 전치사)"
+      },
+      {
+        "expr": "notwithstanding의 뉘앙스",
+        "meaning": "despite보다 더 격식적! 법률/계약 문서!"
+      }
+    ]
+  },
+  {
+    "id": "LINK_227",
+    "category": "LINK",
+    "cat": "전치사",
+    "word_count": 20,
+    "diff": "hard",
+    "sentence": "The pharmaceutical firm restructured its pricing model _______ sustained pressure from governments, patient advocacy groups, and international health organizations over drug affordability.",
+    "choices": [
+      "(A) although",
+      "(B) following",
+      "(C) however",
+      "(D) whereas"
+    ],
+    "answer": 1,
+    "answer_word": "following",
+    "explanation_kr": "빈칸 뒤 명사구 → 전치사! 시간 순서(~후) → following = '~에 뒤이어'!",
+    "explanation": "명사구 앞 → 전치사. 순서 의미 → following.",
+    "kr": "약물 저렴성에 대한 정부, 환자 옹호 그룹 및 국제 보건 기관들의 지속적인 압력에 뒤이어 제약 회사는 가격 모델을 재구성했다.",
+    "expressions": [
+      {
+        "expr": "following + 명사구",
+        "meaning": "~에 뒤이어 (격식 전치사)"
+      },
+      {
+        "expr": "following sustained pressure",
+        "meaning": "지속적인 압력 후!"
+      }
+    ]
+  },
+  {
+    "id": "LINK_228",
+    "category": "LINK",
+    "cat": "전치사",
+    "word_count": 20,
+    "diff": "hard",
+    "sentence": "The international climate finance mechanism distributes resources _______ the demonstrated vulnerability of recipient nations to climate-related disasters rather than their historical carbon emissions.",
+    "choices": [
+      "(A) although",
+      "(B) based on",
+      "(C) however",
+      "(D) whereas"
+    ],
+    "answer": 1,
+    "answer_word": "based on",
+    "explanation_kr": "빈칸 뒤 명사구 → 전치사! 근거 → based on = '~을 기준으로'!",
+    "explanation": "명사구 앞 → 전치사. 근거 의미 → based on.",
+    "kr": "국제 기후 금융 메커니즘은 역사적 탄소 배출보다 기후 관련 재해에 대한 수혜국의 입증된 취약성을 기준으로 자원을 분배한다.",
+    "expressions": [
+      {
+        "expr": "based on + 명사구",
+        "meaning": "~을 기준으로 (근거 전치사)"
+      },
+      {
+        "expr": "distribute based on criteria",
+        "meaning": "기준에 따른 분배!"
+      }
+    ]
+  },
+  {
+    "id": "LINK_229",
+    "category": "LINK",
+    "cat": "전치사",
+    "word_count": 20,
+    "diff": "hard",
+    "sentence": "The AI safety board approved the frontier model's deployment _______ a number of strict conditions, including mandatory third-party audits and an incident reporting requirement.",
+    "choices": [
+      "(A) although",
+      "(B) subject to",
+      "(C) however",
+      "(D) whereas"
+    ],
+    "answer": 1,
+    "answer_word": "subject to",
+    "explanation_kr": "빈칸 뒤 명사구 → 전치사! 조건부 → subject to = '~을 조건으로'!",
+    "explanation": "명사구 앞 → 전치사. 조건 의미 → subject to.",
+    "kr": "의무적인 제3자 감사 및 사건 보고 요건을 포함한 여러 엄격한 조건을 조건으로 AI 안전 위원회는 최첨단 모델의 배포를 승인했다.",
+    "expressions": [
+      {
+        "expr": "subject to + 명사구",
+        "meaning": "~을 조건으로 (전치사)"
+      },
+      {
+        "expr": "subject to conditions/approval/change",
+        "meaning": "조건부 승인!"
+      }
+    ]
+  },
+  {
+    "id": "LINK_230",
+    "category": "LINK",
+    "cat": "전치사",
+    "word_count": 20,
+    "diff": "hard",
+    "sentence": "The longevity research consortium continues to prioritize basic science _______ the commercial pressures to translate discoveries into marketable products more rapidly.",
+    "choices": [
+      "(A) because",
+      "(B) despite",
+      "(C) since",
+      "(D) whereas"
+    ],
+    "answer": 1,
+    "answer_word": "despite",
+    "explanation_kr": "빈칸 뒤 명사구 → 전치사! 양보 → despite = '~에도 불구하고'!",
+    "explanation": "명사구 앞 → 전치사. 양보 의미 → despite.",
+    "kr": "발견을 더 빠르게 상업화 가능한 제품으로 전환하려는 상업적 압력에도 불구하고, 장수 연구 컨소시엄은 기초 과학을 계속 우선시한다.",
+    "expressions": [
+      {
+        "expr": "despite + 명사구",
+        "meaning": "~에도 불구하고 (전치사)"
+      },
+      {
+        "expr": "despite commercial pressures",
+        "meaning": "상업적 압력에도!"
+      }
+    ]
+  },
+  {
+    "id": "LINK_231",
+    "category": "LINK",
+    "cat": "전치사",
+    "word_count": 20,
+    "diff": "hard",
+    "sentence": "The biodiversity credit standard applies identical additionality requirements to all project types _______ their ecological complexity, geographic location, or cost of verification.",
+    "choices": [
+      "(A) although",
+      "(B) irrespective of",
+      "(C) however",
+      "(D) since"
+    ],
+    "answer": 1,
+    "answer_word": "irrespective of",
+    "explanation_kr": "빈칸 뒤 명사구 → 전치사! 무관 → irrespective of = '~에 상관없이' = regardless of!",
+    "explanation": "명사구 앞 → 전치사. 무관 의미 → irrespective of.",
+    "kr": "생태적 복잡성, 지리적 위치 또는 검증 비용에 상관없이 생물 다양성 크레딧 기준은 모든 프로젝트 유형에 동일한 추가성 요건을 적용한다.",
+    "expressions": [
+      {
+        "expr": "irrespective of + 명사구",
+        "meaning": "~에 상관없이 (전치사)"
+      },
+      {
+        "expr": "irrespective of = regardless of",
+        "meaning": "완전한 동의어!"
+      }
+    ]
+  },
+  {
+    "id": "LINK_232",
+    "category": "LINK",
+    "cat": "전치사",
+    "word_count": 20,
+    "diff": "hard",
+    "sentence": "The central bank's decision to raise interest rates by fifty basis points was made _______ widespread criticism from market participants who argued the move would stall economic recovery.",
+    "choices": [
+      "(A) because",
+      "(B) despite",
+      "(C) since",
+      "(D) whereas"
+    ],
+    "answer": 1,
+    "answer_word": "despite",
+    "explanation_kr": "빈칸 뒤 명사구 → 전치사! 양보 → despite = '~에도 불구하고'!",
+    "explanation": "명사구 앞 → 전치사. 양보 의미 → despite.",
+    "kr": "경제 회복을 둔화시킬 것이라고 주장하는 시장 참여자들의 광범위한 비판에도 불구하고, 중앙은행의 50bp 금리 인상 결정이 이루어졌다.",
+    "expressions": [
+      {
+        "expr": "despite + 명사구",
+        "meaning": "~에도 불구하고 (전치사)"
+      },
+      {
+        "expr": "despite widespread criticism",
+        "meaning": "광범위한 비판에도!"
+      }
+    ]
+  },
+  {
+    "id": "LINK_233",
+    "category": "LINK",
+    "cat": "전치사",
+    "word_count": 20,
+    "diff": "hard",
+    "sentence": "The longevity research institute maintained its position that epigenetic interventions are safe _______ emerging evidence suggesting that certain approaches may accelerate tumor development.",
+    "choices": [
+      "(A) because",
+      "(B) notwithstanding",
+      "(C) since",
+      "(D) whereas"
+    ],
+    "answer": 1,
+    "answer_word": "notwithstanding",
+    "explanation_kr": "빈칸 뒤 명사구 → 전치사! 격식 양보 → notwithstanding = '~에도 불구하고'!",
+    "explanation": "명사구 앞 → 전치사. 격식 양보 → notwithstanding.",
+    "kr": "특정 접근법이 종양 발달을 가속화할 수 있다는 신흥 증거에도 불구하고, 장수 연구소는 후성유전학적 개입이 안전하다는 입장을 유지했다.",
+    "expressions": [
+      {
+        "expr": "notwithstanding + 명사구",
+        "meaning": "~에도 불구하고 (격식)"
+      },
+      {
+        "expr": "notwithstanding evidence",
+        "meaning": "증거에도 불구하고!"
+      }
+    ]
+  },
+  {
+    "id": "LINK_234",
+    "category": "LINK",
+    "cat": "전치사",
+    "word_count": 20,
+    "diff": "hard",
+    "sentence": "The startup's extraordinary growth trajectory was achieved _______ a highly competitive market environment and the simultaneous entry of three well-funded rivals.",
+    "choices": [
+      "(A) because",
+      "(B) in spite of",
+      "(C) since",
+      "(D) whereas"
+    ],
+    "answer": 1,
+    "answer_word": "in spite of",
+    "explanation_kr": "빈칸 뒤 명사구 → 전치사! 양보 → in spite of = '~에도 불구하고'!",
+    "explanation": "명사구 앞 → 전치사. 양보 의미 → in spite of.",
+    "kr": "매우 경쟁적인 시장 환경과 충분한 자금을 가진 경쟁자 3명의 동시 진입에도 불구하고, 스타트업의 놀라운 성장 궤적이 달성되었다.",
+    "expressions": [
+      {
+        "expr": "in spite of + 명사구",
+        "meaning": "~에도 불구하고 (전치사)"
+      },
+      {
+        "expr": "in spite of = despite",
+        "meaning": "완전한 동의어!"
+      }
+    ]
+  },
+  {
+    "id": "LINK_235",
+    "category": "LINK",
+    "cat": "전치사",
+    "word_count": 20,
+    "diff": "hard",
+    "sentence": "The sustainability certification was issued _______ all documentation requirements being fully satisfied and the third-party audit confirming compliance with the relevant standards.",
+    "choices": [
+      "(A) although",
+      "(B) upon",
+      "(C) however",
+      "(D) whereas"
+    ],
+    "answer": 1,
+    "answer_word": "upon",
+    "explanation_kr": "빈칸 뒤 명사구/동명사구 → 전치사! 즉시성/완료 후 → upon = '~하자마자, ~을 바탕으로'!",
+    "explanation": "동명사구 앞 → 전치사. 즉시성/완료 → upon.",
+    "kr": "모든 문서 요건이 완전히 충족되고 제3자 감사가 관련 기준의 준수를 확인하자마자 지속가능성 인증이 발급되었다.",
+    "expressions": [
+      {
+        "expr": "upon + 동명사",
+        "meaning": "~하자마자, ~하면 (전치사)"
+      },
+      {
+        "expr": "upon + all requirements being met",
+        "meaning": "조건 충족 즉시!"
+      }
+    ]
+  },
+  {
+    "id": "LINK_236",
+    "category": "LINK",
+    "cat": "전치사",
+    "word_count": 20,
+    "diff": "hard",
+    "sentence": "The AI ethics committee revised its model deployment guidelines _______ an analysis of documented harms caused by similar systems in analogous sectors.",
+    "choices": [
+      "(A) although",
+      "(B) in light of",
+      "(C) however",
+      "(D) whereas"
+    ],
+    "answer": 1,
+    "answer_word": "in light of",
+    "explanation_kr": "빈칸 뒤 명사구 → 전치사! 근거/고려 → in light of = '~을 고려하면'!",
+    "explanation": "명사구 앞 → 전치사. 근거/고려 의미 → in light of.",
+    "kr": "유사 부문에서 유사한 시스템이 야기한 문서화된 피해에 대한 분석을 고려하여 AI 윤리 위원회는 모델 배포 지침을 수정했다.",
+    "expressions": [
+      {
+        "expr": "in light of + 명사구",
+        "meaning": "~을 고려하여 (전치사)"
+      },
+      {
+        "expr": "in light of = given = considering",
+        "meaning": "근거/상황 고려!"
+      }
+    ]
+  },
+  {
+    "id": "LINK_237",
+    "category": "LINK",
+    "cat": "전치사",
+    "word_count": 20,
+    "diff": "hard",
+    "sentence": "The gig economy platform expanded its social protection provisions _______ the persistent advocacy of labor unions and the threat of new statutory obligations.",
+    "choices": [
+      "(A) although",
+      "(B) following",
+      "(C) however",
+      "(D) whereas"
+    ],
+    "answer": 1,
+    "answer_word": "following",
+    "explanation_kr": "빈칸 뒤 명사구 → 전치사! 시간 순서(~후) → following = '~에 뒤이어'!",
+    "explanation": "명사구 앞 → 전치사. 순서 의미 → following.",
+    "kr": "노동 조합의 지속적인 옹호와 새로운 법적 의무의 위협에 뒤이어 긱 이코노미 플랫폼은 사회 보호 조항을 확대했다.",
+    "expressions": [
+      {
+        "expr": "following + 명사구",
+        "meaning": "~에 뒤이어 (전치사)"
+      },
+      {
+        "expr": "following advocacy/pressure",
+        "meaning": "옹호/압력 이후!"
+      }
+    ]
+  },
+  {
+    "id": "LINK_238",
+    "category": "LINK",
+    "cat": "전치사",
+    "word_count": 20,
+    "diff": "hard",
+    "sentence": "All research publications from the consortium must be reviewed and approved _______ submission to a journal to ensure compliance with data sharing agreements.",
+    "choices": [
+      "(A) before",
+      "(B) prior to",
+      "(C) although",
+      "(D) however"
+    ],
+    "answer": 1,
+    "answer_word": "prior to",
+    "explanation_kr": "빈칸 뒤 동명사구 → 전치사! 시간(~전) 격식 → prior to = '~에 앞서'! before도 가능하지만 prior to가 더 격식적!",
+    "explanation": "동명사구 앞 → 전치사. 격식 시간 → prior to.",
+    "kr": "데이터 공유 협약 준수를 보장하기 위해 컨소시엄의 모든 연구 출판물은 학술지에 제출하기에 앞서 검토 및 승인되어야 한다.",
+    "expressions": [
+      {
+        "expr": "prior to + 동명사",
+        "meaning": "~에 앞서 (격식 시간 전치사)"
+      },
+      {
+        "expr": "prior to submission",
+        "meaning": "제출에 앞서!"
+      }
+    ]
+  },
+  {
+    "id": "LINK_239",
+    "category": "LINK",
+    "cat": "전치사",
+    "word_count": 20,
+    "diff": "hard",
+    "sentence": "The carbon market regulator suspended the issuance of new credits _______ the completion of a comprehensive review of verification methodologies across all project categories.",
+    "choices": [
+      "(A) although",
+      "(B) pending",
+      "(C) however",
+      "(D) whereas"
+    ],
+    "answer": 1,
+    "answer_word": "pending",
+    "explanation_kr": "빈칸 뒤 명사구 → 전치사! 완료 대기 → pending = '~이 완료될 때까지, ~을 기다리는 동안'!",
+    "explanation": "명사구 앞 → 전치사. 대기 의미 → pending.",
+    "kr": "모든 프로젝트 범주에 걸쳐 검증 방법론에 대한 포괄적인 검토가 완료될 때까지 탄소 시장 규제 기관은 새로운 크레딧 발행을 중단했다.",
+    "expressions": [
+      {
+        "expr": "pending + 명사구",
+        "meaning": "~이 완료될 때까지 (전치사)"
+      },
+      {
+        "expr": "pending review/investigation/approval",
+        "meaning": "검토/조사/승인 대기 중!"
+      }
+    ]
+  },
+  {
+    "id": "LINK_240",
+    "category": "LINK",
+    "cat": "전치사",
+    "word_count": 20,
+    "diff": "hard",
+    "sentence": "The biosafety committee declined to approve the dual-use research proposal _______ the potentially catastrophic consequences of an accidental release of the engineered pathogen.",
+    "choices": [
+      "(A) although",
+      "(B) given",
+      "(C) however",
+      "(D) whereas"
+    ],
+    "answer": 1,
+    "answer_word": "given",
+    "explanation_kr": "빈칸 뒤 명사구 → 전치사! 근거/이유 → given = '~을 고려하면'!",
+    "explanation": "명사구 앞 → 전치사. 근거 의미 → given.",
+    "kr": "조작된 병원체의 우발적 방출의 잠재적으로 재앙적인 결과를 고려하여 생물 안전 위원회는 이중 사용 연구 제안을 승인하는 것을 거부했다.",
+    "expressions": [
+      {
+        "expr": "given + 명사구",
+        "meaning": "~을 고려하면 (전치사)"
+      },
+      {
+        "expr": "given the potential risks",
+        "meaning": "잠재적 위험을 고려하여!"
+      }
+    ]
+  },
+  {
+    "id": "LINK_241",
+    "category": "LINK",
+    "cat": "접속사",
+    "word_count": 20,
+    "diff": "hard",
+    "sentence": "The international biodiversity framework will remain in force _______ a replacement agreement with stronger enforcement mechanisms and universal participation has been formally ratified.",
+    "choices": [
+      "(A) despite",
+      "(B) until",
+      "(C) however",
+      "(D) due to"
+    ],
+    "answer": 1,
+    "answer_word": "until",
+    "explanation_kr": "빈칸 뒤 절(S+V) → 접속사! 시간 한계 → until = '~할 때까지'!",
+    "explanation": "절(S+V) 앞 → 접속사. 시간 한계 → until.",
+    "kr": "더 강력한 집행 메커니즘과 보편적 참여를 갖춘 대체 협약이 공식적으로 비준될 때까지 국제 생물 다양성 프레임워크는 유효하게 유지될 것이다.",
+    "expressions": [
+      {
+        "expr": "until + S+V",
+        "meaning": "~할 때까지 (시간 접속사)"
+      },
+      {
+        "expr": "remain in force until",
+        "meaning": "~할 때까지 유효!"
+      }
+    ]
+  },
+  {
+    "id": "LINK_242",
+    "category": "LINK",
+    "cat": "접속사",
+    "word_count": 20,
+    "diff": "hard",
+    "sentence": "The AI company will not release the next-generation model to the public _______ independent safety evaluators have confirmed that all catastrophic risk thresholds remain within acceptable parameters.",
+    "choices": [
+      "(A) despite",
+      "(B) unless",
+      "(C) however",
+      "(D) due to"
+    ],
+    "answer": 1,
+    "answer_word": "unless",
+    "explanation_kr": "빈칸 뒤 절(S+V) → 접속사! 조건(부정) → unless = '~하지 않는다면'!",
+    "explanation": "절(S+V) 앞 → 접속사. 부정 조건 → unless.",
+    "kr": "독립적인 안전 평가자들이 모든 재앙적 위험 임계값이 허용 가능한 매개변수 내에 있음을 확인하지 않는 한, AI 회사는 차세대 모델을 공개하지 않을 것이다.",
+    "expressions": [
+      {
+        "expr": "unless + S+V",
+        "meaning": "~하지 않는다면 (조건 접속사)"
+      },
+      {
+        "expr": "not release unless",
+        "meaning": "조건 미충족 시 출시 안 함!"
+      }
+    ]
+  },
+  {
+    "id": "LINK_243",
+    "category": "LINK",
+    "cat": "접속사",
+    "word_count": 20,
+    "diff": "hard",
+    "sentence": "The longevity biotech's cellular reprogramming therapy was rejected for expedited approval _______ preliminary trial data showed statistically significant improvements in healthspan biomarkers.",
+    "choices": [
+      "(A) due to",
+      "(B) even though",
+      "(C) however",
+      "(D) in spite of"
+    ],
+    "answer": 1,
+    "answer_word": "even though",
+    "explanation_kr": "빈칸 뒤 절(S+V) → 접속사! 강한 양보 → even though! 긍정 데이터에도 거부!",
+    "explanation": "절(S+V) 앞 → 접속사. 강한 양보 → even though.",
+    "kr": "비록 예비 임상 시험 데이터가 건강 수명 바이오마커에서 통계적으로 유의미한 개선을 보여줬음에도 불구하고, 장수 바이오테크의 세포 재프로그래밍 치료는 신속 승인에서 거부되었다.",
+    "expressions": [
+      {
+        "expr": "even though + S+V",
+        "meaning": "비록 ~임에도 (강한 양보)"
+      },
+      {
+        "expr": "even though data showed",
+        "meaning": "데이터에도 불구하고 거부!"
+      }
+    ]
+  },
+  {
+    "id": "LINK_244",
+    "category": "LINK",
+    "cat": "접속사",
+    "word_count": 20,
+    "diff": "hard",
+    "sentence": "The carbon credit market reform initiative will gain traction among institutional investors _______ a globally recognized standard for additionality verification is established and independently enforced.",
+    "choices": [
+      "(A) despite",
+      "(B) once",
+      "(C) however",
+      "(D) due to"
+    ],
+    "answer": 1,
+    "answer_word": "once",
+    "explanation_kr": "빈칸 뒤 절(S+V) → 접속사! 시간(완료 후) → once = '일단 ~하면'!",
+    "explanation": "절(S+V) 앞 → 접속사. 시간 순서 → once.",
+    "kr": "추가성 검증을 위한 전 세계적으로 인정받는 기준이 확립되고 독립적으로 시행되면, 탄소 크레딧 시장 개혁 계획은 기관 투자자들 사이에서 힘을 얻을 것이다.",
+    "expressions": [
+      {
+        "expr": "once + S+V",
+        "meaning": "일단 ~하면 (시간 접속사)"
+      },
+      {
+        "expr": "gain traction once",
+        "meaning": "기준 확립 후 탄력 얻음!"
+      }
+    ]
+  },
+  {
+    "id": "LINK_245",
+    "category": "LINK",
+    "cat": "접속사",
+    "word_count": 20,
+    "diff": "hard",
+    "sentence": "The biosecurity protocol mandates that all pathogen samples be immediately destroyed _______ a researcher's continued access to them serves a clearly documented scientific purpose.",
+    "choices": [
+      "(A) despite",
+      "(B) unless",
+      "(C) however",
+      "(D) due to"
+    ],
+    "answer": 1,
+    "answer_word": "unless",
+    "explanation_kr": "빈칸 뒤 절(S+V) → 접속사! 조건(부정) → unless = '~하지 않는다면'!",
+    "explanation": "절(S+V) 앞 → 접속사. 부정 조건 → unless.",
+    "kr": "연구자의 계속적인 접근이 명확하게 문서화된 과학적 목적에 기여하지 않는 한 생물 안보 프로토콜은 모든 병원체 샘플을 즉시 폐기하도록 의무화한다.",
+    "expressions": [
+      {
+        "expr": "unless + S+V",
+        "meaning": "~하지 않는다면 (조건 접속사)"
+      },
+      {
+        "expr": "be destroyed unless",
+        "meaning": "조건 미충족 시 폐기!"
+      }
+    ]
+  },
+  {
+    "id": "LINK_246",
+    "category": "LINK",
+    "cat": "접속사",
+    "word_count": 20,
+    "diff": "hard",
+    "sentence": "The fintech regulator will grant expedited review timelines to applicants _______ they can demonstrate that their product meaningfully addresses an underserved financial need.",
+    "choices": [
+      "(A) despite",
+      "(B) provided that",
+      "(C) however",
+      "(D) due to"
+    ],
+    "answer": 1,
+    "answer_word": "provided that",
+    "explanation_kr": "빈칸 뒤 절(S+V) → 접속사! 조건 → provided that = '~하는 조건으로'!",
+    "explanation": "절(S+V) 앞 → 접속사. 조건 의미 → provided that.",
+    "kr": "제품이 서비스가 부족한 금융 필요를 의미있게 해결한다는 것을 입증할 수 있는 조건으로 핀테크 규제 기관은 신청자들에게 신속 검토 일정을 부여할 것이다.",
+    "expressions": [
+      {
+        "expr": "provided that + S+V",
+        "meaning": "~하는 조건으로 (조건 접속사)"
+      },
+      {
+        "expr": "grant + provided that",
+        "meaning": "조건부 부여!"
+      }
+    ]
+  },
+  {
+    "id": "LINK_247",
+    "category": "LINK",
+    "cat": "접속사",
+    "word_count": 20,
+    "diff": "hard",
+    "sentence": "The circular economy initiative will be implemented across all manufacturing divisions _______ the pilot program achieves a minimum recycled materials recovery rate of sixty percent.",
+    "choices": [
+      "(A) despite",
+      "(B) once",
+      "(C) however",
+      "(D) due to"
+    ],
+    "answer": 1,
+    "answer_word": "once",
+    "explanation_kr": "빈칸 뒤 절(S+V) → 접속사! 시간(완료 후 조건) → once = '일단 ~하면'!",
+    "explanation": "절(S+V) 앞 → 접속사. 시간 순서 → once.",
+    "kr": "시범 프로그램이 60%의 최소 재활용 재료 회수율을 달성하면, 순환 경제 계획이 모든 제조 부문에 걸쳐 시행될 것이다.",
+    "expressions": [
+      {
+        "expr": "once + S+V",
+        "meaning": "일단 ~하면 (시간 접속사)"
+      },
+      {
+        "expr": "implement once target is met",
+        "meaning": "목표 달성 후 시행!"
+      }
+    ]
+  },
+  {
+    "id": "LINK_248",
+    "category": "LINK",
+    "cat": "접속사",
+    "word_count": 20,
+    "diff": "hard",
+    "sentence": "The gig economy platform will be required to provide workers with itemized pay statements _______ the new algorithmic transparency legislation comes into force next January.",
+    "choices": [
+      "(A) despite",
+      "(B) as soon as",
+      "(C) however",
+      "(D) due to"
+    ],
+    "answer": 1,
+    "answer_word": "as soon as",
+    "explanation_kr": "빈칸 뒤 절(S+V) → 접속사! 즉시 시간 → as soon as = '~하자마자'!",
+    "explanation": "절(S+V) 앞 → 접속사. 즉시 시간 → as soon as.",
+    "kr": "다음 1월에 새로운 알고리즘 투명성 법안이 발효되자마자 긱 이코노미 플랫폼은 근로자에게 세부 급여 명세서를 제공하도록 요구될 것이다.",
+    "expressions": [
+      {
+        "expr": "as soon as + S+V",
+        "meaning": "~하자마자 (즉시 시간 접속사)"
+      },
+      {
+        "expr": "be required as soon as",
+        "meaning": "발효 즉시 의무화!"
+      }
+    ]
+  },
+  {
+    "id": "LINK_249",
+    "category": "LINK",
+    "cat": "접속사",
+    "word_count": 20,
+    "diff": "hard",
+    "sentence": "The longevity drug will not be approved for mainstream clinical use _______ a minimum of three independent replication studies have confirmed the original trial's findings.",
+    "choices": [
+      "(A) despite",
+      "(B) until",
+      "(C) however",
+      "(D) due to"
+    ],
+    "answer": 1,
+    "answer_word": "until",
+    "explanation_kr": "빈칸 뒤 절(S+V) → 접속사! 시간 한계 → until = '~할 때까지'!",
+    "explanation": "절(S+V) 앞 → 접속사. 시간 한계 → until.",
+    "kr": "최소 세 개의 독립적인 복제 연구가 원래 임상 시험의 결과를 확인할 때까지 장수 약물은 주류 임상 사용을 위해 승인되지 않을 것이다.",
+    "expressions": [
+      {
+        "expr": "until + S+V",
+        "meaning": "~할 때까지 (시간 접속사)"
+      },
+      {
+        "expr": "not approved until",
+        "meaning": "조건 충족까지 미승인!"
+      }
+    ]
+  },
+  {
+    "id": "LINK_250",
+    "category": "LINK",
+    "cat": "접속부사",
+    "word_count": 20,
+    "diff": "hard",
+    "sentence": "The international AI safety board reached a consensus on the need for mandatory capability evaluations; _______, agreeing on the specific technical benchmarks and enforcement mechanisms proved considerably more difficult.",
+    "choices": [
+      "(A) although",
+      "(B) however",
+      "(C) due to",
+      "(D) despite"
+    ],
+    "answer": 1,
+    "answer_word": "however",
+    "explanation_kr": "세미콜론 뒤 역접 접속부사! 합의 도달(긍정) ↔ 세부 기준 합의 어려움(반전). however = '하지만' 역접!",
+    "explanation": "세미콜론 뒤 → 접속부사. 역접 의미 → however.",
+    "kr": "국제 AI 안전 위원회는 의무적 역량 평가의 필요성에 대한 합의에 도달했다; 하지만, 특정 기술 벤치마크와 집행 메커니즘에 합의하는 것은 상당히 더 어려운 것으로 판명되었다.",
+    "expressions": [
+      {
+        "expr": "; however,",
+        "meaning": "하지만 (역접 접속부사)"
+      },
+      {
+        "expr": "합의 → 세부 불일치",
+        "meaning": "큰 그림 vs 세부사항 역접 패턴!"
+      }
+    ]
+  }
+]
