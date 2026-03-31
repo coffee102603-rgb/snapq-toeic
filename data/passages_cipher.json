@@ -1,0 +1,584 @@
+[
+  {
+    "title": "✉️ CIPHER",
+    "steps": [
+      {
+        "q_type": "purpose",
+        "sentences": [
+          "Dear Ms. Thompson, I am writing to express my strong interest in the Marketing Coordinator position advertised on your company's website.",
+          "With three years of experience in digital marketing and a proven track record of increasing online engagement, I believe I would be a valuable addition to your team."
+        ],
+        "question": "Why was this letter written?",
+        "question_kr": "이 편지는 왜 작성되었는가?",
+        "choices": [
+          "(A) To request a promotion within the company",
+          "(B) To apply for an advertised job position",
+          "(C) To follow up on a previous interview",
+          "(D) To recommend another candidate for the role"
+        ],
+        "choices_kr": [
+          "(A) 사내 승진을 요청하기 위해",
+          "(B) 광고된 직책에 지원하기 위해",
+          "(C) 이전 면접 후속 조치를 위해",
+          "(D) 다른 후보자를 추천하기 위해"
+        ],
+        "answer": 1,
+        "kr": "Thompson 씨께, 귀사 웹사이트에 광고된 마케팅 코디네이터 직책에 강한 관심을 표현하기 위해 편지를 씁니다. 디지털 마케팅 3년 경험과 온라인 참여도 향상의 검증된 실적으로, 저는 귀사 팀에 소중한 인재가 될 것이라 확신합니다.",
+        "expressions": [
+          {
+            "expr": "express my strong interest in",
+            "meaning": "~에 강한 관심을 표현하다"
+          },
+          {
+            "expr": "proven track record",
+            "meaning": "검증된 실적"
+          },
+          {
+            "expr": "a valuable addition to",
+            "meaning": "~에 소중한 인재"
+          }
+        ]
+      },
+      {
+        "q_type": "detail",
+        "sentences": [
+          "I have attached my résumé and a portfolio of recent campaigns for your review.",
+          "I am available for an interview at your earliest convenience and can be reached at j.park@email.com or at 555-0192."
+        ],
+        "question": "What has the writer included with the letter?",
+        "question_kr": "작성자가 편지와 함께 포함한 것은?",
+        "choices": [
+          "(A) A list of professional references",
+          "(B) A résumé and portfolio",
+          "(C) A sample marketing plan",
+          "(D) A letter of recommendation"
+        ],
+        "choices_kr": [
+          "(A) 전문 추천인 목록",
+          "(B) 이력서와 포트폴리오",
+          "(C) 마케팅 계획 샘플",
+          "(D) 추천서"
+        ],
+        "answer": 1,
+        "kr": "이력서와 최근 캠페인 포트폴리오를 첨부했습니다. 편하신 시간에 면접이 가능하며 j.park@email.com 또는 555-0192로 연락 주시기 바랍니다.",
+        "expressions": [
+          {
+            "expr": "have attached",
+            "meaning": "첨부하다"
+          },
+          {
+            "expr": "at your earliest convenience",
+            "meaning": "가장 편하신 시간에"
+          },
+          {
+            "expr": "can be reached at",
+            "meaning": "~로 연락할 수 있다"
+          }
+        ]
+      },
+      {
+        "q_type": "inference",
+        "sentences": [
+          "During my time at Apex Solutions, I led a social media campaign that grew our follower count by 45% in just six months.",
+          "I am confident that similar strategies could be effectively applied to your brand's digital presence."
+        ],
+        "question": "What can be inferred about the letter writer?",
+        "question_kr": "편지 작성자에 대해 추론할 수 있는 것은?",
+        "choices": [
+          "(A) She recently graduated from university",
+          "(B) She has experience growing social media audiences",
+          "(C) She previously worked at Ms. Thompson's company",
+          "(D) She specializes in traditional advertising"
+        ],
+        "choices_kr": [
+          "(A) 최근 대학을 졸업했다",
+          "(B) 소셜 미디어 팔로워 증가 경험이 있다",
+          "(C) 이전에 Thompson 씨 회사에서 근무했다",
+          "(D) 전통적인 광고를 전문으로 한다"
+        ],
+        "answer": 1,
+        "kr": "Apex Solutions에서 소셜 미디어 캠페인을 이끌어 6개월 만에 팔로워 수를 45% 늘렸습니다. 유사한 전략이 귀사 브랜드의 디지털 존재감에 효과적으로 적용될 수 있다고 확신합니다.",
+        "expressions": [
+          {
+            "expr": "grew our follower count",
+            "meaning": "팔로워 수를 늘리다"
+          },
+          {
+            "expr": "digital presence",
+            "meaning": "디지털 존재감"
+          },
+          {
+            "expr": "be effectively applied to",
+            "meaning": "~에 효과적으로 적용되다"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "title": "✉️ CIPHER",
+    "steps": [
+      {
+        "q_type": "purpose",
+        "sentences": [
+          "Dear Team, I am writing to inform you that our quarterly review meeting, originally scheduled for Thursday, has been moved to Friday, October 18, at 2:00 P.M.",
+          "The change was necessary due to a conflict in the conference room booking system."
+        ],
+        "question": "What is the purpose of this email?",
+        "question_kr": "이 이메일의 목적은 무엇인가?",
+        "choices": [
+          "(A) To cancel the quarterly review meeting",
+          "(B) To notify staff of a rescheduled meeting",
+          "(C) To introduce a new meeting format",
+          "(D) To request agenda items from team members"
+        ],
+        "choices_kr": [
+          "(A) 분기별 검토 회의 취소",
+          "(B) 회의 일정 변경 통보",
+          "(C) 새로운 회의 형식 소개",
+          "(D) 팀원들에게 안건 항목 요청"
+        ],
+        "answer": 1,
+        "kr": "팀 여러분, 목요일로 예정되어 있던 분기별 검토 회의가 10월 18일 금요일 오후 2시로 변경되었음을 알려드립니다. 회의실 예약 시스템 충돌로 인해 변경이 필요했습니다.",
+        "expressions": [
+          {
+            "expr": "originally scheduled for",
+            "meaning": "원래 ~로 예정된"
+          },
+          {
+            "expr": "has been moved to",
+            "meaning": "~로 변경되었다"
+          },
+          {
+            "expr": "due to a conflict",
+            "meaning": "충돌로 인해"
+          }
+        ]
+      },
+      {
+        "q_type": "detail",
+        "sentences": [
+          "The meeting will take place in Conference Room B on the third floor.",
+          "Please bring your updated project reports and be prepared to discuss Q3 performance figures.",
+          "Light refreshments will be provided."
+        ],
+        "question": "Where will the meeting be held?",
+        "question_kr": "회의는 어디서 열릴 것인가?",
+        "choices": [
+          "(A) In the main auditorium",
+          "(B) In Conference Room B on the third floor",
+          "(C) In the director's office",
+          "(D) In the cafeteria on the ground floor"
+        ],
+        "choices_kr": [
+          "(A) 대강당에서",
+          "(B) 3층 회의실 B에서",
+          "(C) 이사실에서",
+          "(D) 1층 구내식당에서"
+        ],
+        "answer": 1,
+        "kr": "회의는 3층 회의실 B에서 열린다. 업데이트된 프로젝트 보고서를 지참하고 3분기 실적 수치를 논의할 준비를 해 주세요. 간단한 다과가 제공될 예정입니다.",
+        "expressions": [
+          {
+            "expr": "take place in",
+            "meaning": "~에서 열리다"
+          },
+          {
+            "expr": "performance figures",
+            "meaning": "실적 수치"
+          },
+          {
+            "expr": "light refreshments",
+            "meaning": "간단한 다과"
+          }
+        ]
+      },
+      {
+        "q_type": "inference",
+        "sentences": [
+          "If you are unable to attend in person, please contact Sarah at ext. 304 to arrange a video call connection.",
+          "I apologize for any inconvenience this change may cause and appreciate your flexibility."
+        ],
+        "question": "What is implied about the meeting?",
+        "question_kr": "회의에 대해 추론할 수 있는 것은?",
+        "choices": [
+          "(A) It will be held entirely online",
+          "(B) Remote participation is possible",
+          "(C) It will be recorded for absent members",
+          "(D) Attendance is optional for all staff"
+        ],
+        "choices_kr": [
+          "(A) 전적으로 온라인으로 진행된다",
+          "(B) 원격 참여가 가능하다",
+          "(C) 결석 직원을 위해 녹화된다",
+          "(D) 모든 직원에게 참석이 선택적이다"
+        ],
+        "answer": 1,
+        "kr": "직접 참석할 수 없는 경우 304번으로 Sarah에게 연락하여 화상 통화 연결을 마련해 주세요. 변경으로 인한 불편에 사과드리며 협조해 주셔서 감사합니다.",
+        "expressions": [
+          {
+            "expr": "unable to attend in person",
+            "meaning": "직접 참석할 수 없는"
+          },
+          {
+            "expr": "arrange a video call",
+            "meaning": "화상 통화를 마련하다"
+          },
+          {
+            "expr": "appreciate your flexibility",
+            "meaning": "융통성에 감사하다"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "title": "✉️ CIPHER",
+    "steps": [
+      {
+        "q_type": "purpose",
+        "sentences": [
+          "Dear Customer Service Team, I am writing to express my dissatisfaction with an order I received on March 10.",
+          "Order number 48271 contained a damaged item and was missing one of the three products I had purchased."
+        ],
+        "question": "Why did the customer write this email?",
+        "question_kr": "고객은 왜 이 이메일을 작성했는가?",
+        "choices": [
+          "(A) To request a product catalog",
+          "(B) To complain about a problem with an order",
+          "(C) To inquire about delivery options",
+          "(D) To apply for a store membership"
+        ],
+        "choices_kr": [
+          "(A) 제품 카탈로그를 요청하기 위해",
+          "(B) 주문 문제에 대해 불만을 제기하기 위해",
+          "(C) 배송 옵션에 대해 문의하기 위해",
+          "(D) 매장 회원권 신청을 위해"
+        ],
+        "answer": 1,
+        "kr": "고객 서비스 팀 귀중, 3월 10일에 받은 주문에 대한 불만을 표현하기 위해 이메일을 씁니다. 주문번호 48271에는 파손된 물품이 포함되어 있었고 제품 중 하나가 누락되어 있었습니다.",
+        "expressions": [
+          {
+            "expr": "express my dissatisfaction with",
+            "meaning": "~에 대한 불만을 표현하다"
+          },
+          {
+            "expr": "damaged item",
+            "meaning": "파손된 물품"
+          },
+          {
+            "expr": "was missing",
+            "meaning": "누락되다"
+          }
+        ]
+      },
+      {
+        "q_type": "detail",
+        "sentences": [
+          "I have included photographs of the damaged packaging as well as a screenshot of my original order confirmation.",
+          "I would like to request either a full replacement of the damaged item or a refund for the missing product."
+        ],
+        "question": "What does the customer request?",
+        "question_kr": "고객이 요청하는 것은?",
+        "choices": [
+          "(A) A discount on a future order",
+          "(B) A replacement or refund",
+          "(C) Free shipping on the next purchase",
+          "(D) An upgrade to express delivery"
+        ],
+        "choices_kr": [
+          "(A) 다음 주문 할인",
+          "(B) 교체품 또는 환불",
+          "(C) 다음 구매 무료 배송",
+          "(D) 빠른 배송으로 업그레이드"
+        ],
+        "answer": 1,
+        "kr": "파손된 포장의 사진과 주문 확인서의 스크린샷을 첨부했습니다. 파손된 물품의 완전한 교체품이나 누락된 제품에 대한 환불을 요청합니다.",
+        "expressions": [
+          {
+            "expr": "order confirmation",
+            "meaning": "주문 확인서"
+          },
+          {
+            "expr": "full replacement",
+            "meaning": "완전한 교체"
+          },
+          {
+            "expr": "refund for",
+            "meaning": "~에 대한 환불"
+          }
+        ]
+      },
+      {
+        "q_type": "inference",
+        "sentences": [
+          "I have been a loyal customer for over five years and have always been satisfied with your service until now.",
+          "I hope this matter can be resolved promptly so that I can continue to shop with confidence."
+        ],
+        "question": "What is implied about the customer?",
+        "question_kr": "고객에 대해 추론할 수 있는 것은?",
+        "choices": [
+          "(A) She plans to stop shopping at the store",
+          "(B) She generally has a positive view of the company",
+          "(C) She has complained to the company before",
+          "(D) She is requesting compensation for emotional distress"
+        ],
+        "choices_kr": [
+          "(A) 그 매장에서 쇼핑을 중단할 계획이다",
+          "(B) 일반적으로 회사에 긍정적인 시각을 가지고 있다",
+          "(C) 이전에 회사에 불만을 제기한 적이 있다",
+          "(D) 정신적 피해에 대한 보상을 요청하고 있다"
+        ],
+        "answer": 1,
+        "kr": "저는 5년 이상 충성 고객이었으며 지금까지 항상 서비스에 만족했습니다. 이 문제가 신속히 해결되어 계속 안심하고 쇼핑할 수 있기를 바랍니다.",
+        "expressions": [
+          {
+            "expr": "loyal customer",
+            "meaning": "충성 고객"
+          },
+          {
+            "expr": "resolved promptly",
+            "meaning": "신속히 해결되다"
+          },
+          {
+            "expr": "shop with confidence",
+            "meaning": "안심하고 쇼핑하다"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "title": "✉️ CIPHER",
+    "steps": [
+      {
+        "q_type": "purpose",
+        "sentences": [
+          "Dear Mr. Harrington, I am writing on behalf of Delton Consulting Group to inquire about the office space currently listed for rent at 240 Harbor Boulevard.",
+          "Our company is seeking a modern, well-connected workspace for approximately 25 employees, and your property appears to meet our requirements."
+        ],
+        "question": "What is the purpose of this letter?",
+        "question_kr": "이 편지의 목적은 무엇인가?",
+        "choices": [
+          "(A) To negotiate the price of an existing lease",
+          "(B) To inquire about an available office space",
+          "(C) To report problems with a current rental property",
+          "(D) To request a list of available properties"
+        ],
+        "choices_kr": [
+          "(A) 기존 임대 가격을 협상하기 위해",
+          "(B) 이용 가능한 사무 공간에 대해 문의하기 위해",
+          "(C) 현재 임대 건물의 문제를 보고하기 위해",
+          "(D) 이용 가능한 건물 목록을 요청하기 위해"
+        ],
+        "answer": 1,
+        "kr": "Harrington 씨께, Delton Consulting Group을 대표하여 240 Harbor Boulevard에 임대로 등록된 사무 공간에 대해 문의합니다. 저희 회사는 약 25명의 직원을 위한 현대적이고 교통이 편리한 업무 공간을 찾고 있습니다.",
+        "expressions": [
+          {
+            "expr": "on behalf of",
+            "meaning": "~을 대표하여"
+          },
+          {
+            "expr": "listed for rent",
+            "meaning": "임대로 등록된"
+          },
+          {
+            "expr": "meets our requirements",
+            "meaning": "요건에 부합하다"
+          }
+        ]
+      },
+      {
+        "q_type": "detail",
+        "sentences": [
+          "We would prefer a lease term of at least two years, with the option to renew.",
+          "Could you please provide information on the monthly rental rate, available parking, and whether the space includes high-speed internet infrastructure?"
+        ],
+        "question": "Which of the following does the writer ask about?",
+        "question_kr": "작성자가 문의하는 것은?",
+        "choices": [
+          "(A) The building's renovation history",
+          "(B) The number of floors in the building",
+          "(C) The monthly rental cost and parking",
+          "(D) The names of current tenants"
+        ],
+        "choices_kr": [
+          "(A) 건물 리모델링 이력",
+          "(B) 건물의 층수",
+          "(C) 월 임대료와 주차",
+          "(D) 현재 임차인 이름"
+        ],
+        "answer": 2,
+        "kr": "저희는 갱신 옵션과 함께 최소 2년의 임대 기간을 선호합니다. 월 임대료, 이용 가능한 주차, 고속 인터넷 인프라 포함 여부에 대한 정보를 제공해 주시겠습니까?",
+        "expressions": [
+          {
+            "expr": "lease term",
+            "meaning": "임대 기간"
+          },
+          {
+            "expr": "option to renew",
+            "meaning": "갱신 옵션"
+          },
+          {
+            "expr": "high-speed internet infrastructure",
+            "meaning": "고속 인터넷 인프라"
+          }
+        ]
+      },
+      {
+        "q_type": "not",
+        "sentences": [
+          "We are also open to discussing flexible move-in dates, as our current lease does not expire until the end of next month.",
+          "Should the space meet our needs, we would be prepared to arrange a site visit at your earliest convenience.",
+          "Please feel free to contact me directly at d.kim@delton.com."
+        ],
+        "question": "Which of the following is NOT mentioned in the letter?",
+        "question_kr": "편지에서 언급되지 않은 것은?",
+        "choices": [
+          "(A) The writer's contact information",
+          "(B) The company's preferred move-in date",
+          "(C) Willingness to schedule a property visit",
+          "(D) The company's number of employees"
+        ],
+        "choices_kr": [
+          "(A) 작성자의 연락처",
+          "(B) 회사가 선호하는 이사 날짜",
+          "(C) 건물 방문 일정 조율 의향",
+          "(D) 회사 직원 수"
+        ],
+        "answer": 1,
+        "kr": "저희는 유연한 이사 날짜 협의도 가능합니다. 공간이 요건을 충족하면 현장 방문을 준비할 용의가 있습니다. d.kim@delton.com으로 직접 연락 주시기 바랍니다.",
+        "expressions": [
+          {
+            "expr": "open to discussing",
+            "meaning": "논의할 의향이 있다"
+          },
+          {
+            "expr": "site visit",
+            "meaning": "현장 방문"
+          },
+          {
+            "expr": "does not expire until",
+            "meaning": "~까지 만료되지 않는다"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "title": "✉️ CIPHER",
+    "steps": [
+      {
+        "q_type": "purpose",
+        "sentences": [
+          "Dear Ms. Chen, On behalf of the entire team at Pinnacle Financial Services, I am delighted to welcome you as our newest team member.",
+          "Your appointment as Senior Financial Analyst becomes effective on Monday, September 2."
+        ],
+        "question": "What is the main purpose of this email?",
+        "question_kr": "이 이메일의 주요 목적은 무엇인가?",
+        "choices": [
+          "(A) To offer Ms. Chen a job position",
+          "(B) To welcome a new employee to the company",
+          "(C) To confirm Ms. Chen's resignation",
+          "(D) To invite Ms. Chen to a company event"
+        ],
+        "choices_kr": [
+          "(A) Chen 씨에게 직위를 제안하기 위해",
+          "(B) 새 직원을 회사에 환영하기 위해",
+          "(C) Chen 씨의 사직을 확인하기 위해",
+          "(D) Chen 씨를 회사 행사에 초대하기 위해"
+        ],
+        "answer": 1,
+        "kr": "Chen 씨께, Pinnacle Financial Services 팀 전체를 대표하여 최신 팀원으로 환영합니다. 수석 재무 분석가로의 임명은 9월 2일 월요일부터 발효됩니다.",
+        "expressions": [
+          {
+            "expr": "on behalf of",
+            "meaning": "~을 대표하여"
+          },
+          {
+            "expr": "appointment becomes effective",
+            "meaning": "임명이 발효되다"
+          },
+          {
+            "expr": "delighted to welcome",
+            "meaning": "기쁘게 환영하다"
+          }
+        ]
+      },
+      {
+        "q_type": "detail",
+        "sentences": [
+          "Please report to the main reception on the 12th floor at 9 A.M. on your first day, where you will receive your building access card and meet with HR.",
+          "Your direct supervisor, Mr. James Ortega, will then conduct a brief orientation session before introducing you to the rest of the team."
+        ],
+        "question": "What will Ms. Chen do when she arrives on her first day?",
+        "question_kr": "Chen 씨는 첫날 도착했을 때 무엇을 하는가?",
+        "choices": [
+          "(A) Attend a company-wide presentation",
+          "(B) Go to the 12th floor reception to receive her access card",
+          "(C) Meet with the CEO for a welcome lunch",
+          "(D) Complete online training modules"
+        ],
+        "choices_kr": [
+          "(A) 전사 발표회 참석",
+          "(B) 12층 안내 데스크에서 출입 카드 수령",
+          "(C) CEO와 환영 오찬",
+          "(D) 온라인 교육 모듈 완료"
+        ],
+        "answer": 1,
+        "kr": "첫날 오전 9시에 12층 메인 안내 데스크에 출석하시면 건물 출입 카드를 받고 인사팀을 만나실 것입니다. 직속 상사인 James Ortega 씨가 오리엔테이션을 진행합니다.",
+        "expressions": [
+          {
+            "expr": "building access card",
+            "meaning": "건물 출입 카드"
+          },
+          {
+            "expr": "direct supervisor",
+            "meaning": "직속 상사"
+          },
+          {
+            "expr": "conduct an orientation session",
+            "meaning": "오리엔테이션을 진행하다"
+          }
+        ]
+      },
+      {
+        "q_type": "inference",
+        "sentences": [
+          "We have prepared a full onboarding package including your employee handbook, benefits information, and IT setup instructions.",
+          "We are confident that your expertise in risk assessment and financial modeling will make a significant impact on our department."
+        ],
+        "question": "What can be inferred about Ms. Chen?",
+        "question_kr": "Chen 씨에 대해 추론할 수 있는 것은?",
+        "choices": [
+          "(A) She is a recent university graduate",
+          "(B) She has specialized skills in finance",
+          "(C) She transferred from another department",
+          "(D) She will manage the HR department"
+        ],
+        "choices_kr": [
+          "(A) 최근 대학을 졸업했다",
+          "(B) 재무 분야의 전문 기술을 보유하고 있다",
+          "(C) 다른 부서에서 이동했다",
+          "(D) 인사부서를 관리할 것이다"
+        ],
+        "answer": 1,
+        "kr": "직원 핸드북, 복리후생 정보, IT 설정 지침을 포함한 완전한 온보딩 패키지를 준비했습니다. 리스크 평가와 재무 모델링에 대한 귀하의 전문성이 우리 부서에 큰 영향을 미칠 것이라 확신합니다.",
+        "expressions": [
+          {
+            "expr": "onboarding package",
+            "meaning": "신입사원 교육 패키지"
+          },
+          {
+            "expr": "risk assessment",
+            "meaning": "리스크 평가"
+          },
+          {
+            "expr": "financial modeling",
+            "meaning": "재무 모델링"
+          }
+        ]
+      }
+    ]
+  }
+]

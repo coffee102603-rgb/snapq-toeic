@@ -1,0 +1,583 @@
+[
+  {
+    "title": "📢 SIGNAL",
+    "steps": [
+      {
+        "q_type": "purpose",
+        "sentences": [
+          "Greenfield Bakery is now hiring part-time staff for its downtown location.",
+          "Applicants must be available on weekends and have at least six months of customer service experience."
+        ],
+        "question": "What is the purpose of this advertisement?",
+        "question_kr": "이 광고의 목적은 무엇인가?",
+        "choices": [
+          "(A) To promote a new bakery product",
+          "(B) To recruit part-time workers",
+          "(C) To announce a store relocation",
+          "(D) To offer baking classes"
+        ],
+        "choices_kr": [
+          "(A) 새 베이커리 제품 홍보",
+          "(B) 파트타임 직원 채용",
+          "(C) 매장 이전 안내",
+          "(D) 베이킹 강좌 제공"
+        ],
+        "answer": 1,
+        "kr": "Greenfield Bakery는 시내 지점에서 파트타임 직원을 채용 중이다. 지원자는 주말 근무가 가능해야 하며 최소 6개월의 고객 서비스 경험이 있어야 한다.",
+        "expressions": [
+          {
+            "expr": "part-time staff",
+            "meaning": "파트타임 직원"
+          },
+          {
+            "expr": "customer service experience",
+            "meaning": "고객 서비스 경험"
+          },
+          {
+            "expr": "be available on weekends",
+            "meaning": "주말에 근무 가능하다"
+          }
+        ]
+      },
+      {
+        "q_type": "detail",
+        "sentences": [
+          "The position offers a starting wage of $15 per hour with opportunities for advancement.",
+          "Interested candidates should submit a résumé and cover letter to hr@greenfieldbakery.com by Friday, March 15."
+        ],
+        "question": "By when must applications be submitted?",
+        "question_kr": "지원서는 언제까지 제출해야 하는가?",
+        "choices": [
+          "(A) By Monday, March 11",
+          "(B) By Wednesday, March 13",
+          "(C) By Friday, March 15",
+          "(D) By Sunday, March 17"
+        ],
+        "choices_kr": [
+          "(A) 3월 11일 월요일까지",
+          "(B) 3월 13일 수요일까지",
+          "(C) 3월 15일 금요일까지",
+          "(D) 3월 17일 일요일까지"
+        ],
+        "answer": 2,
+        "kr": "해당 직책은 시간당 $15의 시작 임금과 승진 기회를 제공한다. 관심 있는 지원자는 3월 15일 금요일까지 이력서와 자기소개서를 제출해야 한다.",
+        "expressions": [
+          {
+            "expr": "starting wage",
+            "meaning": "초봉, 시작 임금"
+          },
+          {
+            "expr": "submit a résumé",
+            "meaning": "이력서를 제출하다"
+          },
+          {
+            "expr": "opportunities for advancement",
+            "meaning": "승진 기회"
+          }
+        ]
+      },
+      {
+        "q_type": "inference",
+        "sentences": [
+          "Greenfield Bakery has three locations across the city and is known for its award-winning sourdough bread.",
+          "The downtown branch sees the highest customer traffic and requires additional support during peak hours."
+        ],
+        "question": "What is suggested about the downtown location?",
+        "question_kr": "시내 지점에 대해 추론할 수 있는 것은?",
+        "choices": [
+          "(A) It opened recently",
+          "(B) It is the busiest of the three branches",
+          "(C) It sells the most sourdough bread",
+          "(D) It is the largest location"
+        ],
+        "choices_kr": [
+          "(A) 최근에 개업했다",
+          "(B) 세 지점 중 가장 바쁘다",
+          "(C) 사워도우 빵이 가장 많이 팔린다",
+          "(D) 가장 큰 지점이다"
+        ],
+        "answer": 1,
+        "kr": "Greenfield Bakery는 시내 전역에 3개 지점이 있으며 수상 경력의 사워도우 빵으로 유명하다. 시내 지점은 고객 방문이 가장 많아 피크 시간대에 추가 지원이 필요하다.",
+        "expressions": [
+          {
+            "expr": "customer traffic",
+            "meaning": "고객 방문량"
+          },
+          {
+            "expr": "peak hours",
+            "meaning": "피크 시간대"
+          },
+          {
+            "expr": "award-winning",
+            "meaning": "수상 경력이 있는"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "title": "📢 SIGNAL",
+    "steps": [
+      {
+        "q_type": "purpose",
+        "sentences": [
+          "TechMart is offering a 30% discount on all laptops and tablets this weekend only.",
+          "The sale runs from Saturday, June 8, through Sunday, June 9, at all participating stores."
+        ],
+        "question": "What is the main purpose of this notice?",
+        "question_kr": "이 공지의 주요 목적은 무엇인가?",
+        "choices": [
+          "(A) To announce the opening of a new store",
+          "(B) To inform customers of a weekend sale",
+          "(C) To introduce a new product line",
+          "(D) To notify staff of policy changes"
+        ],
+        "choices_kr": [
+          "(A) 새 매장 개업 안내",
+          "(B) 주말 할인 행사 안내",
+          "(C) 새 제품 라인 소개",
+          "(D) 직원에게 정책 변경 통보"
+        ],
+        "answer": 1,
+        "kr": "TechMart는 이번 주말에만 모든 노트북과 태블릿을 30% 할인 판매한다. 세일은 6월 8일 토요일부터 6월 9일 일요일까지 모든 참여 매장에서 진행된다.",
+        "expressions": [
+          {
+            "expr": "participating stores",
+            "meaning": "참여 매장"
+          },
+          {
+            "expr": "runs from ~ through ~",
+            "meaning": "~부터 ~까지 진행되다"
+          },
+          {
+            "expr": "this weekend only",
+            "meaning": "이번 주말에만"
+          }
+        ]
+      },
+      {
+        "q_type": "detail",
+        "sentences": [
+          "Customers who spend over $500 will receive a free carrying case.",
+          "The discount cannot be combined with any other offers, and all sales are final."
+        ],
+        "question": "What will customers receive if they spend more than $500?",
+        "question_kr": "$500 이상 구매 시 고객이 받는 것은?",
+        "choices": [
+          "(A) An additional 10% discount",
+          "(B) A free carrying case",
+          "(C) A store gift card",
+          "(D) Free delivery service"
+        ],
+        "choices_kr": [
+          "(A) 추가 10% 할인",
+          "(B) 무료 케이스",
+          "(C) 매장 상품권",
+          "(D) 무료 배송 서비스"
+        ],
+        "answer": 1,
+        "kr": "$500 이상 구매 고객은 무료 케이스를 받는다. 할인은 다른 혜택과 중복 적용이 불가하며 모든 판매는 환불이 되지 않는다.",
+        "expressions": [
+          {
+            "expr": "cannot be combined with",
+            "meaning": "~와 중복 적용 불가"
+          },
+          {
+            "expr": "all sales are final",
+            "meaning": "모든 판매는 최종적이다"
+          },
+          {
+            "expr": "carrying case",
+            "meaning": "휴대용 케이스"
+          }
+        ]
+      },
+      {
+        "q_type": "not",
+        "sentences": [
+          "TechMart accepts cash, credit cards, and mobile payments.",
+          "Store hours during the sale will be extended to 10 P.M. on both days.",
+          "Online purchases are not eligible for the weekend discount."
+        ],
+        "question": "Which is NOT mentioned about the TechMart sale?",
+        "question_kr": "TechMart 세일에 대해 언급되지 않은 것은?",
+        "choices": [
+          "(A) Accepted payment methods",
+          "(B) Extended store hours",
+          "(C) Staff working during the sale",
+          "(D) Online purchase restrictions"
+        ],
+        "choices_kr": [
+          "(A) 허용되는 결제 방법",
+          "(B) 연장된 영업시간",
+          "(C) 세일 기간 중 근무 직원",
+          "(D) 온라인 구매 제한"
+        ],
+        "answer": 2,
+        "kr": "TechMart는 현금, 신용카드, 모바일 결제를 받는다. 세일 기간 동안 매장 영업시간은 양일 모두 오후 10시까지 연장된다. 온라인 구매는 주말 할인 대상에서 제외된다.",
+        "expressions": [
+          {
+            "expr": "are not eligible for",
+            "meaning": "~의 자격이 없다"
+          },
+          {
+            "expr": "extended hours",
+            "meaning": "연장된 영업시간"
+          },
+          {
+            "expr": "mobile payments",
+            "meaning": "모바일 결제"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "title": "📢 SIGNAL",
+    "steps": [
+      {
+        "q_type": "purpose",
+        "sentences": [
+          "The parking garage on Level B2 will be closed for maintenance from Monday, April 3, to Friday, April 7.",
+          "During this time, employees are encouraged to use the surface lot on Cedar Street."
+        ],
+        "question": "What is the purpose of this notice?",
+        "question_kr": "이 공지의 목적은 무엇인가?",
+        "choices": [
+          "(A) To announce the opening of a new parking lot",
+          "(B) To inform employees of a temporary parking closure",
+          "(C) To update parking rates for employees",
+          "(D) To introduce a new parking policy"
+        ],
+        "choices_kr": [
+          "(A) 새 주차장 개장 안내",
+          "(B) 임시 주차장 폐쇄 안내",
+          "(C) 직원 주차 요금 변경 안내",
+          "(D) 새 주차 정책 소개"
+        ],
+        "answer": 1,
+        "kr": "B2층 주차장은 4월 3일 월요일부터 4월 7일 금요일까지 유지보수를 위해 폐쇄된다. 이 기간 동안 직원들은 Cedar Street의 지상 주차장을 이용하도록 권장된다.",
+        "expressions": [
+          {
+            "expr": "closed for maintenance",
+            "meaning": "유지보수를 위해 폐쇄된"
+          },
+          {
+            "expr": "are encouraged to",
+            "meaning": "~하도록 권장된다"
+          },
+          {
+            "expr": "surface lot",
+            "meaning": "지상 주차장"
+          }
+        ]
+      },
+      {
+        "q_type": "detail",
+        "sentences": [
+          "Temporary parking passes for Cedar Street can be collected from the reception desk starting Monday morning.",
+          "Employees must display the pass on their dashboard at all times while parked."
+        ],
+        "question": "Where can employees get a temporary parking pass?",
+        "question_kr": "직원들은 임시 주차권을 어디서 받을 수 있는가?",
+        "choices": [
+          "(A) At the security office",
+          "(B) At the reception desk",
+          "(C) At the Cedar Street entrance",
+          "(D) At the human resources department"
+        ],
+        "choices_kr": [
+          "(A) 보안 사무실",
+          "(B) 안내 데스크",
+          "(C) Cedar Street 입구",
+          "(D) 인사부서"
+        ],
+        "answer": 1,
+        "kr": "Cedar Street 임시 주차권은 월요일 아침부터 안내 데스크에서 받을 수 있다. 직원들은 주차 중에는 항상 대시보드에 주차권을 표시해야 한다.",
+        "expressions": [
+          {
+            "expr": "display the pass",
+            "meaning": "주차권을 표시하다"
+          },
+          {
+            "expr": "at all times",
+            "meaning": "항상"
+          },
+          {
+            "expr": "be collected from",
+            "meaning": "~에서 받다"
+          }
+        ]
+      },
+      {
+        "q_type": "inference",
+        "sentences": [
+          "The maintenance work includes resurfacing the floor and upgrading the lighting system.",
+          "Management apologizes for the inconvenience and thanks employees for their cooperation during this period."
+        ],
+        "question": "What is implied about the parking garage?",
+        "question_kr": "주차장에 대해 추론할 수 있는 것은?",
+        "choices": [
+          "(A) It will be permanently closed after repairs",
+          "(B) It will have new features after the maintenance",
+          "(C) It has never been repaired before",
+          "(D) It is located on the ground floor"
+        ],
+        "choices_kr": [
+          "(A) 수리 후 영구 폐쇄될 것이다",
+          "(B) 유지보수 후 새로운 기능이 추가될 것이다",
+          "(C) 이전에 수리된 적이 없다",
+          "(D) 지상층에 위치해 있다"
+        ],
+        "answer": 1,
+        "kr": "유지보수 작업에는 바닥 재포장과 조명 시스템 업그레이드가 포함된다. 경영진은 불편을 드려 사과드리며 이 기간 동안 협조해 주신 직원들에게 감사드린다.",
+        "expressions": [
+          {
+            "expr": "resurfacing the floor",
+            "meaning": "바닥을 재포장하다"
+          },
+          {
+            "expr": "upgrading the lighting system",
+            "meaning": "조명 시스템을 업그레이드하다"
+          },
+          {
+            "expr": "apologizes for the inconvenience",
+            "meaning": "불편에 대해 사과하다"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "title": "📢 SIGNAL",
+    "steps": [
+      {
+        "q_type": "purpose",
+        "sentences": [
+          "Riverside Grill is pleased to announce its new lunch special, available Monday through Friday from 11 A.M. to 2 P.M.",
+          "The special includes a main dish, soup, and a soft drink for just $12."
+        ],
+        "question": "What is being advertised?",
+        "question_kr": "무엇이 광고되고 있는가?",
+        "choices": [
+          "(A) A new restaurant opening",
+          "(B) A discounted lunch menu",
+          "(C) A weekend brunch event",
+          "(D) A cooking competition"
+        ],
+        "choices_kr": [
+          "(A) 새 레스토랑 개업",
+          "(B) 할인 점심 메뉴",
+          "(C) 주말 브런치 행사",
+          "(D) 요리 대회"
+        ],
+        "answer": 1,
+        "kr": "Riverside Grill은 월요일부터 금요일 오전 11시부터 오후 2시까지 이용 가능한 새로운 점심 특선을 발표한다.",
+        "expressions": [
+          {
+            "expr": "lunch special",
+            "meaning": "점심 특선"
+          },
+          {
+            "expr": "is pleased to announce",
+            "meaning": "기쁘게 발표하다"
+          },
+          {
+            "expr": "main dish",
+            "meaning": "주요리"
+          }
+        ]
+      },
+      {
+        "q_type": "detail",
+        "sentences": [
+          "Customers can choose from five rotating main dishes each week, including grilled salmon, pasta, and steak.",
+          "Reservations are recommended but not required for groups of fewer than six people."
+        ],
+        "question": "According to the advertisement, what is true about reservations?",
+        "question_kr": "광고에 따르면 예약에 대한 사실은?",
+        "choices": [
+          "(A) They are required for all customers",
+          "(B) They are not necessary for small groups",
+          "(C) They must be made one week in advance",
+          "(D) They are only available online"
+        ],
+        "choices_kr": [
+          "(A) 모든 고객에게 필수이다",
+          "(B) 소규모 그룹에는 필요 없다",
+          "(C) 1주일 전에 해야 한다",
+          "(D) 온라인으로만 가능하다"
+        ],
+        "answer": 1,
+        "kr": "고객은 매주 5가지 순환 메인 요리 중에서 선택할 수 있다. 6인 미만 그룹에는 예약이 권장되나 필수는 아니다.",
+        "expressions": [
+          {
+            "expr": "rotating dishes",
+            "meaning": "순환 메뉴"
+          },
+          {
+            "expr": "reservations are recommended",
+            "meaning": "예약을 권장한다"
+          },
+          {
+            "expr": "not required",
+            "meaning": "필수가 아니다"
+          }
+        ]
+      },
+      {
+        "q_type": "inference",
+        "sentences": [
+          "Riverside Grill has been serving the downtown community for over fifteen years.",
+          "The new lunch special is designed to attract nearby office workers looking for a quick and affordable meal."
+        ],
+        "question": "Who is most likely the target customer for this advertisement?",
+        "question_kr": "이 광고의 주요 타겟 고객은 누구일 가능성이 가장 높은가?",
+        "choices": [
+          "(A) Tourists visiting the area",
+          "(B) Office workers near the restaurant",
+          "(C) Students from a local university",
+          "(D) Families looking for weekend dining"
+        ],
+        "choices_kr": [
+          "(A) 지역을 방문하는 관광객",
+          "(B) 레스토랑 근처 사무직 직원",
+          "(C) 지역 대학교 학생",
+          "(D) 주말 외식을 원하는 가족"
+        ],
+        "answer": 1,
+        "kr": "Riverside Grill은 15년 이상 시내 지역 주민들에게 서비스를 제공해 왔다. 새로운 점심 특선은 빠르고 저렴한 식사를 원하는 인근 사무직 직원들을 유치하기 위해 기획되었다.",
+        "expressions": [
+          {
+            "expr": "attract nearby office workers",
+            "meaning": "인근 사무직 직원을 유치하다"
+          },
+          {
+            "expr": "affordable meal",
+            "meaning": "저렴한 식사"
+          },
+          {
+            "expr": "serving the community",
+            "meaning": "지역 사회에 서비스를 제공하다"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "title": "📢 SIGNAL",
+    "steps": [
+      {
+        "q_type": "purpose",
+        "sentences": [
+          "The Westside Public Library will adjust its operating hours beginning July 1.",
+          "The library will now be open Monday through Saturday from 9 A.M. to 8 P.M., and closed on Sundays."
+        ],
+        "question": "What is the purpose of this notice?",
+        "question_kr": "이 공지의 목적은 무엇인가?",
+        "choices": [
+          "(A) To announce the library's permanent closure",
+          "(B) To inform the public of new library hours",
+          "(C) To promote new books at the library",
+          "(D) To recruit library volunteers"
+        ],
+        "choices_kr": [
+          "(A) 도서관의 영구 폐쇄 안내",
+          "(B) 새 도서관 운영 시간 안내",
+          "(C) 도서관 신간 도서 홍보",
+          "(D) 도서관 자원봉사자 모집"
+        ],
+        "answer": 1,
+        "kr": "Westside Public Library는 7월 1일부터 운영 시간을 조정한다. 월요일부터 토요일 오전 9시~오후 8시 개방, 일요일 휴관.",
+        "expressions": [
+          {
+            "expr": "adjust its operating hours",
+            "meaning": "운영 시간을 조정하다"
+          },
+          {
+            "expr": "beginning July 1",
+            "meaning": "7월 1일부터"
+          },
+          {
+            "expr": "be closed on Sundays",
+            "meaning": "일요일에 휴관하다"
+          }
+        ]
+      },
+      {
+        "q_type": "detail",
+        "sentences": [
+          "Members who have items due on a Sunday may return them the following Monday without late fees.",
+          "The library's online catalog and e-book services will continue to be available 24 hours a day."
+        ],
+        "question": "What can members do if their items are due on a Sunday?",
+        "question_kr": "일요일에 반납 기한인 경우 회원들은 어떻게 할 수 있는가?",
+        "choices": [
+          "(A) Return items through a drop box outside",
+          "(B) Return them on Monday without a penalty",
+          "(C) Renew items online before Sunday",
+          "(D) Contact a librarian by phone"
+        ],
+        "choices_kr": [
+          "(A) 외부 반납함을 통해 반납",
+          "(B) 벌금 없이 월요일에 반납",
+          "(C) 일요일 이전에 온라인 연장",
+          "(D) 전화로 사서에게 연락"
+        ],
+        "answer": 1,
+        "kr": "일요일 반납 기한인 회원은 다음 월요일에 연체료 없이 반납할 수 있다. 온라인 카탈로그와 전자책 서비스는 24시간 계속 이용 가능하다.",
+        "expressions": [
+          {
+            "expr": "items due on",
+            "meaning": "~에 반납 기한인 도서"
+          },
+          {
+            "expr": "late fees",
+            "meaning": "연체료"
+          },
+          {
+            "expr": "e-book services",
+            "meaning": "전자책 서비스"
+          }
+        ]
+      },
+      {
+        "q_type": "inference",
+        "sentences": [
+          "The change in hours is due to budget reductions that have affected many city services.",
+          "Library officials hope to restore Sunday hours once funding becomes available."
+        ],
+        "question": "What is implied about the library's Sunday closure?",
+        "question_kr": "도서관의 일요일 휴관에 대해 추론할 수 있는 것은?",
+        "choices": [
+          "(A) It is expected to be permanent",
+          "(B) It may be reversed in the future",
+          "(C) It was requested by library members",
+          "(D) It will reduce the library's membership"
+        ],
+        "choices_kr": [
+          "(A) 영구적일 것으로 예상된다",
+          "(B) 향후 번복될 수 있다",
+          "(C) 도서관 회원들이 요청했다",
+          "(D) 도서관 회원 수를 줄일 것이다"
+        ],
+        "answer": 1,
+        "kr": "운영 시간 변경은 예산 삭감 때문이다. 도서관 관계자들은 재정 지원이 가능해지면 일요일 운영을 재개하길 희망한다.",
+        "expressions": [
+          {
+            "expr": "budget reductions",
+            "meaning": "예산 삭감"
+          },
+          {
+            "expr": "restore Sunday hours",
+            "meaning": "일요일 운영을 재개하다"
+          },
+          {
+            "expr": "once funding becomes available",
+            "meaning": "재정 지원이 가능해지면"
+          }
+        ]
+      }
+    ]
+  }
+]

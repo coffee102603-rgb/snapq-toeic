@@ -1,0 +1,583 @@
+[
+  {
+    "title": "☠️ BLACKOUT",
+    "steps": [
+      {
+        "q_type": "purpose",
+        "sentences": [
+          "Austral Energy Corporation has released its annual Sustainability and Corporate Responsibility Report, detailing the company's progress toward its ambitious 2030 environmental targets.",
+          "The report highlights a 22 percent reduction in carbon emissions across all domestic operations compared to the previous fiscal year, attributing this achievement to the accelerated deployment of renewable energy sources and the phased retirement of coal-fired generation facilities."
+        ],
+        "question": "What is the primary purpose of this report?",
+        "question_kr": "이 보고서의 주요 목적은 무엇인가?",
+        "choices": [
+          "(A) To announce the company's merger with a renewable energy firm",
+          "(B) To detail progress toward the company's environmental objectives",
+          "(C) To respond to criticism from environmental groups",
+          "(D) To propose new regulations for the energy industry"
+        ],
+        "choices_kr": [
+          "(A) 재생에너지 기업과의 합병 발표",
+          "(B) 회사의 환경 목표를 향한 진행 상황 상세 보고",
+          "(C) 환경 단체의 비판에 대한 대응",
+          "(D) 에너지 산업에 대한 새로운 규정 제안"
+        ],
+        "answer": 1,
+        "kr": "Austral Energy Corporation은 2030년 환경 목표를 향한 진행 상황을 담은 연간 지속가능성 보고서를 발표했다. 재생에너지원 배치 가속화와 석탄 발전 시설의 단계적 폐지를 통해 전년도 대비 탄소 배출량 22% 감소를 달성했다.",
+        "expressions": [
+          {
+            "expr": "carbon emissions reduction",
+            "meaning": "탄소 배출량 감소"
+          },
+          {
+            "expr": "accelerated deployment",
+            "meaning": "가속화된 배치"
+          },
+          {
+            "expr": "phased retirement",
+            "meaning": "단계적 폐지"
+          }
+        ]
+      },
+      {
+        "q_type": "detail",
+        "sentences": [
+          "Among the report's key disclosures, Austral confirmed that it has divested its remaining stake in three offshore oil exploration projects, completing a strategic repositioning that began in 2021.",
+          "Furthermore, the company has committed to sourcing 60 percent of its operational electricity from certified renewable providers by the end of the next financial year, up from the current 38 percent."
+        ],
+        "question": "According to the report, what percentage of electricity does Austral currently source from renewable providers?",
+        "question_kr": "보고서에 따르면, Austral은 현재 재생에너지 공급업체에서 몇 퍼센트의 전력을 조달하는가?",
+        "choices": [
+          "(A) 22 percent",
+          "(B) 38 percent",
+          "(C) 60 percent",
+          "(D) 75 percent"
+        ],
+        "choices_kr": [
+          "(A) 22퍼센트",
+          "(B) 38퍼센트",
+          "(C) 60퍼센트",
+          "(D) 75퍼센트"
+        ],
+        "answer": 1,
+        "kr": "Austral은 3개의 해양 석유 탐사 프로젝트에서 남은 지분을 매각하여 2021년에 시작된 전략적 재편을 완료했다. 다음 회계연도 말까지 운영 전력의 60%를 인증된 재생에너지 공급업체에서 조달하기로 약속했다(현재 38%).",
+        "expressions": [
+          {
+            "expr": "divested its remaining stake",
+            "meaning": "남은 지분을 매각하다"
+          },
+          {
+            "expr": "strategic repositioning",
+            "meaning": "전략적 재편"
+          },
+          {
+            "expr": "certified renewable providers",
+            "meaning": "인증된 재생에너지 공급업체"
+          }
+        ]
+      },
+      {
+        "q_type": "inference",
+        "sentences": [
+          "Despite the positive environmental metrics, some stakeholders have questioned whether Austral's timeline for transitioning away from fossil fuels is sufficiently aggressive given the urgency of the global climate crisis.",
+          "The company's CEO, in response, emphasized that the transition must be balanced against operational stability and the economic interests of the communities in which Austral operates, particularly those reliant on traditional energy employment."
+        ],
+        "question": "What can be inferred about Austral Energy Corporation's environmental transition?",
+        "question_kr": "Austral Energy Corporation의 환경 전환에 대해 추론할 수 있는 것은?",
+        "choices": [
+          "(A) It has been completed ahead of the original schedule",
+          "(B) It faces tension between speed and economic considerations",
+          "(C) It has been praised by all environmental organizations",
+          "(D) It will result in significant workforce reductions"
+        ],
+        "choices_kr": [
+          "(A) 원래 일정보다 앞서 완료되었다",
+          "(B) 속도와 경제적 고려 사이의 긴장에 직면해 있다",
+          "(C) 모든 환경 단체로부터 칭찬을 받았다",
+          "(D) 상당한 인력 감소를 초래할 것이다"
+        ],
+        "answer": 1,
+        "kr": "일부 이해관계자들은 글로벌 기후 위기의 긴박성을 고려할 때 Austral의 전환 일정이 충분히 적극적인지 의문을 제기했다. CEO는 전환이 운영 안정성과 지역사회의 경제적 이익과 균형을 이루어야 한다고 강조했다.",
+        "expressions": [
+          {
+            "expr": "transitioning away from fossil fuels",
+            "meaning": "화석연료에서 전환하다"
+          },
+          {
+            "expr": "operational stability",
+            "meaning": "운영 안정성"
+          },
+          {
+            "expr": "reliant on traditional energy employment",
+            "meaning": "전통 에너지 고용에 의존하는"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "title": "☠️ BLACKOUT",
+    "steps": [
+      {
+        "q_type": "purpose",
+        "sentences": [
+          "A landmark study published in the Journal of Organizational Psychology has found that employees who are given greater autonomy over their work schedules demonstrate significantly higher levels of job satisfaction, creative output, and long-term retention rates compared to those in strictly structured environments.",
+          "The five-year longitudinal research, conducted across 47 organizations in twelve countries, challenges conventional management assumptions about the relationship between oversight and productivity."
+        ],
+        "question": "What is the main subject of this article?",
+        "question_kr": "이 기사의 주요 주제는 무엇인가?",
+        "choices": [
+          "(A) The negative effects of remote work on creativity",
+          "(B) Research findings on workplace autonomy and employee performance",
+          "(C) A proposal for standardizing international labor laws",
+          "(D) The financial benefits of reducing management positions"
+        ],
+        "choices_kr": [
+          "(A) 원격 근무가 창의성에 미치는 부정적 영향",
+          "(B) 직장 자율성과 직원 성과에 관한 연구 결과",
+          "(C) 국제 노동법 표준화 제안",
+          "(D) 관리직 축소의 재정적 이점"
+        ],
+        "answer": 1,
+        "kr": "조직 심리학 저널에 발표된 연구에 따르면, 업무 일정에 더 많은 자율성을 부여받은 직원들이 직업 만족도, 창의적 산출물, 장기 유지율이 현저히 높다고 밝혔다. 12개국 47개 조직에서 수행된 5년간의 종단 연구이다.",
+        "expressions": [
+          {
+            "expr": "longitudinal research",
+            "meaning": "종단 연구"
+          },
+          {
+            "expr": "conventional management assumptions",
+            "meaning": "기존의 경영 가정"
+          },
+          {
+            "expr": "long-term retention rates",
+            "meaning": "장기 유지율"
+          }
+        ]
+      },
+      {
+        "q_type": "detail",
+        "sentences": [
+          "Notably, the study found that the productivity gains associated with schedule flexibility were most pronounced in knowledge-intensive industries, including technology, consulting, and research and development sectors.",
+          "Conversely, in roles requiring physical presence or real-time coordination, such as manufacturing or emergency services, the correlation between autonomy and performance was considerably weaker."
+        ],
+        "question": "According to the study, in which industries were the benefits of flexibility most significant?",
+        "question_kr": "연구에 따르면, 어떤 산업에서 유연성의 이점이 가장 두드러졌는가?",
+        "choices": [
+          "(A) Manufacturing and logistics",
+          "(B) Emergency services and healthcare",
+          "(C) Technology, consulting, and research",
+          "(D) Retail and hospitality"
+        ],
+        "choices_kr": [
+          "(A) 제조업과 물류",
+          "(B) 응급 서비스와 의료",
+          "(C) 기술, 컨설팅, 연구",
+          "(D) 소매업과 접객업"
+        ],
+        "answer": 2,
+        "kr": "일정 유연성과 관련된 생산성 향상이 기술, 컨설팅, 연구 개발 부문을 포함한 지식 집약적 산업에서 가장 두드러진다. 반대로 제조업이나 응급 서비스와 같이 물리적 존재나 실시간 조정이 필요한 역할에서는 상관관계가 약했다.",
+        "expressions": [
+          {
+            "expr": "knowledge-intensive industries",
+            "meaning": "지식 집약적 산업"
+          },
+          {
+            "expr": "productivity gains",
+            "meaning": "생산성 향상"
+          },
+          {
+            "expr": "real-time coordination",
+            "meaning": "실시간 조정"
+          }
+        ]
+      },
+      {
+        "q_type": "inference",
+        "sentences": [
+          "The lead researcher, Dr. Amara Osei of the University of Edinburgh, cautioned that the findings should not be interpreted as a blanket endorsement of unstructured work environments.",
+          "Rather, she advocated for a nuanced, role-specific approach in which managers calibrate the degree of autonomy offered based on the nature of the work, individual employee characteristics, and organizational objectives."
+        ],
+        "question": "What is implied by Dr. Osei's remarks?",
+        "question_kr": "Osei 박사의 발언에서 추론할 수 있는 것은?",
+        "choices": [
+          "(A) All organizations should immediately adopt flexible scheduling policies",
+          "(B) The appropriate level of autonomy varies depending on the job and individual",
+          "(C) Managers should be given less authority over employee schedules",
+          "(D) The study's findings apply equally to all types of industries"
+        ],
+        "choices_kr": [
+          "(A) 모든 조직은 즉시 유연한 일정 정책을 채택해야 한다",
+          "(B) 적절한 자율성 수준은 직업과 개인에 따라 다르다",
+          "(C) 관리자들은 직원 일정에 대한 권한이 줄어야 한다",
+          "(D) 연구 결과는 모든 유형의 산업에 동일하게 적용된다"
+        ],
+        "answer": 1,
+        "kr": "수석 연구원 Osei 박사는 연구 결과가 비구조적 업무 환경에 대한 전반적인 지지로 해석되어서는 안 된다고 경고했다. 오히려 관리자가 업무 특성, 개별 직원 특성, 조직 목표에 따라 자율성 정도를 조정하는 세밀하고 역할별 접근 방식을 지지했다.",
+        "expressions": [
+          {
+            "expr": "blanket endorsement",
+            "meaning": "전반적인 지지"
+          },
+          {
+            "expr": "nuanced approach",
+            "meaning": "세밀한 접근 방식"
+          },
+          {
+            "expr": "calibrate the degree of autonomy",
+            "meaning": "자율성 정도를 조정하다"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "title": "☠️ BLACKOUT",
+    "steps": [
+      {
+        "q_type": "purpose",
+        "sentences": [
+          "The City of Harlow has unveiled an ambitious 10-year urban development plan aimed at transforming the formerly industrial Eastbank district into a mixed-use hub integrating residential housing, commercial retail, cultural institutions, and green public spaces.",
+          "The $2.4 billion initiative, the largest in the city's history, is designed to attract over 15,000 new residents and generate approximately 8,000 permanent jobs while addressing the city's acute affordable housing shortage."
+        ],
+        "question": "What is the main purpose of this article?",
+        "question_kr": "이 기사의 주요 목적은 무엇인가?",
+        "choices": [
+          "(A) To report on environmental problems in the Eastbank district",
+          "(B) To announce a large-scale urban development project",
+          "(C) To criticize the city's current housing policies",
+          "(D) To promote investment opportunities in Harlow"
+        ],
+        "choices_kr": [
+          "(A) Eastbank 지구의 환경 문제 보도",
+          "(B) 대규모 도시 개발 프로젝트 발표",
+          "(C) 시의 현재 주택 정책 비판",
+          "(D) Harlow의 투자 기회 홍보"
+        ],
+        "answer": 1,
+        "kr": "Harlow 시는 이전 산업 지구인 Eastbank를 복합 용도 허브로 변환하는 야심찬 10년 도시 개발 계획을 발표했다. 시 역사상 최대인 24억 달러 규모로 15,000명 이상의 신규 주민 유치와 8,000개의 영구 일자리 창출을 목표로 한다.",
+        "expressions": [
+          {
+            "expr": "mixed-use hub",
+            "meaning": "복합 용도 허브"
+          },
+          {
+            "expr": "acute affordable housing shortage",
+            "meaning": "심각한 저렴한 주택 부족"
+          },
+          {
+            "expr": "generate permanent jobs",
+            "meaning": "영구 일자리를 창출하다"
+          }
+        ]
+      },
+      {
+        "q_type": "detail",
+        "sentences": [
+          "The plan mandates that 30 percent of all new residential units be designated as affordable housing, with rental rates capped at no more than 30 percent of the median household income for the area.",
+          "Additionally, a new waterfront promenade, three public parks, and a 5,000-seat performing arts center are included in the development blueprint, with construction expected to begin in phases starting next spring."
+        ],
+        "question": "What percentage of new residential units will be designated as affordable housing?",
+        "question_kr": "신규 주거 단위의 몇 퍼센트가 저렴한 주택으로 지정되는가?",
+        "choices": [
+          "(A) 10 percent",
+          "(B) 20 percent",
+          "(C) 30 percent",
+          "(D) 40 percent"
+        ],
+        "choices_kr": [
+          "(A) 10퍼센트",
+          "(B) 20퍼센트",
+          "(C) 30퍼센트",
+          "(D) 40퍼센트"
+        ],
+        "answer": 2,
+        "kr": "계획은 모든 신규 주거 단위의 30%를 저렴한 주택으로 지정하고, 임대료를 지역 중위 가구 소득의 30% 이하로 제한할 것을 규정한다. 또한 수변 산책로, 3개의 공원, 5,000석 공연 예술 센터가 포함된다.",
+        "expressions": [
+          {
+            "expr": "designated as affordable housing",
+            "meaning": "저렴한 주택으로 지정된"
+          },
+          {
+            "expr": "median household income",
+            "meaning": "중위 가구 소득"
+          },
+          {
+            "expr": "waterfront promenade",
+            "meaning": "수변 산책로"
+          }
+        ]
+      },
+      {
+        "q_type": "inference",
+        "sentences": [
+          "The proposal has drawn both enthusiasm and opposition from community stakeholders.",
+          "Residents' groups have welcomed the affordable housing provisions but expressed concern that the influx of commercial development may accelerate gentrification and displace long-term residents who cannot afford the anticipated increases in property values and living costs.",
+          "City planners have responded by commissioning an independent socioeconomic impact assessment, the results of which will inform any modifications to the final plan before it is submitted for council approval."
+        ],
+        "question": "What can be inferred about the development plan?",
+        "question_kr": "개발 계획에 대해 추론할 수 있는 것은?",
+        "choices": [
+          "(A) It has received unanimous approval from all residents",
+          "(B) It may be modified based on an upcoming impact assessment",
+          "(C) It will be financed entirely through private investment",
+          "(D) It is expected to reduce the city's population"
+        ],
+        "choices_kr": [
+          "(A) 모든 주민으로부터 만장일치의 승인을 받았다",
+          "(B) 곧 있을 영향 평가를 바탕으로 수정될 수 있다",
+          "(C) 전액 민간 투자로 재원이 조달될 것이다",
+          "(D) 시의 인구를 줄일 것으로 예상된다"
+        ],
+        "answer": 1,
+        "kr": "이 제안은 열정과 반대 모두를 불러일으켰다. 주민 단체들은 저렴한 주택 조항을 환영하면서도 젠트리피케이션 가속화와 장기 거주자 퇴거에 대한 우려를 표명했다. 시 계획가들은 독립적인 사회경제적 영향 평가를 의뢰했다.",
+        "expressions": [
+          {
+            "expr": "accelerate gentrification",
+            "meaning": "젠트리피케이션을 가속화하다"
+          },
+          {
+            "expr": "socioeconomic impact assessment",
+            "meaning": "사회경제적 영향 평가"
+          },
+          {
+            "expr": "submitted for council approval",
+            "meaning": "시의회 승인을 위해 제출된"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "title": "☠️ BLACKOUT",
+    "steps": [
+      {
+        "q_type": "purpose",
+        "sentences": [
+          "BioPharma Innovations announced Thursday that its experimental treatment for treatment-resistant depression, designated BPI-4400, has successfully completed Phase III clinical trials with statistically significant results, clearing the final regulatory hurdle before the company submits a New Drug Application to the Federal Health Authority.",
+          "The trials, which enrolled 2,800 participants across 14 countries over a three-year period, demonstrated that BPI-4400 produced a clinically meaningful reduction in depressive symptoms in 68 percent of patients who had previously failed to respond to at least two conventional antidepressant therapies."
+        ],
+        "question": "What is this article primarily reporting?",
+        "question_kr": "이 기사가 주로 보도하는 것은 무엇인가?",
+        "choices": [
+          "(A) The approval of a new depression medication by health authorities",
+          "(B) The successful completion of clinical trials for an experimental drug",
+          "(C) A controversy over the safety of antidepressant medications",
+          "(D) The merger of two pharmaceutical companies"
+        ],
+        "choices_kr": [
+          "(A) 보건 당국의 새로운 우울증 약물 승인",
+          "(B) 실험적 약물의 임상시험 성공적 완료",
+          "(C) 항우울제 안전성에 대한 논란",
+          "(D) 두 제약 회사의 합병"
+        ],
+        "answer": 1,
+        "kr": "BioPharma Innovations는 치료 저항성 우울증 치료제 BPI-4400이 3상 임상시험을 성공적으로 완료했다고 발표했다. 3년에 걸쳐 14개국 2,800명 참가자를 등록한 임상시험에서 이전에 2가지 이상 기존 항우울제에 반응하지 않았던 환자의 68%에서 의미 있는 증상 감소를 보였다.",
+        "expressions": [
+          {
+            "expr": "Phase III clinical trials",
+            "meaning": "3상 임상시험"
+          },
+          {
+            "expr": "treatment-resistant depression",
+            "meaning": "치료 저항성 우울증"
+          },
+          {
+            "expr": "New Drug Application",
+            "meaning": "신약 신청서"
+          }
+        ]
+      },
+      {
+        "q_type": "detail",
+        "sentences": [
+          "Unlike existing therapies, BPI-4400 operates through a novel mechanism targeting the brain's glutamate signaling pathways rather than the serotonin system, which may explain its efficacy in populations that have not benefited from traditional treatments.",
+          "The most commonly reported adverse effects were mild and transient, including temporary dizziness and nausea, with no serious neurological events recorded during the trial period."
+        ],
+        "question": "How does BPI-4400 differ from existing antidepressant treatments?",
+        "question_kr": "BPI-4400은 기존 항우울제 치료와 어떻게 다른가?",
+        "choices": [
+          "(A) It targets a different brain signaling pathway",
+          "(B) It requires fewer doses per week than current medications",
+          "(C) It was developed specifically for mild depression",
+          "(D) It has no reported side effects in clinical trials"
+        ],
+        "choices_kr": [
+          "(A) 다른 뇌 신호 경로를 대상으로 한다",
+          "(B) 현재 약물보다 주당 복용 횟수가 적다",
+          "(C) 경미한 우울증을 위해 특별히 개발되었다",
+          "(D) 임상시험에서 보고된 부작용이 없다"
+        ],
+        "answer": 0,
+        "kr": "기존 치료제와 달리 BPI-4400은 세로토닌 시스템이 아닌 뇌의 글루타메이트 신호 경로를 표적으로 하는 새로운 메커니즘을 통해 작용한다. 가장 일반적으로 보고된 부작용은 일시적인 현기증과 메스꺼움으로 경미하고 일시적이었다.",
+        "expressions": [
+          {
+            "expr": "glutamate signaling pathways",
+            "meaning": "글루타메이트 신호 경로"
+          },
+          {
+            "expr": "adverse effects",
+            "meaning": "부작용"
+          },
+          {
+            "expr": "transient",
+            "meaning": "일시적인"
+          }
+        ]
+      },
+      {
+        "q_type": "inference",
+        "sentences": [
+          "Industry analysts estimate that if approved, BPI-4400 could generate annual revenues of between $3 and $5 billion within five years of launch, given the substantial unmet medical need in the treatment-resistant depression market.",
+          "However, health economists have cautioned that the drug's pricing strategy will be closely scrutinized by payers and patient advocacy groups, particularly in light of the significant public investment that supported the foundational research underlying its development."
+        ],
+        "question": "What can be inferred about BPI-4400's market prospects?",
+        "question_kr": "BPI-4400의 시장 전망에 대해 추론할 수 있는 것은?",
+        "choices": [
+          "(A) Its commercial success is guaranteed due to high demand",
+          "(B) Its pricing may face pressure from various stakeholders",
+          "(C) It will be sold exclusively in the domestic market",
+          "(D) Analysts expect it to replace all existing antidepressants"
+        ],
+        "choices_kr": [
+          "(A) 높은 수요로 인해 상업적 성공이 보장되어 있다",
+          "(B) 다양한 이해관계자들로부터 가격 압박을 받을 수 있다",
+          "(C) 국내 시장에서만 독점적으로 판매될 것이다",
+          "(D) 분석가들은 기존 모든 항우울제를 대체할 것으로 예상한다"
+        ],
+        "answer": 1,
+        "kr": "업계 분석가들은 승인될 경우 BPI-4400이 출시 5년 내에 연간 30억~50억 달러의 수익을 창출할 수 있다고 추정한다. 그러나 의료 경제학자들은 약물의 가격 전략이 보험사와 환자 옹호 단체의 면밀한 검토를 받을 것이라고 경고했다.",
+        "expressions": [
+          {
+            "expr": "unmet medical need",
+            "meaning": "미충족 의료 수요"
+          },
+          {
+            "expr": "closely scrutinized",
+            "meaning": "면밀히 검토되다"
+          },
+          {
+            "expr": "patient advocacy groups",
+            "meaning": "환자 옹호 단체"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "title": "☠️ BLACKOUT",
+    "steps": [
+      {
+        "q_type": "purpose",
+        "sentences": [
+          "A comprehensive analysis released by the Global Trade Institute reveals that multinational corporations have been systematically restructuring their supply chains in response to escalating geopolitical tensions, pandemic-era disruptions, and the growing vulnerability of single-source procurement models.",
+          "The report documents a pronounced shift from efficiency-driven, just-in-time sourcing frameworks toward more resilient, geographically diversified supply networks, a trend the institute's researchers have termed 'strategic supply chain decoupling.'"
+        ],
+        "question": "What is the main subject of this report?",
+        "question_kr": "이 보고서의 주요 주제는 무엇인가?",
+        "choices": [
+          "(A) The financial performance of multinational corporations",
+          "(B) Changes in global supply chain strategies by major companies",
+          "(C) New trade regulations introduced by international bodies",
+          "(D) The environmental impact of global shipping networks"
+        ],
+        "choices_kr": [
+          "(A) 다국적 기업들의 재무 실적",
+          "(B) 주요 기업들의 글로벌 공급망 전략 변화",
+          "(C) 국제 기관이 도입한 새로운 무역 규정",
+          "(D) 글로벌 해운 네트워크의 환경적 영향"
+        ],
+        "answer": 1,
+        "kr": "Global Trade Institute의 종합 분석에 따르면 다국적 기업들이 지정학적 긴장, 팬데믹 혼란, 단일 소스 조달 모델의 취약성에 대응하여 공급망을 체계적으로 재편하고 있다. 효율성 중심의 적시 조달에서 더 탄력적이고 지리적으로 다양화된 공급망으로의 전환이 문서화되었다.",
+        "expressions": [
+          {
+            "expr": "just-in-time sourcing",
+            "meaning": "적시 조달"
+          },
+          {
+            "expr": "geographically diversified",
+            "meaning": "지리적으로 다양화된"
+          },
+          {
+            "expr": "supply chain decoupling",
+            "meaning": "공급망 디커플링"
+          }
+        ]
+      },
+      {
+        "q_type": "detail",
+        "sentences": [
+          "Among the sectors most aggressively pursuing supply chain diversification, the semiconductor, pharmaceutical, and critical minerals industries were identified as leaders, driven by their strategic importance and the disproportionate risks they faced during recent global disruptions.",
+          "The report found that companies in these sectors have on average increased the number of approved suppliers by 34 percent and established secondary production facilities in at least two additional geographic regions compared to their pre-2020 configurations."
+        ],
+        "question": "According to the report, by how much have companies in key sectors increased their approved suppliers?",
+        "question_kr": "보고서에 따르면, 핵심 부문의 기업들은 승인된 공급업체를 얼마나 증가시켰는가?",
+        "choices": [
+          "(A) By 20 percent",
+          "(B) By 34 percent",
+          "(C) By 50 percent",
+          "(D) By 60 percent"
+        ],
+        "choices_kr": [
+          "(A) 20퍼센트",
+          "(B) 34퍼센트",
+          "(C) 50퍼센트",
+          "(D) 60퍼센트"
+        ],
+        "answer": 1,
+        "kr": "반도체, 제약, 핵심 광물 산업이 공급망 다양화를 가장 적극적으로 추진하는 부문으로 확인되었다. 이 부문의 기업들은 2020년 이전 대비 평균 34% 승인된 공급업체 수를 늘리고 최소 2개 추가 지역에 2차 생산 시설을 구축했다.",
+        "expressions": [
+          {
+            "expr": "approved suppliers",
+            "meaning": "승인된 공급업체"
+          },
+          {
+            "expr": "secondary production facilities",
+            "meaning": "2차 생산 시설"
+          },
+          {
+            "expr": "disproportionate risks",
+            "meaning": "불균형적 위험"
+          }
+        ]
+      },
+      {
+        "q_type": "inference",
+        "sentences": [
+          "The institute's economists acknowledge that supply chain diversification entails significant short-term costs, including higher inventory expenses, redundant infrastructure, and elevated per-unit procurement costs.",
+          "Nevertheless, they argue that these expenditures represent a rational risk premium given the demonstrated capacity of concentrated supply chains to generate catastrophic operational disruptions, as evidenced by the semiconductor shortages and pharmaceutical supply failures witnessed between 2020 and 2023."
+        ],
+        "question": "What can be inferred from the economists' assessment?",
+        "question_kr": "경제학자들의 평가에서 추론할 수 있는 것은?",
+        "choices": [
+          "(A) Companies are willing to accept higher costs in exchange for greater supply security",
+          "(B) Supply chain diversification is expected to reduce overall production costs",
+          "(C) The semiconductor shortage was caused by excessive supply chain diversification",
+          "(D) Most companies have already completed their supply chain restructuring"
+        ],
+        "choices_kr": [
+          "(A) 기업들은 더 큰 공급 안보를 위해 더 높은 비용을 감수할 의향이 있다",
+          "(B) 공급망 다양화는 전반적인 생산 비용을 절감할 것으로 예상된다",
+          "(C) 반도체 부족은 과도한 공급망 다양화로 인해 발생했다",
+          "(D) 대부분의 기업들이 이미 공급망 재편을 완료했다"
+        ],
+        "answer": 0,
+        "kr": "경제학자들은 공급망 다양화가 상당한 단기 비용을 수반한다고 인정한다. 그럼에도 2020년부터 2023년 사이에 목격된 반도체 부족과 의약품 공급 실패로 입증된 집중된 공급망의 파국적 혼란 능력을 고려할 때 합리적인 위험 프리미엄이라고 주장한다.",
+        "expressions": [
+          {
+            "expr": "risk premium",
+            "meaning": "위험 프리미엄"
+          },
+          {
+            "expr": "concentrated supply chains",
+            "meaning": "집중된 공급망"
+          },
+          {
+            "expr": "catastrophic operational disruptions",
+            "meaning": "파국적인 운영 혼란"
+          }
+        ]
+      }
+    ]
+  }
+]
