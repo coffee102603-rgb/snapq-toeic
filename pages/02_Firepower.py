@@ -11,7 +11,7 @@ EXTEND: Adaptive 난이도 고도화 예정
 import streamlit as st
 import streamlit.components.v1 as components
 from streamlit_autorefresh import st_autorefresh
-import random, time, json, os
+import random, time, json, os, re
 
 st.set_page_config(page_title="화력전 ⚡", page_icon="⚡", layout="wide", initial_sidebar_state="collapsed")
 # ★★★ iOS Safari 세션 가드 — WebSocket 끊겨도 세션 자동 복원 ★★★
@@ -120,8 +120,8 @@ header[data-testid="stHeader"]{background:transparent!important;height:0!importa
   letter-spacing:3px;}
 .qc-g{color:#2288bb;}
 .qc-v{color:#228855;}
-.qt{font-family:'Rajdhani',sans-serif;color:#eeeeff;font-size:0.95rem;font-weight:700;line-height:1.6;word-break:keep-all;}
-.qk{color:#00d4ff;font-weight:900;font-size:1.0rem;border-bottom:2px solid #00d4ff;
+.qt{font-family:'Rajdhani',sans-serif;color:#eeeeff;font-size:0.81rem;font-weight:700;line-height:1.6;word-break:keep-all;}
+.qk{color:#00d4ff;font-weight:900;font-size:0.85rem;border-bottom:2px solid #00d4ff;
   text-shadow:0 0 12px rgba(0,212,255,0.9);padding:0 2px;}
 
 /* ── 답 버튼 — 게임 스타일 ── */
@@ -177,7 +177,7 @@ summary{color:#aaa!important;font-weight:700!important;}
   .ah h1{font-size:1.4rem!important;letter-spacing:2px!important;}
   div[data-testid="stButton"] button{font-size:1.5rem!important;padding:0.8rem 1rem!important;min-height:64px!important;}
   div[data-testid="stButton"] button p{font-size:1.5rem!important;}
-  .qt{font-size:1.75rem!important;}.qk{font-size:1.9rem!important;}
+  .qt{font-size:1.49rem!important;}.qk{font-size:1.6rem!important;}
   .wb-s{font-size:1.6rem!important;}.wb-h,.wb-hn{font-size:1.75rem!important;}
   .wb-k{font-size:1.25rem!important;}.wb-e{font-size:1.15rem!important;}
   .bq{font-size:1.2rem!important;}
@@ -187,7 +187,7 @@ summary{color:#aaa!important;font-weight:700!important;}
   .ah h1{font-size:0.95rem!important;letter-spacing:1px!important;}
   div[data-testid="stButton"] button{font-size:0.98rem!important;padding:0.5rem 0.6rem!important;min-height:52px!important;border-radius:8px!important;}
   div[data-testid="stButton"] button p{font-size:0.98rem!important;}
-  .qt{font-size:1.15rem!important;line-height:1.6!important;}.qk{font-size:1.25rem!important;}
+  .qt{font-size:0.98rem!important;line-height:1.6!important;}.qk{font-size:1.06rem!important;}
   .qb{padding:0.7rem!important;border-radius:10px!important;}
   .bq{font-size:0.95rem!important;}.bs{font-size:0.82rem!important;}
   .rd-dot{width:20px!important;height:20px!important;}
@@ -196,7 +196,7 @@ summary{color:#aaa!important;font-weight:700!important;}
   .ah h1{font-size:0.9rem!important;}
   div[data-testid="stButton"] button{font-size:1.0rem!important;}
   div[data-testid="stButton"] button p{font-size:1.0rem!important;}
-  .qt{font-size:1.2rem!important;}.qk{font-size:1.3rem!important;}
+  .qt{font-size:1.02rem!important;}.qk{font-size:1.1rem!important;}
 }
 </style>
 """, unsafe_allow_html=True)
@@ -514,7 +514,7 @@ if st.session_state.phase=="battle":
 
         _clicked = None
         for _ii, _ch in enumerate(q['ch']):
-            _ch_clean = _ch.split(") ", 1)[-1] if ") " in _ch else _ch
+            _ch_clean = re.sub(r'^\([A-D]\)[:\s]*', '', _ch).strip()
             _display = f"【{_labels[_ii]}】  {_ch_clean}"
             _aid = _ans_cfg[_ii][0]
             st.markdown(f'<div id="btn-{_aid}">', unsafe_allow_html=True)
