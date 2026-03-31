@@ -2277,14 +2277,14 @@ div[data-testid="stButton"] button p{color:#c0c8e0!important;font-size:0.9rem!im
                   {_family_block}
                   <div style="display:flex;justify-content:center;gap:4px;margin-top:8px;">{_dots2}</div>
                   <div style="font-size:13px;font-weight:700;color:#66aa88;margin-top:4px;">
-                    {'🔑 탈출까지 1번 남았어!' if _streak==2 else '💪 한 번 더 맞히면 인정!' if _streak==1 else '⛓ 첫 번째 도전!'}</div>
+                    {'🔓 석방 완료!' if _streak>=3 else '💀 솔직하게 말해 · 알아? 몰라?'}</div>
                 </div>
                 """, height=_card_h)
 
                 _c1,_c2=st.columns(2)
                 with _c1:
                     st.markdown('<div id="btn-know">', unsafe_allow_html=True)
-                    if st.button("✅ 알았어! 석방 +1", key=f"wp_know_{_idx}", use_container_width=True):
+                    if st.button("✅  I KNOW!  석방 +1", key=f"wp_know_{_idx}", use_container_width=True):
                         _ri=next((i for i,x in enumerate(_pr_st["word_prison"]) if x.get("word","").lower()==_word.lower()),None)
                         if _ri is not None:
                             _ns=_streak+1
@@ -2305,7 +2305,7 @@ div[data-testid="stButton"] button p{color:#c0c8e0!important;font-size:0.9rem!im
                     st.markdown('</div>', unsafe_allow_html=True)
                 with _c2:
                     st.markdown('<div id="btn-no">', unsafe_allow_html=True)
-                    if st.button("❌ 모르겠어! 재투옥!", key=f"wp_no_{_idx}", use_container_width=True):
+                    if st.button("❌  NO IDEA!  재투옥!", key=f"wp_no_{_idx}", use_container_width=True):
                         _ri=next((i for i,x in enumerate(_pr_st["word_prison"]) if x.get("word","").lower()==_word.lower()),None)
                         if _ri is not None:
                             _pr_st["word_prison"][_ri]["correct_streak"]=0
