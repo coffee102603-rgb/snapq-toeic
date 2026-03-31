@@ -483,7 +483,7 @@ if st.session_state.sg_phase == "lobby":
                     <div style="font-size:0.8rem;color:#aaa;margin-top:2px;">틀린 문제 박살!</div>
                 </div>
             </div>''', unsafe_allow_html=True)
-            if st.button("출격!", key="rv_p5", type="primary", use_container_width=True):
+            if st.button("출격!", key="rv_p5", use_container_width=True):
                 st.session_state.rv_battle = "p5"; st.rerun()
         with c2:
             st.markdown('''<div style="background:#05080f;border:2px solid #8833ff;border-radius:14px;overflow:hidden;margin-bottom:6px;">
@@ -494,7 +494,7 @@ if st.session_state.sg_phase == "lobby":
                     <div style="font-size:0.8rem;color:#aaa;margin-top:2px;">문장으로 무기 장착!</div>
                 </div>
             </div>''', unsafe_allow_html=True)
-            if st.button("출격!", key="rv_p7", type="primary", use_container_width=True):
+            if st.button("출격!", key="rv_p7", use_container_width=True):
                 st.session_state.rv_battle = "p7"; st.rerun()
 
     # ━━━ 2막 P5: 전투 방식 선택 ━━━
@@ -1085,7 +1085,7 @@ elif st.session_state.sg_phase == "p5_exam_result":
         st.markdown(f'''<div style="background:#120000;border:1px solid #661100;border-radius:10px;padding:8px;text-align:center;margin-bottom:8px;">
             <div style="font-size:0.85rem;color:#ff6644;font-weight:700;">{_nag}</div>
         </div>''', unsafe_allow_html=True)
-        if st.button("⚔️ 설욕전! 다시 싸운다!", key="retry_exam", type="primary", use_container_width=True):
+        if st.button("⚔️ 설욕전! 다시 싸운다!", key="retry_exam", use_container_width=True):
             st.session_state.sg_phase = "lobby"; st.session_state.rv_battle = None; st.session_state.rv_mode = None; st.rerun()
         st.markdown('''<style>
         div[data-testid="stHorizontalBlock"]:last-of-type button{
@@ -1124,7 +1124,7 @@ elif st.session_state.sg_phase == "p5_exam_result":
             <div style="font-size:0.85rem;color:#8833ff;font-weight:700;">⚡ 3번 반복하면 장기기억 전환율 3배!</div>
             <div style="font-size:0.75rem;color:#886600;margin-top:2px;">지금 이 기세로 한 번 더!</div>
         </div>''', unsafe_allow_html=True)
-        if st.button("⚡ 한 번 더! 완전 정복!", key="retry_exam", type="primary", use_container_width=True):
+        if st.button("💀 한 번 더! 완전 정복!", key="retry_exam", use_container_width=True):
             st.session_state.sg_phase = "lobby"; st.session_state.rv_battle = None; st.session_state.rv_mode = None; st.rerun()
         st.markdown('''<style>
         div[data-testid="stHorizontalBlock"]:last-of-type button{
@@ -1194,7 +1194,7 @@ elif st.session_state.sg_phase == "survival":
         </div>''', unsafe_allow_html=True)
         c1,c2=st.columns(2)
         with c1:
-            if st.button("⚡ 시험모드!",key="sb_go_exam",type="primary",use_container_width=True):
+            if st.button("⚡ 시험모드!",key="sb_go_exam",use_container_width=True):
                 st.session_state.sg_combo_score=0; st.session_state.sg_combo_count=0
                 st.session_state.sg_combo_idx=0; st.session_state.sg_combo_start=time.time()
                 st.session_state.sg_combo_over=False; st.session_state.sg_combo_results=[]
@@ -1313,7 +1313,7 @@ elif st.session_state.sg_phase == "survival":
                 <div style="font-size:0.9rem;color:#88ddaa;margin-top:4px;">이 문장, 이제 완전히 네 것!</div>
                 <div style="font-size:0.8rem;color:#aa66ff;margin-top:6px;opacity:0.8;">현재 난이도: {_level_emoji} ({_level_msg})</div>
             </div>''', unsafe_allow_html=True)
-            if st.button("▶ 다음 문장!",key="sb_next",type="primary",use_container_width=True):
+            if st.button("▶ 다음 문장!",key="sb_next",use_container_width=True):
                 st.session_state.sb_idx=idx+1; st.session_state.sb_wrong_cnt=0
                 for k in ["sb_selected","sb_done","sb_blanked","sb_blank_order","sb_blank_words"]:
                     if k in st.session_state: del st.session_state[k]
@@ -1325,7 +1325,7 @@ elif st.session_state.sg_phase == "survival":
                     <div style="font-size:1.1rem;font-weight:800;color:#ff8866;margin-top:4px;">한 번 더! 할 수 있어!</div>
                     <div style="font-size:0.85rem;color:#ffaa88;margin-top:3px;">다시 한글 보고 순서대로!</div>
                 </div>''', unsafe_allow_html=True)
-                if st.button("🔄 다시 도전!",key="sb_retry",type="primary",use_container_width=True):
+                if st.button("🔄 다시 도전!",key="sb_retry",use_container_width=True):
                     st.session_state.sb_selected=[]
                     st.session_state.sb_done=False
                     st.session_state.sb_wrong_counted=False
@@ -1360,7 +1360,7 @@ elif st.session_state.sg_phase == "survival":
                 st.markdown(f'''<div style="background:#1a0a00;border:2px solid #ff8844;border-radius:14px;padding:10px 14px;margin-bottom:8px;text-align:center;">
                     <div style="font-size:1.05rem;font-weight:800;color:#ffaa55;">{msg}</div>
                 </div>''', unsafe_allow_html=True)
-                if st.button("▶ 다음 문장!",key="sb_next2",type="primary",use_container_width=True):
+                if st.button("▶ 다음 문장!",key="sb_next2",use_container_width=True):
                     # ★ 2번 틀리면 레벨 DOWN
                     st.session_state.puzzle_streak = 0
                     old_level = st.session_state.get("puzzle_blank_level", 2)
@@ -1458,7 +1458,7 @@ elif st.session_state.sg_phase == "survival_result":
 
     c1, c2, c3 = st.columns(3)
     with c1:
-        if st.button("🧠 다시 밟고\n완전정복!", key="sv_retry", type="primary", use_container_width=True):
+        if st.button("🧠 다시 밟고\n완전정복!", key="sv_retry", use_container_width=True):
             st.session_state.sg_wave = 1; st.session_state.sg_wave_idx = 0
             st.session_state.sg_wave_results = []; st.session_state.sg_wave_dead = False
             st.session_state.sg_wave_start = time.time()
@@ -1586,13 +1586,13 @@ elif st.session_state.sg_phase == "combo_rush":
 # ════════════════════════════════
 if st.session_state.get("rv_mode") == "p7_vault":
     st.markdown('''<div style="text-align:center;padding:1rem 0;">
-        <div style="font-size:1.8rem;font-weight:900;color:#185FA5;">📦 문장 저장고</div>
-        <div style="font-size:0.9rem;color:#888;margin-top:4px;">저장한 문장으로 학습하고 시험 준비하세요</div>
+        <div style="font-size:1.8rem;font-weight:900;color:#cc88ff;">⚔️ 무기 저장고</div>
+        <div style="font-size:0.9rem;color:#9966ff;margin-top:4px;font-weight:700;">실전 무기를 점검하고 · 불필요한 건 제거하라!</div>
     </div>''', unsafe_allow_html=True)
     storage2=load_storage()
     voca_list=storage2.get("saved_expressions",[])
     if not voca_list:
-        st.markdown('''<div style="text-align:center;background:#f8f8f8;border-radius:12px;padding:2rem;color:#888;">
+        st.markdown('''<div style="text-align:center;background:#0e0628;border-radius:12px;padding:2rem;color:#aa66ff;border:1.5px solid #6622cc;">
             <div style="font-size:2rem;">📭</div>
             <div style="font-size:1rem;margin-top:8px;">저장된 문장이 없어요!</div>
             <div style="font-size:0.85rem;margin-top:4px;">암호해독 작전 브리핑에서 어려운 문장을 저장하세요</div>
@@ -1604,9 +1604,9 @@ if st.session_state.get("rv_mode") == "p7_vault":
             kr_full=item.get("kr","") or item.get("meaning","")
             kr_sents=[x.strip() for x in kr_full.replace("!","!|").replace("?","?|").replace(".",".|").split("|") if x.strip()]
             sent_kr=kr_sents[0] if kr_sents else kr_full
-            st.markdown(f'''<div style="background:#ffffff;border:0.5px solid #d3d1c7;border-radius:12px;padding:12px 14px;margin-bottom:4px;">
-                <div style="font-size:15px;font-weight:700;color:#1a1a2e;line-height:1.6;">{sentence}</div>
-                <div style="font-size:13px;color:#5f5e5a;margin-top:4px;">{sent_kr}</div>
+            st.markdown(f'''<div style="background:#0e0628;border:1.5px solid #4400aa;border-radius:12px;padding:12px 14px;margin-bottom:4px;">
+                <div style="font-size:15px;font-weight:700;color:#ddeeff;line-height:1.6;">{sentence}</div>
+                <div style="font-size:13px;color:#aa88dd;margin-top:4px;">{sent_kr}</div>
             </div>''', unsafe_allow_html=True)
             if st.button("🗑 삭제",key=f"del_v_{idx}"):
                 deleted=voca_list.pop(idx)
@@ -1664,7 +1664,7 @@ elif st.session_state.sg_phase == "combo_result":
     button[data-testid="stBaseButton-secondary"]{background:#0a0a0a!important;border:1.5px solid rgba(255,255,255,0.2)!important;border-radius:12px!important;}
     button[data-testid="stBaseButton-secondary"] p{color:#aaa!important;font-size:1.0rem!important;}
     </style>""", unsafe_allow_html=True)
-    if st.button("💪 다시 덤벼! 이번엔 안 진다!", key="cb_retry", type="primary", use_container_width=True):
+    if st.button("💪 다시 덤벼! 이번엔 안 진다!", key="cb_retry", use_container_width=True):
         st.session_state.sg_combo_score = 0; st.session_state.sg_combo_count = 0
         st.session_state.sg_combo_idx = 0; st.session_state.sg_combo_start = time.time()
         st.session_state.sg_combo_over = False
@@ -1760,11 +1760,9 @@ div[data-testid="stButton"] button p{color:#c0c8e0!important;font-size:0.9rem!im
 #btn-no div[data-testid="stButton"] button p{color:#ff5544!important;font-size:1.05rem!important;font-weight:900!important;}
 #btn-flip div[data-testid="stButton"] button{background:#10102a!important;border:2.5px solid #6655ee!important;color:#cc99ff!important;min-height:58px!important;font-size:1rem!important;}
 #btn-flip div[data-testid="stButton"] button p{color:#cc99ff!important;font-size:1rem!important;font-weight:900!important;}
-#btn-start div[data-testid="stButton"] button{background:#200000!important;border:3px solid #ff0000!important;color:#ff3300!important;min-height:64px!important;font-size:1.1rem!important;
-  animation:btnPulse 1.2s ease infinite!important;
-  box-shadow:0 0 20px #ff000099,0 0 40px #ff000044!important;}
-#btn-start div[data-testid="stButton"] button p{color:#ff4422!important;font-size:1.1rem!important;font-weight:900!important;}
-@keyframes btnPulse{0%,100%{box-shadow:0 0 20px #ff000099,0 0 40px #ff000044}50%{box-shadow:0 0 40px #ff0000cc,0 0 80px #ff000077}}
+#btn-start div[data-testid="stButton"] button{background:#0e0028!important;border:2.5px solid #8833ff!important;color:#cc88ff!important;min-height:64px!important;font-size:1.1rem!important;}
+#btn-start div[data-testid="stButton"] button p{color:#cc88ff!important;font-size:1.1rem!important;font-weight:900!important;}
+
 #btn-home div[data-testid="stButton"] button{background:#08080f!important;border:1px solid #1a1d2a!important;color:#3a4455!important;min-height:38px!important;font-size:0.8rem!important;}
 #btn-home div[data-testid="stButton"] button p{color:#3a4455!important;font-size:0.8rem!important;}
 #btn-back div[data-testid="stButton"] button{background:#08080f!important;border:1px solid #1a1d2a!important;color:#3a4455!important;min-height:36px!important;font-size:0.78rem!important;}
