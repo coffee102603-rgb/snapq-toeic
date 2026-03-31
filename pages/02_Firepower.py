@@ -353,7 +353,7 @@ if st.session_state.phase=="battle":
     ej="🔴" if ig else "🔵"; tn="문법" if ig else "어휘"
 
     _en_mode = "GRAMMAR" if ig else "VOCAB"
-    _rn_str  = f"R.{st.session_state.round_num}" if st.session_state.round_num > 1 else "ROUND 1"
+    _rn_str  = f"WAVE {st.session_state.round_num}" if st.session_state.round_num > 1 else "WAVE 1"
     st.markdown(f'<div class="ah"><h1>⚡ {_en_mode} FIREPOWER · {_rn_str}</h1></div>', unsafe_allow_html=True)
 
     # ── HUD 배틀바 ──
@@ -390,11 +390,11 @@ if st.session_state.phase=="battle":
         #n{{font-size:2.4rem;font-weight:900;animation:pulse 1s ease-in-out infinite;letter-spacing:2px;}}
         #bw{{background:#111;border-radius:10px;height:12px;margin:3px 4px 0;overflow:hidden;border:1px solid #222;}}
         #b{{height:100%;border-radius:10px;transition:width 1s linear;}}
-        .safe{{color:#44ff88;text-shadow:0 0 20px #44ff88,0 0 40px #22cc66;}}
+        .safe{{color:#ff8833;text-shadow:0 0 20px #ff8833,0 0 40px #ff6600;}}
         .warn{{color:#FFD600;text-shadow:0 0 25px #FFD600,0 0 50px #ff8800;}}
         .danger{{color:#ff4444;text-shadow:0 0 35px #ff4444,0 0 70px #ff0000;animation:shakeNum 0.3s infinite!important;}}
         .critical{{color:#ff0000;text-shadow:0 0 50px #ff0000,0 0 100px #ff0000;font-size:2.8rem!important;animation:shakeNum 0.15s infinite!important;}}
-        .bs{{background:linear-gradient(90deg,#22cc66,#44ff88);box-shadow:0 0 10px #44ff88;}}
+        .bs{{background:linear-gradient(90deg,#cc4400,#ff8833);box-shadow:0 0 10px #ff6600;}}
         .bw{{background:linear-gradient(90deg,#cc8800,#FFD600);box-shadow:0 0 10px #FFD600;}}
         .bd{{background:linear-gradient(90deg,#cc2200,#ff4444);box-shadow:0 0 15px #ff4444;animation:bpulse 0.5s infinite;}}
         .bc{{background:linear-gradient(90deg,#ff0000,#ff4444);box-shadow:0 0 25px #ff0000;animation:bpulse 0.2s infinite;}}
@@ -689,18 +689,18 @@ elif st.session_state.phase=="victory":
         ("👑 PERFECT!", "완벽 그 자체!! 오늘 이 실력 그대로 시험장 가면 990점 🎯", "#FFD600"),
     ]
     _VICTORY_list = [
-        ("⚔️ VICTORY!", "강해!! 이 기세면 토익 900+ 그냥 간다! 💪", "#44FF88"),
-        ("⚔️ VICTORY!", "4/5!! 딱 하나 방심한 거지? 다음엔 PERFECT 각이야 🔥", "#44FF88"),
-        ("⚔️ VICTORY!", "아깝다 하나!! 그 하나만 잡으면 토익 고득점 확정이야 🎯", "#44FF88"),
-        ("⚔️ VICTORY!", "90점짜리 실력!! 조금만 더 갈면 진짜 된다 💥", "#44FF88"),
-        ("⚔️ VICTORY!", "거의 다 왔어!! 완벽까지 딱 한 걸음이야 😤", "#44FF88"),
+        ("⚔️ VICTORY!", "강해!! 이 기세면 토익 900+ 그냥 간다! 💪", "#ff8833"),
+        ("⚔️ VICTORY!", "4/5!! 딱 하나 방심한 거지? 다음엔 PERFECT 각이야 🔥", "#ff8833"),
+        ("⚔️ VICTORY!", "아깝다 하나!! 그 하나만 잡으면 토익 고득점 확정이야 🎯", "#ff8833"),
+        ("⚔️ VICTORY!", "90점짜리 실력!! 조금만 더 갈면 진짜 된다 💥", "#ff8833"),
+        ("⚔️ VICTORY!", "거의 다 왔어!! 완벽까지 딱 한 걸음이야 😤", "#ff8833"),
     ]
     _CLEAR_list = [
-        ("✅ CLEAR!", "아슬아슬 살아남았어... 겨우겨우지만 그래도 살았잖아 😅", "#88ccff"),
-        ("✅ CLEAR!", "3개... 딱 생존선이네. 운이 좋았어 🍀", "#88ccff"),
-        ("✅ CLEAR!", "살긴 살았는데, 이게 실력이야? 솔직히 말해봐 😐", "#88ccff"),
-        ("✅ CLEAR!", "통과는 했는데... 토익은 이렇게 안 되거든? 알지? 😬", "#88ccff"),
-        ("✅ CLEAR!", "3/5... 기초는 됐어. 근데 딱 기초만이야 😑", "#88ccff"),
+        ("✅ CLEAR!", "아슬아슬 살아남았어... 겨우겨우지만 그래도 살았잖아 😅", "#ff9944"),
+        ("✅ CLEAR!", "3개... 딱 생존선이네. 운이 좋았어 🍀", "#ff9944"),
+        ("✅ CLEAR!", "살긴 살았는데, 이게 실력이야? 솔직히 말해봐 😐", "#ff9944"),
+        ("✅ CLEAR!", "통과는 했는데... 토익은 이렇게 안 되거든? 알지? 😬", "#ff9944"),
+        ("✅ CLEAR!", "3/5... 기초는 됐어. 근데 딱 기초만이야 😑", "#ff9944"),
     ]
     if _sc_v == 5:
         _grade, _praise, _pcol = random.choice(_PERFECT_list)
@@ -762,7 +762,7 @@ elif st.session_state.phase=="victory":
       {_stars_html}{_coins_html}{_lightning_html}
     </div>
     <div class="wrap">
-        <div class="round-tag">⚔️ ROUND {_rn_v} CLEAR ⚔️</div>
+        <div class="round-tag">💥 WAVE {_rn_v} COMPLETE 💥</div>
         <div class="grade">{_grade}</div>
         <div class="scorebox">
             <div class="sc-num">{_sc_v}<span style="font-size:1.6rem;color:#886600;"> / 5</span></div>
@@ -1018,11 +1018,11 @@ elif st.session_state.phase=="briefing":
 
     /* ── POW HQ CTA 버튼 ── */
     .br-pow-btn div[data-testid="stButton"] button{
-        background:#0a0000!important;border:2px solid #ff4444!important;
+        background:#0e0020!important;border:2px solid #8833ff!important;
         border-radius:12px!important;color:#ff6644!important;
         font-size:0.92rem!important;font-weight:900!important;min-height:48px!important;
         letter-spacing:0.5px!important;}
-    .br-pow-btn div[data-testid="stButton"] button p{color:#ff6644!important;font-size:0.92rem!important;font-weight:900!important;}
+    .br-pow-btn div[data-testid="stButton"] button p{color:#aa66ff!important;font-size:0.92rem!important;font-weight:900!important;}
 
     /* ── 재전투 버튼 ── */
     .br-retry-btn div[data-testid="stButton"] button{
@@ -1064,19 +1064,19 @@ elif st.session_state.phase=="briefing":
 
     # ── 상단 배너 (영문) ──
     if was_victory:
-        st.markdown(f'''<div style="background:#0c0c00;border:2px solid #FFD600;border-left:5px solid #FFD600;
+        st.markdown(f'''<div style="background:#150800;border:2px solid #ff6600;border-left:5px solid #ff6600;
             border-radius:10px;padding:10px 12px;margin-bottom:2px;">
             <div style="font-family:Orbitron,monospace;font-size:0.85rem;font-weight:900;
-              color:#FFD600;letter-spacing:2px;">⚡ ROUND {rn} · VICTORY</div>
-            <div style="font-size:0.72rem;color:#886600;margin-top:3px;letter-spacing:1px;">
+              color:#ff8833;letter-spacing:2px;">💥 WAVE {rn} · FIREPOWER COMPLETE</div>
+            <div style="font-size:0.75rem;color:#cc6622;font-weight:700;margin-top:3px;letter-spacing:1px;">
               ✅ {sc_v} ELIMINATED &nbsp;·&nbsp; ❌ {wr_v} MISSED</div>
         </div>''', unsafe_allow_html=True)
     else:
         st.markdown(f'''<div style="background:#0c0008;border:2px solid #FF2D55;border-left:5px solid #FF2D55;
             border-radius:10px;padding:10px 12px;margin-bottom:2px;">
             <div style="font-family:Orbitron,monospace;font-size:0.85rem;font-weight:900;
-              color:#FF2D55;letter-spacing:2px;">💀 ROUND {rn} · MISSION FAILED</div>
-            <div style="font-size:0.72rem;color:#661122;margin-top:3px;letter-spacing:1px;">
+              color:#FF2D55;letter-spacing:2px;">💀 WAVE {rn} · MISSION FAILED</div>
+            <div style="font-size:0.75rem;color:#ee4455;font-weight:700;margin-top:3px;letter-spacing:1px;">
               ✅ {sc_v} ELIMINATED &nbsp;·&nbsp; ❌ {wr_v} MISSED</div>
         </div>''', unsafe_allow_html=True)
 
@@ -1205,7 +1205,7 @@ elif st.session_state.phase=="briefing":
         _bc1, _bc2 = st.columns([3, 1])
         with _bc1:
             st.markdown('<div class="br-pow-btn">', unsafe_allow_html=True)
-            if st.button("⚔️  포로사령부!", use_container_width=True):
+            if st.button("💀  포로사령부!", use_container_width=True):
                 st.switch_page("pages/03_POW_HQ.py")
             st.markdown('</div>', unsafe_allow_html=True)
         with _bc2:
@@ -1228,7 +1228,7 @@ elif st.session_state.phase=="briefing":
         _rc1, _rc2 = st.columns([3, 1])
         with _rc1:
             st.markdown('<div class="br-pow-btn">', unsafe_allow_html=True)
-            if st.button("⚔️  포로사령부!", use_container_width=True):
+            if st.button("💀  포로사령부!", use_container_width=True):
                 st.switch_page("pages/03_POW_HQ.py")
             st.markdown('</div>', unsafe_allow_html=True)
         with _rc2:
@@ -1378,21 +1378,21 @@ div[data-testid="stButton"] button.fp-mode {
 
 /* 문법력 파랑 */
 div[data-testid="stButton"] button.fp-g1 {
-  background:#05102a !important; border-color:rgba(55,130,255,0.35) !important; color:#4d8eee !important;
+  background:#1a0800 !important; border-color:rgba(255,100,0,0.35) !important; color:#cc5500 !important;
 }
-div[data-testid="stButton"] button.fp-g1 p { color:#4d8eee !important; }
+div[data-testid="stButton"] button.fp-g1 p { color:#cc5500 !important; }
 div[data-testid="stButton"] button.fp-g1.fp-sel {
-  background:#091e44 !important; border-color:#6aadff !important; color:#88ccff !important;
+  background:#2a1000 !important; border-color:#ff6600 !important; color:#ff8833 !important;
   box-shadow:0 0 22px rgba(106,173,255,0.5) !important; border-width:2px !important;
   animation:selPulse 1.8s ease-in-out infinite !important;
 }
-div[data-testid="stButton"] button.fp-g1.fp-sel p { color:#88ccff !important; }
+div[data-testid="stButton"] button.fp-g1.fp-sel p { color:#ff8833 !important; }
 
 /* 구조력 보라 */
 div[data-testid="stButton"] button.fp-g2 {
-  background:#120520 !important; border-color:rgba(158,68,248,0.35) !important; color:#9244dd !important;
+  background:#1a0c00 !important; border-color:rgba(220,140,0,0.35) !important; color:#bb8800 !important;
 }
-div[data-testid="stButton"] button.fp-g2 p { color:#9244dd !important; }
+div[data-testid="stButton"] button.fp-g2 p { color:#bb8800 !important; }
 div[data-testid="stButton"] button.fp-g2.fp-sel {
   background:#200a3e !important; border-color:#cc88ff !important; color:#ddaaff !important;
   box-shadow:0 0 22px rgba(200,136,255,0.5) !important; border-width:2px !important;
@@ -1402,27 +1402,27 @@ div[data-testid="stButton"] button.fp-g2.fp-sel p { color:#ddaaff !important; }
 
 /* 연결력 청록 */
 div[data-testid="stButton"] button.fp-g3 {
-  background:#051a18 !important; border-color:rgba(0,198,178,0.35) !important; color:#00a898 !important;
+  background:#181000 !important; border-color:rgba(200,160,0,0.35) !important; color:#aa8800 !important;
 }
-div[data-testid="stButton"] button.fp-g3 p { color:#00a898 !important; }
+div[data-testid="stButton"] button.fp-g3 p { color:#aa8800 !important; }
 div[data-testid="stButton"] button.fp-g3.fp-sel {
-  background:#092a24 !important; border-color:#00ddc8 !important; color:#00eecc !important;
+  background:#281800 !important; border-color:#ddaa00 !important; color:#ffdd44 !important;
   box-shadow:0 0 22px rgba(0,220,200,0.5) !important; border-width:2px !important;
   animation:selPulse 1.8s ease-in-out infinite !important;
 }
-div[data-testid="stButton"] button.fp-g3.fp-sel p { color:#00eecc !important; }
+div[data-testid="stButton"] button.fp-g3.fp-sel p { color:#ffdd44 !important; }
 
 /* 어휘력 초록 */
 div[data-testid="stButton"] button.fp-vc {
-  background:#061808 !important; border-color:rgba(48,196,72,0.35) !important; color:#2faa50 !important;
+  background:#1a0400 !important; border-color:rgba(220,60,0,0.35) !important; color:#cc3300 !important;
 }
-div[data-testid="stButton"] button.fp-vc p { color:#2faa50 !important; }
+div[data-testid="stButton"] button.fp-vc p { color:#cc3300 !important; }
 div[data-testid="stButton"] button.fp-vc.fp-sel {
-  background:#0c2412 !important; border-color:#55ee77 !important; color:#77ff99 !important;
+  background:#2a0800 !important; border-color:#ff4400 !important; color:#ff6633 !important;
   box-shadow:0 0 22px rgba(85,238,119,0.5) !important; border-width:2px !important;
   animation:selPulse 1.8s ease-in-out infinite !important;
 }
-div[data-testid="stButton"] button.fp-vc.fp-sel p { color:#77ff99 !important; }
+div[data-testid="stButton"] button.fp-vc.fp-sel p { color:#ff6633 !important; }
 
 /* 출격 버튼 */
 div[data-testid="stButton"] button.fp-launch {
@@ -1471,7 +1471,7 @@ div[data-testid="stButton"] button.fp-nav p { color:#3d5066 !important; }
         -webkit-background-clip:text;-webkit-text-fill-color:transparent;
         animation:titleShine 2s linear infinite;line-height:1.2;">{_rb}⚡ 화력전</div>
       <div style="font-size:0.65rem;color:#334455;letter-spacing:2px;margin-top:5px;">
-        5문제 서바이벌 · 문법·어휘 실전 포격전</div>
+        5문제 · 살아남아라! · 문법어휘 실전 포격전</div>
     </div>""", unsafe_allow_html=True)
 
     # ── COMBAT TIME 섹션 ──
