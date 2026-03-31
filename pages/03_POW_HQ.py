@@ -1993,10 +1993,10 @@ div[data-testid="stButton"] button p{color:#c0c8e0!important;font-size:0.9rem!im
             <div style="font-size:26px;font-weight:900;color:#ddaaff;">{_total}</div>
             <div style="font-size:12px;color:#bb88ee;font-weight:600;margin-top:3px;">수감중</div>
           </div>
-          <div style="flex:1;background:#081508;border:1.5px solid #228844;border-radius:14px;padding:12px;text-align:center;">
-            <div style="font-family:Orbitron,monospace;font-size:10px;font-weight:700;color:#44aa66;letter-spacing:2px;margin-bottom:4px;">RELEASED</div>
+          <div style="flex:1;background:#110820;border:1.5px solid #6633aa;border-radius:14px;padding:12px;text-align:center;">
+            <div style="font-family:Orbitron,monospace;font-size:10px;font-weight:700;color:#aa66ff;letter-spacing:2px;margin-bottom:4px;">RELEASED</div>
             <div style="font-size:26px;font-weight:900;color:#aa66ff;">{_freed}</div>
-            <div style="font-size:12px;color:#66dd99;font-weight:600;margin-top:3px;">오늘 석방</div>
+            <div style="font-size:12px;color:#cc88ff;font-weight:600;margin-top:3px;">오늘 석방</div>
           </div>
           <div style="flex:1;background:#0c1018;border:1.5px solid #334455;border-radius:14px;padding:10px;text-align:center;">
             <div style="font-size:13px;font-weight:800;color:#ff9944;">⚡ P5 · {_p5}</div>
@@ -2153,7 +2153,7 @@ div[data-testid="stButton"] button p{color:#c0c8e0!important;font-size:0.9rem!im
                        letter-spacing:3px;text-shadow:0 0 30px {_col},0 0 12px #fff,0 2px 4px #000;
                        margin-bottom:16px;" class="flicker">{_word}</div>
                   <div style="display:flex;justify-content:center;gap:4px;margin-bottom:10px;">{_dots}</div>
-                  <div style="font-size:13px;font-weight:700;color:#8899aa;">{'🔓 석방 완료!' if _streak>=3 else '🔑 탈출까지 ' + str(3-_streak) + '번 남았어!'}</div>
+                  <div style="font-size:11px;color:#8899aa;font-style:italic;line-height:1.5;margin-top:4px;padding:0 4px;">{_sent[:80]+'...' if _sent and len(_sent)>80 else _sent if _sent else ('🔓 석방 완료!' if _streak>=3 else '⛓ 첫 번째 도전!' if _streak==0 else '🔑 '+str(3-_streak)+'번 더 맞히면 석방!')}</div>
                 </div>
                 """, height=260)
 
@@ -2299,8 +2299,8 @@ div[data-testid="stButton"] button p{color:#c0c8e0!important;font-size:0.9rem!im
                             st.session_state.wp_seen_words = _sw
                         st.session_state.wp_idx+=1; st.session_state.wp_flipped=False
                         # 긴급 소환 트리거 체크
-                        if len(st.session_state.wp_seen_words) >= st.session_state.get("wp_quiz_trigger",5):
-                            st.session_state.wp_mode = "flash_intro"
+                        if len(st.session_state.wp_seen_words) >= st.session_state.get("wp_quiz_trigger",4):
+                            import random as _rnd_trig2; st.session_state.wp_quiz_trigger = _rnd_trig2.randint(3,6); st.session_state.wp_seen_words = []; st.session_state.wp_mode = "flash_intro"
                         st.rerun()
                     st.markdown('</div>', unsafe_allow_html=True)
                 with _c2:
@@ -2318,8 +2318,8 @@ div[data-testid="stButton"] button p{color:#c0c8e0!important;font-size:0.9rem!im
                             st.session_state.wp_seen_words = _sw
                         st.session_state.wp_idx+=1; st.session_state.wp_flipped=False
                         # 긴급 소환 트리거 체크
-                        if len(st.session_state.wp_seen_words) >= st.session_state.get("wp_quiz_trigger",5):
-                            st.session_state.wp_mode = "flash_intro"
+                        if len(st.session_state.wp_seen_words) >= st.session_state.get("wp_quiz_trigger",4):
+                            import random as _rnd_trig2; st.session_state.wp_quiz_trigger = _rnd_trig2.randint(3,6); st.session_state.wp_seen_words = []; st.session_state.wp_mode = "flash_intro"
                         st.rerun()
                     st.markdown('</div>', unsafe_allow_html=True)
 
