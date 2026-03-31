@@ -1258,7 +1258,7 @@ else:
     sm        = st.session_state.sel_mode
     rn        = st.session_state.round_num
     _tsec_chosen = st.session_state.get('tsec_chosen', False)
-    lbl_map  = {"g1":"⚔️ 문법력","g2":"⚔️ 구조력","g3":"⚔️ 연결력","vocab":"📘 어휘력"}
+    lbl_map  = {"g1":"⚔️ GRAMMAR","g2":"🔄 FORM","g3":"🔗 LINK","vocab":"📘 VOCAB"}
     mode_map = {"g1":("grammar","g1"),"g2":("grammar","g2"),"g3":("grammar","g3"),"vocab":("vocab",None)}
     _cur_sm  = st.session_state.get("sel_mode","") or ""
     _cur_tc  = st.session_state.get("tsec_chosen", False)
@@ -1493,16 +1493,16 @@ div[data-testid="stButton"] button.fp-nav p { color:#3d5066 !important; }
     st.markdown('<div style="font-size:9px;color:#cc3355;letter-spacing:4px;padding:4px 0 6px;font-weight:700;">🎯  MISSION SELECT</div>', unsafe_allow_html=True)
     b1, b2, b3, b4 = st.columns(4)
     with b1:
-        if st.button("⚔️\n문법력\n수일치·시제\nG1-GRM", key="sg1", use_container_width=True):
+        if st.button("⚔️\nGRAMMAR\n시제·태·수일치\nGRM", key="sg1", use_container_width=True):
             st.session_state.sel_mode="g1"; st.rerun()
     with b2:
-        if st.button("🏛️\n구조력\n가정법·도치\nG2-STR", key="sg2", use_container_width=True):
+        if st.button("🔄\nFORM\n품사전환·어형\nFORM", key="sg2", use_container_width=True):
             st.session_state.sel_mode="g2"; st.rerun()
     with b3:
-        if st.button("🔗\n연결력\n접속사·분사\nG3-CON", key="sg3", use_container_width=True):
+        if st.button("🔗\nLINK\n연결어·접속사\nLINK", key="sg3", use_container_width=True):
             st.session_state.sel_mode="g3"; st.rerun()
     with b4:
-        if st.button("📘\n어휘력\n품사·동사\nVOCAB", key="svc", use_container_width=True):
+        if st.button("📘\nVOCAB\n동의어·문맥어휘\nVOCAB", key="svc", use_container_width=True):
             st.session_state.sel_mode="vocab"; st.rerun()
 
     # ── 생존 규칙 ──
@@ -1588,22 +1588,22 @@ div[data-testid="stButton"] button.fp-nav p { color:#3d5066 !important; }
       }}
 
       // 작전 카드
-      if(txt.indexOf("\ubb38\ubc95\ub825")>-1){{
+      if(txt.indexOf("\uc2dc\uc81c")>-1){{
         b.classList.add("fp-mode","fp-g1");
         if(selM==="g1") b.classList.add("fp-sel"); else b.classList.remove("fp-sel");
         b.querySelectorAll("p").forEach(function(p){{p.classList.add("fp-g1");if(selM==="g1")p.classList.add("fp-sel");else p.classList.remove("fp-sel");}});
       }}
-      if(txt.indexOf("\uad6c\uc870\ub825")>-1){{
+      if(txt.indexOf("\ud488\uc0ac\uc804\ud658")>-1){{
         b.classList.add("fp-mode","fp-g2");
         if(selM==="g2") b.classList.add("fp-sel"); else b.classList.remove("fp-sel");
         b.querySelectorAll("p").forEach(function(p){{p.classList.add("fp-g2");if(selM==="g2")p.classList.add("fp-sel");else p.classList.remove("fp-sel");}});
       }}
-      if(txt.indexOf("\uc5f0\uacb0\ub825")>-1){{
+      if(txt.indexOf("\uc5f0\uacb0\uc5b4")>-1){{
         b.classList.add("fp-mode","fp-g3");
         if(selM==="g3") b.classList.add("fp-sel"); else b.classList.remove("fp-sel");
         b.querySelectorAll("p").forEach(function(p){{p.classList.add("fp-g3");if(selM==="g3")p.classList.add("fp-sel");else p.classList.remove("fp-sel");}});
       }}
-      if(txt.indexOf("\uc5b4\ud718\ub825")>-1){{
+      if(txt.indexOf("\ub3d9\uc758\uc5b4")>-1){{
         b.classList.add("fp-mode","fp-vc");
         if(selM==="vocab") b.classList.add("fp-sel"); else b.classList.remove("fp-sel");
         b.querySelectorAll("p").forEach(function(p){{p.classList.add("fp-vc");if(selM==="vocab")p.classList.add("fp-sel");else p.classList.remove("fp-sel");}});
