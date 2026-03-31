@@ -267,6 +267,43 @@ def _load_grammar_batches():
 
 GQ.extend(_load_grammar_batches())
 
+# ═══ FORM BATCH JSON 자동 로드 ═══
+FQ = []  # Form Questions
+
+def _load_form_batches():
+    """data/ 폴더의 firepower_form_batch*.json 전부 읽어서 FQ 포맷으로 변환"""
+    DATA_DIR = os.path.join(os.path.dirname(os.path.dirname(__file__)), "data")
+    batch_files = sorted(_glob.glob(os.path.join(DATA_DIR, "firepower_form_batch*.json")))
+    loaded = []
+    existing_ids = set()
+    for fpath in batch_files:
+        try:
+            with open(fpath, "r", encoding="utf-8") as f:
+                items = json.load(f)
+            for q in items:
+                if q.get("id") in existing_ids:
+                    continue
+                converted = {
+                    "id":        q.get("id", ""),
+                    "word_count": q.get("word_count", 10),
+                    "diff":      q.get("diff", "easy"),
+                    "text":      q.get("sentence", q.get("text", "")),
+                    "ch":        q.get("choices",  q.get("ch", [])),
+                    "a":         q.get("answer",   q.get("a", 0)),
+                    "ex":        q.get("explanation",    q.get("ex", "")),
+                    "exk":       q.get("explanation_kr", q.get("exk", "")),
+                    "cat":       q.get("cat", "FORM"),
+                    "kr":        q.get("kr", ""),
+                    "tp":        "form",
+                }
+                loaded.append(converted)
+                existing_ids.add(converted["id"])
+        except Exception:
+            pass
+    return loaded
+
+FQ.extend(_load_form_batches())
+
 VQ=[
 {"id":"V1","diff":"easy","text":"The company plans to _______ its operations to three new countries next year.","ch":["(A) expand","(B) expend","(C) expect","(D) expose"],"a":0,"ex":"expand=확장하다. 사업을 새 나라로 확장.","exk":"쉽게: expand=넓히다! expend=쓰다, expect=기대, expose=노출 → 소거법!","cat":"동사 어휘","kr":"그 회사는 내년에 3개 신규 국가로 사업을 확장할 계획이다.","diff":"easy"},
 {"id":"V2","diff":"hard","text":"Please _______ your receipt as proof of purchase for warranty claims.","ch":["(A) retain","(B) attain","(C) obtain","(D) contain"],"a":0,"ex":"retain=보유하다. 영수증을 보관하라는 맥락.","exk":"쉽게: retain=re(다시)+tain(잡다)=계속 잡고 있다=보관!","cat":"동사 어휘","kr":"보증 청구를 위한 구매 증빙으로 영수증을 보관해 주세요."},
@@ -301,17 +338,18 @@ if st.session_state.get("_p5_just_left", False):
     st.session_state.tsec = 30
     st.session_state.tsec_chosen = False
 
-def pool(m): return GQ if m=="grammar" else VQ if m=="vocab" else GQ+VQ
+def pool(m): return GQ if m=="grammar" else FQ if m=="form" else VQ if m=="vocab" else GQ+VQ
+FORM_CATS=["명사형","형용사형","부사형","동사형","분사형","FORM"]
 GRP={
-    # g1 = GRAMMAR : 배치1~8 전체 cat + 기존 하드코딩 cat 모두 포함
+    # g1 = GRAMMAR
     "g1":[
-        "수동태","수일치","시제","가정법","도치",          # Batch 1~8 cats
-        "수동태/수일치","가정법/당위","분사구문",           # 기존 하드코딩 cats
-        "관계대명사","접속사","동명사/준동사","GRAMMAR"     # 기존 + 폴백
+        "수동태","수일치","시제","가정법","도치",
+        "수동태/수일치","가정법/당위","분사구문",
+        "관계대명사","접속사","동명사/준동사","GRAMMAR"
     ],
-    # g2 = FORM (미래 카테고리)
-    "g2":["가정법","가정법/당위","도치"],
-    # g3 = LINK (미래 카테고리)
+    # g2 = FORM (품사전환)
+    "g2": FORM_CATS,
+    # g3 = LINK (미래)
     "g3":["접속사","동명사/준동사","분사구문","관계대명사"]
 }
 VGRP={"v1":"easy","v2":"hard"}
@@ -337,6 +375,20 @@ def _calc_adp_level():
         return "easy"
 
 def pick5(m, grp=None):
+    # ── FORM 모드(g2): FQ 풀 사용 ──
+    if grp == "g2":
+        p = FQ if FQ else pool(m)
+        adp = _calc_adp_level()
+        st.session_state.adp_level = adp
+        diff_p = [q for q in p if q.get("diff","easy") == adp]
+        if len(diff_p) >= 5: p = diff_p
+        cat_p = [q for q in p if q.get("cat","") in FORM_CATS]
+        if len(cat_p) >= 5: p = cat_p
+        avail = [q for q in p if q["id"] not in st.session_state.used]
+        if len(avail) < 5: st.session_state.used = []; avail = p.copy()
+        chosen = random.sample(avail, min(5, len(avail)))
+        for q in chosen: st.session_state.used.append(q["id"]); q["tp"] = "form"
+        return chosen
     p=pool(m)
     if grp and grp in GRP:
         cats=GRP[grp]
