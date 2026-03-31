@@ -302,7 +302,18 @@ if st.session_state.get("_p5_just_left", False):
     st.session_state.tsec_chosen = False
 
 def pool(m): return GQ if m=="grammar" else VQ if m=="vocab" else GQ+VQ
-GRP={"g1":["수일치","수동태/수일치"],"g2":["가정법","가정법/당위","도치"],"g3":["접속사","동명사/준동사","분사구문","관계대명사"]}
+GRP={
+    # g1 = GRAMMAR : 배치1~8 전체 cat + 기존 하드코딩 cat 모두 포함
+    "g1":[
+        "수동태","수일치","시제","가정법","도치",          # Batch 1~8 cats
+        "수동태/수일치","가정법/당위","분사구문",           # 기존 하드코딩 cats
+        "관계대명사","접속사","동명사/준동사","GRAMMAR"     # 기존 + 폴백
+    ],
+    # g2 = FORM (미래 카테고리)
+    "g2":["가정법","가정법/당위","도치"],
+    # g3 = LINK (미래 카테고리)
+    "g3":["접속사","동명사/준동사","분사구문","관계대명사"]
+}
 VGRP={"v1":"easy","v2":"hard"}
 
 def _calc_adp_level():
