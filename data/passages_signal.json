@@ -579,5 +579,4065 @@
         ]
       }
     ]
+  },
+  {
+    "title": "📢 SIGNAL",
+    "steps": [
+      {
+        "q_type": "purpose",
+        "sentences": [
+          "FitLife Gym is offering a special membership deal this month: new members can join for just $29 per month with no enrollment fee.",
+          "The promotion is valid until Saturday, May 31, and includes full access to all equipment and group fitness classes."
+        ],
+        "question": "What is the purpose of this advertisement?",
+        "question_kr": "이 광고의 목적은 무엇인가?",
+        "choices": [
+          "(A) To announce the opening of a new gym",
+          "(B) To promote a discounted membership offer",
+          "(C) To introduce a new fitness class",
+          "(D) To recruit personal trainers"
+        ],
+        "choices_kr": [
+          "(A) 새 헬스장 개장 안내",
+          "(B) 할인 회원권 제공 홍보",
+          "(C) 새 피트니스 수업 소개",
+          "(D) 개인 트레이너 모집"
+        ],
+        "answer": 1,
+        "kr": "FitLife Gym은 이번 달 특별 회원권 혜택을 제공한다: 신규 회원은 등록비 없이 월 $29에 가입할 수 있다. 이 프로모션은 5월 31일 토요일까지 유효하며 모든 장비와 단체 피트니스 수업에 대한 완전한 이용을 포함한다.",
+        "expressions": [
+          {
+            "expr": "enrollment fee",
+            "meaning": "등록비"
+          },
+          {
+            "expr": "valid until",
+            "meaning": "~까지 유효한"
+          },
+          {
+            "expr": "full access to",
+            "meaning": "~에 대한 완전한 이용"
+          }
+        ]
+      },
+      {
+        "q_type": "detail",
+        "sentences": [
+          "Members also receive one free personal training session with a certified trainer upon signing up.",
+          "The gym is open 24 hours a day, seven days a week, for maximum convenience."
+        ],
+        "question": "What do new members receive when they sign up?",
+        "question_kr": "신규 회원이 가입 시 받는 것은?",
+        "choices": [
+          "(A) A free gym bag",
+          "(B) One free personal training session",
+          "(C) A three-month membership upgrade",
+          "(D) A complimentary nutrition consultation"
+        ],
+        "choices_kr": [
+          "(A) 무료 운동 가방",
+          "(B) 무료 개인 트레이닝 1회",
+          "(C) 3개월 회원권 업그레이드",
+          "(D) 무료 영양 상담"
+        ],
+        "answer": 1,
+        "kr": "회원들은 또한 가입 시 공인 트레이너와의 무료 개인 트레이닝 1회를 받는다. 헬스장은 최대 편의를 위해 주 7일 24시간 운영된다.",
+        "expressions": [
+          {
+            "expr": "certified trainer",
+            "meaning": "공인 트레이너"
+          },
+          {
+            "expr": "upon signing up",
+            "meaning": "가입 시"
+          },
+          {
+            "expr": "maximum convenience",
+            "meaning": "최대 편의"
+          }
+        ]
+      },
+      {
+        "q_type": "inference",
+        "sentences": [
+          "FitLife Gym currently has over 2,000 active members and plans to expand to three additional locations next year.",
+          "The gym's management believes that the promotional pricing will significantly increase its membership base before the summer season."
+        ],
+        "question": "What is implied about FitLife Gym's promotional offer?",
+        "question_kr": "FitLife Gym의 프로모션 제안에 대해 추론할 수 있는 것은?",
+        "choices": [
+          "(A) It is available to current members only",
+          "(B) It is intended to attract new members before summer",
+          "(C) It will be extended past May 31",
+          "(D) It applies only to certain membership types"
+        ],
+        "choices_kr": [
+          "(A) 현재 회원에게만 제공된다",
+          "(B) 여름 전에 신규 회원을 유치하기 위한 것이다",
+          "(C) 5월 31일 이후로 연장될 것이다",
+          "(D) 특정 회원권 유형에만 적용된다"
+        ],
+        "answer": 1,
+        "kr": "FitLife Gym은 현재 2,000명 이상의 활성 회원이 있으며 내년에 3개 추가 지점으로 확장할 계획이다. 헬스장 경영진은 프로모션 가격이 여름 시즌 전에 회원 기반을 크게 늘릴 것이라고 믿는다.",
+        "expressions": [
+          {
+            "expr": "membership base",
+            "meaning": "회원 기반"
+          },
+          {
+            "expr": "promotional pricing",
+            "meaning": "프로모션 가격"
+          },
+          {
+            "expr": "summer season",
+            "meaning": "여름 시즌"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "title": "📢 SIGNAL",
+    "steps": [
+      {
+        "q_type": "purpose",
+        "sentences": [
+          "Please be advised that the company email server will undergo scheduled maintenance on Sunday, November 10, from 10 P.M. to 2 A.M.",
+          "During this time, all email services will be temporarily unavailable."
+        ],
+        "question": "What is the purpose of this notice?",
+        "question_kr": "이 공지의 목적은 무엇인가?",
+        "choices": [
+          "(A) To announce a new email system",
+          "(B) To warn staff of a temporary email outage",
+          "(C) To remind employees to update their passwords",
+          "(D) To introduce a new IT policy"
+        ],
+        "choices_kr": [
+          "(A) 새 이메일 시스템 발표",
+          "(B) 임시 이메일 중단에 대한 직원 경고",
+          "(C) 직원들에게 비밀번호 업데이트 상기",
+          "(D) 새 IT 정책 소개"
+        ],
+        "answer": 1,
+        "kr": "회사 이메일 서버는 11월 10일 일요일 오후 10시부터 오전 2시까지 예정된 유지보수를 받을 것임을 알려드립니다. 이 시간 동안 모든 이메일 서비스는 일시적으로 사용 불가합니다.",
+        "expressions": [
+          {
+            "expr": "undergo scheduled maintenance",
+            "meaning": "예정된 유지보수를 받다"
+          },
+          {
+            "expr": "temporarily unavailable",
+            "meaning": "일시적으로 사용 불가"
+          },
+          {
+            "expr": "be advised that",
+            "meaning": "~임을 알리다"
+          }
+        ]
+      },
+      {
+        "q_type": "detail",
+        "sentences": [
+          "Employees who need to send urgent messages during this period are advised to use the company's instant messaging platform.",
+          "Any emails sent during the maintenance window will be queued and delivered automatically once services resume."
+        ],
+        "question": "What should employees do if they need to send urgent messages during maintenance?",
+        "question_kr": "유지보수 중 긴급 메시지를 보내야 하는 경우 직원들은 어떻게 해야 하는가?",
+        "choices": [
+          "(A) Contact the IT department directly",
+          "(B) Use the company's instant messaging platform",
+          "(C) Send messages from a personal email account",
+          "(D) Wait until email services are restored"
+        ],
+        "choices_kr": [
+          "(A) IT 부서에 직접 연락",
+          "(B) 회사의 인스턴트 메시징 플랫폼 사용",
+          "(C) 개인 이메일 계정에서 메시지 발송",
+          "(D) 이메일 서비스가 복구될 때까지 기다림"
+        ],
+        "answer": 1,
+        "kr": "이 기간 동안 긴급 메시지를 보내야 하는 직원들은 회사의 인스턴트 메시징 플랫폼을 사용하도록 권고된다. 유지보수 시간 동안 발송된 이메일은 서비스가 재개되면 자동으로 대기 후 전달된다.",
+        "expressions": [
+          {
+            "expr": "instant messaging platform",
+            "meaning": "인스턴트 메시징 플랫폼"
+          },
+          {
+            "expr": "queued and delivered",
+            "meaning": "대기 후 전달"
+          },
+          {
+            "expr": "once services resume",
+            "meaning": "서비스가 재개되면"
+          }
+        ]
+      },
+      {
+        "q_type": "inference",
+        "sentences": [
+          "The IT department has scheduled the maintenance during late-night hours to minimize the impact on daily operations.",
+          "This upgrade is part of a broader initiative to improve the company's cybersecurity infrastructure."
+        ],
+        "question": "What is implied about the maintenance timing?",
+        "question_kr": "유지보수 시간에 대해 추론할 수 있는 것은?",
+        "choices": [
+          "(A) It was chosen to avoid disrupting work hours",
+          "(B) It was requested by employees",
+          "(C) It will occur every month",
+          "(D) It will last longer than expected"
+        ],
+        "choices_kr": [
+          "(A) 근무 시간 방해를 피하기 위해 선택되었다",
+          "(B) 직원들이 요청했다",
+          "(C) 매월 발생할 것이다",
+          "(D) 예상보다 오래 걸릴 것이다"
+        ],
+        "answer": 0,
+        "kr": "IT 부서는 일상 운영에 대한 영향을 최소화하기 위해 심야 시간대에 유지보수를 예약했다. 이번 업그레이드는 회사의 사이버보안 인프라를 개선하기 위한 더 광범위한 이니셔티브의 일부이다.",
+        "expressions": [
+          {
+            "expr": "minimize the impact",
+            "meaning": "영향을 최소화하다"
+          },
+          {
+            "expr": "cybersecurity infrastructure",
+            "meaning": "사이버보안 인프라"
+          },
+          {
+            "expr": "broader initiative",
+            "meaning": "더 광범위한 이니셔티브"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "title": "📢 SIGNAL",
+    "steps": [
+      {
+        "q_type": "purpose",
+        "sentences": [
+          "The Millbrook Community Center is hosting a series of free public workshops on personal finance, starting Saturday, March 8.",
+          "Workshops will cover topics such as budgeting, saving for retirement, and understanding credit scores."
+        ],
+        "question": "What is being announced?",
+        "question_kr": "무엇이 발표되고 있는가?",
+        "choices": [
+          "(A) A paid financial planning course",
+          "(B) Free public workshops on personal finance",
+          "(C) A new community bank branch opening",
+          "(D) A seminar for small business owners"
+        ],
+        "choices_kr": [
+          "(A) 유료 재무 계획 과정",
+          "(B) 개인 재무에 관한 무료 공개 워크숍",
+          "(C) 새로운 지역 은행 지점 개장",
+          "(D) 소기업주를 위한 세미나"
+        ],
+        "answer": 1,
+        "kr": "Millbrook 커뮤니티 센터는 3월 8일 토요일부터 개인 재무에 관한 일련의 무료 공개 워크숍을 개최한다. 워크숍은 예산 편성, 은퇴 저축, 신용 점수 이해 등의 주제를 다룬다.",
+        "expressions": [
+          {
+            "expr": "hosting a series of",
+            "meaning": "일련의 ~을 개최하다"
+          },
+          {
+            "expr": "budgeting",
+            "meaning": "예산 편성"
+          },
+          {
+            "expr": "credit scores",
+            "meaning": "신용 점수"
+          }
+        ]
+      },
+      {
+        "q_type": "detail",
+        "sentences": [
+          "Sessions are held every Saturday from 10 A.M. to noon and are open to all residents regardless of age or income level.",
+          "Pre-registration is required as space is limited to 30 participants per session."
+        ],
+        "question": "What must participants do before attending a workshop?",
+        "question_kr": "참가자들이 워크숍 참석 전에 해야 하는 것은?",
+        "choices": [
+          "(A) Pay a registration fee",
+          "(B) Register in advance",
+          "(C) Bring a financial document",
+          "(D) Complete an online quiz"
+        ],
+        "choices_kr": [
+          "(A) 등록비 납부",
+          "(B) 사전 등록",
+          "(C) 재무 서류 지참",
+          "(D) 온라인 퀴즈 완료"
+        ],
+        "answer": 1,
+        "kr": "세션은 매주 토요일 오전 10시부터 정오까지 진행되며 나이와 소득 수준에 관계없이 모든 주민에게 열려 있다. 세션당 참가자가 30명으로 제한되므로 사전 등록이 필요하다.",
+        "expressions": [
+          {
+            "expr": "pre-registration is required",
+            "meaning": "사전 등록이 필요하다"
+          },
+          {
+            "expr": "regardless of",
+            "meaning": "~에 관계없이"
+          },
+          {
+            "expr": "space is limited",
+            "meaning": "공간이 제한되어 있다"
+          }
+        ]
+      },
+      {
+        "q_type": "inference",
+        "sentences": [
+          "The workshops are led by certified financial planners who volunteer their time to help the community.",
+          "Organizers hope that participants will leave each session with practical tools they can immediately apply to their financial lives."
+        ],
+        "question": "What can be inferred about the workshop instructors?",
+        "question_kr": "워크숍 강사들에 대해 추론할 수 있는 것은?",
+        "choices": [
+          "(A) They are paid employees of the community center",
+          "(B) They are qualified professionals offering their services for free",
+          "(C) They are local university students",
+          "(D) They are government-appointed advisors"
+        ],
+        "choices_kr": [
+          "(A) 커뮤니티 센터의 유급 직원이다",
+          "(B) 무료로 서비스를 제공하는 자격을 갖춘 전문가들이다",
+          "(C) 지역 대학교 학생들이다",
+          "(D) 정부가 임명한 고문들이다"
+        ],
+        "answer": 1,
+        "kr": "워크숍은 지역 사회를 돕기 위해 자원봉사를 하는 공인 재무 설계사들이 이끈다. 주최자들은 참가자들이 각 세션을 마치고 즉시 재무 생활에 적용할 수 있는 실용적인 도구를 가지고 나가기를 희망한다.",
+        "expressions": [
+          {
+            "expr": "certified financial planners",
+            "meaning": "공인 재무 설계사"
+          },
+          {
+            "expr": "volunteer their time",
+            "meaning": "자원봉사로 시간을 내다"
+          },
+          {
+            "expr": "practical tools",
+            "meaning": "실용적인 도구"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "title": "📢 SIGNAL",
+    "steps": [
+      {
+        "q_type": "purpose",
+        "sentences": [
+          "Starting Monday, the company cafeteria will introduce a new rotating menu featuring healthy meal options prepared by a new catering provider.",
+          "The updated menu will include vegetarian, vegan, and gluten-free selections every day."
+        ],
+        "question": "What is the purpose of this notice?",
+        "question_kr": "이 공지의 목적은 무엇인가?",
+        "choices": [
+          "(A) To announce the closure of the cafeteria",
+          "(B) To inform employees of menu changes",
+          "(C) To promote a new diet program",
+          "(D) To introduce a new cafeteria manager"
+        ],
+        "choices_kr": [
+          "(A) 구내식당 폐쇄 안내",
+          "(B) 직원들에게 메뉴 변경 안내",
+          "(C) 새로운 다이어트 프로그램 홍보",
+          "(D) 새로운 구내식당 관리자 소개"
+        ],
+        "answer": 1,
+        "kr": "월요일부터 회사 구내식당은 새로운 케이터링 업체가 준비한 건강한 식사 옵션을 제공하는 새로운 순환 메뉴를 도입한다. 업데이트된 메뉴에는 매일 채식, 비건, 글루텐 프리 선택지가 포함된다.",
+        "expressions": [
+          {
+            "expr": "rotating menu",
+            "meaning": "순환 메뉴"
+          },
+          {
+            "expr": "catering provider",
+            "meaning": "케이터링 업체"
+          },
+          {
+            "expr": "gluten-free selections",
+            "meaning": "글루텐 프리 선택지"
+          }
+        ]
+      },
+      {
+        "q_type": "detail",
+        "sentences": [
+          "Meal prices will remain unchanged, and employees can view the weekly menu on the company intranet every Friday afternoon.",
+          "A feedback form will also be available at the cafeteria entrance for suggestions and comments."
+        ],
+        "question": "Where can employees view the weekly menu?",
+        "question_kr": "직원들은 주간 메뉴를 어디서 확인할 수 있는가?",
+        "choices": [
+          "(A) On a notice board in the cafeteria",
+          "(B) On the company intranet",
+          "(C) By contacting the HR department",
+          "(D) Via a mobile app"
+        ],
+        "choices_kr": [
+          "(A) 구내식당 게시판에서",
+          "(B) 회사 인트라넷에서",
+          "(C) 인사부에 연락하여",
+          "(D) 모바일 앱을 통해"
+        ],
+        "answer": 1,
+        "kr": "식사 가격은 변경되지 않으며, 직원들은 매주 금요일 오후에 회사 인트라넷에서 주간 메뉴를 확인할 수 있다. 제안 및 의견을 위한 피드백 양식도 구내식당 입구에서 이용 가능하다.",
+        "expressions": [
+          {
+            "expr": "remain unchanged",
+            "meaning": "변경되지 않다"
+          },
+          {
+            "expr": "company intranet",
+            "meaning": "회사 인트라넷"
+          },
+          {
+            "expr": "feedback form",
+            "meaning": "피드백 양식"
+          }
+        ]
+      },
+      {
+        "q_type": "inference",
+        "sentences": [
+          "The new catering provider was selected following a survey in which 78 percent of employees expressed a desire for more diverse and nutritious meal options.",
+          "Management believes the changes will contribute to employee well-being and overall productivity."
+        ],
+        "question": "What prompted the change in cafeteria menu?",
+        "question_kr": "구내식당 메뉴 변경의 원인은 무엇인가?",
+        "choices": [
+          "(A) A decision by the new cafeteria manager",
+          "(B) Employee demand for better food options",
+          "(C) A cost-cutting measure by management",
+          "(D) A government health regulation"
+        ],
+        "choices_kr": [
+          "(A) 새 구내식당 관리자의 결정",
+          "(B) 더 나은 식사 옵션에 대한 직원 수요",
+          "(C) 경영진의 비용 절감 조치",
+          "(D) 정부 건강 규정"
+        ],
+        "answer": 1,
+        "kr": "새로운 케이터링 업체는 직원의 78%가 더 다양하고 영양가 있는 식사 옵션을 원한다고 표명한 설문 조사 후 선정되었다. 경영진은 변화가 직원 복지와 전반적인 생산성에 기여할 것이라고 믿는다.",
+        "expressions": [
+          {
+            "expr": "diverse and nutritious",
+            "meaning": "다양하고 영양가 있는"
+          },
+          {
+            "expr": "employee well-being",
+            "meaning": "직원 복지"
+          },
+          {
+            "expr": "overall productivity",
+            "meaning": "전반적인 생산성"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "title": "📢 SIGNAL",
+    "steps": [
+      {
+        "q_type": "purpose",
+        "sentences": [
+          "The Lakeside Arts Festival returns this August for its 15th annual celebration of music, art, and culture.",
+          "The three-day event will feature over 50 live performances, art exhibitions, and food stalls from local vendors."
+        ],
+        "question": "What is the purpose of this advertisement?",
+        "question_kr": "이 광고의 목적은 무엇인가?",
+        "choices": [
+          "(A) To recruit volunteers for an arts organization",
+          "(B) To promote an annual arts festival",
+          "(C) To announce auditions for performers",
+          "(D) To raise funds for a cultural center"
+        ],
+        "choices_kr": [
+          "(A) 예술 단체 자원봉사자 모집",
+          "(B) 연간 예술 축제 홍보",
+          "(C) 공연자 오디션 발표",
+          "(D) 문화 센터 기금 모금"
+        ],
+        "answer": 1,
+        "kr": "Lakeside Arts Festival이 이번 8월에 15번째 연간 음악, 예술, 문화 축제로 돌아온다. 3일간의 행사에는 50개 이상의 라이브 공연, 미술 전시회, 지역 업체의 음식 부스가 포함된다.",
+        "expressions": [
+          {
+            "expr": "annual celebration",
+            "meaning": "연간 축제"
+          },
+          {
+            "expr": "live performances",
+            "meaning": "라이브 공연"
+          },
+          {
+            "expr": "local vendors",
+            "meaning": "지역 업체"
+          }
+        ]
+      },
+      {
+        "q_type": "detail",
+        "sentences": [
+          "Advance tickets are available online at $25 for adults and $10 for children under 12.",
+          "Tickets purchased at the gate will be $35 for adults, so early booking is strongly encouraged."
+        ],
+        "question": "How much do advance tickets cost for adults?",
+        "question_kr": "성인 사전 예매 티켓의 가격은 얼마인가?",
+        "choices": [
+          "(A) $10",
+          "(B) $25",
+          "(C) $35",
+          "(D) $50"
+        ],
+        "choices_kr": [
+          "(A) $10",
+          "(B) $25",
+          "(C) $35",
+          "(D) $50"
+        ],
+        "answer": 1,
+        "kr": "사전 티켓은 성인 $25, 12세 미만 어린이 $10에 온라인으로 구매 가능하다. 현장에서 구매하는 티켓은 성인 $35이므로 조기 예약을 강력히 권장한다.",
+        "expressions": [
+          {
+            "expr": "advance tickets",
+            "meaning": "사전 예매 티켓"
+          },
+          {
+            "expr": "at the gate",
+            "meaning": "현장에서"
+          },
+          {
+            "expr": "early booking",
+            "meaning": "조기 예약"
+          }
+        ]
+      },
+      {
+        "q_type": "inference",
+        "sentences": [
+          "The festival has donated over $200,000 to local arts programs since its founding and is entirely funded through ticket sales and sponsorships.",
+          "This year's headline performers include internationally recognized musicians, marking the festival's most ambitious lineup to date."
+        ],
+        "question": "What is implied about this year's Lakeside Arts Festival?",
+        "question_kr": "올해 Lakeside Arts Festival에 대해 추론할 수 있는 것은?",
+        "choices": [
+          "(A) It will be smaller than previous years",
+          "(B) It features more prominent artists than ever before",
+          "(C) It is free for all local residents",
+          "(D) It will be held indoors for the first time"
+        ],
+        "choices_kr": [
+          "(A) 이전 해보다 규모가 작을 것이다",
+          "(B) 역대 가장 저명한 예술가들이 참여한다",
+          "(C) 모든 지역 주민에게 무료이다",
+          "(D) 처음으로 실내에서 개최된다"
+        ],
+        "answer": 1,
+        "kr": "축제는 설립 이후 지역 예술 프로그램에 20만 달러 이상을 기부했으며 전적으로 티켓 판매와 후원으로 운영된다. 올해 헤드라인 공연자들에는 국제적으로 인정받은 음악가들이 포함되어 역대 가장 야심찬 라인업을 기록한다.",
+        "expressions": [
+          {
+            "expr": "headline performers",
+            "meaning": "헤드라인 공연자"
+          },
+          {
+            "expr": "most ambitious lineup",
+            "meaning": "가장 야심찬 라인업"
+          },
+          {
+            "expr": "to date",
+            "meaning": "지금까지"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "title": "📢 SIGNAL",
+    "steps": [
+      {
+        "q_type": "purpose",
+        "sentences": [
+          "Due to a mechanical failure, the air conditioning system on floors 4 through 6 will be out of service starting tomorrow, Wednesday, July 14.",
+          "Repair technicians have been scheduled and expect to complete the work by Friday afternoon."
+        ],
+        "question": "What is this notice about?",
+        "question_kr": "이 공지는 무엇에 관한 것인가?",
+        "choices": [
+          "(A) An upcoming building inspection",
+          "(B) A temporary air conditioning outage",
+          "(C) A change in office temperature policy",
+          "(D) The installation of new cooling equipment"
+        ],
+        "choices_kr": [
+          "(A) 예정된 건물 점검",
+          "(B) 임시 에어컨 중단",
+          "(C) 사무실 온도 정책 변경",
+          "(D) 새 냉방 장비 설치"
+        ],
+        "answer": 1,
+        "kr": "기계적 고장으로 인해 4층부터 6층까지의 에어컨 시스템이 내일 7월 14일 수요일부터 작동하지 않는다. 수리 기사가 예약되어 있으며 금요일 오후까지 작업을 완료할 것으로 예상된다.",
+        "expressions": [
+          {
+            "expr": "mechanical failure",
+            "meaning": "기계적 고장"
+          },
+          {
+            "expr": "out of service",
+            "meaning": "작동하지 않는"
+          },
+          {
+            "expr": "repair technicians",
+            "meaning": "수리 기사"
+          }
+        ]
+      },
+      {
+        "q_type": "detail",
+        "sentences": [
+          "Portable fans have been placed throughout the affected floors to help maintain a comfortable working environment.",
+          "Employees on those floors may also use available meeting rooms on other floors if needed."
+        ],
+        "question": "What has been provided to help employees on the affected floors?",
+        "question_kr": "해당 층의 직원들을 돕기 위해 무엇이 제공되었는가?",
+        "choices": [
+          "(A) Temporary workstations on other floors",
+          "(B) Portable fans throughout the area",
+          "(C) Early dismissal for the week",
+          "(D) Free cold beverages at reception"
+        ],
+        "choices_kr": [
+          "(A) 다른 층의 임시 업무 공간",
+          "(B) 해당 구역 전체에 이동식 선풍기",
+          "(C) 이번 주 조기 퇴근",
+          "(D) 안내 데스크에서 무료 차가운 음료"
+        ],
+        "answer": 1,
+        "kr": "쾌적한 근무 환경을 유지하는 데 도움이 되도록 이동식 선풍기가 영향을 받은 층 전체에 배치되었다. 해당 층의 직원들은 필요한 경우 다른 층의 이용 가능한 회의실도 사용할 수 있다.",
+        "expressions": [
+          {
+            "expr": "portable fans",
+            "meaning": "이동식 선풍기"
+          },
+          {
+            "expr": "affected floors",
+            "meaning": "영향을 받은 층"
+          },
+          {
+            "expr": "comfortable working environment",
+            "meaning": "쾌적한 근무 환경"
+          }
+        ]
+      },
+      {
+        "q_type": "inference",
+        "sentences": [
+          "Management regrets any disruption this may cause and reminds staff that summer heat can affect concentration and performance.",
+          "Water stations have been restocked and employees are encouraged to stay hydrated throughout the day."
+        ],
+        "question": "What is implied about management's response to the situation?",
+        "question_kr": "이 상황에 대한 경영진의 대응에 대해 추론할 수 있는 것은?",
+        "choices": [
+          "(A) They are unaware of the severity of the problem",
+          "(B) They are taking steps to support employee comfort",
+          "(C) They plan to permanently upgrade the system",
+          "(D) They expect the repair to take over a week"
+        ],
+        "choices_kr": [
+          "(A) 문제의 심각성을 인식하지 못하고 있다",
+          "(B) 직원 편의를 지원하기 위한 조치를 취하고 있다",
+          "(C) 시스템을 영구적으로 업그레이드할 계획이다",
+          "(D) 수리가 1주일 이상 걸릴 것으로 예상한다"
+        ],
+        "answer": 1,
+        "kr": "경영진은 이로 인한 불편에 대해 유감을 표명하며 여름 더위가 집중력과 성과에 영향을 미칠 수 있음을 직원들에게 상기시킨다. 수분 보충소가 재채워졌으며 직원들은 하루 종일 수분을 유지하도록 권장된다.",
+        "expressions": [
+          {
+            "expr": "stay hydrated",
+            "meaning": "수분을 유지하다"
+          },
+          {
+            "expr": "restocked",
+            "meaning": "재채워진"
+          },
+          {
+            "expr": "affect concentration",
+            "meaning": "집중력에 영향을 미치다"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "title": "📢 SIGNAL",
+    "steps": [
+      {
+        "q_type": "purpose",
+        "sentences": [
+          "QuickClean Laundry is proud to announce the opening of its newest location at 550 Pine Street, serving the Riverside neighborhood.",
+          "The store offers same-day dry cleaning, wash-and-fold services, and free pickup and delivery within a two-mile radius."
+        ],
+        "question": "What is the main purpose of this advertisement?",
+        "question_kr": "이 광고의 주요 목적은 무엇인가?",
+        "choices": [
+          "(A) To announce a sale on laundry services",
+          "(B) To promote the opening of a new laundry location",
+          "(C) To recruit staff for an existing store",
+          "(D) To introduce a new delivery app"
+        ],
+        "choices_kr": [
+          "(A) 세탁 서비스 할인 판매 발표",
+          "(B) 새로운 세탁소 개장 홍보",
+          "(C) 기존 매장 직원 모집",
+          "(D) 새 배달 앱 소개"
+        ],
+        "answer": 1,
+        "kr": "QuickClean Laundry는 Riverside 지역을 서비스하는 550 Pine Street의 새로운 지점 개장을 발표한다. 매장은 당일 드라이클리닝, 세탁 및 접기 서비스, 2마일 반경 내 무료 픽업 및 배달을 제공한다.",
+        "expressions": [
+          {
+            "expr": "same-day dry cleaning",
+            "meaning": "당일 드라이클리닝"
+          },
+          {
+            "expr": "wash-and-fold services",
+            "meaning": "세탁 및 접기 서비스"
+          },
+          {
+            "expr": "two-mile radius",
+            "meaning": "2마일 반경"
+          }
+        ]
+      },
+      {
+        "q_type": "detail",
+        "sentences": [
+          "To celebrate the grand opening, all customers who visit during the first week will receive a 20% discount on their first order.",
+          "The store is open Monday through Saturday from 7 A.M. to 8 P.M."
+        ],
+        "question": "What discount is offered during the opening week?",
+        "question_kr": "오픈 주간에 제공되는 할인은?",
+        "choices": [
+          "(A) 10% off all services",
+          "(B) 20% off the first order",
+          "(C) Free pickup and delivery for a month",
+          "(D) Buy one get one free on dry cleaning"
+        ],
+        "choices_kr": [
+          "(A) 모든 서비스 10% 할인",
+          "(B) 첫 주문 20% 할인",
+          "(C) 한 달 무료 픽업 및 배달",
+          "(D) 드라이클리닝 1+1"
+        ],
+        "answer": 1,
+        "kr": "그랜드 오픈을 기념하여 첫 주에 방문하는 모든 고객은 첫 주문에서 20% 할인을 받는다. 매장은 월요일부터 토요일까지 오전 7시부터 오후 8시까지 운영된다.",
+        "expressions": [
+          {
+            "expr": "grand opening",
+            "meaning": "그랜드 오픈"
+          },
+          {
+            "expr": "first order",
+            "meaning": "첫 주문"
+          },
+          {
+            "expr": "celebrate",
+            "meaning": "기념하다"
+          }
+        ]
+      },
+      {
+        "q_type": "inference",
+        "sentences": [
+          "QuickClean currently operates 12 stores across the metro area and is one of the region's fastest-growing laundry chains.",
+          "The Riverside branch fills a gap in the market, as the nearest competitor is over three miles away."
+        ],
+        "question": "What is implied about the Riverside neighborhood?",
+        "question_kr": "Riverside 지역에 대해 추론할 수 있는 것은?",
+        "choices": [
+          "(A) It already has several laundry businesses",
+          "(B) It has been underserved by laundry services",
+          "(C) It is the largest neighborhood in the city",
+          "(D) It was specifically requested by QuickClean customers"
+        ],
+        "choices_kr": [
+          "(A) 이미 여러 세탁 업체가 있다",
+          "(B) 세탁 서비스가 부족한 지역이었다",
+          "(C) 시에서 가장 큰 지역이다",
+          "(D) QuickClean 고객이 특별히 요청한 지역이다"
+        ],
+        "answer": 1,
+        "kr": "QuickClean은 현재 메트로 지역 전역에서 12개 매장을 운영하며 지역에서 가장 빠르게 성장하는 세탁 체인 중 하나이다. Riverside 지점은 가장 가까운 경쟁업체가 3마일 이상 떨어져 있어 시장의 공백을 채운다.",
+        "expressions": [
+          {
+            "expr": "fills a gap in the market",
+            "meaning": "시장의 공백을 채우다"
+          },
+          {
+            "expr": "fastest-growing",
+            "meaning": "가장 빠르게 성장하는"
+          },
+          {
+            "expr": "metro area",
+            "meaning": "메트로 지역"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "title": "📢 SIGNAL",
+    "steps": [
+      {
+        "q_type": "purpose",
+        "sentences": [
+          "All employees are invited to attend the annual company picnic, to be held at Maplewood Park on Saturday, August 23.",
+          "The event will include a barbecue lunch, team sports, and a raffle with prizes generously donated by local businesses."
+        ],
+        "question": "What is the purpose of this notice?",
+        "question_kr": "이 공지의 목적은 무엇인가?",
+        "choices": [
+          "(A) To announce mandatory training for employees",
+          "(B) To invite staff to an annual social event",
+          "(C) To promote a charity fundraising event",
+          "(D) To introduce new company policies"
+        ],
+        "choices_kr": [
+          "(A) 직원 필수 교육 발표",
+          "(B) 직원을 연간 사교 행사에 초대",
+          "(C) 자선 기금 모금 행사 홍보",
+          "(D) 새로운 회사 정책 소개"
+        ],
+        "answer": 1,
+        "kr": "모든 직원은 8월 23일 토요일에 Maplewood Park에서 열리는 연간 회사 야유회에 참석하도록 초대된다. 행사에는 바비큐 점심, 팀 스포츠, 지역 기업이 기증한 상품이 있는 추첨이 포함된다.",
+        "expressions": [
+          {
+            "expr": "annual company picnic",
+            "meaning": "연간 회사 야유회"
+          },
+          {
+            "expr": "raffle with prizes",
+            "meaning": "상품이 있는 추첨"
+          },
+          {
+            "expr": "generously donated",
+            "meaning": "후하게 기증된"
+          }
+        ]
+      },
+      {
+        "q_type": "detail",
+        "sentences": [
+          "Employees wishing to attend must register by Friday, August 15, through the HR portal.",
+          "Family members are welcome to join, and children under 12 may participate in organized activities at no extra cost."
+        ],
+        "question": "By what date must employees register for the picnic?",
+        "question_kr": "직원들은 야유회 등록을 언제까지 해야 하는가?",
+        "choices": [
+          "(A) August 10",
+          "(B) August 15",
+          "(C) August 20",
+          "(D) August 23"
+        ],
+        "choices_kr": [
+          "(A) 8월 10일",
+          "(B) 8월 15일",
+          "(C) 8월 20일",
+          "(D) 8월 23일"
+        ],
+        "answer": 1,
+        "kr": "참석을 원하는 직원들은 8월 15일 금요일까지 HR 포털을 통해 등록해야 한다. 가족들도 참석 가능하며 12세 미만 어린이는 추가 비용 없이 조직된 활동에 참여할 수 있다.",
+        "expressions": [
+          {
+            "expr": "HR portal",
+            "meaning": "HR 포털"
+          },
+          {
+            "expr": "at no extra cost",
+            "meaning": "추가 비용 없이"
+          },
+          {
+            "expr": "organized activities",
+            "meaning": "조직된 활동"
+          }
+        ]
+      },
+      {
+        "q_type": "inference",
+        "sentences": [
+          "The picnic has been a beloved company tradition for over two decades, with last year's event drawing a record attendance of 350 employees and family members.",
+          "This year's organizing committee has secured sponsorships to cover all food and activity costs, meaning attendance is completely free."
+        ],
+        "question": "What can be inferred about this year's picnic?",
+        "question_kr": "올해 야유회에 대해 추론할 수 있는 것은?",
+        "choices": [
+          "(A) It will be smaller than last year's event",
+          "(B) Employees do not need to pay to attend",
+          "(C) It will be held at a different location than usual",
+          "(D) Attendance is limited to 200 people"
+        ],
+        "choices_kr": [
+          "(A) 작년 행사보다 규모가 작을 것이다",
+          "(B) 직원들은 참석 비용을 낼 필요가 없다",
+          "(C) 평소와 다른 장소에서 열린다",
+          "(D) 참석은 200명으로 제한된다"
+        ],
+        "answer": 1,
+        "kr": "야유회는 20년 이상 사랑받는 회사 전통으로, 작년 행사에는 기록적인 350명의 직원과 가족이 참석했다. 올해 조직 위원회는 모든 음식과 활동 비용을 충당하는 후원을 확보하여 참석이 완전히 무료이다.",
+        "expressions": [
+          {
+            "expr": "beloved tradition",
+            "meaning": "사랑받는 전통"
+          },
+          {
+            "expr": "record attendance",
+            "meaning": "기록적인 참석"
+          },
+          {
+            "expr": "securing sponsorships",
+            "meaning": "후원을 확보하다"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "title": "📢 SIGNAL",
+    "steps": [
+      {
+        "q_type": "purpose",
+        "sentences": [
+          "The City Transit Authority announces that Route 42 will be temporarily rerouted from October 1 due to road construction on Jefferson Avenue.",
+          "Buses will instead operate along Park Boulevard and Cherry Street until construction is complete."
+        ],
+        "question": "What is this notice about?",
+        "question_kr": "이 공지는 무엇에 관한 것인가?",
+        "choices": [
+          "(A) The cancellation of a bus route",
+          "(B) A temporary change to bus route 42",
+          "(C) New bus service to Jefferson Avenue",
+          "(D) An increase in bus fares"
+        ],
+        "choices_kr": [
+          "(A) 버스 노선 취소",
+          "(B) 42번 버스 노선의 임시 변경",
+          "(C) Jefferson Avenue로의 새로운 버스 서비스",
+          "(D) 버스 요금 인상"
+        ],
+        "answer": 1,
+        "kr": "시 교통 당국은 Jefferson Avenue의 도로 공사로 인해 10월 1일부터 42번 노선이 임시로 우회 운행된다고 발표한다. 버스는 공사가 완료될 때까지 Park Boulevard와 Cherry Street을 따라 운행된다.",
+        "expressions": [
+          {
+            "expr": "temporarily rerouted",
+            "meaning": "임시로 우회 운행되다"
+          },
+          {
+            "expr": "road construction",
+            "meaning": "도로 공사"
+          },
+          {
+            "expr": "until construction is complete",
+            "meaning": "공사가 완료될 때까지"
+          }
+        ]
+      },
+      {
+        "q_type": "detail",
+        "sentences": [
+          "Two temporary stops will be added at the corner of Park Boulevard and 5th Street and at Cherry Street Station.",
+          "Passengers are advised to check the updated route map available at all transit stations and on the Transit Authority website."
+        ],
+        "question": "How many temporary stops are being added to Route 42?",
+        "question_kr": "42번 노선에 몇 개의 임시 정류장이 추가되는가?",
+        "choices": [
+          "(A) One",
+          "(B) Two",
+          "(C) Three",
+          "(D) Four"
+        ],
+        "choices_kr": [
+          "(A) 1개",
+          "(B) 2개",
+          "(C) 3개",
+          "(D) 4개"
+        ],
+        "answer": 1,
+        "kr": "Park Boulevard와 5번 거리 모퉁이와 Cherry Street Station에 두 개의 임시 정류장이 추가된다. 승객들은 모든 교통 역과 교통 당국 웹사이트에서 이용 가능한 업데이트된 노선도를 확인하도록 권고된다.",
+        "expressions": [
+          {
+            "expr": "temporary stops",
+            "meaning": "임시 정류장"
+          },
+          {
+            "expr": "updated route map",
+            "meaning": "업데이트된 노선도"
+          },
+          {
+            "expr": "transit stations",
+            "meaning": "교통 역"
+          }
+        ]
+      },
+      {
+        "q_type": "inference",
+        "sentences": [
+          "The construction project is part of a city-wide infrastructure improvement plan expected to take 12 weeks.",
+          "The Transit Authority apologizes for the inconvenience and thanks riders for their patience during this period."
+        ],
+        "question": "What can be inferred about the Route 42 rerouting?",
+        "question_kr": "42번 노선 우회에 대해 추론할 수 있는 것은?",
+        "choices": [
+          "(A) It will last only a few days",
+          "(B) It is likely to continue for several weeks",
+          "(C) It affects all bus routes in the city",
+          "(D) It was requested by local residents"
+        ],
+        "choices_kr": [
+          "(A) 며칠만 지속될 것이다",
+          "(B) 몇 주 동안 지속될 가능성이 높다",
+          "(C) 시의 모든 버스 노선에 영향을 미친다",
+          "(D) 지역 주민들이 요청했다"
+        ],
+        "answer": 1,
+        "kr": "공사 프로젝트는 12주가 걸릴 것으로 예상되는 시 전체 인프라 개선 계획의 일부이다. 교통 당국은 불편에 사과드리며 이 기간 동안 인내해 주시는 승객들에게 감사드린다.",
+        "expressions": [
+          {
+            "expr": "city-wide infrastructure improvement",
+            "meaning": "시 전체 인프라 개선"
+          },
+          {
+            "expr": "apologizes for the inconvenience",
+            "meaning": "불편에 사과하다"
+          },
+          {
+            "expr": "patience",
+            "meaning": "인내"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "title": "📢 SIGNAL",
+    "steps": [
+      {
+        "q_type": "purpose",
+        "sentences": [
+          "Effective Monday, all visitors to the building must register at the main reception desk and receive a visitor's badge before proceeding to any office.",
+          "This new policy has been implemented to improve building security for all staff and tenants."
+        ],
+        "question": "What is the purpose of this notice?",
+        "question_kr": "이 공지의 목적은 무엇인가?",
+        "choices": [
+          "(A) To announce the hiring of new security guards",
+          "(B) To inform staff of a new visitor registration policy",
+          "(C) To remind employees to wear ID badges",
+          "(D) To introduce a new building management team"
+        ],
+        "choices_kr": [
+          "(A) 새 경비원 채용 발표",
+          "(B) 직원들에게 새로운 방문객 등록 정책 안내",
+          "(C) 직원들에게 신분증 착용 상기",
+          "(D) 새로운 건물 관리팀 소개"
+        ],
+        "answer": 1,
+        "kr": "월요일부터 건물을 방문하는 모든 방문객은 어떤 사무실로도 이동하기 전에 메인 안내 데스크에 등록하고 방문자 배지를 받아야 한다. 이 새로운 정책은 모든 직원과 임차인의 건물 보안을 개선하기 위해 시행되었다.",
+        "expressions": [
+          {
+            "expr": "register at the reception desk",
+            "meaning": "안내 데스크에 등록하다"
+          },
+          {
+            "expr": "visitor's badge",
+            "meaning": "방문자 배지"
+          },
+          {
+            "expr": "implemented to improve",
+            "meaning": "개선하기 위해 시행된"
+          }
+        ]
+      },
+      {
+        "q_type": "detail",
+        "sentences": [
+          "Employees who are expecting visitors should notify reception in advance and provide the visitor's name and purpose of visit.",
+          "Unregistered visitors will not be permitted to access any area beyond the lobby."
+        ],
+        "question": "What must employees do before their visitors arrive?",
+        "question_kr": "방문객이 도착하기 전에 직원들이 해야 하는 것은?",
+        "choices": [
+          "(A) Issue a temporary security card to the visitor",
+          "(B) Notify reception of the visitor's details in advance",
+          "(C) Escort the visitor from the parking area",
+          "(D) Obtain approval from the building manager"
+        ],
+        "choices_kr": [
+          "(A) 방문객에게 임시 보안 카드 발급",
+          "(B) 사전에 방문객 정보를 안내 데스크에 통보",
+          "(C) 주차장에서 방문객 안내",
+          "(D) 건물 관리자의 승인 획득"
+        ],
+        "answer": 1,
+        "kr": "방문객을 기다리는 직원들은 사전에 안내 데스크에 통보하고 방문객의 이름과 방문 목적을 제공해야 한다. 등록되지 않은 방문객은 로비 너머 어느 구역에도 접근이 허용되지 않는다.",
+        "expressions": [
+          {
+            "expr": "expecting visitors",
+            "meaning": "방문객을 기다리는"
+          },
+          {
+            "expr": "purpose of visit",
+            "meaning": "방문 목적"
+          },
+          {
+            "expr": "unregistered visitors",
+            "meaning": "등록되지 않은 방문객"
+          }
+        ]
+      },
+      {
+        "q_type": "inference",
+        "sentences": [
+          "The new policy follows a recent security audit that identified gaps in the building's visitor management procedures.",
+          "Management thanks all staff for their cooperation in making the workplace a safer environment."
+        ],
+        "question": "What prompted the new visitor policy?",
+        "question_kr": "새로운 방문객 정책의 원인은 무엇인가?",
+        "choices": [
+          "(A) A request from building tenants",
+          "(B) A security review that found weaknesses",
+          "(C) A government regulation requiring visitor logs",
+          "(D) An incident involving an unauthorized visitor"
+        ],
+        "choices_kr": [
+          "(A) 건물 임차인의 요청",
+          "(B) 약점을 발견한 보안 검토",
+          "(C) 방문자 기록을 요구하는 정부 규정",
+          "(D) 무단 방문자와 관련된 사건"
+        ],
+        "answer": 1,
+        "kr": "새로운 정책은 건물의 방문객 관리 절차의 허점을 파악한 최근 보안 감사를 따른 것이다. 경영진은 직장을 더 안전한 환경으로 만들기 위한 협조에 모든 직원에게 감사드린다.",
+        "expressions": [
+          {
+            "expr": "security audit",
+            "meaning": "보안 감사"
+          },
+          {
+            "expr": "visitor management procedures",
+            "meaning": "방문객 관리 절차"
+          },
+          {
+            "expr": "gaps",
+            "meaning": "허점, 공백"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "title": "📢 SIGNAL",
+    "steps": [
+      {
+        "q_type": "purpose",
+        "sentences": [
+          "The company's annual health screening program will be held at the main conference room on Thursday and Friday, September 18 and 19.",
+          "All full-time employees are eligible to participate at no personal cost."
+        ],
+        "question": "What is the purpose of this notice?",
+        "question_kr": "이 공지의 목적은 무엇인가?",
+        "choices": [
+          "(A) To announce a new health insurance plan",
+          "(B) To inform employees of the annual health screening",
+          "(C) To introduce a new company doctor",
+          "(D) To promote a workplace wellness challenge"
+        ],
+        "choices_kr": [
+          "(A) 새 건강보험 계획 발표",
+          "(B) 연간 건강검진 안내",
+          "(C) 새 회사 의사 소개",
+          "(D) 직장 건강 챌린지 홍보"
+        ],
+        "answer": 1,
+        "kr": "회사의 연간 건강검진 프로그램은 9월 18일 목요일과 19일 금요일에 메인 회의실에서 개최된다. 모든 정규직 직원은 개인 비용 없이 참여할 수 있다.",
+        "expressions": [
+          {
+            "expr": "health screening program",
+            "meaning": "건강검진 프로그램"
+          },
+          {
+            "expr": "eligible to participate",
+            "meaning": "참여 자격이 있는"
+          },
+          {
+            "expr": "at no personal cost",
+            "meaning": "개인 비용 없이"
+          }
+        ]
+      },
+      {
+        "q_type": "detail",
+        "sentences": [
+          "Screenings will include blood pressure checks, cholesterol tests, and vision exams.",
+          "Employees can sign up for a 20-minute time slot through the online booking system on the company intranet."
+        ],
+        "question": "How should employees sign up for the health screening?",
+        "question_kr": "직원들은 건강검진에 어떻게 등록해야 하는가?",
+        "choices": [
+          "(A) By contacting the HR department",
+          "(B) Through the online booking system on the company intranet",
+          "(C) By calling the health center directly",
+          "(D) By submitting a paper form to reception"
+        ],
+        "choices_kr": [
+          "(A) 인사부에 연락하여",
+          "(B) 회사 인트라넷의 온라인 예약 시스템을 통해",
+          "(C) 건강 센터에 직접 전화하여",
+          "(D) 안내 데스크에 서면 양식 제출"
+        ],
+        "answer": 1,
+        "kr": "검진에는 혈압 검사, 콜레스테롤 검사, 시력 검사가 포함된다. 직원들은 회사 인트라넷의 온라인 예약 시스템을 통해 20분 시간대에 등록할 수 있다.",
+        "expressions": [
+          {
+            "expr": "blood pressure checks",
+            "meaning": "혈압 검사"
+          },
+          {
+            "expr": "time slot",
+            "meaning": "시간대"
+          },
+          {
+            "expr": "online booking system",
+            "meaning": "온라인 예약 시스템"
+          }
+        ]
+      },
+      {
+        "q_type": "inference",
+        "sentences": [
+          "Participation rates in last year's screening were 82 percent, and the company hopes to exceed that figure this year.",
+          "Results will be shared confidentially with each employee within two weeks of the screening date."
+        ],
+        "question": "What is implied about the health screening program?",
+        "question_kr": "건강검진 프로그램에 대해 추론할 수 있는 것은?",
+        "choices": [
+          "(A) It is a new program introduced this year",
+          "(B) It has been conducted in previous years",
+          "(C) Results are shared with all management",
+          "(D) Participation is mandatory for all staff"
+        ],
+        "choices_kr": [
+          "(A) 올해 도입된 새 프로그램이다",
+          "(B) 이전 해에도 시행되었다",
+          "(C) 결과가 모든 경영진과 공유된다",
+          "(D) 모든 직원의 참여가 의무적이다"
+        ],
+        "answer": 1,
+        "kr": "작년 검진 참여율은 82%였으며 회사는 올해 그 수치를 초과하기를 희망한다. 결과는 검진일로부터 2주 이내에 각 직원에게 기밀로 공유된다.",
+        "expressions": [
+          {
+            "expr": "participation rates",
+            "meaning": "참여율"
+          },
+          {
+            "expr": "confidentially",
+            "meaning": "기밀로"
+          },
+          {
+            "expr": "exceed that figure",
+            "meaning": "그 수치를 초과하다"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "title": "📢 SIGNAL",
+    "steps": [
+      {
+        "q_type": "purpose",
+        "sentences": [
+          "Nature's Best is thrilled to introduce its newest product: GreenBlend, an all-natural smoothie powder made from 100% organic fruits and vegetables.",
+          "GreenBlend is available at all major health food stores and online starting April 1."
+        ],
+        "question": "What is being promoted in this advertisement?",
+        "question_kr": "이 광고에서 무엇이 홍보되고 있는가?",
+        "choices": [
+          "(A) A new health food store",
+          "(B) A new organic smoothie product",
+          "(C) A discount on existing products",
+          "(D) A nutrition workshop"
+        ],
+        "choices_kr": [
+          "(A) 새로운 건강식품 매장",
+          "(B) 새로운 유기농 스무디 제품",
+          "(C) 기존 제품 할인",
+          "(D) 영양 워크숍"
+        ],
+        "answer": 1,
+        "kr": "Nature's Best는 100% 유기농 과일과 채소로 만든 전천연 스무디 파우더 GreenBlend를 소개하게 되어 기쁩니다. GreenBlend는 4월 1일부터 모든 주요 건강식품 매장과 온라인에서 구매 가능하다.",
+        "expressions": [
+          {
+            "expr": "all-natural",
+            "meaning": "전천연"
+          },
+          {
+            "expr": "organic fruits and vegetables",
+            "meaning": "유기농 과일과 채소"
+          },
+          {
+            "expr": "health food stores",
+            "meaning": "건강식품 매장"
+          }
+        ]
+      },
+      {
+        "q_type": "detail",
+        "sentences": [
+          "Each serving contains 20 grams of plant-based protein and fewer than 150 calories.",
+          "A starter pack with three flavor varieties — berry, tropical, and green apple — is available for $34.99."
+        ],
+        "question": "How many flavor varieties are included in the starter pack?",
+        "question_kr": "스타터 팩에는 몇 가지 맛이 포함되어 있는가?",
+        "choices": [
+          "(A) One",
+          "(B) Two",
+          "(C) Three",
+          "(D) Four"
+        ],
+        "choices_kr": [
+          "(A) 1가지",
+          "(B) 2가지",
+          "(C) 3가지",
+          "(D) 4가지"
+        ],
+        "answer": 2,
+        "kr": "각 1회 제공량에는 식물성 단백질 20그램과 150칼로리 미만이 포함된다. 베리, 트로피칼, 그린 애플의 세 가지 맛이 있는 스타터 팩은 $34.99에 구매 가능하다.",
+        "expressions": [
+          {
+            "expr": "plant-based protein",
+            "meaning": "식물성 단백질"
+          },
+          {
+            "expr": "starter pack",
+            "meaning": "스타터 팩"
+          },
+          {
+            "expr": "flavor varieties",
+            "meaning": "맛 종류"
+          }
+        ]
+      },
+      {
+        "q_type": "inference",
+        "sentences": [
+          "GreenBlend was developed after two years of research and testing by Nature's Best nutritional scientists.",
+          "Early reviews from beta testers have praised the product for its taste and effectiveness in supporting energy levels and overall wellness."
+        ],
+        "question": "What can be inferred about GreenBlend?",
+        "question_kr": "GreenBlend에 대해 추론할 수 있는 것은?",
+        "choices": [
+          "(A) It has not yet been tested by consumers",
+          "(B) It received positive feedback before its official launch",
+          "(C) It is the company's first product",
+          "(D) It is only available in one flavor"
+        ],
+        "choices_kr": [
+          "(A) 아직 소비자에게 테스트되지 않았다",
+          "(B) 공식 출시 전에 긍정적인 피드백을 받았다",
+          "(C) 회사의 첫 번째 제품이다",
+          "(D) 한 가지 맛으로만 제공된다"
+        ],
+        "answer": 1,
+        "kr": "GreenBlend는 Nature's Best 영양 과학자들이 2년간의 연구와 테스트를 거쳐 개발되었다. 베타 테스터들의 초기 리뷰는 맛과 에너지 수준 및 전반적인 건강 지원에서의 효과에 대해 제품을 칭찬했다.",
+        "expressions": [
+          {
+            "expr": "beta testers",
+            "meaning": "베타 테스터"
+          },
+          {
+            "expr": "energy levels",
+            "meaning": "에너지 수준"
+          },
+          {
+            "expr": "overall wellness",
+            "meaning": "전반적인 건강"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "title": "📢 SIGNAL",
+    "steps": [
+      {
+        "q_type": "purpose",
+        "sentences": [
+          "Effective January 1, the hourly parking rate in the Central District parking garage will increase from $3.00 to $3.50 per hour.",
+          "Monthly permit holders will see their rate increase from $85 to $95 per month."
+        ],
+        "question": "What is this notice about?",
+        "question_kr": "이 공지는 무엇에 관한 것인가?",
+        "choices": [
+          "(A) The opening of a new parking facility",
+          "(B) An increase in parking fees",
+          "(C) New parking regulations for the area",
+          "(D) The closure of a parking garage"
+        ],
+        "choices_kr": [
+          "(A) 새로운 주차 시설 개장",
+          "(B) 주차 요금 인상",
+          "(C) 지역 새로운 주차 규정",
+          "(D) 주차장 폐쇄"
+        ],
+        "answer": 1,
+        "kr": "1월 1일부로 Central District 주차장의 시간당 주차 요금이 시간당 $3.00에서 $3.50으로 인상된다. 월정기권 소지자는 요금이 월 $85에서 $95로 인상된다.",
+        "expressions": [
+          {
+            "expr": "hourly parking rate",
+            "meaning": "시간당 주차 요금"
+          },
+          {
+            "expr": "monthly permit holders",
+            "meaning": "월정기권 소지자"
+          },
+          {
+            "expr": "effective January 1",
+            "meaning": "1월 1일부로"
+          }
+        ]
+      },
+      {
+        "q_type": "detail",
+        "sentences": [
+          "The first 30 minutes of parking remain free for all vehicles, and validation for up to two hours is available at participating retailers in the district.",
+          "For more information, contact the Parking Authority at 555-7700."
+        ],
+        "question": "How long is parking free for all vehicles?",
+        "question_kr": "모든 차량에 대해 주차는 얼마나 무료인가?",
+        "choices": [
+          "(A) 15 minutes",
+          "(B) 30 minutes",
+          "(C) One hour",
+          "(D) Two hours"
+        ],
+        "choices_kr": [
+          "(A) 15분",
+          "(B) 30분",
+          "(C) 1시간",
+          "(D) 2시간"
+        ],
+        "answer": 1,
+        "kr": "모든 차량에 대해 주차 처음 30분은 무료이며, 지구 내 참여 소매업체에서 최대 2시간 주차 확인이 가능하다. 더 많은 정보는 555-7700으로 주차 당국에 연락하세요.",
+        "expressions": [
+          {
+            "expr": "validation",
+            "meaning": "주차 확인"
+          },
+          {
+            "expr": "participating retailers",
+            "meaning": "참여 소매업체"
+          },
+          {
+            "expr": "remain free",
+            "meaning": "무료로 유지되다"
+          }
+        ]
+      },
+      {
+        "q_type": "inference",
+        "sentences": [
+          "The rate adjustment is the first since 2019 and reflects increased operating and maintenance costs for the facility.",
+          "The Parking Authority notes that rates in the Central District remain below the city average for comparable facilities."
+        ],
+        "question": "What can be inferred from the notice?",
+        "question_kr": "이 공지에서 추론할 수 있는 것은?",
+        "choices": [
+          "(A) The parking rates are the highest in the city",
+          "(B) The rates had not been changed for several years",
+          "(C) The garage was recently expanded",
+          "(D) The increase applies only to monthly permit holders"
+        ],
+        "choices_kr": [
+          "(A) 주차 요금이 시에서 가장 높다",
+          "(B) 요금이 몇 년간 변경되지 않았다",
+          "(C) 주차장이 최근 확장되었다",
+          "(D) 인상은 월정기권 소지자에게만 적용된다"
+        ],
+        "answer": 1,
+        "kr": "요금 조정은 2019년 이후 처음이며 시설의 증가된 운영 및 유지보수 비용을 반영한다. 주차 당국은 Central District의 요금이 유사한 시설의 시 평균 이하라고 밝혔다.",
+        "expressions": [
+          {
+            "expr": "rate adjustment",
+            "meaning": "요금 조정"
+          },
+          {
+            "expr": "operating and maintenance costs",
+            "meaning": "운영 및 유지보수 비용"
+          },
+          {
+            "expr": "comparable facilities",
+            "meaning": "유사한 시설"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "title": "📢 SIGNAL",
+    "steps": [
+      {
+        "q_type": "purpose",
+        "sentences": [
+          "The company is launching a new Employee Referral Program that rewards staff for recommending qualified candidates for open positions.",
+          "Employees who successfully refer a candidate who is hired and completes 90 days of employment will receive a $500 bonus."
+        ],
+        "question": "What is the purpose of this announcement?",
+        "question_kr": "이 공지의 목적은 무엇인가?",
+        "choices": [
+          "(A) To announce open job positions at the company",
+          "(B) To introduce a new employee referral bonus program",
+          "(C) To remind staff of the interview process",
+          "(D) To promote internal promotion opportunities"
+        ],
+        "choices_kr": [
+          "(A) 회사의 공개 채용 공고",
+          "(B) 새로운 직원 추천 보너스 프로그램 소개",
+          "(C) 면접 과정 상기",
+          "(D) 내부 승진 기회 홍보"
+        ],
+        "answer": 1,
+        "kr": "회사는 공개 직책에 적격 후보자를 추천한 직원에게 보상하는 새로운 직원 추천 프로그램을 시작한다. 채용되어 90일 고용을 완료하는 후보자를 성공적으로 추천한 직원은 $500 보너스를 받는다.",
+        "expressions": [
+          {
+            "expr": "Employee Referral Program",
+            "meaning": "직원 추천 프로그램"
+          },
+          {
+            "expr": "qualified candidates",
+            "meaning": "적격 후보자"
+          },
+          {
+            "expr": "completes 90 days of employment",
+            "meaning": "90일 고용을 완료하다"
+          }
+        ]
+      },
+      {
+        "q_type": "detail",
+        "sentences": [
+          "To participate, employees must submit referrals through the official HR portal before a position is filled.",
+          "Referrals from managers or supervisors for positions within their direct reports are not eligible for the bonus."
+        ],
+        "question": "Who is NOT eligible for the referral bonus?",
+        "question_kr": "추천 보너스 자격이 없는 사람은?",
+        "choices": [
+          "(A) Entry-level employees who refer friends",
+          "(B) Managers who refer candidates for their own team",
+          "(C) Employees in different departments",
+          "(D) Part-time staff who refer full-time candidates"
+        ],
+        "choices_kr": [
+          "(A) 친구를 추천하는 초급 직원",
+          "(B) 자신의 팀에 후보자를 추천하는 관리자",
+          "(C) 다른 부서의 직원",
+          "(D) 정규직 후보자를 추천하는 파트타임 직원"
+        ],
+        "answer": 1,
+        "kr": "참여하려면 직원들은 직위가 채워지기 전에 공식 HR 포털을 통해 추천서를 제출해야 한다. 직속 부하 직원 직위에 대한 관리자나 감독자의 추천은 보너스 자격이 없다.",
+        "expressions": [
+          {
+            "expr": "direct reports",
+            "meaning": "직속 부하 직원"
+          },
+          {
+            "expr": "not eligible for",
+            "meaning": "~의 자격이 없는"
+          },
+          {
+            "expr": "submit referrals",
+            "meaning": "추천서를 제출하다"
+          }
+        ]
+      },
+      {
+        "q_type": "inference",
+        "sentences": [
+          "The program was introduced in response to a growing number of vacancies across the company following a period of rapid expansion.",
+          "HR studies show that referred candidates tend to stay with companies longer and perform better than those hired through other channels."
+        ],
+        "question": "Why was the referral program most likely introduced?",
+        "question_kr": "추천 프로그램이 도입된 가장 큰 이유는 무엇인가?",
+        "choices": [
+          "(A) To reduce the cost of external recruitment agencies",
+          "(B) To fill a large number of job openings efficiently",
+          "(C) To reward long-term employees for their service",
+          "(D) To identify candidates for leadership positions"
+        ],
+        "choices_kr": [
+          "(A) 외부 채용 대행사 비용 절감",
+          "(B) 많은 수의 공석을 효율적으로 채우기 위해",
+          "(C) 장기 근속 직원에게 서비스에 대한 보상",
+          "(D) 리더십 직위 후보자 파악"
+        ],
+        "answer": 1,
+        "kr": "프로그램은 급격한 확장 기간 이후 회사 전반의 증가하는 공석 수에 대응하여 도입되었다. HR 연구에 따르면 추천 후보자들은 다른 경로로 채용된 사람들보다 회사에 더 오래 남아 더 잘 수행하는 경향이 있다.",
+        "expressions": [
+          {
+            "expr": "growing number of vacancies",
+            "meaning": "증가하는 공석 수"
+          },
+          {
+            "expr": "rapid expansion",
+            "meaning": "급격한 확장"
+          },
+          {
+            "expr": "hired through other channels",
+            "meaning": "다른 경로로 채용된"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "title": "📢 SIGNAL",
+    "steps": [
+      {
+        "q_type": "purpose",
+        "sentences": [
+          "PhoneFix Express now offers screen repair services for all major smartphone brands, with most repairs completed in under 60 minutes.",
+          "Walk-ins are welcome, and appointments can also be booked online at phonefix.com."
+        ],
+        "question": "What service is being advertised?",
+        "question_kr": "어떤 서비스가 광고되고 있는가?",
+        "choices": [
+          "(A) A new smartphone brand",
+          "(B) A phone screen repair service",
+          "(C) A smartphone insurance plan",
+          "(D) A mobile data upgrade offer"
+        ],
+        "choices_kr": [
+          "(A) 새로운 스마트폰 브랜드",
+          "(B) 휴대폰 화면 수리 서비스",
+          "(C) 스마트폰 보험 계획",
+          "(D) 모바일 데이터 업그레이드 제공"
+        ],
+        "answer": 1,
+        "kr": "PhoneFix Express는 이제 모든 주요 스마트폰 브랜드에 대한 화면 수리 서비스를 제공하며, 대부분의 수리는 60분 이내에 완료된다. 예약 없이 방문 가능하며, 약속은 phonefix.com에서 온라인으로 예약할 수도 있다.",
+        "expressions": [
+          {
+            "expr": "screen repair services",
+            "meaning": "화면 수리 서비스"
+          },
+          {
+            "expr": "walk-ins are welcome",
+            "meaning": "예약 없이 방문 가능하다"
+          },
+          {
+            "expr": "major smartphone brands",
+            "meaning": "주요 스마트폰 브랜드"
+          }
+        ]
+      },
+      {
+        "q_type": "detail",
+        "sentences": [
+          "All repairs come with a 90-day warranty, and customers can track the status of their repair in real time through the PhoneFix app.",
+          "Current promotions include 15% off battery replacements throughout the month of June."
+        ],
+        "question": "What warranty is provided with repairs?",
+        "question_kr": "수리에 제공되는 보증은?",
+        "choices": [
+          "(A) 30 days",
+          "(B) 60 days",
+          "(C) 90 days",
+          "(D) One year"
+        ],
+        "choices_kr": [
+          "(A) 30일",
+          "(B) 60일",
+          "(C) 90일",
+          "(D) 1년"
+        ],
+        "answer": 2,
+        "kr": "모든 수리에는 90일 보증이 포함되며, 고객들은 PhoneFix 앱을 통해 실시간으로 수리 상태를 추적할 수 있다. 현재 프로모션에는 6월 한 달 동안 배터리 교체 15% 할인이 포함된다.",
+        "expressions": [
+          {
+            "expr": "90-day warranty",
+            "meaning": "90일 보증"
+          },
+          {
+            "expr": "track the status",
+            "meaning": "상태를 추적하다"
+          },
+          {
+            "expr": "battery replacements",
+            "meaning": "배터리 교체"
+          }
+        ]
+      },
+      {
+        "q_type": "inference",
+        "sentences": [
+          "PhoneFix Express has grown from one store to 18 locations across the country in just four years.",
+          "Customer satisfaction surveys show a 96% approval rating, driven largely by the speed and quality of service."
+        ],
+        "question": "What is implied about PhoneFix Express?",
+        "question_kr": "PhoneFix Express에 대해 추론할 수 있는 것은?",
+        "choices": [
+          "(A) It focuses mainly on older phone models",
+          "(B) It has experienced rapid growth due to customer satisfaction",
+          "(C) It offers lower prices than all competitors",
+          "(D) It was recently acquired by a larger company"
+        ],
+        "choices_kr": [
+          "(A) 주로 구형 폰 모델에 집중한다",
+          "(B) 고객 만족도로 인해 빠른 성장을 경험했다",
+          "(C) 모든 경쟁업체보다 낮은 가격을 제공한다",
+          "(D) 최근 더 큰 회사에 인수되었다"
+        ],
+        "answer": 1,
+        "kr": "PhoneFix Express는 단 4년 만에 1개 매장에서 전국 18개 지점으로 성장했다. 고객 만족도 설문 조사에서는 주로 서비스의 속도와 품질에 의해 96% 승인 평가를 보인다.",
+        "expressions": [
+          {
+            "expr": "approval rating",
+            "meaning": "승인 평가"
+          },
+          {
+            "expr": "rapid growth",
+            "meaning": "빠른 성장"
+          },
+          {
+            "expr": "speed and quality of service",
+            "meaning": "서비스의 속도와 품질"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "title": "📢 SIGNAL",
+    "steps": [
+      {
+        "q_type": "purpose",
+        "sentences": [
+          "Sunrise Dental Clinic is pleased to offer free dental checkups for children under 12 during National Dental Health Month in February.",
+          "Appointments can be scheduled by calling 555-2244 or visiting our website at sunrisedental.com."
+        ],
+        "question": "What is being offered in this advertisement?",
+        "question_kr": "이 광고에서 무엇이 제공되고 있는가?",
+        "choices": [
+          "(A) Free dental care for all patients",
+          "(B) Free checkups for children under 12",
+          "(C) Discounted braces for teenagers",
+          "(D) A new dental insurance program"
+        ],
+        "choices_kr": [
+          "(A) 모든 환자에게 무료 치과 진료",
+          "(B) 12세 미만 어린이를 위한 무료 검진",
+          "(C) 청소년을 위한 할인된 치아 교정",
+          "(D) 새로운 치과 보험 프로그램"
+        ],
+        "answer": 1,
+        "kr": "Sunrise Dental Clinic은 2월 치과 건강의 달 동안 12세 미만 어린이를 위한 무료 치과 검진을 제공한다. 예약은 555-2244로 전화하거나 sunrisedental.com을 방문하여 예약할 수 있다.",
+        "expressions": [
+          {
+            "expr": "free dental checkups",
+            "meaning": "무료 치과 검진"
+          },
+          {
+            "expr": "National Dental Health Month",
+            "meaning": "전국 치과 건강의 달"
+          },
+          {
+            "expr": "schedule an appointment",
+            "meaning": "예약하다"
+          }
+        ]
+      },
+      {
+        "q_type": "detail",
+        "sentences": [
+          "Each checkup includes a full examination, X-rays if needed, and a cleaning.",
+          "Parents must accompany their children and bring proof of age such as a birth certificate or passport."
+        ],
+        "question": "What must parents bring to the appointment?",
+        "question_kr": "부모들이 예약 시 가져와야 하는 것은?",
+        "choices": [
+          "(A) Health insurance cards",
+          "(B) Proof of age",
+          "(C) Previous dental records",
+          "(D) A referral from a family doctor"
+        ],
+        "choices_kr": [
+          "(A) 건강보험 카드",
+          "(B) 나이 증명 서류",
+          "(C) 이전 치과 기록",
+          "(D) 가정의 소견서"
+        ],
+        "answer": 1,
+        "kr": "각 검진에는 전체 검사, 필요한 경우 엑스레이, 스케일링이 포함된다. 부모들은 자녀와 함께 출석해야 하며 출생 증명서나 여권과 같은 나이 증명 서류를 지참해야 한다.",
+        "expressions": [
+          {
+            "expr": "proof of age",
+            "meaning": "나이 증명 서류"
+          },
+          {
+            "expr": "birth certificate",
+            "meaning": "출생 증명서"
+          },
+          {
+            "expr": "accompany their children",
+            "meaning": "자녀와 함께 출석하다"
+          }
+        ]
+      },
+      {
+        "q_type": "inference",
+        "sentences": [
+          "Sunrise Dental has been serving families in the community for 22 years and currently sees over 3,000 patients annually.",
+          "The clinic hopes the free checkup event will raise awareness about the importance of early dental care habits."
+        ],
+        "question": "What is the clinic's likely goal for this promotion?",
+        "question_kr": "이 프로모션에 대한 클리닉의 목표는 무엇인가?",
+        "choices": [
+          "(A) To attract adult patients to the clinic",
+          "(B) To encourage good dental habits from a young age",
+          "(C) To expand into a new neighborhood",
+          "(D) To compete with a rival dental clinic"
+        ],
+        "choices_kr": [
+          "(A) 성인 환자를 클리닉으로 유치",
+          "(B) 어릴 때부터 좋은 치과 위생 습관 장려",
+          "(C) 새로운 지역으로 확장",
+          "(D) 경쟁 치과 클리닉과 경쟁"
+        ],
+        "answer": 1,
+        "kr": "Sunrise Dental은 22년 동안 지역 사회 가족들에게 서비스를 제공했으며 현재 연간 3,000명 이상의 환자를 진료한다. 클리닉은 무료 검진 행사가 조기 치과 위생 습관의 중요성에 대한 인식을 높이기를 희망한다.",
+        "expressions": [
+          {
+            "expr": "raise awareness",
+            "meaning": "인식을 높이다"
+          },
+          {
+            "expr": "early dental care habits",
+            "meaning": "조기 치과 위생 습관"
+          },
+          {
+            "expr": "annually",
+            "meaning": "연간"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "title": "📢 SIGNAL",
+    "steps": [
+      {
+        "q_type": "purpose",
+        "sentences": [
+          "The Northgate Shopping Center will undergo major renovations beginning next month, adding 15 new retail spaces and a food court with 10 dining options.",
+          "The center will remain open throughout construction, though some temporary inconveniences are expected."
+        ],
+        "question": "What does this notice announce?",
+        "question_kr": "이 공지는 무엇을 알리는가?",
+        "choices": [
+          "(A) The permanent closure of a shopping center",
+          "(B) A major expansion of a shopping center",
+          "(C) The introduction of a loyalty rewards program",
+          "(D) New parking regulations at the center"
+        ],
+        "choices_kr": [
+          "(A) 쇼핑 센터의 영구 폐쇄",
+          "(B) 쇼핑 센터의 대규모 확장",
+          "(C) 로열티 보상 프로그램 도입",
+          "(D) 센터의 새로운 주차 규정"
+        ],
+        "answer": 1,
+        "kr": "Northgate Shopping Center는 다음 달부터 대규모 리모델링을 시작하여 15개의 새로운 소매 공간과 10개의 다이닝 옵션이 있는 푸드코트를 추가한다. 센터는 공사 기간 동안 계속 영업하지만 일부 임시 불편이 예상된다.",
+        "expressions": [
+          {
+            "expr": "undergo major renovations",
+            "meaning": "대규모 리모델링을 받다"
+          },
+          {
+            "expr": "retail spaces",
+            "meaning": "소매 공간"
+          },
+          {
+            "expr": "temporary inconveniences",
+            "meaning": "임시 불편"
+          }
+        ]
+      },
+      {
+        "q_type": "detail",
+        "sentences": [
+          "During construction, parking in the north lot will be limited to 200 spaces, down from the usual 500.",
+          "Shoppers are encouraged to use the new shuttle service running from the overflow parking area on Green Street every 10 minutes."
+        ],
+        "question": "How often does the shuttle service run?",
+        "question_kr": "셔틀 서비스는 얼마나 자주 운행되는가?",
+        "choices": [
+          "(A) Every 5 minutes",
+          "(B) Every 10 minutes",
+          "(C) Every 15 minutes",
+          "(D) Every 30 minutes"
+        ],
+        "choices_kr": [
+          "(A) 5분마다",
+          "(B) 10분마다",
+          "(C) 15분마다",
+          "(D) 30분마다"
+        ],
+        "answer": 1,
+        "kr": "공사 중에는 북쪽 주차장의 주차가 일반적인 500대에서 200대로 제한된다. 쇼핑객들은 Green Street의 추가 주차 구역에서 10분마다 운행되는 새로운 셔틀 서비스를 이용하도록 권장된다.",
+        "expressions": [
+          {
+            "expr": "overflow parking area",
+            "meaning": "추가 주차 구역"
+          },
+          {
+            "expr": "shuttle service",
+            "meaning": "셔틀 서비스"
+          },
+          {
+            "expr": "limited to",
+            "meaning": "~로 제한된"
+          }
+        ]
+      },
+      {
+        "q_type": "inference",
+        "sentences": [
+          "The renovation project is estimated to be completed by spring of next year, just in time for the busy holiday shopping season that follows.",
+          "Management expects the expanded center to generate 30% more annual revenue upon completion."
+        ],
+        "question": "What is implied about the timing of the renovation?",
+        "question_kr": "리모델링 시기에 대해 추론할 수 있는 것은?",
+        "choices": [
+          "(A) It will be finished before the busiest shopping period",
+          "(B) It is expected to last more than two years",
+          "(C) It was delayed due to budget issues",
+          "(D) It will be completed during the summer"
+        ],
+        "choices_kr": [
+          "(A) 가장 바쁜 쇼핑 기간 전에 완료될 것이다",
+          "(B) 2년 이상 지속될 것으로 예상된다",
+          "(C) 예산 문제로 지연되었다",
+          "(D) 여름에 완료될 것이다"
+        ],
+        "answer": 0,
+        "kr": "리모델링 프로젝트는 내년 봄에 완료될 것으로 예상되며, 그 이후 바쁜 연휴 쇼핑 시즌에 딱 맞게 된다. 경영진은 확장된 센터가 완공 시 연간 수익을 30% 더 창출할 것으로 예상한다.",
+        "expressions": [
+          {
+            "expr": "just in time for",
+            "meaning": "~에 딱 맞게"
+          },
+          {
+            "expr": "busy holiday shopping season",
+            "meaning": "바쁜 연휴 쇼핑 시즌"
+          },
+          {
+            "expr": "upon completion",
+            "meaning": "완공 시"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "title": "📢 SIGNAL",
+    "steps": [
+      {
+        "q_type": "purpose",
+        "sentences": [
+          "The City Library System is seeking volunteer tutors to assist adult learners in improving their reading and writing skills.",
+          "Tutors are needed for two-hour sessions on Tuesday and Thursday evenings throughout the school year."
+        ],
+        "question": "What is the purpose of this notice?",
+        "question_kr": "이 공지의 목적은 무엇인가?",
+        "choices": [
+          "(A) To recruit volunteers for a tutoring program",
+          "(B) To promote adult literacy classes for a fee",
+          "(C) To announce new library hours",
+          "(D) To hire paid teaching assistants"
+        ],
+        "choices_kr": [
+          "(A) 튜터링 프로그램 자원봉사자 모집",
+          "(B) 유료 성인 문해력 강좌 홍보",
+          "(C) 새로운 도서관 운영 시간 발표",
+          "(D) 유급 교육 보조원 채용"
+        ],
+        "answer": 0,
+        "kr": "시 도서관 시스템은 성인 학습자들의 읽기와 쓰기 능력 향상을 돕기 위한 자원봉사 튜터를 모집한다. 학년 동안 화요일과 목요일 저녁 2시간 세션을 위한 튜터가 필요하다.",
+        "expressions": [
+          {
+            "expr": "volunteer tutors",
+            "meaning": "자원봉사 튜터"
+          },
+          {
+            "expr": "adult learners",
+            "meaning": "성인 학습자"
+          },
+          {
+            "expr": "throughout the school year",
+            "meaning": "학년 동안"
+          }
+        ]
+      },
+      {
+        "q_type": "detail",
+        "sentences": [
+          "No formal teaching experience is required, and free training will be provided to all new volunteers.",
+          "Interested individuals can apply online at citylibraryvolunteers.org or pick up an application form at any branch."
+        ],
+        "question": "What training is available for new volunteers?",
+        "question_kr": "새 자원봉사자들에게 어떤 교육이 제공되는가?",
+        "choices": [
+          "(A) A paid professional certification course",
+          "(B) Free training provided by the library",
+          "(C) An online course they must complete independently",
+          "(D) A two-week supervised practice session"
+        ],
+        "choices_kr": [
+          "(A) 유료 전문 자격증 과정",
+          "(B) 도서관에서 제공하는 무료 교육",
+          "(C) 독립적으로 완료해야 하는 온라인 과정",
+          "(D) 2주간의 감독 실습 세션"
+        ],
+        "answer": 1,
+        "kr": "공식적인 교육 경험이 필요하지 않으며 모든 신규 자원봉사자에게 무료 교육이 제공된다. 관심 있는 사람들은 citylibraryvolunteers.org에서 온라인으로 지원하거나 모든 지점에서 지원서를 받을 수 있다.",
+        "expressions": [
+          {
+            "expr": "formal teaching experience",
+            "meaning": "공식적인 교육 경험"
+          },
+          {
+            "expr": "new volunteers",
+            "meaning": "신규 자원봉사자"
+          },
+          {
+            "expr": "application form",
+            "meaning": "지원서"
+          }
+        ]
+      },
+      {
+        "q_type": "inference",
+        "sentences": [
+          "Last year, library volunteers helped over 300 adults improve their literacy skills, with 85% of participants reporting significant improvement within six months.",
+          "The program coordinator notes that demand for tutors consistently exceeds the available volunteer pool."
+        ],
+        "question": "What is implied about the volunteer tutoring program?",
+        "question_kr": "자원봉사 튜터링 프로그램에 대해 추론할 수 있는 것은?",
+        "choices": [
+          "(A) It has not been effective in improving literacy",
+          "(B) More volunteers are needed to meet demand",
+          "(C) It is open only to college students",
+          "(D) It recently received government funding"
+        ],
+        "choices_kr": [
+          "(A) 문해력 향상에 효과적이지 않았다",
+          "(B) 수요를 충족하기 위해 더 많은 자원봉사자가 필요하다",
+          "(C) 대학생에게만 열려 있다",
+          "(D) 최근 정부 자금을 받았다"
+        ],
+        "answer": 1,
+        "kr": "작년에 도서관 자원봉사자들은 300명 이상의 성인이 문해력 향상을 돕는 데 도움을 주었으며, 참가자의 85%가 6개월 내에 상당한 향상을 보고했다. 프로그램 코디네이터는 튜터에 대한 수요가 지속적으로 가용 자원봉사자 풀을 초과한다고 밝혔다.",
+        "expressions": [
+          {
+            "expr": "literacy skills",
+            "meaning": "문해력"
+          },
+          {
+            "expr": "demand exceeds",
+            "meaning": "수요가 초과하다"
+          },
+          {
+            "expr": "volunteer pool",
+            "meaning": "자원봉사자 풀"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "title": "📢 SIGNAL",
+    "steps": [
+      {
+        "q_type": "purpose",
+        "sentences": [
+          "Coastal Property Management is accepting applications for a two-bedroom apartment at 77 Ocean View Drive, available from August 1.",
+          "Monthly rent is $1,800, which includes water and trash removal."
+        ],
+        "question": "What is the purpose of this advertisement?",
+        "question_kr": "이 광고의 목적은 무엇인가?",
+        "choices": [
+          "(A) To sell a residential property",
+          "(B) To rent out an available apartment",
+          "(C) To promote a property management service",
+          "(D) To advertise a home renovation company"
+        ],
+        "choices_kr": [
+          "(A) 주거용 부동산 판매",
+          "(B) 이용 가능한 아파트 임대",
+          "(C) 부동산 관리 서비스 홍보",
+          "(D) 주택 리모델링 회사 광고"
+        ],
+        "answer": 1,
+        "kr": "Coastal Property Management는 8월 1일부터 이용 가능한 77 Ocean View Drive의 침실 2개 아파트 지원서를 받고 있다. 월 임대료는 $1,800이며 수도와 쓰레기 수거가 포함된다.",
+        "expressions": [
+          {
+            "expr": "accepting applications",
+            "meaning": "지원서를 받고 있다"
+          },
+          {
+            "expr": "monthly rent",
+            "meaning": "월 임대료"
+          },
+          {
+            "expr": "trash removal",
+            "meaning": "쓰레기 수거"
+          }
+        ]
+      },
+      {
+        "q_type": "detail",
+        "sentences": [
+          "Applicants must provide proof of income showing earnings of at least three times the monthly rent.",
+          "A security deposit equal to one month's rent is required upon signing the lease."
+        ],
+        "question": "How large must an applicant's income be to qualify?",
+        "question_kr": "지원자가 자격을 갖추려면 소득이 얼마나 커야 하는가?",
+        "choices": [
+          "(A) At least $1,800 per month",
+          "(B) At least $3,600 per month",
+          "(C) At least $5,400 per month",
+          "(D) At least $7,200 per month"
+        ],
+        "choices_kr": [
+          "(A) 월 최소 $1,800",
+          "(B) 월 최소 $3,600",
+          "(C) 월 최소 $5,400",
+          "(D) 월 최소 $7,200"
+        ],
+        "answer": 2,
+        "kr": "지원자는 월 임대료의 최소 3배의 수입을 보여주는 수입 증명을 제공해야 한다. 임대 계약 체결 시 1개월 임대료에 해당하는 보증금이 필요하다.",
+        "expressions": [
+          {
+            "expr": "proof of income",
+            "meaning": "수입 증명"
+          },
+          {
+            "expr": "security deposit",
+            "meaning": "보증금"
+          },
+          {
+            "expr": "upon signing the lease",
+            "meaning": "임대 계약 체결 시"
+          }
+        ]
+      },
+      {
+        "q_type": "inference",
+        "sentences": [
+          "The building features a rooftop garden, a fitness center, and assigned underground parking.",
+          "The neighborhood is known for its proximity to schools, public transit, and a weekly farmers market."
+        ],
+        "question": "What is implied about the apartment's location?",
+        "question_kr": "아파트 위치에 대해 추론할 수 있는 것은?",
+        "choices": [
+          "(A) It is far from public transportation",
+          "(B) It is in a convenient and family-friendly area",
+          "(C) It is in a newly developed district",
+          "(D) It has limited access to shops and services"
+        ],
+        "choices_kr": [
+          "(A) 대중교통에서 멀리 떨어져 있다",
+          "(B) 편리하고 가족 친화적인 지역에 있다",
+          "(C) 새로 개발된 지구에 있다",
+          "(D) 상점과 서비스에 대한 접근이 제한적이다"
+        ],
+        "answer": 1,
+        "kr": "건물에는 옥상 정원, 피트니스 센터, 지정 지하 주차장이 있다. 이 지역은 학교, 대중교통, 주간 파머스 마켓과의 근접성으로 유명하다.",
+        "expressions": [
+          {
+            "expr": "proximity to",
+            "meaning": "~와의 근접성"
+          },
+          {
+            "expr": "public transit",
+            "meaning": "대중교통"
+          },
+          {
+            "expr": "farmers market",
+            "meaning": "파머스 마켓"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "title": "📢 SIGNAL",
+    "steps": [
+      {
+        "q_type": "purpose",
+        "sentences": [
+          "Happy Paws Animal Shelter is hosting an adoption event this Saturday from 10 A.M. to 4 P.M. at Riverside Park.",
+          "Over 50 cats and dogs will be available for adoption, and all adoption fees will be waived for the day."
+        ],
+        "question": "What is the purpose of this announcement?",
+        "question_kr": "이 공지의 목적은 무엇인가?",
+        "choices": [
+          "(A) To raise donations for an animal shelter",
+          "(B) To promote an animal adoption event",
+          "(C) To advertise pet care services",
+          "(D) To recruit volunteers for an animal rescue"
+        ],
+        "choices_kr": [
+          "(A) 동물 보호소를 위한 기부 모금",
+          "(B) 동물 입양 행사 홍보",
+          "(C) 반려동물 돌봄 서비스 광고",
+          "(D) 동물 구조 자원봉사자 모집"
+        ],
+        "answer": 1,
+        "kr": "Happy Paws Animal Shelter는 이번 토요일 오전 10시부터 오후 4시까지 Riverside Park에서 입양 행사를 개최한다. 50마리 이상의 고양이와 개가 입양 가능하며, 당일 모든 입양 비용이 면제된다.",
+        "expressions": [
+          {
+            "expr": "adoption event",
+            "meaning": "입양 행사"
+          },
+          {
+            "expr": "adoption fees",
+            "meaning": "입양 비용"
+          },
+          {
+            "expr": "will be waived",
+            "meaning": "면제될 것이다"
+          }
+        ]
+      },
+      {
+        "q_type": "detail",
+        "sentences": [
+          "Prospective adopters will be asked to complete a short questionnaire to help match them with a suitable pet.",
+          "Veterinary volunteers will be on-site to provide basic health information and initial vaccinations for adopted animals."
+        ],
+        "question": "What will veterinary volunteers do at the event?",
+        "question_kr": "수의사 자원봉사자들은 행사에서 무엇을 하는가?",
+        "choices": [
+          "(A) Conduct pet grooming sessions",
+          "(B) Provide health information and initial vaccinations",
+          "(C) Process all adoption applications",
+          "(D) Offer free spay and neuter surgeries"
+        ],
+        "choices_kr": [
+          "(A) 반려동물 그루밍 세션 진행",
+          "(B) 건강 정보 제공 및 초기 예방접종",
+          "(C) 모든 입양 신청서 처리",
+          "(D) 무료 중성화 수술 제공"
+        ],
+        "answer": 1,
+        "kr": "입양 희망자들은 적합한 반려동물과 매칭하는 데 도움이 되는 짧은 질문지를 작성해야 한다. 수의사 자원봉사자들이 현장에서 기본 건강 정보와 입양된 동물을 위한 초기 예방접종을 제공할 것이다.",
+        "expressions": [
+          {
+            "expr": "prospective adopters",
+            "meaning": "입양 희망자"
+          },
+          {
+            "expr": "on-site",
+            "meaning": "현장에서"
+          },
+          {
+            "expr": "initial vaccinations",
+            "meaning": "초기 예방접종"
+          }
+        ]
+      },
+      {
+        "q_type": "inference",
+        "sentences": [
+          "Happy Paws currently cares for over 200 animals and is at full capacity, making this adoption event particularly urgent.",
+          "The shelter relies entirely on community support and donations to fund its operations."
+        ],
+        "question": "What is implied about Happy Paws Animal Shelter?",
+        "question_kr": "Happy Paws Animal Shelter에 대해 추론할 수 있는 것은?",
+        "choices": [
+          "(A) It receives government funding for operations",
+          "(B) It urgently needs to find homes for animals",
+          "(C) It recently opened and has few animals",
+          "(D) It specializes in exotic pet adoption"
+        ],
+        "choices_kr": [
+          "(A) 운영을 위한 정부 자금을 받는다",
+          "(B) 동물들을 위한 가정을 긴급하게 찾아야 한다",
+          "(C) 최근 개장하여 동물이 적다",
+          "(D) 이색적인 반려동물 입양을 전문으로 한다"
+        ],
+        "answer": 1,
+        "kr": "Happy Paws는 현재 200마리 이상의 동물을 돌보며 정원이 가득 차 있어 이번 입양 행사가 특히 긴급하다. 보호소는 운영 자금을 전적으로 지역 사회 지원과 기부에 의존한다.",
+        "expressions": [
+          {
+            "expr": "at full capacity",
+            "meaning": "정원이 가득 차서"
+          },
+          {
+            "expr": "relies entirely on",
+            "meaning": "~에 전적으로 의존하다"
+          },
+          {
+            "expr": "community support",
+            "meaning": "지역 사회 지원"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "title": "📢 SIGNAL",
+    "steps": [
+      {
+        "q_type": "purpose",
+        "sentences": [
+          "The city's Recreation Department is offering free swimming lessons for adults aged 18 and older every Saturday morning from June through August.",
+          "Classes will be held at the Westview Aquatic Center and are suitable for complete beginners."
+        ],
+        "question": "What is being advertised?",
+        "question_kr": "무엇이 광고되고 있는가?",
+        "choices": [
+          "(A) A paid swim team for competitive athletes",
+          "(B) Free adult swimming lessons",
+          "(C) A summer water park opening",
+          "(D) Lifeguard certification courses"
+        ],
+        "choices_kr": [
+          "(A) 경쟁 선수를 위한 유료 수영팀",
+          "(B) 무료 성인 수영 강습",
+          "(C) 여름 워터파크 개장",
+          "(D) 인명구조원 자격증 과정"
+        ],
+        "answer": 1,
+        "kr": "시 레크리에이션 부서는 6월부터 8월까지 매주 토요일 아침 18세 이상 성인을 위한 무료 수영 강습을 제공한다. 수업은 Westview 수영장에서 열리며 완전 초보자에게 적합하다.",
+        "expressions": [
+          {
+            "expr": "Recreation Department",
+            "meaning": "레크리에이션 부서"
+          },
+          {
+            "expr": "complete beginners",
+            "meaning": "완전 초보자"
+          },
+          {
+            "expr": "Aquatic Center",
+            "meaning": "수영장"
+          }
+        ]
+      },
+      {
+        "q_type": "detail",
+        "sentences": [
+          "Each session lasts 45 minutes and is led by certified swimming instructors.",
+          "Registration opens on May 1 and can be completed online or in person at any recreation center."
+        ],
+        "question": "When does registration open?",
+        "question_kr": "등록은 언제 시작되는가?",
+        "choices": [
+          "(A) April 1",
+          "(B) May 1",
+          "(C) June 1",
+          "(D) July 1"
+        ],
+        "choices_kr": [
+          "(A) 4월 1일",
+          "(B) 5월 1일",
+          "(C) 6월 1일",
+          "(D) 7월 1일"
+        ],
+        "answer": 1,
+        "kr": "각 세션은 45분 동안 지속되며 공인 수영 강사들이 이끈다. 등록은 5월 1일에 시작되며 온라인 또는 모든 레크리에이션 센터에서 직접 완료할 수 있다.",
+        "expressions": [
+          {
+            "expr": "certified swimming instructors",
+            "meaning": "공인 수영 강사"
+          },
+          {
+            "expr": "in person",
+            "meaning": "직접"
+          },
+          {
+            "expr": "registration opens",
+            "meaning": "등록이 시작되다"
+          }
+        ]
+      },
+      {
+        "q_type": "inference",
+        "sentences": [
+          "Last year's program served 180 adults, and surveys showed that 90% felt more confident in the water by the end of the course.",
+          "The city added more sessions this year in response to growing community interest."
+        ],
+        "question": "What is implied about this year's swimming program?",
+        "question_kr": "올해 수영 프로그램에 대해 추론할 수 있는 것은?",
+        "choices": [
+          "(A) It has fewer participants than last year",
+          "(B) It has expanded due to high demand",
+          "(C) It is being offered for the first time",
+          "(D) It requires prior swimming experience"
+        ],
+        "choices_kr": [
+          "(A) 작년보다 참가자가 적다",
+          "(B) 높은 수요로 인해 확장되었다",
+          "(C) 처음으로 제공된다",
+          "(D) 이전 수영 경험이 필요하다"
+        ],
+        "answer": 1,
+        "kr": "작년 프로그램은 180명의 성인을 대상으로 했으며, 설문 조사에 따르면 90%가 과정이 끝날 때 물에서 더 자신감을 느꼈다. 시는 증가하는 지역 사회 관심에 대응하여 올해 더 많은 세션을 추가했다.",
+        "expressions": [
+          {
+            "expr": "more confident",
+            "meaning": "더 자신감 있는"
+          },
+          {
+            "expr": "in response to",
+            "meaning": "~에 대응하여"
+          },
+          {
+            "expr": "growing community interest",
+            "meaning": "증가하는 지역 사회 관심"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "title": "📢 SIGNAL",
+    "steps": [
+      {
+        "q_type": "purpose",
+        "sentences": [
+          "Pine Ridge Community Hall will be unavailable for bookings from Monday, December 2, to Friday, December 20, due to electrical system upgrades.",
+          "All events scheduled during this period have been contacted and are in the process of being relocated."
+        ],
+        "question": "What is the purpose of this notice?",
+        "question_kr": "이 공지의 목적은 무엇인가?",
+        "choices": [
+          "(A) To announce the permanent closure of a hall",
+          "(B) To inform the public of a temporary venue closure",
+          "(C) To advertise an electrical upgrade service",
+          "(D) To promote alternative venues in the area"
+        ],
+        "choices_kr": [
+          "(A) 홀의 영구 폐쇄 발표",
+          "(B) 임시 공연장 폐쇄 안내",
+          "(C) 전기 업그레이드 서비스 광고",
+          "(D) 지역 내 대안 공연장 홍보"
+        ],
+        "answer": 1,
+        "kr": "Pine Ridge Community Hall은 전기 시스템 업그레이드로 인해 12월 2일 월요일부터 12월 20일 금요일까지 예약이 불가하다. 이 기간에 예약된 모든 행사는 연락을 받았으며 이전 과정 중에 있다.",
+        "expressions": [
+          {
+            "expr": "unavailable for bookings",
+            "meaning": "예약이 불가한"
+          },
+          {
+            "expr": "electrical system upgrades",
+            "meaning": "전기 시스템 업그레이드"
+          },
+          {
+            "expr": "in the process of being relocated",
+            "meaning": "이전 과정 중에 있다"
+          }
+        ]
+      },
+      {
+        "q_type": "detail",
+        "sentences": [
+          "The hall will reopen on Monday, December 23, and will be available for the holiday season events.",
+          "Groups wishing to rebook for December 23 or later can contact the bookings office at 555-4433."
+        ],
+        "question": "When will the hall reopen?",
+        "question_kr": "홀은 언제 다시 문을 여는가?",
+        "choices": [
+          "(A) December 1",
+          "(B) December 20",
+          "(C) December 23",
+          "(D) January 1"
+        ],
+        "choices_kr": [
+          "(A) 12월 1일",
+          "(B) 12월 20일",
+          "(C) 12월 23일",
+          "(D) 1월 1일"
+        ],
+        "answer": 2,
+        "kr": "홀은 12월 23일 월요일에 다시 열리며 연휴 시즌 행사에 이용 가능하다. 12월 23일 이후에 다시 예약을 원하는 그룹은 555-4433으로 예약 사무소에 연락할 수 있다.",
+        "expressions": [
+          {
+            "expr": "reopen",
+            "meaning": "다시 문을 열다"
+          },
+          {
+            "expr": "holiday season events",
+            "meaning": "연휴 시즌 행사"
+          },
+          {
+            "expr": "rebook",
+            "meaning": "다시 예약하다"
+          }
+        ]
+      },
+      {
+        "q_type": "inference",
+        "sentences": [
+          "The electrical upgrade is part of an effort to reduce energy consumption and modernize the hall's systems.",
+          "Upon completion, the hall will feature energy-efficient LED lighting and an upgraded sound system."
+        ],
+        "question": "What can be inferred about the hall after the upgrade?",
+        "question_kr": "업그레이드 후 홀에 대해 추론할 수 있는 것은?",
+        "choices": [
+          "(A) It will be available for larger events than before",
+          "(B) It will have improved facilities and energy efficiency",
+          "(C) It will increase rental prices significantly",
+          "(D) It will be converted into office space"
+        ],
+        "choices_kr": [
+          "(A) 이전보다 더 큰 행사에 이용 가능할 것이다",
+          "(B) 개선된 시설과 에너지 효율성을 갖출 것이다",
+          "(C) 임대 가격이 크게 인상될 것이다",
+          "(D) 사무 공간으로 전환될 것이다"
+        ],
+        "answer": 1,
+        "kr": "전기 업그레이드는 에너지 소비를 줄이고 홀의 시스템을 현대화하려는 노력의 일부이다. 완공 시 홀에는 에너지 효율적인 LED 조명과 업그레이드된 음향 시스템이 갖춰진다.",
+        "expressions": [
+          {
+            "expr": "energy consumption",
+            "meaning": "에너지 소비"
+          },
+          {
+            "expr": "energy-efficient",
+            "meaning": "에너지 효율적인"
+          },
+          {
+            "expr": "upon completion",
+            "meaning": "완공 시"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "title": "📢 SIGNAL",
+    "steps": [
+      {
+        "q_type": "purpose",
+        "sentences": [
+          "Sunview Hotel is offering a special early booking rate for guests who reserve a room at least 30 days in advance for any stay between July and September.",
+          "Rooms are available from $89 per night, a 25% reduction from standard rates."
+        ],
+        "question": "What promotion is being offered?",
+        "question_kr": "어떤 프로모션이 제공되고 있는가?",
+        "choices": [
+          "(A) A free room upgrade for returning guests",
+          "(B) A discounted rate for early reservations",
+          "(C) A loyalty points reward for long stays",
+          "(D) A weekend-only special package"
+        ],
+        "choices_kr": [
+          "(A) 재방문 고객을 위한 무료 객실 업그레이드",
+          "(B) 조기 예약에 대한 할인 요금",
+          "(C) 장기 투숙을 위한 로열티 포인트 보상",
+          "(D) 주말 한정 특별 패키지"
+        ],
+        "answer": 1,
+        "kr": "Sunview Hotel은 7월부터 9월 사이 숙박을 위해 최소 30일 전에 객실을 예약하는 고객에게 특별 조기 예약 요금을 제공한다. 객실은 1박 $89부터 이용 가능하며 표준 요금에서 25% 할인된 가격이다.",
+        "expressions": [
+          {
+            "expr": "early booking rate",
+            "meaning": "조기 예약 요금"
+          },
+          {
+            "expr": "at least 30 days in advance",
+            "meaning": "최소 30일 전에"
+          },
+          {
+            "expr": "standard rates",
+            "meaning": "표준 요금"
+          }
+        ]
+      },
+      {
+        "q_type": "detail",
+        "sentences": [
+          "The promotion includes complimentary breakfast for two and free access to the hotel's outdoor pool and fitness center.",
+          "Cancellations made more than 14 days before the check-in date are fully refundable."
+        ],
+        "question": "What is included in the early booking promotion?",
+        "question_kr": "조기 예약 프로모션에 포함된 것은?",
+        "choices": [
+          "(A) A free airport transfer",
+          "(B) Complimentary breakfast for two",
+          "(C) A complimentary spa treatment",
+          "(D) Free parking for the duration of the stay"
+        ],
+        "choices_kr": [
+          "(A) 무료 공항 이동",
+          "(B) 2인 무료 조식",
+          "(C) 무료 스파 트리트먼트",
+          "(D) 숙박 기간 무료 주차"
+        ],
+        "answer": 1,
+        "kr": "프로모션에는 2인 무료 조식과 호텔 야외 수영장 및 피트니스 센터 무료 이용이 포함된다. 체크인 날짜 14일 이전에 취소하면 전액 환불 가능하다.",
+        "expressions": [
+          {
+            "expr": "complimentary breakfast",
+            "meaning": "무료 조식"
+          },
+          {
+            "expr": "fully refundable",
+            "meaning": "전액 환불 가능한"
+          },
+          {
+            "expr": "check-in date",
+            "meaning": "체크인 날짜"
+          }
+        ]
+      },
+      {
+        "q_type": "inference",
+        "sentences": [
+          "Sunview Hotel is located directly on the beach and has recently been awarded a four-star rating by the National Hotel Association.",
+          "The hotel's general manager notes that summer occupancy rates typically reach 95%, making early booking essential."
+        ],
+        "question": "What is implied about availability at Sunview Hotel in summer?",
+        "question_kr": "여름에 Sunview Hotel의 이용 가능성에 대해 추론할 수 있는 것은?",
+        "choices": [
+          "(A) Rooms are usually easy to find last minute",
+          "(B) The hotel tends to be nearly fully booked",
+          "(C) Prices are lower than in other seasons",
+          "(D) The hotel is closed for part of the summer"
+        ],
+        "choices_kr": [
+          "(A) 보통 마지막 순간에 객실을 찾기 쉽다",
+          "(B) 호텔은 거의 만실인 경향이 있다",
+          "(C) 다른 계절보다 가격이 낮다",
+          "(D) 호텔은 여름 일부 동안 폐쇄된다"
+        ],
+        "answer": 1,
+        "kr": "Sunview Hotel은 해변에 직접 위치해 있으며 최근 National Hotel Association으로부터 4성급 평가를 받았다. 호텔 총지배인은 여름 객실 점유율이 일반적으로 95%에 달해 조기 예약이 필수적이라고 밝혔다.",
+        "expressions": [
+          {
+            "expr": "occupancy rates",
+            "meaning": "객실 점유율"
+          },
+          {
+            "expr": "four-star rating",
+            "meaning": "4성급 평가"
+          },
+          {
+            "expr": "early booking essential",
+            "meaning": "조기 예약이 필수적인"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "title": "📢 SIGNAL",
+    "steps": [
+      {
+        "q_type": "purpose",
+        "sentences": [
+          "Maple Street Community Garden is accepting applications for plot rentals for the upcoming growing season, which begins April 15.",
+          "Plots range from 10 to 20 square meters and are available on a first-come, first-served basis."
+        ],
+        "question": "What is the purpose of this notice?",
+        "question_kr": "이 공지의 목적은 무엇인가?",
+        "choices": [
+          "(A) To sell community garden plots",
+          "(B) To rent out garden plots for the growing season",
+          "(C) To recruit garden maintenance volunteers",
+          "(D) To promote organic farming workshops"
+        ],
+        "choices_kr": [
+          "(A) 공동 텃밭 구획 판매",
+          "(B) 재배 시즌을 위한 정원 구획 임대",
+          "(C) 정원 유지보수 자원봉사자 모집",
+          "(D) 유기농 농업 워크숍 홍보"
+        ],
+        "answer": 1,
+        "kr": "Maple Street Community Garden은 4월 15일에 시작하는 다가오는 재배 시즌을 위한 구획 임대 지원서를 받고 있다. 구획은 10~20평방미터이며 선착순으로 이용 가능하다.",
+        "expressions": [
+          {
+            "expr": "plot rentals",
+            "meaning": "구획 임대"
+          },
+          {
+            "expr": "growing season",
+            "meaning": "재배 시즌"
+          },
+          {
+            "expr": "first-come, first-served basis",
+            "meaning": "선착순"
+          }
+        ]
+      },
+      {
+        "q_type": "detail",
+        "sentences": [
+          "Annual rental fees are $60 for a standard 10-square-meter plot and $100 for a 20-square-meter plot.",
+          "Water access and basic tools are provided, but renters are responsible for their own seeds and plants."
+        ],
+        "question": "What does the rental fee include?",
+        "question_kr": "임대료에 포함된 것은?",
+        "choices": [
+          "(A) Seeds and plants for the season",
+          "(B) Water access and basic tools",
+          "(C) A garden maintenance service",
+          "(D) Fertilizers and compost"
+        ],
+        "choices_kr": [
+          "(A) 시즌을 위한 씨앗과 식물",
+          "(B) 수도 이용과 기본 도구",
+          "(C) 정원 유지보수 서비스",
+          "(D) 비료와 퇴비"
+        ],
+        "answer": 1,
+        "kr": "연간 임대료는 표준 10평방미터 구획은 $60이고 20평방미터 구획은 $100이다. 수도 이용과 기본 도구가 제공되지만 임차인은 자신의 씨앗과 식물에 대한 책임을 진다.",
+        "expressions": [
+          {
+            "expr": "annual rental fees",
+            "meaning": "연간 임대료"
+          },
+          {
+            "expr": "water access",
+            "meaning": "수도 이용"
+          },
+          {
+            "expr": "responsible for",
+            "meaning": "~에 대한 책임을 지다"
+          }
+        ]
+      },
+      {
+        "q_type": "inference",
+        "sentences": [
+          "The community garden currently has 45 active plot holders and a waiting list of over 30 people from last year.",
+          "Priority will be given to returning plot holders, with new applicants assigned remaining plots by lottery if demand exceeds supply."
+        ],
+        "question": "What can be inferred about demand for garden plots?",
+        "question_kr": "정원 구획 수요에 대해 추론할 수 있는 것은?",
+        "choices": [
+          "(A) There are always more plots than applicants",
+          "(B) Demand regularly exceeds available plots",
+          "(C) Most applicants are new to gardening",
+          "(D) Plots are rarely rented for a full season"
+        ],
+        "choices_kr": [
+          "(A) 항상 지원자보다 구획이 더 많다",
+          "(B) 수요가 정기적으로 이용 가능한 구획을 초과한다",
+          "(C) 대부분의 지원자는 원예를 처음 하는 사람들이다",
+          "(D) 구획이 전체 시즌 동안 임대되는 경우가 드물다"
+        ],
+        "answer": 1,
+        "kr": "공동 텃밭에는 현재 45명의 활성 구획 보유자가 있으며 작년부터 30명 이상의 대기자 명단이 있다. 반환 구획 보유자에게 우선권이 주어지며, 수요가 공급을 초과하면 새 지원자들은 추첨으로 남은 구획이 배정된다.",
+        "expressions": [
+          {
+            "expr": "waiting list",
+            "meaning": "대기자 명단"
+          },
+          {
+            "expr": "priority will be given",
+            "meaning": "우선권이 주어지다"
+          },
+          {
+            "expr": "by lottery",
+            "meaning": "추첨으로"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "title": "📢 SIGNAL",
+    "steps": [
+      {
+        "q_type": "purpose",
+        "sentences": [
+          "The annual Riverside Career Fair will take place on Friday, March 14, at the Convention Center, Hall B, from 9 A.M. to 4 P.M.",
+          "Over 80 companies from various industries will be in attendance, offering information on full-time, part-time, and internship opportunities."
+        ],
+        "question": "What is the purpose of this advertisement?",
+        "question_kr": "이 광고의 목적은 무엇인가?",
+        "choices": [
+          "(A) To announce job openings at a convention center",
+          "(B) To promote an annual career fair",
+          "(C) To recruit companies to participate in an event",
+          "(D) To advertise a professional networking app"
+        ],
+        "choices_kr": [
+          "(A) 컨벤션 센터의 채용 공고",
+          "(B) 연간 취업 박람회 홍보",
+          "(C) 행사 참여 기업 모집",
+          "(D) 전문 네트워킹 앱 광고"
+        ],
+        "answer": 1,
+        "kr": "연간 Riverside Career Fair는 3월 14일 금요일에 Convention Center Hall B에서 오전 9시부터 오후 4시까지 개최된다. 다양한 산업의 80개 이상의 기업이 참석하여 정규직, 파트타임, 인턴십 기회에 대한 정보를 제공한다.",
+        "expressions": [
+          {
+            "expr": "Career Fair",
+            "meaning": "취업 박람회"
+          },
+          {
+            "expr": "take place",
+            "meaning": "개최되다"
+          },
+          {
+            "expr": "internship opportunities",
+            "meaning": "인턴십 기회"
+          }
+        ]
+      },
+      {
+        "q_type": "detail",
+        "sentences": [
+          "Attendees are encouraged to bring multiple copies of their résumé and dress in business professional attire.",
+          "Free parking is available in the Convention Center's north lot, and public transit stops directly in front of the venue."
+        ],
+        "question": "What are attendees advised to bring?",
+        "question_kr": "참석자들이 지참하도록 권고되는 것은?",
+        "choices": [
+          "(A) A portfolio of past projects",
+          "(B) Multiple copies of their résumé",
+          "(C) Letters of recommendation",
+          "(D) A completed job application form"
+        ],
+        "choices_kr": [
+          "(A) 과거 프로젝트 포트폴리오",
+          "(B) 이력서 여러 부",
+          "(C) 추천서",
+          "(D) 작성된 취업 지원서"
+        ],
+        "answer": 1,
+        "kr": "참석자들은 이력서 여러 부를 지참하고 비즈니스 정장 차림으로 참석하도록 권장된다. 컨벤션 센터 북쪽 주차장에서 무료 주차가 가능하며, 대중교통이 장소 바로 앞에 정차한다.",
+        "expressions": [
+          {
+            "expr": "business professional attire",
+            "meaning": "비즈니스 정장"
+          },
+          {
+            "expr": "multiple copies",
+            "meaning": "여러 부"
+          },
+          {
+            "expr": "public transit",
+            "meaning": "대중교통"
+          }
+        ]
+      },
+      {
+        "q_type": "inference",
+        "sentences": [
+          "Last year's event attracted over 2,000 job seekers and resulted in more than 300 on-site interviews.",
+          "This year, several technology and healthcare firms are participating for the first time, broadening the range of industries represented."
+        ],
+        "question": "What is implied about this year's career fair?",
+        "question_kr": "올해 취업 박람회에 대해 추론할 수 있는 것은?",
+        "choices": [
+          "(A) It will be smaller than previous years",
+          "(B) It offers more industry variety than in the past",
+          "(C) Only recent graduates may attend",
+          "(D) It will be held over multiple days"
+        ],
+        "choices_kr": [
+          "(A) 이전 해보다 규모가 작을 것이다",
+          "(B) 과거보다 더 다양한 산업을 제공한다",
+          "(C) 최근 졸업생만 참석할 수 있다",
+          "(D) 여러 날에 걸쳐 개최될 것이다"
+        ],
+        "answer": 1,
+        "kr": "작년 행사는 2,000명 이상의 구직자를 유치했으며 300건 이상의 현장 인터뷰를 이끌어냈다. 올해는 여러 기술 및 의료 회사들이 처음으로 참가하여 대표되는 산업의 범위를 넓힌다.",
+        "expressions": [
+          {
+            "expr": "job seekers",
+            "meaning": "구직자"
+          },
+          {
+            "expr": "on-site interviews",
+            "meaning": "현장 인터뷰"
+          },
+          {
+            "expr": "broadening the range",
+            "meaning": "범위를 넓히다"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "title": "📢 SIGNAL",
+    "steps": [
+      {
+        "q_type": "purpose",
+        "sentences": [
+          "All employees are reminded that the annual performance review process will begin on October 1.",
+          "Managers are asked to schedule one-on-one meetings with their direct reports before October 31."
+        ],
+        "question": "What is the purpose of this notice?",
+        "question_kr": "이 공지의 목적은 무엇인가?",
+        "choices": [
+          "(A) To announce changes to the performance review format",
+          "(B) To remind staff about the upcoming review process",
+          "(C) To introduce a new HR management system",
+          "(D) To notify employees of promotion decisions"
+        ],
+        "choices_kr": [
+          "(A) 성과 검토 형식 변경 발표",
+          "(B) 다가오는 검토 과정에 대해 직원들에게 상기",
+          "(C) 새로운 HR 관리 시스템 소개",
+          "(D) 직원들에게 승진 결정 통보"
+        ],
+        "answer": 1,
+        "kr": "모든 직원은 연간 성과 검토 과정이 10월 1일에 시작된다는 것을 상기해 드립니다. 관리자들은 10월 31일 이전에 직속 부하 직원들과 일대일 회의를 예약하도록 요청된다.",
+        "expressions": [
+          {
+            "expr": "performance review",
+            "meaning": "성과 검토"
+          },
+          {
+            "expr": "direct reports",
+            "meaning": "직속 부하 직원"
+          },
+          {
+            "expr": "one-on-one meetings",
+            "meaning": "일대일 회의"
+          }
+        ]
+      },
+      {
+        "q_type": "detail",
+        "sentences": [
+          "Employees must complete their self-assessment forms on the HR system by September 25.",
+          "The assessment should reflect achievements from the past year and goals for the year ahead."
+        ],
+        "question": "By when must employees submit their self-assessment forms?",
+        "question_kr": "직원들은 자기 평가서를 언제까지 제출해야 하는가?",
+        "choices": [
+          "(A) September 15",
+          "(B) September 25",
+          "(C) October 1",
+          "(D) October 31"
+        ],
+        "choices_kr": [
+          "(A) 9월 15일",
+          "(B) 9월 25일",
+          "(C) 10월 1일",
+          "(D) 10월 31일"
+        ],
+        "answer": 1,
+        "kr": "직원들은 9월 25일까지 HR 시스템에서 자기 평가서를 작성해야 한다. 평가서는 지난 1년의 성취와 앞으로의 1년 목표를 반영해야 한다.",
+        "expressions": [
+          {
+            "expr": "self-assessment forms",
+            "meaning": "자기 평가서"
+          },
+          {
+            "expr": "achievements",
+            "meaning": "성취"
+          },
+          {
+            "expr": "goals for the year ahead",
+            "meaning": "앞으로의 1년 목표"
+          }
+        ]
+      },
+      {
+        "q_type": "inference",
+        "sentences": [
+          "Employees who complete the process on time will have their results processed by November 15, ahead of the annual salary review in December.",
+          "Late submissions may result in delays to the salary adjustment process."
+        ],
+        "question": "What is implied about submitting the assessment on time?",
+        "question_kr": "적시에 평가서를 제출하는 것에 대해 추론할 수 있는 것은?",
+        "choices": [
+          "(A) It guarantees a salary increase",
+          "(B) It ensures timely processing before salary reviews",
+          "(C) It results in a promotion opportunity",
+          "(D) It is optional for senior employees"
+        ],
+        "choices_kr": [
+          "(A) 급여 인상을 보장한다",
+          "(B) 급여 검토 전에 적시 처리를 보장한다",
+          "(C) 승진 기회를 가져온다",
+          "(D) 고위 직원에게 선택적이다"
+        ],
+        "answer": 1,
+        "kr": "제때 과정을 완료한 직원은 12월 연간 급여 검토 전인 11월 15일까지 결과가 처리된다. 늦은 제출은 급여 조정 과정 지연을 초래할 수 있다.",
+        "expressions": [
+          {
+            "expr": "salary adjustment",
+            "meaning": "급여 조정"
+          },
+          {
+            "expr": "late submissions",
+            "meaning": "늦은 제출"
+          },
+          {
+            "expr": "ahead of",
+            "meaning": "~전에"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "title": "📢 SIGNAL",
+    "steps": [
+      {
+        "q_type": "purpose",
+        "sentences": [
+          "The Central Post Office will be closed on Monday, October 14, in observance of National Day.",
+          "Mail delivery and pickup services will resume on Tuesday, October 15."
+        ],
+        "question": "What is this notice about?",
+        "question_kr": "이 공지는 무엇에 관한 것인가?",
+        "choices": [
+          "(A) A permanent change to post office hours",
+          "(B) A temporary post office closure for a public holiday",
+          "(C) The relocation of the Central Post Office",
+          "(D) New mail delivery regulations"
+        ],
+        "choices_kr": [
+          "(A) 우체국 운영 시간의 영구적 변경",
+          "(B) 공휴일로 인한 임시 우체국 폐쇄",
+          "(C) 중앙 우체국 이전",
+          "(D) 새로운 우편 배달 규정"
+        ],
+        "answer": 1,
+        "kr": "중앙 우체국은 국경일을 기념하여 10월 14일 월요일에 문을 닫는다. 우편 배달 및 수령 서비스는 10월 15일 화요일에 재개된다.",
+        "expressions": [
+          {
+            "expr": "in observance of",
+            "meaning": "~을 기념하여"
+          },
+          {
+            "expr": "National Day",
+            "meaning": "국경일"
+          },
+          {
+            "expr": "resume",
+            "meaning": "재개되다"
+          }
+        ]
+      },
+      {
+        "q_type": "detail",
+        "sentences": [
+          "Customers who need to send urgent packages before the holiday can use the 24-hour drop box located at the main entrance.",
+          "Express mail sent before 5 P.M. on Friday, October 11, will still be delivered by Monday."
+        ],
+        "question": "How can customers send urgent packages before the holiday?",
+        "question_kr": "고객들은 휴일 전에 긴급 소포를 어떻게 보낼 수 있는가?",
+        "choices": [
+          "(A) By visiting any branch office on Sunday",
+          "(B) By using the 24-hour drop box at the main entrance",
+          "(C) By calling customer service for a home pickup",
+          "(D) By submitting an online delivery request"
+        ],
+        "choices_kr": [
+          "(A) 일요일에 어느 지점이나 방문하여",
+          "(B) 메인 입구의 24시간 투하함 사용",
+          "(C) 고객 서비스에 전화하여 가정 픽업 요청",
+          "(D) 온라인 배달 요청 제출"
+        ],
+        "answer": 1,
+        "kr": "휴일 전에 긴급 소포를 보내야 하는 고객들은 메인 입구에 위치한 24시간 투하함을 사용할 수 있다. 10월 11일 금요일 오후 5시 이전에 발송된 빠른 우편은 월요일까지 배달된다.",
+        "expressions": [
+          {
+            "expr": "drop box",
+            "meaning": "투하함"
+          },
+          {
+            "expr": "express mail",
+            "meaning": "빠른 우편"
+          },
+          {
+            "expr": "urgent packages",
+            "meaning": "긴급 소포"
+          }
+        ]
+      },
+      {
+        "q_type": "inference",
+        "sentences": [
+          "The post office expects a significant increase in mail volume in the days following the holiday as customers catch up on deliveries.",
+          "Additional staff will be on duty from October 15 to 18 to manage the expected surge."
+        ],
+        "question": "What can be inferred about the period after the holiday?",
+        "question_kr": "휴일 이후 기간에 대해 추론할 수 있는 것은?",
+        "choices": [
+          "(A) Mail services will be slower than usual",
+          "(B) Extra staff will be working to handle increased volume",
+          "(C) Delivery prices will be temporarily raised",
+          "(D) The post office will extend its opening hours indefinitely"
+        ],
+        "choices_kr": [
+          "(A) 우편 서비스가 평소보다 느릴 것이다",
+          "(B) 증가한 물량을 처리하기 위해 추가 직원이 근무할 것이다",
+          "(C) 배달 가격이 일시적으로 인상될 것이다",
+          "(D) 우체국이 무기한 영업시간을 연장할 것이다"
+        ],
+        "answer": 1,
+        "kr": "우체국은 고객들이 배달을 따라잡는 휴일 이후 며칠 동안 우편 물량이 크게 증가할 것으로 예상한다. 예상되는 급증을 관리하기 위해 10월 15일부터 18일까지 추가 직원이 근무한다.",
+        "expressions": [
+          {
+            "expr": "mail volume",
+            "meaning": "우편 물량"
+          },
+          {
+            "expr": "surge",
+            "meaning": "급증"
+          },
+          {
+            "expr": "on duty",
+            "meaning": "근무 중인"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "title": "📢 SIGNAL",
+    "steps": [
+      {
+        "q_type": "purpose",
+        "sentences": [
+          "The company's IT department is reminding all employees to update their passwords before December 1 as part of the annual cybersecurity initiative.",
+          "Passwords must be at least 12 characters long and include uppercase letters, numbers, and special characters."
+        ],
+        "question": "What is the purpose of this notice?",
+        "question_kr": "이 공지의 목적은 무엇인가?",
+        "choices": [
+          "(A) To announce a new company email system",
+          "(B) To remind employees to update their passwords",
+          "(C) To introduce new cybersecurity software",
+          "(D) To warn about a recent security breach"
+        ],
+        "choices_kr": [
+          "(A) 새 회사 이메일 시스템 발표",
+          "(B) 직원들에게 비밀번호 업데이트 상기",
+          "(C) 새로운 사이버보안 소프트웨어 소개",
+          "(D) 최근 보안 침해에 대한 경고"
+        ],
+        "answer": 1,
+        "kr": "회사의 IT 부서는 연간 사이버보안 이니셔티브의 일환으로 12월 1일 이전에 모든 직원이 비밀번호를 업데이트하도록 상기시키고 있다. 비밀번호는 최소 12자여야 하며 대문자, 숫자, 특수문자를 포함해야 한다.",
+        "expressions": [
+          {
+            "expr": "cybersecurity initiative",
+            "meaning": "사이버보안 이니셔티브"
+          },
+          {
+            "expr": "uppercase letters",
+            "meaning": "대문자"
+          },
+          {
+            "expr": "special characters",
+            "meaning": "특수문자"
+          }
+        ]
+      },
+      {
+        "q_type": "detail",
+        "sentences": [
+          "Employees who do not update their passwords by the deadline will be temporarily locked out of company systems until they complete the process.",
+          "The IT helpdesk at ext. 200 is available to assist anyone experiencing difficulties."
+        ],
+        "question": "What happens to employees who miss the password update deadline?",
+        "question_kr": "비밀번호 업데이트 기한을 놓친 직원들은 어떻게 되는가?",
+        "choices": [
+          "(A) They are required to attend a cybersecurity training",
+          "(B) They will be temporarily locked out of company systems",
+          "(C) They receive a written warning from HR",
+          "(D) They must pay a fee to regain access"
+        ],
+        "choices_kr": [
+          "(A) 사이버보안 교육에 참석해야 한다",
+          "(B) 회사 시스템에서 일시적으로 잠기게 된다",
+          "(C) HR로부터 서면 경고를 받는다",
+          "(D) 접근을 되찾기 위해 요금을 내야 한다"
+        ],
+        "answer": 1,
+        "kr": "기한까지 비밀번호를 업데이트하지 않은 직원들은 과정을 완료할 때까지 회사 시스템에서 일시적으로 잠기게 된다. 어려움을 겪는 사람을 돕기 위해 내선 200번의 IT 헬프데스크가 이용 가능하다.",
+        "expressions": [
+          {
+            "expr": "locked out of",
+            "meaning": "~에서 잠기다"
+          },
+          {
+            "expr": "IT helpdesk",
+            "meaning": "IT 헬프데스크"
+          },
+          {
+            "expr": "experiencing difficulties",
+            "meaning": "어려움을 겪다"
+          }
+        ]
+      },
+      {
+        "q_type": "inference",
+        "sentences": [
+          "This is the third consecutive year the company has required annual password updates, following an industry-wide increase in cyberattacks.",
+          "Compliance rates have improved from 72% in the first year to 94% last year."
+        ],
+        "question": "What is implied about the password update policy?",
+        "question_kr": "비밀번호 업데이트 정책에 대해 추론할 수 있는 것은?",
+        "choices": [
+          "(A) It was introduced in response to a data breach at the company",
+          "(B) Compliance has improved over the years",
+          "(C) It is being implemented for the first time this year",
+          "(D) Most employees find it inconvenient and ignore it"
+        ],
+        "choices_kr": [
+          "(A) 회사의 데이터 침해에 대응하여 도입되었다",
+          "(B) 준수율이 해를 거듭할수록 향상되었다",
+          "(C) 올해 처음으로 시행된다",
+          "(D) 대부분의 직원들이 불편하다고 생각하고 무시한다"
+        ],
+        "answer": 1,
+        "kr": "이것은 사이버 공격의 산업 전반적인 증가 이후 회사가 연간 비밀번호 업데이트를 요구한 세 번째 연속 연도이다. 준수율은 첫 해의 72%에서 작년의 94%로 향상되었다.",
+        "expressions": [
+          {
+            "expr": "consecutive year",
+            "meaning": "연속 연도"
+          },
+          {
+            "expr": "compliance rates",
+            "meaning": "준수율"
+          },
+          {
+            "expr": "industry-wide",
+            "meaning": "산업 전반적인"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "title": "📢 SIGNAL",
+    "steps": [
+      {
+        "q_type": "purpose",
+        "sentences": [
+          "The Eastside Community Center is now accepting registrations for its spring youth sports program, which includes soccer, basketball, and tennis.",
+          "Sessions run from April 5 to June 28 and are open to children aged 6 to 14."
+        ],
+        "question": "What is being announced?",
+        "question_kr": "무엇이 발표되고 있는가?",
+        "choices": [
+          "(A) A professional sports tournament for youth",
+          "(B) A spring youth sports registration",
+          "(C) A new sports facility opening",
+          "(D) Free coaching sessions for adults"
+        ],
+        "choices_kr": [
+          "(A) 청소년을 위한 전문 스포츠 토너먼트",
+          "(B) 봄 청소년 스포츠 등록",
+          "(C) 새로운 스포츠 시설 개장",
+          "(D) 성인을 위한 무료 코칭 세션"
+        ],
+        "answer": 1,
+        "kr": "Eastside Community Center는 이제 축구, 농구, 테니스를 포함하는 봄 청소년 스포츠 프로그램 등록을 받고 있다. 세션은 4월 5일부터 6월 28일까지 진행되며 6~14세 어린이에게 열려 있다.",
+        "expressions": [
+          {
+            "expr": "accepting registrations",
+            "meaning": "등록을 받고 있다"
+          },
+          {
+            "expr": "youth sports program",
+            "meaning": "청소년 스포츠 프로그램"
+          },
+          {
+            "expr": "open to children",
+            "meaning": "어린이에게 열려 있다"
+          }
+        ]
+      },
+      {
+        "q_type": "detail",
+        "sentences": [
+          "Registration fees are $45 per child per sport, and financial assistance is available for families who qualify.",
+          "All coaches are certified by the National Youth Sports Federation."
+        ],
+        "question": "What financial support is available for families?",
+        "question_kr": "가정을 위한 어떤 재정 지원이 있는가?",
+        "choices": [
+          "(A) A 50% discount for all participants",
+          "(B) Financial assistance for qualifying families",
+          "(C) Free registration for siblings",
+          "(D) A payment plan with no interest"
+        ],
+        "choices_kr": [
+          "(A) 모든 참가자에게 50% 할인",
+          "(B) 자격을 갖춘 가정을 위한 재정 지원",
+          "(C) 형제자매를 위한 무료 등록",
+          "(D) 이자 없는 할부 계획"
+        ],
+        "answer": 1,
+        "kr": "등록비는 어린이 1인당 스포츠당 $45이며, 자격을 갖춘 가정을 위한 재정 지원이 가능하다. 모든 코치는 National Youth Sports Federation의 인증을 받았다.",
+        "expressions": [
+          {
+            "expr": "financial assistance",
+            "meaning": "재정 지원"
+          },
+          {
+            "expr": "families who qualify",
+            "meaning": "자격을 갖춘 가정"
+          },
+          {
+            "expr": "certified by",
+            "meaning": "~의 인증을 받은"
+          }
+        ]
+      },
+      {
+        "q_type": "inference",
+        "sentences": [
+          "The program has seen consistent growth over the past five years, with over 400 children participating last spring.",
+          "This year, a new tennis program has been added following requests from parents in the community."
+        ],
+        "question": "What can be inferred about the youth sports program?",
+        "question_kr": "청소년 스포츠 프로그램에 대해 추론할 수 있는 것은?",
+        "choices": [
+          "(A) It was started this year for the first time",
+          "(B) It has grown and expanded its offerings over time",
+          "(C) It is only available for children over 10",
+          "(D) Tennis has been part of the program since the beginning"
+        ],
+        "choices_kr": [
+          "(A) 올해 처음으로 시작되었다",
+          "(B) 시간이 지남에 따라 성장하고 제공을 확대했다",
+          "(C) 10세 이상 어린이에게만 제공된다",
+          "(D) 테니스는 처음부터 프로그램의 일부였다"
+        ],
+        "answer": 1,
+        "kr": "프로그램은 지난 5년 동안 지속적인 성장을 보였으며, 작년 봄에는 400명 이상의 어린이가 참가했다. 올해는 지역 사회 부모들의 요청에 따라 새로운 테니스 프로그램이 추가되었다.",
+        "expressions": [
+          {
+            "expr": "consistent growth",
+            "meaning": "지속적인 성장"
+          },
+          {
+            "expr": "following requests from",
+            "meaning": "~의 요청에 따라"
+          },
+          {
+            "expr": "expanded its offerings",
+            "meaning": "제공을 확대했다"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "title": "📢 SIGNAL",
+    "steps": [
+      {
+        "q_type": "purpose",
+        "sentences": [
+          "Mountain View Bookstore is hosting a book signing event with bestselling author Clara Bennett on Saturday, February 22, from 2 P.M. to 5 P.M.",
+          "Attendees can purchase a signed copy of her latest novel, The Quiet Storm, at the event."
+        ],
+        "question": "What is the purpose of this notice?",
+        "question_kr": "이 공지의 목적은 무엇인가?",
+        "choices": [
+          "(A) To announce a new book release",
+          "(B) To promote an author's book signing event",
+          "(C) To advertise a literary contest",
+          "(D) To recruit staff for a bookstore"
+        ],
+        "choices_kr": [
+          "(A) 새 도서 출시 발표",
+          "(B) 작가의 사인회 행사 홍보",
+          "(C) 문학 대회 광고",
+          "(D) 서점 직원 모집"
+        ],
+        "answer": 1,
+        "kr": "Mountain View Bookstore는 2월 22일 토요일 오후 2시부터 5시까지 베스트셀러 작가 Clara Bennett의 사인회 행사를 개최한다. 참석자들은 행사에서 그녀의 최신 소설 The Quiet Storm의 사인본을 구매할 수 있다.",
+        "expressions": [
+          {
+            "expr": "book signing event",
+            "meaning": "사인회 행사"
+          },
+          {
+            "expr": "bestselling author",
+            "meaning": "베스트셀러 작가"
+          },
+          {
+            "expr": "signed copy",
+            "meaning": "사인본"
+          }
+        ]
+      },
+      {
+        "q_type": "detail",
+        "sentences": [
+          "Tickets for the event are $15 and include a copy of the book.",
+          "Guests without tickets may still attend but will not be guaranteed a signed copy."
+        ],
+        "question": "What do event tickets include?",
+        "question_kr": "행사 티켓에 포함된 것은?",
+        "choices": [
+          "(A) A free tote bag",
+          "(B) A copy of the book",
+          "(C) A photo opportunity with the author",
+          "(D) A gift voucher for the bookstore"
+        ],
+        "choices_kr": [
+          "(A) 무료 토트백",
+          "(B) 책 한 권",
+          "(C) 작가와의 사진 촬영 기회",
+          "(D) 서점 상품권"
+        ],
+        "answer": 1,
+        "kr": "행사 티켓은 $15이며 책 한 권이 포함된다. 티켓 없이 참석하는 게스트도 참석 가능하지만 사인본이 보장되지 않는다.",
+        "expressions": [
+          {
+            "expr": "are guaranteed",
+            "meaning": "보장되다"
+          },
+          {
+            "expr": "without tickets",
+            "meaning": "티켓 없이"
+          },
+          {
+            "expr": "tote bag",
+            "meaning": "토트백"
+          }
+        ]
+      },
+      {
+        "q_type": "inference",
+        "sentences": [
+          "Clara Bennett's previous novel sold over 500,000 copies worldwide and spent 12 weeks on the national bestseller list.",
+          "The bookstore expects high demand and recommends purchasing tickets in advance through their website."
+        ],
+        "question": "What is implied about the book signing event?",
+        "question_kr": "사인회 행사에 대해 추론할 수 있는 것은?",
+        "choices": [
+          "(A) It will be a small, private gathering",
+          "(B) It is likely to attract a large crowd",
+          "(C) Clara Bennett will read from her book",
+          "(D) Attendance is limited to ticket holders only"
+        ],
+        "choices_kr": [
+          "(A) 소규모 비공개 모임이 될 것이다",
+          "(B) 많은 군중을 유치할 가능성이 높다",
+          "(C) Clara Bennett이 책을 읽어줄 것이다",
+          "(D) 참석은 티켓 소지자에게만 제한된다"
+        ],
+        "answer": 1,
+        "kr": "Clara Bennett의 이전 소설은 전 세계적으로 50만 부 이상 팔렸으며 12주 동안 전국 베스트셀러 목록에 올랐다. 서점은 높은 수요를 예상하며 웹사이트를 통해 사전에 티켓을 구매하도록 권장한다.",
+        "expressions": [
+          {
+            "expr": "high demand",
+            "meaning": "높은 수요"
+          },
+          {
+            "expr": "bestseller list",
+            "meaning": "베스트셀러 목록"
+          },
+          {
+            "expr": "in advance",
+            "meaning": "사전에"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "title": "📢 SIGNAL",
+    "steps": [
+      {
+        "q_type": "purpose",
+        "sentences": [
+          "Riverside Pharmacy is offering free blood pressure screenings every Tuesday from 10 A.M. to 1 P.M. throughout the month of May.",
+          "No appointment is necessary, and the service is available to all community members regardless of whether they are regular customers."
+        ],
+        "question": "What service is being promoted?",
+        "question_kr": "어떤 서비스가 홍보되고 있는가?",
+        "choices": [
+          "(A) Free prescription medications",
+          "(B) Free blood pressure screenings",
+          "(C) A new pharmacy membership program",
+          "(D) Discounted vitamins and supplements"
+        ],
+        "choices_kr": [
+          "(A) 무료 처방 약",
+          "(B) 무료 혈압 검진",
+          "(C) 새로운 약국 회원 프로그램",
+          "(D) 할인된 비타민 및 보조제"
+        ],
+        "answer": 1,
+        "kr": "Riverside Pharmacy는 5월 한 달 동안 매주 화요일 오전 10시부터 오후 1시까지 무료 혈압 검진을 제공한다. 예약이 필요 없으며, 정기 고객 여부에 관계없이 모든 지역 사회 구성원이 이용 가능하다.",
+        "expressions": [
+          {
+            "expr": "blood pressure screenings",
+            "meaning": "혈압 검진"
+          },
+          {
+            "expr": "no appointment is necessary",
+            "meaning": "예약이 필요 없다"
+          },
+          {
+            "expr": "regular customers",
+            "meaning": "정기 고객"
+          }
+        ]
+      },
+      {
+        "q_type": "detail",
+        "sentences": [
+          "A licensed pharmacist will conduct each screening and provide personalized advice on maintaining healthy blood pressure.",
+          "Participants will also receive a free informational pamphlet on heart health and lifestyle tips."
+        ],
+        "question": "Who will conduct the screenings?",
+        "question_kr": "검진을 진행하는 사람은 누구인가?",
+        "choices": [
+          "(A) A visiting doctor from the local hospital",
+          "(B) A licensed pharmacist",
+          "(C) A registered nurse",
+          "(D) A community health volunteer"
+        ],
+        "choices_kr": [
+          "(A) 지역 병원의 방문 의사",
+          "(B) 면허를 받은 약사",
+          "(C) 등록 간호사",
+          "(D) 지역 사회 건강 자원봉사자"
+        ],
+        "answer": 1,
+        "kr": "면허를 받은 약사가 각 검진을 진행하고 건강한 혈압 유지에 대한 개인화된 조언을 제공한다. 참가자들은 또한 심장 건강과 생활 방식 팁에 관한 무료 정보 팸플릿을 받는다.",
+        "expressions": [
+          {
+            "expr": "licensed pharmacist",
+            "meaning": "면허를 받은 약사"
+          },
+          {
+            "expr": "personalized advice",
+            "meaning": "개인화된 조언"
+          },
+          {
+            "expr": "informational pamphlet",
+            "meaning": "정보 팸플릿"
+          }
+        ]
+      },
+      {
+        "q_type": "inference",
+        "sentences": [
+          "High blood pressure affects nearly one in three adults in the country and is a leading cause of heart disease and stroke.",
+          "Riverside Pharmacy introduced the screening program to raise awareness and encourage early detection in the community."
+        ],
+        "question": "What motivated Riverside Pharmacy to offer free screenings?",
+        "question_kr": "Riverside Pharmacy가 무료 검진을 제공하게 된 동기는 무엇인가?",
+        "choices": [
+          "(A) To attract new customers to the pharmacy",
+          "(B) To promote health awareness and early detection",
+          "(C) To comply with a new government health regulation",
+          "(D) To compete with a nearby medical clinic"
+        ],
+        "choices_kr": [
+          "(A) 약국에 새 고객을 유치하기 위해",
+          "(B) 건강 인식과 조기 발견을 촉진하기 위해",
+          "(C) 새로운 정부 건강 규정을 준수하기 위해",
+          "(D) 인근 의료 클리닉과 경쟁하기 위해"
+        ],
+        "answer": 1,
+        "kr": "고혈압은 국내 성인 3명 중 거의 1명에게 영향을 미치며 심장 질환과 뇌졸중의 주요 원인이다. Riverside Pharmacy는 지역 사회에서 인식을 높이고 조기 발견을 장려하기 위해 검진 프로그램을 도입했다.",
+        "expressions": [
+          {
+            "expr": "leading cause of",
+            "meaning": "주요 원인"
+          },
+          {
+            "expr": "early detection",
+            "meaning": "조기 발견"
+          },
+          {
+            "expr": "raise awareness",
+            "meaning": "인식을 높이다"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "title": "📢 SIGNAL",
+    "steps": [
+      {
+        "q_type": "purpose",
+        "sentences": [
+          "The Westfield Office Tower will be testing its emergency evacuation system on Wednesday, March 5, at 11 A.M.",
+          "All tenants are asked to participate in the drill by evacuating the building as they would in a real emergency."
+        ],
+        "question": "What is the purpose of this notice?",
+        "question_kr": "이 공지의 목적은 무엇인가?",
+        "choices": [
+          "(A) To report an actual emergency in the building",
+          "(B) To inform tenants of a scheduled fire drill",
+          "(C) To announce new safety regulations",
+          "(D) To introduce a new building security system"
+        ],
+        "choices_kr": [
+          "(A) 건물의 실제 비상 사태 보고",
+          "(B) 예정된 소방 훈련 안내",
+          "(C) 새로운 안전 규정 발표",
+          "(D) 새로운 건물 보안 시스템 소개"
+        ],
+        "answer": 1,
+        "kr": "Westfield Office Tower는 3월 5일 수요일 오전 11시에 비상 대피 시스템을 테스트한다. 모든 임차인은 실제 비상 상황처럼 건물을 대피하여 훈련에 참여하도록 요청된다.",
+        "expressions": [
+          {
+            "expr": "emergency evacuation system",
+            "meaning": "비상 대피 시스템"
+          },
+          {
+            "expr": "participate in the drill",
+            "meaning": "훈련에 참여하다"
+          },
+          {
+            "expr": "real emergency",
+            "meaning": "실제 비상 상황"
+          }
+        ]
+      },
+      {
+        "q_type": "detail",
+        "sentences": [
+          "The drill is expected to last approximately 20 minutes, after which all tenants may return to their offices.",
+          "Elevators will be disabled during the drill, and all occupants must use the designated stairwells."
+        ],
+        "question": "What must building occupants use during the drill?",
+        "question_kr": "훈련 중 건물 입주자들은 무엇을 사용해야 하는가?",
+        "choices": [
+          "(A) The main elevator",
+          "(B) The designated stairwells",
+          "(C) The service entrance on the ground floor",
+          "(D) The emergency ladder on the exterior"
+        ],
+        "choices_kr": [
+          "(A) 메인 엘리베이터",
+          "(B) 지정된 비상구 계단",
+          "(C) 1층 서비스 입구",
+          "(D) 외부 비상 사다리"
+        ],
+        "answer": 1,
+        "kr": "훈련은 약 20분 동안 지속될 것으로 예상되며, 그 후 모든 임차인은 사무실로 돌아갈 수 있다. 훈련 중에는 엘리베이터가 작동하지 않으며, 모든 입주자는 지정된 비상구 계단을 사용해야 한다.",
+        "expressions": [
+          {
+            "expr": "designated stairwells",
+            "meaning": "지정된 비상구 계단"
+          },
+          {
+            "expr": "disabled",
+            "meaning": "작동하지 않는"
+          },
+          {
+            "expr": "approximately",
+            "meaning": "약, 대략"
+          }
+        ]
+      },
+      {
+        "q_type": "inference",
+        "sentences": [
+          "Building management conducts evacuation drills twice a year in compliance with local fire safety regulations.",
+          "Last year's drill was completed in 17 minutes, and management hopes to improve on that time."
+        ],
+        "question": "What is implied about the building's fire drills?",
+        "question_kr": "건물의 소방 훈련에 대해 추론할 수 있는 것은?",
+        "choices": [
+          "(A) They are held for the first time this year",
+          "(B) They are a regular and recurring event",
+          "(C) They are voluntary for all tenants",
+          "(D) They will be combined with a safety seminar"
+        ],
+        "choices_kr": [
+          "(A) 올해 처음으로 시행된다",
+          "(B) 정기적이고 반복적인 행사이다",
+          "(C) 모든 임차인에게 자발적이다",
+          "(D) 안전 세미나와 결합될 것이다"
+        ],
+        "answer": 1,
+        "kr": "건물 관리팀은 지역 소방 안전 규정에 따라 연 2회 대피 훈련을 실시한다. 작년 훈련은 17분 만에 완료되었으며, 관리팀은 그 시간을 개선하기를 희망한다.",
+        "expressions": [
+          {
+            "expr": "in compliance with",
+            "meaning": "~에 따라"
+          },
+          {
+            "expr": "fire safety regulations",
+            "meaning": "소방 안전 규정"
+          },
+          {
+            "expr": "twice a year",
+            "meaning": "연 2회"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "title": "📢 SIGNAL",
+    "steps": [
+      {
+        "q_type": "purpose",
+        "sentences": [
+          "Clearwater Pool & Spa is now offering a complete pool installation package for residential properties starting at $18,500.",
+          "The package includes design consultation, excavation, installation, and a one-year maintenance contract."
+        ],
+        "question": "What is being advertised?",
+        "question_kr": "무엇이 광고되고 있는가?",
+        "choices": [
+          "(A) Pool repair and cleaning services",
+          "(B) A residential pool installation package",
+          "(C) A swimming lesson program",
+          "(D) Pool equipment and accessories"
+        ],
+        "choices_kr": [
+          "(A) 수영장 수리 및 청소 서비스",
+          "(B) 주거용 수영장 설치 패키지",
+          "(C) 수영 강습 프로그램",
+          "(D) 수영장 장비 및 액세서리"
+        ],
+        "answer": 1,
+        "kr": "Clearwater Pool & Spa는 이제 $18,500부터 시작하는 주거용 부동산을 위한 완전한 수영장 설치 패키지를 제공한다. 패키지에는 디자인 상담, 굴착, 설치, 1년 유지보수 계약이 포함된다.",
+        "expressions": [
+          {
+            "expr": "installation package",
+            "meaning": "설치 패키지"
+          },
+          {
+            "expr": "design consultation",
+            "meaning": "디자인 상담"
+          },
+          {
+            "expr": "maintenance contract",
+            "meaning": "유지보수 계약"
+          }
+        ]
+      },
+      {
+        "q_type": "detail",
+        "sentences": [
+          "Customers who sign a contract before April 30 will receive a complimentary pool cover valued at $800.",
+          "Financing options with 0% interest for the first 12 months are available through Clearwater's partner bank."
+        ],
+        "question": "What do customers receive if they sign before April 30?",
+        "question_kr": "4월 30일 이전에 계약하면 고객들이 받는 것은?",
+        "choices": [
+          "(A) A free upgrade to a larger pool size",
+          "(B) A complimentary pool cover worth $800",
+          "(C) Free lifetime maintenance service",
+          "(D) A 10% discount on the total package price"
+        ],
+        "choices_kr": [
+          "(A) 더 큰 수영장 크기로 무료 업그레이드",
+          "(B) $800 상당의 무료 수영장 커버",
+          "(C) 무료 평생 유지보수 서비스",
+          "(D) 전체 패키지 가격 10% 할인"
+        ],
+        "answer": 1,
+        "kr": "4월 30일 이전에 계약하는 고객들은 $800 상당의 무료 수영장 커버를 받는다. Clearwater의 파트너 은행을 통해 첫 12개월 동안 0% 이자의 금융 옵션이 이용 가능하다.",
+        "expressions": [
+          {
+            "expr": "complimentary",
+            "meaning": "무료의"
+          },
+          {
+            "expr": "financing options",
+            "meaning": "금융 옵션"
+          },
+          {
+            "expr": "0% interest",
+            "meaning": "0% 이자"
+          }
+        ]
+      },
+      {
+        "q_type": "inference",
+        "sentences": [
+          "Clearwater has installed over 1,200 pools across the region in the past decade and is rated the top pool company in the area for customer satisfaction.",
+          "Demand for residential pools has surged in recent years as more homeowners look to enhance their outdoor living spaces."
+        ],
+        "question": "What is implied about the pool installation market?",
+        "question_kr": "수영장 설치 시장에 대해 추론할 수 있는 것은?",
+        "choices": [
+          "(A) Competition among pool companies has decreased",
+          "(B) Residential pool installations have become increasingly popular",
+          "(C) Pool prices have dropped significantly in recent years",
+          "(D) Most homeowners prefer above-ground pools"
+        ],
+        "choices_kr": [
+          "(A) 수영장 회사들 간의 경쟁이 줄었다",
+          "(B) 주거용 수영장 설치가 점점 인기를 얻고 있다",
+          "(C) 최근 수영장 가격이 크게 떨어졌다",
+          "(D) 대부분의 주택 소유자는 지상 수영장을 선호한다"
+        ],
+        "answer": 1,
+        "kr": "Clearwater는 지난 10년 동안 이 지역 전역에 1,200개 이상의 수영장을 설치했으며 고객 만족도에서 지역 최고의 수영장 회사로 평가받는다. 더 많은 주택 소유자들이 야외 생활 공간을 향상시키려 함에 따라 최근 몇 년간 주거용 수영장 수요가 급증했다.",
+        "expressions": [
+          {
+            "expr": "surged",
+            "meaning": "급증하다"
+          },
+          {
+            "expr": "enhance outdoor living spaces",
+            "meaning": "야외 생활 공간을 향상시키다"
+          },
+          {
+            "expr": "rated the top",
+            "meaning": "최고로 평가받는"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "title": "📢 SIGNAL",
+    "steps": [
+      {
+        "q_type": "purpose",
+        "sentences": [
+          "Harbor View Conference Center is now accepting bookings for its newly renovated event spaces, available for corporate meetings, seminars, and private functions.",
+          "The center offers rooms accommodating 10 to 500 guests, with state-of-the-art audiovisual equipment included."
+        ],
+        "question": "What is the purpose of this advertisement?",
+        "question_kr": "이 광고의 목적은 무엇인가?",
+        "choices": [
+          "(A) To announce the construction of a new conference center",
+          "(B) To promote bookings for a renovated event venue",
+          "(C) To recruit event coordinators for a hospitality company",
+          "(D) To advertise audiovisual equipment for sale"
+        ],
+        "choices_kr": [
+          "(A) 새로운 컨퍼런스 센터 건설 발표",
+          "(B) 리모델링된 행사 장소 예약 홍보",
+          "(C) 환대 회사를 위한 행사 코디네이터 모집",
+          "(D) 판매용 시청각 장비 광고"
+        ],
+        "answer": 1,
+        "kr": "Harbor View Conference Center는 기업 회의, 세미나, 개인 행사를 위한 새롭게 리모델링된 행사 공간의 예약을 받고 있다. 센터는 최첨단 시청각 장비가 포함된 10~500명을 수용하는 룸을 제공한다.",
+        "expressions": [
+          {
+            "expr": "accepting bookings",
+            "meaning": "예약을 받고 있다"
+          },
+          {
+            "expr": "private functions",
+            "meaning": "개인 행사"
+          },
+          {
+            "expr": "audiovisual equipment",
+            "meaning": "시청각 장비"
+          }
+        ]
+      },
+      {
+        "q_type": "detail",
+        "sentences": [
+          "Catering services are available through the center's in-house team, with customizable menus to suit all dietary requirements.",
+          "Early bookings made before June 1 receive a 15% discount on room rental fees."
+        ],
+        "question": "What discount is available for early bookings?",
+        "question_kr": "조기 예약에 제공되는 할인은?",
+        "choices": [
+          "(A) 10% off catering services",
+          "(B) 15% off room rental fees",
+          "(C) Free audiovisual equipment upgrade",
+          "(D) Complimentary parking for all guests"
+        ],
+        "choices_kr": [
+          "(A) 케이터링 서비스 10% 할인",
+          "(B) 객실 임대료 15% 할인",
+          "(C) 무료 시청각 장비 업그레이드",
+          "(D) 모든 게스트를 위한 무료 주차"
+        ],
+        "answer": 1,
+        "kr": "케이터링 서비스는 센터의 내부 팀을 통해 이용 가능하며, 모든 식이 요건에 맞게 커스터마이즈 가능한 메뉴를 제공한다. 6월 1일 이전에 조기 예약 시 객실 임대료 15% 할인을 받는다.",
+        "expressions": [
+          {
+            "expr": "in-house team",
+            "meaning": "내부 팀"
+          },
+          {
+            "expr": "dietary requirements",
+            "meaning": "식이 요건"
+          },
+          {
+            "expr": "room rental fees",
+            "meaning": "객실 임대료"
+          }
+        ]
+      },
+      {
+        "q_type": "inference",
+        "sentences": [
+          "The renovation, completed in January, included expanded breakout rooms, upgraded kitchen facilities, and a new outdoor terrace overlooking the harbor.",
+          "The center has hosted over 500 events annually and is a preferred venue for several major industry associations."
+        ],
+        "question": "What is implied about Harbor View Conference Center?",
+        "question_kr": "Harbor View Conference Center에 대해 추론할 수 있는 것은?",
+        "choices": [
+          "(A) It is a new facility opening for the first time",
+          "(B) It is an established and well-regarded venue",
+          "(C) It specializes exclusively in small corporate events",
+          "(D) It is located far from the city center"
+        ],
+        "choices_kr": [
+          "(A) 처음으로 문을 여는 새로운 시설이다",
+          "(B) 확립되고 잘 알려진 장소이다",
+          "(C) 소규모 기업 행사만을 전문으로 한다",
+          "(D) 도심에서 멀리 위치해 있다"
+        ],
+        "answer": 1,
+        "kr": "1월에 완공된 리모델링에는 확장된 소회의실, 업그레이드된 주방 시설, 항구가 내려다보이는 새로운 야외 테라스가 포함되었다. 센터는 연간 500개 이상의 행사를 개최하며 여러 주요 산업 협회의 선호 장소이다.",
+        "expressions": [
+          {
+            "expr": "breakout rooms",
+            "meaning": "소회의실"
+          },
+          {
+            "expr": "preferred venue",
+            "meaning": "선호 장소"
+          },
+          {
+            "expr": "industry associations",
+            "meaning": "산업 협회"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "title": "📢 SIGNAL",
+    "steps": [
+      {
+        "q_type": "purpose",
+        "sentences": [
+          "All residents of Elmwood Apartments are reminded that the building's annual fire safety inspection will take place on Thursday, May 8, between 9 A.M. and 5 P.M.",
+          "Inspectors will need brief access to each unit to check smoke detectors and sprinkler systems."
+        ],
+        "question": "What is the purpose of this notice?",
+        "question_kr": "이 공지의 목적은 무엇인가?",
+        "choices": [
+          "(A) To announce a fire emergency in the building",
+          "(B) To inform residents of an upcoming safety inspection",
+          "(C) To introduce new fire safety regulations",
+          "(D) To schedule fire extinguisher replacements"
+        ],
+        "choices_kr": [
+          "(A) 건물의 화재 비상 사태 발표",
+          "(B) 주민들에게 다가오는 안전 점검 안내",
+          "(C) 새로운 화재 안전 규정 소개",
+          "(D) 소화기 교체 일정"
+        ],
+        "answer": 1,
+        "kr": "Elmwood Apartments의 모든 주민은 건물의 연간 화재 안전 점검이 5월 8일 목요일 오전 9시부터 오후 5시 사이에 실시됨을 상기해 드립니다. 점검관들은 연기 감지기와 스프링클러 시스템을 확인하기 위해 각 유닛에 잠깐 접근이 필요하다.",
+        "expressions": [
+          {
+            "expr": "fire safety inspection",
+            "meaning": "화재 안전 점검"
+          },
+          {
+            "expr": "smoke detectors",
+            "meaning": "연기 감지기"
+          },
+          {
+            "expr": "sprinkler systems",
+            "meaning": "스프링클러 시스템"
+          }
+        ]
+      },
+      {
+        "q_type": "detail",
+        "sentences": [
+          "Residents do not need to be present during the inspection, but those who wish to be home may choose any time within the inspection window.",
+          "Any resident who will not be home should contact the building office by May 5 to arrange key access."
+        ],
+        "question": "What must absent residents do by May 5?",
+        "question_kr": "부재 주민들이 5월 5일까지 해야 하는 것은?",
+        "choices": [
+          "(A) Submit a written inspection waiver",
+          "(B) Contact the building office to arrange key access",
+          "(C) Leave a spare key under their door mat",
+          "(D) Reschedule the inspection for a different day"
+        ],
+        "choices_kr": [
+          "(A) 서면 점검 면제 신청서 제출",
+          "(B) 열쇠 접근을 마련하기 위해 건물 사무소에 연락",
+          "(C) 도어 매트 아래에 예비 열쇠 남겨두기",
+          "(D) 다른 날로 점검 일정 변경"
+        ],
+        "answer": 1,
+        "kr": "주민들은 점검 중에 있을 필요는 없지만, 집에 있기를 원하는 주민들은 점검 시간 내 어느 시간이나 선택할 수 있다. 집에 없을 주민들은 열쇠 접근을 마련하기 위해 5월 5일까지 건물 사무소에 연락해야 한다.",
+        "expressions": [
+          {
+            "expr": "arrange key access",
+            "meaning": "열쇠 접근을 마련하다"
+          },
+          {
+            "expr": "inspection window",
+            "meaning": "점검 시간 범위"
+          },
+          {
+            "expr": "absent residents",
+            "meaning": "부재 주민"
+          }
+        ]
+      },
+      {
+        "q_type": "inference",
+        "sentences": [
+          "This inspection is required by city law and ensures that all fire safety equipment in the building meets current standards.",
+          "Failure to pass the inspection could result in temporary closure of affected units until issues are resolved."
+        ],
+        "question": "What can be inferred about the fire safety inspection?",
+        "question_kr": "화재 안전 점검에 대해 추론할 수 있는 것은?",
+        "choices": [
+          "(A) It is an optional procedure for building owners",
+          "(B) It is legally required and has real consequences if failed",
+          "(C) It is conducted by building staff, not inspectors",
+          "(D) It only checks equipment in common areas"
+        ],
+        "choices_kr": [
+          "(A) 건물 소유자를 위한 선택적 절차이다",
+          "(B) 법적으로 요구되며 불합격 시 실제 결과가 있다",
+          "(C) 점검관이 아닌 건물 직원이 실시한다",
+          "(D) 공용 구역의 장비만 확인한다"
+        ],
+        "answer": 1,
+        "kr": "이 점검은 시법에 의해 요구되며 건물의 모든 화재 안전 장비가 현재 기준을 충족하는지 확인한다. 점검에 불합격하면 문제가 해결될 때까지 영향을 받은 유닛이 일시적으로 폐쇄될 수 있다.",
+        "expressions": [
+          {
+            "expr": "required by city law",
+            "meaning": "시법에 의해 요구되는"
+          },
+          {
+            "expr": "meets current standards",
+            "meaning": "현재 기준을 충족하다"
+          },
+          {
+            "expr": "temporary closure",
+            "meaning": "일시적 폐쇄"
+          }
+        ]
+      }
+    ]
   }
 ]

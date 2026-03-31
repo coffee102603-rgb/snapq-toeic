@@ -580,5 +580,4065 @@
         ]
       }
     ]
+  },
+  {
+    "title": "✉️ CIPHER",
+    "steps": [
+      {
+        "q_type": "who",
+        "sentences": [
+          "Dear Mr. Patterson, I am writing on behalf of the Greenhill Residents' Association to formally request a meeting with the city planning department regarding the proposed development on Elm Street.",
+          "We represent over 400 households in the area and have significant concerns about the project's impact on local traffic and green spaces."
+        ],
+        "question": "Who most likely wrote this letter?",
+        "question_kr": "이 편지를 쓴 사람은 누구일 가능성이 가장 높은가?",
+        "choices": [
+          "(A) A city planning official",
+          "(B) A representative of a residents' association",
+          "(C) A property developer",
+          "(D) A local newspaper journalist"
+        ],
+        "choices_kr": [
+          "(A) 시 계획 공무원",
+          "(B) 주민 협회 대표",
+          "(C) 부동산 개발업자",
+          "(D) 지역 신문 기자"
+        ],
+        "answer": 1,
+        "kr": "Patterson 씨께, Greenhill 주민 협회를 대표하여 Elm Street의 제안된 개발에 관해 시 계획 부서와의 공식적인 회의를 요청하기 위해 편지를 씁니다. 저희는 이 지역의 400가구 이상을 대표하며 프로젝트의 지역 교통과 녹지 공간에 대한 영향에 대해 상당한 우려가 있습니다.",
+        "expressions": [
+          {
+            "expr": "on behalf of",
+            "meaning": "~을 대표하여"
+          },
+          {
+            "expr": "formally request",
+            "meaning": "공식적으로 요청하다"
+          },
+          {
+            "expr": "significant concerns",
+            "meaning": "상당한 우려"
+          }
+        ]
+      },
+      {
+        "q_type": "detail",
+        "sentences": [
+          "We are requesting that a public consultation session be held before any planning approval is granted.",
+          "The association would also like to review the environmental impact assessment report, which we understand has not yet been made publicly available."
+        ],
+        "question": "What does the association request?",
+        "question_kr": "협회가 요청하는 것은?",
+        "choices": [
+          "(A) The cancellation of the development project",
+          "(B) A public consultation before planning approval",
+          "(C) A reduction in the size of the development",
+          "(D) Immediate access to the construction site"
+        ],
+        "choices_kr": [
+          "(A) 개발 프로젝트 취소",
+          "(B) 계획 승인 전 공개 협의",
+          "(C) 개발 규모 축소",
+          "(D) 공사 현장 즉시 접근"
+        ],
+        "answer": 1,
+        "kr": "저희는 계획 승인이 승인되기 전에 공개 협의 세션을 개최해 줄 것을 요청한다. 협회는 또한 아직 공개적으로 이용 가능하지 않다고 이해하는 환경 영향 평가 보고서를 검토하고 싶다.",
+        "expressions": [
+          {
+            "expr": "public consultation",
+            "meaning": "공개 협의"
+          },
+          {
+            "expr": "planning approval",
+            "meaning": "계획 승인"
+          },
+          {
+            "expr": "environmental impact assessment",
+            "meaning": "환경 영향 평가"
+          }
+        ]
+      },
+      {
+        "q_type": "inference",
+        "sentences": [
+          "Our members have lived in this neighborhood for an average of 18 years and take great pride in the community they have built.",
+          "We trust that the city will take our concerns seriously and look forward to a productive dialogue."
+        ],
+        "question": "What is implied about the residents?",
+        "question_kr": "주민들에 대해 추론할 수 있는 것은?",
+        "choices": [
+          "(A) They fully support the Elm Street development",
+          "(B) They have strong ties to their community",
+          "(C) They recently moved into the neighborhood",
+          "(D) They plan to take legal action against the city"
+        ],
+        "choices_kr": [
+          "(A) Elm Street 개발을 전적으로 지지한다",
+          "(B) 지역 사회에 강한 유대감을 가지고 있다",
+          "(C) 최근 이 지역으로 이사했다",
+          "(D) 시를 상대로 법적 조치를 취할 계획이다"
+        ],
+        "answer": 1,
+        "kr": "저희 회원들은 평균 18년 동안 이 지역에 살았으며 그들이 만든 커뮤니티에 큰 자부심을 가지고 있다. 시가 저희 우려를 진지하게 받아들이고 생산적인 대화를 기대한다.",
+        "expressions": [
+          {
+            "expr": "take great pride in",
+            "meaning": "~에 큰 자부심을 가지다"
+          },
+          {
+            "expr": "productive dialogue",
+            "meaning": "생산적인 대화"
+          },
+          {
+            "expr": "take concerns seriously",
+            "meaning": "우려를 진지하게 받아들이다"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "title": "✉️ CIPHER",
+    "steps": [
+      {
+        "q_type": "who",
+        "sentences": [
+          "Dear Ms. Watkins, Thank you for your interest in the Regional Sales Manager position at Apex Retail Group.",
+          "After careful consideration of your application and interview performance, we are pleased to offer you the position with a starting salary of $72,000 per year."
+        ],
+        "question": "Who is this letter most likely addressed to?",
+        "question_kr": "이 편지는 누구에게 쓴 것일 가능성이 가장 높은가?",
+        "choices": [
+          "(A) A current employee seeking a promotion",
+          "(B) A job applicant who has been selected",
+          "(C) A client of Apex Retail Group",
+          "(D) A supplier representative"
+        ],
+        "choices_kr": [
+          "(A) 승진을 원하는 현재 직원",
+          "(B) 선발된 취업 지원자",
+          "(C) Apex Retail Group의 고객",
+          "(D) 공급업체 대표"
+        ],
+        "answer": 1,
+        "kr": "Watkins 씨께, Apex Retail Group의 지역 영업 관리자 직책에 관심을 가져주셔서 감사합니다. 귀하의 지원서와 면접 성과를 신중하게 고려한 후, 연봉 $72,000의 시작 급여로 해당 직책을 제안하게 되어 기쁩니다.",
+        "expressions": [
+          {
+            "expr": "careful consideration",
+            "meaning": "신중한 고려"
+          },
+          {
+            "expr": "starting salary",
+            "meaning": "시작 급여"
+          },
+          {
+            "expr": "pleased to offer",
+            "meaning": "기쁘게 제안하다"
+          }
+        ]
+      },
+      {
+        "q_type": "detail",
+        "sentences": [
+          "The position requires relocation to our Chicago headquarters, for which the company will provide a relocation allowance of up to $5,000.",
+          "We ask that you confirm your acceptance of this offer in writing by Friday, May 16."
+        ],
+        "question": "What is the deadline for accepting the offer?",
+        "question_kr": "제안 수락 기한은 언제인가?",
+        "choices": [
+          "(A) May 10",
+          "(B) May 16",
+          "(C) May 20",
+          "(D) May 31"
+        ],
+        "choices_kr": [
+          "(A) 5월 10일",
+          "(B) 5월 16일",
+          "(C) 5월 20일",
+          "(D) 5월 31일"
+        ],
+        "answer": 1,
+        "kr": "이 직책은 시카고 본사로의 이전이 필요하며, 회사는 최대 $5,000의 이전 수당을 제공한다. 5월 16일 금요일까지 서면으로 이 제안의 수락을 확인해 주시기 바랍니다.",
+        "expressions": [
+          {
+            "expr": "relocation allowance",
+            "meaning": "이전 수당"
+          },
+          {
+            "expr": "confirm your acceptance",
+            "meaning": "수락을 확인하다"
+          },
+          {
+            "expr": "in writing",
+            "meaning": "서면으로"
+          }
+        ]
+      },
+      {
+        "q_type": "inference",
+        "sentences": [
+          "We were particularly impressed by your ten years of experience in retail management and your track record of exceeding quarterly sales targets.",
+          "We are confident that you will be a strong addition to our leadership team."
+        ],
+        "question": "What is implied about Ms. Watkins?",
+        "question_kr": "Watkins 씨에 대해 추론할 수 있는 것은?",
+        "choices": [
+          "(A) She has limited experience in retail",
+          "(B) She stood out among the applicants",
+          "(C) She applied for a lower-level position",
+          "(D) She is currently unemployed"
+        ],
+        "choices_kr": [
+          "(A) 소매업 경험이 제한적이다",
+          "(B) 지원자들 중에서 두각을 나타냈다",
+          "(C) 더 낮은 수준의 직책에 지원했다",
+          "(D) 현재 실직 상태이다"
+        ],
+        "answer": 1,
+        "kr": "저희는 특히 소매 관리에서의 10년 경험과 분기별 판매 목표를 초과한 실적에 깊은 인상을 받았습니다. 귀하가 저희 리더십 팀에 강력한 인재가 될 것이라고 확신합니다.",
+        "expressions": [
+          {
+            "expr": "track record",
+            "meaning": "실적"
+          },
+          {
+            "expr": "exceeding quarterly sales targets",
+            "meaning": "분기별 판매 목표를 초과하다"
+          },
+          {
+            "expr": "strong addition",
+            "meaning": "강력한 인재"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "title": "✉️ CIPHER",
+    "steps": [
+      {
+        "q_type": "who",
+        "sentences": [
+          "Dear Purchasing Manager, I am writing to introduce BioClean Solutions, a leading supplier of eco-friendly cleaning products for commercial facilities.",
+          "Our product line includes biodegradable detergents, surface sanitizers, and industrial degreasers, all certified by the Environmental Standards Board."
+        ],
+        "question": "Who most likely wrote this letter?",
+        "question_kr": "이 편지를 쓴 사람은 누구일 가능성이 가장 높은가?",
+        "choices": [
+          "(A) A government health inspector",
+          "(B) A sales representative from a cleaning product company",
+          "(C) A facility maintenance supervisor",
+          "(D) An environmental organization spokesperson"
+        ],
+        "choices_kr": [
+          "(A) 정부 건강 점검관",
+          "(B) 청소 제품 회사의 영업 대표",
+          "(C) 시설 유지보수 감독관",
+          "(D) 환경 단체 대변인"
+        ],
+        "answer": 1,
+        "kr": "구매 담당자 귀중, 상업 시설을 위한 친환경 청소 제품의 선도적 공급업체인 BioClean Solutions를 소개하기 위해 편지를 씁니다. 저희 제품 라인에는 Environmental Standards Board의 인증을 받은 생분해성 세제, 표면 소독제, 산업용 탈지제가 포함된다.",
+        "expressions": [
+          {
+            "expr": "eco-friendly",
+            "meaning": "친환경"
+          },
+          {
+            "expr": "biodegradable",
+            "meaning": "생분해성"
+          },
+          {
+            "expr": "certified by",
+            "meaning": "~의 인증을 받은"
+          }
+        ]
+      },
+      {
+        "q_type": "detail",
+        "sentences": [
+          "We are currently offering a trial package of our three bestselling products at a 40% discount for new commercial clients.",
+          "To arrange a product demonstration or request a sample kit, please contact our sales team at sales@bioclean.com."
+        ],
+        "question": "What is available to new commercial clients?",
+        "question_kr": "신규 상업 고객에게 이용 가능한 것은?",
+        "choices": [
+          "(A) A one-year free supply of cleaning products",
+          "(B) A trial package at a 40% discount",
+          "(C) A free site visit from a cleaning specialist",
+          "(D) Priority delivery on all future orders"
+        ],
+        "choices_kr": [
+          "(A) 1년 무료 청소 제품 공급",
+          "(B) 40% 할인된 체험 패키지",
+          "(C) 청소 전문가의 무료 현장 방문",
+          "(D) 모든 미래 주문에 대한 우선 배달"
+        ],
+        "answer": 1,
+        "kr": "저희는 현재 신규 상업 고객을 위해 3가지 베스트셀러 제품의 체험 패키지를 40% 할인하여 제공하고 있다. 제품 시연을 마련하거나 샘플 키트를 요청하려면 sales@bioclean.com으로 영업팀에 연락해 주세요.",
+        "expressions": [
+          {
+            "expr": "trial package",
+            "meaning": "체험 패키지"
+          },
+          {
+            "expr": "product demonstration",
+            "meaning": "제품 시연"
+          },
+          {
+            "expr": "sample kit",
+            "meaning": "샘플 키트"
+          }
+        ]
+      },
+      {
+        "q_type": "inference",
+        "sentences": [
+          "BioClean Solutions has partnered with over 300 businesses across the country, including hotels, hospitals, and office complexes.",
+          "Our clients report an average reduction of 35% in cleaning-related costs after switching to our products."
+        ],
+        "question": "What is implied about BioClean's products?",
+        "question_kr": "BioClean의 제품에 대해 추론할 수 있는 것은?",
+        "choices": [
+          "(A) They are more expensive than competing brands",
+          "(B) They are cost-effective for businesses",
+          "(C) They are only suitable for small offices",
+          "(D) They have recently been introduced to the market"
+        ],
+        "choices_kr": [
+          "(A) 경쟁 브랜드보다 더 비싸다",
+          "(B) 기업에게 비용 효율적이다",
+          "(C) 소규모 사무실에만 적합하다",
+          "(D) 최근 시장에 출시되었다"
+        ],
+        "answer": 1,
+        "kr": "BioClean Solutions는 호텔, 병원, 오피스 컴플렉스를 포함하여 전국 300개 이상의 기업과 파트너십을 맺었다. 저희 고객들은 저희 제품으로 전환한 후 청소 관련 비용이 평균 35% 감소했다고 보고한다.",
+        "expressions": [
+          {
+            "expr": "partnered with",
+            "meaning": "~와 파트너십을 맺다"
+          },
+          {
+            "expr": "reduction in costs",
+            "meaning": "비용 감소"
+          },
+          {
+            "expr": "switching to",
+            "meaning": "~으로 전환하다"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "title": "✉️ CIPHER",
+    "steps": [
+      {
+        "q_type": "who",
+        "sentences": [
+          "Dear Professor Nguyen, I am a third-year student in your Department of Environmental Science and I am writing to request your guidance regarding graduate school applications.",
+          "I have been considering applying to doctoral programs in climate science and would value your advice on selecting suitable institutions and preparing a strong research proposal."
+        ],
+        "question": "Who is this letter written to?",
+        "question_kr": "이 편지는 누구에게 쓴 것인가?",
+        "choices": [
+          "(A) A university admissions officer",
+          "(B) A university professor",
+          "(C) A research institute director",
+          "(D) A doctoral program graduate student"
+        ],
+        "choices_kr": [
+          "(A) 대학교 입학 담당자",
+          "(B) 대학교 교수",
+          "(C) 연구소 소장",
+          "(D) 박사 과정 대학원생"
+        ],
+        "answer": 1,
+        "kr": "Nguyen 교수님께, 저는 교수님의 환경 과학 학과 3학년 학생이며 대학원 지원에 관한 지도를 요청하기 위해 편지를 씁니다. 저는 기후 과학 박사 프로그램 지원을 고려하고 있으며 적합한 기관 선택과 강력한 연구 제안서 준비에 대한 교수님의 조언을 소중히 여길 것이다.",
+        "expressions": [
+          {
+            "expr": "request your guidance",
+            "meaning": "지도를 요청하다"
+          },
+          {
+            "expr": "doctoral programs",
+            "meaning": "박사 프로그램"
+          },
+          {
+            "expr": "research proposal",
+            "meaning": "연구 제안서"
+          }
+        ]
+      },
+      {
+        "q_type": "detail",
+        "sentences": [
+          "I am particularly interested in researching the effects of urban heat islands on local ecosystems and believe this aligns with the work being conducted in your laboratory.",
+          "I would be grateful if you could meet with me at your convenience to discuss my options."
+        ],
+        "question": "What research topic is the student interested in?",
+        "question_kr": "학생이 관심 있는 연구 주제는?",
+        "choices": [
+          "(A) Ocean pollution and marine biodiversity",
+          "(B) Urban heat islands and local ecosystems",
+          "(C) Renewable energy and carbon emissions",
+          "(D) Arctic ice melting and sea level rise"
+        ],
+        "choices_kr": [
+          "(A) 해양 오염과 해양 생물 다양성",
+          "(B) 도시 열섬과 지역 생태계",
+          "(C) 재생에너지와 탄소 배출",
+          "(D) 북극 얼음 해빙과 해수면 상승"
+        ],
+        "answer": 1,
+        "kr": "저는 특히 도시 열섬이 지역 생태계에 미치는 영향을 연구하는 데 관심이 있으며 이것이 교수님의 연구실에서 수행되는 연구와 일치한다고 생각한다. 편하신 시간에 저의 옵션을 논의하기 위해 만나 주신다면 감사하겠다.",
+        "expressions": [
+          {
+            "expr": "urban heat islands",
+            "meaning": "도시 열섬"
+          },
+          {
+            "expr": "aligns with",
+            "meaning": "~와 일치하다"
+          },
+          {
+            "expr": "at your convenience",
+            "meaning": "편하신 시간에"
+          }
+        ]
+      },
+      {
+        "q_type": "inference",
+        "sentences": [
+          "I maintain a GPA of 3.9 and have completed two research assistantships, including one studying air quality patterns in metropolitan areas last summer.",
+          "I am also the recipient of the Dean's Award for Academic Excellence for the past two consecutive years."
+        ],
+        "question": "What can be inferred about the student?",
+        "question_kr": "학생에 대해 추론할 수 있는 것은?",
+        "choices": [
+          "(A) She is struggling academically",
+          "(B) She is a strong academic performer with research experience",
+          "(C) She has no prior research experience",
+          "(D) She has already been accepted to a doctoral program"
+        ],
+        "choices_kr": [
+          "(A) 학업적으로 어려움을 겪고 있다",
+          "(B) 연구 경험이 있는 우수한 학업 성적자이다",
+          "(C) 이전 연구 경험이 없다",
+          "(D) 이미 박사 프로그램에 합격했다"
+        ],
+        "answer": 1,
+        "kr": "저는 GPA 3.9를 유지하고 있으며 지난 여름 대도시 지역의 대기 질 패턴을 연구하는 연구 조교를 포함하여 두 가지 연구 조교직을 완료했다. 저는 또한 지난 2년 연속으로 학업 우수 학장상 수상자이다.",
+        "expressions": [
+          {
+            "expr": "research assistantships",
+            "meaning": "연구 조교직"
+          },
+          {
+            "expr": "recipient of the Dean's Award",
+            "meaning": "학장상 수상자"
+          },
+          {
+            "expr": "consecutive years",
+            "meaning": "연속 연도"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "title": "✉️ CIPHER",
+    "steps": [
+      {
+        "q_type": "who",
+        "sentences": [
+          "Dear Ms. Alvarez, I am writing to follow up on the project proposal I submitted to your team on March 1.",
+          "As the director of Blue Horizon Creative Agency, I am eager to know whether Aldermoor Publishing has had the opportunity to review the campaign concept we developed for your spring catalogue launch."
+        ],
+        "question": "Who most likely wrote this letter?",
+        "question_kr": "이 편지를 쓴 사람은 누구일 가능성이 가장 높은가?",
+        "choices": [
+          "(A) A publisher reviewing a manuscript",
+          "(B) The head of an advertising agency",
+          "(C) A freelance graphic designer",
+          "(D) A marketing consultant at Aldermoor Publishing"
+        ],
+        "choices_kr": [
+          "(A) 원고를 검토하는 출판사",
+          "(B) 광고 대행사의 대표",
+          "(C) 프리랜서 그래픽 디자이너",
+          "(D) Aldermoor Publishing의 마케팅 컨설턴트"
+        ],
+        "answer": 1,
+        "kr": "Alvarez 씨께, 3월 1일에 귀하의 팀에 제출한 프로젝트 제안서에 대한 후속 조치를 위해 편지를 씁니다. Blue Horizon Creative Agency의 대표로서, Aldermoor Publishing이 저희가 봄 카탈로그 출시를 위해 개발한 캠페인 개념을 검토할 기회가 있었는지 알고 싶습니다.",
+        "expressions": [
+          {
+            "expr": "follow up on",
+            "meaning": "~에 대한 후속 조치를 하다"
+          },
+          {
+            "expr": "project proposal",
+            "meaning": "프로젝트 제안서"
+          },
+          {
+            "expr": "campaign concept",
+            "meaning": "캠페인 개념"
+          }
+        ]
+      },
+      {
+        "q_type": "detail",
+        "sentences": [
+          "The proposal outlines a multi-channel strategy combining print, digital, and social media elements designed to reach your target demographic of readers aged 25 to 44.",
+          "Our estimated budget for the full campaign is $85,000, which includes content creation, design, and distribution costs."
+        ],
+        "question": "What is the estimated budget for the campaign?",
+        "question_kr": "캠페인의 예상 예산은 얼마인가?",
+        "choices": [
+          "(A) $50,000",
+          "(B) $75,000",
+          "(C) $85,000",
+          "(D) $100,000"
+        ],
+        "choices_kr": [
+          "(A) $50,000",
+          "(B) $75,000",
+          "(C) $85,000",
+          "(D) $100,000"
+        ],
+        "answer": 2,
+        "kr": "제안서는 25~44세 독자층의 목표 인구 통계에 도달하도록 설계된 인쇄, 디지털, 소셜 미디어 요소를 결합한 멀티채널 전략을 개요한다. 전체 캠페인의 예상 예산은 콘텐츠 제작, 디자인, 배포 비용을 포함하여 $85,000이다.",
+        "expressions": [
+          {
+            "expr": "multi-channel strategy",
+            "meaning": "멀티채널 전략"
+          },
+          {
+            "expr": "target demographic",
+            "meaning": "목표 인구 통계"
+          },
+          {
+            "expr": "content creation",
+            "meaning": "콘텐츠 제작"
+          }
+        ]
+      },
+      {
+        "q_type": "inference",
+        "sentences": [
+          "We have previously collaborated with three other major publishing houses on similar catalogue campaigns and would be happy to provide references upon request.",
+          "I would welcome the opportunity to present the proposal in person at a time that suits your schedule."
+        ],
+        "question": "What can be inferred about Blue Horizon Creative Agency?",
+        "question_kr": "Blue Horizon Creative Agency에 대해 추론할 수 있는 것은?",
+        "choices": [
+          "(A) It is a newly established company",
+          "(B) It has experience in publishing-related campaigns",
+          "(C) It only works with digital media platforms",
+          "(D) It is based in the same city as Aldermoor Publishing"
+        ],
+        "choices_kr": [
+          "(A) 새로 설립된 회사이다",
+          "(B) 출판 관련 캠페인 경험이 있다",
+          "(C) 디지털 미디어 플랫폼하고만 일한다",
+          "(D) Aldermoor Publishing과 같은 도시에 있다"
+        ],
+        "answer": 1,
+        "kr": "저희는 이전에 유사한 카탈로그 캠페인으로 다른 세 개의 주요 출판사와 협력했으며 요청 시 기꺼이 참고인을 제공한다. 저는 귀하의 일정에 맞는 시간에 직접 제안서를 발표할 기회를 환영합니다.",
+        "expressions": [
+          {
+            "expr": "collaborated with",
+            "meaning": "~와 협력하다"
+          },
+          {
+            "expr": "provide references",
+            "meaning": "참고인을 제공하다"
+          },
+          {
+            "expr": "present in person",
+            "meaning": "직접 발표하다"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "title": "✉️ CIPHER",
+    "steps": [
+      {
+        "q_type": "who",
+        "sentences": [
+          "Dear Mr. Romano, I am reaching out on behalf of the student council of Blackwood University to request your participation as a guest speaker at our annual Leadership Summit on April 19.",
+          "As the founder of three successful social enterprises, your insights on ethical leadership and sustainable business practices would be invaluable to our student audience."
+        ],
+        "question": "Who is the intended recipient of this letter?",
+        "question_kr": "이 편지의 의도된 수신인은 누구인가?",
+        "choices": [
+          "(A) A university professor who teaches business",
+          "(B) A successful entrepreneur being invited to speak",
+          "(C) A student applying for a leadership award",
+          "(D) A university administrator reviewing an event"
+        ],
+        "choices_kr": [
+          "(A) 경영학을 가르치는 대학교 교수",
+          "(B) 연설에 초대된 성공한 기업가",
+          "(C) 리더십 상을 신청하는 학생",
+          "(D) 행사를 검토하는 대학교 행정관"
+        ],
+        "answer": 1,
+        "kr": "Romano 씨께, 4월 19일 저희의 연간 Leadership Summit에 초청 연사로 참여해 주시기를 요청하기 위해 Blackwood University 학생회를 대표하여 연락드립니다. 세 개의 성공적인 사회적 기업의 설립자로서, 윤리적 리더십과 지속 가능한 비즈니스 관행에 대한 귀하의 통찰력은 저희 학생 청중에게 매우 귀중할 것이다.",
+        "expressions": [
+          {
+            "expr": "guest speaker",
+            "meaning": "초청 연사"
+          },
+          {
+            "expr": "social enterprises",
+            "meaning": "사회적 기업"
+          },
+          {
+            "expr": "ethical leadership",
+            "meaning": "윤리적 리더십"
+          }
+        ]
+      },
+      {
+        "q_type": "detail",
+        "sentences": [
+          "The summit will be held in the Kennedy Auditorium and is expected to attract approximately 400 students, faculty, and local business professionals.",
+          "We are requesting a 45-minute keynote address followed by a 15-minute Q&A session."
+        ],
+        "question": "How long is the requested keynote address?",
+        "question_kr": "요청된 기조 연설은 얼마나 길어야 하는가?",
+        "choices": [
+          "(A) 30 minutes",
+          "(B) 45 minutes",
+          "(C) 60 minutes",
+          "(D) 90 minutes"
+        ],
+        "choices_kr": [
+          "(A) 30분",
+          "(B) 45분",
+          "(C) 60분",
+          "(D) 90분"
+        ],
+        "answer": 1,
+        "kr": "정상 회담은 Kennedy Auditorium에서 개최되며 약 400명의 학생, 교수진, 지역 비즈니스 전문가를 유치할 것으로 예상된다. 저희는 15분의 Q&A 세션이 뒤따르는 45분의 기조 연설을 요청하고 있다.",
+        "expressions": [
+          {
+            "expr": "keynote address",
+            "meaning": "기조 연설"
+          },
+          {
+            "expr": "Q&A session",
+            "meaning": "질의응답 세션"
+          },
+          {
+            "expr": "faculty",
+            "meaning": "교수진"
+          }
+        ]
+      },
+      {
+        "q_type": "inference",
+        "sentences": [
+          "We are able to provide an honorarium of $500 and will cover all travel and accommodation expenses for the day.",
+          "Please let us know by March 25 whether you are able to accept this invitation, and we will send you further details about the event format and logistics."
+        ],
+        "question": "What is implied about the event organizers?",
+        "question_kr": "행사 주최자들에 대해 추론할 수 있는 것은?",
+        "choices": [
+          "(A) They have a limited budget for the event",
+          "(B) They are willing to cover the speaker's costs",
+          "(C) They expect the speaker to bring their own materials",
+          "(D) They are unsure about the event date"
+        ],
+        "choices_kr": [
+          "(A) 행사 예산이 제한적이다",
+          "(B) 연사의 비용을 부담할 의향이 있다",
+          "(C) 연사가 자신의 자료를 가져올 것을 기대한다",
+          "(D) 행사 날짜에 대해 확실하지 않다"
+        ],
+        "answer": 1,
+        "kr": "저희는 $500의 사례비를 제공할 수 있으며 당일 모든 여행 및 숙박 비용을 부담한다. 이 초대를 수락할 수 있는지 3월 25일까지 알려주시면 행사 형식과 물류에 대한 추가 세부 정보를 보내드리겠습니다.",
+        "expressions": [
+          {
+            "expr": "honorarium",
+            "meaning": "사례비"
+          },
+          {
+            "expr": "accommodation expenses",
+            "meaning": "숙박 비용"
+          },
+          {
+            "expr": "logistics",
+            "meaning": "물류, 세부 사항"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "title": "✉️ CIPHER",
+    "steps": [
+      {
+        "q_type": "who",
+        "sentences": [
+          "Dear Mr. Fleming, I am writing to inform you that your application for the Sunrise Cottage rental property at 14 Bayshore Lane has been approved.",
+          "As the property manager at Coastal Retreats Ltd., I am pleased to confirm that the cottage will be available for your requested dates of July 12 to July 26."
+        ],
+        "question": "Who most likely wrote this letter?",
+        "question_kr": "이 편지를 쓴 사람은 누구일 가능성이 가장 높은가?",
+        "choices": [
+          "(A) The owner of the cottage personally",
+          "(B) A property management company representative",
+          "(C) A travel agency booking agent",
+          "(D) A local government housing official"
+        ],
+        "choices_kr": [
+          "(A) 별장의 소유자 개인",
+          "(B) 부동산 관리 회사 대표",
+          "(C) 여행사 예약 담당자",
+          "(D) 지역 정부 주택 담당자"
+        ],
+        "answer": 1,
+        "kr": "Fleming 씨께, 14 Bayshore Lane의 Sunrise Cottage 임대 부동산에 대한 귀하의 신청이 승인되었음을 알리기 위해 편지를 씁니다. Coastal Retreats Ltd.의 부동산 관리자로서, 7월 12일부터 7월 26일까지 귀하가 요청한 날짜에 별장이 이용 가능함을 확인하게 되어 기쁩니다.",
+        "expressions": [
+          {
+            "expr": "rental property",
+            "meaning": "임대 부동산"
+          },
+          {
+            "expr": "property manager",
+            "meaning": "부동산 관리자"
+          },
+          {
+            "expr": "confirm availability",
+            "meaning": "이용 가능함을 확인하다"
+          }
+        ]
+      },
+      {
+        "q_type": "detail",
+        "sentences": [
+          "The total rental fee for the two-week stay is $2,800, with a security deposit of $400 required upon booking confirmation.",
+          "Full payment of the remaining balance must be received no later than June 30."
+        ],
+        "question": "By when must the full payment be received?",
+        "question_kr": "전액 결제는 언제까지 받아야 하는가?",
+        "choices": [
+          "(A) At the time of check-in",
+          "(B) By June 30",
+          "(C) By July 12",
+          "(D) By July 26"
+        ],
+        "choices_kr": [
+          "(A) 체크인 시",
+          "(B) 6월 30일까지",
+          "(C) 7월 12일까지",
+          "(D) 7월 26일까지"
+        ],
+        "answer": 1,
+        "kr": "2주 숙박의 총 임대료는 $2,800이며 예약 확인 시 $400의 보증금이 필요하다. 나머지 잔액의 전액 결제는 6월 30일까지 받아야 한다.",
+        "expressions": [
+          {
+            "expr": "security deposit",
+            "meaning": "보증금"
+          },
+          {
+            "expr": "full payment",
+            "meaning": "전액 결제"
+          },
+          {
+            "expr": "remaining balance",
+            "meaning": "나머지 잔액"
+          }
+        ]
+      },
+      {
+        "q_type": "inference",
+        "sentences": [
+          "The cottage is equipped with a full kitchen, outdoor barbecue area, and direct beach access, making it ideal for families and groups of up to six people.",
+          "Please review the attached house rules and local area guide before your arrival."
+        ],
+        "question": "What can be inferred about Mr. Fleming's stay?",
+        "question_kr": "Fleming 씨의 숙박에 대해 추론할 수 있는 것은?",
+        "choices": [
+          "(A) He will be staying alone",
+          "(B) He may be traveling with family or a group",
+          "(C) He has stayed at the cottage before",
+          "(D) He plans to extend his stay beyond July 26"
+        ],
+        "choices_kr": [
+          "(A) 혼자 숙박할 것이다",
+          "(B) 가족이나 그룹과 함께 여행할 수 있다",
+          "(C) 이전에 별장에 묵은 적이 있다",
+          "(D) 7월 26일 이후로 숙박을 연장할 계획이다"
+        ],
+        "answer": 1,
+        "kr": "별장에는 풀 주방, 야외 바비큐 구역, 직접 해변 접근이 갖춰져 있어 최대 6명의 가족과 그룹에 이상적이다. 도착 전에 첨부된 하우스 규칙과 지역 안내서를 검토해 주세요.",
+        "expressions": [
+          {
+            "expr": "direct beach access",
+            "meaning": "직접 해변 접근"
+          },
+          {
+            "expr": "house rules",
+            "meaning": "하우스 규칙"
+          },
+          {
+            "expr": "ideal for families",
+            "meaning": "가족에게 이상적인"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "title": "✉️ CIPHER",
+    "steps": [
+      {
+        "q_type": "who",
+        "sentences": [
+          "Dear Board of Directors, I am writing to formally submit my resignation as Chief Financial Officer of Meridan Logistics, effective March 31.",
+          "This decision has not been made lightly, as I have greatly valued my eight years with this organization and the relationships I have built with each of you."
+        ],
+        "question": "Who wrote this letter?",
+        "question_kr": "이 편지를 쓴 사람은 누구인가?",
+        "choices": [
+          "(A) A newly hired CFO joining the company",
+          "(B) An executive resigning from the company",
+          "(C) An investor withdrawing from the board",
+          "(D) A consultant presenting a business proposal"
+        ],
+        "choices_kr": [
+          "(A) 회사에 합류하는 새로 채용된 CFO",
+          "(B) 회사에서 사임하는 임원",
+          "(C) 이사회에서 탈퇴하는 투자자",
+          "(D) 사업 제안서를 발표하는 컨설턴트"
+        ],
+        "answer": 1,
+        "kr": "이사회 귀중, 3월 31일부로 Meridan Logistics의 최고 재무 책임자직을 공식적으로 사임하기 위해 편지를 씁니다. 이 결정은 가볍게 내린 것이 아니며, 이 조직에서의 8년과 여러분 각각과 쌓아온 관계를 매우 소중하게 여겼습니다.",
+        "expressions": [
+          {
+            "expr": "formally submit my resignation",
+            "meaning": "공식적으로 사임서를 제출하다"
+          },
+          {
+            "expr": "effective March 31",
+            "meaning": "3월 31일부로"
+          },
+          {
+            "expr": "has not been made lightly",
+            "meaning": "가볍게 내린 결정이 아니다"
+          }
+        ]
+      },
+      {
+        "q_type": "detail",
+        "sentences": [
+          "I am committed to ensuring a seamless transition and will work closely with the incoming CFO and my team over the next six weeks to transfer all responsibilities.",
+          "A comprehensive handover document covering all active projects, financial processes, and key contacts will be prepared by March 15."
+        ],
+        "question": "By when will the handover document be ready?",
+        "question_kr": "인수인계 문서는 언제까지 준비되는가?",
+        "choices": [
+          "(A) February 28",
+          "(B) March 15",
+          "(C) March 31",
+          "(D) April 15"
+        ],
+        "choices_kr": [
+          "(A) 2월 28일",
+          "(B) 3월 15일",
+          "(C) 3월 31일",
+          "(D) 4월 15일"
+        ],
+        "answer": 1,
+        "kr": "저는 원활한 전환을 보장하기 위해 헌신하며 다음 6주 동안 후임 CFO 및 팀과 긴밀히 협력하여 모든 책임을 이전할 것이다. 모든 활성 프로젝트, 재무 프로세스, 주요 연락처를 다루는 포괄적인 인수인계 문서는 3월 15일까지 준비될 것이다.",
+        "expressions": [
+          {
+            "expr": "seamless transition",
+            "meaning": "원활한 전환"
+          },
+          {
+            "expr": "handover document",
+            "meaning": "인수인계 문서"
+          },
+          {
+            "expr": "incoming CFO",
+            "meaning": "후임 CFO"
+          }
+        ]
+      },
+      {
+        "q_type": "inference",
+        "sentences": [
+          "I have accepted an exciting opportunity to lead the financial operations of a start-up focused on sustainable infrastructure, which aligns more closely with my long-term career goals.",
+          "I am deeply grateful for the trust and support the board has shown me throughout my tenure."
+        ],
+        "question": "Why did the CFO decide to resign?",
+        "question_kr": "CFO가 사임을 결정한 이유는 무엇인가?",
+        "choices": [
+          "(A) She was asked to leave by the board",
+          "(B) She received a new career opportunity elsewhere",
+          "(C) She plans to start her own financial consulting firm",
+          "(D) She is retiring from the workforce entirely"
+        ],
+        "choices_kr": [
+          "(A) 이사회로부터 떠나달라는 요청을 받았다",
+          "(B) 다른 곳에서 새로운 취업 기회를 받았다",
+          "(C) 자신의 재무 컨설팅 회사를 시작할 계획이다",
+          "(D) 전적으로 직장에서 은퇴한다"
+        ],
+        "answer": 1,
+        "kr": "저는 지속 가능한 인프라에 초점을 맞춘 스타트업의 재무 운영을 이끄는 흥미로운 기회를 수락했으며, 이것은 제 장기적인 커리어 목표와 더 밀접하게 일치한다. 재직 기간 동안 이사회가 보여준 신뢰와 지원에 깊이 감사드립니다.",
+        "expressions": [
+          {
+            "expr": "sustainable infrastructure",
+            "meaning": "지속 가능한 인프라"
+          },
+          {
+            "expr": "long-term career goals",
+            "meaning": "장기적인 커리어 목표"
+          },
+          {
+            "expr": "throughout my tenure",
+            "meaning": "재직 기간 동안"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "title": "✉️ CIPHER",
+    "steps": [
+      {
+        "q_type": "who",
+        "sentences": [
+          "Dear Ms. O'Brien, I am contacting you as the winner of this year's Regional Short Story Competition, organized by the Lakewood Writers' Guild.",
+          "On behalf of all the judges, I am delighted to inform you that your story, 'The Last Garden,' received the highest score across all categories including originality, narrative structure, and emotional impact."
+        ],
+        "question": "Who is the letter addressed to?",
+        "question_kr": "편지가 누구에게 보내진 것인가?",
+        "choices": [
+          "(A) A competition judge",
+          "(B) A competition winner",
+          "(C) A literary magazine editor",
+          "(D) A competition organizer"
+        ],
+        "choices_kr": [
+          "(A) 심사위원",
+          "(B) 대회 우승자",
+          "(C) 문학 잡지 편집자",
+          "(D) 대회 주최자"
+        ],
+        "answer": 1,
+        "kr": "O'Brien 씨께, Lakewood Writers' Guild가 주최하는 올해 지역 단편 소설 대회의 우승자로서 연락드립니다. 모든 심사위원을 대표하여 귀하의 소설 'The Last Garden'이 독창성, 서사 구조, 감성적 임팩트를 포함한 모든 카테고리에서 가장 높은 점수를 받았음을 알리게 되어 기쁩니다.",
+        "expressions": [
+          {
+            "expr": "Short Story Competition",
+            "meaning": "단편 소설 대회"
+          },
+          {
+            "expr": "on behalf of the judges",
+            "meaning": "심사위원들을 대표하여"
+          },
+          {
+            "expr": "narrative structure",
+            "meaning": "서사 구조"
+          }
+        ]
+      },
+      {
+        "q_type": "detail",
+        "sentences": [
+          "You will receive a prize of $1,500, a one-year membership to the Writers' Guild, and your story will be published in the spring edition of our literary journal, Lakewood Review.",
+          "We ask that you attend the award ceremony on May 10 at the Lakewood Library, where you will be invited to read an excerpt from your story."
+        ],
+        "question": "Where will the award ceremony be held?",
+        "question_kr": "시상식은 어디서 열리는가?",
+        "choices": [
+          "(A) At the Lakewood Writers' Guild office",
+          "(B) At the Lakewood Library",
+          "(C) At a local university auditorium",
+          "(D) At a downtown hotel ballroom"
+        ],
+        "choices_kr": [
+          "(A) Lakewood Writers' Guild 사무실",
+          "(B) Lakewood Library",
+          "(C) 지역 대학교 강당",
+          "(D) 시내 호텔 볼룸"
+        ],
+        "answer": 1,
+        "kr": "귀하는 $1,500의 상금, Writers' Guild 1년 회원권을 받으며 귀하의 소설은 저희 문학 저널 Lakewood Review의 봄 호에 게재된다. 5월 10일 Lakewood Library에서 열리는 시상식에 참석하여 소설의 발췌문을 읽어 주시기 바랍니다.",
+        "expressions": [
+          {
+            "expr": "award ceremony",
+            "meaning": "시상식"
+          },
+          {
+            "expr": "read an excerpt",
+            "meaning": "발췌문을 읽다"
+          },
+          {
+            "expr": "literary journal",
+            "meaning": "문학 저널"
+          }
+        ]
+      },
+      {
+        "q_type": "inference",
+        "sentences": [
+          "This year's competition attracted 312 submissions from across the region, the highest number in the Guild's 25-year history.",
+          "Your win reflects not only your writing talent but also the authentic voice and lived experience evident in your storytelling."
+        ],
+        "question": "What is implied about the competition?",
+        "question_kr": "대회에 대해 추론할 수 있는 것은?",
+        "choices": [
+          "(A) It was less popular than in previous years",
+          "(B) It had record-breaking participation this year",
+          "(C) It is being held for the first time",
+          "(D) Only professional writers were eligible to enter"
+        ],
+        "choices_kr": [
+          "(A) 이전 해보다 인기가 낮았다",
+          "(B) 올해 기록적인 참가를 기록했다",
+          "(C) 처음으로 개최된다",
+          "(D) 전문 작가만 참가 자격이 있었다"
+        ],
+        "answer": 1,
+        "kr": "올해 대회는 이 지역 전역에서 312건의 제출을 유치했으며 Guild의 25년 역사상 가장 많은 수이다. 귀하의 수상은 작가로서의 재능뿐만 아니라 스토리텔링에서 나타나는 진정한 목소리와 삶의 경험을 반영한다.",
+        "expressions": [
+          {
+            "expr": "record number of submissions",
+            "meaning": "기록적인 제출 수"
+          },
+          {
+            "expr": "authentic voice",
+            "meaning": "진정한 목소리"
+          },
+          {
+            "expr": "lived experience",
+            "meaning": "삶의 경험"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "title": "✉️ CIPHER",
+    "steps": [
+      {
+        "q_type": "who",
+        "sentences": [
+          "Dear Mr. Sullivan, I am writing to express my sincere gratitude for the professional development scholarship I received from the Sullivan Foundation last month.",
+          "As a nurse working in a rural community clinic, this funding has made it possible for me to enroll in an advanced emergency care certification program that would otherwise have been financially out of reach."
+        ],
+        "question": "Who most likely wrote this letter?",
+        "question_kr": "이 편지를 쓴 사람은 누구일 가능성이 가장 높은가?",
+        "choices": [
+          "(A) A foundation board member",
+          "(B) A scholarship recipient working in healthcare",
+          "(C) A university financial aid officer",
+          "(D) A hospital administrator requesting funding"
+        ],
+        "choices_kr": [
+          "(A) 재단 이사회 구성원",
+          "(B) 의료 분야에서 일하는 장학금 수혜자",
+          "(C) 대학교 장학금 담당자",
+          "(D) 자금을 요청하는 병원 행정관"
+        ],
+        "answer": 1,
+        "kr": "Sullivan 씨께, 지난달 Sullivan Foundation으로부터 받은 전문성 개발 장학금에 진심으로 감사를 표현하기 위해 편지를 씁니다. 농촌 지역 클리닉에서 근무하는 간호사로서, 이 자금 덕분에 그렇지 않았으면 재정적으로 감당할 수 없었을 고급 응급 처치 자격증 프로그램에 등록할 수 있게 되었습니다.",
+        "expressions": [
+          {
+            "expr": "professional development scholarship",
+            "meaning": "전문성 개발 장학금"
+          },
+          {
+            "expr": "rural community clinic",
+            "meaning": "농촌 지역 클리닉"
+          },
+          {
+            "expr": "financially out of reach",
+            "meaning": "재정적으로 감당할 수 없는"
+          }
+        ]
+      },
+      {
+        "q_type": "detail",
+        "sentences": [
+          "The program runs for six months and will equip me with skills in trauma response, cardiac emergencies, and pediatric care that are critically needed in my area.",
+          "Upon completion, I plan to offer free workshops to community members on basic first aid and emergency preparedness."
+        ],
+        "question": "What does the writer plan to do after completing the program?",
+        "question_kr": "작성자는 프로그램 완료 후 무엇을 할 계획인가?",
+        "choices": [
+          "(A) Apply for a position at a large urban hospital",
+          "(B) Offer free first aid workshops to the community",
+          "(C) Begin teaching nursing at a local college",
+          "(D) Start a private medical practice"
+        ],
+        "choices_kr": [
+          "(A) 대형 도시 병원의 직책에 지원",
+          "(B) 지역 사회에 무료 응급 처치 워크숍 제공",
+          "(C) 지역 대학에서 간호학 강의 시작",
+          "(D) 개인 의료 행위 시작"
+        ],
+        "answer": 1,
+        "kr": "프로그램은 6개월 동안 진행되며 제가 있는 지역에서 매우 필요한 외상 대응, 심장 응급 상황, 소아과 진료 기술을 갖추게 해준다. 완료 후 지역 사회 구성원들에게 기본 응급 처치와 비상 대비에 관한 무료 워크숍을 제공할 계획이다.",
+        "expressions": [
+          {
+            "expr": "trauma response",
+            "meaning": "외상 대응"
+          },
+          {
+            "expr": "cardiac emergencies",
+            "meaning": "심장 응급 상황"
+          },
+          {
+            "expr": "emergency preparedness",
+            "meaning": "비상 대비"
+          }
+        ]
+      },
+      {
+        "q_type": "inference",
+        "sentences": [
+          "Healthcare access remains a persistent challenge in my region, where the nearest hospital is over 45 minutes away and specialist services are virtually unavailable.",
+          "Your foundation's investment in frontline health workers like me directly translates into better outcomes for the communities we serve."
+        ],
+        "question": "What is implied about the writer's community?",
+        "question_kr": "작성자의 지역 사회에 대해 추론할 수 있는 것은?",
+        "choices": [
+          "(A) It has an abundance of healthcare facilities",
+          "(B) It has limited access to medical services",
+          "(C) It recently received major government health funding",
+          "(D) It is located in a large metropolitan area"
+        ],
+        "choices_kr": [
+          "(A) 풍부한 의료 시설이 있다",
+          "(B) 의료 서비스에 대한 접근이 제한적이다",
+          "(C) 최근 대규모 정부 의료 자금을 받았다",
+          "(D) 대형 대도시 지역에 위치해 있다"
+        ],
+        "answer": 1,
+        "kr": "의료 접근은 제 지역에서 지속적인 과제로 남아 있으며, 가장 가까운 병원까지 45분 이상 걸리고 전문가 서비스는 사실상 이용 불가하다. 저와 같은 일선 의료 종사자에 대한 귀하의 재단의 투자는 저희가 서비스를 제공하는 지역 사회의 더 나은 결과로 직결된다.",
+        "expressions": [
+          {
+            "expr": "persistent challenge",
+            "meaning": "지속적인 과제"
+          },
+          {
+            "expr": "frontline health workers",
+            "meaning": "일선 의료 종사자"
+          },
+          {
+            "expr": "directly translates into",
+            "meaning": "~로 직결되다"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "title": "✉️ CIPHER",
+    "steps": [
+      {
+        "q_type": "who",
+        "sentences": [
+          "Dear Ms. Kim, I am writing regarding 내부 감사 결과 통보 and wish to address this matter as promptly as possible.",
+          "As the compliance officer, I believe this communication is essential to ensure a clear and productive resolution for all parties involved."
+        ],
+        "question": "Who most likely wrote this letter?",
+        "question_kr": "이 편지를 쓴 사람은 누구일 가능성이 가장 높은가?",
+        "choices": [
+          "(A) A CFO",
+          "(B) A compliance officer",
+          "(C) A government official",
+          "(D) An independent mediator"
+        ],
+        "choices_kr": [
+          "(A) CFO",
+          "(B) compliance officer",
+          "(C) 정부 관리",
+          "(D) 독립적인 중재자"
+        ],
+        "answer": 1,
+        "kr": "내부 감사 결과 통보에 관해 가능한 한 신속하게 이 문제를 해결하기 위해 편지를 씁니다. compliance officer로서, 이 소통이 관련된 모든 당사자들에게 명확하고 생산적인 해결을 보장하는 데 필수적이라고 생각합니다.",
+        "expressions": [
+          {
+            "expr": "as promptly as possible",
+            "meaning": "가능한 한 신속하게"
+          },
+          {
+            "expr": "ensure a clear resolution",
+            "meaning": "명확한 해결을 보장하다"
+          },
+          {
+            "expr": "all parties involved",
+            "meaning": "관련된 모든 당사자"
+          }
+        ]
+      },
+      {
+        "q_type": "detail",
+        "sentences": [
+          "We kindly request that you review the attached documentation related to audit findings and provide a response within five business days.",
+          "Should you require any additional information or clarification, please do not hesitate to contact our office directly."
+        ],
+        "question": "What is the writer requesting?",
+        "question_kr": "작성자가 요청하는 것은?",
+        "choices": [
+          "(A) Immediate payment for services rendered",
+          "(B) Review of attached documents and a response",
+          "(C) A face-to-face meeting at the earliest opportunity",
+          "(D) A written guarantee from senior management"
+        ],
+        "choices_kr": [
+          "(A) 서비스 비용의 즉시 결제",
+          "(B) 첨부 서류 검토와 회신",
+          "(C) 가능한 빠른 시일 내 대면 미팅",
+          "(D) 고위 경영진의 서면 보장"
+        ],
+        "answer": 1,
+        "kr": "audit findings와 관련된 첨부 서류를 검토하고 5영업일 이내에 답변을 제공해 주시기 바랍니다. 추가 정보나 명확화가 필요하신 경우 주저하지 마시고 저희 사무소에 직접 연락해 주세요.",
+        "expressions": [
+          {
+            "expr": "attached documentation",
+            "meaning": "첨부 서류"
+          },
+          {
+            "expr": "business days",
+            "meaning": "영업일"
+          },
+          {
+            "expr": "do not hesitate to",
+            "meaning": "주저하지 마시고 ~하세요"
+          }
+        ]
+      },
+      {
+        "q_type": "inference",
+        "sentences": [
+          "We value our ongoing professional relationship and hope that this matter can be resolved in a manner that is mutually beneficial.",
+          "Please be assured that we remain committed to maintaining open communication and working collaboratively toward a satisfactory outcome."
+        ],
+        "question": "What is implied about the relationship between the writer and recipient?",
+        "question_kr": "작성자와 수신인의 관계에 대해 추론할 수 있는 것은?",
+        "choices": [
+          "(A) They have never communicated before",
+          "(B) They have an existing professional relationship",
+          "(C) They are in a legal dispute",
+          "(D) They are colleagues at the same company"
+        ],
+        "choices_kr": [
+          "(A) 이전에 소통한 적이 없다",
+          "(B) 기존의 전문적인 관계가 있다",
+          "(C) 법적 분쟁 중이다",
+          "(D) 같은 회사의 동료이다"
+        ],
+        "answer": 1,
+        "kr": "저희는 지속적인 전문적 관계를 소중히 여기며 이 문제가 상호 이익이 되는 방식으로 해결되기를 희망한다. 저희는 개방적인 소통을 유지하고 만족스러운 결과를 향해 협력적으로 일하기 위해 헌신하고 있음을 안심하셔도 됩니다.",
+        "expressions": [
+          {
+            "expr": "mutually beneficial",
+            "meaning": "상호 이익이 되는"
+          },
+          {
+            "expr": "open communication",
+            "meaning": "개방적인 소통"
+          },
+          {
+            "expr": "satisfactory outcome",
+            "meaning": "만족스러운 결과"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "title": "✉️ CIPHER",
+    "steps": [
+      {
+        "q_type": "who",
+        "sentences": [
+          "Dear Mr. Park, I am writing regarding 공급업체 계약 갱신 요청 and wish to address this matter as promptly as possible.",
+          "As the procurement manager, I believe this communication is essential to ensure a clear and productive resolution for all parties involved."
+        ],
+        "question": "Who most likely wrote this letter?",
+        "question_kr": "이 편지를 쓴 사람은 누구일 가능성이 가장 높은가?",
+        "choices": [
+          "(A) A supplier",
+          "(B) A procurement manager",
+          "(C) A government official",
+          "(D) An independent mediator"
+        ],
+        "choices_kr": [
+          "(A) supplier",
+          "(B) procurement manager",
+          "(C) 정부 관리",
+          "(D) 독립적인 중재자"
+        ],
+        "answer": 1,
+        "kr": "공급업체 계약 갱신 요청에 관해 가능한 한 신속하게 이 문제를 해결하기 위해 편지를 씁니다. procurement manager로서, 이 소통이 관련된 모든 당사자들에게 명확하고 생산적인 해결을 보장하는 데 필수적이라고 생각합니다.",
+        "expressions": [
+          {
+            "expr": "as promptly as possible",
+            "meaning": "가능한 한 신속하게"
+          },
+          {
+            "expr": "ensure a clear resolution",
+            "meaning": "명확한 해결을 보장하다"
+          },
+          {
+            "expr": "all parties involved",
+            "meaning": "관련된 모든 당사자"
+          }
+        ]
+      },
+      {
+        "q_type": "detail",
+        "sentences": [
+          "We kindly request that you review the attached documentation related to contract renewal and provide a response within five business days.",
+          "Should you require any additional information or clarification, please do not hesitate to contact our office directly."
+        ],
+        "question": "What is the writer requesting?",
+        "question_kr": "작성자가 요청하는 것은?",
+        "choices": [
+          "(A) Immediate payment for services rendered",
+          "(B) Review of attached documents and a response",
+          "(C) A face-to-face meeting at the earliest opportunity",
+          "(D) A written guarantee from senior management"
+        ],
+        "choices_kr": [
+          "(A) 서비스 비용의 즉시 결제",
+          "(B) 첨부 서류 검토와 회신",
+          "(C) 가능한 빠른 시일 내 대면 미팅",
+          "(D) 고위 경영진의 서면 보장"
+        ],
+        "answer": 1,
+        "kr": "contract renewal와 관련된 첨부 서류를 검토하고 5영업일 이내에 답변을 제공해 주시기 바랍니다. 추가 정보나 명확화가 필요하신 경우 주저하지 마시고 저희 사무소에 직접 연락해 주세요.",
+        "expressions": [
+          {
+            "expr": "attached documentation",
+            "meaning": "첨부 서류"
+          },
+          {
+            "expr": "business days",
+            "meaning": "영업일"
+          },
+          {
+            "expr": "do not hesitate to",
+            "meaning": "주저하지 마시고 ~하세요"
+          }
+        ]
+      },
+      {
+        "q_type": "inference",
+        "sentences": [
+          "We value our ongoing professional relationship and hope that this matter can be resolved in a manner that is mutually beneficial.",
+          "Please be assured that we remain committed to maintaining open communication and working collaboratively toward a satisfactory outcome."
+        ],
+        "question": "What is implied about the relationship between the writer and recipient?",
+        "question_kr": "작성자와 수신인의 관계에 대해 추론할 수 있는 것은?",
+        "choices": [
+          "(A) They have never communicated before",
+          "(B) They have an existing professional relationship",
+          "(C) They are in a legal dispute",
+          "(D) They are colleagues at the same company"
+        ],
+        "choices_kr": [
+          "(A) 이전에 소통한 적이 없다",
+          "(B) 기존의 전문적인 관계가 있다",
+          "(C) 법적 분쟁 중이다",
+          "(D) 같은 회사의 동료이다"
+        ],
+        "answer": 1,
+        "kr": "저희는 지속적인 전문적 관계를 소중히 여기며 이 문제가 상호 이익이 되는 방식으로 해결되기를 희망한다. 저희는 개방적인 소통을 유지하고 만족스러운 결과를 향해 협력적으로 일하기 위해 헌신하고 있음을 안심하셔도 됩니다.",
+        "expressions": [
+          {
+            "expr": "mutually beneficial",
+            "meaning": "상호 이익이 되는"
+          },
+          {
+            "expr": "open communication",
+            "meaning": "개방적인 소통"
+          },
+          {
+            "expr": "satisfactory outcome",
+            "meaning": "만족스러운 결과"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "title": "✉️ CIPHER",
+    "steps": [
+      {
+        "q_type": "who",
+        "sentences": [
+          "Dear Ms. Lee, I am writing regarding 컨퍼런스 발표 초청 and wish to address this matter as promptly as possible.",
+          "As the conference coordinator, I believe this communication is essential to ensure a clear and productive resolution for all parties involved."
+        ],
+        "question": "Who most likely wrote this letter?",
+        "question_kr": "이 편지를 쓴 사람은 누구일 가능성이 가장 높은가?",
+        "choices": [
+          "(A) A industry expert",
+          "(B) A conference coordinator",
+          "(C) A government official",
+          "(D) An independent mediator"
+        ],
+        "choices_kr": [
+          "(A) industry expert",
+          "(B) conference coordinator",
+          "(C) 정부 관리",
+          "(D) 독립적인 중재자"
+        ],
+        "answer": 1,
+        "kr": "컨퍼런스 발표 초청에 관해 가능한 한 신속하게 이 문제를 해결하기 위해 편지를 씁니다. conference coordinator로서, 이 소통이 관련된 모든 당사자들에게 명확하고 생산적인 해결을 보장하는 데 필수적이라고 생각합니다.",
+        "expressions": [
+          {
+            "expr": "as promptly as possible",
+            "meaning": "가능한 한 신속하게"
+          },
+          {
+            "expr": "ensure a clear resolution",
+            "meaning": "명확한 해결을 보장하다"
+          },
+          {
+            "expr": "all parties involved",
+            "meaning": "관련된 모든 당사자"
+          }
+        ]
+      },
+      {
+        "q_type": "detail",
+        "sentences": [
+          "We kindly request that you review the attached documentation related to conference presentation and provide a response within five business days.",
+          "Should you require any additional information or clarification, please do not hesitate to contact our office directly."
+        ],
+        "question": "What is the writer requesting?",
+        "question_kr": "작성자가 요청하는 것은?",
+        "choices": [
+          "(A) Immediate payment for services rendered",
+          "(B) Review of attached documents and a response",
+          "(C) A face-to-face meeting at the earliest opportunity",
+          "(D) A written guarantee from senior management"
+        ],
+        "choices_kr": [
+          "(A) 서비스 비용의 즉시 결제",
+          "(B) 첨부 서류 검토와 회신",
+          "(C) 가능한 빠른 시일 내 대면 미팅",
+          "(D) 고위 경영진의 서면 보장"
+        ],
+        "answer": 1,
+        "kr": "conference presentation와 관련된 첨부 서류를 검토하고 5영업일 이내에 답변을 제공해 주시기 바랍니다. 추가 정보나 명확화가 필요하신 경우 주저하지 마시고 저희 사무소에 직접 연락해 주세요.",
+        "expressions": [
+          {
+            "expr": "attached documentation",
+            "meaning": "첨부 서류"
+          },
+          {
+            "expr": "business days",
+            "meaning": "영업일"
+          },
+          {
+            "expr": "do not hesitate to",
+            "meaning": "주저하지 마시고 ~하세요"
+          }
+        ]
+      },
+      {
+        "q_type": "inference",
+        "sentences": [
+          "We value our ongoing professional relationship and hope that this matter can be resolved in a manner that is mutually beneficial.",
+          "Please be assured that we remain committed to maintaining open communication and working collaboratively toward a satisfactory outcome."
+        ],
+        "question": "What is implied about the relationship between the writer and recipient?",
+        "question_kr": "작성자와 수신인의 관계에 대해 추론할 수 있는 것은?",
+        "choices": [
+          "(A) They have never communicated before",
+          "(B) They have an existing professional relationship",
+          "(C) They are in a legal dispute",
+          "(D) They are colleagues at the same company"
+        ],
+        "choices_kr": [
+          "(A) 이전에 소통한 적이 없다",
+          "(B) 기존의 전문적인 관계가 있다",
+          "(C) 법적 분쟁 중이다",
+          "(D) 같은 회사의 동료이다"
+        ],
+        "answer": 1,
+        "kr": "저희는 지속적인 전문적 관계를 소중히 여기며 이 문제가 상호 이익이 되는 방식으로 해결되기를 희망한다. 저희는 개방적인 소통을 유지하고 만족스러운 결과를 향해 협력적으로 일하기 위해 헌신하고 있음을 안심하셔도 됩니다.",
+        "expressions": [
+          {
+            "expr": "mutually beneficial",
+            "meaning": "상호 이익이 되는"
+          },
+          {
+            "expr": "open communication",
+            "meaning": "개방적인 소통"
+          },
+          {
+            "expr": "satisfactory outcome",
+            "meaning": "만족스러운 결과"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "title": "✉️ CIPHER",
+    "steps": [
+      {
+        "q_type": "who",
+        "sentences": [
+          "Dear Mr. Chen, I am writing regarding 제품 보증 클레임 and wish to address this matter as promptly as possible.",
+          "As the customer, I believe this communication is essential to ensure a clear and productive resolution for all parties involved."
+        ],
+        "question": "Who most likely wrote this letter?",
+        "question_kr": "이 편지를 쓴 사람은 누구일 가능성이 가장 높은가?",
+        "choices": [
+          "(A) A warranty department",
+          "(B) A customer",
+          "(C) A government official",
+          "(D) An independent mediator"
+        ],
+        "choices_kr": [
+          "(A) warranty department",
+          "(B) customer",
+          "(C) 정부 관리",
+          "(D) 독립적인 중재자"
+        ],
+        "answer": 1,
+        "kr": "제품 보증 클레임에 관해 가능한 한 신속하게 이 문제를 해결하기 위해 편지를 씁니다. customer로서, 이 소통이 관련된 모든 당사자들에게 명확하고 생산적인 해결을 보장하는 데 필수적이라고 생각합니다.",
+        "expressions": [
+          {
+            "expr": "as promptly as possible",
+            "meaning": "가능한 한 신속하게"
+          },
+          {
+            "expr": "ensure a clear resolution",
+            "meaning": "명확한 해결을 보장하다"
+          },
+          {
+            "expr": "all parties involved",
+            "meaning": "관련된 모든 당사자"
+          }
+        ]
+      },
+      {
+        "q_type": "detail",
+        "sentences": [
+          "We kindly request that you review the attached documentation related to product warranty claim and provide a response within five business days.",
+          "Should you require any additional information or clarification, please do not hesitate to contact our office directly."
+        ],
+        "question": "What is the writer requesting?",
+        "question_kr": "작성자가 요청하는 것은?",
+        "choices": [
+          "(A) Immediate payment for services rendered",
+          "(B) Review of attached documents and a response",
+          "(C) A face-to-face meeting at the earliest opportunity",
+          "(D) A written guarantee from senior management"
+        ],
+        "choices_kr": [
+          "(A) 서비스 비용의 즉시 결제",
+          "(B) 첨부 서류 검토와 회신",
+          "(C) 가능한 빠른 시일 내 대면 미팅",
+          "(D) 고위 경영진의 서면 보장"
+        ],
+        "answer": 1,
+        "kr": "product warranty claim와 관련된 첨부 서류를 검토하고 5영업일 이내에 답변을 제공해 주시기 바랍니다. 추가 정보나 명확화가 필요하신 경우 주저하지 마시고 저희 사무소에 직접 연락해 주세요.",
+        "expressions": [
+          {
+            "expr": "attached documentation",
+            "meaning": "첨부 서류"
+          },
+          {
+            "expr": "business days",
+            "meaning": "영업일"
+          },
+          {
+            "expr": "do not hesitate to",
+            "meaning": "주저하지 마시고 ~하세요"
+          }
+        ]
+      },
+      {
+        "q_type": "inference",
+        "sentences": [
+          "We value our ongoing professional relationship and hope that this matter can be resolved in a manner that is mutually beneficial.",
+          "Please be assured that we remain committed to maintaining open communication and working collaboratively toward a satisfactory outcome."
+        ],
+        "question": "What is implied about the relationship between the writer and recipient?",
+        "question_kr": "작성자와 수신인의 관계에 대해 추론할 수 있는 것은?",
+        "choices": [
+          "(A) They have never communicated before",
+          "(B) They have an existing professional relationship",
+          "(C) They are in a legal dispute",
+          "(D) They are colleagues at the same company"
+        ],
+        "choices_kr": [
+          "(A) 이전에 소통한 적이 없다",
+          "(B) 기존의 전문적인 관계가 있다",
+          "(C) 법적 분쟁 중이다",
+          "(D) 같은 회사의 동료이다"
+        ],
+        "answer": 1,
+        "kr": "저희는 지속적인 전문적 관계를 소중히 여기며 이 문제가 상호 이익이 되는 방식으로 해결되기를 희망한다. 저희는 개방적인 소통을 유지하고 만족스러운 결과를 향해 협력적으로 일하기 위해 헌신하고 있음을 안심하셔도 됩니다.",
+        "expressions": [
+          {
+            "expr": "mutually beneficial",
+            "meaning": "상호 이익이 되는"
+          },
+          {
+            "expr": "open communication",
+            "meaning": "개방적인 소통"
+          },
+          {
+            "expr": "satisfactory outcome",
+            "meaning": "만족스러운 결과"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "title": "✉️ CIPHER",
+    "steps": [
+      {
+        "q_type": "who",
+        "sentences": [
+          "Dear Ms. Patel, I am writing regarding 사무실 임대 계약 해지 통보 and wish to address this matter as promptly as possible.",
+          "As the tenant company, I believe this communication is essential to ensure a clear and productive resolution for all parties involved."
+        ],
+        "question": "Who most likely wrote this letter?",
+        "question_kr": "이 편지를 쓴 사람은 누구일 가능성이 가장 높은가?",
+        "choices": [
+          "(A) A landlord",
+          "(B) A tenant company",
+          "(C) A government official",
+          "(D) An independent mediator"
+        ],
+        "choices_kr": [
+          "(A) landlord",
+          "(B) tenant company",
+          "(C) 정부 관리",
+          "(D) 독립적인 중재자"
+        ],
+        "answer": 1,
+        "kr": "사무실 임대 계약 해지 통보에 관해 가능한 한 신속하게 이 문제를 해결하기 위해 편지를 씁니다. tenant company로서, 이 소통이 관련된 모든 당사자들에게 명확하고 생산적인 해결을 보장하는 데 필수적이라고 생각합니다.",
+        "expressions": [
+          {
+            "expr": "as promptly as possible",
+            "meaning": "가능한 한 신속하게"
+          },
+          {
+            "expr": "ensure a clear resolution",
+            "meaning": "명확한 해결을 보장하다"
+          },
+          {
+            "expr": "all parties involved",
+            "meaning": "관련된 모든 당사자"
+          }
+        ]
+      },
+      {
+        "q_type": "detail",
+        "sentences": [
+          "We kindly request that you review the attached documentation related to lease termination and provide a response within five business days.",
+          "Should you require any additional information or clarification, please do not hesitate to contact our office directly."
+        ],
+        "question": "What is the writer requesting?",
+        "question_kr": "작성자가 요청하는 것은?",
+        "choices": [
+          "(A) Immediate payment for services rendered",
+          "(B) Review of attached documents and a response",
+          "(C) A face-to-face meeting at the earliest opportunity",
+          "(D) A written guarantee from senior management"
+        ],
+        "choices_kr": [
+          "(A) 서비스 비용의 즉시 결제",
+          "(B) 첨부 서류 검토와 회신",
+          "(C) 가능한 빠른 시일 내 대면 미팅",
+          "(D) 고위 경영진의 서면 보장"
+        ],
+        "answer": 1,
+        "kr": "lease termination와 관련된 첨부 서류를 검토하고 5영업일 이내에 답변을 제공해 주시기 바랍니다. 추가 정보나 명확화가 필요하신 경우 주저하지 마시고 저희 사무소에 직접 연락해 주세요.",
+        "expressions": [
+          {
+            "expr": "attached documentation",
+            "meaning": "첨부 서류"
+          },
+          {
+            "expr": "business days",
+            "meaning": "영업일"
+          },
+          {
+            "expr": "do not hesitate to",
+            "meaning": "주저하지 마시고 ~하세요"
+          }
+        ]
+      },
+      {
+        "q_type": "inference",
+        "sentences": [
+          "We value our ongoing professional relationship and hope that this matter can be resolved in a manner that is mutually beneficial.",
+          "Please be assured that we remain committed to maintaining open communication and working collaboratively toward a satisfactory outcome."
+        ],
+        "question": "What is implied about the relationship between the writer and recipient?",
+        "question_kr": "작성자와 수신인의 관계에 대해 추론할 수 있는 것은?",
+        "choices": [
+          "(A) They have never communicated before",
+          "(B) They have an existing professional relationship",
+          "(C) They are in a legal dispute",
+          "(D) They are colleagues at the same company"
+        ],
+        "choices_kr": [
+          "(A) 이전에 소통한 적이 없다",
+          "(B) 기존의 전문적인 관계가 있다",
+          "(C) 법적 분쟁 중이다",
+          "(D) 같은 회사의 동료이다"
+        ],
+        "answer": 1,
+        "kr": "저희는 지속적인 전문적 관계를 소중히 여기며 이 문제가 상호 이익이 되는 방식으로 해결되기를 희망한다. 저희는 개방적인 소통을 유지하고 만족스러운 결과를 향해 협력적으로 일하기 위해 헌신하고 있음을 안심하셔도 됩니다.",
+        "expressions": [
+          {
+            "expr": "mutually beneficial",
+            "meaning": "상호 이익이 되는"
+          },
+          {
+            "expr": "open communication",
+            "meaning": "개방적인 소통"
+          },
+          {
+            "expr": "satisfactory outcome",
+            "meaning": "만족스러운 결과"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "title": "✉️ CIPHER",
+    "steps": [
+      {
+        "q_type": "who",
+        "sentences": [
+          "Dear Mr. Garcia, I am writing regarding 인턴십 합격 통보 and wish to address this matter as promptly as possible.",
+          "As the HR coordinator, I believe this communication is essential to ensure a clear and productive resolution for all parties involved."
+        ],
+        "question": "Who most likely wrote this letter?",
+        "question_kr": "이 편지를 쓴 사람은 누구일 가능성이 가장 높은가?",
+        "choices": [
+          "(A) A internship applicant",
+          "(B) A HR coordinator",
+          "(C) A government official",
+          "(D) An independent mediator"
+        ],
+        "choices_kr": [
+          "(A) internship applicant",
+          "(B) HR coordinator",
+          "(C) 정부 관리",
+          "(D) 독립적인 중재자"
+        ],
+        "answer": 1,
+        "kr": "인턴십 합격 통보에 관해 가능한 한 신속하게 이 문제를 해결하기 위해 편지를 씁니다. HR coordinator로서, 이 소통이 관련된 모든 당사자들에게 명확하고 생산적인 해결을 보장하는 데 필수적이라고 생각합니다.",
+        "expressions": [
+          {
+            "expr": "as promptly as possible",
+            "meaning": "가능한 한 신속하게"
+          },
+          {
+            "expr": "ensure a clear resolution",
+            "meaning": "명확한 해결을 보장하다"
+          },
+          {
+            "expr": "all parties involved",
+            "meaning": "관련된 모든 당사자"
+          }
+        ]
+      },
+      {
+        "q_type": "detail",
+        "sentences": [
+          "We kindly request that you review the attached documentation related to internship offer and provide a response within five business days.",
+          "Should you require any additional information or clarification, please do not hesitate to contact our office directly."
+        ],
+        "question": "What is the writer requesting?",
+        "question_kr": "작성자가 요청하는 것은?",
+        "choices": [
+          "(A) Immediate payment for services rendered",
+          "(B) Review of attached documents and a response",
+          "(C) A face-to-face meeting at the earliest opportunity",
+          "(D) A written guarantee from senior management"
+        ],
+        "choices_kr": [
+          "(A) 서비스 비용의 즉시 결제",
+          "(B) 첨부 서류 검토와 회신",
+          "(C) 가능한 빠른 시일 내 대면 미팅",
+          "(D) 고위 경영진의 서면 보장"
+        ],
+        "answer": 1,
+        "kr": "internship offer와 관련된 첨부 서류를 검토하고 5영업일 이내에 답변을 제공해 주시기 바랍니다. 추가 정보나 명확화가 필요하신 경우 주저하지 마시고 저희 사무소에 직접 연락해 주세요.",
+        "expressions": [
+          {
+            "expr": "attached documentation",
+            "meaning": "첨부 서류"
+          },
+          {
+            "expr": "business days",
+            "meaning": "영업일"
+          },
+          {
+            "expr": "do not hesitate to",
+            "meaning": "주저하지 마시고 ~하세요"
+          }
+        ]
+      },
+      {
+        "q_type": "inference",
+        "sentences": [
+          "We value our ongoing professional relationship and hope that this matter can be resolved in a manner that is mutually beneficial.",
+          "Please be assured that we remain committed to maintaining open communication and working collaboratively toward a satisfactory outcome."
+        ],
+        "question": "What is implied about the relationship between the writer and recipient?",
+        "question_kr": "작성자와 수신인의 관계에 대해 추론할 수 있는 것은?",
+        "choices": [
+          "(A) They have never communicated before",
+          "(B) They have an existing professional relationship",
+          "(C) They are in a legal dispute",
+          "(D) They are colleagues at the same company"
+        ],
+        "choices_kr": [
+          "(A) 이전에 소통한 적이 없다",
+          "(B) 기존의 전문적인 관계가 있다",
+          "(C) 법적 분쟁 중이다",
+          "(D) 같은 회사의 동료이다"
+        ],
+        "answer": 1,
+        "kr": "저희는 지속적인 전문적 관계를 소중히 여기며 이 문제가 상호 이익이 되는 방식으로 해결되기를 희망한다. 저희는 개방적인 소통을 유지하고 만족스러운 결과를 향해 협력적으로 일하기 위해 헌신하고 있음을 안심하셔도 됩니다.",
+        "expressions": [
+          {
+            "expr": "mutually beneficial",
+            "meaning": "상호 이익이 되는"
+          },
+          {
+            "expr": "open communication",
+            "meaning": "개방적인 소통"
+          },
+          {
+            "expr": "satisfactory outcome",
+            "meaning": "만족스러운 결과"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "title": "✉️ CIPHER",
+    "steps": [
+      {
+        "q_type": "who",
+        "sentences": [
+          "Dear Ms. Johnson, I am writing regarding 프로젝트 지연 사과 이메일 and wish to address this matter as promptly as possible.",
+          "As the project manager, I believe this communication is essential to ensure a clear and productive resolution for all parties involved."
+        ],
+        "question": "Who most likely wrote this letter?",
+        "question_kr": "이 편지를 쓴 사람은 누구일 가능성이 가장 높은가?",
+        "choices": [
+          "(A) A client",
+          "(B) A project manager",
+          "(C) A government official",
+          "(D) An independent mediator"
+        ],
+        "choices_kr": [
+          "(A) client",
+          "(B) project manager",
+          "(C) 정부 관리",
+          "(D) 독립적인 중재자"
+        ],
+        "answer": 1,
+        "kr": "프로젝트 지연 사과 이메일에 관해 가능한 한 신속하게 이 문제를 해결하기 위해 편지를 씁니다. project manager로서, 이 소통이 관련된 모든 당사자들에게 명확하고 생산적인 해결을 보장하는 데 필수적이라고 생각합니다.",
+        "expressions": [
+          {
+            "expr": "as promptly as possible",
+            "meaning": "가능한 한 신속하게"
+          },
+          {
+            "expr": "ensure a clear resolution",
+            "meaning": "명확한 해결을 보장하다"
+          },
+          {
+            "expr": "all parties involved",
+            "meaning": "관련된 모든 당사자"
+          }
+        ]
+      },
+      {
+        "q_type": "detail",
+        "sentences": [
+          "We kindly request that you review the attached documentation related to project delay apology and provide a response within five business days.",
+          "Should you require any additional information or clarification, please do not hesitate to contact our office directly."
+        ],
+        "question": "What is the writer requesting?",
+        "question_kr": "작성자가 요청하는 것은?",
+        "choices": [
+          "(A) Immediate payment for services rendered",
+          "(B) Review of attached documents and a response",
+          "(C) A face-to-face meeting at the earliest opportunity",
+          "(D) A written guarantee from senior management"
+        ],
+        "choices_kr": [
+          "(A) 서비스 비용의 즉시 결제",
+          "(B) 첨부 서류 검토와 회신",
+          "(C) 가능한 빠른 시일 내 대면 미팅",
+          "(D) 고위 경영진의 서면 보장"
+        ],
+        "answer": 1,
+        "kr": "project delay apology와 관련된 첨부 서류를 검토하고 5영업일 이내에 답변을 제공해 주시기 바랍니다. 추가 정보나 명확화가 필요하신 경우 주저하지 마시고 저희 사무소에 직접 연락해 주세요.",
+        "expressions": [
+          {
+            "expr": "attached documentation",
+            "meaning": "첨부 서류"
+          },
+          {
+            "expr": "business days",
+            "meaning": "영업일"
+          },
+          {
+            "expr": "do not hesitate to",
+            "meaning": "주저하지 마시고 ~하세요"
+          }
+        ]
+      },
+      {
+        "q_type": "inference",
+        "sentences": [
+          "We value our ongoing professional relationship and hope that this matter can be resolved in a manner that is mutually beneficial.",
+          "Please be assured that we remain committed to maintaining open communication and working collaboratively toward a satisfactory outcome."
+        ],
+        "question": "What is implied about the relationship between the writer and recipient?",
+        "question_kr": "작성자와 수신인의 관계에 대해 추론할 수 있는 것은?",
+        "choices": [
+          "(A) They have never communicated before",
+          "(B) They have an existing professional relationship",
+          "(C) They are in a legal dispute",
+          "(D) They are colleagues at the same company"
+        ],
+        "choices_kr": [
+          "(A) 이전에 소통한 적이 없다",
+          "(B) 기존의 전문적인 관계가 있다",
+          "(C) 법적 분쟁 중이다",
+          "(D) 같은 회사의 동료이다"
+        ],
+        "answer": 1,
+        "kr": "저희는 지속적인 전문적 관계를 소중히 여기며 이 문제가 상호 이익이 되는 방식으로 해결되기를 희망한다. 저희는 개방적인 소통을 유지하고 만족스러운 결과를 향해 협력적으로 일하기 위해 헌신하고 있음을 안심하셔도 됩니다.",
+        "expressions": [
+          {
+            "expr": "mutually beneficial",
+            "meaning": "상호 이익이 되는"
+          },
+          {
+            "expr": "open communication",
+            "meaning": "개방적인 소통"
+          },
+          {
+            "expr": "satisfactory outcome",
+            "meaning": "만족스러운 결과"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "title": "✉️ CIPHER",
+    "steps": [
+      {
+        "q_type": "who",
+        "sentences": [
+          "Dear Mr. Williams, I am writing regarding 파트너십 제안 이메일 and wish to address this matter as promptly as possible.",
+          "As the business development manager, I believe this communication is essential to ensure a clear and productive resolution for all parties involved."
+        ],
+        "question": "Who most likely wrote this letter?",
+        "question_kr": "이 편지를 쓴 사람은 누구일 가능성이 가장 높은가?",
+        "choices": [
+          "(A) A potential partner",
+          "(B) A business development manager",
+          "(C) A government official",
+          "(D) An independent mediator"
+        ],
+        "choices_kr": [
+          "(A) potential partner",
+          "(B) business development manager",
+          "(C) 정부 관리",
+          "(D) 독립적인 중재자"
+        ],
+        "answer": 1,
+        "kr": "파트너십 제안 이메일에 관해 가능한 한 신속하게 이 문제를 해결하기 위해 편지를 씁니다. business development manager로서, 이 소통이 관련된 모든 당사자들에게 명확하고 생산적인 해결을 보장하는 데 필수적이라고 생각합니다.",
+        "expressions": [
+          {
+            "expr": "as promptly as possible",
+            "meaning": "가능한 한 신속하게"
+          },
+          {
+            "expr": "ensure a clear resolution",
+            "meaning": "명확한 해결을 보장하다"
+          },
+          {
+            "expr": "all parties involved",
+            "meaning": "관련된 모든 당사자"
+          }
+        ]
+      },
+      {
+        "q_type": "detail",
+        "sentences": [
+          "We kindly request that you review the attached documentation related to partnership proposal and provide a response within five business days.",
+          "Should you require any additional information or clarification, please do not hesitate to contact our office directly."
+        ],
+        "question": "What is the writer requesting?",
+        "question_kr": "작성자가 요청하는 것은?",
+        "choices": [
+          "(A) Immediate payment for services rendered",
+          "(B) Review of attached documents and a response",
+          "(C) A face-to-face meeting at the earliest opportunity",
+          "(D) A written guarantee from senior management"
+        ],
+        "choices_kr": [
+          "(A) 서비스 비용의 즉시 결제",
+          "(B) 첨부 서류 검토와 회신",
+          "(C) 가능한 빠른 시일 내 대면 미팅",
+          "(D) 고위 경영진의 서면 보장"
+        ],
+        "answer": 1,
+        "kr": "partnership proposal와 관련된 첨부 서류를 검토하고 5영업일 이내에 답변을 제공해 주시기 바랍니다. 추가 정보나 명확화가 필요하신 경우 주저하지 마시고 저희 사무소에 직접 연락해 주세요.",
+        "expressions": [
+          {
+            "expr": "attached documentation",
+            "meaning": "첨부 서류"
+          },
+          {
+            "expr": "business days",
+            "meaning": "영업일"
+          },
+          {
+            "expr": "do not hesitate to",
+            "meaning": "주저하지 마시고 ~하세요"
+          }
+        ]
+      },
+      {
+        "q_type": "inference",
+        "sentences": [
+          "We value our ongoing professional relationship and hope that this matter can be resolved in a manner that is mutually beneficial.",
+          "Please be assured that we remain committed to maintaining open communication and working collaboratively toward a satisfactory outcome."
+        ],
+        "question": "What is implied about the relationship between the writer and recipient?",
+        "question_kr": "작성자와 수신인의 관계에 대해 추론할 수 있는 것은?",
+        "choices": [
+          "(A) They have never communicated before",
+          "(B) They have an existing professional relationship",
+          "(C) They are in a legal dispute",
+          "(D) They are colleagues at the same company"
+        ],
+        "choices_kr": [
+          "(A) 이전에 소통한 적이 없다",
+          "(B) 기존의 전문적인 관계가 있다",
+          "(C) 법적 분쟁 중이다",
+          "(D) 같은 회사의 동료이다"
+        ],
+        "answer": 1,
+        "kr": "저희는 지속적인 전문적 관계를 소중히 여기며 이 문제가 상호 이익이 되는 방식으로 해결되기를 희망한다. 저희는 개방적인 소통을 유지하고 만족스러운 결과를 향해 협력적으로 일하기 위해 헌신하고 있음을 안심하셔도 됩니다.",
+        "expressions": [
+          {
+            "expr": "mutually beneficial",
+            "meaning": "상호 이익이 되는"
+          },
+          {
+            "expr": "open communication",
+            "meaning": "개방적인 소통"
+          },
+          {
+            "expr": "satisfactory outcome",
+            "meaning": "만족스러운 결과"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "title": "✉️ CIPHER",
+    "steps": [
+      {
+        "q_type": "who",
+        "sentences": [
+          "Dear Ms. Brown, I am writing regarding 고객 서비스 칭찬 편지 and wish to address this matter as promptly as possible.",
+          "As the satisfied customer, I believe this communication is essential to ensure a clear and productive resolution for all parties involved."
+        ],
+        "question": "Who most likely wrote this letter?",
+        "question_kr": "이 편지를 쓴 사람은 누구일 가능성이 가장 높은가?",
+        "choices": [
+          "(A) A company customer service",
+          "(B) A satisfied customer",
+          "(C) A government official",
+          "(D) An independent mediator"
+        ],
+        "choices_kr": [
+          "(A) company customer service",
+          "(B) satisfied customer",
+          "(C) 정부 관리",
+          "(D) 독립적인 중재자"
+        ],
+        "answer": 1,
+        "kr": "고객 서비스 칭찬 편지에 관해 가능한 한 신속하게 이 문제를 해결하기 위해 편지를 씁니다. satisfied customer로서, 이 소통이 관련된 모든 당사자들에게 명확하고 생산적인 해결을 보장하는 데 필수적이라고 생각합니다.",
+        "expressions": [
+          {
+            "expr": "as promptly as possible",
+            "meaning": "가능한 한 신속하게"
+          },
+          {
+            "expr": "ensure a clear resolution",
+            "meaning": "명확한 해결을 보장하다"
+          },
+          {
+            "expr": "all parties involved",
+            "meaning": "관련된 모든 당사자"
+          }
+        ]
+      },
+      {
+        "q_type": "detail",
+        "sentences": [
+          "We kindly request that you review the attached documentation related to customer compliment and provide a response within five business days.",
+          "Should you require any additional information or clarification, please do not hesitate to contact our office directly."
+        ],
+        "question": "What is the writer requesting?",
+        "question_kr": "작성자가 요청하는 것은?",
+        "choices": [
+          "(A) Immediate payment for services rendered",
+          "(B) Review of attached documents and a response",
+          "(C) A face-to-face meeting at the earliest opportunity",
+          "(D) A written guarantee from senior management"
+        ],
+        "choices_kr": [
+          "(A) 서비스 비용의 즉시 결제",
+          "(B) 첨부 서류 검토와 회신",
+          "(C) 가능한 빠른 시일 내 대면 미팅",
+          "(D) 고위 경영진의 서면 보장"
+        ],
+        "answer": 1,
+        "kr": "customer compliment와 관련된 첨부 서류를 검토하고 5영업일 이내에 답변을 제공해 주시기 바랍니다. 추가 정보나 명확화가 필요하신 경우 주저하지 마시고 저희 사무소에 직접 연락해 주세요.",
+        "expressions": [
+          {
+            "expr": "attached documentation",
+            "meaning": "첨부 서류"
+          },
+          {
+            "expr": "business days",
+            "meaning": "영업일"
+          },
+          {
+            "expr": "do not hesitate to",
+            "meaning": "주저하지 마시고 ~하세요"
+          }
+        ]
+      },
+      {
+        "q_type": "inference",
+        "sentences": [
+          "We value our ongoing professional relationship and hope that this matter can be resolved in a manner that is mutually beneficial.",
+          "Please be assured that we remain committed to maintaining open communication and working collaboratively toward a satisfactory outcome."
+        ],
+        "question": "What is implied about the relationship between the writer and recipient?",
+        "question_kr": "작성자와 수신인의 관계에 대해 추론할 수 있는 것은?",
+        "choices": [
+          "(A) They have never communicated before",
+          "(B) They have an existing professional relationship",
+          "(C) They are in a legal dispute",
+          "(D) They are colleagues at the same company"
+        ],
+        "choices_kr": [
+          "(A) 이전에 소통한 적이 없다",
+          "(B) 기존의 전문적인 관계가 있다",
+          "(C) 법적 분쟁 중이다",
+          "(D) 같은 회사의 동료이다"
+        ],
+        "answer": 1,
+        "kr": "저희는 지속적인 전문적 관계를 소중히 여기며 이 문제가 상호 이익이 되는 방식으로 해결되기를 희망한다. 저희는 개방적인 소통을 유지하고 만족스러운 결과를 향해 협력적으로 일하기 위해 헌신하고 있음을 안심하셔도 됩니다.",
+        "expressions": [
+          {
+            "expr": "mutually beneficial",
+            "meaning": "상호 이익이 되는"
+          },
+          {
+            "expr": "open communication",
+            "meaning": "개방적인 소통"
+          },
+          {
+            "expr": "satisfactory outcome",
+            "meaning": "만족스러운 결과"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "title": "✉️ CIPHER",
+    "steps": [
+      {
+        "q_type": "who",
+        "sentences": [
+          "Dear Mr. Davis, I am writing regarding 회의 안건 배포 이메일 and wish to address this matter as promptly as possible.",
+          "As the executive assistant, I believe this communication is essential to ensure a clear and productive resolution for all parties involved."
+        ],
+        "question": "Who most likely wrote this letter?",
+        "question_kr": "이 편지를 쓴 사람은 누구일 가능성이 가장 높은가?",
+        "choices": [
+          "(A) A meeting participants",
+          "(B) A executive assistant",
+          "(C) A government official",
+          "(D) An independent mediator"
+        ],
+        "choices_kr": [
+          "(A) meeting participants",
+          "(B) executive assistant",
+          "(C) 정부 관리",
+          "(D) 독립적인 중재자"
+        ],
+        "answer": 1,
+        "kr": "회의 안건 배포 이메일에 관해 가능한 한 신속하게 이 문제를 해결하기 위해 편지를 씁니다. executive assistant로서, 이 소통이 관련된 모든 당사자들에게 명확하고 생산적인 해결을 보장하는 데 필수적이라고 생각합니다.",
+        "expressions": [
+          {
+            "expr": "as promptly as possible",
+            "meaning": "가능한 한 신속하게"
+          },
+          {
+            "expr": "ensure a clear resolution",
+            "meaning": "명확한 해결을 보장하다"
+          },
+          {
+            "expr": "all parties involved",
+            "meaning": "관련된 모든 당사자"
+          }
+        ]
+      },
+      {
+        "q_type": "detail",
+        "sentences": [
+          "We kindly request that you review the attached documentation related to meeting agenda and provide a response within five business days.",
+          "Should you require any additional information or clarification, please do not hesitate to contact our office directly."
+        ],
+        "question": "What is the writer requesting?",
+        "question_kr": "작성자가 요청하는 것은?",
+        "choices": [
+          "(A) Immediate payment for services rendered",
+          "(B) Review of attached documents and a response",
+          "(C) A face-to-face meeting at the earliest opportunity",
+          "(D) A written guarantee from senior management"
+        ],
+        "choices_kr": [
+          "(A) 서비스 비용의 즉시 결제",
+          "(B) 첨부 서류 검토와 회신",
+          "(C) 가능한 빠른 시일 내 대면 미팅",
+          "(D) 고위 경영진의 서면 보장"
+        ],
+        "answer": 1,
+        "kr": "meeting agenda와 관련된 첨부 서류를 검토하고 5영업일 이내에 답변을 제공해 주시기 바랍니다. 추가 정보나 명확화가 필요하신 경우 주저하지 마시고 저희 사무소에 직접 연락해 주세요.",
+        "expressions": [
+          {
+            "expr": "attached documentation",
+            "meaning": "첨부 서류"
+          },
+          {
+            "expr": "business days",
+            "meaning": "영업일"
+          },
+          {
+            "expr": "do not hesitate to",
+            "meaning": "주저하지 마시고 ~하세요"
+          }
+        ]
+      },
+      {
+        "q_type": "inference",
+        "sentences": [
+          "We value our ongoing professional relationship and hope that this matter can be resolved in a manner that is mutually beneficial.",
+          "Please be assured that we remain committed to maintaining open communication and working collaboratively toward a satisfactory outcome."
+        ],
+        "question": "What is implied about the relationship between the writer and recipient?",
+        "question_kr": "작성자와 수신인의 관계에 대해 추론할 수 있는 것은?",
+        "choices": [
+          "(A) They have never communicated before",
+          "(B) They have an existing professional relationship",
+          "(C) They are in a legal dispute",
+          "(D) They are colleagues at the same company"
+        ],
+        "choices_kr": [
+          "(A) 이전에 소통한 적이 없다",
+          "(B) 기존의 전문적인 관계가 있다",
+          "(C) 법적 분쟁 중이다",
+          "(D) 같은 회사의 동료이다"
+        ],
+        "answer": 1,
+        "kr": "저희는 지속적인 전문적 관계를 소중히 여기며 이 문제가 상호 이익이 되는 방식으로 해결되기를 희망한다. 저희는 개방적인 소통을 유지하고 만족스러운 결과를 향해 협력적으로 일하기 위해 헌신하고 있음을 안심하셔도 됩니다.",
+        "expressions": [
+          {
+            "expr": "mutually beneficial",
+            "meaning": "상호 이익이 되는"
+          },
+          {
+            "expr": "open communication",
+            "meaning": "개방적인 소통"
+          },
+          {
+            "expr": "satisfactory outcome",
+            "meaning": "만족스러운 결과"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "title": "✉️ CIPHER",
+    "steps": [
+      {
+        "q_type": "who",
+        "sentences": [
+          "Dear Ms. Miller, I am writing regarding 서비스 해지 요청 이메일 and wish to address this matter as promptly as possible.",
+          "As the customer, I believe this communication is essential to ensure a clear and productive resolution for all parties involved."
+        ],
+        "question": "Who most likely wrote this letter?",
+        "question_kr": "이 편지를 쓴 사람은 누구일 가능성이 가장 높은가?",
+        "choices": [
+          "(A) A internet service provider",
+          "(B) A customer",
+          "(C) A government official",
+          "(D) An independent mediator"
+        ],
+        "choices_kr": [
+          "(A) internet service provider",
+          "(B) customer",
+          "(C) 정부 관리",
+          "(D) 독립적인 중재자"
+        ],
+        "answer": 1,
+        "kr": "서비스 해지 요청 이메일에 관해 가능한 한 신속하게 이 문제를 해결하기 위해 편지를 씁니다. customer로서, 이 소통이 관련된 모든 당사자들에게 명확하고 생산적인 해결을 보장하는 데 필수적이라고 생각합니다.",
+        "expressions": [
+          {
+            "expr": "as promptly as possible",
+            "meaning": "가능한 한 신속하게"
+          },
+          {
+            "expr": "ensure a clear resolution",
+            "meaning": "명확한 해결을 보장하다"
+          },
+          {
+            "expr": "all parties involved",
+            "meaning": "관련된 모든 당사자"
+          }
+        ]
+      },
+      {
+        "q_type": "detail",
+        "sentences": [
+          "We kindly request that you review the attached documentation related to service cancellation and provide a response within five business days.",
+          "Should you require any additional information or clarification, please do not hesitate to contact our office directly."
+        ],
+        "question": "What is the writer requesting?",
+        "question_kr": "작성자가 요청하는 것은?",
+        "choices": [
+          "(A) Immediate payment for services rendered",
+          "(B) Review of attached documents and a response",
+          "(C) A face-to-face meeting at the earliest opportunity",
+          "(D) A written guarantee from senior management"
+        ],
+        "choices_kr": [
+          "(A) 서비스 비용의 즉시 결제",
+          "(B) 첨부 서류 검토와 회신",
+          "(C) 가능한 빠른 시일 내 대면 미팅",
+          "(D) 고위 경영진의 서면 보장"
+        ],
+        "answer": 1,
+        "kr": "service cancellation와 관련된 첨부 서류를 검토하고 5영업일 이내에 답변을 제공해 주시기 바랍니다. 추가 정보나 명확화가 필요하신 경우 주저하지 마시고 저희 사무소에 직접 연락해 주세요.",
+        "expressions": [
+          {
+            "expr": "attached documentation",
+            "meaning": "첨부 서류"
+          },
+          {
+            "expr": "business days",
+            "meaning": "영업일"
+          },
+          {
+            "expr": "do not hesitate to",
+            "meaning": "주저하지 마시고 ~하세요"
+          }
+        ]
+      },
+      {
+        "q_type": "inference",
+        "sentences": [
+          "We value our ongoing professional relationship and hope that this matter can be resolved in a manner that is mutually beneficial.",
+          "Please be assured that we remain committed to maintaining open communication and working collaboratively toward a satisfactory outcome."
+        ],
+        "question": "What is implied about the relationship between the writer and recipient?",
+        "question_kr": "작성자와 수신인의 관계에 대해 추론할 수 있는 것은?",
+        "choices": [
+          "(A) They have never communicated before",
+          "(B) They have an existing professional relationship",
+          "(C) They are in a legal dispute",
+          "(D) They are colleagues at the same company"
+        ],
+        "choices_kr": [
+          "(A) 이전에 소통한 적이 없다",
+          "(B) 기존의 전문적인 관계가 있다",
+          "(C) 법적 분쟁 중이다",
+          "(D) 같은 회사의 동료이다"
+        ],
+        "answer": 1,
+        "kr": "저희는 지속적인 전문적 관계를 소중히 여기며 이 문제가 상호 이익이 되는 방식으로 해결되기를 희망한다. 저희는 개방적인 소통을 유지하고 만족스러운 결과를 향해 협력적으로 일하기 위해 헌신하고 있음을 안심하셔도 됩니다.",
+        "expressions": [
+          {
+            "expr": "mutually beneficial",
+            "meaning": "상호 이익이 되는"
+          },
+          {
+            "expr": "open communication",
+            "meaning": "개방적인 소통"
+          },
+          {
+            "expr": "satisfactory outcome",
+            "meaning": "만족스러운 결과"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "title": "✉️ CIPHER",
+    "steps": [
+      {
+        "q_type": "who",
+        "sentences": [
+          "Dear Mr. Wilson, I am writing regarding 채용 공고 지원 확인 이메일 and wish to address this matter as promptly as possible.",
+          "As the HR department, I believe this communication is essential to ensure a clear and productive resolution for all parties involved."
+        ],
+        "question": "Who most likely wrote this letter?",
+        "question_kr": "이 편지를 쓴 사람은 누구일 가능성이 가장 높은가?",
+        "choices": [
+          "(A) A job applicant",
+          "(B) A HR department",
+          "(C) A government official",
+          "(D) An independent mediator"
+        ],
+        "choices_kr": [
+          "(A) job applicant",
+          "(B) HR department",
+          "(C) 정부 관리",
+          "(D) 독립적인 중재자"
+        ],
+        "answer": 1,
+        "kr": "채용 공고 지원 확인 이메일에 관해 가능한 한 신속하게 이 문제를 해결하기 위해 편지를 씁니다. HR department로서, 이 소통이 관련된 모든 당사자들에게 명확하고 생산적인 해결을 보장하는 데 필수적이라고 생각합니다.",
+        "expressions": [
+          {
+            "expr": "as promptly as possible",
+            "meaning": "가능한 한 신속하게"
+          },
+          {
+            "expr": "ensure a clear resolution",
+            "meaning": "명확한 해결을 보장하다"
+          },
+          {
+            "expr": "all parties involved",
+            "meaning": "관련된 모든 당사자"
+          }
+        ]
+      },
+      {
+        "q_type": "detail",
+        "sentences": [
+          "We kindly request that you review the attached documentation related to application confirmation and provide a response within five business days.",
+          "Should you require any additional information or clarification, please do not hesitate to contact our office directly."
+        ],
+        "question": "What is the writer requesting?",
+        "question_kr": "작성자가 요청하는 것은?",
+        "choices": [
+          "(A) Immediate payment for services rendered",
+          "(B) Review of attached documents and a response",
+          "(C) A face-to-face meeting at the earliest opportunity",
+          "(D) A written guarantee from senior management"
+        ],
+        "choices_kr": [
+          "(A) 서비스 비용의 즉시 결제",
+          "(B) 첨부 서류 검토와 회신",
+          "(C) 가능한 빠른 시일 내 대면 미팅",
+          "(D) 고위 경영진의 서면 보장"
+        ],
+        "answer": 1,
+        "kr": "application confirmation와 관련된 첨부 서류를 검토하고 5영업일 이내에 답변을 제공해 주시기 바랍니다. 추가 정보나 명확화가 필요하신 경우 주저하지 마시고 저희 사무소에 직접 연락해 주세요.",
+        "expressions": [
+          {
+            "expr": "attached documentation",
+            "meaning": "첨부 서류"
+          },
+          {
+            "expr": "business days",
+            "meaning": "영업일"
+          },
+          {
+            "expr": "do not hesitate to",
+            "meaning": "주저하지 마시고 ~하세요"
+          }
+        ]
+      },
+      {
+        "q_type": "inference",
+        "sentences": [
+          "We value our ongoing professional relationship and hope that this matter can be resolved in a manner that is mutually beneficial.",
+          "Please be assured that we remain committed to maintaining open communication and working collaboratively toward a satisfactory outcome."
+        ],
+        "question": "What is implied about the relationship between the writer and recipient?",
+        "question_kr": "작성자와 수신인의 관계에 대해 추론할 수 있는 것은?",
+        "choices": [
+          "(A) They have never communicated before",
+          "(B) They have an existing professional relationship",
+          "(C) They are in a legal dispute",
+          "(D) They are colleagues at the same company"
+        ],
+        "choices_kr": [
+          "(A) 이전에 소통한 적이 없다",
+          "(B) 기존의 전문적인 관계가 있다",
+          "(C) 법적 분쟁 중이다",
+          "(D) 같은 회사의 동료이다"
+        ],
+        "answer": 1,
+        "kr": "저희는 지속적인 전문적 관계를 소중히 여기며 이 문제가 상호 이익이 되는 방식으로 해결되기를 희망한다. 저희는 개방적인 소통을 유지하고 만족스러운 결과를 향해 협력적으로 일하기 위해 헌신하고 있음을 안심하셔도 됩니다.",
+        "expressions": [
+          {
+            "expr": "mutually beneficial",
+            "meaning": "상호 이익이 되는"
+          },
+          {
+            "expr": "open communication",
+            "meaning": "개방적인 소통"
+          },
+          {
+            "expr": "satisfactory outcome",
+            "meaning": "만족스러운 결과"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "title": "✉️ CIPHER",
+    "steps": [
+      {
+        "q_type": "who",
+        "sentences": [
+          "Dear Ms. Moore, I am writing regarding 출장 비용 환급 요청 and wish to address this matter as promptly as possible.",
+          "As the employee, I believe this communication is essential to ensure a clear and productive resolution for all parties involved."
+        ],
+        "question": "Who most likely wrote this letter?",
+        "question_kr": "이 편지를 쓴 사람은 누구일 가능성이 가장 높은가?",
+        "choices": [
+          "(A) A finance department",
+          "(B) A employee",
+          "(C) A government official",
+          "(D) An independent mediator"
+        ],
+        "choices_kr": [
+          "(A) finance department",
+          "(B) employee",
+          "(C) 정부 관리",
+          "(D) 독립적인 중재자"
+        ],
+        "answer": 1,
+        "kr": "출장 비용 환급 요청에 관해 가능한 한 신속하게 이 문제를 해결하기 위해 편지를 씁니다. employee로서, 이 소통이 관련된 모든 당사자들에게 명확하고 생산적인 해결을 보장하는 데 필수적이라고 생각합니다.",
+        "expressions": [
+          {
+            "expr": "as promptly as possible",
+            "meaning": "가능한 한 신속하게"
+          },
+          {
+            "expr": "ensure a clear resolution",
+            "meaning": "명확한 해결을 보장하다"
+          },
+          {
+            "expr": "all parties involved",
+            "meaning": "관련된 모든 당사자"
+          }
+        ]
+      },
+      {
+        "q_type": "detail",
+        "sentences": [
+          "We kindly request that you review the attached documentation related to expense reimbursement and provide a response within five business days.",
+          "Should you require any additional information or clarification, please do not hesitate to contact our office directly."
+        ],
+        "question": "What is the writer requesting?",
+        "question_kr": "작성자가 요청하는 것은?",
+        "choices": [
+          "(A) Immediate payment for services rendered",
+          "(B) Review of attached documents and a response",
+          "(C) A face-to-face meeting at the earliest opportunity",
+          "(D) A written guarantee from senior management"
+        ],
+        "choices_kr": [
+          "(A) 서비스 비용의 즉시 결제",
+          "(B) 첨부 서류 검토와 회신",
+          "(C) 가능한 빠른 시일 내 대면 미팅",
+          "(D) 고위 경영진의 서면 보장"
+        ],
+        "answer": 1,
+        "kr": "expense reimbursement와 관련된 첨부 서류를 검토하고 5영업일 이내에 답변을 제공해 주시기 바랍니다. 추가 정보나 명확화가 필요하신 경우 주저하지 마시고 저희 사무소에 직접 연락해 주세요.",
+        "expressions": [
+          {
+            "expr": "attached documentation",
+            "meaning": "첨부 서류"
+          },
+          {
+            "expr": "business days",
+            "meaning": "영업일"
+          },
+          {
+            "expr": "do not hesitate to",
+            "meaning": "주저하지 마시고 ~하세요"
+          }
+        ]
+      },
+      {
+        "q_type": "inference",
+        "sentences": [
+          "We value our ongoing professional relationship and hope that this matter can be resolved in a manner that is mutually beneficial.",
+          "Please be assured that we remain committed to maintaining open communication and working collaboratively toward a satisfactory outcome."
+        ],
+        "question": "What is implied about the relationship between the writer and recipient?",
+        "question_kr": "작성자와 수신인의 관계에 대해 추론할 수 있는 것은?",
+        "choices": [
+          "(A) They have never communicated before",
+          "(B) They have an existing professional relationship",
+          "(C) They are in a legal dispute",
+          "(D) They are colleagues at the same company"
+        ],
+        "choices_kr": [
+          "(A) 이전에 소통한 적이 없다",
+          "(B) 기존의 전문적인 관계가 있다",
+          "(C) 법적 분쟁 중이다",
+          "(D) 같은 회사의 동료이다"
+        ],
+        "answer": 1,
+        "kr": "저희는 지속적인 전문적 관계를 소중히 여기며 이 문제가 상호 이익이 되는 방식으로 해결되기를 희망한다. 저희는 개방적인 소통을 유지하고 만족스러운 결과를 향해 협력적으로 일하기 위해 헌신하고 있음을 안심하셔도 됩니다.",
+        "expressions": [
+          {
+            "expr": "mutually beneficial",
+            "meaning": "상호 이익이 되는"
+          },
+          {
+            "expr": "open communication",
+            "meaning": "개방적인 소통"
+          },
+          {
+            "expr": "satisfactory outcome",
+            "meaning": "만족스러운 결과"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "title": "✉️ CIPHER",
+    "steps": [
+      {
+        "q_type": "who",
+        "sentences": [
+          "Dear Mr. Taylor, I am writing regarding 제품 견적서 요청 이메일 and wish to address this matter as promptly as possible.",
+          "As the procurement officer, I believe this communication is essential to ensure a clear and productive resolution for all parties involved."
+        ],
+        "question": "Who most likely wrote this letter?",
+        "question_kr": "이 편지를 쓴 사람은 누구일 가능성이 가장 높은가?",
+        "choices": [
+          "(A) A vendor",
+          "(B) A procurement officer",
+          "(C) A government official",
+          "(D) An independent mediator"
+        ],
+        "choices_kr": [
+          "(A) vendor",
+          "(B) procurement officer",
+          "(C) 정부 관리",
+          "(D) 독립적인 중재자"
+        ],
+        "answer": 1,
+        "kr": "제품 견적서 요청 이메일에 관해 가능한 한 신속하게 이 문제를 해결하기 위해 편지를 씁니다. procurement officer로서, 이 소통이 관련된 모든 당사자들에게 명확하고 생산적인 해결을 보장하는 데 필수적이라고 생각합니다.",
+        "expressions": [
+          {
+            "expr": "as promptly as possible",
+            "meaning": "가능한 한 신속하게"
+          },
+          {
+            "expr": "ensure a clear resolution",
+            "meaning": "명확한 해결을 보장하다"
+          },
+          {
+            "expr": "all parties involved",
+            "meaning": "관련된 모든 당사자"
+          }
+        ]
+      },
+      {
+        "q_type": "detail",
+        "sentences": [
+          "We kindly request that you review the attached documentation related to price quotation request and provide a response within five business days.",
+          "Should you require any additional information or clarification, please do not hesitate to contact our office directly."
+        ],
+        "question": "What is the writer requesting?",
+        "question_kr": "작성자가 요청하는 것은?",
+        "choices": [
+          "(A) Immediate payment for services rendered",
+          "(B) Review of attached documents and a response",
+          "(C) A face-to-face meeting at the earliest opportunity",
+          "(D) A written guarantee from senior management"
+        ],
+        "choices_kr": [
+          "(A) 서비스 비용의 즉시 결제",
+          "(B) 첨부 서류 검토와 회신",
+          "(C) 가능한 빠른 시일 내 대면 미팅",
+          "(D) 고위 경영진의 서면 보장"
+        ],
+        "answer": 1,
+        "kr": "price quotation request와 관련된 첨부 서류를 검토하고 5영업일 이내에 답변을 제공해 주시기 바랍니다. 추가 정보나 명확화가 필요하신 경우 주저하지 마시고 저희 사무소에 직접 연락해 주세요.",
+        "expressions": [
+          {
+            "expr": "attached documentation",
+            "meaning": "첨부 서류"
+          },
+          {
+            "expr": "business days",
+            "meaning": "영업일"
+          },
+          {
+            "expr": "do not hesitate to",
+            "meaning": "주저하지 마시고 ~하세요"
+          }
+        ]
+      },
+      {
+        "q_type": "inference",
+        "sentences": [
+          "We value our ongoing professional relationship and hope that this matter can be resolved in a manner that is mutually beneficial.",
+          "Please be assured that we remain committed to maintaining open communication and working collaboratively toward a satisfactory outcome."
+        ],
+        "question": "What is implied about the relationship between the writer and recipient?",
+        "question_kr": "작성자와 수신인의 관계에 대해 추론할 수 있는 것은?",
+        "choices": [
+          "(A) They have never communicated before",
+          "(B) They have an existing professional relationship",
+          "(C) They are in a legal dispute",
+          "(D) They are colleagues at the same company"
+        ],
+        "choices_kr": [
+          "(A) 이전에 소통한 적이 없다",
+          "(B) 기존의 전문적인 관계가 있다",
+          "(C) 법적 분쟁 중이다",
+          "(D) 같은 회사의 동료이다"
+        ],
+        "answer": 1,
+        "kr": "저희는 지속적인 전문적 관계를 소중히 여기며 이 문제가 상호 이익이 되는 방식으로 해결되기를 희망한다. 저희는 개방적인 소통을 유지하고 만족스러운 결과를 향해 협력적으로 일하기 위해 헌신하고 있음을 안심하셔도 됩니다.",
+        "expressions": [
+          {
+            "expr": "mutually beneficial",
+            "meaning": "상호 이익이 되는"
+          },
+          {
+            "expr": "open communication",
+            "meaning": "개방적인 소통"
+          },
+          {
+            "expr": "satisfactory outcome",
+            "meaning": "만족스러운 결과"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "title": "✉️ CIPHER",
+    "steps": [
+      {
+        "q_type": "who",
+        "sentences": [
+          "Dear Mr. Anderson, I am writing regarding 행사 후원 요청 편지 and wish to address this matter as promptly as possible.",
+          "As the event organizer, I believe this communication is essential to ensure a clear and productive resolution for all parties involved."
+        ],
+        "question": "Who most likely wrote this letter?",
+        "question_kr": "이 편지를 쓴 사람은 누구일 가능성이 가장 높은가?",
+        "choices": [
+          "(A) A potential sponsor",
+          "(B) A event organizer",
+          "(C) A government official",
+          "(D) An independent mediator"
+        ],
+        "choices_kr": [
+          "(A) potential sponsor",
+          "(B) event organizer",
+          "(C) 정부 관리",
+          "(D) 독립적인 중재자"
+        ],
+        "answer": 1,
+        "kr": "행사 후원 요청 편지에 관해 가능한 한 신속하게 이 문제를 해결하기 위해 편지를 씁니다. event organizer로서, 이 소통이 관련된 모든 당사자들에게 명확하고 생산적인 해결을 보장하는 데 필수적이라고 생각합니다.",
+        "expressions": [
+          {
+            "expr": "as promptly as possible",
+            "meaning": "가능한 한 신속하게"
+          },
+          {
+            "expr": "ensure a clear resolution",
+            "meaning": "명확한 해결을 보장하다"
+          },
+          {
+            "expr": "all parties involved",
+            "meaning": "관련된 모든 당사자"
+          }
+        ]
+      },
+      {
+        "q_type": "detail",
+        "sentences": [
+          "We kindly request that you review the attached documentation related to event sponsorship and provide a response within five business days.",
+          "Should you require any additional information or clarification, please do not hesitate to contact our office directly."
+        ],
+        "question": "What is the writer requesting?",
+        "question_kr": "작성자가 요청하는 것은?",
+        "choices": [
+          "(A) Immediate payment for services rendered",
+          "(B) Review of attached documents and a response",
+          "(C) A face-to-face meeting at the earliest opportunity",
+          "(D) A written guarantee from senior management"
+        ],
+        "choices_kr": [
+          "(A) 서비스 비용의 즉시 결제",
+          "(B) 첨부 서류 검토와 회신",
+          "(C) 가능한 빠른 시일 내 대면 미팅",
+          "(D) 고위 경영진의 서면 보장"
+        ],
+        "answer": 1,
+        "kr": "event sponsorship와 관련된 첨부 서류를 검토하고 5영업일 이내에 답변을 제공해 주시기 바랍니다. 추가 정보나 명확화가 필요하신 경우 주저하지 마시고 저희 사무소에 직접 연락해 주세요.",
+        "expressions": [
+          {
+            "expr": "attached documentation",
+            "meaning": "첨부 서류"
+          },
+          {
+            "expr": "business days",
+            "meaning": "영업일"
+          },
+          {
+            "expr": "do not hesitate to",
+            "meaning": "주저하지 마시고 ~하세요"
+          }
+        ]
+      },
+      {
+        "q_type": "inference",
+        "sentences": [
+          "We value our ongoing professional relationship and hope that this matter can be resolved in a manner that is mutually beneficial.",
+          "Please be assured that we remain committed to maintaining open communication and working collaboratively toward a satisfactory outcome."
+        ],
+        "question": "What is implied about the relationship between the writer and recipient?",
+        "question_kr": "작성자와 수신인의 관계에 대해 추론할 수 있는 것은?",
+        "choices": [
+          "(A) They have never communicated before",
+          "(B) They have an existing professional relationship",
+          "(C) They are in a legal dispute",
+          "(D) They are colleagues at the same company"
+        ],
+        "choices_kr": [
+          "(A) 이전에 소통한 적이 없다",
+          "(B) 기존의 전문적인 관계가 있다",
+          "(C) 법적 분쟁 중이다",
+          "(D) 같은 회사의 동료이다"
+        ],
+        "answer": 1,
+        "kr": "저희는 지속적인 전문적 관계를 소중히 여기며 이 문제가 상호 이익이 되는 방식으로 해결되기를 희망한다. 저희는 개방적인 소통을 유지하고 만족스러운 결과를 향해 협력적으로 일하기 위해 헌신하고 있음을 안심하셔도 됩니다.",
+        "expressions": [
+          {
+            "expr": "mutually beneficial",
+            "meaning": "상호 이익이 되는"
+          },
+          {
+            "expr": "open communication",
+            "meaning": "개방적인 소통"
+          },
+          {
+            "expr": "satisfactory outcome",
+            "meaning": "만족스러운 결과"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "title": "✉️ CIPHER",
+    "steps": [
+      {
+        "q_type": "who",
+        "sentences": [
+          "Dear Ms. Thomas, I am writing regarding 정기 뉴스레터 구독 확인 and wish to address this matter as promptly as possible.",
+          "As the newsletter manager, I believe this communication is essential to ensure a clear and productive resolution for all parties involved."
+        ],
+        "question": "Who most likely wrote this letter?",
+        "question_kr": "이 편지를 쓴 사람은 누구일 가능성이 가장 높은가?",
+        "choices": [
+          "(A) A new subscriber",
+          "(B) A newsletter manager",
+          "(C) A government official",
+          "(D) An independent mediator"
+        ],
+        "choices_kr": [
+          "(A) new subscriber",
+          "(B) newsletter manager",
+          "(C) 정부 관리",
+          "(D) 독립적인 중재자"
+        ],
+        "answer": 1,
+        "kr": "정기 뉴스레터 구독 확인에 관해 가능한 한 신속하게 이 문제를 해결하기 위해 편지를 씁니다. newsletter manager로서, 이 소통이 관련된 모든 당사자들에게 명확하고 생산적인 해결을 보장하는 데 필수적이라고 생각합니다.",
+        "expressions": [
+          {
+            "expr": "as promptly as possible",
+            "meaning": "가능한 한 신속하게"
+          },
+          {
+            "expr": "ensure a clear resolution",
+            "meaning": "명확한 해결을 보장하다"
+          },
+          {
+            "expr": "all parties involved",
+            "meaning": "관련된 모든 당사자"
+          }
+        ]
+      },
+      {
+        "q_type": "detail",
+        "sentences": [
+          "We kindly request that you review the attached documentation related to newsletter subscription and provide a response within five business days.",
+          "Should you require any additional information or clarification, please do not hesitate to contact our office directly."
+        ],
+        "question": "What is the writer requesting?",
+        "question_kr": "작성자가 요청하는 것은?",
+        "choices": [
+          "(A) Immediate payment for services rendered",
+          "(B) Review of attached documents and a response",
+          "(C) A face-to-face meeting at the earliest opportunity",
+          "(D) A written guarantee from senior management"
+        ],
+        "choices_kr": [
+          "(A) 서비스 비용의 즉시 결제",
+          "(B) 첨부 서류 검토와 회신",
+          "(C) 가능한 빠른 시일 내 대면 미팅",
+          "(D) 고위 경영진의 서면 보장"
+        ],
+        "answer": 1,
+        "kr": "newsletter subscription와 관련된 첨부 서류를 검토하고 5영업일 이내에 답변을 제공해 주시기 바랍니다. 추가 정보나 명확화가 필요하신 경우 주저하지 마시고 저희 사무소에 직접 연락해 주세요.",
+        "expressions": [
+          {
+            "expr": "attached documentation",
+            "meaning": "첨부 서류"
+          },
+          {
+            "expr": "business days",
+            "meaning": "영업일"
+          },
+          {
+            "expr": "do not hesitate to",
+            "meaning": "주저하지 마시고 ~하세요"
+          }
+        ]
+      },
+      {
+        "q_type": "inference",
+        "sentences": [
+          "We value our ongoing professional relationship and hope that this matter can be resolved in a manner that is mutually beneficial.",
+          "Please be assured that we remain committed to maintaining open communication and working collaboratively toward a satisfactory outcome."
+        ],
+        "question": "What is implied about the relationship between the writer and recipient?",
+        "question_kr": "작성자와 수신인의 관계에 대해 추론할 수 있는 것은?",
+        "choices": [
+          "(A) They have never communicated before",
+          "(B) They have an existing professional relationship",
+          "(C) They are in a legal dispute",
+          "(D) They are colleagues at the same company"
+        ],
+        "choices_kr": [
+          "(A) 이전에 소통한 적이 없다",
+          "(B) 기존의 전문적인 관계가 있다",
+          "(C) 법적 분쟁 중이다",
+          "(D) 같은 회사의 동료이다"
+        ],
+        "answer": 1,
+        "kr": "저희는 지속적인 전문적 관계를 소중히 여기며 이 문제가 상호 이익이 되는 방식으로 해결되기를 희망한다. 저희는 개방적인 소통을 유지하고 만족스러운 결과를 향해 협력적으로 일하기 위해 헌신하고 있음을 안심하셔도 됩니다.",
+        "expressions": [
+          {
+            "expr": "mutually beneficial",
+            "meaning": "상호 이익이 되는"
+          },
+          {
+            "expr": "open communication",
+            "meaning": "개방적인 소통"
+          },
+          {
+            "expr": "satisfactory outcome",
+            "meaning": "만족스러운 결과"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "title": "✉️ CIPHER",
+    "steps": [
+      {
+        "q_type": "who",
+        "sentences": [
+          "Dear Mr. Jackson, I am writing regarding 멘토링 요청 이메일 and wish to address this matter as promptly as possible.",
+          "As the junior employee, I believe this communication is essential to ensure a clear and productive resolution for all parties involved."
+        ],
+        "question": "Who most likely wrote this letter?",
+        "question_kr": "이 편지를 쓴 사람은 누구일 가능성이 가장 높은가?",
+        "choices": [
+          "(A) A senior executive",
+          "(B) A junior employee",
+          "(C) A government official",
+          "(D) An independent mediator"
+        ],
+        "choices_kr": [
+          "(A) senior executive",
+          "(B) junior employee",
+          "(C) 정부 관리",
+          "(D) 독립적인 중재자"
+        ],
+        "answer": 1,
+        "kr": "멘토링 요청 이메일에 관해 가능한 한 신속하게 이 문제를 해결하기 위해 편지를 씁니다. junior employee로서, 이 소통이 관련된 모든 당사자들에게 명확하고 생산적인 해결을 보장하는 데 필수적이라고 생각합니다.",
+        "expressions": [
+          {
+            "expr": "as promptly as possible",
+            "meaning": "가능한 한 신속하게"
+          },
+          {
+            "expr": "ensure a clear resolution",
+            "meaning": "명확한 해결을 보장하다"
+          },
+          {
+            "expr": "all parties involved",
+            "meaning": "관련된 모든 당사자"
+          }
+        ]
+      },
+      {
+        "q_type": "detail",
+        "sentences": [
+          "We kindly request that you review the attached documentation related to mentorship request and provide a response within five business days.",
+          "Should you require any additional information or clarification, please do not hesitate to contact our office directly."
+        ],
+        "question": "What is the writer requesting?",
+        "question_kr": "작성자가 요청하는 것은?",
+        "choices": [
+          "(A) Immediate payment for services rendered",
+          "(B) Review of attached documents and a response",
+          "(C) A face-to-face meeting at the earliest opportunity",
+          "(D) A written guarantee from senior management"
+        ],
+        "choices_kr": [
+          "(A) 서비스 비용의 즉시 결제",
+          "(B) 첨부 서류 검토와 회신",
+          "(C) 가능한 빠른 시일 내 대면 미팅",
+          "(D) 고위 경영진의 서면 보장"
+        ],
+        "answer": 1,
+        "kr": "mentorship request와 관련된 첨부 서류를 검토하고 5영업일 이내에 답변을 제공해 주시기 바랍니다. 추가 정보나 명확화가 필요하신 경우 주저하지 마시고 저희 사무소에 직접 연락해 주세요.",
+        "expressions": [
+          {
+            "expr": "attached documentation",
+            "meaning": "첨부 서류"
+          },
+          {
+            "expr": "business days",
+            "meaning": "영업일"
+          },
+          {
+            "expr": "do not hesitate to",
+            "meaning": "주저하지 마시고 ~하세요"
+          }
+        ]
+      },
+      {
+        "q_type": "inference",
+        "sentences": [
+          "We value our ongoing professional relationship and hope that this matter can be resolved in a manner that is mutually beneficial.",
+          "Please be assured that we remain committed to maintaining open communication and working collaboratively toward a satisfactory outcome."
+        ],
+        "question": "What is implied about the relationship between the writer and recipient?",
+        "question_kr": "작성자와 수신인의 관계에 대해 추론할 수 있는 것은?",
+        "choices": [
+          "(A) They have never communicated before",
+          "(B) They have an existing professional relationship",
+          "(C) They are in a legal dispute",
+          "(D) They are colleagues at the same company"
+        ],
+        "choices_kr": [
+          "(A) 이전에 소통한 적이 없다",
+          "(B) 기존의 전문적인 관계가 있다",
+          "(C) 법적 분쟁 중이다",
+          "(D) 같은 회사의 동료이다"
+        ],
+        "answer": 1,
+        "kr": "저희는 지속적인 전문적 관계를 소중히 여기며 이 문제가 상호 이익이 되는 방식으로 해결되기를 희망한다. 저희는 개방적인 소통을 유지하고 만족스러운 결과를 향해 협력적으로 일하기 위해 헌신하고 있음을 안심하셔도 됩니다.",
+        "expressions": [
+          {
+            "expr": "mutually beneficial",
+            "meaning": "상호 이익이 되는"
+          },
+          {
+            "expr": "open communication",
+            "meaning": "개방적인 소통"
+          },
+          {
+            "expr": "satisfactory outcome",
+            "meaning": "만족스러운 결과"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "title": "✉️ CIPHER",
+    "steps": [
+      {
+        "q_type": "who",
+        "sentences": [
+          "Dear Ms. White, I am writing regarding 배송 지연 안내 이메일 and wish to address this matter as promptly as possible.",
+          "As the logistics manager, I believe this communication is essential to ensure a clear and productive resolution for all parties involved."
+        ],
+        "question": "Who most likely wrote this letter?",
+        "question_kr": "이 편지를 쓴 사람은 누구일 가능성이 가장 높은가?",
+        "choices": [
+          "(A) A customer",
+          "(B) A logistics manager",
+          "(C) A government official",
+          "(D) An independent mediator"
+        ],
+        "choices_kr": [
+          "(A) customer",
+          "(B) logistics manager",
+          "(C) 정부 관리",
+          "(D) 독립적인 중재자"
+        ],
+        "answer": 1,
+        "kr": "배송 지연 안내 이메일에 관해 가능한 한 신속하게 이 문제를 해결하기 위해 편지를 씁니다. logistics manager로서, 이 소통이 관련된 모든 당사자들에게 명확하고 생산적인 해결을 보장하는 데 필수적이라고 생각합니다.",
+        "expressions": [
+          {
+            "expr": "as promptly as possible",
+            "meaning": "가능한 한 신속하게"
+          },
+          {
+            "expr": "ensure a clear resolution",
+            "meaning": "명확한 해결을 보장하다"
+          },
+          {
+            "expr": "all parties involved",
+            "meaning": "관련된 모든 당사자"
+          }
+        ]
+      },
+      {
+        "q_type": "detail",
+        "sentences": [
+          "We kindly request that you review the attached documentation related to delivery delay and provide a response within five business days.",
+          "Should you require any additional information or clarification, please do not hesitate to contact our office directly."
+        ],
+        "question": "What is the writer requesting?",
+        "question_kr": "작성자가 요청하는 것은?",
+        "choices": [
+          "(A) Immediate payment for services rendered",
+          "(B) Review of attached documents and a response",
+          "(C) A face-to-face meeting at the earliest opportunity",
+          "(D) A written guarantee from senior management"
+        ],
+        "choices_kr": [
+          "(A) 서비스 비용의 즉시 결제",
+          "(B) 첨부 서류 검토와 회신",
+          "(C) 가능한 빠른 시일 내 대면 미팅",
+          "(D) 고위 경영진의 서면 보장"
+        ],
+        "answer": 1,
+        "kr": "delivery delay와 관련된 첨부 서류를 검토하고 5영업일 이내에 답변을 제공해 주시기 바랍니다. 추가 정보나 명확화가 필요하신 경우 주저하지 마시고 저희 사무소에 직접 연락해 주세요.",
+        "expressions": [
+          {
+            "expr": "attached documentation",
+            "meaning": "첨부 서류"
+          },
+          {
+            "expr": "business days",
+            "meaning": "영업일"
+          },
+          {
+            "expr": "do not hesitate to",
+            "meaning": "주저하지 마시고 ~하세요"
+          }
+        ]
+      },
+      {
+        "q_type": "inference",
+        "sentences": [
+          "We value our ongoing professional relationship and hope that this matter can be resolved in a manner that is mutually beneficial.",
+          "Please be assured that we remain committed to maintaining open communication and working collaboratively toward a satisfactory outcome."
+        ],
+        "question": "What is implied about the relationship between the writer and recipient?",
+        "question_kr": "작성자와 수신인의 관계에 대해 추론할 수 있는 것은?",
+        "choices": [
+          "(A) They have never communicated before",
+          "(B) They have an existing professional relationship",
+          "(C) They are in a legal dispute",
+          "(D) They are colleagues at the same company"
+        ],
+        "choices_kr": [
+          "(A) 이전에 소통한 적이 없다",
+          "(B) 기존의 전문적인 관계가 있다",
+          "(C) 법적 분쟁 중이다",
+          "(D) 같은 회사의 동료이다"
+        ],
+        "answer": 1,
+        "kr": "저희는 지속적인 전문적 관계를 소중히 여기며 이 문제가 상호 이익이 되는 방식으로 해결되기를 희망한다. 저희는 개방적인 소통을 유지하고 만족스러운 결과를 향해 협력적으로 일하기 위해 헌신하고 있음을 안심하셔도 됩니다.",
+        "expressions": [
+          {
+            "expr": "mutually beneficial",
+            "meaning": "상호 이익이 되는"
+          },
+          {
+            "expr": "open communication",
+            "meaning": "개방적인 소통"
+          },
+          {
+            "expr": "satisfactory outcome",
+            "meaning": "만족스러운 결과"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "title": "✉️ CIPHER",
+    "steps": [
+      {
+        "q_type": "who",
+        "sentences": [
+          "Dear Mr. Harris, I am writing regarding 연구 참여 동의 요청 이메일 and wish to address this matter as promptly as possible.",
+          "As the research team, I believe this communication is essential to ensure a clear and productive resolution for all parties involved."
+        ],
+        "question": "Who most likely wrote this letter?",
+        "question_kr": "이 편지를 쓴 사람은 누구일 가능성이 가장 높은가?",
+        "choices": [
+          "(A) A potential participant",
+          "(B) A research team",
+          "(C) A government official",
+          "(D) An independent mediator"
+        ],
+        "choices_kr": [
+          "(A) potential participant",
+          "(B) research team",
+          "(C) 정부 관리",
+          "(D) 독립적인 중재자"
+        ],
+        "answer": 1,
+        "kr": "연구 참여 동의 요청 이메일에 관해 가능한 한 신속하게 이 문제를 해결하기 위해 편지를 씁니다. research team로서, 이 소통이 관련된 모든 당사자들에게 명확하고 생산적인 해결을 보장하는 데 필수적이라고 생각합니다.",
+        "expressions": [
+          {
+            "expr": "as promptly as possible",
+            "meaning": "가능한 한 신속하게"
+          },
+          {
+            "expr": "ensure a clear resolution",
+            "meaning": "명확한 해결을 보장하다"
+          },
+          {
+            "expr": "all parties involved",
+            "meaning": "관련된 모든 당사자"
+          }
+        ]
+      },
+      {
+        "q_type": "detail",
+        "sentences": [
+          "We kindly request that you review the attached documentation related to research participation and provide a response within five business days.",
+          "Should you require any additional information or clarification, please do not hesitate to contact our office directly."
+        ],
+        "question": "What is the writer requesting?",
+        "question_kr": "작성자가 요청하는 것은?",
+        "choices": [
+          "(A) Immediate payment for services rendered",
+          "(B) Review of attached documents and a response",
+          "(C) A face-to-face meeting at the earliest opportunity",
+          "(D) A written guarantee from senior management"
+        ],
+        "choices_kr": [
+          "(A) 서비스 비용의 즉시 결제",
+          "(B) 첨부 서류 검토와 회신",
+          "(C) 가능한 빠른 시일 내 대면 미팅",
+          "(D) 고위 경영진의 서면 보장"
+        ],
+        "answer": 1,
+        "kr": "research participation와 관련된 첨부 서류를 검토하고 5영업일 이내에 답변을 제공해 주시기 바랍니다. 추가 정보나 명확화가 필요하신 경우 주저하지 마시고 저희 사무소에 직접 연락해 주세요.",
+        "expressions": [
+          {
+            "expr": "attached documentation",
+            "meaning": "첨부 서류"
+          },
+          {
+            "expr": "business days",
+            "meaning": "영업일"
+          },
+          {
+            "expr": "do not hesitate to",
+            "meaning": "주저하지 마시고 ~하세요"
+          }
+        ]
+      },
+      {
+        "q_type": "inference",
+        "sentences": [
+          "We value our ongoing professional relationship and hope that this matter can be resolved in a manner that is mutually beneficial.",
+          "Please be assured that we remain committed to maintaining open communication and working collaboratively toward a satisfactory outcome."
+        ],
+        "question": "What is implied about the relationship between the writer and recipient?",
+        "question_kr": "작성자와 수신인의 관계에 대해 추론할 수 있는 것은?",
+        "choices": [
+          "(A) They have never communicated before",
+          "(B) They have an existing professional relationship",
+          "(C) They are in a legal dispute",
+          "(D) They are colleagues at the same company"
+        ],
+        "choices_kr": [
+          "(A) 이전에 소통한 적이 없다",
+          "(B) 기존의 전문적인 관계가 있다",
+          "(C) 법적 분쟁 중이다",
+          "(D) 같은 회사의 동료이다"
+        ],
+        "answer": 1,
+        "kr": "저희는 지속적인 전문적 관계를 소중히 여기며 이 문제가 상호 이익이 되는 방식으로 해결되기를 희망한다. 저희는 개방적인 소통을 유지하고 만족스러운 결과를 향해 협력적으로 일하기 위해 헌신하고 있음을 안심하셔도 됩니다.",
+        "expressions": [
+          {
+            "expr": "mutually beneficial",
+            "meaning": "상호 이익이 되는"
+          },
+          {
+            "expr": "open communication",
+            "meaning": "개방적인 소통"
+          },
+          {
+            "expr": "satisfactory outcome",
+            "meaning": "만족스러운 결과"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "title": "✉️ CIPHER",
+    "steps": [
+      {
+        "q_type": "who",
+        "sentences": [
+          "Dear Mr. Martin, I am writing regarding 프리랜서 서비스 제안 이메일 and wish to address this matter as promptly as possible.",
+          "As the freelance consultant, I believe this communication is essential to ensure a clear and productive resolution for all parties involved."
+        ],
+        "question": "Who most likely wrote this letter?",
+        "question_kr": "이 편지를 쓴 사람은 누구일 가능성이 가장 높은가?",
+        "choices": [
+          "(A) A potential client",
+          "(B) A freelance consultant",
+          "(C) A government official",
+          "(D) An independent mediator"
+        ],
+        "choices_kr": [
+          "(A) potential client",
+          "(B) freelance consultant",
+          "(C) 정부 관리",
+          "(D) 독립적인 중재자"
+        ],
+        "answer": 1,
+        "kr": "프리랜서 서비스 제안 이메일에 관해 가능한 한 신속하게 이 문제를 해결하기 위해 편지를 씁니다. freelance consultant로서, 이 소통이 관련된 모든 당사자들에게 명확하고 생산적인 해결을 보장하는 데 필수적이라고 생각합니다.",
+        "expressions": [
+          {
+            "expr": "as promptly as possible",
+            "meaning": "가능한 한 신속하게"
+          },
+          {
+            "expr": "ensure a clear resolution",
+            "meaning": "명확한 해결을 보장하다"
+          },
+          {
+            "expr": "all parties involved",
+            "meaning": "관련된 모든 당사자"
+          }
+        ]
+      },
+      {
+        "q_type": "detail",
+        "sentences": [
+          "We kindly request that you review the attached documentation related to freelance proposal and provide a response within five business days.",
+          "Should you require any additional information or clarification, please do not hesitate to contact our office directly."
+        ],
+        "question": "What is the writer requesting?",
+        "question_kr": "작성자가 요청하는 것은?",
+        "choices": [
+          "(A) Immediate payment for services rendered",
+          "(B) Review of attached documents and a response",
+          "(C) A face-to-face meeting at the earliest opportunity",
+          "(D) A written guarantee from senior management"
+        ],
+        "choices_kr": [
+          "(A) 서비스 비용의 즉시 결제",
+          "(B) 첨부 서류 검토와 회신",
+          "(C) 가능한 빠른 시일 내 대면 미팅",
+          "(D) 고위 경영진의 서면 보장"
+        ],
+        "answer": 1,
+        "kr": "freelance proposal와 관련된 첨부 서류를 검토하고 5영업일 이내에 답변을 제공해 주시기 바랍니다. 추가 정보나 명확화가 필요하신 경우 주저하지 마시고 저희 사무소에 직접 연락해 주세요.",
+        "expressions": [
+          {
+            "expr": "attached documentation",
+            "meaning": "첨부 서류"
+          },
+          {
+            "expr": "business days",
+            "meaning": "영업일"
+          },
+          {
+            "expr": "do not hesitate to",
+            "meaning": "주저하지 마시고 ~하세요"
+          }
+        ]
+      },
+      {
+        "q_type": "inference",
+        "sentences": [
+          "We value our ongoing professional relationship and hope that this matter can be resolved in a manner that is mutually beneficial.",
+          "Please be assured that we remain committed to maintaining open communication and working collaboratively toward a satisfactory outcome."
+        ],
+        "question": "What is implied about the relationship between the writer and recipient?",
+        "question_kr": "작성자와 수신인의 관계에 대해 추론할 수 있는 것은?",
+        "choices": [
+          "(A) They have never communicated before",
+          "(B) They have an existing professional relationship",
+          "(C) They are in a legal dispute",
+          "(D) They are colleagues at the same company"
+        ],
+        "choices_kr": [
+          "(A) 이전에 소통한 적이 없다",
+          "(B) 기존의 전문적인 관계가 있다",
+          "(C) 법적 분쟁 중이다",
+          "(D) 같은 회사의 동료이다"
+        ],
+        "answer": 1,
+        "kr": "저희는 지속적인 전문적 관계를 소중히 여기며 이 문제가 상호 이익이 되는 방식으로 해결되기를 희망한다. 저희는 개방적인 소통을 유지하고 만족스러운 결과를 향해 협력적으로 일하기 위해 헌신하고 있음을 안심하셔도 됩니다.",
+        "expressions": [
+          {
+            "expr": "mutually beneficial",
+            "meaning": "상호 이익이 되는"
+          },
+          {
+            "expr": "open communication",
+            "meaning": "개방적인 소통"
+          },
+          {
+            "expr": "satisfactory outcome",
+            "meaning": "만족스러운 결과"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "title": "✉️ CIPHER",
+    "steps": [
+      {
+        "q_type": "who",
+        "sentences": [
+          "Dear Ms. Thompson, I am writing regarding 직원 표창 추천 편지 and wish to address this matter as promptly as possible.",
+          "As the department manager, I believe this communication is essential to ensure a clear and productive resolution for all parties involved."
+        ],
+        "question": "Who most likely wrote this letter?",
+        "question_kr": "이 편지를 쓴 사람은 누구일 가능성이 가장 높은가?",
+        "choices": [
+          "(A) A HR committee",
+          "(B) A department manager",
+          "(C) A government official",
+          "(D) An independent mediator"
+        ],
+        "choices_kr": [
+          "(A) HR committee",
+          "(B) department manager",
+          "(C) 정부 관리",
+          "(D) 독립적인 중재자"
+        ],
+        "answer": 1,
+        "kr": "직원 표창 추천 편지에 관해 가능한 한 신속하게 이 문제를 해결하기 위해 편지를 씁니다. department manager로서, 이 소통이 관련된 모든 당사자들에게 명확하고 생산적인 해결을 보장하는 데 필수적이라고 생각합니다.",
+        "expressions": [
+          {
+            "expr": "as promptly as possible",
+            "meaning": "가능한 한 신속하게"
+          },
+          {
+            "expr": "ensure a clear resolution",
+            "meaning": "명확한 해결을 보장하다"
+          },
+          {
+            "expr": "all parties involved",
+            "meaning": "관련된 모든 당사자"
+          }
+        ]
+      },
+      {
+        "q_type": "detail",
+        "sentences": [
+          "We kindly request that you review the attached documentation related to employee commendation and provide a response within five business days.",
+          "Should you require any additional information or clarification, please do not hesitate to contact our office directly."
+        ],
+        "question": "What is the writer requesting?",
+        "question_kr": "작성자가 요청하는 것은?",
+        "choices": [
+          "(A) Immediate payment for services rendered",
+          "(B) Review of attached documents and a response",
+          "(C) A face-to-face meeting at the earliest opportunity",
+          "(D) A written guarantee from senior management"
+        ],
+        "choices_kr": [
+          "(A) 서비스 비용의 즉시 결제",
+          "(B) 첨부 서류 검토와 회신",
+          "(C) 가능한 빠른 시일 내 대면 미팅",
+          "(D) 고위 경영진의 서면 보장"
+        ],
+        "answer": 1,
+        "kr": "employee commendation와 관련된 첨부 서류를 검토하고 5영업일 이내에 답변을 제공해 주시기 바랍니다. 추가 정보나 명확화가 필요하신 경우 주저하지 마시고 저희 사무소에 직접 연락해 주세요.",
+        "expressions": [
+          {
+            "expr": "attached documentation",
+            "meaning": "첨부 서류"
+          },
+          {
+            "expr": "business days",
+            "meaning": "영업일"
+          },
+          {
+            "expr": "do not hesitate to",
+            "meaning": "주저하지 마시고 ~하세요"
+          }
+        ]
+      },
+      {
+        "q_type": "inference",
+        "sentences": [
+          "We value our ongoing professional relationship and hope that this matter can be resolved in a manner that is mutually beneficial.",
+          "Please be assured that we remain committed to maintaining open communication and working collaboratively toward a satisfactory outcome."
+        ],
+        "question": "What is implied about the relationship between the writer and recipient?",
+        "question_kr": "작성자와 수신인의 관계에 대해 추론할 수 있는 것은?",
+        "choices": [
+          "(A) They have never communicated before",
+          "(B) They have an existing professional relationship",
+          "(C) They are in a legal dispute",
+          "(D) They are colleagues at the same company"
+        ],
+        "choices_kr": [
+          "(A) 이전에 소통한 적이 없다",
+          "(B) 기존의 전문적인 관계가 있다",
+          "(C) 법적 분쟁 중이다",
+          "(D) 같은 회사의 동료이다"
+        ],
+        "answer": 1,
+        "kr": "저희는 지속적인 전문적 관계를 소중히 여기며 이 문제가 상호 이익이 되는 방식으로 해결되기를 희망한다. 저희는 개방적인 소통을 유지하고 만족스러운 결과를 향해 협력적으로 일하기 위해 헌신하고 있음을 안심하셔도 됩니다.",
+        "expressions": [
+          {
+            "expr": "mutually beneficial",
+            "meaning": "상호 이익이 되는"
+          },
+          {
+            "expr": "open communication",
+            "meaning": "개방적인 소통"
+          },
+          {
+            "expr": "satisfactory outcome",
+            "meaning": "만족스러운 결과"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "title": "✉️ CIPHER",
+    "steps": [
+      {
+        "q_type": "who",
+        "sentences": [
+          "Dear Mr. Martinez, I am writing regarding 시설 예약 확인 이메일 and wish to address this matter as promptly as possible.",
+          "As the venue manager, I believe this communication is essential to ensure a clear and productive resolution for all parties involved."
+        ],
+        "question": "Who most likely wrote this letter?",
+        "question_kr": "이 편지를 쓴 사람은 누구일 가능성이 가장 높은가?",
+        "choices": [
+          "(A) A event organizer",
+          "(B) A venue manager",
+          "(C) A government official",
+          "(D) An independent mediator"
+        ],
+        "choices_kr": [
+          "(A) event organizer",
+          "(B) venue manager",
+          "(C) 정부 관리",
+          "(D) 독립적인 중재자"
+        ],
+        "answer": 1,
+        "kr": "시설 예약 확인 이메일에 관해 가능한 한 신속하게 이 문제를 해결하기 위해 편지를 씁니다. venue manager로서, 이 소통이 관련된 모든 당사자들에게 명확하고 생산적인 해결을 보장하는 데 필수적이라고 생각합니다.",
+        "expressions": [
+          {
+            "expr": "as promptly as possible",
+            "meaning": "가능한 한 신속하게"
+          },
+          {
+            "expr": "ensure a clear resolution",
+            "meaning": "명확한 해결을 보장하다"
+          },
+          {
+            "expr": "all parties involved",
+            "meaning": "관련된 모든 당사자"
+          }
+        ]
+      },
+      {
+        "q_type": "detail",
+        "sentences": [
+          "We kindly request that you review the attached documentation related to venue booking confirmation and provide a response within five business days.",
+          "Should you require any additional information or clarification, please do not hesitate to contact our office directly."
+        ],
+        "question": "What is the writer requesting?",
+        "question_kr": "작성자가 요청하는 것은?",
+        "choices": [
+          "(A) Immediate payment for services rendered",
+          "(B) Review of attached documents and a response",
+          "(C) A face-to-face meeting at the earliest opportunity",
+          "(D) A written guarantee from senior management"
+        ],
+        "choices_kr": [
+          "(A) 서비스 비용의 즉시 결제",
+          "(B) 첨부 서류 검토와 회신",
+          "(C) 가능한 빠른 시일 내 대면 미팅",
+          "(D) 고위 경영진의 서면 보장"
+        ],
+        "answer": 1,
+        "kr": "venue booking confirmation와 관련된 첨부 서류를 검토하고 5영업일 이내에 답변을 제공해 주시기 바랍니다. 추가 정보나 명확화가 필요하신 경우 주저하지 마시고 저희 사무소에 직접 연락해 주세요.",
+        "expressions": [
+          {
+            "expr": "attached documentation",
+            "meaning": "첨부 서류"
+          },
+          {
+            "expr": "business days",
+            "meaning": "영업일"
+          },
+          {
+            "expr": "do not hesitate to",
+            "meaning": "주저하지 마시고 ~하세요"
+          }
+        ]
+      },
+      {
+        "q_type": "inference",
+        "sentences": [
+          "We value our ongoing professional relationship and hope that this matter can be resolved in a manner that is mutually beneficial.",
+          "Please be assured that we remain committed to maintaining open communication and working collaboratively toward a satisfactory outcome."
+        ],
+        "question": "What is implied about the relationship between the writer and recipient?",
+        "question_kr": "작성자와 수신인의 관계에 대해 추론할 수 있는 것은?",
+        "choices": [
+          "(A) They have never communicated before",
+          "(B) They have an existing professional relationship",
+          "(C) They are in a legal dispute",
+          "(D) They are colleagues at the same company"
+        ],
+        "choices_kr": [
+          "(A) 이전에 소통한 적이 없다",
+          "(B) 기존의 전문적인 관계가 있다",
+          "(C) 법적 분쟁 중이다",
+          "(D) 같은 회사의 동료이다"
+        ],
+        "answer": 1,
+        "kr": "저희는 지속적인 전문적 관계를 소중히 여기며 이 문제가 상호 이익이 되는 방식으로 해결되기를 희망한다. 저희는 개방적인 소통을 유지하고 만족스러운 결과를 향해 협력적으로 일하기 위해 헌신하고 있음을 안심하셔도 됩니다.",
+        "expressions": [
+          {
+            "expr": "mutually beneficial",
+            "meaning": "상호 이익이 되는"
+          },
+          {
+            "expr": "open communication",
+            "meaning": "개방적인 소통"
+          },
+          {
+            "expr": "satisfactory outcome",
+            "meaning": "만족스러운 결과"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "title": "✉️ CIPHER",
+    "steps": [
+      {
+        "q_type": "who",
+        "sentences": [
+          "Dear Ms. Robinson, I am writing regarding 학술 논문 게재 수락 통보 and wish to address this matter as promptly as possible.",
+          "As the journal editor, I believe this communication is essential to ensure a clear and productive resolution for all parties involved."
+        ],
+        "question": "Who most likely wrote this letter?",
+        "question_kr": "이 편지를 쓴 사람은 누구일 가능성이 가장 높은가?",
+        "choices": [
+          "(A) A researcher",
+          "(B) A journal editor",
+          "(C) A government official",
+          "(D) An independent mediator"
+        ],
+        "choices_kr": [
+          "(A) researcher",
+          "(B) journal editor",
+          "(C) 정부 관리",
+          "(D) 독립적인 중재자"
+        ],
+        "answer": 1,
+        "kr": "학술 논문 게재 수락 통보에 관해 가능한 한 신속하게 이 문제를 해결하기 위해 편지를 씁니다. journal editor로서, 이 소통이 관련된 모든 당사자들에게 명확하고 생산적인 해결을 보장하는 데 필수적이라고 생각합니다.",
+        "expressions": [
+          {
+            "expr": "as promptly as possible",
+            "meaning": "가능한 한 신속하게"
+          },
+          {
+            "expr": "ensure a clear resolution",
+            "meaning": "명확한 해결을 보장하다"
+          },
+          {
+            "expr": "all parties involved",
+            "meaning": "관련된 모든 당사자"
+          }
+        ]
+      },
+      {
+        "q_type": "detail",
+        "sentences": [
+          "We kindly request that you review the attached documentation related to paper acceptance and provide a response within five business days.",
+          "Should you require any additional information or clarification, please do not hesitate to contact our office directly."
+        ],
+        "question": "What is the writer requesting?",
+        "question_kr": "작성자가 요청하는 것은?",
+        "choices": [
+          "(A) Immediate payment for services rendered",
+          "(B) Review of attached documents and a response",
+          "(C) A face-to-face meeting at the earliest opportunity",
+          "(D) A written guarantee from senior management"
+        ],
+        "choices_kr": [
+          "(A) 서비스 비용의 즉시 결제",
+          "(B) 첨부 서류 검토와 회신",
+          "(C) 가능한 빠른 시일 내 대면 미팅",
+          "(D) 고위 경영진의 서면 보장"
+        ],
+        "answer": 1,
+        "kr": "paper acceptance와 관련된 첨부 서류를 검토하고 5영업일 이내에 답변을 제공해 주시기 바랍니다. 추가 정보나 명확화가 필요하신 경우 주저하지 마시고 저희 사무소에 직접 연락해 주세요.",
+        "expressions": [
+          {
+            "expr": "attached documentation",
+            "meaning": "첨부 서류"
+          },
+          {
+            "expr": "business days",
+            "meaning": "영업일"
+          },
+          {
+            "expr": "do not hesitate to",
+            "meaning": "주저하지 마시고 ~하세요"
+          }
+        ]
+      },
+      {
+        "q_type": "inference",
+        "sentences": [
+          "We value our ongoing professional relationship and hope that this matter can be resolved in a manner that is mutually beneficial.",
+          "Please be assured that we remain committed to maintaining open communication and working collaboratively toward a satisfactory outcome."
+        ],
+        "question": "What is implied about the relationship between the writer and recipient?",
+        "question_kr": "작성자와 수신인의 관계에 대해 추론할 수 있는 것은?",
+        "choices": [
+          "(A) They have never communicated before",
+          "(B) They have an existing professional relationship",
+          "(C) They are in a legal dispute",
+          "(D) They are colleagues at the same company"
+        ],
+        "choices_kr": [
+          "(A) 이전에 소통한 적이 없다",
+          "(B) 기존의 전문적인 관계가 있다",
+          "(C) 법적 분쟁 중이다",
+          "(D) 같은 회사의 동료이다"
+        ],
+        "answer": 1,
+        "kr": "저희는 지속적인 전문적 관계를 소중히 여기며 이 문제가 상호 이익이 되는 방식으로 해결되기를 희망한다. 저희는 개방적인 소통을 유지하고 만족스러운 결과를 향해 협력적으로 일하기 위해 헌신하고 있음을 안심하셔도 됩니다.",
+        "expressions": [
+          {
+            "expr": "mutually beneficial",
+            "meaning": "상호 이익이 되는"
+          },
+          {
+            "expr": "open communication",
+            "meaning": "개방적인 소통"
+          },
+          {
+            "expr": "satisfactory outcome",
+            "meaning": "만족스러운 결과"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "title": "✉️ CIPHER",
+    "steps": [
+      {
+        "q_type": "who",
+        "sentences": [
+          "Dear Mr. Clark, I am writing regarding 자동차 보험 갱신 안내 and wish to address this matter as promptly as possible.",
+          "As the insurance agent, I believe this communication is essential to ensure a clear and productive resolution for all parties involved."
+        ],
+        "question": "Who most likely wrote this letter?",
+        "question_kr": "이 편지를 쓴 사람은 누구일 가능성이 가장 높은가?",
+        "choices": [
+          "(A) A policyholder",
+          "(B) A insurance agent",
+          "(C) A government official",
+          "(D) An independent mediator"
+        ],
+        "choices_kr": [
+          "(A) policyholder",
+          "(B) insurance agent",
+          "(C) 정부 관리",
+          "(D) 독립적인 중재자"
+        ],
+        "answer": 1,
+        "kr": "자동차 보험 갱신 안내에 관해 가능한 한 신속하게 이 문제를 해결하기 위해 편지를 씁니다. insurance agent로서, 이 소통이 관련된 모든 당사자들에게 명확하고 생산적인 해결을 보장하는 데 필수적이라고 생각합니다.",
+        "expressions": [
+          {
+            "expr": "as promptly as possible",
+            "meaning": "가능한 한 신속하게"
+          },
+          {
+            "expr": "ensure a clear resolution",
+            "meaning": "명확한 해결을 보장하다"
+          },
+          {
+            "expr": "all parties involved",
+            "meaning": "관련된 모든 당사자"
+          }
+        ]
+      },
+      {
+        "q_type": "detail",
+        "sentences": [
+          "We kindly request that you review the attached documentation related to insurance renewal and provide a response within five business days.",
+          "Should you require any additional information or clarification, please do not hesitate to contact our office directly."
+        ],
+        "question": "What is the writer requesting?",
+        "question_kr": "작성자가 요청하는 것은?",
+        "choices": [
+          "(A) Immediate payment for services rendered",
+          "(B) Review of attached documents and a response",
+          "(C) A face-to-face meeting at the earliest opportunity",
+          "(D) A written guarantee from senior management"
+        ],
+        "choices_kr": [
+          "(A) 서비스 비용의 즉시 결제",
+          "(B) 첨부 서류 검토와 회신",
+          "(C) 가능한 빠른 시일 내 대면 미팅",
+          "(D) 고위 경영진의 서면 보장"
+        ],
+        "answer": 1,
+        "kr": "insurance renewal와 관련된 첨부 서류를 검토하고 5영업일 이내에 답변을 제공해 주시기 바랍니다. 추가 정보나 명확화가 필요하신 경우 주저하지 마시고 저희 사무소에 직접 연락해 주세요.",
+        "expressions": [
+          {
+            "expr": "attached documentation",
+            "meaning": "첨부 서류"
+          },
+          {
+            "expr": "business days",
+            "meaning": "영업일"
+          },
+          {
+            "expr": "do not hesitate to",
+            "meaning": "주저하지 마시고 ~하세요"
+          }
+        ]
+      },
+      {
+        "q_type": "inference",
+        "sentences": [
+          "We value our ongoing professional relationship and hope that this matter can be resolved in a manner that is mutually beneficial.",
+          "Please be assured that we remain committed to maintaining open communication and working collaboratively toward a satisfactory outcome."
+        ],
+        "question": "What is implied about the relationship between the writer and recipient?",
+        "question_kr": "작성자와 수신인의 관계에 대해 추론할 수 있는 것은?",
+        "choices": [
+          "(A) They have never communicated before",
+          "(B) They have an existing professional relationship",
+          "(C) They are in a legal dispute",
+          "(D) They are colleagues at the same company"
+        ],
+        "choices_kr": [
+          "(A) 이전에 소통한 적이 없다",
+          "(B) 기존의 전문적인 관계가 있다",
+          "(C) 법적 분쟁 중이다",
+          "(D) 같은 회사의 동료이다"
+        ],
+        "answer": 1,
+        "kr": "저희는 지속적인 전문적 관계를 소중히 여기며 이 문제가 상호 이익이 되는 방식으로 해결되기를 희망한다. 저희는 개방적인 소통을 유지하고 만족스러운 결과를 향해 협력적으로 일하기 위해 헌신하고 있음을 안심하셔도 됩니다.",
+        "expressions": [
+          {
+            "expr": "mutually beneficial",
+            "meaning": "상호 이익이 되는"
+          },
+          {
+            "expr": "open communication",
+            "meaning": "개방적인 소통"
+          },
+          {
+            "expr": "satisfactory outcome",
+            "meaning": "만족스러운 결과"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "title": "✉️ CIPHER",
+    "steps": [
+      {
+        "q_type": "who",
+        "sentences": [
+          "Dear Ms. Lewis, I am writing regarding 봉사 활동 초대 이메일 and wish to address this matter as promptly as possible.",
+          "As the nonprofit coordinator, I believe this communication is essential to ensure a clear and productive resolution for all parties involved."
+        ],
+        "question": "Who most likely wrote this letter?",
+        "question_kr": "이 편지를 쓴 사람은 누구일 가능성이 가장 높은가?",
+        "choices": [
+          "(A) A volunteer",
+          "(B) A nonprofit coordinator",
+          "(C) A government official",
+          "(D) An independent mediator"
+        ],
+        "choices_kr": [
+          "(A) volunteer",
+          "(B) nonprofit coordinator",
+          "(C) 정부 관리",
+          "(D) 독립적인 중재자"
+        ],
+        "answer": 1,
+        "kr": "봉사 활동 초대 이메일에 관해 가능한 한 신속하게 이 문제를 해결하기 위해 편지를 씁니다. nonprofit coordinator로서, 이 소통이 관련된 모든 당사자들에게 명확하고 생산적인 해결을 보장하는 데 필수적이라고 생각합니다.",
+        "expressions": [
+          {
+            "expr": "as promptly as possible",
+            "meaning": "가능한 한 신속하게"
+          },
+          {
+            "expr": "ensure a clear resolution",
+            "meaning": "명확한 해결을 보장하다"
+          },
+          {
+            "expr": "all parties involved",
+            "meaning": "관련된 모든 당사자"
+          }
+        ]
+      },
+      {
+        "q_type": "detail",
+        "sentences": [
+          "We kindly request that you review the attached documentation related to volunteer invitation and provide a response within five business days.",
+          "Should you require any additional information or clarification, please do not hesitate to contact our office directly."
+        ],
+        "question": "What is the writer requesting?",
+        "question_kr": "작성자가 요청하는 것은?",
+        "choices": [
+          "(A) Immediate payment for services rendered",
+          "(B) Review of attached documents and a response",
+          "(C) A face-to-face meeting at the earliest opportunity",
+          "(D) A written guarantee from senior management"
+        ],
+        "choices_kr": [
+          "(A) 서비스 비용의 즉시 결제",
+          "(B) 첨부 서류 검토와 회신",
+          "(C) 가능한 빠른 시일 내 대면 미팅",
+          "(D) 고위 경영진의 서면 보장"
+        ],
+        "answer": 1,
+        "kr": "volunteer invitation와 관련된 첨부 서류를 검토하고 5영업일 이내에 답변을 제공해 주시기 바랍니다. 추가 정보나 명확화가 필요하신 경우 주저하지 마시고 저희 사무소에 직접 연락해 주세요.",
+        "expressions": [
+          {
+            "expr": "attached documentation",
+            "meaning": "첨부 서류"
+          },
+          {
+            "expr": "business days",
+            "meaning": "영업일"
+          },
+          {
+            "expr": "do not hesitate to",
+            "meaning": "주저하지 마시고 ~하세요"
+          }
+        ]
+      },
+      {
+        "q_type": "inference",
+        "sentences": [
+          "We value our ongoing professional relationship and hope that this matter can be resolved in a manner that is mutually beneficial.",
+          "Please be assured that we remain committed to maintaining open communication and working collaboratively toward a satisfactory outcome."
+        ],
+        "question": "What is implied about the relationship between the writer and recipient?",
+        "question_kr": "작성자와 수신인의 관계에 대해 추론할 수 있는 것은?",
+        "choices": [
+          "(A) They have never communicated before",
+          "(B) They have an existing professional relationship",
+          "(C) They are in a legal dispute",
+          "(D) They are colleagues at the same company"
+        ],
+        "choices_kr": [
+          "(A) 이전에 소통한 적이 없다",
+          "(B) 기존의 전문적인 관계가 있다",
+          "(C) 법적 분쟁 중이다",
+          "(D) 같은 회사의 동료이다"
+        ],
+        "answer": 1,
+        "kr": "저희는 지속적인 전문적 관계를 소중히 여기며 이 문제가 상호 이익이 되는 방식으로 해결되기를 희망한다. 저희는 개방적인 소통을 유지하고 만족스러운 결과를 향해 협력적으로 일하기 위해 헌신하고 있음을 안심하셔도 됩니다.",
+        "expressions": [
+          {
+            "expr": "mutually beneficial",
+            "meaning": "상호 이익이 되는"
+          },
+          {
+            "expr": "open communication",
+            "meaning": "개방적인 소통"
+          },
+          {
+            "expr": "satisfactory outcome",
+            "meaning": "만족스러운 결과"
+          }
+        ]
+      }
+    ]
   }
 ]
