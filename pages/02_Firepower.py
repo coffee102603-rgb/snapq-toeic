@@ -821,17 +821,60 @@ elif st.session_state.phase=="victory":
     """, height=320)
 
     st.markdown("""<style>
+    @keyframes zapPulse{
+      0%,100%{box-shadow:0 0 18px #00d4ff,0 0 40px rgba(0,212,255,0.5),inset 0 0 18px rgba(0,212,255,0.1);}
+      50%{box-shadow:0 0 35px #00d4ff,0 0 80px rgba(0,212,255,0.8),inset 0 0 35px rgba(0,212,255,0.2);}
+    }
+    /* ① 즉시 재출격 — 전기 파란 불꽃, 최상위 강조 */
     div[data-testid="stButton"]:nth-of-type(1) button{
+      background:linear-gradient(135deg,#001a2e,#00121f)!important;
+      border:2px solid #00d4ff!important;
+      border-left:5px solid #00d4ff!important;
+      border-radius:14px!important;
+      animation:zapPulse 1.6s ease-in-out infinite!important;
+      min-height:62px!important;
+    }
+    div[data-testid="stButton"]:nth-of-type(1) button p{
+      color:#00d4ff!important;font-size:1.25rem!important;font-weight:900!important;
+      text-shadow:0 0 12px rgba(0,212,255,0.9)!important;letter-spacing:1px!important;
+    }
+    div[data-testid="stButton"]:nth-of-type(1) button:hover{
+      background:linear-gradient(135deg,#002a40,#001a2e)!important;
+      box-shadow:0 0 45px rgba(0,212,255,0.9)!important;
+    }
+    /* ② 브리핑 보기 — 골드 */
+    div[data-testid="stButton"]:nth-of-type(2) button{
       background:#0c0c00!important;border:2px solid #FFD600!important;
       border-left:5px solid #FFD600!important;border-radius:12px!important;
     }
-    div[data-testid="stButton"]:nth-of-type(1) button p{color:#FFD600!important;font-size:1.1rem!important;font-weight:900!important;}
-    div[data-testid="stButton"]:nth-of-type(1) button:hover{box-shadow:0 0 25px rgba(255,214,0,0.6)!important;}
-    div[data-testid="stButton"]:nth-of-type(2) button{
+    div[data-testid="stButton"]:nth-of-type(2) button p{color:#FFD600!important;font-size:1.05rem!important;font-weight:900!important;}
+    div[data-testid="stButton"]:nth-of-type(2) button:hover{box-shadow:0 0 22px rgba(255,214,0,0.6)!important;}
+    /* ③ 홈 — 회색 */
+    div[data-testid="stButton"]:nth-of-type(3) button{
       background:#0a0a0a!important;border:1.5px solid rgba(255,255,255,0.2)!important;
     }
-    div[data-testid="stButton"]:nth-of-type(2) button p{color:#777!important;font-size:0.95rem!important;}
+    div[data-testid="stButton"]:nth-of-type(3) button p{color:#666!important;font-size:0.95rem!important;}
     </style>""", unsafe_allow_html=True)
+
+    # ── ① 즉시 재출격 (전체 폭, 최우선) ──
+    if st.button("⚡ 즉시 재출격!", use_container_width=True, key="btn_relaunch"):
+        _keep_mode = st.session_state.get("mode")
+        _keep_grp  = st.session_state.get("battle_grp")
+        _keep_adp  = st.session_state.get("adp_level", "normal")
+        _keep_hist = st.session_state.get("adp_history", [])
+        _reset_keys = ["cq","qi","sc","wrong","ta","ans","sel",
+                       "round_qs","round_results","round_num","used",
+                       "started","qst","sk","msk","tsec"]
+        for k in _reset_keys:
+            if k in D: st.session_state[k] = D[k]
+        st.session_state.mode         = _keep_mode
+        st.session_state.battle_grp   = _keep_grp
+        st.session_state.adp_level    = _keep_adp
+        st.session_state.adp_history  = _keep_hist
+        st.session_state.phase = "lobby"
+        st.rerun()
+
+    # ── ②③ 브리핑 보기 / 홈 ──
     vc=st.columns(2)
     with vc[0]:
         if st.button("📋 브리핑 보기", use_container_width=True):
