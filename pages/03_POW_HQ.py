@@ -203,7 +203,7 @@ div[data-testid="stVerticalBlock"]>div{gap:0rem;}
 
 button[kind="primary"]{background:#000000!important;color:#fff!important;border:2px solid #ff4444!important;border-radius:14px!important;font-size:1.0rem!important;font-weight:900!important;padding:0.4rem 0.6rem!important;}
 button[kind="primary"] p{font-size:1.0rem!important;font-weight:900!important;text-align:center!important;}
-button[kind="secondary"]{background:#000000!important;color:#fff!important;border:2px solid #4488ff!important;border-radius:14px!important;font-size:1.0rem!important;font-weight:900!important;padding:0.4rem 0.6rem!important;}
+button[kind="secondary"]{background:#000000!important;color:#fff!important;border:2px solid #8833ff!important;border-radius:14px!important;font-size:1.0rem!important;font-weight:900!important;padding:0.4rem 0.6rem!important;}
 button[kind="secondary"] p{font-size:1.0rem!important;font-weight:900!important;text-align:center!important;}
 
 /* 줄노트 */
@@ -221,14 +221,14 @@ button[kind="secondary"] p{font-size:1.0rem!important;font-weight:900!important;
 
 /* 리모컨 */
 .sg-rmt{max-width:95vw;margin:0 auto;background:#000000;
-    border-radius:32px;padding:24px 16px 16px 16px;border:3px solid #ffd700;
+    border-radius:32px;padding:24px 16px 16px 16px;border:3px solid #8833ff;
     box-shadow:0 8px 40px rgba(255,215,0,0.2);text-align:center;}
 .sg-rmt-t{font-size:1.12rem;font-weight:900;
-    background:linear-gradient(90deg,#ffd700,#ffffff,#ffd700);
+    background:linear-gradient(90deg,#8833ff,#cc88ff,#8833ff);
     background-size:300% 300%;-webkit-background-clip:text;-webkit-text-fill-color:transparent;
     animation:rb 4s ease infinite;letter-spacing:2px;}
-.sg-nag{background:#000000;border:2px solid #ffd700;border-radius:18px;padding:14px;margin:12px 0;text-align:center;}
-.sg-nag-t{font-size:1.0rem;font-weight:900;color:#ffd700;text-shadow:0 0 12px rgba(255,215,0,0.4);}
+.sg-nag{background:#000000;border:2px solid #8833ff;border-radius:18px;padding:14px;margin:12px 0;text-align:center;}
+.sg-nag-t{font-size:1.0rem;font-weight:900;color:#cc88ff;text-shadow:0 0 12px rgba(136,51,255,0.4);}
 .sg-zn{border-radius:18px;padding:14px;margin:12px 0 6px 0;text-align:center;}
 .sg-zl{font-size:1.1rem;font-weight:900;letter-spacing:4px;text-transform:uppercase;}
 
@@ -366,13 +366,13 @@ if st.session_state.sg_phase == "lobby":
 
     # 뮤지컬 CSS
     st.markdown("""<style>
-    @keyframes fireGlow{0%,100%{text-shadow:0 0 20px #ff8800,0 0 40px #ff4400;}50%{text-shadow:0 0 35px #ffd700,0 0 60px #ff8800;}}
+    @keyframes fireGlow{0%,100%{text-shadow:0 0 20px #8833ff,0 0 40px #6600cc;}50%{text-shadow:0 0 35px #aa66ff,0 0 60px #8833ff;}}
     @keyframes stageIn{from{opacity:0;transform:translateY(25px);}to{opacity:1;transform:translateY(0);}}
     @keyframes firePulse{0%,100%{box-shadow:0 0 25px rgba(255,136,0,0.5),0 0 50px rgba(255,68,0,0.2);}50%{box-shadow:0 0 45px rgba(255,215,0,0.9),0 0 80px rgba(255,136,0,0.5);}}
     @keyframes nagFade{0%{opacity:0;transform:translateY(8px)}100%{opacity:1;transform:translateY(0)}}
 
     .rv-title{text-align:center;padding:16px 8px 6px 8px;}
-    .rv-title h1{font-size:1.5rem!important;font-size:3.2rem;font-weight:900;letter-spacing:6px;color:#ffd700;animation:fireGlow 2.5s ease infinite;margin:0;}
+    .rv-title h1{font-size:1.5rem!important;font-size:3.2rem;font-weight:900;letter-spacing:6px;color:#aa66ff;animation:fireGlow 2.5s ease infinite;margin:0;}
     .rv-title p{font-size:1.0rem;color:#ff8800;font-weight:900;letter-spacing:3px;margin:4px 0 0 0;}
 
     .rv-stage{animation:stageIn 0.5s ease;border-radius:20px;padding:18px 12px;margin:8px 0;}
@@ -385,16 +385,16 @@ if st.session_state.sg_phase == "lobby":
     .rv-act-1{color:#ff8800;}
     .rv-act-2p5{color:#ff4400;}
     .rv-act-2p7{color:#ffaa00;}
-    .rv-act-3{color:#ffd700;}
+    .rv-act-3{color:#aa66ff;}
 
     .rv-msg{font-size:1.25rem;font-weight:900;color:#fff;text-align:center;line-height:1.5;margin-bottom:12px;}
     .rv-msg .fire{color:#ff8800;}
-    .rv-msg .gold{color:#ffd700;}
+    .rv-msg .gold{color:#aa66ff;}
     .rv-msg .red{color:#ff4444;}
     .rv-msg .cyan{color:#00ffcc;}
 
     .rv-confirmed{text-align:center;padding:6px;margin-bottom:8px;}
-    .rv-confirmed span{font-size:1rem;color:#ffd700;font-weight:900;background:rgba(255,136,0,0.15);padding:5px 14px;border-radius:20px;border:1px solid rgba(255,136,0,0.5);}
+    .rv-confirmed span{font-size:1rem;color:#aa66ff;font-weight:900;background:rgba(136,51,255,0.15);padding:5px 14px;border-radius:20px;border:1px solid rgba(136,51,255,0.5);}
 
     @keyframes rvshake{0%,100%{transform:translateY(0);}20%{transform:translateY(-9px);}50%{transform:translateY(-3px);}75%{transform:translateY(-7px);}90%{transform:translateY(-1px);}}
     @keyframes rvblaze{0%,100%{box-shadow:0 0 15px rgba(255,136,0,0.3);}50%{box-shadow:0 0 60px rgba(255,210,0,1),0 0 120px rgba(255,80,0,0.7);border-color:rgba(255,235,0,1)!important;}}
@@ -408,7 +408,7 @@ if st.session_state.sg_phase == "lobby":
 
     button[data-testid="stBaseButton-primary"]{
         background:linear-gradient(135deg,#3a1500,#7a2a00,#aa4400)!important;
-        border:2px solid #ffd700!important;font-size:1.1rem!important;font-weight:900!important;
+        border:2px solid #8833ff!important;font-size:1.1rem!important;font-weight:900!important;
         padding:0.5rem!important;color:#ffffff!important;border-radius:12px!important;
         min-height:44px!important;max-height:44px!important;
         animation:none!important;
@@ -423,7 +423,7 @@ if st.session_state.sg_phase == "lobby":
     # 타이틀 강화
     st.markdown('''<div style="text-align:center;padding:8px 0 4px 0;">
         <div style="font-size:1.8rem;font-weight:900;color:#ff9900;letter-spacing:5px;">💀 포로사령부</div>
-        <div style="font-size:0.65rem;color:#ff8800;letter-spacing:3px;margin-top:2px;">TOEIC WRONG ANSWER ARENA</div>
+        <div style="font-size:0.65rem;color:#9966ff;letter-spacing:3px;margin-top:2px;">POW HQ · FINAL TRAINING</div>
         <div style="display:flex;align-items:center;justify-content:center;gap:8px;margin-top:4px;">
             <div style="height:1px;width:60px;background:linear-gradient(90deg,transparent,#ff6600);"></div>
             <div style="font-size:0.7rem;color:#ff6600;opacity:0.8;">틀린 문제가 무기가 된다 — 반복이 실력이다</div>
@@ -446,7 +446,7 @@ if st.session_state.sg_phase == "lobby":
         avg_rate = int((p5_rate_val + p7_rate_val) / 2) if (p5_rec["total"] > 0 or voca_rec["total"] > 0) else 0
 
         st.markdown(f'''<div style="background:#12101a;border:1.5px solid #7766ff;border-radius:14px;padding:12px 10px 10px 10px;margin-bottom:10px;">
-            <div style="text-align:center;font-size:0.75rem;font-weight:900;color:#aa99ff;letter-spacing:2px;margin-bottom:8px;">📊 나의 전투 기록</div>
+            <div style="text-align:center;font-size:0.75rem;font-weight:900;color:#cc88ff;letter-spacing:2px;margin-bottom:8px;">📊 나의 전투 기록</div>
             <div style="display:grid;grid-template-columns:1fr 1fr 1fr 1fr;text-align:center;gap:4px;border-bottom:1px solid #2a2a3a;padding-bottom:8px;">
                 <div style="border-right:1px solid #2a2a3a;">
                     <div style="font-size:0.65rem;color:#aaa;margin-bottom:3px;">P5 정답률</div>
@@ -476,7 +476,7 @@ if st.session_state.sg_phase == "lobby":
         c1, c2 = st.columns(2)
         with c1:
             st.markdown('''<div style="background:#150505;border:2px solid #ff5533;border-radius:14px;overflow:hidden;margin-bottom:6px;">
-                <div style="background:#2a0808;padding:6px;text-align:center;font-size:0.8rem;font-weight:900;color:#ff8866;letter-spacing:1px;">P5 전쟁포로</div>
+                <div style="background:#1a0a30;padding:6px;text-align:center;font-size:0.8rem;font-weight:900;color:#cc88ff;letter-spacing:1px;">⚡ 화력전 포로</div>
                 <div style="padding:14px 10px 10px 10px;text-align:center;">
                     <div style="font-size:2.2rem;">⚔️</div>
                     <div style="font-size:1.0rem;color:#ffcc99;margin-top:4px;font-weight:700;">문법 · 어휘</div>
@@ -486,8 +486,8 @@ if st.session_state.sg_phase == "lobby":
             if st.button("출격!", key="rv_p5", type="primary", use_container_width=True):
                 st.session_state.rv_battle = "p5"; st.rerun()
         with c2:
-            st.markdown('''<div style="background:#05080f;border:2px solid #3388ff;border-radius:14px;overflow:hidden;margin-bottom:6px;">
-                <div style="background:#081428;padding:6px;text-align:center;font-size:0.8rem;font-weight:900;color:#66aaff;letter-spacing:1px;">P7 전쟁포로</div>
+            st.markdown('''<div style="background:#05080f;border:2px solid #8833ff;border-radius:14px;overflow:hidden;margin-bottom:6px;">
+                <div style="background:#1a0a30;padding:6px;text-align:center;font-size:0.8rem;font-weight:900;color:#aa88ff;letter-spacing:1px;">📡 해독 포로</div>
                 <div style="padding:14px 10px 10px 10px;text-align:center;">
                     <div style="font-size:2.2rem;">📖</div>
                     <div style="font-size:1.0rem;color:#aaddff;margin-top:4px;font-weight:700;">독해 · 무기 획득</div>
@@ -500,17 +500,17 @@ if st.session_state.sg_phase == "lobby":
     # ━━━ 2막 P5: 전투 방식 선택 ━━━
     elif _rv_battle == "p5" and not _rv_mode:
         st.markdown('''<div style="text-align:center;margin-bottom:8px;">
-            <span style="background:#2a1000;border:1.5px solid #ff6600;border-radius:12px;padding:5px 18px;font-size:0.9rem;font-weight:900;color:#ffaa44;">⚔️ P5 전쟁포로</span>
+            <span style="background:#1a0838;border:1.5px solid #8833ff;border-radius:12px;padding:5px 18px;font-size:0.9rem;font-weight:900;color:#cc88ff;">⚡ 화력전 포로</span>
         </div>''', unsafe_allow_html=True)
 
         # 학습모드 카드
         # 학습모드 — 지붕 라벨 + 카드 + 버튼
         st.markdown('''<div style="display:flex;align-items:flex-end;margin-bottom:0;">
-            <div style="background:#081a14;border:2px solid #22cc88;border-bottom:none;border-radius:8px 8px 0 0;padding:4px 14px;font-size:0.85rem;font-weight:900;color:#44ffaa;display:inline-block;">📖 학습모드</div>
+            <div style="background:#150830;border:2px solid #8833ff;border-bottom:none;border-radius:8px 8px 0 0;padding:4px 14px;font-size:0.85rem;font-weight:900;color:#cc88ff;display:inline-block;">📋 정밀 심문</div>
         </div>''', unsafe_allow_html=True)
         _c1, _c2 = st.columns([3, 1])
         with _c1:
-            st.markdown(f'''<div style="background:#081a14;border:2px solid #22cc88;border-top:none;border-radius:0 12px 12px 12px;padding:12px 14px;min-height:82px;">
+            st.markdown(f'''<div style="background:#0e0628;border:2px solid #8833ff;border-top:none;border-radius:0 12px 12px 12px;padding:12px 14px;min-height:82px;">
                 <div style="font-size:1.05rem;font-weight:900;color:#ffffff;letter-spacing:1px;">🗡️ 오답 격파</div>
                 <div style="font-size:0.9rem;color:#55ffbb;margin-top:5px;font-weight:700;">틀린 문제만 골라<br>완전히 내 것으로!</div>
                 <div style="font-size:0.78rem;color:#aaa;margin-top:3px;">{len(p5_data)}문제 · 해설 · 정답 확인</div>
@@ -524,8 +524,8 @@ if st.session_state.sg_phase == "lobby":
 
         # 시험모드 — 지붕 라벨 + 시한폭탄 배지 + 카드 + 버튼
         st.markdown('''<div style="display:flex;align-items:flex-end;margin-top:10px;margin-bottom:0;gap:4px;">
-            <div style="background:#1a0800;border:2px solid #ff8800;border-bottom:none;border-radius:8px 8px 0 0;padding:4px 14px;font-size:0.85rem;font-weight:900;color:#ffaa44;display:inline-block;">⚡ 시험모드</div>
-            <div style="background:#2a1000;border:2px solid #ff6600;border-bottom:none;border-radius:8px 8px 0 0;padding:4px 14px;font-size:0.8rem;font-weight:900;color:#ff8844;display:inline-block;">💣 33초 시한폭탄</div>
+            <div style="background:#0e0025;border:2px solid #6622cc;border-bottom:none;border-radius:8px 8px 0 0;padding:4px 14px;font-size:0.85rem;font-weight:900;color:#aa66ff;display:inline-block;">💥 생존 심문</div>
+            <div style="background:#1a0838;border:2px solid #ff6600;border-bottom:none;border-radius:8px 8px 0 0;padding:4px 14px;font-size:0.8rem;font-weight:900;color:#ff8844;display:inline-block;">💣 33초 시한폭탄</div>
         </div>''', unsafe_allow_html=True)
         _c3, _c4 = st.columns([3, 1])
         with _c3:
@@ -566,16 +566,16 @@ if st.session_state.sg_phase == "lobby":
     elif _rv_battle == "p7" and not _rv_mode:
         total_words = len(voca_data)
         st.markdown(f'''<div style="text-align:center;margin-bottom:8px;">
-            <span style="background:#0a1428;border:1.5px solid #3388ff;border-radius:12px;padding:5px 18px;font-size:0.9rem;font-weight:900;color:#66aaff;">📖 P7 전쟁포로</span>
+            <span style="background:#1a0838;border:1.5px solid #6622cc;border-radius:12px;padding:5px 18px;font-size:0.9rem;font-weight:900;color:#aa88ff;">📡 해독 포로</span>
         </div>''', unsafe_allow_html=True)
         
         # 학습모드 지붕
         st.markdown('''<div style="display:flex;align-items:flex-end;margin-bottom:0;">
-            <div style="background:#081a14;border:2px solid #22cc88;border-bottom:none;border-radius:8px 8px 0 0;padding:4px 14px;font-size:0.85rem;font-weight:900;color:#44ffaa;display:inline-block;">📖 학습모드</div>
+            <div style="background:#150830;border:2px solid #8833ff;border-bottom:none;border-radius:8px 8px 0 0;padding:4px 14px;font-size:0.85rem;font-weight:900;color:#cc88ff;display:inline-block;">📋 정밀 심문</div>
         </div>''', unsafe_allow_html=True)
         _p7c1, _p7c2 = st.columns([3, 1])
         with _p7c1:
-            st.markdown(f'''<div style="background:#081a14;border:2px solid #22cc88;border-top:none;border-radius:0 12px 12px 12px;padding:12px 14px;min-height:90px;">
+            st.markdown(f'''<div style="background:#0e0628;border:2px solid #8833ff;border-top:none;border-radius:0 12px 12px 12px;padding:12px 14px;min-height:90px;">
                 <div style="font-size:1.05rem;font-weight:900;color:#ffffff;">🗡️ 문장 격파</div>
                 <div style="font-size:0.9rem;color:#55ffbb;margin-top:5px;font-weight:700;">한글 보고 → 영어 빈칸 채워라!</div>
                 <div style="font-size:0.82rem;color:#cceecc;margin-top:3px;font-weight:600;">문장을 몸으로 익혀라!</div>
@@ -595,8 +595,8 @@ if st.session_state.sg_phase == "lobby":
 
         # 시험모드 지붕
         st.markdown('''<div style="display:flex;align-items:flex-end;margin-top:10px;margin-bottom:0;gap:4px;">
-            <div style="background:#1a0800;border:2px solid #ff8800;border-bottom:none;border-radius:8px 8px 0 0;padding:4px 14px;font-size:0.85rem;font-weight:900;color:#ffaa44;display:inline-block;">⚡ 시험모드</div>
-            <div style="background:#2a1000;border:2px solid #ff6600;border-bottom:none;border-radius:8px 8px 0 0;padding:4px 14px;font-size:0.8rem;font-weight:900;color:#ff8844;display:inline-block;">💣 33초 시한폭탄</div>
+            <div style="background:#0e0025;border:2px solid #6622cc;border-bottom:none;border-radius:8px 8px 0 0;padding:4px 14px;font-size:0.85rem;font-weight:900;color:#aa66ff;display:inline-block;">💥 생존 심문</div>
+            <div style="background:#1a0838;border:2px solid #ff6600;border-bottom:none;border-radius:8px 8px 0 0;padding:4px 14px;font-size:0.8rem;font-weight:900;color:#ff8844;display:inline-block;">💣 33초 시한폭탄</div>
         </div>''', unsafe_allow_html=True)
         _p7c3, _p7c4 = st.columns([3, 1])
         with _p7c3:
@@ -732,18 +732,18 @@ elif st.session_state.sg_phase == "p5_study":
 
     st.markdown(f'''<div style="text-align:center;padding:6px 0 4px;">
       <div style="font-size:7px;color:#224433;letter-spacing:4px;margin-bottom:3px;font-weight:700;">POW HEADQUARTERS · INTEL FILE</div>
-      <div style="font-family:Orbitron,monospace;font-size:1.1rem;font-weight:900;color:#44cc88;letter-spacing:3px;">☠️ STUDY MODE · DEBRIEFING</div>
+      <div style="font-family:Orbitron,monospace;font-size:1.1rem;font-weight:900;color:#aa66ff;letter-spacing:3px;">☠️ STUDY MODE · DEBRIEFING</div>
     </div>''', unsafe_allow_html=True)
 
     st.markdown(f'''<div style="margin:3px 0 6px;">
       <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:4px;">
         <span style="font-size:8px;color:#336655;letter-spacing:3px;font-weight:700;">PRISONER {bi+1} / {len(p5_data)}</span>
-        <span style="background:#0a1a10;border:1px solid #226633;border-radius:20px;
-          padding:2px 10px;font-size:8px;color:#44cc88;font-weight:700;letter-spacing:1px;">
+        <span style="background:#0a1a10;border:1px solid #4400aa;border-radius:20px;
+          padding:2px 10px;font-size:8px;color:#aa66ff;font-weight:700;letter-spacing:1px;">
           ⚔ {_rem} 포로 대기중</span>
       </div>
       <div style="background:#0a0c10;border-radius:4px;height:7px;border:1px solid #112211;">
-        <div style="background:linear-gradient(90deg,#226633,#44cc88);height:5px;margin:1px;
+        <div style="background:linear-gradient(90deg,#4400aa,#8833ff);height:5px;margin:1px;
           border-radius:3px;width:{_prog}%;box-shadow:0 0 8px rgba(68,204,136,0.5);"></div>
       </div>
     </div>''', unsafe_allow_html=True)
@@ -752,15 +752,15 @@ elif st.session_state.sg_phase == "p5_study":
         border-left:4px solid #00cc88;border-radius:14px;padding:14px 14px 12px;margin:3px 0;">
       <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:10px;">
         <span style="font-size:7px;color:#336655;letter-spacing:3px;font-weight:700;">◈ INTEL FILE #{bi+1:03d}</span>
-        <span style="background:#0a1808;border:1px solid #226633;border-radius:6px;
-          padding:2px 10px;font-size:8px;color:#44cc88;font-weight:900;letter-spacing:1px;">{cat}</span>
+        <span style="background:#0a1808;border:1px solid #4400aa;border-radius:6px;
+          padding:2px 10px;font-size:8px;color:#aa66ff;font-weight:900;letter-spacing:1px;">{cat}</span>
       </div>
       <div style="font-size:1.0rem;font-weight:900;color:#ddeeff;line-height:1.75;
         margin-bottom:10px;word-break:keep-all;">{sent}</div>
       <div style="height:1px;background:linear-gradient(90deg,#00cc88,transparent);margin:8px 0;opacity:0.3;"></div>
       <div style="font-size:0.85rem;font-weight:600;color:#7a9a8a;line-height:1.65;margin-bottom:8px;">📖 {kr}</div>
-      <div style="background:#040d06;border-left:3px solid #44cc88;border-radius:0 8px 8px 0;padding:7px 10px;">
-        <span style="font-size:0.82rem;font-weight:700;color:#44cc88;">💡 {exk}</span>
+      <div style="background:#0a0420;border-left:3px solid #8833ff;border-radius:0 8px 8px 0;padding:7px 10px;">
+        <span style="font-size:0.82rem;font-weight:700;color:#aa66ff;">💡 {exk}</span>
       </div>
     </div>''', unsafe_allow_html=True)
 
@@ -892,7 +892,7 @@ elif st.session_state.sg_phase == "p5_exam":
         twarn = ""
     else:
         bg_css = ""
-        tcl = "#44ff88"; tsz = "1.2rem"; tglow = ""; twarn = ""
+        tcl = "#aa66ff"; tsz = "1.2rem"; tglow = ""; twarn = ""
     tpct = int(rem / 33 * 100)
     q_border = "rgba(255,50,50,0.6)" if rem <= 10 else "rgba(100,140,255,0.4)"
     q_shadow = "0 0 40px rgba(255,0,0,0.2)" if rem <= 10 else "0 0 30px rgba(100,140,255,0.15)"
@@ -934,7 +934,7 @@ elif st.session_state.sg_phase == "p5_exam":
     _dots = '<div style="display:flex;justify-content:center;gap:8px;margin:2px 0 4px;">'
     for _di in range(len(qs)):
         if _di < qi:
-            _dc="#44ff88"; _db="rgba(68,255,136,0.15)"; _ds="0 0 10px #44ff88"; _dd="✓"
+            _dc="#aa66ff"; _db="rgba(170,102,255,0.15)"; _ds="0 0 10px #aa66ff"; _dd="✓"
         elif _di == qi:
             _dc=tcl; _db="rgba(100,140,255,0.12)"; _ds=f"0 0 14px {tcl}"; _dd=str(_di+1)
         else:
@@ -954,7 +954,7 @@ elif st.session_state.sg_phase == "p5_exam":
         f'<span style="font-size:0.75rem;color:{tcl};opacity:0.7;">s</span></div>',
         unsafe_allow_html=True)
     st.markdown(_dots, unsafe_allow_html=True)
-    bar_color = tcl if rem <= 15 else "#44ff88"
+    bar_color = tcl if rem <= 15 else "#aa66ff"
     st.markdown(
         f'<div style="background:rgba(255,255,255,0.06);border-radius:10px;padding:2px;margin:2px 0;">'
         f'<div style="background:linear-gradient(90deg,{bar_color},{tcl});height:10px;'
@@ -964,7 +964,7 @@ elif st.session_state.sg_phase == "p5_exam":
         st.markdown(twarn, unsafe_allow_html=True)
 
     # ── 문제 카드 (사이즈 축소) ──
-    blank_text = q["text"].replace("_______", '<span style="border-bottom:3px solid #66aaff;padding:0 10px;color:#88bbff;">________</span>')
+    blank_text = q["text"].replace("_______", '<span style="border-bottom:3px solid #cc88ff;padding:0 10px;color:#88bbff;">________</span>')
     st.markdown(
         f'<div style="background:linear-gradient(145deg,#141435,#1c1c4a);'
         f'border:2px solid {q_border};border-radius:14px;padding:0.65rem 0.85rem;'
@@ -1114,14 +1114,14 @@ elif st.session_state.sg_phase == "p5_exam_result":
         st.markdown('''<style>.stApp{background:#080600!important;}</style>''', unsafe_allow_html=True)
         st.markdown('''<div style="text-align:center;padding:1rem 0 0.5rem 0;">
             <div style="font-size:1rem;letter-spacing:4px;opacity:0.6;">🏆 💰 ✨ 👑 ⭐ 🏆 💛</div>
-            <div style="font-size:2.8rem;font-weight:900;color:#ffd700;margin:6px 0;">🏆 생존!</div>
-            <div style="font-size:0.95rem;color:#d4af37;font-weight:700;">폭탄을 이겨냈다! 진짜 전사!</div>
+            <div style="font-size:2.8rem;font-weight:900;color:#cc88ff;margin:6px 0;">🏆 생존!</div>
+            <div style="font-size:0.95rem;color:#8833ff;font-weight:700;">폭탄을 이겨냈다! 진짜 전사!</div>
         </div>''', unsafe_allow_html=True)
-        st.markdown(f'''<div style="background:#0c0c00;border:1.5px solid #d4af37;border-radius:12px;padding:10px;text-align:center;margin:8px 0;">
-            <div style="font-size:1.6rem;font-weight:900;color:#ffd700;">🏆 {ok_cnt} / 5</div>
+        st.markdown(f'''<div style="background:#0c0c00;border:1.5px solid #8833ff;border-radius:12px;padding:10px;text-align:center;margin:8px 0;">
+            <div style="font-size:1.6rem;font-weight:900;color:#cc88ff;">🏆 {ok_cnt} / 5</div>
         </div>''', unsafe_allow_html=True)
-        st.markdown('''<div style="background:#0a0800;border:1px solid #d4af37;border-radius:10px;padding:8px;text-align:center;margin-bottom:8px;">
-            <div style="font-size:0.85rem;color:#d4af37;font-weight:700;">⚡ 3번 반복하면 장기기억 전환율 3배!</div>
+        st.markdown('''<div style="background:#0a0800;border:1px solid #8833ff;border-radius:10px;padding:8px;text-align:center;margin-bottom:8px;">
+            <div style="font-size:0.85rem;color:#8833ff;font-weight:700;">⚡ 3번 반복하면 장기기억 전환율 3배!</div>
             <div style="font-size:0.75rem;color:#886600;margin-top:2px;">지금 이 기세로 한 번 더!</div>
         </div>''', unsafe_allow_html=True)
         if st.button("⚡ 한 번 더! 완전 정복!", key="retry_exam", type="primary", use_container_width=True):
@@ -1273,10 +1273,10 @@ elif st.session_state.sg_phase == "survival":
     # ── 헤더 ──
     _cur_lv = st.session_state.get("puzzle_blank_level", 2)
     _lv_label = ["", "🟢 기초(빈칸 1개)", "🟡 표준(빈칸 2개)", "🔴 심화(빈칸 3개)"][_cur_lv]
-    st.markdown(f'''<div style="background:#1a1a2e;border:1.5px solid #4488ff;border-radius:14px;padding:8px 14px;text-align:center;margin-bottom:8px;">
-        <div style="font-size:0.95rem;font-weight:700;color:#4488ff;">📖 문장 퍼즐 배틀</div>
+    st.markdown(f'''<div style="background:#150830;border:1.5px solid #8833ff;border-radius:14px;padding:8px 14px;text-align:center;margin-bottom:8px;">
+        <div style="font-size:0.95rem;font-weight:700;color:#aa66ff;">📖 문장 퍼즐 배틀</div>
         <div style="font-size:0.8rem;color:#aaa;margin-top:2px;">{idx+1} / {total} 문장 &nbsp;|&nbsp; {_lv_label}</div>
-        <div style="background:#0a0a1a;border-radius:4px;height:5px;margin-top:5px;"><div style="background:linear-gradient(90deg,#4488ff,#44ccff);height:5px;border-radius:4px;width:{int((idx/max(total,1))*100)}%;"></div></div>
+        <div style="background:#0a0a1a;border-radius:4px;height:5px;margin-top:5px;"><div style="background:linear-gradient(90deg,#8833ff,#cc88ff);height:5px;border-radius:4px;width:{int((idx/max(total,1))*100)}%;"></div></div>
     </div>''', unsafe_allow_html=True)
 
     # ── 한글 해석 (위) ──
@@ -1307,11 +1307,11 @@ elif st.session_state.sg_phase == "survival":
             _cur_level = st.session_state.get("puzzle_blank_level", 2)
             _level_emoji = ["", "🟢 기초", "🟡 표준", "🔴 심화"][_cur_level]
             _level_msg = ["", "빈칸 1개", "빈칸 2개", "빈칸 3개!"][_cur_level]
-            st.markdown(f'''<div style="background:#0a2a0a;border:2px solid #44ff88;border-radius:14px;padding:14px;text-align:center;margin-bottom:8px;">
+            st.markdown(f'''<div style="background:#0a0420;border:2px solid #aa66ff;border-radius:14px;padding:14px;text-align:center;margin-bottom:8px;">
                 <div style="font-size:2rem;">🎯</div>
-                <div style="font-size:1.3rem;font-weight:900;color:#44ff88;margin-top:4px;">완벽해! 몸으로 익혔다!</div>
+                <div style="font-size:1.3rem;font-weight:900;color:#aa66ff;margin-top:4px;">완벽해! 몸으로 익혔다!</div>
                 <div style="font-size:0.9rem;color:#88ddaa;margin-top:4px;">이 문장, 이제 완전히 네 것!</div>
-                <div style="font-size:0.8rem;color:#44ff88;margin-top:6px;opacity:0.8;">현재 난이도: {_level_emoji} ({_level_msg})</div>
+                <div style="font-size:0.8rem;color:#aa66ff;margin-top:6px;opacity:0.8;">현재 난이도: {_level_emoji} ({_level_msg})</div>
             </div>''', unsafe_allow_html=True)
             if st.button("▶ 다음 문장!",key="sb_next",type="primary",use_container_width=True):
                 st.session_state.sb_idx=idx+1; st.session_state.sb_wrong_cnt=0
@@ -1349,11 +1349,11 @@ elif st.session_state.sg_phase == "survival":
                 for _w in ans_parts:
                     _clean=_w.strip(".,!?;:()")
                     if any(_clean.lower()==_b.lower() for _b in blank_order):
-                        ans_html+=f'<span style="background:#0a2a0a;border:2px solid #44ff88;border-radius:8px;padding:2px 10px;color:#44ff88;font-weight:900;margin:0 2px;">{_w}</span> '
+                        ans_html+=f'<span style="background:#0a0420;border:2px solid #aa66ff;border-radius:8px;padding:2px 10px;color:#aa66ff;font-weight:900;margin:0 2px;">{_w}</span> '
                     else:
                         ans_html+=f'<span style="color:#ddddff;">{_w}</span> '
-                st.markdown(f'''<div style="background:#0a1a0a;border:2px solid #44ff88;border-radius:14px;padding:12px 14px;margin-bottom:8px;">
-                    <div style="font-size:0.7rem;color:#44ff88;letter-spacing:2px;margin-bottom:6px;">✅ 정답 문장</div>
+                st.markdown(f'''<div style="background:#0a1a0a;border:2px solid #aa66ff;border-radius:14px;padding:12px 14px;margin-bottom:8px;">
+                    <div style="font-size:0.7rem;color:#aa66ff;letter-spacing:2px;margin-bottom:6px;">✅ 정답 문장</div>
                     <div style="font-size:1.05rem;font-weight:600;line-height:2.0;">{ans_html}</div>
                 </div>''', unsafe_allow_html=True)
                 # 잔소리 멘트 (1번만)
@@ -1385,9 +1385,9 @@ elif st.session_state.sg_phase == "survival":
         for _i,_p in enumerate(fp0):
             s0_html+=f'<span style="color:#ddddff;">{_p}</span>'
             if _i<len(fp0)-1:
-                if _i<len(selected): s0_html+=f'<span style="background:#0a2a0a;border:2px solid #44ff88;border-radius:8px;padding:2px 10px;color:#44ff88;font-weight:700;margin:0 3px;">{selected[_i]}</span>'
-                else: s0_html+='<span style="background:#0a0a1a;border:2px dashed #4488ff;border-radius:8px;padding:2px 18px;color:#333;margin:0 3px;">_____</span>'
-        st.markdown(f'''<div style="background:#1a1a2e;border:1.5px solid #4488ff;border-radius:12px;padding:12px 14px;margin-bottom:8px;font-size:1.05rem;font-weight:600;line-height:2.2;">{s0_html}</div>''', unsafe_allow_html=True)
+                if _i<len(selected): s0_html+=f'<span style="background:#0a0420;border:2px solid #aa66ff;border-radius:8px;padding:2px 10px;color:#aa66ff;font-weight:700;margin:0 3px;">{selected[_i]}</span>'
+                else: s0_html+='<span style="background:#0a0a1a;border:2px dashed #8833ff;border-radius:8px;padding:2px 18px;color:#333;margin:0 3px;">_____</span>'
+        st.markdown(f'''<div style="background:#150830;border:1.5px solid #8833ff;border-radius:12px;padding:12px 14px;margin-bottom:8px;font-size:1.05rem;font-weight:600;line-height:2.2;">{s0_html}</div>''', unsafe_allow_html=True)
         # ── 단어 카드 5개 ──
         st.markdown('<div style="font-size:0.8rem;color:#888;text-align:center;margin-bottom:5px;">👇 단어를 터치해서 빈칸에 넣어라!</div>', unsafe_allow_html=True)
         used=[s.lower() for s in selected]
@@ -1446,7 +1446,7 @@ elif st.session_state.sg_phase == "survival_result":
         </div>''', unsafe_allow_html=True)
     elif cleared:
         st.markdown(f'''<div style="text-align:center;padding:1.5rem;">
-            <div style="font-size:3.5rem;font-weight:900;color:#44ff88;text-shadow:0 0 30px #00ff66;">🎉 정복 완료! 🎉</div>
+            <div style="font-size:3.5rem;font-weight:900;color:#aa66ff;text-shadow:0 0 30px #00ff66;">🎉 정복 완료! 🎉</div>
             <div style="font-size:1.5rem;color:#88ffbb;font-weight:800;margin-top:8px;">4전 모두 돌파! 단어가 내 것이 됐다!</div>
         </div>''', unsafe_allow_html=True)
     else:
@@ -1509,15 +1509,15 @@ elif st.session_state.sg_phase == "combo_rush":
     if rem<=5: bg_css="background:linear-gradient(135deg,#2a0808,#3a0a1a)!important;"; tcl="#ff0000"; tsz="2.5rem"; tglow="text-shadow:0 0 40px #ff0000;"; twarn='<div style="text-align:center;font-size:1.4rem;color:#ff0000;font-weight:900;">💀 폭발한다!! 💀</div>'
     elif rem<=10: bg_css="background:linear-gradient(135deg,#1e0815,#2e0a25)!important;"; tcl="#ff2200"; tsz="2rem"; tglow="text-shadow:0 0 25px #ff2200;"; twarn='<div style="text-align:center;font-size:1.1rem;color:#ff4444;font-weight:900;">💀 서둘러!! 💀</div>'
     elif rem<=15: bg_css=""; tcl="#ff6600"; tsz="1.6rem"; tglow="text-shadow:0 0 15px #ff6600;"; twarn='<div style="text-align:center;font-size:1rem;color:#ff8844;font-weight:900;">⚡ 서둘러!!</div>'
-    else: bg_css=""; tcl="#44ff88"; tsz="1.2rem"; tglow=""; twarn=""
+    else: bg_css=""; tcl="#aa66ff"; tsz="1.2rem"; tglow=""; twarn=""
     tpct=int(rem/30*100)
     if bg_css: st.markdown(f'<style>.stApp{{{bg_css}}}</style>',unsafe_allow_html=True)
     ok_cnt=sum(1 for r in st.session_state.sg_combo_results if r)
     needed=max(0,3-ok_cnt); remain_q=total_qs-cidx
-    survive_color="#44ff88" if ok_cnt>=3 else "#ffcc00" if needed<=remain_q else "#ff4444"
-    st.markdown(f'<div style="background:linear-gradient(180deg,#0a0a1a,#1a1030);border:2.5px solid #4488ff;border-radius:22px;padding:8px;text-align:center;"><div style="font-size:1.0rem;font-weight:900;color:#4488ff;">⚡ P7 실전 블랭크 · 5문제 중 3개 이상!</div><div style="display:flex;justify-content:space-around;margin-top:6px;"><span style="font-size:0.85rem;font-weight:900;color:#44ff88;">✅ {ok_cnt}개</span><span style="font-size:0.85rem;font-weight:900;color:#ffcc00;">{cidx+1}/{total_qs}</span><span style="font-size:0.85rem;font-weight:900;color:{survive_color};">필요 {needed}개</span></div></div>',unsafe_allow_html=True)
+    survive_color="#aa66ff" if ok_cnt>=3 else "#ffcc00" if needed<=remain_q else "#ff4444"
+    st.markdown(f'<div style="background:linear-gradient(180deg,#0a0118,#1a0830);border:2.5px solid #8833ff;border-radius:22px;padding:8px;text-align:center;"><div style="font-size:1.0rem;font-weight:900;color:#aa66ff;">⚡ P7 실전 블랭크 · 5문제 중 3개 이상!</div><div style="display:flex;justify-content:space-around;margin-top:6px;"><span style="font-size:0.85rem;font-weight:900;color:#aa66ff;">✅ {ok_cnt}개</span><span style="font-size:0.85rem;font-weight:900;color:#ffcc00;">{cidx+1}/{total_qs}</span><span style="font-size:0.85rem;font-weight:900;color:{survive_color};">필요 {needed}개</span></div></div>',unsafe_allow_html=True)
     st.markdown(f'<div style="text-align:center;margin:4px 0;"><span style="font-size:{tsz};font-weight:900;color:{tcl};{tglow}">{rem}</span><span style="font-size:0.8rem;color:{tcl};opacity:0.7;">s</span></div>',unsafe_allow_html=True)
-    st.markdown(f'<div style="background:rgba(255,255,255,0.06);border-radius:12px;padding:3px;margin:4px 0;"><div style="background:linear-gradient(90deg,{tcl},#4488ff);height:12px;border-radius:10px;width:{tpct}%;"></div></div>',unsafe_allow_html=True)
+    st.markdown(f'<div style="background:rgba(255,255,255,0.06);border-radius:12px;padding:3px;margin:4px 0;"><div style="background:linear-gradient(90deg,{tcl},#8833ff);height:12px;border-radius:10px;width:{tpct}%;"></div></div>',unsafe_allow_html=True)
     if twarn: st.markdown(twarn,unsafe_allow_html=True)
     import re as _re2
     expr_text=q_item.get("expr",""); meaning=q_item.get("meaning",""); sentences=q_item.get("sentences",[])
@@ -1536,7 +1536,7 @@ elif st.session_state.sg_phase == "combo_rush":
             blank_sent=first_en.replace(chosen,"_______",1)
             key_word=chosen.strip(".,!?;:()")
     if "_______" not in blank_sent: blank_sent=first_en.replace(first_en.split()[0],"_______",1)
-    blank_styled=blank_sent.replace("_______",'<span style="border-bottom:3px solid #4488ff;padding:0 8px;color:#88aaff;font-weight:900;">_______</span>')
+    blank_styled=blank_sent.replace("_______",'<span style="border-bottom:3px solid #8833ff;padding:0 8px;color:#cc88ff;font-weight:900;">_______</span>')
     st.markdown(f'<div style="border-radius:20px;padding:1rem;margin:6px 0;background:linear-gradient(145deg,#1a1a2e,#2a2040);border:2.5px solid rgba(100,150,255,0.6);"><div style="font-size:0.85rem;font-weight:800;letter-spacing:3px;color:rgba(150,200,255,0.8);margin-bottom:10px;">📖 FILL IN THE BLANK</div><div style="font-size:1.1rem;font-weight:700;line-height:1.6;color:#eeeeff;">{blank_styled}</div></div>',unsafe_allow_html=True)
     WORD_DB={"a":["address","adjust","advance","achieve","allocate","approve","assess","assist","announce"],"b":["balance","benefit","build","boost","brief","bring","budget"],"c":["comply","conduct","confirm","consider","complete","calculate","cancel","coordinate","clarify"],"d":["deliver","determine","develop","distribute","demonstrate","decline","delay","discuss"],"e":["establish","evaluate","examine","execute","expand","ensure","enforce","engage","enhance"],"f":["facilitate","finalize","follow","forecast","fulfill","focus","forward"],"g":["generate","grant","guide","gather","guarantee"],"h":["handle","highlight","hire","hold","head"],"i":["implement","improve","increase","indicate","inspect","install","integrate","introduce"],"j":["justify","join"],"l":["launch","limit","list","locate","lead","leverage"],"m":["maintain","manage","measure","monitor","modify","meet","mention"],"n":["notify","negotiate","note"],"o":["obtain","operate","optimize","organize","outline","oversee"],"p":["prepare","process","produce","provide","publish","perform","present","prevent","promote"],"q":["qualify","question"],"r":["receive","record","reduce","renew","replace","report","require","resolve","review"],"s":["submit","supply","support","suspend","sustain","schedule","secure","select","specify","streamline"],"t":["terminate","transfer","transform","transmit","track","test","target"],"u":["update","upgrade","utilize","undergo"],"v":["verify","validate","volunteer"],"w":["withdraw","work","warrant"]}
     def get_distractors(correct_word,n=3):
@@ -1639,12 +1639,12 @@ elif st.session_state.sg_phase == "combo_result":
         st.markdown('<style>.stApp{background:#080600!important;}</style>', unsafe_allow_html=True)
         st.markdown(f'''<div style="text-align:center;padding:1rem 0 0.5rem 0;">
             <div style="font-size:0.9rem;letter-spacing:4px;opacity:0.7;">🏆 💰 ✨ 👑 ⭐ 🏆 💛</div>
-            <div style="font-size:2.8rem;font-weight:900;color:#ffd700;text-shadow:0 0 30px #ffd700,0 0 60px #ff8800;margin:6px 0;">🏆 신기록!</div>
-            <div style="font-size:0.9rem;color:#d4af37;font-weight:700;">새로운 최고 기록 달성!</div>
+            <div style="font-size:2.8rem;font-weight:900;color:#cc88ff;text-shadow:0 0 30px #8833ff,0 0 60px #6600cc;margin:6px 0;">🏆 신기록!</div>
+            <div style="font-size:0.9rem;color:#8833ff;font-weight:700;">새로운 최고 기록 달성!</div>
         </div>''', unsafe_allow_html=True)
-        st.markdown(f'''<div style="background:#0c0c00;border:2px solid #d4af37;border-radius:14px;padding:14px;text-align:center;margin:8px 0;">
+        st.markdown(f'''<div style="background:#0c0c00;border:2px solid #8833ff;border-radius:14px;padding:14px;text-align:center;margin:8px 0;">
             <div style="font-size:0.75rem;color:#886600;margin-bottom:4px;">🎉 NEW RECORD</div>
-            <div style="font-size:2.8rem;font-weight:900;color:#ffd700;text-shadow:0 0 20px rgba(255,215,0,0.5);">⭐ {score}</div>
+            <div style="font-size:2.8rem;font-weight:900;color:#cc88ff;text-shadow:0 0 20px rgba(136,51,255,0.5);">⭐ {score}</div>
         </div>''', unsafe_allow_html=True)
     else:
         st.markdown('<style>.stApp{background:#080000!important;}</style>', unsafe_allow_html=True)
@@ -1754,8 +1754,8 @@ div[data-testid="stButton"] button{
   background:#0e1020!important;border:1.5px solid #2a2d45!important;color:#c0c8e0!important;font-size:0.9rem!important;
 }
 div[data-testid="stButton"] button p{color:#c0c8e0!important;font-size:0.9rem!important;font-weight:800!important;}
-#btn-know div[data-testid="stButton"] button{background:#081a0e!important;border:2.5px solid #22dd55!important;color:#33ff77!important;min-height:64px!important;font-size:1.05rem!important;}
-#btn-know div[data-testid="stButton"] button p{color:#33ff77!important;font-size:1.05rem!important;font-weight:900!important;}
+#btn-know div[data-testid="stButton"] button{background:#081a0e!important;border:2.5px solid #22dd55!important;color:#aa66ff!important;min-height:64px!important;font-size:1.05rem!important;}
+#btn-know div[data-testid="stButton"] button p{color:#aa66ff!important;font-size:1.05rem!important;font-weight:900!important;}
 #btn-no div[data-testid="stButton"] button{background:#1a0808!important;border:2.5px solid #dd3322!important;color:#ff5544!important;min-height:64px!important;font-size:1.05rem!important;}
 #btn-no div[data-testid="stButton"] button p{color:#ff5544!important;font-size:1.05rem!important;font-weight:900!important;}
 #btn-flip div[data-testid="stButton"] button{background:#10102a!important;border:2.5px solid #6655ee!important;color:#cc99ff!important;min-height:58px!important;font-size:1rem!important;}
@@ -1958,7 +1958,7 @@ div[data-testid="stButton"] button p{color:#c0c8e0!important;font-size:0.9rem!im
         components.html("""
         <style>*{margin:0;padding:0;}body{background:transparent;font-family:sans-serif;text-align:center;padding:40px 16px;}</style>
         <div style="font-size:56px;margin-bottom:12px;">🏆</div>
-        <div style="font-family:'Orbitron',monospace;font-size:14px;color:#33ff77;letter-spacing:4px;margin-bottom:6px;">전원 석방 🏆</div>
+        <div style="font-family:'Orbitron',monospace;font-size:14px;color:#aa66ff;letter-spacing:4px;margin-bottom:6px;">전원 석방 🏆</div>
         <div style="font-size:13px;color:#448866;margin-top:8px;line-height:1.7;">모든 단어를 정복! 진짜 어휘 전사!</div>
         """, height=180)
         if st.button("💀 사령부 귀환", key="wp_back_empty", use_container_width=True):
@@ -2000,7 +2000,7 @@ div[data-testid="stButton"] button p{color:#c0c8e0!important;font-size:0.9rem!im
           </div>
           <div style="flex:1;background:#081508;border:1.5px solid #228844;border-radius:14px;padding:12px;text-align:center;">
             <div style="font-family:Orbitron,monospace;font-size:10px;font-weight:700;color:#44aa66;letter-spacing:2px;margin-bottom:4px;">RELEASED</div>
-            <div style="font-size:26px;font-weight:900;color:#44ff88;">{_freed}</div>
+            <div style="font-size:26px;font-weight:900;color:#aa66ff;">{_freed}</div>
             <div style="font-size:12px;color:#66dd99;font-weight:600;margin-top:3px;">오늘 석방</div>
           </div>
           <div style="flex:1;background:#0c1018;border:1.5px solid #334455;border-radius:14px;padding:10px;text-align:center;">
@@ -2137,7 +2137,7 @@ div[data-testid="stButton"] button p{color:#c0c8e0!important;font-size:0.9rem!im
                 f'background:#08080f;border:1px solid #1e2235;border-radius:10px;padding:7px 14px;margin-bottom:5px;">'
                 f'<span style="font-family:Orbitron,monospace;font-size:8px;color:#334455;letter-spacing:4px;">INTERROGATION</span>'
                 f'<span style="font-size:13px;color:#8899bb;font-weight:800;">{_idx+1} / {len(_deck)}</span>'
-                f'<span style="font-size:13px;font-weight:900;color:#33ff77;">🔓 {_freed}</span>'
+                f'<span style="font-size:13px;font-weight:900;color:#aa66ff;">🔓 {_freed}</span>'
                 f'</div>', unsafe_allow_html=True)
 
             if not _flipped:
@@ -2486,7 +2486,7 @@ div[data-testid="stButton"] button p{color:#c0c8e0!important;font-size:0.9rem!im
             .word{{font-family:'Orbitron',monospace;font-size:24px;font-weight:900;color:#ffffff;
                 text-shadow:0 0 20px {_ic};margin-bottom:4px;}}
             .kr-show{{font-size:22px;font-weight:900;color:#ffee44;margin:8px 0;}}
-            .fb-ok{{font-size:28px;font-weight:900;color:#33ff77;animation:popIn 0.3s ease;}}
+            .fb-ok{{font-size:28px;font-weight:900;color:#aa66ff;animation:popIn 0.3s ease;}}
             .fb-ng{{font-size:22px;font-weight:900;color:#ff4444;}}
             .fb-ans{{font-size:14px;color:#aabbcc;margin-top:4px;}}
             .inq-msg{{font-size:15px;font-weight:800;color:#ffffff;margin-top:8px;line-height:1.5;}}
@@ -2555,7 +2555,7 @@ div[data-testid="stButton"] button p{color:#c0c8e0!important;font-size:0.9rem!im
         if _score == _total:
             _grade_emoji, _grade_msg, _grade_color = "🏆", "완전 석방 확정! 넌 자유야!", "#ffdd00"
         elif _score >= _total * 0.8:
-            _grade_emoji, _grade_msg, _grade_color = "⭐", "거의 다! 한 놈만 더 잡자!", "#44ff88"
+            _grade_emoji, _grade_msg, _grade_color = "⭐", "거의 다! 한 놈만 더 잡자!", "#aa66ff"
         elif _score >= _total * 0.6:
             _grade_emoji, _grade_msg, _grade_color = "💪", "절반 인정. 나머지 재심문!", "#ffaa33"
         else:
