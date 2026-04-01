@@ -1296,10 +1296,26 @@ _GRID_HTML = f"""
   font-size:9px;color:rgba(255,255,255,0.8);font-weight:600;
 }}
 .card-rule{{font-size:9px;color:rgba(255,255,255,0.5);margin-top:auto;}}
-/* NPC 해골 가이드 */
-#npc-guide{{display:flex;align-items:center;gap:10px;padding:7px 12px;margin-bottom:8px;background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.12);border-radius:10px;}}
-#npc-skull{{font-size:20px;flex-shrink:0;}}
-#npc-bubble{{font-size:11px;font-weight:700;color:rgba(255,255,255,0.85);line-height:1.4;transition:opacity 0.2s;}}
+/* NPC 카드 오버레이 */
+.npc-ov{{
+  position:absolute;top:0;left:0;right:0;bottom:0;
+  border-radius:18px;
+  background:rgba(0,0,0,0.82);
+  display:flex;flex-direction:column;
+  align-items:center;justify-content:center;
+  opacity:0;pointer-events:none;
+  transition:opacity 0.28s;
+  z-index:10;padding:20px;text-align:center;
+}}
+.card:hover .npc-ov,.card.npc-on .npc-ov{{opacity:1;}}
+.pb:hover .npc-ov,.pb.npc-on .npc-ov{{opacity:1;}}
+.npc-sk{{font-size:34px;margin-bottom:10px;animation:skPulse 0.9s ease-in-out infinite;}}
+@keyframes skPulse{{0%,100%{{transform:scale(1);}}50%{{transform:scale(1.3);}}}}
+.npc-tx{{
+  font-size:13px;font-weight:900;color:#fff;
+  line-height:1.6;letter-spacing:0.3px;
+  text-shadow:0 0 14px rgba(255,255,255,0.7);
+}}
 
 /* ── 출격 버튼 바 ── */
 .go-bar{{
@@ -1353,14 +1369,12 @@ _GRID_HTML = f"""
   <span class="tb-msg">{_welcome_short}</span>
 </div>
 
-
-<!-- NPC 해골 가이드 -->
-<div id="npc-guide"><span id="npc-skull">💀</span><div id="npc-bubble">어디 갈지 정했어? 망설이는 순간 적은 전진한다.</div></div>
 <!-- 포로수용소 바 -->
 <div class="pb"
   onclick="{_goto('PRISON_GO')}"
   ontouchend="{_goto('PRISON_GO')};event.preventDefault();"
   ontouchstart="">
+<div class="npc-ov" style="border-radius:14px;"><div class="npc-sk">💀</div><div class="npc-tx">틀린 단어들이 여기 갇혔어.<br>3번 연속 맞혀야 석방.<br>모르면 평생 여기야.</div></div>
   <div class="pb-left">
     <div class="pb-icon">💀</div>
     <div>
@@ -1385,6 +1399,7 @@ _GRID_HTML = f"""
     onclick="{_goto('P5_GO')}"
     ontouchend="{_goto('P5_GO')};event.preventDefault();"
     ontouchstart="">
+<div class="npc-ov"><div class="npc-sk">⚡</div><div class="npc-tx">P5는 속도가 전부야.<br>5문제, 3개 생존.<br>불처럼 밀어붙여!</div></div>
     <div class="card-body">
       <div class="badge">문법·어휘</div>
       <div class="card-icon">⚡</div>
@@ -1408,6 +1423,7 @@ _GRID_HTML = f"""
     onclick="{_goto('P7_GO')}"
     ontouchend="{_goto('P7_GO')};event.preventDefault();"
     ontouchstart="">
+<div class="npc-ov"><div class="npc-sk">📡</div><div class="npc-tx">P7 지문 해독 임무.<br>단 1번 오판 = 즉시 철수.<br>집중해.</div></div>
     <div class="card-body">
       <div class="badge">독해</div>
       <div class="card-icon">📡</div>
@@ -1431,6 +1447,7 @@ _GRID_HTML = f"""
     onclick="{_goto('ARM_GO')}"
     ontouchend="{_goto('ARM_GO')};event.preventDefault();"
     ontouchstart="">
+<div class="npc-ov"><div class="npc-sk">💀</div><div class="npc-tx">네가 틀린 문제들이<br>여기 갇혔어.<br>완전히 외울 때까지 석방 없음.</div></div>
     <div class="pow-left">
       <div class="badge" style="background:rgba(255,255,255,0.15);">BOSS STAGE</div>
       <div style="font-size:22px;margin:4px 0 2px;">💀</div>
