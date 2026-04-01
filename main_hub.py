@@ -1505,6 +1505,9 @@ _GRID_HTML = f"""
         if(ov)ov.classList.add('tour-active');
         idx++;
         setTimeout(next,6000);
+      }} else {{
+        idx=0;
+        setTimeout(next,6000);
       }}
     }}
     setTimeout(next,800);
