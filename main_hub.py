@@ -1456,6 +1456,35 @@ _GRID_HTML = f"""
   setTimeout(next,600);
 }})();
 </script>
+
+<script>
+(function(){{
+  var ovIds=['ov-pb','ov-p5','ov-p7','ov-pow'];
+  var allOvs=document.querySelectorAll('.npc-ov');
+  allOvs.forEach(function(el){{var s=el.querySelector('.npc-stat');if(s)s.style.display='none';}});
+
+  // 자동투어 항상 실행
+  var idx=0;
+  function next(){{
+    allOvs.forEach(function(el){{el.classList.remove('tour-active');}});
+    if(idx<ovIds.length){{
+      var ov=document.getElementById(ovIds[idx]);
+      if(ov)ov.classList.add('tour-active');
+      idx++;
+      setTimeout(next,2200);
+    }} else {{
+      // 투어 끝나면 hover/touch 활성화
+      document.querySelectorAll('.card,.pb').forEach(function(el){{
+        el.addEventListener('mouseenter',function(){{el.classList.add('npc-inbody-on');}});
+        el.addEventListener('mouseleave',function(){{el.classList.remove('npc-inbody-on');}});
+        el.addEventListener('touchstart',function(){{el.classList.add('npc-inbody-on');}},{{passive:true}});
+        el.addEventListener('touchend',function(){{setTimeout(function(){{el.classList.remove('npc-inbody-on');}},800);}});
+      }});
+    }}
+  }}
+  setTimeout(next,800);
+}})();
+</script>
 """
 
 _hc.html(_GRID_HTML, height=580)
