@@ -709,42 +709,7 @@ load_css()
 # ── Streamlit 상단 여백 완전 제거 (MutationObserver로 지속 감시) ──
 import streamlit.components.v1 as _hc
 _hc.html("""
-<script>
-(function(){
-  function killPad(){
-    try{
-      var pd=window.parent.document;
-      var targets=[
-        '.block-container',
-        '[data-testid="stAppViewBlockContainer"]',
-        '[data-testid="block-container"]',
-        '.main .block-container',
-        '[data-testid="stAppViewContainer"] > section > div'
-      ];
-      targets.forEach(function(sel){
-        pd.querySelectorAll(sel).forEach(function(el){
-          el.style.setProperty('padding-top','0px','important');
-          el.style.setProperty('margin-top','0px','important');
-        });
-      });
-      // header 완전 제거
-      var hdr=pd.querySelector('header[data-testid="stHeader"]');
-      if(hdr){hdr.style.setProperty('display','none','important');}
-    }catch(e){}
-  }
-  killPad();
-  setTimeout(killPad,200);
-  setTimeout(killPad,600);
-  setTimeout(killPad,1200);
-  // 변화 감지해서 계속 적용
-  try{
-    new MutationObserver(killPad).observe(
-      window.parent.document.body,
-      {childList:true,subtree:true,attributes:true}
-    );
-  }catch(e){}
-})();
-</script>
+
 """, height=0)
 
 # 로그인 + 검사 체크
@@ -767,18 +732,7 @@ _ios_persist_cmp.html(f"""
 # ══════════════════════════════════════════════════════════
 import streamlit.components.v1 as _vp_cmp
 _vp_cmp.html("""
-<script>
-(function(){
-    try {
-        var vw = window.innerWidth;
-        var url = new URL(window.parent.location.href);
-        if(!url.searchParams.get('vw') || url.searchParams.get('vw') !== String(vw)){
-            url.searchParams.set('vw', vw);
-            window.parent.history.replaceState({}, '', url.toString());
-        }
-    } catch(e){}
-})();
-</script>
+
 """, height=0)
 
 # viewport_width를 devices storage에 저장
@@ -1472,34 +1426,7 @@ _GRID_HTML = f"""
 
 </div>
 
-<script>
-(function(){
-  var KEY='snapq_npc_v3';
-  var v=parseInt(localStorage.getItem(KEY)||'0')+1;
-  localStorage.setItem(KEY,v);
-  var ovIds=['ov-pb','ov-p5','ov-p7','ov-pow'];
-  var allOvs=document.querySelectorAll('.npc-ov');
-  allOvs.forEach(function(el){var s=el.querySelector('.npc-stat');if(s)s.style.display='none';});
-  if(v>3){
-    document.querySelectorAll('.card,.pb').forEach(function(el){
-      el.addEventListener('mouseenter',function(){el.classList.add('npc-inbody-on');});
-      el.addEventListener('mouseleave',function(){el.classList.remove('npc-inbody-on');});
-    });
-    return;
-  }
-  var idx=0;
-  function next(){
-    allOvs.forEach(function(el){el.classList.remove('tour-active');});
-    if(idx<ovIds.length){
-      var ov=document.getElementById(ovIds[idx]);
-      if(ov)ov.classList.add('tour-active');
-      idx++;
-      setTimeout(next,2200);
-    }
-  }
-  setTimeout(next,600);
-})();
-</script>
+
 """
 
 _hc.html(_GRID_HTML, height=580)
