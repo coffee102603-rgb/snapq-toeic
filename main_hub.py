@@ -758,28 +758,38 @@ mark_attendance_once(nickname)
 import streamlit.components.v1 as _ios_persist_cmp
 _ios_nick_js = str(nickname).replace("'", "\\'") if nickname else ""
 _ios_persist_cmp.html(f"""
+
 <script>
 (function(){{
-  var KEY='snapq_npc_v2';
+  var KEY='snapq_npc_v3';
   var v=parseInt(localStorage.getItem(KEY)||'0')+1;
   localStorage.setItem(KEY,v);
   var ovIds=['ov-pb','ov-p5','ov-p7','ov-pow'];
-  var isMobile=('ontouchstart' in window)||navigator.maxTouchPoints>0;
-  if(!isMobile && v>3){{
+  var allOvs=document.querySelectorAll('.npc-ov');
+  allOvs.forEach(function(el){{var s=el.querySelector('.npc-stat');if(s)s.style.display='none';}});
+
+  // 4회~ : hover 인바디 (데스크탑)
+  if(v>3){{
     document.querySelectorAll('.card,.pb').forEach(function(el){{
       el.addEventListener('mouseenter',function(){{el.classList.add('npc-inbody-on');}});
       el.addEventListener('mouseleave',function(){{el.classList.remove('npc-inbody-on');}});
     }});
-    return;
   }}
-  var allOvs=document.querySelectorAll('.npc-ov');
-  allOvs.forEach(function(el){{var s=el.querySelector('.npc-stat');if(s)s.style.display='none';}});
-  var idx=0;
-  function next(){{
-    allOvs.forEach(function(el){{el.classList.remove('tour-active');}});
-    if(idx<ovIds.length){{var ov=document.getElementById(ovIds[idx]);if(ov)ov.classList.add('tour-active');idx++;setTimeout(next,2200);}}
+
+  // 1~3회 : 자동 투어 (모든 기기)
+  if(v<=3){{
+    var idx=0;
+    function next(){{
+      allOvs.forEach(function(el){{el.classList.remove('tour-active');}});
+      if(idx<ovIds.length){{
+        var ov=document.getElementById(ovIds[idx]);
+        if(ov)ov.classList.add('tour-active');
+        idx++;
+        setTimeout(next,2200);
+      }}
+    }}
+    setTimeout(next,600);
   }}
-  setTimeout(next,600);
 }})();
 </script>""", height=0)
 
