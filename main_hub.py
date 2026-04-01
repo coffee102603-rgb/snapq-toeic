@@ -1485,6 +1485,41 @@ _GRID_HTML = f"""
   setTimeout(next,800);
 }})();
 </script>
+
+<script>
+(function(){{
+  var KEY='snapq_tour_v1';
+  var v=parseInt(localStorage.getItem(KEY)||'0')+1;
+  localStorage.setItem(KEY,v);
+  var ovIds=['ov-pb','ov-p5','ov-p7','ov-pow'];
+  var allOvs=document.querySelectorAll('.npc-ov');
+
+  if(v<=3){{
+    // 1~3회: 자동투어 (각 4초)
+    allOvs.forEach(function(el){{var s=el.querySelector('.npc-stat');if(s)s.style.display='none';}});
+    var idx=0;
+    function next(){{
+      allOvs.forEach(function(el){{el.classList.remove('tour-active');}});
+      if(idx<ovIds.length){{
+        var ov=document.getElementById(ovIds[idx]);
+        if(ov)ov.classList.add('tour-active');
+        idx++;
+        setTimeout(next,4000);
+      }}
+    }}
+    setTimeout(next,800);
+  }} else {{
+    // 4회~: hover/touch 인바디 통계
+    allOvs.forEach(function(el){{var t=el.querySelector('.npc-tx');if(t)t.style.display='none';}});
+    document.querySelectorAll('.card,.pb').forEach(function(el){{
+      el.addEventListener('mouseenter',function(){{el.classList.add('npc-inbody-on');}});
+      el.addEventListener('mouseleave',function(){{el.classList.remove('npc-inbody-on');}});
+      el.addEventListener('touchstart',function(){{el.classList.add('npc-inbody-on');}},{{passive:true}});
+      el.addEventListener('touchend',function(){{setTimeout(function(){{el.classList.remove('npc-inbody-on');}},900);}});
+    }});
+  }}
+}})();
+</script>
 """
 
 _hc.html(_GRID_HTML, height=580)
