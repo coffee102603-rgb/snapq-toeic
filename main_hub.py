@@ -757,46 +757,29 @@ mark_attendance_once(nickname)
 # ★★★ iOS Safari 세션 영속화 — localStorage에 닉네임 저장 + WebSocket 킵얼라이브 ★★★
 import streamlit.components.v1 as _ios_persist_cmp
 _ios_nick_js = str(nickname).replace("'", "\\'") if nickname else ""
-_ios_persist_cmp.html(f"""<script>
+_ios_persist_cmp.html(f"""
+<script>
 (function(){{
-    // 1. localStorage에 닉네임 저장 (WebSocket 끊겨도 복원 가능)
-    try {{
-        if('{_ios_nick_js}') {{
-            localStorage.setItem('snapq_nick', '{_ios_nick_js}');
-            localStorage.setItem('snapq_ag', '1');
-        }}
-    }} catch(e){{}}
-
-    // 2. WebSocket 킵얼라이브 — iOS가 백그라운드에서 연결을 끊는 것 방지
-    // 30초마다 빈 메시지를 보내서 연결 유지
-    if(!window._snapq_keepalive) {{
-        window._snapq_keepalive = setInterval(function() {{
-            try {{
-                var ws = window.parent.document.querySelector('iframe');
-                // Streamlit의 WebSocket에 직접 접근하는 대신
-                // visibility change 이벤트로 재연결 트리거
-            }} catch(e) {{}}
-        }}, 25000);
-
-        // 화면이 다시 보일 때 (iOS 탭 전환 후 복귀) 세션 복원 시도
-        document.addEventListener('visibilitychange', function() {{
-            if(document.visibilityState === 'visible') {{
-                try {{
-                    var nick = localStorage.getItem('snapq_nick');
-                    var ag   = localStorage.getItem('snapq_ag');
-                    if(nick && ag === '1') {{
-                        var url = new URL(window.parent.location.href);
-                        // 현재 URL이 메인이고 nick 파라미터가 없으면 추가
-                        if(!url.searchParams.get('nick') && !url.searchParams.get('ag')) {{
-                            url.searchParams.set('nick', nick);
-                            url.searchParams.set('ag', '1');
-                            window.parent.location.replace(url.toString());
-                        }}
-                    }}
-                }} catch(e) {{}}
-            }}
-        }});
-    }}
+  var KEY='snapq_npc_v2';
+  var v=parseInt(localStorage.getItem(KEY)||'0')+1;
+  localStorage.setItem(KEY,v);
+  var ovIds=['ov-pb','ov-p5','ov-p7','ov-pow'];
+  var isMobile=('ontouchstart' in window)||navigator.maxTouchPoints>0;
+  if(!isMobile && v>3){{
+    document.querySelectorAll('.card,.pb').forEach(function(el){{
+      el.addEventListener('mouseenter',function(){{el.classList.add('npc-inbody-on');}});
+      el.addEventListener('mouseleave',function(){{el.classList.remove('npc-inbody-on');}});
+    }});
+    return;
+  }}
+  var allOvs=document.querySelectorAll('.npc-ov');
+  allOvs.forEach(function(el){{var s=el.querySelector('.npc-stat');if(s)s.style.display='none';}});
+  var idx=0;
+  function next(){{
+    allOvs.forEach(function(el){{el.classList.remove('tour-active');}});
+    if(idx<ovIds.length){{var ov=document.getElementById(ovIds[idx]);if(ov)ov.classList.add('tour-active');idx++;setTimeout(next,2200);}}
+  }}
+  setTimeout(next,600);
 }})();
 </script>""", height=0)
 
