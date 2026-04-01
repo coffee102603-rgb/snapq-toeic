@@ -462,6 +462,44 @@ div[data-testid="stButton"] button.p7nav:hover{
       <div style="font-size:0.72rem;color:#8899aa;letter-spacing:1.5px;margin-top:3px;font-weight:700;">CLASSIFIED · PRIORITY LEVEL 7</div>
     </div>''', unsafe_allow_html=True)
 
+
+    # NPC 자동 투어
+    st.markdown('''
+<style>
+#npc-tour-bar{position:fixed;top:54px;left:0;right:0;z-index:9999;
+background:rgba(10,5,20,0.96);border-bottom:2px solid #0099cc;
+padding:7px 14px;display:flex;align-items:center;gap:10px;
+box-shadow:0 2px 16px rgba(0,0,0,0.7);}
+#npc-tour-bar .sk{font-size:18px;flex-shrink:0;animation:skB 0.9s ease-in-out infinite;}
+@keyframes skB{0%,100%{transform:scale(1);}50%{transform:scale(1.2);}}
+#npc-tour-bar .lbl{font-size:9px;font-weight:700;color:#0099cc;}
+#npc-tour-bar .tx{font-size:11px;font-weight:900;color:#fff;line-height:1.5;}
+</style>
+<div id="npc-tour-bar">
+  <span class="sk">💀</span>
+  <div><div class="lbl" id="ntlbl"></div><div class="tx" id="ntmsg"></div></div>
+</div>
+<script>
+(function(){
+  var KEY='snapq_tour_day';
+  var today=new Date().toISOString().slice(0,10);
+  var raw=localStorage.getItem(KEY);
+  var data=raw?JSON.parse(raw):{"first":"","count":0};
+  if(!data.first)data.first=today;
+  var diff=(new Date(today)-new Date(data.first))/(1000*60*60*24);
+  if(diff>=3){document.getElementById('npc-tour-bar').style.display='none';return;}
+  var msgs=[["⏱ SIGNAL FREQUENCY", "100s PRECISION으로 시작!<br>빨리 읽히고 싶지?<br>제대로 읽고 이해부터!"], ["📋 TARGET CLASSIFICATION", "유형 파악이 먼저!<br>SIGNAL부터 시작!<br>BLACKOUT까지 정복!"], ["⏱ SIGNAL FREQUENCY", "시간 욕심 버려!<br>이해 욕심 챙겨!<br>점수 바로 급상승!!"], ["📋 TARGET CLASSIFICATION", "유형(영화 장르) 훈련.<br>글(영화) 내용 재밌음.<br>문제는 당연 다 맞음!"]];
+  var idx=0;
+  function show(){
+    var m=msgs[idx%msgs.length];
+    document.getElementById('ntlbl').textContent=m[0];
+    document.getElementById('ntmsg').innerHTML=m[1];
+    idx++;setTimeout(show,6000);
+  }
+  setTimeout(show,500);
+})();
+</script>''', unsafe_allow_html=True)
+
     # ── 시간 선택 (A안: SIGNAL FREQUENCY 세그먼트) ──
     st.markdown('''<div style="font-size:10px;color:#88aacc;letter-spacing:4px;padding:14px 0 7px;font-weight:900;">
       ⏱  SIGNAL FREQUENCY</div>''', unsafe_allow_html=True)
