@@ -1471,6 +1471,35 @@ _GRID_HTML = f"""
   </div>
 
 </div>
+
+<script>
+(function(){
+  var KEY='snapq_npc_v3';
+  var v=parseInt(localStorage.getItem(KEY)||'0')+1;
+  localStorage.setItem(KEY,v);
+  var ovIds=['ov-pb','ov-p5','ov-p7','ov-pow'];
+  var allOvs=document.querySelectorAll('.npc-ov');
+  allOvs.forEach(function(el){var s=el.querySelector('.npc-stat');if(s)s.style.display='none';});
+  if(v>3){
+    document.querySelectorAll('.card,.pb').forEach(function(el){
+      el.addEventListener('mouseenter',function(){el.classList.add('npc-inbody-on');});
+      el.addEventListener('mouseleave',function(){el.classList.remove('npc-inbody-on');});
+    });
+    return;
+  }
+  var idx=0;
+  function next(){
+    allOvs.forEach(function(el){el.classList.remove('tour-active');});
+    if(idx<ovIds.length){
+      var ov=document.getElementById(ovIds[idx]);
+      if(ov)ov.classList.add('tour-active');
+      idx++;
+      setTimeout(next,2200);
+    }
+  }
+  setTimeout(next,600);
+})();
+</script>
 """
 
 _hc.html(_GRID_HTML, height=580)
