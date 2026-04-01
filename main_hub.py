@@ -1523,6 +1523,56 @@ _GRID_HTML = f"""
   }}
 }})();
 </script>
+
+<script>
+(function(){{
+  var KEY='snapq_tour_day';
+  var today=new Date().toISOString().slice(0,10);
+  var data=JSON.parse(localStorage.getItem(KEY)||'{{"first":"","count":0}}');
+  if(!data.first){{ data.first=today; data.count=1; }}
+  else{{
+    var diff=(new Date(today)-new Date(data.first))/(1000*60*60*24);
+    if(diff>=3) data.count=99;
+  }}
+  localStorage.setItem(KEY,JSON.stringify(data));
+
+  var ovIds=['ov-pb','ov-p5','ov-p7','ov-pow'];
+  var allOvs=document.querySelectorAll('.npc-ov');
+
+  if(data.count<99){{
+    // 3일 이내: 자동투어 무한반복
+    allOvs.forEach(function(el){{
+      var s=el.querySelector('.npc-stat');
+      if(s)s.style.display='none';
+      var t=el.querySelector('.npc-tx');
+      if(t)t.style.display='block';
+    }});
+    var idx=0;
+    function next(){{
+      allOvs.forEach(function(el){{el.classList.remove('tour-active');}});
+      var ov=document.getElementById(ovIds[idx]);
+      if(ov)ov.classList.add('tour-active');
+      idx=(idx+1)%ovIds.length;
+      setTimeout(next,6000);
+    }}
+    setTimeout(next,800);
+  }} else {{
+    // 3일 이후: hover/touch 인바디
+    allOvs.forEach(function(el){{
+      var t=el.querySelector('.npc-tx');
+      if(t)t.style.display='none';
+      var s=el.querySelector('.npc-stat');
+      if(s)s.style.display='block';
+    }});
+    document.querySelectorAll('.card,.pb').forEach(function(el){{
+      el.addEventListener('mouseenter',function(){{el.classList.add('npc-inbody-on');}});
+      el.addEventListener('mouseleave',function(){{el.classList.remove('npc-inbody-on');}});
+      el.addEventListener('touchstart',function(){{el.classList.add('npc-inbody-on');}},{{passive:true}});
+      el.addEventListener('touchend',function(){{setTimeout(function(){{el.classList.remove('npc-inbody-on');}},900);}});
+    }});
+  }}
+}})();
+</script>
 """
 
 _hc.html(_GRID_HTML, height=580)
