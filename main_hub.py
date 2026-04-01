@@ -1186,6 +1186,24 @@ _arm_disp = f"포로 {_pr_total}명" if _pr_total > 0 else "포로 없음"
 def _goto(key):
     return f"window.parent.document.querySelectorAll('button').forEach(function(b){{if((b.innerText||'').trim()==='{key}')b.click()}})"
 
+
+if p5_rate is not None:
+    _npc_p5_stat = f"P5 정답률 {p5_rate}% · 누적 {p5_count}문제"
+else:
+    _npc_p5_stat = "아직 첫 도전 전 · P5 문법어휘 속도전!"
+if p7_rate is not None:
+    _npc_p7_stat = f"P7 정답률 {p7_rate}% · 누적 {p7_count}문제"
+else:
+    _npc_p7_stat = "아직 첫 도전 전 · P7 독해 지문 해독전!"
+if arm_p5 is not None:
+    _npc_pow_stat = f"오답 {arm_pending}개 수감 · 정복률 {arm_p5}%"
+else:
+    _npc_pow_stat = f"오답 {arm_pending}개 수감중"
+if _pr_total > 0:
+    _npc_pb_stat = f"총 {_pr_total}개 · P5:{_pr_p5} P7:{_pr_p7}"
+else:
+    _npc_pb_stat = "포로 없음! 완벽 정복 중"
+_npc_att_stat = f"출석 {att_days}일 · 참여도 {att_rate}%"
 _GRID_HTML = f"""
 <style>
 *{{box-sizing:border-box;margin:0;padding:0;font-family:-apple-system,'Noto Sans KR',sans-serif;}}
@@ -1296,6 +1314,24 @@ _GRID_HTML = f"""
   font-size:9px;color:rgba(255,255,255,0.8);font-weight:600;
 }}
 .card-rule{{font-size:9px;color:rgba(255,255,255,0.5);margin-top:auto;}}
+/* NPC 투어·인바디 오버레이 */
+.pb{{position:relative;overflow:hidden;}}
+.npc-ov{{
+  position:absolute;top:0;left:0;right:0;bottom:0;
+  border-radius:18px;
+  background:rgba(0,0,0,0.87);
+  display:flex;flex-direction:column;
+  align-items:center;justify-content:center;
+  opacity:0;pointer-events:none;
+  transition:opacity 0.32s ease;
+  z-index:10;padding:14px 12px;text-align:center;
+}}
+.npc-ov.tour-active{{opacity:1;}}
+.npc-inbody-on .npc-ov{{opacity:1;}}
+.npc-sk{{font-size:26px;margin-bottom:6px;animation:skPulse 0.85s ease-in-out infinite;}}
+@keyframes skPulse{{0%,100%{{transform:scale(1);}}50%{{transform:scale(1.2);}}}}
+.npc-tx{{font-size:12px;font-weight:900;color:#fff;line-height:1.6;text-shadow:0 0 10px rgba(255,255,255,0.5);}}
+.npc-stat{{font-size:11px;font-weight:700;color:rgba(255,220,80,1);margin-top:5px;line-height:1.5;}}
 /* NPC 카드 오버레이 */
 .npc-ov{{
   position:absolute;top:0;left:0;right:0;bottom:0;
@@ -1375,6 +1411,7 @@ _GRID_HTML = f"""
   ontouchend="{_goto('PRISON_GO')};event.preventDefault();"
   ontouchstart="">
 <div class="npc-ov" style="border-radius:14px;"><div class="npc-sk">💀</div><div class="npc-tx">틀린 단어들이 여기 갇혔어.<br>3번 연속 맞혀야 석방.<br>모르면 평생 여기야.</div></div>
+<div class="npc-ov" id="ov-pb" style="border-radius:14px;"><div class="npc-sk">💀</div><div class="npc-tx">틀린 단어들이 여기 갇혔어.<br>3번 연속 맞혀야 석방.<br>모르면 평생 여기야.</div><div class="npc-stat">{_npc_pb_stat}</div></div>
   <div class="pb-left">
     <div class="pb-icon">💀</div>
     <div>
@@ -1400,6 +1437,7 @@ _GRID_HTML = f"""
     ontouchend="{_goto('P5_GO')};event.preventDefault();"
     ontouchstart="">
 <div class="npc-ov"><div class="npc-sk">⚡</div><div class="npc-tx">P5는 속도가 전부야.<br>5문제, 3개 생존.<br>불처럼 밀어붙여!</div></div>
+<div class="npc-ov" id="ov-p5"><div class="npc-sk">⚡</div><div class="npc-tx">P5는 속도가 전부야.<br>5문제, 3개 생존.<br>불처럼 밀어붙여!</div><div class="npc-stat">{_npc_p5_stat}</div></div>
     <div class="card-body">
       <div class="badge">문법·어휘</div>
       <div class="card-icon">⚡</div>
@@ -1424,6 +1462,7 @@ _GRID_HTML = f"""
     ontouchend="{_goto('P7_GO')};event.preventDefault();"
     ontouchstart="">
 <div class="npc-ov"><div class="npc-sk">📡</div><div class="npc-tx">P7 지문 해독 임무.<br>단 1번 오판 = 즉시 철수.<br>집중해.</div></div>
+<div class="npc-ov" id="ov-p7"><div class="npc-sk">📡</div><div class="npc-tx">P7 지문 해독 임무.<br>단 1번 오판 = 즉시 철수.<br>집중해.</div><div class="npc-stat">{_npc_p7_stat}</div></div>
     <div class="card-body">
       <div class="badge">독해</div>
       <div class="card-icon">📡</div>
@@ -1448,6 +1487,7 @@ _GRID_HTML = f"""
     ontouchend="{_goto('ARM_GO')};event.preventDefault();"
     ontouchstart="">
 <div class="npc-ov"><div class="npc-sk">💀</div><div class="npc-tx">네가 틀린 문제들이<br>여기 갇혔어.<br>완전히 외울 때까지 석방 없음.</div></div>
+<div class="npc-ov" id="ov-pow"><div class="npc-sk">💀</div><div class="npc-tx">네가 틀린 문제들이<br>여기 갇혔어.<br>완전히 외울 때까지 석방 없음.</div><div class="npc-stat">{_npc_pow_stat}</div></div>
     <div class="pow-left">
       <div class="badge" style="background:rgba(255,255,255,0.15);">BOSS STAGE</div>
       <div style="font-size:22px;margin:4px 0 2px;">💀</div>
