@@ -1326,7 +1326,7 @@ _GRID_HTML = f"""
   ontouchend="{_goto('PRISON_GO')};event.preventDefault();"
   ontouchstart="">
 <div class="npc-ov" style="border-radius:14px;"><div class="npc-sk">💀</div><div class="npc-tx">틀린 단어들이 여기 갇혔어.<br>3번 연속 맞혀야 석방.<br>모르면 평생 여기야.</div></div>
-<div class="npc-ov" id="ov-pb" style="border-radius:14px;"><div class="npc-sk">💀</div><div class="npc-tx">틀린 단어들이 여기 갇혔어.<br>3번 연속 맞혀야 석방.<br>모르면 평생 여기야.</div><div class="npc-stat">{_npc_pb_stat}</div></div>
+<div class="npc-ov" id="ov-pb-a" style="border-radius:14px;"><div class="npc-sk">💀</div><div class="npc-tx">화력전·암호해독에서 틀린 단어들.<br>여기 다 갇혔어.<br>3번 연속 맞혀야 석방!</div><div class="npc-stat">{_npc_pb_stat}</div></div><div class="npc-ov" id="ov-pb-b" style="border-radius:14px;"><div class="npc-sk">💀</div><div class="npc-tx">P5·P7에서 네가 모른 단어들.<br>여기 다 있어.<br>외울 때까지 절대 못 나가.</div><div class="npc-stat">{_npc_pb_stat}</div></div>
   <div class="pb-left">
     <div class="pb-icon">💀</div>
     <div>
@@ -1352,7 +1352,7 @@ _GRID_HTML = f"""
     ontouchend="{_goto('P5_GO')};event.preventDefault();"
     ontouchstart="">
 <div class="npc-ov"><div class="npc-sk">⚡</div><div class="npc-tx">P5는 속도가 전부야.<br>5문제, 3개 생존.<br>불처럼 밀어붙여!</div></div>
-<div class="npc-ov" id="ov-p5"><div class="npc-sk">⚡</div><div class="npc-tx">P5는 속도가 전부야.<br>5문제, 3개 생존.<br>불처럼 밀어붙여!</div><div class="npc-stat">{_npc_p5_stat}</div></div>
+<div class="npc-ov" id="ov-p5-a"><div class="npc-sk">⚡</div><div class="npc-tx">P5는 불이야.<br>빠르고 정확하게.<br>화력이 약하면 전멸이다!</div><div class="npc-stat">{_npc_p5_stat}</div></div><div class="npc-ov" id="ov-p5-b"><div class="npc-sk">⚡</div><div class="npc-tx">P5 문법·어휘, 불처럼 밀어붙여.<br>5문제 3개 생존.<br>느리면 죽는다!</div><div class="npc-stat">{_npc_p5_stat}</div></div>
     <div class="card-body">
       <div class="badge">문법·어휘</div>
       <div class="card-icon">⚡</div>
@@ -1377,7 +1377,7 @@ _GRID_HTML = f"""
     ontouchend="{_goto('P7_GO')};event.preventDefault();"
     ontouchstart="">
 <div class="npc-ov"><div class="npc-sk">📡</div><div class="npc-tx">P7 지문 해독 임무.<br>단 1번 오판 = 즉시 철수.<br>집중해.</div></div>
-<div class="npc-ov" id="ov-p7"><div class="npc-sk">📡</div><div class="npc-tx">P7 지문 해독 임무.<br>단 1번 오판 = 즉시 철수.<br>집중해.</div><div class="npc-stat">{_npc_p7_stat}</div></div>
+<div class="npc-ov" id="ov-p7-a"><div class="npc-sk">📡</div><div class="npc-tx">P7 지문 해독 임무.<br>단 1번 오판 = 즉시 철수.<br>집중 = 승리.</div><div class="npc-stat">{_npc_p7_stat}</div></div><div class="npc-ov" id="ov-p7-b"><div class="npc-sk">📡</div><div class="npc-tx">P7 적군 문서 해독.<br>지문 속 단서가 답이야.<br>읽어야 산다.</div><div class="npc-stat">{_npc_p7_stat}</div></div>
     <div class="card-body">
       <div class="badge">독해</div>
       <div class="card-icon">📡</div>
@@ -1402,7 +1402,7 @@ _GRID_HTML = f"""
     ontouchend="{_goto('ARM_GO')};event.preventDefault();"
     ontouchstart="">
 <div class="npc-ov"><div class="npc-sk">💀</div><div class="npc-tx">네가 틀린 문제들이<br>여기 갇혔어.<br>완전히 외울 때까지 석방 없음.</div></div>
-<div class="npc-ov" id="ov-pow"><div class="npc-sk">💀</div><div class="npc-tx">네가 틀린 문제들이<br>여기 갇혔어.<br>완전히 외울 때까지 석방 없음.</div><div class="npc-stat">{_npc_pow_stat}</div></div>
+<div class="npc-ov" id="ov-pow-a"><div class="npc-sk">💀</div><div class="npc-tx">네가 틀린 문제 여기 갇혔어.<br>P5 문법은 약점, P7 문장읽기는 구멍.<br>여기서 끝내.</div><div class="npc-stat">{_npc_pow_stat}</div></div><div class="npc-ov" id="ov-pow-b"><div class="npc-sk">💀</div><div class="npc-tx">화력전서 놓친 P5.<br>암호해독서 못 읽은 P7.<br>다 여기 있어. 이번엔 정복해.</div><div class="npc-stat">{_npc_pow_stat}</div></div>
     <div class="pow-left">
       <div class="badge" style="background:rgba(255,255,255,0.15);">BOSS STAGE</div>
       <div style="font-size:22px;margin:4px 0 2px;">💀</div>
@@ -1558,6 +1558,57 @@ _GRID_HTML = f"""
     setTimeout(next,800);
   }} else {{
     // 3일 이후: hover/touch 인바디
+    allOvs.forEach(function(el){{
+      var t=el.querySelector('.npc-tx');
+      if(t)t.style.display='none';
+      var s=el.querySelector('.npc-stat');
+      if(s)s.style.display='block';
+    }});
+    document.querySelectorAll('.card,.pb').forEach(function(el){{
+      el.addEventListener('mouseenter',function(){{el.classList.add('npc-inbody-on');}});
+      el.addEventListener('mouseleave',function(){{el.classList.remove('npc-inbody-on');}});
+      el.addEventListener('touchstart',function(){{el.classList.add('npc-inbody-on');}},{{passive:true}});
+      el.addEventListener('touchend',function(){{setTimeout(function(){{el.classList.remove('npc-inbody-on');}},900);}});
+    }});
+  }}
+}})();
+</script>
+
+<script>
+(function(){{
+  var KEY='snapq_tour_day';
+  var today=new Date().toISOString().slice(0,10);
+  var data=JSON.parse(localStorage.getItem(KEY)||'{{"first":"","count":0}}');
+  if(!data.first){{ data.first=today; }}
+  else{{
+    var diff=(new Date(today)-new Date(data.first))/(1000*60*60*24);
+    if(diff>=3) data.count=99;
+  }}
+  localStorage.setItem(KEY,JSON.stringify(data));
+
+  var roundA=['ov-pb-a','ov-p5-a','ov-p7-a','ov-pow-a'];
+  var roundB=['ov-pb-b','ov-p5-b','ov-p7-b','ov-pow-b'];
+  var allOvs=document.querySelectorAll('.npc-ov');
+
+  if(data.count<99){{
+    allOvs.forEach(function(el){{
+      var s=el.querySelector('.npc-stat');
+      if(s)s.style.display='none';
+      var t=el.querySelector('.npc-tx');
+      if(t)t.style.display='block';
+    }});
+    var round=0; var idx=0;
+    function next(){{
+      allOvs.forEach(function(el){{el.classList.remove('tour-active');}});
+      var cur=(round%2===0)?roundA:roundB;
+      var ov=document.getElementById(cur[idx]);
+      if(ov)ov.classList.add('tour-active');
+      idx++;
+      if(idx>=cur.length){{ idx=0; round++; }}
+      setTimeout(next,6000);
+    }}
+    setTimeout(next,800);
+  }} else {{
     allOvs.forEach(function(el){{
       var t=el.querySelector('.npc-tx');
       if(t)t.style.display='none';
