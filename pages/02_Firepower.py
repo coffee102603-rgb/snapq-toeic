@@ -1688,23 +1688,18 @@ div[data-testid="stButton"] button.fp-nav p { color:#3d5066 !important; }
         5문제 · 살아남아라! · 문법어휘 실전 포격전</div>
     </div>""", unsafe_allow_html=True)
 
-
     # NPC 자동 투어
     st.markdown('''
-<style>
-#npc-tour-bar{position:fixed;top:54px;left:0;right:0;z-index:9999;
-background:rgba(10,5,20,0.96);border-bottom:2px solid #cc6633;
-padding:7px 14px;display:flex;align-items:center;gap:10px;
-box-shadow:0 2px 16px rgba(0,0,0,0.7);}
-#npc-tour-bar .sk{font-size:18px;flex-shrink:0;animation:skB 0.9s ease-in-out infinite;}
-@keyframes skB{0%,100%{transform:scale(1);}50%{transform:scale(1.2);}}
-#npc-tour-bar .lbl{font-size:9px;font-weight:700;color:#cc6633;}
-#npc-tour-bar .tx{font-size:11px;font-weight:900;color:#fff;line-height:1.5;}
-</style>
-<div id="npc-tour-bar">
-  <span class="sk">💀</span>
-  <div><div class="lbl" id="ntlbl"></div><div class="tx" id="ntmsg"></div></div>
+<div id="npc-tour-bar" style="background:rgba(10,5,20,0.96);border:1.5px solid #cc6633;
+border-radius:10px;padding:8px 14px;display:flex;align-items:center;gap:10px;
+margin-bottom:10px;box-shadow:0 2px 12px rgba(0,0,0,0.5);">
+  <span style="font-size:18px;animation:skB 0.9s ease-in-out infinite;display:inline-block;">💀</span>
+  <div>
+    <div style="font-size:9px;font-weight:700;color:#cc6633;" id="ntlbl"></div>
+    <div style="font-size:11px;font-weight:900;color:#fff;line-height:1.5;" id="ntmsg"></div>
+  </div>
 </div>
+<style>@keyframes skB{0%,100%{transform:scale(1);}50%{transform:scale(1.2);}}</style>
 <script>
 (function(){
   var KEY='snapq_tour_day';
