@@ -1352,7 +1352,7 @@ _GRID_HTML = f"""
     ontouchend="{_goto('P5_GO')};event.preventDefault();"
     ontouchstart="">
 <div class="npc-ov"><div class="npc-sk">⚡</div><div class="npc-tx">P5는 속도가 전부야.<br>5문제, 3개 생존.<br>불처럼 밀어붙여!</div></div>
-<div class="npc-ov" id="ov-p5-a"><div class="npc-sk">⚡</div><div class="npc-tx">P5는 불이야.<br>빠르고 정확하게.<br>화력이 약하면 전멸이다!</div><div class="npc-stat">{_npc_p5_stat}</div></div><div class="npc-ov" id="ov-p5-b"><div class="npc-sk">⚡</div><div class="npc-tx">P5 문법·어휘, 불처럼 밀어붙여.<br>5문제 3개 생존.<br>느리면 죽는다!</div><div class="npc-stat">{_npc_p5_stat}</div></div>
+<div class="npc-ov" id="ov-p5-a"><div class="npc-sk">⚡</div><div class="npc-tx">P5는 불이야.<br>빠르고 정확하게.<br>화력이 약하면 전멸이다!</div><div class="npc-stat">{_npc_p5_stat}</div></div><div class="npc-ov" id="ov-p5-b"><div class="npc-sk">⚡</div><div class="npc-tx">P5 문법·어휘.<br>불처럼 밀어붙여.<br>5문제 3개 생존.<br>느리면 죽는다!</div><div class="npc-stat">{_npc_p5_stat}</div></div>
     <div class="card-body">
       <div class="badge">문법·어휘</div>
       <div class="card-icon">⚡</div>
@@ -1377,7 +1377,7 @@ _GRID_HTML = f"""
     ontouchend="{_goto('P7_GO')};event.preventDefault();"
     ontouchstart="">
 <div class="npc-ov"><div class="npc-sk">📡</div><div class="npc-tx">P7 지문 해독 임무.<br>단 1번 오판 = 즉시 철수.<br>집중해.</div></div>
-<div class="npc-ov" id="ov-p7-a"><div class="npc-sk">📡</div><div class="npc-tx">P7 지문 해독 임무.<br>단 1번 오판 = 즉시 철수.<br>집중 = 승리.</div><div class="npc-stat">{_npc_p7_stat}</div></div><div class="npc-ov" id="ov-p7-b"><div class="npc-sk">📡</div><div class="npc-tx">P7 적군 문서 해독.<br>지문 속 단서가 답이야.<br>읽어야 산다.</div><div class="npc-stat">{_npc_p7_stat}</div></div>
+<div class="npc-ov" id="ov-p7-a"><div class="npc-sk">📡</div><div class="npc-tx">P7 지문 해독 임무.<br>1번 오판 = 즉시 철수.<br>집중 = 승리.</div><div class="npc-stat">{_npc_p7_stat}</div></div><div class="npc-ov" id="ov-p7-b"><div class="npc-sk">📡</div><div class="npc-tx">P7 적군 문서 해독.<br>지문 속 단서가 답이야.<br>읽어야 산다.</div><div class="npc-stat">{_npc_p7_stat}</div></div>
     <div class="card-body">
       <div class="badge">독해</div>
       <div class="card-icon">📡</div>
