@@ -303,21 +303,80 @@ def _load_form_batches():
     return loaded
 
 FQ.extend(_load_form_batches())
+# ═══ LINK BATCH JSON 로딩 ═══
+LQ = []
 
-VQ=[
-{"id":"V1","diff":"easy","text":"The company plans to _______ its operations to three new countries next year.","ch":["(A) expand","(B) expend","(C) expect","(D) expose"],"a":0,"ex":"expand=확장하다. 사업을 새 나라로 확장.","exk":"쉽게: expand=넓히다! expend=쓰다, expect=기대, expose=노출 → 소거법!","cat":"동사 어휘","kr":"그 회사는 내년에 3개 신규 국가로 사업을 확장할 계획이다.","diff":"easy"},
-{"id":"V2","diff":"hard","text":"Please _______ your receipt as proof of purchase for warranty claims.","ch":["(A) retain","(B) attain","(C) obtain","(D) contain"],"a":0,"ex":"retain=보유하다. 영수증을 보관하라는 맥락.","exk":"쉽게: retain=re(다시)+tain(잡다)=계속 잡고 있다=보관!","cat":"동사 어휘","kr":"보증 청구를 위한 구매 증빙으로 영수증을 보관해 주세요."},
-{"id":"V3","diff":"easy","text":"The new software update offers _______ improvements in processing speed.","ch":["(A) significant","(B) signified","(C) significance","(D) signify"],"a":0,"ex":"명사 수식 → 형용사 'significant'","exk":"쉽게: improvements(명사) 앞 = 형용사 자리! significant만 형용사!","cat":"품사(형용사)","kr":"새 소프트웨어 업데이트는 처리 속도에서 상당한 개선을 제공한다."},
-{"id":"V4","diff":"hard","text":"Due to _______ demand, the product launch has been moved to an earlier date.","ch":["(A) overwhelming","(B) underwhelming","(C) overlooking","(D) overcoming"],"a":0,"ex":"overwhelming=압도적인","exk":"쉽게: over(넘치는)+whelming(덮치는)=압도적! 수요 폭발 → 출시 앞당김!","cat":"형용사 어휘","kr":"압도적인 수요로 인해 제품 출시가 더 이른 날짜로 앞당겨졌다."},
-{"id":"V5","diff":"easy","text":"The marketing team will _______ a survey to gather customer feedback.","ch":["(A) conduct","(B) connect","(C) convince","(D) confirm"],"a":0,"ex":"conduct a survey=설문조사 실시(콜로케이션)","exk":"쉽게: conduct+survey는 짝꿍! '조사를 실시하다'는 항상 conduct!","cat":"콜로케이션","kr":"마케팅 팀은 고객 피드백을 수집하기 위해 설문조사를 실시할 것이다."},
-{"id":"V6","diff":"easy","text":"All sales representatives must submit their reports _______.","ch":["(A) prompt","(B) promptly","(C) prompting","(D) prompted"],"a":1,"ex":"동사 수식 → 부사 'promptly'","exk":"쉽게: submit(동사) 꾸미기 = 부사! -ly 붙은 promptly!","cat":"품사(부사)","kr":"모든 영업 사원은 보고서를 신속하게 제출해야 한다."},
-{"id":"V7","diff":"hard","text":"The _______ between the two proposals was discussed at length during the meeting.","ch":["(A) distinct","(B) distinction","(C) distinctive","(D) distinctly"],"a":1,"ex":"관사+전치사 사이 → 명사 'distinction'","exk":"쉽게: The ___ between = 관사+전치사 사이 = 명사 자리! -tion이 명사!","cat":"품사(명사)","kr":"두 제안 사이의 차이점이 회의 중 길게 논의되었다."},
-{"id":"V8","diff":"easy","text":"The factory must _______ with all local environmental regulations.","ch":["(A) comply","(B) apply","(C) supply","(D) imply"],"a":0,"ex":"comply with=준수하다","exk":"쉽게: comply with=규칙을 따르다! apply=지원, supply=공급, imply=암시","cat":"동사 어휘","kr":"그 공장은 모든 지역 환경 규정을 준수해야 한다."},
-{"id":"V9","diff":"hard","text":"The annual conference was attended by _______ 500 professionals from various industries.","ch":["(A) approximation","(B) approximate","(C) approximately","(D) approximated"],"a":2,"ex":"수사 수식 → 부사 'approximately'","exk":"쉽게: 500(숫자) 앞에서 꾸미기 = 부사! approximately='대략'","cat":"품사(부사)","kr":"연례 컨퍼런스에 다양한 산업의 약 500명의 전문가가 참석했다."},
-{"id":"V10","diff":"easy","text":"Employees are encouraged to _______ any workplace hazards to their supervisors immediately.","ch":["(A) report","(B) deport","(C) import","(D) support"],"a":0,"ex":"report=보고하다","exk":"쉽게: report=알리다/보고하다! deport=추방, import=수입, support=지원","cat":"동사 어휘","kr":"직원들은 직장 내 위험 요소를 즉시 상사에게 보고하도록 권장된다."},
-{"id":"V11","diff":"hard","text":"The board expressed _______ satisfaction with the quarterly earnings report.","ch":["(A) consider","(B) considerate","(C) considerable","(D) considerably"],"a":2,"ex":"명사 수식 → 형용사 'considerable'. considerate='사려 깊은'으로 의미 다름.","exk":"쉽게: satisfaction(명사) 앞 = 형용사! considerable=상당한, considerate=배려하는 → 헷갈림 주의!","cat":"품사(형용사)","kr":"이사회는 분기 실적 보고서에 상당한 만족을 표했다."},
-{"id":"V12","diff":"hard","text":"The renovation project is expected to _______ the building's energy efficiency.","ch":["(A) enhance","(B) enforce","(C) endure","(D) enclose"],"a":0,"ex":"enhance=향상시키다","exk":"쉽게: enhance=더 좋게! enforce=시행, endure=견디다, enclose=동봉","cat":"동사 어휘","kr":"리노베이션 프로젝트는 건물의 에너지 효율을 향상시킬 것으로 예상된다."},
-]
+def _load_link_batches():
+    """data/ 폴더의 firepower_link_batch*.json 읽어서 LQ 로 변환"""
+    DATA_DIR = os.path.join(os.path.dirname(os.path.dirname(__file__)), "data")
+    batch_files = sorted(_glob.glob(os.path.join(DATA_DIR, "firepower_link_batch*.json")))
+    loaded = []
+    seen = set()
+    for fp in batch_files:
+        try:
+            with open(fp, "r", encoding="utf-8") as f:
+                items = json.load(f)
+            for q in items:
+                if q.get("id") in seen:
+                    continue
+                converted = {
+                    "id":        q.get("id", ""),
+                    "word_count": q.get("word_count", 10),
+                    "diff":      q.get("diff", "easy"),
+                    "text":      q.get("sentence", q.get("text", "")),
+                    "ch":        q.get("choices",  q.get("ch", [])),
+                    "a":         q.get("answer",   q.get("a", 0)),
+                    "ex":        q.get("explanation",    q.get("ex", "")),
+                    "exk":       q.get("explanation_kr", q.get("exk", "")),
+                    "cat":       q.get("cat", "LINK"),
+                    "kr":        q.get("kr", ""),
+                    "tp":        "link",
+                }
+                loaded.append(converted)
+                seen.add(converted["id"])
+        except Exception:
+            pass
+    return loaded
+
+LQ.extend(_load_link_batches())
+
+
+# ═══ VOCAB BATCH JSON 로딩 ═══
+VQ = []
+
+def _load_vocab_batches():
+    """data/ 폴더의 firepower_vocab_batch*.json 읽어서 VQ 로 변환"""
+    DATA_DIR = os.path.join(os.path.dirname(os.path.dirname(__file__)), "data")
+    batch_files = sorted(_glob.glob(os.path.join(DATA_DIR, "firepower_vocab_batch*.json")))
+    loaded = []
+    seen = set()
+    for fp in batch_files:
+        try:
+            with open(fp, "r", encoding="utf-8") as f:
+                items = json.load(f)
+            for q in items:
+                if q.get("id") in seen:
+                    continue
+                converted = {
+                    "id":        q.get("id", ""),
+                    "word_count": q.get("word_count", 10),
+                    "diff":      q.get("diff", "easy"),
+                    "text":      q.get("sentence", q.get("text", "")),
+                    "ch":        q.get("choices",  q.get("ch", [])),
+                    "a":         q.get("answer",   q.get("a", 0)),
+                    "ex":        q.get("explanation",    q.get("ex", "")),
+                    "exk":       q.get("explanation_kr", q.get("exk", "")),
+                    "cat":       q.get("cat", "VOCAB"),
+                    "kr":        q.get("kr", ""),
+                    "tp":        "vocab",
+                }
+                loaded.append(converted)
+                seen.add(converted["id"])
+        except Exception:
+            pass
+    return loaded
+
+VQ.extend(_load_vocab_batches())
 
 # ═══ 세션 ═══
 D={"started":False,"cq":None,"qi":0,"sc":0,"wrong":0,"ta":0,"sk":0,"msk":0,
@@ -338,7 +397,7 @@ if st.session_state.get("_p5_just_left", False):
     st.session_state.tsec = 30
     st.session_state.tsec_chosen = False
 
-def pool(m): return GQ if m=="grammar" else FQ if m=="form" else VQ if m=="vocab" else GQ+VQ
+def pool(m): return GQ if m=="grammar" else FQ if m=="form" else LQ if m=="link" else VQ if m=="vocab" else LQ+VQ
 FORM_CATS=["명사형","형용사형","부사형","동사형","분사형","FORM"]
 GRP={
     # g1 = GRAMMAR
@@ -352,6 +411,8 @@ GRP={
     # g3 = LINK (미래)
     "g3":["접속사","동명사/준동사","분사구문","관계대명사"]
 }
+GRP["g3"] = ["전치사","접속사","접속부사","LINK"]
+
 VGRP={"v1":"easy","v2":"hard"}
 
 def _calc_adp_level():
@@ -1412,7 +1473,7 @@ else:
     rn        = st.session_state.round_num
     _tsec_chosen = st.session_state.get('tsec_chosen', False)
     lbl_map  = {"g1":"⚔️ GRAMMAR","g2":"🔄 FORM","g3":"🔗 LINK","vocab":"📘 VOCAB"}
-    mode_map = {"g1":("grammar","g1"),"g2":("grammar","g2"),"g3":("grammar","g3"),"vocab":("vocab",None)}
+    mode_map = {"g1":("grammar","g1"),"g2":("grammar","g2"),"g3":("link","g3"),"vocab":("vocab",None)}
     _cur_sm  = st.session_state.get("sel_mode","") or ""
     _cur_tc  = st.session_state.get("tsec_chosen", False)
     _cur_tsec= st.session_state.get("tsec", 30)
