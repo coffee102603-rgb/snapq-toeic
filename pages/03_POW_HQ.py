@@ -431,78 +431,11 @@ if st.session_state.sg_phase == "lobby":
     _rv_battle = st.session_state.get("rv_battle", None)
     _rv_mode = st.session_state.get("rv_mode", None)
 
-    # NPC 자동 투어
-    st.markdown('''
-<div id="npc-tour-bar" style="background:rgba(10,5,20,0.96);border:1.5px solid #8833ff;
-border-radius:10px;padding:8px 14px;display:flex;align-items:center;gap:10px;
-margin-bottom:10px;box-shadow:0 2px 12px rgba(0,0,0,0.5);">
-  <span style="font-size:18px;animation:skB 0.9s ease-in-out infinite;display:inline-block;">💀</span>
-  <div>
-    <div style="font-size:9px;font-weight:700;color:#8833ff;" id="ntlbl"></div>
-    <div style="font-size:11px;font-weight:900;color:#fff;line-height:1.5;" id="ntmsg"></div>
-  </div>
-</div>
-<style>@keyframes skB{0%,100%{transform:scale(1);}50%{transform:scale(1.2);}}</style>
-<script>
-(function(){
-  var KEY='snapq_tour_day';
-  var today=new Date().toISOString().slice(0,10);
-  var raw=localStorage.getItem(KEY);
-  var data=raw?JSON.parse(raw):{"first":"","count":0};
-  if(!data.first)data.first=today;
-  var diff=(new Date(today)-new Date(data.first))/(1000*60*60*24);
-  if(diff>=3){document.getElementById('npc-tour-bar').style.display='none';return;}
-  var msgs=[["📊 나의 전투 기록", "네 실력이 숫자로 봐봐!<br>정답률 낮으면 복습이 답!<br>숫자 올라야 진짜 실력!"], ["⚔️ 화력전 포로", "화력전서 틀린 문제들!<br>문법·어휘 약점 박살내.<br>당장 출격해!"], ["📖 해독 포로", "암호해독서 놓친 문장들!<br>문장 의미 파악 = 핵심.<br>당장 출격해!"], ["📊 나의 전투 기록", "기록이 쌓이면 성장이 보여.<br>P5·P7 정답률 80% 목표!<br>반복이 실력 되는 순간!"], ["⚔️ 화력전 포로", "P5는 반복 = 힘.<br>순환 반복 출제.<br>외울만큼 반복!"], ["📖 해독 포로", "P7문장 = P5문제.<br>P7성적 업 = P5성적 업.<br>결국 토익 만점!"]];
-  var idx=0;
-  function show(){
-    var m=msgs[idx%msgs.length];
-    document.getElementById('ntlbl').textContent=m[0];
-    document.getElementById('ntmsg').innerHTML=m[1];
-    idx++;setTimeout(show,6000);
-  }
-  setTimeout(show,500);
-})();
-</script>''', unsafe_allow_html=True)
 
 
-    # NPC 옥외광고판
-    st.markdown('''
-<div id="npc-board" style="background:rgba(10,5,20,0.96);border:1.5px solid #8833ff;
-border-radius:10px;padding:9px 14px;display:flex;align-items:center;gap:10px;
-margin-bottom:10px;">
-  <span style="font-size:18px;animation:skB 0.9s ease-in-out infinite;display:inline-block;flex-shrink:0;">💀</span>
-  <div style="font-size:12px;font-weight:900;color:#fff;min-height:18px;" id="npc-typing"></div>
-</div>
-<style>@keyframes skB{0%,100%{transform:scale(1);}50%{transform:scale(1.2);}}</style>
-<script>
-(function(){
-  var KEY='snapq_tour_day';
-  var today=new Date().toISOString().slice(0,10);
-  var raw=localStorage.getItem(KEY);
-  var data=raw?JSON.parse(raw):{"first":""};
-  if(!data.first)data.first=today;
-  localStorage.setItem(KEY,JSON.stringify(data));
-  var diff=(new Date(today)-new Date(data.first))/(1000*60*60*24);
-
-  var msgs=diff<3?["📊 정답률 낮으면 복습이 답! 숫자 올라야 실력!", "⚔️ 화력전 약점 박살내러 당장 출격해!", "📖 P7문장=P5문제. 결국 토익 만점!", "📊 기록이 쌓이면 성장이 보여. P5·P7 80% 목표!"]:["💀 오늘도 포로들 심문할 준비 됐어?", "⚔️ 틀린 문제 반복이 진짜 실력이야!", "📖 해독 포로 정복하면 P5도 올라!"];
-  var el=document.getElementById('npc-typing');
-  var mi=0;var ci=0;var typing=null;
-
-  function typeChar(){
-    var txt=msgs[mi%msgs.length];
-    if(ci<txt.length){
-      el.textContent+=txt[ci];ci++;
-      typing=setTimeout(typeChar,45);
-    }else{
-      setTimeout(function(){
-        el.textContent='';ci=0;mi++;typeChar();
-      },3000);
-    }
-  }
-  setTimeout(typeChar,600);
-})();
-</script>''', unsafe_allow_html=True)
-
+    # NPC 광고판
+    st.markdown(f"""
+<div id='npc-board' style='background:rgba(10,5,20,0.96);border:1.5px solid #8833ff;border-radius:10px;padding:9px 14px;display:flex;align-items:center;gap:10px;margin-bottom:10px;'><span style='font-size:18px;animation:skB 0.9s ease-in-out infinite;display:inline-block;flex-shrink:0;'>💀</span><div style='font-size:12px;font-weight:900;color:#fff;min-height:18px;' id='npc-txt'></div></div><style>@keyframes skB{{0%,100%{{transform:scale(1)}}50%{{transform:scale(1.2)}}}}</style><script>(function(){{var KEY='snapq_tour_day';var today=new Date().toISOString().slice(0,10);var raw=localStorage.getItem(KEY);var data=raw?JSON.parse(raw):{{first:''}};if(!data.first){{data.first=today;localStorage.setItem(KEY,JSON.stringify(data));}}var diff=(new Date(today)-new Date(data.first))/(1000*60*60*24);var msgs=diff<3?["📊 정답률 낮으면 복습이 답! 숫자 올라야 실력!", "⚔️ 화력전 약점 박살내러 당장 출격해!", "📖 P7문장=P5문제. 결국 토익 만점!", "📊 기록이 쌓이면 성장이 보여. P5·P7 80% 목표!"]:["💀 오늘도 포로들 심문할 준비 됐어?", "⚔️ 틀린 문제 반복이 진짜 실력이야!", "📖 해독 포로 정복하면 P5도 올라!"];var el=document.getElementById('npc-txt');var mi=0,ci=0;function run(){{var txt=msgs[mi%msgs.length];if(ci<txt.length){{el.textContent+=txt[ci++];setTimeout(run,45);}}else{{setTimeout(function(){{el.textContent='';ci=0;mi++;run();}},3000);}}}}setTimeout(run,600);}})();</script>""", unsafe_allow_html=True)
     # ━━━ 1막: 전장 선택 ━━━
     if not _rv_battle:
         p5_save_cnt = len(p5_data)
