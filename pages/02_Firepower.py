@@ -661,7 +661,7 @@ if st.session_state.phase=="battle":
             _display = f"【{_labels[_ii]}】  {_ch_clean}"
             _aid = _ans_cfg[_ii][0]
             st.markdown(f'<div id="btn-{_aid}-{_qi}">', unsafe_allow_html=True)
-            if st.button(_display, key=f"ans_{_rn}_{_qi}_{_ii}", use_container_width=True):
+            if st.button(_display, key=f"ans_{_rn}_{_qi}_{_ii}_{int(time.time()*1000)%10000}", use_container_width=True):
                 _clicked = _ii
             st.markdown('</div>', unsafe_allow_html=True)
 
