@@ -607,6 +607,7 @@ if st.session_state.phase=="battle":
         div[data-testid="stVerticalBlock"]{gap:3px!important;}
         /* ?? ??踰꾪듉 怨듯넻 ?? */
         div[data-testid="stButton"] button{
+            cursor:pointer!important;
             min-height:50px!important;font-size:0.95rem!important;
             font-weight:800!important;border-radius:10px!important;
             text-align:left!important;padding:0.45rem 0.9rem!important;
