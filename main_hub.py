@@ -1015,8 +1015,9 @@ div[data-testid="stButton"]:has(button[kind="secondary"]) {
     position: fixed !important;
     top: -9999px !important;
     left: -9999px !important;
+    width: 1px !important;
+    height: 1px !important;
     opacity: 0 !important;
-    pointer-events: none !important;
 }
 </style>
 """, unsafe_allow_html=True)
