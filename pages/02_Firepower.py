@@ -616,6 +616,26 @@ if st.session_state.phase=="battle":
             outline:none!important;
         }
         div[data-testid="stButton"] button p{font-size:0.95rem!important;font-weight:800!important;}
+        @media (hover:none) and (pointer:coarse){
+            div[data-testid="stButton"] button,
+            div[data-testid="stButton"] button:active,
+            div[data-testid="stButton"] button:focus,
+            div[data-testid="stButton"] button:focus-visible{
+                transition:none!important;
+                -webkit-transition:none!important;
+                animation:none!important;
+                -webkit-animation:none!important;
+                -webkit-tap-highlight-color:rgba(0,0,0,0)!important;
+                -webkit-appearance:none!important;
+                background-image:none!important;
+                filter:none!important;
+                -webkit-filter:none!important;
+                transform:none!important;
+                -webkit-transform:none!important;
+                outline:none!important;
+                box-shadow:none!important;
+            }
+        }
         div[data-testid="stButton"] button:active,
         div[data-testid="stButton"] button:focus,
         div[data-testid="stButton"] button:focus-visible,
