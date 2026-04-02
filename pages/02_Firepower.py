@@ -668,10 +668,8 @@ if st.session_state.phase=="battle":
             _ch_clean = re.sub(r'^\([A-D]\)[:\s]*', '', _ch).strip()
             _display = f"??_labels[_ii]}?? {_ch_clean}"
             _aid = _ans_cfg[_ii][0]
-            st.markdown(f'<div id="btn-{_aid}">', unsafe_allow_html=True)
             if st.button(_display, key=f"ans_{_rn}_{_qi}_{_ii}", use_container_width=True):
                 _clicked = _ii
-            st.markdown('</div>', unsafe_allow_html=True)
 
         if _clicked is not None:
             if time.time()-st.session_state.qst > st.session_state.tsec:
@@ -1448,12 +1446,10 @@ elif st.session_state.phase=="briefing":
             st.markdown('<div class="br-pow-btn">', unsafe_allow_html=True)
             if st.button("??  ?щ줈?щ졊遺!", use_container_width=True):
                 st.switch_page("pages/03_POW_HQ.py")
-            st.markdown('</div>', unsafe_allow_html=True)
         with _bc2:
             st.markdown('<div class="br-home-btn">', unsafe_allow_html=True)
             if st.button("?룧 ??, use_container_width=True):
                 _go_home()
-            st.markdown('</div>', unsafe_allow_html=True)
     else:
         # 寃뚯엫?ㅻ쾭: ?ㅼ슃???ш쾶 + ?щ줈?щ졊遺쨌???묎쾶
         st.markdown('<div class="br-retry-btn">', unsafe_allow_html=True)
@@ -1471,12 +1467,10 @@ elif st.session_state.phase=="briefing":
             st.markdown('<div class="br-pow-btn">', unsafe_allow_html=True)
             if st.button("??  ?щ줈?щ졊遺!", use_container_width=True):
                 st.switch_page("pages/03_POW_HQ.py")
-            st.markdown('</div>', unsafe_allow_html=True)
         with _rc2:
             st.markdown('<div class="br-home-btn">', unsafe_allow_html=True)
             if st.button("?룧 ??, use_container_width=True):
                 _go_home()
-            st.markdown('</div>', unsafe_allow_html=True)
 
 
 # PHASE: LOBBY
