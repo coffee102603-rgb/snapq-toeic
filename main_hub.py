@@ -1241,8 +1241,8 @@ _GRID_HTML = f"""
   transition:opacity 0.32s ease;
   z-index:10;padding:14px 12px;text-align:center;
 }}
-.npc-ov.tour-active{{opacity:1;}}
-.npc-inbody-on .npc-ov{{opacity:1;}}
+.npc-ov.tour-active{{opacity:1;pointer-events:none;}}
+.npc-inbody-on .npc-ov{{opacity:1;pointer-events:none;}}
 .npc-sk{{font-size:26px;margin-bottom:6px;animation:skPulse 0.85s ease-in-out infinite;}}
 @keyframes skPulse{{0%,100%{{transform:scale(1);}}50%{{transform:scale(1.2);}}}}
 .npc-tx{{font-size:12px;font-weight:900;color:#fff;line-height:1.6;text-shadow:0 0 10px rgba(255,255,255,0.5);}}
@@ -1258,8 +1258,8 @@ _GRID_HTML = f"""
   transition:opacity 0.28s;
   z-index:10;padding:20px;text-align:center;
 }}
-.card:hover .npc-ov,.card.npc-on .npc-ov{{opacity:1;}}
-.pb:hover .npc-ov,.pb.npc-on .npc-ov{{opacity:1;}}
+.card:hover .npc-ov,.card.npc-on .npc-ov{{opacity:1;pointer-events:none;}}
+.pb:hover .npc-ov,.pb.npc-on .npc-ov{{opacity:1;pointer-events:none;}}
 .npc-sk{{font-size:34px;margin-bottom:10px;animation:skPulse 0.9s ease-in-out infinite;}}
 @keyframes skPulse{{0%,100%{{transform:scale(1);}}50%{{transform:scale(1.3);}}}}
 .npc-tx{{
