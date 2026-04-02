@@ -660,12 +660,12 @@ if st.session_state.phase=="battle":
         )
         for _aid, _col, _bg, _sh in _ans_cfg:
             _css += (
-                f'#btn-{_aid} div[data-testid="stButton"] button{{' 
+                f'#btn-{_aid}-{_qi} div[data-testid="stButton"] button{{' 
                 f'border-left:5px solid {_col}!important;background:{_bg}!important;'
                 f'border-color:{_col}!important;color:{_col}!important;'
                 f'-webkit-appearance:none!important;-webkit-text-fill-color:{_col}!important;}}'
-                f'#btn-{_aid} div[data-testid="stButton"] button p{{color:{_col}!important;}}'
-                f'#btn-{_aid} div[data-testid="stButton"] button:hover{{box-shadow:0 0 22px {_sh}!important;}}'
+                f'#btn-{_aid}-{_qi} div[data-testid="stButton"] button p{{color:{_col}!important;}}'
+                f'#btn-{_aid}-{_qi} div[data-testid="stButton"] button:hover{{box-shadow:0 0 22px {_sh}!important;}}'
             )
         # iOS 캐시 리셋
         _css += (
@@ -684,7 +684,7 @@ if st.session_state.phase=="battle":
             _ch_clean = re.sub(r'^\([A-D]\)[:\s]*', '', _ch).strip()
             _display = f"【{_labels[_ii]}】  {_ch_clean}"
             _aid = _ans_cfg[_ii][0]
-            st.markdown(f'<div id="btn-{_aid}">', unsafe_allow_html=True)
+            st.markdown(f'<div id="btn-{_aid}-{_qi}">', unsafe_allow_html=True)
             if st.button(_display, key=f"ans_{_rn}_{_qi}_{_ii}", use_container_width=True):
                 _clicked = _ii
             st.markdown('</div>', unsafe_allow_html=True)
