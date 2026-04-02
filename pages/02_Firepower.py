@@ -627,12 +627,12 @@ if st.session_state.phase=="battle":
         """
         for _aid, _col, _bg, _sh in _ans_cfg:
             _css += (
-                f'#btn-{_aid} div[data-testid="stButton"] button{{' 
+                f'#btn-{_aid}-{_qi} div[data-testid="stButton"] button{{' 
                 f'border-left:5px solid {_col}!important;background:{_bg}!important;'
                 f'border-color:{_col}!important;color:{_col}!important;'
                 f'-webkit-appearance:none!important;-webkit-text-fill-color:{_col}!important;}}'
-                f'#btn-{_aid} div[data-testid="stButton"] button p{{color:{_col}!important;}}'
-                f'#btn-{_aid} div[data-testid="stButton"] button:hover{{box-shadow:0 0 22px {_sh}!important;}}'
+                f'#btn-{_aid}-{_qi} div[data-testid="stButton"] button p{{color:{_col}!important;}}'
+                f'#btn-{_aid}-{_qi} div[data-testid="stButton"] button:hover{{box-shadow:0 0 22px {_sh}!important;}}'
             )
         _css += "</style>"
         st.markdown(_css, unsafe_allow_html=True)
