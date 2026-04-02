@@ -611,7 +611,14 @@ if st.session_state.phase=="battle":
             ("fp-ans-c", "#FF2D55", "#140008", "rgba(255,45,85,0.55)"),
             ("fp-ans-d", "#44FF88", "#001408", "rgba(68,255,136,0.55)"),
         ]
-        _css = """<style>
+        import streamlit.components.v1 as _rm_cmp
+        _rm_cmp.html("""<script>
+        (function(){
+          var old=window.parent.document.querySelectorAll('style[data-fp]');
+          old.forEach(function(s){s.parentNode.removeChild(s);});
+        })();
+        </script>""", height=0)
+        _css = """<style data-fp>
         /* ── 전장 버튼 래퍼 여백 완전 제거 ── */
         .stMarkdown{margin:0!important;padding:0!important;}
         .element-container{margin:0!important;padding:0!important;}
