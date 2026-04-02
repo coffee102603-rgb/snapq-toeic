@@ -462,7 +462,137 @@ div[data-testid="stButton"] button.p7nav:hover{
       <div style="font-size:0.72rem;color:#8899aa;letter-spacing:1.5px;margin-top:3px;font-weight:700;">CLASSIFIED · PRIORITY LEVEL 7</div>
     </div>''', unsafe_allow_html=True)
 
+    import streamlit.components.v1 as _nc
+    _nc.html("""<div style='background:rgba(10,5,20,0.96);border:1.5px solid #0099cc;border-radius:10px;padding:9px 14px;display:flex;align-items:center;gap:10px;'><span style='font-size:18px;animation:skB 0.9s ease-in-out infinite;display:inline-block;flex-shrink:0;'>💀</span><div style='font-size:12px;font-weight:900;color:#fff;min-height:18px;' id='nt'></div></div><style>@keyframes skB{0%,100%{transform:scale(1)}50%{transform:scale(1.2)}}</style><script>(function(){var KEY='snapq_tour_day';var today=new Date().toISOString().slice(0,10);var raw=localStorage.getItem(KEY);var data=raw?JSON.parse(raw):{first:''};if(!data.first){data.first=today;localStorage.setItem(KEY,JSON.stringify(data));}var diff=(new Date(today)-new Date(data.first))/(1000*60*60*24);var msgs=diff<3?["⏱ 100s PRECISION으로 시작! 이해부터!", "📋 유형 파악이 먼저! SIGNAL→BLACKOUT!", "⏱ 시간 욕심 버려! 이해 욕심=점수 급상승!", "📋 유형 훈련=문제 당연 다 맞음!"]:["📡 오늘 해독 임무! 지문 속에 답 있다.", "⏱ 이제 시간 줄여볼 때! 도전!", "📋 유형별 정복 현황 확인해봐!"];var el=document.getElementById('nt'),mi=0,ci=0;function run(){var txt=msgs[mi%msgs.length];if(ci<txt.length){el.textContent+=txt[ci++];setTimeout(run,50);}else{setTimeout(function(){el.textContent='';ci=0;mi++;run();},3000);}}setTimeout(run,600);})();</script>""", height=52)
+    # ── 시간 선택 (A안: SIGNAL FREQUENCY 세그먼트) ──
+    st.markdown('''<div style="font-size:10px;color:#88aacc;letter-spacing:4px;padding:14px 0 7px;font-weight:900;">
+      ⏱  SIGNAL FREQUENCY</div>''', unsafe_allow_html=True)
+    tc1, tc2, tc3 = st.columns(3)
+    with tc1:
+        if st.button("🔥 60s\nRAPID", key="p7t60", use_container_width=True):
+            st.session_state.p7_tsec=60; st.session_state.p7_tsec_chosen=True; st.rerun()
+    with tc2:
+        if st.button("⚡ 80s\nSTANDARD", key="p7t80", use_container_width=True):
+            st.session_state.p7_tsec=80; st.session_state.p7_tsec_chosen=True; st.rerun()
+    with tc3:
+        if st.button("💎 100s\nPRECISION", key="p7t100", use_container_width=True):
+            st.session_state.p7_tsec=100; st.session_state.p7_tsec_chosen=True; st.rerun()
 
+    # ── 지문 선택 (SIGNAL/CIPHER/DECRYPT/BLACKOUT 4개 한 줄) ──
+    st.markdown('''<div style="font-size:10px;color:#dd88aa;letter-spacing:4px;padding:14px 0 7px;font-weight:900;">
+      ⚔  TARGET CLASSIFICATION</div>''', unsafe_allow_html=True)
+    pc1, pc2, pc3, pc4 = st.columns(4)
+    with pc1:
+        if st.button("📢\nSIGNAL\n광고·공지\n▂░░░", key="p7c1", use_container_width=True):
+            st.session_state.p7_cat="article"; st.rerun()
+    with pc2:
+        if st.button("✉️\nCIPHER\n편지·이메일\n▂▄░░", key="p7c2", use_container_width=True):
+            st.session_state.p7_cat="letter"; st.rerun()
+    with pc3:
+        if st.button("📰\nINTERCEPT\n기사·안내\n▂▄▆░", key="p7c3", use_container_width=True):
+            st.session_state.p7_cat="notice"; st.rerun()
+    with pc4:
+        if st.button("☠️\nBLACKOUT\n고난도\n▂▄▆█", key="p7c4", use_container_width=True):
+            st.session_state.p7_cat="information"; st.rerun()
+
+    # ── 생존 규칙 ──
+    st.markdown('<div style="text-align:center;padding:16px 0 3px;font-size:0.82rem;font-weight:900;color:#00ffcc;letter-spacing:1px;text-shadow:0 0 10px #00ffcc88;">☠ 오판 1회 = 작전 종료 · 통신 두절 = 즉시 철수</div>', unsafe_allow_html=True)
+
+    # ── 출격 버튼 ──
+    if _ready:
+        _cat_name = {"article":"📢 SIGNAL","letter":"✉️ CIPHER","notice":"📰 INTERCEPT","information":"☠️ BLACKOUT"}.get(cat, cat)
+        _tlabel = {"60":"🔥 60s RAPID","80":"⚡ 80s STANDARD","100":"💎 100s PRECISION"}.get(str(_p7_tsec), str(_p7_tsec)+"초")
+        if st.button(f"▶ 출격! — {_cat_name}  ⏱ {_tlabel}", key="p7go", use_container_width=True):
+            st.session_state.p7_data = pick_passage(cat)
+            st.session_state.p7_step = 0
+            st.session_state.p7_answers = []
+            st.session_state.p7_started_at = time.time()
+            st.session_state.p7_type_guessed = False
+            st.session_state.p7_type_correct = None
+            st.session_state.p7_analytics = {"step_times":[],"step_correct":[],"step_type_correct":[],"step_started_at":time.time()}
+            st.session_state.p7_phase = "battle"
+            st.rerun()
+    else:
+        st.markdown('<div style="background:#0a0a18;border:1.5px solid #334466;border-radius:12px;color:#6688aa;font-size:0.88rem;font-weight:800;padding:14px;text-align:center;letter-spacing:1px;">⏱ 시간 + 🎯 지문 선택 → 출격!</div>', unsafe_allow_html=True)
+
+    # ── 네비 ──
+    st.markdown('<div style="height:1px;background:#0e0e1e;margin:4px 0 3px;"></div>', unsafe_allow_html=True)
+    nc1, nc2 = st.columns(2)
+    with nc1:
+        if st.button("💀  사령부 귀환", key="p7nav1", use_container_width=True):
+            st.switch_page("pages/03_POW_HQ.py")
+    with nc2:
+        if st.button("🏠 홈", key="p7nav2", use_container_width=True):
+            st.session_state._p7_just_left = True
+            _nick = st.session_state.get("battle_nickname") or st.session_state.get("nickname", "")
+            if _nick:
+                st.query_params["nick"] = _nick
+                st.query_params["ag"] = "1"
+            st.switch_page("main_hub.py")
+
+    # ── JS: 클래스 부여 (setTimeout 2회, setInterval 없음) ──
+    import streamlit.components.v1 as _cmp
+    _cmp.html(f"""<script>
+(function(){{
+  var selT="{_sel_time}", selC="{_sel_cat}";
+  var doc=window.parent.document;
+
+  function applyClasses(){{
+    doc.querySelectorAll("button").forEach(function(b){{
+      var txt=(b.innerText||b.textContent||"").trim();
+      if(!txt) return;
+
+      // 시간 버튼
+      if(txt.indexOf("60s")>-1 && txt.indexOf("\ucd9c\uaca9")===-1){{
+        b.classList.add("p7t60");
+        if(selT==="60") b.classList.add("p7sel"); else b.classList.remove("p7sel");
+        b.querySelectorAll("p").forEach(function(p){{p.classList.add("p7t60");if(selT==="60")p.classList.add("p7sel");else p.classList.remove("p7sel");}});
+      }}
+      if(txt.indexOf("80s")>-1 && txt.indexOf("\ucd9c\uaca9")===-1){{
+        b.classList.add("p7t80");
+        if(selT==="80") b.classList.add("p7sel"); else b.classList.remove("p7sel");
+        b.querySelectorAll("p").forEach(function(p){{p.classList.add("p7t80");if(selT==="80")p.classList.add("p7sel");else p.classList.remove("p7sel");}});
+      }}
+      if(txt.indexOf("100s")>-1 && txt.indexOf("\ucd9c\uaca9")===-1){{
+        b.classList.add("p7t100");
+        if(selT==="100") b.classList.add("p7sel"); else b.classList.remove("p7sel");
+        b.querySelectorAll("p").forEach(function(p){{p.classList.add("p7t100");if(selT==="100")p.classList.add("p7sel");else p.classList.remove("p7sel");}});
+      }}
+
+      // 지문 카드
+      if(txt.indexOf("SIGNAL")>-1 && txt.indexOf("\ucd9c\uaca9")===-1){{
+        b.classList.add("p7pass","p7art");
+        if(selC==="article") b.classList.add("p7sel"); else b.classList.remove("p7sel");
+        b.querySelectorAll("p").forEach(function(p){{p.classList.add("p7art");if(selC==="article")p.classList.add("p7sel");else p.classList.remove("p7sel");}});
+      }}
+      if(txt.indexOf("CIPHER")>-1 && txt.indexOf("\ucd9c\uaca9")===-1){{
+        b.classList.add("p7pass","p7let");
+        if(selC==="letter") b.classList.add("p7sel"); else b.classList.remove("p7sel");
+        b.querySelectorAll("p").forEach(function(p){{p.classList.add("p7let");if(selC==="letter")p.classList.add("p7sel");else p.classList.remove("p7sel");}});
+      }}
+      if(txt.indexOf("INTERCEPT")>-1 && txt.indexOf("\ucd9c\uaca9")===-1){{
+        b.classList.add("p7pass","p7not");
+        if(selC==="notice") b.classList.add("p7sel"); else b.classList.remove("p7sel");
+        b.querySelectorAll("p").forEach(function(p){{p.classList.add("p7not");if(selC==="notice")p.classList.add("p7sel");else p.classList.remove("p7sel");}});
+      }}
+      if(txt.indexOf("BLACKOUT")>-1 && txt.indexOf("\ucd9c\uaca9")===-1){{
+        b.classList.add("p7pass","p7inf");
+        if(selC==="information") b.classList.add("p7sel"); else b.classList.remove("p7sel");
+        b.querySelectorAll("p").forEach(function(p){{p.classList.add("p7inf");if(selC==="information")p.classList.add("p7sel");else p.classList.remove("p7sel");}});
+      }}
+
+      // 출격 버튼
+      if(txt.indexOf("\ucd9c\uaca9!")>-1) b.classList.add("p7launch");
+
+      // 네비
+      if(txt.indexOf("\ud3ec\ub85c\uc0ac\ub839\ubd80")>-1||txt.indexOf("\ud648")>-1) b.classList.add("p7nav");
+    }});
+  }}
+
+  setTimeout(applyClasses, 120);
+  setTimeout(applyClasses, 450);
+}})();
+</script>""", height=0)
 
 # ═══════════════════════════════════════
 # ════════════════════════════════════════

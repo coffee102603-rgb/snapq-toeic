@@ -1688,4 +1688,167 @@ div[data-testid="stButton"] button.fp-nav p { color:#3d5066 !important; }
         5문제 · 살아남아라! · 문법어휘 실전 포격전</div>
     </div>""", unsafe_allow_html=True)
 
+    import streamlit.components.v1 as _nc
+    _nc.html("""<div style='background:rgba(10,5,20,0.96);border:1.5px solid #cc6633;border-radius:10px;padding:9px 14px;display:flex;align-items:center;gap:10px;'><span style='font-size:18px;animation:skB 0.9s ease-in-out infinite;display:inline-block;flex-shrink:0;'>💀</span><div style='font-size:12px;font-weight:900;color:#fff;min-height:18px;' id='nt'></div></div><style>@keyframes skB{0%,100%{transform:scale(1)}50%{transform:scale(1.2)}}</style><script>(function(){var KEY='snapq_tour_day';var today=new Date().toISOString().slice(0,10);var raw=localStorage.getItem(KEY);var data=raw?JSON.parse(raw):{first:''};if(!data.first){data.first=today;localStorage.setItem(KEY,JSON.stringify(data));}var diff=(new Date(today)-new Date(data.first))/(1000*60*60*24);var msgs=diff<3?["⏱ 50s SNIPER로 시작! 익숙해지면 속도 올려!", "🎯 네 약점 카테고리 골라! GRAMMAR부터!", "⏱ 넉넉한 시간=정확한 답. 결국 BLITZ 정복!", "🎯 카테고리 하나 정복=미친듯 오르는 P5!"]:["⚡ 오늘도 화력전! 더 빠르고 정확하게!", "🎯 약점 카테고리 집중 공략 중?", "⏱ BLITZ 도전할 실력 됐어? 확인해봐!"];var el=document.getElementById('nt'),mi=0,ci=0;function run(){var txt=msgs[mi%msgs.length];if(ci<txt.length){el.textContent+=txt[ci++];setTimeout(run,50);}else{setTimeout(function(){el.textContent='';ci=0;mi++;run();},3000);}}setTimeout(run,600);})();</script>""", height=52)
+    # ── COMBAT TIME 섹션 ──
+    st.markdown('<div style="height:4px;"></div>', unsafe_allow_html=True)
+    st.markdown('<div style="font-size:9px;color:#cc6633;letter-spacing:4px;padding:4px 0 6px;font-weight:700;">⚡  COMBAT TIME</div>', unsafe_allow_html=True)
+    tc1, tc2, tc3 = st.columns(3)
+    with tc1:
+        if st.button("🔥 30s\nBLITZ", key="t30", use_container_width=True):
+            st.session_state.tsec=30; st.session_state.tsec_chosen=True; st.rerun()
+    with tc2:
+        if st.button("⚡ 40s\nSTANDARD", key="t40", use_container_width=True):
+            st.session_state.tsec=40; st.session_state.tsec_chosen=True; st.rerun()
+    with tc3:
+        if st.button("🛡️ 50s\nSNIPER", key="t50", use_container_width=True):
+            st.session_state.tsec=50; st.session_state.tsec_chosen=True; st.rerun()
 
+    # ── MISSION SELECT 섹션 ──
+    st.markdown('<div style="height:6px;"></div>', unsafe_allow_html=True)
+    st.markdown('<div style="font-size:9px;color:#cc3355;letter-spacing:4px;padding:4px 0 6px;font-weight:700;">🎯  MISSION SELECT</div>', unsafe_allow_html=True)
+    b1, b2, b3, b4 = st.columns(4)
+    with b1:
+        if st.button("⚔️\nGRAMMAR\n시제·태·수일치\nGRM", key="sg1", use_container_width=True):
+            st.session_state.sel_mode="g1"; st.rerun()
+    with b2:
+        if st.button("🔄\nFORM\n품사전환·어형\nFORM", key="sg2", use_container_width=True):
+            st.session_state.sel_mode="g2"; st.rerun()
+    with b3:
+        if st.button("🔗\nLINK\n연결어·접속사\nLINK", key="sg3", use_container_width=True):
+            st.session_state.sel_mode="g3"; st.rerun()
+    with b4:
+        if st.button("📘\nVOCAB\n동의어·문맥어휘\nVOCAB", key="svc", use_container_width=True):
+            st.session_state.sel_mode="vocab"; st.rerun()
+
+    # ── 생존 규칙 ──
+    st.markdown(
+        '<div style="text-align:center;margin:20px 0 4px;font-size:0.82rem;font-weight:900;'
+        'color:#cc3333;letter-spacing:1px;'
+        'animation:warnBlink 1.4s ease-in-out infinite;">'
+        '💀 3개 이상 격파해야 생존 · 그 이하면 전멸!</div>',
+        unsafe_allow_html=True
+    )
+
+    # ── 출격 버튼 ──
+    if _ready:
+        _cat = lbl_map.get(_cur_sm,"")
+        _tl  = _tlabel_map.get(str(_cur_tsec), str(_cur_tsec)+"s")
+        if st.button(f"🔥 출격! — {_cat}  ⏱ {_tl}", key="go_start", use_container_width=True):
+            try:
+                _md, _grp = mode_map[_cur_sm]
+                _qs = pick5(_md, _grp)
+                st.session_state.mode         = _md
+                st.session_state.round_qs     = _qs
+                st.session_state.cq           = _qs[0]
+                st.session_state.qi           = 0
+                st.session_state.sc           = 0
+                st.session_state.wrong        = 0
+                st.session_state.ta           = 0
+                st.session_state.ans          = False
+                st.session_state.sel          = None
+                st.session_state.round_results= []
+                st.session_state.qst          = time.time()
+                st.session_state["_battle_entry_ans_reset"] = False
+                st.session_state.phase        = "battle"
+                st.rerun()
+            except Exception as _e:
+                st.error(f"오류: {_e}")
+    else:
+        st.button("⏱ COMBAT TIME + 🎯 MISSION → 출격!", key="go_disabled", use_container_width=True, disabled=True)
+
+    # ── 네비 ──
+    st.markdown('<div style="height:1px;background:#0e0e1e;margin:4px 0 3px;"></div>', unsafe_allow_html=True)
+    nc1, nc2 = st.columns(2)
+    with nc1:
+        if st.button("💀 포로사령부", key="p5nav1", use_container_width=True):
+            st.switch_page("pages/03_POW_HQ.py")
+    with nc2:
+        if st.button("🏠 홈", key="p5nav2", use_container_width=True):
+            st.session_state._p5_just_left = True
+            _nick = st.session_state.get("battle_nickname") or st.session_state.get("nickname","")
+            if _nick:
+                st.query_params["nick"] = _nick
+                st.query_params["ag"]   = "1"
+            st.switch_page("main_hub.py")
+
+    # ── JS: 클래스 부여 (setTimeout 2회 + 출격 border-color flicker) ──
+    _sel_t  = str(_cur_tsec) if _cur_tc else ""
+    _sel_m  = _cur_sm
+    _js_ready = "true" if _ready else "false"
+    components.html(f"""<script>
+(function(){{
+  var selT="{_sel_t}", selM="{_sel_m}", isReady={_js_ready};
+  var doc=window.parent.document;
+
+  function applyClasses(){{
+    doc.querySelectorAll("button").forEach(function(b){{
+      var txt=(b.innerText||b.textContent||"").trim();
+      if(!txt) return;
+
+      // 시간 버튼 (영문 라벨)
+      if(txt.indexOf("30s")>-1 && txt.indexOf("\ucd9c\uaca9")===-1){{
+        b.classList.add("fp-t30");
+        if(selT==="30") b.classList.add("fp-sel"); else b.classList.remove("fp-sel");
+        b.querySelectorAll("p").forEach(function(p){{p.classList.add("fp-t30");if(selT==="30")p.classList.add("fp-sel");else p.classList.remove("fp-sel");}});
+      }}
+      if(txt.indexOf("40s")>-1 && txt.indexOf("\ucd9c\uaca9")===-1){{
+        b.classList.add("fp-t40");
+        if(selT==="40") b.classList.add("fp-sel"); else b.classList.remove("fp-sel");
+        b.querySelectorAll("p").forEach(function(p){{p.classList.add("fp-t40");if(selT==="40")p.classList.add("fp-sel");else p.classList.remove("fp-sel");}});
+      }}
+      if(txt.indexOf("50s")>-1 && txt.indexOf("\ucd9c\uaca9")===-1){{
+        b.classList.add("fp-t50");
+        if(selT==="50") b.classList.add("fp-sel"); else b.classList.remove("fp-sel");
+        b.querySelectorAll("p").forEach(function(p){{p.classList.add("fp-t50");if(selT==="50")p.classList.add("fp-sel");else p.classList.remove("fp-sel");}});
+      }}
+
+      // 작전 카드
+      if(txt.indexOf("\uc2dc\uc81c")>-1){{
+        b.classList.add("fp-mode","fp-g1");
+        if(selM==="g1") b.classList.add("fp-sel"); else b.classList.remove("fp-sel");
+        b.querySelectorAll("p").forEach(function(p){{p.classList.add("fp-g1");if(selM==="g1")p.classList.add("fp-sel");else p.classList.remove("fp-sel");}});
+      }}
+      if(txt.indexOf("\ud488\uc0ac\uc804\ud658")>-1){{
+        b.classList.add("fp-mode","fp-g2");
+        if(selM==="g2") b.classList.add("fp-sel"); else b.classList.remove("fp-sel");
+        b.querySelectorAll("p").forEach(function(p){{p.classList.add("fp-g2");if(selM==="g2")p.classList.add("fp-sel");else p.classList.remove("fp-sel");}});
+      }}
+      if(txt.indexOf("\uc5f0\uacb0\uc5b4")>-1){{
+        b.classList.add("fp-mode","fp-g3");
+        if(selM==="g3") b.classList.add("fp-sel"); else b.classList.remove("fp-sel");
+        b.querySelectorAll("p").forEach(function(p){{p.classList.add("fp-g3");if(selM==="g3")p.classList.add("fp-sel");else p.classList.remove("fp-sel");}});
+      }}
+      if(txt.indexOf("\ub3d9\uc758\uc5b4")>-1){{
+        b.classList.add("fp-mode","fp-vc");
+        if(selM==="vocab") b.classList.add("fp-sel"); else b.classList.remove("fp-sel");
+        b.querySelectorAll("p").forEach(function(p){{p.classList.add("fp-vc");if(selM==="vocab")p.classList.add("fp-sel");else p.classList.remove("fp-sel");}});
+      }}
+
+      // 출격 버튼
+      if(txt.indexOf("\ucd9c\uaca9!")>-1 && txt.indexOf("COMBAT")===-1){{
+        if(isReady){{ b.classList.add("fp-launch"); b.classList.remove("fp-launch-off"); }}
+        else{{ b.classList.add("fp-launch-off"); b.classList.remove("fp-launch"); }}
+      }}
+      // 네비
+      if(txt.indexOf("\ud3ec\ub85c\uc0ac\ub839\ubd80")>-1||txt.indexOf("\ud648")>-1){{
+        b.classList.add("fp-nav");
+      }}
+    }});
+  }}
+
+  setTimeout(applyClasses, 120);
+  setTimeout(applyClasses, 450);
+
+  if(isReady){{
+    var _fi=0;
+    var _fc=["#ff4400","#ff6600","#ff9900","#FFD600","#ff9900","#ff6600","#ff4400","#ff2200"];
+    setInterval(function(){{
+      doc.querySelectorAll("button.fp-launch").forEach(function(b){{
+        b.style.setProperty("border-color",_fc[_fi%_fc.length],"important");
+      }});
+      _fi++;
+    }}, 130);
+  }}
+}})();
+</script>""", height=0)
