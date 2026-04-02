@@ -652,13 +652,15 @@ if st.session_state.phase=="battle":
             -webkit-filter:none!important;
         }
         """
-        for _aid, _col, _bg, _sh in _ans_cfg:
+        _cols = [_x[1] for _x in _ans_cfg]
+        _bgs  = [_x[2] for _x in _ans_cfg]
+        for _ci in range(4):
             _css += (
-                f'#btn-{_aid} div[data-testid="stButton"] button{{'
-                f'border-left:5px solid {_col}!important;background:{_bg}!important;'
-                f'border-color:{_col}!important;color:{_col}!important;}}'
-                f'#btn-{_aid} div[data-testid="stButton"] button p{{color:{_col}!important;}}'
-                f'#btn-{_aid} div[data-testid="stButton"] button:hover{{box-shadow:0 0 22px {_sh}!important;}}'
+                f'div[data-testid="stVerticalBlock"] div[data-testid="stButton"]:nth-of-type({_ci+1}) button{{'
+                f'border-left:5px solid {_cols[_ci]}!important;background:{_bgs[_ci]}!important;'
+                f'border-color:{_cols[_ci]}!important;color:{_cols[_ci]}!important;'
+                f'-webkit-text-fill-color:{_cols[_ci]}!important;transition:none!important;}}'
+                f'div[data-testid="stVerticalBlock"] div[data-testid="stButton"]:nth-of-type({_ci+1}) button p{{color:{_cols[_ci]}!important;}}'
             )
         _css += "</style>"
         st.markdown(_css, unsafe_allow_html=True)
