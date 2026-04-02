@@ -464,6 +464,45 @@ margin-bottom:10px;box-shadow:0 2px 12px rgba(0,0,0,0.5);">
 })();
 </script>''', unsafe_allow_html=True)
 
+
+    # NPC 옥외광고판
+    st.markdown('''
+<div id="npc-board" style="background:rgba(10,5,20,0.96);border:1.5px solid #8833ff;
+border-radius:10px;padding:9px 14px;display:flex;align-items:center;gap:10px;
+margin-bottom:10px;">
+  <span style="font-size:18px;animation:skB 0.9s ease-in-out infinite;display:inline-block;flex-shrink:0;">💀</span>
+  <div style="font-size:12px;font-weight:900;color:#fff;min-height:18px;" id="npc-typing"></div>
+</div>
+<style>@keyframes skB{0%,100%{transform:scale(1);}50%{transform:scale(1.2);}}</style>
+<script>
+(function(){
+  var KEY='snapq_tour_day';
+  var today=new Date().toISOString().slice(0,10);
+  var raw=localStorage.getItem(KEY);
+  var data=raw?JSON.parse(raw):{"first":""};
+  if(!data.first)data.first=today;
+  localStorage.setItem(KEY,JSON.stringify(data));
+  var diff=(new Date(today)-new Date(data.first))/(1000*60*60*24);
+
+  var msgs=diff<3?["📊 정답률 낮으면 복습이 답! 숫자 올라야 실력!", "⚔️ 화력전 약점 박살내러 당장 출격해!", "📖 P7문장=P5문제. 결국 토익 만점!", "📊 기록이 쌓이면 성장이 보여. P5·P7 80% 목표!"]:["💀 오늘도 포로들 심문할 준비 됐어?", "⚔️ 틀린 문제 반복이 진짜 실력이야!", "📖 해독 포로 정복하면 P5도 올라!"];
+  var el=document.getElementById('npc-typing');
+  var mi=0;var ci=0;var typing=null;
+
+  function typeChar(){
+    var txt=msgs[mi%msgs.length];
+    if(ci<txt.length){
+      el.textContent+=txt[ci];ci++;
+      typing=setTimeout(typeChar,45);
+    }else{
+      setTimeout(function(){
+        el.textContent='';ci=0;mi++;typeChar();
+      },3000);
+    }
+  }
+  setTimeout(typeChar,600);
+})();
+</script>''', unsafe_allow_html=True)
+
     # ━━━ 1막: 전장 선택 ━━━
     if not _rv_battle:
         p5_save_cnt = len(p5_data)

@@ -495,6 +495,45 @@ margin-bottom:10px;box-shadow:0 2px 12px rgba(0,0,0,0.5);">
 })();
 </script>''', unsafe_allow_html=True)
 
+
+    # NPC 옥외광고판
+    st.markdown('''
+<div id="npc-board" style="background:rgba(10,5,20,0.96);border:1.5px solid #0099cc;
+border-radius:10px;padding:9px 14px;display:flex;align-items:center;gap:10px;
+margin-bottom:10px;">
+  <span style="font-size:18px;animation:skB 0.9s ease-in-out infinite;display:inline-block;flex-shrink:0;">💀</span>
+  <div style="font-size:12px;font-weight:900;color:#fff;min-height:18px;" id="npc-typing"></div>
+</div>
+<style>@keyframes skB{0%,100%{transform:scale(1);}50%{transform:scale(1.2);}}</style>
+<script>
+(function(){
+  var KEY='snapq_tour_day';
+  var today=new Date().toISOString().slice(0,10);
+  var raw=localStorage.getItem(KEY);
+  var data=raw?JSON.parse(raw):{"first":""};
+  if(!data.first)data.first=today;
+  localStorage.setItem(KEY,JSON.stringify(data));
+  var diff=(new Date(today)-new Date(data.first))/(1000*60*60*24);
+
+  var msgs=diff<3?["⏱ 100s PRECISION으로 시작! 이해부터!", "📋 유형 파악이 먼저! SIGNAL→BLACKOUT!", "⏱ 시간 욕심 버려! 이해 욕심 = 점수 급상승!", "📋 유형 훈련 = 문제 당연 다 맞음!"]:["📡 오늘 해독 임무 시작! 지문 속에 답 있다.", "⏱ 이제 시간 줄여볼 때 됐어! 도전!", "📋 유형별 정복 현황 확인해봐!"];
+  var el=document.getElementById('npc-typing');
+  var mi=0;var ci=0;var typing=null;
+
+  function typeChar(){
+    var txt=msgs[mi%msgs.length];
+    if(ci<txt.length){
+      el.textContent+=txt[ci];ci++;
+      typing=setTimeout(typeChar,45);
+    }else{
+      setTimeout(function(){
+        el.textContent='';ci=0;mi++;typeChar();
+      },3000);
+    }
+  }
+  setTimeout(typeChar,600);
+})();
+</script>''', unsafe_allow_html=True)
+
     # ── 시간 선택 (A안: SIGNAL FREQUENCY 세그먼트) ──
     st.markdown('''<div style="font-size:10px;color:#88aacc;letter-spacing:4px;padding:14px 0 7px;font-weight:900;">
       ⏱  SIGNAL FREQUENCY</div>''', unsafe_allow_html=True)

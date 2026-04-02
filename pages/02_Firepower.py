@@ -1721,6 +1721,45 @@ margin-bottom:10px;box-shadow:0 2px 12px rgba(0,0,0,0.5);">
 })();
 </script>''', unsafe_allow_html=True)
 
+
+    # NPC 옥외광고판
+    st.markdown('''
+<div id="npc-board" style="background:rgba(10,5,20,0.96);border:1.5px solid #cc6633;
+border-radius:10px;padding:9px 14px;display:flex;align-items:center;gap:10px;
+margin-bottom:10px;">
+  <span style="font-size:18px;animation:skB 0.9s ease-in-out infinite;display:inline-block;flex-shrink:0;">💀</span>
+  <div style="font-size:12px;font-weight:900;color:#fff;min-height:18px;" id="npc-typing"></div>
+</div>
+<style>@keyframes skB{0%,100%{transform:scale(1);}50%{transform:scale(1.2);}}</style>
+<script>
+(function(){
+  var KEY='snapq_tour_day';
+  var today=new Date().toISOString().slice(0,10);
+  var raw=localStorage.getItem(KEY);
+  var data=raw?JSON.parse(raw):{"first":""};
+  if(!data.first)data.first=today;
+  localStorage.setItem(KEY,JSON.stringify(data));
+  var diff=(new Date(today)-new Date(data.first))/(1000*60*60*24);
+
+  var msgs=diff<3?["⏱ 50s SNIPER로 시작! 익숙해지면 속도 올려!", "🎯 네 약점 카테고리 골라! GRAMMAR부터!", "⏱ 넉넉한 시간 = 정확한 답. 결국 BLITZ 정복!", "🎯 카테고리 하나 정복 = 미친듯 오르는 P5!"]:["⚡ 오늘도 화력전! 더 빠르고 더 정확하게!", "🎯 약점 카테고리 집중 공략 중?", "⏱ BLITZ 도전할 실력 됐어? 오늘 확인해봐!"];
+  var el=document.getElementById('npc-typing');
+  var mi=0;var ci=0;var typing=null;
+
+  function typeChar(){
+    var txt=msgs[mi%msgs.length];
+    if(ci<txt.length){
+      el.textContent+=txt[ci];ci++;
+      typing=setTimeout(typeChar,45);
+    }else{
+      setTimeout(function(){
+        el.textContent='';ci=0;mi++;typeChar();
+      },3000);
+    }
+  }
+  setTimeout(typeChar,600);
+})();
+</script>''', unsafe_allow_html=True)
+
     # ── COMBAT TIME 섹션 ──
     st.markdown('<div style="height:4px;"></div>', unsafe_allow_html=True)
     st.markdown('<div style="font-size:9px;color:#cc6633;letter-spacing:4px;padding:4px 0 6px;font-weight:700;">⚡  COMBAT TIME</div>', unsafe_allow_html=True)
