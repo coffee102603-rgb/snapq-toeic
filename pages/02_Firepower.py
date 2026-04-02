@@ -665,8 +665,11 @@ if st.session_state.phase=="battle":
         _css += "</style>"
         st.markdown(_css, unsafe_allow_html=True)
 
+        # iOS: 이전 버튼 완전 제거 후 새로 생성
+        _btn_container = st.empty()
         _clicked = None
-        for _ii, _ch in enumerate(q['ch']):
+        with _btn_container.container():
+            for _ii, _ch in enumerate(q['ch']):
             _ch_clean = re.sub(r'^\([A-D]\)[:\s]*', '', _ch).strip()
             _display = f"??_labels[_ii]}?? {_ch_clean}"
             _aid = _ans_cfg[_ii][0]
