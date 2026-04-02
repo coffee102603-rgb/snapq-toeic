@@ -634,6 +634,18 @@ if st.session_state.phase=="battle":
         }
         div[data-testid="stButton"] button p{font-size:0.95rem!important;font-weight:800!important;}
         """
+        import streamlit.components.v1 as _fp_cmp
+        _fp_cmp.html("""<script>
+        (function(){
+          var btns=window.parent.document.querySelectorAll('div[data-testid="stButton"] button');
+          btns.forEach(function(b){
+            b.style.setProperty("background","rgba(255,255,255,0.04)","important");
+            b.style.setProperty("border-left","3px solid rgba(255,255,255,0.12)","important");
+            b.style.setProperty("color","rgba(255,255,255,0.85)","important");
+            b.style.setProperty("-webkit-text-fill-color","rgba(255,255,255,0.85)","important");
+          });
+        })();
+        </script>""", height=0)
         # iOS 4개 버튼 명시 리셋 (루프 밖)
         _css += (
             '#btn-fp-ans-a div[data-testid="stButton"] button,'
