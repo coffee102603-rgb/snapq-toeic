@@ -616,6 +616,21 @@ if st.session_state.phase=="battle":
             outline:none!important;
         }
         div[data-testid="stButton"] button p{font-size:0.95rem!important;font-weight:800!important;}
+        div[data-testid="stButton"] button:active,
+        div[data-testid="stButton"] button:focus,
+        div[data-testid="stButton"] button:focus-visible,
+        div[data-testid="stButton"] button:disabled,
+        div[data-testid="stButton"] button[disabled]{
+            background-color:rgba(255,255,255,0.04)!important;
+            border:1px solid rgba(255,255,255,0.2)!important;
+            color:rgb(250,250,250)!important;
+            -webkit-text-fill-color:rgb(250,250,250)!important;
+            opacity:1!important;
+            box-shadow:none!important;
+            outline:none!important;
+            filter:none!important;
+            -webkit-filter:none!important;
+        }
         """
         for _aid, _col, _bg, _sh in _ans_cfg:
             _css += (
