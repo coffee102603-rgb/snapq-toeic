@@ -611,15 +611,6 @@ if st.session_state.phase=="battle":
             ("fp-ans-c", "#FF2D55", "#140008", "rgba(255,45,85,0.55)"),
             ("fp-ans-d", "#44FF88", "#001408", "rgba(68,255,136,0.55)"),
         ]
-        # iOS CSS 캐시 리셋
-        import streamlit.components.v1 as _ans_cmp
-        _ans_cmp.html("""<script>
-        (function(){
-          var s = window.parent.document.getElementById('ios-btn-reset');
-          if(!s){s=window.parent.document.createElement('style');s.id='ios-btn-reset';window.parent.document.head.appendChild(s);}
-          s.textContent = 'div[data-testid=\"stButton\"] button{background:rgba(255,255,255,0.04)!important;border-left:3px solid rgba(255,255,255,0.12)!important;color:rgba(255,255,255,0.85)!important;-webkit-text-fill-color:rgba(255,255,255,0.85)!important;}';
-        })();
-        </script>""", height=0)
         _css = """<style>
         /* ── 전장 버튼 래퍼 여백 완전 제거 ── */
         .stMarkdown{margin:0!important;padding:0!important;}
@@ -634,48 +625,15 @@ if st.session_state.phase=="battle":
         }
         div[data-testid="stButton"] button p{font-size:0.95rem!important;font-weight:800!important;}
         """
-        import streamlit.components.v1 as _fp_cmp
-        _fp_cmp.html("""<script>
-        (function(){
-          var btns=window.parent.document.querySelectorAll('div[data-testid="stButton"] button');
-          btns.forEach(function(b){
-            b.style.setProperty("background","rgba(255,255,255,0.04)","important");
-            b.style.setProperty("border-left","3px solid rgba(255,255,255,0.12)","important");
-            b.style.setProperty("color","rgba(255,255,255,0.85)","important");
-            b.style.setProperty("-webkit-text-fill-color","rgba(255,255,255,0.85)","important");
-          });
-        })();
-        </script>""", height=0)
-        # iOS 4개 버튼 명시 리셋 (루프 밖)
-        _css += (
-            '#btn-fp-ans-a div[data-testid="stButton"] button,'
-            '#btn-fp-ans-b div[data-testid="stButton"] button,'
-            '#btn-fp-ans-c div[data-testid="stButton"] button,'
-            '#btn-fp-ans-d div[data-testid="stButton"] button{'
-            'background:rgba(255,255,255,0.04)!important;'
-            'border-left:3px solid rgba(255,255,255,0.12)!important;'
-            'border-color:rgba(255,255,255,0.12)!important;'
-            'color:rgba(255,255,255,0.85)!important;'
-            '-webkit-text-fill-color:rgba(255,255,255,0.85)!important;}'
-        )
         for _aid, _col, _bg, _sh in _ans_cfg:
             _css += (
-                f'#btn-{_aid}-{_qi} div[data-testid="stButton"] button{{' 
+                f'#btn-{_aid} div[data-testid="stButton"] button{{' 
                 f'border-left:5px solid {_col}!important;background:{_bg}!important;'
                 f'border-color:{_col}!important;color:{_col}!important;'
                 f'-webkit-appearance:none!important;-webkit-text-fill-color:{_col}!important;}}'
-                f'#btn-{_aid}-{_qi} div[data-testid="stButton"] button p{{color:{_col}!important;}}'
-                f'#btn-{_aid}-{_qi} div[data-testid="stButton"] button:hover{{box-shadow:0 0 22px {_sh}!important;}}'
+                f'#btn-{_aid} div[data-testid="stButton"] button p{{color:{_col}!important;}}'
+                f'#btn-{_aid} div[data-testid="stButton"] button:hover{{box-shadow:0 0 22px {_sh}!important;}}'
             )
-        # iOS 캐시 리셋
-        _css += (
-            'div[data-testid="stButton"] button{'
-            'background:transparent!important;'
-            'border-left:none!important;'
-            'border-color:rgba(255,255,255,0.15)!important;'
-            'color:rgba(255,255,255,0.85)!important;'
-            '-webkit-text-fill-color:rgba(255,255,255,0.85)!important;}'
-        )
         _css += "</style>"
         st.markdown(_css, unsafe_allow_html=True)
 
