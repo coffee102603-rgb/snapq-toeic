@@ -779,7 +779,7 @@ _today_day = _dt.date.today().day
 att_rate = round(att_days / _today_day * 100) if _today_day > 0 else 0
 total_time = _get_total_time_str(nickname)
 ranking = _get_ranking(nickname)
-student_name = nickname.split('_')[0] if '_' in nickname else nickname
+student_name = st.session_state.get("student_nickname") or (nickname.split('_')[0] if '_' in nickname else nickname)
 
 # =========================================================
 # 브랜딩 사진 (topbar에서 사용)
