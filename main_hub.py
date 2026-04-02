@@ -1137,7 +1137,7 @@ _p7_disp  = f"{p7_rate}%" if p7_rate is not None else "첫 도전!"
 _arm_disp = f"포로 {_pr_total}명" if _pr_total > 0 else "포로 없음"
 
 def _goto(key):
-    return f"window.parent.document.querySelectorAll('button').forEach(function(b){{if((b.innerText||'').trim()==='{key}')b.click()}})"
+    return f"window.top.location.href='/?nav={key}'"
 
 
 if p5_rate is not None:
