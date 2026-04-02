@@ -632,7 +632,9 @@ if st.session_state.phase=="battle":
         }
         div[data-testid="stButton"] button p{font-size:0.95rem!important;font-weight:800!important;}
         """
-        for _aid, _col, _bg, _sh in _ans_cfg:
+        if st.session_state.get("ans", False):
+         pass
+        for _aid, _col, _bg, _sh in _ans_cfg if st.session_state.get("ans", False) else []:
             _css += (
                 f'.q-{_qi} #btn-{_aid} div[data-testid="stButton"] button{{' 
                 f'border-left:5px solid {_col}!important;background:{_bg}!important;'
