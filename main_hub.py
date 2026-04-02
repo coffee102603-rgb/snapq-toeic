@@ -959,11 +959,9 @@ svg{display:block;overflow:visible;width:100%;}
 </style>"""
 
 def _mk_card(cls, title, s1b, s1l, s1svg, s2b, s2l, s2svg, s3mot, go=""):
-    _oc = f"window.parent.location.href=window.parent.location.pathname+'?nav={go}'" if go else ""
-    return f"""<div class="card {cls}"
-  onclick="{_oc}"
-
-  style="cursor:pointer;touch-action:manipulation;-webkit-tap-highlight-color:transparent;">
+    _href = f"?nav={go}" if go else ""
+    return f"""<a class="card {cls}" href="{_href}"
+  style="cursor:pointer;touch-action:manipulation;-webkit-tap-highlight-color:transparent;text-decoration:none;display:block;">
   <div class="ttl">{title}</div>
   <div class="sl sl1"><div class="row">
     <div class="numbox"><div class="big">{s1b}</div><div class="lbl">{s1l}</div></div>
