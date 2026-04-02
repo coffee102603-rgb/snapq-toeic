@@ -643,15 +643,17 @@ if st.session_state.phase=="battle":
             )
         _css += "</style>"
         import streamlit.components.v1 as _sc
-        _css_content = _css.replace("<style data-fp>","").replace("</style>","").replace('"','\\"').replace("\n"," ")
+        import random as _rand
+        _sid = f"fp-{_rand.randint(0,99999)}"
+        _css_content = _css.replace("<style data-fp>","").replace("</style>","").replace("\n"," ").replace('"','\\"').replace("`","'") 
         _sc.html(f"""<script>
         (function(){{
-          var old=window.parent.document.getElementById("fp-btn-style");
-          if(old)old.remove();
-          var s=window.parent.document.createElement("style");
-          s.id="fp-btn-style";
-          s.textContent="{_css_content}";
-          window.parent.document.head.appendChild(s);
+          var olds=window.parent.document.querySelectorAll('style[id^="fp-"]');
+          olds.forEach(function(s){{s.remove();}});
+          var ns=window.parent.document.createElement("style");
+          ns.id="{_sid}";
+          ns.textContent="{_css_content}";
+          window.parent.document.head.appendChild(ns);
         }})();
         </script>""", height=0)
 
