@@ -611,6 +611,15 @@ if st.session_state.phase=="battle":
             ("fp-ans-c", "#FF2D55", "#140008", "rgba(255,45,85,0.55)"),
             ("fp-ans-d", "#44FF88", "#001408", "rgba(68,255,136,0.55)"),
         ]
+        # iOS CSS 캐시 리셋
+        import streamlit.components.v1 as _ans_cmp
+        _ans_cmp.html("""<script>
+        (function(){
+          var s = window.parent.document.getElementById('ios-btn-reset');
+          if(!s){s=window.parent.document.createElement('style');s.id='ios-btn-reset';window.parent.document.head.appendChild(s);}
+          s.textContent = 'div[data-testid=\"stButton\"] button{background:rgba(255,255,255,0.04)!important;border-left:3px solid rgba(255,255,255,0.12)!important;color:rgba(255,255,255,0.85)!important;-webkit-text-fill-color:rgba(255,255,255,0.85)!important;}';
+        })();
+        </script>""", height=0)
         _css = """<style>
         /* ── 전장 버튼 래퍼 여백 완전 제거 ── */
         .stMarkdown{margin:0!important;padding:0!important;}
