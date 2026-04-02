@@ -962,8 +962,7 @@ def _mk_card(cls, title, s1b, s1l, s1svg, s2b, s2l, s2svg, s3mot, go=""):
     _oc = f"window.parent.document.querySelectorAll('button').forEach(function(b){{if((b.innerText||'').trim()==='{go}')b.click()}})" if go else ""
     return f"""<div class="card {cls}"
   onclick="{_oc}"
-  ontouchstart="this._touched=true;"
-  ontouchend="if(this._touched){{this._touched=false;{_oc};}}"
+
   style="cursor:pointer;touch-action:manipulation;-webkit-tap-highlight-color:transparent;">
   <div class="ttl">{title}</div>
   <div class="sl sl1"><div class="row">
