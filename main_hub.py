@@ -1014,13 +1014,11 @@ st.markdown("""
 <style>
 /* 네비게이션 숨김 버튼 — 화면에 절대 보이지 않게 */
 div[data-testid="stButton"]:has(button[kind="secondary"]) {
-    position: absolute !important;
+    position: fixed !important;
+    top: -9999px !important;
+    left: -9999px !important;
     opacity: 0 !important;
     pointer-events: none !important;
-    height: 0 !important;
-    overflow: hidden !important;
-    margin: 0 !important;
-    padding: 0 !important;
 }
 </style>
 """, unsafe_allow_html=True)
