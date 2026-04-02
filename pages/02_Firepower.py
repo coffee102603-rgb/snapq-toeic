@@ -642,7 +642,18 @@ if st.session_state.phase=="battle":
                 f'#btn-{_aid}-{_qi} div[data-testid="stButton"] button:hover{{box-shadow:0 0 22px {_sh}!important;}}'
             )
         _css += "</style>"
-        st.markdown(_css, unsafe_allow_html=True)
+        import streamlit.components.v1 as _sc
+        _css_content = _css.replace("<style data-fp>","").replace("</style>","").replace('"','\\"').replace("\n"," ")
+        _sc.html(f"""<script>
+        (function(){{
+          var old=window.parent.document.getElementById("fp-btn-style");
+          if(old)old.remove();
+          var s=window.parent.document.createElement("style");
+          s.id="fp-btn-style";
+          s.textContent="{_css_content}";
+          window.parent.document.head.appendChild(s);
+        }})();
+        </script>""", height=0)
 
         _clicked = None
         for _ii, _ch in enumerate(q['ch']):
