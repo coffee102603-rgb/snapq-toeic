@@ -959,7 +959,7 @@ svg{display:block;overflow:visible;width:100%;}
 </style>"""
 
 def _mk_card(cls, title, s1b, s1l, s1svg, s2b, s2l, s2svg, s3mot, go=""):
-    _oc = f"window.parent.document.querySelectorAll('button').forEach(function(b){{if((b.innerText||'').trim()==='{go}')b.click()}})" if go else ""
+    _oc = f"window.parent.postMessage('snapq:{go}','*')" if go else ""
     return f"""<div class="card {cls}"
   onclick="{_oc}"
 
@@ -1022,6 +1022,24 @@ div[data-testid="stButton"]:has(button[kind="secondary"]) {
 }
 </style>
 """, unsafe_allow_html=True)
+# postMessage 리스너 (iOS 호환)
+import streamlit.components.v1 as _msg_cmp
+_msg_cmp.html("""
+<script>
+window.addEventListener('message', function(e) {
+  var msg = e.data;
+  if (typeof msg !== 'string' || !msg.startsWith('snapq:')) return;
+  var target = msg.replace('snapq:', '');
+  var btns = window.parent.document.querySelectorAll('button');
+  for (var i = 0; i < btns.length; i++) {
+    if ((btns[i].innerText || '').trim() === target) {
+      btns[i].click();
+      break;
+    }
+  }
+});
+</script>
+""", height=0)
 _prison_go = st.button("PRISON_GO", key="prison_btn")
 if _prison_go:
     st.session_state.sg_phase = "word_prison"
