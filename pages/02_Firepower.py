@@ -665,6 +665,33 @@ if st.session_state.phase=="battle":
             )
         _css += "</style>"
         st.markdown(_css, unsafe_allow_html=True)
+        import streamlit.components.v1 as _fp_js
+        _fp_js.html("""<script>
+        function fpColors(){
+            var doc=window.parent.document;
+            var btns=doc.querySelectorAll('button');
+            var colors=[
+                {bg:'#160800',bl:'5px solid #ff6633',co:'#ff6633'},
+                {bg:'#001518',bl:'5px solid #00E5FF',co:'#00E5FF'},
+                {bg:'#140008',bl:'5px solid #FF2D55',co:'#FF2D55'},
+                {bg:'#001408',bl:'5px solid #44FF88',co:'#44FF88'}
+            ];
+            var ci=0;
+            btns.forEach(function(btn){
+                var t=btn.textContent||'';
+                if(t.match(/\(A\)|\(B\)|\(C\)|\(D\)/)){
+                    var clr=colors[ci%4];
+                    btn.style.setProperty('background',clr.bg,'important');
+                    btn.style.setProperty('border-left',clr.bl,'important');
+                    btn.style.setProperty('border-color',clr.co,'important');
+                    btn.style.setProperty('color',clr.co,'important');
+                    btn.style.setProperty('-webkit-text-fill-color',clr.co,'important');
+                    ci++;
+                }
+            });
+        }
+        setTimeout(fpColors,100);setTimeout(fpColors,300);setTimeout(fpColors,600);setInterval(fpColors,500);
+        </script>""", height=0)
 
         # iOS: 이전 버튼 완전 제거 후 새로 생성
         _btn_container = st.empty()
