@@ -629,7 +629,8 @@ if st.session_state.phase=="battle":
             _css += (
                 f'#btn-{_aid} div[data-testid="stButton"] button{{'
                 f'border-left:5px solid {_col}!important;background:{_bg}!important;'
-                f'border-color:{_col}!important;color:{_col}!important;}}'
+                f'border-color:{_col}!important;color:{_col}!important;'
+                f'-webkit-appearance:none!important;-webkit-text-fill-color:{_col}!important;}}'
                 f'#btn-{_aid} div[data-testid="stButton"] button p{{color:{_col}!important;}}'
                 f'#btn-{_aid} div[data-testid="stButton"] button:hover{{box-shadow:0 0 22px {_sh}!important;}}'
             )
