@@ -670,7 +670,9 @@ if st.session_state.phase=="battle":
             _ch_clean = re.sub(r'^\([A-D]\)[:\s]*', '', _ch).strip()
             _display = f"??_labels[_ii]}?? {_ch_clean}"
             _aid = _ans_cfg[_ii][0]
-            if st.button(_display, key=f"ans_{_rn}_{_qi}_{_ii}", use_container_width=True):
+            import time as _t
+            _btn_key = f"ans_{_rn}_{_qi}_{_ii}_{int(_t.time()*100)%10000}"
+            if st.button(_display, key=_btn_key, use_container_width=True):
                 _clicked = _ii
 
         if _clicked is not None:
