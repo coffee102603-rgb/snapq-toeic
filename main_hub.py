@@ -1370,9 +1370,7 @@ _GRID_HTML = f"""
 
 <!-- 포로수용소 바 -->
 <div class="pb"
-  onclick="{_goto('PRISON_GO')}"
-  ontouchend="{_goto('PRISON_GO')};event.preventDefault();"
-  ontouchstart="">
+  onclick="{_goto('PRISON_GO')}">
 <div class="npc-ov" style="border-radius:14px;"><div class="npc-sk">💀</div><div class="npc-tx">틀린 단어들이 여기 갇혔어.<br>3번 연속 맞혀야 석방.<br>모르면 평생 여기야.</div></div>
 <div class="npc-ov" id="ov-pb-a" style="border-radius:14px;"><div class="npc-sk">💀</div><div class="npc-tx">화력전·암호해독에서 틀린 단어들.<br>여기 다 갇혔어.<br>3번 연속 맞혀야 석방!</div><div class="npc-stat">{_npc_pb_stat}</div></div><div class="npc-ov" id="ov-pb-b" style="border-radius:14px;"><div class="npc-sk">💀</div><div class="npc-tx">P5·P7에서 네가 모른 단어들.<br>여기 다 있어.<br>외울 때까지 절대 못 나가.</div><div class="npc-stat">{_npc_pb_stat}</div></div>
   <div class="pb-left">
@@ -1396,9 +1394,7 @@ _GRID_HTML = f"""
 
   <!-- ⚡ 화력전 -->
   <div class="card card-p5"
-    onclick="{_goto('P5_GO')}"
-    ontouchend="{_goto('P5_GO')};event.preventDefault();"
-    ontouchstart="">
+    onclick="{_goto('P5_GO')}">
 <div class="npc-ov"><div class="npc-sk">⚡</div><div class="npc-tx">P5는 속도가 전부야.<br>5문제, 3개 생존.<br>불처럼 밀어붙여!</div></div>
 <div class="npc-ov" id="ov-p5-a"><div class="npc-sk">⚡</div><div class="npc-tx">P5는 불이야.<br>빠르고 정확하게.<br>화력이 약하면 전멸이다!</div><div class="npc-stat">{_npc_p5_stat}</div></div><div class="npc-ov" id="ov-p5-b"><div class="npc-sk">⚡</div><div class="npc-tx">P5 문법·어휘.<br>불처럼 밀어붙여.<br>5문제 3개 생존.<br>느리면 죽는다!</div><div class="npc-stat">{_npc_p5_stat}</div></div>
     <div class="card-body">
@@ -1421,9 +1417,7 @@ _GRID_HTML = f"""
 
   <!-- 📡 암호해독 -->
   <div class="card card-p7"
-    onclick="{_goto('P7_GO')}"
-    ontouchend="{_goto('P7_GO')};event.preventDefault();"
-    ontouchstart="">
+    onclick="{_goto('P7_GO')}">
 <div class="npc-ov"><div class="npc-sk">📡</div><div class="npc-tx">P7 지문 해독 임무.<br>단 1번 오판 = 즉시 철수.<br>집중해.</div></div>
 <div class="npc-ov" id="ov-p7-a"><div class="npc-sk">📡</div><div class="npc-tx">P7 지문 해독 임무.<br>1번 오판 = 즉시 철수.<br>집중 = 승리.</div><div class="npc-stat">{_npc_p7_stat}</div></div><div class="npc-ov" id="ov-p7-b"><div class="npc-sk">📡</div><div class="npc-tx">P7 적군 문서 해독.<br>지문 속 단서가 답이야.<br>읽어야 산다.</div><div class="npc-stat">{_npc_p7_stat}</div></div>
     <div class="card-body">
@@ -1446,9 +1440,7 @@ _GRID_HTML = f"""
 
   <!-- 💀 포로사령부 (BOSS) -->
   <div class="card card-pow"
-    onclick="{_goto('ARM_GO')}"
-    ontouchend="{_goto('ARM_GO')};event.preventDefault();"
-    ontouchstart="">
+    onclick="{_goto('ARM_GO')}">
 <div class="npc-ov"><div class="npc-sk">💀</div><div class="npc-tx">네가 틀린 문제들이<br>여기 갇혔어.<br>완전히 외울 때까지 석방 없음.</div></div>
 <div class="npc-ov" id="ov-pow-a"><div class="npc-sk">💀</div><div class="npc-tx">네가 틀린 문제 여기 갇혔어.<br>P5 문법은 약점, P7 문장읽기는 구멍.<br>여기서 끝내.</div><div class="npc-stat">{_npc_pow_stat}</div></div><div class="npc-ov" id="ov-pow-b"><div class="npc-sk">💀</div><div class="npc-tx">화력전서 놓친 P5.<br>암호해독서 못 읽은 P7.<br>다 여기 있어. 이번엔 정복해.</div><div class="npc-stat">{_npc_pow_stat}</div></div>
     <div class="pow-left">
