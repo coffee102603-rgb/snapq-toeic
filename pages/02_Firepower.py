@@ -626,8 +626,17 @@ if st.session_state.phase=="battle":
         div[data-testid="stButton"] button p{font-size:0.95rem!important;font-weight:800!important;}
         """
         for _aid, _col, _bg, _sh in _ans_cfg:
+            # 전체 버튼 먼저 리셋
             _css += (
-                f'#btn-{_aid} div[data-testid="stButton"] button{{'
+                'div[data-testid="stButton"] button{'
+                'background:rgba(255,255,255,0.04)!important;'
+                'border-left:3px solid rgba(255,255,255,0.12)!important;'
+                'border-color:rgba(255,255,255,0.12)!important;'
+                'color:rgba(255,255,255,0.85)!important;'
+                '-webkit-text-fill-color:rgba(255,255,255,0.85)!important;}'
+            )
+            _css += (
+                f'#btn-{_aid} div[data-testid="stButton"] button{{' 
                 f'border-left:5px solid {_col}!important;background:{_bg}!important;'
                 f'border-color:{_col}!important;color:{_col}!important;'
                 f'-webkit-appearance:none!important;-webkit-text-fill-color:{_col}!important;}}'
