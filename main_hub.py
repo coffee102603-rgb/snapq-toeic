@@ -1118,6 +1118,16 @@ if _pr_total > 0:
 else:
     _npc_pb_stat = "포로 없음! 완벽 정복 중"
 _npc_att_stat = f"출석 {att_days}일 · 참여도 {att_rate}%"
+_IOS_FIX = """
+<script>
+(function(){
+  document.addEventListener('touchstart', function(){}, {passive:true});
+  var style = document.createElement('style');
+  style.innerHTML = '* { -webkit-tap-highlight-color: transparent; touch-action: manipulation; } .card, .pb { cursor: pointer; }';
+  document.head.appendChild(style);
+})();
+</script>
+"""
 _GRID_HTML = f"""
 <style>
 *{{box-sizing:border-box;margin:0;padding:0;font-family:-apple-system,'Noto Sans KR',sans-serif;}}
@@ -1625,7 +1635,7 @@ _GRID_HTML = f"""
 </script>
 """
 
-_hc.html(_GRID_HTML, height=580)
+_hc.html(_IOS_FIX + _GRID_HTML, height=580)
 
 
 _hc.html("""
