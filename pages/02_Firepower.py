@@ -634,7 +634,7 @@ if st.session_state.phase=="battle":
         """
         for _aid, _col, _bg, _sh in _ans_cfg:
             _css += (
-                f'#btn-{_aid}[data-q="{_qi}"] div[data-testid="stButton"] button{{' 
+                f'.q-{_qi} #btn-{_aid} div[data-testid="stButton"] button{{' 
                 f'border-left:5px solid {_col}!important;background:{_bg}!important;'
                 f'border-color:{_col}!important;color:{_col}!important;'
                 f'-webkit-appearance:none!important;-webkit-text-fill-color:{_col}!important;}}'
@@ -662,7 +662,7 @@ if st.session_state.phase=="battle":
             _ch_clean = re.sub(r'^\([A-D]\)[:\s]*', '', _ch).strip()
             _display = f"【{_labels[_ii]}】  {_ch_clean}"
             _aid = _ans_cfg[_ii][0]
-            st.markdown(f'<div id="btn-{_aid}" data-q="{_qi}">', unsafe_allow_html=True)
+            st.markdown(f'<div class="q-{_qi}" id="btn-{_aid}">', unsafe_allow_html=True)
             if st.button(_display, key=f"ans_{_rn}_{_qi}_{_ii}_{int(time.time()*1000)%10000}", use_container_width=True):
                 _clicked = _ii
             st.markdown('</div>', unsafe_allow_html=True)
