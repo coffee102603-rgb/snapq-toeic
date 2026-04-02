@@ -634,6 +634,15 @@ if st.session_state.phase=="battle":
                 f'#btn-{_aid} div[data-testid="stButton"] button p{{color:{_col}!important;}}'
                 f'#btn-{_aid} div[data-testid="stButton"] button:hover{{box-shadow:0 0 22px {_sh}!important;}}'
             )
+        # iOS 캐시 리셋
+        _css += (
+            'div[data-testid="stButton"] button{'
+            'background:transparent!important;'
+            'border-left:none!important;'
+            'border-color:rgba(255,255,255,0.15)!important;'
+            'color:rgba(255,255,255,0.85)!important;'
+            '-webkit-text-fill-color:rgba(255,255,255,0.85)!important;}'
+        )
         _css += "</style>"
         st.markdown(_css, unsafe_allow_html=True)
 
