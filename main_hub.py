@@ -959,7 +959,7 @@ svg{display:block;overflow:visible;width:100%;}
 </style>"""
 
 def _mk_card(cls, title, s1b, s1l, s1svg, s2b, s2l, s2svg, s3mot, go=""):
-    _oc = f"window.parent.postMessage('snapq:{go}','*')" if go else ""
+    _oc = f"window.parent.location.href=window.parent.location.pathname+'?nav={go}'" if go else ""
     return f"""<div class="card {cls}"
   onclick="{_oc}"
 
@@ -1040,6 +1040,31 @@ window.addEventListener('message', function(e) {
 });
 </script>
 """, height=0)
+# iOS URL 파라미터 감지
+_nav = st.query_params.get("nav", "")
+if _nav == "PRISON_GO":
+    st.query_params.clear()
+    st.session_state.sg_phase = "word_prison"
+    st.switch_page("pages/03_POW_HQ.py")
+elif _nav == "P5_GO":
+    st.query_params.clear()
+    st.session_state.phase = "lobby"
+    st.session_state._p5_active = False
+    st.switch_page("pages/02_Firepower.py")
+elif _nav == "P7_GO":
+    st.query_params.clear()
+    if "p7_phase" in st.session_state:
+        st.session_state.p7_phase = "lobby"
+    st.switch_page("pages/04_Decrypt_Op.py")
+elif _nav == "ARM_GO":
+    st.query_params.clear()
+    st.session_state.sg_phase = "lobby"
+    st.session_state["_wp_guard"] = False
+    st.switch_page("pages/03_POW_HQ.py")
+elif _nav == "ADMIN_GO":
+    st.query_params.clear()
+    st.switch_page("pages/01_Admin.py")
+
 _prison_go = st.button("PRISON_GO", key="prison_btn")
 if _prison_go:
     st.session_state.sg_phase = "word_prison"
