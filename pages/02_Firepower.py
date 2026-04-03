@@ -707,6 +707,8 @@ if st.session_state.phase=="battle":
                 st.session_state.phase='lost'; st.rerun()
             i = _clicked
             st.session_state.ans=True; st.session_state.sel=i
+            import streamlit.components.v1 as _clr_cmp
+            _clr_cmp.html('<script>var d=window.parent.document;d.querySelectorAll("button").forEach(function(b){b.blur();b.style.removeProperty("background");b.style.removeProperty("border-left");b.style.removeProperty("border-color");b.style.removeProperty("color");});</script>', height=0)
             ok=i==q['a']
             st.session_state.round_results.append(ok)
             if ok: st.session_state.sc+=1
