@@ -1,0 +1,3627 @@
+[
+  {
+    "id": "VOCAB_501",
+    "category": "VOCAB",
+    "cat": "문맥어휘",
+    "word_count": 11,
+    "diff": "easy",
+    "sentence": "The company decided to _______ its data management system with the new cloud platform.",
+    "choices": [
+      "(A) integrate",
+      "(B) inspect",
+      "(C) impose",
+      "(D) ignore"
+    ],
+    "answer": 0,
+    "answer_word": "integrate",
+    "explanation_kr": "새로운 클라우드 플랫폼과 데이터 관리 시스템을 '통합하다' → integrate! ignore=무시하다, inspect=검사하다, impose=부과하다.",
+    "explanation": "Combine into a unified whole → integrate.",
+    "kr": "회사는 데이터 관리 시스템을 새로운 클라우드 플랫폼과 통합하기로 결정했다.",
+    "expressions": [
+      {
+        "expr": "integrate systems/platforms",
+        "meaning": "시스템/플랫폼을 통합하다"
+      },
+      {
+        "expr": "integrate = combine = merge",
+        "meaning": "통합하다!"
+      }
+    ]
+  },
+  {
+    "id": "VOCAB_502",
+    "category": "VOCAB",
+    "cat": "문맥어휘",
+    "word_count": 11,
+    "diff": "easy",
+    "sentence": "The firm chose to _______ its customer support operations to reduce costs.",
+    "choices": [
+      "(A) outline",
+      "(B) outsource",
+      "(C) overcome",
+      "(D) overlook"
+    ],
+    "answer": 1,
+    "answer_word": "outsource",
+    "explanation_kr": "비용 절감을 위해 고객 지원 업무를 '외주하다' → outsource! outline=개요를 설명하다, overcome=극복하다, overlook=간과하다.",
+    "explanation": "Contract out to an external provider → outsource.",
+    "kr": "회사는 비용을 줄이기 위해 고객 지원 업무를 외주화하기로 선택했다.",
+    "expressions": [
+      {
+        "expr": "outsource operations",
+        "meaning": "운영을 외주화하다"
+      },
+      {
+        "expr": "outsource = contract out = externalise",
+        "meaning": "외주화하다!"
+      }
+    ]
+  },
+  {
+    "id": "VOCAB_503",
+    "category": "VOCAB",
+    "cat": "문맥어휘",
+    "word_count": 11,
+    "diff": "easy",
+    "sentence": "The team worked hard to _______ the delivery route and cut transport costs.",
+    "choices": [
+      "(A) optimise",
+      "(B) obtain",
+      "(C) observe",
+      "(D) organise"
+    ],
+    "answer": 0,
+    "answer_word": "optimise",
+    "explanation_kr": "배송 경로를 '최적화하고' 운송 비용 절감 → optimise! organise=조직하다, observe=관찰하다, obtain=획득하다.",
+    "explanation": "Make as efficient and effective as possible → optimise.",
+    "kr": "팀은 배송 경로를 최적화하고 운송 비용을 줄이기 위해 열심히 노력했다.",
+    "expressions": [
+      {
+        "expr": "optimise delivery routes",
+        "meaning": "배송 경로를 최적화하다"
+      },
+      {
+        "expr": "optimise = improve = fine-tune",
+        "meaning": "최적화하다!"
+      }
+    ]
+  },
+  {
+    "id": "VOCAB_504",
+    "category": "VOCAB",
+    "cat": "문맥어휘",
+    "word_count": 11,
+    "diff": "easy",
+    "sentence": "The finance department will _______ sales figures for the next quarter.",
+    "choices": [
+      "(A) format",
+      "(B) follow",
+      "(C) forecast",
+      "(D) forward"
+    ],
+    "answer": 2,
+    "answer_word": "forecast",
+    "explanation_kr": "다음 분기 매출 수치를 '예측하다' → forecast! follow=따르다, forward=전달하다, format=형식화하다.",
+    "explanation": "Predict future sales based on data → forecast.",
+    "kr": "재무 부서는 다음 분기 매출 수치를 예측할 것이다.",
+    "expressions": [
+      {
+        "expr": "forecast sales figures",
+        "meaning": "매출 수치를 예측하다"
+      },
+      {
+        "expr": "forecast = predict = project",
+        "meaning": "예측하다!"
+      }
+    ]
+  },
+  {
+    "id": "VOCAB_505",
+    "category": "VOCAB",
+    "cat": "문맥어휘",
+    "word_count": 11,
+    "diff": "easy",
+    "sentence": "The company will _______ the new software with a small group of users before launch.",
+    "choices": [
+      "(A) push",
+      "(B) permit",
+      "(C) pilot",
+      "(D) post"
+    ],
+    "answer": 2,
+    "answer_word": "pilot",
+    "explanation_kr": "출시 전 소규모 그룹을 통해 새 소프트웨어를 '시범 운영하다' → pilot! post=게시하다, push=밀다, permit=허가하다.",
+    "explanation": "Test something on a small scale before full launch → pilot.",
+    "kr": "회사는 출시 전에 소규모 사용자 그룹을 통해 새로운 소프트웨어를 시범 운영할 것이다.",
+    "expressions": [
+      {
+        "expr": "pilot a programme/software",
+        "meaning": "시범 운영하다"
+      },
+      {
+        "expr": "pilot = trial = test",
+        "meaning": "시범 운영하다!"
+      }
+    ]
+  },
+  {
+    "id": "VOCAB_506",
+    "category": "VOCAB",
+    "cat": "문맥어휘",
+    "word_count": 11,
+    "diff": "easy",
+    "sentence": "The new strategy will _______ input from all regional managers.",
+    "choices": [
+      "(A) instruct",
+      "(B) indicate",
+      "(C) inspect",
+      "(D) incorporate"
+    ],
+    "answer": 3,
+    "answer_word": "incorporate",
+    "explanation_kr": "모든 지역 매니저들의 의견을 '포함하다/통합하다' → incorporate! indicate=나타내다, inspect=검사하다, instruct=지시하다.",
+    "explanation": "Include and absorb input into the strategy → incorporate.",
+    "kr": "새로운 전략은 모든 지역 매니저들의 의견을 통합할 것이다.",
+    "expressions": [
+      {
+        "expr": "incorporate input/feedback",
+        "meaning": "의견/피드백을 통합하다"
+      },
+      {
+        "expr": "incorporate = include = integrate",
+        "meaning": "포함/통합하다!"
+      }
+    ]
+  },
+  {
+    "id": "VOCAB_507",
+    "category": "VOCAB",
+    "cat": "문맥어휘",
+    "word_count": 11,
+    "diff": "easy",
+    "sentence": "The company could be _______ for damages if the product causes harm to consumers.",
+    "choices": [
+      "(A) likely",
+      "(B) liable",
+      "(C) limited",
+      "(D) leading"
+    ],
+    "answer": 1,
+    "answer_word": "liable",
+    "explanation_kr": "제품이 소비자에게 해를 끼치면 회사가 손해에 '책임이 있는' → liable! likely=가능성 있는, limited=제한된, leading=선도하는.",
+    "explanation": "Legally responsible for any harm → liable.",
+    "kr": "제품이 소비자에게 해를 끼치면 회사는 손해에 대한 책임을 질 수 있다.",
+    "expressions": [
+      {
+        "expr": "liable for damages",
+        "meaning": "손해에 책임이 있는"
+      },
+      {
+        "expr": "liable = responsible = accountable",
+        "meaning": "책임이 있는!"
+      }
+    ]
+  },
+  {
+    "id": "VOCAB_508",
+    "category": "VOCAB",
+    "cat": "문맥어휘",
+    "word_count": 11,
+    "diff": "easy",
+    "sentence": "Digital technology has the potential to completely _______ traditional banking services.",
+    "choices": [
+      "(A) transfer",
+      "(B) translate",
+      "(C) transport",
+      "(D) transform"
+    ],
+    "answer": 3,
+    "answer_word": "transform",
+    "explanation_kr": "디지털 기술이 전통적인 은행 서비스를 완전히 '변화시킬' 잠재력 → transform! transfer=이전하다, transport=운반하다, translate=번역하다.",
+    "explanation": "Fundamentally change the nature of → transform.",
+    "kr": "디지털 기술은 전통적인 은행 서비스를 완전히 변화시킬 잠재력이 있다.",
+    "expressions": [
+      {
+        "expr": "transform banking services",
+        "meaning": "은행 서비스를 변화시키다"
+      },
+      {
+        "expr": "transform = revolutionise = change fundamentally",
+        "meaning": "변화시키다!"
+      }
+    ]
+  },
+  {
+    "id": "VOCAB_509",
+    "category": "VOCAB",
+    "cat": "문맥어휘",
+    "word_count": 11,
+    "diff": "easy",
+    "sentence": "The platform was designed to be _______, growing easily as the user base expands.",
+    "choices": [
+      "(A) substantial",
+      "(B) stable",
+      "(C) suitable",
+      "(D) scalable"
+    ],
+    "answer": 3,
+    "answer_word": "scalable",
+    "explanation_kr": "사용자 기반 확장에 따라 쉽게 성장하도록 '확장 가능하게' 설계 → scalable! suitable=적합한, stable=안정적인, substantial=상당한.",
+    "explanation": "Able to grow and handle more users easily → scalable.",
+    "kr": "플랫폼은 사용자 기반이 확장됨에 따라 쉽게 성장할 수 있도록 확장 가능하게 설계되었다.",
+    "expressions": [
+      {
+        "expr": "scalable platform/solution",
+        "meaning": "확장 가능한 플랫폼/솔루션"
+      },
+      {
+        "expr": "scalable = flexible = adaptable",
+        "meaning": "확장 가능한!"
+      }
+    ]
+  },
+  {
+    "id": "VOCAB_510",
+    "category": "VOCAB",
+    "cat": "문맥어휘",
+    "word_count": 11,
+    "diff": "easy",
+    "sentence": "The director will _______ the review process as soon as the team is ready.",
+    "choices": [
+      "(A) instruct",
+      "(B) initiate",
+      "(C) inspect",
+      "(D) impose"
+    ],
+    "answer": 1,
+    "answer_word": "initiate",
+    "explanation_kr": "팀이 준비되는 즉시 검토 프로세스를 '시작하다' → initiate! inspect=검사하다, instruct=지시하다, impose=부과하다.",
+    "explanation": "Begin or start the review process → initiate.",
+    "kr": "이사는 팀이 준비되는 즉시 검토 프로세스를 시작할 것이다.",
+    "expressions": [
+      {
+        "expr": "initiate a review process",
+        "meaning": "검토 프로세스를 시작하다"
+      },
+      {
+        "expr": "initiate = begin = start = launch",
+        "meaning": "시작하다!"
+      }
+    ]
+  },
+  {
+    "id": "VOCAB_511",
+    "category": "VOCAB",
+    "cat": "문맥어휘",
+    "word_count": 11,
+    "diff": "easy",
+    "sentence": "The app sends _______ recommendations based on each user's browsing history.",
+    "choices": [
+      "(A) personalised",
+      "(B) preferred",
+      "(C) previous",
+      "(D) permanent"
+    ],
+    "answer": 0,
+    "answer_word": "personalised",
+    "explanation_kr": "각 사용자의 검색 기록을 기반으로 한 '개인화된' 추천 → personalised! permanent=영구적인, preferred=선호하는, previous=이전의.",
+    "explanation": "Tailored specifically to each individual → personalised.",
+    "kr": "앱은 각 사용자의 검색 기록을 기반으로 개인화된 추천을 보낸다.",
+    "expressions": [
+      {
+        "expr": "personalised recommendations",
+        "meaning": "개인화된 추천"
+      },
+      {
+        "expr": "personalised = customised = tailored",
+        "meaning": "개인화된!"
+      }
+    ]
+  },
+  {
+    "id": "VOCAB_512",
+    "category": "VOCAB",
+    "cat": "문맥어휘",
+    "word_count": 11,
+    "diff": "easy",
+    "sentence": "The company is trying to cut its _______ costs by moving to a smaller office.",
+    "choices": [
+      "(A) ongoing",
+      "(B) outdoor",
+      "(C) overall",
+      "(D) overhead"
+    ],
+    "answer": 3,
+    "answer_word": "overhead",
+    "explanation_kr": "더 작은 사무실로 이전하여 '간접비'를 줄이려는 → overhead! outdoor=야외의, ongoing=지속적인, overall=전반적인.",
+    "explanation": "The general costs of running the business → overhead.",
+    "kr": "회사는 더 작은 사무실로 이전하여 간접비를 줄이려 하고 있다.",
+    "expressions": [
+      {
+        "expr": "overhead costs",
+        "meaning": "간접비 (핵심 비즈니스 표현)"
+      },
+      {
+        "expr": "overhead = running costs = operating expenses",
+        "meaning": "간접비!"
+      }
+    ]
+  },
+  {
+    "id": "VOCAB_513",
+    "category": "VOCAB",
+    "cat": "문맥어휘",
+    "word_count": 11,
+    "diff": "easy",
+    "sentence": "The accountant prepared a detailed report covering the company's _______ year results.",
+    "choices": [
+      "(A) final",
+      "(B) fiscal",
+      "(C) full",
+      "(D) fresh"
+    ],
+    "answer": 1,
+    "answer_word": "fiscal",
+    "explanation_kr": "회사의 '회계 연도' 결과를 다루는 상세 보고서 → fiscal year! final=최종, fresh=새로운, full=전체의.",
+    "explanation": "Relating to the financial or accounting year → fiscal.",
+    "kr": "회계사는 회사의 회계 연도 결과를 다루는 상세 보고서를 작성했다.",
+    "expressions": [
+      {
+        "expr": "fiscal year results",
+        "meaning": "회계 연도 결과"
+      },
+      {
+        "expr": "fiscal = financial (year)",
+        "meaning": "회계의!"
+      }
+    ]
+  },
+  {
+    "id": "VOCAB_514",
+    "category": "VOCAB",
+    "cat": "문맥어휘",
+    "word_count": 11,
+    "diff": "easy",
+    "sentence": "There is a serious _______ of qualified nurses at hospitals across the country.",
+    "choices": [
+      "(A) standard",
+      "(B) shortage",
+      "(C) schedule",
+      "(D) storage"
+    ],
+    "answer": 1,
+    "answer_word": "shortage",
+    "explanation_kr": "전국 병원에 자격을 갖춘 간호사의 심각한 '부족' → shortage! storage=저장, schedule=일정, standard=기준.",
+    "explanation": "Not enough of something needed → shortage.",
+    "kr": "전국 병원에 자격을 갖춘 간호사가 심각하게 부족하다.",
+    "expressions": [
+      {
+        "expr": "shortage of qualified staff",
+        "meaning": "자격 있는 직원의 부족"
+      },
+      {
+        "expr": "shortage = lack = scarcity",
+        "meaning": "부족!"
+      }
+    ]
+  },
+  {
+    "id": "VOCAB_515",
+    "category": "VOCAB",
+    "cat": "문맥어휘",
+    "word_count": 11,
+    "diff": "easy",
+    "sentence": "All electrical installations must be fully _______ with national safety standards.",
+    "choices": [
+      "(A) compliant",
+      "(B) complete",
+      "(C) comparable",
+      "(D) complex"
+    ],
+    "answer": 0,
+    "answer_word": "compliant",
+    "explanation_kr": "모든 전기 설치물이 국가 안전 기준에 '부합하는' → compliant! complex=복잡한, complete=완전한, comparable=비교 가능한.",
+    "explanation": "Meeting all required safety standards → compliant.",
+    "kr": "모든 전기 설치물은 국가 안전 기준에 완전히 부합해야 한다.",
+    "expressions": [
+      {
+        "expr": "compliant with safety standards",
+        "meaning": "안전 기준에 부합하는"
+      },
+      {
+        "expr": "compliant = in compliance = meeting requirements",
+        "meaning": "부합하는!"
+      }
+    ]
+  },
+  {
+    "id": "VOCAB_516",
+    "category": "VOCAB",
+    "cat": "문맥어휘",
+    "word_count": 11,
+    "diff": "easy",
+    "sentence": "The magazine offers a monthly _______ that includes access to all online content.",
+    "choices": [
+      "(A) suggestion",
+      "(B) submission",
+      "(C) subscription",
+      "(D) suspension"
+    ],
+    "answer": 2,
+    "answer_word": "subscription",
+    "explanation_kr": "모든 온라인 콘텐츠 접근을 포함하는 월간 '구독' → subscription! suggestion=제안, submission=제출, suspension=중단.",
+    "explanation": "A regular payment for continued access → subscription.",
+    "kr": "잡지는 모든 온라인 콘텐츠 접근이 포함된 월간 구독을 제공한다.",
+    "expressions": [
+      {
+        "expr": "monthly subscription",
+        "meaning": "월간 구독"
+      },
+      {
+        "expr": "subscription = membership = plan",
+        "meaning": "구독!"
+      }
+    ]
+  },
+  {
+    "id": "VOCAB_517",
+    "category": "VOCAB",
+    "cat": "문맥어휘",
+    "word_count": 11,
+    "diff": "easy",
+    "sentence": "The company has adopted a _______ working model combining office and remote work.",
+    "choices": [
+      "(A) helpful",
+      "(B) handsome",
+      "(C) honest",
+      "(D) hybrid"
+    ],
+    "answer": 3,
+    "answer_word": "hybrid",
+    "explanation_kr": "사무실 근무와 재택근무를 결합한 '혼합형' 근무 모델 → hybrid! helpful=도움이 되는, honest=정직한, handsome=잘 생긴.",
+    "explanation": "Combining two different approaches → hybrid.",
+    "kr": "회사는 사무실 근무와 재택근무를 결합한 혼합형 근무 모델을 채택했다.",
+    "expressions": [
+      {
+        "expr": "hybrid working model",
+        "meaning": "혼합형 근무 모델"
+      },
+      {
+        "expr": "hybrid = blended = combined",
+        "meaning": "혼합형의!"
+      }
+    ]
+  },
+  {
+    "id": "VOCAB_518",
+    "category": "VOCAB",
+    "cat": "문맥어휘",
+    "word_count": 11,
+    "diff": "easy",
+    "sentence": "The company will _______ its new product range at next month's trade show.",
+    "choices": [
+      "(A) unveil",
+      "(B) upgrade",
+      "(C) undermine",
+      "(D) update"
+    ],
+    "answer": 0,
+    "answer_word": "unveil",
+    "explanation_kr": "다음 달 무역 박람회에서 새로운 제품 라인을 '공개하다' → unveil! undermine=약화시키다, update=업데이트하다, upgrade=업그레이드하다.",
+    "explanation": "Reveal for the first time publicly → unveil.",
+    "kr": "회사는 다음 달 무역 박람회에서 새로운 제품 라인을 공개할 것이다.",
+    "expressions": [
+      {
+        "expr": "unveil a new product range",
+        "meaning": "새로운 제품 라인을 공개하다"
+      },
+      {
+        "expr": "unveil = reveal = launch = introduce",
+        "meaning": "공개하다!"
+      }
+    ]
+  },
+  {
+    "id": "VOCAB_519",
+    "category": "VOCAB",
+    "cat": "문맥어휘",
+    "word_count": 11,
+    "diff": "easy",
+    "sentence": "The company announced that it would _______ all operations in the region by year end.",
+    "choices": [
+      "(A) cease",
+      "(B) claim",
+      "(C) charge",
+      "(D) choose"
+    ],
+    "answer": 0,
+    "answer_word": "cease",
+    "explanation_kr": "연말까지 지역의 모든 운영을 '중단하다' → cease! claim=주장하다, charge=청구하다, choose=선택하다.",
+    "explanation": "Stop all operations completely → cease.",
+    "kr": "회사는 연말까지 그 지역의 모든 운영을 중단할 것이라고 발표했다.",
+    "expressions": [
+      {
+        "expr": "cease operations",
+        "meaning": "운영을 중단하다"
+      },
+      {
+        "expr": "cease = stop = halt = discontinue",
+        "meaning": "중단하다!"
+      }
+    ]
+  },
+  {
+    "id": "VOCAB_520",
+    "category": "VOCAB",
+    "cat": "문맥어휘",
+    "word_count": 11,
+    "diff": "easy",
+    "sentence": "The CEO was able to clearly _______ the company's vision for the next decade.",
+    "choices": [
+      "(A) attempt",
+      "(B) arrange",
+      "(C) announce",
+      "(D) articulate"
+    ],
+    "answer": 3,
+    "answer_word": "articulate",
+    "explanation_kr": "회사의 향후 10년 비전을 '명확히 표현하다' → articulate! arrange=준비하다, attempt=시도하다, announce=발표하다.",
+    "explanation": "Express clearly and effectively → articulate.",
+    "kr": "CEO는 향후 10년을 위한 회사의 비전을 명확하게 표현할 수 있었다.",
+    "expressions": [
+      {
+        "expr": "articulate a vision",
+        "meaning": "비전을 명확히 표현하다"
+      },
+      {
+        "expr": "articulate = express = communicate clearly",
+        "meaning": "명확히 표현하다!"
+      }
+    ]
+  },
+  {
+    "id": "VOCAB_521",
+    "category": "VOCAB",
+    "cat": "문맥어휘",
+    "word_count": 11,
+    "diff": "easy",
+    "sentence": "She was chosen to _______ the company's expansion into South America.",
+    "choices": [
+      "(A) spearhead",
+      "(B) support",
+      "(C) suggest",
+      "(D) suspend"
+    ],
+    "answer": 0,
+    "answer_word": "spearhead",
+    "explanation_kr": "남미 진출을 '이끌/선도할' 사람으로 선정 → spearhead! suspend=중단하다, suggest=제안하다, support=지원하다.",
+    "explanation": "Lead and drive something forward → spearhead.",
+    "kr": "그녀는 남미로의 회사 확장을 이끌 사람으로 선택되었다.",
+    "expressions": [
+      {
+        "expr": "spearhead the expansion",
+        "meaning": "확장을 선도하다"
+      },
+      {
+        "expr": "spearhead = lead = drive = champion",
+        "meaning": "이끌다/선도하다!"
+      }
+    ]
+  },
+  {
+    "id": "VOCAB_522",
+    "category": "VOCAB",
+    "cat": "문맥어휘",
+    "word_count": 11,
+    "diff": "easy",
+    "sentence": "The research team will _______ all experimental findings for future reference.",
+    "choices": [
+      "(A) display",
+      "(B) demand",
+      "(C) document",
+      "(D) deliver"
+    ],
+    "answer": 2,
+    "answer_word": "document",
+    "explanation_kr": "미래 참조를 위해 모든 실험 결과를 '문서화하다' → document! demand=요구하다, deliver=배달하다, display=전시하다.",
+    "explanation": "Record carefully in written form → document.",
+    "kr": "연구팀은 미래 참조를 위해 모든 실험 결과를 문서화할 것이다.",
+    "expressions": [
+      {
+        "expr": "document findings",
+        "meaning": "결과를 문서화하다"
+      },
+      {
+        "expr": "document = record = write up",
+        "meaning": "문서화하다!"
+      }
+    ]
+  },
+  {
+    "id": "VOCAB_523",
+    "category": "VOCAB",
+    "cat": "문맥어휘",
+    "word_count": 11,
+    "diff": "easy",
+    "sentence": "The bank will _______ interest on the loan at a rate of three percent per year.",
+    "choices": [
+      "(A) charge",
+      "(B) check",
+      "(C) choose",
+      "(D) claim"
+    ],
+    "answer": 0,
+    "answer_word": "charge",
+    "explanation_kr": "연 3% 이율로 대출 이자를 '부과하다' → charge! choose=선택하다, check=확인하다, claim=청구하다.",
+    "explanation": "Apply an interest rate to the loan → charge.",
+    "kr": "은행은 연간 3%의 이율로 대출 이자를 부과할 것이다.",
+    "expressions": [
+      {
+        "expr": "charge interest on a loan",
+        "meaning": "대출에 이자를 부과하다"
+      },
+      {
+        "expr": "charge = apply = impose",
+        "meaning": "부과하다!"
+      }
+    ]
+  },
+  {
+    "id": "VOCAB_524",
+    "category": "VOCAB",
+    "cat": "문맥어휘",
+    "word_count": 11,
+    "diff": "easy",
+    "sentence": "The firm has a _______ agreement with a major airline to provide corporate travel services.",
+    "choices": [
+      "(A) partnership",
+      "(B) promise",
+      "(C) purchase",
+      "(D) punishment"
+    ],
+    "answer": 0,
+    "answer_word": "partnership",
+    "explanation_kr": "주요 항공사와 기업 출장 서비스 제공을 위한 '파트너십' 협약 → partnership! punishment=처벌, purchase=구매, promise=약속.",
+    "explanation": "A formal business cooperation agreement → partnership.",
+    "kr": "회사는 기업 출장 서비스를 제공하기 위해 주요 항공사와 파트너십 협약을 맺고 있다.",
+    "expressions": [
+      {
+        "expr": "partnership agreement",
+        "meaning": "파트너십 협약"
+      },
+      {
+        "expr": "partnership = alliance = collaboration",
+        "meaning": "파트너십!"
+      }
+    ]
+  },
+  {
+    "id": "VOCAB_525",
+    "category": "VOCAB",
+    "cat": "문맥어휘",
+    "word_count": 11,
+    "diff": "easy",
+    "sentence": "The manager will _______ the client's requirements and recommend the most suitable package.",
+    "choices": [
+      "(A) assess",
+      "(B) announce",
+      "(C) assume",
+      "(D) achieve"
+    ],
+    "answer": 0,
+    "answer_word": "assess",
+    "explanation_kr": "고객의 요구 사항을 '평가하고' 가장 적합한 패키지 추천 → assess! assume=가정하다, achieve=달성하다, announce=발표하다.",
+    "explanation": "Carefully evaluate the client's needs → assess.",
+    "kr": "매니저는 고객의 요구 사항을 평가하고 가장 적합한 패키지를 추천할 것이다.",
+    "expressions": [
+      {
+        "expr": "assess client requirements",
+        "meaning": "고객 요구 사항을 평가하다"
+      },
+      {
+        "expr": "assess = evaluate = review",
+        "meaning": "평가하다!"
+      }
+    ]
+  },
+  {
+    "id": "VOCAB_526",
+    "category": "VOCAB",
+    "cat": "문맥어휘",
+    "word_count": 11,
+    "diff": "easy",
+    "sentence": "The company is looking to _______ its profit margins by cutting unnecessary expenses.",
+    "choices": [
+      "(A) ignore",
+      "(B) include",
+      "(C) improve",
+      "(D) impose"
+    ],
+    "answer": 2,
+    "answer_word": "improve",
+    "explanation_kr": "불필요한 지출 삭감으로 이익 마진을 '개선하다' → improve! ignore=무시하다, impose=부과하다, include=포함하다.",
+    "explanation": "Make profit margins better → improve.",
+    "kr": "회사는 불필요한 지출을 줄임으로써 이익 마진을 개선하려 하고 있다.",
+    "expressions": [
+      {
+        "expr": "improve profit margins",
+        "meaning": "이익 마진을 개선하다"
+      },
+      {
+        "expr": "improve = increase = boost",
+        "meaning": "개선하다!"
+      }
+    ]
+  },
+  {
+    "id": "VOCAB_527",
+    "category": "VOCAB",
+    "cat": "문맥어휘",
+    "word_count": 11,
+    "diff": "easy",
+    "sentence": "The supplier agreed to _______ delivery by three days to meet the client's deadline.",
+    "choices": [
+      "(A) bring back",
+      "(B) bring forward",
+      "(C) bring down",
+      "(D) bring up"
+    ],
+    "answer": 1,
+    "answer_word": "bring forward",
+    "explanation_kr": "고객의 마감에 맞추기 위해 배송을 3일 '앞당기다' → bring forward! bring back=돌아오게 하다, bring down=낮추다, bring up=제기하다.",
+    "explanation": "Move the delivery to an earlier date → bring forward.",
+    "kr": "공급업체는 고객의 마감에 맞추기 위해 배송을 3일 앞당기기로 합의했다.",
+    "expressions": [
+      {
+        "expr": "bring forward the delivery",
+        "meaning": "배송을 앞당기다"
+      },
+      {
+        "expr": "bring forward = move earlier = advance",
+        "meaning": "앞당기다!"
+      }
+    ]
+  },
+  {
+    "id": "VOCAB_528",
+    "category": "VOCAB",
+    "cat": "문맥어휘",
+    "word_count": 11,
+    "diff": "easy",
+    "sentence": "The committee will _______ the results of the employee satisfaction survey next week.",
+    "choices": [
+      "(A) promote",
+      "(B) present",
+      "(C) produce",
+      "(D) prevent"
+    ],
+    "answer": 1,
+    "answer_word": "present",
+    "explanation_kr": "다음 주 직원 만족도 설문 결과를 '발표하다' → present! prevent=방지하다, produce=생산하다, promote=홍보하다.",
+    "explanation": "Formally show and explain the results → present.",
+    "kr": "위원회는 다음 주 직원 만족도 설문 결과를 발표할 것이다.",
+    "expressions": [
+      {
+        "expr": "present survey results",
+        "meaning": "설문 결과를 발표하다"
+      },
+      {
+        "expr": "present = report = share",
+        "meaning": "발표하다!"
+      }
+    ]
+  },
+  {
+    "id": "VOCAB_529",
+    "category": "VOCAB",
+    "cat": "문맥어휘",
+    "word_count": 11,
+    "diff": "easy",
+    "sentence": "The government is working to create a more _______ environment for new businesses.",
+    "choices": [
+      "(A) supportive",
+      "(B) suspicious",
+      "(C) surprising",
+      "(D) separated"
+    ],
+    "answer": 0,
+    "answer_word": "supportive",
+    "explanation_kr": "신규 사업체에 더 '지지적인' 환경 조성 → supportive! suspicious=의심스러운, surprising=놀라운, separated=분리된.",
+    "explanation": "Encouraging and helpful for new businesses → supportive.",
+    "kr": "정부는 신규 사업체에 더 지지적인 환경을 만들기 위해 노력하고 있다.",
+    "expressions": [
+      {
+        "expr": "supportive environment",
+        "meaning": "지지적인 환경"
+      },
+      {
+        "expr": "supportive = encouraging = enabling",
+        "meaning": "지지적인!"
+      }
+    ]
+  },
+  {
+    "id": "VOCAB_530",
+    "category": "VOCAB",
+    "cat": "문맥어휘",
+    "word_count": 11,
+    "diff": "easy",
+    "sentence": "The company will _______ a new branch in Singapore to serve its Asian clients.",
+    "choices": [
+      "(A) outline",
+      "(B) offer",
+      "(C) open",
+      "(D) obtain"
+    ],
+    "answer": 2,
+    "answer_word": "open",
+    "explanation_kr": "아시아 고객 서비스를 위해 싱가포르에 새 지점을 '열다' → open! offer=제공하다, obtain=획득하다, outline=개요를 설명하다.",
+    "explanation": "Establish a new branch office → open.",
+    "kr": "회사는 아시아 고객들을 위해 싱가포르에 새로운 지점을 열 것이다.",
+    "expressions": [
+      {
+        "expr": "open a new branch",
+        "meaning": "새 지점을 열다"
+      },
+      {
+        "expr": "open = establish = set up",
+        "meaning": "열다/설립하다!"
+      }
+    ]
+  },
+  {
+    "id": "VOCAB_531",
+    "category": "VOCAB",
+    "cat": "문맥어휘",
+    "word_count": 11,
+    "diff": "easy",
+    "sentence": "The seminar is open to anyone who wants to _______ their knowledge of digital marketing.",
+    "choices": [
+      "(A) develop",
+      "(B) display",
+      "(C) demand",
+      "(D) deliver"
+    ],
+    "answer": 0,
+    "answer_word": "develop",
+    "explanation_kr": "디지털 마케팅 지식을 '개발하다' → develop! demand=요구하다, deliver=배달하다, display=전시하다.",
+    "explanation": "Grow and improve knowledge → develop.",
+    "kr": "세미나는 디지털 마케팅 지식을 개발하고 싶은 누구에게나 열려 있다.",
+    "expressions": [
+      {
+        "expr": "develop knowledge/skills",
+        "meaning": "지식/기술을 개발하다"
+      },
+      {
+        "expr": "develop = build = enhance",
+        "meaning": "개발하다!"
+      }
+    ]
+  },
+  {
+    "id": "VOCAB_532",
+    "category": "VOCAB",
+    "cat": "문맥어휘",
+    "word_count": 11,
+    "diff": "easy",
+    "sentence": "The firm recently _______ a long-term contract with its primary raw materials supplier.",
+    "choices": [
+      "(A) solved",
+      "(B) started",
+      "(C) studied",
+      "(D) secured"
+    ],
+    "answer": 3,
+    "answer_word": "secured",
+    "explanation_kr": "주요 원자재 공급업체와 장기 계약을 '확보했다' → secured! started=시작했다, studied=공부했다, solved=해결했다.",
+    "explanation": "Successfully obtained the long-term contract → secured.",
+    "kr": "회사는 최근 주요 원자재 공급업체와 장기 계약을 확보했다.",
+    "expressions": [
+      {
+        "expr": "secured a long-term contract",
+        "meaning": "장기 계약을 확보했다"
+      },
+      {
+        "expr": "secure = win = obtain = clinch",
+        "meaning": "확보하다!"
+      }
+    ]
+  },
+  {
+    "id": "VOCAB_533",
+    "category": "VOCAB",
+    "cat": "문맥어휘",
+    "word_count": 11,
+    "diff": "easy",
+    "sentence": "The platform uses AI to _______ product recommendations for each individual shopper.",
+    "choices": [
+      "(A) produce",
+      "(B) personalise",
+      "(C) protect",
+      "(D) prevent"
+    ],
+    "answer": 1,
+    "answer_word": "personalise",
+    "explanation_kr": "각 개별 쇼핑객에 맞게 제품 추천을 '개인화하다' → personalise! prevent=방지하다, produce=생산하다, protect=보호하다.",
+    "explanation": "Make recommendations specific to each person → personalise.",
+    "kr": "플랫폼은 AI를 사용하여 각 개별 쇼핑객을 위한 제품 추천을 개인화한다.",
+    "expressions": [
+      {
+        "expr": "personalise recommendations",
+        "meaning": "추천을 개인화하다"
+      },
+      {
+        "expr": "personalise = customise = tailor",
+        "meaning": "개인화하다!"
+      }
+    ]
+  },
+  {
+    "id": "VOCAB_534",
+    "category": "VOCAB",
+    "cat": "문맥어휘",
+    "word_count": 11,
+    "diff": "easy",
+    "sentence": "The new marketing director is _______ to inject fresh ideas into the brand strategy.",
+    "choices": [
+      "(A) extended",
+      "(B) excluded",
+      "(C) expressed",
+      "(D) expected"
+    ],
+    "answer": 3,
+    "answer_word": "expected",
+    "explanation_kr": "브랜드 전략에 새로운 아이디어를 주입할 것으로 '기대되는' → expected! excluded=제외된, extended=연장된, expressed=표현된.",
+    "explanation": "Anticipated to bring fresh ideas → expected.",
+    "kr": "새로운 마케팅 이사는 브랜드 전략에 신선한 아이디어를 주입할 것으로 기대된다.",
+    "expressions": [
+      {
+        "expr": "expected to inject fresh ideas",
+        "meaning": "새로운 아이디어를 주입할 것으로 기대되는"
+      },
+      {
+        "expr": "expected = anticipated = due",
+        "meaning": "기대되는!"
+      }
+    ]
+  },
+  {
+    "id": "VOCAB_535",
+    "category": "VOCAB",
+    "cat": "문맥어휘",
+    "word_count": 11,
+    "diff": "easy",
+    "sentence": "All drivers must _______ a valid licence and vehicle insurance before starting work.",
+    "choices": [
+      "(A) host",
+      "(B) hold",
+      "(C) hire",
+      "(D) handle"
+    ],
+    "answer": 1,
+    "answer_word": "hold",
+    "explanation_kr": "업무 시작 전에 유효한 면허와 차량 보험을 '보유하다' → hold! hire=고용하다, host=주최하다, handle=다루다.",
+    "explanation": "Have or possess the required documents → hold.",
+    "kr": "모든 운전자는 업무를 시작하기 전에 유효한 면허와 차량 보험을 보유해야 한다.",
+    "expressions": [
+      {
+        "expr": "hold a valid licence",
+        "meaning": "유효한 면허를 보유하다"
+      },
+      {
+        "expr": "hold = have = possess",
+        "meaning": "보유하다!"
+      }
+    ]
+  },
+  {
+    "id": "VOCAB_536",
+    "category": "VOCAB",
+    "cat": "문맥어휘",
+    "word_count": 11,
+    "diff": "easy",
+    "sentence": "The organisation plans to _______ with three local charities to support disadvantaged youth.",
+    "choices": [
+      "(A) prevent",
+      "(B) produce",
+      "(C) pause",
+      "(D) partner"
+    ],
+    "answer": 3,
+    "answer_word": "partner",
+    "explanation_kr": "불우 청소년 지원을 위해 3개의 지역 자선단체와 '협력하다' → partner! pause=일시 정지하다, prevent=방지하다, produce=생산하다.",
+    "explanation": "Work together in partnership → partner.",
+    "kr": "조직은 불우 청소년을 지원하기 위해 3개의 지역 자선단체와 협력할 계획이다.",
+    "expressions": [
+      {
+        "expr": "partner with charities",
+        "meaning": "자선단체와 협력하다"
+      },
+      {
+        "expr": "partner with = collaborate with = team up with",
+        "meaning": "협력하다!"
+      }
+    ]
+  },
+  {
+    "id": "VOCAB_537",
+    "category": "VOCAB",
+    "cat": "문맥어휘",
+    "word_count": 11,
+    "diff": "easy",
+    "sentence": "The company is looking for ways to _______ on travel expenses without reducing quality.",
+    "choices": [
+      "(A) sell",
+      "(B) save",
+      "(C) submit",
+      "(D) share"
+    ],
+    "answer": 1,
+    "answer_word": "save",
+    "explanation_kr": "품질 저하 없이 출장비를 '절약하다' → save! sell=팔다, submit=제출하다, share=공유하다.",
+    "explanation": "Reduce expenditure on travel → save.",
+    "kr": "회사는 품질을 줄이지 않고 출장비를 절약할 방법을 찾고 있다.",
+    "expressions": [
+      {
+        "expr": "save on travel expenses",
+        "meaning": "출장비를 절약하다"
+      },
+      {
+        "expr": "save = cut = reduce costs",
+        "meaning": "절약하다!"
+      }
+    ]
+  },
+  {
+    "id": "VOCAB_538",
+    "category": "VOCAB",
+    "cat": "문맥어휘",
+    "word_count": 11,
+    "diff": "easy",
+    "sentence": "The hotel offers _______ services including a gym, spa, and rooftop pool.",
+    "choices": [
+      "(A) premium",
+      "(B) productive",
+      "(C) preliminary",
+      "(D) previous"
+    ],
+    "answer": 0,
+    "answer_word": "premium",
+    "explanation_kr": "헬스장, 스파, 루프탑 풀을 포함한 '프리미엄' 서비스 → premium! previous=이전의, productive=생산적인, preliminary=예비의.",
+    "explanation": "High quality and above the standard → premium.",
+    "kr": "호텔은 헬스장, 스파, 루프탑 풀을 포함한 프리미엄 서비스를 제공한다.",
+    "expressions": [
+      {
+        "expr": "premium services",
+        "meaning": "프리미엄 서비스"
+      },
+      {
+        "expr": "premium = high-end = top-tier",
+        "meaning": "프리미엄의!"
+      }
+    ]
+  },
+  {
+    "id": "VOCAB_539",
+    "category": "VOCAB",
+    "cat": "문맥어휘",
+    "word_count": 11,
+    "diff": "easy",
+    "sentence": "The system allows managers to _______ tasks to team members based on workload.",
+    "choices": [
+      "(A) allocate",
+      "(B) announce",
+      "(C) achieve",
+      "(D) arrange"
+    ],
+    "answer": 0,
+    "answer_word": "allocate",
+    "explanation_kr": "업무량에 따라 팀원들에게 업무를 '배정하다' → allocate! announce=발표하다, achieve=달성하다, arrange=준비하다.",
+    "explanation": "Distribute and assign tasks according to workload → allocate.",
+    "kr": "시스템은 매니저들이 업무량에 따라 팀원들에게 업무를 배정할 수 있도록 한다.",
+    "expressions": [
+      {
+        "expr": "allocate tasks based on workload",
+        "meaning": "업무량에 따라 업무를 배정하다"
+      },
+      {
+        "expr": "allocate = assign = distribute",
+        "meaning": "배정하다!"
+      }
+    ]
+  },
+  {
+    "id": "VOCAB_540",
+    "category": "VOCAB",
+    "cat": "문맥어휘",
+    "word_count": 11,
+    "diff": "easy",
+    "sentence": "The HR director asked all managers to _______ their team members' performance quarterly.",
+    "choices": [
+      "(A) expose",
+      "(B) exclude",
+      "(C) evaluate",
+      "(D) extend"
+    ],
+    "answer": 2,
+    "answer_word": "evaluate",
+    "explanation_kr": "분기별로 팀원들의 성과를 '평가하다' → evaluate! exclude=제외하다, expose=노출하다, extend=연장하다.",
+    "explanation": "Assess performance on a regular basis → evaluate.",
+    "kr": "HR 이사는 모든 매니저에게 분기별로 팀원들의 성과를 평가하도록 요청했다.",
+    "expressions": [
+      {
+        "expr": "evaluate performance quarterly",
+        "meaning": "분기별로 성과를 평가하다"
+      },
+      {
+        "expr": "evaluate = appraise = assess",
+        "meaning": "평가하다!"
+      }
+    ]
+  },
+  {
+    "id": "VOCAB_541",
+    "category": "VOCAB",
+    "cat": "콜로케이션",
+    "word_count": 11,
+    "diff": "easy",
+    "sentence": "The team will _______ a presentation of the research findings to the board next Friday.",
+    "choices": [
+      "(A) do",
+      "(B) make",
+      "(C) give",
+      "(D) deliver"
+    ],
+    "answer": 3,
+    "answer_word": "deliver",
+    "explanation_kr": "이사회에 연구 결과 발표를 '하다' → deliver a presentation! give도 가능하나 deliver a presentation이 핵심 격식 콜로케이션.",
+    "explanation": "deliver a presentation = formally present findings to an audience.",
+    "kr": "팀은 다음 금요일 이사회에 연구 결과 발표를 할 것이다.",
+    "expressions": [
+      {
+        "expr": "deliver a presentation",
+        "meaning": "발표를 하다 (핵심 콜로케이션)"
+      },
+      {
+        "expr": "deliver = give = make a presentation",
+        "meaning": "발표하다!"
+      }
+    ]
+  },
+  {
+    "id": "VOCAB_542",
+    "category": "VOCAB",
+    "cat": "콜로케이션",
+    "word_count": 11,
+    "diff": "easy",
+    "sentence": "The company was able to _______ significant savings by switching to renewable energy.",
+    "choices": [
+      "(A) have",
+      "(B) take",
+      "(C) do",
+      "(D) make"
+    ],
+    "answer": 3,
+    "answer_word": "make",
+    "explanation_kr": "재생에너지로 전환하여 '상당한 절감을 이루다' → make savings! do/take/have는 savings와 어색.",
+    "explanation": "make savings = successfully reduce costs.",
+    "kr": "회사는 재생에너지로 전환하여 상당한 비용 절감을 이룰 수 있었다.",
+    "expressions": [
+      {
+        "expr": "make significant savings",
+        "meaning": "상당한 절감을 이루다 (핵심 콜로케이션)"
+      },
+      {
+        "expr": "make savings = cut costs = reduce expenses",
+        "meaning": "절감 이루기!"
+      }
+    ]
+  },
+  {
+    "id": "VOCAB_543",
+    "category": "VOCAB",
+    "cat": "콜로케이션",
+    "word_count": 11,
+    "diff": "easy",
+    "sentence": "The director will _______ the findings of the investigation at tomorrow's press conference.",
+    "choices": [
+      "(A) make",
+      "(B) present",
+      "(C) do",
+      "(D) take"
+    ],
+    "answer": 1,
+    "answer_word": "present",
+    "explanation_kr": "내일 기자회견에서 조사 결과를 '발표하다' → present findings! make/do/take는 findings와 어색.",
+    "explanation": "present findings = formally share research results.",
+    "kr": "이사는 내일 기자회견에서 조사 결과를 발표할 것이다.",
+    "expressions": [
+      {
+        "expr": "present findings",
+        "meaning": "연구 결과를 발표하다 (핵심 콜로케이션)"
+      },
+      {
+        "expr": "present = share = report findings",
+        "meaning": "결과를 발표하다!"
+      }
+    ]
+  },
+  {
+    "id": "VOCAB_544",
+    "category": "VOCAB",
+    "cat": "콜로케이션",
+    "word_count": 11,
+    "diff": "easy",
+    "sentence": "The charity hopes to _______ a lasting legacy through its educational programmes.",
+    "choices": [
+      "(A) take",
+      "(B) give",
+      "(C) leave",
+      "(D) make"
+    ],
+    "answer": 2,
+    "answer_word": "leave",
+    "explanation_kr": "교육 프로그램을 통해 지속적인 '유산을 남기다' → leave a legacy! make/take/give는 legacy와 어색.",
+    "explanation": "leave a legacy = have a lasting positive impact.",
+    "kr": "자선단체는 교육 프로그램을 통해 지속적인 유산을 남기기를 희망한다.",
+    "expressions": [
+      {
+        "expr": "leave a legacy",
+        "meaning": "유산을 남기다 (핵심 콜로케이션)"
+      },
+      {
+        "expr": "leave a legacy = make a lasting impact",
+        "meaning": "지속적인 영향을 남기다!"
+      }
+    ]
+  },
+  {
+    "id": "VOCAB_545",
+    "category": "VOCAB",
+    "cat": "콜로케이션",
+    "word_count": 11,
+    "diff": "easy",
+    "sentence": "The leadership team needs to _______ a strategy for entering the Asian market.",
+    "choices": [
+      "(A) devise",
+      "(B) do",
+      "(C) take",
+      "(D) make"
+    ],
+    "answer": 0,
+    "answer_word": "devise",
+    "explanation_kr": "아시아 시장 진출을 위한 전략을 '고안하다' → devise a strategy! make/do/take는 strategy와 어색.",
+    "explanation": "devise a strategy = create and develop a plan.",
+    "kr": "리더십팀은 아시아 시장 진출을 위한 전략을 고안해야 한다.",
+    "expressions": [
+      {
+        "expr": "devise a strategy",
+        "meaning": "전략을 고안하다 (핵심 콜로케이션)"
+      },
+      {
+        "expr": "devise = develop = create = formulate a strategy",
+        "meaning": "전략을 고안하다!"
+      }
+    ]
+  },
+  {
+    "id": "VOCAB_546",
+    "category": "VOCAB",
+    "cat": "콜로케이션",
+    "word_count": 11,
+    "diff": "easy",
+    "sentence": "The company needs to _______ the trust of customers following the data breach.",
+    "choices": [
+      "(A) give",
+      "(B) take",
+      "(C) make",
+      "(D) regain"
+    ],
+    "answer": 3,
+    "answer_word": "regain",
+    "explanation_kr": "데이터 유출 후 고객들의 신뢰를 '되찾다' → regain trust! make/take/give는 trust와 어색.",
+    "explanation": "regain trust = win back the confidence of customers.",
+    "kr": "회사는 데이터 유출 이후 고객들의 신뢰를 되찾아야 한다.",
+    "expressions": [
+      {
+        "expr": "regain trust",
+        "meaning": "신뢰를 되찾다 (핵심 콜로케이션)"
+      },
+      {
+        "expr": "regain = win back = rebuild trust",
+        "meaning": "신뢰를 회복하다!"
+      }
+    ]
+  },
+  {
+    "id": "VOCAB_547",
+    "category": "VOCAB",
+    "cat": "콜로케이션",
+    "word_count": 11,
+    "diff": "easy",
+    "sentence": "The CEO was asked to _______ on the lessons learned from the product recall.",
+    "choices": [
+      "(A) reflect",
+      "(B) review",
+      "(C) report",
+      "(D) respond"
+    ],
+    "answer": 0,
+    "answer_word": "reflect",
+    "explanation_kr": "제품 리콜에서 배운 교훈을 '되돌아보다' → reflect on! report/review/respond는 on과 이 의미로 어색.",
+    "explanation": "reflect on = think carefully about something that happened.",
+    "kr": "CEO는 제품 리콜에서 배운 교훈을 되돌아보도록 요청받았다.",
+    "expressions": [
+      {
+        "expr": "reflect on lessons learned",
+        "meaning": "배운 교훈을 되돌아보다 (핵심 콜로케이션)"
+      },
+      {
+        "expr": "reflect on = look back on = consider",
+        "meaning": "되돌아보다!"
+      }
+    ]
+  },
+  {
+    "id": "VOCAB_548",
+    "category": "VOCAB",
+    "cat": "혼동어휘",
+    "word_count": 11,
+    "diff": "easy",
+    "sentence": "The company ordered more _______ before the start of the new academic year.",
+    "choices": [
+      "(A) statutory",
+      "(B) stationery",
+      "(C) stationary",
+      "(D) strategy"
+    ],
+    "answer": 1,
+    "answer_word": "stationery",
+    "explanation_kr": "stationery = '문구류' (명사, 편지지/봉투/펜 등)! stationary = '정지한' (형용사)! 여기서 문구류를 주문 → stationery!",
+    "explanation": "stationery (noun) = writing materials. stationary (adjective) = not moving.",
+    "kr": "회사는 새 학년 시작 전에 문구류를 더 주문했다.",
+    "expressions": [
+      {
+        "expr": "stationery (문구류) vs stationary (정지한)",
+        "meaning": "토익 최빈출 혼동 철자!"
+      },
+      {
+        "expr": "order stationery",
+        "meaning": "문구류를 주문하다!"
+      }
+    ]
+  },
+  {
+    "id": "VOCAB_549",
+    "category": "VOCAB",
+    "cat": "혼동어휘",
+    "word_count": 11,
+    "diff": "easy",
+    "sentence": "The board discussed the _______ of the project but failed to reach an agreement.",
+    "choices": [
+      "(A) objections",
+      "(B) obligations",
+      "(C) objectives",
+      "(D) observations"
+    ],
+    "answer": 2,
+    "answer_word": "objectives",
+    "explanation_kr": "objectives = '목표/목적'! objections = '반대 의견'! 프로젝트 '목표'를 논의 → objectives!",
+    "explanation": "objectives = goals or aims. objections = reasons for disagreeing.",
+    "kr": "이사회는 프로젝트의 목표를 논의했지만 합의에 도달하지 못했다.",
+    "expressions": [
+      {
+        "expr": "objectives (목표) vs objections (반대 의견)",
+        "meaning": "토익 빈출 혼동어휘!"
+      },
+      {
+        "expr": "project objectives",
+        "meaning": "프로젝트 목표!"
+      }
+    ]
+  },
+  {
+    "id": "VOCAB_550",
+    "category": "VOCAB",
+    "cat": "혼동어휘",
+    "word_count": 11,
+    "diff": "easy",
+    "sentence": "The report focused on the _______ of the new drug rather than its side effects.",
+    "choices": [
+      "(A) implication",
+      "(B) implementation",
+      "(C) imagination",
+      "(D) imitation"
+    ],
+    "answer": 1,
+    "answer_word": "implementation",
+    "explanation_kr": "implementation = '시행/구현'! implication = '시사점/함의'! 신약의 '시행' → implementation!",
+    "explanation": "implementation = putting something into practice. implication = a conclusion or consequence.",
+    "kr": "보고서는 부작용보다 새로운 약물의 시행에 초점을 맞췄다.",
+    "expressions": [
+      {
+        "expr": "implementation (시행) vs implication (시사점)",
+        "meaning": "토익 최빈출 혼동어휘!"
+      },
+      {
+        "expr": "implementation of a policy",
+        "meaning": "정책의 시행!"
+      }
+    ]
+  },
+  {
+    "id": "VOCAB_551",
+    "category": "VOCAB",
+    "cat": "문맥어휘",
+    "word_count": 13,
+    "diff": "normal",
+    "sentence": "The firm is looking for ways to _______ its procurement process and reduce lead times.",
+    "choices": [
+      "(A) strengthen",
+      "(B) substitute",
+      "(C) streamline",
+      "(D) suppress"
+    ],
+    "answer": 2,
+    "answer_word": "streamline",
+    "explanation_kr": "조달 프로세스를 '간소화하고' 리드 타임 줄이기 → streamline! strengthen=강화하다, substitute=대체하다, suppress=억제하다.",
+    "explanation": "Make the process more efficient → streamline.",
+    "kr": "회사는 조달 프로세스를 간소화하고 리드 타임을 줄이는 방법을 찾고 있다.",
+    "expressions": [
+      {
+        "expr": "streamline procurement",
+        "meaning": "조달을 간소화하다"
+      },
+      {
+        "expr": "streamline = simplify = optimise",
+        "meaning": "간소화하다!"
+      }
+    ]
+  },
+  {
+    "id": "VOCAB_552",
+    "category": "VOCAB",
+    "cat": "문맥어휘",
+    "word_count": 13,
+    "diff": "normal",
+    "sentence": "The board decided to _______ 10 percent of its net profits to research and development.",
+    "choices": [
+      "(A) attract",
+      "(B) announce",
+      "(C) achieve",
+      "(D) allocate"
+    ],
+    "answer": 3,
+    "answer_word": "allocate",
+    "explanation_kr": "순이익의 10%를 연구개발에 '배정하다' → allocate! attract=유치하다, achieve=달성하다, announce=발표하다.",
+    "explanation": "Set aside a specific amount for a purpose → allocate.",
+    "kr": "이사회는 순이익의 10%를 연구개발에 배정하기로 결정했다.",
+    "expressions": [
+      {
+        "expr": "allocate profits to R&D",
+        "meaning": "이익을 R&D에 배정하다"
+      },
+      {
+        "expr": "allocate = set aside = earmark",
+        "meaning": "배정하다!"
+      }
+    ]
+  },
+  {
+    "id": "VOCAB_553",
+    "category": "VOCAB",
+    "cat": "문맥어휘",
+    "word_count": 13,
+    "diff": "normal",
+    "sentence": "The technology company has grown into one of the most _______ firms in the sector.",
+    "choices": [
+      "(A) innovative",
+      "(B) initial",
+      "(C) integral",
+      "(D) informal"
+    ],
+    "answer": 0,
+    "answer_word": "innovative",
+    "explanation_kr": "업계에서 가장 '혁신적인' 회사 중 하나로 성장 → innovative! informal=비공식적인, integral=필수적인, initial=초기의.",
+    "explanation": "Introducing new ideas and approaches → innovative.",
+    "kr": "기술 회사는 해당 부문에서 가장 혁신적인 회사 중 하나로 성장했다.",
+    "expressions": [
+      {
+        "expr": "innovative firm/approach",
+        "meaning": "혁신적인 회사/접근법"
+      },
+      {
+        "expr": "innovative = pioneering = cutting-edge",
+        "meaning": "혁신적인!"
+      }
+    ]
+  },
+  {
+    "id": "VOCAB_554",
+    "category": "VOCAB",
+    "cat": "문맥어휘",
+    "word_count": 13,
+    "diff": "normal",
+    "sentence": "The company plans to _______ its position in the market through a series of targeted acquisitions.",
+    "choices": [
+      "(A) contact",
+      "(B) consider",
+      "(C) consolidate",
+      "(D) contest"
+    ],
+    "answer": 2,
+    "answer_word": "consolidate",
+    "explanation_kr": "일련의 목표 인수를 통해 시장 위치를 '강화/공고히 하다' → consolidate! consider=고려하다, contact=연락하다, contest=이의를 제기하다.",
+    "explanation": "Strengthen and secure the market position → consolidate.",
+    "kr": "회사는 일련의 목표 인수를 통해 시장 위치를 공고히 할 계획이다.",
+    "expressions": [
+      {
+        "expr": "consolidate market position",
+        "meaning": "시장 위치를 공고히 하다"
+      },
+      {
+        "expr": "consolidate = strengthen = cement",
+        "meaning": "공고히 하다!"
+      }
+    ]
+  },
+  {
+    "id": "VOCAB_555",
+    "category": "VOCAB",
+    "cat": "문맥어휘",
+    "word_count": 13,
+    "diff": "normal",
+    "sentence": "The organisation's _______ approach to managing talent has resulted in a strong leadership pipeline.",
+    "choices": [
+      "(A) sudden",
+      "(B) stubborn",
+      "(C) surplus",
+      "(D) structured"
+    ],
+    "answer": 3,
+    "answer_word": "structured",
+    "explanation_kr": "강력한 리더십 파이프라인으로 이어진 '체계적인' 인재 관리 접근법 → structured! stubborn=고집스러운, sudden=갑작스러운, surplus=잉여의.",
+    "explanation": "Well-organised and following a clear plan → structured.",
+    "kr": "조직의 체계적인 인재 관리 접근법이 강력한 리더십 파이프라인으로 이어졌다.",
+    "expressions": [
+      {
+        "expr": "structured approach",
+        "meaning": "체계적인 접근법"
+      },
+      {
+        "expr": "structured = systematic = organised",
+        "meaning": "체계적인!"
+      }
+    ]
+  },
+  {
+    "id": "VOCAB_556",
+    "category": "VOCAB",
+    "cat": "문맥어휘",
+    "word_count": 13,
+    "diff": "normal",
+    "sentence": "The new product has been _______ designed to meet the needs of working parents.",
+    "choices": [
+      "(A) similarly",
+      "(B) slightly",
+      "(C) specifically",
+      "(D) softly"
+    ],
+    "answer": 2,
+    "answer_word": "specifically",
+    "explanation_kr": "직장을 다니는 부모들의 니즈를 충족하기 위해 '특별히' 설계된 → specifically! slightly=약간, similarly=유사하게, softly=부드럽게.",
+    "explanation": "Designed for a particular purpose → specifically.",
+    "kr": "새로운 제품은 직장을 다니는 부모들의 니즈를 충족하기 위해 특별히 설계되었다.",
+    "expressions": [
+      {
+        "expr": "specifically designed for",
+        "meaning": "~을 위해 특별히 설계된"
+      },
+      {
+        "expr": "specifically = expressly = particularly",
+        "meaning": "특별히!"
+      }
+    ]
+  },
+  {
+    "id": "VOCAB_557",
+    "category": "VOCAB",
+    "cat": "문맥어휘",
+    "word_count": 13,
+    "diff": "normal",
+    "sentence": "The audit found that the company had _______ to properly maintain its financial records.",
+    "choices": [
+      "(A) failed",
+      "(B) followed",
+      "(C) forced",
+      "(D) formed"
+    ],
+    "answer": 0,
+    "answer_word": "failed",
+    "explanation_kr": "회사가 재무 기록을 적절히 유지하는 데 '실패했다' → failed! forced=강요됐다, followed=따랐다, formed=형성됐다.",
+    "explanation": "Did not succeed in maintaining records → failed.",
+    "kr": "감사에서 회사가 재무 기록을 적절히 유지하는 데 실패했다는 것이 밝혀졌다.",
+    "expressions": [
+      {
+        "expr": "failed to maintain records",
+        "meaning": "기록을 유지하는 데 실패한"
+      },
+      {
+        "expr": "fail to = not succeed in",
+        "meaning": "~하는 데 실패하다!"
+      }
+    ]
+  },
+  {
+    "id": "VOCAB_558",
+    "category": "VOCAB",
+    "cat": "문맥어휘",
+    "word_count": 13,
+    "diff": "normal",
+    "sentence": "The merger is _______ to create over two thousand new jobs in the region.",
+    "choices": [
+      "(A) extended",
+      "(B) excluded",
+      "(C) explored",
+      "(D) expected"
+    ],
+    "answer": 3,
+    "answer_word": "expected",
+    "explanation_kr": "합병이 그 지역에 2천 개 이상의 새로운 일자리를 창출할 것으로 '기대되는' → expected! excluded=제외된, extended=연장된, explored=탐구됐다.",
+    "explanation": "Anticipated to create new jobs → expected.",
+    "kr": "합병은 그 지역에 2천 개 이상의 새로운 일자리를 창출할 것으로 기대된다.",
+    "expressions": [
+      {
+        "expr": "expected to create jobs",
+        "meaning": "일자리를 창출할 것으로 기대되는"
+      },
+      {
+        "expr": "expected = anticipated = projected",
+        "meaning": "기대되는!"
+      }
+    ]
+  },
+  {
+    "id": "VOCAB_559",
+    "category": "VOCAB",
+    "cat": "문맥어휘",
+    "word_count": 13,
+    "diff": "normal",
+    "sentence": "The company _______ significant improvements in both customer satisfaction and employee morale.",
+    "choices": [
+      "(A) recruited",
+      "(B) refused",
+      "(C) required",
+      "(D) reported"
+    ],
+    "answer": 3,
+    "answer_word": "reported",
+    "explanation_kr": "고객 만족과 직원 사기 모두에서 상당한 개선을 '보고했다' → reported! refused=거부했다, required=요구됐다, recruited=채용했다.",
+    "explanation": "Announced and published findings about improvement → reported.",
+    "kr": "회사는 고객 만족도와 직원 사기 모두에서 상당한 개선을 보고했다.",
+    "expressions": [
+      {
+        "expr": "reported improvements in",
+        "meaning": "~에서 개선을 보고했다"
+      },
+      {
+        "expr": "report = announce = disclose",
+        "meaning": "보고하다/발표하다!"
+      }
+    ]
+  },
+  {
+    "id": "VOCAB_560",
+    "category": "VOCAB",
+    "cat": "문맥어휘",
+    "word_count": 13,
+    "diff": "normal",
+    "sentence": "The workshop aims to _______ participants with the skills they need to lead remote teams.",
+    "choices": [
+      "(A) evaluate",
+      "(B) exceed",
+      "(C) eliminate",
+      "(D) equip"
+    ],
+    "answer": 3,
+    "answer_word": "equip",
+    "explanation_kr": "원격 팀을 이끄는 데 필요한 기술로 참가자들을 '갖추다/준비시키다' → equip! evaluate=평가하다, eliminate=제거하다, exceed=초과하다.",
+    "explanation": "Provide participants with the necessary skills → equip.",
+    "kr": "워크숍은 원격 팀을 이끄는 데 필요한 기술을 갖추도록 참가자들을 준비시키는 것을 목표로 한다.",
+    "expressions": [
+      {
+        "expr": "equip participants with skills",
+        "meaning": "참가자들에게 기술을 갖추게 하다"
+      },
+      {
+        "expr": "equip = provide with = prepare with",
+        "meaning": "갖추게 하다!"
+      }
+    ]
+  },
+  {
+    "id": "VOCAB_561",
+    "category": "VOCAB",
+    "cat": "문맥어휘",
+    "word_count": 13,
+    "diff": "normal",
+    "sentence": "The board _______ the decision to relocate the headquarters until more data was available.",
+    "choices": [
+      "(A) deferred",
+      "(B) deployed",
+      "(C) delivered",
+      "(D) divided"
+    ],
+    "answer": 0,
+    "answer_word": "deferred",
+    "explanation_kr": "더 많은 데이터가 확보될 때까지 본사 이전 결정을 '연기했다' → deferred! delivered=배달했다, deployed=배치했다, divided=나눴다.",
+    "explanation": "Postponed until more information was available → deferred.",
+    "kr": "이사회는 더 많은 데이터가 확보될 때까지 본사 이전 결정을 연기했다.",
+    "expressions": [
+      {
+        "expr": "defer a decision",
+        "meaning": "결정을 연기하다"
+      },
+      {
+        "expr": "defer = postpone = put off",
+        "meaning": "연기하다!"
+      }
+    ]
+  },
+  {
+    "id": "VOCAB_562",
+    "category": "VOCAB",
+    "cat": "문맥어휘",
+    "word_count": 13,
+    "diff": "normal",
+    "sentence": "The company's _______ growth is reflected in its increasing global market share.",
+    "choices": [
+      "(A) surprising",
+      "(B) surplus",
+      "(C) sustained",
+      "(D) sudden"
+    ],
+    "answer": 2,
+    "answer_word": "sustained",
+    "explanation_kr": "증가하는 글로벌 시장 점유율에 반영된 '지속적인' 성장 → sustained! surprising=놀라운, sudden=갑작스러운, surplus=잉여의.",
+    "explanation": "Continuing over a long period → sustained.",
+    "kr": "회사의 지속적인 성장은 증가하는 글로벌 시장 점유율에 반영되어 있다.",
+    "expressions": [
+      {
+        "expr": "sustained growth",
+        "meaning": "지속적인 성장"
+      },
+      {
+        "expr": "sustained = continued = ongoing",
+        "meaning": "지속적인!"
+      }
+    ]
+  },
+  {
+    "id": "VOCAB_563",
+    "category": "VOCAB",
+    "cat": "문맥어휘",
+    "word_count": 13,
+    "diff": "normal",
+    "sentence": "The management team was _______ the challenge of meeting customer demand with limited resources.",
+    "choices": [
+      "(A) committed to",
+      "(B) confronted with",
+      "(C) contrary to",
+      "(D) consistent with"
+    ],
+    "answer": 1,
+    "answer_word": "confronted with",
+    "explanation_kr": "제한된 자원으로 고객 수요를 충족하는 '도전에 직면한' → confronted with! committed to=헌신하는, consistent with=일치하는, contrary to=반하는.",
+    "explanation": "Faced with a difficult challenge → confronted with.",
+    "kr": "경영팀은 제한된 자원으로 고객 수요를 충족하는 도전에 직면했다.",
+    "expressions": [
+      {
+        "expr": "confronted with a challenge",
+        "meaning": "도전에 직면한"
+      },
+      {
+        "expr": "confronted with = faced with = dealing with",
+        "meaning": "직면한!"
+      }
+    ]
+  },
+  {
+    "id": "VOCAB_564",
+    "category": "VOCAB",
+    "cat": "문맥어휘",
+    "word_count": 13,
+    "diff": "normal",
+    "sentence": "The company has established a _______ reputation for delivering projects on time.",
+    "choices": [
+      "(A) strong",
+      "(B) sharp",
+      "(C) strict",
+      "(D) strange"
+    ],
+    "answer": 0,
+    "answer_word": "strong",
+    "explanation_kr": "제때 프로젝트를 완수하는 '강한' 명성 확립 → strong! strict=엄격한, sharp=날카로운, strange=이상한.",
+    "explanation": "A well-known and respected reputation → strong.",
+    "kr": "회사는 프로젝트를 제때 완수하는 강한 명성을 확립했다.",
+    "expressions": [
+      {
+        "expr": "strong reputation for",
+        "meaning": "~으로 강한 명성"
+      },
+      {
+        "expr": "strong = excellent = outstanding reputation",
+        "meaning": "강한 명성!"
+      }
+    ]
+  },
+  {
+    "id": "VOCAB_565",
+    "category": "VOCAB",
+    "cat": "문맥어휘",
+    "word_count": 13,
+    "diff": "normal",
+    "sentence": "The university will _______ a joint research programme with its partner institution.",
+    "choices": [
+      "(A) launch",
+      "(B) locate",
+      "(C) lower",
+      "(D) limit"
+    ],
+    "answer": 0,
+    "answer_word": "launch",
+    "explanation_kr": "파트너 기관과 공동 연구 프로그램을 '시작/출시하다' → launch! lower=낮추다, limit=제한하다, locate=찾다.",
+    "explanation": "Formally begin the joint programme → launch.",
+    "kr": "대학은 파트너 기관과 공동 연구 프로그램을 시작할 것이다.",
+    "expressions": [
+      {
+        "expr": "launch a joint programme",
+        "meaning": "공동 프로그램을 시작하다"
+      },
+      {
+        "expr": "launch = start = kick off",
+        "meaning": "시작하다!"
+      }
+    ]
+  },
+  {
+    "id": "VOCAB_566",
+    "category": "VOCAB",
+    "cat": "문맥어휘",
+    "word_count": 13,
+    "diff": "normal",
+    "sentence": "The firm's new data-sharing policy is _______ to strict confidentiality agreements.",
+    "choices": [
+      "(A) sufficient",
+      "(B) subject",
+      "(C) suitable",
+      "(D) successful"
+    ],
+    "answer": 1,
+    "answer_word": "subject",
+    "explanation_kr": "엄격한 기밀 유지 계약의 '적용을 받는' → subject to! suitable=적합한, sufficient=충분한, successful=성공적인.",
+    "explanation": "Governed by or under the conditions of → subject to.",
+    "kr": "회사의 새로운 데이터 공유 정책은 엄격한 기밀 유지 계약의 적용을 받는다.",
+    "expressions": [
+      {
+        "expr": "subject to confidentiality agreements",
+        "meaning": "기밀 유지 계약의 적용을 받는"
+      },
+      {
+        "expr": "subject to = governed by = bound by",
+        "meaning": "~의 적용을 받는!"
+      }
+    ]
+  },
+  {
+    "id": "VOCAB_567",
+    "category": "VOCAB",
+    "cat": "문맥어휘",
+    "word_count": 13,
+    "diff": "normal",
+    "sentence": "The government has agreed to _______ companies that invest in clean energy projects.",
+    "choices": [
+      "(A) incentivise",
+      "(B) ignore",
+      "(C) inspect",
+      "(D) indicate"
+    ],
+    "answer": 0,
+    "answer_word": "incentivise",
+    "explanation_kr": "청정 에너지 프로젝트에 투자하는 기업들에게 '인센티브를 제공하다' → incentivise! indicate=나타내다, inspect=검사하다, ignore=무시하다.",
+    "explanation": "Encourage companies by providing incentives → incentivise.",
+    "kr": "정부는 청정 에너지 프로젝트에 투자하는 기업들에게 인센티브를 제공하기로 합의했다.",
+    "expressions": [
+      {
+        "expr": "incentivise companies to invest",
+        "meaning": "기업들이 투자하도록 인센티브 제공"
+      },
+      {
+        "expr": "incentivise = encourage = motivate with rewards",
+        "meaning": "인센티브를 제공하다!"
+      }
+    ]
+  },
+  {
+    "id": "VOCAB_568",
+    "category": "VOCAB",
+    "cat": "문맥어휘",
+    "word_count": 13,
+    "diff": "normal",
+    "sentence": "The organisation has been _______ efforts to reduce its environmental impact over the past year.",
+    "choices": [
+      "(A) intensifying",
+      "(B) illustrating",
+      "(C) identifying",
+      "(D) inviting"
+    ],
+    "answer": 0,
+    "answer_word": "intensifying",
+    "explanation_kr": "지난 한 해 동안 환경 영향 감소 노력을 '강화해왔다' → intensifying! illustrating=설명하는, identifying=파악하는, inviting=초대하는.",
+    "explanation": "Increasing the effort and focus → intensifying.",
+    "kr": "조직은 지난 한 해 동안 환경 영향을 줄이기 위한 노력을 강화해왔다.",
+    "expressions": [
+      {
+        "expr": "intensifying efforts",
+        "meaning": "노력을 강화하다"
+      },
+      {
+        "expr": "intensify = increase = step up",
+        "meaning": "강화하다!"
+      }
+    ]
+  },
+  {
+    "id": "VOCAB_569",
+    "category": "VOCAB",
+    "cat": "문맥어휘",
+    "word_count": 13,
+    "diff": "normal",
+    "sentence": "The CEO's speech _______ the company's commitment to achieving carbon neutrality by 2030.",
+    "choices": [
+      "(A) released",
+      "(B) refused",
+      "(C) reinforced",
+      "(D) replaced"
+    ],
+    "answer": 2,
+    "answer_word": "reinforced",
+    "explanation_kr": "2030년 탄소 중립 달성에 대한 회사의 약속을 '강화했다' → reinforced! refused=거부했다, released=출시됐다, replaced=교체됐다.",
+    "explanation": "Made the commitment stronger and clearer → reinforced.",
+    "kr": "CEO의 연설은 2030년까지 탄소 중립을 달성하겠다는 회사의 약속을 강화했다.",
+    "expressions": [
+      {
+        "expr": "reinforced commitment",
+        "meaning": "약속을 강화했다"
+      },
+      {
+        "expr": "reinforce = strengthen = emphasise",
+        "meaning": "강화하다!"
+      }
+    ]
+  },
+  {
+    "id": "VOCAB_570",
+    "category": "VOCAB",
+    "cat": "문맥어휘",
+    "word_count": 13,
+    "diff": "normal",
+    "sentence": "The company will _______ its services in the coming months to include financial planning.",
+    "choices": [
+      "(A) expand",
+      "(B) explore",
+      "(C) express",
+      "(D) expose"
+    ],
+    "answer": 0,
+    "answer_word": "expand",
+    "explanation_kr": "앞으로 몇 달 안에 재무 계획을 포함하도록 서비스를 '확장하다' → expand! explore=탐구하다, expose=노출하다, express=표현하다.",
+    "explanation": "Grow the services to include new offerings → expand.",
+    "kr": "회사는 앞으로 몇 달 안에 재무 계획을 포함하도록 서비스를 확장할 것이다.",
+    "expressions": [
+      {
+        "expr": "expand services to include",
+        "meaning": "~을 포함하도록 서비스를 확장하다"
+      },
+      {
+        "expr": "expand = extend = broaden",
+        "meaning": "확장하다!"
+      }
+    ]
+  },
+  {
+    "id": "VOCAB_571",
+    "category": "VOCAB",
+    "cat": "문맥어휘",
+    "word_count": 13,
+    "diff": "normal",
+    "sentence": "The industry is _______ unprecedented disruption as new technologies reshape traditional business models.",
+    "choices": [
+      "(A) explaining",
+      "(B) experiencing",
+      "(C) extending",
+      "(D) excluding"
+    ],
+    "answer": 1,
+    "answer_word": "experiencing",
+    "explanation_kr": "새로운 기술이 전통적인 비즈니스 모델을 재편함에 따라 전례 없는 혼란을 '겪고 있는' → experiencing! excluding=제외하는, explaining=설명하는, extending=연장하는.",
+    "explanation": "Going through a period of major change → experiencing.",
+    "kr": "업계는 새로운 기술이 전통적인 비즈니스 모델을 재편함에 따라 전례 없는 혼란을 겪고 있다.",
+    "expressions": [
+      {
+        "expr": "experiencing unprecedented disruption",
+        "meaning": "전례 없는 혼란을 겪고 있다"
+      },
+      {
+        "expr": "unprecedented = never seen before = extraordinary",
+        "meaning": "전례 없는!"
+      }
+    ]
+  },
+  {
+    "id": "VOCAB_572",
+    "category": "VOCAB",
+    "cat": "문맥어휘",
+    "word_count": 13,
+    "diff": "normal",
+    "sentence": "The company's _______ earnings were hit hard by the weakness of the euro.",
+    "choices": [
+      "(A) obvious",
+      "(B) overseas",
+      "(C) official",
+      "(D) outdoor"
+    ],
+    "answer": 1,
+    "answer_word": "overseas",
+    "explanation_kr": "유로화 약세로 '해외' 수익이 크게 타격 → overseas! outdoor=야외의, obvious=명백한, official=공식적인.",
+    "explanation": "Earnings from international operations → overseas.",
+    "kr": "회사의 해외 수익은 유로화 약세로 큰 타격을 받았다.",
+    "expressions": [
+      {
+        "expr": "overseas earnings",
+        "meaning": "해외 수익"
+      },
+      {
+        "expr": "overseas = international = global",
+        "meaning": "해외의!"
+      }
+    ]
+  },
+  {
+    "id": "VOCAB_573",
+    "category": "VOCAB",
+    "cat": "문맥어휘",
+    "word_count": 13,
+    "diff": "normal",
+    "sentence": "The project has been put _______ pending a full safety review.",
+    "choices": [
+      "(A) on demand",
+      "(B) on duty",
+      "(C) on hold",
+      "(D) on track"
+    ],
+    "answer": 2,
+    "answer_word": "on hold",
+    "explanation_kr": "전체 안전 검토가 진행되는 동안 프로젝트가 '보류됐다' → on hold! on track=순조로운, on duty=근무 중, on demand=요청 시.",
+    "explanation": "Paused and waiting until the review is complete → on hold.",
+    "kr": "프로젝트는 전체 안전 검토를 전제로 보류되었다.",
+    "expressions": [
+      {
+        "expr": "put on hold",
+        "meaning": "보류하다 (핵심 비즈니스 표현)"
+      },
+      {
+        "expr": "on hold = paused = suspended",
+        "meaning": "보류 중!"
+      }
+    ]
+  },
+  {
+    "id": "VOCAB_574",
+    "category": "VOCAB",
+    "cat": "문맥어휘",
+    "word_count": 13,
+    "diff": "normal",
+    "sentence": "The company has _______ a significant presence in both online and offline retail channels.",
+    "choices": [
+      "(A) examined",
+      "(B) estimated",
+      "(C) excluded",
+      "(D) established"
+    ],
+    "answer": 3,
+    "answer_word": "established",
+    "explanation_kr": "온라인과 오프라인 소매 채널 모두에서 상당한 입지를 '확립했다' → established! estimated=추산했다, examined=검토했다, excluded=제외했다.",
+    "explanation": "Built and created a strong presence → established.",
+    "kr": "회사는 온라인과 오프라인 소매 채널 모두에서 상당한 입지를 확립했다.",
+    "expressions": [
+      {
+        "expr": "established a presence",
+        "meaning": "입지를 확립했다"
+      },
+      {
+        "expr": "establish = build = create a presence",
+        "meaning": "입지를 확립하다!"
+      }
+    ]
+  },
+  {
+    "id": "VOCAB_575",
+    "category": "VOCAB",
+    "cat": "문맥어휘",
+    "word_count": 13,
+    "diff": "normal",
+    "sentence": "The audit committee found that the company's controls were _______ to prevent fraud.",
+    "choices": [
+      "(A) informal",
+      "(B) independent",
+      "(C) inadequate",
+      "(D) indirect"
+    ],
+    "answer": 2,
+    "answer_word": "inadequate",
+    "explanation_kr": "사기를 방지하기에 회사의 통제가 '불충분한' → inadequate! independent=독립적인, indirect=간접적인, informal=비공식적인.",
+    "explanation": "Not strong enough to prevent fraud → inadequate.",
+    "kr": "감사 위원회는 회사의 통제가 사기를 방지하기에 불충분하다는 것을 발견했다.",
+    "expressions": [
+      {
+        "expr": "inadequate controls",
+        "meaning": "불충분한 통제"
+      },
+      {
+        "expr": "inadequate = insufficient = not enough",
+        "meaning": "불충분한!"
+      }
+    ]
+  },
+  {
+    "id": "VOCAB_576",
+    "category": "VOCAB",
+    "cat": "문맥어휘",
+    "word_count": 13,
+    "diff": "normal",
+    "sentence": "The company will _______ in-depth market research before finalising the pricing strategy.",
+    "choices": [
+      "(A) undermine",
+      "(B) underline",
+      "(C) undertake",
+      "(D) underwrite"
+    ],
+    "answer": 2,
+    "answer_word": "undertake",
+    "explanation_kr": "가격 전략 확정 전 심층 시장 조사를 '착수하다' → undertake! undermine=약화시키다, underline=강조하다, underwrite=보증하다.",
+    "explanation": "Carry out the market research formally → undertake.",
+    "kr": "회사는 가격 전략을 확정하기 전에 심층 시장 조사를 착수할 것이다.",
+    "expressions": [
+      {
+        "expr": "undertake market research",
+        "meaning": "시장 조사를 착수하다"
+      },
+      {
+        "expr": "undertake = carry out = conduct",
+        "meaning": "착수하다/수행하다!"
+      }
+    ]
+  },
+  {
+    "id": "VOCAB_577",
+    "category": "VOCAB",
+    "cat": "문맥어휘",
+    "word_count": 13,
+    "diff": "normal",
+    "sentence": "The changes to the pension scheme were _______ to staff through a series of briefings.",
+    "choices": [
+      "(A) confirmed",
+      "(B) communicated",
+      "(C) collected",
+      "(D) cancelled"
+    ],
+    "answer": 1,
+    "answer_word": "communicated",
+    "explanation_kr": "일련의 브리핑을 통해 직원들에게 연금 제도 변경 사항이 '전달됐다' → communicated! cancelled=취소됐다, collected=수집됐다, confirmed=확인됐다.",
+    "explanation": "Passed on through official briefings → communicated.",
+    "kr": "연금 제도 변경 사항은 일련의 브리핑을 통해 직원들에게 전달됐다.",
+    "expressions": [
+      {
+        "expr": "communicated through briefings",
+        "meaning": "브리핑을 통해 전달된"
+      },
+      {
+        "expr": "communicate = inform = convey",
+        "meaning": "전달하다!"
+      }
+    ]
+  },
+  {
+    "id": "VOCAB_578",
+    "category": "VOCAB",
+    "cat": "문맥어휘",
+    "word_count": 13,
+    "diff": "normal",
+    "sentence": "The organisation is _______ to receive government funding for its research activities.",
+    "choices": [
+      "(A) external",
+      "(B) excessive",
+      "(C) eligible",
+      "(D) evident"
+    ],
+    "answer": 2,
+    "answer_word": "eligible",
+    "explanation_kr": "연구 활동에 대한 정부 자금을 받을 '자격이 있는' → eligible! excessive=과도한, external=외부의, evident=명백한.",
+    "explanation": "Qualifying to receive the funding → eligible.",
+    "kr": "조직은 연구 활동에 대한 정부 자금을 받을 자격이 있다.",
+    "expressions": [
+      {
+        "expr": "eligible to receive funding",
+        "meaning": "자금을 받을 자격이 있는"
+      },
+      {
+        "expr": "eligible = qualified = entitled",
+        "meaning": "자격이 있는!"
+      }
+    ]
+  },
+  {
+    "id": "VOCAB_579",
+    "category": "VOCAB",
+    "cat": "문맥어휘",
+    "word_count": 13,
+    "diff": "normal",
+    "sentence": "The contract _______ that all disputes will be handled by an independent mediator.",
+    "choices": [
+      "(A) supports",
+      "(B) stipulates",
+      "(C) suggests",
+      "(D) supplies"
+    ],
+    "answer": 1,
+    "answer_word": "stipulates",
+    "explanation_kr": "모든 분쟁이 독립 중재자에 의해 처리된다고 '명시하다' → stipulates! supplies=공급한다, supports=지원한다, suggests=제안한다.",
+    "explanation": "Formally specifies a condition → stipulates.",
+    "kr": "계약은 모든 분쟁이 독립 중재자에 의해 처리된다고 명시한다.",
+    "expressions": [
+      {
+        "expr": "the contract stipulates",
+        "meaning": "계약이 명시하다"
+      },
+      {
+        "expr": "stipulate = specify = state",
+        "meaning": "명시하다!"
+      }
+    ]
+  },
+  {
+    "id": "VOCAB_580",
+    "category": "VOCAB",
+    "cat": "문맥어휘",
+    "word_count": 13,
+    "diff": "normal",
+    "sentence": "The company has been _______ scrutiny from regulators over its data handling practices.",
+    "choices": [
+      "(A) facing",
+      "(B) forming",
+      "(C) forcing",
+      "(D) finding"
+    ],
+    "answer": 0,
+    "answer_word": "facing",
+    "explanation_kr": "데이터 처리 관행에 대한 규제 당국의 면밀한 조사에 '직면해 있다' → facing! finding=찾고 있다, forcing=강요하는, forming=형성하는.",
+    "explanation": "Encountering scrutiny from regulators → facing.",
+    "kr": "회사는 데이터 처리 관행에 대해 규제 당국의 면밀한 조사에 직면해 있다.",
+    "expressions": [
+      {
+        "expr": "facing scrutiny from regulators",
+        "meaning": "규제 당국의 조사에 직면한"
+      },
+      {
+        "expr": "scrutiny = examination = investigation",
+        "meaning": "면밀한 조사!"
+      }
+    ]
+  },
+  {
+    "id": "VOCAB_581",
+    "category": "VOCAB",
+    "cat": "문맥어휘",
+    "word_count": 13,
+    "diff": "normal",
+    "sentence": "The firm plans to _______ its entire IT infrastructure before the end of the fiscal year.",
+    "choices": [
+      "(A) overcome",
+      "(B) overflow",
+      "(C) overlook",
+      "(D) overhaul"
+    ],
+    "answer": 3,
+    "answer_word": "overhaul",
+    "explanation_kr": "회계 연도 말 전에 전체 IT 인프라를 '전면 개선하다' → overhaul! overlook=간과하다, overcome=극복하다, overflow=넘치다.",
+    "explanation": "Completely revamp and update → overhaul.",
+    "kr": "회사는 회계 연도 말 전에 전체 IT 인프라를 전면 개선할 계획이다.",
+    "expressions": [
+      {
+        "expr": "overhaul IT infrastructure",
+        "meaning": "IT 인프라를 전면 개선하다"
+      },
+      {
+        "expr": "overhaul = revamp = modernise",
+        "meaning": "전면 개선하다!"
+      }
+    ]
+  },
+  {
+    "id": "VOCAB_582",
+    "category": "VOCAB",
+    "cat": "문맥어휘",
+    "word_count": 13,
+    "diff": "normal",
+    "sentence": "The research centre plans to _______ with five universities on a climate change study.",
+    "choices": [
+      "(A) complain",
+      "(B) confirm",
+      "(C) collaborate",
+      "(D) compete"
+    ],
+    "answer": 2,
+    "answer_word": "collaborate",
+    "explanation_kr": "기후 변화 연구에서 5개 대학과 '협력하다' → collaborate! compete=경쟁하다, complain=불평하다, confirm=확인하다.",
+    "explanation": "Work jointly with universities → collaborate.",
+    "kr": "연구 센터는 기후 변화 연구에서 5개 대학과 협력할 계획이다.",
+    "expressions": [
+      {
+        "expr": "collaborate with universities",
+        "meaning": "대학과 협력하다"
+      },
+      {
+        "expr": "collaborate = partner = cooperate",
+        "meaning": "협력하다!"
+      }
+    ]
+  },
+  {
+    "id": "VOCAB_583",
+    "category": "VOCAB",
+    "cat": "문맥어휘",
+    "word_count": 13,
+    "diff": "normal",
+    "sentence": "The management team will _______ the new performance management system in January.",
+    "choices": [
+      "(A) ignore",
+      "(B) impose",
+      "(C) inspect",
+      "(D) implement"
+    ],
+    "answer": 3,
+    "answer_word": "implement",
+    "explanation_kr": "1월에 새로운 성과 관리 시스템을 '시행하다' → implement! ignore=무시하다, impose=부과하다, inspect=검사하다.",
+    "explanation": "Put the new system into action → implement.",
+    "kr": "경영팀은 1월에 새로운 성과 관리 시스템을 시행할 것이다.",
+    "expressions": [
+      {
+        "expr": "implement a new system",
+        "meaning": "새로운 시스템을 시행하다"
+      },
+      {
+        "expr": "implement = introduce = put in place",
+        "meaning": "시행하다!"
+      }
+    ]
+  },
+  {
+    "id": "VOCAB_584",
+    "category": "VOCAB",
+    "cat": "문맥어휘",
+    "word_count": 13,
+    "diff": "normal",
+    "sentence": "The start-up secured _______ investment to develop its artificial intelligence platform.",
+    "choices": [
+      "(A) seed",
+      "(B) strict",
+      "(C) steady",
+      "(D) surplus"
+    ],
+    "answer": 0,
+    "answer_word": "seed",
+    "explanation_kr": "AI 플랫폼 개발을 위해 '시드' 투자 확보 → seed investment! steady=꾸준한, strict=엄격한, surplus=잉여의.",
+    "explanation": "Initial funding to start developing the platform → seed.",
+    "kr": "스타트업은 인공 지능 플랫폼 개발을 위한 시드 투자를 확보했다.",
+    "expressions": [
+      {
+        "expr": "seed investment/funding",
+        "meaning": "시드 투자/자금 (초기 투자)"
+      },
+      {
+        "expr": "seed = initial = early-stage investment",
+        "meaning": "시드 투자!"
+      }
+    ]
+  },
+  {
+    "id": "VOCAB_585",
+    "category": "VOCAB",
+    "cat": "문맥어휘",
+    "word_count": 13,
+    "diff": "normal",
+    "sentence": "The company's new initiative will _______ to all employees, regardless of their role.",
+    "choices": [
+      "(A) approve",
+      "(B) allow",
+      "(C) apply",
+      "(D) attract"
+    ],
+    "answer": 2,
+    "answer_word": "apply",
+    "explanation_kr": "역할에 관계없이 모든 직원에게 '적용되다' → apply! allow=허용하다, attract=유치하다, approve=승인하다.",
+    "explanation": "Be relevant and applicable to all employees → apply.",
+    "kr": "회사의 새로운 계획은 역할에 관계없이 모든 직원에게 적용될 것이다.",
+    "expressions": [
+      {
+        "expr": "apply to all employees",
+        "meaning": "모든 직원에게 적용되다"
+      },
+      {
+        "expr": "apply to = affect = cover",
+        "meaning": "적용되다!"
+      }
+    ]
+  },
+  {
+    "id": "VOCAB_586",
+    "category": "VOCAB",
+    "cat": "문맥어휘",
+    "word_count": 13,
+    "diff": "normal",
+    "sentence": "The annual general meeting provided shareholders with a chance to _______ management.",
+    "choices": [
+      "(A) question",
+      "(B) queue",
+      "(C) qualify",
+      "(D) quantify"
+    ],
+    "answer": 0,
+    "answer_word": "question",
+    "explanation_kr": "주주들이 경영진에게 '질문하다/문제를 제기하다' → question! qualify=자격을 갖추다, quantify=정량화하다, queue=줄을 서다.",
+    "explanation": "Challenge and seek answers from management → question.",
+    "kr": "연간 총회는 주주들이 경영진에게 질문할 기회를 제공했다.",
+    "expressions": [
+      {
+        "expr": "question management",
+        "meaning": "경영진에게 문제를 제기하다"
+      },
+      {
+        "expr": "question = challenge = hold to account",
+        "meaning": "문제를 제기하다!"
+      }
+    ]
+  },
+  {
+    "id": "VOCAB_587",
+    "category": "VOCAB",
+    "cat": "문맥어휘",
+    "word_count": 13,
+    "diff": "normal",
+    "sentence": "The firm has been at the _______ of developing sustainable packaging solutions.",
+    "choices": [
+      "(A) forum",
+      "(B) forefront",
+      "(C) forecast",
+      "(D) forward"
+    ],
+    "answer": 1,
+    "answer_word": "forefront",
+    "explanation_kr": "지속 가능한 포장 솔루션 개발의 '최전선에' 있는 → forefront! forward=앞으로, forecast=예측, forum=포럼.",
+    "explanation": "At the leading edge of innovation → forefront.",
+    "kr": "회사는 지속 가능한 포장 솔루션 개발의 최전선에 있어왔다.",
+    "expressions": [
+      {
+        "expr": "at the forefront of",
+        "meaning": "~의 최전선에 (핵심 표현)"
+      },
+      {
+        "expr": "at the forefront = leading = pioneering",
+        "meaning": "최전선에!"
+      }
+    ]
+  },
+  {
+    "id": "VOCAB_588",
+    "category": "VOCAB",
+    "cat": "콜로케이션",
+    "word_count": 13,
+    "diff": "normal",
+    "sentence": "The company needs to _______ a thorough review of its current business model.",
+    "choices": [
+      "(A) carry on",
+      "(B) carry off",
+      "(C) carry over",
+      "(D) carry out"
+    ],
+    "answer": 3,
+    "answer_word": "carry out",
+    "explanation_kr": "현재 비즈니스 모델에 대한 철저한 검토를 '수행하다' → carry out a review! carry on=계속하다, carry over=이월하다, carry off=해내다.",
+    "explanation": "carry out a review = formally conduct an examination.",
+    "kr": "회사는 현재 비즈니스 모델에 대한 철저한 검토를 수행해야 한다.",
+    "expressions": [
+      {
+        "expr": "carry out a review",
+        "meaning": "검토를 수행하다 (핵심 콜로케이션)"
+      },
+      {
+        "expr": "carry out = conduct = perform",
+        "meaning": "수행하다!"
+      }
+    ]
+  },
+  {
+    "id": "VOCAB_589",
+    "category": "VOCAB",
+    "cat": "콜로케이션",
+    "word_count": 13,
+    "diff": "normal",
+    "sentence": "The company plans to _______ a long-term commitment to reducing its environmental footprint.",
+    "choices": [
+      "(A) take",
+      "(B) have",
+      "(C) make",
+      "(D) do"
+    ],
+    "answer": 2,
+    "answer_word": "make",
+    "explanation_kr": "환경 발자국 감소를 위한 장기적인 약속을 '하다' → make a commitment! do/take/have는 부자연스러움.",
+    "explanation": "make a commitment = formally promise to do something.",
+    "kr": "회사는 환경 발자국을 줄이기 위한 장기적인 약속을 할 계획이다.",
+    "expressions": [
+      {
+        "expr": "make a commitment to",
+        "meaning": "~에 대한 약속을 하다 (핵심 콜로케이션)"
+      },
+      {
+        "expr": "make a commitment = commit = pledge",
+        "meaning": "약속하다!"
+      }
+    ]
+  },
+  {
+    "id": "VOCAB_590",
+    "category": "VOCAB",
+    "cat": "콜로케이션",
+    "word_count": 13,
+    "diff": "normal",
+    "sentence": "The board voted to _______ the existing contract for a further three years.",
+    "choices": [
+      "(A) renew",
+      "(B) take",
+      "(C) do",
+      "(D) make"
+    ],
+    "answer": 0,
+    "answer_word": "renew",
+    "explanation_kr": "기존 계약을 추가 3년 '갱신하다' → renew the contract! make/do/take는 contract와 어색.",
+    "explanation": "renew a contract = extend it for another period.",
+    "kr": "이사회는 기존 계약을 추가 3년 갱신하기로 투표했다.",
+    "expressions": [
+      {
+        "expr": "renew the contract",
+        "meaning": "계약을 갱신하다 (핵심 콜로케이션)"
+      },
+      {
+        "expr": "renew = extend = continue the contract",
+        "meaning": "계약 갱신!"
+      }
+    ]
+  },
+  {
+    "id": "VOCAB_591",
+    "category": "VOCAB",
+    "cat": "콜로케이션",
+    "word_count": 13,
+    "diff": "normal",
+    "sentence": "The firm plans to _______ its position as market leader through aggressive expansion.",
+    "choices": [
+      "(A) consolidate",
+      "(B) do",
+      "(C) make",
+      "(D) take"
+    ],
+    "answer": 0,
+    "answer_word": "consolidate",
+    "explanation_kr": "공격적인 확장을 통해 시장 선도자로서의 위치를 '공고히 하다' → consolidate a position! make/do/take는 부자연스러움.",
+    "explanation": "consolidate a position = make it stronger and more secure.",
+    "kr": "회사는 공격적인 확장을 통해 시장 선도자로서의 위치를 공고히 할 계획이다.",
+    "expressions": [
+      {
+        "expr": "consolidate a position",
+        "meaning": "위치를 공고히 하다 (핵심 콜로케이션)"
+      },
+      {
+        "expr": "consolidate = strengthen = cement a position",
+        "meaning": "위치를 공고히!"
+      }
+    ]
+  },
+  {
+    "id": "VOCAB_592",
+    "category": "VOCAB",
+    "cat": "콜로케이션",
+    "word_count": 13,
+    "diff": "normal",
+    "sentence": "The company hopes to _______ a profit in its first year of international operations.",
+    "choices": [
+      "(A) turn",
+      "(B) get",
+      "(C) do",
+      "(D) make"
+    ],
+    "answer": 0,
+    "answer_word": "turn",
+    "explanation_kr": "국제 운영 첫 해에 '이익을 내다' → turn a profit! make a profit도 가능하지만 turn a profit이 핵심 콜로케이션.",
+    "explanation": "turn a profit = become profitable for the first time.",
+    "kr": "회사는 국제 운영 첫 해에 이익을 낼 것을 희망한다.",
+    "expressions": [
+      {
+        "expr": "turn a profit",
+        "meaning": "이익을 내다 (핵심 콜로케이션)"
+      },
+      {
+        "expr": "turn = make = generate a profit",
+        "meaning": "이익을 내다!"
+      }
+    ]
+  },
+  {
+    "id": "VOCAB_593",
+    "category": "VOCAB",
+    "cat": "콜로케이션",
+    "word_count": 13,
+    "diff": "normal",
+    "sentence": "The CEO chose to step _______ after the company failed to meet its financial targets.",
+    "choices": [
+      "(A) up",
+      "(B) in",
+      "(C) down",
+      "(D) back"
+    ],
+    "answer": 2,
+    "answer_word": "down",
+    "explanation_kr": "회사가 재무 목표를 충족하지 못한 후 CEO가 '사임하다' → step down! step up=강화하다, step back=물러서다, step in=개입하다.",
+    "explanation": "step down = resign from a position.",
+    "kr": "CEO는 회사가 재무 목표를 충족하지 못한 후 사임하기로 했다.",
+    "expressions": [
+      {
+        "expr": "step down from a position",
+        "meaning": "직위에서 사임하다 (핵심 표현)"
+      },
+      {
+        "expr": "step down = resign = stand down",
+        "meaning": "사임하다!"
+      }
+    ]
+  },
+  {
+    "id": "VOCAB_594",
+    "category": "VOCAB",
+    "cat": "콜로케이션",
+    "word_count": 13,
+    "diff": "normal",
+    "sentence": "The company has agreed to _______ responsibility for the environmental damage caused.",
+    "choices": [
+      "(A) make",
+      "(B) give",
+      "(C) do",
+      "(D) accept"
+    ],
+    "answer": 3,
+    "answer_word": "accept",
+    "explanation_kr": "야기된 환경 피해에 대한 책임을 '받아들이다/인정하다' → accept responsibility! make/do/give는 responsibility와 어색.",
+    "explanation": "accept responsibility = formally acknowledge you are at fault.",
+    "kr": "회사는 야기된 환경 피해에 대한 책임을 받아들이기로 합의했다.",
+    "expressions": [
+      {
+        "expr": "accept responsibility for",
+        "meaning": "~에 대한 책임을 인정하다 (핵심 표현)"
+      },
+      {
+        "expr": "accept = take = assume responsibility",
+        "meaning": "책임을 인정하다!"
+      }
+    ]
+  },
+  {
+    "id": "VOCAB_595",
+    "category": "VOCAB",
+    "cat": "콜로케이션",
+    "word_count": 13,
+    "diff": "normal",
+    "sentence": "The organisation will _______ a partnership with leading universities to foster research.",
+    "choices": [
+      "(A) do",
+      "(B) make",
+      "(C) forge",
+      "(D) take"
+    ],
+    "answer": 2,
+    "answer_word": "forge",
+    "explanation_kr": "연구를 육성하기 위해 선도적인 대학들과 파트너십을 '구축하다' → forge a partnership! make/do/take는 partnership과 어색.",
+    "explanation": "forge a partnership = build a strong collaborative relationship.",
+    "kr": "조직은 연구를 육성하기 위해 선도적인 대학들과 파트너십을 구축할 것이다.",
+    "expressions": [
+      {
+        "expr": "forge a partnership",
+        "meaning": "파트너십을 구축하다 (핵심 콜로케이션)"
+      },
+      {
+        "expr": "forge = establish = build a partnership",
+        "meaning": "파트너십 구축!"
+      }
+    ]
+  },
+  {
+    "id": "VOCAB_596",
+    "category": "VOCAB",
+    "cat": "혼동어휘",
+    "word_count": 13,
+    "diff": "normal",
+    "sentence": "The final report will be _______ to the board for approval before the end of the month.",
+    "choices": [
+      "(A) prevented",
+      "(B) presented",
+      "(C) pretended",
+      "(D) preserved"
+    ],
+    "answer": 1,
+    "answer_word": "presented",
+    "explanation_kr": "이사회에 최종 보고서를 '제출하다/발표하다' → presented! prevented=방지됐다, pretended=가장됐다, preserved=보존됐다.",
+    "explanation": "Formally shown and given to the board → presented.",
+    "kr": "최종 보고서는 이달 말 전에 승인을 위해 이사회에 제출될 것이다.",
+    "expressions": [
+      {
+        "expr": "presented to the board",
+        "meaning": "이사회에 제출된"
+      },
+      {
+        "expr": "present = submit = deliver to the board",
+        "meaning": "이사회에 제출하다!"
+      }
+    ]
+  },
+  {
+    "id": "VOCAB_597",
+    "category": "VOCAB",
+    "cat": "혼동어휘",
+    "word_count": 13,
+    "diff": "normal",
+    "sentence": "The regulation requires that companies _______ the total quantity and _______ of materials used.",
+    "choices": [
+      "(A) quality / quantity",
+      "(B) quantity / quantity",
+      "(C) quantity / quality",
+      "(D) quality / quality"
+    ],
+    "answer": 2,
+    "answer_word": "quantity / quality",
+    "explanation_kr": "총 '수량(quantity)'과 '품질(quality)'을 보고하도록 요구 → quantity / quality! 문맥상 수량을 먼저, 품질을 나중에 언급.",
+    "explanation": "quantity = how much. quality = how good. The sentence lists total amount first, then standard.",
+    "kr": "규정은 회사들이 사용된 재료의 총 수량과 품질을 보고하도록 요구한다.",
+    "expressions": [
+      {
+        "expr": "quantity (수량) vs quality (품질)",
+        "meaning": "토익 빈출 혼동어휘!"
+      },
+      {
+        "expr": "total quantity and quality",
+        "meaning": "총 수량과 품질!"
+      }
+    ]
+  },
+  {
+    "id": "VOCAB_598",
+    "category": "VOCAB",
+    "cat": "혼동어휘",
+    "word_count": 13,
+    "diff": "normal",
+    "sentence": "The policy on data _______ must be reviewed annually to remain effective.",
+    "choices": [
+      "(A) accordance",
+      "(B) abidance",
+      "(C) adherence",
+      "(D) compliance"
+    ],
+    "answer": 3,
+    "answer_word": "compliance",
+    "explanation_kr": "compliance = '준수/규정 준수' (데이터 컴플라이언스가 더 자연스러운 비즈니스 표현)! adherence=준수(다소 격식체), accordance=일치.",
+    "explanation": "data compliance = the most common business expression for following data rules.",
+    "kr": "데이터 준수 정책은 효과적으로 유지하기 위해 매년 검토되어야 한다.",
+    "expressions": [
+      {
+        "expr": "data compliance",
+        "meaning": "데이터 준수 (핵심 비즈니스 표현)"
+      },
+      {
+        "expr": "compliance vs adherence",
+        "meaning": "compliance=준수(비즈니스), adherence=준수(격식)!"
+      }
+    ]
+  },
+  {
+    "id": "VOCAB_599",
+    "category": "VOCAB",
+    "cat": "혼동어휘",
+    "word_count": 13,
+    "diff": "normal",
+    "sentence": "The results are _______ with those observed in similar studies conducted elsewhere.",
+    "choices": [
+      "(A) insistent",
+      "(B) consistent",
+      "(C) persistent",
+      "(D) resistant"
+    ],
+    "answer": 1,
+    "answer_word": "consistent",
+    "explanation_kr": "consistent with = '~와 일치하는' (다른 곳에서의 연구 결과와 일치)! persistent=지속적인, resistant=저항하는, insistent=주장하는.",
+    "explanation": "consistent with = matching or in agreement with the other findings.",
+    "kr": "결과는 다른 곳에서 수행된 유사한 연구에서 관찰된 것들과 일치한다.",
+    "expressions": [
+      {
+        "expr": "consistent with other studies",
+        "meaning": "다른 연구와 일치하는"
+      },
+      {
+        "expr": "consistent with = in line with = matching",
+        "meaning": "일치하는!"
+      }
+    ]
+  },
+  {
+    "id": "VOCAB_600",
+    "category": "VOCAB",
+    "cat": "혼동어휘",
+    "word_count": 13,
+    "diff": "normal",
+    "sentence": "The CEO confirmed that the company's expansion plans were _______ to schedule.",
+    "choices": [
+      "(A) on course",
+      "(B) in accordance",
+      "(C) on track",
+      "(D) according"
+    ],
+    "answer": 2,
+    "answer_word": "on track",
+    "explanation_kr": "확장 계획이 '예정대로 순조롭게 진행 중인' → on track! 'according to schedule'은 가능하지만 on track이 가장 자연스러운 답.",
+    "explanation": "on track (to schedule) = progressing as planned — the most common TOEIC expression.",
+    "kr": "CEO는 회사의 확장 계획이 예정대로 순조롭게 진행 중이라고 확인했다.",
+    "expressions": [
+      {
+        "expr": "on track to schedule",
+        "meaning": "예정대로 순조로운"
+      },
+      {
+        "expr": "on track = on schedule = as planned",
+        "meaning": "예정대로!"
+      }
+    ]
+  },
+  {
+    "id": "VOCAB_601",
+    "category": "VOCAB",
+    "cat": "문맥어휘",
+    "word_count": 15,
+    "diff": "hard",
+    "sentence": "The firm plans to _______ its long-term growth through a series of strategic acquisitions.",
+    "choices": [
+      "(A) accommodate",
+      "(B) accumulate",
+      "(C) accomplish",
+      "(D) accelerate"
+    ],
+    "answer": 3,
+    "answer_word": "accelerate",
+    "explanation_kr": "일련의 전략적 인수를 통해 장기 성장을 '가속화하다' → accelerate! accommodate=수용하다, accomplish=달성하다, accumulate=축적하다.",
+    "explanation": "Speed up growth through acquisitions → accelerate.",
+    "kr": "회사는 일련의 전략적 인수를 통해 장기 성장을 가속화할 계획이다.",
+    "expressions": [
+      {
+        "expr": "accelerate growth",
+        "meaning": "성장을 가속화하다"
+      },
+      {
+        "expr": "accelerate = speed up = fast-track",
+        "meaning": "가속화하다!"
+      }
+    ]
+  },
+  {
+    "id": "VOCAB_602",
+    "category": "VOCAB",
+    "cat": "문맥어휘",
+    "word_count": 15,
+    "diff": "hard",
+    "sentence": "The company's stock price _______ following the announcement of better-than-expected quarterly earnings.",
+    "choices": [
+      "(A) substituted",
+      "(B) sustained",
+      "(C) surged",
+      "(D) submitted"
+    ],
+    "answer": 2,
+    "answer_word": "surged",
+    "explanation_kr": "예상보다 좋은 분기 실적 발표 후 주가가 '급등했다' → surged! submitted=제출됐다, sustained=유지됐다, substituted=대체됐다.",
+    "explanation": "Rose sharply and quickly → surged.",
+    "kr": "예상보다 좋은 분기 실적 발표 후 회사 주가가 급등했다.",
+    "expressions": [
+      {
+        "expr": "stock price surged",
+        "meaning": "주가가 급등했다"
+      },
+      {
+        "expr": "surge = soar = rocket = spike",
+        "meaning": "급등하다!"
+      }
+    ]
+  },
+  {
+    "id": "VOCAB_603",
+    "category": "VOCAB",
+    "cat": "문맥어휘",
+    "word_count": 15,
+    "diff": "hard",
+    "sentence": "The airline has been _______ to maintain passenger numbers during the slow tourism season.",
+    "choices": [
+      "(A) supplying",
+      "(B) suggesting",
+      "(C) supporting",
+      "(D) struggling"
+    ],
+    "answer": 3,
+    "answer_word": "struggling",
+    "explanation_kr": "관광 비수기 동안 승객 수를 유지하기 위해 '고군분투하고 있는' → struggling! supplying=공급하는, supporting=지원하는, suggesting=제안하는.",
+    "explanation": "Having difficulty maintaining passenger numbers → struggling.",
+    "kr": "항공사는 관광 비수기 동안 승객 수를 유지하기 위해 고군분투하고 있다.",
+    "expressions": [
+      {
+        "expr": "struggling to maintain",
+        "meaning": "유지하기 위해 고군분투하는"
+      },
+      {
+        "expr": "struggle = find it difficult = have trouble",
+        "meaning": "고군분투하다!"
+      }
+    ]
+  },
+  {
+    "id": "VOCAB_604",
+    "category": "VOCAB",
+    "cat": "문맥어휘",
+    "word_count": 15,
+    "diff": "hard",
+    "sentence": "The report _______ a number of areas where the organisation could improve its governance.",
+    "choices": [
+      "(A) handled",
+      "(B) highlighted",
+      "(C) harvested",
+      "(D) halted"
+    ],
+    "answer": 1,
+    "answer_word": "highlighted",
+    "explanation_kr": "조직이 거버넌스를 개선할 수 있는 여러 분야를 '강조했다' → highlighted! handled=다뤘다, halted=중단됐다, harvested=수확됐다.",
+    "explanation": "Drew attention to specific improvement areas → highlighted.",
+    "kr": "보고서는 조직이 거버넌스를 개선할 수 있는 여러 분야를 강조했다.",
+    "expressions": [
+      {
+        "expr": "highlighted areas for improvement",
+        "meaning": "개선 분야를 강조했다"
+      },
+      {
+        "expr": "highlight = identify = point to",
+        "meaning": "강조하다/지적하다!"
+      }
+    ]
+  },
+  {
+    "id": "VOCAB_605",
+    "category": "VOCAB",
+    "cat": "문맥어휘",
+    "word_count": 15,
+    "diff": "hard",
+    "sentence": "The departure of several key executives has left the company _______ in terms of leadership.",
+    "choices": [
+      "(A) variable",
+      "(B) voluntary",
+      "(C) valuable",
+      "(D) vulnerable"
+    ],
+    "answer": 3,
+    "answer_word": "vulnerable",
+    "explanation_kr": "여러 핵심 임원들의 퇴임이 회사를 리더십 측면에서 '취약하게' 만들었다 → vulnerable! variable=변동하는, valuable=귀중한, voluntary=자발적인.",
+    "explanation": "Exposed to risk due to the leadership gap → vulnerable.",
+    "kr": "여러 핵심 임원들의 퇴임은 회사를 리더십 측면에서 취약하게 만들었다.",
+    "expressions": [
+      {
+        "expr": "vulnerable in terms of leadership",
+        "meaning": "리더십 측면에서 취약한"
+      },
+      {
+        "expr": "vulnerable = exposed = at risk",
+        "meaning": "취약한!"
+      }
+    ]
+  },
+  {
+    "id": "VOCAB_606",
+    "category": "VOCAB",
+    "cat": "문맥어휘",
+    "word_count": 15,
+    "diff": "hard",
+    "sentence": "The new regulation aims to _______ anti-competitive behaviour in the technology sector.",
+    "choices": [
+      "(A) deter",
+      "(B) develop",
+      "(C) detect",
+      "(D) deliver"
+    ],
+    "answer": 0,
+    "answer_word": "deter",
+    "explanation_kr": "기술 부문의 반경쟁적 행동을 '억제하다' → deter! detect=감지하다, develop=개발하다, deliver=배달하다.",
+    "explanation": "Discourage and prevent anti-competitive behaviour → deter.",
+    "kr": "새로운 규정은 기술 부문의 반경쟁적 행동을 억제하는 것을 목표로 한다.",
+    "expressions": [
+      {
+        "expr": "deter anti-competitive behaviour",
+        "meaning": "반경쟁적 행동을 억제하다"
+      },
+      {
+        "expr": "deter = discourage = prevent",
+        "meaning": "억제하다!"
+      }
+    ]
+  },
+  {
+    "id": "VOCAB_607",
+    "category": "VOCAB",
+    "cat": "문맥어휘",
+    "word_count": 15,
+    "diff": "hard",
+    "sentence": "The CEO's _______ decision to restructure the company shocked many long-serving employees.",
+    "choices": [
+      "(A) constructive",
+      "(B) cooperative",
+      "(C) consistent",
+      "(D) controversial"
+    ],
+    "answer": 3,
+    "answer_word": "controversial",
+    "explanation_kr": "오랜 직원들을 충격에 빠뜨린 회사 구조조정에 대한 '논란이 많은' 결정 → controversial! consistent=일관된, constructive=건설적인, cooperative=협력적인.",
+    "explanation": "Causing disagreement and debate → controversial.",
+    "kr": "회사를 구조조정하려는 CEO의 논란이 많은 결정은 많은 오랜 직원들을 충격에 빠뜨렸다.",
+    "expressions": [
+      {
+        "expr": "controversial decision",
+        "meaning": "논란이 많은 결정"
+      },
+      {
+        "expr": "controversial = contentious = debatable",
+        "meaning": "논란이 많은!"
+      }
+    ]
+  },
+  {
+    "id": "VOCAB_608",
+    "category": "VOCAB",
+    "cat": "문맥어휘",
+    "word_count": 15,
+    "diff": "hard",
+    "sentence": "The firm's latest innovation has _______ a new standard for energy efficiency in the industry.",
+    "choices": [
+      "(A) served",
+      "(B) set",
+      "(C) sent",
+      "(D) seen"
+    ],
+    "answer": 1,
+    "answer_word": "set",
+    "explanation_kr": "업계 에너지 효율성의 새로운 기준을 '세웠다' → set a standard! sent=보냈다, seen=봤다, served=제공했다.",
+    "explanation": "Established a new benchmark for the industry → set.",
+    "kr": "회사의 최신 혁신은 업계의 에너지 효율성에 대한 새로운 기준을 세웠다.",
+    "expressions": [
+      {
+        "expr": "set a new standard",
+        "meaning": "새로운 기준을 세우다"
+      },
+      {
+        "expr": "set = establish = create a standard",
+        "meaning": "기준을 세우다!"
+      }
+    ]
+  },
+  {
+    "id": "VOCAB_609",
+    "category": "VOCAB",
+    "cat": "문맥어휘",
+    "word_count": 15,
+    "diff": "hard",
+    "sentence": "The strategy focuses on _______ organic growth rather than relying on costly acquisitions.",
+    "choices": [
+      "(A) doubting",
+      "(B) driving",
+      "(C) dropping",
+      "(D) discarding"
+    ],
+    "answer": 1,
+    "answer_word": "driving",
+    "explanation_kr": "비용이 많이 드는 인수에 의존하는 대신 유기적 성장을 '이끄는' → driving! dropping=떨어뜨리는, doubting=의심하는, discarding=버리는.",
+    "explanation": "Actively pushing and generating organic growth → driving.",
+    "kr": "전략은 비용이 많이 드는 인수에 의존하는 대신 유기적 성장을 이끄는 데 초점을 맞춘다.",
+    "expressions": [
+      {
+        "expr": "driving organic growth",
+        "meaning": "유기적 성장을 이끄는"
+      },
+      {
+        "expr": "drive = generate = fuel organic growth",
+        "meaning": "유기적 성장을 이끌다!"
+      }
+    ]
+  },
+  {
+    "id": "VOCAB_610",
+    "category": "VOCAB",
+    "cat": "문맥어휘",
+    "word_count": 15,
+    "diff": "hard",
+    "sentence": "The company has been _______ in its mission to become the most sustainable retailer globally.",
+    "choices": [
+      "(A) unofficial",
+      "(B) unwavering",
+      "(C) unrelated",
+      "(D) unlimited"
+    ],
+    "answer": 1,
+    "answer_word": "unwavering",
+    "explanation_kr": "글로벌 최고 지속 가능한 소매업체가 되려는 사명에서 '흔들리지 않는' → unwavering! unrelated=관련 없는, unlimited=무제한의, unofficial=비공식적인.",
+    "explanation": "Steady and completely committed → unwavering.",
+    "kr": "회사는 전 세계에서 가장 지속 가능한 소매업체가 되겠다는 사명에서 흔들리지 않아왔다.",
+    "expressions": [
+      {
+        "expr": "unwavering in its mission",
+        "meaning": "사명에서 흔들리지 않는"
+      },
+      {
+        "expr": "unwavering = steadfast = resolute",
+        "meaning": "흔들리지 않는!"
+      }
+    ]
+  },
+  {
+    "id": "VOCAB_611",
+    "category": "VOCAB",
+    "cat": "문맥어휘",
+    "word_count": 15,
+    "diff": "hard",
+    "sentence": "The board voted _______ to approve the proposed changes to executive remuneration.",
+    "choices": [
+      "(A) ultimately",
+      "(B) unanimously",
+      "(C) unexpectedly",
+      "(D) universally"
+    ],
+    "answer": 1,
+    "answer_word": "unanimously",
+    "explanation_kr": "임원 보수 변경 제안을 '만장일치로' 승인 → unanimously! unexpectedly=예상치 못하게, ultimately=궁극적으로, universally=보편적으로.",
+    "explanation": "All board members agreed without exception → unanimously.",
+    "kr": "이사회는 만장일치로 임원 보수 변경 제안을 승인하기로 투표했다.",
+    "expressions": [
+      {
+        "expr": "voted unanimously to approve",
+        "meaning": "만장일치로 승인에 투표했다"
+      },
+      {
+        "expr": "unanimously = by consensus = without dissent",
+        "meaning": "만장일치로!"
+      }
+    ]
+  },
+  {
+    "id": "VOCAB_612",
+    "category": "VOCAB",
+    "cat": "문맥어휘",
+    "word_count": 15,
+    "diff": "hard",
+    "sentence": "The analysis revealed that consumer confidence had _______ to its lowest point in five years.",
+    "choices": [
+      "(A) decided",
+      "(B) dropped",
+      "(C) declared",
+      "(D) delivered"
+    ],
+    "answer": 1,
+    "answer_word": "dropped",
+    "explanation_kr": "소비자 신뢰가 5년 만에 최저점으로 '떨어졌다' → dropped! delivered=배달됐다, decided=결정됐다, declared=선언됐다.",
+    "explanation": "Fell to the lowest level in five years → dropped.",
+    "kr": "분석에 따르면 소비자 신뢰가 5년 만에 최저점으로 떨어졌다.",
+    "expressions": [
+      {
+        "expr": "dropped to its lowest point",
+        "meaning": "최저점으로 떨어졌다"
+      },
+      {
+        "expr": "drop = fall = decline = plummet",
+        "meaning": "떨어지다!"
+      }
+    ]
+  },
+  {
+    "id": "VOCAB_613",
+    "category": "VOCAB",
+    "cat": "문맥어휘",
+    "word_count": 15,
+    "diff": "hard",
+    "sentence": "The company successfully _______ the threat of a hostile takeover by increasing its share buyback programme.",
+    "choices": [
+      "(A) fended off",
+      "(B) filled out",
+      "(C) fixed on",
+      "(D) fallen behind"
+    ],
+    "answer": 0,
+    "answer_word": "fended off",
+    "explanation_kr": "자사주 매입 프로그램 확대를 통해 적대적 인수 위협을 '막아냈다' → fended off! filled out=기재됐다, fixed on=고정됐다, fallen behind=뒤처졌다.",
+    "explanation": "Successfully defended against a hostile takeover → fended off.",
+    "kr": "회사는 자사주 매입 프로그램을 확대하여 적대적 인수 위협을 성공적으로 막아냈다.",
+    "expressions": [
+      {
+        "expr": "fend off a hostile takeover",
+        "meaning": "적대적 인수를 막아내다"
+      },
+      {
+        "expr": "fend off = ward off = defend against",
+        "meaning": "막아내다!"
+      }
+    ]
+  },
+  {
+    "id": "VOCAB_614",
+    "category": "VOCAB",
+    "cat": "문맥어휘",
+    "word_count": 15,
+    "diff": "hard",
+    "sentence": "The results _______ that the firm is well-positioned to capture new growth opportunities.",
+    "choices": [
+      "(A) suspend",
+      "(B) support",
+      "(C) substitute",
+      "(D) suggest"
+    ],
+    "answer": 3,
+    "answer_word": "suggest",
+    "explanation_kr": "결과가 회사가 새로운 성장 기회를 포착하기에 유리한 위치에 있다고 '시사한다' → suggest! support=지원하다, suspend=중단하다, substitute=대체하다.",
+    "explanation": "Indicate based on the data → suggest.",
+    "kr": "결과는 회사가 새로운 성장 기회를 포착하기에 유리한 위치에 있다고 시사한다.",
+    "expressions": [
+      {
+        "expr": "results suggest that",
+        "meaning": "결과가 ~을 시사한다"
+      },
+      {
+        "expr": "suggest = indicate = imply",
+        "meaning": "시사하다!"
+      }
+    ]
+  },
+  {
+    "id": "VOCAB_615",
+    "category": "VOCAB",
+    "cat": "문맥어휘",
+    "word_count": 15,
+    "diff": "hard",
+    "sentence": "The research institute _______ its commitment to developing treatments for rare diseases.",
+    "choices": [
+      "(A) retrieved",
+      "(B) retained",
+      "(C) reiterated",
+      "(D) released"
+    ],
+    "answer": 2,
+    "answer_word": "reiterated",
+    "explanation_kr": "희귀 질환 치료제 개발에 대한 헌신을 '거듭 강조했다' → reiterated! released=출시됐다, retained=유지됐다, retrieved=검색됐다.",
+    "explanation": "Repeated and reaffirmed its commitment → reiterated.",
+    "kr": "연구소는 희귀 질환 치료제 개발에 대한 헌신을 거듭 강조했다.",
+    "expressions": [
+      {
+        "expr": "reiterated its commitment",
+        "meaning": "헌신을 거듭 강조했다"
+      },
+      {
+        "expr": "reiterate = repeat = reaffirm",
+        "meaning": "거듭 강조하다!"
+      }
+    ]
+  },
+  {
+    "id": "VOCAB_616",
+    "category": "VOCAB",
+    "cat": "문맥어휘",
+    "word_count": 15,
+    "diff": "hard",
+    "sentence": "The company's transformation from a regional to a global player has been truly _______ in scale.",
+    "choices": [
+      "(A) reluctant",
+      "(B) regional",
+      "(C) relentless",
+      "(D) remarkable"
+    ],
+    "answer": 3,
+    "answer_word": "remarkable",
+    "explanation_kr": "지역 기업에서 글로벌 기업으로의 변화가 규모 면에서 '눈에 띄는/놀라운' → remarkable! reluctant=꺼리는, regional=지역의, relentless=끊임없는.",
+    "explanation": "Extraordinary and deserving of attention → remarkable.",
+    "kr": "지역 기업에서 글로벌 기업으로의 회사 변화는 규모 면에서 정말 눈에 띄었다.",
+    "expressions": [
+      {
+        "expr": "remarkable transformation",
+        "meaning": "눈에 띄는 변화"
+      },
+      {
+        "expr": "remarkable = extraordinary = impressive",
+        "meaning": "놀라운/눈에 띄는!"
+      }
+    ]
+  },
+  {
+    "id": "VOCAB_617",
+    "category": "VOCAB",
+    "cat": "문맥어휘",
+    "word_count": 15,
+    "diff": "hard",
+    "sentence": "The shareholders voted to _______ the proposed dividend payment due to poor annual results.",
+    "choices": [
+      "(A) withstand",
+      "(B) withhold",
+      "(C) withdraw",
+      "(D) witness"
+    ],
+    "answer": 1,
+    "answer_word": "withhold",
+    "explanation_kr": "저조한 연간 실적으로 인해 제안된 배당금 지급을 '보류하다' → withhold! withdraw=철회하다, withstand=견디다, witness=목격하다.",
+    "explanation": "Decide not to pay the dividend → withhold.",
+    "kr": "주주들은 저조한 연간 실적으로 인해 제안된 배당금 지급을 보류하기로 투표했다.",
+    "expressions": [
+      {
+        "expr": "withhold dividend payment",
+        "meaning": "배당금 지급을 보류하다"
+      },
+      {
+        "expr": "withhold = hold back = not pay",
+        "meaning": "보류하다!"
+      }
+    ]
+  },
+  {
+    "id": "VOCAB_618",
+    "category": "VOCAB",
+    "cat": "문맥어휘",
+    "word_count": 15,
+    "diff": "hard",
+    "sentence": "The new policy will _______ the amount of money managers can spend without prior approval.",
+    "choices": [
+      "(A) cancel",
+      "(B) cap",
+      "(C) cause",
+      "(D) capture"
+    ],
+    "answer": 1,
+    "answer_word": "cap",
+    "explanation_kr": "사전 승인 없이 매니저들이 지출할 수 있는 금액에 '상한선을 두다' → cap! cancel=취소하다, capture=포착하다, cause=야기하다.",
+    "explanation": "Set an upper limit on spending → cap.",
+    "kr": "새로운 정책은 매니저들이 사전 승인 없이 지출할 수 있는 금액에 상한선을 둘 것이다.",
+    "expressions": [
+      {
+        "expr": "cap spending at",
+        "meaning": "지출에 상한선을 두다"
+      },
+      {
+        "expr": "cap = limit = set a ceiling on",
+        "meaning": "상한선을 두다!"
+      }
+    ]
+  },
+  {
+    "id": "VOCAB_619",
+    "category": "VOCAB",
+    "cat": "문맥어휘",
+    "word_count": 15,
+    "diff": "hard",
+    "sentence": "The group's combined _______ now exceeds five billion dollars following the recent merger.",
+    "choices": [
+      "(A) transport",
+      "(B) transaction",
+      "(C) transfer",
+      "(D) turnover"
+    ],
+    "answer": 3,
+    "answer_word": "turnover",
+    "explanation_kr": "최근 합병 후 그룹의 합산 '매출액'이 50억 달러를 초과 → turnover! transfer=이전, transaction=거래, transport=운송.",
+    "explanation": "Total combined sales/revenue → turnover.",
+    "kr": "최근 합병 이후 그룹의 합산 매출액은 이제 50억 달러를 초과한다.",
+    "expressions": [
+      {
+        "expr": "combined turnover",
+        "meaning": "합산 매출액"
+      },
+      {
+        "expr": "turnover = revenue = sales",
+        "meaning": "매출액!"
+      }
+    ]
+  },
+  {
+    "id": "VOCAB_620",
+    "category": "VOCAB",
+    "cat": "문맥어휘",
+    "word_count": 15,
+    "diff": "hard",
+    "sentence": "The company's strong performance _______ years of careful investment in technology and talent.",
+    "choices": [
+      "(A) replaces",
+      "(B) releases",
+      "(C) reflects",
+      "(D) refuses"
+    ],
+    "answer": 2,
+    "answer_word": "reflects",
+    "explanation_kr": "강한 성과가 기술과 인재에 대한 수년간의 신중한 투자를 '반영한다' → reflects! refuses=거부한다, releases=출시한다, replaces=교체한다.",
+    "explanation": "Shows the result of careful investment → reflects.",
+    "kr": "회사의 강한 성과는 기술과 인재에 대한 수년간의 신중한 투자를 반영한다.",
+    "expressions": [
+      {
+        "expr": "reflects years of investment",
+        "meaning": "수년간의 투자를 반영한다"
+      },
+      {
+        "expr": "reflect = show = demonstrate",
+        "meaning": "반영하다!"
+      }
+    ]
+  },
+  {
+    "id": "VOCAB_621",
+    "category": "VOCAB",
+    "cat": "콜로케이션",
+    "word_count": 15,
+    "diff": "hard",
+    "sentence": "The company will _______ synergies from combining the two businesses under one structure.",
+    "choices": [
+      "(A) do",
+      "(B) extract",
+      "(C) make",
+      "(D) take"
+    ],
+    "answer": 1,
+    "answer_word": "extract",
+    "explanation_kr": "두 사업을 하나의 구조로 통합함으로써 시너지를 '추출하다' → extract synergies! generate synergies도 가능하나 extract가 핵심 M&A 표현.",
+    "explanation": "extract synergies = obtain the benefits of combining two businesses.",
+    "kr": "회사는 두 사업을 하나의 구조로 통합함으로써 시너지를 추출할 것이다.",
+    "expressions": [
+      {
+        "expr": "extract synergies",
+        "meaning": "시너지를 추출하다 (핵심 M&A 표현)"
+      },
+      {
+        "expr": "extract = generate = realise synergies",
+        "meaning": "시너지를 추출/실현하다!"
+      }
+    ]
+  },
+  {
+    "id": "VOCAB_622",
+    "category": "VOCAB",
+    "cat": "콜로케이션",
+    "word_count": 15,
+    "diff": "hard",
+    "sentence": "The firm needs to _______ a clear distinction between its premium and standard product lines.",
+    "choices": [
+      "(A) make",
+      "(B) take",
+      "(C) do",
+      "(D) draw"
+    ],
+    "answer": 3,
+    "answer_word": "draw",
+    "explanation_kr": "프리미엄과 표준 제품 라인 사이의 명확한 구분을 '긋다' → draw a distinction! make/do/take는 distinction과 어색.",
+    "explanation": "draw a distinction = clearly separate and define two things.",
+    "kr": "회사는 프리미엄 및 표준 제품 라인 사이에 명확한 구분을 지을 필요가 있다.",
+    "expressions": [
+      {
+        "expr": "draw a distinction between",
+        "meaning": "~사이의 구분을 긋다 (핵심 콜로케이션)"
+      },
+      {
+        "expr": "draw = make = create a distinction",
+        "meaning": "구분을 짓다!"
+      }
+    ]
+  },
+  {
+    "id": "VOCAB_623",
+    "category": "VOCAB",
+    "cat": "콜로케이션",
+    "word_count": 15,
+    "diff": "hard",
+    "sentence": "The research institute secured funding to _______ a comprehensive study into ageing populations.",
+    "choices": [
+      "(A) do",
+      "(B) make",
+      "(C) undertake",
+      "(D) take"
+    ],
+    "answer": 2,
+    "answer_word": "undertake",
+    "explanation_kr": "고령화 인구에 대한 포괄적인 연구를 '착수하다' → undertake a study! make/do/take는 study와 격식체에서 어색.",
+    "explanation": "undertake a study = formally begin and carry out research.",
+    "kr": "연구소는 고령화 인구에 대한 포괄적인 연구를 착수하기 위한 자금을 확보했다.",
+    "expressions": [
+      {
+        "expr": "undertake a comprehensive study",
+        "meaning": "포괄적인 연구를 착수하다"
+      },
+      {
+        "expr": "undertake = conduct = carry out a study",
+        "meaning": "연구를 착수/수행하다!"
+      }
+    ]
+  },
+  {
+    "id": "VOCAB_624",
+    "category": "VOCAB",
+    "cat": "콜로케이션",
+    "word_count": 15,
+    "diff": "hard",
+    "sentence": "The company is _______ a renewed focus on customer experience as a key differentiator.",
+    "choices": [
+      "(A) doing",
+      "(B) making",
+      "(C) placing",
+      "(D) taking"
+    ],
+    "answer": 2,
+    "answer_word": "placing",
+    "explanation_kr": "고객 경험에 새로운 '초점을 두다' → placing emphasis/focus on! making/doing/taking은 focus on과 어색.",
+    "explanation": "placing a focus on = giving special attention and priority to.",
+    "kr": "회사는 주요 차별화 요소로 고객 경험에 새로운 초점을 두고 있다.",
+    "expressions": [
+      {
+        "expr": "placing a focus on",
+        "meaning": "~에 초점을 두다 (핵심 콜로케이션)"
+      },
+      {
+        "expr": "place emphasis/focus on = prioritise",
+        "meaning": "~에 초점/강조를 두다!"
+      }
+    ]
+  },
+  {
+    "id": "VOCAB_625",
+    "category": "VOCAB",
+    "cat": "혼동어휘",
+    "word_count": 15,
+    "diff": "hard",
+    "sentence": "The board approved the _______ plan, which is subject to regulatory clearance.",
+    "choices": [
+      "(A) proposition",
+      "(B) proposal",
+      "(C) proposed",
+      "(D) proposal"
+    ],
+    "answer": 2,
+    "answer_word": "proposed",
+    "explanation_kr": "proposed = '제안된' (형용사, plan을 수식)! proposal = '제안서' (명사), proposition = '제안/명제' (명사). 빈칸은 plan을 수식하는 형용사 → proposed!",
+    "explanation": "proposed (adjective) = put forward for consideration. proposal (noun) = the document or idea itself.",
+    "kr": "이사회는 규제 승인이 필요한 제안된 계획을 승인했다.",
+    "expressions": [
+      {
+        "expr": "proposed (제안된, 형용사) vs proposal (제안서, 명사)",
+        "meaning": "토익 핵심 품사 혼동!"
+      },
+      {
+        "expr": "the proposed plan",
+        "meaning": "제안된 계획 (형용사 사용)!"
+      }
+    ]
+  }
+]

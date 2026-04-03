@@ -1,0 +1,3627 @@
+[
+  {
+    "id": "LINK_501",
+    "category": "LINK",
+    "cat": "전치사",
+    "word_count": 10,
+    "diff": "easy",
+    "sentence": "Please place your order _______ calling the front desk.",
+    "choices": [
+      "(A) however",
+      "(B) although",
+      "(C) whereas",
+      "(D) by"
+    ],
+    "answer": 3,
+    "answer_word": "by",
+    "explanation_kr": "빈칸 뒤 동명사구 → 전치사! 수단 → by + 동명사 = '~함으로써'!",
+    "explanation": "동명사구 앞 → 전치사. 수단 의미 → by.",
+    "kr": "프런트 데스크에 전화함으로써 주문해 주세요.",
+    "expressions": [
+      {
+        "expr": "by + 동명사",
+        "meaning": "~함으로써 (수단 전치사)"
+      },
+      {
+        "expr": "by calling/pressing/using",
+        "meaning": "수단 표현에 자주!"
+      }
+    ]
+  },
+  {
+    "id": "LINK_502",
+    "category": "LINK",
+    "cat": "전치사",
+    "word_count": 10,
+    "diff": "easy",
+    "sentence": "The café is open every day _______ Mondays.",
+    "choices": [
+      "(A) whereas",
+      "(B) although",
+      "(C) except",
+      "(D) however"
+    ],
+    "answer": 2,
+    "answer_word": "except",
+    "explanation_kr": "빈칸 뒤 명사 → 전치사! 예외 → except = '~을 제외하고'!",
+    "explanation": "명사 앞 → 전치사. 예외 의미 → except.",
+    "kr": "카페는 월요일을 제외하고 매일 열려 있다.",
+    "expressions": [
+      {
+        "expr": "except + 명사",
+        "meaning": "~을 제외하고 (예외 전치사)"
+      },
+      {
+        "expr": "except Mondays/holidays",
+        "meaning": "특정 날 제외!"
+      }
+    ]
+  },
+  {
+    "id": "LINK_503",
+    "category": "LINK",
+    "cat": "전치사",
+    "word_count": 10,
+    "diff": "easy",
+    "sentence": "The hotel offers a complimentary breakfast _______ all guests.",
+    "choices": [
+      "(A) however",
+      "(B) although",
+      "(C) whereas",
+      "(D) for"
+    ],
+    "answer": 3,
+    "answer_word": "for",
+    "explanation_kr": "빈칸 뒤 명사구 → 전치사! 대상 → for = '~을 위해'!",
+    "explanation": "명사구 앞 → 전치사. 대상 의미 → for.",
+    "kr": "호텔은 모든 투숙객을 위해 무료 조식을 제공한다.",
+    "expressions": [
+      {
+        "expr": "for + 명사구",
+        "meaning": "~을 위해, ~에게 (대상 전치사)"
+      },
+      {
+        "expr": "complimentary for all guests",
+        "meaning": "모든 투숙객 무료!"
+      }
+    ]
+  },
+  {
+    "id": "LINK_504",
+    "category": "LINK",
+    "cat": "전치사",
+    "word_count": 10,
+    "diff": "easy",
+    "sentence": "The package will be delivered _______ Thursday morning.",
+    "choices": [
+      "(A) although",
+      "(B) by",
+      "(C) whereas",
+      "(D) however"
+    ],
+    "answer": 1,
+    "answer_word": "by",
+    "explanation_kr": "빈칸 뒤 시간 명사구 → 전치사! 기한 → by = '~까지'!",
+    "explanation": "시간 명사구 앞 → 전치사. 기한 의미 → by.",
+    "kr": "패키지는 목요일 아침까지 배달될 것이다.",
+    "expressions": [
+      {
+        "expr": "by + 시간",
+        "meaning": "~까지 (기한 전치사)"
+      },
+      {
+        "expr": "delivered by Thursday",
+        "meaning": "목요일까지 배달!"
+      }
+    ]
+  },
+  {
+    "id": "LINK_505",
+    "category": "LINK",
+    "cat": "전치사",
+    "word_count": 10,
+    "diff": "easy",
+    "sentence": "The conference room is available _______ 9 a.m. and 5 p.m.",
+    "choices": [
+      "(A) between",
+      "(B) although",
+      "(C) however",
+      "(D) whereas"
+    ],
+    "answer": 0,
+    "answer_word": "between",
+    "explanation_kr": "빈칸 뒤 두 시간 → 전치사! 범위(둘 사이) → between = '~ 사이에'!",
+    "explanation": "두 시간 앞 → 전치사. 범위 의미 → between.",
+    "kr": "회의실은 오전 9시와 오후 5시 사이에 이용 가능하다.",
+    "expressions": [
+      {
+        "expr": "between A and B",
+        "meaning": "A와 B 사이에 (전치사)"
+      },
+      {
+        "expr": "between 9 a.m. and 5 p.m.",
+        "meaning": "시간 범위!"
+      }
+    ]
+  },
+  {
+    "id": "LINK_506",
+    "category": "LINK",
+    "cat": "전치사",
+    "word_count": 10,
+    "diff": "easy",
+    "sentence": "The manager left a note _______ the whiteboard for the team.",
+    "choices": [
+      "(A) however",
+      "(B) whereas",
+      "(C) on",
+      "(D) although"
+    ],
+    "answer": 2,
+    "answer_word": "on",
+    "explanation_kr": "빈칸 뒤 명사구 → 전치사! 위치(표면) → on = '~위에'!",
+    "explanation": "명사구 앞 → 전치사. 위치 의미 → on.",
+    "kr": "매니저는 팀을 위해 화이트보드에 메모를 남겼다.",
+    "expressions": [
+      {
+        "expr": "on + 명사구",
+        "meaning": "~위에, ~에 (위치 전치사)"
+      },
+      {
+        "expr": "leave a note on",
+        "meaning": "~에 메모를 남기다!"
+      }
+    ]
+  },
+  {
+    "id": "LINK_507",
+    "category": "LINK",
+    "cat": "전치사",
+    "word_count": 10,
+    "diff": "easy",
+    "sentence": "Reservations must be made _______ least three days in advance.",
+    "choices": [
+      "(A) although",
+      "(B) whereas",
+      "(C) at",
+      "(D) however"
+    ],
+    "answer": 2,
+    "answer_word": "at",
+    "explanation_kr": "at least = '적어도' 관용 표현!",
+    "explanation": "관용 전치사구 → at least.",
+    "kr": "예약은 적어도 3일 전에 이루어져야 한다.",
+    "expressions": [
+      {
+        "expr": "at least + 수량",
+        "meaning": "적어도 (관용 전치사구)"
+      },
+      {
+        "expr": "at least three days",
+        "meaning": "최소 3일!"
+      }
+    ]
+  },
+  {
+    "id": "LINK_508",
+    "category": "LINK",
+    "cat": "전치사",
+    "word_count": 10,
+    "diff": "easy",
+    "sentence": "The restaurant will be closed _______ renovation next week.",
+    "choices": [
+      "(A) although",
+      "(B) for",
+      "(C) however",
+      "(D) whereas"
+    ],
+    "answer": 1,
+    "answer_word": "for",
+    "explanation_kr": "빈칸 뒤 명사구 → 전치사! 이유/목적 → for = '~때문에'!",
+    "explanation": "명사구 앞 → 전치사. 이유 의미 → for.",
+    "kr": "레스토랑은 다음 주 리노베이션으로 인해 문을 닫을 것이다.",
+    "expressions": [
+      {
+        "expr": "closed for + 명사",
+        "meaning": "~때문에 폐점"
+      },
+      {
+        "expr": "closed for renovation/repairs",
+        "meaning": "공사로 인한 휴업!"
+      }
+    ]
+  },
+  {
+    "id": "LINK_509",
+    "category": "LINK",
+    "cat": "전치사",
+    "word_count": 10,
+    "diff": "easy",
+    "sentence": "The discount applies to orders _______ fifty dollars or more.",
+    "choices": [
+      "(A) of",
+      "(B) however",
+      "(C) whereas",
+      "(D) although"
+    ],
+    "answer": 0,
+    "answer_word": "of",
+    "explanation_kr": "orders of ~ = '~에 달하는 주문' 전치사구!",
+    "explanation": "명사구 앞 → 전치사. 수량 의미 → of.",
+    "kr": "할인은 50달러 이상의 주문에 적용된다.",
+    "expressions": [
+      {
+        "expr": "orders of + 금액",
+        "meaning": "~에 달하는 주문"
+      },
+      {
+        "expr": "of fifty dollars or more",
+        "meaning": "50달러 이상!"
+      }
+    ]
+  },
+  {
+    "id": "LINK_510",
+    "category": "LINK",
+    "cat": "전치사",
+    "word_count": 11,
+    "diff": "easy",
+    "sentence": "The staff meeting will be held _______ the main conference room.",
+    "choices": [
+      "(A) although",
+      "(B) however",
+      "(C) in",
+      "(D) whereas"
+    ],
+    "answer": 2,
+    "answer_word": "in",
+    "explanation_kr": "빈칸 뒤 장소 명사구 → 전치사! 위치(실내) → in = '~안에서'!",
+    "explanation": "장소 명사구 앞 → 전치사. 실내 위치 → in.",
+    "kr": "직원 회의는 메인 회의실에서 개최될 것이다.",
+    "expressions": [
+      {
+        "expr": "in + 장소",
+        "meaning": "~안에서, ~에서 (위치 전치사)"
+      },
+      {
+        "expr": "held in the conference room",
+        "meaning": "회의실에서 개최!"
+      }
+    ]
+  },
+  {
+    "id": "LINK_511",
+    "category": "LINK",
+    "cat": "전치사",
+    "word_count": 11,
+    "diff": "easy",
+    "sentence": "Guests may check in _______ 3 p.m. on their arrival day.",
+    "choices": [
+      "(A) although",
+      "(B) however",
+      "(C) whereas",
+      "(D) from"
+    ],
+    "answer": 3,
+    "answer_word": "from",
+    "explanation_kr": "빈칸 뒤 시간 → 전치사! 시작 시점 → from = '~부터'!",
+    "explanation": "시간 앞 → 전치사. 시작 시점 의미 → from.",
+    "kr": "투숙객은 도착 당일 오후 3시부터 체크인할 수 있다.",
+    "expressions": [
+      {
+        "expr": "from + 시간",
+        "meaning": "~부터 (시작 시점 전치사)"
+      },
+      {
+        "expr": "check in from 3 p.m.",
+        "meaning": "오후 3시부터!"
+      }
+    ]
+  },
+  {
+    "id": "LINK_512",
+    "category": "LINK",
+    "cat": "전치사",
+    "word_count": 10,
+    "diff": "easy",
+    "sentence": "The lunch special is available _______ noon until 2 p.m.",
+    "choices": [
+      "(A) from",
+      "(B) whereas",
+      "(C) however",
+      "(D) although"
+    ],
+    "answer": 0,
+    "answer_word": "from",
+    "explanation_kr": "from ~ until ~ = '~부터 ~까지' 시간 범위!",
+    "explanation": "시간 범위 앞 → 전치사. 시간 범위 → from.",
+    "kr": "런치 스페셜은 정오부터 오후 2시까지 이용 가능하다.",
+    "expressions": [
+      {
+        "expr": "from A until B",
+        "meaning": "A부터 B까지 (시간 범위)"
+      },
+      {
+        "expr": "from noon until 2 p.m.",
+        "meaning": "정오~오후 2시!"
+      }
+    ]
+  },
+  {
+    "id": "LINK_513",
+    "category": "LINK",
+    "cat": "전치사",
+    "word_count": 11,
+    "diff": "easy",
+    "sentence": "The event venue is located _______ the city center.",
+    "choices": [
+      "(A) whereas",
+      "(B) although",
+      "(C) however",
+      "(D) near"
+    ],
+    "answer": 3,
+    "answer_word": "near",
+    "explanation_kr": "빈칸 뒤 장소 명사구 → 전치사! 근접 위치 → near = '~근처에'!",
+    "explanation": "장소 명사구 앞 → 전치사. 근접 의미 → near.",
+    "kr": "행사 장소는 도심 근처에 위치해 있다.",
+    "expressions": [
+      {
+        "expr": "near + 장소",
+        "meaning": "~근처에 (위치 전치사)"
+      },
+      {
+        "expr": "located near the city center",
+        "meaning": "도심 근처 위치!"
+      }
+    ]
+  },
+  {
+    "id": "LINK_514",
+    "category": "LINK",
+    "cat": "전치사",
+    "word_count": 10,
+    "diff": "easy",
+    "sentence": "Please return the form _______ the end of the week.",
+    "choices": [
+      "(A) by",
+      "(B) whereas",
+      "(C) however",
+      "(D) although"
+    ],
+    "answer": 0,
+    "answer_word": "by",
+    "explanation_kr": "빈칸 뒤 시간 명사구 → 전치사! 기한 → by = '~까지'!",
+    "explanation": "시간 명사구 앞 → 전치사. 기한 의미 → by.",
+    "kr": "이번 주말까지 양식을 반환해 주세요.",
+    "expressions": [
+      {
+        "expr": "by + 시간",
+        "meaning": "~까지 (기한 전치사)"
+      },
+      {
+        "expr": "return by the end of the week",
+        "meaning": "이번 주말까지!"
+      }
+    ]
+  },
+  {
+    "id": "LINK_515",
+    "category": "LINK",
+    "cat": "전치사",
+    "word_count": 10,
+    "diff": "easy",
+    "sentence": "The training session will last _______ approximately two hours.",
+    "choices": [
+      "(A) for",
+      "(B) whereas",
+      "(C) although",
+      "(D) however"
+    ],
+    "answer": 0,
+    "answer_word": "for",
+    "explanation_kr": "빈칸 뒤 기간 → 전치사! 기간 → for = '~동안'!",
+    "explanation": "기간 앞 → 전치사. 기간 의미 → for.",
+    "kr": "교육 세션은 약 두 시간 동안 진행될 것이다.",
+    "expressions": [
+      {
+        "expr": "for + 기간",
+        "meaning": "~동안 (기간 전치사)"
+      },
+      {
+        "expr": "last for two hours",
+        "meaning": "두 시간 동안 지속!"
+      }
+    ]
+  },
+  {
+    "id": "LINK_516",
+    "category": "LINK",
+    "cat": "전치사",
+    "word_count": 10,
+    "diff": "easy",
+    "sentence": "The welcome kit will be sent _______ email upon registration.",
+    "choices": [
+      "(A) however",
+      "(B) whereas",
+      "(C) although",
+      "(D) via"
+    ],
+    "answer": 3,
+    "answer_word": "via",
+    "explanation_kr": "빈칸 뒤 수단 명사 → 전치사! 수단 → via = '~을 통해'!",
+    "explanation": "수단 명사 앞 → 전치사. 수단 의미 → via.",
+    "kr": "등록 시 환영 키트가 이메일을 통해 발송될 것이다.",
+    "expressions": [
+      {
+        "expr": "via + 수단",
+        "meaning": "~을 통해 (수단 전치사)"
+      },
+      {
+        "expr": "sent via email",
+        "meaning": "이메일을 통해 발송!"
+      }
+    ]
+  },
+  {
+    "id": "LINK_517",
+    "category": "LINK",
+    "cat": "전치사",
+    "word_count": 10,
+    "diff": "easy",
+    "sentence": "The new menu items are available _______ all branches.",
+    "choices": [
+      "(A) however",
+      "(B) at",
+      "(C) whereas",
+      "(D) although"
+    ],
+    "answer": 1,
+    "answer_word": "at",
+    "explanation_kr": "빈칸 뒤 장소 명사구 → 전치사! 위치(지점) → at = '~에서'!",
+    "explanation": "장소 명사구 앞 → 전치사. 위치 의미 → at.",
+    "kr": "새로운 메뉴 항목은 모든 지점에서 이용 가능하다.",
+    "expressions": [
+      {
+        "expr": "at + 장소",
+        "meaning": "~에서 (위치 전치사)"
+      },
+      {
+        "expr": "available at all branches",
+        "meaning": "전 지점 이용 가능!"
+      }
+    ]
+  },
+  {
+    "id": "LINK_518",
+    "category": "LINK",
+    "cat": "전치사",
+    "word_count": 11,
+    "diff": "easy",
+    "sentence": "The seminar seats are filled _______ a first-come basis.",
+    "choices": [
+      "(A) whereas",
+      "(B) although",
+      "(C) however",
+      "(D) on"
+    ],
+    "answer": 3,
+    "answer_word": "on",
+    "explanation_kr": "on a first-come basis = '선착순으로' 관용 전치사구!",
+    "explanation": "관용 전치사구 → on a first-come basis.",
+    "kr": "세미나 좌석은 선착순으로 채워진다.",
+    "expressions": [
+      {
+        "expr": "on a first-come basis",
+        "meaning": "선착순으로 (관용구)"
+      },
+      {
+        "expr": "on a + 명사 + basis",
+        "meaning": "~기준으로!"
+      }
+    ]
+  },
+  {
+    "id": "LINK_519",
+    "category": "LINK",
+    "cat": "전치사",
+    "word_count": 10,
+    "diff": "easy",
+    "sentence": "The sales figures include data _______ all regions.",
+    "choices": [
+      "(A) however",
+      "(B) although",
+      "(C) whereas",
+      "(D) from"
+    ],
+    "answer": 3,
+    "answer_word": "from",
+    "explanation_kr": "빈칸 뒤 명사구 → 전치사! 출처/범위 → from = '~로부터'!",
+    "explanation": "명사구 앞 → 전치사. 출처/범위 의미 → from.",
+    "kr": "매출 수치에는 모든 지역의 데이터가 포함되어 있다.",
+    "expressions": [
+      {
+        "expr": "from + 출처",
+        "meaning": "~로부터 (출처 전치사)"
+      },
+      {
+        "expr": "data from all regions",
+        "meaning": "전 지역 데이터!"
+      }
+    ]
+  },
+  {
+    "id": "LINK_520",
+    "category": "LINK",
+    "cat": "전치사",
+    "word_count": 10,
+    "diff": "easy",
+    "sentence": "The shipment was delayed _______ heavy snow.",
+    "choices": [
+      "(A) due to",
+      "(B) although",
+      "(C) however",
+      "(D) whereas"
+    ],
+    "answer": 0,
+    "answer_word": "due to",
+    "explanation_kr": "빈칸 뒤 명사구 → 전치사! 이유 → due to = '~때문에'!",
+    "explanation": "명사구 앞 → 전치사. 이유 의미 → due to.",
+    "kr": "폭설 때문에 배송이 지연되었다.",
+    "expressions": [
+      {
+        "expr": "due to + 명사구",
+        "meaning": "~때문에 (이유 전치사)"
+      },
+      {
+        "expr": "delayed due to snow",
+        "meaning": "눈으로 인한 지연!"
+      }
+    ]
+  },
+  {
+    "id": "LINK_521",
+    "category": "LINK",
+    "cat": "전치사",
+    "word_count": 10,
+    "diff": "easy",
+    "sentence": "The meeting will be held _______ the third floor.",
+    "choices": [
+      "(A) on",
+      "(B) however",
+      "(C) although",
+      "(D) whereas"
+    ],
+    "answer": 0,
+    "answer_word": "on",
+    "explanation_kr": "빈칸 뒤 층 명사구 → 전치사! 층 위치 → on = '~층에'!",
+    "explanation": "층 명사구 앞 → 전치사. 층 위치 → on.",
+    "kr": "회의는 3층에서 개최될 것이다.",
+    "expressions": [
+      {
+        "expr": "on the + 서수 + floor",
+        "meaning": "~층에 (위치 전치사)"
+      },
+      {
+        "expr": "on the third floor",
+        "meaning": "3층에!"
+      }
+    ]
+  },
+  {
+    "id": "LINK_522",
+    "category": "LINK",
+    "cat": "전치사",
+    "word_count": 10,
+    "diff": "easy",
+    "sentence": "Vouchers are redeemable _______ any participating outlet.",
+    "choices": [
+      "(A) although",
+      "(B) at",
+      "(C) however",
+      "(D) whereas"
+    ],
+    "answer": 1,
+    "answer_word": "at",
+    "explanation_kr": "빈칸 뒤 장소 명사구 → 전치사! 위치 → at = '~에서'!",
+    "explanation": "장소 명사구 앞 → 전치사. 위치 의미 → at.",
+    "kr": "바우처는 참여하는 모든 매장에서 사용 가능하다.",
+    "expressions": [
+      {
+        "expr": "redeemable at + 장소",
+        "meaning": "~에서 사용 가능한"
+      },
+      {
+        "expr": "at any participating outlet",
+        "meaning": "참여 매장에서!"
+      }
+    ]
+  },
+  {
+    "id": "LINK_523",
+    "category": "LINK",
+    "cat": "전치사",
+    "word_count": 10,
+    "diff": "easy",
+    "sentence": "The promotional offer is valid _______ the end of this month.",
+    "choices": [
+      "(A) however",
+      "(B) whereas",
+      "(C) although",
+      "(D) until"
+    ],
+    "answer": 3,
+    "answer_word": "until",
+    "explanation_kr": "빈칸 뒤 시간 명사구 → 전치사! 기한 한계 → until = '~까지'!",
+    "explanation": "시간 명사구 앞 → 전치사. 기한 의미 → until.",
+    "kr": "프로모션 제안은 이달 말까지 유효하다.",
+    "expressions": [
+      {
+        "expr": "valid until + 시간",
+        "meaning": "~까지 유효한"
+      },
+      {
+        "expr": "until the end of this month",
+        "meaning": "이달 말까지!"
+      }
+    ]
+  },
+  {
+    "id": "LINK_524",
+    "category": "LINK",
+    "cat": "전치사",
+    "word_count": 11,
+    "diff": "easy",
+    "sentence": "The banquet hall can accommodate _______ three hundred guests.",
+    "choices": [
+      "(A) up to",
+      "(B) however",
+      "(C) whereas",
+      "(D) although"
+    ],
+    "answer": 0,
+    "answer_word": "up to",
+    "explanation_kr": "up to = '최대 ~까지' 수량 전치사구!",
+    "explanation": "수량 앞 → 전치사구. 최대 수량 의미 → up to.",
+    "kr": "연회장은 최대 300명의 투숙객을 수용할 수 있다.",
+    "expressions": [
+      {
+        "expr": "up to + 수량",
+        "meaning": "최대 ~까지 (수량 전치사구)"
+      },
+      {
+        "expr": "accommodate up to 300",
+        "meaning": "최대 300명 수용!"
+      }
+    ]
+  },
+  {
+    "id": "LINK_525",
+    "category": "LINK",
+    "cat": "전치사",
+    "word_count": 10,
+    "diff": "easy",
+    "sentence": "The sales report should be submitted _______ Friday afternoon.",
+    "choices": [
+      "(A) although",
+      "(B) however",
+      "(C) by",
+      "(D) whereas"
+    ],
+    "answer": 2,
+    "answer_word": "by",
+    "explanation_kr": "빈칸 뒤 시간 → 전치사! 기한 → by = '~까지'!",
+    "explanation": "시간 앞 → 전치사. 기한 의미 → by.",
+    "kr": "영업 보고서는 금요일 오후까지 제출되어야 한다.",
+    "expressions": [
+      {
+        "expr": "by + 시간",
+        "meaning": "~까지 (기한 전치사)"
+      },
+      {
+        "expr": "submitted by Friday",
+        "meaning": "금요일까지 제출!"
+      }
+    ]
+  },
+  {
+    "id": "LINK_526",
+    "category": "LINK",
+    "cat": "전치사",
+    "word_count": 10,
+    "diff": "easy",
+    "sentence": "The feedback form is available _______ the reception desk.",
+    "choices": [
+      "(A) whereas",
+      "(B) however",
+      "(C) at",
+      "(D) although"
+    ],
+    "answer": 2,
+    "answer_word": "at",
+    "explanation_kr": "빈칸 뒤 장소 명사구 → 전치사! 위치 → at = '~에서'!",
+    "explanation": "장소 명사구 앞 → 전치사. 위치 의미 → at.",
+    "kr": "피드백 양식은 리셉션 데스크에서 이용 가능하다.",
+    "expressions": [
+      {
+        "expr": "at + 장소",
+        "meaning": "~에서 (위치 전치사)"
+      },
+      {
+        "expr": "available at the reception desk",
+        "meaning": "리셉션에서 이용!"
+      }
+    ]
+  },
+  {
+    "id": "LINK_527",
+    "category": "LINK",
+    "cat": "전치사",
+    "word_count": 10,
+    "diff": "easy",
+    "sentence": "The new policy covers all staff _______ management level.",
+    "choices": [
+      "(A) whereas",
+      "(B) although",
+      "(C) however",
+      "(D) regardless of"
+    ],
+    "answer": 3,
+    "answer_word": "regardless of",
+    "explanation_kr": "빈칸 뒤 명사구 → 전치사! 무관 → regardless of = '~에 상관없이'!",
+    "explanation": "명사구 앞 → 전치사. 무관 의미 → regardless of.",
+    "kr": "새로운 정책은 관리 수준에 상관없이 모든 직원에게 적용된다.",
+    "expressions": [
+      {
+        "expr": "regardless of + 명사",
+        "meaning": "~에 상관없이"
+      },
+      {
+        "expr": "regardless of level",
+        "meaning": "직급 상관없이!"
+      }
+    ]
+  },
+  {
+    "id": "LINK_528",
+    "category": "LINK",
+    "cat": "전치사",
+    "word_count": 10,
+    "diff": "easy",
+    "sentence": "Lunch is provided free of charge _______ all participants.",
+    "choices": [
+      "(A) to",
+      "(B) although",
+      "(C) whereas",
+      "(D) however"
+    ],
+    "answer": 0,
+    "answer_word": "to",
+    "explanation_kr": "빈칸 뒤 대상 명사구 → 전치사! 제공 대상 → to = '~에게'!",
+    "explanation": "대상 명사구 앞 → 전치사. 대상 의미 → to.",
+    "kr": "점심은 모든 참가자에게 무료로 제공된다.",
+    "expressions": [
+      {
+        "expr": "provided to + 대상",
+        "meaning": "~에게 제공되다"
+      },
+      {
+        "expr": "free of charge to all participants",
+        "meaning": "모든 참가자 무료!"
+      }
+    ]
+  },
+  {
+    "id": "LINK_529",
+    "category": "LINK",
+    "cat": "전치사",
+    "word_count": 11,
+    "diff": "easy",
+    "sentence": "The invoice must be paid _______ thirty days of receipt.",
+    "choices": [
+      "(A) although",
+      "(B) however",
+      "(C) whereas",
+      "(D) within"
+    ],
+    "answer": 3,
+    "answer_word": "within",
+    "explanation_kr": "빈칸 뒤 기간 명사구 → 전치사! 기간 이내 → within = '~이내에'!",
+    "explanation": "기간 명사구 앞 → 전치사. 기간 이내 의미 → within.",
+    "kr": "청구서는 수령 후 30일 이내에 지불되어야 한다.",
+    "expressions": [
+      {
+        "expr": "within + 기간",
+        "meaning": "~이내에 (기간 전치사)"
+      },
+      {
+        "expr": "paid within thirty days",
+        "meaning": "30일 이내 지불!"
+      }
+    ]
+  },
+  {
+    "id": "LINK_530",
+    "category": "LINK",
+    "cat": "전치사",
+    "word_count": 10,
+    "diff": "easy",
+    "sentence": "The store will remain open _______ the holiday season.",
+    "choices": [
+      "(A) however",
+      "(B) whereas",
+      "(C) although",
+      "(D) during"
+    ],
+    "answer": 3,
+    "answer_word": "during",
+    "explanation_kr": "빈칸 뒤 기간 명사구 → 전치사! 기간 동안 → during = '~동안'!",
+    "explanation": "기간 명사구 앞 → 전치사. 기간 의미 → during.",
+    "kr": "매장은 휴가 시즌 동안 계속 열려 있을 것이다.",
+    "expressions": [
+      {
+        "expr": "during + 기간",
+        "meaning": "~동안 (기간 전치사)"
+      },
+      {
+        "expr": "open during the holiday season",
+        "meaning": "휴가 시즌 동안!"
+      }
+    ]
+  },
+  {
+    "id": "LINK_531",
+    "category": "LINK",
+    "cat": "접속사",
+    "word_count": 11,
+    "diff": "easy",
+    "sentence": "_______ the café was fully booked, we found a table near the window.",
+    "choices": [
+      "(A) Due to",
+      "(B) Although",
+      "(C) However",
+      "(D) Despite"
+    ],
+    "answer": 1,
+    "answer_word": "Although",
+    "explanation_kr": "빈칸 뒤 절(S+V) → 접속사! 양보 → although = '비록~이지만'!",
+    "explanation": "절(S+V) 앞 → 접속사. 양보 의미 → although.",
+    "kr": "비록 카페가 만석이었지만, 우리는 창가 근처에 자리를 찾았다.",
+    "expressions": [
+      {
+        "expr": "Although + S+V",
+        "meaning": "비록 ~이지만 (양보 접속사)"
+      },
+      {
+        "expr": "although vs despite",
+        "meaning": "although + S+V / despite + 명사구!"
+      }
+    ]
+  },
+  {
+    "id": "LINK_532",
+    "category": "LINK",
+    "cat": "접속사",
+    "word_count": 11,
+    "diff": "easy",
+    "sentence": "The hotel will hold your reservation _______ you arrive by midnight.",
+    "choices": [
+      "(A) due to",
+      "(B) as long as",
+      "(C) however",
+      "(D) despite"
+    ],
+    "answer": 1,
+    "answer_word": "as long as",
+    "explanation_kr": "빈칸 뒤 절(S+V) → 접속사! 조건 → as long as = '~하는 한'!",
+    "explanation": "절(S+V) 앞 → 접속사. 조건 의미 → as long as.",
+    "kr": "자정까지 도착하는 한 호텔은 예약을 보관해 줄 것이다.",
+    "expressions": [
+      {
+        "expr": "as long as + S+V",
+        "meaning": "~하는 한 (조건 접속사)"
+      },
+      {
+        "expr": "hold reservation as long as arrive",
+        "meaning": "도착 조건부 보관!"
+      }
+    ]
+  },
+  {
+    "id": "LINK_533",
+    "category": "LINK",
+    "cat": "접속사",
+    "word_count": 11,
+    "diff": "easy",
+    "sentence": "_______ the delivery arrives late, please contact our customer service.",
+    "choices": [
+      "(A) Despite",
+      "(B) If",
+      "(C) Due to",
+      "(D) However"
+    ],
+    "answer": 1,
+    "answer_word": "If",
+    "explanation_kr": "빈칸 뒤 절(S+V) → 접속사! 가정 조건 → if = '~한다면'!",
+    "explanation": "절(S+V) 앞 → 접속사. 가정 조건 → if.",
+    "kr": "배달이 늦게 도착한다면, 고객 서비스에 연락해 주세요.",
+    "expressions": [
+      {
+        "expr": "If + S+V",
+        "meaning": "~한다면 (조건 접속사)"
+      },
+      {
+        "expr": "if delivery arrives late",
+        "meaning": "늦게 도착하면!"
+      }
+    ]
+  },
+  {
+    "id": "LINK_534",
+    "category": "LINK",
+    "cat": "접속사",
+    "word_count": 11,
+    "diff": "easy",
+    "sentence": "The kitchen closes at ten _______ the bar remains open until midnight.",
+    "choices": [
+      "(A) due to",
+      "(B) in spite of",
+      "(C) while",
+      "(D) however"
+    ],
+    "answer": 2,
+    "answer_word": "while",
+    "explanation_kr": "빈칸 뒤 절(S+V) → 접속사! 대조 → while = '반면에'!",
+    "explanation": "절(S+V) 앞 → 접속사. 대조 의미 → while.",
+    "kr": "주방은 10시에 닫는 반면에 바는 자정까지 열려 있다.",
+    "expressions": [
+      {
+        "expr": "while + S+V",
+        "meaning": "~인 반면에 (대조 접속사)"
+      },
+      {
+        "expr": "closes while bar remains open",
+        "meaning": "주방 닫힘 vs 바 영업!"
+      }
+    ]
+  },
+  {
+    "id": "LINK_535",
+    "category": "LINK",
+    "cat": "접속사",
+    "word_count": 11,
+    "diff": "easy",
+    "sentence": "_______ you book online, you receive a ten percent discount.",
+    "choices": [
+      "(A) Despite",
+      "(B) When",
+      "(C) However",
+      "(D) Due to"
+    ],
+    "answer": 1,
+    "answer_word": "When",
+    "explanation_kr": "빈칸 뒤 절(S+V) → 접속사! 시간 조건 → when = '~할 때'!",
+    "explanation": "절(S+V) 앞 → 접속사. 시간 조건 → when.",
+    "kr": "온라인으로 예약할 때, 10% 할인을 받는다.",
+    "expressions": [
+      {
+        "expr": "When + S+V",
+        "meaning": "~할 때 (시간 접속사)"
+      },
+      {
+        "expr": "when you book online",
+        "meaning": "온라인 예약 시!"
+      }
+    ]
+  },
+  {
+    "id": "LINK_536",
+    "category": "LINK",
+    "cat": "접속사",
+    "word_count": 11,
+    "diff": "easy",
+    "sentence": "The chef will prepare a vegan option _______ guests request it in advance.",
+    "choices": [
+      "(A) however",
+      "(B) due to",
+      "(C) provided that",
+      "(D) despite"
+    ],
+    "answer": 2,
+    "answer_word": "provided that",
+    "explanation_kr": "빈칸 뒤 절(S+V) → 접속사! 조건 → provided that = '~하는 조건으로'!",
+    "explanation": "절(S+V) 앞 → 접속사. 조건 의미 → provided that.",
+    "kr": "투숙객이 사전에 요청하는 조건으로 셰프는 비건 옵션을 준비할 것이다.",
+    "expressions": [
+      {
+        "expr": "provided that + S+V",
+        "meaning": "~하는 조건으로 (조건 접속사)"
+      },
+      {
+        "expr": "prepare provided that requested",
+        "meaning": "요청 조건부 준비!"
+      }
+    ]
+  },
+  {
+    "id": "LINK_537",
+    "category": "LINK",
+    "cat": "접속사",
+    "word_count": 11,
+    "diff": "easy",
+    "sentence": "_______ the venue was small, the event drew a large crowd.",
+    "choices": [
+      "(A) Even though",
+      "(B) Despite",
+      "(C) Due to",
+      "(D) However"
+    ],
+    "answer": 0,
+    "answer_word": "Even though",
+    "explanation_kr": "빈칸 뒤 절(S+V) → 접속사! 강한 양보 → even though!",
+    "explanation": "절(S+V) 앞 → 접속사. 강한 양보 → even though.",
+    "kr": "비록 행사장이 작았음에도 불구하고, 이벤트에 많은 인파가 몰렸다.",
+    "expressions": [
+      {
+        "expr": "Even though + S+V",
+        "meaning": "비록 ~임에도 (강한 양보)"
+      },
+      {
+        "expr": "large crowd even though small venue",
+        "meaning": "작은 공간에도 인파!"
+      }
+    ]
+  },
+  {
+    "id": "LINK_538",
+    "category": "LINK",
+    "cat": "접속사",
+    "word_count": 11,
+    "diff": "easy",
+    "sentence": "Guests must vacate their rooms _______ checkout time is noon.",
+    "choices": [
+      "(A) since",
+      "(B) due to",
+      "(C) despite",
+      "(D) however"
+    ],
+    "answer": 0,
+    "answer_word": "since",
+    "explanation_kr": "빈칸 뒤 절(S+V) → 접속사! 이유 → since = '~이므로'!",
+    "explanation": "절(S+V) 앞 → 접속사. 이유 의미 → since.",
+    "kr": "체크아웃 시간이 정오이므로 투숙객은 방을 비워야 한다.",
+    "expressions": [
+      {
+        "expr": "since + S+V",
+        "meaning": "~이므로 (이유 접속사)"
+      },
+      {
+        "expr": "must vacate since checkout is noon",
+        "meaning": "정오 체크아웃이므로!"
+      }
+    ]
+  },
+  {
+    "id": "LINK_539",
+    "category": "LINK",
+    "cat": "접속사",
+    "word_count": 11,
+    "diff": "easy",
+    "sentence": "The restaurant will not seat parties of more than eight _______ prior notice is given.",
+    "choices": [
+      "(A) despite",
+      "(B) unless",
+      "(C) however",
+      "(D) due to"
+    ],
+    "answer": 1,
+    "answer_word": "unless",
+    "explanation_kr": "빈칸 뒤 절(S+V) → 접속사! 조건(부정) → unless = '~하지 않는다면'!",
+    "explanation": "절(S+V) 앞 → 접속사. 부정 조건 → unless.",
+    "kr": "사전 통보가 없으면 레스토랑은 8명 이상의 파티를 받지 않을 것이다.",
+    "expressions": [
+      {
+        "expr": "unless + S+V",
+        "meaning": "~하지 않는다면 (조건 접속사)"
+      },
+      {
+        "expr": "not seat unless prior notice",
+        "meaning": "통보 없으면 거절!"
+      }
+    ]
+  },
+  {
+    "id": "LINK_540",
+    "category": "LINK",
+    "cat": "접속사",
+    "word_count": 11,
+    "diff": "easy",
+    "sentence": "_______ the rain started, the outdoor event moved inside.",
+    "choices": [
+      "(A) However",
+      "(B) Despite",
+      "(C) Due to",
+      "(D) Once"
+    ],
+    "answer": 3,
+    "answer_word": "Once",
+    "explanation_kr": "빈칸 뒤 절(S+V) → 접속사! 시간(완료 후) → once = '일단 ~하면'!",
+    "explanation": "절(S+V) 앞 → 접속사. 시간 순서 → once.",
+    "kr": "비가 시작되자 야외 행사가 실내로 이동했다.",
+    "expressions": [
+      {
+        "expr": "Once + S+V",
+        "meaning": "일단 ~하면, ~하자마자 (시간 접속사)"
+      },
+      {
+        "expr": "moved inside once rain started",
+        "meaning": "비 시작 후 이동!"
+      }
+    ]
+  },
+  {
+    "id": "LINK_541",
+    "category": "LINK",
+    "cat": "접속사",
+    "word_count": 11,
+    "diff": "easy",
+    "sentence": "The front desk is staffed around the clock _______ guests can request help at any time.",
+    "choices": [
+      "(A) however",
+      "(B) so that",
+      "(C) despite",
+      "(D) due to"
+    ],
+    "answer": 1,
+    "answer_word": "so that",
+    "explanation_kr": "빈칸 뒤 절(S+V) → 접속사! 목적 → so that = '~하기 위해'!",
+    "explanation": "절(S+V) 앞 → 접속사. 목적 의미 → so that.",
+    "kr": "투숙객이 언제든지 도움을 요청할 수 있도록 프런트 데스크는 24시간 운영된다.",
+    "expressions": [
+      {
+        "expr": "so that + S+V",
+        "meaning": "~하기 위해, ~하도록 (목적 접속사)"
+      },
+      {
+        "expr": "staffed so that guests can request",
+        "meaning": "요청 가능하도록!"
+      }
+    ]
+  },
+  {
+    "id": "LINK_542",
+    "category": "LINK",
+    "cat": "접속사",
+    "word_count": 11,
+    "diff": "easy",
+    "sentence": "Please notify us _______ you have any dietary restrictions.",
+    "choices": [
+      "(A) due to",
+      "(B) despite",
+      "(C) if",
+      "(D) however"
+    ],
+    "answer": 2,
+    "answer_word": "if",
+    "explanation_kr": "빈칸 뒤 절(S+V) → 접속사! 가정 → if = '~한다면'!",
+    "explanation": "절(S+V) 앞 → 접속사. 가정 의미 → if.",
+    "kr": "식이 제한이 있다면 저희에게 알려주세요.",
+    "expressions": [
+      {
+        "expr": "if + S+V",
+        "meaning": "~한다면 (조건 접속사)"
+      },
+      {
+        "expr": "notify if you have restrictions",
+        "meaning": "제한 있으면 알림!"
+      }
+    ]
+  },
+  {
+    "id": "LINK_543",
+    "category": "LINK",
+    "cat": "접속사",
+    "word_count": 11,
+    "diff": "easy",
+    "sentence": "The concert will go ahead _______ tickets have been sold out.",
+    "choices": [
+      "(A) in spite of",
+      "(B) even though",
+      "(C) however",
+      "(D) due to"
+    ],
+    "answer": 1,
+    "answer_word": "even though",
+    "explanation_kr": "빈칸 뒤 절(S+V) → 접속사! 강한 양보 → even though!",
+    "explanation": "절(S+V) 앞 → 접속사. 강한 양보 → even though.",
+    "kr": "비록 티켓이 매진되었음에도 불구하고, 콘서트는 진행될 것이다.",
+    "expressions": [
+      {
+        "expr": "even though + S+V",
+        "meaning": "비록 ~임에도 (강한 양보)"
+      },
+      {
+        "expr": "go ahead even though sold out",
+        "meaning": "매진에도 진행!"
+      }
+    ]
+  },
+  {
+    "id": "LINK_544",
+    "category": "LINK",
+    "cat": "접속사",
+    "word_count": 11,
+    "diff": "easy",
+    "sentence": "The store opens at nine _______ the warehouse is accessible from seven.",
+    "choices": [
+      "(A) in spite of",
+      "(B) due to",
+      "(C) whereas",
+      "(D) however"
+    ],
+    "answer": 2,
+    "answer_word": "whereas",
+    "explanation_kr": "빈칸 뒤 절(S+V) → 접속사! 대조 → whereas = '반면에'!",
+    "explanation": "절(S+V) 앞 → 접속사. 대조 의미 → whereas.",
+    "kr": "매장은 9시에 열리는 반면에 창고는 7시부터 접근 가능하다.",
+    "expressions": [
+      {
+        "expr": "whereas + S+V",
+        "meaning": "반면에 (대조 접속사)"
+      },
+      {
+        "expr": "store opens whereas warehouse accessible",
+        "meaning": "시간 대조!"
+      }
+    ]
+  },
+  {
+    "id": "LINK_545",
+    "category": "LINK",
+    "cat": "접속사",
+    "word_count": 11,
+    "diff": "easy",
+    "sentence": "The buffet will be extended by one hour _______ more guests arrive.",
+    "choices": [
+      "(A) due to",
+      "(B) despite",
+      "(C) if",
+      "(D) however"
+    ],
+    "answer": 2,
+    "answer_word": "if",
+    "explanation_kr": "빈칸 뒤 절(S+V) → 접속사! 가정 조건 → if = '~한다면'!",
+    "explanation": "절(S+V) 앞 → 접속사. 가정 의미 → if.",
+    "kr": "더 많은 손님이 도착한다면 뷔페가 한 시간 연장될 것이다.",
+    "expressions": [
+      {
+        "expr": "if + S+V",
+        "meaning": "~한다면 (조건 접속사)"
+      },
+      {
+        "expr": "extended if more guests arrive",
+        "meaning": "추가 손님 시 연장!"
+      }
+    ]
+  },
+  {
+    "id": "LINK_546",
+    "category": "LINK",
+    "cat": "접속사",
+    "word_count": 11,
+    "diff": "easy",
+    "sentence": "_______ demand for express delivery grows, the service fee may increase.",
+    "choices": [
+      "(A) However",
+      "(B) Due to",
+      "(C) Despite",
+      "(D) As"
+    ],
+    "answer": 3,
+    "answer_word": "As",
+    "explanation_kr": "빈칸 뒤 절(S+V) → 접속사! 시간/비례 → as = '~함에 따라'!",
+    "explanation": "절(S+V) 앞 → 접속사. 비례 의미 → as.",
+    "kr": "당일 배달 수요가 증가함에 따라, 서비스 요금이 인상될 수 있다.",
+    "expressions": [
+      {
+        "expr": "As + S+V",
+        "meaning": "~함에 따라 (비례/시간 접속사)"
+      },
+      {
+        "expr": "fee may increase as demand grows",
+        "meaning": "수요 증가 따라 요금 인상!"
+      }
+    ]
+  },
+  {
+    "id": "LINK_547",
+    "category": "LINK",
+    "cat": "접속사",
+    "word_count": 11,
+    "diff": "easy",
+    "sentence": "The catering team will arrive _______ the venue is ready for setup.",
+    "choices": [
+      "(A) due to",
+      "(B) despite",
+      "(C) once",
+      "(D) however"
+    ],
+    "answer": 2,
+    "answer_word": "once",
+    "explanation_kr": "빈칸 뒤 절(S+V) → 접속사! 시간(완료 후) → once = '일단 ~하면'!",
+    "explanation": "절(S+V) 앞 → 접속사. 시간 순서 → once.",
+    "kr": "행사장이 세팅 준비가 되면, 케이터링팀이 도착할 것이다.",
+    "expressions": [
+      {
+        "expr": "once + S+V",
+        "meaning": "일단 ~하면 (시간 접속사)"
+      },
+      {
+        "expr": "arrive once venue is ready",
+        "meaning": "준비 완료 후 도착!"
+      }
+    ]
+  },
+  {
+    "id": "LINK_548",
+    "category": "LINK",
+    "cat": "접속사",
+    "word_count": 11,
+    "diff": "easy",
+    "sentence": "_______ the item is out of stock, we will offer a full refund.",
+    "choices": [
+      "(A) However",
+      "(B) Despite",
+      "(C) Due to",
+      "(D) If"
+    ],
+    "answer": 3,
+    "answer_word": "If",
+    "explanation_kr": "빈칸 뒤 절(S+V) → 접속사! 가정 조건 → if = '~한다면'!",
+    "explanation": "절(S+V) 앞 → 접속사. 가정 의미 → if.",
+    "kr": "제품이 품절이라면, 전액 환불을 제공할 것이다.",
+    "expressions": [
+      {
+        "expr": "If + S+V",
+        "meaning": "~한다면 (조건 접속사)"
+      },
+      {
+        "expr": "offer refund if out of stock",
+        "meaning": "품절 시 환불!"
+      }
+    ]
+  },
+  {
+    "id": "LINK_549",
+    "category": "LINK",
+    "cat": "접속부사",
+    "word_count": 11,
+    "diff": "easy",
+    "sentence": "The event sold out in one hour. _______, the organizers added a second show.",
+    "choices": [
+      "(A) Consequently",
+      "(B) Although",
+      "(C) Despite",
+      "(D) Due to"
+    ],
+    "answer": 0,
+    "answer_word": "Consequently",
+    "explanation_kr": "앞 문장의 결과! 1시간 만에 매진(원인) → 공연 추가(결과). Consequently = '그 결과'!",
+    "explanation": "앞 문장의 결과 → 접속부사. 결과 의미 → consequently.",
+    "kr": "이벤트는 1시간 만에 매진되었다. 그 결과, 주최측은 두 번째 공연을 추가했다.",
+    "expressions": [
+      {
+        "expr": "Consequently,",
+        "meaning": "그 결과 (결과 접속부사)"
+      },
+      {
+        "expr": "결과 접속부사",
+        "meaning": "consequently/therefore/as a result!"
+      }
+    ]
+  },
+  {
+    "id": "LINK_550",
+    "category": "LINK",
+    "cat": "접속부사",
+    "word_count": 11,
+    "diff": "easy",
+    "sentence": "The café introduced a new loyalty card. _______, it extended its opening hours.",
+    "choices": [
+      "(A) Despite",
+      "(B) Due to",
+      "(C) Furthermore",
+      "(D) Although"
+    ],
+    "answer": 2,
+    "answer_word": "Furthermore",
+    "explanation_kr": "앞 문장에 추가 정보! 로열티 카드 도입(성과1) + 운영 시간 연장(성과2 추가). Furthermore = '더욱이'!",
+    "explanation": "앞 문장에 추가 → 접속부사. 추가 의미 → furthermore.",
+    "kr": "카페는 새로운 로열티 카드를 도입했다. 더욱이, 운영 시간을 연장했다.",
+    "expressions": [
+      {
+        "expr": "Furthermore,",
+        "meaning": "더욱이 (추가 접속부사)"
+      },
+      {
+        "expr": "추가 접속부사",
+        "meaning": "furthermore/moreover/additionally!"
+      }
+    ]
+  },
+  {
+    "id": "LINK_551",
+    "category": "LINK",
+    "cat": "전치사",
+    "word_count": 15,
+    "diff": "normal",
+    "sentence": "The hotel's rooftop bar remains open _______ midnight on weekends to accommodate late-night guests.",
+    "choices": [
+      "(A) whereas",
+      "(B) however",
+      "(C) although",
+      "(D) until"
+    ],
+    "answer": 3,
+    "answer_word": "until",
+    "explanation_kr": "빈칸 뒤 시간 명사구 → 전치사! 기한 한계 → until = '~까지'!",
+    "explanation": "시간 명사구 앞 → 전치사. 기한 의미 → until.",
+    "kr": "호텔의 루프탑 바는 늦은 밤 투숙객을 수용하기 위해 주말에 자정까지 열려 있다.",
+    "expressions": [
+      {
+        "expr": "until + 시간",
+        "meaning": "~까지 (기한 전치사)"
+      },
+      {
+        "expr": "open until midnight",
+        "meaning": "자정까지 영업!"
+      }
+    ]
+  },
+  {
+    "id": "LINK_552",
+    "category": "LINK",
+    "cat": "전치사",
+    "word_count": 15,
+    "diff": "normal",
+    "sentence": "The café experienced a thirty percent increase in sales _______ the opening of a new office complex nearby.",
+    "choices": [
+      "(A) however",
+      "(B) whereas",
+      "(C) following",
+      "(D) although"
+    ],
+    "answer": 2,
+    "answer_word": "following",
+    "explanation_kr": "빈칸 뒤 명사구 → 전치사! 시간 순서(~후) → following = '~에 뒤이어'!",
+    "explanation": "명사구 앞 → 전치사. 순서 의미 → following.",
+    "kr": "근처에 새로운 오피스 단지가 개설된 후에 카페는 매출이 30% 증가했다.",
+    "expressions": [
+      {
+        "expr": "following + 명사구",
+        "meaning": "~에 뒤이어 (시간 전치사)"
+      },
+      {
+        "expr": "increase following the opening",
+        "meaning": "개설 후 증가!"
+      }
+    ]
+  },
+  {
+    "id": "LINK_553",
+    "category": "LINK",
+    "cat": "전치사",
+    "word_count": 15,
+    "diff": "normal",
+    "sentence": "All meal plans are calculated _______ a per-person basis for groups of ten or more.",
+    "choices": [
+      "(A) on",
+      "(B) whereas",
+      "(C) although",
+      "(D) however"
+    ],
+    "answer": 0,
+    "answer_word": "on",
+    "explanation_kr": "on a per-person basis = '1인당 기준으로' 관용 전치사구!",
+    "explanation": "관용 전치사구 → on a per-person basis.",
+    "kr": "모든 식사 플랜은 10명 이상의 단체에 대해 1인당 기준으로 계산된다.",
+    "expressions": [
+      {
+        "expr": "on a per-person basis",
+        "meaning": "1인당 기준으로"
+      },
+      {
+        "expr": "on a + 명사 + basis",
+        "meaning": "~기준으로!"
+      }
+    ]
+  },
+  {
+    "id": "LINK_554",
+    "category": "LINK",
+    "cat": "전치사",
+    "word_count": 15,
+    "diff": "normal",
+    "sentence": "The event coordinator distributed name badges _______ all registered attendees at the entrance.",
+    "choices": [
+      "(A) although",
+      "(B) to",
+      "(C) however",
+      "(D) whereas"
+    ],
+    "answer": 1,
+    "answer_word": "to",
+    "explanation_kr": "빈칸 뒤 대상 명사구 → 전치사! 배포 대상 → to = '~에게'!",
+    "explanation": "대상 명사구 앞 → 전치사. 대상 의미 → to.",
+    "kr": "행사 코디네이터는 입구에서 모든 등록된 참석자들에게 명찰을 배포했다.",
+    "expressions": [
+      {
+        "expr": "distributed to + 대상",
+        "meaning": "~에게 배포하다"
+      },
+      {
+        "expr": "badges to all attendees",
+        "meaning": "모든 참석자에게!"
+      }
+    ]
+  },
+  {
+    "id": "LINK_555",
+    "category": "LINK",
+    "cat": "전치사",
+    "word_count": 15,
+    "diff": "normal",
+    "sentence": "The delivery fee is waived for orders placed _______ our premium membership program.",
+    "choices": [
+      "(A) however",
+      "(B) whereas",
+      "(C) although",
+      "(D) through"
+    ],
+    "answer": 3,
+    "answer_word": "through",
+    "explanation_kr": "빈칸 뒤 명사구 → 전치사! 수단/경로 → through = '~을 통해'!",
+    "explanation": "명사구 앞 → 전치사. 수단 의미 → through.",
+    "kr": "프리미엄 멤버십 프로그램을 통해 주문한 경우 배달비가 면제된다.",
+    "expressions": [
+      {
+        "expr": "through + 명사구",
+        "meaning": "~을 통해 (수단 전치사)"
+      },
+      {
+        "expr": "placed through our program",
+        "meaning": "프로그램을 통한 주문!"
+      }
+    ]
+  },
+  {
+    "id": "LINK_556",
+    "category": "LINK",
+    "cat": "전치사",
+    "word_count": 15,
+    "diff": "normal",
+    "sentence": "The new dessert menu was created _______ consultation with a renowned pastry chef.",
+    "choices": [
+      "(A) whereas",
+      "(B) however",
+      "(C) although",
+      "(D) in"
+    ],
+    "answer": 3,
+    "answer_word": "in",
+    "explanation_kr": "in consultation with = '~와의 협의를 통해' 관용 전치사구!",
+    "explanation": "관용 전치사구 → in consultation with.",
+    "kr": "새로운 디저트 메뉴는 유명한 페이스트리 셰프와의 협의를 통해 만들어졌다.",
+    "expressions": [
+      {
+        "expr": "in consultation with",
+        "meaning": "~와의 협의를 통해"
+      },
+      {
+        "expr": "created in consultation with",
+        "meaning": "협의를 통해 제작!"
+      }
+    ]
+  },
+  {
+    "id": "LINK_557",
+    "category": "LINK",
+    "cat": "전치사",
+    "word_count": 15,
+    "diff": "normal",
+    "sentence": "_______ the unexpected cancellation of the keynote speaker, the organizers rescheduled the afternoon session.",
+    "choices": [
+      "(A) Following",
+      "(B) Since",
+      "(C) Although",
+      "(D) Because"
+    ],
+    "answer": 0,
+    "answer_word": "Following",
+    "explanation_kr": "빈칸 뒤 명사구(the unexpected cancellation) → 전치사! 시간 순서(~후) → following!",
+    "explanation": "명사구 앞 → 전치사. 순서 의미 → following.",
+    "kr": "기조 연설자의 예상치 못한 취소에 뒤이어 주최측은 오후 세션을 재일정화했다.",
+    "expressions": [
+      {
+        "expr": "Following + 명사구",
+        "meaning": "~에 뒤이어 (전치사)"
+      },
+      {
+        "expr": "rescheduled following cancellation",
+        "meaning": "취소 후 재일정!"
+      }
+    ]
+  },
+  {
+    "id": "LINK_558",
+    "category": "LINK",
+    "cat": "전치사",
+    "word_count": 15,
+    "diff": "normal",
+    "sentence": "The guest loyalty points are valid _______ a period of twelve months from the date of issue.",
+    "choices": [
+      "(A) although",
+      "(B) however",
+      "(C) for",
+      "(D) whereas"
+    ],
+    "answer": 2,
+    "answer_word": "for",
+    "explanation_kr": "빈칸 뒤 기간 명사구 → 전치사! 기간 → for = '~동안'!",
+    "explanation": "기간 명사구 앞 → 전치사. 기간 의미 → for.",
+    "kr": "게스트 로열티 포인트는 발행일로부터 12개월 동안 유효하다.",
+    "expressions": [
+      {
+        "expr": "for + 기간",
+        "meaning": "~동안 (기간 전치사)"
+      },
+      {
+        "expr": "valid for twelve months",
+        "meaning": "12개월간 유효!"
+      }
+    ]
+  },
+  {
+    "id": "LINK_559",
+    "category": "LINK",
+    "cat": "전치사",
+    "word_count": 15,
+    "diff": "normal",
+    "sentence": "Guests traveling _______ business are entitled to complimentary airport transfers.",
+    "choices": [
+      "(A) on",
+      "(B) whereas",
+      "(C) although",
+      "(D) however"
+    ],
+    "answer": 0,
+    "answer_word": "on",
+    "explanation_kr": "traveling on business = '출장으로 여행 중인' 관용 전치사구!",
+    "explanation": "관용 전치사구 → on business.",
+    "kr": "출장으로 여행 중인 투숙객은 무료 공항 셔틀을 받을 자격이 있다.",
+    "expressions": [
+      {
+        "expr": "traveling on business",
+        "meaning": "출장으로 여행 중인"
+      },
+      {
+        "expr": "on business vs for business",
+        "meaning": "on business = 출장 목적!"
+      }
+    ]
+  },
+  {
+    "id": "LINK_560",
+    "category": "LINK",
+    "cat": "전치사",
+    "word_count": 15,
+    "diff": "normal",
+    "sentence": "The pop-up market operates _______ the town square every Saturday and Sunday.",
+    "choices": [
+      "(A) across",
+      "(B) however",
+      "(C) in",
+      "(D) although"
+    ],
+    "answer": 2,
+    "answer_word": "in",
+    "explanation_kr": "빈칸 뒤 장소 명사구 → 전치사! 위치 → in = '~에서'!",
+    "explanation": "장소 명사구 앞 → 전치사. 위치 의미 → in.",
+    "kr": "팝업 마켓은 매주 토요일과 일요일에 마을 광장에서 운영된다.",
+    "expressions": [
+      {
+        "expr": "in + 장소",
+        "meaning": "~에서 (위치 전치사)"
+      },
+      {
+        "expr": "operates in the town square",
+        "meaning": "광장에서 운영!"
+      }
+    ]
+  },
+  {
+    "id": "LINK_561",
+    "category": "LINK",
+    "cat": "전치사",
+    "word_count": 15,
+    "diff": "normal",
+    "sentence": "The hotel's wellness center is available to all guests _______ no additional charge.",
+    "choices": [
+      "(A) whereas",
+      "(B) although",
+      "(C) at",
+      "(D) however"
+    ],
+    "answer": 2,
+    "answer_word": "at",
+    "explanation_kr": "at no additional charge = '추가 요금 없이' 관용 전치사구!",
+    "explanation": "관용 전치사구 → at no additional charge.",
+    "kr": "호텔의 웰니스 센터는 추가 요금 없이 모든 투숙객이 이용 가능하다.",
+    "expressions": [
+      {
+        "expr": "at no additional charge",
+        "meaning": "추가 요금 없이 (관용구)"
+      },
+      {
+        "expr": "at no charge / at no cost",
+        "meaning": "무료로!"
+      }
+    ]
+  },
+  {
+    "id": "LINK_562",
+    "category": "LINK",
+    "cat": "전치사",
+    "word_count": 15,
+    "diff": "normal",
+    "sentence": "Advance tickets are priced _______ ten dollars less than those purchased at the door.",
+    "choices": [
+      "(A) at",
+      "(B) whereas",
+      "(C) however",
+      "(D) although"
+    ],
+    "answer": 0,
+    "answer_word": "at",
+    "explanation_kr": "priced at = '~의 가격으로 책정된' 관용 전치사구!",
+    "explanation": "가격 명사구 앞 → 전치사. 가격 의미 → at.",
+    "kr": "사전 티켓은 현장에서 구매하는 것보다 10달러 싸게 책정된다.",
+    "expressions": [
+      {
+        "expr": "priced at + 가격",
+        "meaning": "~가격으로 책정된"
+      },
+      {
+        "expr": "priced at ten dollars less",
+        "meaning": "10달러 더 저렴!"
+      }
+    ]
+  },
+  {
+    "id": "LINK_563",
+    "category": "LINK",
+    "cat": "전치사",
+    "word_count": 15,
+    "diff": "normal",
+    "sentence": "_______ the overwhelming demand for vegan options, the restaurant expanded its plant-based menu.",
+    "choices": [
+      "(A) Since",
+      "(B) Due to",
+      "(C) Because",
+      "(D) Although"
+    ],
+    "answer": 1,
+    "answer_word": "Due to",
+    "explanation_kr": "빈칸 뒤 명사구(the overwhelming demand) → 전치사! 이유 → due to = '~때문에'!",
+    "explanation": "명사구 앞 → 전치사. 이유 의미 → due to.",
+    "kr": "비건 옵션에 대한 압도적인 수요 때문에 레스토랑은 식물성 메뉴를 확장했다.",
+    "expressions": [
+      {
+        "expr": "Due to + 명사구",
+        "meaning": "~때문에 (이유 전치사)"
+      },
+      {
+        "expr": "due to overwhelming demand",
+        "meaning": "압도적 수요 때문에!"
+      }
+    ]
+  },
+  {
+    "id": "LINK_564",
+    "category": "LINK",
+    "cat": "전치사",
+    "word_count": 15,
+    "diff": "normal",
+    "sentence": "The speaker delivered her presentation entirely _______ memory, without any notes.",
+    "choices": [
+      "(A) whereas",
+      "(B) from",
+      "(C) however",
+      "(D) although"
+    ],
+    "answer": 1,
+    "answer_word": "from",
+    "explanation_kr": "from memory = '암기로, 기억에서' 관용 전치사구!",
+    "explanation": "관용 전치사구 → from memory.",
+    "kr": "연사는 어떤 노트도 없이 오로지 암기로 발표를 전달했다.",
+    "expressions": [
+      {
+        "expr": "from memory",
+        "meaning": "암기로, 기억에서 (관용구)"
+      },
+      {
+        "expr": "speak/present from memory",
+        "meaning": "암기 발표!"
+      }
+    ]
+  },
+  {
+    "id": "LINK_565",
+    "category": "LINK",
+    "cat": "전치사",
+    "word_count": 15,
+    "diff": "normal",
+    "sentence": "The new office kitchen is equipped _______ a fully automated espresso machine.",
+    "choices": [
+      "(A) however",
+      "(B) with",
+      "(C) whereas",
+      "(D) although"
+    ],
+    "answer": 1,
+    "answer_word": "with",
+    "explanation_kr": "빈칸 뒤 명사구 → 전치사! 수반 → be equipped with = '~을 갖추고 있다'!",
+    "explanation": "수반 명사구 앞 → 전치사. 수반 의미 → with.",
+    "kr": "새로운 사무실 주방에는 완전 자동 에스프레소 기계가 구비되어 있다.",
+    "expressions": [
+      {
+        "expr": "equipped with + 명사구",
+        "meaning": "~을 갖추고 있는"
+      },
+      {
+        "expr": "equipped with an espresso machine",
+        "meaning": "에스프레소 기계 구비!"
+      }
+    ]
+  },
+  {
+    "id": "LINK_566",
+    "category": "LINK",
+    "cat": "전치사",
+    "word_count": 15,
+    "diff": "normal",
+    "sentence": "The event photographer captured candid moments _______ the entire evening.",
+    "choices": [
+      "(A) whereas",
+      "(B) however",
+      "(C) throughout",
+      "(D) although"
+    ],
+    "answer": 2,
+    "answer_word": "throughout",
+    "explanation_kr": "빈칸 뒤 기간 명사구 → 전치사! 전체 기간 → throughout = '~전반에 걸쳐'!",
+    "explanation": "기간 명사구 앞 → 전치사. 전체 기간 의미 → throughout.",
+    "kr": "행사 사진작가는 저녁 내내 자연스러운 순간들을 포착했다.",
+    "expressions": [
+      {
+        "expr": "throughout + 기간",
+        "meaning": "~전반에 걸쳐 (기간 전치사)"
+      },
+      {
+        "expr": "throughout the evening",
+        "meaning": "저녁 내내!"
+      }
+    ]
+  },
+  {
+    "id": "LINK_567",
+    "category": "LINK",
+    "cat": "전치사",
+    "word_count": 15,
+    "diff": "normal",
+    "sentence": "Reservations made _______ the company's corporate account receive an automatic fifteen percent discount.",
+    "choices": [
+      "(A) although",
+      "(B) through",
+      "(C) however",
+      "(D) whereas"
+    ],
+    "answer": 1,
+    "answer_word": "through",
+    "explanation_kr": "빈칸 뒤 명사구 → 전치사! 수단/경로 → through = '~을 통해'!",
+    "explanation": "명사구 앞 → 전치사. 수단 의미 → through.",
+    "kr": "회사의 법인 계좌를 통해 이루어진 예약은 자동으로 15% 할인을 받는다.",
+    "expressions": [
+      {
+        "expr": "through + 명사구",
+        "meaning": "~을 통해 (수단 전치사)"
+      },
+      {
+        "expr": "reservations through corporate account",
+        "meaning": "법인 계좌를 통한 예약!"
+      }
+    ]
+  },
+  {
+    "id": "LINK_568",
+    "category": "LINK",
+    "cat": "전치사",
+    "word_count": 15,
+    "diff": "normal",
+    "sentence": "The farewell dinner is scheduled to take place _______ the penthouse suite on Friday.",
+    "choices": [
+      "(A) in",
+      "(B) however",
+      "(C) whereas",
+      "(D) although"
+    ],
+    "answer": 0,
+    "answer_word": "in",
+    "explanation_kr": "빈칸 뒤 장소 명사구 → 전치사! 실내 위치 → in = '~에서'!",
+    "explanation": "장소 명사구 앞 → 전치사. 실내 위치 → in.",
+    "kr": "송별 만찬은 금요일에 펜트하우스 스위트에서 열릴 예정이다.",
+    "expressions": [
+      {
+        "expr": "in + 장소",
+        "meaning": "~에서 (위치 전치사)"
+      },
+      {
+        "expr": "take place in the suite",
+        "meaning": "스위트에서 개최!"
+      }
+    ]
+  },
+  {
+    "id": "LINK_569",
+    "category": "LINK",
+    "cat": "전치사",
+    "word_count": 15,
+    "diff": "normal",
+    "sentence": "The restaurant was awarded a Michelin star _______ its innovative fusion cuisine and exceptional service.",
+    "choices": [
+      "(A) whereas",
+      "(B) for",
+      "(C) although",
+      "(D) however"
+    ],
+    "answer": 1,
+    "answer_word": "for",
+    "explanation_kr": "빈칸 뒤 명사구 → 전치사! 이유/대상 → for = '~때문에, ~으로 인해'!",
+    "explanation": "명사구 앞 → 전치사. 이유 의미 → for.",
+    "kr": "혁신적인 퓨전 요리와 탁월한 서비스로 인해 레스토랑은 미슐랭 별을 받았다.",
+    "expressions": [
+      {
+        "expr": "awarded for + 이유",
+        "meaning": "~으로 인해 수상"
+      },
+      {
+        "expr": "awarded for cuisine",
+        "meaning": "요리로 수상!"
+      }
+    ]
+  },
+  {
+    "id": "LINK_570",
+    "category": "LINK",
+    "cat": "전치사",
+    "word_count": 15,
+    "diff": "normal",
+    "sentence": "The delivery window is _______ 10 a.m. and 2 p.m. on the selected day.",
+    "choices": [
+      "(A) however",
+      "(B) although",
+      "(C) whereas",
+      "(D) between"
+    ],
+    "answer": 3,
+    "answer_word": "between",
+    "explanation_kr": "빈칸 뒤 두 시간 사이 표현 → 전치사! between A and B = 'A와 B 사이에'!",
+    "explanation": "두 시간 앞 → 전치사. 범위 의미 → between.",
+    "kr": "배달 시간대는 선택한 날짜의 오전 10시와 오후 2시 사이이다.",
+    "expressions": [
+      {
+        "expr": "between A and B",
+        "meaning": "A와 B 사이에 (전치사)"
+      },
+      {
+        "expr": "between 10 a.m. and 2 p.m.",
+        "meaning": "오전 10시~오후 2시!"
+      }
+    ]
+  },
+  {
+    "id": "LINK_571",
+    "category": "LINK",
+    "cat": "전치사",
+    "word_count": 15,
+    "diff": "normal",
+    "sentence": "Parking is complimentary _______ hotel guests who validate their ticket at the front desk.",
+    "choices": [
+      "(A) however",
+      "(B) for",
+      "(C) although",
+      "(D) whereas"
+    ],
+    "answer": 1,
+    "answer_word": "for",
+    "explanation_kr": "빈칸 뒤 대상 명사구 → 전치사! 대상 → for = '~에게'!",
+    "explanation": "대상 명사구 앞 → 전치사. 대상 의미 → for.",
+    "kr": "프런트 데스크에서 티켓을 인증하는 호텔 투숙객에게 주차는 무료이다.",
+    "expressions": [
+      {
+        "expr": "complimentary for + 대상",
+        "meaning": "~에게 무료인"
+      },
+      {
+        "expr": "complimentary for hotel guests",
+        "meaning": "투숙객 무료!"
+      }
+    ]
+  },
+  {
+    "id": "LINK_572",
+    "category": "LINK",
+    "cat": "전치사",
+    "word_count": 15,
+    "diff": "normal",
+    "sentence": "_______ its reputation for slow service, the new branch attracted consistently positive reviews.",
+    "choices": [
+      "(A) Although",
+      "(B) Since",
+      "(C) Because",
+      "(D) Despite"
+    ],
+    "answer": 3,
+    "answer_word": "Despite",
+    "explanation_kr": "빈칸 뒤 명사구(its reputation) → 전치사! 양보 → despite = '~에도 불구하고'!",
+    "explanation": "명사구 앞 → 전치사. 양보 의미 → despite.",
+    "kr": "느린 서비스로 인한 명성에도 불구하고, 새로운 지점은 꾸준히 긍정적인 리뷰를 유치했다.",
+    "expressions": [
+      {
+        "expr": "Despite + 명사구",
+        "meaning": "~에도 불구하고 (전치사)"
+      },
+      {
+        "expr": "despite its reputation",
+        "meaning": "명성에도 불구하고!"
+      }
+    ]
+  },
+  {
+    "id": "LINK_573",
+    "category": "LINK",
+    "cat": "전치사",
+    "word_count": 15,
+    "diff": "normal",
+    "sentence": "The gift shop is open to the public _______ the hours of 9 a.m. to 6 p.m. daily.",
+    "choices": [
+      "(A) whereas",
+      "(B) however",
+      "(C) during",
+      "(D) although"
+    ],
+    "answer": 2,
+    "answer_word": "during",
+    "explanation_kr": "빈칸 뒤 기간 명사구 → 전치사! 기간 → during = '~동안'!",
+    "explanation": "기간 명사구 앞 → 전치사. 기간 의미 → during.",
+    "kr": "기념품점은 매일 오전 9시에서 오후 6시까지의 시간 동안 일반인에게 열려 있다.",
+    "expressions": [
+      {
+        "expr": "during + 기간",
+        "meaning": "~동안 (기간 전치사)"
+      },
+      {
+        "expr": "during the hours of",
+        "meaning": "~시간 동안!"
+      }
+    ]
+  },
+  {
+    "id": "LINK_574",
+    "category": "LINK",
+    "cat": "전치사",
+    "word_count": 15,
+    "diff": "normal",
+    "sentence": "The complimentary shuttle departs _______ the lobby every thirty minutes.",
+    "choices": [
+      "(A) whereas",
+      "(B) from",
+      "(C) however",
+      "(D) although"
+    ],
+    "answer": 1,
+    "answer_word": "from",
+    "explanation_kr": "빈칸 뒤 출발지 명사구 → 전치사! 출발지 → from = '~에서 출발'!",
+    "explanation": "출발지 명사구 앞 → 전치사. 출발지 의미 → from.",
+    "kr": "무료 셔틀은 매 30분마다 로비에서 출발한다.",
+    "expressions": [
+      {
+        "expr": "depart from + 장소",
+        "meaning": "~에서 출발하다"
+      },
+      {
+        "expr": "departs from the lobby",
+        "meaning": "로비에서 출발!"
+      }
+    ]
+  },
+  {
+    "id": "LINK_575",
+    "category": "LINK",
+    "cat": "전치사",
+    "word_count": 15,
+    "diff": "normal",
+    "sentence": "The seminar is free of charge _______ members, but non-members pay a registration fee.",
+    "choices": [
+      "(A) however",
+      "(B) whereas",
+      "(C) for",
+      "(D) although"
+    ],
+    "answer": 2,
+    "answer_word": "for",
+    "explanation_kr": "빈칸 뒤 대상 명사 → 전치사! 대상 → for = '~에게'!",
+    "explanation": "대상 명사 앞 → 전치사. 대상 의미 → for.",
+    "kr": "세미나는 회원에게는 무료이지만, 비회원은 등록비를 납부한다.",
+    "expressions": [
+      {
+        "expr": "free of charge for + 대상",
+        "meaning": "~에게 무료인"
+      },
+      {
+        "expr": "free for members",
+        "meaning": "회원에게 무료!"
+      }
+    ]
+  },
+  {
+    "id": "LINK_576",
+    "category": "LINK",
+    "cat": "전치사",
+    "word_count": 15,
+    "diff": "normal",
+    "sentence": "Children under twelve are admitted _______ no charge when accompanied by a paying adult.",
+    "choices": [
+      "(A) although",
+      "(B) at",
+      "(C) however",
+      "(D) whereas"
+    ],
+    "answer": 1,
+    "answer_word": "at",
+    "explanation_kr": "at no charge = '무료로' 관용 전치사구!",
+    "explanation": "관용 전치사구 → at no charge.",
+    "kr": "12세 미만 어린이는 유료 성인을 동반할 경우 무료로 입장 가능하다.",
+    "expressions": [
+      {
+        "expr": "at no charge",
+        "meaning": "무료로 (관용 전치사구)"
+      },
+      {
+        "expr": "admitted at no charge",
+        "meaning": "무료 입장!"
+      }
+    ]
+  },
+  {
+    "id": "LINK_577",
+    "category": "LINK",
+    "cat": "전치사",
+    "word_count": 15,
+    "diff": "normal",
+    "sentence": "The speaker's presentation was broadcast live _______ the company's internal streaming platform.",
+    "choices": [
+      "(A) however",
+      "(B) whereas",
+      "(C) via",
+      "(D) although"
+    ],
+    "answer": 2,
+    "answer_word": "via",
+    "explanation_kr": "빈칸 뒤 수단 명사구 → 전치사! 수단 → via = '~을 통해, ~을 경유하여'!",
+    "explanation": "수단 명사구 앞 → 전치사. 수단 의미 → via.",
+    "kr": "연사의 발표는 회사의 내부 스트리밍 플랫폼을 통해 생방송으로 방영되었다.",
+    "expressions": [
+      {
+        "expr": "via + 수단",
+        "meaning": "~을 통해 (수단 전치사)"
+      },
+      {
+        "expr": "broadcast via streaming platform",
+        "meaning": "스트리밍을 통해 방송!"
+      }
+    ]
+  },
+  {
+    "id": "LINK_578",
+    "category": "LINK",
+    "cat": "전치사",
+    "word_count": 15,
+    "diff": "normal",
+    "sentence": "Room upgrades are provided _______ availability at the time of check-in.",
+    "choices": [
+      "(A) although",
+      "(B) whereas",
+      "(C) however",
+      "(D) subject to"
+    ],
+    "answer": 3,
+    "answer_word": "subject to",
+    "explanation_kr": "빈칸 뒤 명사구 → 전치사! 조건부 → subject to = '~에 따라, ~을 조건으로'!",
+    "explanation": "명사구 앞 → 전치사. 조건 의미 → subject to.",
+    "kr": "객실 업그레이드는 체크인 시 이용 가능 여부에 따라 제공된다.",
+    "expressions": [
+      {
+        "expr": "subject to + 명사구",
+        "meaning": "~에 따라, ~을 조건으로 (전치사)"
+      },
+      {
+        "expr": "subject to availability",
+        "meaning": "이용 가능 여부에 따라!"
+      }
+    ]
+  },
+  {
+    "id": "LINK_579",
+    "category": "LINK",
+    "cat": "전치사",
+    "word_count": 15,
+    "diff": "normal",
+    "sentence": "The group tour departs _______ the hotel entrance at 8:30 a.m. sharp.",
+    "choices": [
+      "(A) whereas",
+      "(B) however",
+      "(C) although",
+      "(D) from"
+    ],
+    "answer": 3,
+    "answer_word": "from",
+    "explanation_kr": "빈칸 뒤 출발지 명사구 → 전치사! 출발지 → from = '~에서'!",
+    "explanation": "출발지 명사구 앞 → 전치사. 출발지 의미 → from.",
+    "kr": "단체 투어는 정확히 오전 8시 30분에 호텔 입구에서 출발한다.",
+    "expressions": [
+      {
+        "expr": "depart from + 장소",
+        "meaning": "~에서 출발하다"
+      },
+      {
+        "expr": "departs from the entrance",
+        "meaning": "입구에서 출발!"
+      }
+    ]
+  },
+  {
+    "id": "LINK_580",
+    "category": "LINK",
+    "cat": "전치사",
+    "word_count": 15,
+    "diff": "normal",
+    "sentence": "The new employee orientation program runs _______ two full days and covers all key company policies.",
+    "choices": [
+      "(A) for",
+      "(B) although",
+      "(C) whereas",
+      "(D) however"
+    ],
+    "answer": 0,
+    "answer_word": "for",
+    "explanation_kr": "빈칸 뒤 기간 명사구 → 전치사! 기간 → for = '~동안'!",
+    "explanation": "기간 명사구 앞 → 전치사. 기간 의미 → for.",
+    "kr": "새로운 직원 오리엔테이션 프로그램은 이틀 전일에 걸쳐 진행되며 모든 주요 회사 정책을 다룬다.",
+    "expressions": [
+      {
+        "expr": "for + 기간",
+        "meaning": "~동안 (기간 전치사)"
+      },
+      {
+        "expr": "runs for two full days",
+        "meaning": "이틀 전일 진행!"
+      }
+    ]
+  },
+  {
+    "id": "LINK_581",
+    "category": "LINK",
+    "cat": "접속사",
+    "word_count": 15,
+    "diff": "normal",
+    "sentence": "_______ the hotel gym was undergoing maintenance, guests were offered complimentary access to a nearby fitness center.",
+    "choices": [
+      "(A) Despite",
+      "(B) Due to",
+      "(C) While",
+      "(D) However"
+    ],
+    "answer": 2,
+    "answer_word": "While",
+    "explanation_kr": "빈칸 뒤 절(S+V) → 접속사! 동시/대조 → while = '~하는 동안, ~인 반면에'!",
+    "explanation": "절(S+V) 앞 → 접속사. 동시 의미 → while.",
+    "kr": "호텔 헬스장이 유지 보수를 받는 동안 투숙객에게 근처 피트니스 센터에 무료 이용권이 제공되었다.",
+    "expressions": [
+      {
+        "expr": "While + S+V",
+        "meaning": "~하는 동안 (시간 접속사)"
+      },
+      {
+        "expr": "offered access while undergoing maintenance",
+        "meaning": "공사 중 대안 제공!"
+      }
+    ]
+  },
+  {
+    "id": "LINK_582",
+    "category": "LINK",
+    "cat": "접속사",
+    "word_count": 15,
+    "diff": "normal",
+    "sentence": "The restaurant will waive the corkage fee _______ diners purchase at least two bottles from the wine list.",
+    "choices": [
+      "(A) provided that",
+      "(B) due to",
+      "(C) despite",
+      "(D) however"
+    ],
+    "answer": 0,
+    "answer_word": "provided that",
+    "explanation_kr": "빈칸 뒤 절(S+V) → 접속사! 조건 → provided that = '~하는 조건으로'!",
+    "explanation": "절(S+V) 앞 → 접속사. 조건 의미 → provided that.",
+    "kr": "다이너가 와인 리스트에서 최소 두 병을 구매하는 조건으로 레스토랑은 코르크세이지 요금을 면제할 것이다.",
+    "expressions": [
+      {
+        "expr": "provided that + S+V",
+        "meaning": "~하는 조건으로 (조건 접속사)"
+      },
+      {
+        "expr": "waive fee provided that purchase",
+        "meaning": "구매 조건부 면제!"
+      }
+    ]
+  },
+  {
+    "id": "LINK_583",
+    "category": "LINK",
+    "cat": "접속사",
+    "word_count": 15,
+    "diff": "normal",
+    "sentence": "_______ the catering manager had arranged everything meticulously, the buffet ran out of food by eight o'clock.",
+    "choices": [
+      "(A) Even though",
+      "(B) However",
+      "(C) Due to",
+      "(D) Despite"
+    ],
+    "answer": 0,
+    "answer_word": "Even though",
+    "explanation_kr": "빈칸 뒤 절(S+V) → 접속사! 강한 양보 → even though!",
+    "explanation": "절(S+V) 앞 → 접속사. 강한 양보 → even though.",
+    "kr": "비록 케이터링 매니저가 모든 것을 꼼꼼하게 준비했음에도 불구하고, 뷔페는 8시에 음식이 떨어졌다.",
+    "expressions": [
+      {
+        "expr": "Even though + S+V",
+        "meaning": "비록 ~임에도 (강한 양보)"
+      },
+      {
+        "expr": "ran out even though arranged",
+        "meaning": "준비에도 부족!"
+      }
+    ]
+  },
+  {
+    "id": "LINK_584",
+    "category": "LINK",
+    "cat": "접속사",
+    "word_count": 15,
+    "diff": "normal",
+    "sentence": "The café started offering oat milk _______ a growing number of customers requested non-dairy alternatives.",
+    "choices": [
+      "(A) however",
+      "(B) as",
+      "(C) despite",
+      "(D) in spite of"
+    ],
+    "answer": 1,
+    "answer_word": "as",
+    "explanation_kr": "빈칸 뒤 절(S+V) → 접속사! 이유/비례 → as = '~이므로, ~함에 따라'!",
+    "explanation": "절(S+V) 앞 → 접속사. 이유/비례 의미 → as.",
+    "kr": "점점 더 많은 고객들이 무유제품 대안을 요청함에 따라 카페는 귀리 우유를 제공하기 시작했다.",
+    "expressions": [
+      {
+        "expr": "as + S+V",
+        "meaning": "~이므로, ~함에 따라 (접속사)"
+      },
+      {
+        "expr": "started offering as customers requested",
+        "meaning": "요청 따라 제공!"
+      }
+    ]
+  },
+  {
+    "id": "LINK_585",
+    "category": "LINK",
+    "cat": "접속사",
+    "word_count": 15,
+    "diff": "normal",
+    "sentence": "The venue will not accept walk-in bookings _______ a special exception is granted by the events manager.",
+    "choices": [
+      "(A) despite",
+      "(B) however",
+      "(C) unless",
+      "(D) due to"
+    ],
+    "answer": 2,
+    "answer_word": "unless",
+    "explanation_kr": "빈칸 뒤 절(S+V) → 접속사! 조건(부정) → unless = '~하지 않는다면'!",
+    "explanation": "절(S+V) 앞 → 접속사. 부정 조건 → unless.",
+    "kr": "행사 매니저가 특별 예외를 허용하지 않는 한 행사장은 워크인 예약을 받지 않을 것이다.",
+    "expressions": [
+      {
+        "expr": "unless + S+V",
+        "meaning": "~하지 않는다면 (조건 접속사)"
+      },
+      {
+        "expr": "not accept unless exception granted",
+        "meaning": "예외 없으면 거절!"
+      }
+    ]
+  },
+  {
+    "id": "LINK_586",
+    "category": "LINK",
+    "cat": "접속사",
+    "word_count": 15,
+    "diff": "normal",
+    "sentence": "_______ the kitchen upgraded its equipment, food preparation times dropped by nearly forty percent.",
+    "choices": [
+      "(A) Despite",
+      "(B) However",
+      "(C) Due to",
+      "(D) Once"
+    ],
+    "answer": 3,
+    "answer_word": "Once",
+    "explanation_kr": "빈칸 뒤 절(S+V) → 접속사! 시간(완료 후) → once = '일단 ~하면'!",
+    "explanation": "절(S+V) 앞 → 접속사. 시간 순서 → once.",
+    "kr": "주방이 장비를 업그레이드하자 음식 준비 시간이 거의 40%나 줄었다.",
+    "expressions": [
+      {
+        "expr": "Once + S+V",
+        "meaning": "일단 ~하면 (시간 접속사)"
+      },
+      {
+        "expr": "dropped once kitchen upgraded",
+        "meaning": "업그레이드 후 감소!"
+      }
+    ]
+  },
+  {
+    "id": "LINK_587",
+    "category": "LINK",
+    "cat": "접속사",
+    "word_count": 15,
+    "diff": "normal",
+    "sentence": "The new café attracts younger customers _______ the traditional bakery across the street caters mostly to older residents.",
+    "choices": [
+      "(A) whereas",
+      "(B) due to",
+      "(C) in spite of",
+      "(D) however"
+    ],
+    "answer": 0,
+    "answer_word": "whereas",
+    "explanation_kr": "빈칸 뒤 절(S+V) → 접속사! 대조 → whereas = '반면에'!",
+    "explanation": "절(S+V) 앞 → 접속사. 대조 의미 → whereas.",
+    "kr": "길 건너 전통 빵집이 주로 나이든 주민들을 응대하는 반면에 새로운 카페는 젊은 고객들을 유치한다.",
+    "expressions": [
+      {
+        "expr": "whereas + S+V",
+        "meaning": "반면에 (대조 접속사)"
+      },
+      {
+        "expr": "younger vs older customers",
+        "meaning": "고객층 대조!"
+      }
+    ]
+  },
+  {
+    "id": "LINK_588",
+    "category": "LINK",
+    "cat": "접속사",
+    "word_count": 15,
+    "diff": "normal",
+    "sentence": "The conference registration portal will remain open _______ all available seats have been filled.",
+    "choices": [
+      "(A) until",
+      "(B) however",
+      "(C) despite",
+      "(D) due to"
+    ],
+    "answer": 0,
+    "answer_word": "until",
+    "explanation_kr": "빈칸 뒤 절(S+V) → 접속사! 시간 한계 → until = '~할 때까지'!",
+    "explanation": "절(S+V) 앞 → 접속사. 시간 한계 → until.",
+    "kr": "모든 이용 가능한 좌석이 채워질 때까지 컨퍼런스 등록 포털이 계속 열려 있을 것이다.",
+    "expressions": [
+      {
+        "expr": "until + S+V",
+        "meaning": "~할 때까지 (시간 접속사)"
+      },
+      {
+        "expr": "remain open until seats filled",
+        "meaning": "좌석 충원까지 열림!"
+      }
+    ]
+  },
+  {
+    "id": "LINK_589",
+    "category": "LINK",
+    "cat": "접속사",
+    "word_count": 15,
+    "diff": "normal",
+    "sentence": "The outdoor seating area will be covered with a canopy _______ the weather remains unpredictable.",
+    "choices": [
+      "(A) despite",
+      "(B) however",
+      "(C) since",
+      "(D) due to"
+    ],
+    "answer": 2,
+    "answer_word": "since",
+    "explanation_kr": "빈칸 뒤 절(S+V) → 접속사! 이유 → since = '~이므로'!",
+    "explanation": "절(S+V) 앞 → 접속사. 이유 의미 → since.",
+    "kr": "날씨가 예측 불가능한 상태로 남아있으므로 야외 좌석 공간은 캐노피로 덮일 것이다.",
+    "expressions": [
+      {
+        "expr": "since + S+V",
+        "meaning": "~이므로 (이유 접속사)"
+      },
+      {
+        "expr": "covered since weather unpredictable",
+        "meaning": "날씨 이유 캐노피!"
+      }
+    ]
+  },
+  {
+    "id": "LINK_590",
+    "category": "LINK",
+    "cat": "접속사",
+    "word_count": 15,
+    "diff": "normal",
+    "sentence": "The delivery driver will notify the customer _______ the order is approximately fifteen minutes away.",
+    "choices": [
+      "(A) despite",
+      "(B) however",
+      "(C) when",
+      "(D) due to"
+    ],
+    "answer": 2,
+    "answer_word": "when",
+    "explanation_kr": "빈칸 뒤 절(S+V) → 접속사! 시간 → when = '~할 때'!",
+    "explanation": "절(S+V) 앞 → 접속사. 시간 의미 → when.",
+    "kr": "주문이 약 15분 거리에 있을 때 배달 기사가 고객에게 통보할 것이다.",
+    "expressions": [
+      {
+        "expr": "when + S+V",
+        "meaning": "~할 때 (시간 접속사)"
+      },
+      {
+        "expr": "notify when order is nearby",
+        "meaning": "근접 시 통보!"
+      }
+    ]
+  },
+  {
+    "id": "LINK_591",
+    "category": "LINK",
+    "cat": "접속사",
+    "word_count": 15,
+    "diff": "normal",
+    "sentence": "The coffee shop will offer a free drink to any customer _______ they join the new subscription service.",
+    "choices": [
+      "(A) however",
+      "(B) if",
+      "(C) despite",
+      "(D) due to"
+    ],
+    "answer": 1,
+    "answer_word": "if",
+    "explanation_kr": "빈칸 뒤 절(S+V) → 접속사! 가정 → if = '~한다면'!",
+    "explanation": "절(S+V) 앞 → 접속사. 가정 의미 → if.",
+    "kr": "새로운 구독 서비스에 가입한다면 커피숍은 모든 고객에게 무료 음료를 제공할 것이다.",
+    "expressions": [
+      {
+        "expr": "if + S+V",
+        "meaning": "~한다면 (조건 접속사)"
+      },
+      {
+        "expr": "offer free drink if they join",
+        "meaning": "가입 시 무료 음료!"
+      }
+    ]
+  },
+  {
+    "id": "LINK_592",
+    "category": "LINK",
+    "cat": "접속사",
+    "word_count": 15,
+    "diff": "normal",
+    "sentence": "_______ the hotel charged premium rates, it maintained a consistent occupancy rate above ninety percent.",
+    "choices": [
+      "(A) Although",
+      "(B) Despite",
+      "(C) However",
+      "(D) Due to"
+    ],
+    "answer": 0,
+    "answer_word": "Although",
+    "explanation_kr": "빈칸 뒤 절(S+V) → 접속사! 양보 → although = '비록~이지만'!",
+    "explanation": "절(S+V) 앞 → 접속사. 양보 의미 → although.",
+    "kr": "비록 호텔이 프리미엄 요금을 청구했지만, 90% 이상의 일관된 객실 점유율을 유지했다.",
+    "expressions": [
+      {
+        "expr": "Although + S+V",
+        "meaning": "비록 ~이지만 (양보 접속사)"
+      },
+      {
+        "expr": "maintained occupancy although charged premium",
+        "meaning": "프리미엄에도 점유율 유지!"
+      }
+    ]
+  },
+  {
+    "id": "LINK_593",
+    "category": "LINK",
+    "cat": "접속사",
+    "word_count": 15,
+    "diff": "normal",
+    "sentence": "The pop-up restaurant will keep its location secret _______ bookings open one week before each event.",
+    "choices": [
+      "(A) despite",
+      "(B) however",
+      "(C) due to",
+      "(D) until"
+    ],
+    "answer": 3,
+    "answer_word": "until",
+    "explanation_kr": "빈칸 뒤 절(S+V) → 접속사! 시간 한계 → until = '~할 때까지'!",
+    "explanation": "절(S+V) 앞 → 접속사. 시간 한계 → until.",
+    "kr": "각 행사 일주일 전에 예약이 시작될 때까지 팝업 레스토랑은 위치를 비밀로 유지할 것이다.",
+    "expressions": [
+      {
+        "expr": "until + S+V",
+        "meaning": "~할 때까지 (시간 접속사)"
+      },
+      {
+        "expr": "keep secret until bookings open",
+        "meaning": "예약 시작까지 비밀!"
+      }
+    ]
+  },
+  {
+    "id": "LINK_594",
+    "category": "LINK",
+    "cat": "접속사",
+    "word_count": 15,
+    "diff": "normal",
+    "sentence": "The venue fee doubles _______ an event runs beyond the contracted finishing time.",
+    "choices": [
+      "(A) due to",
+      "(B) however",
+      "(C) despite",
+      "(D) whenever"
+    ],
+    "answer": 3,
+    "answer_word": "whenever",
+    "explanation_kr": "빈칸 뒤 절(S+V) → 접속사! 반복 조건 → whenever = '~할 때마다'!",
+    "explanation": "절(S+V) 앞 → 접속사. 반복 조건 → whenever.",
+    "kr": "행사가 계약된 종료 시간을 넘길 때마다 행사장 요금이 두 배가 된다.",
+    "expressions": [
+      {
+        "expr": "whenever + S+V",
+        "meaning": "~할 때마다 (반복 접속사)"
+      },
+      {
+        "expr": "doubles whenever event runs over",
+        "meaning": "초과 시마다 두 배!"
+      }
+    ]
+  },
+  {
+    "id": "LINK_595",
+    "category": "LINK",
+    "cat": "접속사",
+    "word_count": 15,
+    "diff": "normal",
+    "sentence": "The chef will accommodate special dietary requests _______ they are submitted at least forty-eight hours in advance.",
+    "choices": [
+      "(A) as long as",
+      "(B) however",
+      "(C) due to",
+      "(D) despite"
+    ],
+    "answer": 0,
+    "answer_word": "as long as",
+    "explanation_kr": "빈칸 뒤 절(S+V) → 접속사! 조건 → as long as = '~하는 한'!",
+    "explanation": "절(S+V) 앞 → 접속사. 조건 의미 → as long as.",
+    "kr": "최소 48시간 전에 제출되는 한 셰프는 특별 식이 요청을 수용할 것이다.",
+    "expressions": [
+      {
+        "expr": "as long as + S+V",
+        "meaning": "~하는 한 (조건 접속사)"
+      },
+      {
+        "expr": "accommodate as long as submitted early",
+        "meaning": "사전 제출 조건부 수용!"
+      }
+    ]
+  },
+  {
+    "id": "LINK_596",
+    "category": "LINK",
+    "cat": "접속사",
+    "word_count": 15,
+    "diff": "normal",
+    "sentence": "The hotel spa will open its doors to non-resident guests _______ the renovation of the changing rooms is complete.",
+    "choices": [
+      "(A) however",
+      "(B) due to",
+      "(C) once",
+      "(D) despite"
+    ],
+    "answer": 2,
+    "answer_word": "once",
+    "explanation_kr": "빈칸 뒤 절(S+V) → 접속사! 시간(완료 후) → once = '일단 ~하면'!",
+    "explanation": "절(S+V) 앞 → 접속사. 시간 순서 → once.",
+    "kr": "탈의실 리노베이션이 완료되면, 호텔 스파는 비투숙객에게 문을 열 것이다.",
+    "expressions": [
+      {
+        "expr": "once + S+V",
+        "meaning": "일단 ~하면 (시간 접속사)"
+      },
+      {
+        "expr": "open once renovation complete",
+        "meaning": "공사 완료 후 개방!"
+      }
+    ]
+  },
+  {
+    "id": "LINK_597",
+    "category": "LINK",
+    "cat": "접속사",
+    "word_count": 15,
+    "diff": "normal",
+    "sentence": "_______ the outdoor terrace capacity increased, more private events could be hosted simultaneously.",
+    "choices": [
+      "(A) Due to",
+      "(B) However",
+      "(C) As",
+      "(D) Despite"
+    ],
+    "answer": 2,
+    "answer_word": "As",
+    "explanation_kr": "빈칸 뒤 절(S+V) → 접속사! 비례 → as = '~함에 따라'!",
+    "explanation": "절(S+V) 앞 → 접속사. 비례 의미 → as.",
+    "kr": "야외 테라스 수용 인원이 증가함에 따라, 더 많은 프라이빗 행사를 동시에 개최할 수 있었다.",
+    "expressions": [
+      {
+        "expr": "As + S+V",
+        "meaning": "~함에 따라 (비례 접속사)"
+      },
+      {
+        "expr": "more events as capacity increased",
+        "meaning": "수용 증가 따라 행사 증가!"
+      }
+    ]
+  },
+  {
+    "id": "LINK_598",
+    "category": "LINK",
+    "cat": "접속부사",
+    "word_count": 15,
+    "diff": "normal",
+    "sentence": "The hotel introduced a digital check-in app; _______, it reduced front desk waiting times by over sixty percent.",
+    "choices": [
+      "(A) consequently",
+      "(B) although",
+      "(C) due to",
+      "(D) despite"
+    ],
+    "answer": 0,
+    "answer_word": "consequently",
+    "explanation_kr": "세미콜론 뒤 결과! 디지털 체크인 앱 도입(원인) → 대기 시간 감소(결과). consequently = '그 결과'!",
+    "explanation": "세미콜론 뒤 → 접속부사. 결과 의미 → consequently.",
+    "kr": "호텔이 디지털 체크인 앱을 도입했다; 그 결과, 프런트 데스크 대기 시간이 60% 이상 줄었다.",
+    "expressions": [
+      {
+        "expr": "; consequently,",
+        "meaning": "그 결과 (결과 접속부사)"
+      },
+      {
+        "expr": "결과 접속부사",
+        "meaning": "consequently/therefore/as a result!"
+      }
+    ]
+  },
+  {
+    "id": "LINK_599",
+    "category": "LINK",
+    "cat": "접속부사",
+    "word_count": 15,
+    "diff": "normal",
+    "sentence": "The pop-up dessert bar attracted record weekend footfall. _______, the owner signed a lease for a permanent location.",
+    "choices": [
+      "(A) Although",
+      "(B) Due to",
+      "(C) Despite",
+      "(D) Therefore"
+    ],
+    "answer": 3,
+    "answer_word": "Therefore",
+    "explanation_kr": "앞 문장의 결과! 기록적 방문객(원인) → 영구 장소 계약(결과). Therefore = '따라서'!",
+    "explanation": "앞 문장의 결과 → 접속부사. 결과 의미 → therefore.",
+    "kr": "팝업 디저트 바가 기록적인 주말 방문객을 유치했다. 따라서, 오너는 영구적인 위치의 임대 계약을 체결했다.",
+    "expressions": [
+      {
+        "expr": "Therefore,",
+        "meaning": "따라서 (결과 접속부사)"
+      },
+      {
+        "expr": "결과 접속부사",
+        "meaning": "therefore/consequently/as a result!"
+      }
+    ]
+  },
+  {
+    "id": "LINK_600",
+    "category": "LINK",
+    "cat": "접속부사",
+    "word_count": 15,
+    "diff": "normal",
+    "sentence": "The conference caterers provided hot meals for all delegates; _______, they arranged dietary alternatives for those with specific requirements.",
+    "choices": [
+      "(A) despite",
+      "(B) additionally",
+      "(C) although",
+      "(D) due to"
+    ],
+    "answer": 1,
+    "answer_word": "additionally",
+    "explanation_kr": "세미콜론 뒤 추가! 전 참가자 식사 제공(성과1) + 식이 대안 준비(성과2 추가). additionally = '추가적으로'!",
+    "explanation": "세미콜론 뒤 → 접속부사. 추가 의미 → additionally.",
+    "kr": "컨퍼런스 케이터러들은 모든 대표단에게 따뜻한 식사를 제공했다; 추가적으로, 특별 요건이 있는 사람들을 위해 식이 대안을 마련했다.",
+    "expressions": [
+      {
+        "expr": "; additionally,",
+        "meaning": "추가적으로 (추가 접속부사)"
+      },
+      {
+        "expr": "additionally = furthermore = moreover",
+        "meaning": "추가 접속부사!"
+      }
+    ]
+  },
+  {
+    "id": "LINK_601",
+    "category": "LINK",
+    "cat": "전치사",
+    "word_count": 18,
+    "diff": "hard",
+    "sentence": "_______ consistently positive guest feedback, the hotel's new sustainable dining concept attracted significant media coverage and several industry awards.",
+    "choices": [
+      "(A) Following",
+      "(B) Because",
+      "(C) Although",
+      "(D) Since"
+    ],
+    "answer": 0,
+    "answer_word": "Following",
+    "explanation_kr": "빈칸 뒤 명사구(consistently positive guest feedback) → 전치사! 시간 순서(~후) → following!",
+    "explanation": "명사구 앞 → 전치사. 순서 의미 → following.",
+    "kr": "꾸준히 긍정적인 투숙객 피드백에 뒤이어 호텔의 새로운 지속가능 식사 콘셉트는 상당한 미디어 보도와 여러 업계 상을 유치했다.",
+    "expressions": [
+      {
+        "expr": "Following + 명사구",
+        "meaning": "~에 뒤이어 (전치사)"
+      },
+      {
+        "expr": "following positive feedback",
+        "meaning": "긍정 피드백 후!"
+      }
+    ]
+  },
+  {
+    "id": "LINK_602",
+    "category": "LINK",
+    "cat": "전치사",
+    "word_count": 18,
+    "diff": "hard",
+    "sentence": "The catering company priced its premium corporate event packages _______ a per-head basis, with tiered rates depending on the total number of guests.",
+    "choices": [
+      "(A) although",
+      "(B) on",
+      "(C) whereas",
+      "(D) however"
+    ],
+    "answer": 1,
+    "answer_word": "on",
+    "explanation_kr": "on a per-head basis = '1인당 기준으로' 관용 전치사구!",
+    "explanation": "관용 전치사구 → on a per-head basis.",
+    "kr": "케이터링 회사는 프리미엄 법인 행사 패키지를 총 투숙객 수에 따른 계층별 요금으로 1인당 기준으로 책정했다.",
+    "expressions": [
+      {
+        "expr": "on a per-head basis",
+        "meaning": "1인당 기준으로"
+      },
+      {
+        "expr": "priced on a per-head basis",
+        "meaning": "1인당 기준 책정!"
+      }
+    ]
+  },
+  {
+    "id": "LINK_603",
+    "category": "LINK",
+    "cat": "전치사",
+    "word_count": 18,
+    "diff": "hard",
+    "sentence": "The venue operator agreed to waive the cancellation penalty _______ exceptional circumstances, including documented medical emergencies or natural disasters.",
+    "choices": [
+      "(A) whereas",
+      "(B) however",
+      "(C) although",
+      "(D) in"
+    ],
+    "answer": 3,
+    "answer_word": "in",
+    "explanation_kr": "in exceptional circumstances = '예외적인 상황에서' 관용 전치사구!",
+    "explanation": "관용 전치사구 → in exceptional circumstances.",
+    "kr": "행사장 운영자는 문서화된 의료 응급 상황이나 자연재해를 포함한 예외적인 상황에서 취소 패널티를 면제하기로 합의했다.",
+    "expressions": [
+      {
+        "expr": "in exceptional circumstances",
+        "meaning": "예외적인 상황에서"
+      },
+      {
+        "expr": "in circumstances = in situations",
+        "meaning": "상황에서!"
+      }
+    ]
+  },
+  {
+    "id": "LINK_604",
+    "category": "LINK",
+    "cat": "전치사",
+    "word_count": 18,
+    "diff": "hard",
+    "sentence": "The conference organizers scheduled the networking dinner _______ the final presentation session to give delegates time to change and freshen up.",
+    "choices": [
+      "(A) whereas",
+      "(B) following",
+      "(C) although",
+      "(D) however"
+    ],
+    "answer": 1,
+    "answer_word": "following",
+    "explanation_kr": "빈칸 뒤 명사구 → 전치사! 시간 순서(~후) → following = '~에 뒤이어'!",
+    "explanation": "명사구 앞 → 전치사. 순서 의미 → following.",
+    "kr": "대표단들이 옷을 갈아입고 기분 전환을 할 시간을 주기 위해 컨퍼런스 주최측은 마지막 발표 세션에 뒤이어 네트워킹 만찬을 예정했다.",
+    "expressions": [
+      {
+        "expr": "following + 명사구",
+        "meaning": "~에 뒤이어 (전치사)"
+      },
+      {
+        "expr": "scheduled following the session",
+        "meaning": "세션 후 예정!"
+      }
+    ]
+  },
+  {
+    "id": "LINK_605",
+    "category": "LINK",
+    "cat": "전치사",
+    "word_count": 18,
+    "diff": "hard",
+    "sentence": "The restaurant expanded its delivery radius _______ a distance of fifteen kilometers to serve residential areas previously outside its catchment zone.",
+    "choices": [
+      "(A) although",
+      "(B) to",
+      "(C) whereas",
+      "(D) however"
+    ],
+    "answer": 1,
+    "answer_word": "to",
+    "explanation_kr": "빈칸 뒤 수량 명사구 → 전치사! 범위 확장 → to = '~까지'!",
+    "explanation": "수량 명사구 앞 → 전치사. 범위 의미 → to.",
+    "kr": "레스토랑은 이전에 서비스 구역 밖이었던 주거 지역을 서비스하기 위해 배달 반경을 15킬로미터까지 확장했다.",
+    "expressions": [
+      {
+        "expr": "expanded to + 범위",
+        "meaning": "~까지 확장하다"
+      },
+      {
+        "expr": "expanded to fifteen kilometers",
+        "meaning": "15km까지 확장!"
+      }
+    ]
+  },
+  {
+    "id": "LINK_606",
+    "category": "LINK",
+    "cat": "전치사",
+    "word_count": 18,
+    "diff": "hard",
+    "sentence": "Guests staying _______ a minimum of five consecutive nights are automatically enrolled in the hotel's premium loyalty tier.",
+    "choices": [
+      "(A) for",
+      "(B) although",
+      "(C) whereas",
+      "(D) however"
+    ],
+    "answer": 0,
+    "answer_word": "for",
+    "explanation_kr": "빈칸 뒤 기간 명사구 → 전치사! 기간 → for = '~동안'!",
+    "explanation": "기간 명사구 앞 → 전치사. 기간 의미 → for.",
+    "kr": "최소 5박 연속으로 숙박하는 투숙객은 자동으로 호텔의 프리미엄 로열티 등급에 등록된다.",
+    "expressions": [
+      {
+        "expr": "for + 기간",
+        "meaning": "~동안 (기간 전치사)"
+      },
+      {
+        "expr": "staying for five nights",
+        "meaning": "5박 숙박!"
+      }
+    ]
+  },
+  {
+    "id": "LINK_607",
+    "category": "LINK",
+    "cat": "전치사",
+    "word_count": 18,
+    "diff": "hard",
+    "sentence": "The hotel's concierge service operates _______ dawn and midnight and can arrange transportation, tickets, and restaurant reservations.",
+    "choices": [
+      "(A) although",
+      "(B) whereas",
+      "(C) between",
+      "(D) however"
+    ],
+    "answer": 2,
+    "answer_word": "between",
+    "explanation_kr": "빈칸 뒤 두 시간 표현 → 전치사! 범위 → between A and B = 'A와 B 사이에'!",
+    "explanation": "두 시간 앞 → 전치사. 범위 의미 → between.",
+    "kr": "호텔의 컨시어지 서비스는 새벽과 자정 사이에 운영되며 교통편, 티켓 및 레스토랑 예약을 주선할 수 있다.",
+    "expressions": [
+      {
+        "expr": "between A and B",
+        "meaning": "A와 B 사이에 (전치사)"
+      },
+      {
+        "expr": "operates between dawn and midnight",
+        "meaning": "새벽~자정 운영!"
+      }
+    ]
+  },
+  {
+    "id": "LINK_608",
+    "category": "LINK",
+    "cat": "전치사",
+    "word_count": 18,
+    "diff": "hard",
+    "sentence": "_______ its relatively modest size, the boutique hotel consistently outranked larger competitors in annual guest satisfaction surveys.",
+    "choices": [
+      "(A) Since",
+      "(B) Because",
+      "(C) Although",
+      "(D) Despite"
+    ],
+    "answer": 3,
+    "answer_word": "Despite",
+    "explanation_kr": "빈칸 뒤 명사구(its relatively modest size) → 전치사! 양보 → despite = '~에도 불구하고'!",
+    "explanation": "명사구 앞 → 전치사. 양보 의미 → despite.",
+    "kr": "비교적 작은 규모에도 불구하고 부티크 호텔은 연간 투숙객 만족도 조사에서 더 큰 경쟁자들을 꾸준히 능가했다.",
+    "expressions": [
+      {
+        "expr": "Despite + 명사구",
+        "meaning": "~에도 불구하고 (전치사)"
+      },
+      {
+        "expr": "despite modest size",
+        "meaning": "작은 규모에도!"
+      }
+    ]
+  },
+  {
+    "id": "LINK_609",
+    "category": "LINK",
+    "cat": "전치사",
+    "word_count": 18,
+    "diff": "hard",
+    "sentence": "The event management firm built its reputation _______ meticulous attention to detail and a willingness to accommodate last-minute client requests.",
+    "choices": [
+      "(A) although",
+      "(B) however",
+      "(C) through",
+      "(D) whereas"
+    ],
+    "answer": 2,
+    "answer_word": "through",
+    "explanation_kr": "빈칸 뒤 명사구 → 전치사! 수단 → through = '~을 통해'!",
+    "explanation": "명사구 앞 → 전치사. 수단 의미 → through.",
+    "kr": "행사 관리 회사는 세부 사항에 대한 세심한 주의와 막바지 고객 요청을 수용하려는 의지를 통해 명성을 쌓았다.",
+    "expressions": [
+      {
+        "expr": "through + 명사구",
+        "meaning": "~을 통해 (수단 전치사)"
+      },
+      {
+        "expr": "built reputation through attention",
+        "meaning": "세심함을 통해 명성 구축!"
+      }
+    ]
+  },
+  {
+    "id": "LINK_610",
+    "category": "LINK",
+    "cat": "전치사",
+    "word_count": 18,
+    "diff": "hard",
+    "sentence": "All catering bookings must be confirmed _______ written deposit _______ ten working days before the scheduled event date.",
+    "choices": [
+      "(A) although",
+      "(B) whereas",
+      "(C) however",
+      "(D) by"
+    ],
+    "answer": 3,
+    "answer_word": "by",
+    "explanation_kr": "빈칸 뒤 수단 명사구 → 전치사! 수단 → by = '~에 의해, ~으로'!",
+    "explanation": "수단 명사구 앞 → 전치사. 수단 의미 → by.",
+    "kr": "모든 케이터링 예약은 예정된 행사일 10 영업일 전까지 서면 계약금으로 확정되어야 한다.",
+    "expressions": [
+      {
+        "expr": "confirmed by + 수단",
+        "meaning": "~에 의해 확정되다"
+      },
+      {
+        "expr": "confirmed by written deposit",
+        "meaning": "서면 계약금으로 확정!"
+      }
+    ]
+  },
+  {
+    "id": "LINK_611",
+    "category": "LINK",
+    "cat": "전치사",
+    "word_count": 18,
+    "diff": "hard",
+    "sentence": "The hotel chain expanded its breakfast offering _______ the sustained demand from corporate clients for nutritious, time-efficient morning meal solutions.",
+    "choices": [
+      "(A) in response to",
+      "(B) whereas",
+      "(C) however",
+      "(D) although"
+    ],
+    "answer": 0,
+    "answer_word": "in response to",
+    "explanation_kr": "빈칸 뒤 명사구 → 전치사! 대응 → in response to = '~에 대한 대응으로'!",
+    "explanation": "명사구 앞 → 전치사. 대응 의미 → in response to.",
+    "kr": "영양가 있고 시간 효율적인 아침 식사 솔루션에 대한 법인 고객들의 지속적인 수요에 대한 대응으로 호텔 체인은 조식 제공을 확대했다.",
+    "expressions": [
+      {
+        "expr": "in response to + 명사구",
+        "meaning": "~에 대한 대응으로"
+      },
+      {
+        "expr": "expanded in response to demand",
+        "meaning": "수요에 대응 확장!"
+      }
+    ]
+  },
+  {
+    "id": "LINK_612",
+    "category": "LINK",
+    "cat": "전치사",
+    "word_count": 18,
+    "diff": "hard",
+    "sentence": "The bistro's signature dishes are prepared fresh each morning _______ a team of three chefs who source ingredients exclusively from local farms.",
+    "choices": [
+      "(A) by",
+      "(B) whereas",
+      "(C) however",
+      "(D) although"
+    ],
+    "answer": 0,
+    "answer_word": "by",
+    "explanation_kr": "빈칸 뒤 행위자 명사구 → 전치사! 행위자 → by = '~에 의해' (수동태 행위자)!",
+    "explanation": "행위자 명사구 앞 → 전치사. 행위자 의미 → by.",
+    "kr": "비스트로의 시그니처 요리들은 지역 농장에서만 재료를 조달하는 세 명의 셰프팀에 의해 매일 아침 신선하게 준비된다.",
+    "expressions": [
+      {
+        "expr": "prepared by + 행위자",
+        "meaning": "~에 의해 준비되다 (수동태 행위자)"
+      },
+      {
+        "expr": "prepared by a team of chefs",
+        "meaning": "셰프팀에 의해!"
+      }
+    ]
+  },
+  {
+    "id": "LINK_613",
+    "category": "LINK",
+    "cat": "전치사",
+    "word_count": 18,
+    "diff": "hard",
+    "sentence": "The wedding banquet package includes floral arrangements, catering, and audiovisual equipment, all _______ a single all-inclusive price.",
+    "choices": [
+      "(A) however",
+      "(B) although",
+      "(C) whereas",
+      "(D) at"
+    ],
+    "answer": 3,
+    "answer_word": "at",
+    "explanation_kr": "at a single price = '단일 가격으로' 관용 전치사구!",
+    "explanation": "가격 명사구 앞 → 전치사. 가격 의미 → at.",
+    "kr": "웨딩 연회 패키지에는 꽃 장식, 케이터링 및 시청각 장비가 포함되어 있으며, 모두 단일 올인클루시브 가격으로 제공된다.",
+    "expressions": [
+      {
+        "expr": "at + 가격",
+        "meaning": "~의 가격으로 (가격 전치사)"
+      },
+      {
+        "expr": "all at a single price",
+        "meaning": "단일 가격에 모두!"
+      }
+    ]
+  },
+  {
+    "id": "LINK_614",
+    "category": "LINK",
+    "cat": "전치사",
+    "word_count": 18,
+    "diff": "hard",
+    "sentence": "The rooftop restaurant remained fully booked _______ six weeks, making it one of the most sought-after dining destinations in the city.",
+    "choices": [
+      "(A) although",
+      "(B) for",
+      "(C) however",
+      "(D) whereas"
+    ],
+    "answer": 1,
+    "answer_word": "for",
+    "explanation_kr": "빈칸 뒤 기간 명사구 → 전치사! 기간 → for = '~동안'!",
+    "explanation": "기간 명사구 앞 → 전치사. 기간 의미 → for.",
+    "kr": "루프탑 레스토랑은 6주 동안 예약이 가득 차 있어, 도시에서 가장 인기 있는 식사 목적지 중 하나가 되었다.",
+    "expressions": [
+      {
+        "expr": "for + 기간",
+        "meaning": "~동안 (기간 전치사)"
+      },
+      {
+        "expr": "booked for six weeks",
+        "meaning": "6주 동안 예약 만석!"
+      }
+    ]
+  },
+  {
+    "id": "LINK_615",
+    "category": "LINK",
+    "cat": "전치사",
+    "word_count": 18,
+    "diff": "hard",
+    "sentence": "The hotel granted early check-in privileges to repeat guests _______ an additional fee, recognizing their loyalty and long-standing relationship with the brand.",
+    "choices": [
+      "(A) without",
+      "(B) whereas",
+      "(C) although",
+      "(D) however"
+    ],
+    "answer": 0,
+    "answer_word": "without",
+    "explanation_kr": "빈칸 뒤 명사구 → 전치사! 부재 → without = '~없이'!",
+    "explanation": "명사구 앞 → 전치사. 부재 의미 → without.",
+    "kr": "브랜드와의 충성도와 오랜 관계를 인정하여 호텔은 재방문 투숙객에게 추가 요금 없이 조기 체크인 특권을 부여했다.",
+    "expressions": [
+      {
+        "expr": "without + 명사구",
+        "meaning": "~없이 (부재 전치사)"
+      },
+      {
+        "expr": "without an additional fee",
+        "meaning": "추가 요금 없이!"
+      }
+    ]
+  },
+  {
+    "id": "LINK_616",
+    "category": "LINK",
+    "cat": "접속사",
+    "word_count": 18,
+    "diff": "hard",
+    "sentence": "The rooftop event space will not be made available for private hire _______ all structural safety inspections have been independently verified and signed off.",
+    "choices": [
+      "(A) due to",
+      "(B) until",
+      "(C) however",
+      "(D) despite"
+    ],
+    "answer": 1,
+    "answer_word": "until",
+    "explanation_kr": "빈칸 뒤 절(S+V) → 접속사! 시간 한계 → until = '~할 때까지'!",
+    "explanation": "절(S+V) 앞 → 접속사. 시간 한계 → until.",
+    "kr": "모든 구조 안전 점검이 독립적으로 검증되고 승인될 때까지 루프탑 행사 공간은 개인 대관에 제공되지 않을 것이다.",
+    "expressions": [
+      {
+        "expr": "until + S+V",
+        "meaning": "~할 때까지 (시간 접속사)"
+      },
+      {
+        "expr": "not available until inspections verified",
+        "meaning": "점검 완료까지 비제공!"
+      }
+    ]
+  },
+  {
+    "id": "LINK_617",
+    "category": "LINK",
+    "cat": "접속사",
+    "word_count": 18,
+    "diff": "hard",
+    "sentence": "The hotel's sustainability report showed a thirty percent reduction in food waste _______ the introduction of a real-time kitchen inventory management system.",
+    "choices": [
+      "(A) due to",
+      "(B) however",
+      "(C) since",
+      "(D) in spite of"
+    ],
+    "answer": 2,
+    "answer_word": "since",
+    "explanation_kr": "빈칸 뒤 절(S+V) → 접속사! 시간 기점/이유 → since = '~이후로, ~이므로'!",
+    "explanation": "절(S+V) 앞 → 접속사. 시간 기점 의미 → since.",
+    "kr": "실시간 주방 재고 관리 시스템의 도입 이후로 호텔의 지속가능성 보고서는 음식 낭비의 30% 감소를 보여주었다.",
+    "expressions": [
+      {
+        "expr": "since + S+V",
+        "meaning": "~이후로, ~이므로 (접속사)"
+      },
+      {
+        "expr": "thirty percent reduction since introduction",
+        "meaning": "도입 이후 30% 감소!"
+      }
+    ]
+  },
+  {
+    "id": "LINK_618",
+    "category": "LINK",
+    "cat": "접속사",
+    "word_count": 18,
+    "diff": "hard",
+    "sentence": "The restaurant maintained its full complement of staff _______ revenues dropped significantly during the off-peak winter months.",
+    "choices": [
+      "(A) due to",
+      "(B) in spite of",
+      "(C) however",
+      "(D) even though"
+    ],
+    "answer": 3,
+    "answer_word": "even though",
+    "explanation_kr": "빈칸 뒤 절(S+V) → 접속사! 강한 양보 → even though!",
+    "explanation": "절(S+V) 앞 → 접속사. 강한 양보 → even though.",
+    "kr": "비록 비성수기 겨울 달 동안 수익이 크게 감소했음에도 불구하고, 레스토랑은 전체 직원 수를 유지했다.",
+    "expressions": [
+      {
+        "expr": "even though + S+V",
+        "meaning": "비록 ~임에도 (강한 양보)"
+      },
+      {
+        "expr": "maintained staff even though revenues dropped",
+        "meaning": "수익 감소에도 유지!"
+      }
+    ]
+  },
+  {
+    "id": "LINK_619",
+    "category": "LINK",
+    "cat": "접속사",
+    "word_count": 18,
+    "diff": "hard",
+    "sentence": "The event management platform will automatically generate a customized run-of-show document _______ the client finalizes the event programme.",
+    "choices": [
+      "(A) despite",
+      "(B) as soon as",
+      "(C) however",
+      "(D) due to"
+    ],
+    "answer": 1,
+    "answer_word": "as soon as",
+    "explanation_kr": "빈칸 뒤 절(S+V) → 접속사! 즉시 시간 → as soon as = '~하자마자'!",
+    "explanation": "절(S+V) 앞 → 접속사. 즉시 시간 → as soon as.",
+    "kr": "고객이 행사 프로그램을 최종 확정하자마자 행사 관리 플랫폼이 맞춤화된 행사 진행 문서를 자동으로 생성할 것이다.",
+    "expressions": [
+      {
+        "expr": "as soon as + S+V",
+        "meaning": "~하자마자 (즉시 시간 접속사)"
+      },
+      {
+        "expr": "generate as soon as client finalizes",
+        "meaning": "확정 즉시 생성!"
+      }
+    ]
+  },
+  {
+    "id": "LINK_620",
+    "category": "LINK",
+    "cat": "접속사",
+    "word_count": 18,
+    "diff": "hard",
+    "sentence": "The food delivery platform will continue to operate in the city _______ it can maintain an average delivery time of under thirty minutes.",
+    "choices": [
+      "(A) due to",
+      "(B) however",
+      "(C) as long as",
+      "(D) despite"
+    ],
+    "answer": 2,
+    "answer_word": "as long as",
+    "explanation_kr": "빈칸 뒤 절(S+V) → 접속사! 조건 → as long as = '~하는 한'!",
+    "explanation": "절(S+V) 앞 → 접속사. 조건 의미 → as long as.",
+    "kr": "평균 배달 시간을 30분 이내로 유지할 수 있는 한 음식 배달 플랫폼은 도시에서 계속 운영할 것이다.",
+    "expressions": [
+      {
+        "expr": "as long as + S+V",
+        "meaning": "~하는 한 (조건 접속사)"
+      },
+      {
+        "expr": "operate as long as time maintained",
+        "meaning": "시간 유지 조건 운영!"
+      }
+    ]
+  },
+  {
+    "id": "LINK_621",
+    "category": "LINK",
+    "cat": "접속사",
+    "word_count": 18,
+    "diff": "hard",
+    "sentence": "The hotel chain will award complimentary weekend stays to front-line staff members _______ their team achieves the quarterly guest satisfaction target.",
+    "choices": [
+      "(A) despite",
+      "(B) due to",
+      "(C) however",
+      "(D) whenever"
+    ],
+    "answer": 3,
+    "answer_word": "whenever",
+    "explanation_kr": "빈칸 뒤 절(S+V) → 접속사! 반복 조건 → whenever = '~할 때마다'!",
+    "explanation": "절(S+V) 앞 → 접속사. 반복 조건 → whenever.",
+    "kr": "팀이 분기 투숙객 만족도 목표를 달성할 때마다 호텔 체인은 일선 직원들에게 무료 주말 숙박을 수여할 것이다.",
+    "expressions": [
+      {
+        "expr": "whenever + S+V",
+        "meaning": "~할 때마다 (반복 접속사)"
+      },
+      {
+        "expr": "award stays whenever target achieved",
+        "meaning": "목표 달성 시마다 수여!"
+      }
+    ]
+  },
+  {
+    "id": "LINK_622",
+    "category": "LINK",
+    "cat": "접속사",
+    "word_count": 18,
+    "diff": "hard",
+    "sentence": "The caterer will honor the contracted menu _______ any substitution of ingredients is required by documented supply chain disruptions beyond the company's control.",
+    "choices": [
+      "(A) unless",
+      "(B) due to",
+      "(C) however",
+      "(D) despite"
+    ],
+    "answer": 0,
+    "answer_word": "unless",
+    "explanation_kr": "빈칸 뒤 절(S+V) → 접속사! 조건(부정) → unless = '~하지 않는다면'!",
+    "explanation": "절(S+V) 앞 → 접속사. 부정 조건 → unless.",
+    "kr": "회사의 통제 밖에 있는 문서화된 공급망 혼란으로 인해 재료 대체가 필요하지 않는 한 케이터러는 계약된 메뉴를 이행할 것이다.",
+    "expressions": [
+      {
+        "expr": "unless + S+V",
+        "meaning": "~하지 않는다면 (조건 접속사)"
+      },
+      {
+        "expr": "honor menu unless substitution required",
+        "meaning": "대체 필요 없으면 이행!"
+      }
+    ]
+  },
+  {
+    "id": "LINK_623",
+    "category": "LINK",
+    "cat": "접속사",
+    "word_count": 18,
+    "diff": "hard",
+    "sentence": "The flagship restaurant attracted a growing international clientele _______ its innovative tasting menu showcased exclusively local and seasonal ingredients.",
+    "choices": [
+      "(A) due to",
+      "(B) as",
+      "(C) however",
+      "(D) in spite of"
+    ],
+    "answer": 1,
+    "answer_word": "as",
+    "explanation_kr": "빈칸 뒤 절(S+V) → 접속사! 이유/비례 → as = '~이므로, ~함에 따라'!",
+    "explanation": "절(S+V) 앞 → 접속사. 이유 의미 → as.",
+    "kr": "혁신적인 테이스팅 메뉴가 독점적으로 현지 및 계절 재료를 선보임에 따라 플래그십 레스토랑은 증가하는 국제 고객층을 유치했다.",
+    "expressions": [
+      {
+        "expr": "as + S+V",
+        "meaning": "~이므로, ~함에 따라 (접속사)"
+      },
+      {
+        "expr": "attracted clientele as menu showcased",
+        "meaning": "메뉴 선보임에 따라!"
+      }
+    ]
+  },
+  {
+    "id": "LINK_624",
+    "category": "LINK",
+    "cat": "접속사",
+    "word_count": 18,
+    "diff": "hard",
+    "sentence": "The hotel group will invest in renewable energy infrastructure across all its properties _______ the financial return on such investments becomes demonstrably favorable.",
+    "choices": [
+      "(A) once",
+      "(B) due to",
+      "(C) despite",
+      "(D) however"
+    ],
+    "answer": 0,
+    "answer_word": "once",
+    "explanation_kr": "빈칸 뒤 절(S+V) → 접속사! 시간(완료 후) → once = '일단 ~하면'!",
+    "explanation": "절(S+V) 앞 → 접속사. 시간 순서 → once.",
+    "kr": "그러한 투자의 재정적 수익이 명백히 유리해지면, 호텔 그룹은 모든 부동산에 걸쳐 재생에너지 인프라에 투자할 것이다.",
+    "expressions": [
+      {
+        "expr": "once + S+V",
+        "meaning": "일단 ~하면 (시간 접속사)"
+      },
+      {
+        "expr": "invest once return becomes favorable",
+        "meaning": "수익 유리해지면 투자!"
+      }
+    ]
+  },
+  {
+    "id": "LINK_625",
+    "category": "LINK",
+    "cat": "접속부사",
+    "word_count": 18,
+    "diff": "hard",
+    "sentence": "The boutique hotel's farm-to-table dining concept proved extraordinarily popular with guests and generated widespread critical acclaim; _______, replicating the model across the wider portfolio remains challenging given the operational complexity of sourcing exclusively local produce.",
+    "choices": [
+      "(A) despite",
+      "(B) however",
+      "(C) due to",
+      "(D) although"
+    ],
+    "answer": 1,
+    "answer_word": "however",
+    "explanation_kr": "세미콜론 뒤 역접 접속부사! 큰 인기(긍정) ↔ 전체 복제의 어려움(현실 한계). however = '하지만'!",
+    "explanation": "세미콜론 뒤 → 접속부사. 역접 의미 → however.",
+    "kr": "부티크 호텔의 팜투테이블 식사 콘셉트는 투숙객들에게 엄청나게 인기를 끌고 광범위한 비평적 호평을 받았다; 하지만, 독점적인 현지 농산물 조달의 운영적 복잡성을 고려하면 더 넓은 포트폴리오에 걸쳐 모델을 복제하는 것은 여전히 어려운 과제이다.",
+    "expressions": [
+      {
+        "expr": "; however,",
+        "meaning": "하지만 (역접 접속부사)"
+      },
+      {
+        "expr": "인기/호평 → however → 복제 어려움",
+        "meaning": "성공 vs 확장 어려움 역접!"
+      }
+    ]
+  }
+]

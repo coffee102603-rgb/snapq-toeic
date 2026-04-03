@@ -11,18 +11,18 @@
         "question": "What is the purpose of this announcement?",
         "question_kr": "이 공지의 목적은 무엇인가?",
         "choices": [
-          "(A) To inform the public of a museum's temporary closure",
-          "(B) To announce the opening of a new exhibition",
-          "(C) To request donations for museum renovations",
-          "(D) To promote upcoming educational programs"
+          "(A) To announce the opening of a new exhibition",
+          "(B) To inform the public of a museum's temporary closure",
+          "(C) To promote upcoming educational programs",
+          "(D) To request donations for museum renovations"
         ],
         "choices_kr": [
+          "(C) 박물관 리모델링을 위한 기부를 요청하기 위해",
           "(A) 박물관의 임시 폐관을 대중에게 알리기 위해",
           "(B) 새 전시회 개막을 발표하기 위해",
-          "(C) 박물관 리모델링을 위한 기부를 요청하기 위해",
           "(D) 다가오는 교육 프로그램을 홍보하기 위해"
         ],
-        "answer": 0,
+        "answer": 1,
         "kr": "Harborview 자연사박물관은 주요 전시실의 종합적인 리모델링을 위해 8월 5일부터 8월 30일까지 폐관한다. City Arts Council의 200만 달러 보조금으로 일부 지원되는 이 프로젝트는 전시 시스템을 현대화하고 건물 전체의 접근성을 개선할 것이다.",
         "expressions": [
           {
@@ -48,18 +48,18 @@
         "question": "What will annual members receive during the closure period?",
         "question_kr": "연간 회원들은 폐관 기간 동안 무엇을 받는가?",
         "choices": [
-          "(A) A full refund of their membership fee",
-          "(B) Free access to partner museums",
-          "(C) A one-month extension to their membership",
-          "(D) Priority tickets for the reopening event"
+          "(A) Priority tickets for the reopening event",
+          "(B) A full refund of their membership fee",
+          "(C) Free access to partner museums",
+          "(D) A one-month extension to their membership"
         ],
         "choices_kr": [
+          "(D) 재개관 행사 우선 티켓",
           "(A) 회원비 전액 환불",
           "(B) 협력 박물관 무료 입장",
-          "(C) 회원권 1개월 연장",
-          "(D) 재개관 행사 우선 티켓"
+          "(C) 회원권 1개월 연장"
         ],
-        "answer": 2,
+        "answer": 3,
         "kr": "유효한 연간 회원권 보유자는 폐관 보상으로 회원 기간이 1개월 연장된다. 시즌권 소지자는 업데이트된 만료일 확인을 위해 membership@harborviewmuseum.org로 연락하도록 권고된다.",
         "expressions": [
           {
@@ -86,17 +86,17 @@
         "question_kr": "리모델링 후 박물관에 대해 추론할 수 있는 것은?",
         "choices": [
           "(A) It will charge higher admission fees",
-          "(B) It will offer new exhibits that were not there before",
-          "(C) It will reduce the size of its gift shop",
-          "(D) It will close permanently after the renovation"
+          "(B) It will close permanently after the renovation",
+          "(C) It will offer new exhibits that were not there before",
+          "(D) It will reduce the size of its gift shop"
         ],
         "choices_kr": [
+          "(D) 리모델링 후 영구 폐관할 것이다",
           "(A) 입장료를 인상할 것이다",
           "(B) 이전에 없던 새로운 전시를 제공할 것이다",
-          "(C) 기념품점 규모를 줄일 것이다",
-          "(D) 리모델링 후 영구 폐관할 것이다"
+          "(C) 기념품점 규모를 줄일 것이다"
         ],
-        "answer": 1,
+        "answer": 2,
         "kr": "박물관 기념품점과 카페는 Maple Avenue 임시 입구를 통해 계속 이용 가능하다. 9월 2일 재개관 시 확장된 선사시대 생명 전시관과 최첨단 플라네타리움을 갖춘 새로운 상설 컬렉션을 선보일 것이다.",
         "expressions": [
           {
@@ -127,18 +127,18 @@
         "question": "What is this article mainly about?",
         "question_kr": "이 기사는 주로 무엇에 관한 것인가?",
         "choices": [
-          "(A) The launch of a new cloud computing product",
-          "(B) The completion of a corporate acquisition",
-          "(C) The financial difficulties of CloudBridge Solutions",
-          "(D) Changes in cloud computing regulations"
+          "(A) Changes in cloud computing regulations",
+          "(B) The financial difficulties of CloudBridge Solutions",
+          "(C) The completion of a corporate acquisition",
+          "(D) The launch of a new cloud computing product"
         ],
         "choices_kr": [
           "(A) 새 클라우드 컴퓨팅 제품 출시",
+          "(D) 클라우드 컴퓨팅 규정 변경",
           "(B) 기업 인수 완료",
-          "(C) CloudBridge Solutions의 재정적 어려움",
-          "(D) 클라우드 컴퓨팅 규정 변경"
+          "(C) CloudBridge Solutions의 재정적 어려움"
         ],
-        "answer": 1,
+        "answer": 2,
         "kr": "Meridian Technologies는 기업 데이터 관리 소프트웨어 공급업체인 CloudBridge Solutions를 약 3억 8천만 달러에 인수 완료했다고 발표했다. 이 거래는 클라우드 컴퓨팅 시장에서 Meridian의 입지를 크게 확장할 것으로 예상된다.",
         "expressions": [
           {
@@ -164,18 +164,18 @@
         "question": "According to the article, what will happen to CloudBridge employees?",
         "question_kr": "기사에 따르면, CloudBridge 직원들은 어떻게 되는가?",
         "choices": [
-          "(A) They will be offered voluntary retirement packages",
-          "(B) They will join Meridian's operations division",
-          "(C) They will work independently under a new brand",
-          "(D) They will be relocated to Meridian's headquarters"
+          "(A) They will join Meridian's operations division",
+          "(B) They will work independently under a new brand",
+          "(C) They will be relocated to Meridian's headquarters",
+          "(D) They will be offered voluntary retirement packages"
         ],
         "choices_kr": [
-          "(A) 자발적 퇴직 패키지가 제공될 것이다",
           "(B) Meridian의 운영 부서에 합류할 것이다",
+          "(A) 자발적 퇴직 패키지가 제공될 것이다",
           "(C) 새 브랜드 아래 독립적으로 일할 것이다",
           "(D) Meridian 본사로 이전할 것이다"
         ],
-        "answer": 1,
+        "answer": 0,
         "kr": "CloudBridge의 기존 420명 직원팀은 감원 계획 없이 Meridian의 운영 부서에 통합될 것이다. 합병된 회사는 28개국에 걸쳐 3,000개 이상의 기업 고객에게 서비스를 제공할 것이다.",
         "expressions": [
           {
@@ -201,18 +201,18 @@
         "question": "What is implied about the acquisition?",
         "question_kr": "인수에 대해 추론할 수 있는 것은?",
         "choices": [
-          "(A) It was opposed by most industry analysts",
-          "(B) It is expected to strengthen Meridian's product offerings",
-          "(C) It will result in significant job losses at Meridian",
-          "(D) It was motivated primarily by reducing competition"
+          "(A) It is expected to strengthen Meridian's product offerings",
+          "(B) It will result in significant job losses at Meridian",
+          "(C) It was motivated primarily by reducing competition",
+          "(D) It was opposed by most industry analysts"
         ],
         "choices_kr": [
-          "(A) 대부분의 업계 분석가들이 반대했다",
           "(B) Meridian의 제품 라인업을 강화할 것으로 예상된다",
           "(C) Meridian에서 상당한 일자리 감소를 초래할 것이다",
+          "(A) 대부분의 업계 분석가들이 반대했다",
           "(D) 주로 경쟁 감소를 위해 추진되었다"
         ],
-        "answer": 1,
+        "answer": 0,
         "kr": "업계 분석가들은 CloudBridge의 독자적인 데이터 암호화 기술이 Meridian의 현재 제품 라인의 중요한 공백을 채운다고 언급하며 합병에 긍정적으로 반응했다.",
         "expressions": [
           {
@@ -243,18 +243,18 @@
         "question": "What is the purpose of this notice?",
         "question_kr": "이 공지의 목적은 무엇인가?",
         "choices": [
-          "(A) To announce the firm's merger with another company",
-          "(B) To inform clients and staff of an office relocation",
-          "(C) To promote the firm's new legal services",
-          "(D) To notify staff of changes to working hours"
+          "(A) To promote the firm's new legal services",
+          "(B) To notify staff of changes to working hours",
+          "(C) To announce the firm's merger with another company",
+          "(D) To inform clients and staff of an office relocation"
         ],
         "choices_kr": [
-          "(A) 회사의 다른 회사와의 합병 발표",
-          "(B) 고객과 직원에게 사무소 이전 안내",
           "(C) 회사의 새로운 법률 서비스 홍보",
-          "(D) 직원에게 근무 시간 변경 통보"
+          "(D) 직원에게 근무 시간 변경 통보",
+          "(A) 회사의 다른 회사와의 합병 발표",
+          "(B) 고객과 직원에게 사무소 이전 안내"
         ],
-        "answer": 1,
+        "answer": 3,
         "kr": "Vanguard Legal Associates가 11월 1일부로 88 Commerce Drive에 새로 건설된 Pinnacle Tower로 사무소를 이전한다고 기쁘게 알려드립니다. 이번 이전은 회사의 지속적인 성장과 고객 및 직원들에게 현대적인 근무 환경을 제공하려는 의지를 반영합니다.",
         "expressions": [
           {
@@ -280,16 +280,16 @@
         "question": "What are clients with appointments during October 28-31 advised to do?",
         "question_kr": "10월 28-31일에 예약이 있는 고객들에게 권고되는 것은?",
         "choices": [
-          "(A) Cancel their appointments and rebook after November 1",
+          "(A) Contact the main reception to update their records",
           "(B) Confirm their appointment details with their attorney",
-          "(C) Visit the new office at Pinnacle Tower",
-          "(D) Contact the main reception to update their records"
+          "(C) Cancel their appointments and rebook after November 1",
+          "(D) Visit the new office at Pinnacle Tower"
         ],
         "choices_kr": [
           "(A) 예약을 취소하고 11월 1일 이후 다시 예약",
           "(B) 담당 변호사에게 예약 세부 사항 확인",
-          "(C) Pinnacle Tower의 새 사무소 방문",
-          "(D) 메인 안내 데스크에 연락하여 기록 업데이트"
+          "(D) 메인 안내 데스크에 연락하여 기록 업데이트",
+          "(C) Pinnacle Tower의 새 사무소 방문"
         ],
         "answer": 1,
         "kr": "모든 전화번호와 이메일 주소는 변경되지 않으며, 고객 파일은 이전 전에 안전하게 이전된다. 10월 28-31일 이전 주에 예약이 있는 고객들은 담당 변호사에게 예약 세부 사항을 확인하도록 권고된다.",
@@ -317,18 +317,18 @@
         "question": "What is implied about Vanguard Legal Associates' current office?",
         "question_kr": "Vanguard Legal Associates의 현재 사무소에 대해 추론할 수 있는 것은?",
         "choices": [
-          "(A) It is located in a modern building",
-          "(B) It has fewer amenities than the new location",
+          "(A) It is shared with another law firm",
+          "(B) It is located in a modern building",
           "(C) It recently underwent major renovations",
-          "(D) It is shared with another law firm"
+          "(D) It has fewer amenities than the new location"
         ],
         "choices_kr": [
-          "(A) 현대적인 건물에 위치해 있다",
-          "(B) 새 위치보다 편의시설이 적다",
           "(C) 최근 대규모 리모델링을 했다",
-          "(D) 다른 법무법인과 공유하고 있다"
+          "(D) 다른 법무법인과 공유하고 있다",
+          "(A) 현대적인 건물에 위치해 있다",
+          "(B) 새 위치보다 편의시설이 적다"
         ],
-        "answer": 1,
+        "answer": 3,
         "kr": "새 위치는 크게 확장된 사무 공간, 전용 고객 상담실, 최대 80대를 위한 지하 주차장을 제공한다. 새 사무소에서 여러분을 환영하고 탁월한 법률 서비스를 계속 제공하기를 기대합니다.",
         "expressions": [
           {
@@ -360,17 +360,17 @@
         "question_kr": "이 기사의 주요 목적은 무엇인가?",
         "choices": [
           "(A) To announce a new product launch by Hometech",
-          "(B) To warn consumers about a defective product recall",
-          "(C) To report a lawsuit filed against Hometech Appliances",
+          "(B) To report a lawsuit filed against Hometech Appliances",
+          "(C) To warn consumers about a defective product recall",
           "(D) To promote safer alternatives to pressure cookers"
         ],
         "choices_kr": [
+          "(D) 압력솥의 더 안전한 대안 홍보",
           "(A) Hometech의 새 제품 출시 발표",
           "(B) 결함 제품 리콜에 대한 소비자 경고",
-          "(C) Hometech Appliances를 상대로 제기된 소송 보도",
-          "(D) 압력솥의 더 안전한 대안 홍보"
+          "(C) Hometech Appliances를 상대로 제기된 소송 보도"
         ],
-        "answer": 1,
+        "answer": 2,
         "kr": "Hometech Appliances는 올해 1월부터 9월 사이에 판매된 약 15,000개의 HT-700 Series 전기 압력솥에 대한 자발적 리콜을 발표했다. 뚜껑 잠금 장치의 잠재적 결함이 작동 중 화상 위험을 초래할 수 있다는 것을 확인했다.",
         "expressions": [
           {
@@ -397,17 +397,17 @@
         "question_kr": "해당 제품을 소유한 고객들은 무엇을 해야 하는가?",
         "choices": [
           "(A) Return the product to the store where it was purchased",
-          "(B) Stop using it and call Hometech's support line",
-          "(C) Wait for a Hometech representative to contact them",
-          "(D) Submit a written complaint to the consumer protection agency"
+          "(B) Submit a written complaint to the consumer protection agency",
+          "(C) Stop using it and call Hometech's support line",
+          "(D) Wait for a Hometech representative to contact them"
         ],
         "choices_kr": [
+          "(C) Hometech 담당자가 연락할 때까지 기다림",
           "(A) 구매한 매장에 제품 반납",
           "(B) 사용을 중단하고 Hometech 지원 라인에 전화",
-          "(C) Hometech 담당자가 연락할 때까지 기다림",
           "(D) 소비자 보호 기관에 서면 민원 제출"
         ],
-        "answer": 1,
+        "answer": 2,
         "kr": "해당 제품을 소유한 고객은 즉시 사용을 중단하고 1-800-HOMETECH로 연락하여 무료 교체를 마련하도록 요청된다. 교체 프로그램 자격을 얻기 위해 구매 증명이 필요하지 않다.",
         "expressions": [
           {
@@ -434,18 +434,18 @@
         "question": "Which of the following is NOT mentioned in the article?",
         "question_kr": "기사에서 언급되지 않은 것은?",
         "choices": [
-          "(A) The serial numbers of affected models",
-          "(B) The number of injuries reported so far",
-          "(C) The countries where the recall applies",
+          "(A) The countries where the recall applies",
+          "(B) The serial numbers of affected models",
+          "(C) The number of injuries reported so far",
           "(D) When the defect was fixed in manufacturing"
         ],
         "choices_kr": [
-          "(A) 해당 모델의 일련번호",
-          "(B) 현재까지 보고된 부상 수",
           "(C) 리콜이 적용되는 국가",
-          "(D) 제조에서 결함이 수정된 시기"
+          "(B) 현재까지 보고된 부상 수",
+          "(D) 제조에서 결함이 수정된 시기",
+          "(A) 해당 모델의 일련번호"
         ],
-        "answer": 2,
+        "answer": 0,
         "kr": "리콜은 HT7로 시작하는 일련번호 모델에 영향을 미친다. 10월 1일 이후 구매한 모델은 영향을 받지 않는다. Hometech는 지금까지 결함과 관련된 부상을 보고하지 않았지만 예방 조치로 시행되고 있다고 강조한다.",
         "expressions": [
           {
@@ -476,18 +476,18 @@
         "question": "What is this article primarily about?",
         "question_kr": "이 기사는 주로 무엇에 관한 것인가?",
         "choices": [
-          "(A) The MTA's annual financial report",
-          "(B) A major upgrade to the city's subway system",
-          "(C) The introduction of a new bus rapid transit line",
-          "(D) Environmental concerns about subway construction"
+          "(A) A major upgrade to the city's subway system",
+          "(B) The MTA's annual financial report",
+          "(C) Environmental concerns about subway construction",
+          "(D) The introduction of a new bus rapid transit line"
         ],
         "choices_kr": [
-          "(A) MTA의 연간 재무 보고서",
           "(B) 시 지하철 시스템의 대규모 업그레이드",
+          "(D) 지하철 건설에 대한 환경 우려",
           "(C) 새로운 급행버스 노선 도입",
-          "(D) 지하철 건설에 대한 환경 우려"
+          "(A) MTA의 연간 재무 보고서"
         ],
-        "answer": 1,
+        "answer": 0,
         "kr": "MTA는 봄에 시작될 예정인 Central Line 지하철 시스템에 대한 1억 5천만 달러 규모의 인프라 업그레이드를 발표했다. 노후화된 신호 장비 교체, 스크린도어 설치, 비접촉식 요금 결제 시스템 도입을 목표로 한다.",
         "expressions": [
           {
@@ -513,18 +513,18 @@
         "question": "According to the article, when will service suspensions occur?",
         "question_kr": "기사에 따르면, 서비스 중단은 언제 발생하는가?",
         "choices": [
-          "(A) On weekday mornings from April through August",
-          "(B) On weekends from April through August",
-          "(C) Every night throughout the construction period",
-          "(D) Only during the final week of construction"
+          "(A) On weekends from April through August",
+          "(B) Only during the final week of construction",
+          "(C) On weekday mornings from April through August",
+          "(D) Every night throughout the construction period"
         ],
         "choices_kr": [
-          "(A) 4월부터 8월까지 주중 아침에",
           "(B) 4월부터 8월까지 주말에",
+          "(D) 공사 마지막 주에만",
           "(C) 공사 기간 내내 매일 밤",
-          "(D) 공사 마지막 주에만"
+          "(A) 4월부터 8월까지 주중 아침에"
         ],
-        "answer": 1,
+        "answer": 0,
         "kr": "공사는 주로 야간에 진행된다. 그러나 승객들은 4월부터 8월까지 Harbor Station과 Riverside Junction 사이에서 주말 서비스 중단을 예상해야 한다.",
         "expressions": [
           {
@@ -551,17 +551,17 @@
         "question_kr": "기사에서 추론할 수 있는 것은?",
         "choices": [
           "(A) The subway system was upgraded three decades ago",
-          "(B) The current payment system slows down boarding",
-          "(C) The MTA plans to expand the Central Line to new areas",
+          "(B) The MTA plans to expand the Central Line to new areas",
+          "(C) The current payment system slows down boarding",
           "(D) Smartphone payments are not currently accepted on the network"
         ],
         "choices_kr": [
           "(A) 지하철 시스템은 30년 전에 업그레이드되었다",
+          "(D) 현재 네트워크에서 스마트폰 결제가 허용되지 않는다",
           "(B) 현재 결제 시스템은 승차 속도를 늦춘다",
-          "(C) MTA는 Central Line을 새 지역으로 확장할 계획이다",
-          "(D) 현재 네트워크에서 스마트폰 결제가 허용되지 않는다"
+          "(C) MTA는 Central Line을 새 지역으로 확장할 계획이다"
         ],
-        "answer": 1,
+        "answer": 2,
         "kr": "MTA 의장은 이번 업그레이드가 30년 이상 만에 가장 중요한 투자라고 말했다. 새로운 비접촉식 결제 시스템은 승차 시간을 최대 30% 단축하여 피크 시간대의 혼잡을 완화할 것으로 예상된다.",
         "expressions": [
           {
@@ -592,9 +592,9 @@
         "question": "What is the main purpose of this article?",
         "question_kr": "이 기사의 주요 목적은 무엇인가?",
         "choices": [
-          "(A) To critique government spending on public programs",
+          "(A) To compare local policies with those of other regions",
           "(B) To report on a new public initiative or development",
-          "(C) To compare local policies with those of other regions",
+          "(C) To critique government spending on public programs",
           "(D) To announce the resignation of a key official"
         ],
         "choices_kr": [
@@ -629,18 +629,18 @@
         "question": "How much funding has been allocated for the first phase?",
         "question_kr": "첫 번째 단계에 얼마의 자금이 배정되었는가?",
         "choices": [
-          "(A) $8 million",
-          "(B) $12 million",
-          "(C) $15 million",
-          "(D) $23 million"
+          "(A) $23 million",
+          "(B) $8 million",
+          "(C) $12 million",
+          "(D) $15 million"
         ],
         "choices_kr": [
           "(A) 800만 달러",
           "(B) 1,200만 달러",
-          "(C) 1,500만 달러",
-          "(D) 2,300만 달러"
+          "(D) 2,300만 달러",
+          "(C) 1,500만 달러"
         ],
-        "answer": 2,
+        "answer": 3,
         "kr": "프로그램의 첫 번째 단계를 위해 1,500만 달러가 배정되었으며, 최종 승인 대기 중인 연방 매칭 자금에서 추가로 800만 달러가 예상된다. 프로그램 관리자들은 주민과 지역 기업들이 이니셔티브 시작 후 첫 12개월 이내에 실질적인 결과를 보기 시작할 것이라고 말한다.",
         "expressions": [
           {
@@ -666,15 +666,15 @@
         "question": "What can be inferred about the initiative?",
         "question_kr": "이 이니셔티브에 대해 추론할 수 있는 것은?",
         "choices": [
-          "(A) It has been welcomed without any opposition",
+          "(A) It has already been fully implemented",
           "(B) It remains subject to community feedback before launch",
-          "(C) It has already been fully implemented",
-          "(D) It was proposed by a private corporation"
+          "(C) It was proposed by a private corporation",
+          "(D) It has been welcomed without any opposition"
         ],
         "choices_kr": [
-          "(A) 어떠한 반대 없이 환영받았다",
-          "(B) 시작 전에 지역 사회 피드백을 받아야 한다",
           "(C) 이미 완전히 시행되었다",
+          "(B) 시작 전에 지역 사회 피드백을 받아야 한다",
+          "(A) 어떠한 반대 없이 환영받았다",
           "(D) 민간 기업이 제안했다"
         ],
         "answer": 1,
@@ -708,18 +708,18 @@
         "question": "What is the main purpose of this article?",
         "question_kr": "이 기사의 주요 목적은 무엇인가?",
         "choices": [
-          "(A) To critique government spending on public programs",
-          "(B) To report on a new public initiative or development",
+          "(A) To announce the resignation of a key official",
+          "(B) To critique government spending on public programs",
           "(C) To compare local policies with those of other regions",
-          "(D) To announce the resignation of a key official"
+          "(D) To report on a new public initiative or development"
         ],
         "choices_kr": [
+          "(D) 주요 공무원의 사임 발표",
           "(A) 공공 프로그램에 대한 정부 지출 비판",
-          "(B) 새로운 공공 이니셔티브나 개발 보도",
           "(C) 지역 정책과 다른 지역 정책 비교",
-          "(D) 주요 공무원의 사임 발표"
+          "(B) 새로운 공공 이니셔티브나 개발 보도"
         ],
-        "answer": 1,
+        "answer": 3,
         "kr": "시와 지역 당국은 병원 신축 기사와 관련된 중요한 이니셔티브를 발표했으며, 이는 공공 서비스와 삶의 질을 향상시키기 위한 지속적인 노력에서 중요한 발전을 나타낸다. 공무원들은 2년 이상 개발 중인 이 프로그램이 앞으로 몇 달 안에 시행될 것이라고 밝혔다.",
         "expressions": [
           {
@@ -745,18 +745,18 @@
         "question": "How much funding has been allocated for the first phase?",
         "question_kr": "첫 번째 단계에 얼마의 자금이 배정되었는가?",
         "choices": [
-          "(A) $8 million",
-          "(B) $12 million",
-          "(C) $15 million",
-          "(D) $23 million"
+          "(A) $15 million",
+          "(B) $8 million",
+          "(C) $23 million",
+          "(D) $12 million"
         ],
         "choices_kr": [
-          "(A) 800만 달러",
-          "(B) 1,200만 달러",
           "(C) 1,500만 달러",
-          "(D) 2,300만 달러"
+          "(D) 2,300만 달러",
+          "(B) 1,200만 달러",
+          "(A) 800만 달러"
         ],
-        "answer": 2,
+        "answer": 0,
         "kr": "프로그램의 첫 번째 단계를 위해 1,500만 달러가 배정되었으며, 최종 승인 대기 중인 연방 매칭 자금에서 추가로 800만 달러가 예상된다. 프로그램 관리자들은 주민과 지역 기업들이 이니셔티브 시작 후 첫 12개월 이내에 실질적인 결과를 보기 시작할 것이라고 말한다.",
         "expressions": [
           {
@@ -782,18 +782,18 @@
         "question": "What can be inferred about the initiative?",
         "question_kr": "이 이니셔티브에 대해 추론할 수 있는 것은?",
         "choices": [
-          "(A) It has been welcomed without any opposition",
-          "(B) It remains subject to community feedback before launch",
-          "(C) It has already been fully implemented",
-          "(D) It was proposed by a private corporation"
+          "(A) It has already been fully implemented",
+          "(B) It was proposed by a private corporation",
+          "(C) It remains subject to community feedback before launch",
+          "(D) It has been welcomed without any opposition"
         ],
         "choices_kr": [
+          "(C) 이미 완전히 시행되었다",
           "(A) 어떠한 반대 없이 환영받았다",
           "(B) 시작 전에 지역 사회 피드백을 받아야 한다",
-          "(C) 이미 완전히 시행되었다",
           "(D) 민간 기업이 제안했다"
         ],
-        "answer": 1,
+        "answer": 2,
         "kr": "지역 사회 옹호자들과 반대 그룹들은 이 발표에 다르게 반응했으며, 일부는 오랫동안 기다려온 것이라고 칭찬하고 다른 사람들은 시행 일정과 책임 조치에 대한 우려를 제기했다. 공개 정보 세션이 다음 달로 예정되어 있어 주민들이 프로젝트가 공식적으로 시작되기 전에 질문하고 의견을 제공할 수 있다.",
         "expressions": [
           {
@@ -824,18 +824,18 @@
         "question": "What is the main purpose of this article?",
         "question_kr": "이 기사의 주요 목적은 무엇인가?",
         "choices": [
-          "(A) To critique government spending on public programs",
-          "(B) To report on a new public initiative or development",
+          "(A) To announce the resignation of a key official",
+          "(B) To critique government spending on public programs",
           "(C) To compare local policies with those of other regions",
-          "(D) To announce the resignation of a key official"
+          "(D) To report on a new public initiative or development"
         ],
         "choices_kr": [
-          "(A) 공공 프로그램에 대한 정부 지출 비판",
-          "(B) 새로운 공공 이니셔티브나 개발 보도",
           "(C) 지역 정책과 다른 지역 정책 비교",
-          "(D) 주요 공무원의 사임 발표"
+          "(D) 주요 공무원의 사임 발표",
+          "(A) 공공 프로그램에 대한 정부 지출 비판",
+          "(B) 새로운 공공 이니셔티브나 개발 보도"
         ],
-        "answer": 1,
+        "answer": 3,
         "kr": "시와 지역 당국은 환경 보호 기사와 관련된 중요한 이니셔티브를 발표했으며, 이는 공공 서비스와 삶의 질을 향상시키기 위한 지속적인 노력에서 중요한 발전을 나타낸다. 공무원들은 2년 이상 개발 중인 이 프로그램이 앞으로 몇 달 안에 시행될 것이라고 밝혔다.",
         "expressions": [
           {
@@ -861,18 +861,18 @@
         "question": "How much funding has been allocated for the first phase?",
         "question_kr": "첫 번째 단계에 얼마의 자금이 배정되었는가?",
         "choices": [
-          "(A) $8 million",
-          "(B) $12 million",
-          "(C) $15 million",
+          "(A) $15 million",
+          "(B) $8 million",
+          "(C) $12 million",
           "(D) $23 million"
         ],
         "choices_kr": [
-          "(A) 800만 달러",
-          "(B) 1,200만 달러",
           "(C) 1,500만 달러",
+          "(B) 1,200만 달러",
+          "(A) 800만 달러",
           "(D) 2,300만 달러"
         ],
-        "answer": 2,
+        "answer": 0,
         "kr": "프로그램의 첫 번째 단계를 위해 1,500만 달러가 배정되었으며, 최종 승인 대기 중인 연방 매칭 자금에서 추가로 800만 달러가 예상된다. 프로그램 관리자들은 주민과 지역 기업들이 이니셔티브 시작 후 첫 12개월 이내에 실질적인 결과를 보기 시작할 것이라고 말한다.",
         "expressions": [
           {
@@ -898,18 +898,18 @@
         "question": "What can be inferred about the initiative?",
         "question_kr": "이 이니셔티브에 대해 추론할 수 있는 것은?",
         "choices": [
-          "(A) It has been welcomed without any opposition",
-          "(B) It remains subject to community feedback before launch",
+          "(A) It remains subject to community feedback before launch",
+          "(B) It has been welcomed without any opposition",
           "(C) It has already been fully implemented",
           "(D) It was proposed by a private corporation"
         ],
         "choices_kr": [
-          "(A) 어떠한 반대 없이 환영받았다",
           "(B) 시작 전에 지역 사회 피드백을 받아야 한다",
+          "(D) 민간 기업이 제안했다",
           "(C) 이미 완전히 시행되었다",
-          "(D) 민간 기업이 제안했다"
+          "(A) 어떠한 반대 없이 환영받았다"
         ],
-        "answer": 1,
+        "answer": 0,
         "kr": "지역 사회 옹호자들과 반대 그룹들은 이 발표에 다르게 반응했으며, 일부는 오랫동안 기다려온 것이라고 칭찬하고 다른 사람들은 시행 일정과 책임 조치에 대한 우려를 제기했다. 공개 정보 세션이 다음 달로 예정되어 있어 주민들이 프로젝트가 공식적으로 시작되기 전에 질문하고 의견을 제공할 수 있다.",
         "expressions": [
           {
@@ -940,18 +940,18 @@
         "question": "What is the main purpose of this article?",
         "question_kr": "이 기사의 주요 목적은 무엇인가?",
         "choices": [
-          "(A) To critique government spending on public programs",
-          "(B) To report on a new public initiative or development",
-          "(C) To compare local policies with those of other regions",
-          "(D) To announce the resignation of a key official"
+          "(A) To announce the resignation of a key official",
+          "(B) To critique government spending on public programs",
+          "(C) To report on a new public initiative or development",
+          "(D) To compare local policies with those of other regions"
         ],
         "choices_kr": [
           "(A) 공공 프로그램에 대한 정부 지출 비판",
-          "(B) 새로운 공공 이니셔티브나 개발 보도",
           "(C) 지역 정책과 다른 지역 정책 비교",
+          "(B) 새로운 공공 이니셔티브나 개발 보도",
           "(D) 주요 공무원의 사임 발표"
         ],
-        "answer": 1,
+        "answer": 2,
         "kr": "시와 지역 당국은 스타트업 투자 기사와 관련된 중요한 이니셔티브를 발표했으며, 이는 공공 서비스와 삶의 질을 향상시키기 위한 지속적인 노력에서 중요한 발전을 나타낸다. 공무원들은 2년 이상 개발 중인 이 프로그램이 앞으로 몇 달 안에 시행될 것이라고 밝혔다.",
         "expressions": [
           {
@@ -977,18 +977,18 @@
         "question": "How much funding has been allocated for the first phase?",
         "question_kr": "첫 번째 단계에 얼마의 자금이 배정되었는가?",
         "choices": [
-          "(A) $8 million",
-          "(B) $12 million",
-          "(C) $15 million",
-          "(D) $23 million"
+          "(A) $15 million",
+          "(B) $23 million",
+          "(C) $8 million",
+          "(D) $12 million"
         ],
         "choices_kr": [
+          "(C) 1,500만 달러",
           "(A) 800만 달러",
           "(B) 1,200만 달러",
-          "(C) 1,500만 달러",
           "(D) 2,300만 달러"
         ],
-        "answer": 2,
+        "answer": 0,
         "kr": "프로그램의 첫 번째 단계를 위해 1,500만 달러가 배정되었으며, 최종 승인 대기 중인 연방 매칭 자금에서 추가로 800만 달러가 예상된다. 프로그램 관리자들은 주민과 지역 기업들이 이니셔티브 시작 후 첫 12개월 이내에 실질적인 결과를 보기 시작할 것이라고 말한다.",
         "expressions": [
           {
@@ -1014,18 +1014,18 @@
         "question": "What can be inferred about the initiative?",
         "question_kr": "이 이니셔티브에 대해 추론할 수 있는 것은?",
         "choices": [
-          "(A) It has been welcomed without any opposition",
-          "(B) It remains subject to community feedback before launch",
-          "(C) It has already been fully implemented",
-          "(D) It was proposed by a private corporation"
+          "(A) It remains subject to community feedback before launch",
+          "(B) It has been welcomed without any opposition",
+          "(C) It was proposed by a private corporation",
+          "(D) It has already been fully implemented"
         ],
         "choices_kr": [
-          "(A) 어떠한 반대 없이 환영받았다",
           "(B) 시작 전에 지역 사회 피드백을 받아야 한다",
-          "(C) 이미 완전히 시행되었다",
-          "(D) 민간 기업이 제안했다"
+          "(D) 민간 기업이 제안했다",
+          "(A) 어떠한 반대 없이 환영받았다",
+          "(C) 이미 완전히 시행되었다"
         ],
-        "answer": 1,
+        "answer": 0,
         "kr": "지역 사회 옹호자들과 반대 그룹들은 이 발표에 다르게 반응했으며, 일부는 오랫동안 기다려온 것이라고 칭찬하고 다른 사람들은 시행 일정과 책임 조치에 대한 우려를 제기했다. 공개 정보 세션이 다음 달로 예정되어 있어 주민들이 프로젝트가 공식적으로 시작되기 전에 질문하고 의견을 제공할 수 있다.",
         "expressions": [
           {
@@ -1056,18 +1056,18 @@
         "question": "What is the main purpose of this article?",
         "question_kr": "이 기사의 주요 목적은 무엇인가?",
         "choices": [
-          "(A) To critique government spending on public programs",
-          "(B) To report on a new public initiative or development",
-          "(C) To compare local policies with those of other regions",
-          "(D) To announce the resignation of a key official"
+          "(A) To report on a new public initiative or development",
+          "(B) To critique government spending on public programs",
+          "(C) To announce the resignation of a key official",
+          "(D) To compare local policies with those of other regions"
         ],
         "choices_kr": [
-          "(A) 공공 프로그램에 대한 정부 지출 비판",
           "(B) 새로운 공공 이니셔티브나 개발 보도",
-          "(C) 지역 정책과 다른 지역 정책 비교",
-          "(D) 주요 공무원의 사임 발표"
+          "(A) 공공 프로그램에 대한 정부 지출 비판",
+          "(D) 주요 공무원의 사임 발표",
+          "(C) 지역 정책과 다른 지역 정책 비교"
         ],
-        "answer": 1,
+        "answer": 0,
         "kr": "시와 지역 당국은 학교 개혁 공지와 관련된 중요한 이니셔티브를 발표했으며, 이는 공공 서비스와 삶의 질을 향상시키기 위한 지속적인 노력에서 중요한 발전을 나타낸다. 공무원들은 2년 이상 개발 중인 이 프로그램이 앞으로 몇 달 안에 시행될 것이라고 밝혔다.",
         "expressions": [
           {
@@ -1093,18 +1093,18 @@
         "question": "How much funding has been allocated for the first phase?",
         "question_kr": "첫 번째 단계에 얼마의 자금이 배정되었는가?",
         "choices": [
-          "(A) $8 million",
-          "(B) $12 million",
-          "(C) $15 million",
-          "(D) $23 million"
+          "(A) $23 million",
+          "(B) $15 million",
+          "(C) $8 million",
+          "(D) $12 million"
         ],
         "choices_kr": [
-          "(A) 800만 달러",
-          "(B) 1,200만 달러",
+          "(D) 2,300만 달러",
           "(C) 1,500만 달러",
-          "(D) 2,300만 달러"
+          "(B) 1,200만 달러",
+          "(A) 800만 달러"
         ],
-        "answer": 2,
+        "answer": 1,
         "kr": "프로그램의 첫 번째 단계를 위해 1,500만 달러가 배정되었으며, 최종 승인 대기 중인 연방 매칭 자금에서 추가로 800만 달러가 예상된다. 프로그램 관리자들은 주민과 지역 기업들이 이니셔티브 시작 후 첫 12개월 이내에 실질적인 결과를 보기 시작할 것이라고 말한다.",
         "expressions": [
           {
@@ -1130,18 +1130,18 @@
         "question": "What can be inferred about the initiative?",
         "question_kr": "이 이니셔티브에 대해 추론할 수 있는 것은?",
         "choices": [
-          "(A) It has been welcomed without any opposition",
-          "(B) It remains subject to community feedback before launch",
+          "(A) It remains subject to community feedback before launch",
+          "(B) It has been welcomed without any opposition",
           "(C) It has already been fully implemented",
           "(D) It was proposed by a private corporation"
         ],
         "choices_kr": [
-          "(A) 어떠한 반대 없이 환영받았다",
           "(B) 시작 전에 지역 사회 피드백을 받아야 한다",
-          "(C) 이미 완전히 시행되었다",
-          "(D) 민간 기업이 제안했다"
+          "(A) 어떠한 반대 없이 환영받았다",
+          "(D) 민간 기업이 제안했다",
+          "(C) 이미 완전히 시행되었다"
         ],
-        "answer": 1,
+        "answer": 0,
         "kr": "지역 사회 옹호자들과 반대 그룹들은 이 발표에 다르게 반응했으며, 일부는 오랫동안 기다려온 것이라고 칭찬하고 다른 사람들은 시행 일정과 책임 조치에 대한 우려를 제기했다. 공개 정보 세션이 다음 달로 예정되어 있어 주민들이 프로젝트가 공식적으로 시작되기 전에 질문하고 의견을 제공할 수 있다.",
         "expressions": [
           {
@@ -1172,18 +1172,18 @@
         "question": "What is the main purpose of this article?",
         "question_kr": "이 기사의 주요 목적은 무엇인가?",
         "choices": [
-          "(A) To critique government spending on public programs",
-          "(B) To report on a new public initiative or development",
-          "(C) To compare local policies with those of other regions",
-          "(D) To announce the resignation of a key official"
+          "(A) To announce the resignation of a key official",
+          "(B) To compare local policies with those of other regions",
+          "(C) To critique government spending on public programs",
+          "(D) To report on a new public initiative or development"
         ],
         "choices_kr": [
           "(A) 공공 프로그램에 대한 정부 지출 비판",
-          "(B) 새로운 공공 이니셔티브나 개발 보도",
           "(C) 지역 정책과 다른 지역 정책 비교",
-          "(D) 주요 공무원의 사임 발표"
+          "(D) 주요 공무원의 사임 발표",
+          "(B) 새로운 공공 이니셔티브나 개발 보도"
         ],
-        "answer": 1,
+        "answer": 3,
         "kr": "시와 지역 당국은 공항 확장 기사와 관련된 중요한 이니셔티브를 발표했으며, 이는 공공 서비스와 삶의 질을 향상시키기 위한 지속적인 노력에서 중요한 발전을 나타낸다. 공무원들은 2년 이상 개발 중인 이 프로그램이 앞으로 몇 달 안에 시행될 것이라고 밝혔다.",
         "expressions": [
           {
@@ -1209,16 +1209,16 @@
         "question": "How much funding has been allocated for the first phase?",
         "question_kr": "첫 번째 단계에 얼마의 자금이 배정되었는가?",
         "choices": [
-          "(A) $8 million",
-          "(B) $12 million",
+          "(A) $12 million",
+          "(B) $23 million",
           "(C) $15 million",
-          "(D) $23 million"
+          "(D) $8 million"
         ],
         "choices_kr": [
-          "(A) 800만 달러",
           "(B) 1,200만 달러",
+          "(D) 2,300만 달러",
           "(C) 1,500만 달러",
-          "(D) 2,300만 달러"
+          "(A) 800만 달러"
         ],
         "answer": 2,
         "kr": "프로그램의 첫 번째 단계를 위해 1,500만 달러가 배정되었으며, 최종 승인 대기 중인 연방 매칭 자금에서 추가로 800만 달러가 예상된다. 프로그램 관리자들은 주민과 지역 기업들이 이니셔티브 시작 후 첫 12개월 이내에 실질적인 결과를 보기 시작할 것이라고 말한다.",
@@ -1246,18 +1246,18 @@
         "question": "What can be inferred about the initiative?",
         "question_kr": "이 이니셔티브에 대해 추론할 수 있는 것은?",
         "choices": [
-          "(A) It has been welcomed without any opposition",
-          "(B) It remains subject to community feedback before launch",
-          "(C) It has already been fully implemented",
-          "(D) It was proposed by a private corporation"
+          "(A) It remains subject to community feedback before launch",
+          "(B) It has been welcomed without any opposition",
+          "(C) It was proposed by a private corporation",
+          "(D) It has already been fully implemented"
         ],
         "choices_kr": [
-          "(A) 어떠한 반대 없이 환영받았다",
           "(B) 시작 전에 지역 사회 피드백을 받아야 한다",
+          "(A) 어떠한 반대 없이 환영받았다",
           "(C) 이미 완전히 시행되었다",
           "(D) 민간 기업이 제안했다"
         ],
-        "answer": 1,
+        "answer": 0,
         "kr": "지역 사회 옹호자들과 반대 그룹들은 이 발표에 다르게 반응했으며, 일부는 오랫동안 기다려온 것이라고 칭찬하고 다른 사람들은 시행 일정과 책임 조치에 대한 우려를 제기했다. 공개 정보 세션이 다음 달로 예정되어 있어 주민들이 프로젝트가 공식적으로 시작되기 전에 질문하고 의견을 제공할 수 있다.",
         "expressions": [
           {
@@ -1288,16 +1288,16 @@
         "question": "What is the main purpose of this article?",
         "question_kr": "이 기사의 주요 목적은 무엇인가?",
         "choices": [
-          "(A) To critique government spending on public programs",
+          "(A) To announce the resignation of a key official",
           "(B) To report on a new public initiative or development",
           "(C) To compare local policies with those of other regions",
-          "(D) To announce the resignation of a key official"
+          "(D) To critique government spending on public programs"
         ],
         "choices_kr": [
-          "(A) 공공 프로그램에 대한 정부 지출 비판",
-          "(B) 새로운 공공 이니셔티브나 개발 보도",
           "(C) 지역 정책과 다른 지역 정책 비교",
-          "(D) 주요 공무원의 사임 발표"
+          "(B) 새로운 공공 이니셔티브나 개발 보도",
+          "(D) 주요 공무원의 사임 발표",
+          "(A) 공공 프로그램에 대한 정부 지출 비판"
         ],
         "answer": 1,
         "kr": "시와 지역 당국은 식품 안전 기사와 관련된 중요한 이니셔티브를 발표했으며, 이는 공공 서비스와 삶의 질을 향상시키기 위한 지속적인 노력에서 중요한 발전을 나타낸다. 공무원들은 2년 이상 개발 중인 이 프로그램이 앞으로 몇 달 안에 시행될 것이라고 밝혔다.",
@@ -1326,17 +1326,17 @@
         "question_kr": "첫 번째 단계에 얼마의 자금이 배정되었는가?",
         "choices": [
           "(A) $8 million",
-          "(B) $12 million",
-          "(C) $15 million",
-          "(D) $23 million"
+          "(B) $23 million",
+          "(C) $12 million",
+          "(D) $15 million"
         ],
         "choices_kr": [
+          "(D) 2,300만 달러",
           "(A) 800만 달러",
           "(B) 1,200만 달러",
-          "(C) 1,500만 달러",
-          "(D) 2,300만 달러"
+          "(C) 1,500만 달러"
         ],
-        "answer": 2,
+        "answer": 3,
         "kr": "프로그램의 첫 번째 단계를 위해 1,500만 달러가 배정되었으며, 최종 승인 대기 중인 연방 매칭 자금에서 추가로 800만 달러가 예상된다. 프로그램 관리자들은 주민과 지역 기업들이 이니셔티브 시작 후 첫 12개월 이내에 실질적인 결과를 보기 시작할 것이라고 말한다.",
         "expressions": [
           {
@@ -1363,17 +1363,17 @@
         "question_kr": "이 이니셔티브에 대해 추론할 수 있는 것은?",
         "choices": [
           "(A) It has been welcomed without any opposition",
-          "(B) It remains subject to community feedback before launch",
-          "(C) It has already been fully implemented",
-          "(D) It was proposed by a private corporation"
+          "(B) It has already been fully implemented",
+          "(C) It was proposed by a private corporation",
+          "(D) It remains subject to community feedback before launch"
         ],
         "choices_kr": [
-          "(A) 어떠한 반대 없이 환영받았다",
-          "(B) 시작 전에 지역 사회 피드백을 받아야 한다",
           "(C) 이미 완전히 시행되었다",
-          "(D) 민간 기업이 제안했다"
+          "(A) 어떠한 반대 없이 환영받았다",
+          "(D) 민간 기업이 제안했다",
+          "(B) 시작 전에 지역 사회 피드백을 받아야 한다"
         ],
-        "answer": 1,
+        "answer": 3,
         "kr": "지역 사회 옹호자들과 반대 그룹들은 이 발표에 다르게 반응했으며, 일부는 오랫동안 기다려온 것이라고 칭찬하고 다른 사람들은 시행 일정과 책임 조치에 대한 우려를 제기했다. 공개 정보 세션이 다음 달로 예정되어 있어 주민들이 프로젝트가 공식적으로 시작되기 전에 질문하고 의견을 제공할 수 있다.",
         "expressions": [
           {
@@ -1404,18 +1404,18 @@
         "question": "What is the main purpose of this article?",
         "question_kr": "이 기사의 주요 목적은 무엇인가?",
         "choices": [
-          "(A) To critique government spending on public programs",
-          "(B) To report on a new public initiative or development",
-          "(C) To compare local policies with those of other regions",
-          "(D) To announce the resignation of a key official"
+          "(A) To compare local policies with those of other regions",
+          "(B) To announce the resignation of a key official",
+          "(C) To critique government spending on public programs",
+          "(D) To report on a new public initiative or development"
         ],
         "choices_kr": [
           "(A) 공공 프로그램에 대한 정부 지출 비판",
-          "(B) 새로운 공공 이니셔티브나 개발 보도",
+          "(D) 주요 공무원의 사임 발표",
           "(C) 지역 정책과 다른 지역 정책 비교",
-          "(D) 주요 공무원의 사임 발표"
+          "(B) 새로운 공공 이니셔티브나 개발 보도"
         ],
-        "answer": 1,
+        "answer": 3,
         "kr": "시와 지역 당국은 관광 진흥 공지와 관련된 중요한 이니셔티브를 발표했으며, 이는 공공 서비스와 삶의 질을 향상시키기 위한 지속적인 노력에서 중요한 발전을 나타낸다. 공무원들은 2년 이상 개발 중인 이 프로그램이 앞으로 몇 달 안에 시행될 것이라고 밝혔다.",
         "expressions": [
           {
@@ -1442,17 +1442,17 @@
         "question_kr": "첫 번째 단계에 얼마의 자금이 배정되었는가?",
         "choices": [
           "(A) $8 million",
-          "(B) $12 million",
-          "(C) $15 million",
+          "(B) $15 million",
+          "(C) $12 million",
           "(D) $23 million"
         ],
         "choices_kr": [
-          "(A) 800만 달러",
-          "(B) 1,200만 달러",
+          "(D) 2,300만 달러",
           "(C) 1,500만 달러",
-          "(D) 2,300만 달러"
+          "(B) 1,200만 달러",
+          "(A) 800만 달러"
         ],
-        "answer": 2,
+        "answer": 1,
         "kr": "프로그램의 첫 번째 단계를 위해 1,500만 달러가 배정되었으며, 최종 승인 대기 중인 연방 매칭 자금에서 추가로 800만 달러가 예상된다. 프로그램 관리자들은 주민과 지역 기업들이 이니셔티브 시작 후 첫 12개월 이내에 실질적인 결과를 보기 시작할 것이라고 말한다.",
         "expressions": [
           {
@@ -1486,8 +1486,8 @@
         "choices_kr": [
           "(A) 어떠한 반대 없이 환영받았다",
           "(B) 시작 전에 지역 사회 피드백을 받아야 한다",
-          "(C) 이미 완전히 시행되었다",
-          "(D) 민간 기업이 제안했다"
+          "(D) 민간 기업이 제안했다",
+          "(C) 이미 완전히 시행되었다"
         ],
         "answer": 1,
         "kr": "지역 사회 옹호자들과 반대 그룹들은 이 발표에 다르게 반응했으며, 일부는 오랫동안 기다려온 것이라고 칭찬하고 다른 사람들은 시행 일정과 책임 조치에 대한 우려를 제기했다. 공개 정보 세션이 다음 달로 예정되어 있어 주민들이 프로젝트가 공식적으로 시작되기 전에 질문하고 의견을 제공할 수 있다.",
@@ -1520,18 +1520,18 @@
         "question": "What is the main purpose of this article?",
         "question_kr": "이 기사의 주요 목적은 무엇인가?",
         "choices": [
-          "(A) To critique government spending on public programs",
-          "(B) To report on a new public initiative or development",
-          "(C) To compare local policies with those of other regions",
-          "(D) To announce the resignation of a key official"
+          "(A) To report on a new public initiative or development",
+          "(B) To compare local policies with those of other regions",
+          "(C) To announce the resignation of a key official",
+          "(D) To critique government spending on public programs"
         ],
         "choices_kr": [
-          "(A) 공공 프로그램에 대한 정부 지출 비판",
           "(B) 새로운 공공 이니셔티브나 개발 보도",
           "(C) 지역 정책과 다른 지역 정책 비교",
-          "(D) 주요 공무원의 사임 발표"
+          "(D) 주요 공무원의 사임 발표",
+          "(A) 공공 프로그램에 대한 정부 지출 비판"
         ],
-        "answer": 1,
+        "answer": 0,
         "kr": "시와 지역 당국은 의료 연구 기사와 관련된 중요한 이니셔티브를 발표했으며, 이는 공공 서비스와 삶의 질을 향상시키기 위한 지속적인 노력에서 중요한 발전을 나타낸다. 공무원들은 2년 이상 개발 중인 이 프로그램이 앞으로 몇 달 안에 시행될 것이라고 밝혔다.",
         "expressions": [
           {
@@ -1557,18 +1557,18 @@
         "question": "How much funding has been allocated for the first phase?",
         "question_kr": "첫 번째 단계에 얼마의 자금이 배정되었는가?",
         "choices": [
-          "(A) $8 million",
-          "(B) $12 million",
-          "(C) $15 million",
-          "(D) $23 million"
+          "(A) $15 million",
+          "(B) $8 million",
+          "(C) $23 million",
+          "(D) $12 million"
         ],
         "choices_kr": [
+          "(C) 1,500만 달러",
           "(A) 800만 달러",
           "(B) 1,200만 달러",
-          "(C) 1,500만 달러",
           "(D) 2,300만 달러"
         ],
-        "answer": 2,
+        "answer": 0,
         "kr": "프로그램의 첫 번째 단계를 위해 1,500만 달러가 배정되었으며, 최종 승인 대기 중인 연방 매칭 자금에서 추가로 800만 달러가 예상된다. 프로그램 관리자들은 주민과 지역 기업들이 이니셔티브 시작 후 첫 12개월 이내에 실질적인 결과를 보기 시작할 것이라고 말한다.",
         "expressions": [
           {
@@ -1594,18 +1594,18 @@
         "question": "What can be inferred about the initiative?",
         "question_kr": "이 이니셔티브에 대해 추론할 수 있는 것은?",
         "choices": [
-          "(A) It has been welcomed without any opposition",
-          "(B) It remains subject to community feedback before launch",
-          "(C) It has already been fully implemented",
-          "(D) It was proposed by a private corporation"
+          "(A) It was proposed by a private corporation",
+          "(B) It has already been fully implemented",
+          "(C) It remains subject to community feedback before launch",
+          "(D) It has been welcomed without any opposition"
         ],
         "choices_kr": [
+          "(D) 민간 기업이 제안했다",
           "(A) 어떠한 반대 없이 환영받았다",
           "(B) 시작 전에 지역 사회 피드백을 받아야 한다",
-          "(C) 이미 완전히 시행되었다",
-          "(D) 민간 기업이 제안했다"
+          "(C) 이미 완전히 시행되었다"
         ],
-        "answer": 1,
+        "answer": 2,
         "kr": "지역 사회 옹호자들과 반대 그룹들은 이 발표에 다르게 반응했으며, 일부는 오랫동안 기다려온 것이라고 칭찬하고 다른 사람들은 시행 일정과 책임 조치에 대한 우려를 제기했다. 공개 정보 세션이 다음 달로 예정되어 있어 주민들이 프로젝트가 공식적으로 시작되기 전에 질문하고 의견을 제공할 수 있다.",
         "expressions": [
           {
@@ -1636,18 +1636,18 @@
         "question": "What is the main purpose of this article?",
         "question_kr": "이 기사의 주요 목적은 무엇인가?",
         "choices": [
-          "(A) To critique government spending on public programs",
-          "(B) To report on a new public initiative or development",
+          "(A) To announce the resignation of a key official",
+          "(B) To critique government spending on public programs",
           "(C) To compare local policies with those of other regions",
-          "(D) To announce the resignation of a key official"
+          "(D) To report on a new public initiative or development"
         ],
         "choices_kr": [
-          "(A) 공공 프로그램에 대한 정부 지출 비판",
-          "(B) 새로운 공공 이니셔티브나 개발 보도",
           "(C) 지역 정책과 다른 지역 정책 비교",
-          "(D) 주요 공무원의 사임 발표"
+          "(D) 주요 공무원의 사임 발표",
+          "(A) 공공 프로그램에 대한 정부 지출 비판",
+          "(B) 새로운 공공 이니셔티브나 개발 보도"
         ],
-        "answer": 1,
+        "answer": 3,
         "kr": "시와 지역 당국은 주택 정책 기사와 관련된 중요한 이니셔티브를 발표했으며, 이는 공공 서비스와 삶의 질을 향상시키기 위한 지속적인 노력에서 중요한 발전을 나타낸다. 공무원들은 2년 이상 개발 중인 이 프로그램이 앞으로 몇 달 안에 시행될 것이라고 밝혔다.",
         "expressions": [
           {
@@ -1673,18 +1673,18 @@
         "question": "How much funding has been allocated for the first phase?",
         "question_kr": "첫 번째 단계에 얼마의 자금이 배정되었는가?",
         "choices": [
-          "(A) $8 million",
-          "(B) $12 million",
-          "(C) $15 million",
-          "(D) $23 million"
+          "(A) $15 million",
+          "(B) $8 million",
+          "(C) $23 million",
+          "(D) $12 million"
         ],
         "choices_kr": [
-          "(A) 800만 달러",
-          "(B) 1,200만 달러",
           "(C) 1,500만 달러",
-          "(D) 2,300만 달러"
+          "(D) 2,300만 달러",
+          "(B) 1,200만 달러",
+          "(A) 800만 달러"
         ],
-        "answer": 2,
+        "answer": 0,
         "kr": "프로그램의 첫 번째 단계를 위해 1,500만 달러가 배정되었으며, 최종 승인 대기 중인 연방 매칭 자금에서 추가로 800만 달러가 예상된다. 프로그램 관리자들은 주민과 지역 기업들이 이니셔티브 시작 후 첫 12개월 이내에 실질적인 결과를 보기 시작할 것이라고 말한다.",
         "expressions": [
           {
@@ -1710,18 +1710,18 @@
         "question": "What can be inferred about the initiative?",
         "question_kr": "이 이니셔티브에 대해 추론할 수 있는 것은?",
         "choices": [
-          "(A) It has been welcomed without any opposition",
-          "(B) It remains subject to community feedback before launch",
+          "(A) It remains subject to community feedback before launch",
+          "(B) It has been welcomed without any opposition",
           "(C) It has already been fully implemented",
           "(D) It was proposed by a private corporation"
         ],
         "choices_kr": [
-          "(A) 어떠한 반대 없이 환영받았다",
           "(B) 시작 전에 지역 사회 피드백을 받아야 한다",
+          "(A) 어떠한 반대 없이 환영받았다",
           "(C) 이미 완전히 시행되었다",
           "(D) 민간 기업이 제안했다"
         ],
-        "answer": 1,
+        "answer": 0,
         "kr": "지역 사회 옹호자들과 반대 그룹들은 이 발표에 다르게 반응했으며, 일부는 오랫동안 기다려온 것이라고 칭찬하고 다른 사람들은 시행 일정과 책임 조치에 대한 우려를 제기했다. 공개 정보 세션이 다음 달로 예정되어 있어 주민들이 프로젝트가 공식적으로 시작되기 전에 질문하고 의견을 제공할 수 있다.",
         "expressions": [
           {
@@ -1753,17 +1753,17 @@
         "question_kr": "이 기사의 주요 목적은 무엇인가?",
         "choices": [
           "(A) To critique government spending on public programs",
-          "(B) To report on a new public initiative or development",
+          "(B) To announce the resignation of a key official",
           "(C) To compare local policies with those of other regions",
-          "(D) To announce the resignation of a key official"
+          "(D) To report on a new public initiative or development"
         ],
         "choices_kr": [
-          "(A) 공공 프로그램에 대한 정부 지출 비판",
-          "(B) 새로운 공공 이니셔티브나 개발 보도",
           "(C) 지역 정책과 다른 지역 정책 비교",
-          "(D) 주요 공무원의 사임 발표"
+          "(A) 공공 프로그램에 대한 정부 지출 비판",
+          "(D) 주요 공무원의 사임 발표",
+          "(B) 새로운 공공 이니셔티브나 개발 보도"
         ],
-        "answer": 1,
+        "answer": 3,
         "kr": "시와 지역 당국은 도로 공사 공지와 관련된 중요한 이니셔티브를 발표했으며, 이는 공공 서비스와 삶의 질을 향상시키기 위한 지속적인 노력에서 중요한 발전을 나타낸다. 공무원들은 2년 이상 개발 중인 이 프로그램이 앞으로 몇 달 안에 시행될 것이라고 밝혔다.",
         "expressions": [
           {
@@ -1789,16 +1789,16 @@
         "question": "How much funding has been allocated for the first phase?",
         "question_kr": "첫 번째 단계에 얼마의 자금이 배정되었는가?",
         "choices": [
-          "(A) $8 million",
-          "(B) $12 million",
+          "(A) $23 million",
+          "(B) $8 million",
           "(C) $15 million",
-          "(D) $23 million"
+          "(D) $12 million"
         ],
         "choices_kr": [
+          "(D) 2,300만 달러",
           "(A) 800만 달러",
-          "(B) 1,200만 달러",
           "(C) 1,500만 달러",
-          "(D) 2,300만 달러"
+          "(B) 1,200만 달러"
         ],
         "answer": 2,
         "kr": "프로그램의 첫 번째 단계를 위해 1,500만 달러가 배정되었으며, 최종 승인 대기 중인 연방 매칭 자금에서 추가로 800만 달러가 예상된다. 프로그램 관리자들은 주민과 지역 기업들이 이니셔티브 시작 후 첫 12개월 이내에 실질적인 결과를 보기 시작할 것이라고 말한다.",
@@ -1826,18 +1826,18 @@
         "question": "What can be inferred about the initiative?",
         "question_kr": "이 이니셔티브에 대해 추론할 수 있는 것은?",
         "choices": [
-          "(A) It has been welcomed without any opposition",
-          "(B) It remains subject to community feedback before launch",
-          "(C) It has already been fully implemented",
-          "(D) It was proposed by a private corporation"
+          "(A) It has already been fully implemented",
+          "(B) It has been welcomed without any opposition",
+          "(C) It was proposed by a private corporation",
+          "(D) It remains subject to community feedback before launch"
         ],
         "choices_kr": [
-          "(A) 어떠한 반대 없이 환영받았다",
-          "(B) 시작 전에 지역 사회 피드백을 받아야 한다",
+          "(D) 민간 기업이 제안했다",
           "(C) 이미 완전히 시행되었다",
-          "(D) 민간 기업이 제안했다"
+          "(A) 어떠한 반대 없이 환영받았다",
+          "(B) 시작 전에 지역 사회 피드백을 받아야 한다"
         ],
-        "answer": 1,
+        "answer": 3,
         "kr": "지역 사회 옹호자들과 반대 그룹들은 이 발표에 다르게 반응했으며, 일부는 오랫동안 기다려온 것이라고 칭찬하고 다른 사람들은 시행 일정과 책임 조치에 대한 우려를 제기했다. 공개 정보 세션이 다음 달로 예정되어 있어 주민들이 프로젝트가 공식적으로 시작되기 전에 질문하고 의견을 제공할 수 있다.",
         "expressions": [
           {
@@ -1868,18 +1868,18 @@
         "question": "What is the main purpose of this article?",
         "question_kr": "이 기사의 주요 목적은 무엇인가?",
         "choices": [
-          "(A) To critique government spending on public programs",
-          "(B) To report on a new public initiative or development",
-          "(C) To compare local policies with those of other regions",
-          "(D) To announce the resignation of a key official"
+          "(A) To report on a new public initiative or development",
+          "(B) To announce the resignation of a key official",
+          "(C) To critique government spending on public programs",
+          "(D) To compare local policies with those of other regions"
         ],
         "choices_kr": [
-          "(A) 공공 프로그램에 대한 정부 지출 비판",
           "(B) 새로운 공공 이니셔티브나 개발 보도",
-          "(C) 지역 정책과 다른 지역 정책 비교",
-          "(D) 주요 공무원의 사임 발표"
+          "(D) 주요 공무원의 사임 발표",
+          "(A) 공공 프로그램에 대한 정부 지출 비판",
+          "(C) 지역 정책과 다른 지역 정책 비교"
         ],
-        "answer": 1,
+        "answer": 0,
         "kr": "시와 지역 당국은 기업 사회공헌 기사와 관련된 중요한 이니셔티브를 발표했으며, 이는 공공 서비스와 삶의 질을 향상시키기 위한 지속적인 노력에서 중요한 발전을 나타낸다. 공무원들은 2년 이상 개발 중인 이 프로그램이 앞으로 몇 달 안에 시행될 것이라고 밝혔다.",
         "expressions": [
           {
@@ -1905,18 +1905,18 @@
         "question": "How much funding has been allocated for the first phase?",
         "question_kr": "첫 번째 단계에 얼마의 자금이 배정되었는가?",
         "choices": [
-          "(A) $8 million",
-          "(B) $12 million",
-          "(C) $15 million",
-          "(D) $23 million"
+          "(A) $23 million",
+          "(B) $15 million",
+          "(C) $12 million",
+          "(D) $8 million"
         ],
         "choices_kr": [
           "(A) 800만 달러",
-          "(B) 1,200만 달러",
           "(C) 1,500만 달러",
-          "(D) 2,300만 달러"
+          "(D) 2,300만 달러",
+          "(B) 1,200만 달러"
         ],
-        "answer": 2,
+        "answer": 1,
         "kr": "프로그램의 첫 번째 단계를 위해 1,500만 달러가 배정되었으며, 최종 승인 대기 중인 연방 매칭 자금에서 추가로 800만 달러가 예상된다. 프로그램 관리자들은 주민과 지역 기업들이 이니셔티브 시작 후 첫 12개월 이내에 실질적인 결과를 보기 시작할 것이라고 말한다.",
         "expressions": [
           {
@@ -1943,17 +1943,17 @@
         "question_kr": "이 이니셔티브에 대해 추론할 수 있는 것은?",
         "choices": [
           "(A) It has been welcomed without any opposition",
-          "(B) It remains subject to community feedback before launch",
-          "(C) It has already been fully implemented",
+          "(B) It has already been fully implemented",
+          "(C) It remains subject to community feedback before launch",
           "(D) It was proposed by a private corporation"
         ],
         "choices_kr": [
-          "(A) 어떠한 반대 없이 환영받았다",
-          "(B) 시작 전에 지역 사회 피드백을 받아야 한다",
+          "(D) 민간 기업이 제안했다",
           "(C) 이미 완전히 시행되었다",
-          "(D) 민간 기업이 제안했다"
+          "(B) 시작 전에 지역 사회 피드백을 받아야 한다",
+          "(A) 어떠한 반대 없이 환영받았다"
         ],
-        "answer": 1,
+        "answer": 2,
         "kr": "지역 사회 옹호자들과 반대 그룹들은 이 발표에 다르게 반응했으며, 일부는 오랫동안 기다려온 것이라고 칭찬하고 다른 사람들은 시행 일정과 책임 조치에 대한 우려를 제기했다. 공개 정보 세션이 다음 달로 예정되어 있어 주민들이 프로젝트가 공식적으로 시작되기 전에 질문하고 의견을 제공할 수 있다.",
         "expressions": [
           {
@@ -1984,18 +1984,18 @@
         "question": "What is the main purpose of this article?",
         "question_kr": "이 기사의 주요 목적은 무엇인가?",
         "choices": [
-          "(A) To critique government spending on public programs",
-          "(B) To report on a new public initiative or development",
-          "(C) To compare local policies with those of other regions",
-          "(D) To announce the resignation of a key official"
+          "(A) To report on a new public initiative or development",
+          "(B) To announce the resignation of a key official",
+          "(C) To critique government spending on public programs",
+          "(D) To compare local policies with those of other regions"
         ],
         "choices_kr": [
-          "(A) 공공 프로그램에 대한 정부 지출 비판",
           "(B) 새로운 공공 이니셔티브나 개발 보도",
           "(C) 지역 정책과 다른 지역 정책 비교",
+          "(A) 공공 프로그램에 대한 정부 지출 비판",
           "(D) 주요 공무원의 사임 발표"
         ],
-        "answer": 1,
+        "answer": 0,
         "kr": "시와 지역 당국은 교통 혁신 기사와 관련된 중요한 이니셔티브를 발표했으며, 이는 공공 서비스와 삶의 질을 향상시키기 위한 지속적인 노력에서 중요한 발전을 나타낸다. 공무원들은 2년 이상 개발 중인 이 프로그램이 앞으로 몇 달 안에 시행될 것이라고 밝혔다.",
         "expressions": [
           {
@@ -2021,18 +2021,18 @@
         "question": "How much funding has been allocated for the first phase?",
         "question_kr": "첫 번째 단계에 얼마의 자금이 배정되었는가?",
         "choices": [
-          "(A) $8 million",
-          "(B) $12 million",
-          "(C) $15 million",
+          "(A) $12 million",
+          "(B) $15 million",
+          "(C) $8 million",
           "(D) $23 million"
         ],
         "choices_kr": [
-          "(A) 800만 달러",
           "(B) 1,200만 달러",
           "(C) 1,500만 달러",
-          "(D) 2,300만 달러"
+          "(D) 2,300만 달러",
+          "(A) 800만 달러"
         ],
-        "answer": 2,
+        "answer": 1,
         "kr": "프로그램의 첫 번째 단계를 위해 1,500만 달러가 배정되었으며, 최종 승인 대기 중인 연방 매칭 자금에서 추가로 800만 달러가 예상된다. 프로그램 관리자들은 주민과 지역 기업들이 이니셔티브 시작 후 첫 12개월 이내에 실질적인 결과를 보기 시작할 것이라고 말한다.",
         "expressions": [
           {
@@ -2066,8 +2066,8 @@
         "choices_kr": [
           "(A) 어떠한 반대 없이 환영받았다",
           "(B) 시작 전에 지역 사회 피드백을 받아야 한다",
-          "(C) 이미 완전히 시행되었다",
-          "(D) 민간 기업이 제안했다"
+          "(D) 민간 기업이 제안했다",
+          "(C) 이미 완전히 시행되었다"
         ],
         "answer": 1,
         "kr": "지역 사회 옹호자들과 반대 그룹들은 이 발표에 다르게 반응했으며, 일부는 오랫동안 기다려온 것이라고 칭찬하고 다른 사람들은 시행 일정과 책임 조치에 대한 우려를 제기했다. 공개 정보 세션이 다음 달로 예정되어 있어 주민들이 프로젝트가 공식적으로 시작되기 전에 질문하고 의견을 제공할 수 있다.",
@@ -2102,14 +2102,14 @@
         "choices": [
           "(A) To critique government spending on public programs",
           "(B) To report on a new public initiative or development",
-          "(C) To compare local policies with those of other regions",
-          "(D) To announce the resignation of a key official"
+          "(C) To announce the resignation of a key official",
+          "(D) To compare local policies with those of other regions"
         ],
         "choices_kr": [
-          "(A) 공공 프로그램에 대한 정부 지출 비판",
+          "(D) 주요 공무원의 사임 발표",
           "(B) 새로운 공공 이니셔티브나 개발 보도",
           "(C) 지역 정책과 다른 지역 정책 비교",
-          "(D) 주요 공무원의 사임 발표"
+          "(A) 공공 프로그램에 대한 정부 지출 비판"
         ],
         "answer": 1,
         "kr": "시와 지역 당국은 재해 대응 기사와 관련된 중요한 이니셔티브를 발표했으며, 이는 공공 서비스와 삶의 질을 향상시키기 위한 지속적인 노력에서 중요한 발전을 나타낸다. 공무원들은 2년 이상 개발 중인 이 프로그램이 앞으로 몇 달 안에 시행될 것이라고 밝혔다.",
@@ -2137,16 +2137,16 @@
         "question": "How much funding has been allocated for the first phase?",
         "question_kr": "첫 번째 단계에 얼마의 자금이 배정되었는가?",
         "choices": [
-          "(A) $8 million",
-          "(B) $12 million",
+          "(A) $12 million",
+          "(B) $23 million",
           "(C) $15 million",
-          "(D) $23 million"
+          "(D) $8 million"
         ],
         "choices_kr": [
-          "(A) 800만 달러",
+          "(D) 2,300만 달러",
           "(B) 1,200만 달러",
           "(C) 1,500만 달러",
-          "(D) 2,300만 달러"
+          "(A) 800만 달러"
         ],
         "answer": 2,
         "kr": "프로그램의 첫 번째 단계를 위해 1,500만 달러가 배정되었으며, 최종 승인 대기 중인 연방 매칭 자금에서 추가로 800만 달러가 예상된다. 프로그램 관리자들은 주민과 지역 기업들이 이니셔티브 시작 후 첫 12개월 이내에 실질적인 결과를 보기 시작할 것이라고 말한다.",
@@ -2175,17 +2175,17 @@
         "question_kr": "이 이니셔티브에 대해 추론할 수 있는 것은?",
         "choices": [
           "(A) It has been welcomed without any opposition",
-          "(B) It remains subject to community feedback before launch",
-          "(C) It has already been fully implemented",
-          "(D) It was proposed by a private corporation"
+          "(B) It was proposed by a private corporation",
+          "(C) It remains subject to community feedback before launch",
+          "(D) It has already been fully implemented"
         ],
         "choices_kr": [
           "(A) 어떠한 반대 없이 환영받았다",
+          "(D) 민간 기업이 제안했다",
           "(B) 시작 전에 지역 사회 피드백을 받아야 한다",
-          "(C) 이미 완전히 시행되었다",
-          "(D) 민간 기업이 제안했다"
+          "(C) 이미 완전히 시행되었다"
         ],
-        "answer": 1,
+        "answer": 2,
         "kr": "지역 사회 옹호자들과 반대 그룹들은 이 발표에 다르게 반응했으며, 일부는 오랫동안 기다려온 것이라고 칭찬하고 다른 사람들은 시행 일정과 책임 조치에 대한 우려를 제기했다. 공개 정보 세션이 다음 달로 예정되어 있어 주민들이 프로젝트가 공식적으로 시작되기 전에 질문하고 의견을 제공할 수 있다.",
         "expressions": [
           {
@@ -2216,18 +2216,18 @@
         "question": "What is the main purpose of this article?",
         "question_kr": "이 기사의 주요 목적은 무엇인가?",
         "choices": [
-          "(A) To critique government spending on public programs",
-          "(B) To report on a new public initiative or development",
-          "(C) To compare local policies with those of other regions",
-          "(D) To announce the resignation of a key official"
+          "(A) To compare local policies with those of other regions",
+          "(B) To announce the resignation of a key official",
+          "(C) To report on a new public initiative or development",
+          "(D) To critique government spending on public programs"
         ],
         "choices_kr": [
-          "(A) 공공 프로그램에 대한 정부 지출 비판",
-          "(B) 새로운 공공 이니셔티브나 개발 보도",
           "(C) 지역 정책과 다른 지역 정책 비교",
-          "(D) 주요 공무원의 사임 발표"
+          "(D) 주요 공무원의 사임 발표",
+          "(B) 새로운 공공 이니셔티브나 개발 보도",
+          "(A) 공공 프로그램에 대한 정부 지출 비판"
         ],
-        "answer": 1,
+        "answer": 2,
         "kr": "시와 지역 당국은 문화 보존 기사와 관련된 중요한 이니셔티브를 발표했으며, 이는 공공 서비스와 삶의 질을 향상시키기 위한 지속적인 노력에서 중요한 발전을 나타낸다. 공무원들은 2년 이상 개발 중인 이 프로그램이 앞으로 몇 달 안에 시행될 것이라고 밝혔다.",
         "expressions": [
           {
@@ -2253,18 +2253,18 @@
         "question": "How much funding has been allocated for the first phase?",
         "question_kr": "첫 번째 단계에 얼마의 자금이 배정되었는가?",
         "choices": [
-          "(A) $8 million",
-          "(B) $12 million",
-          "(C) $15 million",
-          "(D) $23 million"
+          "(A) $12 million",
+          "(B) $8 million",
+          "(C) $23 million",
+          "(D) $15 million"
         ],
         "choices_kr": [
-          "(A) 800만 달러",
           "(B) 1,200만 달러",
-          "(C) 1,500만 달러",
-          "(D) 2,300만 달러"
+          "(D) 2,300만 달러",
+          "(A) 800만 달러",
+          "(C) 1,500만 달러"
         ],
-        "answer": 2,
+        "answer": 3,
         "kr": "프로그램의 첫 번째 단계를 위해 1,500만 달러가 배정되었으며, 최종 승인 대기 중인 연방 매칭 자금에서 추가로 800만 달러가 예상된다. 프로그램 관리자들은 주민과 지역 기업들이 이니셔티브 시작 후 첫 12개월 이내에 실질적인 결과를 보기 시작할 것이라고 말한다.",
         "expressions": [
           {
@@ -2292,14 +2292,14 @@
         "choices": [
           "(A) It has been welcomed without any opposition",
           "(B) It remains subject to community feedback before launch",
-          "(C) It has already been fully implemented",
-          "(D) It was proposed by a private corporation"
+          "(C) It was proposed by a private corporation",
+          "(D) It has already been fully implemented"
         ],
         "choices_kr": [
-          "(A) 어떠한 반대 없이 환영받았다",
-          "(B) 시작 전에 지역 사회 피드백을 받아야 한다",
           "(C) 이미 완전히 시행되었다",
-          "(D) 민간 기업이 제안했다"
+          "(B) 시작 전에 지역 사회 피드백을 받아야 한다",
+          "(D) 민간 기업이 제안했다",
+          "(A) 어떠한 반대 없이 환영받았다"
         ],
         "answer": 1,
         "kr": "지역 사회 옹호자들과 반대 그룹들은 이 발표에 다르게 반응했으며, 일부는 오랫동안 기다려온 것이라고 칭찬하고 다른 사람들은 시행 일정과 책임 조치에 대한 우려를 제기했다. 공개 정보 세션이 다음 달로 예정되어 있어 주민들이 프로젝트가 공식적으로 시작되기 전에 질문하고 의견을 제공할 수 있다.",
@@ -2332,16 +2332,16 @@
         "question": "What is the main purpose of this article?",
         "question_kr": "이 기사의 주요 목적은 무엇인가?",
         "choices": [
-          "(A) To critique government spending on public programs",
+          "(A) To compare local policies with those of other regions",
           "(B) To report on a new public initiative or development",
-          "(C) To compare local policies with those of other regions",
-          "(D) To announce the resignation of a key official"
+          "(C) To announce the resignation of a key official",
+          "(D) To critique government spending on public programs"
         ],
         "choices_kr": [
           "(A) 공공 프로그램에 대한 정부 지출 비판",
           "(B) 새로운 공공 이니셔티브나 개발 보도",
-          "(C) 지역 정책과 다른 지역 정책 비교",
-          "(D) 주요 공무원의 사임 발표"
+          "(D) 주요 공무원의 사임 발표",
+          "(C) 지역 정책과 다른 지역 정책 비교"
         ],
         "answer": 1,
         "kr": "시와 지역 당국은 직업훈련 프로그램 공지와 관련된 중요한 이니셔티브를 발표했으며, 이는 공공 서비스와 삶의 질을 향상시키기 위한 지속적인 노력에서 중요한 발전을 나타낸다. 공무원들은 2년 이상 개발 중인 이 프로그램이 앞으로 몇 달 안에 시행될 것이라고 밝혔다.",
@@ -2370,17 +2370,17 @@
         "question_kr": "첫 번째 단계에 얼마의 자금이 배정되었는가?",
         "choices": [
           "(A) $8 million",
-          "(B) $12 million",
-          "(C) $15 million",
-          "(D) $23 million"
+          "(B) $15 million",
+          "(C) $23 million",
+          "(D) $12 million"
         ],
         "choices_kr": [
-          "(A) 800만 달러",
-          "(B) 1,200만 달러",
+          "(D) 2,300만 달러",
           "(C) 1,500만 달러",
-          "(D) 2,300만 달러"
+          "(B) 1,200만 달러",
+          "(A) 800만 달러"
         ],
-        "answer": 2,
+        "answer": 1,
         "kr": "프로그램의 첫 번째 단계를 위해 1,500만 달러가 배정되었으며, 최종 승인 대기 중인 연방 매칭 자금에서 추가로 800만 달러가 예상된다. 프로그램 관리자들은 주민과 지역 기업들이 이니셔티브 시작 후 첫 12개월 이내에 실질적인 결과를 보기 시작할 것이라고 말한다.",
         "expressions": [
           {
@@ -2412,10 +2412,10 @@
           "(D) It was proposed by a private corporation"
         ],
         "choices_kr": [
-          "(A) 어떠한 반대 없이 환영받았다",
+          "(D) 민간 기업이 제안했다",
           "(B) 시작 전에 지역 사회 피드백을 받아야 한다",
           "(C) 이미 완전히 시행되었다",
-          "(D) 민간 기업이 제안했다"
+          "(A) 어떠한 반대 없이 환영받았다"
         ],
         "answer": 1,
         "kr": "지역 사회 옹호자들과 반대 그룹들은 이 발표에 다르게 반응했으며, 일부는 오랫동안 기다려온 것이라고 칭찬하고 다른 사람들은 시행 일정과 책임 조치에 대한 우려를 제기했다. 공개 정보 세션이 다음 달로 예정되어 있어 주민들이 프로젝트가 공식적으로 시작되기 전에 질문하고 의견을 제공할 수 있다.",
@@ -2448,16 +2448,16 @@
         "question": "What is the main purpose of this article?",
         "question_kr": "이 기사의 주요 목적은 무엇인가?",
         "choices": [
-          "(A) To critique government spending on public programs",
+          "(A) To compare local policies with those of other regions",
           "(B) To report on a new public initiative or development",
-          "(C) To compare local policies with those of other regions",
-          "(D) To announce the resignation of a key official"
+          "(C) To announce the resignation of a key official",
+          "(D) To critique government spending on public programs"
         ],
         "choices_kr": [
-          "(A) 공공 프로그램에 대한 정부 지출 비판",
-          "(B) 새로운 공공 이니셔티브나 개발 보도",
           "(C) 지역 정책과 다른 지역 정책 비교",
-          "(D) 주요 공무원의 사임 발표"
+          "(B) 새로운 공공 이니셔티브나 개발 보도",
+          "(D) 주요 공무원의 사임 발표",
+          "(A) 공공 프로그램에 대한 정부 지출 비판"
         ],
         "answer": 1,
         "kr": "시와 지역 당국은 재생에너지 기사와 관련된 중요한 이니셔티브를 발표했으며, 이는 공공 서비스와 삶의 질을 향상시키기 위한 지속적인 노력에서 중요한 발전을 나타낸다. 공무원들은 2년 이상 개발 중인 이 프로그램이 앞으로 몇 달 안에 시행될 것이라고 밝혔다.",
@@ -2485,18 +2485,18 @@
         "question": "How much funding has been allocated for the first phase?",
         "question_kr": "첫 번째 단계에 얼마의 자금이 배정되었는가?",
         "choices": [
-          "(A) $8 million",
-          "(B) $12 million",
-          "(C) $15 million",
+          "(A) $12 million",
+          "(B) $15 million",
+          "(C) $8 million",
           "(D) $23 million"
         ],
         "choices_kr": [
-          "(A) 800만 달러",
           "(B) 1,200만 달러",
           "(C) 1,500만 달러",
+          "(A) 800만 달러",
           "(D) 2,300만 달러"
         ],
-        "answer": 2,
+        "answer": 1,
         "kr": "프로그램의 첫 번째 단계를 위해 1,500만 달러가 배정되었으며, 최종 승인 대기 중인 연방 매칭 자금에서 추가로 800만 달러가 예상된다. 프로그램 관리자들은 주민과 지역 기업들이 이니셔티브 시작 후 첫 12개월 이내에 실질적인 결과를 보기 시작할 것이라고 말한다.",
         "expressions": [
           {
@@ -2522,16 +2522,16 @@
         "question": "What can be inferred about the initiative?",
         "question_kr": "이 이니셔티브에 대해 추론할 수 있는 것은?",
         "choices": [
-          "(A) It has been welcomed without any opposition",
+          "(A) It was proposed by a private corporation",
           "(B) It remains subject to community feedback before launch",
-          "(C) It has already been fully implemented",
-          "(D) It was proposed by a private corporation"
+          "(C) It has been welcomed without any opposition",
+          "(D) It has already been fully implemented"
         ],
         "choices_kr": [
-          "(A) 어떠한 반대 없이 환영받았다",
-          "(B) 시작 전에 지역 사회 피드백을 받아야 한다",
           "(C) 이미 완전히 시행되었다",
-          "(D) 민간 기업이 제안했다"
+          "(B) 시작 전에 지역 사회 피드백을 받아야 한다",
+          "(D) 민간 기업이 제안했다",
+          "(A) 어떠한 반대 없이 환영받았다"
         ],
         "answer": 1,
         "kr": "지역 사회 옹호자들과 반대 그룹들은 이 발표에 다르게 반응했으며, 일부는 오랫동안 기다려온 것이라고 칭찬하고 다른 사람들은 시행 일정과 책임 조치에 대한 우려를 제기했다. 공개 정보 세션이 다음 달로 예정되어 있어 주민들이 프로젝트가 공식적으로 시작되기 전에 질문하고 의견을 제공할 수 있다.",
@@ -2564,18 +2564,18 @@
         "question": "What is the main purpose of this article?",
         "question_kr": "이 기사의 주요 목적은 무엇인가?",
         "choices": [
-          "(A) To critique government spending on public programs",
-          "(B) To report on a new public initiative or development",
-          "(C) To compare local policies with those of other regions",
-          "(D) To announce the resignation of a key official"
+          "(A) To announce the resignation of a key official",
+          "(B) To compare local policies with those of other regions",
+          "(C) To report on a new public initiative or development",
+          "(D) To critique government spending on public programs"
         ],
         "choices_kr": [
+          "(C) 지역 정책과 다른 지역 정책 비교",
           "(A) 공공 프로그램에 대한 정부 지출 비판",
           "(B) 새로운 공공 이니셔티브나 개발 보도",
-          "(C) 지역 정책과 다른 지역 정책 비교",
           "(D) 주요 공무원의 사임 발표"
         ],
-        "answer": 1,
+        "answer": 2,
         "kr": "시와 지역 당국은 의료보험 정책 기사와 관련된 중요한 이니셔티브를 발표했으며, 이는 공공 서비스와 삶의 질을 향상시키기 위한 지속적인 노력에서 중요한 발전을 나타낸다. 공무원들은 2년 이상 개발 중인 이 프로그램이 앞으로 몇 달 안에 시행될 것이라고 밝혔다.",
         "expressions": [
           {
@@ -2601,18 +2601,18 @@
         "question": "How much funding has been allocated for the first phase?",
         "question_kr": "첫 번째 단계에 얼마의 자금이 배정되었는가?",
         "choices": [
-          "(A) $8 million",
-          "(B) $12 million",
-          "(C) $15 million",
-          "(D) $23 million"
+          "(A) $12 million",
+          "(B) $23 million",
+          "(C) $8 million",
+          "(D) $15 million"
         ],
         "choices_kr": [
           "(A) 800만 달러",
+          "(D) 2,300만 달러",
           "(B) 1,200만 달러",
-          "(C) 1,500만 달러",
-          "(D) 2,300만 달러"
+          "(C) 1,500만 달러"
         ],
-        "answer": 2,
+        "answer": 3,
         "kr": "프로그램의 첫 번째 단계를 위해 1,500만 달러가 배정되었으며, 최종 승인 대기 중인 연방 매칭 자금에서 추가로 800만 달러가 예상된다. 프로그램 관리자들은 주민과 지역 기업들이 이니셔티브 시작 후 첫 12개월 이내에 실질적인 결과를 보기 시작할 것이라고 말한다.",
         "expressions": [
           {
@@ -2638,16 +2638,16 @@
         "question": "What can be inferred about the initiative?",
         "question_kr": "이 이니셔티브에 대해 추론할 수 있는 것은?",
         "choices": [
-          "(A) It has been welcomed without any opposition",
+          "(A) It has already been fully implemented",
           "(B) It remains subject to community feedback before launch",
-          "(C) It has already been fully implemented",
-          "(D) It was proposed by a private corporation"
+          "(C) It was proposed by a private corporation",
+          "(D) It has been welcomed without any opposition"
         ],
         "choices_kr": [
-          "(A) 어떠한 반대 없이 환영받았다",
-          "(B) 시작 전에 지역 사회 피드백을 받아야 한다",
           "(C) 이미 완전히 시행되었다",
-          "(D) 민간 기업이 제안했다"
+          "(B) 시작 전에 지역 사회 피드백을 받아야 한다",
+          "(D) 민간 기업이 제안했다",
+          "(A) 어떠한 반대 없이 환영받았다"
         ],
         "answer": 1,
         "kr": "지역 사회 옹호자들과 반대 그룹들은 이 발표에 다르게 반응했으며, 일부는 오랫동안 기다려온 것이라고 칭찬하고 다른 사람들은 시행 일정과 책임 조치에 대한 우려를 제기했다. 공개 정보 세션이 다음 달로 예정되어 있어 주민들이 프로젝트가 공식적으로 시작되기 전에 질문하고 의견을 제공할 수 있다.",
@@ -2680,18 +2680,18 @@
         "question": "What is the main purpose of this article?",
         "question_kr": "이 기사의 주요 목적은 무엇인가?",
         "choices": [
-          "(A) To critique government spending on public programs",
-          "(B) To report on a new public initiative or development",
-          "(C) To compare local policies with those of other regions",
-          "(D) To announce the resignation of a key official"
+          "(A) To compare local policies with those of other regions",
+          "(B) To critique government spending on public programs",
+          "(C) To announce the resignation of a key official",
+          "(D) To report on a new public initiative or development"
         ],
         "choices_kr": [
+          "(D) 주요 공무원의 사임 발표",
           "(A) 공공 프로그램에 대한 정부 지출 비판",
-          "(B) 새로운 공공 이니셔티브나 개발 보도",
           "(C) 지역 정책과 다른 지역 정책 비교",
-          "(D) 주요 공무원의 사임 발표"
+          "(B) 새로운 공공 이니셔티브나 개발 보도"
         ],
-        "answer": 1,
+        "answer": 3,
         "kr": "시와 지역 당국은 교육 기술 기사와 관련된 중요한 이니셔티브를 발표했으며, 이는 공공 서비스와 삶의 질을 향상시키기 위한 지속적인 노력에서 중요한 발전을 나타낸다. 공무원들은 2년 이상 개발 중인 이 프로그램이 앞으로 몇 달 안에 시행될 것이라고 밝혔다.",
         "expressions": [
           {
@@ -2717,16 +2717,16 @@
         "question": "How much funding has been allocated for the first phase?",
         "question_kr": "첫 번째 단계에 얼마의 자금이 배정되었는가?",
         "choices": [
-          "(A) $8 million",
-          "(B) $12 million",
+          "(A) $23 million",
+          "(B) $8 million",
           "(C) $15 million",
-          "(D) $23 million"
+          "(D) $12 million"
         ],
         "choices_kr": [
-          "(A) 800만 달러",
+          "(D) 2,300만 달러",
           "(B) 1,200만 달러",
           "(C) 1,500만 달러",
-          "(D) 2,300만 달러"
+          "(A) 800만 달러"
         ],
         "answer": 2,
         "kr": "프로그램의 첫 번째 단계를 위해 1,500만 달러가 배정되었으며, 최종 승인 대기 중인 연방 매칭 자금에서 추가로 800만 달러가 예상된다. 프로그램 관리자들은 주민과 지역 기업들이 이니셔티브 시작 후 첫 12개월 이내에 실질적인 결과를 보기 시작할 것이라고 말한다.",
@@ -2754,18 +2754,18 @@
         "question": "What can be inferred about the initiative?",
         "question_kr": "이 이니셔티브에 대해 추론할 수 있는 것은?",
         "choices": [
-          "(A) It has been welcomed without any opposition",
-          "(B) It remains subject to community feedback before launch",
-          "(C) It has already been fully implemented",
-          "(D) It was proposed by a private corporation"
+          "(A) It has already been fully implemented",
+          "(B) It has been welcomed without any opposition",
+          "(C) It was proposed by a private corporation",
+          "(D) It remains subject to community feedback before launch"
         ],
         "choices_kr": [
-          "(A) 어떠한 반대 없이 환영받았다",
-          "(B) 시작 전에 지역 사회 피드백을 받아야 한다",
           "(C) 이미 완전히 시행되었다",
-          "(D) 민간 기업이 제안했다"
+          "(D) 민간 기업이 제안했다",
+          "(A) 어떠한 반대 없이 환영받았다",
+          "(B) 시작 전에 지역 사회 피드백을 받아야 한다"
         ],
-        "answer": 1,
+        "answer": 3,
         "kr": "지역 사회 옹호자들과 반대 그룹들은 이 발표에 다르게 반응했으며, 일부는 오랫동안 기다려온 것이라고 칭찬하고 다른 사람들은 시행 일정과 책임 조치에 대한 우려를 제기했다. 공개 정보 세션이 다음 달로 예정되어 있어 주민들이 프로젝트가 공식적으로 시작되기 전에 질문하고 의견을 제공할 수 있다.",
         "expressions": [
           {
@@ -2796,15 +2796,15 @@
         "question": "What is the main purpose of this article?",
         "question_kr": "이 기사의 주요 목적은 무엇인가?",
         "choices": [
-          "(A) To critique government spending on public programs",
+          "(A) To compare local policies with those of other regions",
           "(B) To report on a new public initiative or development",
-          "(C) To compare local policies with those of other regions",
+          "(C) To critique government spending on public programs",
           "(D) To announce the resignation of a key official"
         ],
         "choices_kr": [
-          "(A) 공공 프로그램에 대한 정부 지출 비판",
-          "(B) 새로운 공공 이니셔티브나 개발 보도",
           "(C) 지역 정책과 다른 지역 정책 비교",
+          "(B) 새로운 공공 이니셔티브나 개발 보도",
+          "(A) 공공 프로그램에 대한 정부 지출 비판",
           "(D) 주요 공무원의 사임 발표"
         ],
         "answer": 1,
@@ -2833,18 +2833,18 @@
         "question": "How much funding has been allocated for the first phase?",
         "question_kr": "첫 번째 단계에 얼마의 자금이 배정되었는가?",
         "choices": [
-          "(A) $8 million",
-          "(B) $12 million",
-          "(C) $15 million",
-          "(D) $23 million"
+          "(A) $23 million",
+          "(B) $15 million",
+          "(C) $12 million",
+          "(D) $8 million"
         ],
         "choices_kr": [
-          "(A) 800만 달러",
           "(B) 1,200만 달러",
           "(C) 1,500만 달러",
-          "(D) 2,300만 달러"
+          "(D) 2,300만 달러",
+          "(A) 800만 달러"
         ],
-        "answer": 2,
+        "answer": 1,
         "kr": "프로그램의 첫 번째 단계를 위해 1,500만 달러가 배정되었으며, 최종 승인 대기 중인 연방 매칭 자금에서 추가로 800만 달러가 예상된다. 프로그램 관리자들은 주민과 지역 기업들이 이니셔티브 시작 후 첫 12개월 이내에 실질적인 결과를 보기 시작할 것이라고 말한다.",
         "expressions": [
           {
@@ -2870,18 +2870,18 @@
         "question": "What can be inferred about the initiative?",
         "question_kr": "이 이니셔티브에 대해 추론할 수 있는 것은?",
         "choices": [
-          "(A) It has been welcomed without any opposition",
-          "(B) It remains subject to community feedback before launch",
+          "(A) It remains subject to community feedback before launch",
+          "(B) It was proposed by a private corporation",
           "(C) It has already been fully implemented",
-          "(D) It was proposed by a private corporation"
+          "(D) It has been welcomed without any opposition"
         ],
         "choices_kr": [
-          "(A) 어떠한 반대 없이 환영받았다",
           "(B) 시작 전에 지역 사회 피드백을 받아야 한다",
+          "(A) 어떠한 반대 없이 환영받았다",
           "(C) 이미 완전히 시행되었다",
           "(D) 민간 기업이 제안했다"
         ],
-        "answer": 1,
+        "answer": 0,
         "kr": "지역 사회 옹호자들과 반대 그룹들은 이 발표에 다르게 반응했으며, 일부는 오랫동안 기다려온 것이라고 칭찬하고 다른 사람들은 시행 일정과 책임 조치에 대한 우려를 제기했다. 공개 정보 세션이 다음 달로 예정되어 있어 주민들이 프로젝트가 공식적으로 시작되기 전에 질문하고 의견을 제공할 수 있다.",
         "expressions": [
           {
@@ -2912,18 +2912,18 @@
         "question": "What is the main purpose of this article?",
         "question_kr": "이 기사의 주요 목적은 무엇인가?",
         "choices": [
-          "(A) To critique government spending on public programs",
-          "(B) To report on a new public initiative or development",
-          "(C) To compare local policies with those of other regions",
-          "(D) To announce the resignation of a key official"
+          "(A) To announce the resignation of a key official",
+          "(B) To critique government spending on public programs",
+          "(C) To report on a new public initiative or development",
+          "(D) To compare local policies with those of other regions"
         ],
         "choices_kr": [
+          "(C) 지역 정책과 다른 지역 정책 비교",
           "(A) 공공 프로그램에 대한 정부 지출 비판",
           "(B) 새로운 공공 이니셔티브나 개발 보도",
-          "(C) 지역 정책과 다른 지역 정책 비교",
           "(D) 주요 공무원의 사임 발표"
         ],
-        "answer": 1,
+        "answer": 2,
         "kr": "시와 지역 당국은 해양 보호 기사와 관련된 중요한 이니셔티브를 발표했으며, 이는 공공 서비스와 삶의 질을 향상시키기 위한 지속적인 노력에서 중요한 발전을 나타낸다. 공무원들은 2년 이상 개발 중인 이 프로그램이 앞으로 몇 달 안에 시행될 것이라고 밝혔다.",
         "expressions": [
           {
@@ -2949,16 +2949,16 @@
         "question": "How much funding has been allocated for the first phase?",
         "question_kr": "첫 번째 단계에 얼마의 자금이 배정되었는가?",
         "choices": [
-          "(A) $8 million",
-          "(B) $12 million",
+          "(A) $12 million",
+          "(B) $8 million",
           "(C) $15 million",
           "(D) $23 million"
         ],
         "choices_kr": [
-          "(A) 800만 달러",
           "(B) 1,200만 달러",
+          "(D) 2,300만 달러",
           "(C) 1,500만 달러",
-          "(D) 2,300만 달러"
+          "(A) 800만 달러"
         ],
         "answer": 2,
         "kr": "프로그램의 첫 번째 단계를 위해 1,500만 달러가 배정되었으며, 최종 승인 대기 중인 연방 매칭 자금에서 추가로 800만 달러가 예상된다. 프로그램 관리자들은 주민과 지역 기업들이 이니셔티브 시작 후 첫 12개월 이내에 실질적인 결과를 보기 시작할 것이라고 말한다.",
@@ -2986,18 +2986,18 @@
         "question": "What can be inferred about the initiative?",
         "question_kr": "이 이니셔티브에 대해 추론할 수 있는 것은?",
         "choices": [
-          "(A) It has been welcomed without any opposition",
-          "(B) It remains subject to community feedback before launch",
-          "(C) It has already been fully implemented",
+          "(A) It has already been fully implemented",
+          "(B) It has been welcomed without any opposition",
+          "(C) It remains subject to community feedback before launch",
           "(D) It was proposed by a private corporation"
         ],
         "choices_kr": [
+          "(C) 이미 완전히 시행되었다",
           "(A) 어떠한 반대 없이 환영받았다",
           "(B) 시작 전에 지역 사회 피드백을 받아야 한다",
-          "(C) 이미 완전히 시행되었다",
           "(D) 민간 기업이 제안했다"
         ],
-        "answer": 1,
+        "answer": 2,
         "kr": "지역 사회 옹호자들과 반대 그룹들은 이 발표에 다르게 반응했으며, 일부는 오랫동안 기다려온 것이라고 칭찬하고 다른 사람들은 시행 일정과 책임 조치에 대한 우려를 제기했다. 공개 정보 세션이 다음 달로 예정되어 있어 주민들이 프로젝트가 공식적으로 시작되기 전에 질문하고 의견을 제공할 수 있다.",
         "expressions": [
           {
@@ -3028,18 +3028,18 @@
         "question": "What is the main purpose of this article?",
         "question_kr": "이 기사의 주요 목적은 무엇인가?",
         "choices": [
-          "(A) To critique government spending on public programs",
-          "(B) To report on a new public initiative or development",
+          "(A) To announce the resignation of a key official",
+          "(B) To critique government spending on public programs",
           "(C) To compare local policies with those of other regions",
-          "(D) To announce the resignation of a key official"
+          "(D) To report on a new public initiative or development"
         ],
         "choices_kr": [
-          "(A) 공공 프로그램에 대한 정부 지출 비판",
-          "(B) 새로운 공공 이니셔티브나 개발 보도",
           "(C) 지역 정책과 다른 지역 정책 비교",
-          "(D) 주요 공무원의 사임 발표"
+          "(A) 공공 프로그램에 대한 정부 지출 비판",
+          "(D) 주요 공무원의 사임 발표",
+          "(B) 새로운 공공 이니셔티브나 개발 보도"
         ],
-        "answer": 1,
+        "answer": 3,
         "kr": "시와 지역 당국은 항공사 파산 기사와 관련된 중요한 이니셔티브를 발표했으며, 이는 공공 서비스와 삶의 질을 향상시키기 위한 지속적인 노력에서 중요한 발전을 나타낸다. 공무원들은 2년 이상 개발 중인 이 프로그램이 앞으로 몇 달 안에 시행될 것이라고 밝혔다.",
         "expressions": [
           {
@@ -3065,18 +3065,18 @@
         "question": "How much funding has been allocated for the first phase?",
         "question_kr": "첫 번째 단계에 얼마의 자금이 배정되었는가?",
         "choices": [
-          "(A) $8 million",
-          "(B) $12 million",
-          "(C) $15 million",
-          "(D) $23 million"
+          "(A) $12 million",
+          "(B) $8 million",
+          "(C) $23 million",
+          "(D) $15 million"
         ],
         "choices_kr": [
-          "(A) 800만 달러",
+          "(D) 2,300만 달러",
           "(B) 1,200만 달러",
-          "(C) 1,500만 달러",
-          "(D) 2,300만 달러"
+          "(A) 800만 달러",
+          "(C) 1,500만 달러"
         ],
-        "answer": 2,
+        "answer": 3,
         "kr": "프로그램의 첫 번째 단계를 위해 1,500만 달러가 배정되었으며, 최종 승인 대기 중인 연방 매칭 자금에서 추가로 800만 달러가 예상된다. 프로그램 관리자들은 주민과 지역 기업들이 이니셔티브 시작 후 첫 12개월 이내에 실질적인 결과를 보기 시작할 것이라고 말한다.",
         "expressions": [
           {
@@ -3102,16 +3102,16 @@
         "question": "What can be inferred about the initiative?",
         "question_kr": "이 이니셔티브에 대해 추론할 수 있는 것은?",
         "choices": [
-          "(A) It has been welcomed without any opposition",
+          "(A) It was proposed by a private corporation",
           "(B) It remains subject to community feedback before launch",
-          "(C) It has already been fully implemented",
-          "(D) It was proposed by a private corporation"
+          "(C) It has been welcomed without any opposition",
+          "(D) It has already been fully implemented"
         ],
         "choices_kr": [
-          "(A) 어떠한 반대 없이 환영받았다",
+          "(D) 민간 기업이 제안했다",
           "(B) 시작 전에 지역 사회 피드백을 받아야 한다",
-          "(C) 이미 완전히 시행되었다",
-          "(D) 민간 기업이 제안했다"
+          "(A) 어떠한 반대 없이 환영받았다",
+          "(C) 이미 완전히 시행되었다"
         ],
         "answer": 1,
         "kr": "지역 사회 옹호자들과 반대 그룹들은 이 발표에 다르게 반응했으며, 일부는 오랫동안 기다려온 것이라고 칭찬하고 다른 사람들은 시행 일정과 책임 조치에 대한 우려를 제기했다. 공개 정보 세션이 다음 달로 예정되어 있어 주민들이 프로젝트가 공식적으로 시작되기 전에 질문하고 의견을 제공할 수 있다.",
@@ -3144,18 +3144,18 @@
         "question": "What is the main purpose of this article?",
         "question_kr": "이 기사의 주요 목적은 무엇인가?",
         "choices": [
-          "(A) To critique government spending on public programs",
-          "(B) To report on a new public initiative or development",
-          "(C) To compare local policies with those of other regions",
-          "(D) To announce the resignation of a key official"
+          "(A) To announce the resignation of a key official",
+          "(B) To compare local policies with those of other regions",
+          "(C) To critique government spending on public programs",
+          "(D) To report on a new public initiative or development"
         ],
         "choices_kr": [
           "(A) 공공 프로그램에 대한 정부 지출 비판",
-          "(B) 새로운 공공 이니셔티브나 개발 보도",
+          "(D) 주요 공무원의 사임 발표",
           "(C) 지역 정책과 다른 지역 정책 비교",
-          "(D) 주요 공무원의 사임 발표"
+          "(B) 새로운 공공 이니셔티브나 개발 보도"
         ],
-        "answer": 1,
+        "answer": 3,
         "kr": "시와 지역 당국은 공공도서관 확장 공지와 관련된 중요한 이니셔티브를 발표했으며, 이는 공공 서비스와 삶의 질을 향상시키기 위한 지속적인 노력에서 중요한 발전을 나타낸다. 공무원들은 2년 이상 개발 중인 이 프로그램이 앞으로 몇 달 안에 시행될 것이라고 밝혔다.",
         "expressions": [
           {
@@ -3181,18 +3181,18 @@
         "question": "How much funding has been allocated for the first phase?",
         "question_kr": "첫 번째 단계에 얼마의 자금이 배정되었는가?",
         "choices": [
-          "(A) $8 million",
+          "(A) $15 million",
           "(B) $12 million",
-          "(C) $15 million",
-          "(D) $23 million"
+          "(C) $23 million",
+          "(D) $8 million"
         ],
         "choices_kr": [
-          "(A) 800만 달러",
-          "(B) 1,200만 달러",
           "(C) 1,500만 달러",
-          "(D) 2,300만 달러"
+          "(D) 2,300만 달러",
+          "(A) 800만 달러",
+          "(B) 1,200만 달러"
         ],
-        "answer": 2,
+        "answer": 0,
         "kr": "프로그램의 첫 번째 단계를 위해 1,500만 달러가 배정되었으며, 최종 승인 대기 중인 연방 매칭 자금에서 추가로 800만 달러가 예상된다. 프로그램 관리자들은 주민과 지역 기업들이 이니셔티브 시작 후 첫 12개월 이내에 실질적인 결과를 보기 시작할 것이라고 말한다.",
         "expressions": [
           {
@@ -3218,18 +3218,18 @@
         "question": "What can be inferred about the initiative?",
         "question_kr": "이 이니셔티브에 대해 추론할 수 있는 것은?",
         "choices": [
-          "(A) It has been welcomed without any opposition",
-          "(B) It remains subject to community feedback before launch",
+          "(A) It was proposed by a private corporation",
+          "(B) It has been welcomed without any opposition",
           "(C) It has already been fully implemented",
-          "(D) It was proposed by a private corporation"
+          "(D) It remains subject to community feedback before launch"
         ],
         "choices_kr": [
+          "(D) 민간 기업이 제안했다",
           "(A) 어떠한 반대 없이 환영받았다",
-          "(B) 시작 전에 지역 사회 피드백을 받아야 한다",
           "(C) 이미 완전히 시행되었다",
-          "(D) 민간 기업이 제안했다"
+          "(B) 시작 전에 지역 사회 피드백을 받아야 한다"
         ],
-        "answer": 1,
+        "answer": 3,
         "kr": "지역 사회 옹호자들과 반대 그룹들은 이 발표에 다르게 반응했으며, 일부는 오랫동안 기다려온 것이라고 칭찬하고 다른 사람들은 시행 일정과 책임 조치에 대한 우려를 제기했다. 공개 정보 세션이 다음 달로 예정되어 있어 주민들이 프로젝트가 공식적으로 시작되기 전에 질문하고 의견을 제공할 수 있다.",
         "expressions": [
           {
@@ -3260,18 +3260,18 @@
         "question": "What is the main purpose of this article?",
         "question_kr": "이 기사의 주요 목적은 무엇인가?",
         "choices": [
-          "(A) To critique government spending on public programs",
-          "(B) To report on a new public initiative or development",
-          "(C) To compare local policies with those of other regions",
-          "(D) To announce the resignation of a key official"
+          "(A) To compare local policies with those of other regions",
+          "(B) To critique government spending on public programs",
+          "(C) To announce the resignation of a key official",
+          "(D) To report on a new public initiative or development"
         ],
         "choices_kr": [
           "(A) 공공 프로그램에 대한 정부 지출 비판",
-          "(B) 새로운 공공 이니셔티브나 개발 보도",
+          "(D) 주요 공무원의 사임 발표",
           "(C) 지역 정책과 다른 지역 정책 비교",
-          "(D) 주요 공무원의 사임 발표"
+          "(B) 새로운 공공 이니셔티브나 개발 보도"
         ],
-        "answer": 1,
+        "answer": 3,
         "kr": "시와 지역 당국은 노동법 개정 기사와 관련된 중요한 이니셔티브를 발표했으며, 이는 공공 서비스와 삶의 질을 향상시키기 위한 지속적인 노력에서 중요한 발전을 나타낸다. 공무원들은 2년 이상 개발 중인 이 프로그램이 앞으로 몇 달 안에 시행될 것이라고 밝혔다.",
         "expressions": [
           {
@@ -3297,18 +3297,18 @@
         "question": "How much funding has been allocated for the first phase?",
         "question_kr": "첫 번째 단계에 얼마의 자금이 배정되었는가?",
         "choices": [
-          "(A) $8 million",
-          "(B) $12 million",
-          "(C) $15 million",
+          "(A) $15 million",
+          "(B) $8 million",
+          "(C) $12 million",
           "(D) $23 million"
         ],
         "choices_kr": [
-          "(A) 800만 달러",
-          "(B) 1,200만 달러",
           "(C) 1,500만 달러",
+          "(B) 1,200만 달러",
+          "(A) 800만 달러",
           "(D) 2,300만 달러"
         ],
-        "answer": 2,
+        "answer": 0,
         "kr": "프로그램의 첫 번째 단계를 위해 1,500만 달러가 배정되었으며, 최종 승인 대기 중인 연방 매칭 자금에서 추가로 800만 달러가 예상된다. 프로그램 관리자들은 주민과 지역 기업들이 이니셔티브 시작 후 첫 12개월 이내에 실질적인 결과를 보기 시작할 것이라고 말한다.",
         "expressions": [
           {
@@ -3334,18 +3334,18 @@
         "question": "What can be inferred about the initiative?",
         "question_kr": "이 이니셔티브에 대해 추론할 수 있는 것은?",
         "choices": [
-          "(A) It has been welcomed without any opposition",
-          "(B) It remains subject to community feedback before launch",
-          "(C) It has already been fully implemented",
-          "(D) It was proposed by a private corporation"
+          "(A) It was proposed by a private corporation",
+          "(B) It has already been fully implemented",
+          "(C) It remains subject to community feedback before launch",
+          "(D) It has been welcomed without any opposition"
         ],
         "choices_kr": [
+          "(D) 민간 기업이 제안했다",
           "(A) 어떠한 반대 없이 환영받았다",
           "(B) 시작 전에 지역 사회 피드백을 받아야 한다",
-          "(C) 이미 완전히 시행되었다",
-          "(D) 민간 기업이 제안했다"
+          "(C) 이미 완전히 시행되었다"
         ],
-        "answer": 1,
+        "answer": 2,
         "kr": "지역 사회 옹호자들과 반대 그룹들은 이 발표에 다르게 반응했으며, 일부는 오랫동안 기다려온 것이라고 칭찬하고 다른 사람들은 시행 일정과 책임 조치에 대한 우려를 제기했다. 공개 정보 세션이 다음 달로 예정되어 있어 주민들이 프로젝트가 공식적으로 시작되기 전에 질문하고 의견을 제공할 수 있다.",
         "expressions": [
           {
@@ -3377,17 +3377,17 @@
         "question_kr": "이 기사의 주요 목적은 무엇인가?",
         "choices": [
           "(A) To critique government spending on public programs",
-          "(B) To report on a new public initiative or development",
-          "(C) To compare local policies with those of other regions",
-          "(D) To announce the resignation of a key official"
+          "(B) To announce the resignation of a key official",
+          "(C) To report on a new public initiative or development",
+          "(D) To compare local policies with those of other regions"
         ],
         "choices_kr": [
           "(A) 공공 프로그램에 대한 정부 지출 비판",
+          "(D) 주요 공무원의 사임 발표",
           "(B) 새로운 공공 이니셔티브나 개발 보도",
-          "(C) 지역 정책과 다른 지역 정책 비교",
-          "(D) 주요 공무원의 사임 발표"
+          "(C) 지역 정책과 다른 지역 정책 비교"
         ],
-        "answer": 1,
+        "answer": 2,
         "kr": "시와 지역 당국은 기후 대응 기사와 관련된 중요한 이니셔티브를 발표했으며, 이는 공공 서비스와 삶의 질을 향상시키기 위한 지속적인 노력에서 중요한 발전을 나타낸다. 공무원들은 2년 이상 개발 중인 이 프로그램이 앞으로 몇 달 안에 시행될 것이라고 밝혔다.",
         "expressions": [
           {
@@ -3413,18 +3413,18 @@
         "question": "How much funding has been allocated for the first phase?",
         "question_kr": "첫 번째 단계에 얼마의 자금이 배정되었는가?",
         "choices": [
-          "(A) $8 million",
-          "(B) $12 million",
-          "(C) $15 million",
+          "(A) $15 million",
+          "(B) $8 million",
+          "(C) $12 million",
           "(D) $23 million"
         ],
         "choices_kr": [
-          "(A) 800만 달러",
-          "(B) 1,200만 달러",
           "(C) 1,500만 달러",
-          "(D) 2,300만 달러"
+          "(D) 2,300만 달러",
+          "(B) 1,200만 달러",
+          "(A) 800만 달러"
         ],
-        "answer": 2,
+        "answer": 0,
         "kr": "프로그램의 첫 번째 단계를 위해 1,500만 달러가 배정되었으며, 최종 승인 대기 중인 연방 매칭 자금에서 추가로 800만 달러가 예상된다. 프로그램 관리자들은 주민과 지역 기업들이 이니셔티브 시작 후 첫 12개월 이내에 실질적인 결과를 보기 시작할 것이라고 말한다.",
         "expressions": [
           {
@@ -3451,17 +3451,17 @@
         "question_kr": "이 이니셔티브에 대해 추론할 수 있는 것은?",
         "choices": [
           "(A) It has been welcomed without any opposition",
-          "(B) It remains subject to community feedback before launch",
+          "(B) It was proposed by a private corporation",
           "(C) It has already been fully implemented",
-          "(D) It was proposed by a private corporation"
+          "(D) It remains subject to community feedback before launch"
         ],
         "choices_kr": [
-          "(A) 어떠한 반대 없이 환영받았다",
-          "(B) 시작 전에 지역 사회 피드백을 받아야 한다",
           "(C) 이미 완전히 시행되었다",
-          "(D) 민간 기업이 제안했다"
+          "(D) 민간 기업이 제안했다",
+          "(A) 어떠한 반대 없이 환영받았다",
+          "(B) 시작 전에 지역 사회 피드백을 받아야 한다"
         ],
-        "answer": 1,
+        "answer": 3,
         "kr": "지역 사회 옹호자들과 반대 그룹들은 이 발표에 다르게 반응했으며, 일부는 오랫동안 기다려온 것이라고 칭찬하고 다른 사람들은 시행 일정과 책임 조치에 대한 우려를 제기했다. 공개 정보 세션이 다음 달로 예정되어 있어 주민들이 프로젝트가 공식적으로 시작되기 전에 질문하고 의견을 제공할 수 있다.",
         "expressions": [
           {
@@ -3493,17 +3493,17 @@
         "question_kr": "이 기사의 주요 목적은 무엇인가?",
         "choices": [
           "(A) To critique government spending on public programs",
-          "(B) To report on a new public initiative or development",
+          "(B) To announce the resignation of a key official",
           "(C) To compare local policies with those of other regions",
-          "(D) To announce the resignation of a key official"
+          "(D) To report on a new public initiative or development"
         ],
         "choices_kr": [
-          "(A) 공공 프로그램에 대한 정부 지출 비판",
-          "(B) 새로운 공공 이니셔티브나 개발 보도",
           "(C) 지역 정책과 다른 지역 정책 비교",
-          "(D) 주요 공무원의 사임 발표"
+          "(D) 주요 공무원의 사임 발표",
+          "(A) 공공 프로그램에 대한 정부 지출 비판",
+          "(B) 새로운 공공 이니셔티브나 개발 보도"
         ],
-        "answer": 1,
+        "answer": 3,
         "kr": "시와 지역 당국은 의료 기기 승인 기사와 관련된 중요한 이니셔티브를 발표했으며, 이는 공공 서비스와 삶의 질을 향상시키기 위한 지속적인 노력에서 중요한 발전을 나타낸다. 공무원들은 2년 이상 개발 중인 이 프로그램이 앞으로 몇 달 안에 시행될 것이라고 밝혔다.",
         "expressions": [
           {
@@ -3529,18 +3529,18 @@
         "question": "How much funding has been allocated for the first phase?",
         "question_kr": "첫 번째 단계에 얼마의 자금이 배정되었는가?",
         "choices": [
-          "(A) $8 million",
-          "(B) $12 million",
-          "(C) $15 million",
+          "(A) $15 million",
+          "(B) $8 million",
+          "(C) $12 million",
           "(D) $23 million"
         ],
         "choices_kr": [
-          "(A) 800만 달러",
-          "(B) 1,200만 달러",
           "(C) 1,500만 달러",
+          "(B) 1,200만 달러",
+          "(A) 800만 달러",
           "(D) 2,300만 달러"
         ],
-        "answer": 2,
+        "answer": 0,
         "kr": "프로그램의 첫 번째 단계를 위해 1,500만 달러가 배정되었으며, 최종 승인 대기 중인 연방 매칭 자금에서 추가로 800만 달러가 예상된다. 프로그램 관리자들은 주민과 지역 기업들이 이니셔티브 시작 후 첫 12개월 이내에 실질적인 결과를 보기 시작할 것이라고 말한다.",
         "expressions": [
           {
@@ -3567,17 +3567,17 @@
         "question_kr": "이 이니셔티브에 대해 추론할 수 있는 것은?",
         "choices": [
           "(A) It has been welcomed without any opposition",
-          "(B) It remains subject to community feedback before launch",
+          "(B) It was proposed by a private corporation",
           "(C) It has already been fully implemented",
-          "(D) It was proposed by a private corporation"
+          "(D) It remains subject to community feedback before launch"
         ],
         "choices_kr": [
-          "(A) 어떠한 반대 없이 환영받았다",
-          "(B) 시작 전에 지역 사회 피드백을 받아야 한다",
           "(C) 이미 완전히 시행되었다",
-          "(D) 민간 기업이 제안했다"
+          "(A) 어떠한 반대 없이 환영받았다",
+          "(D) 민간 기업이 제안했다",
+          "(B) 시작 전에 지역 사회 피드백을 받아야 한다"
         ],
-        "answer": 1,
+        "answer": 3,
         "kr": "지역 사회 옹호자들과 반대 그룹들은 이 발표에 다르게 반응했으며, 일부는 오랫동안 기다려온 것이라고 칭찬하고 다른 사람들은 시행 일정과 책임 조치에 대한 우려를 제기했다. 공개 정보 세션이 다음 달로 예정되어 있어 주민들이 프로젝트가 공식적으로 시작되기 전에 질문하고 의견을 제공할 수 있다.",
         "expressions": [
           {
@@ -3608,16 +3608,16 @@
         "question": "What is the main purpose of this article?",
         "question_kr": "이 기사의 주요 목적은 무엇인가?",
         "choices": [
-          "(A) To critique government spending on public programs",
+          "(A) To compare local policies with those of other regions",
           "(B) To report on a new public initiative or development",
-          "(C) To compare local policies with those of other regions",
-          "(D) To announce the resignation of a key official"
+          "(C) To announce the resignation of a key official",
+          "(D) To critique government spending on public programs"
         ],
         "choices_kr": [
           "(A) 공공 프로그램에 대한 정부 지출 비판",
           "(B) 새로운 공공 이니셔티브나 개발 보도",
-          "(C) 지역 정책과 다른 지역 정책 비교",
-          "(D) 주요 공무원의 사임 발표"
+          "(D) 주요 공무원의 사임 발표",
+          "(C) 지역 정책과 다른 지역 정책 비교"
         ],
         "answer": 1,
         "kr": "시와 지역 당국은 대학 순위 기사와 관련된 중요한 이니셔티브를 발표했으며, 이는 공공 서비스와 삶의 질을 향상시키기 위한 지속적인 노력에서 중요한 발전을 나타낸다. 공무원들은 2년 이상 개발 중인 이 프로그램이 앞으로 몇 달 안에 시행될 것이라고 밝혔다.",
@@ -3645,18 +3645,18 @@
         "question": "How much funding has been allocated for the first phase?",
         "question_kr": "첫 번째 단계에 얼마의 자금이 배정되었는가?",
         "choices": [
-          "(A) $8 million",
-          "(B) $12 million",
-          "(C) $15 million",
-          "(D) $23 million"
+          "(A) $12 million",
+          "(B) $8 million",
+          "(C) $23 million",
+          "(D) $15 million"
         ],
         "choices_kr": [
-          "(A) 800만 달러",
           "(B) 1,200만 달러",
-          "(C) 1,500만 달러",
-          "(D) 2,300만 달러"
+          "(A) 800만 달러",
+          "(D) 2,300만 달러",
+          "(C) 1,500만 달러"
         ],
-        "answer": 2,
+        "answer": 3,
         "kr": "프로그램의 첫 번째 단계를 위해 1,500만 달러가 배정되었으며, 최종 승인 대기 중인 연방 매칭 자금에서 추가로 800만 달러가 예상된다. 프로그램 관리자들은 주민과 지역 기업들이 이니셔티브 시작 후 첫 12개월 이내에 실질적인 결과를 보기 시작할 것이라고 말한다.",
         "expressions": [
           {
@@ -3682,16 +3682,16 @@
         "question": "What can be inferred about the initiative?",
         "question_kr": "이 이니셔티브에 대해 추론할 수 있는 것은?",
         "choices": [
-          "(A) It has been welcomed without any opposition",
+          "(A) It was proposed by a private corporation",
           "(B) It remains subject to community feedback before launch",
           "(C) It has already been fully implemented",
-          "(D) It was proposed by a private corporation"
+          "(D) It has been welcomed without any opposition"
         ],
         "choices_kr": [
-          "(A) 어떠한 반대 없이 환영받았다",
+          "(D) 민간 기업이 제안했다",
           "(B) 시작 전에 지역 사회 피드백을 받아야 한다",
           "(C) 이미 완전히 시행되었다",
-          "(D) 민간 기업이 제안했다"
+          "(A) 어떠한 반대 없이 환영받았다"
         ],
         "answer": 1,
         "kr": "지역 사회 옹호자들과 반대 그룹들은 이 발표에 다르게 반응했으며, 일부는 오랫동안 기다려온 것이라고 칭찬하고 다른 사람들은 시행 일정과 책임 조치에 대한 우려를 제기했다. 공개 정보 세션이 다음 달로 예정되어 있어 주민들이 프로젝트가 공식적으로 시작되기 전에 질문하고 의견을 제공할 수 있다.",
@@ -3724,18 +3724,18 @@
         "question": "What is the main purpose of this article?",
         "question_kr": "이 기사의 주요 목적은 무엇인가?",
         "choices": [
-          "(A) To critique government spending on public programs",
-          "(B) To report on a new public initiative or development",
+          "(A) To report on a new public initiative or development",
+          "(B) To announce the resignation of a key official",
           "(C) To compare local policies with those of other regions",
-          "(D) To announce the resignation of a key official"
+          "(D) To critique government spending on public programs"
         ],
         "choices_kr": [
-          "(A) 공공 프로그램에 대한 정부 지출 비판",
           "(B) 새로운 공공 이니셔티브나 개발 보도",
           "(C) 지역 정책과 다른 지역 정책 비교",
-          "(D) 주요 공무원의 사임 발표"
+          "(D) 주요 공무원의 사임 발표",
+          "(A) 공공 프로그램에 대한 정부 지출 비판"
         ],
-        "answer": 1,
+        "answer": 0,
         "kr": "시와 지역 당국은 소비자 보호 기사와 관련된 중요한 이니셔티브를 발표했으며, 이는 공공 서비스와 삶의 질을 향상시키기 위한 지속적인 노력에서 중요한 발전을 나타낸다. 공무원들은 2년 이상 개발 중인 이 프로그램이 앞으로 몇 달 안에 시행될 것이라고 밝혔다.",
         "expressions": [
           {
@@ -3761,18 +3761,18 @@
         "question": "How much funding has been allocated for the first phase?",
         "question_kr": "첫 번째 단계에 얼마의 자금이 배정되었는가?",
         "choices": [
-          "(A) $8 million",
-          "(B) $12 million",
-          "(C) $15 million",
-          "(D) $23 million"
+          "(A) $15 million",
+          "(B) $8 million",
+          "(C) $23 million",
+          "(D) $12 million"
         ],
         "choices_kr": [
-          "(A) 800만 달러",
-          "(B) 1,200만 달러",
           "(C) 1,500만 달러",
-          "(D) 2,300만 달러"
+          "(A) 800만 달러",
+          "(D) 2,300만 달러",
+          "(B) 1,200만 달러"
         ],
-        "answer": 2,
+        "answer": 0,
         "kr": "프로그램의 첫 번째 단계를 위해 1,500만 달러가 배정되었으며, 최종 승인 대기 중인 연방 매칭 자금에서 추가로 800만 달러가 예상된다. 프로그램 관리자들은 주민과 지역 기업들이 이니셔티브 시작 후 첫 12개월 이내에 실질적인 결과를 보기 시작할 것이라고 말한다.",
         "expressions": [
           {
@@ -3806,8 +3806,8 @@
         "choices_kr": [
           "(A) 어떠한 반대 없이 환영받았다",
           "(B) 시작 전에 지역 사회 피드백을 받아야 한다",
-          "(C) 이미 완전히 시행되었다",
-          "(D) 민간 기업이 제안했다"
+          "(D) 민간 기업이 제안했다",
+          "(C) 이미 완전히 시행되었다"
         ],
         "answer": 1,
         "kr": "지역 사회 옹호자들과 반대 그룹들은 이 발표에 다르게 반응했으며, 일부는 오랫동안 기다려온 것이라고 칭찬하고 다른 사람들은 시행 일정과 책임 조치에 대한 우려를 제기했다. 공개 정보 세션이 다음 달로 예정되어 있어 주민들이 프로젝트가 공식적으로 시작되기 전에 질문하고 의견을 제공할 수 있다.",
@@ -3841,17 +3841,17 @@
         "question_kr": "이 기사의 주요 목적은 무엇인가?",
         "choices": [
           "(A) To critique government spending on public programs",
-          "(B) To report on a new public initiative or development",
-          "(C) To compare local policies with those of other regions",
+          "(B) To compare local policies with those of other regions",
+          "(C) To report on a new public initiative or development",
           "(D) To announce the resignation of a key official"
         ],
         "choices_kr": [
           "(A) 공공 프로그램에 대한 정부 지출 비판",
+          "(D) 주요 공무원의 사임 발표",
           "(B) 새로운 공공 이니셔티브나 개발 보도",
-          "(C) 지역 정책과 다른 지역 정책 비교",
-          "(D) 주요 공무원의 사임 발표"
+          "(C) 지역 정책과 다른 지역 정책 비교"
         ],
-        "answer": 1,
+        "answer": 2,
         "kr": "시와 지역 당국은 공연예술 지원 공지와 관련된 중요한 이니셔티브를 발표했으며, 이는 공공 서비스와 삶의 질을 향상시키기 위한 지속적인 노력에서 중요한 발전을 나타낸다. 공무원들은 2년 이상 개발 중인 이 프로그램이 앞으로 몇 달 안에 시행될 것이라고 밝혔다.",
         "expressions": [
           {
@@ -3877,16 +3877,16 @@
         "question": "How much funding has been allocated for the first phase?",
         "question_kr": "첫 번째 단계에 얼마의 자금이 배정되었는가?",
         "choices": [
-          "(A) $8 million",
+          "(A) $23 million",
           "(B) $12 million",
           "(C) $15 million",
-          "(D) $23 million"
+          "(D) $8 million"
         ],
         "choices_kr": [
-          "(A) 800만 달러",
           "(B) 1,200만 달러",
+          "(D) 2,300만 달러",
           "(C) 1,500만 달러",
-          "(D) 2,300만 달러"
+          "(A) 800만 달러"
         ],
         "answer": 2,
         "kr": "프로그램의 첫 번째 단계를 위해 1,500만 달러가 배정되었으며, 최종 승인 대기 중인 연방 매칭 자금에서 추가로 800만 달러가 예상된다. 프로그램 관리자들은 주민과 지역 기업들이 이니셔티브 시작 후 첫 12개월 이내에 실질적인 결과를 보기 시작할 것이라고 말한다.",
@@ -3914,18 +3914,18 @@
         "question": "What can be inferred about the initiative?",
         "question_kr": "이 이니셔티브에 대해 추론할 수 있는 것은?",
         "choices": [
-          "(A) It has been welcomed without any opposition",
-          "(B) It remains subject to community feedback before launch",
-          "(C) It has already been fully implemented",
-          "(D) It was proposed by a private corporation"
+          "(A) It remains subject to community feedback before launch",
+          "(B) It has been welcomed without any opposition",
+          "(C) It was proposed by a private corporation",
+          "(D) It has already been fully implemented"
         ],
         "choices_kr": [
-          "(A) 어떠한 반대 없이 환영받았다",
           "(B) 시작 전에 지역 사회 피드백을 받아야 한다",
-          "(C) 이미 완전히 시행되었다",
-          "(D) 민간 기업이 제안했다"
+          "(D) 민간 기업이 제안했다",
+          "(A) 어떠한 반대 없이 환영받았다",
+          "(C) 이미 완전히 시행되었다"
         ],
-        "answer": 1,
+        "answer": 0,
         "kr": "지역 사회 옹호자들과 반대 그룹들은 이 발표에 다르게 반응했으며, 일부는 오랫동안 기다려온 것이라고 칭찬하고 다른 사람들은 시행 일정과 책임 조치에 대한 우려를 제기했다. 공개 정보 세션이 다음 달로 예정되어 있어 주민들이 프로젝트가 공식적으로 시작되기 전에 질문하고 의견을 제공할 수 있다.",
         "expressions": [
           {
@@ -3956,18 +3956,18 @@
         "question": "What is the main purpose of this article?",
         "question_kr": "이 기사의 주요 목적은 무엇인가?",
         "choices": [
-          "(A) To critique government spending on public programs",
-          "(B) To report on a new public initiative or development",
-          "(C) To compare local policies with those of other regions",
-          "(D) To announce the resignation of a key official"
+          "(A) To compare local policies with those of other regions",
+          "(B) To critique government spending on public programs",
+          "(C) To announce the resignation of a key official",
+          "(D) To report on a new public initiative or development"
         ],
         "choices_kr": [
-          "(A) 공공 프로그램에 대한 정부 지출 비판",
-          "(B) 새로운 공공 이니셔티브나 개발 보도",
           "(C) 지역 정책과 다른 지역 정책 비교",
-          "(D) 주요 공무원의 사임 발표"
+          "(D) 주요 공무원의 사임 발표",
+          "(A) 공공 프로그램에 대한 정부 지출 비판",
+          "(B) 새로운 공공 이니셔티브나 개발 보도"
         ],
-        "answer": 1,
+        "answer": 3,
         "kr": "시와 지역 당국은 인구 감소 기사와 관련된 중요한 이니셔티브를 발표했으며, 이는 공공 서비스와 삶의 질을 향상시키기 위한 지속적인 노력에서 중요한 발전을 나타낸다. 공무원들은 2년 이상 개발 중인 이 프로그램이 앞으로 몇 달 안에 시행될 것이라고 밝혔다.",
         "expressions": [
           {
@@ -3993,18 +3993,18 @@
         "question": "How much funding has been allocated for the first phase?",
         "question_kr": "첫 번째 단계에 얼마의 자금이 배정되었는가?",
         "choices": [
-          "(A) $8 million",
-          "(B) $12 million",
-          "(C) $15 million",
+          "(A) $12 million",
+          "(B) $15 million",
+          "(C) $8 million",
           "(D) $23 million"
         ],
         "choices_kr": [
-          "(A) 800만 달러",
-          "(B) 1,200만 달러",
+          "(D) 2,300만 달러",
           "(C) 1,500만 달러",
-          "(D) 2,300만 달러"
+          "(B) 1,200만 달러",
+          "(A) 800만 달러"
         ],
-        "answer": 2,
+        "answer": 1,
         "kr": "프로그램의 첫 번째 단계를 위해 1,500만 달러가 배정되었으며, 최종 승인 대기 중인 연방 매칭 자금에서 추가로 800만 달러가 예상된다. 프로그램 관리자들은 주민과 지역 기업들이 이니셔티브 시작 후 첫 12개월 이내에 실질적인 결과를 보기 시작할 것이라고 말한다.",
         "expressions": [
           {
@@ -4030,18 +4030,18 @@
         "question": "What can be inferred about the initiative?",
         "question_kr": "이 이니셔티브에 대해 추론할 수 있는 것은?",
         "choices": [
-          "(A) It has been welcomed without any opposition",
-          "(B) It remains subject to community feedback before launch",
-          "(C) It has already been fully implemented",
+          "(A) It has already been fully implemented",
+          "(B) It has been welcomed without any opposition",
+          "(C) It remains subject to community feedback before launch",
           "(D) It was proposed by a private corporation"
         ],
         "choices_kr": [
-          "(A) 어떠한 반대 없이 환영받았다",
-          "(B) 시작 전에 지역 사회 피드백을 받아야 한다",
+          "(D) 민간 기업이 제안했다",
           "(C) 이미 완전히 시행되었다",
-          "(D) 민간 기업이 제안했다"
+          "(B) 시작 전에 지역 사회 피드백을 받아야 한다",
+          "(A) 어떠한 반대 없이 환영받았다"
         ],
-        "answer": 1,
+        "answer": 2,
         "kr": "지역 사회 옹호자들과 반대 그룹들은 이 발표에 다르게 반응했으며, 일부는 오랫동안 기다려온 것이라고 칭찬하고 다른 사람들은 시행 일정과 책임 조치에 대한 우려를 제기했다. 공개 정보 세션이 다음 달로 예정되어 있어 주민들이 프로젝트가 공식적으로 시작되기 전에 질문하고 의견을 제공할 수 있다.",
         "expressions": [
           {
@@ -4072,18 +4072,18 @@
         "question": "What is the main purpose of this article?",
         "question_kr": "이 기사의 주요 목적은 무엇인가?",
         "choices": [
-          "(A) To critique government spending on public programs",
-          "(B) To report on a new public initiative or development",
+          "(A) To report on a new public initiative or development",
+          "(B) To critique government spending on public programs",
           "(C) To compare local policies with those of other regions",
           "(D) To announce the resignation of a key official"
         ],
         "choices_kr": [
-          "(A) 공공 프로그램에 대한 정부 지출 비판",
           "(B) 새로운 공공 이니셔티브나 개발 보도",
+          "(D) 주요 공무원의 사임 발표",
           "(C) 지역 정책과 다른 지역 정책 비교",
-          "(D) 주요 공무원의 사임 발표"
+          "(A) 공공 프로그램에 대한 정부 지출 비판"
         ],
-        "answer": 1,
+        "answer": 0,
         "kr": "시와 지역 당국은 스포츠 시설 공지와 관련된 중요한 이니셔티브를 발표했으며, 이는 공공 서비스와 삶의 질을 향상시키기 위한 지속적인 노력에서 중요한 발전을 나타낸다. 공무원들은 2년 이상 개발 중인 이 프로그램이 앞으로 몇 달 안에 시행될 것이라고 밝혔다.",
         "expressions": [
           {
@@ -4109,16 +4109,16 @@
         "question": "How much funding has been allocated for the first phase?",
         "question_kr": "첫 번째 단계에 얼마의 자금이 배정되었는가?",
         "choices": [
-          "(A) $8 million",
-          "(B) $12 million",
+          "(A) $12 million",
+          "(B) $8 million",
           "(C) $15 million",
           "(D) $23 million"
         ],
         "choices_kr": [
-          "(A) 800만 달러",
+          "(D) 2,300만 달러",
           "(B) 1,200만 달러",
           "(C) 1,500만 달러",
-          "(D) 2,300만 달러"
+          "(A) 800만 달러"
         ],
         "answer": 2,
         "kr": "프로그램의 첫 번째 단계를 위해 1,500만 달러가 배정되었으며, 최종 승인 대기 중인 연방 매칭 자금에서 추가로 800만 달러가 예상된다. 프로그램 관리자들은 주민과 지역 기업들이 이니셔티브 시작 후 첫 12개월 이내에 실질적인 결과를 보기 시작할 것이라고 말한다.",
@@ -4146,18 +4146,18 @@
         "question": "What can be inferred about the initiative?",
         "question_kr": "이 이니셔티브에 대해 추론할 수 있는 것은?",
         "choices": [
-          "(A) It has been welcomed without any opposition",
-          "(B) It remains subject to community feedback before launch",
+          "(A) It was proposed by a private corporation",
+          "(B) It has been welcomed without any opposition",
           "(C) It has already been fully implemented",
-          "(D) It was proposed by a private corporation"
+          "(D) It remains subject to community feedback before launch"
         ],
         "choices_kr": [
           "(A) 어떠한 반대 없이 환영받았다",
-          "(B) 시작 전에 지역 사회 피드백을 받아야 한다",
+          "(D) 민간 기업이 제안했다",
           "(C) 이미 완전히 시행되었다",
-          "(D) 민간 기업이 제안했다"
+          "(B) 시작 전에 지역 사회 피드백을 받아야 한다"
         ],
-        "answer": 1,
+        "answer": 3,
         "kr": "지역 사회 옹호자들과 반대 그룹들은 이 발표에 다르게 반응했으며, 일부는 오랫동안 기다려온 것이라고 칭찬하고 다른 사람들은 시행 일정과 책임 조치에 대한 우려를 제기했다. 공개 정보 세션이 다음 달로 예정되어 있어 주민들이 프로젝트가 공식적으로 시작되기 전에 질문하고 의견을 제공할 수 있다.",
         "expressions": [
           {
@@ -4188,18 +4188,18 @@
         "question": "What is the main purpose of this article?",
         "question_kr": "이 기사의 주요 목적은 무엇인가?",
         "choices": [
-          "(A) To critique government spending on public programs",
-          "(B) To report on a new public initiative or development",
-          "(C) To compare local policies with those of other regions",
-          "(D) To announce the resignation of a key official"
+          "(A) To report on a new public initiative or development",
+          "(B) To critique government spending on public programs",
+          "(C) To announce the resignation of a key official",
+          "(D) To compare local policies with those of other regions"
         ],
         "choices_kr": [
-          "(A) 공공 프로그램에 대한 정부 지출 비판",
           "(B) 새로운 공공 이니셔티브나 개발 보도",
+          "(A) 공공 프로그램에 대한 정부 지출 비판",
           "(C) 지역 정책과 다른 지역 정책 비교",
           "(D) 주요 공무원의 사임 발표"
         ],
-        "answer": 1,
+        "answer": 0,
         "kr": "시와 지역 당국은 수출 증가 기사와 관련된 중요한 이니셔티브를 발표했으며, 이는 공공 서비스와 삶의 질을 향상시키기 위한 지속적인 노력에서 중요한 발전을 나타낸다. 공무원들은 2년 이상 개발 중인 이 프로그램이 앞으로 몇 달 안에 시행될 것이라고 밝혔다.",
         "expressions": [
           {
@@ -4225,18 +4225,18 @@
         "question": "How much funding has been allocated for the first phase?",
         "question_kr": "첫 번째 단계에 얼마의 자금이 배정되었는가?",
         "choices": [
-          "(A) $8 million",
-          "(B) $12 million",
-          "(C) $15 million",
-          "(D) $23 million"
+          "(A) $12 million",
+          "(B) $8 million",
+          "(C) $23 million",
+          "(D) $15 million"
         ],
         "choices_kr": [
-          "(A) 800만 달러",
+          "(D) 2,300만 달러",
           "(B) 1,200만 달러",
-          "(C) 1,500만 달러",
-          "(D) 2,300만 달러"
+          "(A) 800만 달러",
+          "(C) 1,500만 달러"
         ],
-        "answer": 2,
+        "answer": 3,
         "kr": "프로그램의 첫 번째 단계를 위해 1,500만 달러가 배정되었으며, 최종 승인 대기 중인 연방 매칭 자금에서 추가로 800만 달러가 예상된다. 프로그램 관리자들은 주민과 지역 기업들이 이니셔티브 시작 후 첫 12개월 이내에 실질적인 결과를 보기 시작할 것이라고 말한다.",
         "expressions": [
           {
@@ -4262,18 +4262,18 @@
         "question": "What can be inferred about the initiative?",
         "question_kr": "이 이니셔티브에 대해 추론할 수 있는 것은?",
         "choices": [
-          "(A) It has been welcomed without any opposition",
-          "(B) It remains subject to community feedback before launch",
-          "(C) It has already been fully implemented",
-          "(D) It was proposed by a private corporation"
+          "(A) It was proposed by a private corporation",
+          "(B) It has already been fully implemented",
+          "(C) It remains subject to community feedback before launch",
+          "(D) It has been welcomed without any opposition"
         ],
         "choices_kr": [
           "(A) 어떠한 반대 없이 환영받았다",
+          "(D) 민간 기업이 제안했다",
           "(B) 시작 전에 지역 사회 피드백을 받아야 한다",
-          "(C) 이미 완전히 시행되었다",
-          "(D) 민간 기업이 제안했다"
+          "(C) 이미 완전히 시행되었다"
         ],
-        "answer": 1,
+        "answer": 2,
         "kr": "지역 사회 옹호자들과 반대 그룹들은 이 발표에 다르게 반응했으며, 일부는 오랫동안 기다려온 것이라고 칭찬하고 다른 사람들은 시행 일정과 책임 조치에 대한 우려를 제기했다. 공개 정보 세션이 다음 달로 예정되어 있어 주민들이 프로젝트가 공식적으로 시작되기 전에 질문하고 의견을 제공할 수 있다.",
         "expressions": [
           {
@@ -4305,17 +4305,17 @@
         "question_kr": "이 기사의 주요 목적은 무엇인가?",
         "choices": [
           "(A) To critique government spending on public programs",
-          "(B) To report on a new public initiative or development",
-          "(C) To compare local policies with those of other regions",
-          "(D) To announce the resignation of a key official"
+          "(B) To announce the resignation of a key official",
+          "(C) To report on a new public initiative or development",
+          "(D) To compare local policies with those of other regions"
         ],
         "choices_kr": [
+          "(D) 주요 공무원의 사임 발표",
           "(A) 공공 프로그램에 대한 정부 지출 비판",
           "(B) 새로운 공공 이니셔티브나 개발 보도",
-          "(C) 지역 정책과 다른 지역 정책 비교",
-          "(D) 주요 공무원의 사임 발표"
+          "(C) 지역 정책과 다른 지역 정책 비교"
         ],
-        "answer": 1,
+        "answer": 2,
         "kr": "시와 지역 당국은 원격근무 정책 기사와 관련된 중요한 이니셔티브를 발표했으며, 이는 공공 서비스와 삶의 질을 향상시키기 위한 지속적인 노력에서 중요한 발전을 나타낸다. 공무원들은 2년 이상 개발 중인 이 프로그램이 앞으로 몇 달 안에 시행될 것이라고 밝혔다.",
         "expressions": [
           {
@@ -4341,10 +4341,10 @@
         "question": "How much funding has been allocated for the first phase?",
         "question_kr": "첫 번째 단계에 얼마의 자금이 배정되었는가?",
         "choices": [
-          "(A) $8 million",
-          "(B) $12 million",
+          "(A) $12 million",
+          "(B) $23 million",
           "(C) $15 million",
-          "(D) $23 million"
+          "(D) $8 million"
         ],
         "choices_kr": [
           "(A) 800만 달러",
@@ -4378,18 +4378,18 @@
         "question": "What can be inferred about the initiative?",
         "question_kr": "이 이니셔티브에 대해 추론할 수 있는 것은?",
         "choices": [
-          "(A) It has been welcomed without any opposition",
-          "(B) It remains subject to community feedback before launch",
-          "(C) It has already been fully implemented",
+          "(A) It has already been fully implemented",
+          "(B) It has been welcomed without any opposition",
+          "(C) It remains subject to community feedback before launch",
           "(D) It was proposed by a private corporation"
         ],
         "choices_kr": [
           "(A) 어떠한 반대 없이 환영받았다",
+          "(D) 민간 기업이 제안했다",
           "(B) 시작 전에 지역 사회 피드백을 받아야 한다",
-          "(C) 이미 완전히 시행되었다",
-          "(D) 민간 기업이 제안했다"
+          "(C) 이미 완전히 시행되었다"
         ],
-        "answer": 1,
+        "answer": 2,
         "kr": "지역 사회 옹호자들과 반대 그룹들은 이 발표에 다르게 반응했으며, 일부는 오랫동안 기다려온 것이라고 칭찬하고 다른 사람들은 시행 일정과 책임 조치에 대한 우려를 제기했다. 공개 정보 세션이 다음 달로 예정되어 있어 주민들이 프로젝트가 공식적으로 시작되기 전에 질문하고 의견을 제공할 수 있다.",
         "expressions": [
           {
@@ -4420,10 +4420,10 @@
         "question": "What is the main purpose of this article?",
         "question_kr": "이 기사의 주요 목적은 무엇인가?",
         "choices": [
-          "(A) To critique government spending on public programs",
+          "(A) To announce the resignation of a key official",
           "(B) To report on a new public initiative or development",
           "(C) To compare local policies with those of other regions",
-          "(D) To announce the resignation of a key official"
+          "(D) To critique government spending on public programs"
         ],
         "choices_kr": [
           "(A) 공공 프로그램에 대한 정부 지출 비판",
@@ -4457,18 +4457,18 @@
         "question": "How much funding has been allocated for the first phase?",
         "question_kr": "첫 번째 단계에 얼마의 자금이 배정되었는가?",
         "choices": [
-          "(A) $8 million",
-          "(B) $12 million",
-          "(C) $15 million",
-          "(D) $23 million"
+          "(A) $23 million",
+          "(B) $8 million",
+          "(C) $12 million",
+          "(D) $15 million"
         ],
         "choices_kr": [
           "(A) 800만 달러",
           "(B) 1,200만 달러",
-          "(C) 1,500만 달러",
-          "(D) 2,300만 달러"
+          "(D) 2,300만 달러",
+          "(C) 1,500만 달러"
         ],
-        "answer": 2,
+        "answer": 3,
         "kr": "프로그램의 첫 번째 단계를 위해 1,500만 달러가 배정되었으며, 최종 승인 대기 중인 연방 매칭 자금에서 추가로 800만 달러가 예상된다. 프로그램 관리자들은 주민과 지역 기업들이 이니셔티브 시작 후 첫 12개월 이내에 실질적인 결과를 보기 시작할 것이라고 말한다.",
         "expressions": [
           {
@@ -4500,10 +4500,10 @@
           "(D) It was proposed by a private corporation"
         ],
         "choices_kr": [
-          "(A) 어떠한 반대 없이 환영받았다",
+          "(D) 민간 기업이 제안했다",
           "(B) 시작 전에 지역 사회 피드백을 받아야 한다",
-          "(C) 이미 완전히 시행되었다",
-          "(D) 민간 기업이 제안했다"
+          "(A) 어떠한 반대 없이 환영받았다",
+          "(C) 이미 완전히 시행되었다"
         ],
         "answer": 1,
         "kr": "지역 사회 옹호자들과 반대 그룹들은 이 발표에 다르게 반응했으며, 일부는 오랫동안 기다려온 것이라고 칭찬하고 다른 사람들은 시행 일정과 책임 조치에 대한 우려를 제기했다. 공개 정보 세션이 다음 달로 예정되어 있어 주민들이 프로젝트가 공식적으로 시작되기 전에 질문하고 의견을 제공할 수 있다.",
@@ -4536,16 +4536,16 @@
         "question": "What is the main purpose of this article?",
         "question_kr": "이 기사의 주요 목적은 무엇인가?",
         "choices": [
-          "(A) To critique government spending on public programs",
+          "(A) To compare local policies with those of other regions",
           "(B) To report on a new public initiative or development",
-          "(C) To compare local policies with those of other regions",
+          "(C) To critique government spending on public programs",
           "(D) To announce the resignation of a key official"
         ],
         "choices_kr": [
           "(A) 공공 프로그램에 대한 정부 지출 비판",
           "(B) 새로운 공공 이니셔티브나 개발 보도",
-          "(C) 지역 정책과 다른 지역 정책 비교",
-          "(D) 주요 공무원의 사임 발표"
+          "(D) 주요 공무원의 사임 발표",
+          "(C) 지역 정책과 다른 지역 정책 비교"
         ],
         "answer": 1,
         "kr": "시와 지역 당국은 스마트시티 기사와 관련된 중요한 이니셔티브를 발표했으며, 이는 공공 서비스와 삶의 질을 향상시키기 위한 지속적인 노력에서 중요한 발전을 나타낸다. 공무원들은 2년 이상 개발 중인 이 프로그램이 앞으로 몇 달 안에 시행될 것이라고 밝혔다.",
@@ -4573,18 +4573,18 @@
         "question": "How much funding has been allocated for the first phase?",
         "question_kr": "첫 번째 단계에 얼마의 자금이 배정되었는가?",
         "choices": [
-          "(A) $8 million",
-          "(B) $12 million",
-          "(C) $15 million",
-          "(D) $23 million"
+          "(A) $15 million",
+          "(B) $8 million",
+          "(C) $23 million",
+          "(D) $12 million"
         ],
         "choices_kr": [
+          "(C) 1,500만 달러",
           "(A) 800만 달러",
           "(B) 1,200만 달러",
-          "(C) 1,500만 달러",
           "(D) 2,300만 달러"
         ],
-        "answer": 2,
+        "answer": 0,
         "kr": "프로그램의 첫 번째 단계를 위해 1,500만 달러가 배정되었으며, 최종 승인 대기 중인 연방 매칭 자금에서 추가로 800만 달러가 예상된다. 프로그램 관리자들은 주민과 지역 기업들이 이니셔티브 시작 후 첫 12개월 이내에 실질적인 결과를 보기 시작할 것이라고 말한다.",
         "expressions": [
           {
@@ -4611,17 +4611,17 @@
         "question_kr": "이 이니셔티브에 대해 추론할 수 있는 것은?",
         "choices": [
           "(A) It has been welcomed without any opposition",
-          "(B) It remains subject to community feedback before launch",
-          "(C) It has already been fully implemented",
-          "(D) It was proposed by a private corporation"
+          "(B) It was proposed by a private corporation",
+          "(C) It remains subject to community feedback before launch",
+          "(D) It has already been fully implemented"
         ],
         "choices_kr": [
-          "(A) 어떠한 반대 없이 환영받았다",
-          "(B) 시작 전에 지역 사회 피드백을 받아야 한다",
           "(C) 이미 완전히 시행되었다",
-          "(D) 민간 기업이 제안했다"
+          "(D) 민간 기업이 제안했다",
+          "(B) 시작 전에 지역 사회 피드백을 받아야 한다",
+          "(A) 어떠한 반대 없이 환영받았다"
         ],
-        "answer": 1,
+        "answer": 2,
         "kr": "지역 사회 옹호자들과 반대 그룹들은 이 발표에 다르게 반응했으며, 일부는 오랫동안 기다려온 것이라고 칭찬하고 다른 사람들은 시행 일정과 책임 조치에 대한 우려를 제기했다. 공개 정보 세션이 다음 달로 예정되어 있어 주민들이 프로젝트가 공식적으로 시작되기 전에 질문하고 의견을 제공할 수 있다.",
         "expressions": [
           {

@@ -11,18 +11,18 @@
         "question": "Why was this letter written?",
         "question_kr": "이 편지는 왜 작성되었는가?",
         "choices": [
-          "(A) To request a promotion within the company",
-          "(B) To apply for an advertised job position",
-          "(C) To follow up on a previous interview",
-          "(D) To recommend another candidate for the role"
+          "(A) To apply for an advertised job position",
+          "(B) To recommend another candidate for the role",
+          "(C) To request a promotion within the company",
+          "(D) To follow up on a previous interview"
         ],
         "choices_kr": [
-          "(A) 사내 승진을 요청하기 위해",
           "(B) 광고된 직책에 지원하기 위해",
-          "(C) 이전 면접 후속 조치를 위해",
-          "(D) 다른 후보자를 추천하기 위해"
+          "(D) 다른 후보자를 추천하기 위해",
+          "(A) 사내 승진을 요청하기 위해",
+          "(C) 이전 면접 후속 조치를 위해"
         ],
-        "answer": 1,
+        "answer": 0,
         "kr": "Thompson 씨께, 귀사 웹사이트에 광고된 마케팅 코디네이터 직책에 강한 관심을 표현하기 위해 편지를 씁니다. 디지털 마케팅 3년 경험과 온라인 참여도 향상의 검증된 실적으로, 저는 귀사 팀에 소중한 인재가 될 것이라 확신합니다.",
         "expressions": [
           {
@@ -48,15 +48,15 @@
         "question": "What has the writer included with the letter?",
         "question_kr": "작성자가 편지와 함께 포함한 것은?",
         "choices": [
-          "(A) A list of professional references",
+          "(A) A letter of recommendation",
           "(B) A résumé and portfolio",
-          "(C) A sample marketing plan",
-          "(D) A letter of recommendation"
+          "(C) A list of professional references",
+          "(D) A sample marketing plan"
         ],
         "choices_kr": [
-          "(A) 전문 추천인 목록",
-          "(B) 이력서와 포트폴리오",
           "(C) 마케팅 계획 샘플",
+          "(B) 이력서와 포트폴리오",
+          "(A) 전문 추천인 목록",
           "(D) 추천서"
         ],
         "answer": 1,
@@ -85,18 +85,18 @@
         "question": "What can be inferred about the letter writer?",
         "question_kr": "편지 작성자에 대해 추론할 수 있는 것은?",
         "choices": [
-          "(A) She recently graduated from university",
-          "(B) She has experience growing social media audiences",
-          "(C) She previously worked at Ms. Thompson's company",
-          "(D) She specializes in traditional advertising"
+          "(A) She has experience growing social media audiences",
+          "(B) She specializes in traditional advertising",
+          "(C) She recently graduated from university",
+          "(D) She previously worked at Ms. Thompson's company"
         ],
         "choices_kr": [
-          "(A) 최근 대학을 졸업했다",
           "(B) 소셜 미디어 팔로워 증가 경험이 있다",
           "(C) 이전에 Thompson 씨 회사에서 근무했다",
-          "(D) 전통적인 광고를 전문으로 한다"
+          "(D) 전통적인 광고를 전문으로 한다",
+          "(A) 최근 대학을 졸업했다"
         ],
-        "answer": 1,
+        "answer": 0,
         "kr": "Apex Solutions에서 소셜 미디어 캠페인을 이끌어 6개월 만에 팔로워 수를 45% 늘렸습니다. 유사한 전략이 귀사 브랜드의 디지털 존재감에 효과적으로 적용될 수 있다고 확신합니다.",
         "expressions": [
           {
@@ -128,17 +128,17 @@
         "question_kr": "이 이메일의 목적은 무엇인가?",
         "choices": [
           "(A) To cancel the quarterly review meeting",
-          "(B) To notify staff of a rescheduled meeting",
+          "(B) To request agenda items from team members",
           "(C) To introduce a new meeting format",
-          "(D) To request agenda items from team members"
+          "(D) To notify staff of a rescheduled meeting"
         ],
         "choices_kr": [
+          "(D) 팀원들에게 안건 항목 요청",
           "(A) 분기별 검토 회의 취소",
-          "(B) 회의 일정 변경 통보",
           "(C) 새로운 회의 형식 소개",
-          "(D) 팀원들에게 안건 항목 요청"
+          "(B) 회의 일정 변경 통보"
         ],
-        "answer": 1,
+        "answer": 3,
         "kr": "팀 여러분, 목요일로 예정되어 있던 분기별 검토 회의가 10월 18일 금요일 오후 2시로 변경되었음을 알려드립니다. 회의실 예약 시스템 충돌로 인해 변경이 필요했습니다.",
         "expressions": [
           {
@@ -165,18 +165,18 @@
         "question": "Where will the meeting be held?",
         "question_kr": "회의는 어디서 열릴 것인가?",
         "choices": [
-          "(A) In the main auditorium",
-          "(B) In Conference Room B on the third floor",
+          "(A) In Conference Room B on the third floor",
+          "(B) In the main auditorium",
           "(C) In the director's office",
           "(D) In the cafeteria on the ground floor"
         ],
         "choices_kr": [
-          "(A) 대강당에서",
           "(B) 3층 회의실 B에서",
           "(C) 이사실에서",
+          "(A) 대강당에서",
           "(D) 1층 구내식당에서"
         ],
-        "answer": 1,
+        "answer": 0,
         "kr": "회의는 3층 회의실 B에서 열린다. 업데이트된 프로젝트 보고서를 지참하고 3분기 실적 수치를 논의할 준비를 해 주세요. 간단한 다과가 제공될 예정입니다.",
         "expressions": [
           {
@@ -202,18 +202,18 @@
         "question": "What is implied about the meeting?",
         "question_kr": "회의에 대해 추론할 수 있는 것은?",
         "choices": [
-          "(A) It will be held entirely online",
-          "(B) Remote participation is possible",
+          "(A) Remote participation is possible",
+          "(B) Attendance is optional for all staff",
           "(C) It will be recorded for absent members",
-          "(D) Attendance is optional for all staff"
+          "(D) It will be held entirely online"
         ],
         "choices_kr": [
-          "(A) 전적으로 온라인으로 진행된다",
           "(B) 원격 참여가 가능하다",
+          "(D) 모든 직원에게 참석이 선택적이다",
           "(C) 결석 직원을 위해 녹화된다",
-          "(D) 모든 직원에게 참석이 선택적이다"
+          "(A) 전적으로 온라인으로 진행된다"
         ],
-        "answer": 1,
+        "answer": 0,
         "kr": "직접 참석할 수 없는 경우 304번으로 Sarah에게 연락하여 화상 통화 연결을 마련해 주세요. 변경으로 인한 불편에 사과드리며 협조해 주셔서 감사합니다.",
         "expressions": [
           {
@@ -244,18 +244,18 @@
         "question": "Why did the customer write this email?",
         "question_kr": "고객은 왜 이 이메일을 작성했는가?",
         "choices": [
-          "(A) To request a product catalog",
-          "(B) To complain about a problem with an order",
-          "(C) To inquire about delivery options",
-          "(D) To apply for a store membership"
+          "(A) To complain about a problem with an order",
+          "(B) To inquire about delivery options",
+          "(C) To apply for a store membership",
+          "(D) To request a product catalog"
         ],
         "choices_kr": [
-          "(A) 제품 카탈로그를 요청하기 위해",
           "(B) 주문 문제에 대해 불만을 제기하기 위해",
+          "(D) 매장 회원권 신청을 위해",
           "(C) 배송 옵션에 대해 문의하기 위해",
-          "(D) 매장 회원권 신청을 위해"
+          "(A) 제품 카탈로그를 요청하기 위해"
         ],
-        "answer": 1,
+        "answer": 0,
         "kr": "고객 서비스 팀 귀중, 3월 10일에 받은 주문에 대한 불만을 표현하기 위해 이메일을 씁니다. 주문번호 48271에는 파손된 물품이 포함되어 있었고 제품 중 하나가 누락되어 있었습니다.",
         "expressions": [
           {
@@ -281,18 +281,18 @@
         "question": "What does the customer request?",
         "question_kr": "고객이 요청하는 것은?",
         "choices": [
-          "(A) A discount on a future order",
-          "(B) A replacement or refund",
-          "(C) Free shipping on the next purchase",
-          "(D) An upgrade to express delivery"
+          "(A) A replacement or refund",
+          "(B) A discount on a future order",
+          "(C) An upgrade to express delivery",
+          "(D) Free shipping on the next purchase"
         ],
         "choices_kr": [
-          "(A) 다음 주문 할인",
           "(B) 교체품 또는 환불",
-          "(C) 다음 구매 무료 배송",
-          "(D) 빠른 배송으로 업그레이드"
+          "(A) 다음 주문 할인",
+          "(D) 빠른 배송으로 업그레이드",
+          "(C) 다음 구매 무료 배송"
         ],
-        "answer": 1,
+        "answer": 0,
         "kr": "파손된 포장의 사진과 주문 확인서의 스크린샷을 첨부했습니다. 파손된 물품의 완전한 교체품이나 누락된 제품에 대한 환불을 요청합니다.",
         "expressions": [
           {
@@ -318,18 +318,18 @@
         "question": "What is implied about the customer?",
         "question_kr": "고객에 대해 추론할 수 있는 것은?",
         "choices": [
-          "(A) She plans to stop shopping at the store",
-          "(B) She generally has a positive view of the company",
-          "(C) She has complained to the company before",
-          "(D) She is requesting compensation for emotional distress"
+          "(A) She has complained to the company before",
+          "(B) She plans to stop shopping at the store",
+          "(C) She is requesting compensation for emotional distress",
+          "(D) She generally has a positive view of the company"
         ],
         "choices_kr": [
           "(A) 그 매장에서 쇼핑을 중단할 계획이다",
-          "(B) 일반적으로 회사에 긍정적인 시각을 가지고 있다",
+          "(D) 정신적 피해에 대한 보상을 요청하고 있다",
           "(C) 이전에 회사에 불만을 제기한 적이 있다",
-          "(D) 정신적 피해에 대한 보상을 요청하고 있다"
+          "(B) 일반적으로 회사에 긍정적인 시각을 가지고 있다"
         ],
-        "answer": 1,
+        "answer": 3,
         "kr": "저는 5년 이상 충성 고객이었으며 지금까지 항상 서비스에 만족했습니다. 이 문제가 신속히 해결되어 계속 안심하고 쇼핑할 수 있기를 바랍니다.",
         "expressions": [
           {
@@ -361,17 +361,17 @@
         "question_kr": "이 편지의 목적은 무엇인가?",
         "choices": [
           "(A) To negotiate the price of an existing lease",
-          "(B) To inquire about an available office space",
-          "(C) To report problems with a current rental property",
-          "(D) To request a list of available properties"
+          "(B) To request a list of available properties",
+          "(C) To inquire about an available office space",
+          "(D) To report problems with a current rental property"
         ],
         "choices_kr": [
-          "(A) 기존 임대 가격을 협상하기 위해",
-          "(B) 이용 가능한 사무 공간에 대해 문의하기 위해",
+          "(D) 이용 가능한 건물 목록을 요청하기 위해",
           "(C) 현재 임대 건물의 문제를 보고하기 위해",
-          "(D) 이용 가능한 건물 목록을 요청하기 위해"
+          "(B) 이용 가능한 사무 공간에 대해 문의하기 위해",
+          "(A) 기존 임대 가격을 협상하기 위해"
         ],
-        "answer": 1,
+        "answer": 2,
         "kr": "Harrington 씨께, Delton Consulting Group을 대표하여 240 Harbor Boulevard에 임대로 등록된 사무 공간에 대해 문의합니다. 저희 회사는 약 25명의 직원을 위한 현대적이고 교통이 편리한 업무 공간을 찾고 있습니다.",
         "expressions": [
           {
@@ -397,18 +397,18 @@
         "question": "Which of the following does the writer ask about?",
         "question_kr": "작성자가 문의하는 것은?",
         "choices": [
-          "(A) The building's renovation history",
+          "(A) The names of current tenants",
           "(B) The number of floors in the building",
-          "(C) The monthly rental cost and parking",
-          "(D) The names of current tenants"
+          "(C) The building's renovation history",
+          "(D) The monthly rental cost and parking"
         ],
         "choices_kr": [
           "(A) 건물 리모델링 이력",
+          "(D) 현재 임차인 이름",
           "(B) 건물의 층수",
-          "(C) 월 임대료와 주차",
-          "(D) 현재 임차인 이름"
+          "(C) 월 임대료와 주차"
         ],
-        "answer": 2,
+        "answer": 3,
         "kr": "저희는 갱신 옵션과 함께 최소 2년의 임대 기간을 선호합니다. 월 임대료, 이용 가능한 주차, 고속 인터넷 인프라 포함 여부에 대한 정보를 제공해 주시겠습니까?",
         "expressions": [
           {
@@ -436,17 +436,17 @@
         "question_kr": "편지에서 언급되지 않은 것은?",
         "choices": [
           "(A) The writer's contact information",
-          "(B) The company's preferred move-in date",
-          "(C) Willingness to schedule a property visit",
+          "(B) Willingness to schedule a property visit",
+          "(C) The company's preferred move-in date",
           "(D) The company's number of employees"
         ],
         "choices_kr": [
+          "(C) 건물 방문 일정 조율 의향",
           "(A) 작성자의 연락처",
           "(B) 회사가 선호하는 이사 날짜",
-          "(C) 건물 방문 일정 조율 의향",
           "(D) 회사 직원 수"
         ],
-        "answer": 1,
+        "answer": 2,
         "kr": "저희는 유연한 이사 날짜 협의도 가능합니다. 공간이 요건을 충족하면 현장 방문을 준비할 용의가 있습니다. d.kim@delton.com으로 직접 연락 주시기 바랍니다.",
         "expressions": [
           {
@@ -477,16 +477,16 @@
         "question": "What is the main purpose of this email?",
         "question_kr": "이 이메일의 주요 목적은 무엇인가?",
         "choices": [
-          "(A) To offer Ms. Chen a job position",
+          "(A) To invite Ms. Chen to a company event",
           "(B) To welcome a new employee to the company",
           "(C) To confirm Ms. Chen's resignation",
-          "(D) To invite Ms. Chen to a company event"
+          "(D) To offer Ms. Chen a job position"
         ],
         "choices_kr": [
           "(A) Chen 씨에게 직위를 제안하기 위해",
           "(B) 새 직원을 회사에 환영하기 위해",
-          "(C) Chen 씨의 사직을 확인하기 위해",
-          "(D) Chen 씨를 회사 행사에 초대하기 위해"
+          "(D) Chen 씨를 회사 행사에 초대하기 위해",
+          "(C) Chen 씨의 사직을 확인하기 위해"
         ],
         "answer": 1,
         "kr": "Chen 씨께, Pinnacle Financial Services 팀 전체를 대표하여 최신 팀원으로 환영합니다. 수석 재무 분석가로의 임명은 9월 2일 월요일부터 발효됩니다.",
@@ -515,17 +515,17 @@
         "question_kr": "Chen 씨는 첫날 도착했을 때 무엇을 하는가?",
         "choices": [
           "(A) Attend a company-wide presentation",
-          "(B) Go to the 12th floor reception to receive her access card",
+          "(B) Complete online training modules",
           "(C) Meet with the CEO for a welcome lunch",
-          "(D) Complete online training modules"
+          "(D) Go to the 12th floor reception to receive her access card"
         ],
         "choices_kr": [
+          "(D) 온라인 교육 모듈 완료",
           "(A) 전사 발표회 참석",
-          "(B) 12층 안내 데스크에서 출입 카드 수령",
           "(C) CEO와 환영 오찬",
-          "(D) 온라인 교육 모듈 완료"
+          "(B) 12층 안내 데스크에서 출입 카드 수령"
         ],
-        "answer": 1,
+        "answer": 3,
         "kr": "첫날 오전 9시에 12층 메인 안내 데스크에 출석하시면 건물 출입 카드를 받고 인사팀을 만나실 것입니다. 직속 상사인 James Ortega 씨가 오리엔테이션을 진행합니다.",
         "expressions": [
           {
@@ -552,17 +552,17 @@
         "question_kr": "Chen 씨에 대해 추론할 수 있는 것은?",
         "choices": [
           "(A) She is a recent university graduate",
-          "(B) She has specialized skills in finance",
+          "(B) She will manage the HR department",
           "(C) She transferred from another department",
-          "(D) She will manage the HR department"
+          "(D) She has specialized skills in finance"
         ],
         "choices_kr": [
+          "(D) 인사부서를 관리할 것이다",
           "(A) 최근 대학을 졸업했다",
-          "(B) 재무 분야의 전문 기술을 보유하고 있다",
           "(C) 다른 부서에서 이동했다",
-          "(D) 인사부서를 관리할 것이다"
+          "(B) 재무 분야의 전문 기술을 보유하고 있다"
         ],
-        "answer": 1,
+        "answer": 3,
         "kr": "직원 핸드북, 복리후생 정보, IT 설정 지침을 포함한 완전한 온보딩 패키지를 준비했습니다. 리스크 평가와 재무 모델링에 대한 귀하의 전문성이 우리 부서에 큰 영향을 미칠 것이라 확신합니다.",
         "expressions": [
           {
@@ -593,18 +593,18 @@
         "question": "Who most likely wrote this letter?",
         "question_kr": "이 편지를 쓴 사람은 누구일 가능성이 가장 높은가?",
         "choices": [
-          "(A) A city planning official",
-          "(B) A representative of a residents' association",
-          "(C) A property developer",
+          "(A) A representative of a residents' association",
+          "(B) A property developer",
+          "(C) A city planning official",
           "(D) A local newspaper journalist"
         ],
         "choices_kr": [
-          "(A) 시 계획 공무원",
           "(B) 주민 협회 대표",
+          "(A) 시 계획 공무원",
           "(C) 부동산 개발업자",
           "(D) 지역 신문 기자"
         ],
-        "answer": 1,
+        "answer": 0,
         "kr": "Patterson 씨께, Greenhill 주민 협회를 대표하여 Elm Street의 제안된 개발에 관해 시 계획 부서와의 공식적인 회의를 요청하기 위해 편지를 씁니다. 저희는 이 지역의 400가구 이상을 대표하며 프로젝트의 지역 교통과 녹지 공간에 대한 영향에 대해 상당한 우려가 있습니다.",
         "expressions": [
           {
@@ -630,18 +630,18 @@
         "question": "What does the association request?",
         "question_kr": "협회가 요청하는 것은?",
         "choices": [
-          "(A) The cancellation of the development project",
-          "(B) A public consultation before planning approval",
-          "(C) A reduction in the size of the development",
+          "(A) A public consultation before planning approval",
+          "(B) A reduction in the size of the development",
+          "(C) The cancellation of the development project",
           "(D) Immediate access to the construction site"
         ],
         "choices_kr": [
-          "(A) 개발 프로젝트 취소",
           "(B) 계획 승인 전 공개 협의",
-          "(C) 개발 규모 축소",
-          "(D) 공사 현장 즉시 접근"
+          "(D) 공사 현장 즉시 접근",
+          "(A) 개발 프로젝트 취소",
+          "(C) 개발 규모 축소"
         ],
-        "answer": 1,
+        "answer": 0,
         "kr": "저희는 계획 승인이 승인되기 전에 공개 협의 세션을 개최해 줄 것을 요청한다. 협회는 또한 아직 공개적으로 이용 가능하지 않다고 이해하는 환경 영향 평가 보고서를 검토하고 싶다.",
         "expressions": [
           {
@@ -667,16 +667,16 @@
         "question": "What is implied about the residents?",
         "question_kr": "주민들에 대해 추론할 수 있는 것은?",
         "choices": [
-          "(A) They fully support the Elm Street development",
+          "(A) They recently moved into the neighborhood",
           "(B) They have strong ties to their community",
-          "(C) They recently moved into the neighborhood",
+          "(C) They fully support the Elm Street development",
           "(D) They plan to take legal action against the city"
         ],
         "choices_kr": [
-          "(A) Elm Street 개발을 전적으로 지지한다",
-          "(B) 지역 사회에 강한 유대감을 가지고 있다",
           "(C) 최근 이 지역으로 이사했다",
-          "(D) 시를 상대로 법적 조치를 취할 계획이다"
+          "(B) 지역 사회에 강한 유대감을 가지고 있다",
+          "(D) 시를 상대로 법적 조치를 취할 계획이다",
+          "(A) Elm Street 개발을 전적으로 지지한다"
         ],
         "answer": 1,
         "kr": "저희 회원들은 평균 18년 동안 이 지역에 살았으며 그들이 만든 커뮤니티에 큰 자부심을 가지고 있다. 시가 저희 우려를 진지하게 받아들이고 생산적인 대화를 기대한다.",
@@ -709,18 +709,18 @@
         "question": "Who is this letter most likely addressed to?",
         "question_kr": "이 편지는 누구에게 쓴 것일 가능성이 가장 높은가?",
         "choices": [
-          "(A) A current employee seeking a promotion",
-          "(B) A job applicant who has been selected",
+          "(A) A supplier representative",
+          "(B) A current employee seeking a promotion",
           "(C) A client of Apex Retail Group",
-          "(D) A supplier representative"
+          "(D) A job applicant who has been selected"
         ],
         "choices_kr": [
-          "(A) 승진을 원하는 현재 직원",
-          "(B) 선발된 취업 지원자",
           "(C) Apex Retail Group의 고객",
-          "(D) 공급업체 대표"
+          "(A) 승진을 원하는 현재 직원",
+          "(D) 공급업체 대표",
+          "(B) 선발된 취업 지원자"
         ],
-        "answer": 1,
+        "answer": 3,
         "kr": "Watkins 씨께, Apex Retail Group의 지역 영업 관리자 직책에 관심을 가져주셔서 감사합니다. 귀하의 지원서와 면접 성과를 신중하게 고려한 후, 연봉 $72,000의 시작 급여로 해당 직책을 제안하게 되어 기쁩니다.",
         "expressions": [
           {
@@ -747,17 +747,17 @@
         "question_kr": "제안 수락 기한은 언제인가?",
         "choices": [
           "(A) May 10",
-          "(B) May 16",
-          "(C) May 20",
-          "(D) May 31"
+          "(B) May 20",
+          "(C) May 31",
+          "(D) May 16"
         ],
         "choices_kr": [
+          "(D) 5월 31일",
           "(A) 5월 10일",
-          "(B) 5월 16일",
           "(C) 5월 20일",
-          "(D) 5월 31일"
+          "(B) 5월 16일"
         ],
-        "answer": 1,
+        "answer": 3,
         "kr": "이 직책은 시카고 본사로의 이전이 필요하며, 회사는 최대 $5,000의 이전 수당을 제공한다. 5월 16일 금요일까지 서면으로 이 제안의 수락을 확인해 주시기 바랍니다.",
         "expressions": [
           {
@@ -783,18 +783,18 @@
         "question": "What is implied about Ms. Watkins?",
         "question_kr": "Watkins 씨에 대해 추론할 수 있는 것은?",
         "choices": [
-          "(A) She has limited experience in retail",
-          "(B) She stood out among the applicants",
+          "(A) She stood out among the applicants",
+          "(B) She has limited experience in retail",
           "(C) She applied for a lower-level position",
           "(D) She is currently unemployed"
         ],
         "choices_kr": [
-          "(A) 소매업 경험이 제한적이다",
           "(B) 지원자들 중에서 두각을 나타냈다",
-          "(C) 더 낮은 수준의 직책에 지원했다",
-          "(D) 현재 실직 상태이다"
+          "(D) 현재 실직 상태이다",
+          "(A) 소매업 경험이 제한적이다",
+          "(C) 더 낮은 수준의 직책에 지원했다"
         ],
-        "answer": 1,
+        "answer": 0,
         "kr": "저희는 특히 소매 관리에서의 10년 경험과 분기별 판매 목표를 초과한 실적에 깊은 인상을 받았습니다. 귀하가 저희 리더십 팀에 강력한 인재가 될 것이라고 확신합니다.",
         "expressions": [
           {
@@ -825,18 +825,18 @@
         "question": "Who most likely wrote this letter?",
         "question_kr": "이 편지를 쓴 사람은 누구일 가능성이 가장 높은가?",
         "choices": [
-          "(A) A government health inspector",
-          "(B) A sales representative from a cleaning product company",
-          "(C) A facility maintenance supervisor",
-          "(D) An environmental organization spokesperson"
+          "(A) A sales representative from a cleaning product company",
+          "(B) A facility maintenance supervisor",
+          "(C) An environmental organization spokesperson",
+          "(D) A government health inspector"
         ],
         "choices_kr": [
-          "(A) 정부 건강 점검관",
           "(B) 청소 제품 회사의 영업 대표",
           "(C) 시설 유지보수 감독관",
+          "(A) 정부 건강 점검관",
           "(D) 환경 단체 대변인"
         ],
-        "answer": 1,
+        "answer": 0,
         "kr": "구매 담당자 귀중, 상업 시설을 위한 친환경 청소 제품의 선도적 공급업체인 BioClean Solutions를 소개하기 위해 편지를 씁니다. 저희 제품 라인에는 Environmental Standards Board의 인증을 받은 생분해성 세제, 표면 소독제, 산업용 탈지제가 포함된다.",
         "expressions": [
           {
@@ -862,18 +862,18 @@
         "question": "What is available to new commercial clients?",
         "question_kr": "신규 상업 고객에게 이용 가능한 것은?",
         "choices": [
-          "(A) A one-year free supply of cleaning products",
-          "(B) A trial package at a 40% discount",
-          "(C) A free site visit from a cleaning specialist",
-          "(D) Priority delivery on all future orders"
+          "(A) A free site visit from a cleaning specialist",
+          "(B) Priority delivery on all future orders",
+          "(C) A trial package at a 40% discount",
+          "(D) A one-year free supply of cleaning products"
         ],
         "choices_kr": [
+          "(C) 청소 전문가의 무료 현장 방문",
           "(A) 1년 무료 청소 제품 공급",
           "(B) 40% 할인된 체험 패키지",
-          "(C) 청소 전문가의 무료 현장 방문",
           "(D) 모든 미래 주문에 대한 우선 배달"
         ],
-        "answer": 1,
+        "answer": 2,
         "kr": "저희는 현재 신규 상업 고객을 위해 3가지 베스트셀러 제품의 체험 패키지를 40% 할인하여 제공하고 있다. 제품 시연을 마련하거나 샘플 키트를 요청하려면 sales@bioclean.com으로 영업팀에 연락해 주세요.",
         "expressions": [
           {
@@ -899,16 +899,16 @@
         "question": "What is implied about BioClean's products?",
         "question_kr": "BioClean의 제품에 대해 추론할 수 있는 것은?",
         "choices": [
-          "(A) They are more expensive than competing brands",
+          "(A) They are only suitable for small offices",
           "(B) They are cost-effective for businesses",
-          "(C) They are only suitable for small offices",
+          "(C) They are more expensive than competing brands",
           "(D) They have recently been introduced to the market"
         ],
         "choices_kr": [
-          "(A) 경쟁 브랜드보다 더 비싸다",
-          "(B) 기업에게 비용 효율적이다",
           "(C) 소규모 사무실에만 적합하다",
-          "(D) 최근 시장에 출시되었다"
+          "(B) 기업에게 비용 효율적이다",
+          "(D) 최근 시장에 출시되었다",
+          "(A) 경쟁 브랜드보다 더 비싸다"
         ],
         "answer": 1,
         "kr": "BioClean Solutions는 호텔, 병원, 오피스 컴플렉스를 포함하여 전국 300개 이상의 기업과 파트너십을 맺었다. 저희 고객들은 저희 제품으로 전환한 후 청소 관련 비용이 평균 35% 감소했다고 보고한다.",
@@ -941,18 +941,18 @@
         "question": "Who is this letter written to?",
         "question_kr": "이 편지는 누구에게 쓴 것인가?",
         "choices": [
-          "(A) A university admissions officer",
-          "(B) A university professor",
+          "(A) A doctoral program graduate student",
+          "(B) A university admissions officer",
           "(C) A research institute director",
-          "(D) A doctoral program graduate student"
+          "(D) A university professor"
         ],
         "choices_kr": [
-          "(A) 대학교 입학 담당자",
-          "(B) 대학교 교수",
           "(C) 연구소 소장",
-          "(D) 박사 과정 대학원생"
+          "(D) 박사 과정 대학원생",
+          "(A) 대학교 입학 담당자",
+          "(B) 대학교 교수"
         ],
-        "answer": 1,
+        "answer": 3,
         "kr": "Nguyen 교수님께, 저는 교수님의 환경 과학 학과 3학년 학생이며 대학원 지원에 관한 지도를 요청하기 위해 편지를 씁니다. 저는 기후 과학 박사 프로그램 지원을 고려하고 있으며 적합한 기관 선택과 강력한 연구 제안서 준비에 대한 교수님의 조언을 소중히 여길 것이다.",
         "expressions": [
           {
@@ -978,18 +978,18 @@
         "question": "What research topic is the student interested in?",
         "question_kr": "학생이 관심 있는 연구 주제는?",
         "choices": [
-          "(A) Ocean pollution and marine biodiversity",
-          "(B) Urban heat islands and local ecosystems",
-          "(C) Renewable energy and carbon emissions",
-          "(D) Arctic ice melting and sea level rise"
+          "(A) Urban heat islands and local ecosystems",
+          "(B) Ocean pollution and marine biodiversity",
+          "(C) Arctic ice melting and sea level rise",
+          "(D) Renewable energy and carbon emissions"
         ],
         "choices_kr": [
-          "(A) 해양 오염과 해양 생물 다양성",
           "(B) 도시 열섬과 지역 생태계",
-          "(C) 재생에너지와 탄소 배출",
-          "(D) 북극 얼음 해빙과 해수면 상승"
+          "(D) 북극 얼음 해빙과 해수면 상승",
+          "(A) 해양 오염과 해양 생물 다양성",
+          "(C) 재생에너지와 탄소 배출"
         ],
-        "answer": 1,
+        "answer": 0,
         "kr": "저는 특히 도시 열섬이 지역 생태계에 미치는 영향을 연구하는 데 관심이 있으며 이것이 교수님의 연구실에서 수행되는 연구와 일치한다고 생각한다. 편하신 시간에 저의 옵션을 논의하기 위해 만나 주신다면 감사하겠다.",
         "expressions": [
           {
@@ -1023,8 +1023,8 @@
         "choices_kr": [
           "(A) 학업적으로 어려움을 겪고 있다",
           "(B) 연구 경험이 있는 우수한 학업 성적자이다",
-          "(C) 이전 연구 경험이 없다",
-          "(D) 이미 박사 프로그램에 합격했다"
+          "(D) 이미 박사 프로그램에 합격했다",
+          "(C) 이전 연구 경험이 없다"
         ],
         "answer": 1,
         "kr": "저는 GPA 3.9를 유지하고 있으며 지난 여름 대도시 지역의 대기 질 패턴을 연구하는 연구 조교를 포함하여 두 가지 연구 조교직을 완료했다. 저는 또한 지난 2년 연속으로 학업 우수 학장상 수상자이다.",
@@ -1057,18 +1057,18 @@
         "question": "Who most likely wrote this letter?",
         "question_kr": "이 편지를 쓴 사람은 누구일 가능성이 가장 높은가?",
         "choices": [
-          "(A) A publisher reviewing a manuscript",
-          "(B) The head of an advertising agency",
+          "(A) The head of an advertising agency",
+          "(B) A publisher reviewing a manuscript",
           "(C) A freelance graphic designer",
           "(D) A marketing consultant at Aldermoor Publishing"
         ],
         "choices_kr": [
-          "(A) 원고를 검토하는 출판사",
           "(B) 광고 대행사의 대표",
-          "(C) 프리랜서 그래픽 디자이너",
-          "(D) Aldermoor Publishing의 마케팅 컨설턴트"
+          "(D) Aldermoor Publishing의 마케팅 컨설턴트",
+          "(A) 원고를 검토하는 출판사",
+          "(C) 프리랜서 그래픽 디자이너"
         ],
-        "answer": 1,
+        "answer": 0,
         "kr": "Alvarez 씨께, 3월 1일에 귀하의 팀에 제출한 프로젝트 제안서에 대한 후속 조치를 위해 편지를 씁니다. Blue Horizon Creative Agency의 대표로서, Aldermoor Publishing이 저희가 봄 카탈로그 출시를 위해 개발한 캠페인 개념을 검토할 기회가 있었는지 알고 싶습니다.",
         "expressions": [
           {
@@ -1094,16 +1094,16 @@
         "question": "What is the estimated budget for the campaign?",
         "question_kr": "캠페인의 예상 예산은 얼마인가?",
         "choices": [
-          "(A) $50,000",
+          "(A) $100,000",
           "(B) $75,000",
           "(C) $85,000",
-          "(D) $100,000"
+          "(D) $50,000"
         ],
         "choices_kr": [
-          "(A) $50,000",
+          "(D) $100,000",
           "(B) $75,000",
           "(C) $85,000",
-          "(D) $100,000"
+          "(A) $50,000"
         ],
         "answer": 2,
         "kr": "제안서는 25~44세 독자층의 목표 인구 통계에 도달하도록 설계된 인쇄, 디지털, 소셜 미디어 요소를 결합한 멀티채널 전략을 개요한다. 전체 캠페인의 예상 예산은 콘텐츠 제작, 디자인, 배포 비용을 포함하여 $85,000이다.",
@@ -1131,18 +1131,18 @@
         "question": "What can be inferred about Blue Horizon Creative Agency?",
         "question_kr": "Blue Horizon Creative Agency에 대해 추론할 수 있는 것은?",
         "choices": [
-          "(A) It is a newly established company",
-          "(B) It has experience in publishing-related campaigns",
-          "(C) It only works with digital media platforms",
-          "(D) It is based in the same city as Aldermoor Publishing"
+          "(A) It has experience in publishing-related campaigns",
+          "(B) It is a newly established company",
+          "(C) It is based in the same city as Aldermoor Publishing",
+          "(D) It only works with digital media platforms"
         ],
         "choices_kr": [
-          "(A) 새로 설립된 회사이다",
           "(B) 출판 관련 캠페인 경험이 있다",
+          "(D) Aldermoor Publishing과 같은 도시에 있다",
           "(C) 디지털 미디어 플랫폼하고만 일한다",
-          "(D) Aldermoor Publishing과 같은 도시에 있다"
+          "(A) 새로 설립된 회사이다"
         ],
-        "answer": 1,
+        "answer": 0,
         "kr": "저희는 이전에 유사한 카탈로그 캠페인으로 다른 세 개의 주요 출판사와 협력했으며 요청 시 기꺼이 참고인을 제공한다. 저는 귀하의 일정에 맞는 시간에 직접 제안서를 발표할 기회를 환영합니다.",
         "expressions": [
           {
@@ -1173,18 +1173,18 @@
         "question": "Who is the intended recipient of this letter?",
         "question_kr": "이 편지의 의도된 수신인은 누구인가?",
         "choices": [
-          "(A) A university professor who teaches business",
-          "(B) A successful entrepreneur being invited to speak",
+          "(A) A university administrator reviewing an event",
+          "(B) A university professor who teaches business",
           "(C) A student applying for a leadership award",
-          "(D) A university administrator reviewing an event"
+          "(D) A successful entrepreneur being invited to speak"
         ],
         "choices_kr": [
+          "(D) 행사를 검토하는 대학교 행정관",
           "(A) 경영학을 가르치는 대학교 교수",
-          "(B) 연설에 초대된 성공한 기업가",
           "(C) 리더십 상을 신청하는 학생",
-          "(D) 행사를 검토하는 대학교 행정관"
+          "(B) 연설에 초대된 성공한 기업가"
         ],
-        "answer": 1,
+        "answer": 3,
         "kr": "Romano 씨께, 4월 19일 저희의 연간 Leadership Summit에 초청 연사로 참여해 주시기를 요청하기 위해 Blackwood University 학생회를 대표하여 연락드립니다. 세 개의 성공적인 사회적 기업의 설립자로서, 윤리적 리더십과 지속 가능한 비즈니스 관행에 대한 귀하의 통찰력은 저희 학생 청중에게 매우 귀중할 것이다.",
         "expressions": [
           {
@@ -1210,18 +1210,18 @@
         "question": "How long is the requested keynote address?",
         "question_kr": "요청된 기조 연설은 얼마나 길어야 하는가?",
         "choices": [
-          "(A) 30 minutes",
-          "(B) 45 minutes",
+          "(A) 90 minutes",
+          "(B) 30 minutes",
           "(C) 60 minutes",
-          "(D) 90 minutes"
+          "(D) 45 minutes"
         ],
         "choices_kr": [
           "(A) 30분",
-          "(B) 45분",
           "(C) 60분",
-          "(D) 90분"
+          "(D) 90분",
+          "(B) 45분"
         ],
-        "answer": 1,
+        "answer": 3,
         "kr": "정상 회담은 Kennedy Auditorium에서 개최되며 약 400명의 학생, 교수진, 지역 비즈니스 전문가를 유치할 것으로 예상된다. 저희는 15분의 Q&A 세션이 뒤따르는 45분의 기조 연설을 요청하고 있다.",
         "expressions": [
           {
@@ -1247,16 +1247,16 @@
         "question": "What is implied about the event organizers?",
         "question_kr": "행사 주최자들에 대해 추론할 수 있는 것은?",
         "choices": [
-          "(A) They have a limited budget for the event",
+          "(A) They are unsure about the event date",
           "(B) They are willing to cover the speaker's costs",
           "(C) They expect the speaker to bring their own materials",
-          "(D) They are unsure about the event date"
+          "(D) They have a limited budget for the event"
         ],
         "choices_kr": [
-          "(A) 행사 예산이 제한적이다",
-          "(B) 연사의 비용을 부담할 의향이 있다",
           "(C) 연사가 자신의 자료를 가져올 것을 기대한다",
-          "(D) 행사 날짜에 대해 확실하지 않다"
+          "(B) 연사의 비용을 부담할 의향이 있다",
+          "(D) 행사 날짜에 대해 확실하지 않다",
+          "(A) 행사 예산이 제한적이다"
         ],
         "answer": 1,
         "kr": "저희는 $500의 사례비를 제공할 수 있으며 당일 모든 여행 및 숙박 비용을 부담한다. 이 초대를 수락할 수 있는지 3월 25일까지 알려주시면 행사 형식과 물류에 대한 추가 세부 정보를 보내드리겠습니다.",
@@ -1289,18 +1289,18 @@
         "question": "Who most likely wrote this letter?",
         "question_kr": "이 편지를 쓴 사람은 누구일 가능성이 가장 높은가?",
         "choices": [
-          "(A) The owner of the cottage personally",
-          "(B) A property management company representative",
+          "(A) A property management company representative",
+          "(B) The owner of the cottage personally",
           "(C) A travel agency booking agent",
           "(D) A local government housing official"
         ],
         "choices_kr": [
-          "(A) 별장의 소유자 개인",
           "(B) 부동산 관리 회사 대표",
           "(C) 여행사 예약 담당자",
-          "(D) 지역 정부 주택 담당자"
+          "(D) 지역 정부 주택 담당자",
+          "(A) 별장의 소유자 개인"
         ],
-        "answer": 1,
+        "answer": 0,
         "kr": "Fleming 씨께, 14 Bayshore Lane의 Sunrise Cottage 임대 부동산에 대한 귀하의 신청이 승인되었음을 알리기 위해 편지를 씁니다. Coastal Retreats Ltd.의 부동산 관리자로서, 7월 12일부터 7월 26일까지 귀하가 요청한 날짜에 별장이 이용 가능함을 확인하게 되어 기쁩니다.",
         "expressions": [
           {
@@ -1327,17 +1327,17 @@
         "question_kr": "전액 결제는 언제까지 받아야 하는가?",
         "choices": [
           "(A) At the time of check-in",
-          "(B) By June 30",
-          "(C) By July 12",
-          "(D) By July 26"
+          "(B) By July 26",
+          "(C) By June 30",
+          "(D) By July 12"
         ],
         "choices_kr": [
-          "(A) 체크인 시",
-          "(B) 6월 30일까지",
           "(C) 7월 12일까지",
-          "(D) 7월 26일까지"
+          "(D) 7월 26일까지",
+          "(B) 6월 30일까지",
+          "(A) 체크인 시"
         ],
-        "answer": 1,
+        "answer": 2,
         "kr": "2주 숙박의 총 임대료는 $2,800이며 예약 확인 시 $400의 보증금이 필요하다. 나머지 잔액의 전액 결제는 6월 30일까지 받아야 한다.",
         "expressions": [
           {
@@ -1363,18 +1363,18 @@
         "question": "What can be inferred about Mr. Fleming's stay?",
         "question_kr": "Fleming 씨의 숙박에 대해 추론할 수 있는 것은?",
         "choices": [
-          "(A) He will be staying alone",
-          "(B) He may be traveling with family or a group",
-          "(C) He has stayed at the cottage before",
-          "(D) He plans to extend his stay beyond July 26"
+          "(A) He may be traveling with family or a group",
+          "(B) He has stayed at the cottage before",
+          "(C) He plans to extend his stay beyond July 26",
+          "(D) He will be staying alone"
         ],
         "choices_kr": [
-          "(A) 혼자 숙박할 것이다",
           "(B) 가족이나 그룹과 함께 여행할 수 있다",
+          "(A) 혼자 숙박할 것이다",
           "(C) 이전에 별장에 묵은 적이 있다",
           "(D) 7월 26일 이후로 숙박을 연장할 계획이다"
         ],
-        "answer": 1,
+        "answer": 0,
         "kr": "별장에는 풀 주방, 야외 바비큐 구역, 직접 해변 접근이 갖춰져 있어 최대 6명의 가족과 그룹에 이상적이다. 도착 전에 첨부된 하우스 규칙과 지역 안내서를 검토해 주세요.",
         "expressions": [
           {
@@ -1405,18 +1405,18 @@
         "question": "Who wrote this letter?",
         "question_kr": "이 편지를 쓴 사람은 누구인가?",
         "choices": [
-          "(A) A newly hired CFO joining the company",
-          "(B) An executive resigning from the company",
+          "(A) A consultant presenting a business proposal",
+          "(B) A newly hired CFO joining the company",
           "(C) An investor withdrawing from the board",
-          "(D) A consultant presenting a business proposal"
+          "(D) An executive resigning from the company"
         ],
         "choices_kr": [
+          "(D) 사업 제안서를 발표하는 컨설턴트",
           "(A) 회사에 합류하는 새로 채용된 CFO",
-          "(B) 회사에서 사임하는 임원",
           "(C) 이사회에서 탈퇴하는 투자자",
-          "(D) 사업 제안서를 발표하는 컨설턴트"
+          "(B) 회사에서 사임하는 임원"
         ],
-        "answer": 1,
+        "answer": 3,
         "kr": "이사회 귀중, 3월 31일부로 Meridan Logistics의 최고 재무 책임자직을 공식적으로 사임하기 위해 편지를 씁니다. 이 결정은 가볍게 내린 것이 아니며, 이 조직에서의 8년과 여러분 각각과 쌓아온 관계를 매우 소중하게 여겼습니다.",
         "expressions": [
           {
@@ -1442,16 +1442,16 @@
         "question": "By when will the handover document be ready?",
         "question_kr": "인수인계 문서는 언제까지 준비되는가?",
         "choices": [
-          "(A) February 28",
+          "(A) March 31",
           "(B) March 15",
-          "(C) March 31",
+          "(C) February 28",
           "(D) April 15"
         ],
         "choices_kr": [
-          "(A) 2월 28일",
+          "(D) 4월 15일",
           "(B) 3월 15일",
           "(C) 3월 31일",
-          "(D) 4월 15일"
+          "(A) 2월 28일"
         ],
         "answer": 1,
         "kr": "저는 원활한 전환을 보장하기 위해 헌신하며 다음 6주 동안 후임 CFO 및 팀과 긴밀히 협력하여 모든 책임을 이전할 것이다. 모든 활성 프로젝트, 재무 프로세스, 주요 연락처를 다루는 포괄적인 인수인계 문서는 3월 15일까지 준비될 것이다.",
@@ -1479,18 +1479,18 @@
         "question": "Why did the CFO decide to resign?",
         "question_kr": "CFO가 사임을 결정한 이유는 무엇인가?",
         "choices": [
-          "(A) She was asked to leave by the board",
-          "(B) She received a new career opportunity elsewhere",
-          "(C) She plans to start her own financial consulting firm",
-          "(D) She is retiring from the workforce entirely"
+          "(A) She is retiring from the workforce entirely",
+          "(B) She was asked to leave by the board",
+          "(C) She received a new career opportunity elsewhere",
+          "(D) She plans to start her own financial consulting firm"
         ],
         "choices_kr": [
           "(A) 이사회로부터 떠나달라는 요청을 받았다",
-          "(B) 다른 곳에서 새로운 취업 기회를 받았다",
           "(C) 자신의 재무 컨설팅 회사를 시작할 계획이다",
+          "(B) 다른 곳에서 새로운 취업 기회를 받았다",
           "(D) 전적으로 직장에서 은퇴한다"
         ],
-        "answer": 1,
+        "answer": 2,
         "kr": "저는 지속 가능한 인프라에 초점을 맞춘 스타트업의 재무 운영을 이끄는 흥미로운 기회를 수락했으며, 이것은 제 장기적인 커리어 목표와 더 밀접하게 일치한다. 재직 기간 동안 이사회가 보여준 신뢰와 지원에 깊이 감사드립니다.",
         "expressions": [
           {
@@ -1521,18 +1521,18 @@
         "question": "Who is the letter addressed to?",
         "question_kr": "편지가 누구에게 보내진 것인가?",
         "choices": [
-          "(A) A competition judge",
-          "(B) A competition winner",
-          "(C) A literary magazine editor",
-          "(D) A competition organizer"
+          "(A) A competition winner",
+          "(B) A competition organizer",
+          "(C) A competition judge",
+          "(D) A literary magazine editor"
         ],
         "choices_kr": [
-          "(A) 심사위원",
           "(B) 대회 우승자",
+          "(A) 심사위원",
           "(C) 문학 잡지 편집자",
           "(D) 대회 주최자"
         ],
-        "answer": 1,
+        "answer": 0,
         "kr": "O'Brien 씨께, Lakewood Writers' Guild가 주최하는 올해 지역 단편 소설 대회의 우승자로서 연락드립니다. 모든 심사위원을 대표하여 귀하의 소설 'The Last Garden'이 독창성, 서사 구조, 감성적 임팩트를 포함한 모든 카테고리에서 가장 높은 점수를 받았음을 알리게 되어 기쁩니다.",
         "expressions": [
           {
@@ -1558,18 +1558,18 @@
         "question": "Where will the award ceremony be held?",
         "question_kr": "시상식은 어디서 열리는가?",
         "choices": [
-          "(A) At the Lakewood Writers' Guild office",
-          "(B) At the Lakewood Library",
-          "(C) At a local university auditorium",
-          "(D) At a downtown hotel ballroom"
+          "(A) At the Lakewood Library",
+          "(B) At the Lakewood Writers' Guild office",
+          "(C) At a downtown hotel ballroom",
+          "(D) At a local university auditorium"
         ],
         "choices_kr": [
-          "(A) Lakewood Writers' Guild 사무실",
           "(B) Lakewood Library",
-          "(C) 지역 대학교 강당",
-          "(D) 시내 호텔 볼룸"
+          "(D) 시내 호텔 볼룸",
+          "(A) Lakewood Writers' Guild 사무실",
+          "(C) 지역 대학교 강당"
         ],
-        "answer": 1,
+        "answer": 0,
         "kr": "귀하는 $1,500의 상금, Writers' Guild 1년 회원권을 받으며 귀하의 소설은 저희 문학 저널 Lakewood Review의 봄 호에 게재된다. 5월 10일 Lakewood Library에서 열리는 시상식에 참석하여 소설의 발췌문을 읽어 주시기 바랍니다.",
         "expressions": [
           {
@@ -1595,18 +1595,18 @@
         "question": "What is implied about the competition?",
         "question_kr": "대회에 대해 추론할 수 있는 것은?",
         "choices": [
-          "(A) It was less popular than in previous years",
-          "(B) It had record-breaking participation this year",
-          "(C) It is being held for the first time",
-          "(D) Only professional writers were eligible to enter"
+          "(A) It is being held for the first time",
+          "(B) It was less popular than in previous years",
+          "(C) Only professional writers were eligible to enter",
+          "(D) It had record-breaking participation this year"
         ],
         "choices_kr": [
-          "(A) 이전 해보다 인기가 낮았다",
-          "(B) 올해 기록적인 참가를 기록했다",
+          "(D) 전문 작가만 참가 자격이 있었다",
           "(C) 처음으로 개최된다",
-          "(D) 전문 작가만 참가 자격이 있었다"
+          "(A) 이전 해보다 인기가 낮았다",
+          "(B) 올해 기록적인 참가를 기록했다"
         ],
-        "answer": 1,
+        "answer": 3,
         "kr": "올해 대회는 이 지역 전역에서 312건의 제출을 유치했으며 Guild의 25년 역사상 가장 많은 수이다. 귀하의 수상은 작가로서의 재능뿐만 아니라 스토리텔링에서 나타나는 진정한 목소리와 삶의 경험을 반영한다.",
         "expressions": [
           {
@@ -1643,10 +1643,10 @@
           "(D) A hospital administrator requesting funding"
         ],
         "choices_kr": [
-          "(A) 재단 이사회 구성원",
+          "(D) 자금을 요청하는 병원 행정관",
           "(B) 의료 분야에서 일하는 장학금 수혜자",
           "(C) 대학교 장학금 담당자",
-          "(D) 자금을 요청하는 병원 행정관"
+          "(A) 재단 이사회 구성원"
         ],
         "answer": 1,
         "kr": "Sullivan 씨께, 지난달 Sullivan Foundation으로부터 받은 전문성 개발 장학금에 진심으로 감사를 표현하기 위해 편지를 씁니다. 농촌 지역 클리닉에서 근무하는 간호사로서, 이 자금 덕분에 그렇지 않았으면 재정적으로 감당할 수 없었을 고급 응급 처치 자격증 프로그램에 등록할 수 있게 되었습니다.",
@@ -1675,17 +1675,17 @@
         "question_kr": "작성자는 프로그램 완료 후 무엇을 할 계획인가?",
         "choices": [
           "(A) Apply for a position at a large urban hospital",
-          "(B) Offer free first aid workshops to the community",
-          "(C) Begin teaching nursing at a local college",
-          "(D) Start a private medical practice"
+          "(B) Start a private medical practice",
+          "(C) Offer free first aid workshops to the community",
+          "(D) Begin teaching nursing at a local college"
         ],
         "choices_kr": [
+          "(D) 개인 의료 행위 시작",
           "(A) 대형 도시 병원의 직책에 지원",
           "(B) 지역 사회에 무료 응급 처치 워크숍 제공",
-          "(C) 지역 대학에서 간호학 강의 시작",
-          "(D) 개인 의료 행위 시작"
+          "(C) 지역 대학에서 간호학 강의 시작"
         ],
-        "answer": 1,
+        "answer": 2,
         "kr": "프로그램은 6개월 동안 진행되며 제가 있는 지역에서 매우 필요한 외상 대응, 심장 응급 상황, 소아과 진료 기술을 갖추게 해준다. 완료 후 지역 사회 구성원들에게 기본 응급 처치와 비상 대비에 관한 무료 워크숍을 제공할 계획이다.",
         "expressions": [
           {
@@ -1711,16 +1711,16 @@
         "question": "What is implied about the writer's community?",
         "question_kr": "작성자의 지역 사회에 대해 추론할 수 있는 것은?",
         "choices": [
-          "(A) It has an abundance of healthcare facilities",
+          "(A) It recently received major government health funding",
           "(B) It has limited access to medical services",
-          "(C) It recently received major government health funding",
+          "(C) It has an abundance of healthcare facilities",
           "(D) It is located in a large metropolitan area"
         ],
         "choices_kr": [
           "(A) 풍부한 의료 시설이 있다",
           "(B) 의료 서비스에 대한 접근이 제한적이다",
-          "(C) 최근 대규모 정부 의료 자금을 받았다",
-          "(D) 대형 대도시 지역에 위치해 있다"
+          "(D) 대형 대도시 지역에 위치해 있다",
+          "(C) 최근 대규모 정부 의료 자금을 받았다"
         ],
         "answer": 1,
         "kr": "의료 접근은 제 지역에서 지속적인 과제로 남아 있으며, 가장 가까운 병원까지 45분 이상 걸리고 전문가 서비스는 사실상 이용 불가하다. 저와 같은 일선 의료 종사자에 대한 귀하의 재단의 투자는 저희가 서비스를 제공하는 지역 사회의 더 나은 결과로 직결된다.",
@@ -1753,18 +1753,18 @@
         "question": "Who most likely wrote this letter?",
         "question_kr": "이 편지를 쓴 사람은 누구일 가능성이 가장 높은가?",
         "choices": [
-          "(A) A CFO",
-          "(B) A compliance officer",
+          "(A) A compliance officer",
+          "(B) An independent mediator",
           "(C) A government official",
-          "(D) An independent mediator"
+          "(D) A CFO"
         ],
         "choices_kr": [
-          "(A) CFO",
           "(B) compliance officer",
-          "(C) 정부 관리",
-          "(D) 독립적인 중재자"
+          "(D) 독립적인 중재자",
+          "(A) CFO",
+          "(C) 정부 관리"
         ],
-        "answer": 1,
+        "answer": 0,
         "kr": "내부 감사 결과 통보에 관해 가능한 한 신속하게 이 문제를 해결하기 위해 편지를 씁니다. compliance officer로서, 이 소통이 관련된 모든 당사자들에게 명확하고 생산적인 해결을 보장하는 데 필수적이라고 생각합니다.",
         "expressions": [
           {
@@ -1790,18 +1790,18 @@
         "question": "What is the writer requesting?",
         "question_kr": "작성자가 요청하는 것은?",
         "choices": [
-          "(A) Immediate payment for services rendered",
-          "(B) Review of attached documents and a response",
-          "(C) A face-to-face meeting at the earliest opportunity",
-          "(D) A written guarantee from senior management"
+          "(A) A face-to-face meeting at the earliest opportunity",
+          "(B) A written guarantee from senior management",
+          "(C) Review of attached documents and a response",
+          "(D) Immediate payment for services rendered"
         ],
         "choices_kr": [
+          "(D) 고위 경영진의 서면 보장",
           "(A) 서비스 비용의 즉시 결제",
           "(B) 첨부 서류 검토와 회신",
-          "(C) 가능한 빠른 시일 내 대면 미팅",
-          "(D) 고위 경영진의 서면 보장"
+          "(C) 가능한 빠른 시일 내 대면 미팅"
         ],
-        "answer": 1,
+        "answer": 2,
         "kr": "audit findings와 관련된 첨부 서류를 검토하고 5영업일 이내에 답변을 제공해 주시기 바랍니다. 추가 정보나 명확화가 필요하신 경우 주저하지 마시고 저희 사무소에 직접 연락해 주세요.",
         "expressions": [
           {
@@ -1828,17 +1828,17 @@
         "question_kr": "작성자와 수신인의 관계에 대해 추론할 수 있는 것은?",
         "choices": [
           "(A) They have never communicated before",
-          "(B) They have an existing professional relationship",
+          "(B) They are colleagues at the same company",
           "(C) They are in a legal dispute",
-          "(D) They are colleagues at the same company"
+          "(D) They have an existing professional relationship"
         ],
         "choices_kr": [
-          "(A) 이전에 소통한 적이 없다",
-          "(B) 기존의 전문적인 관계가 있다",
+          "(D) 같은 회사의 동료이다",
           "(C) 법적 분쟁 중이다",
-          "(D) 같은 회사의 동료이다"
+          "(A) 이전에 소통한 적이 없다",
+          "(B) 기존의 전문적인 관계가 있다"
         ],
-        "answer": 1,
+        "answer": 3,
         "kr": "저희는 지속적인 전문적 관계를 소중히 여기며 이 문제가 상호 이익이 되는 방식으로 해결되기를 희망한다. 저희는 개방적인 소통을 유지하고 만족스러운 결과를 향해 협력적으로 일하기 위해 헌신하고 있음을 안심하셔도 됩니다.",
         "expressions": [
           {
@@ -1869,18 +1869,18 @@
         "question": "Who most likely wrote this letter?",
         "question_kr": "이 편지를 쓴 사람은 누구일 가능성이 가장 높은가?",
         "choices": [
-          "(A) A supplier",
-          "(B) A procurement manager",
+          "(A) An independent mediator",
+          "(B) A supplier",
           "(C) A government official",
-          "(D) An independent mediator"
+          "(D) A procurement manager"
         ],
         "choices_kr": [
           "(A) supplier",
-          "(B) procurement manager",
           "(C) 정부 관리",
-          "(D) 독립적인 중재자"
+          "(D) 독립적인 중재자",
+          "(B) procurement manager"
         ],
-        "answer": 1,
+        "answer": 3,
         "kr": "공급업체 계약 갱신 요청에 관해 가능한 한 신속하게 이 문제를 해결하기 위해 편지를 씁니다. procurement manager로서, 이 소통이 관련된 모든 당사자들에게 명확하고 생산적인 해결을 보장하는 데 필수적이라고 생각합니다.",
         "expressions": [
           {
@@ -1906,18 +1906,18 @@
         "question": "What is the writer requesting?",
         "question_kr": "작성자가 요청하는 것은?",
         "choices": [
-          "(A) Immediate payment for services rendered",
-          "(B) Review of attached documents and a response",
-          "(C) A face-to-face meeting at the earliest opportunity",
+          "(A) Review of attached documents and a response",
+          "(B) A face-to-face meeting at the earliest opportunity",
+          "(C) Immediate payment for services rendered",
           "(D) A written guarantee from senior management"
         ],
         "choices_kr": [
-          "(A) 서비스 비용의 즉시 결제",
           "(B) 첨부 서류 검토와 회신",
           "(C) 가능한 빠른 시일 내 대면 미팅",
-          "(D) 고위 경영진의 서면 보장"
+          "(D) 고위 경영진의 서면 보장",
+          "(A) 서비스 비용의 즉시 결제"
         ],
-        "answer": 1,
+        "answer": 0,
         "kr": "contract renewal와 관련된 첨부 서류를 검토하고 5영업일 이내에 답변을 제공해 주시기 바랍니다. 추가 정보나 명확화가 필요하신 경우 주저하지 마시고 저희 사무소에 직접 연락해 주세요.",
         "expressions": [
           {
@@ -1943,18 +1943,18 @@
         "question": "What is implied about the relationship between the writer and recipient?",
         "question_kr": "작성자와 수신인의 관계에 대해 추론할 수 있는 것은?",
         "choices": [
-          "(A) They have never communicated before",
-          "(B) They have an existing professional relationship",
-          "(C) They are in a legal dispute",
-          "(D) They are colleagues at the same company"
+          "(A) They have an existing professional relationship",
+          "(B) They are in a legal dispute",
+          "(C) They are colleagues at the same company",
+          "(D) They have never communicated before"
         ],
         "choices_kr": [
-          "(A) 이전에 소통한 적이 없다",
           "(B) 기존의 전문적인 관계가 있다",
           "(C) 법적 분쟁 중이다",
+          "(A) 이전에 소통한 적이 없다",
           "(D) 같은 회사의 동료이다"
         ],
-        "answer": 1,
+        "answer": 0,
         "kr": "저희는 지속적인 전문적 관계를 소중히 여기며 이 문제가 상호 이익이 되는 방식으로 해결되기를 희망한다. 저희는 개방적인 소통을 유지하고 만족스러운 결과를 향해 협력적으로 일하기 위해 헌신하고 있음을 안심하셔도 됩니다.",
         "expressions": [
           {
@@ -1987,14 +1987,14 @@
         "choices": [
           "(A) A industry expert",
           "(B) A conference coordinator",
-          "(C) A government official",
-          "(D) An independent mediator"
+          "(C) An independent mediator",
+          "(D) A government official"
         ],
         "choices_kr": [
-          "(A) industry expert",
+          "(D) 독립적인 중재자",
           "(B) conference coordinator",
           "(C) 정부 관리",
-          "(D) 독립적인 중재자"
+          "(A) industry expert"
         ],
         "answer": 1,
         "kr": "컨퍼런스 발표 초청에 관해 가능한 한 신속하게 이 문제를 해결하기 위해 편지를 씁니다. conference coordinator로서, 이 소통이 관련된 모든 당사자들에게 명확하고 생산적인 해결을 보장하는 데 필수적이라고 생각합니다.",
@@ -2022,18 +2022,18 @@
         "question": "What is the writer requesting?",
         "question_kr": "작성자가 요청하는 것은?",
         "choices": [
-          "(A) Immediate payment for services rendered",
-          "(B) Review of attached documents and a response",
-          "(C) A face-to-face meeting at the earliest opportunity",
-          "(D) A written guarantee from senior management"
+          "(A) Review of attached documents and a response",
+          "(B) Immediate payment for services rendered",
+          "(C) A written guarantee from senior management",
+          "(D) A face-to-face meeting at the earliest opportunity"
         ],
         "choices_kr": [
-          "(A) 서비스 비용의 즉시 결제",
           "(B) 첨부 서류 검토와 회신",
           "(C) 가능한 빠른 시일 내 대면 미팅",
-          "(D) 고위 경영진의 서면 보장"
+          "(D) 고위 경영진의 서면 보장",
+          "(A) 서비스 비용의 즉시 결제"
         ],
-        "answer": 1,
+        "answer": 0,
         "kr": "conference presentation와 관련된 첨부 서류를 검토하고 5영업일 이내에 답변을 제공해 주시기 바랍니다. 추가 정보나 명확화가 필요하신 경우 주저하지 마시고 저희 사무소에 직접 연락해 주세요.",
         "expressions": [
           {
@@ -2059,16 +2059,16 @@
         "question": "What is implied about the relationship between the writer and recipient?",
         "question_kr": "작성자와 수신인의 관계에 대해 추론할 수 있는 것은?",
         "choices": [
-          "(A) They have never communicated before",
+          "(A) They are colleagues at the same company",
           "(B) They have an existing professional relationship",
-          "(C) They are in a legal dispute",
-          "(D) They are colleagues at the same company"
+          "(C) They have never communicated before",
+          "(D) They are in a legal dispute"
         ],
         "choices_kr": [
-          "(A) 이전에 소통한 적이 없다",
+          "(D) 같은 회사의 동료이다",
           "(B) 기존의 전문적인 관계가 있다",
-          "(C) 법적 분쟁 중이다",
-          "(D) 같은 회사의 동료이다"
+          "(A) 이전에 소통한 적이 없다",
+          "(C) 법적 분쟁 중이다"
         ],
         "answer": 1,
         "kr": "저희는 지속적인 전문적 관계를 소중히 여기며 이 문제가 상호 이익이 되는 방식으로 해결되기를 희망한다. 저희는 개방적인 소통을 유지하고 만족스러운 결과를 향해 협력적으로 일하기 위해 헌신하고 있음을 안심하셔도 됩니다.",
@@ -2101,16 +2101,16 @@
         "question": "Who most likely wrote this letter?",
         "question_kr": "이 편지를 쓴 사람은 누구일 가능성이 가장 높은가?",
         "choices": [
-          "(A) A warranty department",
+          "(A) An independent mediator",
           "(B) A customer",
-          "(C) A government official",
-          "(D) An independent mediator"
+          "(C) A warranty department",
+          "(D) A government official"
         ],
         "choices_kr": [
-          "(A) warranty department",
+          "(D) 독립적인 중재자",
           "(B) customer",
           "(C) 정부 관리",
-          "(D) 독립적인 중재자"
+          "(A) warranty department"
         ],
         "answer": 1,
         "kr": "제품 보증 클레임에 관해 가능한 한 신속하게 이 문제를 해결하기 위해 편지를 씁니다. customer로서, 이 소통이 관련된 모든 당사자들에게 명확하고 생산적인 해결을 보장하는 데 필수적이라고 생각합니다.",
@@ -2138,18 +2138,18 @@
         "question": "What is the writer requesting?",
         "question_kr": "작성자가 요청하는 것은?",
         "choices": [
-          "(A) Immediate payment for services rendered",
-          "(B) Review of attached documents and a response",
-          "(C) A face-to-face meeting at the earliest opportunity",
-          "(D) A written guarantee from senior management"
+          "(A) A face-to-face meeting at the earliest opportunity",
+          "(B) Immediate payment for services rendered",
+          "(C) A written guarantee from senior management",
+          "(D) Review of attached documents and a response"
         ],
         "choices_kr": [
-          "(A) 서비스 비용의 즉시 결제",
-          "(B) 첨부 서류 검토와 회신",
           "(C) 가능한 빠른 시일 내 대면 미팅",
-          "(D) 고위 경영진의 서면 보장"
+          "(A) 서비스 비용의 즉시 결제",
+          "(D) 고위 경영진의 서면 보장",
+          "(B) 첨부 서류 검토와 회신"
         ],
-        "answer": 1,
+        "answer": 3,
         "kr": "product warranty claim와 관련된 첨부 서류를 검토하고 5영업일 이내에 답변을 제공해 주시기 바랍니다. 추가 정보나 명확화가 필요하신 경우 주저하지 마시고 저희 사무소에 직접 연락해 주세요.",
         "expressions": [
           {
@@ -2175,18 +2175,18 @@
         "question": "What is implied about the relationship between the writer and recipient?",
         "question_kr": "작성자와 수신인의 관계에 대해 추론할 수 있는 것은?",
         "choices": [
-          "(A) They have never communicated before",
-          "(B) They have an existing professional relationship",
-          "(C) They are in a legal dispute",
-          "(D) They are colleagues at the same company"
+          "(A) They are in a legal dispute",
+          "(B) They are colleagues at the same company",
+          "(C) They have never communicated before",
+          "(D) They have an existing professional relationship"
         ],
         "choices_kr": [
-          "(A) 이전에 소통한 적이 없다",
-          "(B) 기존의 전문적인 관계가 있다",
           "(C) 법적 분쟁 중이다",
-          "(D) 같은 회사의 동료이다"
+          "(A) 이전에 소통한 적이 없다",
+          "(D) 같은 회사의 동료이다",
+          "(B) 기존의 전문적인 관계가 있다"
         ],
-        "answer": 1,
+        "answer": 3,
         "kr": "저희는 지속적인 전문적 관계를 소중히 여기며 이 문제가 상호 이익이 되는 방식으로 해결되기를 희망한다. 저희는 개방적인 소통을 유지하고 만족스러운 결과를 향해 협력적으로 일하기 위해 헌신하고 있음을 안심하셔도 됩니다.",
         "expressions": [
           {
@@ -2217,16 +2217,16 @@
         "question": "Who most likely wrote this letter?",
         "question_kr": "이 편지를 쓴 사람은 누구일 가능성이 가장 높은가?",
         "choices": [
-          "(A) A landlord",
+          "(A) An independent mediator",
           "(B) A tenant company",
-          "(C) A government official",
-          "(D) An independent mediator"
+          "(C) A landlord",
+          "(D) A government official"
         ],
         "choices_kr": [
-          "(A) landlord",
+          "(D) 독립적인 중재자",
           "(B) tenant company",
-          "(C) 정부 관리",
-          "(D) 독립적인 중재자"
+          "(A) landlord",
+          "(C) 정부 관리"
         ],
         "answer": 1,
         "kr": "사무실 임대 계약 해지 통보에 관해 가능한 한 신속하게 이 문제를 해결하기 위해 편지를 씁니다. tenant company로서, 이 소통이 관련된 모든 당사자들에게 명확하고 생산적인 해결을 보장하는 데 필수적이라고 생각합니다.",
@@ -2254,18 +2254,18 @@
         "question": "What is the writer requesting?",
         "question_kr": "작성자가 요청하는 것은?",
         "choices": [
-          "(A) Immediate payment for services rendered",
-          "(B) Review of attached documents and a response",
-          "(C) A face-to-face meeting at the earliest opportunity",
-          "(D) A written guarantee from senior management"
+          "(A) A face-to-face meeting at the earliest opportunity",
+          "(B) A written guarantee from senior management",
+          "(C) Review of attached documents and a response",
+          "(D) Immediate payment for services rendered"
         ],
         "choices_kr": [
-          "(A) 서비스 비용의 즉시 결제",
-          "(B) 첨부 서류 검토와 회신",
           "(C) 가능한 빠른 시일 내 대면 미팅",
-          "(D) 고위 경영진의 서면 보장"
+          "(D) 고위 경영진의 서면 보장",
+          "(B) 첨부 서류 검토와 회신",
+          "(A) 서비스 비용의 즉시 결제"
         ],
-        "answer": 1,
+        "answer": 2,
         "kr": "lease termination와 관련된 첨부 서류를 검토하고 5영업일 이내에 답변을 제공해 주시기 바랍니다. 추가 정보나 명확화가 필요하신 경우 주저하지 마시고 저희 사무소에 직접 연락해 주세요.",
         "expressions": [
           {
@@ -2291,18 +2291,18 @@
         "question": "What is implied about the relationship between the writer and recipient?",
         "question_kr": "작성자와 수신인의 관계에 대해 추론할 수 있는 것은?",
         "choices": [
-          "(A) They have never communicated before",
-          "(B) They have an existing professional relationship",
-          "(C) They are in a legal dispute",
+          "(A) They are in a legal dispute",
+          "(B) They have never communicated before",
+          "(C) They have an existing professional relationship",
           "(D) They are colleagues at the same company"
         ],
         "choices_kr": [
+          "(D) 같은 회사의 동료이다",
           "(A) 이전에 소통한 적이 없다",
           "(B) 기존의 전문적인 관계가 있다",
-          "(C) 법적 분쟁 중이다",
-          "(D) 같은 회사의 동료이다"
+          "(C) 법적 분쟁 중이다"
         ],
-        "answer": 1,
+        "answer": 2,
         "kr": "저희는 지속적인 전문적 관계를 소중히 여기며 이 문제가 상호 이익이 되는 방식으로 해결되기를 희망한다. 저희는 개방적인 소통을 유지하고 만족스러운 결과를 향해 협력적으로 일하기 위해 헌신하고 있음을 안심하셔도 됩니다.",
         "expressions": [
           {
@@ -2333,15 +2333,15 @@
         "question": "Who most likely wrote this letter?",
         "question_kr": "이 편지를 쓴 사람은 누구일 가능성이 가장 높은가?",
         "choices": [
-          "(A) A internship applicant",
+          "(A) An independent mediator",
           "(B) A HR coordinator",
-          "(C) A government official",
-          "(D) An independent mediator"
+          "(C) A internship applicant",
+          "(D) A government official"
         ],
         "choices_kr": [
-          "(A) internship applicant",
-          "(B) HR coordinator",
           "(C) 정부 관리",
+          "(B) HR coordinator",
+          "(A) internship applicant",
           "(D) 독립적인 중재자"
         ],
         "answer": 1,
@@ -2370,18 +2370,18 @@
         "question": "What is the writer requesting?",
         "question_kr": "작성자가 요청하는 것은?",
         "choices": [
-          "(A) Immediate payment for services rendered",
-          "(B) Review of attached documents and a response",
-          "(C) A face-to-face meeting at the earliest opportunity",
-          "(D) A written guarantee from senior management"
+          "(A) A face-to-face meeting at the earliest opportunity",
+          "(B) A written guarantee from senior management",
+          "(C) Review of attached documents and a response",
+          "(D) Immediate payment for services rendered"
         ],
         "choices_kr": [
+          "(D) 고위 경영진의 서면 보장",
           "(A) 서비스 비용의 즉시 결제",
           "(B) 첨부 서류 검토와 회신",
-          "(C) 가능한 빠른 시일 내 대면 미팅",
-          "(D) 고위 경영진의 서면 보장"
+          "(C) 가능한 빠른 시일 내 대면 미팅"
         ],
-        "answer": 1,
+        "answer": 2,
         "kr": "internship offer와 관련된 첨부 서류를 검토하고 5영업일 이내에 답변을 제공해 주시기 바랍니다. 추가 정보나 명확화가 필요하신 경우 주저하지 마시고 저희 사무소에 직접 연락해 주세요.",
         "expressions": [
           {
@@ -2407,16 +2407,16 @@
         "question": "What is implied about the relationship between the writer and recipient?",
         "question_kr": "작성자와 수신인의 관계에 대해 추론할 수 있는 것은?",
         "choices": [
-          "(A) They have never communicated before",
+          "(A) They are in a legal dispute",
           "(B) They have an existing professional relationship",
-          "(C) They are in a legal dispute",
-          "(D) They are colleagues at the same company"
+          "(C) They are colleagues at the same company",
+          "(D) They have never communicated before"
         ],
         "choices_kr": [
           "(A) 이전에 소통한 적이 없다",
           "(B) 기존의 전문적인 관계가 있다",
-          "(C) 법적 분쟁 중이다",
-          "(D) 같은 회사의 동료이다"
+          "(D) 같은 회사의 동료이다",
+          "(C) 법적 분쟁 중이다"
         ],
         "answer": 1,
         "kr": "저희는 지속적인 전문적 관계를 소중히 여기며 이 문제가 상호 이익이 되는 방식으로 해결되기를 희망한다. 저희는 개방적인 소통을 유지하고 만족스러운 결과를 향해 협력적으로 일하기 위해 헌신하고 있음을 안심하셔도 됩니다.",
@@ -2450,17 +2450,17 @@
         "question_kr": "이 편지를 쓴 사람은 누구일 가능성이 가장 높은가?",
         "choices": [
           "(A) A client",
-          "(B) A project manager",
-          "(C) A government official",
+          "(B) A government official",
+          "(C) A project manager",
           "(D) An independent mediator"
         ],
         "choices_kr": [
+          "(D) 독립적인 중재자",
           "(A) client",
           "(B) project manager",
-          "(C) 정부 관리",
-          "(D) 독립적인 중재자"
+          "(C) 정부 관리"
         ],
-        "answer": 1,
+        "answer": 2,
         "kr": "프로젝트 지연 사과 이메일에 관해 가능한 한 신속하게 이 문제를 해결하기 위해 편지를 씁니다. project manager로서, 이 소통이 관련된 모든 당사자들에게 명확하고 생산적인 해결을 보장하는 데 필수적이라고 생각합니다.",
         "expressions": [
           {
@@ -2486,16 +2486,16 @@
         "question": "What is the writer requesting?",
         "question_kr": "작성자가 요청하는 것은?",
         "choices": [
-          "(A) Immediate payment for services rendered",
+          "(A) A face-to-face meeting at the earliest opportunity",
           "(B) Review of attached documents and a response",
-          "(C) A face-to-face meeting at the earliest opportunity",
+          "(C) Immediate payment for services rendered",
           "(D) A written guarantee from senior management"
         ],
         "choices_kr": [
-          "(A) 서비스 비용의 즉시 결제",
+          "(D) 고위 경영진의 서면 보장",
           "(B) 첨부 서류 검토와 회신",
-          "(C) 가능한 빠른 시일 내 대면 미팅",
-          "(D) 고위 경영진의 서면 보장"
+          "(A) 서비스 비용의 즉시 결제",
+          "(C) 가능한 빠른 시일 내 대면 미팅"
         ],
         "answer": 1,
         "kr": "project delay apology와 관련된 첨부 서류를 검토하고 5영업일 이내에 답변을 제공해 주시기 바랍니다. 추가 정보나 명확화가 필요하신 경우 주저하지 마시고 저희 사무소에 직접 연락해 주세요.",
@@ -2523,18 +2523,18 @@
         "question": "What is implied about the relationship between the writer and recipient?",
         "question_kr": "작성자와 수신인의 관계에 대해 추론할 수 있는 것은?",
         "choices": [
-          "(A) They have never communicated before",
-          "(B) They have an existing professional relationship",
-          "(C) They are in a legal dispute",
-          "(D) They are colleagues at the same company"
+          "(A) They have an existing professional relationship",
+          "(B) They are in a legal dispute",
+          "(C) They are colleagues at the same company",
+          "(D) They have never communicated before"
         ],
         "choices_kr": [
-          "(A) 이전에 소통한 적이 없다",
           "(B) 기존의 전문적인 관계가 있다",
-          "(C) 법적 분쟁 중이다",
-          "(D) 같은 회사의 동료이다"
+          "(D) 같은 회사의 동료이다",
+          "(A) 이전에 소통한 적이 없다",
+          "(C) 법적 분쟁 중이다"
         ],
-        "answer": 1,
+        "answer": 0,
         "kr": "저희는 지속적인 전문적 관계를 소중히 여기며 이 문제가 상호 이익이 되는 방식으로 해결되기를 희망한다. 저희는 개방적인 소통을 유지하고 만족스러운 결과를 향해 협력적으로 일하기 위해 헌신하고 있음을 안심하셔도 됩니다.",
         "expressions": [
           {
@@ -2565,18 +2565,18 @@
         "question": "Who most likely wrote this letter?",
         "question_kr": "이 편지를 쓴 사람은 누구일 가능성이 가장 높은가?",
         "choices": [
-          "(A) A potential partner",
-          "(B) A business development manager",
-          "(C) A government official",
-          "(D) An independent mediator"
+          "(A) An independent mediator",
+          "(B) A government official",
+          "(C) A potential partner",
+          "(D) A business development manager"
         ],
         "choices_kr": [
-          "(A) potential partner",
-          "(B) business development manager",
+          "(D) 독립적인 중재자",
           "(C) 정부 관리",
-          "(D) 독립적인 중재자"
+          "(A) potential partner",
+          "(B) business development manager"
         ],
-        "answer": 1,
+        "answer": 3,
         "kr": "파트너십 제안 이메일에 관해 가능한 한 신속하게 이 문제를 해결하기 위해 편지를 씁니다. business development manager로서, 이 소통이 관련된 모든 당사자들에게 명확하고 생산적인 해결을 보장하는 데 필수적이라고 생각합니다.",
         "expressions": [
           {
@@ -2602,18 +2602,18 @@
         "question": "What is the writer requesting?",
         "question_kr": "작성자가 요청하는 것은?",
         "choices": [
-          "(A) Immediate payment for services rendered",
-          "(B) Review of attached documents and a response",
-          "(C) A face-to-face meeting at the earliest opportunity",
-          "(D) A written guarantee from senior management"
+          "(A) A written guarantee from senior management",
+          "(B) A face-to-face meeting at the earliest opportunity",
+          "(C) Review of attached documents and a response",
+          "(D) Immediate payment for services rendered"
         ],
         "choices_kr": [
+          "(C) 가능한 빠른 시일 내 대면 미팅",
           "(A) 서비스 비용의 즉시 결제",
           "(B) 첨부 서류 검토와 회신",
-          "(C) 가능한 빠른 시일 내 대면 미팅",
           "(D) 고위 경영진의 서면 보장"
         ],
-        "answer": 1,
+        "answer": 2,
         "kr": "partnership proposal와 관련된 첨부 서류를 검토하고 5영업일 이내에 답변을 제공해 주시기 바랍니다. 추가 정보나 명확화가 필요하신 경우 주저하지 마시고 저희 사무소에 직접 연락해 주세요.",
         "expressions": [
           {
@@ -2639,15 +2639,15 @@
         "question": "What is implied about the relationship between the writer and recipient?",
         "question_kr": "작성자와 수신인의 관계에 대해 추론할 수 있는 것은?",
         "choices": [
-          "(A) They have never communicated before",
+          "(A) They are colleagues at the same company",
           "(B) They have an existing professional relationship",
-          "(C) They are in a legal dispute",
-          "(D) They are colleagues at the same company"
+          "(C) They have never communicated before",
+          "(D) They are in a legal dispute"
         ],
         "choices_kr": [
-          "(A) 이전에 소통한 적이 없다",
-          "(B) 기존의 전문적인 관계가 있다",
           "(C) 법적 분쟁 중이다",
+          "(B) 기존의 전문적인 관계가 있다",
+          "(A) 이전에 소통한 적이 없다",
           "(D) 같은 회사의 동료이다"
         ],
         "answer": 1,
@@ -2681,10 +2681,10 @@
         "question": "Who most likely wrote this letter?",
         "question_kr": "이 편지를 쓴 사람은 누구일 가능성이 가장 높은가?",
         "choices": [
-          "(A) A company customer service",
+          "(A) A government official",
           "(B) A satisfied customer",
-          "(C) A government official",
-          "(D) An independent mediator"
+          "(C) An independent mediator",
+          "(D) A company customer service"
         ],
         "choices_kr": [
           "(A) company customer service",
@@ -2718,18 +2718,18 @@
         "question": "What is the writer requesting?",
         "question_kr": "작성자가 요청하는 것은?",
         "choices": [
-          "(A) Immediate payment for services rendered",
-          "(B) Review of attached documents and a response",
-          "(C) A face-to-face meeting at the earliest opportunity",
-          "(D) A written guarantee from senior management"
+          "(A) A face-to-face meeting at the earliest opportunity",
+          "(B) A written guarantee from senior management",
+          "(C) Review of attached documents and a response",
+          "(D) Immediate payment for services rendered"
         ],
         "choices_kr": [
+          "(D) 고위 경영진의 서면 보장",
           "(A) 서비스 비용의 즉시 결제",
           "(B) 첨부 서류 검토와 회신",
-          "(C) 가능한 빠른 시일 내 대면 미팅",
-          "(D) 고위 경영진의 서면 보장"
+          "(C) 가능한 빠른 시일 내 대면 미팅"
         ],
-        "answer": 1,
+        "answer": 2,
         "kr": "customer compliment와 관련된 첨부 서류를 검토하고 5영업일 이내에 답변을 제공해 주시기 바랍니다. 추가 정보나 명확화가 필요하신 경우 주저하지 마시고 저희 사무소에 직접 연락해 주세요.",
         "expressions": [
           {
@@ -2755,18 +2755,18 @@
         "question": "What is implied about the relationship between the writer and recipient?",
         "question_kr": "작성자와 수신인의 관계에 대해 추론할 수 있는 것은?",
         "choices": [
-          "(A) They have never communicated before",
-          "(B) They have an existing professional relationship",
-          "(C) They are in a legal dispute",
-          "(D) They are colleagues at the same company"
+          "(A) They are in a legal dispute",
+          "(B) They are colleagues at the same company",
+          "(C) They have never communicated before",
+          "(D) They have an existing professional relationship"
         ],
         "choices_kr": [
-          "(A) 이전에 소통한 적이 없다",
-          "(B) 기존의 전문적인 관계가 있다",
           "(C) 법적 분쟁 중이다",
-          "(D) 같은 회사의 동료이다"
+          "(D) 같은 회사의 동료이다",
+          "(A) 이전에 소통한 적이 없다",
+          "(B) 기존의 전문적인 관계가 있다"
         ],
-        "answer": 1,
+        "answer": 3,
         "kr": "저희는 지속적인 전문적 관계를 소중히 여기며 이 문제가 상호 이익이 되는 방식으로 해결되기를 희망한다. 저희는 개방적인 소통을 유지하고 만족스러운 결과를 향해 협력적으로 일하기 위해 헌신하고 있음을 안심하셔도 됩니다.",
         "expressions": [
           {
@@ -2798,17 +2798,17 @@
         "question_kr": "이 편지를 쓴 사람은 누구일 가능성이 가장 높은가?",
         "choices": [
           "(A) A meeting participants",
-          "(B) A executive assistant",
-          "(C) A government official",
-          "(D) An independent mediator"
+          "(B) A government official",
+          "(C) An independent mediator",
+          "(D) A executive assistant"
         ],
         "choices_kr": [
           "(A) meeting participants",
-          "(B) executive assistant",
+          "(D) 독립적인 중재자",
           "(C) 정부 관리",
-          "(D) 독립적인 중재자"
+          "(B) executive assistant"
         ],
-        "answer": 1,
+        "answer": 3,
         "kr": "회의 안건 배포 이메일에 관해 가능한 한 신속하게 이 문제를 해결하기 위해 편지를 씁니다. executive assistant로서, 이 소통이 관련된 모든 당사자들에게 명확하고 생산적인 해결을 보장하는 데 필수적이라고 생각합니다.",
         "expressions": [
           {
@@ -2834,18 +2834,18 @@
         "question": "What is the writer requesting?",
         "question_kr": "작성자가 요청하는 것은?",
         "choices": [
-          "(A) Immediate payment for services rendered",
-          "(B) Review of attached documents and a response",
-          "(C) A face-to-face meeting at the earliest opportunity",
+          "(A) A face-to-face meeting at the earliest opportunity",
+          "(B) Immediate payment for services rendered",
+          "(C) Review of attached documents and a response",
           "(D) A written guarantee from senior management"
         ],
         "choices_kr": [
-          "(A) 서비스 비용의 즉시 결제",
-          "(B) 첨부 서류 검토와 회신",
           "(C) 가능한 빠른 시일 내 대면 미팅",
-          "(D) 고위 경영진의 서면 보장"
+          "(D) 고위 경영진의 서면 보장",
+          "(B) 첨부 서류 검토와 회신",
+          "(A) 서비스 비용의 즉시 결제"
         ],
-        "answer": 1,
+        "answer": 2,
         "kr": "meeting agenda와 관련된 첨부 서류를 검토하고 5영업일 이내에 답변을 제공해 주시기 바랍니다. 추가 정보나 명확화가 필요하신 경우 주저하지 마시고 저희 사무소에 직접 연락해 주세요.",
         "expressions": [
           {
@@ -2871,18 +2871,18 @@
         "question": "What is implied about the relationship between the writer and recipient?",
         "question_kr": "작성자와 수신인의 관계에 대해 추론할 수 있는 것은?",
         "choices": [
-          "(A) They have never communicated before",
-          "(B) They have an existing professional relationship",
+          "(A) They have an existing professional relationship",
+          "(B) They have never communicated before",
           "(C) They are in a legal dispute",
           "(D) They are colleagues at the same company"
         ],
         "choices_kr": [
-          "(A) 이전에 소통한 적이 없다",
           "(B) 기존의 전문적인 관계가 있다",
+          "(A) 이전에 소통한 적이 없다",
           "(C) 법적 분쟁 중이다",
           "(D) 같은 회사의 동료이다"
         ],
-        "answer": 1,
+        "answer": 0,
         "kr": "저희는 지속적인 전문적 관계를 소중히 여기며 이 문제가 상호 이익이 되는 방식으로 해결되기를 희망한다. 저희는 개방적인 소통을 유지하고 만족스러운 결과를 향해 협력적으로 일하기 위해 헌신하고 있음을 안심하셔도 됩니다.",
         "expressions": [
           {
@@ -2913,16 +2913,16 @@
         "question": "Who most likely wrote this letter?",
         "question_kr": "이 편지를 쓴 사람은 누구일 가능성이 가장 높은가?",
         "choices": [
-          "(A) A internet service provider",
+          "(A) An independent mediator",
           "(B) A customer",
-          "(C) A government official",
-          "(D) An independent mediator"
+          "(C) A internet service provider",
+          "(D) A government official"
         ],
         "choices_kr": [
-          "(A) internet service provider",
-          "(B) customer",
           "(C) 정부 관리",
-          "(D) 독립적인 중재자"
+          "(B) customer",
+          "(D) 독립적인 중재자",
+          "(A) internet service provider"
         ],
         "answer": 1,
         "kr": "서비스 해지 요청 이메일에 관해 가능한 한 신속하게 이 문제를 해결하기 위해 편지를 씁니다. customer로서, 이 소통이 관련된 모든 당사자들에게 명확하고 생산적인 해결을 보장하는 데 필수적이라고 생각합니다.",
@@ -2950,18 +2950,18 @@
         "question": "What is the writer requesting?",
         "question_kr": "작성자가 요청하는 것은?",
         "choices": [
-          "(A) Immediate payment for services rendered",
-          "(B) Review of attached documents and a response",
-          "(C) A face-to-face meeting at the earliest opportunity",
+          "(A) A face-to-face meeting at the earliest opportunity",
+          "(B) Immediate payment for services rendered",
+          "(C) Review of attached documents and a response",
           "(D) A written guarantee from senior management"
         ],
         "choices_kr": [
           "(A) 서비스 비용의 즉시 결제",
-          "(B) 첨부 서류 검토와 회신",
           "(C) 가능한 빠른 시일 내 대면 미팅",
+          "(B) 첨부 서류 검토와 회신",
           "(D) 고위 경영진의 서면 보장"
         ],
-        "answer": 1,
+        "answer": 2,
         "kr": "service cancellation와 관련된 첨부 서류를 검토하고 5영업일 이내에 답변을 제공해 주시기 바랍니다. 추가 정보나 명확화가 필요하신 경우 주저하지 마시고 저희 사무소에 직접 연락해 주세요.",
         "expressions": [
           {
@@ -2987,18 +2987,18 @@
         "question": "What is implied about the relationship between the writer and recipient?",
         "question_kr": "작성자와 수신인의 관계에 대해 추론할 수 있는 것은?",
         "choices": [
-          "(A) They have never communicated before",
-          "(B) They have an existing professional relationship",
-          "(C) They are in a legal dispute",
+          "(A) They are in a legal dispute",
+          "(B) They have never communicated before",
+          "(C) They have an existing professional relationship",
           "(D) They are colleagues at the same company"
         ],
         "choices_kr": [
           "(A) 이전에 소통한 적이 없다",
-          "(B) 기존의 전문적인 관계가 있다",
           "(C) 법적 분쟁 중이다",
+          "(B) 기존의 전문적인 관계가 있다",
           "(D) 같은 회사의 동료이다"
         ],
-        "answer": 1,
+        "answer": 2,
         "kr": "저희는 지속적인 전문적 관계를 소중히 여기며 이 문제가 상호 이익이 되는 방식으로 해결되기를 희망한다. 저희는 개방적인 소통을 유지하고 만족스러운 결과를 향해 협력적으로 일하기 위해 헌신하고 있음을 안심하셔도 됩니다.",
         "expressions": [
           {
@@ -3030,17 +3030,17 @@
         "question_kr": "이 편지를 쓴 사람은 누구일 가능성이 가장 높은가?",
         "choices": [
           "(A) A job applicant",
-          "(B) A HR department",
+          "(B) An independent mediator",
           "(C) A government official",
-          "(D) An independent mediator"
+          "(D) A HR department"
         ],
         "choices_kr": [
-          "(A) job applicant",
-          "(B) HR department",
           "(C) 정부 관리",
-          "(D) 독립적인 중재자"
+          "(D) 독립적인 중재자",
+          "(A) job applicant",
+          "(B) HR department"
         ],
-        "answer": 1,
+        "answer": 3,
         "kr": "채용 공고 지원 확인 이메일에 관해 가능한 한 신속하게 이 문제를 해결하기 위해 편지를 씁니다. HR department로서, 이 소통이 관련된 모든 당사자들에게 명확하고 생산적인 해결을 보장하는 데 필수적이라고 생각합니다.",
         "expressions": [
           {
@@ -3066,18 +3066,18 @@
         "question": "What is the writer requesting?",
         "question_kr": "작성자가 요청하는 것은?",
         "choices": [
-          "(A) Immediate payment for services rendered",
-          "(B) Review of attached documents and a response",
-          "(C) A face-to-face meeting at the earliest opportunity",
-          "(D) A written guarantee from senior management"
+          "(A) Review of attached documents and a response",
+          "(B) A face-to-face meeting at the earliest opportunity",
+          "(C) A written guarantee from senior management",
+          "(D) Immediate payment for services rendered"
         ],
         "choices_kr": [
-          "(A) 서비스 비용의 즉시 결제",
           "(B) 첨부 서류 검토와 회신",
           "(C) 가능한 빠른 시일 내 대면 미팅",
+          "(A) 서비스 비용의 즉시 결제",
           "(D) 고위 경영진의 서면 보장"
         ],
-        "answer": 1,
+        "answer": 0,
         "kr": "application confirmation와 관련된 첨부 서류를 검토하고 5영업일 이내에 답변을 제공해 주시기 바랍니다. 추가 정보나 명확화가 필요하신 경우 주저하지 마시고 저희 사무소에 직접 연락해 주세요.",
         "expressions": [
           {
@@ -3109,9 +3109,9 @@
           "(D) They are colleagues at the same company"
         ],
         "choices_kr": [
-          "(A) 이전에 소통한 적이 없다",
-          "(B) 기존의 전문적인 관계가 있다",
           "(C) 법적 분쟁 중이다",
+          "(B) 기존의 전문적인 관계가 있다",
+          "(A) 이전에 소통한 적이 없다",
           "(D) 같은 회사의 동료이다"
         ],
         "answer": 1,
@@ -3145,18 +3145,18 @@
         "question": "Who most likely wrote this letter?",
         "question_kr": "이 편지를 쓴 사람은 누구일 가능성이 가장 높은가?",
         "choices": [
-          "(A) A finance department",
-          "(B) A employee",
-          "(C) A government official",
-          "(D) An independent mediator"
+          "(A) An independent mediator",
+          "(B) A finance department",
+          "(C) A employee",
+          "(D) A government official"
         ],
         "choices_kr": [
+          "(D) 독립적인 중재자",
           "(A) finance department",
           "(B) employee",
-          "(C) 정부 관리",
-          "(D) 독립적인 중재자"
+          "(C) 정부 관리"
         ],
-        "answer": 1,
+        "answer": 2,
         "kr": "출장 비용 환급 요청에 관해 가능한 한 신속하게 이 문제를 해결하기 위해 편지를 씁니다. employee로서, 이 소통이 관련된 모든 당사자들에게 명확하고 생산적인 해결을 보장하는 데 필수적이라고 생각합니다.",
         "expressions": [
           {
@@ -3182,18 +3182,18 @@
         "question": "What is the writer requesting?",
         "question_kr": "작성자가 요청하는 것은?",
         "choices": [
-          "(A) Immediate payment for services rendered",
-          "(B) Review of attached documents and a response",
-          "(C) A face-to-face meeting at the earliest opportunity",
-          "(D) A written guarantee from senior management"
+          "(A) A face-to-face meeting at the earliest opportunity",
+          "(B) A written guarantee from senior management",
+          "(C) Review of attached documents and a response",
+          "(D) Immediate payment for services rendered"
         ],
         "choices_kr": [
-          "(A) 서비스 비용의 즉시 결제",
-          "(B) 첨부 서류 검토와 회신",
+          "(D) 고위 경영진의 서면 보장",
           "(C) 가능한 빠른 시일 내 대면 미팅",
-          "(D) 고위 경영진의 서면 보장"
+          "(B) 첨부 서류 검토와 회신",
+          "(A) 서비스 비용의 즉시 결제"
         ],
-        "answer": 1,
+        "answer": 2,
         "kr": "expense reimbursement와 관련된 첨부 서류를 검토하고 5영업일 이내에 답변을 제공해 주시기 바랍니다. 추가 정보나 명확화가 필요하신 경우 주저하지 마시고 저희 사무소에 직접 연락해 주세요.",
         "expressions": [
           {
@@ -3219,16 +3219,16 @@
         "question": "What is implied about the relationship between the writer and recipient?",
         "question_kr": "작성자와 수신인의 관계에 대해 추론할 수 있는 것은?",
         "choices": [
-          "(A) They have never communicated before",
+          "(A) They are colleagues at the same company",
           "(B) They have an existing professional relationship",
-          "(C) They are in a legal dispute",
-          "(D) They are colleagues at the same company"
+          "(C) They have never communicated before",
+          "(D) They are in a legal dispute"
         ],
         "choices_kr": [
-          "(A) 이전에 소통한 적이 없다",
-          "(B) 기존의 전문적인 관계가 있다",
           "(C) 법적 분쟁 중이다",
-          "(D) 같은 회사의 동료이다"
+          "(B) 기존의 전문적인 관계가 있다",
+          "(D) 같은 회사의 동료이다",
+          "(A) 이전에 소통한 적이 없다"
         ],
         "answer": 1,
         "kr": "저희는 지속적인 전문적 관계를 소중히 여기며 이 문제가 상호 이익이 되는 방식으로 해결되기를 희망한다. 저희는 개방적인 소통을 유지하고 만족스러운 결과를 향해 협력적으로 일하기 위해 헌신하고 있음을 안심하셔도 됩니다.",
@@ -3261,16 +3261,16 @@
         "question": "Who most likely wrote this letter?",
         "question_kr": "이 편지를 쓴 사람은 누구일 가능성이 가장 높은가?",
         "choices": [
-          "(A) A vendor",
+          "(A) An independent mediator",
           "(B) A procurement officer",
           "(C) A government official",
-          "(D) An independent mediator"
+          "(D) A vendor"
         ],
         "choices_kr": [
-          "(A) vendor",
+          "(D) 독립적인 중재자",
           "(B) procurement officer",
-          "(C) 정부 관리",
-          "(D) 독립적인 중재자"
+          "(A) vendor",
+          "(C) 정부 관리"
         ],
         "answer": 1,
         "kr": "제품 견적서 요청 이메일에 관해 가능한 한 신속하게 이 문제를 해결하기 위해 편지를 씁니다. procurement officer로서, 이 소통이 관련된 모든 당사자들에게 명확하고 생산적인 해결을 보장하는 데 필수적이라고 생각합니다.",
@@ -3299,17 +3299,17 @@
         "question_kr": "작성자가 요청하는 것은?",
         "choices": [
           "(A) Immediate payment for services rendered",
-          "(B) Review of attached documents and a response",
-          "(C) A face-to-face meeting at the earliest opportunity",
-          "(D) A written guarantee from senior management"
+          "(B) A written guarantee from senior management",
+          "(C) Review of attached documents and a response",
+          "(D) A face-to-face meeting at the earliest opportunity"
         ],
         "choices_kr": [
           "(A) 서비스 비용의 즉시 결제",
+          "(D) 고위 경영진의 서면 보장",
           "(B) 첨부 서류 검토와 회신",
-          "(C) 가능한 빠른 시일 내 대면 미팅",
-          "(D) 고위 경영진의 서면 보장"
+          "(C) 가능한 빠른 시일 내 대면 미팅"
         ],
-        "answer": 1,
+        "answer": 2,
         "kr": "price quotation request와 관련된 첨부 서류를 검토하고 5영업일 이내에 답변을 제공해 주시기 바랍니다. 추가 정보나 명확화가 필요하신 경우 주저하지 마시고 저희 사무소에 직접 연락해 주세요.",
         "expressions": [
           {
@@ -3335,15 +3335,15 @@
         "question": "What is implied about the relationship between the writer and recipient?",
         "question_kr": "작성자와 수신인의 관계에 대해 추론할 수 있는 것은?",
         "choices": [
-          "(A) They have never communicated before",
+          "(A) They are in a legal dispute",
           "(B) They have an existing professional relationship",
-          "(C) They are in a legal dispute",
-          "(D) They are colleagues at the same company"
+          "(C) They are colleagues at the same company",
+          "(D) They have never communicated before"
         ],
         "choices_kr": [
-          "(A) 이전에 소통한 적이 없다",
-          "(B) 기존의 전문적인 관계가 있다",
           "(C) 법적 분쟁 중이다",
+          "(B) 기존의 전문적인 관계가 있다",
+          "(A) 이전에 소통한 적이 없다",
           "(D) 같은 회사의 동료이다"
         ],
         "answer": 1,
@@ -3377,18 +3377,18 @@
         "question": "Who most likely wrote this letter?",
         "question_kr": "이 편지를 쓴 사람은 누구일 가능성이 가장 높은가?",
         "choices": [
-          "(A) A potential sponsor",
-          "(B) A event organizer",
-          "(C) A government official",
+          "(A) A government official",
+          "(B) A potential sponsor",
+          "(C) A event organizer",
           "(D) An independent mediator"
         ],
         "choices_kr": [
-          "(A) potential sponsor",
-          "(B) event organizer",
           "(C) 정부 관리",
-          "(D) 독립적인 중재자"
+          "(D) 독립적인 중재자",
+          "(B) event organizer",
+          "(A) potential sponsor"
         ],
-        "answer": 1,
+        "answer": 2,
         "kr": "행사 후원 요청 편지에 관해 가능한 한 신속하게 이 문제를 해결하기 위해 편지를 씁니다. event organizer로서, 이 소통이 관련된 모든 당사자들에게 명확하고 생산적인 해결을 보장하는 데 필수적이라고 생각합니다.",
         "expressions": [
           {
@@ -3414,18 +3414,18 @@
         "question": "What is the writer requesting?",
         "question_kr": "작성자가 요청하는 것은?",
         "choices": [
-          "(A) Immediate payment for services rendered",
-          "(B) Review of attached documents and a response",
-          "(C) A face-to-face meeting at the earliest opportunity",
-          "(D) A written guarantee from senior management"
+          "(A) A written guarantee from senior management",
+          "(B) Immediate payment for services rendered",
+          "(C) Review of attached documents and a response",
+          "(D) A face-to-face meeting at the earliest opportunity"
         ],
         "choices_kr": [
-          "(A) 서비스 비용의 즉시 결제",
-          "(B) 첨부 서류 검토와 회신",
           "(C) 가능한 빠른 시일 내 대면 미팅",
-          "(D) 고위 경영진의 서면 보장"
+          "(D) 고위 경영진의 서면 보장",
+          "(B) 첨부 서류 검토와 회신",
+          "(A) 서비스 비용의 즉시 결제"
         ],
-        "answer": 1,
+        "answer": 2,
         "kr": "event sponsorship와 관련된 첨부 서류를 검토하고 5영업일 이내에 답변을 제공해 주시기 바랍니다. 추가 정보나 명확화가 필요하신 경우 주저하지 마시고 저희 사무소에 직접 연락해 주세요.",
         "expressions": [
           {
@@ -3451,18 +3451,18 @@
         "question": "What is implied about the relationship between the writer and recipient?",
         "question_kr": "작성자와 수신인의 관계에 대해 추론할 수 있는 것은?",
         "choices": [
-          "(A) They have never communicated before",
-          "(B) They have an existing professional relationship",
+          "(A) They have an existing professional relationship",
+          "(B) They have never communicated before",
           "(C) They are in a legal dispute",
           "(D) They are colleagues at the same company"
         ],
         "choices_kr": [
-          "(A) 이전에 소통한 적이 없다",
           "(B) 기존의 전문적인 관계가 있다",
+          "(A) 이전에 소통한 적이 없다",
           "(C) 법적 분쟁 중이다",
           "(D) 같은 회사의 동료이다"
         ],
-        "answer": 1,
+        "answer": 0,
         "kr": "저희는 지속적인 전문적 관계를 소중히 여기며 이 문제가 상호 이익이 되는 방식으로 해결되기를 희망한다. 저희는 개방적인 소통을 유지하고 만족스러운 결과를 향해 협력적으로 일하기 위해 헌신하고 있음을 안심하셔도 됩니다.",
         "expressions": [
           {
@@ -3493,18 +3493,18 @@
         "question": "Who most likely wrote this letter?",
         "question_kr": "이 편지를 쓴 사람은 누구일 가능성이 가장 높은가?",
         "choices": [
-          "(A) A new subscriber",
-          "(B) A newsletter manager",
+          "(A) An independent mediator",
+          "(B) A new subscriber",
           "(C) A government official",
-          "(D) An independent mediator"
+          "(D) A newsletter manager"
         ],
         "choices_kr": [
           "(A) new subscriber",
-          "(B) newsletter manager",
           "(C) 정부 관리",
-          "(D) 독립적인 중재자"
+          "(D) 독립적인 중재자",
+          "(B) newsletter manager"
         ],
-        "answer": 1,
+        "answer": 3,
         "kr": "정기 뉴스레터 구독 확인에 관해 가능한 한 신속하게 이 문제를 해결하기 위해 편지를 씁니다. newsletter manager로서, 이 소통이 관련된 모든 당사자들에게 명확하고 생산적인 해결을 보장하는 데 필수적이라고 생각합니다.",
         "expressions": [
           {
@@ -3530,18 +3530,18 @@
         "question": "What is the writer requesting?",
         "question_kr": "작성자가 요청하는 것은?",
         "choices": [
-          "(A) Immediate payment for services rendered",
-          "(B) Review of attached documents and a response",
-          "(C) A face-to-face meeting at the earliest opportunity",
-          "(D) A written guarantee from senior management"
+          "(A) A face-to-face meeting at the earliest opportunity",
+          "(B) A written guarantee from senior management",
+          "(C) Immediate payment for services rendered",
+          "(D) Review of attached documents and a response"
         ],
         "choices_kr": [
+          "(D) 고위 경영진의 서면 보장",
           "(A) 서비스 비용의 즉시 결제",
-          "(B) 첨부 서류 검토와 회신",
           "(C) 가능한 빠른 시일 내 대면 미팅",
-          "(D) 고위 경영진의 서면 보장"
+          "(B) 첨부 서류 검토와 회신"
         ],
-        "answer": 1,
+        "answer": 3,
         "kr": "newsletter subscription와 관련된 첨부 서류를 검토하고 5영업일 이내에 답변을 제공해 주시기 바랍니다. 추가 정보나 명확화가 필요하신 경우 주저하지 마시고 저희 사무소에 직접 연락해 주세요.",
         "expressions": [
           {
@@ -3567,18 +3567,18 @@
         "question": "What is implied about the relationship between the writer and recipient?",
         "question_kr": "작성자와 수신인의 관계에 대해 추론할 수 있는 것은?",
         "choices": [
-          "(A) They have never communicated before",
-          "(B) They have an existing professional relationship",
-          "(C) They are in a legal dispute",
-          "(D) They are colleagues at the same company"
+          "(A) They are in a legal dispute",
+          "(B) They are colleagues at the same company",
+          "(C) They have never communicated before",
+          "(D) They have an existing professional relationship"
         ],
         "choices_kr": [
           "(A) 이전에 소통한 적이 없다",
-          "(B) 기존의 전문적인 관계가 있다",
           "(C) 법적 분쟁 중이다",
-          "(D) 같은 회사의 동료이다"
+          "(D) 같은 회사의 동료이다",
+          "(B) 기존의 전문적인 관계가 있다"
         ],
-        "answer": 1,
+        "answer": 3,
         "kr": "저희는 지속적인 전문적 관계를 소중히 여기며 이 문제가 상호 이익이 되는 방식으로 해결되기를 희망한다. 저희는 개방적인 소통을 유지하고 만족스러운 결과를 향해 협력적으로 일하기 위해 헌신하고 있음을 안심하셔도 됩니다.",
         "expressions": [
           {
@@ -3609,18 +3609,18 @@
         "question": "Who most likely wrote this letter?",
         "question_kr": "이 편지를 쓴 사람은 누구일 가능성이 가장 높은가?",
         "choices": [
-          "(A) A senior executive",
-          "(B) A junior employee",
+          "(A) A junior employee",
+          "(B) An independent mediator",
           "(C) A government official",
-          "(D) An independent mediator"
+          "(D) A senior executive"
         ],
         "choices_kr": [
-          "(A) senior executive",
           "(B) junior employee",
           "(C) 정부 관리",
-          "(D) 독립적인 중재자"
+          "(D) 독립적인 중재자",
+          "(A) senior executive"
         ],
-        "answer": 1,
+        "answer": 0,
         "kr": "멘토링 요청 이메일에 관해 가능한 한 신속하게 이 문제를 해결하기 위해 편지를 씁니다. junior employee로서, 이 소통이 관련된 모든 당사자들에게 명확하고 생산적인 해결을 보장하는 데 필수적이라고 생각합니다.",
         "expressions": [
           {
@@ -3648,14 +3648,14 @@
         "choices": [
           "(A) Immediate payment for services rendered",
           "(B) Review of attached documents and a response",
-          "(C) A face-to-face meeting at the earliest opportunity",
-          "(D) A written guarantee from senior management"
+          "(C) A written guarantee from senior management",
+          "(D) A face-to-face meeting at the earliest opportunity"
         ],
         "choices_kr": [
-          "(A) 서비스 비용의 즉시 결제",
+          "(D) 고위 경영진의 서면 보장",
           "(B) 첨부 서류 검토와 회신",
           "(C) 가능한 빠른 시일 내 대면 미팅",
-          "(D) 고위 경영진의 서면 보장"
+          "(A) 서비스 비용의 즉시 결제"
         ],
         "answer": 1,
         "kr": "mentorship request와 관련된 첨부 서류를 검토하고 5영업일 이내에 답변을 제공해 주시기 바랍니다. 추가 정보나 명확화가 필요하신 경우 주저하지 마시고 저희 사무소에 직접 연락해 주세요.",
@@ -3683,10 +3683,10 @@
         "question": "What is implied about the relationship between the writer and recipient?",
         "question_kr": "작성자와 수신인의 관계에 대해 추론할 수 있는 것은?",
         "choices": [
-          "(A) They have never communicated before",
+          "(A) They are in a legal dispute",
           "(B) They have an existing professional relationship",
-          "(C) They are in a legal dispute",
-          "(D) They are colleagues at the same company"
+          "(C) They are colleagues at the same company",
+          "(D) They have never communicated before"
         ],
         "choices_kr": [
           "(A) 이전에 소통한 적이 없다",
@@ -3725,16 +3725,16 @@
         "question": "Who most likely wrote this letter?",
         "question_kr": "이 편지를 쓴 사람은 누구일 가능성이 가장 높은가?",
         "choices": [
-          "(A) A customer",
+          "(A) An independent mediator",
           "(B) A logistics manager",
           "(C) A government official",
-          "(D) An independent mediator"
+          "(D) A customer"
         ],
         "choices_kr": [
-          "(A) customer",
+          "(D) 독립적인 중재자",
           "(B) logistics manager",
-          "(C) 정부 관리",
-          "(D) 독립적인 중재자"
+          "(A) customer",
+          "(C) 정부 관리"
         ],
         "answer": 1,
         "kr": "배송 지연 안내 이메일에 관해 가능한 한 신속하게 이 문제를 해결하기 위해 편지를 씁니다. logistics manager로서, 이 소통이 관련된 모든 당사자들에게 명확하고 생산적인 해결을 보장하는 데 필수적이라고 생각합니다.",
@@ -3762,18 +3762,18 @@
         "question": "What is the writer requesting?",
         "question_kr": "작성자가 요청하는 것은?",
         "choices": [
-          "(A) Immediate payment for services rendered",
-          "(B) Review of attached documents and a response",
-          "(C) A face-to-face meeting at the earliest opportunity",
-          "(D) A written guarantee from senior management"
+          "(A) A written guarantee from senior management",
+          "(B) Immediate payment for services rendered",
+          "(C) Review of attached documents and a response",
+          "(D) A face-to-face meeting at the earliest opportunity"
         ],
         "choices_kr": [
           "(A) 서비스 비용의 즉시 결제",
-          "(B) 첨부 서류 검토와 회신",
           "(C) 가능한 빠른 시일 내 대면 미팅",
+          "(B) 첨부 서류 검토와 회신",
           "(D) 고위 경영진의 서면 보장"
         ],
-        "answer": 1,
+        "answer": 2,
         "kr": "delivery delay와 관련된 첨부 서류를 검토하고 5영업일 이내에 답변을 제공해 주시기 바랍니다. 추가 정보나 명확화가 필요하신 경우 주저하지 마시고 저희 사무소에 직접 연락해 주세요.",
         "expressions": [
           {
@@ -3799,18 +3799,18 @@
         "question": "What is implied about the relationship between the writer and recipient?",
         "question_kr": "작성자와 수신인의 관계에 대해 추론할 수 있는 것은?",
         "choices": [
-          "(A) They have never communicated before",
-          "(B) They have an existing professional relationship",
+          "(A) They are colleagues at the same company",
+          "(B) They have never communicated before",
           "(C) They are in a legal dispute",
-          "(D) They are colleagues at the same company"
+          "(D) They have an existing professional relationship"
         ],
         "choices_kr": [
+          "(D) 같은 회사의 동료이다",
           "(A) 이전에 소통한 적이 없다",
-          "(B) 기존의 전문적인 관계가 있다",
           "(C) 법적 분쟁 중이다",
-          "(D) 같은 회사의 동료이다"
+          "(B) 기존의 전문적인 관계가 있다"
         ],
-        "answer": 1,
+        "answer": 3,
         "kr": "저희는 지속적인 전문적 관계를 소중히 여기며 이 문제가 상호 이익이 되는 방식으로 해결되기를 희망한다. 저희는 개방적인 소통을 유지하고 만족스러운 결과를 향해 협력적으로 일하기 위해 헌신하고 있음을 안심하셔도 됩니다.",
         "expressions": [
           {
@@ -3841,18 +3841,18 @@
         "question": "Who most likely wrote this letter?",
         "question_kr": "이 편지를 쓴 사람은 누구일 가능성이 가장 높은가?",
         "choices": [
-          "(A) A potential participant",
-          "(B) A research team",
-          "(C) A government official",
-          "(D) An independent mediator"
+          "(A) A government official",
+          "(B) An independent mediator",
+          "(C) A research team",
+          "(D) A potential participant"
         ],
         "choices_kr": [
+          "(D) 독립적인 중재자",
           "(A) potential participant",
           "(B) research team",
-          "(C) 정부 관리",
-          "(D) 독립적인 중재자"
+          "(C) 정부 관리"
         ],
-        "answer": 1,
+        "answer": 2,
         "kr": "연구 참여 동의 요청 이메일에 관해 가능한 한 신속하게 이 문제를 해결하기 위해 편지를 씁니다. research team로서, 이 소통이 관련된 모든 당사자들에게 명확하고 생산적인 해결을 보장하는 데 필수적이라고 생각합니다.",
         "expressions": [
           {
@@ -3878,18 +3878,18 @@
         "question": "What is the writer requesting?",
         "question_kr": "작성자가 요청하는 것은?",
         "choices": [
-          "(A) Immediate payment for services rendered",
-          "(B) Review of attached documents and a response",
-          "(C) A face-to-face meeting at the earliest opportunity",
-          "(D) A written guarantee from senior management"
+          "(A) A written guarantee from senior management",
+          "(B) A face-to-face meeting at the earliest opportunity",
+          "(C) Immediate payment for services rendered",
+          "(D) Review of attached documents and a response"
         ],
         "choices_kr": [
           "(A) 서비스 비용의 즉시 결제",
-          "(B) 첨부 서류 검토와 회신",
+          "(D) 고위 경영진의 서면 보장",
           "(C) 가능한 빠른 시일 내 대면 미팅",
-          "(D) 고위 경영진의 서면 보장"
+          "(B) 첨부 서류 검토와 회신"
         ],
-        "answer": 1,
+        "answer": 3,
         "kr": "research participation와 관련된 첨부 서류를 검토하고 5영업일 이내에 답변을 제공해 주시기 바랍니다. 추가 정보나 명확화가 필요하신 경우 주저하지 마시고 저희 사무소에 직접 연락해 주세요.",
         "expressions": [
           {
@@ -3915,18 +3915,18 @@
         "question": "What is implied about the relationship between the writer and recipient?",
         "question_kr": "작성자와 수신인의 관계에 대해 추론할 수 있는 것은?",
         "choices": [
-          "(A) They have never communicated before",
-          "(B) They have an existing professional relationship",
+          "(A) They have an existing professional relationship",
+          "(B) They are colleagues at the same company",
           "(C) They are in a legal dispute",
-          "(D) They are colleagues at the same company"
+          "(D) They have never communicated before"
         ],
         "choices_kr": [
-          "(A) 이전에 소통한 적이 없다",
           "(B) 기존의 전문적인 관계가 있다",
+          "(D) 같은 회사의 동료이다",
           "(C) 법적 분쟁 중이다",
-          "(D) 같은 회사의 동료이다"
+          "(A) 이전에 소통한 적이 없다"
         ],
-        "answer": 1,
+        "answer": 0,
         "kr": "저희는 지속적인 전문적 관계를 소중히 여기며 이 문제가 상호 이익이 되는 방식으로 해결되기를 희망한다. 저희는 개방적인 소통을 유지하고 만족스러운 결과를 향해 협력적으로 일하기 위해 헌신하고 있음을 안심하셔도 됩니다.",
         "expressions": [
           {
@@ -3957,18 +3957,18 @@
         "question": "Who most likely wrote this letter?",
         "question_kr": "이 편지를 쓴 사람은 누구일 가능성이 가장 높은가?",
         "choices": [
-          "(A) A potential client",
-          "(B) A freelance consultant",
-          "(C) A government official",
+          "(A) A government official",
+          "(B) A potential client",
+          "(C) A freelance consultant",
           "(D) An independent mediator"
         ],
         "choices_kr": [
+          "(C) 정부 관리",
           "(A) potential client",
           "(B) freelance consultant",
-          "(C) 정부 관리",
           "(D) 독립적인 중재자"
         ],
-        "answer": 1,
+        "answer": 2,
         "kr": "프리랜서 서비스 제안 이메일에 관해 가능한 한 신속하게 이 문제를 해결하기 위해 편지를 씁니다. freelance consultant로서, 이 소통이 관련된 모든 당사자들에게 명확하고 생산적인 해결을 보장하는 데 필수적이라고 생각합니다.",
         "expressions": [
           {
@@ -3994,16 +3994,16 @@
         "question": "What is the writer requesting?",
         "question_kr": "작성자가 요청하는 것은?",
         "choices": [
-          "(A) Immediate payment for services rendered",
+          "(A) A face-to-face meeting at the earliest opportunity",
           "(B) Review of attached documents and a response",
-          "(C) A face-to-face meeting at the earliest opportunity",
+          "(C) Immediate payment for services rendered",
           "(D) A written guarantee from senior management"
         ],
         "choices_kr": [
-          "(A) 서비스 비용의 즉시 결제",
+          "(D) 고위 경영진의 서면 보장",
           "(B) 첨부 서류 검토와 회신",
           "(C) 가능한 빠른 시일 내 대면 미팅",
-          "(D) 고위 경영진의 서면 보장"
+          "(A) 서비스 비용의 즉시 결제"
         ],
         "answer": 1,
         "kr": "freelance proposal와 관련된 첨부 서류를 검토하고 5영업일 이내에 답변을 제공해 주시기 바랍니다. 추가 정보나 명확화가 필요하신 경우 주저하지 마시고 저희 사무소에 직접 연락해 주세요.",
@@ -4032,17 +4032,17 @@
         "question_kr": "작성자와 수신인의 관계에 대해 추론할 수 있는 것은?",
         "choices": [
           "(A) They have never communicated before",
-          "(B) They have an existing professional relationship",
-          "(C) They are in a legal dispute",
+          "(B) They are in a legal dispute",
+          "(C) They have an existing professional relationship",
           "(D) They are colleagues at the same company"
         ],
         "choices_kr": [
-          "(A) 이전에 소통한 적이 없다",
-          "(B) 기존의 전문적인 관계가 있다",
+          "(D) 같은 회사의 동료이다",
           "(C) 법적 분쟁 중이다",
-          "(D) 같은 회사의 동료이다"
+          "(B) 기존의 전문적인 관계가 있다",
+          "(A) 이전에 소통한 적이 없다"
         ],
-        "answer": 1,
+        "answer": 2,
         "kr": "저희는 지속적인 전문적 관계를 소중히 여기며 이 문제가 상호 이익이 되는 방식으로 해결되기를 희망한다. 저희는 개방적인 소통을 유지하고 만족스러운 결과를 향해 협력적으로 일하기 위해 헌신하고 있음을 안심하셔도 됩니다.",
         "expressions": [
           {
@@ -4074,17 +4074,17 @@
         "question_kr": "이 편지를 쓴 사람은 누구일 가능성이 가장 높은가?",
         "choices": [
           "(A) A HR committee",
-          "(B) A department manager",
-          "(C) A government official",
-          "(D) An independent mediator"
+          "(B) An independent mediator",
+          "(C) A department manager",
+          "(D) A government official"
         ],
         "choices_kr": [
-          "(A) HR committee",
-          "(B) department manager",
+          "(D) 독립적인 중재자",
           "(C) 정부 관리",
-          "(D) 독립적인 중재자"
+          "(B) department manager",
+          "(A) HR committee"
         ],
-        "answer": 1,
+        "answer": 2,
         "kr": "직원 표창 추천 편지에 관해 가능한 한 신속하게 이 문제를 해결하기 위해 편지를 씁니다. department manager로서, 이 소통이 관련된 모든 당사자들에게 명확하고 생산적인 해결을 보장하는 데 필수적이라고 생각합니다.",
         "expressions": [
           {
@@ -4110,18 +4110,18 @@
         "question": "What is the writer requesting?",
         "question_kr": "작성자가 요청하는 것은?",
         "choices": [
-          "(A) Immediate payment for services rendered",
-          "(B) Review of attached documents and a response",
-          "(C) A face-to-face meeting at the earliest opportunity",
-          "(D) A written guarantee from senior management"
+          "(A) A face-to-face meeting at the earliest opportunity",
+          "(B) Immediate payment for services rendered",
+          "(C) A written guarantee from senior management",
+          "(D) Review of attached documents and a response"
         ],
         "choices_kr": [
-          "(A) 서비스 비용의 즉시 결제",
-          "(B) 첨부 서류 검토와 회신",
+          "(D) 고위 경영진의 서면 보장",
           "(C) 가능한 빠른 시일 내 대면 미팅",
-          "(D) 고위 경영진의 서면 보장"
+          "(A) 서비스 비용의 즉시 결제",
+          "(B) 첨부 서류 검토와 회신"
         ],
-        "answer": 1,
+        "answer": 3,
         "kr": "employee commendation와 관련된 첨부 서류를 검토하고 5영업일 이내에 답변을 제공해 주시기 바랍니다. 추가 정보나 명확화가 필요하신 경우 주저하지 마시고 저희 사무소에 직접 연락해 주세요.",
         "expressions": [
           {
@@ -4147,15 +4147,15 @@
         "question": "What is implied about the relationship between the writer and recipient?",
         "question_kr": "작성자와 수신인의 관계에 대해 추론할 수 있는 것은?",
         "choices": [
-          "(A) They have never communicated before",
+          "(A) They are colleagues at the same company",
           "(B) They have an existing professional relationship",
-          "(C) They are in a legal dispute",
-          "(D) They are colleagues at the same company"
+          "(C) They have never communicated before",
+          "(D) They are in a legal dispute"
         ],
         "choices_kr": [
-          "(A) 이전에 소통한 적이 없다",
-          "(B) 기존의 전문적인 관계가 있다",
           "(C) 법적 분쟁 중이다",
+          "(B) 기존의 전문적인 관계가 있다",
+          "(A) 이전에 소통한 적이 없다",
           "(D) 같은 회사의 동료이다"
         ],
         "answer": 1,
@@ -4189,16 +4189,16 @@
         "question": "Who most likely wrote this letter?",
         "question_kr": "이 편지를 쓴 사람은 누구일 가능성이 가장 높은가?",
         "choices": [
-          "(A) A event organizer",
+          "(A) A government official",
           "(B) A venue manager",
-          "(C) A government official",
+          "(C) A event organizer",
           "(D) An independent mediator"
         ],
         "choices_kr": [
-          "(A) event organizer",
+          "(D) 독립적인 중재자",
           "(B) venue manager",
-          "(C) 정부 관리",
-          "(D) 독립적인 중재자"
+          "(A) event organizer",
+          "(C) 정부 관리"
         ],
         "answer": 1,
         "kr": "시설 예약 확인 이메일에 관해 가능한 한 신속하게 이 문제를 해결하기 위해 편지를 씁니다. venue manager로서, 이 소통이 관련된 모든 당사자들에게 명확하고 생산적인 해결을 보장하는 데 필수적이라고 생각합니다.",
@@ -4226,18 +4226,18 @@
         "question": "What is the writer requesting?",
         "question_kr": "작성자가 요청하는 것은?",
         "choices": [
-          "(A) Immediate payment for services rendered",
-          "(B) Review of attached documents and a response",
-          "(C) A face-to-face meeting at the earliest opportunity",
-          "(D) A written guarantee from senior management"
+          "(A) A written guarantee from senior management",
+          "(B) A face-to-face meeting at the earliest opportunity",
+          "(C) Immediate payment for services rendered",
+          "(D) Review of attached documents and a response"
         ],
         "choices_kr": [
-          "(A) 서비스 비용의 즉시 결제",
-          "(B) 첨부 서류 검토와 회신",
           "(C) 가능한 빠른 시일 내 대면 미팅",
-          "(D) 고위 경영진의 서면 보장"
+          "(A) 서비스 비용의 즉시 결제",
+          "(D) 고위 경영진의 서면 보장",
+          "(B) 첨부 서류 검토와 회신"
         ],
-        "answer": 1,
+        "answer": 3,
         "kr": "venue booking confirmation와 관련된 첨부 서류를 검토하고 5영업일 이내에 답변을 제공해 주시기 바랍니다. 추가 정보나 명확화가 필요하신 경우 주저하지 마시고 저희 사무소에 직접 연락해 주세요.",
         "expressions": [
           {
@@ -4264,17 +4264,17 @@
         "question_kr": "작성자와 수신인의 관계에 대해 추론할 수 있는 것은?",
         "choices": [
           "(A) They have never communicated before",
-          "(B) They have an existing professional relationship",
-          "(C) They are in a legal dispute",
-          "(D) They are colleagues at the same company"
+          "(B) They are colleagues at the same company",
+          "(C) They have an existing professional relationship",
+          "(D) They are in a legal dispute"
         ],
         "choices_kr": [
+          "(D) 같은 회사의 동료이다",
           "(A) 이전에 소통한 적이 없다",
           "(B) 기존의 전문적인 관계가 있다",
-          "(C) 법적 분쟁 중이다",
-          "(D) 같은 회사의 동료이다"
+          "(C) 법적 분쟁 중이다"
         ],
-        "answer": 1,
+        "answer": 2,
         "kr": "저희는 지속적인 전문적 관계를 소중히 여기며 이 문제가 상호 이익이 되는 방식으로 해결되기를 희망한다. 저희는 개방적인 소통을 유지하고 만족스러운 결과를 향해 협력적으로 일하기 위해 헌신하고 있음을 안심하셔도 됩니다.",
         "expressions": [
           {
@@ -4306,17 +4306,17 @@
         "question_kr": "이 편지를 쓴 사람은 누구일 가능성이 가장 높은가?",
         "choices": [
           "(A) A researcher",
-          "(B) A journal editor",
+          "(B) An independent mediator",
           "(C) A government official",
-          "(D) An independent mediator"
+          "(D) A journal editor"
         ],
         "choices_kr": [
-          "(A) researcher",
-          "(B) journal editor",
           "(C) 정부 관리",
-          "(D) 독립적인 중재자"
+          "(D) 독립적인 중재자",
+          "(A) researcher",
+          "(B) journal editor"
         ],
-        "answer": 1,
+        "answer": 3,
         "kr": "학술 논문 게재 수락 통보에 관해 가능한 한 신속하게 이 문제를 해결하기 위해 편지를 씁니다. journal editor로서, 이 소통이 관련된 모든 당사자들에게 명확하고 생산적인 해결을 보장하는 데 필수적이라고 생각합니다.",
         "expressions": [
           {
@@ -4342,18 +4342,18 @@
         "question": "What is the writer requesting?",
         "question_kr": "작성자가 요청하는 것은?",
         "choices": [
-          "(A) Immediate payment for services rendered",
-          "(B) Review of attached documents and a response",
-          "(C) A face-to-face meeting at the earliest opportunity",
+          "(A) Review of attached documents and a response",
+          "(B) A face-to-face meeting at the earliest opportunity",
+          "(C) Immediate payment for services rendered",
           "(D) A written guarantee from senior management"
         ],
         "choices_kr": [
-          "(A) 서비스 비용의 즉시 결제",
           "(B) 첨부 서류 검토와 회신",
+          "(A) 서비스 비용의 즉시 결제",
           "(C) 가능한 빠른 시일 내 대면 미팅",
           "(D) 고위 경영진의 서면 보장"
         ],
-        "answer": 1,
+        "answer": 0,
         "kr": "paper acceptance와 관련된 첨부 서류를 검토하고 5영업일 이내에 답변을 제공해 주시기 바랍니다. 추가 정보나 명확화가 필요하신 경우 주저하지 마시고 저희 사무소에 직접 연락해 주세요.",
         "expressions": [
           {
@@ -4379,18 +4379,18 @@
         "question": "What is implied about the relationship between the writer and recipient?",
         "question_kr": "작성자와 수신인의 관계에 대해 추론할 수 있는 것은?",
         "choices": [
-          "(A) They have never communicated before",
-          "(B) They have an existing professional relationship",
-          "(C) They are in a legal dispute",
-          "(D) They are colleagues at the same company"
+          "(A) They have an existing professional relationship",
+          "(B) They are in a legal dispute",
+          "(C) They are colleagues at the same company",
+          "(D) They have never communicated before"
         ],
         "choices_kr": [
-          "(A) 이전에 소통한 적이 없다",
           "(B) 기존의 전문적인 관계가 있다",
-          "(C) 법적 분쟁 중이다",
-          "(D) 같은 회사의 동료이다"
+          "(A) 이전에 소통한 적이 없다",
+          "(D) 같은 회사의 동료이다",
+          "(C) 법적 분쟁 중이다"
         ],
-        "answer": 1,
+        "answer": 0,
         "kr": "저희는 지속적인 전문적 관계를 소중히 여기며 이 문제가 상호 이익이 되는 방식으로 해결되기를 희망한다. 저희는 개방적인 소통을 유지하고 만족스러운 결과를 향해 협력적으로 일하기 위해 헌신하고 있음을 안심하셔도 됩니다.",
         "expressions": [
           {
@@ -4421,16 +4421,16 @@
         "question": "Who most likely wrote this letter?",
         "question_kr": "이 편지를 쓴 사람은 누구일 가능성이 가장 높은가?",
         "choices": [
-          "(A) A policyholder",
+          "(A) A government official",
           "(B) A insurance agent",
-          "(C) A government official",
-          "(D) An independent mediator"
+          "(C) An independent mediator",
+          "(D) A policyholder"
         ],
         "choices_kr": [
-          "(A) policyholder",
+          "(D) 독립적인 중재자",
           "(B) insurance agent",
           "(C) 정부 관리",
-          "(D) 독립적인 중재자"
+          "(A) policyholder"
         ],
         "answer": 1,
         "kr": "자동차 보험 갱신 안내에 관해 가능한 한 신속하게 이 문제를 해결하기 위해 편지를 씁니다. insurance agent로서, 이 소통이 관련된 모든 당사자들에게 명확하고 생산적인 해결을 보장하는 데 필수적이라고 생각합니다.",
@@ -4459,17 +4459,17 @@
         "question_kr": "작성자가 요청하는 것은?",
         "choices": [
           "(A) Immediate payment for services rendered",
-          "(B) Review of attached documents and a response",
-          "(C) A face-to-face meeting at the earliest opportunity",
+          "(B) A face-to-face meeting at the earliest opportunity",
+          "(C) Review of attached documents and a response",
           "(D) A written guarantee from senior management"
         ],
         "choices_kr": [
-          "(A) 서비스 비용의 즉시 결제",
-          "(B) 첨부 서류 검토와 회신",
+          "(D) 고위 경영진의 서면 보장",
           "(C) 가능한 빠른 시일 내 대면 미팅",
-          "(D) 고위 경영진의 서면 보장"
+          "(B) 첨부 서류 검토와 회신",
+          "(A) 서비스 비용의 즉시 결제"
         ],
-        "answer": 1,
+        "answer": 2,
         "kr": "insurance renewal와 관련된 첨부 서류를 검토하고 5영업일 이내에 답변을 제공해 주시기 바랍니다. 추가 정보나 명확화가 필요하신 경우 주저하지 마시고 저희 사무소에 직접 연락해 주세요.",
         "expressions": [
           {
@@ -4495,18 +4495,18 @@
         "question": "What is implied about the relationship between the writer and recipient?",
         "question_kr": "작성자와 수신인의 관계에 대해 추론할 수 있는 것은?",
         "choices": [
-          "(A) They have never communicated before",
-          "(B) They have an existing professional relationship",
-          "(C) They are in a legal dispute",
+          "(A) They are in a legal dispute",
+          "(B) They have never communicated before",
+          "(C) They have an existing professional relationship",
           "(D) They are colleagues at the same company"
         ],
         "choices_kr": [
           "(A) 이전에 소통한 적이 없다",
+          "(D) 같은 회사의 동료이다",
           "(B) 기존의 전문적인 관계가 있다",
-          "(C) 법적 분쟁 중이다",
-          "(D) 같은 회사의 동료이다"
+          "(C) 법적 분쟁 중이다"
         ],
-        "answer": 1,
+        "answer": 2,
         "kr": "저희는 지속적인 전문적 관계를 소중히 여기며 이 문제가 상호 이익이 되는 방식으로 해결되기를 희망한다. 저희는 개방적인 소통을 유지하고 만족스러운 결과를 향해 협력적으로 일하기 위해 헌신하고 있음을 안심하셔도 됩니다.",
         "expressions": [
           {
@@ -4537,18 +4537,18 @@
         "question": "Who most likely wrote this letter?",
         "question_kr": "이 편지를 쓴 사람은 누구일 가능성이 가장 높은가?",
         "choices": [
-          "(A) A volunteer",
-          "(B) A nonprofit coordinator",
-          "(C) A government official",
-          "(D) An independent mediator"
+          "(A) An independent mediator",
+          "(B) A government official",
+          "(C) A volunteer",
+          "(D) A nonprofit coordinator"
         ],
         "choices_kr": [
-          "(A) volunteer",
-          "(B) nonprofit coordinator",
+          "(D) 독립적인 중재자",
           "(C) 정부 관리",
-          "(D) 독립적인 중재자"
+          "(A) volunteer",
+          "(B) nonprofit coordinator"
         ],
-        "answer": 1,
+        "answer": 3,
         "kr": "봉사 활동 초대 이메일에 관해 가능한 한 신속하게 이 문제를 해결하기 위해 편지를 씁니다. nonprofit coordinator로서, 이 소통이 관련된 모든 당사자들에게 명확하고 생산적인 해결을 보장하는 데 필수적이라고 생각합니다.",
         "expressions": [
           {
@@ -4575,17 +4575,17 @@
         "question_kr": "작성자가 요청하는 것은?",
         "choices": [
           "(A) Immediate payment for services rendered",
-          "(B) Review of attached documents and a response",
-          "(C) A face-to-face meeting at the earliest opportunity",
-          "(D) A written guarantee from senior management"
+          "(B) A face-to-face meeting at the earliest opportunity",
+          "(C) A written guarantee from senior management",
+          "(D) Review of attached documents and a response"
         ],
         "choices_kr": [
-          "(A) 서비스 비용의 즉시 결제",
-          "(B) 첨부 서류 검토와 회신",
           "(C) 가능한 빠른 시일 내 대면 미팅",
-          "(D) 고위 경영진의 서면 보장"
+          "(A) 서비스 비용의 즉시 결제",
+          "(D) 고위 경영진의 서면 보장",
+          "(B) 첨부 서류 검토와 회신"
         ],
-        "answer": 1,
+        "answer": 3,
         "kr": "volunteer invitation와 관련된 첨부 서류를 검토하고 5영업일 이내에 답변을 제공해 주시기 바랍니다. 추가 정보나 명확화가 필요하신 경우 주저하지 마시고 저희 사무소에 직접 연락해 주세요.",
         "expressions": [
           {
@@ -4611,18 +4611,18 @@
         "question": "What is implied about the relationship between the writer and recipient?",
         "question_kr": "작성자와 수신인의 관계에 대해 추론할 수 있는 것은?",
         "choices": [
-          "(A) They have never communicated before",
-          "(B) They have an existing professional relationship",
-          "(C) They are in a legal dispute",
+          "(A) They have an existing professional relationship",
+          "(B) They are in a legal dispute",
+          "(C) They have never communicated before",
           "(D) They are colleagues at the same company"
         ],
         "choices_kr": [
-          "(A) 이전에 소통한 적이 없다",
           "(B) 기존의 전문적인 관계가 있다",
-          "(C) 법적 분쟁 중이다",
-          "(D) 같은 회사의 동료이다"
+          "(A) 이전에 소통한 적이 없다",
+          "(D) 같은 회사의 동료이다",
+          "(C) 법적 분쟁 중이다"
         ],
-        "answer": 1,
+        "answer": 0,
         "kr": "저희는 지속적인 전문적 관계를 소중히 여기며 이 문제가 상호 이익이 되는 방식으로 해결되기를 희망한다. 저희는 개방적인 소통을 유지하고 만족스러운 결과를 향해 협력적으로 일하기 위해 헌신하고 있음을 안심하셔도 됩니다.",
         "expressions": [
           {
