@@ -665,17 +665,17 @@ if st.session_state.phase=="battle":
         setTimeout(fpColors,100);setTimeout(fpColors,300);setTimeout(fpColors,600);setInterval(fpColors,500);
         </script>""", height=0)
 
+        _btn_slot = st.empty()
         _clicked = None
-        for _ii, _ch in enumerate(q['ch']):
-            _ch_clean = re.sub(r'^\([A-D]\)[:\s]*', '', _ch).strip()
-            _display = f"【{_labels[_ii]}】  {_ch_clean}"
-            _aid = _ans_cfg[_ii][0]
-            st.markdown(f'<div id="btn-{_aid}">', unsafe_allow_html=True)
-            if st.button(_display, key=f"ans_{_rn}_{_qi}_{_ii}", use_container_width=True):
-                _clicked = _ii
-            st.markdown('</div>', unsafe_allow_html=True)
-
+        with _btn_slot.container():
+            for _ii, _ch in enumerate(q['ch']):
+                _ch_clean = re.sub(r'^\([A-D]\)[:\s]*', '', _ch).strip()
+                _display = f"【{_labels[_ii]}】  {_ch_clean}"
+                _aid = _ans_cfg[_ii][0]
+                if st.button(_display, key=f"ans_{_rn}_{_qi}_{_ii}", use_container_width=True):
+                    _clicked = _ii
         if _clicked is not None:
+            _btn_slot.empty()
             if time.time()-st.session_state.qst > st.session_state.tsec:
                 st.session_state.phase='lost'; st.rerun()
             i = _clicked
