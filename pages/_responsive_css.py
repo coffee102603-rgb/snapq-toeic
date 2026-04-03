@@ -140,5 +140,22 @@ div[data-testid="stRadio"] > div > label {
     .p7-q    { font-size: 1.25rem !important; }
     .exam-q  { font-size: 1.3rem !important; }
 }
+/* iOS 화력전 버튼 tap highlight 완전 제거 */
+@media (hover:none) and (pointer:coarse){
+    div[data-testid="stButton"] button {
+        -webkit-tap-highlight-color: rgba(0,0,0,0) !important;
+        -webkit-touch-callout: none !important;
+        transition: none !important;
+        -webkit-transition: none !important;
+        animation: none !important;
+        -webkit-animation: none !important;
+    }
+    div[data-testid="stButton"] button:active,
+    div[data-testid="stButton"] button:focus {
+        -webkit-tap-highlight-color: rgba(0,0,0,0) !important;
+        outline: none !important;
+        box-shadow: none !important;
+    }
+}
 </style>
 """, unsafe_allow_html=True)
