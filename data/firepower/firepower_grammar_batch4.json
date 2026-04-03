@@ -1,0 +1,3687 @@
+[
+  {
+    "id": "GRM_376",
+    "category": "GRAMMAR",
+    "cat": "수동태",
+    "word_count": 11,
+    "diff": "easy",
+    "sentence": "The hybrid work policy _______ approved by all department heads last Friday.",
+    "choices": [
+      "(A) was",
+      "(B) has been",
+      "(C) were",
+      "(D) is"
+    ],
+    "answer": 0,
+    "answer_word": "was",
+    "explanation": "policy(단수) + 수동태 + last Friday(과거) → was approved.",
+    "explanation_kr": "last Friday!! 과거 확정! 정책이 승인 당한 거잖아! 수동태! 단수니까 was approved!",
+    "kr": "하이브리드 근무 정책이 지난 금요일 모든 부서장에 의해 승인되었다.",
+    "expressions": [
+      {
+        "expr": "hybrid work policy",
+        "meaning": "하이브리드 근무 정책"
+      },
+      {
+        "expr": "department head",
+        "meaning": "부서장"
+      }
+    ]
+  },
+  {
+    "id": "GRM_377",
+    "category": "GRAMMAR",
+    "cat": "수동태",
+    "word_count": 11,
+    "diff": "easy",
+    "sentence": "New cybersecurity protocols _______ implemented across all remote devices this month.",
+    "choices": [
+      "(A) was being",
+      "(B) were being",
+      "(C) is being",
+      "(D) are being"
+    ],
+    "answer": 3,
+    "answer_word": "are being",
+    "explanation": "protocols(복수) + this month(현재 진행) + 수동태 → are being implemented.",
+    "explanation_kr": "this month! 지금 이번 달 진행 중이야! protocols = 복수! 현재진행 수동 → are being! are being implemented!",
+    "kr": "이번 달 모든 원격 장치에 새 사이버보안 프로토콜이 시행되고 있다.",
+    "expressions": [
+      {
+        "expr": "cybersecurity protocols",
+        "meaning": "사이버보안 프로토콜"
+      },
+      {
+        "expr": "remote devices",
+        "meaning": "원격 장치"
+      }
+    ]
+  },
+  {
+    "id": "GRM_378",
+    "category": "GRAMMAR",
+    "cat": "수동태",
+    "word_count": 11,
+    "diff": "easy",
+    "sentence": "The digital transformation roadmap _______ finalized last Thursday by the executive team.",
+    "choices": [
+      "(A) were",
+      "(B) has been",
+      "(C) is",
+      "(D) was"
+    ],
+    "answer": 3,
+    "answer_word": "was",
+    "explanation": "roadmap(단수) + 수동태 + last Thursday(과거) → was finalized.",
+    "explanation_kr": "last Thursday!! 과거야! 로드맵이 확정 당한 거잖아! 수동태! 단수 → was finalized!",
+    "kr": "디지털 전환 로드맵이 지난 목요일 임원진에 의해 최종 확정되었다.",
+    "expressions": [
+      {
+        "expr": "digital transformation roadmap",
+        "meaning": "디지털 전환 로드맵"
+      },
+      {
+        "expr": "executive team",
+        "meaning": "임원진"
+      }
+    ]
+  },
+  {
+    "id": "GRM_379",
+    "category": "GRAMMAR",
+    "cat": "수동태",
+    "word_count": 11,
+    "diff": "easy",
+    "sentence": "All staff personal data _______ encrypted to comply with the latest privacy laws.",
+    "choices": [
+      "(A) was",
+      "(B) have been",
+      "(C) were",
+      "(D) has been"
+    ],
+    "answer": 3,
+    "answer_word": "has been",
+    "explanation": "data(불가산 단수) + 현재완료 수동 → has been encrypted.",
+    "explanation_kr": "data = 불가산 단수야! 암호화 당한 거잖아! 현재완료 수동 → has been encrypted! 개인정보 보호 중요해~",
+    "kr": "모든 직원 개인 데이터는 최신 개인정보 보호법을 준수하기 위해 암호화되었다.",
+    "expressions": [
+      {
+        "expr": "encrypt",
+        "meaning": "암호화하다"
+      },
+      {
+        "expr": "privacy laws",
+        "meaning": "개인정보 보호법"
+      }
+    ]
+  },
+  {
+    "id": "GRM_380",
+    "category": "GRAMMAR",
+    "cat": "수동태",
+    "word_count": 12,
+    "diff": "easy",
+    "sentence": "The ESG performance report _______ submitted to regulators by the end of next week.",
+    "choices": [
+      "(A) will",
+      "(B) is",
+      "(C) will be",
+      "(D) was"
+    ],
+    "answer": 2,
+    "answer_word": "will be",
+    "explanation": "next week(미래) + 보고서가 '제출되는' 수동태 → will be submitted.",
+    "explanation_kr": "next week → 미래! 보고서가 제출 당하는 거잖아! 미래 수동태 → will be! will만 쓰면 submitted 고아가 돼~",
+    "kr": "ESG 성과 보고서는 다음 주 말까지 규제 기관에 제출될 것이다.",
+    "expressions": [
+      {
+        "expr": "ESG",
+        "meaning": "환경·사회·지배구조"
+      },
+      {
+        "expr": "regulators",
+        "meaning": "규제 기관"
+      }
+    ]
+  },
+  {
+    "id": "GRM_381",
+    "category": "GRAMMAR",
+    "cat": "수동태",
+    "word_count": 12,
+    "diff": "easy",
+    "sentence": "The AI-powered customer service chatbot _______ launched on the platform last Monday.",
+    "choices": [
+      "(A) was",
+      "(B) were",
+      "(C) is",
+      "(D) has"
+    ],
+    "answer": 0,
+    "answer_word": "was",
+    "explanation": "chatbot(단수) + 수동태 + last Monday(과거) → was launched.",
+    "explanation_kr": "last Monday!! 과거! 챗봇이 출시 당한 거야! 단수 + 과거 수동 → was launched!",
+    "kr": "AI 기반 고객 서비스 챗봇이 지난 월요일 플랫폼에 출시되었다.",
+    "expressions": [
+      {
+        "expr": "AI-powered",
+        "meaning": "AI 기반의"
+      },
+      {
+        "expr": "chatbot",
+        "meaning": "챗봇"
+      }
+    ]
+  },
+  {
+    "id": "GRM_382",
+    "category": "GRAMMAR",
+    "cat": "수동태",
+    "word_count": 10,
+    "diff": "easy",
+    "sentence": "The remote work guidelines _______ updated to reflect new government policies.",
+    "choices": [
+      "(A) were",
+      "(B) have been",
+      "(C) has been",
+      "(D) are"
+    ],
+    "answer": 1,
+    "answer_word": "have been",
+    "explanation": "guidelines(복수) + 현재완료 수동(최근 업데이트) → have been updated.",
+    "explanation_kr": "최근에 업데이트된 거잖아! 현재완료 수동! guidelines = 복수 → have been updated! were는 명확한 과거 시점이 있을 때!",
+    "kr": "재택근무 지침이 새로운 정부 정책을 반영하도록 업데이트되었다.",
+    "expressions": [
+      {
+        "expr": "remote work guidelines",
+        "meaning": "재택근무 지침"
+      },
+      {
+        "expr": "reflect",
+        "meaning": "반영하다"
+      }
+    ]
+  },
+  {
+    "id": "GRM_383",
+    "category": "GRAMMAR",
+    "cat": "수동태",
+    "word_count": 10,
+    "diff": "easy",
+    "sentence": "All online transactions _______ processed through the new secure payment gateway.",
+    "choices": [
+      "(A) is",
+      "(B) are",
+      "(C) was",
+      "(D) were"
+    ],
+    "answer": 1,
+    "answer_word": "are",
+    "explanation": "transactions(복수) + 현재 반복 수동 → are processed.",
+    "explanation_kr": "모든 거래가 처리 당하는 거야! transactions = 복수! 현재 반복 사실 → are processed!",
+    "kr": "모든 온라인 거래는 새로운 보안 결제 게이트웨이를 통해 처리된다.",
+    "expressions": [
+      {
+        "expr": "payment gateway",
+        "meaning": "결제 게이트웨이"
+      },
+      {
+        "expr": "secure",
+        "meaning": "안전한"
+      }
+    ]
+  },
+  {
+    "id": "GRM_384",
+    "category": "GRAMMAR",
+    "cat": "수동태",
+    "word_count": 10,
+    "diff": "easy",
+    "sentence": "The virtual training session _______ recorded and shared with all remote employees.",
+    "choices": [
+      "(A) is",
+      "(B) were",
+      "(C) has",
+      "(D) was"
+    ],
+    "answer": 3,
+    "answer_word": "was",
+    "explanation": "session(단수) + 수동태 + 과거 → was recorded.",
+    "explanation_kr": "세션이 녹화 당하고 공유 당한 거야! 단수 + 과거 수동 → was recorded and shared!",
+    "kr": "가상 교육 세션이 녹화되어 모든 원격 직원들과 공유되었다.",
+    "expressions": [
+      {
+        "expr": "virtual training session",
+        "meaning": "가상 교육 세션"
+      },
+      {
+        "expr": "remote employees",
+        "meaning": "원격 직원"
+      }
+    ]
+  },
+  {
+    "id": "GRM_385",
+    "category": "GRAMMAR",
+    "cat": "수동태",
+    "word_count": 11,
+    "diff": "easy",
+    "sentence": "The company's carbon reduction targets _______ outlined in the annual sustainability report.",
+    "choices": [
+      "(A) is",
+      "(B) was",
+      "(C) were",
+      "(D) has been"
+    ],
+    "answer": 2,
+    "answer_word": "were",
+    "explanation": "targets(복수) + 수동태 + 과거 → were outlined.",
+    "explanation_kr": "targets = 복수! 목표들이 제시 당한 거야! 과거 보고서니까 → were outlined!",
+    "kr": "회사의 탄소 감축 목표가 연간 지속가능성 보고서에 제시되었다.",
+    "expressions": [
+      {
+        "expr": "carbon reduction targets",
+        "meaning": "탄소 감축 목표"
+      },
+      {
+        "expr": "sustainability report",
+        "meaning": "지속가능성 보고서"
+      }
+    ]
+  },
+  {
+    "id": "GRM_386",
+    "category": "GRAMMAR",
+    "cat": "수일치",
+    "word_count": 11,
+    "diff": "easy",
+    "sentence": "The number of remote workers _______ increased dramatically since the pandemic.",
+    "choices": [
+      "(A) are",
+      "(B) have",
+      "(C) has",
+      "(D) were"
+    ],
+    "answer": 2,
+    "answer_word": "has",
+    "explanation": "The number of = 단수 + 현재완료 → has increased.",
+    "explanation_kr": "The number of! '그 수'는 하나야! 단수! since → 현재완료! has increased! 재택 직원 수가 폭발적으로 늘었다는 거잖아~",
+    "kr": "팬데믹 이후 원격 근무자 수가 극적으로 증가했다.",
+    "expressions": [
+      {
+        "expr": "the number of",
+        "meaning": "~의 수 (단수!)"
+      },
+      {
+        "expr": "dramatically",
+        "meaning": "극적으로"
+      }
+    ]
+  },
+  {
+    "id": "GRM_387",
+    "category": "GRAMMAR",
+    "cat": "수일치",
+    "word_count": 12,
+    "diff": "easy",
+    "sentence": "Each of the new cloud-based tools _______ tested before being deployed to staff.",
+    "choices": [
+      "(A) was",
+      "(B) are",
+      "(C) were",
+      "(D) have been"
+    ],
+    "answer": 0,
+    "answer_word": "was",
+    "explanation": "Each of = 단수 + 과거 수동 → was tested.",
+    "explanation_kr": "Each of! '각각 하나하나'는 단수야! tools가 복수여도! → was tested! 배포 전에 테스트 당한 거잖아~",
+    "kr": "새로운 클라우드 기반 도구들 각각은 직원들에게 배포되기 전에 테스트되었다.",
+    "expressions": [
+      {
+        "expr": "cloud-based tools",
+        "meaning": "클라우드 기반 도구"
+      },
+      {
+        "expr": "deploy",
+        "meaning": "배포하다"
+      }
+    ]
+  },
+  {
+    "id": "GRM_388",
+    "category": "GRAMMAR",
+    "cat": "수일치",
+    "word_count": 13,
+    "diff": "easy",
+    "sentence": "Both the marketing director and the digital team _______ working on the new campaign.",
+    "choices": [
+      "(A) are",
+      "(B) is",
+      "(C) was",
+      "(D) has been"
+    ],
+    "answer": 0,
+    "answer_word": "are",
+    "explanation": "Both A and B = 복수 → are.",
+    "explanation_kr": "Both A and B! 둘 다! 무조건 복수! → are! 마케팅 이사와 디지털팀 모두 캠페인 작업 중이야~",
+    "kr": "마케팅 이사와 디지털팀 모두 새 캠페인 작업을 하고 있다.",
+    "expressions": [
+      {
+        "expr": "both A and B",
+        "meaning": "A와 B 둘 다 (무조건 복수!)"
+      },
+      {
+        "expr": "campaign",
+        "meaning": "캠페인"
+      }
+    ]
+  },
+  {
+    "id": "GRM_389",
+    "category": "GRAMMAR",
+    "cat": "수일치",
+    "word_count": 11,
+    "diff": "easy",
+    "sentence": "A number of automation tools _______ recently integrated into the workflow.",
+    "choices": [
+      "(A) is",
+      "(B) was",
+      "(C) have been",
+      "(D) has been"
+    ],
+    "answer": 2,
+    "answer_word": "have been",
+    "explanation": "A number of = 많은(복수) + 현재완료 수동 → have been integrated.",
+    "explanation_kr": "A number of! 여러 개의 도구들! 복수! → have been! A number of = 복수, The number of = 단수! 차이 기억해!",
+    "kr": "여러 자동화 도구들이 최근 워크플로에 통합되었다.",
+    "expressions": [
+      {
+        "expr": "automation tools",
+        "meaning": "자동화 도구"
+      },
+      {
+        "expr": "integrate",
+        "meaning": "통합하다"
+      },
+      {
+        "expr": "workflow",
+        "meaning": "워크플로, 업무 흐름"
+      }
+    ]
+  },
+  {
+    "id": "GRM_390",
+    "category": "GRAMMAR",
+    "cat": "수일치",
+    "word_count": 11,
+    "diff": "easy",
+    "sentence": "None of the submitted app updates _______ passed the quality assurance review.",
+    "choices": [
+      "(A) are",
+      "(B) have",
+      "(C) has",
+      "(D) were"
+    ],
+    "answer": 1,
+    "answer_word": "have",
+    "explanation": "None of + 복수명사(updates) → 복수 → have passed.",
+    "explanation_kr": "None of + updates! updates = 복수! → have! None of + 불가산이면 has지만 updates는 가산 복수! → have passed!",
+    "kr": "제출된 앱 업데이트들 중 어느 것도 품질 보증 검토를 통과하지 못했다.",
+    "expressions": [
+      {
+        "expr": "quality assurance",
+        "meaning": "품질 보증 (QA)"
+      },
+      {
+        "expr": "none of + 복수",
+        "meaning": "복수 취급 → have!"
+      }
+    ]
+  },
+  {
+    "id": "GRM_391",
+    "category": "GRAMMAR",
+    "cat": "수일치",
+    "word_count": 12,
+    "diff": "easy",
+    "sentence": "The IT team, along with the external consultants, _______ reviewing the cybersecurity data.",
+    "choices": [
+      "(A) have been",
+      "(B) is",
+      "(C) are",
+      "(D) were"
+    ],
+    "answer": 1,
+    "answer_word": "is",
+    "explanation": "along with 무시 → 주어 IT team(단수) → is.",
+    "explanation_kr": "along with 무시! IT team이 진짜 주어! 단수! → is reviewing! external consultants에 낚이면 안 돼!",
+    "kr": "IT팀은 외부 컨설턴트들과 함께 사이버보안 데이터를 검토하고 있다.",
+    "expressions": [
+      {
+        "expr": "along with",
+        "meaning": "~와 함께 (수일치 무시!)"
+      },
+      {
+        "expr": "cybersecurity data",
+        "meaning": "사이버보안 데이터"
+      }
+    ]
+  },
+  {
+    "id": "GRM_392",
+    "category": "GRAMMAR",
+    "cat": "수일치",
+    "word_count": 11,
+    "diff": "easy",
+    "sentence": "Either the data analyst or her supervisors _______ responsible for the reporting error.",
+    "choices": [
+      "(A) is",
+      "(B) was",
+      "(C) are",
+      "(D) were"
+    ],
+    "answer": 2,
+    "answer_word": "are",
+    "explanation": "Either A or B → B에 수 일치. B = supervisors(복수) → are.",
+    "explanation_kr": "either or! 뒤(B)에 맞추기! supervisors = 복수! → are! analyst에 낚이면 탈락! 항상 뒤쪽 B!",
+    "kr": "데이터 분석가 또는 그녀의 상사들이 보고 오류에 책임이 있다.",
+    "expressions": [
+      {
+        "expr": "either A or B → B에 수 일치",
+        "meaning": "뒤쪽만 봐!"
+      },
+      {
+        "expr": "reporting error",
+        "meaning": "보고 오류"
+      }
+    ]
+  },
+  {
+    "id": "GRM_393",
+    "category": "GRAMMAR",
+    "cat": "수일치",
+    "word_count": 12,
+    "diff": "easy",
+    "sentence": "Everyone who completed the online compliance training _______ issued a digital badge.",
+    "choices": [
+      "(A) are",
+      "(B) were",
+      "(C) have been",
+      "(D) was"
+    ],
+    "answer": 3,
+    "answer_word": "was",
+    "explanation": "Everyone = 단수 + 과거 수동 → was issued.",
+    "explanation_kr": "Everyone! 단수야! every+ONE! ONE = 하나 = 단수! 과거 수동 → was issued! 뱃지 받았네~",
+    "kr": "온라인 컴플라이언스 교육을 이수한 모든 사람은 디지털 배지를 받았다.",
+    "expressions": [
+      {
+        "expr": "compliance training",
+        "meaning": "컴플라이언스 교육"
+      },
+      {
+        "expr": "digital badge",
+        "meaning": "디지털 배지"
+      }
+    ]
+  },
+  {
+    "id": "GRM_394",
+    "category": "GRAMMAR",
+    "cat": "수일치",
+    "word_count": 13,
+    "diff": "easy",
+    "sentence": "The number of customer complaints about the app _______ fallen since the latest update.",
+    "choices": [
+      "(A) are",
+      "(B) have",
+      "(C) has",
+      "(D) were"
+    ],
+    "answer": 2,
+    "answer_word": "has",
+    "explanation": "The number of = 단수 + 현재완료 → has fallen.",
+    "explanation_kr": "The number of! 단수! since → 현재완료! has fallen! 최신 업데이트 후 불만 줄었다는 좋은 소식이야~",
+    "kr": "최신 업데이트 이후 앱에 대한 고객 불만 수가 줄어들었다.",
+    "expressions": [
+      {
+        "expr": "the number of + has",
+        "meaning": "단수 취급!"
+      },
+      {
+        "expr": "latest update",
+        "meaning": "최신 업데이트"
+      }
+    ]
+  },
+  {
+    "id": "GRM_395",
+    "category": "GRAMMAR",
+    "cat": "수일치",
+    "word_count": 10,
+    "diff": "easy",
+    "sentence": "Not a single remote employee _______ missed the virtual team meeting today.",
+    "choices": [
+      "(A) have",
+      "(B) has",
+      "(C) were",
+      "(D) are"
+    ],
+    "answer": 1,
+    "answer_word": "has",
+    "explanation": "Not a single + 단수명사 + 현재완료 → has.",
+    "explanation_kr": "Not a single employee! 단수! 아무도 빠지지 않았다! 현재완료 경험 → has missed! 훌륭한 팀이네~",
+    "kr": "오늘 가상 팀 회의에서 단 한 명의 원격 직원도 빠지지 않았다.",
+    "expressions": [
+      {
+        "expr": "not a single",
+        "meaning": "단 하나도 없는 (단수!)"
+      },
+      {
+        "expr": "virtual team meeting",
+        "meaning": "가상 팀 회의"
+      }
+    ]
+  },
+  {
+    "id": "GRM_396",
+    "category": "GRAMMAR",
+    "cat": "시제",
+    "word_count": 11,
+    "diff": "easy",
+    "sentence": "The company _______ flexible work arrangements since the start of this year.",
+    "choices": [
+      "(A) offers",
+      "(B) has been offering",
+      "(C) offered",
+      "(D) had offered"
+    ],
+    "answer": 1,
+    "answer_word": "has been offering",
+    "explanation": "since + 올해 초 + 현재까지 계속 → 현재완료 진행 has been offering.",
+    "explanation_kr": "since the start of this year! 올해 초부터 지금까지 쭉 제공 중! 현재완료 진행! has been offering!",
+    "kr": "그 회사는 올해 초부터 유연 근무 제도를 제공해오고 있다.",
+    "expressions": [
+      {
+        "expr": "flexible work arrangements",
+        "meaning": "유연 근무 제도"
+      },
+      {
+        "expr": "since the start of",
+        "meaning": "~의 초부터 (현재완료 진행!)"
+      }
+    ]
+  },
+  {
+    "id": "GRM_397",
+    "category": "GRAMMAR",
+    "cat": "시제",
+    "word_count": 11,
+    "diff": "easy",
+    "sentence": "The software update _______ being installed when the network connection dropped.",
+    "choices": [
+      "(A) was",
+      "(B) has been",
+      "(C) had been",
+      "(D) is"
+    ],
+    "answer": 0,
+    "answer_word": "was",
+    "explanation": "when + 과거 사건(dropped) → 그때 진행 중이던 수동태 = was being installed.",
+    "explanation_kr": "연결이 끊겼을 때(when) 설치가 진행 중이었던 거야! 과거 진행 수동! was being installed!",
+    "kr": "네트워크 연결이 끊겼을 때 소프트웨어 업데이트가 설치되고 있었다.",
+    "expressions": [
+      {
+        "expr": "was being installed when",
+        "meaning": "과거 진행 수동 + when!"
+      },
+      {
+        "expr": "network connection",
+        "meaning": "네트워크 연결"
+      }
+    ]
+  },
+  {
+    "id": "GRM_398",
+    "category": "GRAMMAR",
+    "cat": "시제",
+    "word_count": 11,
+    "diff": "easy",
+    "sentence": "By next quarter, the team _______ the new platform for six full months.",
+    "choices": [
+      "(A) will use",
+      "(B) has used",
+      "(C) will have used",
+      "(D) used"
+    ],
+    "answer": 2,
+    "answer_word": "will have used",
+    "explanation": "By next quarter(미래 완료 시점) → 미래완료 will have used.",
+    "explanation_kr": "By next quarter! 다음 분기까지 6개월이 완료! → 미래완료! will have used!",
+    "kr": "다음 분기까지 팀은 새 플랫폼을 꼬박 6개월 동안 사용한 것이 될 것이다.",
+    "expressions": [
+      {
+        "expr": "by next quarter",
+        "meaning": "다음 분기까지 (미래완료 신호!)"
+      },
+      {
+        "expr": "platform",
+        "meaning": "플랫폼"
+      }
+    ]
+  },
+  {
+    "id": "GRM_399",
+    "category": "GRAMMAR",
+    "cat": "시제",
+    "word_count": 10,
+    "diff": "easy",
+    "sentence": "The CEO _______ three video calls before the morning briefing yesterday.",
+    "choices": [
+      "(A) attended",
+      "(B) has attended",
+      "(C) had attended",
+      "(D) attends"
+    ],
+    "answer": 2,
+    "answer_word": "had attended",
+    "explanation": "morning briefing(과거 기준) 이전에 완료 → 과거완료 had attended.",
+    "explanation_kr": "아침 브리핑(기준) 전에 이미 세 번 영상 통화 완료! 더 먼저 한 일 → had attended!",
+    "kr": "CEO는 어제 오전 브리핑 전에 이미 세 번의 화상 통화에 참석했었다.",
+    "expressions": [
+      {
+        "expr": "before + 과거 기준점",
+        "meaning": "과거완료 신호!"
+      },
+      {
+        "expr": "video call",
+        "meaning": "화상 통화"
+      }
+    ]
+  },
+  {
+    "id": "GRM_400",
+    "category": "GRAMMAR",
+    "cat": "시제",
+    "word_count": 11,
+    "diff": "easy",
+    "sentence": "The e-commerce platform _______ its monthly sales records every quarter this year.",
+    "choices": [
+      "(A) had broken",
+      "(B) has broken",
+      "(C) broke",
+      "(D) breaks"
+    ],
+    "answer": 1,
+    "answer_word": "has broken",
+    "explanation": "this year + 반복 달성 경험 → 현재완료 has broken.",
+    "explanation_kr": "this year! 올해 아직 끝 안 났어! 매 분기 갱신한 경험 → 현재완료! has broken! 대단한 플랫폼이네~",
+    "kr": "이커머스 플랫폼은 올해 매 분기마다 월간 매출 기록을 경신했다.",
+    "expressions": [
+      {
+        "expr": "e-commerce platform",
+        "meaning": "이커머스 플랫폼"
+      },
+      {
+        "expr": "break a record",
+        "meaning": "기록을 경신하다"
+      }
+    ]
+  },
+  {
+    "id": "GRM_401",
+    "category": "GRAMMAR",
+    "cat": "시제",
+    "word_count": 11,
+    "diff": "easy",
+    "sentence": "The IT team _______ on the server upgrade when the power outage occurred.",
+    "choices": [
+      "(A) has worked",
+      "(B) had worked",
+      "(C) worked",
+      "(D) was working"
+    ],
+    "answer": 3,
+    "answer_word": "was working",
+    "explanation": "when + 과거 사건(occurred) → 그때 진행 중 = 과거진행 was working.",
+    "explanation_kr": "정전 발생했을 때(when) 서버 업그레이드 '중'이었던 거야! 진행 중에 갑자기! → was working!",
+    "kr": "IT팀이 서버 업그레이드 작업을 하고 있을 때 정전이 발생했다.",
+    "expressions": [
+      {
+        "expr": "server upgrade",
+        "meaning": "서버 업그레이드"
+      },
+      {
+        "expr": "power outage",
+        "meaning": "정전"
+      }
+    ]
+  },
+  {
+    "id": "GRM_402",
+    "category": "GRAMMAR",
+    "cat": "시제",
+    "word_count": 10,
+    "diff": "easy",
+    "sentence": "The startup _______ its annual sustainability targets every year since 2020.",
+    "choices": [
+      "(A) has exceeded",
+      "(B) had exceeded",
+      "(C) exceeded",
+      "(D) exceeds"
+    ],
+    "answer": 0,
+    "answer_word": "has exceeded",
+    "explanation": "since 2020 + 현재까지 → 현재완료 has exceeded.",
+    "explanation_kr": "since 2020! 2020년부터 지금까지 매년 달성! 현재완료 경험! has exceeded!",
+    "kr": "그 스타트업은 2020년부터 매년 연간 지속가능성 목표를 초과 달성했다.",
+    "expressions": [
+      {
+        "expr": "since 2020",
+        "meaning": "현재완료 신호!"
+      },
+      {
+        "expr": "sustainability targets",
+        "meaning": "지속가능성 목표"
+      }
+    ]
+  },
+  {
+    "id": "GRM_403",
+    "category": "GRAMMAR",
+    "cat": "시제",
+    "word_count": 9,
+    "diff": "easy",
+    "sentence": "The AI assistant _______ over ten million customer queries since its launch.",
+    "choices": [
+      "(A) has handled",
+      "(B) handles",
+      "(C) had handled",
+      "(D) handled"
+    ],
+    "answer": 0,
+    "answer_word": "has handled",
+    "explanation": "since its launch + 현재까지 → 현재완료 has handled.",
+    "explanation_kr": "since its launch! 출시 이후 지금까지! 현재완료 경험! has handled! 1천만 건이라니 대단하잖아~",
+    "kr": "AI 어시스턴트는 출시 이후 천만 건 이상의 고객 문의를 처리했다.",
+    "expressions": [
+      {
+        "expr": "AI assistant",
+        "meaning": "AI 어시스턴트"
+      },
+      {
+        "expr": "since its launch",
+        "meaning": "출시 이후 (현재완료!)"
+      }
+    ]
+  },
+  {
+    "id": "GRM_404",
+    "category": "GRAMMAR",
+    "cat": "시제",
+    "word_count": 10,
+    "diff": "easy",
+    "sentence": "The developer _______ the code when a critical security bug was found.",
+    "choices": [
+      "(A) had reviewed",
+      "(B) reviewed",
+      "(C) was reviewing",
+      "(D) has reviewed"
+    ],
+    "answer": 2,
+    "answer_word": "was reviewing",
+    "explanation": "when + 과거 발생(was found) → 그때 진행 중 = 과거진행 was reviewing.",
+    "explanation_kr": "버그가 발견됐을 때(when) 코드 리뷰 '중'이었던 거야! 진행 중에 발견! → was reviewing!",
+    "kr": "개발자가 코드를 검토하고 있을 때 치명적인 보안 버그가 발견되었다.",
+    "expressions": [
+      {
+        "expr": "critical security bug",
+        "meaning": "치명적 보안 버그"
+      },
+      {
+        "expr": "was reviewing when found",
+        "meaning": "검토 중에 발견!"
+      }
+    ]
+  },
+  {
+    "id": "GRM_405",
+    "category": "GRAMMAR",
+    "cat": "시제",
+    "word_count": 11,
+    "diff": "easy",
+    "sentence": "By this Friday, the consultant _______ on the project for exactly three weeks.",
+    "choices": [
+      "(A) has worked",
+      "(B) will have been working",
+      "(C) will work",
+      "(D) worked"
+    ],
+    "answer": 1,
+    "answer_word": "will have been working",
+    "explanation": "By this Friday(미래 완료 시점) + 3주 계속 → 미래완료 진행 will have been working.",
+    "explanation_kr": "By this Friday! 금요일까지 딱 3주 계속 작업! → 미래완료 진행! will have been working!",
+    "kr": "이번 금요일까지면 컨설턴트는 정확히 3주 동안 이 프로젝트를 진행하고 있는 것이 된다.",
+    "expressions": [
+      {
+        "expr": "by this Friday",
+        "meaning": "미래완료 진행 신호!"
+      },
+      {
+        "expr": "will have been working",
+        "meaning": "미래완료 진행형!"
+      }
+    ]
+  },
+  {
+    "id": "GRM_406",
+    "category": "GRAMMAR",
+    "cat": "가정법",
+    "word_count": 12,
+    "diff": "easy",
+    "sentence": "If the app _______ more user-friendly, our customer retention rate would improve.",
+    "choices": [
+      "(A) were",
+      "(B) was",
+      "(C) will be",
+      "(D) is"
+    ],
+    "answer": 0,
+    "answer_word": "were",
+    "explanation": "현재 반사실 가정법 → if절 were.",
+    "explanation_kr": "실제로 앱이 별로 직관적이지 않다는 현실~ 반대 상상! 가정법 → if절 were! 단수여도 were!",
+    "kr": "앱이 더 사용자 친화적이라면 고객 유지율이 향상될 텐데.",
+    "expressions": [
+      {
+        "expr": "user-friendly",
+        "meaning": "사용자 친화적인"
+      },
+      {
+        "expr": "customer retention rate",
+        "meaning": "고객 유지율"
+      }
+    ]
+  },
+  {
+    "id": "GRM_407",
+    "category": "GRAMMAR",
+    "cat": "가정법",
+    "word_count": 12,
+    "diff": "easy",
+    "sentence": "The company would have avoided the data breach if it _______ stronger security.",
+    "choices": [
+      "(A) has implemented",
+      "(B) implements",
+      "(C) had implemented",
+      "(D) implemented"
+    ],
+    "answer": 2,
+    "answer_word": "had implemented",
+    "explanation": "would have avoided → 가정법 과거완료 → if절 had implemented.",
+    "explanation_kr": "would have avoided! 가정법 과거완료 주절! if절엔 had implemented! 결국 보안 허술해서 유출됐다는 거잖아~",
+    "kr": "회사가 더 강력한 보안을 구현했더라면 데이터 침해를 피했을 것이다.",
+    "expressions": [
+      {
+        "expr": "data breach",
+        "meaning": "데이터 침해"
+      },
+      {
+        "expr": "would have avoided → had implemented",
+        "meaning": "가정법 과거완료!"
+      }
+    ]
+  },
+  {
+    "id": "GRM_408",
+    "category": "GRAMMAR",
+    "cat": "가정법",
+    "word_count": 13,
+    "diff": "easy",
+    "sentence": "If the startup _______ more venture capital, it could expand into overseas markets.",
+    "choices": [
+      "(A) had secured",
+      "(B) secures",
+      "(C) secured",
+      "(D) will secure"
+    ],
+    "answer": 2,
+    "answer_word": "secured",
+    "explanation": "현재 반사실(could expand) → if절 동사 과거형 secured.",
+    "explanation_kr": "could expand가 주절에 있어! 가정법 과거야! if절엔 과거형! secured! 실제로 자금이 부족하다는 거~",
+    "kr": "스타트업이 더 많은 벤처 캐피털을 확보한다면 해외 시장으로 확장할 수 있을 텐데.",
+    "expressions": [
+      {
+        "expr": "venture capital",
+        "meaning": "벤처 캐피털"
+      },
+      {
+        "expr": "could expand",
+        "meaning": "가정법 과거 주절 신호!"
+      }
+    ]
+  },
+  {
+    "id": "GRM_409",
+    "category": "GRAMMAR",
+    "cat": "가정법",
+    "word_count": 11,
+    "diff": "easy",
+    "sentence": "Were the cloud migration completed, we _______ see immediate performance improvements.",
+    "choices": [
+      "(A) will",
+      "(B) had",
+      "(C) can",
+      "(D) would"
+    ],
+    "answer": 3,
+    "answer_word": "would",
+    "explanation": "Were + 수동 가정법 도치 → 주절 would.",
+    "explanation_kr": "Were 도치! If the migration were completed의 도치 버전! 가정법 → 주절 would! 마이그레이션 아직 안 됐다는 거~",
+    "kr": "클라우드 마이그레이션이 완료된다면 즉각적인 성능 향상을 볼 수 있을 텐데.",
+    "expressions": [
+      {
+        "expr": "cloud migration",
+        "meaning": "클라우드 마이그레이션"
+      },
+      {
+        "expr": "were + 수동 → would",
+        "meaning": "수동 가정법 도치!"
+      }
+    ]
+  },
+  {
+    "id": "GRM_410",
+    "category": "GRAMMAR",
+    "cat": "가정법",
+    "word_count": 13,
+    "diff": "easy",
+    "sentence": "Had the development team _______ the deadline, the product launch would have succeeded.",
+    "choices": [
+      "(A) meeting",
+      "(B) to meet",
+      "(C) met",
+      "(D) meet"
+    ],
+    "answer": 2,
+    "answer_word": "met",
+    "explanation": "Had + S + p.p. 가정법 과거완료 도치.",
+    "explanation_kr": "Had 도치! Had + the team + p.p.! met! would have succeeded가 주절! 가정법 과거완료 도치엔 p.p.!",
+    "kr": "개발팀이 마감일을 맞췄더라면 제품 출시가 성공했을 것이다.",
+    "expressions": [
+      {
+        "expr": "had + S + p.p.",
+        "meaning": "가정법 과거완료 도치!"
+      },
+      {
+        "expr": "product launch",
+        "meaning": "제품 출시"
+      }
+    ]
+  },
+  {
+    "id": "GRM_411",
+    "category": "GRAMMAR",
+    "cat": "가정법",
+    "word_count": 12,
+    "diff": "easy",
+    "sentence": "If only our app _______ rated higher, we would have more downloads.",
+    "choices": [
+      "(A) is",
+      "(B) was",
+      "(C) has been",
+      "(D) were"
+    ],
+    "answer": 3,
+    "answer_word": "were",
+    "explanation": "if only + 현재 반사실 → were.",
+    "explanation_kr": "if only! 현재에 대한 아쉬움! '높은 평점이었다면' → 현재 가정법 → were! 앱 평점이 낮다는 슬픈 현실~",
+    "kr": "앱이 더 높은 평점을 받았더라면 더 많은 다운로드가 있을 텐데.",
+    "expressions": [
+      {
+        "expr": "if only + 현재 가정",
+        "meaning": "현재 반사실 → were!"
+      },
+      {
+        "expr": "downloads",
+        "meaning": "다운로드 수"
+      }
+    ]
+  },
+  {
+    "id": "GRM_412",
+    "category": "GRAMMAR",
+    "cat": "가정법",
+    "word_count": 12,
+    "diff": "easy",
+    "sentence": "Should the server _______ down again, contact the IT helpdesk immediately.",
+    "choices": [
+      "(A) goes",
+      "(B) go",
+      "(C) gone",
+      "(D) went"
+    ],
+    "answer": 1,
+    "answer_word": "go",
+    "explanation": "Should + S + 동사원형 (조건 가정법).",
+    "explanation_kr": "Should! 조건 가정법 도치! Should + the server + 동사원형! go! goes는 일반 현재, go는 Should 다음 원형!",
+    "kr": "서버가 다시 다운되면 즉시 IT 헬프데스크에 연락하세요.",
+    "expressions": [
+      {
+        "expr": "should + S + 동사원형",
+        "meaning": "조건 가정법! 원형 필수!"
+      },
+      {
+        "expr": "IT helpdesk",
+        "meaning": "IT 헬프데스크"
+      }
+    ]
+  },
+  {
+    "id": "GRM_413",
+    "category": "GRAMMAR",
+    "cat": "가정법",
+    "word_count": 13,
+    "diff": "easy",
+    "sentence": "The startup would be profitable now if it _______ costs more carefully last year.",
+    "choices": [
+      "(A) managed",
+      "(B) would manage",
+      "(C) manages",
+      "(D) had managed"
+    ],
+    "answer": 3,
+    "answer_word": "had managed",
+    "explanation": "would be now(현재 결과) + last year(과거 원인) → 혼합 가정법 had managed.",
+    "explanation_kr": "would be now(현재 결과)! last year(과거)에 잘못했다는 거잖아! 혼합 가정법! had managed!",
+    "kr": "작년에 비용을 더 신중하게 관리했더라면 스타트업은 지금 수익성이 있을 것이다.",
+    "expressions": [
+      {
+        "expr": "혼합 가정법",
+        "meaning": "if had p.p.(과거) + would be(현재)"
+      },
+      {
+        "expr": "profitable",
+        "meaning": "수익성 있는"
+      }
+    ]
+  },
+  {
+    "id": "GRM_414",
+    "category": "GRAMMAR",
+    "cat": "도치",
+    "word_count": 10,
+    "diff": "easy",
+    "sentence": "Rarely _______ such rapid growth in a tech startup in just one year.",
+    "choices": [
+      "(A) we saw",
+      "(B) have we seen",
+      "(C) did we see",
+      "(D) we have seen"
+    ],
+    "answer": 1,
+    "answer_word": "have we seen",
+    "explanation": "Rarely 문두 + 경험 → 현재완료 도치 have + we + seen.",
+    "explanation_kr": "Rarely 도치! 경험 이야기 → 현재완료! have + we + seen! 1년 만에 이런 성장 거의 없다는 거야~",
+    "kr": "테크 스타트업에서 단 1년 만에 이런 급속한 성장을 본 적이 거의 없다.",
+    "expressions": [
+      {
+        "expr": "rarely have we seen",
+        "meaning": "Rarely 도치 + 현재완료!"
+      },
+      {
+        "expr": "rapid growth",
+        "meaning": "급속한 성장"
+      }
+    ]
+  },
+  {
+    "id": "GRM_415",
+    "category": "GRAMMAR",
+    "cat": "도치",
+    "word_count": 10,
+    "diff": "easy",
+    "sentence": "Never before _______ a mobile app reached one billion users so quickly.",
+    "choices": [
+      "(A) a mobile app had",
+      "(B) has a mobile app",
+      "(C) had a mobile app",
+      "(D) a mobile app has"
+    ],
+    "answer": 1,
+    "answer_word": "has a mobile app",
+    "explanation": "Never before 문두 + 단수주어(a mobile app) + 현재완료 → has.",
+    "explanation_kr": "Never before 도치! a mobile app = 단수! 현재 경험 → has! Never before has a mobile app reached!",
+    "kr": "어떤 모바일 앱도 이렇게 빠르게 10억 사용자를 달성한 적이 없었다.",
+    "expressions": [
+      {
+        "expr": "never before has + 단수 + p.p.",
+        "meaning": "Never before 도치 + 현재완료!"
+      },
+      {
+        "expr": "billion users",
+        "meaning": "10억 사용자"
+      }
+    ]
+  },
+  {
+    "id": "GRM_416",
+    "category": "GRAMMAR",
+    "cat": "도치",
+    "word_count": 11,
+    "diff": "easy",
+    "sentence": "Only after the system patch _______ fully tested did the team push the update live.",
+    "choices": [
+      "(A) has been",
+      "(B) had been",
+      "(C) is",
+      "(D) was"
+    ],
+    "answer": 1,
+    "answer_word": "had been",
+    "explanation": "Only after 절 → 주절보다 먼저 완료된 수동 = 과거완료 수동 had been tested.",
+    "explanation_kr": "Only after 절 안! 패치 테스트(먼저)가 업데이트 배포(나중)보다 앞서! 과거완료 수동! had been tested!",
+    "kr": "시스템 패치가 완전히 테스트된 후에야 팀은 업데이트를 라이브로 배포했다.",
+    "expressions": [
+      {
+        "expr": "only after + had been p.p.",
+        "meaning": "Only after 절 과거완료 수동!"
+      },
+      {
+        "expr": "push live",
+        "meaning": "라이브로 배포하다"
+      }
+    ]
+  },
+  {
+    "id": "GRM_417",
+    "category": "GRAMMAR",
+    "cat": "도치",
+    "word_count": 11,
+    "diff": "easy",
+    "sentence": "Not until the security audit _______ passed did the company receive its certification.",
+    "choices": [
+      "(A) has been",
+      "(B) is",
+      "(C) had been",
+      "(D) was"
+    ],
+    "answer": 3,
+    "answer_word": "was",
+    "explanation": "Not until 절 내부 수동태 + 과거 → was passed.",
+    "explanation_kr": "Not until 절 안! 감사가 통과 당한 거야! 수동태! 과거 → was passed! 뒤에 did가 주절 도치 신호!",
+    "kr": "보안 감사를 통과할 때까지 회사는 인증을 받지 못했다.",
+    "expressions": [
+      {
+        "expr": "not until was p.p., did 도치",
+        "meaning": "Not until 수동 + 주절 도치!"
+      },
+      {
+        "expr": "security audit",
+        "meaning": "보안 감사"
+      }
+    ]
+  },
+  {
+    "id": "GRM_418",
+    "category": "GRAMMAR",
+    "cat": "도치",
+    "word_count": 10,
+    "diff": "easy",
+    "sentence": "So innovative _______ the product that it won three industry awards.",
+    "choices": [
+      "(A) the product is",
+      "(B) was the product",
+      "(C) the product was",
+      "(D) is the product"
+    ],
+    "answer": 1,
+    "answer_word": "was the product",
+    "explanation": "So + 형용사 문두 도치 → was + the product (과거).",
+    "explanation_kr": "So innovative 도치! 형용사 앞에 나오면 뒤집어! was + the product 순서! 3개 상을 탔다니 과거니까 was!",
+    "kr": "그 제품이 너무 혁신적이어서 세 개의 업계 상을 수상했다.",
+    "expressions": [
+      {
+        "expr": "so + 형용사 + was + 주어 that",
+        "meaning": "So innovative was the product that...!"
+      },
+      {
+        "expr": "industry award",
+        "meaning": "업계 상"
+      }
+    ]
+  },
+  {
+    "id": "GRM_419",
+    "category": "GRAMMAR",
+    "cat": "도치",
+    "word_count": 10,
+    "diff": "easy",
+    "sentence": "Little _______ that their app would disrupt the entire fintech industry.",
+    "choices": [
+      "(A) they know",
+      "(B) knew they",
+      "(C) did they know",
+      "(D) they knew"
+    ],
+    "answer": 2,
+    "answer_word": "did they know",
+    "explanation": "Little 문두 도치 → did + 주어 + 동사원형.",
+    "explanation_kr": "Little 도치! 창업자들이 거의 몰랐다! did + they + know! 결국 핀테크 판을 뒤집었다는 놀라운 스토리!",
+    "kr": "그들의 앱이 핀테크 업계 전체를 혁신할 것이라는 것을 그들은 거의 알지 못했다.",
+    "expressions": [
+      {
+        "expr": "little did + 주어 + 동사원형",
+        "meaning": "Little 도치!"
+      },
+      {
+        "expr": "disrupt",
+        "meaning": "혁신하다, 뒤흔들다"
+      }
+    ]
+  },
+  {
+    "id": "GRM_420",
+    "category": "GRAMMAR",
+    "cat": "도치",
+    "word_count": 10,
+    "diff": "easy",
+    "sentence": "Not only _______ the app bug fixed, but the team also improved the user interface.",
+    "choices": [
+      "(A) the team did get",
+      "(B) the team got",
+      "(C) did the team get",
+      "(D) got the team"
+    ],
+    "answer": 2,
+    "answer_word": "did the team get",
+    "explanation": "Not only 문두 도치 → did + the team + get.",
+    "explanation_kr": "Not only 도치! did + the team + get! 동사원형 get! 버그 고치고 UI도 개선했다니 열일했네~",
+    "kr": "팀은 앱 버그를 수정했을 뿐만 아니라 사용자 인터페이스도 개선했다.",
+    "expressions": [
+      {
+        "expr": "not only did + 주어 + 동사원형",
+        "meaning": "Not only 도치!"
+      },
+      {
+        "expr": "user interface",
+        "meaning": "사용자 인터페이스 (UI)"
+      }
+    ]
+  },
+  {
+    "id": "GRM_421",
+    "category": "GRAMMAR",
+    "cat": "도치",
+    "word_count": 10,
+    "diff": "easy",
+    "sentence": "Seldom _______ a product update received such overwhelmingly positive user feedback.",
+    "choices": [
+      "(A) a product update had",
+      "(B) has a product update",
+      "(C) did a product update",
+      "(D) a product update has"
+    ],
+    "answer": 1,
+    "answer_word": "has a product update",
+    "explanation": "Seldom 문두 + 현재완료 도치 → has + a product update.",
+    "explanation_kr": "Seldom 도치! 현재완료 경험! has + a product update! a product update = 단수 → has!",
+    "kr": "어떤 제품 업데이트도 이렇게 압도적으로 긍정적인 사용자 피드백을 받은 적이 거의 없다.",
+    "expressions": [
+      {
+        "expr": "seldom has + 주어 + p.p.",
+        "meaning": "Seldom 도치 + 현재완료!"
+      },
+      {
+        "expr": "user feedback",
+        "meaning": "사용자 피드백"
+      }
+    ]
+  },
+  {
+    "id": "GRM_422",
+    "category": "GRAMMAR",
+    "cat": "도치",
+    "word_count": 10,
+    "diff": "easy",
+    "sentence": "Under no circumstances _______ employees share their login credentials with others.",
+    "choices": [
+      "(A) will employees",
+      "(B) should employees",
+      "(C) employees must",
+      "(D) employees should"
+    ],
+    "answer": 1,
+    "answer_word": "should employees",
+    "explanation": "Under no circumstances 문두 → 도치 should + employees.",
+    "explanation_kr": "Under no circumstances! 절대 안 된다! 부정 표현 앞에 나오면 도치! should + employees! 로그인 정보 공유 절대 금지!",
+    "kr": "어떤 경우에도 직원들은 로그인 자격 증명을 다른 사람과 공유해서는 안 된다.",
+    "expressions": [
+      {
+        "expr": "under no circumstances should + 주어",
+        "meaning": "절대 ~해서는 안 된다!"
+      },
+      {
+        "expr": "login credentials",
+        "meaning": "로그인 자격 증명"
+      }
+    ]
+  },
+  {
+    "id": "GRM_423",
+    "category": "GRAMMAR",
+    "cat": "도치",
+    "word_count": 10,
+    "diff": "easy",
+    "sentence": "Such _______ the demand for AI engineers that salaries tripled in two years.",
+    "choices": [
+      "(A) were",
+      "(B) has been",
+      "(C) is",
+      "(D) was"
+    ],
+    "answer": 3,
+    "answer_word": "was",
+    "explanation": "Such + was + 주어 도치. 과거 상황이므로 was.",
+    "explanation_kr": "Such 도치! Such was the demand! AI 엔지니어 수요가 어마어마했던 거야! 과거 → was! 연봉 3배라니~",
+    "kr": "AI 엔지니어에 대한 수요가 너무 커서 2년 만에 연봉이 세 배가 되었다.",
+    "expressions": [
+      {
+        "expr": "such was + 주어 that",
+        "meaning": "Such 도치 패턴!"
+      },
+      {
+        "expr": "triple",
+        "meaning": "세 배가 되다"
+      }
+    ]
+  },
+  {
+    "id": "GRM_424",
+    "category": "GRAMMAR",
+    "cat": "도치",
+    "word_count": 9,
+    "diff": "easy",
+    "sentence": "No sooner _______ the app than it crashed with a critical error.",
+    "choices": [
+      "(A) had we launched",
+      "(B) we had launched",
+      "(C) did we launch",
+      "(D) we launched"
+    ],
+    "answer": 0,
+    "answer_word": "had we launched",
+    "explanation": "No sooner 문두 + 과거완료 도치 had + we + launched.",
+    "explanation_kr": "No sooner 도치! '~하자마자'! had + we + launched! 출시하자마자 충돌났다는 최악의 시나리오~",
+    "kr": "앱을 출시하자마자 치명적인 오류와 함께 충돌이 발생했다.",
+    "expressions": [
+      {
+        "expr": "no sooner had + 주어 + p.p. than",
+        "meaning": "~하자마자!"
+      },
+      {
+        "expr": "crash",
+        "meaning": "충돌하다, 다운되다"
+      }
+    ]
+  },
+  {
+    "id": "GRM_425",
+    "category": "GRAMMAR",
+    "cat": "도치",
+    "word_count": 11,
+    "diff": "easy",
+    "sentence": "Only when the platform _______ fully secured did the company announce the relaunch.",
+    "choices": [
+      "(A) had been",
+      "(B) was",
+      "(C) has been",
+      "(D) is"
+    ],
+    "answer": 1,
+    "answer_word": "was",
+    "explanation": "Only when 절 내부 수동태 + 과거 → was secured.",
+    "explanation_kr": "Only when 절 안! 플랫폼이 보안 처리 당한 거잖아! 수동태! 과거 → was secured! 그다음 did 도치!",
+    "kr": "플랫폼이 완전히 보안 처리될 때서야 회사는 재출시를 발표했다.",
+    "expressions": [
+      {
+        "expr": "only when 수동절, did 도치",
+        "meaning": "Only when 절 수동 + 도치!"
+      },
+      {
+        "expr": "relaunch",
+        "meaning": "재출시"
+      }
+    ]
+  },
+  {
+    "id": "GRM_426",
+    "category": "GRAMMAR",
+    "cat": "수동태",
+    "word_count": 17,
+    "diff": "normal",
+    "sentence": "The new AI-driven recruitment platform _______ piloted in three regional offices before being rolled out company-wide.",
+    "choices": [
+      "(A) were",
+      "(B) has been",
+      "(C) is being",
+      "(D) was"
+    ],
+    "answer": 3,
+    "answer_word": "was",
+    "explanation": "platform(단수) + 수동태 + 과거(before being rolled out) → was piloted.",
+    "explanation_kr": "플랫폼이 시범 운영 당한 거야! 단수! 과거에 먼저 시범 운영하고 나중에 전사 도입! → was piloted!",
+    "kr": "새로운 AI 기반 채용 플랫폼은 전사적으로 도입되기 전에 세 개 지역 사무소에서 시범 운영되었다.",
+    "expressions": [
+      {
+        "expr": "AI-driven",
+        "meaning": "AI 기반의"
+      },
+      {
+        "expr": "pilot",
+        "meaning": "시범 운영하다"
+      },
+      {
+        "expr": "roll out",
+        "meaning": "도입하다, 배포하다"
+      }
+    ]
+  },
+  {
+    "id": "GRM_427",
+    "category": "GRAMMAR",
+    "cat": "수동태",
+    "word_count": 18,
+    "diff": "normal",
+    "sentence": "All employee performance data collected through the new digital evaluation system _______ stored securely in encrypted cloud servers.",
+    "choices": [
+      "(A) is",
+      "(B) were",
+      "(C) was",
+      "(D) are"
+    ],
+    "answer": 0,
+    "answer_word": "is",
+    "explanation": "진짜 주어 = data(불가산 단수) + 현재 수동 → is stored.",
+    "explanation_kr": "data가 주어! 불가산 단수! of/collected 이하 다 수식어! is stored! 클라우드에 암호화 저장 중이야~",
+    "kr": "새 디지털 평가 시스템을 통해 수집된 모든 직원 성과 데이터는 암호화된 클라우드 서버에 안전하게 저장된다.",
+    "expressions": [
+      {
+        "expr": "data",
+        "meaning": "데이터 (불가산 → 단수 is!)"
+      },
+      {
+        "expr": "encrypted cloud servers",
+        "meaning": "암호화된 클라우드 서버"
+      }
+    ]
+  },
+  {
+    "id": "GRM_428",
+    "category": "GRAMMAR",
+    "cat": "수동태",
+    "word_count": 17,
+    "diff": "normal",
+    "sentence": "The company's entire network infrastructure _______ migrated to a hybrid cloud environment over the past six months.",
+    "choices": [
+      "(A) had been",
+      "(B) has been",
+      "(C) was",
+      "(D) were"
+    ],
+    "answer": 1,
+    "answer_word": "has been",
+    "explanation": "진짜 주어 infrastructure(단수) + over the past six months(현재완료) → has been migrated.",
+    "explanation_kr": "infrastructure = 단수! over the past 6 months → 현재완료! has been migrated! 지금 막 완료된 마이그레이션이야~",
+    "kr": "지난 6개월에 걸쳐 회사 전체 네트워크 인프라가 하이브리드 클라우드 환경으로 마이그레이션되었다.",
+    "expressions": [
+      {
+        "expr": "network infrastructure",
+        "meaning": "네트워크 인프라"
+      },
+      {
+        "expr": "hybrid cloud",
+        "meaning": "하이브리드 클라우드"
+      }
+    ]
+  },
+  {
+    "id": "GRM_429",
+    "category": "GRAMMAR",
+    "cat": "수동태",
+    "word_count": 17,
+    "diff": "normal",
+    "sentence": "The revised remote work policy incorporating feedback from over five hundred employees _______ distributed to all staff yesterday.",
+    "choices": [
+      "(A) were",
+      "(B) has been",
+      "(C) was",
+      "(D) is"
+    ],
+    "answer": 2,
+    "answer_word": "was",
+    "explanation": "주어 policy(단수) + 수동태 + yesterday(과거) → was distributed.",
+    "explanation_kr": "yesterday!! 과거 확정! policy = 단수! 배포 당한 거잖아! was distributed!",
+    "kr": "500명 이상의 직원 피드백을 반영한 개정된 재택근무 정책이 어제 모든 직원에게 배포되었다.",
+    "expressions": [
+      {
+        "expr": "remote work policy",
+        "meaning": "재택근무 정책"
+      },
+      {
+        "expr": "incorporate feedback",
+        "meaning": "피드백을 반영하다"
+      }
+    ]
+  },
+  {
+    "id": "GRM_430",
+    "category": "GRAMMAR",
+    "cat": "수동태",
+    "word_count": 16,
+    "diff": "normal",
+    "sentence": "A comprehensive review of the company's data privacy practices _______ currently conducted by an independent third-party auditor.",
+    "choices": [
+      "(A) are being",
+      "(B) was being",
+      "(C) were being",
+      "(D) is being"
+    ],
+    "answer": 3,
+    "answer_word": "is being",
+    "explanation": "주어 review(단수) + 현재진행 수동 → is being conducted.",
+    "explanation_kr": "A comprehensive review! 단수! 현재 진행 중이야! 현재진행 수동 → is being conducted!",
+    "kr": "회사의 데이터 개인정보 보호 관행에 대한 포괄적인 검토가 현재 독립적인 제3자 감사기관에 의해 진행되고 있다.",
+    "expressions": [
+      {
+        "expr": "data privacy practices",
+        "meaning": "데이터 개인정보 보호 관행"
+      },
+      {
+        "expr": "third-party auditor",
+        "meaning": "제3자 감사기관"
+      }
+    ]
+  },
+  {
+    "id": "GRM_431",
+    "category": "GRAMMAR",
+    "cat": "수동태",
+    "word_count": 18,
+    "diff": "normal",
+    "sentence": "All job applications submitted through the company's new online recruitment portal _______ screened by an AI algorithm before human review.",
+    "choices": [
+      "(A) is",
+      "(B) were",
+      "(C) are",
+      "(D) was"
+    ],
+    "answer": 2,
+    "answer_word": "are",
+    "explanation": "진짜 주어 applications(복수) + 현재 반복 수동 → are screened.",
+    "explanation_kr": "applications = 복수야! 지원서들이 스크리닝 당하는 거잖아! 현재 반복 사실 → are screened! AI가 먼저 걸러낸다고~",
+    "kr": "회사의 새 온라인 채용 포털을 통해 제출된 모든 입사 지원서는 인간 검토 전에 AI 알고리즘에 의해 심사된다.",
+    "expressions": [
+      {
+        "expr": "recruitment portal",
+        "meaning": "채용 포털"
+      },
+      {
+        "expr": "AI algorithm",
+        "meaning": "AI 알고리즘"
+      }
+    ]
+  },
+  {
+    "id": "GRM_432",
+    "category": "GRAMMAR",
+    "cat": "수동태",
+    "word_count": 17,
+    "diff": "normal",
+    "sentence": "The quarterly sustainability metrics and carbon emission data _______ reported to the board of directors at the end of each fiscal quarter.",
+    "choices": [
+      "(A) are",
+      "(B) is",
+      "(C) were",
+      "(D) was"
+    ],
+    "answer": 0,
+    "answer_word": "are",
+    "explanation": "metrics and data = 복수(두 가지) + 현재 수동 → are reported.",
+    "explanation_kr": "metrics and data! and로 연결된 두 가지 → 복수! are reported! 매 분기 보고 당하는 거야~",
+    "kr": "분기별 지속가능성 지표와 탄소 배출 데이터가 각 회계 분기 말에 이사회에 보고된다.",
+    "expressions": [
+      {
+        "expr": "sustainability metrics",
+        "meaning": "지속가능성 지표"
+      },
+      {
+        "expr": "carbon emission",
+        "meaning": "탄소 배출"
+      }
+    ]
+  },
+  {
+    "id": "GRM_433",
+    "category": "GRAMMAR",
+    "cat": "수동태",
+    "word_count": 17,
+    "diff": "normal",
+    "sentence": "The e-commerce platform's new one-click checkout feature _______ developed and tested by the UX team over three months.",
+    "choices": [
+      "(A) were",
+      "(B) has been",
+      "(C) was",
+      "(D) had been"
+    ],
+    "answer": 1,
+    "answer_word": "has been",
+    "explanation": "feature(단수) + 현재완료 수동(최근 완료) → has been developed.",
+    "explanation_kr": "feature = 단수! 최근 3개월에 걸쳐 개발 완료! 현재완료 수동 → has been developed and tested!",
+    "kr": "이커머스 플랫폼의 새로운 원클릭 결제 기능이 3개월에 걸쳐 UX팀에 의해 개발되고 테스트되었다.",
+    "expressions": [
+      {
+        "expr": "one-click checkout",
+        "meaning": "원클릭 결제"
+      },
+      {
+        "expr": "UX team",
+        "meaning": "UX(사용자 경험) 팀"
+      }
+    ]
+  },
+  {
+    "id": "GRM_434",
+    "category": "GRAMMAR",
+    "cat": "수동태",
+    "word_count": 16,
+    "diff": "normal",
+    "sentence": "The entire inventory management system _______ automated using machine learning algorithms to reduce human error.",
+    "choices": [
+      "(A) were",
+      "(B) have been",
+      "(C) is",
+      "(D) has been"
+    ],
+    "answer": 3,
+    "answer_word": "has been",
+    "explanation": "주어 system(단수) + 현재완료 수동 → has been automated.",
+    "explanation_kr": "system = 단수! 자동화 당한 거잖아! 현재완료 수동 → has been automated! 머신러닝으로 자동화했다니 최신 트렌드네~",
+    "kr": "전체 재고 관리 시스템이 인적 오류를 줄이기 위해 머신러닝 알고리즘을 사용하여 자동화되었다.",
+    "expressions": [
+      {
+        "expr": "inventory management",
+        "meaning": "재고 관리"
+      },
+      {
+        "expr": "machine learning",
+        "meaning": "머신러닝"
+      }
+    ]
+  },
+  {
+    "id": "GRM_435",
+    "category": "GRAMMAR",
+    "cat": "수동태",
+    "word_count": 16,
+    "diff": "normal",
+    "sentence": "All sensitive financial transactions above a certain threshold _______ flagged automatically by the fraud detection system.",
+    "choices": [
+      "(A) were",
+      "(B) was",
+      "(C) are",
+      "(D) is"
+    ],
+    "answer": 2,
+    "answer_word": "are",
+    "explanation": "transactions(복수) + 현재 반복 수동 → are flagged.",
+    "explanation_kr": "transactions = 복수! 거래들이 자동으로 표시 당하는 거야! 현재 반복 사실 → are flagged! 사기 감지 시스템이 잡아낸다~",
+    "kr": "일정 한도 이상의 모든 민감한 금융 거래는 사기 탐지 시스템에 의해 자동으로 플래그 표시된다.",
+    "expressions": [
+      {
+        "expr": "fraud detection system",
+        "meaning": "사기 탐지 시스템"
+      },
+      {
+        "expr": "threshold",
+        "meaning": "한도, 임계값"
+      }
+    ]
+  },
+  {
+    "id": "GRM_436",
+    "category": "GRAMMAR",
+    "cat": "수일치",
+    "word_count": 17,
+    "diff": "normal",
+    "sentence": "The number of employees opting for the hybrid work model _______ steadily increased over the past two quarters.",
+    "choices": [
+      "(A) have",
+      "(B) are",
+      "(C) were",
+      "(D) has"
+    ],
+    "answer": 3,
+    "answer_word": "has",
+    "explanation": "The number of = 단수 + 현재완료 → has increased.",
+    "explanation_kr": "The number of! 단수야! employees 아무리 많아도! has increased! 하이브리드 근무 선택자가 늘고 있다는 현재 트렌드!",
+    "kr": "하이브리드 근무 모델을 선택하는 직원 수가 지난 두 분기에 걸쳐 꾸준히 증가했다.",
+    "expressions": [
+      {
+        "expr": "hybrid work model",
+        "meaning": "하이브리드 근무 모델"
+      },
+      {
+        "expr": "the number of → has",
+        "meaning": "단수!"
+      }
+    ]
+  },
+  {
+    "id": "GRM_437",
+    "category": "GRAMMAR",
+    "cat": "수일치",
+    "word_count": 18,
+    "diff": "normal",
+    "sentence": "Neither the chief technology officer nor the software development team _______ been notified about the critical system vulnerability.",
+    "choices": [
+      "(A) has",
+      "(B) were",
+      "(C) are",
+      "(D) have"
+    ],
+    "answer": 0,
+    "answer_word": "has",
+    "explanation": "Neither A nor B → B에 수 일치. B = team(단수) → has.",
+    "explanation_kr": "neither nor! 뒤(B)에 맞추기! team = 단수! has been notified! CTO도 팀도 몰랐다니 보안 구멍이네~",
+    "kr": "최고기술책임자도 소프트웨어 개발팀도 심각한 시스템 취약점에 대해 통보받지 못했다.",
+    "expressions": [
+      {
+        "expr": "chief technology officer (CTO)",
+        "meaning": "최고기술책임자"
+      },
+      {
+        "expr": "system vulnerability",
+        "meaning": "시스템 취약점"
+      }
+    ]
+  },
+  {
+    "id": "GRM_438",
+    "category": "GRAMMAR",
+    "cat": "수일치",
+    "word_count": 18,
+    "diff": "normal",
+    "sentence": "The proportion of customers who prefer digital self-service options over traditional call centers _______ risen significantly.",
+    "choices": [
+      "(A) are",
+      "(B) has",
+      "(C) were",
+      "(D) have"
+    ],
+    "answer": 1,
+    "answer_word": "has",
+    "explanation": "The proportion(단수) + 현재완료 → has risen.",
+    "explanation_kr": "The proportion이 주어! 단수! who절 다 수식어! has risen! 비율이 올랐다는 거야~",
+    "kr": "전통적인 콜센터보다 디지털 셀프서비스 옵션을 선호하는 고객 비율이 크게 증가했다.",
+    "expressions": [
+      {
+        "expr": "digital self-service",
+        "meaning": "디지털 셀프서비스"
+      },
+      {
+        "expr": "call center",
+        "meaning": "콜센터"
+      }
+    ]
+  },
+  {
+    "id": "GRM_439",
+    "category": "GRAMMAR",
+    "cat": "수일치",
+    "word_count": 18,
+    "diff": "normal",
+    "sentence": "The chief data officer, along with her team of data scientists, _______ currently analyzing patterns in the company's customer behavior data.",
+    "choices": [
+      "(A) are",
+      "(B) were",
+      "(C) have been",
+      "(D) is"
+    ],
+    "answer": 3,
+    "answer_word": "is",
+    "explanation": "along with 무시 → 주어 chief data officer(단수) → is.",
+    "explanation_kr": "along with 무시!! chief data officer 혼자가 주어야! 단수! is analyzing! 데이터 사이언티스트들 아무리 많아도!",
+    "kr": "최고데이터책임자는 데이터 사이언티스트 팀과 함께 현재 회사 고객 행동 데이터의 패턴을 분석하고 있다.",
+    "expressions": [
+      {
+        "expr": "chief data officer (CDO)",
+        "meaning": "최고데이터책임자"
+      },
+      {
+        "expr": "customer behavior data",
+        "meaning": "고객 행동 데이터"
+      }
+    ]
+  },
+  {
+    "id": "GRM_440",
+    "category": "GRAMMAR",
+    "cat": "수일치",
+    "word_count": 17,
+    "diff": "normal",
+    "sentence": "Either the regional IT manager or the two network engineers _______ responsible for resolving the connectivity issues immediately.",
+    "choices": [
+      "(A) were",
+      "(B) was",
+      "(C) are",
+      "(D) is"
+    ],
+    "answer": 2,
+    "answer_word": "are",
+    "explanation": "Either A or B → B에 수 일치. B = two network engineers(복수) → are.",
+    "explanation_kr": "either or! 뒤(B)에 맞추기! two network engineers = 복수! are! IT manager에 낚이면 안 돼!",
+    "kr": "지역 IT 매니저 또는 두 명의 네트워크 엔지니어가 연결 문제를 즉시 해결할 책임이 있다.",
+    "expressions": [
+      {
+        "expr": "network engineers",
+        "meaning": "네트워크 엔지니어"
+      },
+      {
+        "expr": "connectivity issues",
+        "meaning": "연결 문제"
+      }
+    ]
+  },
+  {
+    "id": "GRM_441",
+    "category": "GRAMMAR",
+    "cat": "수일치",
+    "word_count": 17,
+    "diff": "normal",
+    "sentence": "A growing number of global companies _______ started integrating generative AI tools into their daily workflows.",
+    "choices": [
+      "(A) have",
+      "(B) was",
+      "(C) is",
+      "(D) has"
+    ],
+    "answer": 0,
+    "answer_word": "have",
+    "explanation": "A growing number of = 복수 + 현재완료 → have started.",
+    "explanation_kr": "A growing number of! 증가하는 수의 기업들! 복수! → have! A number of = 복수, The number of = 단수! 차이!",
+    "kr": "증가하는 수의 글로벌 기업들이 생성형 AI 도구를 일상 워크플로에 통합하기 시작했다.",
+    "expressions": [
+      {
+        "expr": "generative AI",
+        "meaning": "생성형 AI"
+      },
+      {
+        "expr": "a growing number of",
+        "meaning": "증가하는 수의 (복수!)"
+      }
+    ]
+  },
+  {
+    "id": "GRM_442",
+    "category": "GRAMMAR",
+    "cat": "수일치",
+    "word_count": 17,
+    "diff": "normal",
+    "sentence": "Not only the development team but also the UX designer _______ been working overtime to meet the product launch deadline.",
+    "choices": [
+      "(A) has",
+      "(B) were",
+      "(C) have",
+      "(D) are"
+    ],
+    "answer": 0,
+    "answer_word": "has",
+    "explanation": "Not only A but also B → B에 수 일치. B = UX designer(단수) → has.",
+    "explanation_kr": "not only but also! B에 맞추기! UX designer = 단수! has! 마감 맞추려고 야근하고 있다니~",
+    "kr": "개발팀뿐만 아니라 UX 디자이너도 제품 출시 마감일을 맞추기 위해 야근을 하고 있다.",
+    "expressions": [
+      {
+        "expr": "not only A but also B → B 단수",
+        "meaning": "has!"
+      },
+      {
+        "expr": "product launch deadline",
+        "meaning": "제품 출시 마감일"
+      }
+    ]
+  },
+  {
+    "id": "GRM_443",
+    "category": "GRAMMAR",
+    "cat": "수일치",
+    "word_count": 17,
+    "diff": "normal",
+    "sentence": "The quality of AI-generated content produced by the new automated marketing platform _______ been consistently high.",
+    "choices": [
+      "(A) were",
+      "(B) has",
+      "(C) are",
+      "(D) have"
+    ],
+    "answer": 1,
+    "answer_word": "has",
+    "explanation": "The quality(단수) + 현재완료 → has been.",
+    "explanation_kr": "The quality가 주어! 단수! of AI-generated content 다 수식어 무시! has been consistently high!",
+    "kr": "새로운 자동화 마케팅 플랫폼이 생성하는 AI 생성 콘텐츠의 품질이 꾸준히 높았다.",
+    "expressions": [
+      {
+        "expr": "AI-generated content",
+        "meaning": "AI 생성 콘텐츠"
+      },
+      {
+        "expr": "automated marketing platform",
+        "meaning": "자동화 마케팅 플랫폼"
+      }
+    ]
+  },
+  {
+    "id": "GRM_444",
+    "category": "GRAMMAR",
+    "cat": "수일치",
+    "word_count": 18,
+    "diff": "normal",
+    "sentence": "The entire portfolio of digital products developed by the startup's engineering team _______ been acquired by a major technology corporation.",
+    "choices": [
+      "(A) were",
+      "(B) has",
+      "(C) have",
+      "(D) are"
+    ],
+    "answer": 1,
+    "answer_word": "has",
+    "explanation": "The portfolio(단수) + 현재완료 수동 → has been acquired.",
+    "explanation_kr": "The portfolio가 주어! 단수! of digital products는 수식어! has been acquired! 스타트업이 대기업에 인수됐다는 얘기~",
+    "kr": "스타트업 엔지니어링 팀이 개발한 전체 디지털 제품 포트폴리오가 주요 기술 기업에 인수되었다.",
+    "expressions": [
+      {
+        "expr": "portfolio",
+        "meaning": "포트폴리오 (단수!)"
+      },
+      {
+        "expr": "acquire",
+        "meaning": "인수하다"
+      }
+    ]
+  },
+  {
+    "id": "GRM_445",
+    "category": "GRAMMAR",
+    "cat": "수일치",
+    "word_count": 18,
+    "diff": "normal",
+    "sentence": "Three quarters of the annual IT budget for digital transformation projects _______ already been allocated to cloud infrastructure upgrades.",
+    "choices": [
+      "(A) has",
+      "(B) was",
+      "(C) were",
+      "(D) have"
+    ],
+    "answer": 0,
+    "answer_word": "has",
+    "explanation": "three quarters of + 불가산명사(budget) → 단수 → has.",
+    "explanation_kr": "three quarters of budget! budget = 불가산 단수! three quarters of + 불가산 → 단수! has! projects면 have지만 budget이니까 has!",
+    "kr": "디지털 전환 프로젝트를 위한 연간 IT 예산의 4분의 3이 이미 클라우드 인프라 업그레이드에 배정되었다.",
+    "expressions": [
+      {
+        "expr": "three quarters of + 불가산",
+        "meaning": "단수 → has!"
+      },
+      {
+        "expr": "cloud infrastructure",
+        "meaning": "클라우드 인프라"
+      }
+    ]
+  },
+  {
+    "id": "GRM_446",
+    "category": "GRAMMAR",
+    "cat": "시제",
+    "word_count": 17,
+    "diff": "normal",
+    "sentence": "The company's chief AI officer _______ machine learning models for various business applications since she joined three years ago.",
+    "choices": [
+      "(A) develops",
+      "(B) had been developing",
+      "(C) has been developing",
+      "(D) developed"
+    ],
+    "answer": 2,
+    "answer_word": "has been developing",
+    "explanation": "since she joined(과거) + 현재까지 → 현재완료 진행 has been developing.",
+    "explanation_kr": "since she joined! 3년 전부터 지금까지 쭉! 현재완료 진행! has been developing! 아직 현직이니까 has been!",
+    "kr": "최고AI책임자는 3년 전에 합류한 이후 다양한 비즈니스 애플리케이션을 위한 머신러닝 모델을 개발해오고 있다.",
+    "expressions": [
+      {
+        "expr": "chief AI officer",
+        "meaning": "최고AI책임자"
+      },
+      {
+        "expr": "since she joined",
+        "meaning": "현재완료 진행 신호!"
+      }
+    ]
+  },
+  {
+    "id": "GRM_447",
+    "category": "GRAMMAR",
+    "cat": "시제",
+    "word_count": 17,
+    "diff": "normal",
+    "sentence": "The data science team _______ on the predictive analytics model for eight months when the project was suddenly cancelled.",
+    "choices": [
+      "(A) had been working",
+      "(B) has worked",
+      "(C) was working",
+      "(D) worked"
+    ],
+    "answer": 0,
+    "answer_word": "had been working",
+    "explanation": "when + 과거 사건(was cancelled) → 그때까지 계속 = 과거완료 진행 had been working.",
+    "explanation_kr": "프로젝트가 취소됐을 때(과거)까지 8개월 쭉 작업 중이었던 거야! 과거완료 진행! had been working!",
+    "kr": "데이터 사이언스 팀은 프로젝트가 갑자기 취소되었을 때 8개월 동안 예측 분석 모델을 작업하고 있었다.",
+    "expressions": [
+      {
+        "expr": "predictive analytics",
+        "meaning": "예측 분석"
+      },
+      {
+        "expr": "had been working when cancelled",
+        "meaning": "취소 시점까지의 진행!"
+      }
+    ]
+  },
+  {
+    "id": "GRM_448",
+    "category": "GRAMMAR",
+    "cat": "시제",
+    "word_count": 17,
+    "diff": "normal",
+    "sentence": "By the time the updated privacy policy _______ sent to all users, the company will have notified over two million customers.",
+    "choices": [
+      "(A) will be",
+      "(B) has been",
+      "(C) is",
+      "(D) was"
+    ],
+    "answer": 2,
+    "answer_word": "is",
+    "explanation": "By the time + 시간 부사절 → 현재형으로 미래 표현(is).",
+    "explanation_kr": "By the time 뒤에 미래 얘기여도 시간 부사절엔 will 못 써!! 현재형 is! will be sent 쓰면 틀려! 자주 나오는 함정!",
+    "kr": "업데이트된 개인정보 보호 정책이 모든 사용자에게 발송될 때쯤이면 회사는 200만 명 이상의 고객에게 통보한 것이 될 것이다.",
+    "expressions": [
+      {
+        "expr": "by the time + 현재형",
+        "meaning": "시간 부사절 → 현재형! will 불가!"
+      },
+      {
+        "expr": "privacy policy",
+        "meaning": "개인정보 보호 정책"
+      }
+    ]
+  },
+  {
+    "id": "GRM_449",
+    "category": "GRAMMAR",
+    "cat": "시제",
+    "word_count": 16,
+    "diff": "normal",
+    "sentence": "The tech company's stock price _______ steadily for six months before the unexpected data breach was publicly disclosed.",
+    "choices": [
+      "(A) has risen",
+      "(B) had been rising",
+      "(C) was rising",
+      "(D) rose"
+    ],
+    "answer": 1,
+    "answer_word": "had been rising",
+    "explanation": "before + 과거 사건(was disclosed) → 그때까지 계속 = 과거완료 진행 had been rising.",
+    "explanation_kr": "유출 공개(과거) 전에 6개월 동안 쭉 상승 중이었던 거야! 과거완료 진행! had been rising!",
+    "kr": "예상치 못한 데이터 침해가 공개되기 전 기술 회사의 주가가 6개월 동안 꾸준히 상승하고 있었다.",
+    "expressions": [
+      {
+        "expr": "stock price",
+        "meaning": "주가"
+      },
+      {
+        "expr": "data breach",
+        "meaning": "데이터 침해"
+      },
+      {
+        "expr": "publicly disclose",
+        "meaning": "공개적으로 공개하다"
+      }
+    ]
+  },
+  {
+    "id": "GRM_450",
+    "category": "GRAMMAR",
+    "cat": "시제",
+    "word_count": 17,
+    "diff": "normal",
+    "sentence": "The head of product development _______ on the new feature roadmap every day this week when her manager announced an urgent pivot.",
+    "choices": [
+      "(A) was working",
+      "(B) had been working",
+      "(C) has worked",
+      "(D) worked"
+    ],
+    "answer": 0,
+    "answer_word": "was working",
+    "explanation": "when + 갑작스러운 과거 발표(announced) → 그때 진행 중 = 과거진행 was working.",
+    "explanation_kr": "매니저가 발표(when)했을 때 작업 '중'이었던 거야! 진행 중에 갑자기! → was working!",
+    "kr": "제품 개발 책임자가 이번 주 매일 새 기능 로드맵을 작업하고 있을 때 매니저가 긴급한 방향 전환을 발표했다.",
+    "expressions": [
+      {
+        "expr": "feature roadmap",
+        "meaning": "기능 로드맵"
+      },
+      {
+        "expr": "pivot",
+        "meaning": "방향 전환 (스타트업 용어)"
+      }
+    ]
+  },
+  {
+    "id": "GRM_451",
+    "category": "GRAMMAR",
+    "cat": "시제",
+    "word_count": 16,
+    "diff": "normal",
+    "sentence": "By the end of this financial year, the company _______ its carbon emissions by thirty percent compared to the 2020 baseline.",
+    "choices": [
+      "(A) has reduced",
+      "(B) will have reduced",
+      "(C) reduced",
+      "(D) will reduce"
+    ],
+    "answer": 1,
+    "answer_word": "will have reduced",
+    "explanation": "By the end of this financial year(미래 완료 시점) → 미래완료 will have reduced.",
+    "explanation_kr": "By the end of this financial year! 올해 말까지 완료! → 미래완료! will have reduced!",
+    "kr": "이 회계연도 말까지 회사는 2020년 기준 대비 탄소 배출량을 30% 줄인 것이 될 것이다.",
+    "expressions": [
+      {
+        "expr": "will have reduced",
+        "meaning": "미래완료!"
+      },
+      {
+        "expr": "carbon emissions",
+        "meaning": "탄소 배출량"
+      },
+      {
+        "expr": "baseline",
+        "meaning": "기준선"
+      }
+    ]
+  },
+  {
+    "id": "GRM_452",
+    "category": "GRAMMAR",
+    "cat": "시제",
+    "word_count": 17,
+    "diff": "normal",
+    "sentence": "The fintech startup _______ its mobile payment solution in twelve countries since it launched its international expansion strategy.",
+    "choices": [
+      "(A) launched",
+      "(B) has been launching",
+      "(C) had launched",
+      "(D) launches"
+    ],
+    "answer": 1,
+    "answer_word": "has been launching",
+    "explanation": "since + 과거 + 현재까지 계속 진행 → 현재완료 진행 has been launching.",
+    "explanation_kr": "since it launched international expansion! 과거부터 지금까지 계속! 현재완료 진행! has been launching!",
+    "kr": "핀테크 스타트업은 국제 확장 전략을 시작한 이후 12개국에 모바일 결제 솔루션을 출시해오고 있다.",
+    "expressions": [
+      {
+        "expr": "mobile payment solution",
+        "meaning": "모바일 결제 솔루션"
+      },
+      {
+        "expr": "international expansion",
+        "meaning": "국제 확장"
+      }
+    ]
+  },
+  {
+    "id": "GRM_453",
+    "category": "GRAMMAR",
+    "cat": "시제",
+    "word_count": 16,
+    "diff": "normal",
+    "sentence": "The product manager realized that the development team _______ on the wrong version of the API for the entire previous sprint.",
+    "choices": [
+      "(A) worked",
+      "(B) had been working",
+      "(C) has worked",
+      "(D) was working"
+    ],
+    "answer": 1,
+    "answer_word": "had been working",
+    "explanation": "realized(과거) → 그 이전에 계속 = 과거완료 진행 had been working.",
+    "explanation_kr": "깨달았을 때(과거) 이미 이전 스프린트 내내 틀린 API 작업 중이었던 거야! 과거완료 진행! had been working!",
+    "kr": "제품 매니저는 개발팀이 이전 전체 스프린트 동안 잘못된 버전의 API를 작업하고 있었다는 것을 깨달았다.",
+    "expressions": [
+      {
+        "expr": "API (Application Programming Interface)",
+        "meaning": "API, 응용 프로그래밍 인터페이스"
+      },
+      {
+        "expr": "sprint",
+        "meaning": "스프린트 (애자일 개발 주기)"
+      }
+    ]
+  },
+  {
+    "id": "GRM_454",
+    "category": "GRAMMAR",
+    "cat": "시제",
+    "word_count": 16,
+    "diff": "normal",
+    "sentence": "The global e-commerce company _______ same-day delivery to customers in over fifty cities since expanding its logistics network.",
+    "choices": [
+      "(A) has been offering",
+      "(B) offered",
+      "(C) had been offering",
+      "(D) offers"
+    ],
+    "answer": 0,
+    "answer_word": "has been offering",
+    "explanation": "since expanding(과거) + 현재까지 → 현재완료 진행 has been offering.",
+    "explanation_kr": "since expanding! 물류망 확장 이후 지금까지 쭉! 현재완료 진행! has been offering! 당일 배송 서비스!",
+    "kr": "글로벌 이커머스 회사는 물류 네트워크를 확장한 이후 50개 이상의 도시에서 당일 배송 서비스를 제공해오고 있다.",
+    "expressions": [
+      {
+        "expr": "same-day delivery",
+        "meaning": "당일 배송"
+      },
+      {
+        "expr": "logistics network",
+        "meaning": "물류 네트워크"
+      }
+    ]
+  },
+  {
+    "id": "GRM_455",
+    "category": "GRAMMAR",
+    "cat": "시제",
+    "word_count": 16,
+    "diff": "normal",
+    "sentence": "By the time our competitor releases its next flagship product, our team _______ the upgraded version for over a year.",
+    "choices": [
+      "(A) will develop",
+      "(B) will have been developing",
+      "(C) has developed",
+      "(D) developed"
+    ],
+    "answer": 1,
+    "answer_word": "will have been developing",
+    "explanation": "By the time + 현재형(releases) + 1년 이상 계속 → 미래완료 진행.",
+    "explanation_kr": "By the time + releases(현재형)! 경쟁사 출시 시점까지 1년 이상 쭉 개발! → 미래완료 진행! will have been developing!",
+    "kr": "경쟁사가 다음 주력 제품을 출시할 때쯤이면 우리 팀은 1년 이상 업그레이드 버전을 개발하고 있는 것이 될 것이다.",
+    "expressions": [
+      {
+        "expr": "flagship product",
+        "meaning": "주력 제품"
+      },
+      {
+        "expr": "will have been developing",
+        "meaning": "미래완료 진행!"
+      }
+    ]
+  },
+  {
+    "id": "GRM_456",
+    "category": "GRAMMAR",
+    "cat": "가정법",
+    "word_count": 17,
+    "diff": "normal",
+    "sentence": "If the startup _______ its user data more responsibly, the regulatory fine could have been entirely avoided.",
+    "choices": [
+      "(A) would manage",
+      "(B) managed",
+      "(C) manages",
+      "(D) had managed"
+    ],
+    "answer": 3,
+    "answer_word": "had managed",
+    "explanation": "could have been avoided → 가정법 과거완료 → if절 had managed.",
+    "explanation_kr": "could have been avoided! 가정법 과거완료! if절엔 had managed! 결국 사용자 데이터 잘못 관리해서 과징금 맞은 거야~",
+    "kr": "만약 스타트업이 사용자 데이터를 더 책임감 있게 관리했더라면 규제 과징금을 완전히 피할 수 있었을 것이다.",
+    "expressions": [
+      {
+        "expr": "regulatory fine",
+        "meaning": "규제 과징금"
+      },
+      {
+        "expr": "responsibly",
+        "meaning": "책임감 있게"
+      }
+    ]
+  },
+  {
+    "id": "GRM_457",
+    "category": "GRAMMAR",
+    "cat": "가정법",
+    "word_count": 17,
+    "diff": "normal",
+    "sentence": "Should the company's cybersecurity systems _______ to detect the intrusion earlier, significant data losses could have been prevented.",
+    "choices": [
+      "(A) been able",
+      "(B) being able",
+      "(C) be able",
+      "(D) have been able"
+    ],
+    "answer": 3,
+    "answer_word": "have been able",
+    "explanation": "Should + S + have p.p. → 과거 사실에 대한 조건 가정법.",
+    "explanation_kr": "Should + 주어 + have been able! 과거에 대한 조건 가정법! 실제로는 탐지 못 했다는 거잖아~",
+    "kr": "만약 회사의 사이버보안 시스템이 침입을 더 일찍 탐지할 수 있었더라면 상당한 데이터 손실을 예방할 수 있었을 것이다.",
+    "expressions": [
+      {
+        "expr": "should have been able",
+        "meaning": "과거 조건 가정법!"
+      },
+      {
+        "expr": "intrusion",
+        "meaning": "침입"
+      },
+      {
+        "expr": "detect",
+        "meaning": "탐지하다"
+      }
+    ]
+  },
+  {
+    "id": "GRM_458",
+    "category": "GRAMMAR",
+    "cat": "가정법",
+    "word_count": 17,
+    "diff": "normal",
+    "sentence": "The tech company would be valued at twice its current market capitalization if it _______ its international expansion sooner.",
+    "choices": [
+      "(A) started",
+      "(B) starts",
+      "(C) would start",
+      "(D) had started"
+    ],
+    "answer": 3,
+    "answer_word": "had started",
+    "explanation": "would be(현재 결과) + 과거 원인 가정 → 혼합 가정법 had started.",
+    "explanation_kr": "would be(현재 가치 추정)! 과거에 더 일찍 시작 못 했다는 거~ 혼합 가정법! had started!",
+    "kr": "더 일찍 국제 확장을 시작했더라면 기술 회사의 가치는 현재 시가총액의 두 배가 되었을 것이다.",
+    "expressions": [
+      {
+        "expr": "market capitalization",
+        "meaning": "시가총액"
+      },
+      {
+        "expr": "혼합 가정법",
+        "meaning": "if had p.p.(과거) + would be(현재)"
+      }
+    ]
+  },
+  {
+    "id": "GRM_459",
+    "category": "GRAMMAR",
+    "cat": "가정법",
+    "word_count": 17,
+    "diff": "normal",
+    "sentence": "Were the company to implement a four-day work week policy, employee satisfaction scores _______ dramatically improve.",
+    "choices": [
+      "(A) can",
+      "(B) shall",
+      "(C) will",
+      "(D) would"
+    ],
+    "answer": 3,
+    "answer_word": "would",
+    "explanation": "Were + 주어 + to 부정사 → 가정법. 주절 would.",
+    "explanation_kr": "Were the company to implement! 고급 가정법 도치! 주절 would! 주 4일 근무제 도입하면 직원 만족도 오를 거란 가정~",
+    "kr": "회사가 주 4일 근무 정책을 시행한다면 직원 만족도 점수가 극적으로 향상될 것이다.",
+    "expressions": [
+      {
+        "expr": "four-day work week",
+        "meaning": "주 4일 근무제"
+      },
+      {
+        "expr": "were + to implement → would",
+        "meaning": "고급 가정법 도치!"
+      }
+    ]
+  },
+  {
+    "id": "GRM_460",
+    "category": "GRAMMAR",
+    "cat": "가정법",
+    "word_count": 17,
+    "diff": "normal",
+    "sentence": "If only the engineering team _______ the security flaw before the product went live, the company's reputation would have remained intact.",
+    "choices": [
+      "(A) had caught",
+      "(B) caught",
+      "(C) catches",
+      "(D) would catch"
+    ],
+    "answer": 0,
+    "answer_word": "had caught",
+    "explanation": "if only + 과거 후회 + would have remained → 가정법 과거완료 had caught.",
+    "explanation_kr": "if only! 강한 후회! 출시 전에 발견했더라면! 과거완료! had caught! 결국 출시 후에 발견해서 평판에 타격~",
+    "kr": "만약 엔지니어링 팀이 제품이 출시되기 전에 보안 취약점을 발견했더라면 회사의 평판이 손상되지 않았을 것이다.",
+    "expressions": [
+      {
+        "expr": "security flaw",
+        "meaning": "보안 취약점"
+      },
+      {
+        "expr": "reputation",
+        "meaning": "평판"
+      },
+      {
+        "expr": "intact",
+        "meaning": "손상되지 않은"
+      }
+    ]
+  },
+  {
+    "id": "GRM_461",
+    "category": "GRAMMAR",
+    "cat": "가정법",
+    "word_count": 16,
+    "diff": "normal",
+    "sentence": "Had the product team _______ more user research before the launch, the app would not have received such negative reviews.",
+    "choices": [
+      "(A) conducting",
+      "(B) conduct",
+      "(C) conducted",
+      "(D) to conduct"
+    ],
+    "answer": 2,
+    "answer_word": "conducted",
+    "explanation": "Had + S + p.p. 가정법 과거완료 도치.",
+    "explanation_kr": "Had 도치! Had + the product team + p.p.! conducted! would not have received가 주절! 결국 리서치 부족으로 나쁜 리뷰 받은 거잖아~",
+    "kr": "만약 제품팀이 출시 전에 더 많은 사용자 조사를 실시했더라면 앱은 그런 부정적인 리뷰를 받지 않았을 것이다.",
+    "expressions": [
+      {
+        "expr": "user research",
+        "meaning": "사용자 조사"
+      },
+      {
+        "expr": "had + S + p.p.",
+        "meaning": "가정법 과거완료 도치!"
+      }
+    ]
+  },
+  {
+    "id": "GRM_462",
+    "category": "GRAMMAR",
+    "cat": "가정법",
+    "word_count": 16,
+    "diff": "normal",
+    "sentence": "The software company would currently dominate the mobile market if it _______ into smartphones a decade earlier.",
+    "choices": [
+      "(A) expands",
+      "(B) had expanded",
+      "(C) would expand",
+      "(D) expanded"
+    ],
+    "answer": 1,
+    "answer_word": "had expanded",
+    "explanation": "would currently dominate(현재) + 과거 가정 → 혼합 가정법 had expanded.",
+    "explanation_kr": "would currently dominate(지금 현재)! 10년 전에 못 한 걸 가정! 혼합 가정법! had expanded!",
+    "kr": "10년 전에 스마트폰 시장으로 확장했더라면 소프트웨어 회사는 현재 모바일 시장을 장악하고 있을 것이다.",
+    "expressions": [
+      {
+        "expr": "dominate the market",
+        "meaning": "시장을 장악하다"
+      },
+      {
+        "expr": "혼합 가정법 (had p.p. + would currently)",
+        "meaning": "과거 원인 + 현재 결과!"
+      }
+    ]
+  },
+  {
+    "id": "GRM_463",
+    "category": "GRAMMAR",
+    "cat": "가정법",
+    "word_count": 16,
+    "diff": "normal",
+    "sentence": "Should the proposed data sharing agreement between the two tech giants _______ approved, it would transform the industry.",
+    "choices": [
+      "(A) was",
+      "(B) been",
+      "(C) is",
+      "(D) be"
+    ],
+    "answer": 3,
+    "answer_word": "be",
+    "explanation": "Should + S + be p.p. → 조건 가정법 수동태.",
+    "explanation_kr": "Should! 조건 가정법! 협약이 '승인되는' 수동태! Should + the agreement + be approved! 동사원형 be 필수!",
+    "kr": "두 기술 대기업 간의 제안된 데이터 공유 협약이 승인된다면 업계가 변화할 것이다.",
+    "expressions": [
+      {
+        "expr": "should + S + be approved",
+        "meaning": "조건 가정법 수동태!"
+      },
+      {
+        "expr": "tech giants",
+        "meaning": "기술 대기업"
+      }
+    ]
+  },
+  {
+    "id": "GRM_464",
+    "category": "GRAMMAR",
+    "cat": "도치",
+    "word_count": 17,
+    "diff": "normal",
+    "sentence": "Never before in the history of the company _______ a single software release generated such widespread media coverage globally.",
+    "choices": [
+      "(A) has",
+      "(B) had",
+      "(C) have",
+      "(D) did"
+    ],
+    "answer": 0,
+    "answer_word": "has",
+    "explanation": "Never before 문두 + 단수주어(a software release) + 현재완료 → has.",
+    "explanation_kr": "Never before 도치! a software release = 단수! 현재완료 경험 → has! 전례 없는 미디어 커버리지야~",
+    "kr": "회사 역사상 단 한 번의 소프트웨어 출시가 이렇게 전 세계적으로 광범위한 미디어 보도를 받은 적이 없었다.",
+    "expressions": [
+      {
+        "expr": "never before has + 단수 + p.p.",
+        "meaning": "Never before 도치 + 현재완료!"
+      },
+      {
+        "expr": "media coverage",
+        "meaning": "미디어 보도"
+      }
+    ]
+  },
+  {
+    "id": "GRM_465",
+    "category": "GRAMMAR",
+    "cat": "도치",
+    "word_count": 18,
+    "diff": "normal",
+    "sentence": "Not only _______ the cybersecurity audit on schedule, but the team also identified three previously unknown vulnerabilities.",
+    "choices": [
+      "(A) did the team complete",
+      "(B) completed the team",
+      "(C) the team completed",
+      "(D) the team did complete"
+    ],
+    "answer": 0,
+    "answer_word": "did the team complete",
+    "explanation": "Not only 문두 도치 → did + the team + complete.",
+    "explanation_kr": "Not only 도치! did + the team + complete! 동사원형! 일정 맞추고 취약점까지 발견했다니 대단한 팀!",
+    "kr": "팀은 사이버보안 감사를 일정대로 완료했을 뿐만 아니라 이전에 알려지지 않은 취약점 세 개도 발견했다.",
+    "expressions": [
+      {
+        "expr": "not only did + 주어 + 동사원형",
+        "meaning": "Not only 도치!"
+      },
+      {
+        "expr": "vulnerability",
+        "meaning": "취약점"
+      }
+    ]
+  },
+  {
+    "id": "GRM_466",
+    "category": "GRAMMAR",
+    "cat": "도치",
+    "word_count": 16,
+    "diff": "normal",
+    "sentence": "So rapidly _______ the artificial intelligence sector that new job roles _______ being created faster than universities could train graduates.",
+    "choices": [
+      "(A) grew the sector / was",
+      "(B) the sector has grown / is",
+      "(C) the sector grew / were",
+      "(D) has the sector grown / are"
+    ],
+    "answer": 3,
+    "answer_word": "has the sector grown / are",
+    "explanation": "So rapidly 문두 → 현재완료 도치 has + the sector + grown.",
+    "explanation_kr": "So rapidly 도치! 현재완료로 급성장 표현! has + the sector + grown! AI 섹터가 너무 빠르게 성장했다는 거야~",
+    "kr": "인공지능 섹터가 너무 빠르게 성장하여 대학이 졸업생을 배출하는 것보다 빠르게 새로운 직업 역할이 만들어지고 있다.",
+    "expressions": [
+      {
+        "expr": "so rapidly has + 주어 + p.p.",
+        "meaning": "So 도치 + 현재완료!"
+      },
+      {
+        "expr": "artificial intelligence sector",
+        "meaning": "인공지능 섹터"
+      }
+    ]
+  },
+  {
+    "id": "GRM_467",
+    "category": "GRAMMAR",
+    "cat": "도치",
+    "word_count": 17,
+    "diff": "normal",
+    "sentence": "Rarely in the global technology industry _______ a company managed to successfully transition from a hardware to a software business model.",
+    "choices": [
+      "(A) did",
+      "(B) have",
+      "(C) had",
+      "(D) has"
+    ],
+    "answer": 3,
+    "answer_word": "has",
+    "explanation": "Rarely 문두 + 단수주어(a company) + 현재완료 → has.",
+    "explanation_kr": "Rarely 도치! a company = 단수! 현재완료 경험 → has! 하드웨어에서 소프트웨어로 성공적 전환은 매우 드문 일!",
+    "kr": "글로벌 기술 업계에서 하드웨어에서 소프트웨어 비즈니스 모델로 성공적으로 전환한 회사가 거의 없다.",
+    "expressions": [
+      {
+        "expr": "rarely has + 단수 + p.p.",
+        "meaning": "Rarely 도치 + 현재완료!"
+      },
+      {
+        "expr": "business model transition",
+        "meaning": "비즈니스 모델 전환"
+      }
+    ]
+  },
+  {
+    "id": "GRM_468",
+    "category": "GRAMMAR",
+    "cat": "도치",
+    "word_count": 17,
+    "diff": "normal",
+    "sentence": "Only after the entire development team _______ reviewed the code for potential security issues did the project manager approve the deployment.",
+    "choices": [
+      "(A) was",
+      "(B) had",
+      "(C) has",
+      "(D) were"
+    ],
+    "answer": 1,
+    "answer_word": "had",
+    "explanation": "Only after 절 내부 → 주절보다 먼저 완료 = 과거완료 had reviewed.",
+    "explanation_kr": "Only after 절 안! 코드 검토(먼저)가 배포 승인(나중)보다 앞서! 과거완료! had reviewed!",
+    "kr": "전체 개발팀이 잠재적인 보안 문제에 대해 코드를 검토한 후에야 프로젝트 매니저가 배포를 승인했다.",
+    "expressions": [
+      {
+        "expr": "only after + had p.p., did 도치",
+        "meaning": "Only after 절 과거완료!"
+      },
+      {
+        "expr": "deployment",
+        "meaning": "배포"
+      }
+    ]
+  },
+  {
+    "id": "GRM_469",
+    "category": "GRAMMAR",
+    "cat": "도치",
+    "word_count": 17,
+    "diff": "normal",
+    "sentence": "So significant _______ the impact of the new algorithm that it completely transformed how digital advertising campaigns are targeted.",
+    "choices": [
+      "(A) the impact is",
+      "(B) the impact was",
+      "(C) is the impact",
+      "(D) was the impact"
+    ],
+    "answer": 3,
+    "answer_word": "was the impact",
+    "explanation": "So + 형용사 문두 도치 → was + the impact (단수 + 과거).",
+    "explanation_kr": "So significant 도치! 과거에 미친 영향이니까 was + the impact! the impact was 쓰면 도치 없는 일반 문장!",
+    "kr": "새 알고리즘의 영향이 너무 중요해서 디지털 광고 캠페인의 타게팅 방식을 완전히 변화시켰다.",
+    "expressions": [
+      {
+        "expr": "so + 형용사 + was + 주어 that",
+        "meaning": "So 도치!"
+      },
+      {
+        "expr": "digital advertising",
+        "meaning": "디지털 광고"
+      },
+      {
+        "expr": "algorithm",
+        "meaning": "알고리즘"
+      }
+    ]
+  },
+  {
+    "id": "GRM_470",
+    "category": "GRAMMAR",
+    "cat": "도치",
+    "word_count": 17,
+    "diff": "normal",
+    "sentence": "Not until all the regulatory compliance requirements _______ fully met did the fintech company receive approval to launch its services.",
+    "choices": [
+      "(A) are",
+      "(B) had been",
+      "(C) have been",
+      "(D) were"
+    ],
+    "answer": 1,
+    "answer_word": "had been",
+    "explanation": "Not until 절 내부 수동 → 주절보다 먼저 완료 = 과거완료 수동 had been met.",
+    "explanation_kr": "Not until 절 안! 요건 충족(먼저)이 승인(나중)보다 앞서! 과거완료 수동! had been met!",
+    "kr": "모든 규제 준수 요건이 완전히 충족될 때까지 핀테크 회사는 서비스 출시 승인을 받지 못했다.",
+    "expressions": [
+      {
+        "expr": "regulatory compliance requirements",
+        "meaning": "규제 준수 요건"
+      },
+      {
+        "expr": "not until + had been p.p., did 도치",
+        "meaning": "Not until 과거완료 수동!"
+      }
+    ]
+  },
+  {
+    "id": "GRM_471",
+    "category": "GRAMMAR",
+    "cat": "도치",
+    "word_count": 17,
+    "diff": "normal",
+    "sentence": "Little _______ when they first developed the machine learning model that it would eventually be used by over a billion people.",
+    "choices": [
+      "(A) knew the researchers",
+      "(B) the researchers knew",
+      "(C) the researchers did know",
+      "(D) did the researchers know"
+    ],
+    "answer": 3,
+    "answer_word": "did the researchers know",
+    "explanation": "Little 문두 도치 → did + 주어 + 동사원형.",
+    "explanation_kr": "Little 도치! 연구자들이 거의 몰랐다! did + the researchers + know! 결국 10억 명이 쓰는 모델이 됐다는 놀라운 스토리!",
+    "kr": "연구자들이 머신러닝 모델을 처음 개발할 때 그것이 결국 10억 명 이상이 사용하게 될 것이라는 것을 거의 알지 못했다.",
+    "expressions": [
+      {
+        "expr": "little did + 주어 + 동사원형",
+        "meaning": "Little 도치!"
+      },
+      {
+        "expr": "machine learning model",
+        "meaning": "머신러닝 모델"
+      }
+    ]
+  },
+  {
+    "id": "GRM_472",
+    "category": "GRAMMAR",
+    "cat": "도치",
+    "word_count": 16,
+    "diff": "normal",
+    "sentence": "Under no circumstances _______ proprietary source code or algorithmic models be shared outside the organization without prior board approval.",
+    "choices": [
+      "(A) will",
+      "(B) can",
+      "(C) should",
+      "(D) would"
+    ],
+    "answer": 2,
+    "answer_word": "should",
+    "explanation": "Under no circumstances → 도치 should + 주어. 강한 금지.",
+    "explanation_kr": "Under no circumstances! 절대 안 된다! should + proprietary source code...! 소스코드는 절대 외부 공유 금지야~",
+    "kr": "어떤 경우에도 사전 이사회 승인 없이 독점 소스 코드나 알고리즘 모델이 조직 외부와 공유되어서는 안 된다.",
+    "expressions": [
+      {
+        "expr": "proprietary source code",
+        "meaning": "독점 소스 코드"
+      },
+      {
+        "expr": "algorithmic models",
+        "meaning": "알고리즘 모델"
+      }
+    ]
+  },
+  {
+    "id": "GRM_473",
+    "category": "GRAMMAR",
+    "cat": "도치",
+    "word_count": 17,
+    "diff": "normal",
+    "sentence": "No sooner _______ the software update than users began reporting widespread performance issues across multiple platforms.",
+    "choices": [
+      "(A) did the company release",
+      "(B) the company released",
+      "(C) had the company released",
+      "(D) the company had released"
+    ],
+    "answer": 2,
+    "answer_word": "had the company released",
+    "explanation": "No sooner 문두 + 과거완료 도치 had + the company + released.",
+    "explanation_kr": "No sooner 도치! '~하자마자'! had + the company + released! 업데이트 출시하자마자 성능 문제 보고가 쏟아진 거야~",
+    "kr": "회사가 소프트웨어 업데이트를 출시하자마자 사용자들이 여러 플랫폼에 걸쳐 광범위한 성능 문제를 보고하기 시작했다.",
+    "expressions": [
+      {
+        "expr": "no sooner had + 주어 + p.p. than",
+        "meaning": "~하자마자!"
+      },
+      {
+        "expr": "performance issues",
+        "meaning": "성능 문제"
+      }
+    ]
+  },
+  {
+    "id": "GRM_474",
+    "category": "GRAMMAR",
+    "cat": "도치",
+    "word_count": 16,
+    "diff": "normal",
+    "sentence": "Only when the complete dataset _______ cleaned and validated did the data science team begin building the predictive model.",
+    "choices": [
+      "(A) has been",
+      "(B) is",
+      "(C) had been",
+      "(D) was"
+    ],
+    "answer": 2,
+    "answer_word": "had been",
+    "explanation": "Only when 절 내부 → 과거완료 수동 had been cleaned.",
+    "explanation_kr": "Only when 절 안! 데이터 정제(먼저)가 모델 구축(나중)보다 앞서! 과거완료 수동! had been cleaned and validated!",
+    "kr": "전체 데이터셋이 정제되고 검증된 후에야 데이터 사이언스 팀이 예측 모델 구축을 시작했다.",
+    "expressions": [
+      {
+        "expr": "only when + had been p.p.",
+        "meaning": "Only when 절 과거완료 수동!"
+      },
+      {
+        "expr": "predictive model",
+        "meaning": "예측 모델"
+      }
+    ]
+  },
+  {
+    "id": "GRM_475",
+    "category": "GRAMMAR",
+    "cat": "도치",
+    "word_count": 17,
+    "diff": "normal",
+    "sentence": "So thoroughly _______ the independent security audit that it uncovered vulnerabilities in systems that had not been reviewed for years.",
+    "choices": [
+      "(A) was the audit conducted",
+      "(B) was conducted the audit",
+      "(C) the audit was conducted",
+      "(D) conducted the audit was"
+    ],
+    "answer": 0,
+    "answer_word": "was the audit conducted",
+    "explanation": "So thoroughly 문두 도치 → was + the audit + conducted.",
+    "explanation_kr": "So thoroughly 도치! 수동태 도치! was + the audit + conducted 순서! 몇 년간 미검토 시스템 취약점까지 발견했다는 철저한 감사!",
+    "kr": "독립적인 보안 감사가 너무 철저하게 진행되어 수년간 검토되지 않은 시스템의 취약점을 발견했다.",
+    "expressions": [
+      {
+        "expr": "so thoroughly was + 주어 + p.p. that",
+        "meaning": "수동태 So 도치!"
+      },
+      {
+        "expr": "security audit",
+        "meaning": "보안 감사"
+      }
+    ]
+  },
+  {
+    "id": "GRM_476",
+    "category": "GRAMMAR",
+    "cat": "수동태",
+    "word_count": 21,
+    "diff": "hard",
+    "sentence": "The entire proprietary dataset used to train the company's flagship AI model _______ encrypted and backed up across three geographically separate data centers.",
+    "choices": [
+      "(A) have been",
+      "(B) were",
+      "(C) has been",
+      "(D) was"
+    ],
+    "answer": 2,
+    "answer_word": "has been",
+    "explanation": "진짜 주어 dataset(단수) + 현재완료 수동 → has been.",
+    "explanation_kr": "The entire proprietary dataset이 주어! 단수! 나머지 다 수식어! has been encrypted and backed up! 지리적으로 분산 저장이라니 철저한 보안이네~",
+    "kr": "회사의 주력 AI 모델을 훈련하는 데 사용된 전체 독점 데이터셋이 암호화되어 지리적으로 분리된 세 개의 데이터 센터에 백업되었다.",
+    "expressions": [
+      {
+        "expr": "proprietary dataset",
+        "meaning": "독점 데이터셋"
+      },
+      {
+        "expr": "geographically separate",
+        "meaning": "지리적으로 분리된"
+      }
+    ]
+  },
+  {
+    "id": "GRM_477",
+    "category": "GRAMMAR",
+    "cat": "수동태",
+    "word_count": 22,
+    "diff": "hard",
+    "sentence": "All personally identifiable information collected through the company's mobile application _______ processed in strict accordance with the applicable data protection regulations.",
+    "choices": [
+      "(A) was",
+      "(B) were",
+      "(C) are",
+      "(D) is"
+    ],
+    "answer": 3,
+    "answer_word": "is",
+    "explanation": "진짜 주어 information(불가산 단수) + 현재 반복 수동 → is processed.",
+    "explanation_kr": "information이 주어! 불가산 단수! 아무리 길어도! is processed! GDPR 준수 같은 현재 규정 얘기니까 현재형!",
+    "kr": "회사의 모바일 애플리케이션을 통해 수집된 모든 개인 식별 정보는 적용 가능한 데이터 보호 규정에 엄격히 준수하여 처리된다.",
+    "expressions": [
+      {
+        "expr": "personally identifiable information (PII)",
+        "meaning": "개인 식별 정보"
+      },
+      {
+        "expr": "data protection regulations",
+        "meaning": "데이터 보호 규정"
+      }
+    ]
+  },
+  {
+    "id": "GRM_478",
+    "category": "GRAMMAR",
+    "cat": "수동태",
+    "word_count": 22,
+    "diff": "hard",
+    "sentence": "The groundbreaking neural network architecture that _______ developed by the research team has since been adopted by over two hundred technology companies worldwide.",
+    "choices": [
+      "(A) had been",
+      "(B) were",
+      "(C) was",
+      "(D) has been"
+    ],
+    "answer": 2,
+    "answer_word": "was",
+    "explanation": "관계절 내 architecture(단수) + 수동 + 과거 → was developed.",
+    "explanation_kr": "관계절 that 안! architecture = 단수! 과거에 개발 당한 거야! 이후에 200개 이상 기업이 채택했다는 거잖아! was developed!",
+    "kr": "연구팀이 개발한 획기적인 신경망 아키텍처는 이후 전 세계 200개 이상의 기술 기업에 의해 채택되었다.",
+    "expressions": [
+      {
+        "expr": "neural network architecture",
+        "meaning": "신경망 아키텍처"
+      },
+      {
+        "expr": "groundbreaking",
+        "meaning": "획기적인"
+      }
+    ]
+  },
+  {
+    "id": "GRM_479",
+    "category": "GRAMMAR",
+    "cat": "수동태",
+    "word_count": 22,
+    "diff": "hard",
+    "sentence": "The comprehensive framework for responsible AI development and deployment _______ currently being reviewed by representatives from over forty member nations.",
+    "choices": [
+      "(A) was",
+      "(B) were",
+      "(C) is",
+      "(D) are"
+    ],
+    "answer": 2,
+    "answer_word": "is",
+    "explanation": "진짜 주어 framework(단수) + 현재진행 수동 → is being reviewed.",
+    "explanation_kr": "The comprehensive framework이 주어! 단수! for 이하 다 수식어! 현재 검토 중 → is being reviewed! 40개국이 검토 중이라니 국제적인 이슈네~",
+    "kr": "책임 있는 AI 개발 및 배포를 위한 포괄적인 프레임워크가 현재 40개 이상의 회원국 대표들에 의해 검토되고 있다.",
+    "expressions": [
+      {
+        "expr": "responsible AI",
+        "meaning": "책임 있는 AI"
+      },
+      {
+        "expr": "framework",
+        "meaning": "프레임워크 (단수!)"
+      }
+    ]
+  },
+  {
+    "id": "GRM_480",
+    "category": "GRAMMAR",
+    "cat": "수동태",
+    "word_count": 21,
+    "diff": "hard",
+    "sentence": "The innovative carbon capture technology developed by the environmental startup _______ expected to be commercially viable within the next five years.",
+    "choices": [
+      "(A) is",
+      "(B) are",
+      "(C) was",
+      "(D) were"
+    ],
+    "answer": 0,
+    "answer_word": "is",
+    "explanation": "진짜 주어 technology(단수) + 현재 수동 → is expected.",
+    "explanation_kr": "technology가 주어! 단수! developed by... 수식어 무시! is expected! 향후 5년 내 상업화 가능하다는 현재 전망이야!",
+    "kr": "환경 스타트업이 개발한 혁신적인 탄소 포집 기술이 향후 5년 내에 상업적으로 실용화될 것으로 예상된다.",
+    "expressions": [
+      {
+        "expr": "carbon capture technology",
+        "meaning": "탄소 포집 기술"
+      },
+      {
+        "expr": "commercially viable",
+        "meaning": "상업적으로 실용화 가능한"
+      }
+    ]
+  },
+  {
+    "id": "GRM_481",
+    "category": "GRAMMAR",
+    "cat": "수일치",
+    "word_count": 22,
+    "diff": "hard",
+    "sentence": "The sheer volume of unstructured data generated daily by the company's global network of IoT sensors _______ presented significant challenges for the analytics team.",
+    "choices": [
+      "(A) has",
+      "(B) were",
+      "(C) are",
+      "(D) have"
+    ],
+    "answer": 0,
+    "answer_word": "has",
+    "explanation": "진짜 주어 volume(단수) + 현재완료 → has presented.",
+    "explanation_kr": "volume이 주어! 단수! of unstructured data 이하 다 수식어! has presented! IoT 센서 데이터가 너무 많아서 분석팀이 힘들다는 거야~",
+    "kr": "회사의 글로벌 IoT 센서 네트워크에 의해 매일 생성되는 엄청난 양의 비정형 데이터가 분석팀에 상당한 도전을 안겨주었다.",
+    "expressions": [
+      {
+        "expr": "unstructured data",
+        "meaning": "비정형 데이터"
+      },
+      {
+        "expr": "IoT sensors",
+        "meaning": "사물인터넷 센서"
+      }
+    ]
+  },
+  {
+    "id": "GRM_482",
+    "category": "GRAMMAR",
+    "cat": "수일치",
+    "word_count": 22,
+    "diff": "hard",
+    "sentence": "Neither the board of directors nor the executive management team _______ reached a consensus on the company's approach to generative AI adoption.",
+    "choices": [
+      "(A) were",
+      "(B) are",
+      "(C) have",
+      "(D) has"
+    ],
+    "answer": 3,
+    "answer_word": "has",
+    "explanation": "Neither A nor B → B에 수 일치. B = team(단수) + 현재완료 → has.",
+    "explanation_kr": "neither nor! 뒤(B)에 맞추기! executive management team = 단수! has reached! 이사회도 경영진도 합의 못 했다는 거잖아~",
+    "kr": "이사회도 임원 경영진도 생성형 AI 도입에 대한 회사의 접근 방식에 합의에 이르지 못했다.",
+    "expressions": [
+      {
+        "expr": "consensus",
+        "meaning": "합의"
+      },
+      {
+        "expr": "generative AI adoption",
+        "meaning": "생성형 AI 도입"
+      }
+    ]
+  },
+  {
+    "id": "GRM_483",
+    "category": "GRAMMAR",
+    "cat": "수일치",
+    "word_count": 22,
+    "diff": "hard",
+    "sentence": "The entire suite of cloud-based productivity tools procured for the company's global remote workforce _______ been rolled out to employees in over thirty countries.",
+    "choices": [
+      "(A) have",
+      "(B) are",
+      "(C) were",
+      "(D) has"
+    ],
+    "answer": 3,
+    "answer_word": "has",
+    "explanation": "진짜 주어 suite(단수) + 현재완료 수동 → has been rolled out.",
+    "explanation_kr": "The entire suite가 주어! 단수! of cloud-based productivity tools 다 수식어! has been rolled out! suite는 단수야!",
+    "kr": "회사의 글로벌 원격 인력을 위해 조달된 전체 클라우드 기반 생산성 도구 패키지가 30개 이상의 국가의 직원들에게 배포되었다.",
+    "expressions": [
+      {
+        "expr": "suite of tools",
+        "meaning": "도구 패키지 (단수!)"
+      },
+      {
+        "expr": "remote workforce",
+        "meaning": "원격 인력"
+      }
+    ]
+  },
+  {
+    "id": "GRM_484",
+    "category": "GRAMMAR",
+    "cat": "수일치",
+    "word_count": 21,
+    "diff": "hard",
+    "sentence": "Not only the newly appointed chief sustainability officer but also the entire environmental compliance team _______ expected to present their findings at next month's board meeting.",
+    "choices": [
+      "(A) is",
+      "(B) was",
+      "(C) were",
+      "(D) are"
+    ],
+    "answer": 0,
+    "answer_word": "is",
+    "explanation": "Not only A but also B → B에 수 일치. B = team(단수) → is.",
+    "explanation_kr": "not only but also! B에 맞추기! the entire environmental compliance team = 단수! is! 아무리 길어도 team이 단수야!",
+    "kr": "새로 임명된 최고지속가능성책임자뿐만 아니라 전체 환경 컴플라이언스 팀도 다음 달 이사회에서 결과를 발표할 것으로 예상된다.",
+    "expressions": [
+      {
+        "expr": "chief sustainability officer",
+        "meaning": "최고지속가능성책임자"
+      },
+      {
+        "expr": "not only A but also B → B 단수",
+        "meaning": "is!"
+      }
+    ]
+  },
+  {
+    "id": "GRM_485",
+    "category": "GRAMMAR",
+    "cat": "수일치",
+    "word_count": 21,
+    "diff": "hard",
+    "sentence": "The combination of advanced machine learning algorithms, real-time data processing, and predictive analytics _______ enabled the platform to anticipate user behavior with unprecedented accuracy.",
+    "choices": [
+      "(A) have",
+      "(B) has",
+      "(C) were",
+      "(D) are"
+    ],
+    "answer": 1,
+    "answer_word": "has",
+    "explanation": "진짜 주어 The combination(단수) + 현재완료 → has enabled.",
+    "explanation_kr": "The combination이 주어! 단수! of algorithms, processing, analytics 전부 수식어 무시! has enabled! combination은 항상 단수!",
+    "kr": "고급 머신러닝 알고리즘, 실시간 데이터 처리, 예측 분석의 조합이 플랫폼이 전례 없는 정확도로 사용자 행동을 예측할 수 있도록 했다.",
+    "expressions": [
+      {
+        "expr": "the combination of",
+        "meaning": "~의 조합 (단수!)"
+      },
+      {
+        "expr": "unprecedented accuracy",
+        "meaning": "전례 없는 정확도"
+      }
+    ]
+  },
+  {
+    "id": "GRM_486",
+    "category": "GRAMMAR",
+    "cat": "시제",
+    "word_count": 21,
+    "diff": "hard",
+    "sentence": "The lead machine learning engineer _______ on the neural network optimization for over eighteen months when the company unexpectedly pivoted to a completely different technology.",
+    "choices": [
+      "(A) was working",
+      "(B) worked",
+      "(C) had been working",
+      "(D) has been working"
+    ],
+    "answer": 2,
+    "answer_word": "had been working",
+    "explanation": "when + 과거 사건(pivoted) → 그때까지 계속 = 과거완료 진행 had been working.",
+    "explanation_kr": "회사가 피봇했을 때(과거)까지 18개월 이상 쭉 작업! 과거완료 진행! had been working! 피봇 이전까지의 진행이야~",
+    "kr": "수석 머신러닝 엔지니어는 회사가 예상치 못하게 완전히 다른 기술로 방향을 전환했을 때 18개월 이상 신경망 최적화 작업을 하고 있었다.",
+    "expressions": [
+      {
+        "expr": "neural network optimization",
+        "meaning": "신경망 최적화"
+      },
+      {
+        "expr": "pivot",
+        "meaning": "방향 전환하다"
+      }
+    ]
+  },
+  {
+    "id": "GRM_487",
+    "category": "GRAMMAR",
+    "cat": "시제",
+    "word_count": 22,
+    "diff": "hard",
+    "sentence": "By the time the company successfully completes its transition to a fully cloud-native infrastructure, it _______ on the migration project for nearly three years.",
+    "choices": [
+      "(A) will have been working",
+      "(B) worked",
+      "(C) will work",
+      "(D) has worked"
+    ],
+    "answer": 0,
+    "answer_word": "will have been working",
+    "explanation": "By the time + 현재형(completes) + 3년 계속 → 미래완료 진행 will have been working.",
+    "explanation_kr": "By the time + 현재형(completes)! 전환 완료 시점까지 3년 쭉! → 미래완료 진행! will have been working!",
+    "kr": "회사가 완전한 클라우드 네이티브 인프라로의 전환을 성공적으로 완료할 때쯤이면 거의 3년 동안 마이그레이션 프로젝트를 진행하고 있는 것이 될 것이다.",
+    "expressions": [
+      {
+        "expr": "cloud-native infrastructure",
+        "meaning": "클라우드 네이티브 인프라"
+      },
+      {
+        "expr": "will have been working",
+        "meaning": "미래완료 진행!"
+      }
+    ]
+  },
+  {
+    "id": "GRM_488",
+    "category": "GRAMMAR",
+    "cat": "시제",
+    "word_count": 22,
+    "diff": "hard",
+    "sentence": "The data engineering team _______ the company's entire data pipeline architecture for two years before discovering that the original design was fundamentally flawed.",
+    "choices": [
+      "(A) was rebuilding",
+      "(B) rebuilt",
+      "(C) had been rebuilding",
+      "(D) has been rebuilding"
+    ],
+    "answer": 2,
+    "answer_word": "had been rebuilding",
+    "explanation": "before discovering(과거 기준) → 그때까지 계속 = 과거완료 진행 had been rebuilding.",
+    "explanation_kr": "발견하기(과거 기준) 전에 2년 동안 쭉 재구축 중이었던 거야! 과거완료 진행! had been rebuilding!",
+    "kr": "데이터 엔지니어링 팀은 원래 설계가 근본적으로 결함이 있다는 것을 발견하기 전 2년 동안 회사의 전체 데이터 파이프라인 아키텍처를 재구축하고 있었다.",
+    "expressions": [
+      {
+        "expr": "data pipeline architecture",
+        "meaning": "데이터 파이프라인 아키텍처"
+      },
+      {
+        "expr": "fundamentally flawed",
+        "meaning": "근본적으로 결함이 있는"
+      }
+    ]
+  },
+  {
+    "id": "GRM_489",
+    "category": "GRAMMAR",
+    "cat": "시제",
+    "word_count": 21,
+    "diff": "hard",
+    "sentence": "By the time all international data privacy regulations affecting the company's operations in forty markets _______ fully implemented, compliance costs will have tripled.",
+    "choices": [
+      "(A) have been",
+      "(B) were",
+      "(C) will be",
+      "(D) are"
+    ],
+    "answer": 3,
+    "answer_word": "are",
+    "explanation": "By the time + 시간 부사절 → 현재형으로 미래 표현.",
+    "explanation_kr": "By the time 뒤에 미래 얘기여도 시간 부사절엔 will 못 써!! 현재형 are! 40개 시장 규정 준수 비용이 3배가 된다니!",
+    "kr": "40개 시장에서 회사 운영에 영향을 미치는 모든 국제 데이터 개인정보 보호 규정이 완전히 시행될 때쯤이면 컴플라이언스 비용이 세 배가 되었을 것이다.",
+    "expressions": [
+      {
+        "expr": "by the time + 현재형",
+        "meaning": "시간 부사절 → 현재형!"
+      },
+      {
+        "expr": "compliance costs",
+        "meaning": "컴플라이언스 비용"
+      }
+    ]
+  },
+  {
+    "id": "GRM_490",
+    "category": "GRAMMAR",
+    "cat": "시제",
+    "word_count": 22,
+    "diff": "hard",
+    "sentence": "The global head of digital transformation _______ cloud adoption strategies across seventeen business units simultaneously since taking over the newly created role last January.",
+    "choices": [
+      "(A) oversees",
+      "(B) had been overseeing",
+      "(C) has been overseeing",
+      "(D) oversaw"
+    ],
+    "answer": 2,
+    "answer_word": "has been overseeing",
+    "explanation": "since taking over(last January) + 현재까지 → 현재완료 진행 has been overseeing.",
+    "explanation_kr": "since taking over last January! 작년 1월부터 지금까지 쭉! 현재완료 진행! has been overseeing! 아직 현직이니까 has been!",
+    "kr": "디지털 전환 글로벌 책임자는 작년 1월 새로 만들어진 역할을 맡은 이후 17개 사업 단위에 걸쳐 동시에 클라우드 도입 전략을 감독해오고 있다.",
+    "expressions": [
+      {
+        "expr": "digital transformation",
+        "meaning": "디지털 전환"
+      },
+      {
+        "expr": "since taking over",
+        "meaning": "현재완료 진행 신호!"
+      }
+    ]
+  },
+  {
+    "id": "GRM_491",
+    "category": "GRAMMAR",
+    "cat": "가정법",
+    "word_count": 22,
+    "diff": "hard",
+    "sentence": "If the company's board of directors _______ the proposed acquisition of the AI startup at the initial valuation, it would currently hold a dominant position in the market.",
+    "choices": [
+      "(A) had approved",
+      "(B) approves",
+      "(C) approved",
+      "(D) would approve"
+    ],
+    "answer": 0,
+    "answer_word": "had approved",
+    "explanation": "would currently hold(현재 결과) + 과거 가정 → 혼합 가정법 had approved.",
+    "explanation_kr": "would currently hold(지금 현재 상황)! 과거에 인수 승인을 못 했다는 거잖아! 혼합 가정법! had approved!",
+    "kr": "만약 이사회가 초기 가치 평가에서 AI 스타트업 인수를 승인했더라면 현재 시장에서 지배적인 위치를 보유하고 있을 것이다.",
+    "expressions": [
+      {
+        "expr": "혼합 가정법",
+        "meaning": "if had p.p.(과거) + would currently(현재)"
+      },
+      {
+        "expr": "valuation",
+        "meaning": "가치 평가"
+      }
+    ]
+  },
+  {
+    "id": "GRM_492",
+    "category": "GRAMMAR",
+    "cat": "가정법",
+    "word_count": 22,
+    "diff": "hard",
+    "sentence": "Had the development team _______ the critical infrastructure vulnerability before the cyberattack occurred, the company's sensitive financial data would not have been compromised.",
+    "choices": [
+      "(A) identify",
+      "(B) to identify",
+      "(C) identifying",
+      "(D) identified"
+    ],
+    "answer": 3,
+    "answer_word": "identified",
+    "explanation": "Had + S + p.p. 가정법 과거완료 도치.",
+    "explanation_kr": "Had 도치! Had + the development team + p.p.! identified! would not have been compromised가 주절! 사이버공격 전에 발견했더라면!",
+    "kr": "만약 개발팀이 사이버공격 발생 전에 치명적인 인프라 취약점을 식별했더라면 회사의 민감한 재무 데이터가 침해되지 않았을 것이다.",
+    "expressions": [
+      {
+        "expr": "had + S + p.p.",
+        "meaning": "가정법 과거완료 도치!"
+      },
+      {
+        "expr": "infrastructure vulnerability",
+        "meaning": "인프라 취약점"
+      },
+      {
+        "expr": "compromise",
+        "meaning": "침해하다"
+      }
+    ]
+  },
+  {
+    "id": "GRM_493",
+    "category": "GRAMMAR",
+    "cat": "가정법",
+    "word_count": 22,
+    "diff": "hard",
+    "sentence": "Were the international regulatory bodies to establish a unified global standard for AI governance, technology companies _______ spend significantly less on compliance across different jurisdictions.",
+    "choices": [
+      "(A) would",
+      "(B) can",
+      "(C) will",
+      "(D) shall"
+    ],
+    "answer": 0,
+    "answer_word": "would",
+    "explanation": "Were + 주어 + to 부정사 → 가정법. 주절 would.",
+    "explanation_kr": "Were the regulatory bodies to establish! 고급 가정법 도치! 국제 AI 거버넌스 통일 기준이 생기면 좋겠다는 거잖아! would!",
+    "kr": "만약 국제 규제 기관들이 AI 거버넌스를 위한 통일된 글로벌 표준을 수립한다면 기술 회사들은 다른 관할권에 걸친 컴플라이언스에 훨씬 덜 지출할 것이다.",
+    "expressions": [
+      {
+        "expr": "were + to establish → would",
+        "meaning": "고급 가정법 도치!"
+      },
+      {
+        "expr": "AI governance",
+        "meaning": "AI 거버넌스"
+      },
+      {
+        "expr": "jurisdictions",
+        "meaning": "관할권"
+      }
+    ]
+  },
+  {
+    "id": "GRM_494",
+    "category": "GRAMMAR",
+    "cat": "가정법",
+    "word_count": 22,
+    "diff": "hard",
+    "sentence": "If only the startup's founding team _______ the full implications of the algorithm's potential biases before deploying it at scale across their platform.",
+    "choices": [
+      "(A) had understood",
+      "(B) understood",
+      "(C) understands",
+      "(D) would understand"
+    ],
+    "answer": 0,
+    "answer_word": "had understood",
+    "explanation": "if only + 과거 후회 → 가정법 과거완료 had understood.",
+    "explanation_kr": "if only! 강한 후회! '알았더라면!' → 과거완료! had understood! 결국 알고리즘 편향 문제로 곤란해진 거잖아~",
+    "kr": "스타트업의 창업팀이 플랫폼 전체에 대규모 배포하기 전에 알고리즘의 잠재적 편향의 전체 시사점을 이해했더라면 좋았을 텐데.",
+    "expressions": [
+      {
+        "expr": "if only + had p.p.",
+        "meaning": "과거 강한 후회!"
+      },
+      {
+        "expr": "algorithmic bias",
+        "meaning": "알고리즘 편향"
+      },
+      {
+        "expr": "deploy at scale",
+        "meaning": "대규모 배포하다"
+      }
+    ]
+  },
+  {
+    "id": "GRM_495",
+    "category": "GRAMMAR",
+    "cat": "가정법",
+    "word_count": 22,
+    "diff": "hard",
+    "sentence": "Should the proposed merger between the two largest cloud computing providers _______ approved by antitrust regulators, the combined entity would control over sixty percent of global cloud infrastructure.",
+    "choices": [
+      "(A) be",
+      "(B) been",
+      "(C) was",
+      "(D) is"
+    ],
+    "answer": 0,
+    "answer_word": "be",
+    "explanation": "Should + S + be p.p. → 조건 가정법 수동태.",
+    "explanation_kr": "Should! 조건 가정법! 합병이 '승인되는' 수동태! Should + the merger + be approved! 동사원형 be 필수! 합병되면 클라우드 60% 장악이라니~",
+    "kr": "두 최대 클라우드 컴퓨팅 업체 간의 제안된 합병이 반독점 규제 당국에 의해 승인된다면 합병 법인은 글로벌 클라우드 인프라의 60% 이상을 통제할 것이다.",
+    "expressions": [
+      {
+        "expr": "should + S + be approved",
+        "meaning": "조건 가정법 수동태!"
+      },
+      {
+        "expr": "antitrust regulators",
+        "meaning": "반독점 규제 당국"
+      },
+      {
+        "expr": "cloud computing providers",
+        "meaning": "클라우드 컴퓨팅 업체"
+      }
+    ]
+  },
+  {
+    "id": "GRM_496",
+    "category": "GRAMMAR",
+    "cat": "도치",
+    "word_count": 22,
+    "diff": "hard",
+    "sentence": "Never before in the history of enterprise software development _______ a single platform managed to simultaneously integrate artificial intelligence, blockchain, and cloud computing capabilities.",
+    "choices": [
+      "(A) had",
+      "(B) has",
+      "(C) have",
+      "(D) did"
+    ],
+    "answer": 1,
+    "answer_word": "has",
+    "explanation": "Never before 문두 + 단수주어(a platform) + 현재완료 → has.",
+    "explanation_kr": "Never before 도치! a single platform = 단수! 현재완료 경험 → has! AI, 블록체인, 클라우드 동시 통합은 전례 없는 일이야~",
+    "kr": "기업 소프트웨어 개발 역사상 단 하나의 플랫폼이 인공지능, 블록체인, 클라우드 컴퓨팅 기능을 동시에 통합하는 데 성공한 적이 없었다.",
+    "expressions": [
+      {
+        "expr": "never before has + 단수 + p.p.",
+        "meaning": "Never before 도치 + 현재완료!"
+      },
+      {
+        "expr": "blockchain",
+        "meaning": "블록체인"
+      },
+      {
+        "expr": "simultaneously",
+        "meaning": "동시에"
+      }
+    ]
+  },
+  {
+    "id": "GRM_497",
+    "category": "GRAMMAR",
+    "cat": "도치",
+    "word_count": 22,
+    "diff": "hard",
+    "sentence": "So dramatically _______ the global demand for skilled AI engineers that universities worldwide are rapidly redesigning their computer science and data science curricula.",
+    "choices": [
+      "(A) did the demand increase",
+      "(B) increased",
+      "(C) the demand has increased",
+      "(D) has the demand increased"
+    ],
+    "answer": 3,
+    "answer_word": "has the demand increased",
+    "explanation": "So dramatically 문두 + 현재완료 도치 → has + the demand + increased.",
+    "explanation_kr": "So dramatically 도치! 현재완료 결과 강조! has + the demand + increased! AI 엔지니어 수요가 급증해서 대학 커리큘럼까지 바뀌고 있다니!",
+    "kr": "숙련된 AI 엔지니어에 대한 글로벌 수요가 너무 극적으로 증가하여 전 세계 대학들이 컴퓨터 과학 및 데이터 과학 커리큘럼을 빠르게 재설계하고 있다.",
+    "expressions": [
+      {
+        "expr": "so dramatically has + 주어 + p.p.",
+        "meaning": "So 도치 + 현재완료!"
+      },
+      {
+        "expr": "curricula",
+        "meaning": "커리큘럼들 (curriculum의 복수)"
+      }
+    ]
+  },
+  {
+    "id": "GRM_498",
+    "category": "GRAMMAR",
+    "cat": "도치",
+    "word_count": 22,
+    "diff": "hard",
+    "sentence": "Not until every potential cybersecurity threat identified in the comprehensive penetration testing report _______ fully addressed did the CISO authorize the system to go live.",
+    "choices": [
+      "(A) had been",
+      "(B) has been",
+      "(C) was",
+      "(D) is"
+    ],
+    "answer": 0,
+    "answer_word": "had been",
+    "explanation": "Not until 절 내부 → 주절보다 먼저 완료된 수동 = 과거완료 수동 had been addressed.",
+    "explanation_kr": "Not until 절 안! 위협 대응(먼저)이 CISO 승인(나중)보다 앞서! 과거완료 수동! had been addressed!",
+    "kr": "포괄적인 침투 테스트 보고서에서 식별된 모든 잠재적 사이버보안 위협이 완전히 해결될 때까지 CISO는 시스템의 가동을 승인하지 않았다.",
+    "expressions": [
+      {
+        "expr": "penetration testing",
+        "meaning": "침투 테스트"
+      },
+      {
+        "expr": "CISO (Chief Information Security Officer)",
+        "meaning": "최고정보보안책임자"
+      },
+      {
+        "expr": "not until + had been p.p.",
+        "meaning": "Not until 과거완료 수동!"
+      }
+    ]
+  },
+  {
+    "id": "GRM_499",
+    "category": "GRAMMAR",
+    "cat": "도치",
+    "word_count": 22,
+    "diff": "hard",
+    "sentence": "Only after all relevant stakeholders had reviewed and signed off on the comprehensive data governance framework _______ the chief data officer authorize its implementation across all global operations.",
+    "choices": [
+      "(A) did",
+      "(B) has",
+      "(C) does",
+      "(D) had"
+    ],
+    "answer": 0,
+    "answer_word": "did",
+    "explanation": "Only after 절 → 주절 도치 did + 주어 + 동사원형.",
+    "explanation_kr": "Only after 절 완료 후 주절 도치! did + the chief data officer + authorize! 모든 이해관계자 승인 후에야 CDO가 실행 승인한 거야~",
+    "kr": "모든 관련 이해관계자들이 포괄적인 데이터 거버넌스 프레임워크를 검토하고 승인한 후에야 최고데이터책임자가 모든 글로벌 운영 전반에 걸친 시행을 승인했다.",
+    "expressions": [
+      {
+        "expr": "only after + 절, did + 주어 + 동사원형",
+        "meaning": "Only after 도치!"
+      },
+      {
+        "expr": "data governance framework",
+        "meaning": "데이터 거버넌스 프레임워크"
+      },
+      {
+        "expr": "sign off on",
+        "meaning": "~을 최종 승인하다"
+      }
+    ]
+  },
+  {
+    "id": "GRM_500",
+    "category": "GRAMMAR",
+    "cat": "도치",
+    "word_count": 22,
+    "diff": "hard",
+    "sentence": "Little _______ when they first released the open-source large language model that it would fundamentally reshape how businesses across every industry approach knowledge work.",
+    "choices": [
+      "(A) realized the researchers",
+      "(B) have the researchers realized",
+      "(C) did the researchers realize",
+      "(D) the researchers realized"
+    ],
+    "answer": 2,
+    "answer_word": "did the researchers realize",
+    "explanation": "Little 문두 도치 → did + 주어 + 동사원형.",
+    "explanation_kr": "Little 도치! 연구자들이 처음 오픈소스 LLM 공개할 때 거의 몰랐다는 거야! did + the researchers + realize! 모든 산업의 지식 노동 방식을 바꿀 줄이야~",
+    "kr": "연구자들이 오픈소스 대형 언어 모델을 처음 공개했을 때 그것이 모든 산업의 기업들이 지식 업무에 접근하는 방식을 근본적으로 재편할 것이라는 것을 거의 알지 못했다.",
+    "expressions": [
+      {
+        "expr": "little did + 주어 + 동사원형",
+        "meaning": "Little 도치!"
+      },
+      {
+        "expr": "large language model (LLM)",
+        "meaning": "대형 언어 모델"
+      },
+      {
+        "expr": "knowledge work",
+        "meaning": "지식 업무"
+      }
+    ]
+  }
+]

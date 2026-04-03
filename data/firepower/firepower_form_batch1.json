@@ -1,0 +1,3627 @@
+[
+  {
+    "id": "FORM_001",
+    "category": "FORM",
+    "cat": "명사형",
+    "word_count": 10,
+    "diff": "easy",
+    "sentence": "The _______ of the new remote work policy impressed all employees.",
+    "choices": [
+      "(A) implementation",
+      "(B) implemented",
+      "(C) implementing",
+      "(D) implement"
+    ],
+    "answer": 0,
+    "answer_word": "implementation",
+    "explanation": "The ___ of → 관사 + 명사 + 전치사 구조. 명사 자리.",
+    "explanation_kr": "The 다음에 of가 오면 사이는 무조건 명사! The implementation of = '~의 시행'! implement는 동사야~",
+    "kr": "새로운 재택근무 정책의 시행이 모든 직원들에게 깊은 인상을 남겼다.",
+    "expressions": [
+      {
+        "expr": "implementation",
+        "meaning": "시행, 구현 (명사)"
+      },
+      {
+        "expr": "the ___ of",
+        "meaning": "관사+명사+전치사 → 명사 자리!"
+      }
+    ]
+  },
+  {
+    "id": "FORM_002",
+    "category": "FORM",
+    "cat": "명사형",
+    "word_count": 10,
+    "diff": "easy",
+    "sentence": "Her _______ of market trends helped the team make better decisions.",
+    "choices": [
+      "(A) analytical",
+      "(B) analytically",
+      "(C) analyze",
+      "(D) analysis"
+    ],
+    "answer": 3,
+    "answer_word": "analysis",
+    "explanation": "Her ___ of → 소유격 + 명사 + 전치사. 명사 자리.",
+    "explanation_kr": "Her 다음에 of가 오면 사이는 명사! analysis = '분석(명사)'! analyze는 동사야~",
+    "kr": "시장 트렌드에 대한 그녀의 분석이 팀이 더 나은 결정을 내리는 데 도움이 되었다.",
+    "expressions": [
+      {
+        "expr": "analysis",
+        "meaning": "분석 (명사)"
+      },
+      {
+        "expr": "her ___ of",
+        "meaning": "소유격+명사 → 명사 자리!"
+      }
+    ]
+  },
+  {
+    "id": "FORM_003",
+    "category": "FORM",
+    "cat": "명사형",
+    "word_count": 9,
+    "diff": "easy",
+    "sentence": "Strong _______ between departments boosted overall productivity.",
+    "choices": [
+      "(A) collaborative",
+      "(B) collaboratively",
+      "(C) collaborate",
+      "(D) collaboration"
+    ],
+    "answer": 3,
+    "answer_word": "collaboration",
+    "explanation": "Strong ___ → 형용사 + 명사 구조. 명사 자리.",
+    "explanation_kr": "Strong 다음은 명사! collaboration = '협력(명사)'! collaborate는 동사야~",
+    "kr": "부서 간의 강한 협력이 전반적인 생산성을 높였다.",
+    "expressions": [
+      {
+        "expr": "collaboration",
+        "meaning": "협력 (명사)"
+      },
+      {
+        "expr": "strong ___",
+        "meaning": "형용사 + 명사 → 명사 자리!"
+      }
+    ]
+  },
+  {
+    "id": "FORM_004",
+    "category": "FORM",
+    "cat": "명사형",
+    "word_count": 10,
+    "diff": "easy",
+    "sentence": "The company's _______ to digital platforms increased customer engagement significantly.",
+    "choices": [
+      "(A) transit",
+      "(B) transitional",
+      "(C) transitioning",
+      "(D) transition"
+    ],
+    "answer": 3,
+    "answer_word": "transition",
+    "explanation": "The company's ___ → 소유격 + 명사. 명사 자리.",
+    "explanation_kr": "소유격 company's 다음은 명사! transition = '전환(명사)'! transitional은 형용사야~",
+    "kr": "디지털 플랫폼으로의 회사의 전환이 고객 참여를 크게 증가시켰다.",
+    "expressions": [
+      {
+        "expr": "transition",
+        "meaning": "전환 (명사)"
+      },
+      {
+        "expr": "possessive + ___",
+        "meaning": "소유격 뒤 → 명사 자리!"
+      }
+    ]
+  },
+  {
+    "id": "FORM_005",
+    "category": "FORM",
+    "cat": "명사형",
+    "word_count": 11,
+    "diff": "easy",
+    "sentence": "The _______ of the new AI software took three months to complete.",
+    "choices": [
+      "(A) develop",
+      "(B) developer",
+      "(C) development",
+      "(D) developing"
+    ],
+    "answer": 2,
+    "answer_word": "development",
+    "explanation": "The ___ of → 관사 + 명사 + 전치사. 명사 자리.",
+    "explanation_kr": "The ___ of 구조! 명사 자리! development = '개발(명사)'! develop는 동사야~",
+    "kr": "새로운 AI 소프트웨어의 개발에는 완료까지 세 달이 걸렸다.",
+    "expressions": [
+      {
+        "expr": "development",
+        "meaning": "개발 (명사)"
+      },
+      {
+        "expr": "the ___ of",
+        "meaning": "관사+명사+전치사 → 명사!"
+      }
+    ]
+  },
+  {
+    "id": "FORM_006",
+    "category": "FORM",
+    "cat": "명사형",
+    "word_count": 10,
+    "diff": "easy",
+    "sentence": "Effective _______ of resources is key to project success.",
+    "choices": [
+      "(A) allocation",
+      "(B) allocating",
+      "(C) allocate",
+      "(D) allocated"
+    ],
+    "answer": 0,
+    "answer_word": "allocation",
+    "explanation": "Effective ___ of → 형용사 + 명사 + 전치사. 명사 자리.",
+    "explanation_kr": "Effective 다음에 of가 오면 사이는 명사! allocation = '할당(명사)'! allocate는 동사야~",
+    "kr": "자원의 효과적인 할당이 프로젝트 성공의 열쇠이다.",
+    "expressions": [
+      {
+        "expr": "allocation",
+        "meaning": "할당 (명사)"
+      },
+      {
+        "expr": "effective ___",
+        "meaning": "형용사 뒤 → 명사 자리!"
+      }
+    ]
+  },
+  {
+    "id": "FORM_007",
+    "category": "FORM",
+    "cat": "명사형",
+    "word_count": 10,
+    "diff": "easy",
+    "sentence": "The _______ between the two companies was finalized last Friday.",
+    "choices": [
+      "(A) partner",
+      "(B) partnership",
+      "(C) partnered",
+      "(D) partnering"
+    ],
+    "answer": 1,
+    "answer_word": "partnership",
+    "explanation": "The ___ between → 관사 + 명사 구조. 명사 자리.",
+    "explanation_kr": "The 다음은 명사! partnership = '파트너십(명사)'! partner는 동사/명사 둘 다지만 '파트너십' 의미엔 partnership!",
+    "kr": "두 회사 간의 파트너십이 지난 금요일 마무리되었다.",
+    "expressions": [
+      {
+        "expr": "partnership",
+        "meaning": "파트너십 (명사)"
+      },
+      {
+        "expr": "the ___ between",
+        "meaning": "관사+명사+전치사 → 명사!"
+      }
+    ]
+  },
+  {
+    "id": "FORM_008",
+    "category": "FORM",
+    "cat": "명사형",
+    "word_count": 9,
+    "diff": "easy",
+    "sentence": "Rapid _______ in technology is changing the job market.",
+    "choices": [
+      "(A) advance",
+      "(B) advancement",
+      "(C) advancing",
+      "(D) advanced"
+    ],
+    "answer": 1,
+    "answer_word": "advancement",
+    "explanation": "Rapid ___ in → 형용사 + 명사 + 전치사. 명사 자리.",
+    "explanation_kr": "Rapid 다음에 in이 오면 사이는 명사! advancement = '발전(명사)'! advance는 동사/명사 가능하지만 advancement가 더 자연스러워~",
+    "kr": "기술의 급속한 발전이 취업 시장을 변화시키고 있다.",
+    "expressions": [
+      {
+        "expr": "advancement",
+        "meaning": "발전, 향상 (명사)"
+      },
+      {
+        "expr": "rapid ___",
+        "meaning": "형용사+명사 → 명사 자리!"
+      }
+    ]
+  },
+  {
+    "id": "FORM_009",
+    "category": "FORM",
+    "cat": "명사형",
+    "word_count": 11,
+    "diff": "easy",
+    "sentence": "The _______ of remote work has transformed how companies manage teams.",
+    "choices": [
+      "(A) prevalent",
+      "(B) prevalently",
+      "(C) prevail",
+      "(D) prevalence"
+    ],
+    "answer": 3,
+    "answer_word": "prevalence",
+    "explanation": "The ___ of → 관사 + 명사 + 전치사. 명사 자리.",
+    "explanation_kr": "The ___ of 구조! 명사 자리! prevalence = '만연, 확산(명사)'! prevalent는 형용사야~",
+    "kr": "원격 근무의 확산이 회사들이 팀을 관리하는 방식을 변화시켰다.",
+    "expressions": [
+      {
+        "expr": "prevalence",
+        "meaning": "만연, 확산 (명사)"
+      },
+      {
+        "expr": "the ___ of",
+        "meaning": "관사+명사+전치사 → 명사!"
+      }
+    ]
+  },
+  {
+    "id": "FORM_010",
+    "category": "FORM",
+    "cat": "명사형",
+    "word_count": 10,
+    "diff": "easy",
+    "sentence": "The board approved the _______ of a new sustainability committee.",
+    "choices": [
+      "(A) established",
+      "(B) establish",
+      "(C) establishment",
+      "(D) establishing"
+    ],
+    "answer": 2,
+    "answer_word": "establishment",
+    "explanation": "the ___ of → 관사 + 명사 + 전치사. 명사 자리.",
+    "explanation_kr": "the ___ of 구조! 명사 자리! establishment = '설립(명사)'! establish는 동사야~",
+    "kr": "이사회는 새로운 지속가능성 위원회의 설립을 승인했다.",
+    "expressions": [
+      {
+        "expr": "establishment",
+        "meaning": "설립 (명사)"
+      },
+      {
+        "expr": "the ___ of",
+        "meaning": "관사+명사+전치사 → 명사!"
+      }
+    ]
+  },
+  {
+    "id": "FORM_011",
+    "category": "FORM",
+    "cat": "형용사형",
+    "word_count": 9,
+    "diff": "easy",
+    "sentence": "The consultant provided _______ feedback on the marketing strategy.",
+    "choices": [
+      "(A) constructively",
+      "(B) construct",
+      "(C) constructive",
+      "(D) construction"
+    ],
+    "answer": 2,
+    "answer_word": "constructive",
+    "explanation": "___ feedback → 명사 앞 수식. 형용사 자리.",
+    "explanation_kr": "feedback(명사) 앞에서 꾸미는 역할! 형용사 자리! constructive = '건설적인(형용사)'! constructively는 부사야~",
+    "kr": "그 컨설턴트는 마케팅 전략에 대한 건설적인 피드백을 제공했다.",
+    "expressions": [
+      {
+        "expr": "constructive",
+        "meaning": "건설적인 (형용사)"
+      },
+      {
+        "expr": "___ + 명사",
+        "meaning": "명사 앞 → 형용사 자리!"
+      }
+    ]
+  },
+  {
+    "id": "FORM_012",
+    "category": "FORM",
+    "cat": "형용사형",
+    "word_count": 10,
+    "diff": "easy",
+    "sentence": "The company has developed an _______ approach to employee wellness.",
+    "choices": [
+      "(A) innovative",
+      "(B) innovate",
+      "(C) innovation",
+      "(D) innovatively"
+    ],
+    "answer": 0,
+    "answer_word": "innovative",
+    "explanation": "an ___ approach → 관사 + 형용사 + 명사. 형용사 자리.",
+    "explanation_kr": "an 다음에 approach(명사)가 오면 사이는 형용사! innovative = '혁신적인(형용사)'! innovation은 명사야~",
+    "kr": "그 회사는 직원 웰니스에 대한 혁신적인 접근 방식을 개발했다.",
+    "expressions": [
+      {
+        "expr": "innovative",
+        "meaning": "혁신적인 (형용사)"
+      },
+      {
+        "expr": "an ___ approach",
+        "meaning": "관사+형용사+명사 → 형용사!"
+      }
+    ]
+  },
+  {
+    "id": "FORM_013",
+    "category": "FORM",
+    "cat": "형용사형",
+    "word_count": 9,
+    "diff": "easy",
+    "sentence": "The team needs _______ data before making investment decisions.",
+    "choices": [
+      "(A) reliable",
+      "(B) rely",
+      "(C) reliably",
+      "(D) reliability"
+    ],
+    "answer": 0,
+    "answer_word": "reliable",
+    "explanation": "___ data → 명사 앞 수식. 형용사 자리.",
+    "explanation_kr": "data(명사) 앞에서 꾸미는 역할! 형용사 자리! reliable = '신뢰할 수 있는(형용사)'! reliably는 부사야~",
+    "kr": "팀은 투자 결정을 내리기 전에 신뢰할 수 있는 데이터가 필요하다.",
+    "expressions": [
+      {
+        "expr": "reliable",
+        "meaning": "신뢰할 수 있는 (형용사)"
+      },
+      {
+        "expr": "___ data",
+        "meaning": "명사 앞 → 형용사 자리!"
+      }
+    ]
+  },
+  {
+    "id": "FORM_014",
+    "category": "FORM",
+    "cat": "형용사형",
+    "word_count": 9,
+    "diff": "easy",
+    "sentence": "The new ESG policy is _______ with international standards.",
+    "choices": [
+      "(A) consist",
+      "(B) consistency",
+      "(C) consistent",
+      "(D) consistently"
+    ],
+    "answer": 2,
+    "answer_word": "consistent",
+    "explanation": "is ___ → be동사 + 보어. 형용사 자리.",
+    "explanation_kr": "is 다음은 보어! 형용사 자리! consistent = '일치하는(형용사)'! consistently는 부사야~",
+    "kr": "새로운 ESG 정책은 국제 기준과 일치한다.",
+    "expressions": [
+      {
+        "expr": "consistent",
+        "meaning": "일치하는, 일관된 (형용사)"
+      },
+      {
+        "expr": "be동사 + ___",
+        "meaning": "be동사 뒤 보어 → 형용사!"
+      }
+    ]
+  },
+  {
+    "id": "FORM_015",
+    "category": "FORM",
+    "cat": "형용사형",
+    "word_count": 10,
+    "diff": "easy",
+    "sentence": "Remote work has become _______ for many technology companies.",
+    "choices": [
+      "(A) standardized",
+      "(B) standard",
+      "(C) standardize",
+      "(D) standardization"
+    ],
+    "answer": 1,
+    "answer_word": "standard",
+    "explanation": "become ___ → 연결동사 + 보어. 형용사 자리.",
+    "explanation_kr": "become 다음은 보어! 형용사 자리! standard = '표준적인(형용사)'! standardized도 형용사지만 '표준적인'엔 standard!",
+    "kr": "원격 근무는 많은 기술 회사들에게 표준이 되었다.",
+    "expressions": [
+      {
+        "expr": "standard",
+        "meaning": "표준적인 (형용사)"
+      },
+      {
+        "expr": "become ___",
+        "meaning": "연결동사 뒤 → 형용사 보어!"
+      }
+    ]
+  },
+  {
+    "id": "FORM_016",
+    "category": "FORM",
+    "cat": "형용사형",
+    "word_count": 10,
+    "diff": "easy",
+    "sentence": "The CEO gave a _______ speech about the company's future plans.",
+    "choices": [
+      "(A) inspiringly",
+      "(B) inspiring",
+      "(C) inspire",
+      "(D) inspiration"
+    ],
+    "answer": 1,
+    "answer_word": "inspiring",
+    "explanation": "a ___ speech → 관사 + 형용사 + 명사. 형용사 자리.",
+    "explanation_kr": "a 다음에 speech(명사)가 오면 사이는 형용사! inspiring = '영감을 주는(형용사)'! inspiration은 명사야~",
+    "kr": "CEO는 회사의 미래 계획에 대해 영감을 주는 연설을 했다.",
+    "expressions": [
+      {
+        "expr": "inspiring",
+        "meaning": "영감을 주는 (형용사)"
+      },
+      {
+        "expr": "a ___ speech",
+        "meaning": "관사+형용사+명사 → 형용사!"
+      }
+    ]
+  },
+  {
+    "id": "FORM_017",
+    "category": "FORM",
+    "cat": "형용사형",
+    "word_count": 9,
+    "diff": "easy",
+    "sentence": "The manager is _______ for overseeing all digital transformation projects.",
+    "choices": [
+      "(A) responsibility",
+      "(B) responsibly",
+      "(C) responsible",
+      "(D) respond"
+    ],
+    "answer": 2,
+    "answer_word": "responsible",
+    "explanation": "is ___ for → be동사 + 보어 + 전치사. 형용사 자리.",
+    "explanation_kr": "is 다음은 보어! responsible for = '~에 책임이 있는'! 형용사! responsibility는 명사야~",
+    "kr": "그 매니저는 모든 디지털 전환 프로젝트를 감독하는 책임이 있다.",
+    "expressions": [
+      {
+        "expr": "responsible",
+        "meaning": "책임이 있는 (형용사)"
+      },
+      {
+        "expr": "responsible for",
+        "meaning": "~에 책임이 있는 (형용사 + 전치사)"
+      }
+    ]
+  },
+  {
+    "id": "FORM_018",
+    "category": "FORM",
+    "cat": "형용사형",
+    "word_count": 10,
+    "diff": "easy",
+    "sentence": "The startup received _______ praise for its carbon-neutral delivery service.",
+    "choices": [
+      "(A) widely",
+      "(B) widen",
+      "(C) wideness",
+      "(D) wide"
+    ],
+    "answer": 3,
+    "answer_word": "wide",
+    "explanation": "___ praise → 명사 앞 수식. 형용사 자리.",
+    "explanation_kr": "praise(명사) 앞에서 꾸미는 역할! 형용사 자리! wide = '광범위한(형용사)'! widely는 부사야~",
+    "kr": "그 스타트업은 탄소 중립 배달 서비스로 광범위한 칭찬을 받았다.",
+    "expressions": [
+      {
+        "expr": "wide",
+        "meaning": "광범위한 (형용사)"
+      },
+      {
+        "expr": "___ praise",
+        "meaning": "명사 앞 → 형용사 자리!"
+      }
+    ]
+  },
+  {
+    "id": "FORM_019",
+    "category": "FORM",
+    "cat": "형용사형",
+    "word_count": 9,
+    "diff": "easy",
+    "sentence": "The AI system proved _______ in detecting financial fraud.",
+    "choices": [
+      "(A) effectiveness",
+      "(B) effect",
+      "(C) effective",
+      "(D) effectively"
+    ],
+    "answer": 2,
+    "answer_word": "effective",
+    "explanation": "proved ___ → 연결동사 + 보어. 형용사 자리.",
+    "explanation_kr": "proved 다음은 보어! 형용사 자리! effective = '효과적인(형용사)'! effectively는 부사야~",
+    "kr": "AI 시스템은 금융 사기 탐지에 효과적인 것으로 입증되었다.",
+    "expressions": [
+      {
+        "expr": "effective",
+        "meaning": "효과적인 (형용사)"
+      },
+      {
+        "expr": "prove ___",
+        "meaning": "prove + 형용사 → 형용사 보어!"
+      }
+    ]
+  },
+  {
+    "id": "FORM_020",
+    "category": "FORM",
+    "cat": "형용사형",
+    "word_count": 10,
+    "diff": "easy",
+    "sentence": "The new onboarding process is more _______ than the previous one.",
+    "choices": [
+      "(A) efficiency",
+      "(B) efficient",
+      "(C) efficiently",
+      "(D) efficiencies"
+    ],
+    "answer": 1,
+    "answer_word": "efficient",
+    "explanation": "more ___ → more + 형용사 (비교급). 형용사 자리.",
+    "explanation_kr": "more 다음은 형용사! efficient = '효율적인(형용사)'! efficiently는 부사야~",
+    "kr": "새로운 온보딩 프로세스는 이전 것보다 더 효율적이다.",
+    "expressions": [
+      {
+        "expr": "efficient",
+        "meaning": "효율적인 (형용사)"
+      },
+      {
+        "expr": "more ___",
+        "meaning": "more + 형용사 → 비교급!"
+      }
+    ]
+  },
+  {
+    "id": "FORM_021",
+    "category": "FORM",
+    "cat": "부사형",
+    "word_count": 9,
+    "diff": "easy",
+    "sentence": "The team _______ completed the cybersecurity audit ahead of schedule.",
+    "choices": [
+      "(A) successful",
+      "(B) successfully",
+      "(C) success",
+      "(D) succeed"
+    ],
+    "answer": 1,
+    "answer_word": "successfully",
+    "explanation": "동사(completed) 수식. 부사 자리.",
+    "explanation_kr": "completed(동사)를 꾸미는 건 부사! successfully = '성공적으로(부사)'! successful은 형용사야~",
+    "kr": "팀은 일정보다 앞서 사이버보안 감사를 성공적으로 완료했다.",
+    "expressions": [
+      {
+        "expr": "successfully",
+        "meaning": "성공적으로 (부사)"
+      },
+      {
+        "expr": "동사 수식",
+        "meaning": "동사 꾸미기 → 부사 자리!"
+      }
+    ]
+  },
+  {
+    "id": "FORM_022",
+    "category": "FORM",
+    "cat": "부사형",
+    "word_count": 9,
+    "diff": "easy",
+    "sentence": "The company _______ reduced its carbon footprint over two years.",
+    "choices": [
+      "(A) significantly",
+      "(B) signify",
+      "(C) significant",
+      "(D) significance"
+    ],
+    "answer": 0,
+    "answer_word": "significantly",
+    "explanation": "동사(reduced) 수식. 부사 자리.",
+    "explanation_kr": "reduced(동사)를 꾸미는 건 부사! significantly = '상당히(부사)'! significant는 형용사야~",
+    "kr": "회사는 2년에 걸쳐 탄소 발자국을 상당히 줄였다.",
+    "expressions": [
+      {
+        "expr": "significantly",
+        "meaning": "상당히 (부사)"
+      },
+      {
+        "expr": "동사 + ___",
+        "meaning": "동사 뒤 수식 → 부사 자리!"
+      }
+    ]
+  },
+  {
+    "id": "FORM_023",
+    "category": "FORM",
+    "cat": "부사형",
+    "word_count": 9,
+    "diff": "easy",
+    "sentence": "The data analyst _______ reviewed all the financial reports.",
+    "choices": [
+      "(A) care",
+      "(B) careless",
+      "(C) carefully",
+      "(D) careful"
+    ],
+    "answer": 2,
+    "answer_word": "carefully",
+    "explanation": "동사(reviewed) 수식. 부사 자리.",
+    "explanation_kr": "reviewed(동사)를 꾸미는 건 부사! carefully = '신중하게(부사)'! careful은 형용사야~",
+    "kr": "데이터 분석가는 모든 재무 보고서를 신중하게 검토했다.",
+    "expressions": [
+      {
+        "expr": "carefully",
+        "meaning": "신중하게 (부사)"
+      },
+      {
+        "expr": "동사 수식",
+        "meaning": "동사 꾸미기 → 부사 자리!"
+      }
+    ]
+  },
+  {
+    "id": "FORM_024",
+    "category": "FORM",
+    "cat": "부사형",
+    "word_count": 10,
+    "diff": "easy",
+    "sentence": "The new app was _______ well received by users in all markets.",
+    "choices": [
+      "(A) exception",
+      "(B) exceptional",
+      "(C) exceptionally",
+      "(D) except"
+    ],
+    "answer": 2,
+    "answer_word": "exceptionally",
+    "explanation": "형용사(well) 수식. 부사 자리.",
+    "explanation_kr": "well(형용사)를 더 강하게 꾸미는 건 부사! exceptionally = '예외적으로(부사)'! exceptional은 형용사야~",
+    "kr": "새로운 앱은 모든 시장에서 사용자들에게 예외적으로 좋은 반응을 얻었다.",
+    "expressions": [
+      {
+        "expr": "exceptionally",
+        "meaning": "예외적으로 (부사)"
+      },
+      {
+        "expr": "___ + 형용사",
+        "meaning": "형용사 앞 수식 → 부사 자리!"
+      }
+    ]
+  },
+  {
+    "id": "FORM_025",
+    "category": "FORM",
+    "cat": "부사형",
+    "word_count": 9,
+    "diff": "easy",
+    "sentence": "The logistics team _______ delivered all orders before the holiday.",
+    "choices": [
+      "(A) efficiencies",
+      "(B) efficiently",
+      "(C) efficient",
+      "(D) efficiency"
+    ],
+    "answer": 1,
+    "answer_word": "efficiently",
+    "explanation": "동사(delivered) 수식. 부사 자리.",
+    "explanation_kr": "delivered(동사)를 꾸미는 건 부사! efficiently = '효율적으로(부사)'! efficient는 형용사야~",
+    "kr": "물류팀은 휴일 전에 모든 주문을 효율적으로 배달했다.",
+    "expressions": [
+      {
+        "expr": "efficiently",
+        "meaning": "효율적으로 (부사)"
+      },
+      {
+        "expr": "동사 수식",
+        "meaning": "동사 꾸미기 → 부사 자리!"
+      }
+    ]
+  },
+  {
+    "id": "FORM_026",
+    "category": "FORM",
+    "cat": "부사형",
+    "word_count": 10,
+    "diff": "easy",
+    "sentence": "The sustainability report was _______ prepared by the ESG committee.",
+    "choices": [
+      "(A) thoroughing",
+      "(B) thoroughness",
+      "(C) thorough",
+      "(D) thoroughly"
+    ],
+    "answer": 3,
+    "answer_word": "thoroughly",
+    "explanation": "수동태(was prepared) 수식. 부사 자리.",
+    "explanation_kr": "was prepared(수동태 동사)를 꾸미는 건 부사! thoroughly = '철저하게(부사)'! thorough는 형용사야~",
+    "kr": "지속가능성 보고서는 ESG 위원회에 의해 철저하게 준비되었다.",
+    "expressions": [
+      {
+        "expr": "thoroughly",
+        "meaning": "철저하게 (부사)"
+      },
+      {
+        "expr": "수동태 동사 수식",
+        "meaning": "수동태 꾸미기 → 부사 자리!"
+      }
+    ]
+  },
+  {
+    "id": "FORM_027",
+    "category": "FORM",
+    "cat": "부사형",
+    "word_count": 10,
+    "diff": "easy",
+    "sentence": "The startup responded _______ to all customer complaints within 24 hours.",
+    "choices": [
+      "(A) promptly",
+      "(B) promptness",
+      "(C) prompt",
+      "(D) prompts"
+    ],
+    "answer": 0,
+    "answer_word": "promptly",
+    "explanation": "동사(responded) 수식. 부사 자리.",
+    "explanation_kr": "responded(동사)를 꾸미는 건 부사! promptly = '신속하게(부사)'! prompt는 형용사/동사야~",
+    "kr": "스타트업은 24시간 이내에 모든 고객 불만에 신속하게 응답했다.",
+    "expressions": [
+      {
+        "expr": "promptly",
+        "meaning": "신속하게 (부사)"
+      },
+      {
+        "expr": "responded ___",
+        "meaning": "동사 뒤 수식 → 부사!"
+      }
+    ]
+  },
+  {
+    "id": "FORM_028",
+    "category": "FORM",
+    "cat": "부사형",
+    "word_count": 9,
+    "diff": "easy",
+    "sentence": "The board members voted _______ in favor of the acquisition.",
+    "choices": [
+      "(A) unanimously",
+      "(B) unanimous",
+      "(C) unanimousness",
+      "(D) unanimity"
+    ],
+    "answer": 0,
+    "answer_word": "unanimously",
+    "explanation": "동사(voted) 수식. 부사 자리.",
+    "explanation_kr": "voted(동사)를 꾸미는 건 부사! unanimously = '만장일치로(부사)'! unanimous는 형용사야~",
+    "kr": "이사회 구성원들은 인수에 찬성하여 만장일치로 투표했다.",
+    "expressions": [
+      {
+        "expr": "unanimously",
+        "meaning": "만장일치로 (부사)"
+      },
+      {
+        "expr": "voted ___",
+        "meaning": "동사 뒤 수식 → 부사!"
+      }
+    ]
+  },
+  {
+    "id": "FORM_029",
+    "category": "FORM",
+    "cat": "부사형",
+    "word_count": 10,
+    "diff": "easy",
+    "sentence": "The robot performed _______ during the quality control test.",
+    "choices": [
+      "(A) accuracy",
+      "(B) accurate",
+      "(C) accurately",
+      "(D) inaccurate"
+    ],
+    "answer": 2,
+    "answer_word": "accurately",
+    "explanation": "동사(performed) 수식. 부사 자리.",
+    "explanation_kr": "performed(동사)를 꾸미는 건 부사! accurately = '정확하게(부사)'! accurate는 형용사야~",
+    "kr": "로봇은 품질 관리 테스트 동안 정확하게 작동했다.",
+    "expressions": [
+      {
+        "expr": "accurately",
+        "meaning": "정확하게 (부사)"
+      },
+      {
+        "expr": "performed ___",
+        "meaning": "동사 뒤 수식 → 부사!"
+      }
+    ]
+  },
+  {
+    "id": "FORM_030",
+    "category": "FORM",
+    "cat": "부사형",
+    "word_count": 9,
+    "diff": "easy",
+    "sentence": "The company _______ exceeded its quarterly revenue targets.",
+    "choices": [
+      "(A) consist",
+      "(B) consistently",
+      "(C) consistency",
+      "(D) consistent"
+    ],
+    "answer": 1,
+    "answer_word": "consistently",
+    "explanation": "동사(exceeded) 수식. 부사 자리.",
+    "explanation_kr": "exceeded(동사)를 꾸미는 건 부사! consistently = '꾸준히(부사)'! consistent는 형용사야~",
+    "kr": "회사는 분기 수익 목표를 꾸준히 초과 달성했다.",
+    "expressions": [
+      {
+        "expr": "consistently",
+        "meaning": "꾸준히 (부사)"
+      },
+      {
+        "expr": "동사 수식",
+        "meaning": "동사 꾸미기 → 부사 자리!"
+      }
+    ]
+  },
+  {
+    "id": "FORM_031",
+    "category": "FORM",
+    "cat": "동사형",
+    "word_count": 9,
+    "diff": "easy",
+    "sentence": "The HR team will _______ the new talent management system next month.",
+    "choices": [
+      "(A) implement",
+      "(B) implemented",
+      "(C) implementing",
+      "(D) implementation"
+    ],
+    "answer": 0,
+    "answer_word": "implement",
+    "explanation": "will ___ → 조동사 + 동사원형. 동사 자리.",
+    "explanation_kr": "will 다음은 동사원형! implement = '시행하다(동사원형)'! implementation은 명사야~",
+    "kr": "HR팀은 다음 달 새로운 인재 관리 시스템을 시행할 것이다.",
+    "expressions": [
+      {
+        "expr": "implement",
+        "meaning": "시행하다 (동사원형)"
+      },
+      {
+        "expr": "will + ___",
+        "meaning": "조동사 뒤 → 동사원형!"
+      }
+    ]
+  },
+  {
+    "id": "FORM_032",
+    "category": "FORM",
+    "cat": "동사형",
+    "word_count": 10,
+    "diff": "easy",
+    "sentence": "The startup plans to _______ its operations to five new countries.",
+    "choices": [
+      "(A) expanding",
+      "(B) expansive",
+      "(C) expand",
+      "(D) expansion"
+    ],
+    "answer": 2,
+    "answer_word": "expand",
+    "explanation": "to ___ → to부정사. 동사원형 자리.",
+    "explanation_kr": "to 다음은 동사원형! expand = '확장하다(동사원형)'! expansion은 명사야~",
+    "kr": "스타트업은 5개 새로운 국가로 운영을 확장할 계획이다.",
+    "expressions": [
+      {
+        "expr": "expand",
+        "meaning": "확장하다 (동사원형)"
+      },
+      {
+        "expr": "to + ___",
+        "meaning": "to부정사 → 동사원형!"
+      }
+    ]
+  },
+  {
+    "id": "FORM_033",
+    "category": "FORM",
+    "cat": "동사형",
+    "word_count": 9,
+    "diff": "easy",
+    "sentence": "The company should _______ its data privacy policy immediately.",
+    "choices": [
+      "(A) revised",
+      "(B) revision",
+      "(C) revise",
+      "(D) revising"
+    ],
+    "answer": 2,
+    "answer_word": "revise",
+    "explanation": "should ___ → 조동사 + 동사원형. 동사 자리.",
+    "explanation_kr": "should 다음은 동사원형! revise = '수정하다(동사원형)'! revision은 명사야~",
+    "kr": "회사는 즉시 데이터 개인정보 보호 정책을 수정해야 한다.",
+    "expressions": [
+      {
+        "expr": "revise",
+        "meaning": "수정하다 (동사원형)"
+      },
+      {
+        "expr": "should + ___",
+        "meaning": "조동사 뒤 → 동사원형!"
+      }
+    ]
+  },
+  {
+    "id": "FORM_034",
+    "category": "FORM",
+    "cat": "동사형",
+    "word_count": 9,
+    "diff": "easy",
+    "sentence": "The management team decided to _______ a new hybrid work model.",
+    "choices": [
+      "(A) adoption",
+      "(B) adoptive",
+      "(C) adopted",
+      "(D) adopt"
+    ],
+    "answer": 3,
+    "answer_word": "adopt",
+    "explanation": "to ___ → to부정사. 동사원형 자리.",
+    "explanation_kr": "to 다음은 동사원형! adopt = '채택하다(동사원형)'! adoption은 명사야~",
+    "kr": "경영진은 새로운 하이브리드 근무 모델을 채택하기로 결정했다.",
+    "expressions": [
+      {
+        "expr": "adopt",
+        "meaning": "채택하다 (동사원형)"
+      },
+      {
+        "expr": "to + ___",
+        "meaning": "to부정사 → 동사원형!"
+      }
+    ]
+  },
+  {
+    "id": "FORM_035",
+    "category": "FORM",
+    "cat": "동사형",
+    "word_count": 9,
+    "diff": "easy",
+    "sentence": "The new regulations will _______ companies to disclose ESG data.",
+    "choices": [
+      "(A) required",
+      "(B) requiring",
+      "(C) require",
+      "(D) requirement"
+    ],
+    "answer": 2,
+    "answer_word": "require",
+    "explanation": "will ___ → 조동사 + 동사원형. 동사 자리.",
+    "explanation_kr": "will 다음은 동사원형! require = '요구하다(동사원형)'! requirement는 명사야~",
+    "kr": "새로운 규정은 기업들이 ESG 데이터를 공개하도록 요구할 것이다.",
+    "expressions": [
+      {
+        "expr": "require",
+        "meaning": "요구하다 (동사원형)"
+      },
+      {
+        "expr": "will + ___",
+        "meaning": "조동사 뒤 → 동사원형!"
+      }
+    ]
+  },
+  {
+    "id": "FORM_036",
+    "category": "FORM",
+    "cat": "동사형",
+    "word_count": 9,
+    "diff": "easy",
+    "sentence": "The team must _______ the cybersecurity protocols before launch.",
+    "choices": [
+      "(A) verification",
+      "(B) verified",
+      "(C) verifying",
+      "(D) verify"
+    ],
+    "answer": 3,
+    "answer_word": "verify",
+    "explanation": "must ___ → 조동사 + 동사원형. 동사 자리.",
+    "explanation_kr": "must 다음은 동사원형! verify = '검증하다(동사원형)'! verification은 명사야~",
+    "kr": "팀은 출시 전에 사이버보안 프로토콜을 검증해야 한다.",
+    "expressions": [
+      {
+        "expr": "verify",
+        "meaning": "검증하다 (동사원형)"
+      },
+      {
+        "expr": "must + ___",
+        "meaning": "조동사 뒤 → 동사원형!"
+      }
+    ]
+  },
+  {
+    "id": "FORM_037",
+    "category": "FORM",
+    "cat": "동사형",
+    "word_count": 10,
+    "diff": "easy",
+    "sentence": "The logistics company aims to _______ delivery times by thirty percent.",
+    "choices": [
+      "(A) reduction",
+      "(B) reduce",
+      "(C) reducing",
+      "(D) reduced"
+    ],
+    "answer": 1,
+    "answer_word": "reduce",
+    "explanation": "to ___ → to부정사. 동사원형 자리.",
+    "explanation_kr": "to 다음은 동사원형! reduce = '줄이다(동사원형)'! reduction은 명사야~",
+    "kr": "물류 회사는 배달 시간을 30% 줄이는 것을 목표로 한다.",
+    "expressions": [
+      {
+        "expr": "reduce",
+        "meaning": "줄이다 (동사원형)"
+      },
+      {
+        "expr": "to + ___",
+        "meaning": "to부정사 → 동사원형!"
+      }
+    ]
+  },
+  {
+    "id": "FORM_038",
+    "category": "FORM",
+    "cat": "동사형",
+    "word_count": 10,
+    "diff": "easy",
+    "sentence": "The board will _______ the new CEO's performance after six months.",
+    "choices": [
+      "(A) evaluating",
+      "(B) evaluation",
+      "(C) evaluated",
+      "(D) evaluate"
+    ],
+    "answer": 3,
+    "answer_word": "evaluate",
+    "explanation": "will ___ → 조동사 + 동사원형. 동사 자리.",
+    "explanation_kr": "will 다음은 동사원형! evaluate = '평가하다(동사원형)'! evaluation은 명사야~",
+    "kr": "이사회는 6개월 후 새 CEO의 성과를 평가할 것이다.",
+    "expressions": [
+      {
+        "expr": "evaluate",
+        "meaning": "평가하다 (동사원형)"
+      },
+      {
+        "expr": "will + ___",
+        "meaning": "조동사 뒤 → 동사원형!"
+      }
+    ]
+  },
+  {
+    "id": "FORM_039",
+    "category": "FORM",
+    "cat": "동사형",
+    "word_count": 9,
+    "diff": "easy",
+    "sentence": "The tech company needs to _______ its cloud infrastructure.",
+    "choices": [
+      "(A) modern",
+      "(B) modernize",
+      "(C) modernly",
+      "(D) modernization"
+    ],
+    "answer": 1,
+    "answer_word": "modernize",
+    "explanation": "to ___ → to부정사. 동사원형 자리.",
+    "explanation_kr": "to 다음은 동사원형! modernize = '현대화하다(동사원형)'! modernization은 명사야~",
+    "kr": "기술 회사는 클라우드 인프라를 현대화할 필요가 있다.",
+    "expressions": [
+      {
+        "expr": "modernize",
+        "meaning": "현대화하다 (동사원형)"
+      },
+      {
+        "expr": "to + ___",
+        "meaning": "to부정사 → 동사원형!"
+      }
+    ]
+  },
+  {
+    "id": "FORM_040",
+    "category": "FORM",
+    "cat": "동사형",
+    "word_count": 9,
+    "diff": "easy",
+    "sentence": "The AI system can _______ thousands of applications simultaneously.",
+    "choices": [
+      "(A) processor",
+      "(B) process",
+      "(C) processed",
+      "(D) processing"
+    ],
+    "answer": 1,
+    "answer_word": "process",
+    "explanation": "can ___ → 조동사 + 동사원형. 동사 자리.",
+    "explanation_kr": "can 다음은 동사원형! process = '처리하다(동사원형)'! processor는 명사야~",
+    "kr": "AI 시스템은 수천 개의 애플리케이션을 동시에 처리할 수 있다.",
+    "expressions": [
+      {
+        "expr": "process",
+        "meaning": "처리하다 (동사원형)"
+      },
+      {
+        "expr": "can + ___",
+        "meaning": "조동사 뒤 → 동사원형!"
+      }
+    ]
+  },
+  {
+    "id": "FORM_041",
+    "category": "FORM",
+    "cat": "분사형",
+    "word_count": 10,
+    "diff": "easy",
+    "sentence": "The _______ report highlighted several risks in the supply chain.",
+    "choices": [
+      "(A) details",
+      "(B) detailed",
+      "(C) detail",
+      "(D) detailing"
+    ],
+    "answer": 1,
+    "answer_word": "detailed",
+    "explanation": "___ report → 명사 앞 수식. 과거분사 형용사.",
+    "explanation_kr": "report(명사) 앞에서 꾸미는 역할! '세부적인'이라는 의미의 형용사 → detailed! detailing은 현재분사야~",
+    "kr": "상세한 보고서는 공급망의 여러 위험을 강조했다.",
+    "expressions": [
+      {
+        "expr": "detailed",
+        "meaning": "세부적인 (과거분사 형용사)"
+      },
+      {
+        "expr": "___ report",
+        "meaning": "명사 앞 → 분사형 형용사!"
+      }
+    ]
+  },
+  {
+    "id": "FORM_042",
+    "category": "FORM",
+    "cat": "분사형",
+    "word_count": 9,
+    "diff": "easy",
+    "sentence": "The _______ demand for electric vehicles is reshaping the auto industry.",
+    "choices": [
+      "(A) grew",
+      "(B) grows",
+      "(C) grown",
+      "(D) growing"
+    ],
+    "answer": 3,
+    "answer_word": "growing",
+    "explanation": "___ demand → 명사 앞 수식. 현재분사 형용사.",
+    "explanation_kr": "demand(명사) 앞에서 꾸미는 역할! '증가하는'이라는 현재진행 의미 → growing! grew는 과거형이야~",
+    "kr": "전기차에 대한 증가하는 수요가 자동차 산업을 재편하고 있다.",
+    "expressions": [
+      {
+        "expr": "growing",
+        "meaning": "증가하는 (현재분사 형용사)"
+      },
+      {
+        "expr": "growing demand",
+        "meaning": "현재분사 + 명사!"
+      }
+    ]
+  },
+  {
+    "id": "FORM_043",
+    "category": "FORM",
+    "cat": "분사형",
+    "word_count": 10,
+    "diff": "easy",
+    "sentence": "Employees were _______ by the unexpected announcement of layoffs.",
+    "choices": [
+      "(A) shocking",
+      "(B) shocked",
+      "(C) shock",
+      "(D) shockingly"
+    ],
+    "answer": 1,
+    "answer_word": "shocked",
+    "explanation": "were ___ → be + 과거분사 (수동태/감정 형용사).",
+    "explanation_kr": "were 다음에 사람이 주어면 과거분사! shocked = '충격받은(형용사)'! shocking은 '충격을 주는'으로 사물에!",
+    "kr": "직원들은 예상치 못한 정리해고 발표에 충격을 받았다.",
+    "expressions": [
+      {
+        "expr": "shocked",
+        "meaning": "충격받은 (감정 형용사)"
+      },
+      {
+        "expr": "사람 + were + shocked",
+        "meaning": "사람 주어 → 과거분사 감정 형용사!"
+      }
+    ]
+  },
+  {
+    "id": "FORM_044",
+    "category": "FORM",
+    "cat": "분사형",
+    "word_count": 10,
+    "diff": "easy",
+    "sentence": "The _______ costs of raw materials are affecting profit margins.",
+    "choices": [
+      "(A) rise",
+      "(B) raised",
+      "(C) rising",
+      "(D) risen"
+    ],
+    "answer": 2,
+    "answer_word": "rising",
+    "explanation": "___ costs → 명사 앞 수식. 현재분사 형용사.",
+    "explanation_kr": "costs(명사) 앞에서 꾸미는 역할! '오르고 있는'이라는 진행 의미 → rising! raised는 타동사 과거분사야~",
+    "kr": "오르고 있는 원자재 비용이 이익 마진에 영향을 미치고 있다.",
+    "expressions": [
+      {
+        "expr": "rising",
+        "meaning": "오르고 있는 (현재분사 형용사)"
+      },
+      {
+        "expr": "rising costs",
+        "meaning": "현재분사 + 명사!"
+      }
+    ]
+  },
+  {
+    "id": "FORM_045",
+    "category": "FORM",
+    "cat": "분사형",
+    "word_count": 9,
+    "diff": "easy",
+    "sentence": "The investors were _______ with the startup's impressive growth figures.",
+    "choices": [
+      "(A) impression",
+      "(B) impressing",
+      "(C) impressed",
+      "(D) impressive"
+    ],
+    "answer": 2,
+    "answer_word": "impressed",
+    "explanation": "were ___ with → be + 과거분사 (수동/감정 형용사).",
+    "explanation_kr": "were 다음에 사람이 주어면 과거분사! impressed with = '~에 감동받은'! impressive는 사물 주어에 써~",
+    "kr": "투자자들은 스타트업의 인상적인 성장 수치에 감명을 받았다.",
+    "expressions": [
+      {
+        "expr": "impressed",
+        "meaning": "감명받은 (감정 형용사)"
+      },
+      {
+        "expr": "be impressed with",
+        "meaning": "~에 감명받다"
+      }
+    ]
+  },
+  {
+    "id": "FORM_046",
+    "category": "FORM",
+    "cat": "분사형",
+    "word_count": 10,
+    "diff": "easy",
+    "sentence": "The _______ market for green hydrogen presents a huge opportunity.",
+    "choices": [
+      "(A) expand",
+      "(B) expanding",
+      "(C) expanded",
+      "(D) expands"
+    ],
+    "answer": 1,
+    "answer_word": "expanding",
+    "explanation": "___ market → 명사 앞 수식. 현재분사 형용사.",
+    "explanation_kr": "market(명사) 앞에서 꾸미는 역할! '확장하고 있는' 진행 의미 → expanding! expanded는 '이미 확장된'이야~",
+    "kr": "그린 수소에 대한 확장하고 있는 시장은 엄청난 기회를 제공한다.",
+    "expressions": [
+      {
+        "expr": "expanding",
+        "meaning": "확장하고 있는 (현재분사)"
+      },
+      {
+        "expr": "expanding market",
+        "meaning": "현재분사 + 명사!"
+      }
+    ]
+  },
+  {
+    "id": "FORM_047",
+    "category": "FORM",
+    "cat": "분사형",
+    "word_count": 9,
+    "diff": "easy",
+    "sentence": "Staff were _______ to hear about the new flexible work arrangements.",
+    "choices": [
+      "(A) excitement",
+      "(B) excited",
+      "(C) excitedly",
+      "(D) exciting"
+    ],
+    "answer": 1,
+    "answer_word": "excited",
+    "explanation": "were ___ → be + 과거분사 (감정 형용사). 사람 주어.",
+    "explanation_kr": "사람(Staff)이 주어면 과거분사! excited = '흥분한'! exciting은 '흥분을 일으키는'으로 사물 주어에!",
+    "kr": "직원들은 새로운 유연한 근무 제도에 대해 듣고 흥분했다.",
+    "expressions": [
+      {
+        "expr": "excited",
+        "meaning": "흥분한 (감정 형용사)"
+      },
+      {
+        "expr": "사람 + be + excited",
+        "meaning": "사람 주어 → 과거분사 감정!"
+      }
+    ]
+  },
+  {
+    "id": "FORM_048",
+    "category": "FORM",
+    "cat": "분사형",
+    "word_count": 10,
+    "diff": "easy",
+    "sentence": "The newly _______ guidelines on AI use were distributed to all staff.",
+    "choices": [
+      "(A) revision",
+      "(B) revising",
+      "(C) revise",
+      "(D) revised"
+    ],
+    "answer": 3,
+    "answer_word": "revised",
+    "explanation": "newly ___ guidelines → 부사 + 과거분사 + 명사. 과거분사 형용사.",
+    "explanation_kr": "guidelines(명사) 앞에서 꾸미는 역할! newly revised = '새로 개정된'! 과거분사 형용사!",
+    "kr": "새로 개정된 AI 사용 지침이 모든 직원에게 배포되었다.",
+    "expressions": [
+      {
+        "expr": "revised",
+        "meaning": "개정된 (과거분사 형용사)"
+      },
+      {
+        "expr": "newly revised",
+        "meaning": "부사 + 과거분사 + 명사!"
+      }
+    ]
+  },
+  {
+    "id": "FORM_049",
+    "category": "FORM",
+    "cat": "분사형",
+    "word_count": 9,
+    "diff": "easy",
+    "sentence": "The _______ trend toward remote work is irreversible.",
+    "choices": [
+      "(A) continuing",
+      "(B) continues",
+      "(C) continuation",
+      "(D) continued"
+    ],
+    "answer": 0,
+    "answer_word": "continuing",
+    "explanation": "___ trend → 명사 앞 수식. 현재분사 형용사.",
+    "explanation_kr": "trend(명사) 앞에서 꾸미는 역할! '계속되는' 진행 의미 → continuing! continued도 가능하지만 진행 강조엔 continuing!",
+    "kr": "원격 근무를 향한 계속되는 추세는 돌이킬 수 없다.",
+    "expressions": [
+      {
+        "expr": "continuing",
+        "meaning": "계속되는 (현재분사 형용사)"
+      },
+      {
+        "expr": "continuing trend",
+        "meaning": "현재분사 + 명사!"
+      }
+    ]
+  },
+  {
+    "id": "FORM_050",
+    "category": "FORM",
+    "cat": "분사형",
+    "word_count": 9,
+    "diff": "easy",
+    "sentence": "The management team was _______ by the positive Q3 results.",
+    "choices": [
+      "(A) encourage",
+      "(B) encouraged",
+      "(C) encouraging",
+      "(D) encouragement"
+    ],
+    "answer": 1,
+    "answer_word": "encouraged",
+    "explanation": "was ___ by → be + 과거분사. 사람 주어 감정 형용사.",
+    "explanation_kr": "사람(management team)이 주어면 과거분사! was encouraged by = '~에 의해 고무됐다'! encouraging은 사물 주어에!",
+    "kr": "경영팀은 긍정적인 3분기 실적에 의해 고무되었다.",
+    "expressions": [
+      {
+        "expr": "encouraged",
+        "meaning": "고무된 (감정 형용사)"
+      },
+      {
+        "expr": "be encouraged by",
+        "meaning": "~에 의해 고무되다"
+      }
+    ]
+  },
+  {
+    "id": "FORM_051",
+    "category": "FORM",
+    "cat": "명사형",
+    "word_count": 16,
+    "diff": "normal",
+    "sentence": "The _______ of advanced AI tools into existing workflows has improved overall team productivity considerably.",
+    "choices": [
+      "(A) integrate",
+      "(B) integrating",
+      "(C) integrated",
+      "(D) integration"
+    ],
+    "answer": 3,
+    "answer_word": "integration",
+    "explanation": "The ___ of → 관사 + 명사 + 전치사. 명사 자리.",
+    "explanation_kr": "The ___ of 구조! 명사 자리! integration = '통합(명사)'! integrate는 동사야~",
+    "kr": "기존 워크플로에 첨단 AI 도구의 통합이 전반적인 팀 생산성을 상당히 향상시켰다.",
+    "expressions": [
+      {
+        "expr": "integration",
+        "meaning": "통합 (명사)"
+      },
+      {
+        "expr": "the ___ of",
+        "meaning": "관사+명사+전치사 → 명사!"
+      }
+    ]
+  },
+  {
+    "id": "FORM_052",
+    "category": "FORM",
+    "cat": "명사형",
+    "word_count": 17,
+    "diff": "normal",
+    "sentence": "The board expressed its _______ with the company's rapid transition to renewable energy sources.",
+    "choices": [
+      "(A) satisfaction",
+      "(B) satisfactorily",
+      "(C) satisfied",
+      "(D) satisfying"
+    ],
+    "answer": 0,
+    "answer_word": "satisfaction",
+    "explanation": "its ___ with → 소유격 + 명사 + 전치사. 명사 자리.",
+    "explanation_kr": "소유격 its 다음에 with가 오면 사이는 명사! satisfaction = '만족(명사)'! satisfied는 형용사야~",
+    "kr": "이사회는 재생에너지원으로의 회사의 빠른 전환에 대한 만족을 표명했다.",
+    "expressions": [
+      {
+        "expr": "satisfaction",
+        "meaning": "만족 (명사)"
+      },
+      {
+        "expr": "its ___ with",
+        "meaning": "소유격+명사+전치사 → 명사!"
+      }
+    ]
+  },
+  {
+    "id": "FORM_053",
+    "category": "FORM",
+    "cat": "명사형",
+    "word_count": 16,
+    "diff": "normal",
+    "sentence": "The _______ of the new blockchain-based payment system required extensive testing across multiple platforms.",
+    "choices": [
+      "(A) deploying",
+      "(B) deployment",
+      "(C) deploy",
+      "(D) deployed"
+    ],
+    "answer": 1,
+    "answer_word": "deployment",
+    "explanation": "The ___ of → 관사 + 명사 + 전치사. 명사 자리.",
+    "explanation_kr": "The ___ of 구조! 명사 자리! deployment = '배포(명사)'! deploy는 동사야~",
+    "kr": "새로운 블록체인 기반 결제 시스템의 배포는 여러 플랫폼에 걸쳐 광범위한 테스트가 필요했다.",
+    "expressions": [
+      {
+        "expr": "deployment",
+        "meaning": "배포, 구축 (명사)"
+      },
+      {
+        "expr": "the ___ of",
+        "meaning": "관사+명사+전치사 → 명사!"
+      }
+    ]
+  },
+  {
+    "id": "FORM_054",
+    "category": "FORM",
+    "cat": "명사형",
+    "word_count": 17,
+    "diff": "normal",
+    "sentence": "Her _______ to lead the cross-functional team impressed the senior executives during the annual performance review.",
+    "choices": [
+      "(A) capably",
+      "(B) capacitate",
+      "(C) capability",
+      "(D) capable"
+    ],
+    "answer": 2,
+    "answer_word": "capability",
+    "explanation": "Her ___ to → 소유격 + 명사 + to부정사. 명사 자리.",
+    "explanation_kr": "Her 다음에 to가 오면 사이는 명사! capability = '능력(명사)'! capable은 형용사야~",
+    "kr": "부서 간 팀을 이끄는 그녀의 능력이 연례 성과 검토에서 고위 임원들에게 깊은 인상을 남겼다.",
+    "expressions": [
+      {
+        "expr": "capability",
+        "meaning": "능력 (명사)"
+      },
+      {
+        "expr": "her ___ to",
+        "meaning": "소유격+명사+to부정사 → 명사!"
+      }
+    ]
+  },
+  {
+    "id": "FORM_055",
+    "category": "FORM",
+    "cat": "명사형",
+    "word_count": 16,
+    "diff": "normal",
+    "sentence": "The _______ of autonomous vehicles on public roads remains a controversial topic in many jurisdictions.",
+    "choices": [
+      "(A) regulate",
+      "(B) regulating",
+      "(C) regulated",
+      "(D) regulation"
+    ],
+    "answer": 3,
+    "answer_word": "regulation",
+    "explanation": "The ___ of → 관사 + 명사 + 전치사. 명사 자리.",
+    "explanation_kr": "The ___ of 구조! 명사 자리! regulation = '규제(명사)'! regulate는 동사야~",
+    "kr": "공공 도로에서 자율주행차의 규제는 많은 관할권에서 논쟁적인 주제로 남아있다.",
+    "expressions": [
+      {
+        "expr": "regulation",
+        "meaning": "규제 (명사)"
+      },
+      {
+        "expr": "the ___ of",
+        "meaning": "관사+명사+전치사 → 명사!"
+      }
+    ]
+  },
+  {
+    "id": "FORM_056",
+    "category": "FORM",
+    "cat": "명사형",
+    "word_count": 17,
+    "diff": "normal",
+    "sentence": "Building a culture of _______ within the organization requires consistent leadership support at every level.",
+    "choices": [
+      "(A) accountable",
+      "(B) accountably",
+      "(C) accountability",
+      "(D) account"
+    ],
+    "answer": 2,
+    "answer_word": "accountability",
+    "explanation": "a culture of ___ → 관사 + 명사 + of + 명사. 명사 자리.",
+    "explanation_kr": "a culture of 다음은 명사! accountability = '책임(명사)'! accountable은 형용사야~",
+    "kr": "조직 내 책임감의 문화를 구축하려면 모든 수준에서 일관된 리더십 지원이 필요하다.",
+    "expressions": [
+      {
+        "expr": "accountability",
+        "meaning": "책임(감) (명사)"
+      },
+      {
+        "expr": "a culture of ___",
+        "meaning": "전치사 뒤 → 명사!"
+      }
+    ]
+  },
+  {
+    "id": "FORM_057",
+    "category": "FORM",
+    "cat": "명사형",
+    "word_count": 16,
+    "diff": "normal",
+    "sentence": "The government's _______ to reduce carbon emissions by 2030 was welcomed by environmental groups.",
+    "choices": [
+      "(A) commitment",
+      "(B) commit",
+      "(C) committing",
+      "(D) committed"
+    ],
+    "answer": 0,
+    "answer_word": "commitment",
+    "explanation": "The government's ___ to → 소유격 + 명사 + to. 명사 자리.",
+    "explanation_kr": "소유격 government's 다음에 to가 오면 사이는 명사! commitment = '약속, 헌신(명사)'! commit는 동사야~",
+    "kr": "2030년까지 탄소 배출량을 줄이겠다는 정부의 약속이 환경 단체들로부터 환영받았다.",
+    "expressions": [
+      {
+        "expr": "commitment",
+        "meaning": "약속, 헌신 (명사)"
+      },
+      {
+        "expr": "possessive + ___ + to",
+        "meaning": "소유격+명사+to → 명사!"
+      }
+    ]
+  },
+  {
+    "id": "FORM_058",
+    "category": "FORM",
+    "cat": "명사형",
+    "word_count": 16,
+    "diff": "normal",
+    "sentence": "The _______ of the new workplace wellness program showed a significant decrease in employee sick days.",
+    "choices": [
+      "(A) effectively",
+      "(B) effectiveness",
+      "(C) effective",
+      "(D) effect"
+    ],
+    "answer": 1,
+    "answer_word": "effectiveness",
+    "explanation": "The ___ of → 관사 + 명사 + 전치사. 명사 자리.",
+    "explanation_kr": "The ___ of 구조! 명사 자리! effectiveness = '효과성(명사)'! effective는 형용사야~",
+    "kr": "새로운 직장 웰니스 프로그램의 효과성은 직원 병가의 상당한 감소를 보여주었다.",
+    "expressions": [
+      {
+        "expr": "effectiveness",
+        "meaning": "효과성 (명사)"
+      },
+      {
+        "expr": "the ___ of",
+        "meaning": "관사+명사+전치사 → 명사!"
+      }
+    ]
+  },
+  {
+    "id": "FORM_059",
+    "category": "FORM",
+    "cat": "명사형",
+    "word_count": 17,
+    "diff": "normal",
+    "sentence": "The _______ of the two pharmaceutical companies created the world's largest biotech firm.",
+    "choices": [
+      "(A) merging",
+      "(B) merge",
+      "(C) merged",
+      "(D) merger"
+    ],
+    "answer": 3,
+    "answer_word": "merger",
+    "explanation": "The ___ of → 관사 + 명사 + 전치사. 명사 자리.",
+    "explanation_kr": "The ___ of 구조! 명사 자리! merger = '합병(명사)'! merge는 동사야~",
+    "kr": "두 제약 회사의 합병으로 세계 최대의 바이오테크 기업이 탄생했다.",
+    "expressions": [
+      {
+        "expr": "merger",
+        "meaning": "합병 (명사)"
+      },
+      {
+        "expr": "the ___ of",
+        "meaning": "관사+명사+전치사 → 명사!"
+      }
+    ]
+  },
+  {
+    "id": "FORM_060",
+    "category": "FORM",
+    "cat": "명사형",
+    "word_count": 16,
+    "diff": "normal",
+    "sentence": "The team showed great _______ in completing the product launch despite the unexpected supply chain disruptions.",
+    "choices": [
+      "(A) resile",
+      "(B) resiliently",
+      "(C) resilience",
+      "(D) resilient"
+    ],
+    "answer": 2,
+    "answer_word": "resilience",
+    "explanation": "great ___ → 형용사 + 명사. 명사 자리.",
+    "explanation_kr": "great 다음은 명사! resilience = '회복력(명사)'! resilient는 형용사야~",
+    "kr": "팀은 예상치 못한 공급망 혼란에도 불구하고 제품 출시를 완료하는 데 큰 회복력을 보여주었다.",
+    "expressions": [
+      {
+        "expr": "resilience",
+        "meaning": "회복력 (명사)"
+      },
+      {
+        "expr": "great ___",
+        "meaning": "형용사+명사 → 명사 자리!"
+      }
+    ]
+  },
+  {
+    "id": "FORM_061",
+    "category": "FORM",
+    "cat": "형용사형",
+    "word_count": 16,
+    "diff": "normal",
+    "sentence": "The company's _______ approach to talent development has made it one of the most sought-after employers.",
+    "choices": [
+      "(A) comprehend",
+      "(B) comprehension",
+      "(C) comprehensively",
+      "(D) comprehensive"
+    ],
+    "answer": 3,
+    "answer_word": "comprehensive",
+    "explanation": "a ___ approach → 관사 + 형용사 + 명사. 형용사 자리.",
+    "explanation_kr": "approach(명사) 앞에서 꾸미는 역할! comprehensive = '포괄적인(형용사)'! comprehension은 명사야~",
+    "kr": "인재 개발에 대한 회사의 포괄적인 접근 방식은 그 회사를 가장 인기 있는 고용주 중 하나로 만들었다.",
+    "expressions": [
+      {
+        "expr": "comprehensive",
+        "meaning": "포괄적인 (형용사)"
+      },
+      {
+        "expr": "___ approach",
+        "meaning": "명사 앞 → 형용사 자리!"
+      }
+    ]
+  },
+  {
+    "id": "FORM_062",
+    "category": "FORM",
+    "cat": "형용사형",
+    "word_count": 16,
+    "diff": "normal",
+    "sentence": "The startup's new platform is _______ with all major operating systems and mobile devices.",
+    "choices": [
+      "(A) compatible",
+      "(B) compatibly",
+      "(C) compatibilize",
+      "(D) compatibility"
+    ],
+    "answer": 0,
+    "answer_word": "compatible",
+    "explanation": "is ___ with → be동사 + 보어. 형용사 자리.",
+    "explanation_kr": "is 다음은 보어! compatible with = '~와 호환되는'! compatibility는 명사야~",
+    "kr": "스타트업의 새 플랫폼은 모든 주요 운영 체제 및 모바일 기기와 호환된다.",
+    "expressions": [
+      {
+        "expr": "compatible",
+        "meaning": "호환되는 (형용사)"
+      },
+      {
+        "expr": "compatible with",
+        "meaning": "~와 호환되는"
+      }
+    ]
+  },
+  {
+    "id": "FORM_063",
+    "category": "FORM",
+    "cat": "형용사형",
+    "word_count": 17,
+    "diff": "normal",
+    "sentence": "The team needs to produce more _______ reports that clearly show the return on investment.",
+    "choices": [
+      "(A) persuasion",
+      "(B) persuasive",
+      "(C) persuasively",
+      "(D) persuade"
+    ],
+    "answer": 1,
+    "answer_word": "persuasive",
+    "explanation": "more ___ reports → more + 형용사 + 명사. 형용사 자리.",
+    "explanation_kr": "reports(명사) 앞에서 꾸미는 역할! more persuasive = '더 설득력 있는'! persuasion은 명사야~",
+    "kr": "팀은 투자 수익을 명확하게 보여주는 더 설득력 있는 보고서를 작성해야 한다.",
+    "expressions": [
+      {
+        "expr": "persuasive",
+        "meaning": "설득력 있는 (형용사)"
+      },
+      {
+        "expr": "more ___ reports",
+        "meaning": "more+형용사+명사 → 형용사!"
+      }
+    ]
+  },
+  {
+    "id": "FORM_064",
+    "category": "FORM",
+    "cat": "형용사형",
+    "word_count": 17,
+    "diff": "normal",
+    "sentence": "The results of the clinical trial were so _______ that the pharmaceutical company accelerated its production timeline.",
+    "choices": [
+      "(A) promise",
+      "(B) promisingly",
+      "(C) promised",
+      "(D) promising"
+    ],
+    "answer": 3,
+    "answer_word": "promising",
+    "explanation": "were so ___ → be동사 + so + 형용사. 형용사 자리.",
+    "explanation_kr": "were so 다음은 형용사! promising = '유망한(형용사)'! promisingly는 부사야~",
+    "kr": "임상 시험 결과가 너무 유망하여 제약 회사가 생산 일정을 앞당겼다.",
+    "expressions": [
+      {
+        "expr": "promising",
+        "meaning": "유망한 (형용사)"
+      },
+      {
+        "expr": "so ___",
+        "meaning": "so + 형용사 → 형용사 자리!"
+      }
+    ]
+  },
+  {
+    "id": "FORM_065",
+    "category": "FORM",
+    "cat": "형용사형",
+    "word_count": 16,
+    "diff": "normal",
+    "sentence": "The new carbon offset certification scheme is considered highly _______ by international environmental bodies.",
+    "choices": [
+      "(A) credit",
+      "(B) credibly",
+      "(C) credible",
+      "(D) credibility"
+    ],
+    "answer": 2,
+    "answer_word": "credible",
+    "explanation": "highly ___ → 부사 + 형용사. 형용사 자리.",
+    "explanation_kr": "highly 다음은 형용사! credible = '신뢰할 수 있는(형용사)'! credibility는 명사야~",
+    "kr": "새로운 탄소 상쇄 인증 제도는 국제 환경 기관들에 의해 매우 신뢰할 수 있는 것으로 여겨진다.",
+    "expressions": [
+      {
+        "expr": "credible",
+        "meaning": "신뢰할 수 있는 (형용사)"
+      },
+      {
+        "expr": "highly ___",
+        "meaning": "부사+형용사 → 형용사!"
+      }
+    ]
+  },
+  {
+    "id": "FORM_066",
+    "category": "FORM",
+    "cat": "형용사형",
+    "word_count": 16,
+    "diff": "normal",
+    "sentence": "Building _______ relationships with local communities is central to the company's long-term strategy.",
+    "choices": [
+      "(A) sustainable",
+      "(B) sustainability",
+      "(C) sustainably",
+      "(D) sustain"
+    ],
+    "answer": 0,
+    "answer_word": "sustainable",
+    "explanation": "___ relationships → 명사 앞 수식. 형용사 자리.",
+    "explanation_kr": "relationships(명사) 앞에서 꾸미는 역할! sustainable = '지속 가능한(형용사)'! sustainably는 부사야~",
+    "kr": "지역 사회와 지속 가능한 관계를 구축하는 것이 회사의 장기 전략의 핵심이다.",
+    "expressions": [
+      {
+        "expr": "sustainable",
+        "meaning": "지속 가능한 (형용사)"
+      },
+      {
+        "expr": "___ relationships",
+        "meaning": "명사 앞 → 형용사!"
+      }
+    ]
+  },
+  {
+    "id": "FORM_067",
+    "category": "FORM",
+    "cat": "형용사형",
+    "word_count": 17,
+    "diff": "normal",
+    "sentence": "The government's new industrial policy is designed to be _______ to businesses of all sizes.",
+    "choices": [
+      "(A) accessible",
+      "(B) access",
+      "(C) accessibly",
+      "(D) accessibility"
+    ],
+    "answer": 0,
+    "answer_word": "accessible",
+    "explanation": "to be ___ to → to부정사 보어. 형용사 자리.",
+    "explanation_kr": "be 다음은 보어! accessible to = '~가 접근할 수 있는'! accessibility는 명사야~",
+    "kr": "정부의 새로운 산업 정책은 모든 규모의 기업이 접근할 수 있도록 설계되었다.",
+    "expressions": [
+      {
+        "expr": "accessible",
+        "meaning": "접근 가능한 (형용사)"
+      },
+      {
+        "expr": "be ___ to",
+        "meaning": "be동사+형용사+전치사 → 형용사!"
+      }
+    ]
+  },
+  {
+    "id": "FORM_068",
+    "category": "FORM",
+    "cat": "형용사형",
+    "word_count": 16,
+    "diff": "normal",
+    "sentence": "The team leader was _______ about the challenges ahead but remained motivated throughout.",
+    "choices": [
+      "(A) realize",
+      "(B) realistic",
+      "(C) realistically",
+      "(D) realism"
+    ],
+    "answer": 1,
+    "answer_word": "realistic",
+    "explanation": "was ___ about → be동사 + 보어. 형용사 자리.",
+    "explanation_kr": "was 다음은 보어! realistic about = '~에 대해 현실적인'! realistically는 부사야~",
+    "kr": "팀 리더는 앞에 있는 도전들에 대해 현실적이었지만 내내 동기부여를 유지했다.",
+    "expressions": [
+      {
+        "expr": "realistic",
+        "meaning": "현실적인 (형용사)"
+      },
+      {
+        "expr": "be ___ about",
+        "meaning": "be동사+형용사+전치사 → 형용사!"
+      }
+    ]
+  },
+  {
+    "id": "FORM_069",
+    "category": "FORM",
+    "cat": "형용사형",
+    "word_count": 16,
+    "diff": "normal",
+    "sentence": "Employees found the new AI-powered performance review system quite _______ and easy to use.",
+    "choices": [
+      "(A) intuitively",
+      "(B) intuitive",
+      "(C) intuitiveness",
+      "(D) intuit"
+    ],
+    "answer": 1,
+    "answer_word": "intuitive",
+    "explanation": "found ___ → 목적격 보어. 형용사 자리.",
+    "explanation_kr": "found + 목적어 + 목적격 보어! 목적격 보어 자리는 형용사! intuitive = '직관적인(형용사)'! intuitively는 부사야~",
+    "kr": "직원들은 새로운 AI 기반 성과 검토 시스템이 매우 직관적이고 사용하기 쉽다고 생각했다.",
+    "expressions": [
+      {
+        "expr": "intuitive",
+        "meaning": "직관적인 (형용사)"
+      },
+      {
+        "expr": "find + 목적어 + ___",
+        "meaning": "목적격 보어 → 형용사!"
+      }
+    ]
+  },
+  {
+    "id": "FORM_070",
+    "category": "FORM",
+    "cat": "형용사형",
+    "word_count": 17,
+    "diff": "normal",
+    "sentence": "The new regulation makes it _______ for all listed companies to publish annual sustainability reports.",
+    "choices": [
+      "(A) mandatory",
+      "(B) obligatorily",
+      "(C) oblige",
+      "(D) obligation"
+    ],
+    "answer": 0,
+    "answer_word": "mandatory",
+    "explanation": "make it ___ for → 가목적어(it) + 형용사 + for. 형용사 자리.",
+    "explanation_kr": "make it ___ for 구조! 가목적어 it 다음은 형용사! mandatory = '의무적인(형용사)'! obligation은 명사야~",
+    "kr": "새로운 규정은 모든 상장 기업이 연간 지속가능성 보고서를 발행하는 것을 의무적으로 만든다.",
+    "expressions": [
+      {
+        "expr": "mandatory",
+        "meaning": "의무적인 (형용사)"
+      },
+      {
+        "expr": "make it ___ for",
+        "meaning": "가목적어 구조 → 형용사!"
+      }
+    ]
+  },
+  {
+    "id": "FORM_071",
+    "category": "FORM",
+    "cat": "부사형",
+    "word_count": 16,
+    "diff": "normal",
+    "sentence": "The company has _______ invested in renewable energy infrastructure over the past three years.",
+    "choices": [
+      "(A) substance",
+      "(B) substantiate",
+      "(C) substantially",
+      "(D) substantial"
+    ],
+    "answer": 2,
+    "answer_word": "substantially",
+    "explanation": "has ___ invested → 현재완료 + 부사 + 과거분사. 부사 자리.",
+    "explanation_kr": "invested(동사/과거분사)를 꾸미는 건 부사! substantially = '상당히(부사)'! substantial은 형용사야~",
+    "kr": "회사는 지난 3년간 재생에너지 인프라에 상당히 투자했다.",
+    "expressions": [
+      {
+        "expr": "substantially",
+        "meaning": "상당히 (부사)"
+      },
+      {
+        "expr": "has ___ invested",
+        "meaning": "동사 수식 → 부사!"
+      }
+    ]
+  },
+  {
+    "id": "FORM_072",
+    "category": "FORM",
+    "cat": "부사형",
+    "word_count": 17,
+    "diff": "normal",
+    "sentence": "The new predictive analytics tool _______ identifies potential supply chain disruptions before they occur.",
+    "choices": [
+      "(A) accurately",
+      "(B) inaccurate",
+      "(C) accuracy",
+      "(D) accurate"
+    ],
+    "answer": 0,
+    "answer_word": "accurately",
+    "explanation": "동사(identifies) 수식. 부사 자리.",
+    "explanation_kr": "identifies(동사)를 꾸미는 건 부사! accurately = '정확하게(부사)'! accurate는 형용사야~",
+    "kr": "새로운 예측 분석 도구는 공급망 혼란이 발생하기 전에 정확하게 식별한다.",
+    "expressions": [
+      {
+        "expr": "accurately",
+        "meaning": "정확하게 (부사)"
+      },
+      {
+        "expr": "동사 + ___",
+        "meaning": "동사 수식 → 부사!"
+      }
+    ]
+  },
+  {
+    "id": "FORM_073",
+    "category": "FORM",
+    "cat": "부사형",
+    "word_count": 16,
+    "diff": "normal",
+    "sentence": "The autonomous vehicle navigated the complex urban environment _______, avoiding all pedestrians.",
+    "choices": [
+      "(A) flawless",
+      "(B) flawed",
+      "(C) flawlessly",
+      "(D) flaw"
+    ],
+    "answer": 2,
+    "answer_word": "flawlessly",
+    "explanation": "동사(navigated) 수식. 부사 자리.",
+    "explanation_kr": "navigated(동사)를 꾸미는 건 부사! flawlessly = '완벽하게(부사)'! flawless는 형용사야~",
+    "kr": "자율주행차는 모든 보행자를 피하면서 복잡한 도시 환경을 완벽하게 탐색했다.",
+    "expressions": [
+      {
+        "expr": "flawlessly",
+        "meaning": "완벽하게 (부사)"
+      },
+      {
+        "expr": "동사 수식",
+        "meaning": "동사 꾸미기 → 부사!"
+      }
+    ]
+  },
+  {
+    "id": "FORM_074",
+    "category": "FORM",
+    "cat": "부사형",
+    "word_count": 17,
+    "diff": "normal",
+    "sentence": "The startup _______ adapted its business model in response to shifting consumer preferences post-pandemic.",
+    "choices": [
+      "(A) agileness",
+      "(B) agilely",
+      "(C) agile",
+      "(D) agility"
+    ],
+    "answer": 1,
+    "answer_word": "agilely",
+    "explanation": "동사(adapted) 수식. 부사 자리.",
+    "explanation_kr": "adapted(동사)를 꾸미는 건 부사! agilely = '민첩하게(부사)'! agile은 형용사야~",
+    "kr": "스타트업은 팬데믹 이후 변화하는 소비자 선호에 대응하여 비즈니스 모델을 민첩하게 조정했다.",
+    "expressions": [
+      {
+        "expr": "agilely",
+        "meaning": "민첩하게 (부사)"
+      },
+      {
+        "expr": "동사 수식",
+        "meaning": "동사 꾸미기 → 부사!"
+      }
+    ]
+  },
+  {
+    "id": "FORM_075",
+    "category": "FORM",
+    "cat": "부사형",
+    "word_count": 17,
+    "diff": "normal",
+    "sentence": "The multinational corporation _______ communicated its new environmental targets to all regional offices.",
+    "choices": [
+      "(A) transparently",
+      "(B) transparency",
+      "(C) transparence",
+      "(D) transparent"
+    ],
+    "answer": 0,
+    "answer_word": "transparently",
+    "explanation": "동사(communicated) 수식. 부사 자리.",
+    "explanation_kr": "communicated(동사)를 꾸미는 건 부사! transparently = '투명하게(부사)'! transparent는 형용사야~",
+    "kr": "다국적 기업은 모든 지역 사무소에 새로운 환경 목표를 투명하게 전달했다.",
+    "expressions": [
+      {
+        "expr": "transparently",
+        "meaning": "투명하게 (부사)"
+      },
+      {
+        "expr": "동사 수식",
+        "meaning": "동사 꾸미기 → 부사!"
+      }
+    ]
+  },
+  {
+    "id": "FORM_076",
+    "category": "FORM",
+    "cat": "부사형",
+    "word_count": 16,
+    "diff": "normal",
+    "sentence": "The company's mental health support program has been _______ praised by industry analysts.",
+    "choices": [
+      "(A) wideness",
+      "(B) widely",
+      "(C) wide",
+      "(D) widen"
+    ],
+    "answer": 1,
+    "answer_word": "widely",
+    "explanation": "has been ___ praised → 현재완료 수동 + 부사. 부사 자리.",
+    "explanation_kr": "praised(과거분사)를 꾸미는 건 부사! widely = '널리(부사)'! wide는 형용사야~",
+    "kr": "회사의 정신 건강 지원 프로그램이 업계 분석가들에 의해 널리 칭찬받아 왔다.",
+    "expressions": [
+      {
+        "expr": "widely",
+        "meaning": "널리 (부사)"
+      },
+      {
+        "expr": "has been ___ praised",
+        "meaning": "부사가 과거분사 수식!"
+      }
+    ]
+  },
+  {
+    "id": "FORM_077",
+    "category": "FORM",
+    "cat": "부사형",
+    "word_count": 17,
+    "diff": "normal",
+    "sentence": "The biotech firm _______ pursued regulatory approval for its groundbreaking gene therapy treatment.",
+    "choices": [
+      "(A) persistence",
+      "(B) persistently",
+      "(C) persist",
+      "(D) persistent"
+    ],
+    "answer": 1,
+    "answer_word": "persistently",
+    "explanation": "동사(pursued) 수식. 부사 자리.",
+    "explanation_kr": "pursued(동사)를 꾸미는 건 부사! persistently = '꾸준히(부사)'! persistent는 형용사야~",
+    "kr": "바이오테크 회사는 획기적인 유전자 치료 치료법에 대한 규제 승인을 꾸준히 추구했다.",
+    "expressions": [
+      {
+        "expr": "persistently",
+        "meaning": "꾸준히 (부사)"
+      },
+      {
+        "expr": "동사 수식",
+        "meaning": "동사 꾸미기 → 부사!"
+      }
+    ]
+  },
+  {
+    "id": "FORM_078",
+    "category": "FORM",
+    "cat": "부사형",
+    "word_count": 17,
+    "diff": "normal",
+    "sentence": "The new digital identity verification system _______ reduced fraud rates across all online platforms.",
+    "choices": [
+      "(A) dramatic",
+      "(B) dramatically",
+      "(C) dramatize",
+      "(D) drama"
+    ],
+    "answer": 1,
+    "answer_word": "dramatically",
+    "explanation": "동사(reduced) 수식. 부사 자리.",
+    "explanation_kr": "reduced(동사)를 꾸미는 건 부사! dramatically = '극적으로(부사)'! dramatic은 형용사야~",
+    "kr": "새로운 디지털 신원 확인 시스템은 모든 온라인 플랫폼의 사기 비율을 극적으로 줄였다.",
+    "expressions": [
+      {
+        "expr": "dramatically",
+        "meaning": "극적으로 (부사)"
+      },
+      {
+        "expr": "동사 수식",
+        "meaning": "동사 꾸미기 → 부사!"
+      }
+    ]
+  },
+  {
+    "id": "FORM_079",
+    "category": "FORM",
+    "cat": "부사형",
+    "word_count": 17,
+    "diff": "normal",
+    "sentence": "The gig economy platform _______ failed to disclose its algorithms used for worker pay calculations.",
+    "choices": [
+      "(A) consistently",
+      "(B) consistence",
+      "(C) consist",
+      "(D) consistent"
+    ],
+    "answer": 0,
+    "answer_word": "consistently",
+    "explanation": "동사(failed) 수식. 부사 자리.",
+    "explanation_kr": "failed(동사)를 꾸미는 건 부사! consistently = '꾸준히(부사)'! consistent는 형용사야~",
+    "kr": "긱 이코노미 플랫폼은 근로자 급여 계산에 사용되는 알고리즘을 꾸준히 공개하지 않았다.",
+    "expressions": [
+      {
+        "expr": "consistently",
+        "meaning": "꾸준히, 일관되게 (부사)"
+      },
+      {
+        "expr": "동사 수식",
+        "meaning": "동사 꾸미기 → 부사!"
+      }
+    ]
+  },
+  {
+    "id": "FORM_080",
+    "category": "FORM",
+    "cat": "부사형",
+    "word_count": 17,
+    "diff": "normal",
+    "sentence": "The longevity research institute _______ conducted over five hundred clinical studies on aging interventions.",
+    "choices": [
+      "(A) rigorousness",
+      "(B) rigorously",
+      "(C) rigor",
+      "(D) rigorous"
+    ],
+    "answer": 1,
+    "answer_word": "rigorously",
+    "explanation": "동사(conducted) 수식. 부사 자리.",
+    "explanation_kr": "conducted(동사)를 꾸미는 건 부사! rigorously = '엄격하게(부사)'! rigorous는 형용사야~",
+    "kr": "장수 연구소는 노화 개입에 관한 500개 이상의 임상 연구를 엄격하게 수행했다.",
+    "expressions": [
+      {
+        "expr": "rigorously",
+        "meaning": "엄격하게 (부사)"
+      },
+      {
+        "expr": "동사 수식",
+        "meaning": "동사 꾸미기 → 부사!"
+      }
+    ]
+  },
+  {
+    "id": "FORM_081",
+    "category": "FORM",
+    "cat": "동사형",
+    "word_count": 16,
+    "diff": "normal",
+    "sentence": "The board of directors has decided to _______ the company's global supply chain by diversifying suppliers.",
+    "choices": [
+      "(A) strengthened",
+      "(B) strengthening",
+      "(C) strength",
+      "(D) strengthen"
+    ],
+    "answer": 3,
+    "answer_word": "strengthen",
+    "explanation": "to ___ → to부정사. 동사원형 자리.",
+    "explanation_kr": "to 다음은 동사원형! strengthen = '강화하다(동사원형)'! strength는 명사야~",
+    "kr": "이사회는 공급업체를 다양화하여 회사의 글로벌 공급망을 강화하기로 결정했다.",
+    "expressions": [
+      {
+        "expr": "strengthen",
+        "meaning": "강화하다 (동사원형)"
+      },
+      {
+        "expr": "to + ___",
+        "meaning": "to부정사 → 동사원형!"
+      }
+    ]
+  },
+  {
+    "id": "FORM_082",
+    "category": "FORM",
+    "cat": "동사형",
+    "word_count": 17,
+    "diff": "normal",
+    "sentence": "The sustainability team will _______ a comprehensive carbon audit across all manufacturing facilities next year.",
+    "choices": [
+      "(A) conductor",
+      "(B) conduction",
+      "(C) conducting",
+      "(D) conduct"
+    ],
+    "answer": 3,
+    "answer_word": "conduct",
+    "explanation": "will ___ → 조동사 + 동사원형. 동사 자리.",
+    "explanation_kr": "will 다음은 동사원형! conduct = '실시하다(동사원형)'! conducting은 현재분사야~",
+    "kr": "지속가능성 팀은 내년에 모든 제조 시설에 걸쳐 포괄적인 탄소 감사를 실시할 것이다.",
+    "expressions": [
+      {
+        "expr": "conduct",
+        "meaning": "실시하다 (동사원형)"
+      },
+      {
+        "expr": "will + ___",
+        "meaning": "조동사 뒤 → 동사원형!"
+      }
+    ]
+  },
+  {
+    "id": "FORM_083",
+    "category": "FORM",
+    "cat": "동사형",
+    "word_count": 16,
+    "diff": "normal",
+    "sentence": "The government plans to _______ new incentives for companies that exceed their emission reduction targets.",
+    "choices": [
+      "(A) introduction",
+      "(B) introducing",
+      "(C) introduced",
+      "(D) introduce"
+    ],
+    "answer": 3,
+    "answer_word": "introduce",
+    "explanation": "to ___ → to부정사. 동사원형 자리.",
+    "explanation_kr": "to 다음은 동사원형! introduce = '도입하다(동사원형)'! introduction은 명사야~",
+    "kr": "정부는 배출 감소 목표를 초과하는 기업들을 위해 새로운 인센티브를 도입할 계획이다.",
+    "expressions": [
+      {
+        "expr": "introduce",
+        "meaning": "도입하다 (동사원형)"
+      },
+      {
+        "expr": "to + ___",
+        "meaning": "to부정사 → 동사원형!"
+      }
+    ]
+  },
+  {
+    "id": "FORM_084",
+    "category": "FORM",
+    "cat": "동사형",
+    "word_count": 16,
+    "diff": "normal",
+    "sentence": "The HR department must _______ its training programs to meet the rapidly evolving demands of the digital economy.",
+    "choices": [
+      "(A) modernly",
+      "(B) modernizing",
+      "(C) modernization",
+      "(D) modernize"
+    ],
+    "answer": 3,
+    "answer_word": "modernize",
+    "explanation": "must ___ → 조동사 + 동사원형. 동사 자리.",
+    "explanation_kr": "must 다음은 동사원형! modernize = '현대화하다(동사원형)'! modernization은 명사야~",
+    "kr": "HR 부서는 급변하는 디지털 경제의 요구를 충족하기 위해 교육 프로그램을 현대화해야 한다.",
+    "expressions": [
+      {
+        "expr": "modernize",
+        "meaning": "현대화하다 (동사원형)"
+      },
+      {
+        "expr": "must + ___",
+        "meaning": "조동사 뒤 → 동사원형!"
+      }
+    ]
+  },
+  {
+    "id": "FORM_085",
+    "category": "FORM",
+    "cat": "동사형",
+    "word_count": 17,
+    "diff": "normal",
+    "sentence": "The fintech company aims to _______ underserved communities with affordable digital banking services.",
+    "choices": [
+      "(A) empower",
+      "(B) empowerment",
+      "(C) empowering",
+      "(D) empowered"
+    ],
+    "answer": 0,
+    "answer_word": "empower",
+    "explanation": "to ___ → to부정사. 동사원형 자리.",
+    "explanation_kr": "to 다음은 동사원형! empower = '역량을 부여하다(동사원형)'! empowerment는 명사야~",
+    "kr": "핀테크 회사는 저렴한 디지털 뱅킹 서비스로 소외된 지역 사회의 역량을 강화하는 것을 목표로 한다.",
+    "expressions": [
+      {
+        "expr": "empower",
+        "meaning": "역량을 부여하다 (동사원형)"
+      },
+      {
+        "expr": "to + ___",
+        "meaning": "to부정사 → 동사원형!"
+      }
+    ]
+  },
+  {
+    "id": "FORM_086",
+    "category": "FORM",
+    "cat": "동사형",
+    "word_count": 16,
+    "diff": "normal",
+    "sentence": "The new biosafety protocol will _______ all research labs to undergo mandatory annual inspections.",
+    "choices": [
+      "(A) required",
+      "(B) requirement",
+      "(C) require",
+      "(D) requiring"
+    ],
+    "answer": 2,
+    "answer_word": "require",
+    "explanation": "will ___ → 조동사 + 동사원형. 동사 자리.",
+    "explanation_kr": "will 다음은 동사원형! require = '요구하다(동사원형)'! requirement는 명사야~",
+    "kr": "새로운 생물 안전 프로토콜은 모든 연구소가 의무적인 연간 검사를 받도록 요구할 것이다.",
+    "expressions": [
+      {
+        "expr": "require",
+        "meaning": "요구하다 (동사원형)"
+      },
+      {
+        "expr": "will + ___",
+        "meaning": "조동사 뒤 → 동사원형!"
+      }
+    ]
+  },
+  {
+    "id": "FORM_087",
+    "category": "FORM",
+    "cat": "동사형",
+    "word_count": 17,
+    "diff": "normal",
+    "sentence": "The aging population specialist recommended that the government _______ a national longevity strategy.",
+    "choices": [
+      "(A) formulation",
+      "(B) formulate",
+      "(C) formulated",
+      "(D) formulating"
+    ],
+    "answer": 1,
+    "answer_word": "formulate",
+    "explanation": "recommend that + 주어 + (should) ___ → 당위 가정법. 동사원형 자리.",
+    "explanation_kr": "recommend that 다음은 (should) + 동사원형! formulate = '수립하다(동사원형)'! formulation은 명사야~",
+    "kr": "고령화 인구 전문가는 정부가 국가 장수 전략을 수립할 것을 권고했다.",
+    "expressions": [
+      {
+        "expr": "formulate",
+        "meaning": "수립하다, 공식화하다 (동사원형)"
+      },
+      {
+        "expr": "recommend that + 원형",
+        "meaning": "당위절 → 동사원형!"
+      }
+    ]
+  },
+  {
+    "id": "FORM_088",
+    "category": "FORM",
+    "cat": "동사형",
+    "word_count": 17,
+    "diff": "normal",
+    "sentence": "The circular economy initiative should _______ waste reduction targets across all industries by 2030.",
+    "choices": [
+      "(A) prioritized",
+      "(B) prioritizing",
+      "(C) prioritization",
+      "(D) prioritize"
+    ],
+    "answer": 3,
+    "answer_word": "prioritize",
+    "explanation": "should ___ → 조동사 + 동사원형. 동사 자리.",
+    "explanation_kr": "should 다음은 동사원형! prioritize = '우선시하다(동사원형)'! prioritization은 명사야~",
+    "kr": "순환 경제 계획은 2030년까지 모든 산업에 걸쳐 폐기물 감소 목표를 우선시해야 한다.",
+    "expressions": [
+      {
+        "expr": "prioritize",
+        "meaning": "우선시하다 (동사원형)"
+      },
+      {
+        "expr": "should + ___",
+        "meaning": "조동사 뒤 → 동사원형!"
+      }
+    ]
+  },
+  {
+    "id": "FORM_089",
+    "category": "FORM",
+    "cat": "동사형",
+    "word_count": 16,
+    "diff": "normal",
+    "sentence": "The behavioral economist proposed that the government _______ a default opt-in pension system.",
+    "choices": [
+      "(A) implement",
+      "(B) implementing",
+      "(C) implementation",
+      "(D) implemented"
+    ],
+    "answer": 0,
+    "answer_word": "implement",
+    "explanation": "proposed that + 주어 + (should) ___ → 당위 가정법. 동사원형 자리.",
+    "explanation_kr": "propose that 다음은 (should) + 동사원형! implement = '시행하다(동사원형)'! implementation은 명사야~",
+    "kr": "행동 경제학자는 정부가 기본 자동 가입 연금 시스템을 시행할 것을 제안했다.",
+    "expressions": [
+      {
+        "expr": "implement",
+        "meaning": "시행하다 (동사원형)"
+      },
+      {
+        "expr": "propose that + 원형",
+        "meaning": "당위절 → 동사원형!"
+      }
+    ]
+  },
+  {
+    "id": "FORM_090",
+    "category": "FORM",
+    "cat": "동사형",
+    "word_count": 16,
+    "diff": "normal",
+    "sentence": "The carbon market regulator can _______ trading licenses from platforms that fail to meet verification standards.",
+    "choices": [
+      "(A) revoke",
+      "(B) revoking",
+      "(C) revocation",
+      "(D) revocable"
+    ],
+    "answer": 0,
+    "answer_word": "revoke",
+    "explanation": "can ___ → 조동사 + 동사원형. 동사 자리.",
+    "explanation_kr": "can 다음은 동사원형! revoke = '취소하다(동사원형)'! revocation은 명사야~",
+    "kr": "탄소 시장 규제 기관은 검증 기준을 충족하지 못하는 플랫폼으로부터 거래 라이선스를 취소할 수 있다.",
+    "expressions": [
+      {
+        "expr": "revoke",
+        "meaning": "취소하다 (동사원형)"
+      },
+      {
+        "expr": "can + ___",
+        "meaning": "조동사 뒤 → 동사원형!"
+      }
+    ]
+  },
+  {
+    "id": "FORM_091",
+    "category": "FORM",
+    "cat": "분사형",
+    "word_count": 16,
+    "diff": "normal",
+    "sentence": "The _______ number of companies adopting AI-driven recruitment tools reflects a broader industry trend.",
+    "choices": [
+      "(A) increased",
+      "(B) increase",
+      "(C) increases",
+      "(D) increasing"
+    ],
+    "answer": 3,
+    "answer_word": "increasing",
+    "explanation": "___ number of → 명사 앞 수식. 현재분사 형용사.",
+    "explanation_kr": "number(명사) 앞에서 꾸미는 역할! '증가하고 있는' 진행 의미 → increasing! increased는 이미 증가된 정적 의미야~",
+    "kr": "AI 기반 채용 도구를 채택하는 회사의 증가하는 수는 더 넓은 업계 트렌드를 반영한다.",
+    "expressions": [
+      {
+        "expr": "increasing",
+        "meaning": "증가하고 있는 (현재분사)"
+      },
+      {
+        "expr": "increasing + 명사",
+        "meaning": "현재분사+명사 → 현재분사 형용사!"
+      }
+    ]
+  },
+  {
+    "id": "FORM_092",
+    "category": "FORM",
+    "cat": "분사형",
+    "word_count": 17,
+    "diff": "normal",
+    "sentence": "Employees _______ by the new performance management system reported feeling more motivated at work.",
+    "choices": [
+      "(A) affecting",
+      "(B) affect",
+      "(C) affection",
+      "(D) affected"
+    ],
+    "answer": 3,
+    "answer_word": "affected",
+    "explanation": "Employees ___ by → 명사 + 과거분사 + 전치사. 과거분사가 명사 수식.",
+    "explanation_kr": "Employees(명사) 다음에 by가 오면 사이는 과거분사! affected by = '~에 의해 영향받은'! affecting은 현재분사야~",
+    "kr": "새로운 성과 관리 시스템에 의해 영향받은 직원들은 직장에서 더 동기부여를 받는다고 보고했다.",
+    "expressions": [
+      {
+        "expr": "affected",
+        "meaning": "영향받은 (과거분사)"
+      },
+      {
+        "expr": "명사 + ___ by",
+        "meaning": "명사+과거분사+by → 과거분사 수식!"
+      }
+    ]
+  },
+  {
+    "id": "FORM_093",
+    "category": "FORM",
+    "cat": "분사형",
+    "word_count": 16,
+    "diff": "normal",
+    "sentence": "The _______ data from thousands of wearable devices helped researchers identify aging biomarkers.",
+    "choices": [
+      "(A) accumulative",
+      "(B) accumulated",
+      "(C) accumulate",
+      "(D) accumulating"
+    ],
+    "answer": 1,
+    "answer_word": "accumulated",
+    "explanation": "___ data → 명사 앞 수식. 과거분사 형용사.",
+    "explanation_kr": "data(명사) 앞에서 꾸미는 역할! '수집된' 완료 의미 → accumulated! accumulating은 '수집하고 있는'이야~",
+    "kr": "수천 개의 웨어러블 기기로부터 축적된 데이터가 연구자들이 노화 바이오마커를 식별하는 데 도움을 주었다.",
+    "expressions": [
+      {
+        "expr": "accumulated",
+        "meaning": "축적된 (과거분사 형용사)"
+      },
+      {
+        "expr": "___ data",
+        "meaning": "명사 앞 과거분사 → 완료 의미!"
+      }
+    ]
+  },
+  {
+    "id": "FORM_094",
+    "category": "FORM",
+    "cat": "분사형",
+    "word_count": 16,
+    "diff": "normal",
+    "sentence": "The investors were deeply _______ by the startup's failure to disclose material information.",
+    "choices": [
+      "(A) concern",
+      "(B) concerning",
+      "(C) concerns",
+      "(D) concerned"
+    ],
+    "answer": 3,
+    "answer_word": "concerned",
+    "explanation": "were ___ by → be동사 + 과거분사. 사람 감정 형용사.",
+    "explanation_kr": "사람(investors)이 주어면 과거분사! concerned by = '~에 의해 우려된'! concerning은 '~와 관련하여'야~",
+    "kr": "투자자들은 스타트업의 중요한 정보 미공개로 인해 깊이 우려했다.",
+    "expressions": [
+      {
+        "expr": "concerned",
+        "meaning": "우려하는 (감정 형용사)"
+      },
+      {
+        "expr": "be concerned by",
+        "meaning": "~에 의해 우려되다"
+      }
+    ]
+  },
+  {
+    "id": "FORM_095",
+    "category": "FORM",
+    "cat": "분사형",
+    "word_count": 17,
+    "diff": "normal",
+    "sentence": "The _______ demand for mental health services has led to a shortage of qualified therapists worldwide.",
+    "choices": [
+      "(A) surge",
+      "(B) surging",
+      "(C) surges",
+      "(D) surged"
+    ],
+    "answer": 1,
+    "answer_word": "surging",
+    "explanation": "___ demand → 명사 앞 수식. 현재분사 형용사.",
+    "explanation_kr": "demand(명사) 앞에서 꾸미는 역할! '급증하고 있는' 진행 의미 → surging! surged는 '이미 급증한' 과거야~",
+    "kr": "급증하는 정신 건강 서비스 수요가 전 세계적으로 자격을 갖춘 치료사의 부족으로 이어졌다.",
+    "expressions": [
+      {
+        "expr": "surging",
+        "meaning": "급증하고 있는 (현재분사)"
+      },
+      {
+        "expr": "surging demand",
+        "meaning": "현재분사+명사!"
+      }
+    ]
+  },
+  {
+    "id": "FORM_096",
+    "category": "FORM",
+    "cat": "분사형",
+    "word_count": 16,
+    "diff": "normal",
+    "sentence": "Analysts were _______ by the speed at which the metaverse company lost its market valuation.",
+    "choices": [
+      "(A) astonishing",
+      "(B) astonish",
+      "(C) astonishment",
+      "(D) astonished"
+    ],
+    "answer": 3,
+    "answer_word": "astonished",
+    "explanation": "were ___ by → be + 과거분사. 사람 감정 형용사.",
+    "explanation_kr": "사람(analysts)이 주어면 과거분사! astonished by = '~에 놀란'! astonishing은 사물 주어에!",
+    "kr": "분석가들은 메타버스 회사가 시장 가치를 잃은 속도에 놀랐다.",
+    "expressions": [
+      {
+        "expr": "astonished",
+        "meaning": "놀란 (감정 형용사)"
+      },
+      {
+        "expr": "be astonished by",
+        "meaning": "~에 놀라다"
+      }
+    ]
+  },
+  {
+    "id": "FORM_097",
+    "category": "FORM",
+    "cat": "분사형",
+    "word_count": 16,
+    "diff": "normal",
+    "sentence": "The _______ momentum behind the green hydrogen economy has attracted record levels of investment.",
+    "choices": [
+      "(A) build",
+      "(B) builds",
+      "(C) building",
+      "(D) built"
+    ],
+    "answer": 2,
+    "answer_word": "building",
+    "explanation": "___ momentum → 명사 앞 수식. 현재분사 형용사.",
+    "explanation_kr": "momentum(명사) 앞에서 꾸미는 역할! '형성되고 있는' 진행 의미 → building! built는 '이미 완성된' 의미야~",
+    "kr": "그린 수소 경제 뒤에 형성되고 있는 모멘텀이 기록적인 투자를 유치했다.",
+    "expressions": [
+      {
+        "expr": "building",
+        "meaning": "형성되고 있는 (현재분사)"
+      },
+      {
+        "expr": "building momentum",
+        "meaning": "현재분사+명사!"
+      }
+    ]
+  },
+  {
+    "id": "FORM_098",
+    "category": "FORM",
+    "cat": "분사형",
+    "word_count": 17,
+    "diff": "normal",
+    "sentence": "The workers _______ by the new gig economy regulation were entitled to full employee benefits.",
+    "choices": [
+      "(A) coverage",
+      "(B) cover",
+      "(C) covered",
+      "(D) covering"
+    ],
+    "answer": 2,
+    "answer_word": "covered",
+    "explanation": "workers ___ by → 명사 + 과거분사 + 전치사. 과거분사가 명사 수식.",
+    "explanation_kr": "workers(명사) 다음에 by가 오면 사이는 과거분사! covered by = '~에 의해 보호받는'! covering은 현재분사야~",
+    "kr": "새로운 긱 이코노미 규정에 의해 보호받는 근로자들은 모든 직원 복리후생을 받을 자격이 있었다.",
+    "expressions": [
+      {
+        "expr": "covered",
+        "meaning": "보호받는 (과거분사)"
+      },
+      {
+        "expr": "명사 + ___ by",
+        "meaning": "명사+과거분사+by → 수식!"
+      }
+    ]
+  },
+  {
+    "id": "FORM_099",
+    "category": "FORM",
+    "cat": "분사형",
+    "word_count": 17,
+    "diff": "normal",
+    "sentence": "The regulators found the biotech company's safety data _______, leading to immediate suspension of the trial.",
+    "choices": [
+      "(A) insuffice",
+      "(B) insufficiency",
+      "(C) insufficient",
+      "(D) insufficiently"
+    ],
+    "answer": 2,
+    "answer_word": "insufficient",
+    "explanation": "found ___ + 목적격 보어. 형용사 자리.",
+    "explanation_kr": "found + 목적어 + 목적격 보어! 목적격 보어 자리는 형용사! insufficient = '불충분한(형용사)'! insufficiently는 부사야~",
+    "kr": "규제 기관들은 바이오테크 회사의 안전 데이터가 불충분하다는 것을 발견하여 즉각적인 시험 중단으로 이어졌다.",
+    "expressions": [
+      {
+        "expr": "insufficient",
+        "meaning": "불충분한 (형용사)"
+      },
+      {
+        "expr": "find + 목적어 + ___",
+        "meaning": "목적격 보어 → 형용사!"
+      }
+    ]
+  },
+  {
+    "id": "FORM_100",
+    "category": "FORM",
+    "cat": "분사형",
+    "word_count": 16,
+    "diff": "normal",
+    "sentence": "The _______ guidelines on carbon market verification were welcomed by all major trading platforms.",
+    "choices": [
+      "(A) updated",
+      "(B) updating",
+      "(C) update",
+      "(D) updation"
+    ],
+    "answer": 0,
+    "answer_word": "updated",
+    "explanation": "___ guidelines → 명사 앞 수식. 과거분사 형용사.",
+    "explanation_kr": "guidelines(명사) 앞에서 꾸미는 역할! '업데이트된' 완료 의미 → updated! updating은 '업데이트하고 있는' 진행이야~",
+    "kr": "탄소 시장 검증에 관한 업데이트된 지침이 모든 주요 거래 플랫폼으로부터 환영받았다.",
+    "expressions": [
+      {
+        "expr": "updated",
+        "meaning": "업데이트된 (과거분사 형용사)"
+      },
+      {
+        "expr": "updated guidelines",
+        "meaning": "과거분사+명사 → 완료 의미!"
+      }
+    ]
+  },
+  {
+    "id": "FORM_101",
+    "category": "FORM",
+    "cat": "명사형",
+    "word_count": 21,
+    "diff": "hard",
+    "sentence": "The _______ of a globally standardized framework for measuring and reporting scope three emissions remains one of the most pressing challenges in corporate sustainability.",
+    "choices": [
+      "(A) establish",
+      "(B) establishing",
+      "(C) establishment",
+      "(D) established"
+    ],
+    "answer": 2,
+    "answer_word": "establishment",
+    "explanation": "The ___ of → 관사 + 명사 + 전치사. 명사 자리.",
+    "explanation_kr": "The ___ of 구조! 명사 자리! establishment = '수립(명사)'! establish는 동사야~ 문장이 아무리 길어도 The ___ of 패턴은 명사!",
+    "kr": "범위 3 배출량 측정 및 보고를 위한 전 세계적으로 표준화된 프레임워크의 수립은 기업 지속가능성에서 가장 시급한 과제 중 하나로 남아있다.",
+    "expressions": [
+      {
+        "expr": "establishment",
+        "meaning": "수립, 설립 (명사)"
+      },
+      {
+        "expr": "the ___ of",
+        "meaning": "관사+명사+전치사 → 명사! 문장이 길어도 같아!"
+      }
+    ]
+  },
+  {
+    "id": "FORM_102",
+    "category": "FORM",
+    "cat": "명사형",
+    "word_count": 22,
+    "diff": "hard",
+    "sentence": "Achieving broad _______ for the proposed global minimum corporate tax rate among major economies has proven extremely difficult for international policymakers.",
+    "choices": [
+      "(A) acceptable",
+      "(B) acceptably",
+      "(C) accept",
+      "(D) acceptance"
+    ],
+    "answer": 3,
+    "answer_word": "acceptance",
+    "explanation": "broad ___ for → 형용사 + 명사 + 전치사. 명사 자리.",
+    "explanation_kr": "broad 다음에 for가 오면 사이는 명사! acceptance = '수용(명사)'! acceptable은 형용사야~",
+    "kr": "주요 경제국들 사이에서 제안된 글로벌 최저 법인세율에 대한 광범위한 수용을 달성하는 것은 국제 정책 입안자들에게 매우 어려운 것으로 입증되었다.",
+    "expressions": [
+      {
+        "expr": "acceptance",
+        "meaning": "수용 (명사)"
+      },
+      {
+        "expr": "broad ___ for",
+        "meaning": "형용사+명사+전치사 → 명사!"
+      }
+    ]
+  },
+  {
+    "id": "FORM_103",
+    "category": "FORM",
+    "cat": "명사형",
+    "word_count": 22,
+    "diff": "hard",
+    "sentence": "The government's _______ to prioritize domestic manufacturing through targeted industrial subsidies reflects a broader shift away from free trade orthodoxy.",
+    "choices": [
+      "(A) determinedly",
+      "(B) determine",
+      "(C) determination",
+      "(D) determined"
+    ],
+    "answer": 2,
+    "answer_word": "determination",
+    "explanation": "The government's ___ to → 소유격 + 명사 + to부정사. 명사 자리.",
+    "explanation_kr": "소유격 government's 다음에 to가 오면 사이는 명사! determination = '결의(명사)'! determined는 형용사야~",
+    "kr": "목표된 산업 보조금을 통해 국내 제조업을 우선시하겠다는 정부의 결의는 자유 무역 정통론에서 벗어난 더 넓은 전환을 반영한다.",
+    "expressions": [
+      {
+        "expr": "determination",
+        "meaning": "결의, 결단 (명사)"
+      },
+      {
+        "expr": "possessive + ___ to",
+        "meaning": "소유격+명사+to부정사 → 명사!"
+      }
+    ]
+  },
+  {
+    "id": "FORM_104",
+    "category": "FORM",
+    "cat": "명사형",
+    "word_count": 21,
+    "diff": "hard",
+    "sentence": "The _______ between long-term shareholder value creation and short-term profitability targets continues to challenge corporate governance frameworks.",
+    "choices": [
+      "(A) tensely",
+      "(B) tenser",
+      "(C) tension",
+      "(D) tense"
+    ],
+    "answer": 2,
+    "answer_word": "tension",
+    "explanation": "The ___ between → 관사 + 명사 + 전치사. 명사 자리.",
+    "explanation_kr": "The ___ between 구조! 명사 자리! tension = '긴장(명사)'! tense는 형용사/동사야~",
+    "kr": "장기 주주 가치 창출과 단기 수익성 목표 사이의 긴장이 계속해서 기업 지배구조 프레임워크에 도전하고 있다.",
+    "expressions": [
+      {
+        "expr": "tension",
+        "meaning": "긴장, 갈등 (명사)"
+      },
+      {
+        "expr": "the ___ between",
+        "meaning": "관사+명사+between → 명사!"
+      }
+    ]
+  },
+  {
+    "id": "FORM_105",
+    "category": "FORM",
+    "cat": "명사형",
+    "word_count": 22,
+    "diff": "hard",
+    "sentence": "The growing _______ between the skills demanded by emerging technology sectors and those possessed by the current workforce requires urgent policy intervention.",
+    "choices": [
+      "(A) misalignment",
+      "(B) misalign",
+      "(C) misaligned",
+      "(D) misalignedly"
+    ],
+    "answer": 0,
+    "answer_word": "misalignment",
+    "explanation": "The growing ___ between → 관사 + 형용사 + 명사 + 전치사. 명사 자리.",
+    "explanation_kr": "The growing ___ between 구조! 명사 자리! misalignment = '불일치(명사)'! misaligned는 형용사야~",
+    "kr": "신흥 기술 부문이 요구하는 기술과 현재 인력이 보유한 기술 사이의 증가하는 불일치는 긴급한 정책 개입을 필요로 한다.",
+    "expressions": [
+      {
+        "expr": "misalignment",
+        "meaning": "불일치 (명사)"
+      },
+      {
+        "expr": "the growing ___ between",
+        "meaning": "관사+형용사+명사+between → 명사!"
+      }
+    ]
+  },
+  {
+    "id": "FORM_106",
+    "category": "FORM",
+    "cat": "형용사형",
+    "word_count": 21,
+    "diff": "hard",
+    "sentence": "The new international biosecurity treaty will make it _______ for all signatory nations to share pathogen surveillance data in real time.",
+    "choices": [
+      "(A) obligatory",
+      "(B) obligatorily",
+      "(C) oblige",
+      "(D) obligation"
+    ],
+    "answer": 0,
+    "answer_word": "obligatory",
+    "explanation": "make it ___ for → 가목적어(it) + 형용사. 형용사 자리.",
+    "explanation_kr": "make it ___ for 구조! 형용사 자리! obligatory = '의무적인(형용사)'! obligation은 명사야~",
+    "kr": "새로운 국제 생물 안보 조약은 모든 서명국이 실시간으로 병원체 감시 데이터를 공유하는 것을 의무적으로 만들 것이다.",
+    "expressions": [
+      {
+        "expr": "obligatory",
+        "meaning": "의무적인 (형용사)"
+      },
+      {
+        "expr": "make it ___ for",
+        "meaning": "가목적어 구조 → 형용사!"
+      }
+    ]
+  },
+  {
+    "id": "FORM_107",
+    "category": "FORM",
+    "cat": "형용사형",
+    "word_count": 22,
+    "diff": "hard",
+    "sentence": "The technology company's refusal to provide end-to-end encryption backdoors to law enforcement agencies remains highly _______ among digital rights advocates.",
+    "choices": [
+      "(A) controversially",
+      "(B) controversialize",
+      "(C) controversy",
+      "(D) controversial"
+    ],
+    "answer": 3,
+    "answer_word": "controversial",
+    "explanation": "highly ___ among → 부사 + 형용사. 형용사 자리.",
+    "explanation_kr": "highly 다음은 형용사! controversial = '논쟁적인(형용사)'! controversy는 명사야~",
+    "kr": "법 집행 기관에 종단간 암호화 백도어를 제공하기를 거부하는 기술 회사의 입장은 디지털 권리 옹호자들 사이에서 여전히 매우 논쟁적이다.",
+    "expressions": [
+      {
+        "expr": "controversial",
+        "meaning": "논쟁적인 (형용사)"
+      },
+      {
+        "expr": "highly ___",
+        "meaning": "부사+형용사 → 형용사!"
+      }
+    ]
+  },
+  {
+    "id": "FORM_108",
+    "category": "FORM",
+    "cat": "형용사형",
+    "word_count": 21,
+    "diff": "hard",
+    "sentence": "The findings of the longevity research consortium were so _______ that they prompted an emergency review of existing anti-aging drug approval pathways.",
+    "choices": [
+      "(A) significance",
+      "(B) signify",
+      "(C) significantly",
+      "(D) significant"
+    ],
+    "answer": 3,
+    "answer_word": "significant",
+    "explanation": "so ___ that → so + 형용사 + that절. 형용사 자리.",
+    "explanation_kr": "so 다음은 형용사! significant = '중요한(형용사)'! significantly는 부사야~",
+    "kr": "장수 연구 컨소시엄의 결과는 너무 중요해서 기존 항노화 약물 승인 경로의 긴급 검토를 촉발했다.",
+    "expressions": [
+      {
+        "expr": "significant",
+        "meaning": "중요한 (형용사)"
+      },
+      {
+        "expr": "so ___ that",
+        "meaning": "so+형용사+that절 → 형용사!"
+      }
+    ]
+  },
+  {
+    "id": "FORM_109",
+    "category": "FORM",
+    "cat": "형용사형",
+    "word_count": 22,
+    "diff": "hard",
+    "sentence": "Policymakers are increasingly _______ that existing regulatory sandboxes are insufficient to govern the rapid deployment of autonomous AI decision-making systems.",
+    "choices": [
+      "(A) convinced",
+      "(B) convincingly",
+      "(C) conviction",
+      "(D) convince"
+    ],
+    "answer": 0,
+    "answer_word": "convinced",
+    "explanation": "are ___ that → be + 과거분사(형용사) + that절. 형용사 자리.",
+    "explanation_kr": "are 다음은 보어! convinced that = '~에 확신하는'! conviction은 명사야~",
+    "kr": "정책 입안자들은 기존 규제 샌드박스가 자율 AI 의사결정 시스템의 빠른 배포를 관리하기에 불충분하다는 것을 점점 더 확신하고 있다.",
+    "expressions": [
+      {
+        "expr": "convinced",
+        "meaning": "확신하는 (형용사)"
+      },
+      {
+        "expr": "be convinced that",
+        "meaning": "~임을 확신하다"
+      }
+    ]
+  },
+  {
+    "id": "FORM_110",
+    "category": "FORM",
+    "cat": "형용사형",
+    "word_count": 21,
+    "diff": "hard",
+    "sentence": "The transition to a fully circular economy requires businesses to become genuinely _______ about the entire lifecycle impact of their products.",
+    "choices": [
+      "(A) transparency",
+      "(B) transparent",
+      "(C) transparently",
+      "(D) transparentize"
+    ],
+    "answer": 1,
+    "answer_word": "transparent",
+    "explanation": "become ___ about → become + 보어. 형용사 자리.",
+    "explanation_kr": "become 다음은 보어! transparent about = '~에 대해 투명한'! transparency는 명사야~",
+    "kr": "완전한 순환 경제로의 전환은 기업들이 제품의 전체 수명 주기 영향에 대해 진정으로 투명해지도록 요구한다.",
+    "expressions": [
+      {
+        "expr": "transparent",
+        "meaning": "투명한 (형용사)"
+      },
+      {
+        "expr": "become ___ about",
+        "meaning": "become+형용사+about → 형용사 보어!"
+      }
+    ]
+  },
+  {
+    "id": "FORM_111",
+    "category": "FORM",
+    "cat": "부사형",
+    "word_count": 21,
+    "diff": "hard",
+    "sentence": "The autonomous vehicle fleet has _______ demonstrated its ability to operate safely in densely populated urban environments across multiple cities.",
+    "choices": [
+      "(A) consistent",
+      "(B) consistency",
+      "(C) consistently",
+      "(D) consist"
+    ],
+    "answer": 2,
+    "answer_word": "consistently",
+    "explanation": "has ___ demonstrated → 현재완료 + 부사 + 과거분사. 부사 자리.",
+    "explanation_kr": "demonstrated(과거분사)를 꾸미는 건 부사! consistently = '꾸준히(부사)'! consistent는 형용사야~",
+    "kr": "자율주행차 차량은 여러 도시에 걸쳐 인구 밀집 도시 환경에서 안전하게 운행하는 능력을 꾸준히 입증했다.",
+    "expressions": [
+      {
+        "expr": "consistently",
+        "meaning": "꾸준히 (부사)"
+      },
+      {
+        "expr": "has ___ demonstrated",
+        "meaning": "현재완료 + 부사 + 과거분사!"
+      }
+    ]
+  },
+  {
+    "id": "FORM_112",
+    "category": "FORM",
+    "cat": "부사형",
+    "word_count": 22,
+    "diff": "hard",
+    "sentence": "The biosecurity agency has been _______ criticized for its failure to establish a sufficiently robust early warning system for pandemic threats.",
+    "choices": [
+      "(A) sharply",
+      "(B) sharp",
+      "(C) sharpen",
+      "(D) sharpness"
+    ],
+    "answer": 0,
+    "answer_word": "sharply",
+    "explanation": "has been ___ criticized → 현재완료 수동 + 부사. 부사 자리.",
+    "explanation_kr": "criticized(과거분사)를 꾸미는 건 부사! sharply = '날카롭게, 강하게(부사)'! sharp는 형용사야~",
+    "kr": "생물 안보 기관은 팬데믹 위협에 대한 충분히 강력한 조기 경보 시스템 수립 실패로 강하게 비판받아 왔다.",
+    "expressions": [
+      {
+        "expr": "sharply",
+        "meaning": "강하게, 날카롭게 (부사)"
+      },
+      {
+        "expr": "has been ___ criticized",
+        "meaning": "수동태 + 부사 수식!"
+      }
+    ]
+  },
+  {
+    "id": "FORM_113",
+    "category": "FORM",
+    "cat": "부사형",
+    "word_count": 21,
+    "diff": "hard",
+    "sentence": "The impact investing community has _______ called for a standardized global taxonomy that clearly defines what qualifies as a genuine social enterprise.",
+    "choices": [
+      "(A) repeated",
+      "(B) repeat",
+      "(C) repeatedly",
+      "(D) repetition"
+    ],
+    "answer": 2,
+    "answer_word": "repeatedly",
+    "explanation": "has ___ called → 현재완료 + 부사. 부사 자리.",
+    "explanation_kr": "called(과거분사)를 꾸미는 건 부사! repeatedly = '반복적으로(부사)'! repeated는 형용사야~",
+    "kr": "임팩트 투자 커뮤니티는 진정한 사회적 기업 자격을 명확하게 정의하는 표준화된 글로벌 분류법을 반복적으로 요구해왔다.",
+    "expressions": [
+      {
+        "expr": "repeatedly",
+        "meaning": "반복적으로 (부사)"
+      },
+      {
+        "expr": "has ___ called",
+        "meaning": "현재완료 + 부사!"
+      }
+    ]
+  },
+  {
+    "id": "FORM_114",
+    "category": "FORM",
+    "cat": "부사형",
+    "word_count": 22,
+    "diff": "hard",
+    "sentence": "The longevity biotech firm _______ allocated its research budget toward cellular reprogramming technologies at the expense of more conventional drug development pathways.",
+    "choices": [
+      "(A) aggress",
+      "(B) aggressiveness",
+      "(C) aggressive",
+      "(D) aggressively"
+    ],
+    "answer": 3,
+    "answer_word": "aggressively",
+    "explanation": "동사(allocated) 수식. 부사 자리.",
+    "explanation_kr": "allocated(동사)를 꾸미는 건 부사! aggressively = '공격적으로(부사)'! aggressive는 형용사야~",
+    "kr": "장수 바이오테크 회사는 보다 전통적인 신약 개발 경로를 희생하면서 세포 재프로그래밍 기술에 연구 예산을 공격적으로 배분했다.",
+    "expressions": [
+      {
+        "expr": "aggressively",
+        "meaning": "공격적으로 (부사)"
+      },
+      {
+        "expr": "동사 수식",
+        "meaning": "동사 꾸미기 → 부사!"
+      }
+    ]
+  },
+  {
+    "id": "FORM_115",
+    "category": "FORM",
+    "cat": "부사형",
+    "word_count": 21,
+    "diff": "hard",
+    "sentence": "The carbon credit verification body acted _______ when it suspended the certification of several major forestry offset projects following evidence of significant overclaiming.",
+    "choices": [
+      "(A) decisive",
+      "(B) decide",
+      "(C) decisively",
+      "(D) decision"
+    ],
+    "answer": 2,
+    "answer_word": "decisively",
+    "explanation": "동사(acted) 수식. 부사 자리.",
+    "explanation_kr": "acted(동사)를 꾸미는 건 부사! decisively = '단호하게(부사)'! decisive는 형용사야~",
+    "kr": "탄소 크레딧 검증 기관은 상당한 과도 주장의 증거를 따라 여러 주요 산림 상쇄 프로젝트의 인증을 중단했을 때 단호하게 행동했다.",
+    "expressions": [
+      {
+        "expr": "decisively",
+        "meaning": "단호하게 (부사)"
+      },
+      {
+        "expr": "acted ___",
+        "meaning": "동사 뒤 수식 → 부사!"
+      }
+    ]
+  },
+  {
+    "id": "FORM_116",
+    "category": "FORM",
+    "cat": "동사형",
+    "word_count": 21,
+    "diff": "hard",
+    "sentence": "The international regulatory panel recommended that all major AI companies _______ independent algorithmic audits on an annual basis.",
+    "choices": [
+      "(A) undertake",
+      "(B) undertaken",
+      "(C) undertaking",
+      "(D) undertook"
+    ],
+    "answer": 0,
+    "answer_word": "undertake",
+    "explanation": "recommended that + 주어 + (should) ___ → 당위 가정법. 동사원형 자리.",
+    "explanation_kr": "recommend that 다음은 (should) + 동사원형! undertake = '착수하다(동사원형)'! undertaken은 p.p.야~",
+    "kr": "국제 규제 패널은 모든 주요 AI 기업이 연간 기준으로 독립적인 알고리즘 감사를 착수할 것을 권고했다.",
+    "expressions": [
+      {
+        "expr": "undertake",
+        "meaning": "착수하다 (동사원형)"
+      },
+      {
+        "expr": "recommend that + 원형",
+        "meaning": "당위절 → 동사원형!"
+      }
+    ]
+  },
+  {
+    "id": "FORM_117",
+    "category": "FORM",
+    "cat": "동사형",
+    "word_count": 22,
+    "diff": "hard",
+    "sentence": "The biosecurity treaty stipulates that member states must _______ all research involving gain-of-function modifications to dangerous pathogens with national authorities.",
+    "choices": [
+      "(A) registration",
+      "(B) registering",
+      "(C) registered",
+      "(D) register"
+    ],
+    "answer": 3,
+    "answer_word": "register",
+    "explanation": "must ___ → 조동사 + 동사원형. 동사 자리.",
+    "explanation_kr": "must 다음은 동사원형! register = '등록하다(동사원형)'! registration은 명사야~",
+    "kr": "생물 안보 조약은 회원국들이 위험한 병원체에 대한 기능 강화 변형을 포함하는 모든 연구를 국가 당국에 등록해야 한다고 규정한다.",
+    "expressions": [
+      {
+        "expr": "register",
+        "meaning": "등록하다 (동사원형)"
+      },
+      {
+        "expr": "must + ___",
+        "meaning": "조동사 뒤 → 동사원형!"
+      }
+    ]
+  },
+  {
+    "id": "FORM_118",
+    "category": "FORM",
+    "cat": "동사형",
+    "word_count": 22,
+    "diff": "hard",
+    "sentence": "The impact measurement framework requires companies to _______ the social return on investment of all community programs using standardized metrics.",
+    "choices": [
+      "(A) quantify",
+      "(B) quantified",
+      "(C) quantification",
+      "(D) quantifying"
+    ],
+    "answer": 0,
+    "answer_word": "quantify",
+    "explanation": "to ___ → to부정사. 동사원형 자리.",
+    "explanation_kr": "to 다음은 동사원형! quantify = '정량화하다(동사원형)'! quantification은 명사야~",
+    "kr": "임팩트 측정 프레임워크는 기업들이 표준화된 지표를 사용하여 모든 지역사회 프로그램의 사회적 투자 수익을 정량화하도록 요구한다.",
+    "expressions": [
+      {
+        "expr": "quantify",
+        "meaning": "정량화하다 (동사원형)"
+      },
+      {
+        "expr": "to + ___",
+        "meaning": "to부정사 → 동사원형!"
+      }
+    ]
+  },
+  {
+    "id": "FORM_119",
+    "category": "FORM",
+    "cat": "동사형",
+    "word_count": 21,
+    "diff": "hard",
+    "sentence": "The aging society task force urged the government to _______ a comprehensive national strategy addressing both preventive healthcare and late-life economic participation.",
+    "choices": [
+      "(A) formulate",
+      "(B) formulation",
+      "(C) formulated",
+      "(D) formulating"
+    ],
+    "answer": 0,
+    "answer_word": "formulate",
+    "explanation": "to ___ → to부정사. 동사원형 자리.",
+    "explanation_kr": "to 다음은 동사원형! formulate = '수립하다(동사원형)'! formulation은 명사야~",
+    "kr": "고령화 사회 태스크포스는 정부가 예방 의료와 노후 경제 참여 모두를 다루는 포괄적인 국가 전략을 수립할 것을 촉구했다.",
+    "expressions": [
+      {
+        "expr": "formulate",
+        "meaning": "수립하다 (동사원형)"
+      },
+      {
+        "expr": "urge + to + ___",
+        "meaning": "to부정사 → 동사원형!"
+      }
+    ]
+  },
+  {
+    "id": "FORM_120",
+    "category": "FORM",
+    "cat": "동사형",
+    "word_count": 22,
+    "diff": "hard",
+    "sentence": "The global carbon market oversight body proposed that governments _______ standardized verification requirements across all voluntary carbon credit trading platforms.",
+    "choices": [
+      "(A) harmonize",
+      "(B) harmonized",
+      "(C) harmonizing",
+      "(D) harmonization"
+    ],
+    "answer": 0,
+    "answer_word": "harmonize",
+    "explanation": "proposed that + 주어 + (should) ___ → 당위 가정법. 동사원형 자리.",
+    "explanation_kr": "propose that 다음은 (should) + 동사원형! harmonize = '조화시키다(동사원형)'! harmonization은 명사야~",
+    "kr": "글로벌 탄소 시장 감독 기구는 정부들이 모든 자발적 탄소 크레딧 거래 플랫폼에 걸쳐 표준화된 검증 요건을 조화시킬 것을 제안했다.",
+    "expressions": [
+      {
+        "expr": "harmonize",
+        "meaning": "조화시키다, 일치시키다 (동사원형)"
+      },
+      {
+        "expr": "propose that + 원형",
+        "meaning": "당위절 → 동사원형!"
+      }
+    ]
+  },
+  {
+    "id": "FORM_121",
+    "category": "FORM",
+    "cat": "분사형",
+    "word_count": 22,
+    "diff": "hard",
+    "sentence": "The _______ evidence linking chronic stress in the workplace to accelerated biological aging has prompted calls for mandatory employer mental health programs.",
+    "choices": [
+      "(A) accumulate",
+      "(B) accumulating",
+      "(C) accumulation",
+      "(D) accumulative"
+    ],
+    "answer": 1,
+    "answer_word": "accumulating",
+    "explanation": "___ evidence → 명사 앞 수식. 현재분사 형용사.",
+    "explanation_kr": "evidence(명사) 앞에서 꾸미는 역할! '축적되고 있는' 진행 의미 → accumulating! accumulated는 '이미 축적된' 정적 의미야~",
+    "kr": "직장에서의 만성 스트레스와 가속화된 생물학적 노화를 연결하는 축적되고 있는 증거가 의무적인 고용주 정신 건강 프로그램에 대한 요구를 불러일으켰다.",
+    "expressions": [
+      {
+        "expr": "accumulating",
+        "meaning": "축적되고 있는 (현재분사)"
+      },
+      {
+        "expr": "accumulating evidence",
+        "meaning": "현재분사+명사 → 진행 의미!"
+      }
+    ]
+  },
+  {
+    "id": "FORM_122",
+    "category": "FORM",
+    "cat": "분사형",
+    "word_count": 22,
+    "diff": "hard",
+    "sentence": "Institutional investors _______ by the increasing complexity of ESG disclosure requirements have begun demanding simpler, more standardized reporting frameworks.",
+    "choices": [
+      "(A) overwhelm",
+      "(B) overwhelming",
+      "(C) overwhelmingly",
+      "(D) overwhelmed"
+    ],
+    "answer": 3,
+    "answer_word": "overwhelmed",
+    "explanation": "investors ___ by → 명사 + 과거분사 + 전치사. 과거분사 수식.",
+    "explanation_kr": "investors(명사) 다음에 by가 오면 사이는 과거분사! overwhelmed by = '~에 압도된'! overwhelming은 사물 주어에!",
+    "kr": "ESG 공시 요건의 증가하는 복잡성에 압도된 기관 투자자들은 더 단순하고 더 표준화된 보고 프레임워크를 요구하기 시작했다.",
+    "expressions": [
+      {
+        "expr": "overwhelmed",
+        "meaning": "압도된 (과거분사)"
+      },
+      {
+        "expr": "명사 + ___ by",
+        "meaning": "명사+과거분사+by → 수식!"
+      }
+    ]
+  },
+  {
+    "id": "FORM_123",
+    "category": "FORM",
+    "cat": "분사형",
+    "word_count": 21,
+    "diff": "hard",
+    "sentence": "The government found the biotech company's clinical trial data _______ of the high safety standards required for regulatory approval of novel gene therapies.",
+    "choices": [
+      "(A) falling",
+      "(B) fell",
+      "(C) falls",
+      "(D) fall"
+    ],
+    "answer": 0,
+    "answer_word": "falling",
+    "explanation": "found ___ + 목적격 보어. 분사 형태의 목적격 보어.",
+    "explanation_kr": "found + 목적어 + 분사 형태 목적격 보어! falling short of = '~에 미치지 못하는'! fell은 과거형이야~",
+    "kr": "정부는 바이오테크 회사의 임상 시험 데이터가 신규 유전자 치료법의 규제 승인에 필요한 높은 안전 기준에 미치지 못한다는 것을 발견했다.",
+    "expressions": [
+      {
+        "expr": "falling",
+        "meaning": "미치지 못하는 (현재분사 목적격 보어)"
+      },
+      {
+        "expr": "find + 목적어 + falling",
+        "meaning": "목적격 보어 → 분사!"
+      }
+    ]
+  },
+  {
+    "id": "FORM_124",
+    "category": "FORM",
+    "cat": "분사형",
+    "word_count": 22,
+    "diff": "hard",
+    "sentence": "The _______ momentum behind voluntary carbon markets, despite persistent questions about additionality and permanence, suggests that corporate demand for offsets will remain strong.",
+    "choices": [
+      "(A) sustained",
+      "(B) sustaining",
+      "(C) sustain",
+      "(D) sustainment"
+    ],
+    "answer": 0,
+    "answer_word": "sustained",
+    "explanation": "___ momentum → 명사 앞 수식. 과거분사 형용사.",
+    "explanation_kr": "momentum(명사) 앞에서 꾸미는 역할! '지속된' 상태 의미 → sustained! sustaining은 '유지하고 있는' 능동 의미야~",
+    "kr": "추가성과 영속성에 대한 지속적인 의문에도 불구하고 자발적 탄소 시장 뒤에 있는 지속된 모멘텀은 상쇄에 대한 기업 수요가 강하게 유지될 것임을 시사한다.",
+    "expressions": [
+      {
+        "expr": "sustained",
+        "meaning": "지속된 (과거분사 형용사)"
+      },
+      {
+        "expr": "sustained momentum",
+        "meaning": "과거분사+명사 → 상태 의미!"
+      }
+    ]
+  },
+  {
+    "id": "FORM_125",
+    "category": "FORM",
+    "cat": "분사형",
+    "word_count": 22,
+    "diff": "hard",
+    "sentence": "Policymakers _______ by the rapid proliferation of unregulated AI systems in critical decision-making contexts are now pushing for a global governance framework.",
+    "choices": [
+      "(A) alarmingly",
+      "(B) alarm",
+      "(C) alarmed",
+      "(D) alarming"
+    ],
+    "answer": 2,
+    "answer_word": "alarmed",
+    "explanation": "Policymakers ___ by → 명사 + 과거분사 + 전치사. 과거분사 수식.",
+    "explanation_kr": "policymakers(명사) 다음에 by가 오면 사이는 과거분사! alarmed by = '~에 놀란, 우려하는'! alarming은 사물 주어에!",
+    "kr": "규제되지 않은 AI 시스템의 중요한 의사결정 맥락에서의 빠른 확산에 우려하는 정책 입안자들이 이제 글로벌 거버넌스 프레임워크를 추진하고 있다.",
+    "expressions": [
+      {
+        "expr": "alarmed",
+        "meaning": "우려하는 (과거분사)"
+      },
+      {
+        "expr": "명사 + ___ by",
+        "meaning": "명사+과거분사+by → 수식!"
+      }
+    ]
+  }
+]
