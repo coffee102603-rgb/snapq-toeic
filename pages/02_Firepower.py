@@ -608,6 +608,10 @@ if st.session_state.phase=="battle":
         /* ?? ??踰꾪듉 怨듯넻 ?? */
         div[data-testid="stButton"] button{
             cursor:pointer!important;
+            will-change:transform!important;
+            transform:translateZ(0)!important;
+            -webkit-transform:translateZ(0)!important;
+            isolation:isolate!important;
             min-height:50px!important;font-size:0.95rem!important;
             font-weight:800!important;border-radius:10px!important;
             text-align:left!important;padding:0.45rem 0.9rem!important;
