@@ -14,6 +14,24 @@ import streamlit.components.v1 as components
 import json, os, random, time, re
 from streamlit_autorefresh import st_autorefresh
 
+# ★ 단어 DB — kr 조회용 (포로수용소 영한 매칭)
+import sys as _sys_top
+_sys_top.path.insert(0, os.path.join(os.path.dirname(__file__), "pages") if not os.path.dirname(__file__).endswith("pages") else os.path.dirname(__file__))
+try:
+    from _word_family_db import lookup as _prison_lookup, WORD_INDEX as _WORD_INDEX
+except Exception:
+    _prison_lookup = None
+    _WORD_INDEX = {}
+
+def _lookup_kr(word):
+    """개별 단어의 한국어 뜻 조회 — FAMILY_DB 우선, VOCAB_DICT fallback"""
+    if not word or not _prison_lookup:
+        return ""
+    info = _prison_lookup(word)
+    if info and info.get("kr"):
+        return info["kr"]
+    return ""
+
 st.set_page_config(page_title="💀 포로사령부", page_icon="💀", layout="wide", initial_sidebar_state="collapsed")
 # ★★★ iOS Safari 세션 가드 — WebSocket 끊겨도 세션 자동 복원 ★★★
 _qs_nick = st.query_params.get("nick", "")
@@ -100,10 +118,17 @@ def _extract_prison_word(text, ex_field="", cat="", ch=None, a_idx=0):
     return None
 
 def _add_to_prison(word, source, sentence="", kr="", cat=""):
-    """포로수용소에 단어 추가 (중복 없이)"""
+    """포로수용소에 단어 추가 (중복 없이, kr 자동 조회)"""
     if not word or len(word) < 2:
         return
     try:
+        # ★ kr이 비어있거나 표현 전체 뜻(공백 포함)이면 → 개별 단어 kr 조회
+        _need_lookup = (not kr or kr in ("?","뜻 없음","")
+                        or (" " in kr.strip() and len(kr) > 8))  # "종합적인 검토" 같은 표현 뜻 감지
+        if _need_lookup:
+            _looked = _lookup_kr(word)
+            if _looked:
+                kr = _looked
         # JSONDecodeError 안전 처리
         try:
             st_data = load_storage()
@@ -1944,6 +1969,26 @@ div[data-testid="stButton"] button p{color:#c0c8e0!important;font-size:0.9rem!im
         st.session_state["wp_quiz_score"]    = 0
         st.session_state["wp_quiz_feedback"] = None
         st.session_state["_wp_guard"] = True
+
+        # ★★★ 기존 포로 kr 일괄 수정 (영한 불일치 해결) ★★★
+        try:
+            _rp_st = load_storage()
+            _rp_changed = False
+            for _rp_p in _rp_st.get("word_prison", []):
+                _rp_w = _rp_p.get("word", "")
+                _rp_kr = _rp_p.get("kr", "")
+                # kr이 비어있거나, "?"이거나, 표현 전체 뜻(공백+8자 초과)이면 수정
+                _rp_bad = (not _rp_kr or _rp_kr in ("?", "뜻 없음", "")
+                           or (" " in _rp_kr.strip() and len(_rp_kr) > 8))
+                if _rp_bad and _rp_w:
+                    _rp_new = _lookup_kr(_rp_w)
+                    if _rp_new:
+                        _rp_p["kr"] = _rp_new
+                        _rp_changed = True
+            if _rp_changed:
+                save_storage(_rp_st)
+        except Exception:
+            pass
     for _k,_v in {"wp_mode":"lobby","wp_idx":0,"wp_flipped":False,"wp_freed":0,
                   "wp_seen_words":[],"wp_quiz_qs":[],"wp_quiz_idx":0,
                   "wp_quiz_score":0,"wp_quiz_feedback":None}.items():
@@ -2048,6 +2093,8 @@ div[data-testid="stButton"] button p{color:#c0c8e0!important;font-size:0.9rem!im
             _w_raw = _p.get("word",""); _w = _lemma(_w_raw)
             _raw_kr = _p.get("kr","") or ""
             _kr = _clean_kr(_raw_kr)
+            if not _kr or _kr in ("?","뜻 없음","") or (" " in _kr.strip() and len(_kr) > 8):
+                _kr = _lookup_kr(_w_raw) or _lookup_kr(_w) or ""
             if not _kr or _kr in ("?","뜻 없음",""):
                 _kr = _VOCAB_DICT.get(_w.lower(),"") or _VOCAB_DICT.get(_w_raw.lower(),"") or "?"
             _streak = _p.get("correct_streak",0)
@@ -2102,9 +2149,23 @@ div[data-testid="stButton"] button p{color:#c0c8e0!important;font-size:0.9rem!im
             _p=_deck[_idx]; _raw_word=_p.get("word",""); _word=_lemma(_raw_word)
             _raw_kr=_p.get("kr","") or ""; _kr=_clean_kr(_raw_kr)
             _sent=_p.get("sentence",""); _sent_kr=_p.get("sent_kr","")
-            # kr 없으면 사전 fallback 시도
+            # ★ kr이 없거나 표현 전체 뜻이면 → DB 조회 → VOCAB_DICT fallback
+            _kr_was_bad = False
+            if not _kr or _kr in ("?","뜻 없음","") or (" " in _kr.strip() and len(_kr) > 8):
+                _kr_was_bad = True
+                _kr = _lookup_kr(_raw_word) or _lookup_kr(_word) or ""
             if not _kr or _kr in ("?","뜻 없음",""):
+                _kr_was_bad = True
                 _kr = _VOCAB_DICT.get(_word.lower(), "") or _VOCAB_DICT.get(_raw_word.lower(), "")
+            # ★ 수정된 kr을 storage에 저장 (다음에는 바로 표시)
+            if _kr_was_bad and _kr and _kr not in ("?","뜻 없음",""):
+                try:
+                    _ri_fix = next((i for i,x in enumerate(_pr_st.get("word_prison",[])) if x.get("word","").lower()==_raw_word.lower()), None)
+                    if _ri_fix is not None:
+                        _pr_st["word_prison"][_ri_fix]["kr"] = _kr
+                        save_storage(_pr_st)
+                except Exception:
+                    pass
             _has_meaning = bool(_kr and _kr not in ("뜻 없음","?",""))
             _streak=_p.get("correct_streak",0)
             _src=_p.get("source",""); _ch,_col,_lbl=_get_char(_p)
@@ -2378,6 +2439,9 @@ div[data-testid="stButton"] button p{color:#c0c8e0!important;font-size:0.9rem!im
                 # seen words가 부족하면 word_prison 전체에서 보충
                 for _pp in _prisoners:
                     _pw = _pp.get("word",""); _pk = _pp.get("kr","")
+                    # ★ kr이 없거나 부정확하면 DB에서 조회
+                    if not _pk or _pk in ("?","뜻 없음","") or (" " in _pk.strip() and len(_pk) > 8):
+                        _pk = _lookup_kr(_pw) or _pk
                     if _pk and _pk not in ("?","뜻 없음","") and not any(s["word"]==_pw for s in _pool):
                         _pool.append({"word":_pw,"kr":_pk})
                     if len(_pool) >= 5: break
@@ -2390,23 +2454,35 @@ div[data-testid="stButton"] button p{color:#c0c8e0!important;font-size:0.9rem!im
                     if _is_cor:
                         _show_kr = _qw["kr"]
                     else:
-                        _wrongs = [s["kr"] for s in _pool if s["word"]!=_qw["word"] and s.get("kr")]
+                        _wrongs = [s["kr"] for s in _pool if s["word"]!=_qw["word"] and s.get("kr")
+                                   and s["kr"] != _qw["kr"]]
                         _show_kr = _fi_rnd.choice(_wrongs) if _wrongs else _qw["kr"]
                         if _show_kr == _qw["kr"]: _is_cor = True
                     _qs.append({"type":"ox","word":_qw["word"],"kr":_qw["kr"],
                                 "show_kr":_show_kr,"correct":_is_cor})
                 else:
+                    # ★ 4지선다: 중복 없는 선택지 보장
+                    _correct_kr = _qw["kr"]
                     _dists = list({s["kr"] for s in _pool if s["word"]!=_qw["word"] and s.get("kr")
-                                   and s["kr"] not in ("?","뜻 없음","")})
-                    _fb = ["고용하다","제출하다","준수하다","평가하다","승인하다","관리하다","연장하다","참가하다","발표하다","검토하다"]
+                                   and s["kr"] not in ("?","뜻 없음","") and s["kr"] != _correct_kr})
+                    _fb = ["고용하다","제출하다","준수하다","평가하다","승인하다","관리하다",
+                           "연장하다","참가하다","발표하다","검토하다","제공하다","요청하다",
+                           "개선하다","운영하다","보장하다","통지하다","설립하다","감소시키다"]
                     for _fk in _fb:
-                        if _fk not in _dists and _fk != _qw["kr"]: _dists.append(_fk)
-                    _dists = [d for d in _dists if d != _qw["kr"]]
+                        if _fk not in _dists and _fk != _correct_kr: _dists.append(_fk)
+                        if len(_dists) >= 6: break  # 충분하면 중단
                     _fi_rnd.shuffle(_dists)
-                    _ch4 = _dists[:3] + [_qw["kr"]]
+                    _ch4 = _dists[:3] + [_correct_kr]
+                    # ★ 최종 중복 검증: set으로 확인, 부족하면 fallback 추가
+                    if len(set(_ch4)) < 4:
+                        _ch4 = list(dict.fromkeys(_ch4))  # 순서 유지 중복 제거
+                        for _extra in _fb:
+                            if _extra not in _ch4:
+                                _ch4.append(_extra)
+                            if len(_ch4) >= 4: break
                     _fi_rnd.shuffle(_ch4)
-                    _qs.append({"type":"choice4","word":_qw["word"],"kr":_qw["kr"],
-                                "choices":_ch4,"answer_idx":_ch4.index(_qw["kr"])})
+                    _qs.append({"type":"choice4","word":_qw["word"],"kr":_correct_kr,
+                                "choices":_ch4,"answer_idx":_ch4.index(_correct_kr)})
             st.session_state.wp_quiz_qs = _qs
             st.session_state.wp_quiz_idx = 0
             st.session_state.wp_quiz_score = 0
