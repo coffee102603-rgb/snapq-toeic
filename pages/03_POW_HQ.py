@@ -2397,109 +2397,101 @@ div[data-testid="stButton"] button p{color:#c0c8e0!important;font-size:0.9rem!im
             st.markdown('</div>', unsafe_allow_html=True)
 
     # ════════════════════════════════════════
-    # PHASE: FLASH_INTRO — 🚨 긴급 소환 전환 화면
+    # PHASE: FLASH_INTRO — 🚨 용의자 대질 돌입
     # ════════════════════════════════════════
     elif st.session_state.wp_mode == "flash_intro":
         import random as _fi_rnd
 
-        # 수사관 5종
+        # 수사관 5종 (대질 버전)
         _INTERROGATORS = [
             {"name":"박형사","emoji":"👮","color":"#ff6633","title":"강력계 형사",
-             "enter":"야!! 책상 탁!!! 솔직하게 말해!!",
-             "correct":"좋아, 인정한다! 다음!!","wrong":"딱 걸렸어!! 거짓말하지 마!!",
+             "enter":"야!! 줄 서!! 대질이다!!",
+             "correct":"좋아 눈썰미 있네!","wrong":"눈 뜨고 봐!!","timeout":"뭐해?! 시간 초과야!!",
              "done":"이번엔 봐준다... 다음엔 없어."},
             {"name":"Agent K","emoji":"🕵️","color":"#00ccff","title":"CIA 냉철 요원",
-             "enter":"우리는... 이미 알고 있어.",
-             "correct":"예상대로군.","wrong":"거짓말은 데이터가 증명한다.",
+             "enter":"용의자 대질 개시.",
+             "correct":"식별 완료.","wrong":"오판이다.","timeout":"반응 없음. 실패.",
              "done":"임무 완료. 철수."},
             {"name":"여우씨","emoji":"🦊","color":"#ffaa33","title":"교활한 탐정",
-             "enter":"어머~ 방심했지? 이건 함정이야~ 🦊",
-             "correct":"흠... 맞추다니. 예상 밖인걸?","wrong":"역시~ 내 함정에 딱 걸렸네~",
-             "done":"오늘은 봐줄게. 다음엔 더 교활해질 거야."},
+             "enter":"누가 진범인지 맞춰봐~ 🦊",
+             "correct":"눈이 좋네?","wrong":"역시~ 속았지~","timeout":"너무 느려~ 도망갔잖아~",
+             "done":"오늘은 봐줄게~"},
             {"name":"UNIT-7","emoji":"🤖","color":"#44ffcc","title":"AI 수사관",
-             "enter":"분석 완료. 즉시 응답하라.",
-             "correct":"정답 확인됨. 다음 항목.","wrong":"오답 감지. 재투옥 처리 중...",
-             "done":"오늘 정확도 분석 완료. 데이터 저장."},
+             "enter":"대질 모드 활성화. 지문 스캔 준비.",
+             "correct":"매칭 성공.","wrong":"불일치 감지.","timeout":"응답 시간 초과.",
+             "done":"정확도 분석 완료."},
             {"name":"대부","emoji":"👹","color":"#ff3366","title":"보스",
-             "enter":"내가... 직접 나왔어.",
-             "correct":"...이번만 봐준다.","wrong":"내 앞에서 틀려?! 각오해!!",
-             "done":"살아남았군. 오늘은."},
+             "enter":"내가 직접 대질을 보겠다.",
+             "correct":"...살았다.","wrong":"잘못 짚었어!!","timeout":"뭘 망설여?!",
+             "done":"살아남았군."},
         ]
-        st.session_state.setdefault("_fi_interrogators", _INTERROGATORS)
+        st.session_state["_fi_interrogators"] = _INTERROGATORS
 
         _inq_idx = st.session_state.get("wp_interrogator", 0)
         _inq = _INTERROGATORS[_inq_idx % len(_INTERROGATORS)]
         _ic = _inq["color"]
 
-        # 문제 아직 생성 안 됐으면 생성
+        # ★★★ 대질 문제 생성 (2지선다 라인업) ★★★
         if not st.session_state.get("wp_quiz_qs"):
             _seen = st.session_state.get("wp_seen_words", [])
             _pool = [s for s in _seen if s.get("kr") and s["kr"] not in ("?","뜻 없음","")]
-            if len(_pool) < 2:
-                # seen words가 부족하면 word_prison 전체에서 보충
+            if len(_pool) < 3:
                 for _pp in _prisoners:
                     _pw = _pp.get("word",""); _pk = _pp.get("kr","")
-                    # ★ kr이 없거나 부정확하면 DB에서 조회
                     if not _pk or _pk in ("?","뜻 없음","") or (" " in _pk.strip() and len(_pk) > 8):
                         _pk = _lookup_kr(_pw) or _pk
                     if _pk and _pk not in ("?","뜻 없음","") and not any(s["word"]==_pw for s in _pool):
                         _pool.append({"word":_pw,"kr":_pk})
-                    if len(_pool) >= 5: break
+                    if len(_pool) >= 8: break
+
             _q_words = _fi_rnd.sample(_pool, min(5, len(_pool)))
             _qs = []
-            for _qi, _qw in enumerate(_q_words):
-                _qtype = "ox" if _qi % 2 == 0 else "choice4"
-                if _qtype == "ox":
-                    _is_cor = _fi_rnd.choice([True, False])
-                    if _is_cor:
-                        _show_kr = _qw["kr"]
-                    else:
-                        _wrongs = [s["kr"] for s in _pool if s["word"]!=_qw["word"] and s.get("kr")
-                                   and s["kr"] != _qw["kr"]]
-                        _show_kr = _fi_rnd.choice(_wrongs) if _wrongs else _qw["kr"]
-                        if _show_kr == _qw["kr"]: _is_cor = True
-                    _qs.append({"type":"ox","word":_qw["word"],"kr":_qw["kr"],
-                                "show_kr":_show_kr,"correct":_is_cor})
+            _fallback_en = ["process","indicate","establish","provide","conduct",
+                            "maintain","evaluate","implement","facilitate","negotiate",
+                            "distribute","participate","contribute","accomplish","determine"]
+            for _qw in _q_words:
+                _other_pool = [s["word"] for s in _pool
+                               if s["word"].lower() != _qw["word"].lower()]
+                # 공범(word family) 중에서 오답 후보 추가
+                _fam = _get_family(_qw["word"], _qw["word"])
+                _fam_words = []
+                if _fam:
+                    for _pos_list in _fam.values():
+                        for _fw, _fkr in _pos_list:
+                            if _fw.lower() != _qw["word"].lower():
+                                _fam_words.append(_fw)
+                # 오답 후보: 다른 풀 단어 → 공범 단어 → fallback
+                _dist_pool = _other_pool + _fam_words + _fallback_en
+                _dist_pool = [d for d in _dist_pool if d.lower() != _qw["word"].lower()]
+                _distractor = _fi_rnd.choice(_dist_pool) if _dist_pool else "establish"
+
+                _side = _fi_rnd.choice(["left","right"])
+                if _side == "left":
+                    _left, _right = _qw["word"], _distractor
                 else:
-                    # ★ 4지선다: 중복 없는 선택지 보장
-                    _correct_kr = _qw["kr"]
-                    _dists = list({s["kr"] for s in _pool if s["word"]!=_qw["word"] and s.get("kr")
-                                   and s["kr"] not in ("?","뜻 없음","") and s["kr"] != _correct_kr})
-                    _fb = ["고용하다","제출하다","준수하다","평가하다","승인하다","관리하다",
-                           "연장하다","참가하다","발표하다","검토하다","제공하다","요청하다",
-                           "개선하다","운영하다","보장하다","통지하다","설립하다","감소시키다"]
-                    for _fk in _fb:
-                        if _fk not in _dists and _fk != _correct_kr: _dists.append(_fk)
-                        if len(_dists) >= 6: break  # 충분하면 중단
-                    _fi_rnd.shuffle(_dists)
-                    _ch4 = _dists[:3] + [_correct_kr]
-                    # ★ 최종 중복 검증: set으로 확인, 부족하면 fallback 추가
-                    if len(set(_ch4)) < 4:
-                        _ch4 = list(dict.fromkeys(_ch4))  # 순서 유지 중복 제거
-                        for _extra in _fb:
-                            if _extra not in _ch4:
-                                _ch4.append(_extra)
-                            if len(_ch4) >= 4: break
-                    _fi_rnd.shuffle(_ch4)
-                    _qs.append({"type":"choice4","word":_qw["word"],"kr":_correct_kr,
-                                "choices":_ch4,"answer_idx":_ch4.index(_correct_kr)})
+                    _left, _right = _distractor, _qw["word"]
+
+                _qs.append({"word":_qw["word"],"kr":_qw["kr"],
+                            "left":_left,"right":_right,"correct_side":_side})
+
             st.session_state.wp_quiz_qs = _qs
             st.session_state.wp_quiz_idx = 0
             st.session_state.wp_quiz_score = 0
             st.session_state.wp_quiz_feedback = None
+            st.session_state.wp_quiz_q_start = None
+            st.session_state.wp_lineup_correct = []
 
+        # ── 인트로 화면 ──
         components.html(f"""
         <style>
         @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@900&display=swap');
         *{{margin:0;padding:0;box-sizing:border-box;}}body{{background:transparent;font-family:sans-serif;text-align:center;overflow:hidden;}}
         @keyframes redFlash{{0%{{opacity:1}}30%{{opacity:0.3}}60%{{opacity:1}}80%{{opacity:0.6}}100%{{opacity:1}}}}
         @keyframes slideUp{{from{{transform:translateY(80px);opacity:0}}to{{transform:translateY(0);opacity:1}}}}
-        @keyframes thud{{0%{{transform:scale(1)}}20%{{transform:scale(1.4)}}40%{{transform:scale(0.9)}}60%{{transform:scale(1.15)}}100%{{transform:scale(1)}}}}
         @keyframes alarmPulse{{0%,100%{{box-shadow:0 0 30px {_ic},0 0 60px {_ic}44}}50%{{box-shadow:0 0 60px {_ic},0 0 120px {_ic}88}}}}
         @keyframes blink{{0%,100%{{opacity:1}}50%{{opacity:0.3}}}}
         .container{{background:radial-gradient(ellipse at 50% 30%,#2a0010 0%,#06080f 70%);
-            border:3px solid {_ic};border-radius:20px;padding:24px 16px;
-            animation:alarmPulse 1.2s ease infinite;}}
+            border:3px solid {_ic};border-radius:20px;padding:24px 16px;animation:alarmPulse 1.2s ease infinite;}}
         .alarm{{font-family:'Orbitron',monospace;font-size:13px;font-weight:900;
             color:{_ic};letter-spacing:4px;animation:blink 0.8s ease infinite;margin-bottom:12px;}}
         .emoji{{font-size:64px;animation:slideUp 0.6s ease;display:block;margin-bottom:10px;filter:drop-shadow(0 0 20px {_ic});}}
@@ -2509,27 +2501,30 @@ div[data-testid="stButton"] button p{color:#c0c8e0!important;font-size:0.9rem!im
         .sub{{font-size:13px;color:{_ic};font-weight:700;animation:blink 1.5s ease infinite;}}
         </style>
         <div class="container">
-          <div class="alarm">🚨 EMERGENCY RECALL 🚨</div>
+          <div class="alarm">🚨 LINEUP · 용의자 대질 🚨</div>
           <span class="emoji">{_inq["emoji"]}</span>
           <div class="title">{_inq["title"]}</div>
           <div class="name">{_inq["name"]}</div>
           <div class="enter">"{_inq["enter"]}"</div>
-          <div class="sub">방금 본 단어들... 진짜 알아?</div>
+          <div class="sub">한국어 뜻 보고… 진범을 가르켜!!</div>
         </div>
         """, height=330)
 
-        st.markdown(f'<div id="btn-start" style="margin-top:8px;">', unsafe_allow_html=True)
-        if st.button(f"⚡ 긴급 심문 돌입!", key="flash_go", use_container_width=True):
-            st.session_state.wp_mode = "flash_quiz"; st.rerun()
+        st.markdown('<div id="btn-start" style="margin-top:8px;">', unsafe_allow_html=True)
+        if st.button("⚡ 용의자 대질 돌입!", key="flash_go", use_container_width=True):
+            st.session_state.wp_mode = "flash_quiz"
+            st.session_state.wp_quiz_q_start = time.time()
+            st.rerun()
         st.markdown('</div>', unsafe_allow_html=True)
 
     # ════════════════════════════════════════
-    # PHASE: FLASH_QUIZ — ⚡ 긴급 소환 퀴즈
+    # PHASE: FLASH_QUIZ — 🔍 용의자 대질 (타이머 2지선다)
     # ════════════════════════════════════════
     elif st.session_state.wp_mode == "flash_quiz":
+        _TIME_LIMIT = 6  # 초
         _INTERROGATORS = st.session_state.get("_fi_interrogators", [
             {"name":"박형사","emoji":"👮","color":"#ff6633","title":"강력계 형사",
-             "enter":"야!!","correct":"좋아!","wrong":"딱 걸렸어!!","done":"이번엔 봐준다."},
+             "correct":"좋아!","wrong":"딱 걸렸어!!","timeout":"시간 초과!!","done":"봐준다."},
         ])
         _inq_idx = st.session_state.get("wp_interrogator", 0)
         _inq = _INTERROGATORS[_inq_idx % len(_INTERROGATORS)]
@@ -2539,105 +2534,209 @@ div[data-testid="stButton"] button p{color:#c0c8e0!important;font-size:0.9rem!im
         _score = st.session_state.get("wp_quiz_score", 0)
         _fb = st.session_state.get("wp_quiz_feedback", None)
 
+        # 심문 멘트 순환
+        _LINEUP_PROMPTS = [
+            "👆 손가락 올려봐!!","☝️ 가르켜봐!!","🖱️ 마우스 올려봐!!",
+            "🔍 지문 찍어봐!!","👉 누가 범인이야?!","🎯 찍어! 빨리!!",
+            "⚡ 짚어봐! NOW!","👊 범인을 지목해!!","🚔 잡아! 도망간다!!",
+        ]
+
         if _qi >= len(_qs):
             st.session_state.wp_mode = "flash_result"; st.rerun()
-        else:
-            _q = _qs[_qi]
-            _qword = _q["word"]; _qkr = _q["kr"]
-            _total_q = len(_qs)
 
-            # HUD
+        _q = _qs[_qi]
+        _total_q = len(_qs)
+
+        # ★ 타임아웃 체크 (autorefresh or 버튼 클릭 시)
+        _q_start = st.session_state.get("wp_quiz_q_start") or time.time()
+        _elapsed = time.time() - _q_start
+        if not _fb and _elapsed > _TIME_LIMIT + 0.5:
+            st.session_state.wp_quiz_feedback = {"correct":False,"timeout":True}
+            st.rerun()
+
+        # ★ 타이머 autorefresh (답 안 누르면 자동 진행)
+        if not _fb:
+            st_autorefresh(interval=(_TIME_LIMIT + 1) * 1000, limit=1, key=f"lu_ar_{_qi}_{_score}")
+
+        # ── 피드백 화면 ──
+        if _fb:
+            _is_ok = _fb.get("correct", False)
+            _is_to = _fb.get("timeout", False)
+            _msg = _inq.get("timeout","시간 초과!") if _is_to else (_inq["correct"] if _is_ok else _inq["wrong"])
             components.html(f"""
             <style>@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@900&display=swap');
-            *{{margin:0;padding:0;box-sizing:border-box;}}body{{background:transparent;font-family:sans-serif;}}
-            @keyframes shake{{0%,100%{{transform:translateX(0)}}20%{{transform:translateX(-8px)}}40%{{transform:translateX(8px)}}60%{{transform:translateX(-5px)}}80%{{transform:translateX(5px)}}}}
+            *{{margin:0;padding:0;box-sizing:border-box;}}body{{background:transparent;font-family:sans-serif;text-align:center;}}
             @keyframes popIn{{from{{transform:scale(0.7);opacity:0}}to{{transform:scale(1);opacity:1}}}}
-            .hud{{background:#06080f;border:2px solid {_ic};border-radius:14px;padding:10px 14px;
-                display:flex;justify-content:space-between;align-items:center;margin-bottom:2px;}}
-            .inq{{font-size:22px;}} .inq-name{{font-family:'Orbitron',monospace;font-size:10px;color:{_ic};font-weight:900;}}
-            .prog{{font-family:'Orbitron',monospace;font-size:14px;font-weight:900;color:#ffffff;}}
-            .star{{font-size:16px;}}
+            @keyframes shake{{0%,100%{{transform:translateX(0)}}20%{{transform:translateX(-8px)}}40%{{transform:translateX(8px)}}60%{{transform:translateX(-5px)}}80%{{transform:translateX(5px)}}}}
             .card{{background:radial-gradient(ellipse at top,#1a0820 0%,#06080f 70%);
-                border:2.5px solid {_ic};border-radius:18px;padding:20px 16px;text-align:center;
-                {'animation:shake 0.5s ease;' if _fb and not _fb["correct"] else 'animation:popIn 0.4s ease;'}}}
-            .qtype{{font-family:'Orbitron',monospace;font-size:9px;color:{_ic};letter-spacing:3px;margin-bottom:10px;}}
-            .word{{font-family:'Orbitron',monospace;font-size:24px;font-weight:900;color:#ffffff;
-                text-shadow:0 0 20px {_ic};margin-bottom:4px;}}
-            .kr-show{{font-size:22px;font-weight:900;color:#ffee44;margin:8px 0;}}
-            .fb-ok{{font-size:28px;font-weight:900;color:#aa66ff;animation:popIn 0.3s ease;}}
-            .fb-ng{{font-size:22px;font-weight:900;color:#ff4444;}}
-            .fb-ans{{font-size:14px;color:#aabbcc;margin-top:4px;}}
-            .inq-msg{{font-size:15px;font-weight:800;color:#ffffff;margin-top:8px;line-height:1.5;}}
+                border:2.5px solid {_ic};border-radius:18px;padding:20px 16px;
+                {'animation:popIn 0.3s ease;' if _is_ok else 'animation:shake 0.5s ease;'}}}
+            .hud{{display:flex;justify-content:space-between;align-items:center;margin-bottom:8px;}}
+            .prog{{font-family:'Orbitron',monospace;font-size:13px;font-weight:900;color:#fff;}}
+            .emoji{{font-size:38px;margin-bottom:6px;}}
+            .fb-icon{{font-size:36px;{'animation:popIn 0.3s ease;' if _is_ok else ''}}}
+            .fb-msg{{font-size:17px;font-weight:900;color:#fff;margin:8px 0;line-height:1.5;}}
+            .fb-ans{{font-size:13px;color:#99aabb;margin-top:4px;}}
+            .stars{{font-size:16px;margin-top:4px;}}
             </style>
             <div class="hud">
-              <div><div class="inq">{_inq["emoji"]}</div><div class="inq-name">{_inq["name"]}</div></div>
-              <div class="prog">Q{_qi+1} / {_total_q}</div>
-              <div class="star">{"⭐"*_score}{"☆"*(_qi-_score)}</div>
+              <span class="prog">Q{_qi+1}/{_total_q}</span>
+              <span class="stars">{"⭐"*_score}{"☆"*(_qi+1-_score)}</span>
             </div>
             <div class="card">
-              {'<div class="fb-ok">✅ 탁!!</div><div class="inq-msg">' + _inq["correct"] + '</div>' if _fb and _fb["correct"]
-               else '<div class="fb-ng">❌ 딱 걸렸어!</div><div class="fb-ans">정답: ' + _qkr + '</div><div class="inq-msg">' + _inq["wrong"] + '</div>' if _fb and not _fb["correct"]
-               else ('<div class="qtype">' + ('🔎 OX 심문' if _q["type"]=="ox" else '🎯 4지선다') + '</div>'
-               + ('<div class="word">' + _qword + '</div><div class="kr-show">' + _q.get("show_kr","") + '</div>'
-                  if _q["type"]=="ox" else '<div style="font-size:14px;color:#aabbcc;margin-bottom:6px;">아래 중 맞는 한국어 뜻은?</div><div class="word">' + _qword + '</div>'))}
+              <div class="emoji">{_inq["emoji"]}</div>
+              <div class="fb-icon">{'✅' if _is_ok else ('⏰' if _is_to else '❌')}</div>
+              <div class="fb-msg">{_msg}</div>
+              {'<div class="fb-ans">정답: ' + _q["word"] + ' = ' + _q["kr"] + '</div>' if not _is_ok else ''}
             </div>
-            """, height=210 if _fb else 190)
+            """, height=240)
 
-            if _fb:
-                st.markdown('<div id="btn-start">', unsafe_allow_html=True)
-                _next_label = "🏁 결과 보기!" if _qi+1 >= _total_q else "다음 → "
-                if st.button(_next_label, key=f"fq_next_{_qi}", use_container_width=True):
-                    st.session_state.wp_quiz_idx += 1
-                    st.session_state.wp_quiz_feedback = None
+            st.markdown('<div id="btn-start">', unsafe_allow_html=True)
+            _next_label = "🏁 대질 결과!" if _qi+1 >= _total_q else "다음 용의자 →"
+            if st.button(_next_label, key=f"lu_next_{_qi}", use_container_width=True):
+                st.session_state.wp_quiz_idx += 1
+                st.session_state.wp_quiz_feedback = None
+                st.session_state.wp_quiz_q_start = time.time()
+                st.rerun()
+            st.markdown('</div>', unsafe_allow_html=True)
+
+        # ── 문제 화면 (타이머 + 한국어 + 2카드) ──
+        else:
+            _prompt = _LINEUP_PROMPTS[_qi % len(_LINEUP_PROMPTS)]
+            _remaining = max(0, _TIME_LIMIT - _elapsed)
+            # CSS 타이머 바: _remaining 시간만큼 남은 애니메이션
+            components.html(f"""
+            <style>
+            @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@900&display=swap');
+            *{{margin:0;padding:0;box-sizing:border-box;}}body{{background:transparent;font-family:sans-serif;text-align:center;}}
+            @keyframes shrink{{from{{width:100%}}to{{width:0%}}}}
+            @keyframes urgentPulse{{0%,100%{{opacity:1}}50%{{opacity:0.5}}}}
+            @keyframes popUp{{from{{transform:translateY(20px);opacity:0}}to{{transform:translateY(0);opacity:1}}}}
+            .hud{{display:flex;justify-content:space-between;align-items:center;margin-bottom:6px;}}
+            .prog{{font-family:'Orbitron',monospace;font-size:13px;font-weight:900;color:#fff;}}
+            .stars{{font-size:16px;}}
+            .timer-bg{{background:#1a1a2a;border-radius:6px;height:10px;overflow:hidden;margin-bottom:12px;border:1px solid #333;}}
+            .timer-bar{{height:100%;border-radius:6px;
+                background:linear-gradient(90deg,#ff3333,#ff8833,#ffcc33);
+                animation:shrink {_remaining:.1f}s linear forwards;}}
+            .card{{background:radial-gradient(ellipse at top,#1a0820 0%,#06080f 70%);
+                border:2.5px solid {_ic};border-radius:18px;padding:18px 16px;animation:popUp 0.3s ease;}}
+            .label{{font-family:'Orbitron',monospace;font-size:9px;color:{_ic};letter-spacing:3px;margin-bottom:6px;}}
+            .kr{{font-size:32px;font-weight:900;color:#ffee44;text-shadow:0 0 20px #ffee4488;margin:8px 0;}}
+            .prompt{{font-size:16px;font-weight:900;color:#ffffff;animation:urgentPulse 0.8s ease infinite;margin-top:6px;}}
+            </style>
+            <div class="hud">
+              <span class="prog">Q{_qi+1}/{_total_q}</span>
+              <span class="stars">{"⭐"*_score}{"☆"*max(0,_qi-_score)}</span>
+            </div>
+            <div class="timer-bg"><div class="timer-bar"></div></div>
+            <div class="card">
+              <div class="label">🔍 LINEUP · 용의자 대질</div>
+              <div class="kr">{_q["kr"]}</div>
+              <div class="prompt">{_prompt}</div>
+            </div>
+            """, height=200)
+
+            # ★ 2장의 용의자 카드 (Streamlit 버튼)
+            _c1, _c2 = st.columns(2)
+            with _c1:
+                st.markdown(f"""<div style="text-align:center;background:#0a0620;border:2px solid {_ic};
+                    border-radius:16px;padding:8px 4px;margin-bottom:4px;">
+                    <div style="font-family:Orbitron,monospace;font-size:9px;color:{_ic};letter-spacing:2px;">SUSPECT A</div>
+                    <div style="font-size:22px;font-weight:900;color:#fff;margin:4px 0;
+                        text-shadow:0 0 12px {_ic};">{_q["left"]}</div>
+                </div>""", unsafe_allow_html=True)
+                st.markdown('<div id="btn-know">', unsafe_allow_html=True)
+                if st.button("👆 A 지목!", key=f"lu_L_{_qi}", use_container_width=True):
+                    _ok = (_q["correct_side"] == "left")
+                    if _ok:
+                        st.session_state.wp_quiz_score += 1
+                        _lc = st.session_state.get("wp_lineup_correct",[])
+                        _lc.append(_q["word"])
+                        st.session_state.wp_lineup_correct = _lc
+                    st.session_state.wp_quiz_feedback = {"correct":_ok,"timeout":False}
                     st.rerun()
                 st.markdown('</div>', unsafe_allow_html=True)
-            elif _q["type"] == "ox":
-                _ox1, _ox2 = st.columns(2)
-                with _ox1:
-                    st.markdown('<div id="btn-know">', unsafe_allow_html=True)
-                    if st.button("⭕ 맞아!", key=f"fq_ox_y_{_qi}", use_container_width=True):
-                        _ok = _q["correct"]
-                        if _ok: st.session_state.wp_quiz_score += 1
-                        st.session_state.wp_quiz_feedback = {"correct": _ok}; st.rerun()
-                    st.markdown('</div>', unsafe_allow_html=True)
-                with _ox2:
-                    st.markdown('<div id="btn-no">', unsafe_allow_html=True)
-                    if st.button("❌ 아니야!", key=f"fq_ox_n_{_qi}", use_container_width=True):
-                        _ok = not _q["correct"]
-                        if _ok: st.session_state.wp_quiz_score += 1
-                        st.session_state.wp_quiz_feedback = {"correct": _ok}; st.rerun()
-                    st.markdown('</div>', unsafe_allow_html=True)
-            else:
-                _choices = _q["choices"]
-                for _ci, _ch in enumerate(_choices):
-                    if st.button(f"{chr(9312+_ci)} {_ch}", key=f"fq_ch_{_qi}_{_ci}", use_container_width=True):
-                        _ok = (_ci == _q["answer_idx"])
-                        if _ok: st.session_state.wp_quiz_score += 1
-                        st.session_state.wp_quiz_feedback = {"correct": _ok}; st.rerun()
+            with _c2:
+                st.markdown(f"""<div style="text-align:center;background:#0a0620;border:2px solid {_ic};
+                    border-radius:16px;padding:8px 4px;margin-bottom:4px;">
+                    <div style="font-family:Orbitron,monospace;font-size:9px;color:{_ic};letter-spacing:2px;">SUSPECT B</div>
+                    <div style="font-size:22px;font-weight:900;color:#fff;margin:4px 0;
+                        text-shadow:0 0 12px {_ic};">{_q["right"]}</div>
+                </div>""", unsafe_allow_html=True)
+                st.markdown('<div id="btn-no">', unsafe_allow_html=True)
+                if st.button("👆 B 지목!", key=f"lu_R_{_qi}", use_container_width=True):
+                    _ok = (_q["correct_side"] == "right")
+                    if _ok:
+                        st.session_state.wp_quiz_score += 1
+                        _lc = st.session_state.get("wp_lineup_correct",[])
+                        _lc.append(_q["word"])
+                        st.session_state.wp_lineup_correct = _lc
+                    st.session_state.wp_quiz_feedback = {"correct":_ok,"timeout":False}
+                    st.rerun()
+                st.markdown('</div>', unsafe_allow_html=True)
 
     # ════════════════════════════════════════
-    # PHASE: FLASH_RESULT — 🏆 긴급 소환 결과
+    # PHASE: FLASH_RESULT — 🏆 대질 결과 + 동반 석방
     # ════════════════════════════════════════
     elif st.session_state.wp_mode == "flash_result":
         _INTERROGATORS = st.session_state.get("_fi_interrogators", [
-            {"name":"박형사","emoji":"👮","color":"#ff6633",
-             "done":"이번엔 봐준다."},
+            {"name":"박형사","emoji":"👮","color":"#ff6633","done":"봐준다."},
         ])
         _inq_idx = st.session_state.get("wp_interrogator", 0)
         _inq = _INTERROGATORS[_inq_idx % len(_INTERROGATORS)]
         _ic = _inq["color"]
         _score = st.session_state.get("wp_quiz_score", 0)
-        _total = len(st.session_state.get("wp_quiz_qs", [1,2,3,4,5]))
+        _total = len(st.session_state.get("wp_quiz_qs", []))
+        _correct_words = st.session_state.get("wp_lineup_correct", [])
 
-        _done_msg = _inq["done"].replace("{score}", str(_score))
-        if _score == _total:
-            _grade_emoji, _grade_msg, _grade_color = "🏆", "완전 석방 확정! 넌 자유야!", "#ffdd00"
-        elif _score >= _total * 0.8:
-            _grade_emoji, _grade_msg, _grade_color = "⭐", "거의 다! 한 놈만 더 잡자!", "#aa66ff"
-        elif _score >= _total * 0.6:
-            _grade_emoji, _grade_msg, _grade_color = "💪", "절반 인정. 나머지 재심문!", "#ffaa33"
+        # ★★★ 동반 석방 처리: 3개 이상 맞추면 공범(word family)까지 석방 ★★★
+        _freed_names = []
+        _freed_count = 0
+        if _score >= 3 and _correct_words:
+            try:
+                _fr_st = load_storage()
+                _freed_set = set()
+                for _cw in _correct_words:
+                    _freed_set.add(_cw.lower())
+                    # 공범 소환: word family 전체 석방
+                    _fam2 = _get_family(_cw, _cw)
+                    if _fam2:
+                        for _pos_list2 in _fam2.values():
+                            for _fw2, _fkr2 in _pos_list2:
+                                _freed_set.add(_fw2.lower())
+                _before = len(_fr_st.get("word_prison", []))
+                # 석방 대상 이름 수집 (표시용)
+                for _fp in _fr_st.get("word_prison", []):
+                    if _fp.get("word","").lower() in _freed_set:
+                        _freed_names.append(_fp.get("word",""))
+                _fr_st["word_prison"] = [p for p in _fr_st.get("word_prison",[])
+                                         if p.get("word","").lower() not in _freed_set]
+                _freed_count = _before - len(_fr_st["word_prison"])
+                if _freed_count > 0:
+                    save_storage(_fr_st)
+            except Exception:
+                pass
+
+        _done_msg = _inq.get("done","수고.")
+        if _score >= 3 and _freed_count > 0:
+            _grade_emoji = "🔓"
+            _grade_msg = f"동반 석방! {_freed_count}명이 자유를 얻었다!"
+            _grade_color = "#33ff77"
+        elif _score == _total:
+            _grade_emoji, _grade_msg, _grade_color = "🏆", "완전 식별! 전원 석방!", "#ffdd00"
+        elif _score >= 3:
+            _grade_emoji, _grade_msg, _grade_color = "⭐", "대질 성공! 석방 처리 중!", "#aa66ff"
+        elif _score >= 2:
+            _grade_emoji, _grade_msg, _grade_color = "💪", "아깝다! 조금만 더!", "#ffaa33"
         else:
-            _grade_emoji, _grade_msg, _grade_color = "💀", "전원 재투옥! 다시 시작해!", "#ff4444"
+            _grade_emoji, _grade_msg, _grade_color = "💀", "전원 재투옥! 다시 심문!", "#ff4444"
+
+        # 석방된 단어 리스트 HTML
+        _freed_html = ""
+        if _freed_names:
+            _flist = " · ".join([f'<span style="color:#33ff77;font-weight:900;">{fn}</span>' for fn in _freed_names[:8]])
+            _freed_html = f'<div style="font-size:13px;color:#88bbaa;margin-top:10px;line-height:1.8;">🔓 석방: {_flist}</div>'
 
         components.html(f"""
         <style>
@@ -2645,15 +2744,16 @@ div[data-testid="stButton"] button p{color:#c0c8e0!important;font-size:0.9rem!im
         *{{margin:0;padding:0;box-sizing:border-box;}}body{{background:transparent;font-family:sans-serif;text-align:center;}}
         @keyframes popIn{{from{{transform:scale(0.5);opacity:0}}to{{transform:scale(1);opacity:1}}}}
         @keyframes pulse{{0%,100%{{box-shadow:0 0 20px {_ic}44}}50%{{box-shadow:0 0 50px {_ic}99}}}}
+        @keyframes confetti{{0%{{opacity:1;transform:translateY(0) rotate(0deg)}}100%{{opacity:0;transform:translateY(-60px) rotate(720deg)}}}}
         .card{{background:radial-gradient(ellipse at top,#150a25 0%,#06080f 70%);
-            border:2.5px solid {_ic};border-radius:20px;padding:22px 16px;animation:pulse 2s ease infinite;}}
-        .inq-big{{font-size:52px;margin-bottom:6px;filter:drop-shadow(0 0 16px {_ic});animation:popIn 0.6s ease;}}
-        .inq-msg{{font-size:15px;font-weight:800;color:#cccccc;margin-bottom:14px;line-height:1.5;font-style:italic;}}
-        .grade{{font-size:48px;animation:popIn 0.5s 0.2s both ease;}}
-        .score{{font-family:'Orbitron',monospace;font-size:32px;font-weight:900;color:{_grade_color};
+            border:2.5px solid {_ic};border-radius:20px;padding:20px 16px;animation:pulse 2s ease infinite;}}
+        .inq-big{{font-size:48px;margin-bottom:6px;filter:drop-shadow(0 0 16px {_ic});animation:popIn 0.6s ease;}}
+        .inq-msg{{font-size:14px;font-weight:800;color:#cccccc;margin-bottom:12px;line-height:1.5;font-style:italic;}}
+        .grade{{font-size:44px;animation:popIn 0.5s 0.2s both ease;}}
+        .score{{font-family:'Orbitron',monospace;font-size:28px;font-weight:900;color:{_grade_color};
             text-shadow:0 0 20px {_grade_color};margin:6px 0;}}
-        .grade-msg{{font-size:16px;font-weight:900;color:{_grade_color};margin-top:4px;}}
-        .stars{{font-size:20px;letter-spacing:4px;margin-top:8px;}}
+        .grade-msg{{font-size:15px;font-weight:900;color:{_grade_color};margin-top:4px;}}
+        .stars{{font-size:18px;letter-spacing:4px;margin-top:6px;}}
         </style>
         <div class="card">
           <div class="inq-big">{_inq["emoji"]}</div>
@@ -2661,9 +2761,10 @@ div[data-testid="stButton"] button p{color:#c0c8e0!important;font-size:0.9rem!im
           <div class="grade">{_grade_emoji}</div>
           <div class="score">{_score} / {_total}</div>
           <div class="grade-msg">{_grade_msg}</div>
-          <div class="stars">{"⭐"*_score}{"☆"*(_total-_score)}</div>
+          <div class="stars">{"⭐"*_score}{"☆"*max(0,_total-_score)}</div>
+          {_freed_html}
         </div>
-        """, height=320)
+        """, height=340 if _freed_names else 290)
 
         st.markdown("<div style='height:6px'></div>", unsafe_allow_html=True)
         _r1, _r2 = st.columns(2)
@@ -2671,8 +2772,9 @@ div[data-testid="stButton"] button p{color:#c0c8e0!important;font-size:0.9rem!im
             if st.button("🔁 심문 계속!", key="fl_resume", use_container_width=True):
                 import random as _fr_rnd
                 st.session_state.wp_mode = "card"
-                st.session_state.wp_quiz_trigger = 9999  # 다시 발동 안 함
+                st.session_state.wp_quiz_trigger = 9999
                 st.session_state.wp_quiz_feedback = None
+                st.session_state.wp_lineup_correct = []
                 st.rerun()
         with _r2:
             if st.button("↩️ 로비", key="fl_lobby", use_container_width=True):
