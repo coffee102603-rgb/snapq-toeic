@@ -598,6 +598,23 @@ if st.session_state.phase=="battle":
     st.markdown(f'<div class="qb qb-{th}"><div class="qc qc-{th}">{ej} {tn} · {q.get("cat","")}</div><div class="qt">{fq(q["text"])}</div></div>', unsafe_allow_html=True)
 
     # ── 답 버튼 4개 — A/B/C/D 네온 스타일 ──
+    # iOS 2-phase rerun fix
+    if st.session_state.get("_fp_processing"):
+        st.session_state.pop("_fp_processing")
+        if st.session_state.wrong>=2:
+            st.session_state.phase='lost'; st.rerun()
+        if st.session_state.qi>=4:
+            st.session_state.phase='victory' if st.session_state.sc>=4 else 'lost'
+            st.rerun()
+        _nqi2=st.session_state.qi+1
+        if _nqi2<len(st.session_state.round_qs):
+            st.session_state.qi=_nqi2
+            st.session_state.cq=st.session_state.round_qs[_nqi2]
+            st.session_state.ans=False; st.session_state.sel=None
+        else:
+            st.session_state.phase='victory' if st.session_state.sc>=4 else 'lost'
+        st.rerun()
+
     if not st.session_state.ans:
         _qi = st.session_state.get('qi', 0)
         _rn = st.session_state.get('round_num', 0)
@@ -675,7 +692,6 @@ if st.session_state.phase=="battle":
                 if st.button(_display, key=f"ans_{_rn}_{_qi}_{_ii}", use_container_width=True):
                     _clicked = _ii
         if _clicked is not None:
-            _btn_slot.empty()
             if time.time()-st.session_state.qst > st.session_state.tsec:
                 st.session_state.phase='lost'; st.rerun()
             i = _clicked
@@ -685,86 +701,9 @@ if st.session_state.phase=="battle":
             if ok: st.session_state.sc+=1
             else: st.session_state.wrong+=1
             st.session_state.ta+=1
-
-            # ── 데이터 수집 (rt_logs + zpd_logs + p5_logs) ──
-            try:
-                _elapsed_now = time.time() - st.session_state.qst
-                _tsec_now    = st.session_state.tsec
-                _sec_rem     = round(max(0.0, _tsec_now - _elapsed_now), 2)
-                _rt_proxy    = round(_tsec_now - _sec_rem, 2)
-                _rem_ratio   = _sec_rem / _tsec_now if _tsec_now > 0 else 0
-                if ok:
-                    _err_type = "correct"
-                elif _rem_ratio > 0.8:
-                    _err_type = "fast_wrong"
-                elif _rem_ratio < 0.2:
-                    _err_type = "slow_wrong"
-                else:
-                    _err_type = "mid_wrong"
-                _uid  = st.session_state.get("nickname", "guest")
-                _cat  = q.get("cat", "")
-                _qid  = q.get("id", "?")
-                _today = __import__("datetime").datetime.now().strftime("%Y-%m-%d")
-                if "p5_session_no" not in st.session_state:
-                    st.session_state.p5_session_no = 0
-                _sno = st.session_state.p5_session_no
-                if "p5_start_date" not in st.session_state:
-                    st.session_state.p5_start_date = _today
-                try:
-                    _dt = __import__("datetime")
-                    _days = (_dt.datetime.strptime(_today, "%Y-%m-%d") -
-                             _dt.datetime.strptime(st.session_state.p5_start_date, "%Y-%m-%d")).days
-                    _week = _days // 7 + 1
-                except:
-                    _week = 1
-                _st_data = load_storage()
-                _rt_log = {
-                    "user_id":          _uid,
-                    "session_date":     _today,
-                    "session_no":       _sno,
-                    "timer_setting":    _tsec_now,
-                    "question_no":      st.session_state.qi + 1,
-                    "question_id":      _qid,
-                    "seconds_remaining": _sec_rem,
-                    "rt_proxy":         _rt_proxy,
-                    "correct":          ok,
-                    "grammar_type":     _cat,
-                    "error_timing_type": _err_type,
-                    "difficulty_level": st.session_state.get("adp_level", "normal"),
-                    "week":             _week,
-                    "timestamp":        __import__("datetime").datetime.now().isoformat(),
-                }
-                if "rt_logs" not in _st_data:
-                    _st_data["rt_logs"] = []
-                _st_data["rt_logs"].append(_rt_log)
-                if not ok:
-                    _st_data.setdefault("_zpd_pending", {})
-                    _st_data["_zpd_pending"][_uid] = {
-                        "session_date":   _today,
-                        "session_no":     _sno,
-                        "arena":          "P5",
-                        "timer_setting":  _tsec_now,
-                        "game_over_q_no": st.session_state.qi + 1,
-                        "max_q_reached":  st.session_state.qi + 1,
-                        "week":           _week,
-                    }
-                with open(STORAGE_FILE, "w", encoding="utf-8") as _f:
-                    json.dump(_st_data, _f, ensure_ascii=False, indent=2)
-            except Exception as _e:
-                pass
-
-            try:
-                import sys as _sys, os as _os
-                _sys.path.insert(0, _os.path.dirname(_os.path.dirname(__file__)))
-                from data_collector import DataCollector as _DC
-                _DC(st.session_state.get('nickname','guest')).log_activity('P5', q.get('id','?'), i, ok, round(time.time()-st.session_state.qst,2))
-            except: pass
-
-            if st.session_state.wrong>=2:
-                st.session_state.phase='lost'; st.rerun()
-            if st.session_state.qi>=4:
-                st.session_state.phase='victory' if st.session_state.sc>=4 else 'lost'
-                st.rerun()
+            # iOS 2-phase: 버튼 제거 후 다음 문제
+            st.session_state["_fp_processing"] = True
+            st.rerun()
             nqi = st.session_state.qi + 1
             if nqi < len(st.session_state.round_qs):
                 st.session_state.qi = nqi
