@@ -7,12 +7,12 @@
     "diff": "easy",
     "sentence": "_______ its high price, the new software was adopted by over five hundred companies.",
     "choices": [
-      "(A) Although",
-      "(B) Because",
-      "(C) However",
-      "(D) Despite"
+      "(A) beneath",
+      "(B) following",
+      "(C) Despite",
+      "(D) above"
     ],
-    "answer": 3,
+    "answer": 2,
     "answer_word": "Despite",
     "explanation_kr": "빈칸 뒤 명사구(its high price) → 전치사 자리! despite = '~에도 불구하고'! although는 절(S+V) 앞에!",
     "explanation": "명사구 앞 → 전치사. 양보 의미 → despite.",
@@ -36,9 +36,9 @@
     "diff": "easy",
     "sentence": "The project was delayed _______ unexpected supply chain issues.",
     "choices": [
-      "(A) although",
-      "(B) because",
-      "(C) whereas",
+      "(A) in proportion to",
+      "(B) relative to",
+      "(C) with regard to",
       "(D) due to"
     ],
     "answer": 3,
@@ -65,12 +65,12 @@
     "diff": "easy",
     "sentence": "_______ the merger announcement, the company's shares rose sharply.",
     "choices": [
-      "(A) Following",
-      "(B) Although",
-      "(C) Because",
-      "(D) However"
+      "(A) of",
+      "(B) Following",
+      "(C) above",
+      "(D) after"
     ],
-    "answer": 0,
+    "answer": 1,
     "answer_word": "Following",
     "explanation_kr": "빈칸 뒤 명사구 → 전치사! 시간 순서(~후) → following = '~에 뒤이어'!",
     "explanation": "명사구 앞 → 전치사. 순서 의미 → following.",
@@ -94,12 +94,12 @@
     "diff": "easy",
     "sentence": "The new benefits package was developed _______ employee feedback.",
     "choices": [
-      "(A) whereas",
-      "(B) although",
-      "(C) however",
-      "(D) based on"
+      "(A) in view of",
+      "(B) due to",
+      "(C) based on",
+      "(D) notwithstanding"
     ],
-    "answer": 3,
+    "answer": 2,
     "answer_word": "based on",
     "explanation_kr": "빈칸 뒤 명사구 → 전치사! 근거 의미 → based on = '~을 기준으로'!",
     "explanation": "명사구 앞 → 전치사. 근거 의미 → based on.",
@@ -123,12 +123,12 @@
     "diff": "easy",
     "sentence": "_______ the budget cuts, the team still delivered an excellent product.",
     "choices": [
-      "(A) Because",
-      "(B) However",
-      "(C) Although",
-      "(D) In spite of"
+      "(A) In spite of",
+      "(B) for the purpose of",
+      "(C) in keeping with",
+      "(D) contrary to"
     ],
-    "answer": 3,
+    "answer": 0,
     "answer_word": "In spite of",
     "explanation_kr": "빈칸 뒤 명사구 → 전치사! 양보 의미 → in spite of = '~에도 불구하고'!",
     "explanation": "명사구 앞 → 전치사. 양보 의미 → in spite of.",
@@ -152,12 +152,12 @@
     "diff": "easy",
     "sentence": "The conference will proceed as scheduled _______ the forecasted bad weather.",
     "choices": [
-      "(A) since",
-      "(B) because",
-      "(C) regardless of",
-      "(D) although"
+      "(A) regardless of",
+      "(B) in the event of",
+      "(C) based on",
+      "(D) in response to"
     ],
-    "answer": 2,
+    "answer": 0,
     "answer_word": "regardless of",
     "explanation_kr": "빈칸 뒤 명사구 → 전치사! 무관 의미 → regardless of = '~에 상관없이'!",
     "explanation": "명사구 앞 → 전치사. 무관 의미 → regardless of.",
@@ -181,12 +181,12 @@
     "diff": "easy",
     "sentence": "All attendees must register _______ attending the annual summit.",
     "choices": [
-      "(A) before",
-      "(B) although",
-      "(C) however",
-      "(D) prior to"
+      "(A) in exchange for",
+      "(B) in view of",
+      "(C) prior to",
+      "(D) in the wake of"
     ],
-    "answer": 3,
+    "answer": 2,
     "answer_word": "prior to",
     "explanation_kr": "빈칸 뒤 동명사/명사구 → 전치사! 시간(~전) → prior to = '~에 앞서'! before도 가능하지만 prior to가 더 격식적!",
     "explanation": "동명사구 앞 → 전치사. 격식 시간 → prior to.",
@@ -210,10 +210,10 @@
     "diff": "easy",
     "sentence": "The report was prepared _______ the request of the board of directors.",
     "choices": [
-      "(A) although",
+      "(A) into",
       "(B) at",
-      "(C) however",
-      "(D) because"
+      "(C) per",
+      "(D) until"
     ],
     "answer": 1,
     "answer_word": "at",
@@ -239,12 +239,12 @@
     "diff": "easy",
     "sentence": "The new platform was built _______ input from over two thousand users.",
     "choices": [
-      "(A) whereas",
-      "(B) although",
-      "(C) however",
-      "(D) with"
+      "(A) behind",
+      "(B) among",
+      "(C) with",
+      "(D) before"
     ],
-    "answer": 3,
+    "answer": 2,
     "answer_word": "with",
     "explanation_kr": "빈칸 뒤 명사구 → 전치사! 수반/방식 → with = '~을 바탕으로'!",
     "explanation": "명사구 앞 → 전치사. 수반 의미 → with.",
@@ -268,12 +268,12 @@
     "diff": "easy",
     "sentence": "_______ the strong demand, the company decided to extend the product's availability.",
     "choices": [
-      "(A) Although",
-      "(B) Because",
-      "(C) However",
-      "(D) Given"
+      "(A) according to",
+      "(B) Given",
+      "(C) in view of",
+      "(D) by means of"
     ],
-    "answer": 3,
+    "answer": 1,
     "answer_word": "Given",
     "explanation_kr": "빈칸 뒤 명사구 → 전치사! 근거/고려 → given = '~을 고려하면'! although/because는 절 앞에!",
     "explanation": "명사구 앞 → 전치사. 근거 의미 → given.",
@@ -297,12 +297,12 @@
     "diff": "easy",
     "sentence": "The manager acted _______ the instructions provided by headquarters.",
     "choices": [
-      "(A) however",
-      "(B) although",
-      "(C) whereas",
-      "(D) in accordance with"
+      "(A) in spite of",
+      "(B) in accordance with",
+      "(C) relative to",
+      "(D) in lieu of"
     ],
-    "answer": 3,
+    "answer": 1,
     "answer_word": "in accordance with",
     "explanation_kr": "빈칸 뒤 명사구 → 전치사! 준수 의미 → in accordance with = '~에 따라서'!",
     "explanation": "명사구 앞 → 전치사. 준수 의미 → in accordance with.",
@@ -326,12 +326,12 @@
     "diff": "easy",
     "sentence": "The event was cancelled _______ low ticket sales.",
     "choices": [
-      "(A) however",
-      "(B) although",
-      "(C) because of",
-      "(D) whereas"
+      "(A) because of",
+      "(B) in anticipation of",
+      "(C) in accordance with",
+      "(D) in the absence of"
     ],
-    "answer": 2,
+    "answer": 0,
     "answer_word": "because of",
     "explanation_kr": "빈칸 뒤 명사구 → 전치사! 이유 → because of = '~때문에'! = due to, owing to!",
     "explanation": "명사구 앞 → 전치사. 이유 의미 → because of.",
@@ -355,12 +355,12 @@
     "diff": "easy",
     "sentence": "Employees are encouraged to submit suggestions _______ the company's official feedback portal.",
     "choices": [
-      "(A) although",
-      "(B) whereas",
-      "(C) however",
-      "(D) through"
+      "(A) along",
+      "(B) through",
+      "(C) with",
+      "(D) on"
     ],
-    "answer": 3,
+    "answer": 1,
     "answer_word": "through",
     "explanation_kr": "빈칸 뒤 명사구 → 전치사! 수단 → through = '~을 통해'!",
     "explanation": "명사구 앞 → 전치사. 수단 의미 → through.",
@@ -384,10 +384,10 @@
     "diff": "easy",
     "sentence": "The committee reviewed the proposal _______ the CEO's recommendation.",
     "choices": [
-      "(A) however",
-      "(B) whereas",
+      "(A) on the grounds of",
+      "(B) at the expense of",
       "(C) according to",
-      "(D) although"
+      "(D) in light of"
     ],
     "answer": 2,
     "answer_word": "according to",
@@ -414,9 +414,9 @@
     "sentence": "The factory operated at full capacity _______ the annual maintenance shutdown.",
     "choices": [
       "(A) except for",
-      "(B) although",
-      "(C) however",
-      "(D) whereas"
+      "(B) compared to",
+      "(C) relative to",
+      "(D) in anticipation of"
     ],
     "answer": 0,
     "answer_word": "except for",
@@ -442,12 +442,12 @@
     "diff": "easy",
     "sentence": "The new recycling program was implemented _______ the efforts of local volunteers.",
     "choices": [
-      "(A) however",
-      "(B) whereas",
-      "(C) although",
-      "(D) thanks to"
+      "(A) owing to",
+      "(B) thanks to",
+      "(C) by means of",
+      "(D) notwithstanding"
     ],
-    "answer": 3,
+    "answer": 1,
     "answer_word": "thanks to",
     "explanation_kr": "빈칸 뒤 명사구 → 전치사! 긍정적 이유 → thanks to = '~덕분에'!",
     "explanation": "명사구 앞 → 전치사. 긍정 이유 → thanks to.",
@@ -472,9 +472,9 @@
     "sentence": "The training session was held _______ normal business hours.",
     "choices": [
       "(A) outside of",
-      "(B) however",
-      "(C) whereas",
-      "(D) although"
+      "(B) in line with",
+      "(C) on the basis of",
+      "(D) in lieu of"
     ],
     "answer": 0,
     "answer_word": "outside of",
@@ -500,12 +500,12 @@
     "diff": "easy",
     "sentence": "The survey was conducted _______ all departments to ensure comprehensive feedback.",
     "choices": [
-      "(A) however",
-      "(B) whereas",
-      "(C) across",
-      "(D) although"
+      "(A) upon",
+      "(B) across",
+      "(C) between",
+      "(D) concerning"
     ],
-    "answer": 2,
+    "answer": 1,
     "answer_word": "across",
     "explanation_kr": "빈칸 뒤 명사구 → 전치사! 범위 전체 → across = '~전반에 걸쳐'!",
     "explanation": "명사구 앞 → 전치사. 범위 전체 의미 → across.",
@@ -529,10 +529,10 @@
     "diff": "easy",
     "sentence": "The new policy was developed _______ consultation with legal experts.",
     "choices": [
-      "(A) whereas",
-      "(B) although",
+      "(A) across",
+      "(B) to",
       "(C) in",
-      "(D) however"
+      "(D) past"
     ],
     "answer": 2,
     "answer_word": "in",
@@ -558,12 +558,12 @@
     "diff": "easy",
     "sentence": "The decision was made _______ the interests of all stakeholders.",
     "choices": [
-      "(A) although",
-      "(B) in the interest of",
-      "(C) whereas",
-      "(D) however"
+      "(A) in recognition of",
+      "(B) subject to",
+      "(C) in the interest of",
+      "(D) according to"
     ],
-    "answer": 1,
+    "answer": 2,
     "answer_word": "in the interest of",
     "explanation_kr": "in the interest of = '~의 이익을 위해' 관용 전치사구!",
     "explanation": "관용 전치사구 → in the interest of.",
@@ -587,12 +587,12 @@
     "diff": "easy",
     "sentence": "Sales increased by twenty percent _______ the same period last year.",
     "choices": [
-      "(A) however",
-      "(B) although",
-      "(C) compared to",
-      "(D) whereas"
+      "(A) in lieu of",
+      "(B) subject to",
+      "(C) at the expense of",
+      "(D) compared to"
     ],
-    "answer": 2,
+    "answer": 3,
     "answer_word": "compared to",
     "explanation_kr": "빈칸 뒤 명사구 → 전치사! 비교 → compared to = '~와 비교하여'!",
     "explanation": "명사구 앞 → 전치사. 비교 의미 → compared to.",
@@ -616,12 +616,12 @@
     "diff": "easy",
     "sentence": "The new product was launched _______ the holiday season to maximize sales.",
     "choices": [
-      "(A) although",
-      "(B) during",
-      "(C) however",
-      "(D) whereas"
+      "(A) during",
+      "(B) behind",
+      "(C) with",
+      "(D) at"
     ],
-    "answer": 1,
+    "answer": 0,
     "answer_word": "during",
     "explanation_kr": "빈칸 뒤 명사구 → 전치사! 특정 기간 동안 → during = '~하는 동안'!",
     "explanation": "명사구 앞 → 전치사. 기간 의미 → during.",
@@ -645,12 +645,12 @@
     "diff": "easy",
     "sentence": "The chairman signed the agreement _______ the company.",
     "choices": [
-      "(A) although",
-      "(B) on behalf of",
-      "(C) whereas",
-      "(D) however"
+      "(A) in keeping with",
+      "(B) in the event of",
+      "(C) on behalf of",
+      "(D) in the absence of"
     ],
-    "answer": 1,
+    "answer": 2,
     "answer_word": "on behalf of",
     "explanation_kr": "on behalf of = '~을 대신하여, ~을 대표하여' 관용 전치사구!",
     "explanation": "관용 전치사구 → on behalf of.",
@@ -674,12 +674,12 @@
     "diff": "easy",
     "sentence": "The new office was equipped _______ state-of-the-art technology.",
     "choices": [
-      "(A) with",
-      "(B) however",
-      "(C) whereas",
-      "(D) although"
+      "(A) concerning",
+      "(B) near",
+      "(C) with",
+      "(D) under"
     ],
-    "answer": 0,
+    "answer": 2,
     "answer_word": "with",
     "explanation_kr": "be equipped with = '~을 갖추다' 관용 전치사구!",
     "explanation": "관용 동사구 → be equipped with.",
@@ -703,12 +703,12 @@
     "diff": "easy",
     "sentence": "The renovation project was completed _______ schedule.",
     "choices": [
-      "(A) however",
-      "(B) although",
-      "(C) ahead of",
-      "(D) whereas"
+      "(A) regardless of",
+      "(B) ahead of",
+      "(C) in keeping with",
+      "(D) in view of"
     ],
-    "answer": 2,
+    "answer": 1,
     "answer_word": "ahead of",
     "explanation_kr": "ahead of schedule = '일정보다 앞서' 관용 전치사구!",
     "explanation": "관용 전치사구 → ahead of schedule.",
@@ -732,12 +732,12 @@
     "diff": "easy",
     "sentence": "The team achieved its targets _______ a number of significant challenges.",
     "choices": [
-      "(A) since",
-      "(B) despite",
-      "(C) however",
-      "(D) because"
+      "(A) despite",
+      "(B) through",
+      "(C) concerning",
+      "(D) from"
     ],
-    "answer": 1,
+    "answer": 0,
     "answer_word": "despite",
     "explanation_kr": "빈칸 뒤 명사구 → 전치사! 양보 → despite = '~에도 불구하고'!",
     "explanation": "명사구 앞 → 전치사. 양보 의미 → despite.",
@@ -761,12 +761,12 @@
     "diff": "easy",
     "sentence": "The bonus will be distributed _______ all eligible employees.",
     "choices": [
-      "(A) however",
-      "(B) whereas",
-      "(C) among",
-      "(D) although"
+      "(A) among",
+      "(B) off",
+      "(C) at",
+      "(D) for"
     ],
-    "answer": 2,
+    "answer": 0,
     "answer_word": "among",
     "explanation_kr": "빈칸 뒤 명사구 → 전치사! 분배 대상 → among = '~사이에서 (셋 이상)'!",
     "explanation": "명사구 앞 → 전치사. 분배 의미 → among.",
@@ -790,12 +790,12 @@
     "diff": "easy",
     "sentence": "The policy was introduced _______ the growing concern about data privacy.",
     "choices": [
-      "(A) in response to",
-      "(B) although",
-      "(C) however",
-      "(D) whereas"
+      "(A) contrary to",
+      "(B) in response to",
+      "(C) at the expense of",
+      "(D) in terms of"
     ],
-    "answer": 0,
+    "answer": 1,
     "answer_word": "in response to",
     "explanation_kr": "빈칸 뒤 명사구 → 전치사! 대응 → in response to = '~에 대한 대응으로'!",
     "explanation": "명사구 앞 → 전치사. 대응 의미 → in response to.",
@@ -819,10 +819,10 @@
     "diff": "easy",
     "sentence": "The organization raised funds _______ the construction of a new community center.",
     "choices": [
-      "(A) however",
+      "(A) regarding",
       "(B) for",
-      "(C) whereas",
-      "(D) although"
+      "(C) over",
+      "(D) beyond"
     ],
     "answer": 1,
     "answer_word": "for",
@@ -848,12 +848,12 @@
     "diff": "easy",
     "sentence": "All candidates will be evaluated _______ their technical skills and leadership potential.",
     "choices": [
-      "(A) whereas",
-      "(B) however",
-      "(C) although",
-      "(D) in terms of"
+      "(A) in terms of",
+      "(B) contrary to",
+      "(C) apart from",
+      "(D) with a view to"
     ],
-    "answer": 3,
+    "answer": 0,
     "answer_word": "in terms of",
     "explanation_kr": "빈칸 뒤 명사구 → 전치사! 측면/기준 → in terms of = '~의 측면에서'!",
     "explanation": "명사구 앞 → 전치사. 측면 의미 → in terms of.",
@@ -877,12 +877,12 @@
     "diff": "easy",
     "sentence": "_______ the salary was lower than expected, she accepted the job offer.",
     "choices": [
-      "(A) However",
-      "(B) Due to",
-      "(C) Although",
-      "(D) Despite"
+      "(A) but",
+      "(B) now that",
+      "(C) as",
+      "(D) Although"
     ],
-    "answer": 2,
+    "answer": 3,
     "answer_word": "Although",
     "explanation_kr": "빈칸 뒤 절(S+V) → 접속사! 양보 → although = '비록~이지만'! despite는 전치사야~",
     "explanation": "절(S+V) 앞 → 접속사. 양보 의미 → although.",
@@ -906,12 +906,12 @@
     "diff": "easy",
     "sentence": "The company will reimburse travel expenses _______ employees submit receipts within thirty days.",
     "choices": [
-      "(A) provided that",
-      "(B) despite",
-      "(C) however",
-      "(D) due to"
+      "(A) even though",
+      "(B) as long as",
+      "(C) provided that",
+      "(D) whenever"
     ],
-    "answer": 0,
+    "answer": 2,
     "answer_word": "provided that",
     "explanation_kr": "빈칸 뒤 절(S+V) → 접속사! 조건 → provided that = '~하는 조건으로'!",
     "explanation": "절(S+V) 앞 → 접속사. 조건 의미 → provided that.",
@@ -935,12 +935,12 @@
     "diff": "easy",
     "sentence": "_______ the new system was implemented, customer complaints dropped by half.",
     "choices": [
-      "(A) Despite",
-      "(B) However",
-      "(C) Once",
-      "(D) Due to"
+      "(A) Once",
+      "(B) or",
+      "(C) since",
+      "(D) whereas"
     ],
-    "answer": 2,
+    "answer": 0,
     "answer_word": "Once",
     "explanation_kr": "빈칸 뒤 절(S+V) → 접속사! 시간(완료 후 즉시) → once = '일단 ~하면'!",
     "explanation": "절(S+V) 앞 → 접속사. 시간 순서 → once.",
@@ -964,10 +964,10 @@
     "diff": "easy",
     "sentence": "The office will remain open _______ all clients have been served.",
     "choices": [
-      "(A) despite",
+      "(A) by",
       "(B) until",
-      "(C) however",
-      "(D) due to"
+      "(C) beyond",
+      "(D) at"
     ],
     "answer": 1,
     "answer_word": "until",
@@ -993,10 +993,10 @@
     "diff": "easy",
     "sentence": "The team leader will finalize the report _______ all members submit their sections.",
     "choices": [
-      "(A) due to",
+      "(A) under",
       "(B) after",
-      "(C) however",
-      "(D) despite"
+      "(C) off",
+      "(D) by"
     ],
     "answer": 1,
     "answer_word": "after",
@@ -1022,12 +1022,12 @@
     "diff": "easy",
     "sentence": "The alarm will sound _______ the temperature exceeds forty degrees.",
     "choices": [
-      "(A) despite",
-      "(B) due to",
-      "(C) however",
-      "(D) whenever"
+      "(A) because",
+      "(B) even though",
+      "(C) whenever",
+      "(D) if"
     ],
-    "answer": 3,
+    "answer": 2,
     "answer_word": "whenever",
     "explanation_kr": "빈칸 뒤 절(S+V) → 접속사! 반복 시간 조건 → whenever = '~할 때마다'!",
     "explanation": "절(S+V) 앞 → 접속사. 반복 시간 → whenever.",
@@ -1051,10 +1051,10 @@
     "diff": "easy",
     "sentence": "The store will offer a full refund _______ the product is returned within thirty days.",
     "choices": [
-      "(A) due to",
-      "(B) however",
+      "(A) while",
+      "(B) where",
       "(C) as long as",
-      "(D) despite"
+      "(D) until"
     ],
     "answer": 2,
     "answer_word": "as long as",
@@ -1080,12 +1080,12 @@
     "diff": "easy",
     "sentence": "_______ demand continues to grow, the factory will expand its production capacity.",
     "choices": [
-      "(A) As long as",
-      "(B) Despite",
-      "(C) Due to",
-      "(D) However"
+      "(A) whether",
+      "(B) nor",
+      "(C) As long as",
+      "(D) since"
     ],
-    "answer": 0,
+    "answer": 2,
     "answer_word": "As long as",
     "explanation_kr": "빈칸 뒤 절(S+V) → 접속사! 조건 → as long as = '~하는 한'!",
     "explanation": "절(S+V) 앞 → 접속사. 조건 의미 → as long as.",
@@ -1110,9 +1110,9 @@
     "sentence": "The intern completed all assigned tasks _______ he had no prior work experience.",
     "choices": [
       "(A) even though",
-      "(B) however",
-      "(C) due to",
-      "(D) in spite of"
+      "(B) as",
+      "(C) although",
+      "(D) or"
     ],
     "answer": 0,
     "answer_word": "even though",
@@ -1138,12 +1138,12 @@
     "diff": "easy",
     "sentence": "The seminar will be recorded _______ those who cannot attend in person can view it later.",
     "choices": [
-      "(A) so that",
-      "(B) despite",
-      "(C) due to",
-      "(D) however"
+      "(A) when",
+      "(B) now that",
+      "(C) so that",
+      "(D) as soon as"
     ],
-    "answer": 0,
+    "answer": 2,
     "answer_word": "so that",
     "explanation_kr": "빈칸 뒤 절(S+V) → 접속사! 목적 → so that = '~하기 위해, ~하도록'!",
     "explanation": "절(S+V) 앞 → 접속사. 목적 의미 → so that.",
@@ -1167,12 +1167,12 @@
     "diff": "easy",
     "sentence": "_______ the online version is more convenient, many customers still prefer the physical store.",
     "choices": [
-      "(A) In spite of",
-      "(B) Therefore",
-      "(C) While",
-      "(D) Due to"
+      "(A) While",
+      "(B) until",
+      "(C) or",
+      "(D) where"
     ],
-    "answer": 2,
+    "answer": 0,
     "answer_word": "While",
     "explanation_kr": "빈칸 뒤 절(S+V) → 접속사! 대조 → while = '~인 반면에'!",
     "explanation": "절(S+V) 앞 → 접속사. 대조 의미 → while.",
@@ -1196,12 +1196,12 @@
     "diff": "easy",
     "sentence": "The applicant was hired _______ she had limited experience.",
     "choices": [
-      "(A) in spite of",
-      "(B) even though",
-      "(C) however",
-      "(D) due to"
+      "(A) even though",
+      "(B) until",
+      "(C) since",
+      "(D) while"
     ],
-    "answer": 1,
+    "answer": 0,
     "answer_word": "even though",
     "explanation_kr": "빈칸 뒤 절(S+V) → 접속사! 강한 양보 → even though = '비록~임에도 불구하고'!",
     "explanation": "절(S+V) 앞 → 접속사. 강한 양보 → even though.",
@@ -1225,12 +1225,12 @@
     "diff": "easy",
     "sentence": "The client will not sign the contract _______ all conditions are clearly specified.",
     "choices": [
-      "(A) unless",
-      "(B) despite",
-      "(C) due to",
-      "(D) however"
+      "(A) since",
+      "(B) as long as",
+      "(C) unless",
+      "(D) while"
     ],
-    "answer": 0,
+    "answer": 2,
     "answer_word": "unless",
     "explanation_kr": "빈칸 뒤 절(S+V) → 접속사! 조건(부정) → unless = '~하지 않는다면'!",
     "explanation": "절(S+V) 앞 → 접속사. 부정 조건 → unless.",
@@ -1254,12 +1254,12 @@
     "diff": "easy",
     "sentence": "_______ the new regulations take effect, businesses must update their data storage policies.",
     "choices": [
-      "(A) Due to",
-      "(B) Despite",
-      "(C) However",
-      "(D) Before"
+      "(A) behind",
+      "(B) Before",
+      "(C) unlike",
+      "(D) into"
     ],
-    "answer": 3,
+    "answer": 1,
     "answer_word": "Before",
     "explanation_kr": "빈칸 뒤 절(S+V) → 접속사! 시간(~전) → before = '~하기 전에'!",
     "explanation": "절(S+V) 앞 → 접속사. 시간 순서 → before.",
@@ -1283,12 +1283,12 @@
     "diff": "easy",
     "sentence": "The report must be submitted _______ the committee finishes reviewing all applications.",
     "choices": [
-      "(A) by the time",
-      "(B) however",
-      "(C) due to",
-      "(D) despite"
+      "(A) on the grounds of",
+      "(B) for the purpose of",
+      "(C) by the time",
+      "(D) in light of"
     ],
-    "answer": 0,
+    "answer": 2,
     "answer_word": "by the time",
     "explanation_kr": "빈칸 뒤 절(S+V) → 접속사! 시간 기한 → by the time = '~할 때쯤'!",
     "explanation": "절(S+V) 앞 → 접속사. 기한 시간 → by the time.",
@@ -1312,10 +1312,10 @@
     "diff": "easy",
     "sentence": "_______ the market has matured, competition has intensified significantly.",
     "choices": [
-      "(A) However",
+      "(A) while",
       "(B) As",
-      "(C) Due to",
-      "(D) Despite"
+      "(C) provided",
+      "(D) though"
     ],
     "answer": 1,
     "answer_word": "As",
@@ -1341,10 +1341,10 @@
     "diff": "easy",
     "sentence": "The project was completed on time _______ the team faced several unexpected obstacles.",
     "choices": [
-      "(A) however",
-      "(B) due to",
+      "(A) though",
+      "(B) because",
       "(C) even though",
-      "(D) in spite of"
+      "(D) whereas"
     ],
     "answer": 2,
     "answer_word": "even though",
@@ -1370,12 +1370,12 @@
     "diff": "easy",
     "sentence": "_______ the CEO announced his retirement, the board has been searching for a successor.",
     "choices": [
-      "(A) Due to",
-      "(B) Despite",
-      "(C) Since",
-      "(D) However"
+      "(A) by",
+      "(B) Since",
+      "(C) via",
+      "(D) along"
     ],
-    "answer": 2,
+    "answer": 1,
     "answer_word": "Since",
     "explanation_kr": "빈칸 뒤 절(S+V) → 접속사! 시간 기점 → since = '~한 이후로'! 현재완료와 함께!",
     "explanation": "절(S+V) 앞 → 접속사. 시간 기점 → since.",
@@ -1399,12 +1399,12 @@
     "diff": "easy",
     "sentence": "The product received mixed reviews; _______, it sold out within three days.",
     "choices": [
-      "(A) despite",
-      "(B) nevertheless",
-      "(C) due to",
-      "(D) although"
+      "(A) similarly",
+      "(B) therefore",
+      "(C) regardless",
+      "(D) nevertheless"
     ],
-    "answer": 1,
+    "answer": 3,
     "answer_word": "nevertheless",
     "explanation_kr": "세미콜론 뒤 역접 접속부사! 엇갈린 리뷰(부정적) ↔ 그래도 매진(긍정). nevertheless = '그럼에도 불구하고'!",
     "explanation": "세미콜론 뒤 → 접속부사. 역접 의미 → nevertheless.",
@@ -1428,12 +1428,12 @@
     "diff": "easy",
     "sentence": "The new policy reduces administrative costs. _______, it improves employee satisfaction.",
     "choices": [
-      "(A) Although",
-      "(B) Furthermore",
-      "(C) Despite",
-      "(D) Due to"
+      "(A) accordingly",
+      "(B) alternatively",
+      "(C) Furthermore",
+      "(D) apparently"
     ],
-    "answer": 1,
+    "answer": 2,
     "answer_word": "Furthermore",
     "explanation_kr": "앞 문장에 정보 추가! 비용 절감 + 직원 만족도 향상(추가). Furthermore = '더욱이' 추가 접속부사!",
     "explanation": "앞 문장에 추가 → 접속부사. 추가 의미 → furthermore.",
@@ -1457,12 +1457,12 @@
     "diff": "normal",
     "sentence": "_______ his lack of formal qualifications, the candidate was offered the senior position based on his extensive industry experience.",
     "choices": [
-      "(A) Although",
-      "(B) Notwithstanding",
-      "(C) Because",
-      "(D) Since"
+      "(A) Notwithstanding",
+      "(B) in favor of",
+      "(C) in line with",
+      "(D) in light of"
     ],
-    "answer": 1,
+    "answer": 0,
     "answer_word": "Notwithstanding",
     "explanation_kr": "빈칸 뒤 명사구 → 전치사! 양보 → notwithstanding = '~에도 불구하고' (very formal) despite와 동의어!",
     "explanation": "명사구 앞 → 전치사. 격식 양보 → notwithstanding.",
@@ -1486,12 +1486,12 @@
     "diff": "normal",
     "sentence": "_______ the significant upfront investment, the renewable energy project is expected to deliver substantial returns within five years.",
     "choices": [
-      "(A) Since",
-      "(B) Despite",
-      "(C) Although",
-      "(D) Because"
+      "(A) near",
+      "(B) into",
+      "(C) Despite",
+      "(D) under"
     ],
-    "answer": 1,
+    "answer": 2,
     "answer_word": "Despite",
     "explanation_kr": "빈칸 뒤 명사구(the significant upfront investment) → 전치사! 양보 → despite! although는 절 앞에!",
     "explanation": "명사구 앞 → 전치사. 양보 의미 → despite.",
@@ -1515,12 +1515,12 @@
     "diff": "normal",
     "sentence": "The company redesigned its packaging _______ consumer complaints about excessive plastic waste.",
     "choices": [
-      "(A) whereas",
-      "(B) however",
-      "(C) in response to",
-      "(D) although"
+      "(A) by means of",
+      "(B) in response to",
+      "(C) on account of",
+      "(D) in view of"
     ],
-    "answer": 2,
+    "answer": 1,
     "answer_word": "in response to",
     "explanation_kr": "빈칸 뒤 명사구 → 전치사! 대응 → in response to = '~에 대한 대응으로'!",
     "explanation": "명사구 앞 → 전치사. 대응 의미 → in response to.",
@@ -1544,12 +1544,12 @@
     "diff": "normal",
     "sentence": "_______ recent advances in battery technology, the cost of electric vehicles has fallen dramatically.",
     "choices": [
-      "(A) Since",
-      "(B) Owing to",
-      "(C) Although",
-      "(D) Because"
+      "(A) by means of",
+      "(B) in light of",
+      "(C) Owing to",
+      "(D) on the grounds of"
     ],
-    "answer": 1,
+    "answer": 2,
     "answer_word": "Owing to",
     "explanation_kr": "빈칸 뒤 명사구 → 전치사! 이유 → owing to = '~때문에' = due to!",
     "explanation": "명사구 앞 → 전치사. 이유 의미 → owing to.",
@@ -1573,12 +1573,12 @@
     "diff": "normal",
     "sentence": "All employees are required to act _______ the company's code of conduct at all times.",
     "choices": [
-      "(A) although",
-      "(B) in accordance with",
-      "(C) however",
-      "(D) whereas"
+      "(A) in accordance with",
+      "(B) for the purpose of",
+      "(C) instead of",
+      "(D) in spite of"
     ],
-    "answer": 1,
+    "answer": 0,
     "answer_word": "in accordance with",
     "explanation_kr": "빈칸 뒤 명사구 → 전치사! 준수 → in accordance with = '~에 따라서'!",
     "explanation": "명사구 앞 → 전치사. 준수 의미 → in accordance with.",
@@ -1602,12 +1602,12 @@
     "diff": "normal",
     "sentence": "The AI company expanded its research team _______ growing demand for machine learning expertise.",
     "choices": [
-      "(A) whereas",
-      "(B) although",
-      "(C) however",
-      "(D) in response to"
+      "(A) in response to",
+      "(B) owing to",
+      "(C) due to",
+      "(D) in the wake of"
     ],
-    "answer": 3,
+    "answer": 0,
     "answer_word": "in response to",
     "explanation_kr": "빈칸 뒤 명사구 → 전치사! 대응 → in response to = '~에 대한 대응으로'!",
     "explanation": "명사구 앞 → 전치사. 대응 의미 → in response to.",
@@ -1631,12 +1631,12 @@
     "diff": "normal",
     "sentence": "_______ the tight deadline, the development team delivered a fully functional prototype.",
     "choices": [
-      "(A) Although",
-      "(B) Since",
-      "(C) Because",
-      "(D) Given"
+      "(A) Given",
+      "(B) in the event of",
+      "(C) on account of",
+      "(D) notwithstanding"
     ],
-    "answer": 3,
+    "answer": 0,
     "answer_word": "Given",
     "explanation_kr": "빈칸 뒤 명사구 → 전치사! 근거/상황 → given = '~을 고려하면'!",
     "explanation": "명사구 앞 → 전치사. 근거/상황 의미 → given.",
@@ -1660,12 +1660,12 @@
     "diff": "normal",
     "sentence": "The startup secured additional funding _______ the strong performance in its first two quarters.",
     "choices": [
-      "(A) owing to",
-      "(B) although",
-      "(C) whereas",
-      "(D) however"
+      "(A) contrary to",
+      "(B) as part of",
+      "(C) on the grounds of",
+      "(D) owing to"
     ],
-    "answer": 0,
+    "answer": 3,
     "answer_word": "owing to",
     "explanation_kr": "빈칸 뒤 명사구 → 전치사! 이유 → owing to = '~때문에'!",
     "explanation": "명사구 앞 → 전치사. 이유 의미 → owing to.",
@@ -1689,12 +1689,12 @@
     "diff": "normal",
     "sentence": "_______ its proven track record, the consultancy was awarded the government contract.",
     "choices": [
-      "(A) Given",
-      "(B) Because",
-      "(C) Although",
-      "(D) Since"
+      "(A) as part of",
+      "(B) Given",
+      "(C) subject to",
+      "(D) due to"
     ],
-    "answer": 0,
+    "answer": 1,
     "answer_word": "Given",
     "explanation_kr": "빈칸 뒤 명사구 → 전치사! 근거 → given = '~을 고려하면'!",
     "explanation": "명사구 앞 → 전치사. 근거 의미 → given.",
@@ -1718,10 +1718,10 @@
     "diff": "normal",
     "sentence": "The safety inspector approved the facility _______ a number of minor issues that were quickly resolved.",
     "choices": [
-      "(A) since",
-      "(B) because",
+      "(A) in addition to",
+      "(B) with regard to",
       "(C) in spite of",
-      "(D) however"
+      "(D) due to"
     ],
     "answer": 2,
     "answer_word": "in spite of",
@@ -1747,12 +1747,12 @@
     "diff": "normal",
     "sentence": "The sustainability report was prepared _______ international environmental disclosure standards.",
     "choices": [
-      "(A) in accordance with",
-      "(B) although",
-      "(C) whereas",
-      "(D) however"
+      "(A) in favor of",
+      "(B) in accordance with",
+      "(C) in terms of",
+      "(D) in the wake of"
     ],
-    "answer": 0,
+    "answer": 1,
     "answer_word": "in accordance with",
     "explanation_kr": "빈칸 뒤 명사구 → 전치사! 준수 → in accordance with = '~에 따라서'!",
     "explanation": "명사구 앞 → 전치사. 준수 의미 → in accordance with.",
@@ -1776,10 +1776,10 @@
     "diff": "normal",
     "sentence": "The merger was approved by regulators _______ some conditions related to market competition.",
     "choices": [
-      "(A) whereas",
-      "(B) although",
+      "(A) relative to",
+      "(B) compared to",
       "(C) subject to",
-      "(D) however"
+      "(D) in anticipation of"
     ],
     "answer": 2,
     "answer_word": "subject to",
@@ -1805,12 +1805,12 @@
     "diff": "normal",
     "sentence": "The new vaccine was approved _______ expedited regulatory review procedures.",
     "choices": [
-      "(A) although",
-      "(B) whereas",
-      "(C) however",
-      "(D) through"
+      "(A) throughout",
+      "(B) beyond",
+      "(C) through",
+      "(D) following"
     ],
-    "answer": 3,
+    "answer": 2,
     "answer_word": "through",
     "explanation_kr": "빈칸 뒤 명사구 → 전치사! 수단 → through = '~을 통해'!",
     "explanation": "명사구 앞 → 전치사. 수단 의미 → through.",
@@ -1834,9 +1834,9 @@
     "diff": "normal",
     "sentence": "The annual performance review will be conducted _______ the end of the third quarter.",
     "choices": [
-      "(A) although",
-      "(B) however",
-      "(C) whereas",
+      "(A) with a view to",
+      "(B) with respect to",
+      "(C) in recognition of",
       "(D) prior to"
     ],
     "answer": 3,
@@ -1863,12 +1863,12 @@
     "diff": "normal",
     "sentence": "_______ the increased operating costs, the company managed to maintain its profit margins.",
     "choices": [
-      "(A) Despite",
-      "(B) Because",
-      "(C) Although",
-      "(D) Since"
+      "(A) during",
+      "(B) below",
+      "(C) Despite",
+      "(D) since"
     ],
-    "answer": 0,
+    "answer": 2,
     "answer_word": "Despite",
     "explanation_kr": "빈칸 뒤 명사구(the increased operating costs) → 전치사! 양보 → despite!",
     "explanation": "명사구 앞 → 전치사. 양보 의미 → despite.",
@@ -1892,12 +1892,12 @@
     "diff": "normal",
     "sentence": "The annual conference will be held _______ the regional offices, connecting employees from all locations.",
     "choices": [
-      "(A) whereas",
-      "(B) although",
-      "(C) however",
-      "(D) across"
+      "(A) across",
+      "(B) against",
+      "(C) on",
+      "(D) for"
     ],
-    "answer": 3,
+    "answer": 0,
     "answer_word": "across",
     "explanation_kr": "빈칸 뒤 명사구 → 전치사! 범위 전체 → across = '~전반에 걸쳐'!",
     "explanation": "명사구 앞 → 전치사. 범위 전체 의미 → across.",
@@ -1921,12 +1921,12 @@
     "diff": "normal",
     "sentence": "The financial results varied considerably _______ the different regional markets.",
     "choices": [
-      "(A) however",
-      "(B) across",
-      "(C) although",
-      "(D) whereas"
+      "(A) of",
+      "(B) over",
+      "(C) until",
+      "(D) across"
     ],
-    "answer": 1,
+    "answer": 3,
     "answer_word": "across",
     "explanation_kr": "빈칸 뒤 명사구 → 전치사! 범위 전체 → across = '~전반에 걸쳐'!",
     "explanation": "명사구 앞 → 전치사. 범위 전체 의미 → across.",
@@ -1950,12 +1950,12 @@
     "diff": "normal",
     "sentence": "The product launch exceeded expectations _______ a challenging economic environment and supply constraints.",
     "choices": [
-      "(A) whereas",
-      "(B) despite",
-      "(C) because",
-      "(D) since"
+      "(A) near",
+      "(B) beneath",
+      "(C) beyond",
+      "(D) despite"
     ],
-    "answer": 1,
+    "answer": 3,
     "answer_word": "despite",
     "explanation_kr": "빈칸 뒤 명사구 → 전치사! 양보 → despite = '~에도 불구하고'!",
     "explanation": "명사구 앞 → 전치사. 양보 의미 → despite.",
@@ -1979,12 +1979,12 @@
     "diff": "normal",
     "sentence": "The assistant was promoted _______ the director's personal recommendation.",
     "choices": [
-      "(A) based on",
-      "(B) whereas",
-      "(C) however",
-      "(D) although"
+      "(A) in line with",
+      "(B) with the exception of",
+      "(C) by virtue of",
+      "(D) based on"
     ],
-    "answer": 0,
+    "answer": 3,
     "answer_word": "based on",
     "explanation_kr": "빈칸 뒤 명사구 → 전치사! 근거 → based on = '~을 기준으로'!",
     "explanation": "명사구 앞 → 전치사. 근거 의미 → based on.",
@@ -2008,12 +2008,12 @@
     "diff": "normal",
     "sentence": "The board reached a unanimous decision _______ considerable debate among members.",
     "choices": [
-      "(A) despite",
-      "(B) since",
+      "(A) because",
+      "(B) despite",
       "(C) since",
-      "(D) because"
+      "(D) since"
     ],
-    "answer": 0,
+    "answer": 1,
     "answer_word": "despite",
     "explanation_kr": "빈칸 뒤 명사구 → 전치사! 양보 → despite = '~에도 불구하고'!",
     "explanation": "명사구 앞 → 전치사. 양보 의미 → despite.",
@@ -2037,10 +2037,10 @@
     "diff": "normal",
     "sentence": "The marketing campaign succeeded _______ its relatively small budget.",
     "choices": [
-      "(A) however",
+      "(A) on behalf of",
       "(B) in spite of",
-      "(C) since",
-      "(D) although"
+      "(C) with the exception of",
+      "(D) in view of"
     ],
     "answer": 1,
     "answer_word": "in spite of",
@@ -2066,12 +2066,12 @@
     "diff": "normal",
     "sentence": "The medication must be stored _______ direct sunlight and moisture.",
     "choices": [
-      "(A) although",
-      "(B) whereas",
-      "(C) however",
-      "(D) away from"
+      "(A) for the purpose of",
+      "(B) away from",
+      "(C) by means of",
+      "(D) thanks to"
     ],
-    "answer": 3,
+    "answer": 1,
     "answer_word": "away from",
     "explanation_kr": "away from = '~에서 멀리, ~을 피하여' 관용 전치사구!",
     "explanation": "관용 전치사구 → away from.",
@@ -2095,12 +2095,12 @@
     "diff": "normal",
     "sentence": "The management team introduced several key initiatives _______ employee wellbeing.",
     "choices": [
-      "(A) whereas",
-      "(B) aimed at",
-      "(C) although",
-      "(D) however"
+      "(A) relative to",
+      "(B) contrary to",
+      "(C) due to",
+      "(D) aimed at"
     ],
-    "answer": 1,
+    "answer": 3,
     "answer_word": "aimed at",
     "explanation_kr": "aimed at = '~을 목표로 한' 관용 전치사구!",
     "explanation": "관용 전치사구 → aimed at.",
@@ -2124,12 +2124,12 @@
     "diff": "normal",
     "sentence": "The contract terms remain unchanged _______ a formal written agreement by both parties.",
     "choices": [
-      "(A) although",
-      "(B) whereas",
-      "(C) however",
-      "(D) absent"
+      "(A) for the sake of",
+      "(B) in the absence of",
+      "(C) absent",
+      "(D) contrary to"
     ],
-    "answer": 3,
+    "answer": 2,
     "answer_word": "absent",
     "explanation_kr": "absent = '~이 없으면, ~이 없는 상태에서' 격식 전치사!",
     "explanation": "명사구 앞 → 전치사. 부재 의미 → absent.",
@@ -2153,10 +2153,10 @@
     "diff": "normal",
     "sentence": "The company's strong Q3 results were achieved _______ adverse market conditions.",
     "choices": [
-      "(A) because",
-      "(B) whereas",
+      "(A) following",
+      "(B) via",
       "(C) despite",
-      "(D) since"
+      "(D) on"
     ],
     "answer": 2,
     "answer_word": "despite",
@@ -2182,12 +2182,12 @@
     "diff": "normal",
     "sentence": "The firm continued to invest in R&D _______ short-term profitability.",
     "choices": [
-      "(A) although",
-      "(B) at the expense of",
-      "(C) whereas",
-      "(D) however"
+      "(A) by virtue of",
+      "(B) in proportion to",
+      "(C) in favor of",
+      "(D) at the expense of"
     ],
-    "answer": 1,
+    "answer": 3,
     "answer_word": "at the expense of",
     "explanation_kr": "빈칸 뒤 명사구 → 전치사! 희생 → at the expense of = '~을 희생하여'!",
     "explanation": "명사구 앞 → 전치사. 희생 의미 → at the expense of.",
@@ -2211,10 +2211,10 @@
     "diff": "normal",
     "sentence": "The proposal was rejected _______ its innovative approach and projected long-term benefits.",
     "choices": [
-      "(A) as",
-      "(B) because",
+      "(A) within",
+      "(B) after",
       "(C) despite",
-      "(D) since"
+      "(D) from"
     ],
     "answer": 2,
     "answer_word": "despite",
@@ -2240,12 +2240,12 @@
     "diff": "normal",
     "sentence": "The software update will be rolled out _______ all users by the end of the week.",
     "choices": [
-      "(A) whereas",
-      "(B) although",
-      "(C) however",
-      "(D) to"
+      "(A) toward",
+      "(B) past",
+      "(C) to",
+      "(D) before"
     ],
-    "answer": 3,
+    "answer": 2,
     "answer_word": "to",
     "explanation_kr": "roll out to = '~에게 배포하다' 관용 전치사구!",
     "explanation": "관용 동사구 → roll out to.",
@@ -2269,12 +2269,12 @@
     "diff": "normal",
     "sentence": "The board approved the expansion plan _______ the unanimous recommendation of the finance committee.",
     "choices": [
-      "(A) however",
-      "(B) following",
-      "(C) although",
-      "(D) whereas"
+      "(A) across",
+      "(B) on",
+      "(C) near",
+      "(D) following"
     ],
-    "answer": 1,
+    "answer": 3,
     "answer_word": "following",
     "explanation_kr": "빈칸 뒤 명사구 → 전치사! 시간 순서(~후) → following = '~에 뒤이어'!",
     "explanation": "명사구 앞 → 전치사. 순서 의미 → following.",
@@ -2298,12 +2298,12 @@
     "diff": "normal",
     "sentence": "The charity distributed medical supplies _______ the affected communities.",
     "choices": [
-      "(A) whereas",
-      "(B) although",
-      "(C) throughout",
-      "(D) however"
+      "(A) beyond",
+      "(B) across",
+      "(C) during",
+      "(D) throughout"
     ],
-    "answer": 2,
+    "answer": 3,
     "answer_word": "throughout",
     "explanation_kr": "빈칸 뒤 명사구 → 전치사! 전체 범위 → throughout = '~전역에 걸쳐'!",
     "explanation": "명사구 앞 → 전치사. 전체 범위 의미 → throughout.",
@@ -2327,12 +2327,12 @@
     "diff": "normal",
     "sentence": "_______ the pharmaceutical company invested heavily in clinical trials, the drug failed to secure regulatory approval.",
     "choices": [
-      "(A) Even though",
-      "(B) However",
-      "(C) Due to",
-      "(D) In spite of"
+      "(A) unless",
+      "(B) Even though",
+      "(C) provided",
+      "(D) yet"
     ],
-    "answer": 0,
+    "answer": 1,
     "answer_word": "Even though",
     "explanation_kr": "빈칸 뒤 절(S+V) → 접속사! 강한 양보 → even though = '비록~임에도 불구하고'! despite/in spite of는 명사구 앞에!",
     "explanation": "절(S+V) 앞 → 접속사. 강한 양보 → even though.",
@@ -2356,12 +2356,12 @@
     "diff": "normal",
     "sentence": "The AI governance framework will be updated annually _______ significant technological advances require more frequent revisions.",
     "choices": [
-      "(A) however",
-      "(B) despite",
-      "(C) unless",
-      "(D) due to"
+      "(A) provided",
+      "(B) now that",
+      "(C) because",
+      "(D) unless"
     ],
-    "answer": 2,
+    "answer": 3,
     "answer_word": "unless",
     "explanation_kr": "빈칸 뒤 절(S+V) → 접속사! 조건(부정) → unless = '~하지 않는다면'!",
     "explanation": "절(S+V) 앞 → 접속사. 부정 조건 → unless.",
@@ -2385,12 +2385,12 @@
     "diff": "normal",
     "sentence": "The startup outperformed established rivals _______ it had significantly fewer resources and less brand recognition.",
     "choices": [
-      "(A) although",
-      "(B) however",
-      "(C) in spite of",
-      "(D) due to"
+      "(A) before",
+      "(B) although",
+      "(C) when",
+      "(D) or"
     ],
-    "answer": 0,
+    "answer": 1,
     "answer_word": "although",
     "explanation_kr": "빈칸 뒤 절(S+V) → 접속사! 양보 → although = '비록~이지만'! despite/in spite of는 명사구 앞에!",
     "explanation": "절(S+V) 앞 → 접속사. 양보 의미 → although.",
@@ -2414,12 +2414,12 @@
     "diff": "normal",
     "sentence": "The clinical trial will be extended _______ the initial results confirm the drug's safety profile.",
     "choices": [
-      "(A) however",
-      "(B) due to",
-      "(C) despite",
-      "(D) once"
+      "(A) since",
+      "(B) if",
+      "(C) once",
+      "(D) although"
     ],
-    "answer": 3,
+    "answer": 2,
     "answer_word": "once",
     "explanation_kr": "빈칸 뒤 절(S+V) → 접속사! 시간 순서(완료 후) → once = '일단 ~하면'!",
     "explanation": "절(S+V) 앞 → 접속사. 시간 순서 → once.",
@@ -2443,12 +2443,12 @@
     "diff": "normal",
     "sentence": "The government will provide subsidies to clean energy companies _______ they meet specific emissions reduction targets.",
     "choices": [
-      "(A) provided that",
-      "(B) however",
-      "(C) despite",
-      "(D) due to"
+      "(A) whereas",
+      "(B) whenever",
+      "(C) provided that",
+      "(D) even if"
     ],
-    "answer": 0,
+    "answer": 2,
     "answer_word": "provided that",
     "explanation_kr": "빈칸 뒤 절(S+V) → 접속사! 조건 → provided that = '~하는 조건으로'!",
     "explanation": "절(S+V) 앞 → 접속사. 조건 의미 → provided that.",
@@ -2472,12 +2472,12 @@
     "diff": "normal",
     "sentence": "_______ the company increased its headcount by twenty percent, overall productivity per employee declined.",
     "choices": [
-      "(A) However",
-      "(B) In spite of",
-      "(C) Due to",
-      "(D) Even though"
+      "(A) Even though",
+      "(B) or",
+      "(C) provided",
+      "(D) yet"
     ],
-    "answer": 3,
+    "answer": 0,
     "answer_word": "Even though",
     "explanation_kr": "빈칸 뒤 절(S+V) → 접속사! 강한 양보 → even though! 인원 증가 → 그럼에도 생산성 하락!",
     "explanation": "절(S+V) 앞 → 접속사. 강한 양보 → even though.",
@@ -2501,12 +2501,12 @@
     "diff": "normal",
     "sentence": "The CEO will finalize the acquisition terms _______ the due diligence process has been completed satisfactorily.",
     "choices": [
-      "(A) due to",
-      "(B) despite",
-      "(C) once",
-      "(D) however"
+      "(A) once",
+      "(B) unless",
+      "(C) or",
+      "(D) even though"
     ],
-    "answer": 2,
+    "answer": 0,
     "answer_word": "once",
     "explanation_kr": "빈칸 뒤 절(S+V) → 접속사! 시간(완료 후 즉시) → once = '일단 ~하면'!",
     "explanation": "절(S+V) 앞 → 접속사. 시간 순서 → once.",
@@ -2530,12 +2530,12 @@
     "diff": "normal",
     "sentence": "The smartphone market leader retained its position _______ several competitors launched aggressive promotional campaigns.",
     "choices": [
-      "(A) however",
-      "(B) while",
-      "(C) due to",
-      "(D) in spite of"
+      "(A) while",
+      "(B) because",
+      "(C) as",
+      "(D) now that"
     ],
-    "answer": 1,
+    "answer": 0,
     "answer_word": "while",
     "explanation_kr": "빈칸 뒤 절(S+V) → 접속사! 대조 → while = '~인 반면에'! 시장 선두 유지 vs 경쟁자들의 공격적 캠페인!",
     "explanation": "절(S+V) 앞 → 접속사. 대조 의미 → while.",
@@ -2559,12 +2559,12 @@
     "diff": "normal",
     "sentence": "Employees are entitled to additional compensation _______ they are required to work during designated public holidays.",
     "choices": [
-      "(A) despite",
-      "(B) due to",
-      "(C) however",
-      "(D) whenever"
+      "(A) as",
+      "(B) whenever",
+      "(C) before",
+      "(D) whereas"
     ],
-    "answer": 3,
+    "answer": 1,
     "answer_word": "whenever",
     "explanation_kr": "빈칸 뒤 절(S+V) → 접속사! 반복 조건 → whenever = '~할 때마다'!",
     "explanation": "절(S+V) 앞 → 접속사. 반복 조건 → whenever.",
@@ -2588,12 +2588,12 @@
     "diff": "normal",
     "sentence": "The data analysis platform will alert users _______ an anomaly is detected in the financial transactions.",
     "choices": [
-      "(A) due to",
-      "(B) despite",
-      "(C) however",
-      "(D) as soon as"
+      "(A) whenever",
+      "(B) as soon as",
+      "(C) nor",
+      "(D) since"
     ],
-    "answer": 3,
+    "answer": 1,
     "answer_word": "as soon as",
     "explanation_kr": "빈칸 뒤 절(S+V) → 접속사! 즉시 시간 → as soon as = '~하자마자'!",
     "explanation": "절(S+V) 앞 → 접속사. 즉시 시간 → as soon as.",
@@ -2617,12 +2617,12 @@
     "diff": "normal",
     "sentence": "The fintech startup will continue to operate in the European market _______ it can maintain full compliance with GDPR requirements.",
     "choices": [
-      "(A) as long as",
-      "(B) however",
-      "(C) despite",
-      "(D) due to"
+      "(A) before",
+      "(B) as soon as",
+      "(C) as long as",
+      "(D) whenever"
     ],
-    "answer": 0,
+    "answer": 2,
     "answer_word": "as long as",
     "explanation_kr": "빈칸 뒤 절(S+V) → 접속사! 조건 한정 → as long as = '~하는 한'!",
     "explanation": "절(S+V) 앞 → 접속사. 조건 한정 → as long as.",
@@ -2646,12 +2646,12 @@
     "diff": "normal",
     "sentence": "The pharmaceutical company will delay the drug launch _______ independent safety reviewers confirm the long-term efficacy data.",
     "choices": [
-      "(A) due to",
-      "(B) however",
-      "(C) until",
-      "(D) despite"
+      "(A) across",
+      "(B) beside",
+      "(C) against",
+      "(D) until"
     ],
-    "answer": 2,
+    "answer": 3,
     "answer_word": "until",
     "explanation_kr": "빈칸 뒤 절(S+V) → 접속사! 시간 한계 → until = '~할 때까지'!",
     "explanation": "절(S+V) 앞 → 접속사. 시간 한계 → until.",
@@ -2675,12 +2675,12 @@
     "diff": "normal",
     "sentence": "_______ the technology performed well in controlled trials, real-world results have been less impressive.",
     "choices": [
-      "(A) Although",
-      "(B) However",
-      "(C) In spite of",
-      "(D) Due to"
+      "(A) where",
+      "(B) as",
+      "(C) after",
+      "(D) Although"
     ],
-    "answer": 0,
+    "answer": 3,
     "answer_word": "Although",
     "explanation_kr": "빈칸 뒤 절(S+V) → 접속사! 양보 → although = '비록~이지만'! 통제 실험 우수 → 실제 결과 부진!",
     "explanation": "절(S+V) 앞 → 접속사. 양보 의미 → although.",
@@ -2704,12 +2704,12 @@
     "diff": "normal",
     "sentence": "The health app will sync data automatically _______ users have granted permission to access their wearable devices.",
     "choices": [
-      "(A) despite",
-      "(B) due to",
-      "(C) once",
-      "(D) however"
+      "(A) if",
+      "(B) as long as",
+      "(C) where",
+      "(D) once"
     ],
-    "answer": 2,
+    "answer": 3,
     "answer_word": "once",
     "explanation_kr": "빈칸 뒤 절(S+V) → 접속사! 시간(완료 후) → once = '일단 ~하면'!",
     "explanation": "절(S+V) 앞 → 접속사. 시간 순서 → once.",
@@ -2733,12 +2733,12 @@
     "diff": "normal",
     "sentence": "The supply chain disruptions continued _______ the company had implemented contingency measures months earlier.",
     "choices": [
-      "(A) even though",
-      "(B) in spite of",
-      "(C) due to",
-      "(D) however"
+      "(A) unless",
+      "(B) so that",
+      "(C) even though",
+      "(D) as"
     ],
-    "answer": 0,
+    "answer": 2,
     "answer_word": "even though",
     "explanation_kr": "빈칸 뒤 절(S+V) → 접속사! 강한 양보 → even though! 비상 대책 있음에도 혼란 지속!",
     "explanation": "절(S+V) 앞 → 접속사. 강한 양보 → even though.",
@@ -2762,12 +2762,12 @@
     "diff": "normal",
     "sentence": "The software system will automatically flag any transaction _______ the amount exceeds the pre-approved limit.",
     "choices": [
-      "(A) however",
-      "(B) whenever",
-      "(C) due to",
-      "(D) despite"
+      "(A) whether",
+      "(B) even if",
+      "(C) whenever",
+      "(D) provided"
     ],
-    "answer": 1,
+    "answer": 2,
     "answer_word": "whenever",
     "explanation_kr": "빈칸 뒤 절(S+V) → 접속사! 반복 조건 → whenever = '~할 때마다'!",
     "explanation": "절(S+V) 앞 → 접속사. 반복 조건 → whenever.",
@@ -2791,12 +2791,12 @@
     "diff": "normal",
     "sentence": "The investor will commit additional capital _______ the startup demonstrates a clear path to profitability.",
     "choices": [
-      "(A) due to",
-      "(B) however",
-      "(C) despite",
-      "(D) provided that"
+      "(A) even if",
+      "(B) unless",
+      "(C) provided that",
+      "(D) provided"
     ],
-    "answer": 3,
+    "answer": 2,
     "answer_word": "provided that",
     "explanation_kr": "빈칸 뒤 절(S+V) → 접속사! 조건 → provided that = '~하는 조건으로'!",
     "explanation": "절(S+V) 앞 → 접속사. 조건 의미 → provided that.",
@@ -2820,12 +2820,12 @@
     "diff": "normal",
     "sentence": "The new platform reduced operational costs by thirty percent; _______, it significantly improved customer satisfaction scores.",
     "choices": [
-      "(A) due to",
-      "(B) furthermore",
-      "(C) although",
-      "(D) despite"
+      "(A) subsequently",
+      "(B) thus",
+      "(C) fortunately",
+      "(D) furthermore"
     ],
-    "answer": 1,
+    "answer": 3,
     "answer_word": "furthermore",
     "explanation_kr": "세미콜론 뒤 추가 접속부사! 비용 절감(성과1) + 고객 만족도 향상(성과2). furthermore = '더욱이' 추가 접속부사!",
     "explanation": "세미콜론 뒤 → 접속부사. 추가 의미 → furthermore.",
@@ -2849,10 +2849,10 @@
     "diff": "normal",
     "sentence": "The board approved the proposed acquisition. _______, it authorized a share buyback program worth two hundred million dollars.",
     "choices": [
-      "(A) Due to",
+      "(A) in line with",
       "(B) In addition",
-      "(C) Although",
-      "(D) Despite"
+      "(C) regardless of",
+      "(D) on the grounds of"
     ],
     "answer": 1,
     "answer_word": "In addition",
@@ -2878,12 +2878,12 @@
     "diff": "normal",
     "sentence": "The fintech startup secured a record funding round. _______, it announced plans to expand into three new Asian markets.",
     "choices": [
-      "(A) Moreover",
-      "(B) However",
-      "(C) Although",
-      "(D) Due to"
+      "(A) regardless",
+      "(B) Moreover",
+      "(C) incidentally",
+      "(D) meanwhile"
     ],
-    "answer": 0,
+    "answer": 1,
     "answer_word": "Moreover",
     "explanation_kr": "앞 문장에 추가 정보! 기록적 펀딩(성과1) + 아시아 시장 확장(성과2). Moreover = '더욱이' 추가 접속부사!",
     "explanation": "앞 문장에 추가 → 접속부사. 추가 의미 → moreover.",
@@ -2907,12 +2907,12 @@
     "diff": "hard",
     "sentence": "_______ its limited market share and relatively short operating history, the biotech startup secured a strategic investment from one of the world's largest pharmaceutical companies.",
     "choices": [
-      "(A) Although",
-      "(B) Because",
-      "(C) Since",
-      "(D) Notwithstanding"
+      "(A) in proportion to",
+      "(B) Notwithstanding",
+      "(C) prior to",
+      "(D) for the sake of"
     ],
-    "answer": 3,
+    "answer": 1,
     "answer_word": "Notwithstanding",
     "explanation_kr": "빈칸 뒤 명사구 → 전치사! 격식 양보 → notwithstanding = '~에도 불구하고' (despite의 격식체, 주로 법률/계약 문서)!",
     "explanation": "명사구 앞 → 전치사. 격식 양보 → notwithstanding.",
@@ -2936,12 +2936,12 @@
     "diff": "hard",
     "sentence": "The pharmaceutical firm restructured its pricing model _______ sustained pressure from governments, patient advocacy groups, and international health organizations over drug affordability.",
     "choices": [
-      "(A) whereas",
-      "(B) following",
-      "(C) however",
-      "(D) although"
+      "(A) at",
+      "(B) behind",
+      "(C) following",
+      "(D) into"
     ],
-    "answer": 1,
+    "answer": 2,
     "answer_word": "following",
     "explanation_kr": "빈칸 뒤 명사구 → 전치사! 시간 순서(~후) → following = '~에 뒤이어'!",
     "explanation": "명사구 앞 → 전치사. 순서 의미 → following.",
@@ -2965,12 +2965,12 @@
     "diff": "hard",
     "sentence": "The international climate finance mechanism distributes resources _______ the demonstrated vulnerability of recipient nations to climate-related disasters rather than their historical carbon emissions.",
     "choices": [
-      "(A) based on",
-      "(B) whereas",
-      "(C) however",
-      "(D) although"
+      "(A) in light of",
+      "(B) in the absence of",
+      "(C) contrary to",
+      "(D) based on"
     ],
-    "answer": 0,
+    "answer": 3,
     "answer_word": "based on",
     "explanation_kr": "빈칸 뒤 명사구 → 전치사! 근거 → based on = '~을 기준으로'!",
     "explanation": "명사구 앞 → 전치사. 근거 의미 → based on.",
@@ -2994,12 +2994,12 @@
     "diff": "hard",
     "sentence": "The AI safety board approved the frontier model's deployment _______ a number of strict conditions, including mandatory third-party audits and an incident reporting requirement.",
     "choices": [
-      "(A) whereas",
-      "(B) although",
-      "(C) however",
-      "(D) subject to"
+      "(A) by means of",
+      "(B) subject to",
+      "(C) in accordance with",
+      "(D) according to"
     ],
-    "answer": 3,
+    "answer": 1,
     "answer_word": "subject to",
     "explanation_kr": "빈칸 뒤 명사구 → 전치사! 조건부 → subject to = '~을 조건으로'!",
     "explanation": "명사구 앞 → 전치사. 조건 의미 → subject to.",
@@ -3023,12 +3023,12 @@
     "diff": "hard",
     "sentence": "The longevity research consortium continues to prioritize basic science _______ the commercial pressures to translate discoveries into marketable products more rapidly.",
     "choices": [
-      "(A) because",
-      "(B) whereas",
-      "(C) despite",
-      "(D) since"
+      "(A) below",
+      "(B) despite",
+      "(C) without",
+      "(D) between"
     ],
-    "answer": 2,
+    "answer": 1,
     "answer_word": "despite",
     "explanation_kr": "빈칸 뒤 명사구 → 전치사! 양보 → despite = '~에도 불구하고'!",
     "explanation": "명사구 앞 → 전치사. 양보 의미 → despite.",
@@ -3052,12 +3052,12 @@
     "diff": "hard",
     "sentence": "The biodiversity credit standard applies identical additionality requirements to all project types _______ their ecological complexity, geographic location, or cost of verification.",
     "choices": [
-      "(A) although",
-      "(B) irrespective of",
-      "(C) however",
-      "(D) since"
+      "(A) in light of",
+      "(B) with respect to",
+      "(C) irrespective of",
+      "(D) on behalf of"
     ],
-    "answer": 1,
+    "answer": 2,
     "answer_word": "irrespective of",
     "explanation_kr": "빈칸 뒤 명사구 → 전치사! 무관 → irrespective of = '~에 상관없이' = regardless of!",
     "explanation": "명사구 앞 → 전치사. 무관 의미 → irrespective of.",
@@ -3081,12 +3081,12 @@
     "diff": "hard",
     "sentence": "The central bank's decision to raise interest rates by fifty basis points was made _______ widespread criticism from market participants who argued the move would stall economic recovery.",
     "choices": [
-      "(A) since",
-      "(B) because",
-      "(C) whereas",
-      "(D) despite"
+      "(A) upon",
+      "(B) despite",
+      "(C) beside",
+      "(D) after"
     ],
-    "answer": 3,
+    "answer": 1,
     "answer_word": "despite",
     "explanation_kr": "빈칸 뒤 명사구 → 전치사! 양보 → despite = '~에도 불구하고'!",
     "explanation": "명사구 앞 → 전치사. 양보 의미 → despite.",
@@ -3110,12 +3110,12 @@
     "diff": "hard",
     "sentence": "The longevity research institute maintained its position that epigenetic interventions are safe _______ emerging evidence suggesting that certain approaches may accelerate tumor development.",
     "choices": [
-      "(A) notwithstanding",
-      "(B) whereas",
-      "(C) because",
-      "(D) since"
+      "(A) with regard to",
+      "(B) notwithstanding",
+      "(C) in the wake of",
+      "(D) in the absence of"
     ],
-    "answer": 0,
+    "answer": 1,
     "answer_word": "notwithstanding",
     "explanation_kr": "빈칸 뒤 명사구 → 전치사! 격식 양보 → notwithstanding = '~에도 불구하고'!",
     "explanation": "명사구 앞 → 전치사. 격식 양보 → notwithstanding.",
@@ -3139,10 +3139,10 @@
     "diff": "hard",
     "sentence": "The startup's extraordinary growth trajectory was achieved _______ a highly competitive market environment and the simultaneous entry of three well-funded rivals.",
     "choices": [
-      "(A) because",
-      "(B) since",
+      "(A) in lieu of",
+      "(B) in favor of",
       "(C) in spite of",
-      "(D) whereas"
+      "(D) regardless of"
     ],
     "answer": 2,
     "answer_word": "in spite of",
@@ -3168,12 +3168,12 @@
     "diff": "hard",
     "sentence": "The sustainability certification was issued _______ all documentation requirements being fully satisfied and the third-party audit confirming compliance with the relevant standards.",
     "choices": [
-      "(A) upon",
-      "(B) although",
-      "(C) however",
-      "(D) whereas"
+      "(A) for",
+      "(B) below",
+      "(C) along",
+      "(D) upon"
     ],
-    "answer": 0,
+    "answer": 3,
     "answer_word": "upon",
     "explanation_kr": "빈칸 뒤 명사구/동명사구 → 전치사! 즉시성/완료 후 → upon = '~하자마자, ~을 바탕으로'!",
     "explanation": "동명사구 앞 → 전치사. 즉시성/완료 → upon.",
@@ -3197,12 +3197,12 @@
     "diff": "hard",
     "sentence": "The AI ethics committee revised its model deployment guidelines _______ an analysis of documented harms caused by similar systems in analogous sectors.",
     "choices": [
-      "(A) although",
-      "(B) whereas",
-      "(C) in light of",
-      "(D) however"
+      "(A) thanks to",
+      "(B) at the expense of",
+      "(C) regardless of",
+      "(D) in light of"
     ],
-    "answer": 2,
+    "answer": 3,
     "answer_word": "in light of",
     "explanation_kr": "빈칸 뒤 명사구 → 전치사! 근거/고려 → in light of = '~을 고려하면'!",
     "explanation": "명사구 앞 → 전치사. 근거/고려 의미 → in light of.",
@@ -3226,12 +3226,12 @@
     "diff": "hard",
     "sentence": "The gig economy platform expanded its social protection provisions _______ the persistent advocacy of labor unions and the threat of new statutory obligations.",
     "choices": [
-      "(A) following",
-      "(B) although",
-      "(C) however",
-      "(D) whereas"
+      "(A) through",
+      "(B) at",
+      "(C) following",
+      "(D) on"
     ],
-    "answer": 0,
+    "answer": 2,
     "answer_word": "following",
     "explanation_kr": "빈칸 뒤 명사구 → 전치사! 시간 순서(~후) → following = '~에 뒤이어'!",
     "explanation": "명사구 앞 → 전치사. 순서 의미 → following.",
@@ -3255,12 +3255,12 @@
     "diff": "hard",
     "sentence": "All research publications from the consortium must be reviewed and approved _______ submission to a journal to ensure compliance with data sharing agreements.",
     "choices": [
-      "(A) prior to",
-      "(B) however",
-      "(C) before",
-      "(D) although"
+      "(A) in the event of",
+      "(B) as part of",
+      "(C) in the absence of",
+      "(D) prior to"
     ],
-    "answer": 0,
+    "answer": 3,
     "answer_word": "prior to",
     "explanation_kr": "빈칸 뒤 동명사구 → 전치사! 시간(~전) 격식 → prior to = '~에 앞서'! before도 가능하지만 prior to가 더 격식적!",
     "explanation": "동명사구 앞 → 전치사. 격식 시간 → prior to.",
@@ -3284,12 +3284,12 @@
     "diff": "hard",
     "sentence": "The carbon market regulator suspended the issuance of new credits _______ the completion of a comprehensive review of verification methodologies across all project categories.",
     "choices": [
-      "(A) pending",
-      "(B) whereas",
-      "(C) however",
-      "(D) although"
+      "(A) notwithstanding",
+      "(B) prior to",
+      "(C) with a view to",
+      "(D) pending"
     ],
-    "answer": 0,
+    "answer": 3,
     "answer_word": "pending",
     "explanation_kr": "빈칸 뒤 명사구 → 전치사! 완료 대기 → pending = '~이 완료될 때까지, ~을 기다리는 동안'!",
     "explanation": "명사구 앞 → 전치사. 대기 의미 → pending.",
@@ -3313,10 +3313,10 @@
     "diff": "hard",
     "sentence": "The biosafety committee declined to approve the dual-use research proposal _______ the potentially catastrophic consequences of an accidental release of the engineered pathogen.",
     "choices": [
-      "(A) whereas",
-      "(B) although",
+      "(A) at the expense of",
+      "(B) in exchange for",
       "(C) given",
-      "(D) however"
+      "(D) in the wake of"
     ],
     "answer": 2,
     "answer_word": "given",
@@ -3342,12 +3342,12 @@
     "diff": "hard",
     "sentence": "The international biodiversity framework will remain in force _______ a replacement agreement with stronger enforcement mechanisms and universal participation has been formally ratified.",
     "choices": [
-      "(A) despite",
-      "(B) until",
-      "(C) due to",
-      "(D) however"
+      "(A) with",
+      "(B) via",
+      "(C) upon",
+      "(D) until"
     ],
-    "answer": 1,
+    "answer": 3,
     "answer_word": "until",
     "explanation_kr": "빈칸 뒤 절(S+V) → 접속사! 시간 한계 → until = '~할 때까지'!",
     "explanation": "절(S+V) 앞 → 접속사. 시간 한계 → until.",
@@ -3371,12 +3371,12 @@
     "diff": "hard",
     "sentence": "The AI company will not release the next-generation model to the public _______ independent safety evaluators have confirmed that all catastrophic risk thresholds remain within acceptable parameters.",
     "choices": [
-      "(A) due to",
-      "(B) despite",
-      "(C) unless",
-      "(D) however"
+      "(A) unless",
+      "(B) or",
+      "(C) even if",
+      "(D) nor"
     ],
-    "answer": 2,
+    "answer": 0,
     "answer_word": "unless",
     "explanation_kr": "빈칸 뒤 절(S+V) → 접속사! 조건(부정) → unless = '~하지 않는다면'!",
     "explanation": "절(S+V) 앞 → 접속사. 부정 조건 → unless.",
@@ -3400,12 +3400,12 @@
     "diff": "hard",
     "sentence": "The longevity biotech's cellular reprogramming therapy was rejected for expedited approval _______ preliminary trial data showed statistically significant improvements in healthspan biomarkers.",
     "choices": [
-      "(A) due to",
-      "(B) in spite of",
-      "(C) even though",
-      "(D) however"
+      "(A) even though",
+      "(B) unless",
+      "(C) because",
+      "(D) where"
     ],
-    "answer": 2,
+    "answer": 0,
     "answer_word": "even though",
     "explanation_kr": "빈칸 뒤 절(S+V) → 접속사! 강한 양보 → even though! 긍정 데이터에도 거부!",
     "explanation": "절(S+V) 앞 → 접속사. 강한 양보 → even though.",
@@ -3429,10 +3429,10 @@
     "diff": "hard",
     "sentence": "The carbon credit market reform initiative will gain traction among institutional investors _______ a globally recognized standard for additionality verification is established and independently enforced.",
     "choices": [
-      "(A) due to",
+      "(A) now that",
       "(B) once",
-      "(C) however",
-      "(D) despite"
+      "(C) unless",
+      "(D) when"
     ],
     "answer": 1,
     "answer_word": "once",
@@ -3458,9 +3458,9 @@
     "diff": "hard",
     "sentence": "The biosecurity protocol mandates that all pathogen samples be immediately destroyed _______ a researcher's continued access to them serves a clearly documented scientific purpose.",
     "choices": [
-      "(A) due to",
-      "(B) however",
-      "(C) despite",
+      "(A) yet",
+      "(B) while",
+      "(C) but",
       "(D) unless"
     ],
     "answer": 3,
@@ -3488,9 +3488,9 @@
     "sentence": "The fintech regulator will grant expedited review timelines to applicants _______ they can demonstrate that their product meaningfully addresses an underserved financial need.",
     "choices": [
       "(A) provided that",
-      "(B) despite",
-      "(C) due to",
-      "(D) however"
+      "(B) until",
+      "(C) while",
+      "(D) so that"
     ],
     "answer": 0,
     "answer_word": "provided that",
@@ -3516,12 +3516,12 @@
     "diff": "hard",
     "sentence": "The circular economy initiative will be implemented across all manufacturing divisions _______ the pilot program achieves a minimum recycled materials recovery rate of sixty percent.",
     "choices": [
-      "(A) despite",
-      "(B) once",
-      "(C) due to",
-      "(D) however"
+      "(A) whereas",
+      "(B) yet",
+      "(C) once",
+      "(D) so that"
     ],
-    "answer": 1,
+    "answer": 2,
     "answer_word": "once",
     "explanation_kr": "빈칸 뒤 절(S+V) → 접속사! 시간(완료 후 조건) → once = '일단 ~하면'!",
     "explanation": "절(S+V) 앞 → 접속사. 시간 순서 → once.",
@@ -3545,12 +3545,12 @@
     "diff": "hard",
     "sentence": "The gig economy platform will be required to provide workers with itemized pay statements _______ the new algorithmic transparency legislation comes into force next January.",
     "choices": [
-      "(A) however",
-      "(B) despite",
-      "(C) as soon as",
-      "(D) due to"
+      "(A) as soon as",
+      "(B) since",
+      "(C) before",
+      "(D) once"
     ],
-    "answer": 2,
+    "answer": 0,
     "answer_word": "as soon as",
     "explanation_kr": "빈칸 뒤 절(S+V) → 접속사! 즉시 시간 → as soon as = '~하자마자'!",
     "explanation": "절(S+V) 앞 → 접속사. 즉시 시간 → as soon as.",
@@ -3574,12 +3574,12 @@
     "diff": "hard",
     "sentence": "The longevity drug will not be approved for mainstream clinical use _______ a minimum of three independent replication studies have confirmed the original trial's findings.",
     "choices": [
-      "(A) until",
-      "(B) however",
-      "(C) despite",
-      "(D) due to"
+      "(A) for",
+      "(B) during",
+      "(C) through",
+      "(D) until"
     ],
-    "answer": 0,
+    "answer": 3,
     "answer_word": "until",
     "explanation_kr": "빈칸 뒤 절(S+V) → 접속사! 시간 한계 → until = '~할 때까지'!",
     "explanation": "절(S+V) 앞 → 접속사. 시간 한계 → until.",
@@ -3603,12 +3603,12 @@
     "diff": "hard",
     "sentence": "The international AI safety board reached a consensus on the need for mandatory capability evaluations; _______, agreeing on the specific technical benchmarks and enforcement mechanisms proved considerably more difficult.",
     "choices": [
-      "(A) due to",
-      "(B) despite",
-      "(C) although",
-      "(D) however"
+      "(A) particularly",
+      "(B) instead",
+      "(C) however",
+      "(D) specifically"
     ],
-    "answer": 3,
+    "answer": 2,
     "answer_word": "however",
     "explanation_kr": "세미콜론 뒤 역접 접속부사! 합의 도달(긍정) ↔ 세부 기준 합의 어려움(반전). however = '하지만' 역접!",
     "explanation": "세미콜론 뒤 → 접속부사. 역접 의미 → however.",
