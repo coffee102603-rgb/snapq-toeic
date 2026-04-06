@@ -917,7 +917,14 @@ elif st.session_state.phase=="victory":
     # ── 토리 한 줄 ──
     _nick_v = st.session_state.get("battle_nickname") or st.session_state.get("nickname","전사")
     _tori_v = f"⛓ 포획 대기 중" if _wr_v > 0 else "전원 격파!"
-    st.markdown(f'<div style="text-align:center;padding:6px 0;font-size:0.82rem;color:#aa8855;font-weight:700;letter-spacing:1px;">토리: {_nick_v}! {_tori_v} 사령부에 보고하라.</div>', unsafe_allow_html=True)
+    # ── 토리 Victory 이미지 ──
+    _ASSETS_V = os.path.join(os.path.dirname(os.path.dirname(__file__)), "assets")
+    _tori_v_img = os.path.join(_ASSETS_V, "tori_victory.png")
+    _tv1, _tv2 = st.columns([1, 3])
+    with _tv1:
+        if os.path.exists(_tori_v_img): st.image(_tori_v_img, width=70)
+    with _tv2:
+        st.markdown(f'<div style="background:#1a0800;border:1.5px solid #ff6600;border-radius:10px;padding:10px 12px;margin-top:6px;"><div style="font-size:13px;font-weight:900;color:#ffaa44;">토리: {_nick_v}! {_tori_v} 사령부에 보고하라.</div></div>', unsafe_allow_html=True)
 
     st.markdown("""<style>
     @keyframes zapPulse{
@@ -1142,7 +1149,14 @@ elif st.session_state.phase=="lost":
 
     # ── 토리 한 줄 ──
     _nick_go = st.session_state.get("battle_nickname") or st.session_state.get("nickname","전사")
-    st.markdown(f'<div style="text-align:center;padding:6px 0;font-size:0.82rem;color:#884444;font-weight:700;letter-spacing:1px;">토리: {_nick_go}! 후퇴! 재정비 후 재출격!</div>', unsafe_allow_html=True)
+    # ── 토리 Warning 이미지 ──
+    _ASSETS_GO = os.path.join(os.path.dirname(os.path.dirname(__file__)), "assets")
+    _tori_w_img = os.path.join(_ASSETS_GO, "tori_warning.png")
+    _tw1, _tw2 = st.columns([1, 3])
+    with _tw1:
+        if os.path.exists(_tori_w_img): st.image(_tori_w_img, width=70)
+    with _tw2:
+        st.markdown(f'<div style="background:#1a0000;border:1.5px solid #cc2244;border-radius:10px;padding:10px 12px;margin-top:6px;"><div style="font-size:13px;font-weight:900;color:#ff6644;">토리: {_nick_go}! 후퇴! 재정비 후 재출격!</div></div>', unsafe_allow_html=True)
 
     st.markdown("""<style>
     div[data-testid="stButton"]:nth-of-type(1) button{
@@ -1729,13 +1743,29 @@ div[data-testid="stButton"] button.fp-nav p { color:#3d5066 !important; }
         5문제 · 살아남아라! · 문법어휘 실전 포격전</div>
     </div>""", unsafe_allow_html=True)
 
-    import streamlit.components.v1 as _nc
-    # NPC_BOARD
+    # ── 토리 NPC 배너 (이미지 + 메시지) ──
+    import random as _rnd_npc
+    _ASSETS_DIR = os.path.join(os.path.dirname(os.path.dirname(__file__)), "assets")
     _npc_nick = st.session_state.get('student_nickname', '')
-    _npc_html = """<div id='npc-board' style='background:rgba(10,5,20,0.96);border:1.5px solid #cc6633;border-radius:10px;padding:10px 14px;text-align:center;margin-bottom:4px;'><span id='npc-icon' style='font-size:28px;margin-bottom:4px;animation:iconPop 0.9s ease-in-out infinite;display:block;'></span><div id='npc-txt' style='font-size:13px;font-weight:900;color:#fff;min-height:20px;'></div></div><style>@keyframes iconPop{0%,100%{transform:scale(1)}50%{transform:scale(1.18)}}</style><script>(function(){var KEY='snapq_tour_day';var today=new Date().toISOString().slice(0,10);var raw=localStorage.getItem(KEY);var data=raw?JSON.parse(raw):{'first':''};if(!data.first){data.first=today;localStorage.setItem(KEY,JSON.stringify(data));}var diff=(new Date(today)-new Date(data.first))/(1000*60*60*24);var nick='__NICK__';var tour=[["🔥💥", "토리: 전장에 온 걸 환영한다! 30초부터 시작!"], ["🎯⚡", "토리: SNIPER 모드로 워밍업! 50초다!"], ["⚔️🔥", "토리: 약점을 찾아서 박살 내자!"], ["💥🏆", "토리: BLITZ 정복하면 진짜 전사다!"]];var inbody=[["🔥⚡", "토리: __NICK__! 오늘도 불처럼!"], ["🎯💥", "토리: __NICK__! 약점 카테고리 집중 공략!"], ["⏱️🏆", "토리: __NICK__! BLITZ 도전할 때다!"]];inbody=inbody.map(function(m){return[m[0],m[1].replace(/__NICK__/g,nick)];});var msgs=diff<3?tour:inbody;var ic=document.getElementById('npc-icon');var tx=document.getElementById('npc-txt');var mi=0,ci=0;function run(){var m=msgs[mi%msgs.length];ic.textContent=m[0];if(ci<m[1].length){tx.textContent+=m[1][ci++];setTimeout(run,45);}else{setTimeout(function(){tx.textContent='';ci=0;mi++;run();},3500);}}setTimeout(run,500);})();</script>"""
-    _npc_html = _npc_html.replace('__NICK__', _npc_nick)
-    import streamlit.components.v1 as _nc
-    _nc.html(_npc_html, height=80)
+    _tori_msgs = [
+        f"토리: {_npc_nick}! 오늘도 불처럼!",
+        f"토리: {_npc_nick}! 약점 카테고리 집중 공략!",
+        f"토리: {_npc_nick}! BLITZ 도전할 때다!",
+        f"토리: {_npc_nick}! 전장에서 기다린다!",
+    ]
+    _tori_img = os.path.join(_ASSETS_DIR, "tori_normal.png")
+    _tori_msg = _rnd_npc.choice(_tori_msgs) if _npc_nick else "토리: 전장에 온 걸 환영한다!"
+    _tc_img, _tc_txt = st.columns([1, 3])
+    with _tc_img:
+        if os.path.exists(_tori_img):
+            st.image(_tori_img, width=75)
+    with _tc_txt:
+        st.markdown(f'''<div style="background:rgba(10,5,20,0.96);border:1.5px solid #cc6633;
+            border-radius:10px;padding:12px 14px;margin-top:6px;">
+            <div style="font-size:13px;font-weight:900;color:#ffaa44;letter-spacing:0.5px;">
+            {_tori_msg}</div>
+        </div>''', unsafe_allow_html=True)
+
     # ── COMBAT TIME 섹션 ──
     st.markdown('<div style="height:4px;"></div>', unsafe_allow_html=True)
     st.markdown('<div style="font-size:9px;color:#cc6633;letter-spacing:4px;padding:4px 0 6px;font-weight:700;">⚡  COMBAT TIME</div>', unsafe_allow_html=True)
