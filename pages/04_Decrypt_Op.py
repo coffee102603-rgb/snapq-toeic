@@ -467,14 +467,15 @@ div[data-testid="stButton"] button.p7nav:hover{
     import random as _rnd_npc2
     _ASSETS_DIR2 = os.path.join(os.path.dirname(os.path.dirname(__file__)), "assets")
     _npc_nick = st.session_state.get('student_nickname', '')
+    _HB = '<span style="background:#001520;border:1px solid #00ccee;border-radius:5px;padding:1px 8px;color:#00ddff;font-weight:900;font-size:11px;letter-spacing:2px;">HAE</span>'
     _hae_msgs = [
-        f"해: {_npc_nick}, 답은 지문 안에 있다.",
-        f"해: {_npc_nick}, 시간 줄일 준비 됐나?",
-        f"해: {_npc_nick}, 유형별 현황 분석 완료.",
-        f"해: {_npc_nick}, 신호에 집중하라.",
+        f"{_HB} {_npc_nick}, 답은 지문 안에 있다.",
+        f"{_HB} {_npc_nick}, 시간 줄일 준비 됐나?",
+        f"{_HB} {_npc_nick}, 유형별 현황 분석 완료.",
+        f"{_HB} {_npc_nick}, 신호에 집중하라.",
     ]
     _hae_img = os.path.join(_ASSETS_DIR2, "hae_normal.png")
-    _hae_msg = _rnd_npc2.choice(_hae_msgs) if _npc_nick else "해: 정독이 답이다. 집중."
+    _hae_msg = _rnd_npc2.choice(_hae_msgs) if _npc_nick else "{_HB} 정독이 답이다. 집중."
     _hc_img, _hc_txt = st.columns([1, 3])
     with _hc_img:
         if os.path.exists(_hae_img):
@@ -979,6 +980,7 @@ elif st.session_state.p7_phase == "victory":
         <div style="font-size:0.72rem;color:#555;margin-top:2px;">지금 브리핑에서 핵심표현 무기로 장착하라!</div>
     </div>''', unsafe_allow_html=True)
     _nick_cl = st.session_state.get("battle_nickname") or st.session_state.get("nickname","요원")
+    _HB = '<span style="background:#001520;border:1px solid #00ccee;border-radius:5px;padding:1px 8px;color:#00ddff;font-weight:900;font-size:11px;letter-spacing:2px;">HAE</span>'
     # ── 해 Victory 이미지 ──
     _ASSETS_CL = os.path.join(os.path.dirname(os.path.dirname(__file__)), "assets")
     _hae_v_img = os.path.join(_ASSETS_CL, "hae_victory.png")
@@ -986,7 +988,7 @@ elif st.session_state.p7_phase == "victory":
     with _hv1:
         if os.path.exists(_hae_v_img): st.image(_hae_v_img, width=70)
     with _hv2:
-        st.markdown(f'<div style="background:#001520;border:1.5px solid #00ccee;border-radius:10px;padding:10px 12px;margin-top:6px;"><div style="font-size:13px;font-weight:900;color:#00ccee;">해: {_nick_cl}, 정보 확보 완료. 브리핑 준비.</div></div>', unsafe_allow_html=True)
+        st.markdown(f'<div style="background:#001520;border:1.5px solid #00ccee;border-radius:10px;padding:10px 12px;margin-top:6px;"><div style="font-size:13px;font-weight:900;color:#00ccee;">{_HB} {_nick_cl}, 정보 확보 완료. 브리핑 준비.</div></div>', unsafe_allow_html=True)
     st.markdown('''<style>
     button[data-testid="stBaseButton-primary"]{
         background:#0c0c00!important;border:2px solid #00ccee!important;
@@ -1080,6 +1082,7 @@ elif st.session_state.p7_phase == "lost":
     </div>''', unsafe_allow_html=True)
 
     _nick_go2 = st.session_state.get("battle_nickname") or st.session_state.get("nickname","요원")
+    _HB = '<span style="background:#001520;border:1px solid #00ccee;border-radius:5px;padding:1px 8px;color:#00ddff;font-weight:900;font-size:11px;letter-spacing:2px;">HAE</span>'
     # ── 해 Warning 이미지 ──
     _ASSETS_GO2 = os.path.join(os.path.dirname(os.path.dirname(__file__)), "assets")
     _hae_w_img = os.path.join(_ASSETS_GO2, "hae_warning.png")
@@ -1087,7 +1090,7 @@ elif st.session_state.p7_phase == "lost":
     with _hw1:
         if os.path.exists(_hae_w_img): st.image(_hae_w_img, width=70)
     with _hw2:
-        st.markdown(f'<div style="background:#1a0000;border:1.5px solid #cc2244;border-radius:10px;padding:10px 12px;margin-top:6px;"><div style="font-size:13px;font-weight:900;color:#ff6644;">해: {_nick_go2}, 통신 두절. 재접속하라.</div></div>', unsafe_allow_html=True)
+        st.markdown(f'<div style="background:#1a0000;border:1.5px solid #cc2244;border-radius:10px;padding:10px 12px;margin-top:6px;"><div style="font-size:13px;font-weight:900;color:#ff6644;">{_HB} {_nick_go2}, 통신 두절. 재접속하라.</div></div>', unsafe_allow_html=True)
 
     st.markdown('''<style>
     button[data-testid="stBaseButton-primary"]{

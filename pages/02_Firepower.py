@@ -917,6 +917,7 @@ elif st.session_state.phase=="victory":
     # ── 토리 한 줄 ──
     _nick_v = st.session_state.get("battle_nickname") or st.session_state.get("nickname","전사")
     _tori_v = f"⛓ 포획 대기 중" if _wr_v > 0 else "전원 격파!"
+    _TB = '<span style="background:#331100;border:1px solid #ff6600;border-radius:5px;padding:1px 8px;color:#ff8833;font-weight:900;font-size:11px;letter-spacing:2px;">TORI</span>'
     # ── 토리 Victory 이미지 ──
     _ASSETS_V = os.path.join(os.path.dirname(os.path.dirname(__file__)), "assets")
     _tori_v_img = os.path.join(_ASSETS_V, "tori_victory.png")
@@ -924,7 +925,7 @@ elif st.session_state.phase=="victory":
     with _tv1:
         if os.path.exists(_tori_v_img): st.image(_tori_v_img, width=70)
     with _tv2:
-        st.markdown(f'<div style="background:#1a0800;border:1.5px solid #ff6600;border-radius:10px;padding:10px 12px;margin-top:6px;"><div style="font-size:13px;font-weight:900;color:#ffaa44;">토리: {_nick_v}! {_tori_v} 사령부에 보고하라.</div></div>', unsafe_allow_html=True)
+        st.markdown(f'<div style="background:#1a0800;border:1.5px solid #ff6600;border-radius:10px;padding:10px 12px;margin-top:6px;"><div style="font-size:13px;font-weight:900;color:#ffaa44;">{_TB} {_nick_v}! {_tori_v} 사령부에 보고하라.</div></div>', unsafe_allow_html=True)
 
     st.markdown("""<style>
     @keyframes zapPulse{
@@ -1149,6 +1150,7 @@ elif st.session_state.phase=="lost":
 
     # ── 토리 한 줄 ──
     _nick_go = st.session_state.get("battle_nickname") or st.session_state.get("nickname","전사")
+    _TB = '<span style="background:#331100;border:1px solid #ff6600;border-radius:5px;padding:1px 8px;color:#ff8833;font-weight:900;font-size:11px;letter-spacing:2px;">TORI</span>'
     # ── 토리 Warning 이미지 ──
     _ASSETS_GO = os.path.join(os.path.dirname(os.path.dirname(__file__)), "assets")
     _tori_w_img = os.path.join(_ASSETS_GO, "tori_warning.png")
@@ -1156,7 +1158,7 @@ elif st.session_state.phase=="lost":
     with _tw1:
         if os.path.exists(_tori_w_img): st.image(_tori_w_img, width=70)
     with _tw2:
-        st.markdown(f'<div style="background:#1a0000;border:1.5px solid #cc2244;border-radius:10px;padding:10px 12px;margin-top:6px;"><div style="font-size:13px;font-weight:900;color:#ff6644;">토리: {_nick_go}! 후퇴! 재정비 후 재출격!</div></div>', unsafe_allow_html=True)
+        st.markdown(f'<div style="background:#1a0000;border:1.5px solid #cc2244;border-radius:10px;padding:10px 12px;margin-top:6px;"><div style="font-size:13px;font-weight:900;color:#ff6644;">{_TB} {_nick_go}! 후퇴! 재정비 후 재출격!</div></div>', unsafe_allow_html=True)
 
     st.markdown("""<style>
     div[data-testid="stButton"]:nth-of-type(1) button{
@@ -1747,14 +1749,15 @@ div[data-testid="stButton"] button.fp-nav p { color:#3d5066 !important; }
     import random as _rnd_npc
     _ASSETS_DIR = os.path.join(os.path.dirname(os.path.dirname(__file__)), "assets")
     _npc_nick = st.session_state.get('student_nickname', '')
+    _TB = '<span style="background:#331100;border:1px solid #ff6600;border-radius:5px;padding:1px 8px;color:#ff8833;font-weight:900;font-size:11px;letter-spacing:2px;">TORI</span>'
     _tori_msgs = [
-        f"토리: {_npc_nick}! 오늘도 불처럼!",
-        f"토리: {_npc_nick}! 약점 카테고리 집중 공략!",
-        f"토리: {_npc_nick}! BLITZ 도전할 때다!",
-        f"토리: {_npc_nick}! 전장에서 기다린다!",
+        f"{_TB} {_npc_nick}! 오늘도 불처럼!",
+        f"{_TB} {_npc_nick}! 약점 카테고리 집중 공략!",
+        f"{_TB} {_npc_nick}! BLITZ 도전할 때다!",
+        f"{_TB} {_npc_nick}! 전장에서 기다린다!",
     ]
     _tori_img = os.path.join(_ASSETS_DIR, "tori_normal.png")
-    _tori_msg = _rnd_npc.choice(_tori_msgs) if _npc_nick else "토리: 전장에 온 걸 환영한다!"
+    _tori_msg = _rnd_npc.choice(_tori_msgs) if _npc_nick else "{_TB} 전장에 온 걸 환영한다!"
     _tc_img, _tc_txt = st.columns([1, 3])
     with _tc_img:
         if os.path.exists(_tori_img):
