@@ -184,7 +184,7 @@ button[kind="primary"] p{font-size:1.2rem!important;font-weight:900!important;te
 button[kind="secondary"]{background:#111111!important;color:#ffffff!important;border:2px solid #ffffff!important;border-radius:10px!important;font-size:1.2rem!important;font-weight:900!important;padding:0.48rem 0.5rem!important;box-shadow:0 0 10px rgba(255,255,255,0.3)!important;text-align:center!important;min-height:43px!important;}
 button[kind="secondary"] p{font-size:1.2rem!important;font-weight:900!important;text-align:center!important;color:#ffffff!important;}
 
-/* P7 지문 카드 */
+/* 지문 카드 */
 .p7-pass{background:linear-gradient(145deg,#001a22,#002233);border:2px solid rgba(0,180,220,0.7);border-radius:18px;padding:1.5rem;margin:0.5rem 0;box-shadow:0 0 20px rgba(0,180,220,0.15);}
 .p7-sent{color:#e8e0cc;font-size:0.82rem;font-weight:400;line-height:1.55;}
 .p7-new{color:#9aa5b4;font-weight:400;font-size:0.82rem;}
@@ -242,7 +242,7 @@ button[kind="primary"] p,button[kind="secondary"] p{font-size:1rem!important;}
 .stButton button{min-height:43px!important;padding:4px 6px!important;}
 .stButton button p{font-size:1.0rem!important;}
 
-/* P7브리핑 버튼 강제 가로배치 */
+/* 브리핑 버튼 강제 가로배치 */
 @media (max-width: 768px) {
     div[data-testid="stHorizontalBlock"] {
         flex-wrap: nowrap !important;
@@ -465,7 +465,7 @@ div[data-testid="stButton"] button.p7nav:hover{
     import streamlit.components.v1 as _nc
     # NPC_BOARD
     _npc_nick = st.session_state.get('student_nickname', '')
-    _npc_html = """<div id='npc-board' style='background:rgba(10,5,20,0.96);border:1.5px solid #0099cc;border-radius:10px;padding:10px 14px;text-align:center;margin-bottom:4px;'><span id='npc-icon' style='font-size:28px;margin-bottom:4px;animation:iconPop 0.9s ease-in-out infinite;display:block;'></span><div id='npc-txt' style='font-size:13px;font-weight:900;color:#fff;min-height:20px;'></div></div><style>@keyframes iconPop{0%,100%{transform:scale(1)}50%{transform:scale(1.18)}}</style><script>(function(){var KEY='snapq_tour_day';var today=new Date().toISOString().slice(0,10);var raw=localStorage.getItem(KEY);var data=raw?JSON.parse(raw):{'first':''};if(!data.first){data.first=today;localStorage.setItem(KEY,JSON.stringify(data));}var diff=(new Date(today)-new Date(data.first))/(1000*60*60*24);var nick='__NICK__';var tour=[["🎯🔍", "100s PRECISION으로 시작! 똑바로 이해해랏!"], ["🕵️⚠️", "P7은 찍으면 다 오답! 이해하면 다 정답!"], ["⏱️💡", "시간 욕심 버려! 이해 욕심 챙겨!"], ["📡🔓", "SIGNAL→BLACKOUT 난이도 순서로 정복!"]];var inbody=[["📡💡", "__NICK__야, 지문 속에 답 있다!"], ["⏱️🔓", "__NICK__야, 이제 시간 줄여볼 때!"], ["📋🏆", "__NICK__야, 유형별 정복 현황 확인해봐!"]];inbody=inbody.map(function(m){return[m[0],m[1].replace(/__NICK__/g,nick)];});var msgs=diff<3?tour:inbody;var ic=document.getElementById('npc-icon');var tx=document.getElementById('npc-txt');var mi=0,ci=0;function run(){var m=msgs[mi%msgs.length];ic.textContent=m[0];if(ci<m[1].length){tx.textContent+=m[1][ci++];setTimeout(run,45);}else{setTimeout(function(){tx.textContent='';ci=0;mi++;run();},3500);}}setTimeout(run,500);})();</script>"""
+    _npc_html = """<div id='npc-board' style='background:rgba(10,5,20,0.96);border:1.5px solid #0099cc;border-radius:10px;padding:10px 14px;text-align:center;margin-bottom:4px;'><span id='npc-icon' style='font-size:28px;margin-bottom:4px;animation:iconPop 0.9s ease-in-out infinite;display:block;'></span><div id='npc-txt' style='font-size:13px;font-weight:900;color:#fff;min-height:20px;'></div></div><style>@keyframes iconPop{0%,100%{transform:scale(1)}50%{transform:scale(1.18)}}</style><script>(function(){var KEY='snapq_tour_day';var today=new Date().toISOString().slice(0,10);var raw=localStorage.getItem(KEY);var data=raw?JSON.parse(raw):{'first':''};if(!data.first){data.first=today;localStorage.setItem(KEY,JSON.stringify(data));}var diff=(new Date(today)-new Date(data.first))/(1000*60*60*24);var nick='__NICK__';var tour=[["🎯🔍", "해: PRECISION 모드로 시작. 정독이 답이다."], ["🕵️⚠️", "해: 찍으면 전멸. 이해하면 클리어."], ["⏱️💡", "해: 시간 욕심은 버려. 이해가 먼저."], ["📡🔓", "해: SIGNAL부터 정복. 단계별로."]];var inbody=[["📡💡", "해: __NICK__, 답은 지문 안에 있다."], ["⏱️🔓", "해: __NICK__, 시간 줄일 준비 됐나?"], ["📋🏆", "해: __NICK__, 유형별 현황 분석 완료."]];inbody=inbody.map(function(m){return[m[0],m[1].replace(/__NICK__/g,nick)];});var msgs=diff<3?tour:inbody;var ic=document.getElementById('npc-icon');var tx=document.getElementById('npc-txt');var mi=0,ci=0;function run(){var m=msgs[mi%msgs.length];ic.textContent=m[0];if(ci<m[1].length){tx.textContent+=m[1][ci++];setTimeout(run,45);}else{setTimeout(function(){tx.textContent='';ci=0;mi++;run();},3500);}}setTimeout(run,500);})();</script>"""
     _npc_html = _npc_html.replace('__NICK__', _npc_nick)
     import streamlit.components.v1 as _nc
     _nc.html(_npc_html, height=80)
@@ -961,6 +961,8 @@ elif st.session_state.p7_phase == "victory":
         <div style="font-size:0.82rem;color:#00ccee;font-weight:700;">⚡ 3번 반복하면 장기기억 전환율 3배!</div>
         <div style="font-size:0.72rem;color:#555;margin-top:2px;">지금 브리핑에서 핵심표현 무기로 장착하라!</div>
     </div>''', unsafe_allow_html=True)
+    _nick_cl = st.session_state.get("battle_nickname") or st.session_state.get("nickname","요원")
+    st.markdown(f'<div style="text-align:center;padding:6px 0;font-size:0.82rem;color:#559999;font-weight:700;letter-spacing:1px;">해: {_nick_cl}, 정보 확보 완료. 브리핑 준비.</div>', unsafe_allow_html=True)
     st.markdown('''<style>
     button[data-testid="stBaseButton-primary"]{
         background:#0c0c00!important;border:2px solid #00ccee!important;
@@ -1052,6 +1054,9 @@ elif st.session_state.p7_phase == "lost":
         <div style="font-size:0.92rem;color:#ff4466;font-weight:700;margin-bottom:4px;">{_nag1}</div>
         <div style="font-size:0.78rem;color:#664433;">{_nag2}</div>
     </div>''', unsafe_allow_html=True)
+
+    _nick_go2 = st.session_state.get("battle_nickname") or st.session_state.get("nickname","요원")
+    st.markdown(f'<div style="text-align:center;padding:6px 0;font-size:0.82rem;color:#884444;font-weight:700;letter-spacing:1px;">해: {_nick_go2}, 통신 두절. 재접속하라.</div>', unsafe_allow_html=True)
 
     st.markdown('''<style>
     button[data-testid="stBaseButton-primary"]{
@@ -1275,7 +1280,7 @@ div[data-testid="stButton"] button.br-home p{color:#3d5066!important;}
                 f'<div style="background:#04080a;border:1.5px solid rgba(0,150,100,0.25);border-left:4px solid #336644;border-radius:12px;padding:10px;opacity:0.85;">' +
                 f'<div style="font-size:13px;font-weight:800;color:#ddeeff;line-height:1.75;margin-bottom:5px;">{_hl}</div>' +
                 f'<div style="font-size:12px;color:#99bbcc;font-weight:600;margin-bottom:6px;">{sent_kr}</div>' +
-                '<span style="background:#001520;border:1px solid #006688;border-radius:6px;padding:2px 8px;font-size:8px;color:#00ccee;font-weight:700;">✅ 포로 등록 완료 · 포로사령부 대기중</span>' +
+                '<span style="background:#001520;border:1px solid #006688;border-radius:6px;padding:2px 8px;font-size:8px;color:#00ccee;font-weight:700;">✅ 포획 완료 · 수용소 대기중</span>' +
                 '</div>',
                 unsafe_allow_html=True)
         else:
@@ -1289,7 +1294,7 @@ div[data-testid="stButton"] button.br-home p{color:#3d5066!important;}
 
             # 저장 버튼
             _sv_key = f"br_sv_{bi}_{si}"
-            _btn_label = "💾 증거 확보! → 포로 등록" if ok else "💾 오답 증거 — 반드시 확보!"
+            _btn_label = "📌 정보 포획! → 수용소 이송" if ok else "⛓ 오답 정보 — 자동 포획!"
             if st.button(_btn_label, key=_sv_key, use_container_width=True):
                 sent_data = dict(s)
                 sent_data["sentences"] = [sent]
@@ -1359,8 +1364,8 @@ div[data-testid="stButton"] button.br-home p{color:#3d5066!important;}
       if(!txt) return;
       if(txt.startsWith("Q") && (txt.indexOf("✅")>-1||txt.indexOf("❌")>-1||txt.match(/^Q\d/)))
         b.classList.add("br-qtab");
-      if(txt.indexOf("증거 확보")>-1) b.classList.add("br-save");
-      if(txt.indexOf("오답 증거")>-1) b.classList.add("br-save-wrong");
+      if(txt.indexOf("정보 포획")>-1) b.classList.add("br-save");
+      if(txt.indexOf("오답 정보")>-1) b.classList.add("br-save-wrong");
       if(txt.indexOf("포로사령부!")>-1) b.classList.add("br-pow");
       if(txt.indexOf("홈")>-1 && txt.length<5) b.classList.add("br-home");
     }});
