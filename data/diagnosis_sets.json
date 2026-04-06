@@ -12,7 +12,9 @@
           "has postponed"
         ],
         "answer_index": 0,
-        "explanation": "to부정사 뒤에는 동사원형이 옵니다."
+        "explanation": "to부정사 뒤에는 동사원형이 옵니다.",
+        "cat": "동사형태",
+        "diff": "normal"
       },
       {
         "id": "d1_p5_2",
@@ -24,7 +26,9 @@
           "throughout"
         ],
         "answer_index": 2,
-        "explanation": "by는 기한을 나타내며 까지라는 의미입니다."
+        "explanation": "by는 기한을 나타내며 까지라는 의미입니다.",
+        "cat": "전치사",
+        "diff": "easy"
       },
       {
         "id": "d1_p5_3",
@@ -36,7 +40,9 @@
           "comprehension"
         ],
         "answer_index": 1,
-        "explanation": "so 뒤에는 형용사가 오며 comprehensive는 포괄적인이라는 뜻입니다."
+        "explanation": "so 뒤에는 형용사가 오며 comprehensive는 포괄적인이라는 뜻입니다.",
+        "cat": "어휘",
+        "diff": "normal"
       },
       {
         "id": "d1_p5_4",
@@ -48,7 +54,9 @@
           "Nevertheless"
         ],
         "answer_index": 0,
-        "explanation": "Despite는 전치사로 명사구 앞에 사용됩니다."
+        "explanation": "Despite는 전치사로 명사구 앞에 사용됩니다.",
+        "cat": "접속사",
+        "diff": "normal"
       },
       {
         "id": "d1_p5_5",
@@ -60,7 +68,9 @@
           "implementing"
         ],
         "answer_index": 2,
-        "explanation": "수동태 구조에서 implemented가 적절합니다."
+        "explanation": "수동태 구조에서 implemented가 적절합니다.",
+        "cat": "수동태",
+        "diff": "normal"
       },
       {
         "id": "d1_p5_6",
@@ -72,7 +82,9 @@
           "which"
         ],
         "answer_index": 2,
-        "explanation": "뒤에 명사가 오므로 소유격 관계대명사 whose가 적절합니다."
+        "explanation": "뒤에 명사가 오므로 소유격 관계대명사 whose가 적절합니다.",
+        "cat": "관계대명사",
+        "diff": "normal"
       },
       {
         "id": "d1_p5_7",
@@ -84,7 +96,9 @@
           "to allocate"
         ],
         "answer_index": 2,
-        "explanation": "recommend는 동명사를 목적어로 취합니다."
+        "explanation": "recommend는 동명사를 목적어로 취합니다.",
+        "cat": "동명사",
+        "diff": "normal"
       },
       {
         "id": "d1_p5_8",
@@ -96,7 +110,9 @@
           "proficiencies"
         ],
         "answer_index": 1,
-        "explanation": "demonstrate의 목적어로 명사 proficiency가 적절합니다."
+        "explanation": "demonstrate의 목적어로 명사 proficiency가 적절합니다.",
+        "cat": "어휘",
+        "diff": "normal"
       },
       {
         "id": "d1_p5_9",
@@ -108,7 +124,9 @@
           "complying"
         ],
         "answer_index": 0,
-        "explanation": "to부정사 뒤에는 동사원형이 오며 comply with는 준수하다라는 뜻입니다."
+        "explanation": "to부정사 뒤에는 동사원형이 오며 comply with는 준수하다라는 뜻입니다.",
+        "cat": "동사형태",
+        "diff": "easy"
       },
       {
         "id": "d1_p5_10",
@@ -120,7 +138,9 @@
           "distribution"
         ],
         "answer_index": 1,
-        "explanation": "수동태 구조에서 distributed가 적절합니다."
+        "explanation": "수동태 구조에서 distributed가 적절합니다.",
+        "cat": "어휘",
+        "diff": "normal"
       }
     ],
     "p7": {
@@ -162,7 +182,8 @@
           "answer_index": 1,
           "explanation": "미등록 공급업체는 등록 완료 전까지 구매 주문을 받을 수 없습니다."
         }
-      ]
+      ],
+      "passage_id": "day1_p7"
     }
   },
   "day10": {
@@ -178,7 +199,9 @@
           "continuously"
         ],
         "answer_index": 3,
-        "explanation": "동사 improve를 수식하는 부사 continuously가 적절합니다."
+        "explanation": "동사 improve를 수식하는 부사 continuously가 적절합니다.",
+        "cat": "품사전환(부사)",
+        "diff": "normal"
       },
       {
         "id": "d10_p5_2",
@@ -190,7 +213,9 @@
           "augmentation"
         ],
         "answer_index": 0,
-        "explanation": "would 뒤에는 동사원형이 오며 augment는 증가시키다라는 뜻입니다."
+        "explanation": "would 뒤에는 동사원형이 오며 augment는 증가시키다라는 뜻입니다.",
+        "cat": "어휘",
+        "diff": "hard"
       },
       {
         "id": "d10_p5_3",
@@ -202,7 +227,9 @@
           "familiarly"
         ],
         "answer_index": 2,
-        "explanation": "to부정사 뒤에는 동사원형이 오며 familiarize oneself with는 익숙해지다라는 뜻입니다."
+        "explanation": "to부정사 뒤에는 동사원형이 오며 familiarize oneself with는 익숙해지다라는 뜻입니다.",
+        "cat": "동사형태",
+        "diff": "normal"
       },
       {
         "id": "d10_p5_4",
@@ -214,7 +241,9 @@
           "being"
         ],
         "answer_index": 0,
-        "explanation": "stipulate that 절에서는 동사원형을 사용합니다."
+        "explanation": "stipulate that 절에서는 동사원형을 사용합니다.",
+        "cat": "가정법/당위",
+        "diff": "hard"
       },
       {
         "id": "d10_p5_5",
@@ -226,7 +255,9 @@
           "signify"
         ],
         "answer_index": 2,
-        "explanation": "delayed를 수식하는 부사 significantly가 적절합니다."
+        "explanation": "delayed를 수식하는 부사 significantly가 적절합니다.",
+        "cat": "품사전환(부사)",
+        "diff": "normal"
       },
       {
         "id": "d10_p5_6",
@@ -238,7 +269,9 @@
           "to use"
         ],
         "answer_index": 2,
-        "explanation": "주어 자리에 동명사 using이 적절합니다."
+        "explanation": "주어 자리에 동명사 using이 적절합니다.",
+        "cat": "동명사",
+        "diff": "normal"
       },
       {
         "id": "d10_p5_7",
@@ -250,7 +283,9 @@
           "consideration"
         ],
         "answer_index": 2,
-        "explanation": "형용사 inadequate를 수식하는 부사 considerably가 적절합니다."
+        "explanation": "형용사 inadequate를 수식하는 부사 considerably가 적절합니다.",
+        "cat": "품사전환(부사)",
+        "diff": "normal"
       },
       {
         "id": "d10_p5_8",
@@ -262,7 +297,9 @@
           "require"
         ],
         "answer_index": 1,
-        "explanation": "It is required that은 하는 것이 요구된다는 관용 표현입니다."
+        "explanation": "It is required that은 하는 것이 요구된다는 관용 표현입니다.",
+        "cat": "수동태",
+        "diff": "normal"
       },
       {
         "id": "d10_p5_9",
@@ -274,7 +311,9 @@
           "what"
         ],
         "answer_index": 1,
-        "explanation": "콤마가 있으므로 계속적 용법의 which가 적절합니다."
+        "explanation": "콤마가 있으므로 계속적 용법의 which가 적절합니다.",
+        "cat": "관계대명사",
+        "diff": "normal"
       },
       {
         "id": "d10_p5_10",
@@ -286,7 +325,9 @@
           "conduction"
         ],
         "answer_index": 0,
-        "explanation": "to부정사 뒤에는 동사원형이 오며 conduct는 수행하다라는 뜻입니다."
+        "explanation": "to부정사 뒤에는 동사원형이 오며 conduct는 수행하다라는 뜻입니다.",
+        "cat": "동사형태",
+        "diff": "easy"
       }
     ],
     "p7": {
@@ -328,7 +369,8 @@
           "answer_index": 2,
           "explanation": "통지 기간이 90일에서 180일로 연장되었습니다."
         }
-      ]
+      ],
+      "passage_id": "day10_p7"
     }
   },
   "day20": {
@@ -344,7 +386,9 @@
           "whenever"
         ],
         "answer_index": 0,
-        "explanation": "whether는 인지 아닌지라는 의미로 명사절을 이끕니다."
+        "explanation": "whether는 인지 아닌지라는 의미로 명사절을 이끕니다.",
+        "cat": "접속사",
+        "diff": "hard"
       },
       {
         "id": "d20_p5_2",
@@ -356,7 +400,9 @@
           "regardless"
         ],
         "answer_index": 1,
-        "explanation": "수동태 구조에서 regarded가 적절하며 be regarded as는 로 간주되다라는 뜻입니다."
+        "explanation": "수동태 구조에서 regarded가 적절하며 be regarded as는 로 간주되다라는 뜻입니다.",
+        "cat": "수동태",
+        "diff": "hard"
       },
       {
         "id": "d20_p5_3",
@@ -368,7 +414,9 @@
           "resisted"
         ],
         "answer_index": 2,
-        "explanation": "considerable의 수식을 받는 명사 resistance가 적절합니다."
+        "explanation": "considerable의 수식을 받는 명사 resistance가 적절합니다.",
+        "cat": "어휘",
+        "diff": "hard"
       },
       {
         "id": "d20_p5_4",
@@ -380,7 +428,9 @@
           "anticipating"
         ],
         "answer_index": 1,
-        "explanation": "가정법 과거완료에서 anticipated가 적절합니다."
+        "explanation": "가정법 과거완료에서 anticipated가 적절합니다.",
+        "cat": "가정법",
+        "diff": "hard"
       },
       {
         "id": "d20_p5_5",
@@ -392,7 +442,9 @@
           "consequently"
         ],
         "answer_index": 0,
-        "explanation": "rather는 오히려 그 대신에라는 의미로 대조적 내용을 연결합니다."
+        "explanation": "rather는 오히려 그 대신에라는 의미로 대조적 내용을 연결합니다.",
+        "cat": "접속부사",
+        "diff": "hard"
       },
       {
         "id": "d20_p5_6",
@@ -404,7 +456,9 @@
           "revision"
         ],
         "answer_index": 0,
-        "explanation": "mandate that 절에서는 동사원형을 사용합니다."
+        "explanation": "mandate that 절에서는 동사원형을 사용합니다.",
+        "cat": "동사형태",
+        "diff": "normal"
       },
       {
         "id": "d20_p5_7",
@@ -416,7 +470,9 @@
           "infeasible"
         ],
         "answer_index": 1,
-        "explanation": "주어 자리이므로 명사 feasibility가 적절합니다."
+        "explanation": "주어 자리이므로 명사 feasibility가 적절합니다.",
+        "cat": "어휘",
+        "diff": "hard"
       },
       {
         "id": "d20_p5_8",
@@ -428,7 +484,9 @@
           "to contact"
         ],
         "answer_index": 2,
-        "explanation": "before는 전치사로 뒤에 동명사가 옵니다."
+        "explanation": "before는 전치사로 뒤에 동명사가 옵니다.",
+        "cat": "동명사",
+        "diff": "normal"
       },
       {
         "id": "d20_p5_9",
@@ -440,7 +498,9 @@
           "contiguous"
         ],
         "answer_index": 0,
-        "explanation": "contingent upon은 에 달려있는이라는 관용 표현입니다."
+        "explanation": "contingent upon은 에 달려있는이라는 관용 표현입니다.",
+        "cat": "어휘",
+        "diff": "hard"
       },
       {
         "id": "d20_p5_10",
@@ -452,7 +512,9 @@
           "stricken"
         ],
         "answer_index": 0,
-        "explanation": "be able to 뒤에는 동사원형이 오며 strike a balance는 균형을 잡다라는 관용 표현입니다."
+        "explanation": "be able to 뒤에는 동사원형이 오며 strike a balance는 균형을 잡다라는 관용 표현입니다.",
+        "cat": "어휘(관용)",
+        "diff": "hard"
       }
     ],
     "p7": {
@@ -494,7 +556,8 @@
           "answer_index": 1,
           "explanation": "기술 투자는 더 이상 선택이 아니므로 투자하지 않으면 경쟁 우위를 유지하기 어렵습니다."
         }
-      ]
+      ],
+      "passage_id": "day20_p7"
     }
   }
 }
