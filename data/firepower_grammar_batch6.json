@@ -1,4 +1,4 @@
-[
+﻿[
   {
     "id": "GRM_626",
     "category": "GRAMMAR",
@@ -817,7 +817,7 @@
     "cat": "시제",
     "word_count": 11,
     "diff": "easy",
-    "sentence": "By the end of the sports season, the athlete _______ broken five national records.",
+    "sentence": "By the end of the sports season, the athlete _______ five national records.",
     "choices": [
       "(A) broke",
       "(B) will break",
