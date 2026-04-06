@@ -3045,64 +3045,6 @@
     ]
   },
   {
-    "id": "LINK_731",
-    "category": "LINK",
-    "cat": "전치사",
-    "word_count": 18,
-    "diff": "hard",
-    "sentence": "The community health trust is now operating _______ budget, having overspent _______ two consecutive financial years.",
-    "choices": [
-      "(A) in",
-      "(B) concerning",
-      "(C) following",
-      "(D) over"
-    ],
-    "answer": 3,
-    "answer_word": "over",
-    "explanation_kr": "빈칸 뒤 예산 명사 → 전치사! 초과 → over = '~을 초과하여'! over budget = '예산 초과'",
-    "explanation": "예산 명사 앞 → 전치사. over.",
-    "kr": "지역 사회 건강 트러스트는 2년 연속 지출 초과로 현재 예산을 초과하여 운영하고 있다.",
-    "expressions": [
-      {
-        "expr": "over budget",
-        "meaning": "예산 초과로 (전치사구)"
-      },
-      {
-        "expr": "operating over budget",
-        "meaning": "예산 초과 운영!"
-      }
-    ]
-  },
-  {
-    "id": "LINK_732",
-    "category": "LINK",
-    "cat": "전치사",
-    "word_count": 18,
-    "diff": "hard",
-    "sentence": "The school's Ofsted rating improved _______ outstanding _______ requires improvement in just eighteen months.",
-    "choices": [
-      "(A) from",
-      "(B) until",
-      "(C) between",
-      "(D) among"
-    ],
-    "answer": 0,
-    "answer_word": "from",
-    "explanation_kr": "from A to B = 'A에서 B로' 변화 전치사!",
-    "explanation": "변화 표현 → from A to B.",
-    "kr": "학교의 교육청 등급이 불과 18개월 만에 개선 필요에서 탁월함으로 향상되었다.",
-    "expressions": [
-      {
-        "expr": "from A to B",
-        "meaning": "A에서 B로 (변화 전치사)"
-      },
-      {
-        "expr": "improved from X to Y",
-        "meaning": "X에서 Y로 향상!"
-      }
-    ]
-  },
-  {
     "id": "LINK_733",
     "category": "LINK",
     "cat": "전치사",
@@ -3302,35 +3244,6 @@
       {
         "expr": "under a single structure",
         "meaning": "단일 구조 하에!"
-      }
-    ]
-  },
-  {
-    "id": "LINK_740",
-    "category": "LINK",
-    "cat": "전치사",
-    "word_count": 18,
-    "diff": "hard",
-    "sentence": "Average house prices in the borough rose _______ over fifty percent _______ the last decade, outpacing wage growth significantly.",
-    "choices": [
-      "(A) into",
-      "(B) below",
-      "(C) from",
-      "(D) by"
-    ],
-    "answer": 3,
-    "answer_word": "by",
-    "explanation_kr": "빈칸 뒤 수량 표현 → 전치사! 변화 정도 → by = '~만큼'!",
-    "explanation": "수량 표현 앞 → 전치사. by.",
-    "kr": "자치구의 평균 주택 가격이 지난 10년 동안 50% 이상만큼 상승하여 임금 상승률을 크게 앞질렀다.",
-    "expressions": [
-      {
-        "expr": "rose by + 수량",
-        "meaning": "~만큼 상승한 (정도 전치사)"
-      },
-      {
-        "expr": "rose by over fifty percent",
-        "meaning": "50% 이상 상승!"
       }
     ]
   },

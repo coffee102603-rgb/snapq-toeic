@@ -1450,35 +1450,6 @@
     ]
   },
   {
-    "id": "LINK_926",
-    "category": "LINK",
-    "cat": "전치사",
-    "word_count": 14,
-    "diff": "normal",
-    "sentence": "The climate report was compiled _______ data gathered _______ over fifty research stations.",
-    "choices": [
-      "(A) into",
-      "(B) unlike",
-      "(C) from",
-      "(D) before"
-    ],
-    "answer": 2,
-    "answer_word": "from",
-    "explanation_kr": "빈칸 뒤 출처 명사구 → 전치사! 출처 → from = '~에서 수집된'!",
-    "explanation": "출처 명사구 앞 → 전치사. 출처 의미 → from.",
-    "kr": "기후 보고서는 50개 이상의 연구소에서 수집된 데이터로 작성되었다.",
-    "expressions": [
-      {
-        "expr": "from + 출처 명사",
-        "meaning": "~에서 수집된 (전치사)"
-      },
-      {
-        "expr": "data from over fifty stations",
-        "meaning": "50개 이상 연구소 데이터!"
-      }
-    ]
-  },
-  {
     "id": "LINK_927",
     "category": "LINK",
     "cat": "전치사",
@@ -1508,35 +1479,6 @@
     ]
   },
   {
-    "id": "LINK_928",
-    "category": "LINK",
-    "cat": "전치사",
-    "word_count": 14,
-    "diff": "normal",
-    "sentence": "The government cut vehicle emission limits _______ twenty percent _______ the previous standard.",
-    "choices": [
-      "(A) before",
-      "(B) by",
-      "(C) about",
-      "(D) during"
-    ],
-    "answer": 1,
-    "answer_word": "by",
-    "explanation_kr": "빈칸 뒤 수량/비율 → 전치사! 변화 정도 → by = '~만큼'!",
-    "explanation": "수량 앞 → 전치사. 정도 의미 → by.",
-    "kr": "정부는 이전 기준보다 차량 배출 한도를 20%만큼 낮췄다.",
-    "expressions": [
-      {
-        "expr": "cut by + 비율",
-        "meaning": "~만큼 낮추다 (정도 전치사)"
-      },
-      {
-        "expr": "cut by twenty percent",
-        "meaning": "20% 감축!"
-      }
-    ]
-  },
-  {
     "id": "LINK_929",
     "category": "LINK",
     "cat": "전치사",
@@ -1562,64 +1504,6 @@
       {
         "expr": "across six major networks",
         "meaning": "6개 방송 네트워크에!"
-      }
-    ]
-  },
-  {
-    "id": "LINK_930",
-    "category": "LINK",
-    "cat": "전치사",
-    "word_count": 14,
-    "diff": "normal",
-    "sentence": "Community members can apply _______ the volunteer programme _______ the council website.",
-    "choices": [
-      "(A) with",
-      "(B) among",
-      "(C) via",
-      "(D) following"
-    ],
-    "answer": 2,
-    "answer_word": "via",
-    "explanation_kr": "빈칸 뒤 수단 명사구 → 전치사! 수단/경로 → via = '~을 통해'!",
-    "explanation": "수단 명사구 앞 → 전치사. 수단 의미 → via.",
-    "kr": "지역 사회 구성원들은 의회 웹사이트를 통해 봉사 프로그램에 지원할 수 있다.",
-    "expressions": [
-      {
-        "expr": "via + 수단 명사",
-        "meaning": "~을 통해 (전치사)"
-      },
-      {
-        "expr": "apply via the council website",
-        "meaning": "웹사이트를 통해 지원!"
-      }
-    ]
-  },
-  {
-    "id": "LINK_931",
-    "category": "LINK",
-    "cat": "전치사",
-    "word_count": 14,
-    "diff": "normal",
-    "sentence": "The pop-up art gallery was installed _______ an abandoned warehouse _______ the city.",
-    "choices": [
-      "(A) with respect to",
-      "(B) for the sake of",
-      "(C) regardless of",
-      "(D) inside"
-    ],
-    "answer": 3,
-    "answer_word": "inside",
-    "explanation_kr": "빈칸 뒤 장소 명사구 → 전치사! 내부 → inside = '~안에'!",
-    "explanation": "장소 명사구 앞 → 전치사. 내부 의미 → inside.",
-    "kr": "팝업 미술관은 도시의 버려진 창고 안에 설치되었다.",
-    "expressions": [
-      {
-        "expr": "inside + 장소 명사",
-        "meaning": "~안에 (내부 전치사)"
-      },
-      {
-        "expr": "inside an abandoned warehouse",
-        "meaning": "폐창고 안에!"
       }
     ]
   },
@@ -1682,35 +1566,6 @@
     ]
   },
   {
-    "id": "LINK_934",
-    "category": "LINK",
-    "cat": "전치사",
-    "word_count": 14,
-    "diff": "normal",
-    "sentence": "The vintage clothing market is held _______ the first Sunday _______ every month.",
-    "choices": [
-      "(A) into",
-      "(B) since",
-      "(C) through",
-      "(D) on"
-    ],
-    "answer": 3,
-    "answer_word": "on",
-    "explanation_kr": "빈칸 뒤 특정일 명사구 → 전치사! 특정일 → on = '~에'!",
-    "explanation": "특정일 명사구 앞 → 전치사. 특정일 의미 → on.",
-    "kr": "빈티지 의류 시장은 매월 첫 번째 일요일에 열린다.",
-    "expressions": [
-      {
-        "expr": "on + 특정일",
-        "meaning": "~에 (특정일 전치사)"
-      },
-      {
-        "expr": "on the first Sunday",
-        "meaning": "첫 번째 일요일에!"
-      }
-    ]
-  },
-  {
     "id": "LINK_935",
     "category": "LINK",
     "cat": "전치사",
@@ -1769,64 +1624,6 @@
     ]
   },
   {
-    "id": "LINK_937",
-    "category": "LINK",
-    "cat": "전치사",
-    "word_count": 14,
-    "diff": "normal",
-    "sentence": "The electric bus covers the route _______ a single charge _______ the whole day.",
-    "choices": [
-      "(A) beyond",
-      "(B) on",
-      "(C) through",
-      "(D) along"
-    ],
-    "answer": 1,
-    "answer_word": "on",
-    "explanation_kr": "빈칸 뒤 명사구 → 전치사! 수단/조건 → on = '~으로, ~에 의해'!",
-    "explanation": "명사구 앞 → 전치사. 수단 의미 → on.",
-    "kr": "전기 버스는 하루 종일 한 번의 충전으로 노선을 운행한다.",
-    "expressions": [
-      {
-        "expr": "on a single charge",
-        "meaning": "한 번의 충전으로 (전치사)"
-      },
-      {
-        "expr": "on a single charge all day",
-        "meaning": "하루 종일 단일 충전!"
-      }
-    ]
-  },
-  {
-    "id": "LINK_938",
-    "category": "LINK",
-    "cat": "전치사",
-    "word_count": 14,
-    "diff": "normal",
-    "sentence": "The microplastic study was conducted _______ collaboration _______ marine biologists.",
-    "choices": [
-      "(A) throughout",
-      "(B) regarding",
-      "(C) in",
-      "(D) over"
-    ],
-    "answer": 2,
-    "answer_word": "in",
-    "explanation_kr": "in collaboration with = '~와의 협력으로' 관용 전치사구!",
-    "explanation": "관용 전치사구 → in collaboration with.",
-    "kr": "마이크로플라스틱 연구는 해양 생물학자들과의 협력으로 수행되었다.",
-    "expressions": [
-      {
-        "expr": "in collaboration with",
-        "meaning": "~와의 협력으로 (전치사구)"
-      },
-      {
-        "expr": "in collaboration with biologists",
-        "meaning": "생물학자들과 협력!"
-      }
-    ]
-  },
-  {
     "id": "LINK_939",
     "category": "LINK",
     "cat": "전치사",
@@ -1881,35 +1678,6 @@
       {
         "expr": "available on all platforms",
         "meaning": "모든 플랫폼에서!"
-      }
-    ]
-  },
-  {
-    "id": "LINK_941",
-    "category": "LINK",
-    "cat": "전치사",
-    "word_count": 14,
-    "diff": "normal",
-    "sentence": "The government's investment _______ green infrastructure grew _______ thirty percent.",
-    "choices": [
-      "(A) at",
-      "(B) during",
-      "(C) below",
-      "(D) in"
-    ],
-    "answer": 3,
-    "answer_word": "in",
-    "explanation_kr": "invest in = '~에 투자하다' 관용 전치사구!",
-    "explanation": "관용 전치사구 → investment in.",
-    "kr": "녹색 인프라에 대한 정부의 투자가 30% 성장했다.",
-    "expressions": [
-      {
-        "expr": "investment in + 명사",
-        "meaning": "~에 대한 투자 (전치사)"
-      },
-      {
-        "expr": "investment in green infrastructure",
-        "meaning": "녹색 인프라 투자!"
       }
     ]
   },
@@ -2001,35 +1769,6 @@
     ]
   },
   {
-    "id": "LINK_945",
-    "category": "LINK",
-    "cat": "전치사",
-    "word_count": 14,
-    "diff": "normal",
-    "sentence": "The vegan menu was developed _______ consultation _______ nutritionists.",
-    "choices": [
-      "(A) about",
-      "(B) in",
-      "(C) beyond",
-      "(D) beneath"
-    ],
-    "answer": 1,
-    "answer_word": "in",
-    "explanation_kr": "in consultation with = '~와의 협의를 통해' 관용 전치사구!",
-    "explanation": "관용 전치사구 → in consultation with.",
-    "kr": "비건 메뉴는 영양사들과의 협의를 통해 개발되었다.",
-    "expressions": [
-      {
-        "expr": "in consultation with",
-        "meaning": "~와의 협의를 통해 (전치사구)"
-      },
-      {
-        "expr": "in consultation with nutritionists",
-        "meaning": "영양사와 협의!"
-      }
-    ]
-  },
-  {
     "id": "LINK_946",
     "category": "LINK",
     "cat": "전치사",
@@ -2084,35 +1823,6 @@
       {
         "expr": "grown within five years",
         "meaning": "5년 이내에 성장!"
-      }
-    ]
-  },
-  {
-    "id": "LINK_948",
-    "category": "LINK",
-    "cat": "전치사",
-    "word_count": 14,
-    "diff": "normal",
-    "sentence": "The chef trained _______ three Michelin-starred restaurants _______ a decade.",
-    "choices": [
-      "(A) at",
-      "(B) off",
-      "(C) along",
-      "(D) with"
-    ],
-    "answer": 0,
-    "answer_word": "at",
-    "explanation_kr": "빈칸 뒤 장소 명사구 → 전치사! 장소(~에서) → at = '~에서'!",
-    "explanation": "장소 명사구 앞 → 전치사. 장소 의미 → at.",
-    "kr": "셰프는 10년 동안 세 개의 미슐랭 스타 레스토랑에서 수련했다.",
-    "expressions": [
-      {
-        "expr": "trained at + 장소",
-        "meaning": "~에서 수련한 (전치사)"
-      },
-      {
-        "expr": "trained at Michelin-starred restaurants",
-        "meaning": "미슐랭 레스토랑에서 수련!"
       }
     ]
   },
@@ -2200,35 +1910,6 @@
       {
         "expr": "delegates from over forty countries",
         "meaning": "40개국 이상 대표단!"
-      }
-    ]
-  },
-  {
-    "id": "LINK_952",
-    "category": "LINK",
-    "cat": "전치사",
-    "word_count": 14,
-    "diff": "normal",
-    "sentence": "The new cycling infrastructure was built _______ a budget _______ ten million pounds.",
-    "choices": [
-      "(A) unlike",
-      "(B) with",
-      "(C) of",
-      "(D) along"
-    ],
-    "answer": 2,
-    "answer_word": "of",
-    "explanation_kr": "빈칸 뒤 금액 명사구 → 전치사! 예산 금액 → of = '~의'!",
-    "explanation": "금액 명사구 앞 → 전치사. 금액 의미 → of.",
-    "kr": "새로운 자전거 인프라는 천만 파운드의 예산으로 건설되었다.",
-    "expressions": [
-      {
-        "expr": "a budget of + 금액",
-        "meaning": "~의 예산 (전치사)"
-      },
-      {
-        "expr": "budget of ten million pounds",
-        "meaning": "천만 파운드 예산!"
       }
     ]
   },
@@ -2432,35 +2113,6 @@
       {
         "expr": "begin trials as soon as funding confirmed",
         "meaning": "자금 확인 즉시 실험!"
-      }
-    ]
-  },
-  {
-    "id": "LINK_960",
-    "category": "LINK",
-    "cat": "접속사",
-    "word_count": 14,
-    "diff": "normal",
-    "sentence": "Commuters prefer the underground _______ the bus is significantly faster _______ peak hours.",
-    "choices": [
-      "(A) once",
-      "(B) or",
-      "(C) whether",
-      "(D) whereas"
-    ],
-    "answer": 3,
-    "answer_word": "whereas",
-    "explanation_kr": "빈칸 뒤 절(S+V) → 접속사! 대조 → whereas!",
-    "explanation": "절(S+V) 앞 → 접속사. 대조 의미 → whereas.",
-    "kr": "버스가 러시아워에 상당히 더 빠른 반면에, 통근자들은 지하철을 선호한다.",
-    "expressions": [
-      {
-        "expr": "whereas + S+V",
-        "meaning": "반면에 (대조 접속사)"
-      },
-      {
-        "expr": "prefer underground whereas bus faster",
-        "meaning": "버스 빠른 반면 지하철 선호!"
       }
     ]
   },
@@ -2900,35 +2552,6 @@
     ]
   },
   {
-    "id": "LINK_976",
-    "category": "LINK",
-    "cat": "전치사",
-    "word_count": 18,
-    "diff": "hard",
-    "sentence": "The government's investment _______ public transport infrastructure grew _______ nearly forty percent _______ a single parliamentary term.",
-    "choices": [
-      "(A) in",
-      "(B) to",
-      "(C) following",
-      "(D) below"
-    ],
-    "answer": 0,
-    "answer_word": "in",
-    "explanation_kr": "빈칸 뒤 명사구 → 전치사! 투자 분야 → in = '~에 대한'!",
-    "explanation": "명사구 앞 → 전치사. 투자 분야 의미 → in.",
-    "kr": "대중교통 인프라에 대한 정부 투자는 단 한 번의 의회 임기 동안 거의 40%에 가깝게 성장했다.",
-    "expressions": [
-      {
-        "expr": "investment in + 명사",
-        "meaning": "~에 대한 투자 (전치사)"
-      },
-      {
-        "expr": "investment in public transport",
-        "meaning": "대중교통 투자!"
-      }
-    ]
-  },
-  {
     "id": "LINK_977",
     "category": "LINK",
     "cat": "전치사",
@@ -2983,64 +2606,6 @@
       {
         "expr": "guides through local eateries",
         "meaning": "현지 식당들을 통해 안내!"
-      }
-    ]
-  },
-  {
-    "id": "LINK_979",
-    "category": "LINK",
-    "cat": "전치사",
-    "word_count": 18,
-    "diff": "hard",
-    "sentence": "The data shows a clear correlation _______ screen time and reported levels of anxiety _______ young people.",
-    "choices": [
-      "(A) despite",
-      "(B) between",
-      "(C) toward",
-      "(D) for"
-    ],
-    "answer": 1,
-    "answer_word": "between",
-    "explanation_kr": "빈칸 뒤 두 명사구 → 전치사! 둘 사이 관계 → between = '~사이의'!",
-    "explanation": "두 명사구 앞 → 전치사. 사이 의미 → between.",
-    "kr": "데이터는 젊은이들 사이에서 스크린 시간과 보고된 불안 수준 사이에 명확한 상관관계를 보여준다.",
-    "expressions": [
-      {
-        "expr": "correlation between A and B",
-        "meaning": "A와 B 사이의 상관관계 (전치사)"
-      },
-      {
-        "expr": "between screen time and anxiety",
-        "meaning": "스크린 시간과 불안 사이!"
-      }
-    ]
-  },
-  {
-    "id": "LINK_980",
-    "category": "LINK",
-    "cat": "전치사",
-    "word_count": 18,
-    "diff": "hard",
-    "sentence": "The exhibition catalogue was produced _______ partnership _______ three national arts councils.",
-    "choices": [
-      "(A) at",
-      "(B) beyond",
-      "(C) in",
-      "(D) until"
-    ],
-    "answer": 2,
-    "answer_word": "in",
-    "explanation_kr": "in partnership with = '~와의 협력으로' 관용 전치사구!",
-    "explanation": "관용 전치사구 → in partnership with.",
-    "kr": "전시회 카탈로그는 세 개의 국가 예술 위원회와의 협력으로 제작되었다.",
-    "expressions": [
-      {
-        "expr": "in partnership with",
-        "meaning": "~와의 협력으로 (전치사구)"
-      },
-      {
-        "expr": "in partnership with arts councils",
-        "meaning": "예술 위원회와 협력!"
       }
     ]
   },
@@ -3132,35 +2697,6 @@
     ]
   },
   {
-    "id": "LINK_984",
-    "category": "LINK",
-    "cat": "전치사",
-    "word_count": 18,
-    "diff": "hard",
-    "sentence": "Public opinion _______ the proposed nuclear energy expansion is divided, _______ generational and regional lines.",
-    "choices": [
-      "(A) between",
-      "(B) on",
-      "(C) behind",
-      "(D) about"
-    ],
-    "answer": 1,
-    "answer_word": "on",
-    "explanation_kr": "빈칸 뒤 주제 명사구 → 전치사! 주제 → on = '~에 관한'!",
-    "explanation": "주제 명사구 앞 → 전치사. 주제 의미 → on.",
-    "kr": "제안된 원자력 에너지 확대에 관한 여론은 세대적, 지역적 경계에 따라 나뉘어 있다.",
-    "expressions": [
-      {
-        "expr": "opinion on + 명사",
-        "meaning": "~에 관한 여론 (전치사)"
-      },
-      {
-        "expr": "opinion on nuclear expansion",
-        "meaning": "원자력 확대에 관한 여론!"
-      }
-    ]
-  },
-  {
     "id": "LINK_985",
     "category": "LINK",
     "cat": "전치사",
@@ -3186,151 +2722,6 @@
       {
         "expr": "against brand awareness metrics",
         "meaning": "브랜드 인지도 지표 기준!"
-      }
-    ]
-  },
-  {
-    "id": "LINK_986",
-    "category": "LINK",
-    "cat": "전치사",
-    "word_count": 18,
-    "diff": "hard",
-    "sentence": "The new legislation was developed _______ close consultation _______ environmental scientists and urban planners.",
-    "choices": [
-      "(A) over",
-      "(B) despite",
-      "(C) after",
-      "(D) in"
-    ],
-    "answer": 3,
-    "answer_word": "in",
-    "explanation_kr": "in close consultation with = '~와의 긴밀한 협의를 통해' 관용 전치사구!",
-    "explanation": "관용 전치사구 → in close consultation with.",
-    "kr": "새로운 법안은 환경 과학자와 도시 계획가들과의 긴밀한 협의를 통해 개발되었다.",
-    "expressions": [
-      {
-        "expr": "in close consultation with",
-        "meaning": "~와의 긴밀한 협의를 통해 (전치사구)"
-      },
-      {
-        "expr": "in consultation with scientists",
-        "meaning": "과학자들과 협의!"
-      }
-    ]
-  },
-  {
-    "id": "LINK_987",
-    "category": "LINK",
-    "cat": "전치사",
-    "word_count": 18,
-    "diff": "hard",
-    "sentence": "The biodegradable packaging was introduced as an alternative _______ single-use plastics _______ the retail sector.",
-    "choices": [
-      "(A) to",
-      "(B) for",
-      "(C) beside",
-      "(D) of"
-    ],
-    "answer": 0,
-    "answer_word": "to",
-    "explanation_kr": "alternative to = '~의 대안' 관용 전치사구!",
-    "explanation": "관용 전치사구 → alternative to.",
-    "kr": "생분해성 포장은 소매 부문에서 일회용 플라스틱의 대안으로 도입되었다.",
-    "expressions": [
-      {
-        "expr": "alternative to + 명사",
-        "meaning": "~의 대안 (전치사)"
-      },
-      {
-        "expr": "alternative to single-use plastics",
-        "meaning": "일회용 플라스틱 대안!"
-      }
-    ]
-  },
-  {
-    "id": "LINK_988",
-    "category": "LINK",
-    "cat": "전치사",
-    "word_count": 18,
-    "diff": "hard",
-    "sentence": "The research team collected behavioural data _______ users _______ a controlled fourteen-day study.",
-    "choices": [
-      "(A) beyond",
-      "(B) to",
-      "(C) from",
-      "(D) via"
-    ],
-    "answer": 2,
-    "answer_word": "from",
-    "explanation_kr": "빈칸 뒤 출처 명사구 → 전치사! 출처 → from = '~에서 수집된'!",
-    "explanation": "출처 명사구 앞 → 전치사. 출처 의미 → from.",
-    "kr": "연구팀은 통제된 14일 연구에서 사용자들로부터 행동 데이터를 수집했다.",
-    "expressions": [
-      {
-        "expr": "data from + 출처",
-        "meaning": "~에서 수집된 데이터 (전치사)"
-      },
-      {
-        "expr": "data from users",
-        "meaning": "사용자들에게서 데이터!"
-      }
-    ]
-  },
-  {
-    "id": "LINK_989",
-    "category": "LINK",
-    "cat": "전치사",
-    "word_count": 18,
-    "diff": "hard",
-    "sentence": "The award-winning chef built her reputation _______ years of experimentation _______ locally sourced seasonal produce.",
-    "choices": [
-      "(A) following",
-      "(B) regarding",
-      "(C) per",
-      "(D) through"
-    ],
-    "answer": 3,
-    "answer_word": "through",
-    "explanation_kr": "빈칸 뒤 수단 명사구 → 전치사! 수단 → through = '~을 통해'!",
-    "explanation": "수단 명사구 앞 → 전치사. 수단 의미 → through.",
-    "kr": "수상 경력이 있는 셰프는 현지에서 조달한 제철 식재료로 수년간의 실험을 통해 명성을 쌓았다.",
-    "expressions": [
-      {
-        "expr": "built reputation through + 수단",
-        "meaning": "~을 통해 명성을 쌓은 (전치사)"
-      },
-      {
-        "expr": "through years of experimentation",
-        "meaning": "수년간의 실험을 통해!"
-      }
-    ]
-  },
-  {
-    "id": "LINK_990",
-    "category": "LINK",
-    "cat": "전치사",
-    "word_count": 18,
-    "diff": "hard",
-    "sentence": "Public engagement _______ the planning process was far higher than anticipated, _______ over three thousand responses.",
-    "choices": [
-      "(A) during",
-      "(B) with",
-      "(C) into",
-      "(D) despite"
-    ],
-    "answer": 1,
-    "answer_word": "with",
-    "explanation_kr": "빈칸 뒤 명사구 → 전치사! 참여 대상 → with = '~과의'!",
-    "explanation": "명사구 앞 → 전치사. 참여 의미 → with.",
-    "kr": "계획 과정과의 공공 참여는 예상보다 훨씬 높았으며, 3천 건 이상의 응답이 있었다.",
-    "expressions": [
-      {
-        "expr": "engagement with + 명사",
-        "meaning": "~과의 참여 (전치사)"
-      },
-      {
-        "expr": "engagement with the planning process",
-        "meaning": "계획 과정 참여!"
       }
     ]
   },
@@ -3534,35 +2925,6 @@
       {
         "expr": "not display until provenance confirmed",
         "meaning": "출처 확인까지 미전시!"
-      }
-    ]
-  },
-  {
-    "id": "LINK_998",
-    "category": "LINK",
-    "cat": "접속사",
-    "word_count": 18,
-    "diff": "hard",
-    "sentence": "The urban farming initiative attracted far more interest from younger residents _______ planners had originally anticipated _______ launching the scheme.",
-    "choices": [
-      "(A) in light of",
-      "(B) than",
-      "(C) according to",
-      "(D) in line with"
-    ],
-    "answer": 1,
-    "answer_word": "than",
-    "explanation_kr": "빈칸 뒤 절(S+V) → 접속사! 비교 → than = '~보다'!",
-    "explanation": "절(S+V) 앞 → 접속사. 비교 의미 → than.",
-    "kr": "도시 농업 계획은 계획자들이 계획을 출범할 때 원래 예상했던 것보다 훨씬 더 많은 젊은 주민들의 관심을 끌었다.",
-    "expressions": [
-      {
-        "expr": "more + 형용사 + than + S+V",
-        "meaning": "~보다 더 ~ (비교 접속사)"
-      },
-      {
-        "expr": "more interest than planners anticipated",
-        "meaning": "예상보다 더 많은 관심!"
       }
     ]
   },

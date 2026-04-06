@@ -1537,35 +1537,6 @@
     ]
   },
   {
-    "id": "LINK_804",
-    "category": "LINK",
-    "cat": "전치사",
-    "word_count": 14,
-    "diff": "normal",
-    "sentence": "The streaming platform grew its subscriber base _______ nearly two million _______ six months.",
-    "choices": [
-      "(A) regarding",
-      "(B) despite",
-      "(C) around",
-      "(D) by"
-    ],
-    "answer": 3,
-    "answer_word": "by",
-    "explanation_kr": "빈칸 뒤 수량 → 전치사! 변화 정도 → by = '~만큼'!",
-    "explanation": "수량 앞 → 전치사. 정도 의미 → by.",
-    "kr": "스트리밍 플랫폼은 6개월 만에 약 200만 명만큼 구독자 기반을 성장시켰다.",
-    "expressions": [
-      {
-        "expr": "grew by + 수량",
-        "meaning": "~만큼 성장 (정도 전치사)"
-      },
-      {
-        "expr": "grew by nearly two million",
-        "meaning": "약 200만 명 성장!"
-      }
-    ]
-  },
-  {
     "id": "LINK_805",
     "category": "LINK",
     "cat": "전치사",
@@ -1624,35 +1595,6 @@
     ]
   },
   {
-    "id": "LINK_807",
-    "category": "LINK",
-    "cat": "전치사",
-    "word_count": 14,
-    "diff": "normal",
-    "sentence": "The patient was admitted _______ hospital after showing symptoms _______ the virus.",
-    "choices": [
-      "(A) to",
-      "(B) before",
-      "(C) above",
-      "(D) near"
-    ],
-    "answer": 0,
-    "answer_word": "to",
-    "explanation_kr": "admitted to hospital = '병원에 입원하다' 관용 전치사구!",
-    "explanation": "관용 전치사구 → admitted to hospital.",
-    "kr": "환자는 바이러스 증상을 보인 후 병원에 입원했다.",
-    "expressions": [
-      {
-        "expr": "admitted to hospital",
-        "meaning": "병원에 입원하다 (전치사)"
-      },
-      {
-        "expr": "admitted to hospital after showing symptoms",
-        "meaning": "증상 후 입원!"
-      }
-    ]
-  },
-  {
     "id": "LINK_808",
     "category": "LINK",
     "cat": "전치사",
@@ -1678,35 +1620,6 @@
       {
         "expr": "inactive for eighteen months",
         "meaning": "18개월 비활성!"
-      }
-    ]
-  },
-  {
-    "id": "LINK_809",
-    "category": "LINK",
-    "cat": "전치사",
-    "word_count": 14,
-    "diff": "normal",
-    "sentence": "The study analysed data collected _______ patients _______ twenty-five clinics.",
-    "choices": [
-      "(A) regarding",
-      "(B) unlike",
-      "(C) from",
-      "(D) to"
-    ],
-    "answer": 2,
-    "answer_word": "from",
-    "explanation_kr": "빈칸 뒤 출처 명사구 → 전치사! 출처 → from = '~에서 수집된'!",
-    "explanation": "출처 명사구 앞 → 전치사. 출처 의미 → from.",
-    "kr": "연구는 25개 클리닉의 환자들로부터 수집된 데이터를 분석했다.",
-    "expressions": [
-      {
-        "expr": "data from + 출처",
-        "meaning": "~에서 수집된 데이터 (전치사)"
-      },
-      {
-        "expr": "data from twenty-five clinics",
-        "meaning": "25개 클리닉 데이터!"
       }
     ]
   },
@@ -2987,35 +2900,6 @@
     ]
   },
   {
-    "id": "LINK_854",
-    "category": "LINK",
-    "cat": "전치사",
-    "word_count": 18,
-    "diff": "hard",
-    "sentence": "The fixed-rate mortgage protects homeowners _______ sudden rises in interest rates _______ a set period.",
-    "choices": [
-      "(A) between",
-      "(B) beyond",
-      "(C) near",
-      "(D) against"
-    ],
-    "answer": 3,
-    "answer_word": "against",
-    "explanation_kr": "빈칸 뒤 명사구 → 전치사! 보호 대상 → against = '~에 대비하여, ~으로부터 보호하다'!",
-    "explanation": "명사구 앞 → 전치사. 보호 의미 → against.",
-    "kr": "고정 금리 모기지는 일정 기간 동안 금리의 갑작스러운 상승에 대비하여 주택 소유자들을 보호한다.",
-    "expressions": [
-      {
-        "expr": "protect against + 명사",
-        "meaning": "~에 대비하여 보호하다 (전치사)"
-      },
-      {
-        "expr": "protect against interest rate rises",
-        "meaning": "금리 상승 대비!"
-      }
-    ]
-  },
-  {
     "id": "LINK_855",
     "category": "LINK",
     "cat": "전치사",
@@ -3273,35 +3157,6 @@
       {
         "expr": "sold at below asking price",
         "meaning": "요구가 이하 판매!"
-      }
-    ]
-  },
-  {
-    "id": "LINK_864",
-    "category": "LINK",
-    "cat": "전치사",
-    "word_count": 18,
-    "diff": "hard",
-    "sentence": "The documentary was commissioned _______ the broadcaster _______ response to growing public demand for content about climate change.",
-    "choices": [
-      "(A) by",
-      "(B) above",
-      "(C) beyond",
-      "(D) around"
-    ],
-    "answer": 0,
-    "answer_word": "by",
-    "explanation_kr": "빈칸 뒤 행위자 명사구 → 전치사! 수동태 행위자 → by = '~에 의해'!",
-    "explanation": "행위자 명사구 앞 → 전치사. 행위자 의미 → by.",
-    "kr": "다큐멘터리는 기후 변화에 관한 콘텐츠에 대한 증가하는 대중 수요에 대한 대응으로 방송국에 의해 의뢰되었다.",
-    "expressions": [
-      {
-        "expr": "commissioned by + 행위자",
-        "meaning": "~에 의해 의뢰된 (전치사)"
-      },
-      {
-        "expr": "commissioned by the broadcaster",
-        "meaning": "방송국이 의뢰!"
       }
     ]
   },

@@ -3161,35 +3161,6 @@
     ]
   },
   {
-    "id": "LINK_610",
-    "category": "LINK",
-    "cat": "전치사",
-    "word_count": 18,
-    "diff": "hard",
-    "sentence": "All catering bookings must be confirmed _______ written deposit _______ ten working days before the scheduled event date.",
-    "choices": [
-      "(A) past",
-      "(B) toward",
-      "(C) beyond",
-      "(D) by"
-    ],
-    "answer": 3,
-    "answer_word": "by",
-    "explanation_kr": "빈칸 뒤 수단 명사구 → 전치사! 수단 → by = '~에 의해, ~으로'!",
-    "explanation": "수단 명사구 앞 → 전치사. 수단 의미 → by.",
-    "kr": "모든 케이터링 예약은 예정된 행사일 10 영업일 전까지 서면 계약금으로 확정되어야 한다.",
-    "expressions": [
-      {
-        "expr": "confirmed by + 수단",
-        "meaning": "~에 의해 확정되다"
-      },
-      {
-        "expr": "confirmed by written deposit",
-        "meaning": "서면 계약금으로 확정!"
-      }
-    ]
-  },
-  {
     "id": "LINK_611",
     "category": "LINK",
     "cat": "전치사",
