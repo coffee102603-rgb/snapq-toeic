@@ -472,7 +472,7 @@ def pick5(m, grp=None):
                 if len(avail_e) < 2: avail_e = easy_p.copy()
                 chosen = random.sample(avail_h, min(3,len(avail_h))) + random.sample(avail_e, min(2,len(avail_e)))
                 random.shuffle(chosen)
-                for q in chosen: st.session_state.used.append(q["id"]); q["tp"]="grammar"
+                for q in chosen: st.session_state.used.append(q["id"]); q["tp"]=grp or "grammar"
                 return chosen
         elif adp == "easy" and len(p) >= 5:
             easy_cats = ["수일치","수동태/수일치","접속사","관계대명사"]
@@ -485,7 +485,7 @@ def pick5(m, grp=None):
                 if len(avail_h) < 1: avail_h = hard_p.copy()
                 chosen = random.sample(avail_e, min(4,len(avail_e))) + random.sample(avail_h, min(1,len(avail_h)))
                 random.shuffle(chosen)
-                for q in chosen: st.session_state.used.append(q["id"]); q["tp"]="grammar"
+                for q in chosen: st.session_state.used.append(q["id"]); q["tp"]=grp or "grammar"
                 return chosen
     elif grp and grp in VGRP:
         adp = _calc_adp_level()
@@ -503,7 +503,7 @@ def pick5(m, grp=None):
     avail=[q for q in p if q["id"] not in st.session_state.used]
     if len(avail)<5: st.session_state.used=[]; avail=p.copy()
     chosen=random.sample(avail,min(5,len(avail)))
-    for q in chosen: st.session_state.used.append(q["id"]); q["tp"]="grammar" if q["id"].startswith("G") else "vocab"
+    for q in chosen: st.session_state.used.append(q["id"]); q["tp"]=q.get("tp","grammar") if q.get("tp") in ("grammar","form","link","vocab") else (grp or ("grammar" if q["id"].startswith("G") else "vocab"))
     return chosen
 
 def fq(t): return t.replace("_______",'<span class="qk">________</span>')
@@ -520,10 +520,12 @@ if st.session_state.phase=="battle":
         st.session_state["_battle_entry_ans_reset"] = False
     q=st.session_state.cq
     if not q: st.session_state.phase="lobby"; st.rerun()
-    ig=q.get("tp")=="grammar"; th="g" if ig else "v"; bt="primary" if ig else "secondary"
-    ej="🔴" if ig else "🔵"; tn="문법" if ig else "어휘"
+    _tp = q.get("tp","grammar")
+    ig = _tp in ("grammar","g1","g2","g3","form","link"); th="g" if ig else "v"; bt="primary" if ig else "secondary"
+    ej={"grammar":"🔴","g1":"🔴","form":"🔵","g2":"🔵","link":"🔴","g3":"🔴","vocab":"🔵"}.get(_tp,"🔵")
+    tn={"grammar":"문법","g1":"문법","form":"품사","g2":"품사","link":"연결","g3":"연결","vocab":"어휘"}.get(_tp,"어휘")
 
-    _en_mode = "GRAMMAR" if ig else "VOCAB"
+    _en_mode = {"grammar":"GRM · 문법 사격","g1":"GRM · 문법 사격","form":"FORM · 형태 변환","g2":"FORM · 형태 변환","link":"LINK · 연결 작전","g3":"LINK · 연결 작전","vocab":"VOCAB · 어휘 폭격"}.get(_tp,"VOCAB · 어휘 폭격")
     _rn_str  = f"WAVE {st.session_state.round_num}" if st.session_state.round_num > 1 else "WAVE 1"
     st.markdown(f'<div class="ah"><h1>⚡ {_en_mode} FIREPOWER · {_rn_str}</h1></div>', unsafe_allow_html=True)
 
@@ -1440,7 +1442,7 @@ else:
     sm        = st.session_state.sel_mode
     rn        = st.session_state.round_num
     _tsec_chosen = st.session_state.get('tsec_chosen', False)
-    lbl_map  = {"g1":"⚔️ GRAMMAR","g2":"🔄 FORM","g3":"🔗 LINK","vocab":"📘 VOCAB"}
+    lbl_map  = {"g1":"⚔️ GRM · 문법 사격","g2":"🔄 FORM · 형태 변환","g3":"🔗 LINK · 연결 작전","vocab":"📘 VOCAB · 어휘 폭격"}
     mode_map = {"g1":("grammar","g1"),"g2":("grammar","g2"),"g3":("link","g3"),"vocab":("vocab",None)}
     _cur_sm  = st.session_state.get("sel_mode","") or ""
     _cur_tc  = st.session_state.get("tsec_chosen", False)
@@ -1682,16 +1684,16 @@ div[data-testid="stButton"] button.fp-nav p { color:#3d5066 !important; }
     st.markdown('<div style="font-size:9px;color:#cc3355;letter-spacing:4px;padding:4px 0 6px;font-weight:700;">🎯  MISSION SELECT</div>', unsafe_allow_html=True)
     b1, b2, b3, b4 = st.columns(4)
     with b1:
-        if st.button("⚔️\nGRAMMAR\n시제·태·수일치\nGRM", key="sg1", use_container_width=True):
+        if st.button("⚔️\nGRM\n문법 사격", key="sg1", use_container_width=True):
             st.session_state.sel_mode="g1"; st.rerun()
     with b2:
-        if st.button("🔄\nFORM\n품사전환·어형\nFORM", key="sg2", use_container_width=True):
+        if st.button("🔄\nFORM\n형태 변환", key="sg2", use_container_width=True):
             st.session_state.sel_mode="g2"; st.rerun()
     with b3:
-        if st.button("🔗\nLINK\n연결어·접속사\nLINK", key="sg3", use_container_width=True):
+        if st.button("🔗\nLINK\n연결 작전", key="sg3", use_container_width=True):
             st.session_state.sel_mode="g3"; st.rerun()
     with b4:
-        if st.button("📘\nVOCAB\n동의어·문맥어휘\nVOCAB", key="svc", use_container_width=True):
+        if st.button("📘\nVOCAB\n어휘 폭격", key="svc", use_container_width=True):
             st.session_state.sel_mode="vocab"; st.rerun()
 
     # ── 생존 규칙 ──
