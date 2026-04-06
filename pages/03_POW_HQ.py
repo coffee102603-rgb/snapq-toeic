@@ -478,19 +478,19 @@ if st.session_state.sg_phase == "lobby":
             <div style="text-align:center;font-size:0.75rem;font-weight:900;color:#cc88ff;letter-spacing:2px;margin-bottom:8px;">📊 나의 전투 기록</div>
             <div style="display:grid;grid-template-columns:1fr 1fr 1fr 1fr;text-align:center;gap:4px;border-bottom:1px solid #2a2a3a;padding-bottom:8px;">
                 <div style="border-right:1px solid #2a2a3a;">
-                    <div style="font-size:0.65rem;color:#aaa;margin-bottom:3px;">P5 정답률</div>
+                    <div style="font-size:0.65rem;color:#aaa;margin-bottom:3px;">화력전 정답률</div>
                     <div style="font-size:1.2rem;font-weight:900;color:#ffcc44;">{p5_rate_disp}</div>
                 </div>
                 <div style="border-right:1px solid #2a2a3a;">
-                    <div style="font-size:0.65rem;color:#aaa;margin-bottom:3px;">P5 저장</div>
+                    <div style="font-size:0.65rem;color:#aaa;margin-bottom:3px;">화력전 포로</div>
                     <div style="font-size:1.2rem;font-weight:900;color:#cc88ff;">{p5_save_cnt}개</div>
                 </div>
                 <div style="border-right:1px solid #2a2a3a;">
-                    <div style="font-size:0.65rem;color:#aaa;margin-bottom:3px;">P7 무기</div>
+                    <div style="font-size:0.65rem;color:#aaa;margin-bottom:3px;">해독 포로</div>
                     <div style="font-size:1.2rem;font-weight:900;color:#cc88ff;">{p7_weapon_cnt}개</div>
                 </div>
                 <div>
-                    <div style="font-size:0.65rem;color:#aaa;margin-bottom:3px;">P7 정답률</div>
+                    <div style="font-size:0.65rem;color:#aaa;margin-bottom:3px;">해독 정답률</div>
                     <div style="font-size:1.2rem;font-weight:900;color:#ff8844;">{p7_rate_disp}</div>
                 </div>
             </div>
@@ -2027,13 +2027,13 @@ div[data-testid="stButton"] button p{color:#c0c8e0!important;font-size:0.9rem!im
              box-shadow:inset 0 0 40px rgba(136,51,255,0.15);">
           <div style="font-family:'Orbitron',monospace;font-size:11px;font-weight:700;color:#aa66ee;
                letter-spacing:4px;margin-bottom:10px;">☠ INTERROGATION ROOM ☠</div>
-          <div style="font-size:38px;margin-bottom:6px;filter:drop-shadow(0 0 12px #8833ff);">🚔</div>
+          <div style="font-size:38px;margin-bottom:6px;filter:drop-shadow(0 0 12px #8833ff);">⛓</div>
           <div style="font-family:'Orbitron',monospace;font-size:15px;font-weight:900;color:#ddaaff;letter-spacing:3px;margin-bottom:4px;">WORD PRISON</div>
-          <div style="font-size:14px;color:#cc99ff;font-weight:700;margin-bottom:2px;">단어 심문실</div>
+          <div style="font-size:14px;color:#cc99ff;font-weight:700;margin-bottom:2px;">단어 수감실</div>
           <div style="font-size:14px;color:#ffffff;font-weight:800;margin-top:10px;line-height:1.8;letter-spacing:0.3px;
                text-shadow:none;padding:6px 4px;
                border-top:1px solid #ff337744;">
-            🚨 기억하면 <span style="color:#ff2244;font-weight:900;">석방</span>, 잊으면 <span style="color:#ff2244;font-weight:900;">재투옥</span>,<br>
+            🚨 기억하면 <span style="color:#ff2244;font-weight:900;">석방</span>, 잊으면 <span style="color:#ff2244;font-weight:900;">재수감</span>,<br>
             <span style="color:#ff2244;font-weight:900;">방심</span>하면 <span style="color:#ff2244;font-weight:900;">공범</span>까지 소환된다.
           </div>
         </div>
@@ -2051,9 +2051,9 @@ div[data-testid="stButton"] button p{color:#c0c8e0!important;font-size:0.9rem!im
             <div style="font-size:12px;color:#cc88ff;font-weight:600;margin-top:3px;">오늘 석방</div>
           </div>
           <div style="flex:1;background:#0c1018;border:1.5px solid #334455;border-radius:14px;padding:10px;text-align:center;">
-            <div style="font-size:13px;font-weight:800;color:#ff9944;">⚡ P5 · {_p5}</div>
+            <div style="font-size:13px;font-weight:800;color:#ff9944;">⚡ 화력 · {_p5}</div>
             <div style="font-size:11px;color:#cc7733;font-weight:600;margin-bottom:8px;">화력전</div>
-            <div style="font-size:13px;font-weight:800;color:#00ddee;">📡 P7 · {_p7}</div>
+            <div style="font-size:13px;font-weight:800;color:#00ddee;">📡 해독 · {_p7}</div>
             <div style="font-size:11px;color:#22aabb;font-weight:600;">암호해독</div>
           </div>
         </div>""", unsafe_allow_html=True)
@@ -2186,7 +2186,7 @@ div[data-testid="stButton"] button p{color:#c0c8e0!important;font-size:0.9rem!im
                 "3초 안에 뜻 생각해봐! ⏱ 뒤집어!",
                 "이 단어 또 나왔네... 이번엔 뒤집어! 😏",
                 "아는척하지 마! 진짜로 뒤집어봐! 😈",
-                "심문관이 기다린다! 뒤집어! 🚔",
+                "심문관이 기다린다! 뒤집어! ⛓",
                 "긴장돼? 정상이야. 뒤집어! 💀",
                 "이 단어 토익 단골! 뒤집어봐! 📋",
                 "모른다고? 일단 뒤집어! 용기내! 💪",
@@ -2373,7 +2373,7 @@ div[data-testid="stButton"] button p{color:#c0c8e0!important;font-size:0.9rem!im
                     st.markdown('</div>', unsafe_allow_html=True)
                 with _c2:
                     st.markdown('<div id="btn-no">', unsafe_allow_html=True)
-                    if st.button("❌  NO IDEA!  재투옥!", key=f"wp_no_{_idx}", use_container_width=True):
+                    if st.button("❌  NO IDEA!  재수감!", key=f"wp_no_{_idx}", use_container_width=True):
                         _ri=next((i for i,x in enumerate(_pr_st["word_prison"]) if x.get("word","").lower()==_word.lower()),None)
                         if _ri is not None:
                             _pr_st["word_prison"][_ri]["correct_streak"]=0
@@ -2538,7 +2538,7 @@ div[data-testid="stButton"] button p{color:#c0c8e0!important;font-size:0.9rem!im
         _LINEUP_PROMPTS = [
             "👆 손가락 올려봐!!","☝️ 가르켜봐!!","🖱️ 마우스 올려봐!!",
             "🔍 지문 찍어봐!!","👉 누가 범인이야?!","🎯 찍어! 빨리!!",
-            "⚡ 짚어봐! NOW!","👊 범인을 지목해!!","🚔 잡아! 도망간다!!",
+            "⚡ 짚어봐! NOW!","👊 범인을 지목해!!","⛓ 잡아! 도망간다!!",
         ]
 
         if _qi >= len(_qs):
@@ -2730,7 +2730,7 @@ div[data-testid="stButton"] button p{color:#c0c8e0!important;font-size:0.9rem!im
         elif _score >= 2:
             _grade_emoji, _grade_msg, _grade_color = "💪", "아깝다! 조금만 더!", "#ffaa33"
         else:
-            _grade_emoji, _grade_msg, _grade_color = "💀", "전원 재투옥! 다시 심문!", "#ff4444"
+            _grade_emoji, _grade_msg, _grade_color = "💀", "전원 재수감! 다시 심문!", "#ff4444"
 
         # 석방된 단어 리스트 HTML
         _freed_html = ""

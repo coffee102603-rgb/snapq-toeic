@@ -1241,6 +1241,13 @@ elif st.session_state.phase=="briefing":
                 _weak_cats[_wcat] = _weak_cats.get(_wcat,0) + 1
         _weak_str = " · ".join([f"{c}({n})" for c,n in sorted(_weak_cats.items(), key=lambda x:-x[1])]) if _weak_cats else "없음!"
 
+        _BR_ASSETS2 = os.path.join(os.path.dirname(os.path.dirname(__file__)), "assets")
+        _br_tori_fin = os.path.join(_BR_ASSETS2, "tori_victory.png" if was_victory else "tori_warning.png")
+        if os.path.exists(_br_tori_fin):
+            _fc1, _fc2, _fc3 = st.columns([1, 2, 1])
+            with _fc2:
+                st.image(_br_tori_fin, width=140)
+
         import streamlit.components.v1 as _br_comp
         _br_comp.html(f"""
         <style>
@@ -1378,6 +1385,17 @@ elif st.session_state.phase=="briefing":
                 _dots_html += '<span style="display:inline-block;width:14px;height:14px;border-radius:50%;background:#00ccff;margin:0 4px;box-shadow:0 0 8px #00ccff;"></span>'
             else:
                 _dots_html += '<span style="display:inline-block;width:12px;height:12px;border-radius:50%;background:#1a1a2a;border:1px solid #333;margin:0 4px;"></span>'
+
+        # ── TORI 캐릭터 (Q카드 상단) ──
+        _BR_ASSETS = os.path.join(os.path.dirname(os.path.dirname(__file__)), "assets")
+        _br_tori_path = os.path.join(_BR_ASSETS, "tori_normal.png")
+        if os.path.exists(_br_tori_path):
+            _tc1, _tc2 = st.columns([1, 5])
+            with _tc1:
+                st.image(_br_tori_path, width=55)
+            with _tc2:
+                _TB_BR = '<span style="background:#331100;border:1px solid #ff6600;border-radius:5px;padding:1px 8px;color:#ff8833;font-weight:900;font-size:11px;letter-spacing:2px;">TORI</span>'
+                st.markdown(f'<div style="padding:6px 0 0 4px;"><div style="margin-bottom:3px;">{_TB_BR}</div><div style="font-size:12px;font-weight:900;color:#ffaa55;">Q{bi+1} 브리핑 — {"맞혔다!" if ok else "틀렸다... 포획!"}</div></div>', unsafe_allow_html=True)
 
         # ── 상단 HUD (진행 + 포획 카운터) ──
         _jail_cnt = st.session_state.br_jail_count

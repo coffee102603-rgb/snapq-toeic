@@ -1156,7 +1156,7 @@ elif st.session_state.p7_phase == "briefing":
         st.session_state["p7_br_passage_uid"] = _passage_uid
     num_steps = min(len(steps), len(answers))
     if num_steps == 0: num_steps = 1
-    if bi >= num_steps: bi = num_steps - 1
+    # bi clamping handled by sequential mode below
 
     # query_params 처리
     _qp = st.query_params.get("p7action", "")
@@ -1229,185 +1229,236 @@ div[data-testid="stButton"] button.br-home{
 div[data-testid="stButton"] button.br-home p{color:#3d5066!important;}
 </style>""", unsafe_allow_html=True)
 
-    # ── 배너 ──
-    if was_victory:
-        st.markdown(f'''<div style="background:#001520;border:2px solid #00ccee;border-left:5px solid #00ccee;
-            border-radius:10px;padding:9px 12px;">
-          <div style="font-family:Orbitron,monospace;font-size:11px;font-weight:900;
-            color:#00ccee;letter-spacing:2px;">📡 OP.1 · MISSION COMPLETE</div>
-          <div style="font-size:10px;color:#55aacc;font-weight:700;margin-top:3px;letter-spacing:1px;">
-            ✅ {ok_cnt} CAPTURED &nbsp;·&nbsp; ❌ {miss_cnt} MISSED &nbsp;·&nbsp; 📋 {data.get("title","")}</div>
-        </div>''', unsafe_allow_html=True)
-    else:
-        st.markdown(f'''<div style="background:#0c0008;border:2px solid #FF2D55;border-left:5px solid #FF2D55;
-            border-radius:10px;padding:9px 12px;">
-          <div style="font-family:Orbitron,monospace;font-size:11px;font-weight:900;
-            color:#FF2D55;letter-spacing:2px;">📡 OP.1 · MISSION FAILED</div>
-          <div style="font-size:10px;color:#ee6688;font-weight:700;margin-top:3px;letter-spacing:1px;">
-            ✅ {ok_cnt} CAPTURED &nbsp;·&nbsp; ❌ {miss_cnt} MISSED &nbsp;·&nbsp; 📋 {data.get("title","")}</div>
-        </div>''', unsafe_allow_html=True)
+    # ══════════════════════════════════════
+    # 최종 요약 (bi >= num_steps)
+    # ══════════════════════════════════════
+    if bi >= num_steps:
+        _ASSETS_HAE2 = os.path.join(os.path.dirname(os.path.dirname(__file__)), "assets")
+        _hae_fin = os.path.join(_ASSETS_HAE2, "hae_victory.png" if was_victory else "hae_warning.png")
+        if os.path.exists(_hae_fin):
+            _hfc1, _hfc2, _hfc3 = st.columns([1, 2, 1])
+            with _hfc2:
+                st.image(_hae_fin, width=140)
 
-    # ── Q 탭 ──
-    tab_cols = st.columns(num_steps)
-    for ti in range(num_steps):
-        with tab_cols[ti]:
-            _ok_i = answers[ti] if ti < len(answers) else None
-            _dot  = "✅" if _ok_i else "❌" if _ok_i is not None else ""
-            if st.button(f"Q{ti+1} {_dot}", key=f"br_tab_{ti}", use_container_width=True):
-                st.session_state.p7_br_idx = ti; st.rerun()
+        _HB_BR = '<span style="background:#001520;border:1px solid #00ccee;border-radius:5px;padding:1px 8px;color:#00ddff;font-weight:900;font-size:11px;letter-spacing:2px;">HAE</span>'
+        _victory_col = "#00ccee" if was_victory else "#FF2D55"
+        _victory_txt = "OP COMPLETE" if was_victory else "OP FAILED"
+        _victory_emoji = "📡" if was_victory else "💀"
 
-    # ── 현재 스텝 데이터 ──
-    s = steps[bi]
-    ok = answers[bi] if bi < len(answers) else False
-    sym = "✅" if ok else "❌"
-    correct_choice = s["choices"][s["answer"]]
-    _mark_style = "color:#00ffaa;font-weight:900;border-bottom:2px solid #00ffaa;padding:0 2px;"
-    _exprs_list = [e.get("expr","") for e in s.get("expressions", []) if e.get("expr")]
-    c_kr = s.get("choices_kr", [])
-    answer_kr = c_kr[s["answer"]] if c_kr and s["answer"] < len(c_kr) else ""
-    kr_full = s.get("kr", "")
-    # 문장 분리 — 숫자 뒤 마침표(2.3 등)는 분리 안 함
-    import re as _re_kr
-    _kr_tmp = _re_kr.sub(r'(?<![0-9])[.](?![0-9])', '.|', kr_full)
-    _kr_tmp = _kr_tmp.replace("!","!|").replace("?","?|")
-    kr_sents = [x.strip() for x in _kr_tmp.split("|") if x.strip()]
+        import streamlit.components.v1 as _br_comp2
+        _br_comp2.html(f"""
+        <style>
+        @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@900&display=swap');
+        *{{margin:0;padding:0;box-sizing:border-box;}}body{{background:transparent;font-family:sans-serif;text-align:center;}}
+        @keyframes popIn{{from{{transform:scale(0.5);opacity:0}}to{{transform:scale(1);opacity:1}}}}
+        .card{{background:radial-gradient(ellipse at top,#001520 0%,#06080f 70%);
+            border:2.5px solid {_victory_col};border-radius:18px;padding:16px 14px;}}
+        .title{{font-family:'Orbitron',monospace;font-size:11px;font-weight:900;
+            color:{_victory_col};letter-spacing:3px;margin-bottom:8px;}}
+        .score{{font-family:'Orbitron',monospace;font-size:32px;font-weight:900;
+            color:#ffffff;text-shadow:0 0 20px {_victory_col};animation:popIn 0.5s ease;}}
+        .sub{{font-size:13px;color:#8899aa;font-weight:700;margin-top:5px;}}
+        </style>
+        <div class="card">
+          <div class="title">{_victory_emoji} DECRYPT OP · {_victory_txt}</div>
+          <div class="score">✅ {ok_cnt} &nbsp; ❌ {miss_cnt}</div>
+          <div class="sub">3문제 브리핑 완료 · {data.get("title","")}</div>
+        </div>
+        """, height=180)
 
-    # ── 문제 + 정답 카드 ──
-    _q_border = "#00ccee" if ok else "#ff4466"
-    st.markdown(f'''<div style="background:#06090f;border:1px solid #1a2240;
-        border-left:3px solid {_q_border};border-radius:10px;padding:8px 10px;">
-      <div style="font-size:10px;color:#5588aa;font-weight:700;letter-spacing:2px;margin-bottom:4px;">[ Q{bi+1} ] RESULT</div>
-      <div style="font-size:13px;color:#aaccdd;font-weight:600;margin-bottom:4px;">{s["question"]}</div>
-      <div style="font-size:13px;font-weight:700;color:{_q_border};">{sym} {correct_choice}</div>
-      {f'<div style="font-size:11px;color:#88bbcc;font-weight:600;margin-top:3px;">{answer_kr}</div>' if answer_kr else ""}
-    </div>''', unsafe_allow_html=True)
+        st.markdown(f'<div style="text-align:center;margin:6px 0;">{_HB_BR}</div>', unsafe_allow_html=True)
 
-
-    # ── 문장 카드들 ──
-    for si, sent in enumerate(s["sentences"]):
-        sent_key = f"br_sent_saved_{bi}_{si}"
-        if sent_key not in st.session_state: st.session_state[sent_key] = False
-        is_saved = st.session_state[sent_key]
-        sent_kr = kr_sents[si] if si < len(kr_sents) else kr_full
-
-        # 표현 하이라이트
-        _hl = sent
-        for _ex in _exprs_list:
-            if _ex.lower() in _hl.lower():
-                try: _hl = _re3.sub(f"(?i)({_re3.escape(_ex)})", f'<span style="{_mark_style}">\\1</span>', _hl)
-                except: pass
-
-        # 이 문장에 포함된 표현만 추출 (저장용 + 하이라이트용)
-        _sent_lower = sent.lower()
-        _sent_exprs = [
-            e for e in s.get("expressions", [])
-            if e.get("expr") and e.get("expr","").lower() in _sent_lower
-        ]
-        _card_border = "#00aacc" if ok else "#ff4466"
-
-        if is_saved:
-            # 저장 완료 — 태그 없이 하이라이트만
-            st.markdown(
-                f'<div style="background:#04080a;border:1.5px solid rgba(0,150,100,0.25);border-left:4px solid #336644;border-radius:12px;padding:10px;opacity:0.85;">' +
-                f'<div style="font-size:13px;font-weight:800;color:#ddeeff;line-height:1.75;margin-bottom:5px;">{_hl}</div>' +
-                f'<div style="font-size:12px;color:#99bbcc;font-weight:600;margin-bottom:6px;">{sent_kr}</div>' +
-                '<span style="background:#001520;border:1px solid #006688;border-radius:6px;padding:2px 8px;font-size:8px;color:#00ccee;font-weight:700;">✅ 포획 완료 · 수용소 대기중</span>' +
-                '</div>',
-                unsafe_allow_html=True)
+        if was_victory:
+            _hvc1, _hvc2 = st.columns(2)
+            with _hvc1:
+                if st.button("💀 포로사령부!", key="p7br_pow", use_container_width=True):
+                    st.switch_page("pages/03_POW_HQ.py")
+            with _hvc2:
+                if st.button("🔄 다음 암호!", key="p7br_next", use_container_width=True):
+                    for k in ["p7_data","p7_answers","p7_br_idx","p7_br_passage_uid"]:
+                        if k in st.session_state: del st.session_state[k]
+                    for _kk in list(st.session_state.keys()):
+                        if _kk.startswith("br_sent_saved_") or _kk.startswith("br_sv_"):
+                            del st.session_state[_kk]
+                    st.session_state.p7_phase = "lobby"; st.rerun()
         else:
-            # 미저장 — 태그 없이 하이라이트만
-            st.markdown(
-                f'<div style="background:#06090f;border:1.5px solid rgba(0,180,255,0.25);border-left:4px solid {_card_border};border-radius:12px;padding:10px;margin-bottom:2px;">' +
-                f'<div style="font-size:13px;font-weight:800;color:#ddeeff;line-height:1.75;margin-bottom:5px;">{_hl}</div>' +
-                f'<div style="font-size:12px;color:#99bbcc;font-weight:600;margin-bottom:6px;">{sent_kr}</div>' +
-                '</div>',
-                unsafe_allow_html=True)
+            if st.button("🔄 설욕전!", key="p7br_retry", use_container_width=True):
+                for k in ["p7_data","p7_answers","p7_br_idx","p7_br_passage_uid"]:
+                    if k in st.session_state: del st.session_state[k]
+                for _kk in list(st.session_state.keys()):
+                    if _kk.startswith("br_sent_saved_") or _kk.startswith("br_sv_"):
+                        del st.session_state[_kk]
+                st.session_state.p7_phase = "lobby"; st.rerun()
+            _rc1, _rc2 = st.columns([3, 1])
+            with _rc1:
+                if st.button("💀 포로사령부!", key="p7br_pow2", use_container_width=True):
+                    st.switch_page("pages/03_POW_HQ.py")
+            with _rc2:
+                if st.button("🏠 홈", key="p7br_home2", use_container_width=True):
+                    for k in D: st.session_state[k] = D[k]
+                    _nick = st.session_state.get("battle_nickname") or st.session_state.get("nickname", "")
+                    if _nick:
+                        st.query_params["nick"] = _nick
+                        st.query_params["ag"] = "1"
+                    st.switch_page("main_hub.py")
 
-            # 저장 버튼
-            _sv_key = f"br_sv_{bi}_{si}"
-            _btn_label = "📌 정보 포획! → 수용소 이송" if ok else "⛓ 오답 정보 — 자동 포획!"
-            if st.button(_btn_label, key=_sv_key, use_container_width=True):
-                sent_data = dict(s)
-                sent_data["sentences"] = [sent]
-                sent_data["kr"] = sent_kr
-                # 1. 문장 → 포로사령부 (saved_expressions)
-                save_expressions(_sent_exprs, step_data=sent_data)
-                # 2. 문장 핵심 단어 → word_prison (DB 스캔)
-                try:
-                    import sys as _sys4, os as _os4, datetime as _bdt
-                    _sys4.path.insert(0, _os4.path.dirname(__file__))
-                    from _word_family_db import find_words_in_sentence as _find_w
-                    _storage_br = load_storage()
-                    if "word_prison" not in _storage_br: _storage_br["word_prison"] = []
-                    _cat_br = st.session_state.get("p7_cat", "P7")
-                    _matched_br = _find_w(sent, max_words=3)
-                    _br_changed = False
-                    for _m in _matched_br:
-                        _w = _m["word"].strip()
-                        if not _w or len(_w) < 3: continue
-                        if any(p.get("word","").lower()==_w.lower() for p in _storage_br["word_prison"]): continue
-                        _storage_br["word_prison"].append({
-                            "word":           _w,
-                            "kr":             _m["kr"],
-                            "pos":            _m["pos"],
-                            "family_root":    _m["family_root"],
-                            "source":         "P7",
-                            "sentence":       sent,
-                            "sent_kr":        sent_kr,
-                            "captured_date":  _bdt.datetime.now().strftime("%Y-%m-%d"),
-                            "correct_streak": 0,
-                            "last_reviewed":  None,
-                            "cat":            _cat_br,
-                        })
-                        _br_changed = True
-                    if _br_changed:
-                        save_storage(_storage_br)
-                except Exception:
-                    pass
-                st.session_state[sent_key] = True
-                st.rerun()
+    # ══════════════════════════════════════
+    # Q카드 순차 표시 (bi < num_steps)
+    # ══════════════════════════════════════
+    else:
+        s = steps[bi]
+        ok = answers[bi] if bi < len(answers) else False
+        sym = "✅" if ok else "❌"
+        correct_choice = s["choices"][s["answer"]]
+        _mark_style = "color:#00ffaa;font-weight:900;border-bottom:2px solid #00ffaa;padding:0 2px;"
+        _exprs_list = [e.get("expr","") for e in s.get("expressions", []) if e.get("expr")]
+        c_kr = s.get("choices_kr", [])
+        answer_kr = c_kr[s["answer"]] if c_kr and s["answer"] < len(c_kr) else ""
+        kr_full = s.get("kr", "")
+        import re as _re_kr
+        _kr_tmp = _re_kr.sub(r'(?<![0-9])[.](?![0-9])', '.||', kr_full)
+        _kr_tmp = _kr_tmp.replace("!","!|").replace("?","?|")
+        kr_sents = [x.strip() for x in _kr_tmp.split("|") if x.strip()]
 
-    # ── 구분선 ──
-    st.markdown('<div style="height:1px;background:#0e0e1e;margin:4px 0;"></div>', unsafe_allow_html=True)
+        # ── HAE 캐릭터 (Q카드 상단) ──
+        _ASSETS_HAE = os.path.join(os.path.dirname(os.path.dirname(__file__)), "assets")
+        _br_hae_path = os.path.join(_ASSETS_HAE, "hae_normal.png")
+        if os.path.exists(_br_hae_path):
+            _hc1, _hc2 = st.columns([1, 5])
+            with _hc1:
+                st.image(_br_hae_path, width=55)
+            with _hc2:
+                _HB_Q = '<span style="background:#001520;border:1px solid #00ccee;border-radius:5px;padding:1px 8px;color:#00ddff;font-weight:900;font-size:11px;letter-spacing:2px;">HAE</span>'
+                st.markdown(f'<div style="padding:6px 0 0 4px;"><div style="margin-bottom:3px;">{_HB_Q}</div><div style="font-size:12px;font-weight:900;color:#00ccee;">Q{bi+1} 브리핑 — {"해독 완료!" if ok else "해독 실패... 분석하라!"}</div></div>', unsafe_allow_html=True)
 
-    # ── 하단 네비 ──
-    _nc1, _nc2 = st.columns([3, 1])
-    with _nc1:
-        if st.button("💀  포로사령부!", key="p7store", use_container_width=True):
-            st.switch_page("pages/03_POW_HQ.py")
-    with _nc2:
-        if st.button("🏠 홈", key="p7lobby", use_container_width=True):
+        # ── 진행 도트 ──
+        _dots_html = ""
+        for _di in range(num_steps):
+            if _di < bi:
+                _dc = "#00ccee" if answers[_di] else "#ff4466"
+                _dots_html += f'<span style="display:inline-block;width:12px;height:12px;border-radius:50%;background:{_dc};margin:0 4px;"></span>'
+            elif _di == bi:
+                _dots_html += '<span style="display:inline-block;width:14px;height:14px;border-radius:50%;background:#00ccee;margin:0 4px;box-shadow:0 0 8px #00ccee;"></span>'
+            else:
+                _dots_html += '<span style="display:inline-block;width:12px;height:12px;border-radius:50%;background:#1a1a2a;border:1px solid #333;margin:0 4px;"></span>'
+
+        st.markdown(f'<div style="display:flex;justify-content:center;align-items:center;padding:4px 0 6px;">{_dots_html}</div>', unsafe_allow_html=True)
+
+        # ── 문제 + 정답 카드 ──
+        _q_border = "#00ccee" if ok else "#ff4466"
+        st.markdown(f'''<div style="background:#06090f;border:1px solid #1a2240;
+            border-left:3px solid {_q_border};border-radius:10px;padding:8px 10px;">
+          <div style="font-size:10px;color:#5588aa;font-weight:700;letter-spacing:2px;margin-bottom:4px;">[ Q{bi+1} ] RESULT</div>
+          <div style="font-size:13px;color:#aaccdd;font-weight:600;margin-bottom:4px;">{s["question"]}</div>
+          <div style="font-size:13px;font-weight:700;color:{_q_border};">{sym} {correct_choice}</div>
+          {f'<div style="font-size:11px;color:#88bbcc;font-weight:600;margin-top:3px;">{answer_kr}</div>' if answer_kr else ""}
+        </div>''', unsafe_allow_html=True)
+
+        # ── 문장 카드들 ──
+        import re as _re3
+        for si, sent in enumerate(s["sentences"]):
+            sent_key = f"br_sent_saved_{bi}_{si}"
+            if sent_key not in st.session_state: st.session_state[sent_key] = False
+            is_saved = st.session_state[sent_key]
+            sent_kr = kr_sents[si] if si < len(kr_sents) else kr_full
+
+            _hl = sent
+            for _ex in _exprs_list:
+                if _ex.lower() in _hl.lower():
+                    try: _hl = _re3.sub(f"(?i)({_re3.escape(_ex)})", f'<span style="{_mark_style}">\\1</span>', _hl)
+                    except: pass
+
+            _sent_lower = sent.lower()
+            _sent_exprs = [
+                e for e in s.get("expressions", [])
+                if e.get("expr") and e.get("expr","").lower() in _sent_lower
+            ]
+            _card_border = "#00aacc" if ok else "#ff4466"
+
+            if is_saved:
+                st.markdown(
+                    f'<div style="background:#04080a;border:1.5px solid rgba(0,150,100,0.25);border-left:4px solid #336644;border-radius:12px;padding:10px;opacity:0.85;">' +
+                    f'<div style="font-size:13px;font-weight:800;color:#ddeeff;line-height:1.75;margin-bottom:5px;">{_hl}</div>' +
+                    f'<div style="font-size:12px;color:#99bbcc;font-weight:600;margin-bottom:6px;">{sent_kr}</div>' +
+                    '<span style="background:#001520;border:1px solid #006688;border-radius:6px;padding:2px 8px;font-size:8px;color:#00ccee;font-weight:700;">✅ 포획 완료 · 수용소 대기중</span>' +
+                    '</div>',
+                    unsafe_allow_html=True)
+            else:
+                st.markdown(
+                    f'<div style="background:#06090f;border:1.5px solid rgba(0,180,255,0.25);border-left:4px solid {_card_border};border-radius:12px;padding:10px;margin-bottom:2px;">' +
+                    f'<div style="font-size:13px;font-weight:800;color:#ddeeff;line-height:1.75;margin-bottom:5px;">{_hl}</div>' +
+                    f'<div style="font-size:12px;color:#99bbcc;font-weight:600;margin-bottom:6px;">{sent_kr}</div>' +
+                    '</div>',
+                    unsafe_allow_html=True)
+
+                _sv_key = f"br_sv_{bi}_{si}"
+                _btn_label = "📌 정보 포획! → 수용소 이송" if ok else "⛓ 오답 정보 — 자동 포획!"
+                if st.button(_btn_label, key=_sv_key, use_container_width=True):
+                    sent_data = dict(s)
+                    sent_data["sentences"] = [sent]
+                    sent_data["kr"] = sent_kr
+                    save_expressions(_sent_exprs, step_data=sent_data)
+                    try:
+                        import sys as _sys4, os as _os4, datetime as _bdt
+                        _sys4.path.insert(0, _os4.path.dirname(__file__))
+                        from _word_family_db import find_words_in_sentence as _find_w
+                        _storage_br = load_storage()
+                        if "word_prison" not in _storage_br: _storage_br["word_prison"] = []
+                        _cat_br = st.session_state.get("p7_cat", "P7")
+                        _matched_br = _find_w(sent, max_words=3)
+                        _br_changed = False
+                        for _m in _matched_br:
+                            _w = _m["word"].strip()
+                            if not _w or len(_w) < 3: continue
+                            if any(p.get("word","").lower()==_w.lower() for p in _storage_br["word_prison"]): continue
+                            _storage_br["word_prison"].append({
+                                "word":           _w,
+                                "kr":             _m["kr"],
+                                "pos":            _m["pos"],
+                                "family_root":    _m["family_root"],
+                                "source":         "P7",
+                                "sentence":       sent,
+                                "sent_kr":        sent_kr,
+                                "captured_date":  _bdt.datetime.now().strftime("%Y-%m-%d"),
+                                "correct_streak": 0,
+                                "last_reviewed":  None,
+                                "cat":            _cat_br,
+                            })
+                            _br_changed = True
+                        if _br_changed:
+                            save_storage(_storage_br)
+                    except Exception:
+                        pass
+                    st.session_state[sent_key] = True
+                    st.rerun()
+
+        # ── 다음 심문 / 브리핑 완료 버튼 ──
+        st.markdown('<div style="height:4px;"></div>', unsafe_allow_html=True)
+        _is_last = (bi + 1 >= num_steps)
+        _next_label = "🏁 브리핑 완료!" if _is_last else f"다음 심문 → Q{bi+2}"
+        st.markdown('''<style>
+        div[data-testid="stButton"]:last-of-type button{
+            background:#0a0a20!important;border:2px solid #00ccff!important;
+            border-radius:12px!important;color:#00ddff!important;
+            font-size:1.0rem!important;font-weight:900!important;min-height:50px!important;}
+        div[data-testid="stButton"]:last-of-type button p{color:#00ddff!important;font-size:1.0rem!important;font-weight:900!important;}
+        </style>''', unsafe_allow_html=True)
+        if st.button(_next_label, key=f"p7br_next_{bi}", use_container_width=True):
+            st.session_state.p7_br_idx = bi + 1
+            st.rerun()
+
+        # ── 하단 홈 버튼 (작게) ──
+        st.markdown('''<style>
+        div[data-testid="stButton"] button.p7-home-sm{
+            background:#05050e!important;border:1px solid #151525!important;
+            border-radius:10px!important;color:#3d5066!important;
+            min-height:36px!important;font-size:0.82rem!important;}
+        </style>''', unsafe_allow_html=True)
+        if st.button("🏠 홈", key=f"p7br_home_{bi}", use_container_width=True):
             for k in D: st.session_state[k] = D[k]
             _nick = st.session_state.get("battle_nickname") or st.session_state.get("nickname", "")
             if _nick:
                 st.query_params["nick"] = _nick
                 st.query_params["ag"] = "1"
             st.switch_page("main_hub.py")
-
-    # ── JS: 버튼 클래스 부여 ──
-    import streamlit.components.v1 as _br_cmp
-    _br_cmp.html(f"""<script>
-(function(){{
-  var doc=window.parent.document;
-  function applyBrClasses(){{
-    doc.querySelectorAll("button").forEach(function(b){{
-      var txt=(b.innerText||b.textContent||"").trim();
-      if(!txt) return;
-      if(txt.startsWith("Q") && (txt.indexOf("✅")>-1||txt.indexOf("❌")>-1||txt.match(/^Q\d/)))
-        b.classList.add("br-qtab");
-      if(txt.indexOf("정보 포획")>-1) b.classList.add("br-save");
-      if(txt.indexOf("오답 정보")>-1) b.classList.add("br-save-wrong");
-      if(txt.indexOf("포로사령부!")>-1) b.classList.add("br-pow");
-      if(txt.indexOf("홈")>-1 && txt.length<5) b.classList.add("br-home");
-    }});
-    // 현재 Q탭 on 표시
-    doc.querySelectorAll("button.br-qtab").forEach(function(b,i){{
-      if(i==={bi}) b.classList.add("br-qtab-on");
-      else b.classList.remove("br-qtab-on");
-    }});
-  }}
-  setTimeout(applyBrClasses,120);
-  setTimeout(applyBrClasses,450);
-}})();
-</script>""", height=0)
 
