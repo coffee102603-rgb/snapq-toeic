@@ -850,82 +850,59 @@ elif st.session_state.phase=="victory":
     else:
         _grade, _praise, _pcol = random.choice(_CLEAR_list)
 
+    # ── 토리 Victory 메인 이미지 ──
+    _ASSETS_V = os.path.join(os.path.dirname(os.path.dirname(__file__)), "assets")
+    _tori_v_path = os.path.join(_ASSETS_V, "tori_victory.png")
+    _cv1, _cv2, _cv3 = st.columns([1, 2, 1])
+    with _cv2:
+        if os.path.exists(_tori_v_path): st.image(_tori_v_path, width=180)
+
     _stars_html = "".join([
         f'<div style="position:absolute;left:{random.randint(2,98)}%;top:{random.randint(2,98)}%;'
         f'width:{random.randint(3,12)}px;height:{random.randint(3,12)}px;'
         f'border-radius:50%;background:{"#FFD600" if random.random()>0.4 else "#fff8cc"};'
         f'animation:twinkle {0.3+random.random()*0.8:.1f}s ease-in-out infinite {random.random():.2f}s both;"></div>'
-        for _ in range(90)])
-    _coins_html = "".join([
-        f'<div style="position:absolute;top:-10px;left:{random.randint(2,98)}%;font-size:{1.0+random.random()*0.8:.1f}rem;'
-        f'animation:coinFall {0.8+random.random()*1.2:.1f}s ease-in infinite {random.random():.2f}s;">{"💰" if random.random()>0.5 else "⭐" if random.random()>0.5 else "🏆"}</div>'
-        for _ in range(22)])
-    _lightning_html = "".join([
-        f'<div style="position:absolute;left:{random.randint(2,95)}%;top:{random.randint(2,90)}%;'
-        f'font-size:{random.randint(18,45)}px;opacity:0.18;'
-        f'animation:twinkle {0.2+random.random()*0.4:.1f}s ease-in-out infinite {random.random():.2f}s;">{"⚡" if random.random()>0.5 else "✨"}</div>'
-        for _ in range(14)])
+        for _ in range(50)])
 
     components.html(f"""
     <style>
     *{{margin:0;padding:0;box-sizing:border-box;}}
-    body{{background:linear-gradient(180deg,#060400 0%,#1a1000 50%,#060400 100%);
-      overflow:hidden;height:100vh;font-family:'Arial Black',sans-serif;
+    body{{background:transparent;overflow:hidden;height:100vh;font-family:'Arial Black',sans-serif;
       display:flex;align-items:center;justify-content:center;}}
     @keyframes vi{{0%{{transform:scale(0) rotate(-20deg);opacity:0;}}65%{{transform:scale(1.12) rotate(3deg);}}100%{{transform:scale(1) rotate(0deg);opacity:1;}}}}
-    @keyframes goldGlow{{0%,100%{{text-shadow:0 0 20px #FFD600,0 0 60px #ff8800,0 0 120px #ff4400;}}50%{{text-shadow:0 0 60px #FFD600,0 0 120px #ff8800,0 0 200px #ff4400;}}}}
-    @keyframes twinkle{{0%,100%{{opacity:1;transform:scale(1) rotate(0deg);}}50%{{opacity:0.1;transform:scale(0.2) rotate(180deg);}}}}
-    @keyframes coinFall{{0%{{transform:translateY(-20px) rotate(0deg) scale(1);opacity:1;}}100%{{transform:translateY(160px) rotate(540deg) scale(0.4);opacity:0;}}}}
+    @keyframes goldGlow{{0%,100%{{text-shadow:0 0 20px #FFD600,0 0 60px #ff8800;}}50%{{text-shadow:0 0 60px #FFD600,0 0 120px #ff8800;}}}}
+    @keyframes twinkle{{0%,100%{{opacity:1;transform:scale(1);}}50%{{opacity:0.1;transform:scale(0.2);}}}}
     @keyframes scoreIn{{0%{{transform:translateY(40px);opacity:0;}}100%{{transform:translateY(0);opacity:1;}}}}
     @keyframes barFill{{0%{{width:0%;}}100%{{width:{int(_sc_v/5*100)}%;}}}}
-    @keyframes pulse{{0%,100%{{transform:scale(1);}}50%{{transform:scale(1.05);}}}}
-    @keyframes borderPulse{{0%,100%{{box-shadow:0 0 20px rgba(255,214,0,0.4),inset 0 0 20px rgba(255,214,0,0.05);}}50%{{box-shadow:0 0 50px rgba(255,214,0,0.8),inset 0 0 40px rgba(255,214,0,0.1);}}}}
     .wrap{{text-align:center;animation:vi 0.8s cubic-bezier(0.34,1.56,0.64,1) forwards;position:relative;z-index:10;width:90%;}}
-    .round-tag{{font-size:0.72rem;color:#886600;font-weight:700;letter-spacing:4px;margin-bottom:8px;}}
-    .grade{{font-size:3rem;font-weight:900;color:#FFD600;
-      animation:goldGlow 1.5s ease-in-out infinite, pulse 1.5s ease-in-out infinite;
-      letter-spacing:3px;line-height:1.1;}}
+    .round-tag{{font-size:0.72rem;color:#886600;font-weight:700;letter-spacing:4px;margin-bottom:4px;}}
+    .grade{{font-size:2.2rem;font-weight:900;color:#FFD600;animation:goldGlow 1.5s ease-in-out infinite;letter-spacing:3px;}}
     .scorebox{{background:rgba(255,214,0,0.08);border:2px solid rgba(255,214,0,0.5);
-      border-radius:16px;padding:14px 28px;margin:12px auto;display:inline-block;
-      animation:scoreIn 0.6s ease 0.3s both, borderPulse 2s ease-in-out infinite;}}
-    .sc-num{{font-size:3.5rem;font-weight:900;color:#FFD600;line-height:1;
-      text-shadow:0 0 30px rgba(255,214,0,0.8);}}
-    .sc-label{{font-size:0.78rem;color:#aa8800;font-weight:700;letter-spacing:2px;margin-top:4px;}}
-    .bar-wrap{{background:#1a1100;border-radius:20px;height:12px;margin:12px auto;width:85%;
-      overflow:hidden;border:1px solid #443300;}}
-    .bar-fill{{height:100%;border-radius:20px;
-      background:linear-gradient(90deg,#886600,#FFD600,#fff8aa);
-      box-shadow:0 0 12px #FFD600;animation:barFill 1.2s ease 0.6s both;}}
-    .praise{{font-size:1.0rem;color:{_pcol};font-weight:900;margin:10px 0 4px;
-      animation:scoreIn 0.5s ease 0.8s both;letter-spacing:1px;}}
+      border-radius:16px;padding:10px 24px;margin:8px auto;display:inline-block;}}
+    .sc-num{{font-size:2.8rem;font-weight:900;color:#FFD600;line-height:1;}}
+    .sc-label{{font-size:0.72rem;color:#aa8800;font-weight:700;letter-spacing:2px;margin-top:4px;}}
+    .bar-wrap{{background:#1a1100;border-radius:20px;height:10px;margin:8px auto;width:85%;overflow:hidden;border:1px solid #443300;}}
+    .bar-fill{{height:100%;border-radius:20px;background:linear-gradient(90deg,#886600,#FFD600);animation:barFill 1.2s ease 0.6s both;}}
+    .praise{{font-size:0.88rem;color:{_pcol};font-weight:900;margin:6px 0 0;animation:scoreIn 0.5s ease 0.8s both;}}
     </style>
-    <div style="position:absolute;width:100%;height:100%;overflow:hidden;top:0;left:0;">
-      {_stars_html}{_coins_html}{_lightning_html}
-    </div>
+    <div style="position:absolute;width:100%;height:100%;overflow:hidden;top:0;left:0;">{_stars_html}</div>
     <div class="wrap">
-        <div class="round-tag">💥 WAVE {_rn_v} COMPLETE 💥</div>
+        <div class="round-tag">WAVE {_rn_v} COMPLETE</div>
         <div class="grade">{_grade}</div>
         <div class="scorebox">
-            <div class="sc-num">{_sc_v}<span style="font-size:1.6rem;color:#886600;"> / 5</span></div>
+            <div class="sc-num">{_sc_v}<span style="font-size:1.4rem;color:#886600;"> / 5</span></div>
             <div class="sc-label">✅ {_sc_v}격파 &nbsp;·&nbsp; ❌ {_wr_v}개 놓침</div>
         </div>
         <div class="bar-wrap"><div class="bar-fill"></div></div>
         <div class="praise">{_praise}</div>
     </div>
-    """, height=320)
+    """, height=220)
 
     # ── 토리 한 줄 ──
     _nick_v = st.session_state.get("battle_nickname") or st.session_state.get("nickname","전사")
     _tori_v = f"⛓ 포획 대기 중" if _wr_v > 0 else "전원 격파!"
     _TB = '<span style="background:#331100;border:1px solid #ff6600;border-radius:5px;padding:1px 8px;color:#ff8833;font-weight:900;font-size:11px;letter-spacing:2px;">TORI</span>'
-    # ── 토리 Victory 이미지 ──
-    _ASSETS_V = os.path.join(os.path.dirname(os.path.dirname(__file__)), "assets")
-    _tori_v_img = os.path.join(_ASSETS_V, "tori_victory.png")
-    _tv1, _tv2 = st.columns([1, 3])
-    with _tv1:
-        if os.path.exists(_tori_v_img): st.image(_tori_v_img, width=70)
-    with _tv2:
-        st.markdown(f'<div style="background:#1a0800;border:1.5px solid #ff6600;border-radius:10px;padding:10px 12px;margin-top:6px;"><div style="margin-bottom:5px;">{_TB}</div><div style="font-size:13px;font-weight:900;color:#ffaa44;">{_nick_v}! {_tori_v} 사령부에 보고하라.</div></div>', unsafe_allow_html=True)
+    st.markdown(f'<div style="text-align:center;padding:6px 0;"><div style="margin-bottom:4px;">{_TB}</div><div style="font-size:13px;font-weight:900;color:#ffaa44;">{_nick_v}! {_tori_v} 사령부에 보고하라.</div></div>', unsafe_allow_html=True)
 
     st.markdown("""<style>
     @keyframes zapPulse{
@@ -1107,58 +1084,40 @@ elif st.session_state.phase=="lost":
         f'animation:fadeFloat {0.8+random.random()*1.2:.1f}s ease-in-out infinite {random.random():.1f}s;">{"💀" if random.random()>0.3 else "☠️"}</div>'
         for _ in range(18)])
 
+    # ── 토리 Warning 메인 이미지 ──
+    _ASSETS_GO = os.path.join(os.path.dirname(os.path.dirname(__file__)), "assets")
+    _tori_w_path = os.path.join(_ASSETS_GO, "tori_warning.png")
+    _cg1, _cg2, _cg3 = st.columns([1, 2, 1])
+    with _cg2:
+        if os.path.exists(_tori_w_path): st.image(_tori_w_path, width=200)
+
     components.html(f"""
     <style>
     *{{margin:0;padding:0;box-sizing:border-box;}}
-    body{{background:#0a0000;overflow:hidden;display:flex;align-items:center;justify-content:center;
+    body{{background:transparent;overflow:hidden;display:flex;align-items:center;justify-content:center;
       height:100vh;font-family:'Arial Black',sans-serif;}}
-    @keyframes redPulse{{0%,100%{{background:#0a0000;}}50%{{background:#180000;}}}}
-    @keyframes crashIn{{0%{{transform:scale(4) rotate(-8deg);opacity:0;}}60%{{transform:scale(0.92) rotate(2deg);}}100%{{transform:scale(1) rotate(0deg);opacity:1;}}}}
-    @keyframes shakeX{{0%,100%{{transform:translateX(0);}}20%{{transform:translateX(-10px);}}40%{{transform:translateX(10px);}}60%{{transform:translateX(-7px);}}80%{{transform:translateX(7px);}}}}
-    @keyframes rise{{0%{{opacity:1;transform:translateY(0) scale(1);}}100%{{opacity:0;transform:translateY(-350px) scale(0.3);}}}}
+    @keyframes crashIn{{0%{{transform:scale(4);opacity:0;}}60%{{transform:scale(0.92);}}100%{{transform:scale(1);opacity:1;}}}}
+    @keyframes shakeX{{0%,100%{{transform:translateX(0);}}20%{{transform:translateX(-8px);}}40%{{transform:translateX(8px);}}60%{{transform:translateX(-5px);}}80%{{transform:translateX(5px);}}}}
     @keyframes flicker{{0%,100%{{opacity:1;}}30%{{opacity:0.6;}}60%{{opacity:0.9;}}}}
-    @keyframes fadeFloat{{0%,100%{{opacity:0;transform:translateY(0);}}50%{{opacity:0.15;transform:translateY(-20px);}}}}
     @keyframes scoreIn{{0%{{transform:translateY(30px);opacity:0;}}100%{{transform:translateY(0);opacity:1;}}}}
-    body{{animation:redPulse 0.35s ease-in-out infinite;}}
-    .wrap{{text-align:center;animation:crashIn 0.6s cubic-bezier(0.34,1.56,0.64,1) forwards;
-      z-index:10;position:relative;padding:10px;}}
-    .skull{{font-size:2.8rem;animation:shakeX 0.5s ease-in-out infinite;display:inline-block;margin-bottom:6px;}}
-    .lost-txt{{font-size:2.2rem;font-weight:900;color:#ff0000;
-      text-shadow:0 0 20px #ff0000,0 0 60px #cc0000;
-      animation:flicker 0.25s infinite;letter-spacing:4px;}}
-    .reason{{font-size:0.9rem;color:#ff6644;font-weight:700;margin:5px 0;letter-spacing:2px;
-      background:rgba(255,100,0,0.1);border:1px solid rgba(255,100,0,0.3);
-      border-radius:20px;display:inline-block;padding:3px 16px;}}
-    .score{{font-size:2.8rem;font-weight:900;color:#ffcc00;
-      text-shadow:0 0 30px #ffaa00,0 0 60px #ff8800;margin:8px 0;
-      animation:scoreIn 0.5s ease 0.3s both;}}
-    .taunt{{font-size:1.05rem;color:#ff8888;font-weight:900;margin:8px 0;
-      animation:shakeX 4s ease-in-out infinite;}}
-    .sub{{font-size:0.82rem;color:#ff6666;margin-top:4px;font-weight:700;opacity:0.9;}}
+    .wrap{{text-align:center;animation:crashIn 0.6s cubic-bezier(0.34,1.56,0.64,1) forwards;z-index:10;position:relative;}}
+    .lost-txt{{font-size:1.8rem;font-weight:900;color:#ff0000;text-shadow:0 0 20px #ff0000;animation:flicker 0.25s infinite;letter-spacing:4px;}}
+    .reason{{font-size:0.82rem;color:#ff6644;font-weight:700;margin:4px 0;letter-spacing:2px;background:rgba(255,100,0,0.1);border:1px solid rgba(255,100,0,0.3);border-radius:20px;display:inline-block;padding:2px 14px;}}
+    .score{{font-size:2.2rem;font-weight:900;color:#ffcc00;text-shadow:0 0 30px #ffaa00;margin:6px 0;animation:scoreIn 0.5s ease 0.3s both;}}
+    .taunt{{font-size:0.92rem;color:#ff8888;font-weight:900;margin:4px 0;animation:shakeX 4s ease-in-out infinite;}}
+    .sub{{font-size:0.75rem;color:#ff6666;font-weight:700;opacity:0.9;}}
     </style>
-    <div style="position:absolute;width:100%;height:100%;overflow:hidden;top:0;left:0;">
-      {_embers}{_skulls}
-    </div>
     <div class="wrap">
-        <div class="skull">💀</div>
         <div class="lost-txt">GAME OVER</div>
         <div class="reason">[ {_reason} ]</div>
         <div class="score">{_pct}점</div>
         <div class="taunt">{_taunt}</div>
         <div class="sub">{_sub}</div>
-    </div>""", height=300)
+    </div>""", height=200)
 
-    # ── 토리 한 줄 ──
     _nick_go = st.session_state.get("battle_nickname") or st.session_state.get("nickname","전사")
     _TB = '<span style="background:#331100;border:1px solid #ff6600;border-radius:5px;padding:1px 8px;color:#ff8833;font-weight:900;font-size:11px;letter-spacing:2px;">TORI</span>'
-    # ── 토리 Warning 이미지 ──
-    _ASSETS_GO = os.path.join(os.path.dirname(os.path.dirname(__file__)), "assets")
-    _tori_w_img = os.path.join(_ASSETS_GO, "tori_warning.png")
-    _tw1, _tw2 = st.columns([1, 3])
-    with _tw1:
-        if os.path.exists(_tori_w_img): st.image(_tori_w_img, width=70)
-    with _tw2:
-        st.markdown(f'<div style="background:#1a0000;border:1.5px solid #cc2244;border-radius:10px;padding:10px 12px;margin-top:6px;"><div style="margin-bottom:5px;">{_TB}</div><div style="font-size:13px;font-weight:900;color:#ff6644;">{_nick_go}! 후퇴! 재정비 후 재출격!</div></div>', unsafe_allow_html=True)
+    st.markdown(f'<div style="text-align:center;padding:6px 0;"><div style="margin-bottom:4px;">{_TB}</div><div style="font-size:13px;font-weight:900;color:#ff6644;">{_nick_go}! 후퇴! 재정비 후 재출격!</div></div>', unsafe_allow_html=True)
 
     st.markdown("""<style>
     div[data-testid="stButton"]:nth-of-type(1) button{

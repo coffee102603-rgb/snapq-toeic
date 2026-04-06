@@ -967,10 +967,15 @@ elif st.session_state.p7_phase == "victory":
     _answers = st.session_state.p7_answers
     _ok = len([a for a in _answers if a])
     st.markdown('<style>.stApp{background:#08080f!important;}</style>', unsafe_allow_html=True)
-    st.markdown('''<div style="text-align:center;padding:1.2rem 0 0.5rem 0;">
-        <div style="font-size:0.9rem;letter-spacing:4px;opacity:0.6;margin-bottom:6px;">💎 ⭐ ✨ 🏆 🌟 💫 💎</div>
-        <div style="font-size:2.8rem;font-weight:900;color:#ffd700;letter-spacing:3px;text-shadow:0 0 30px #ffd700,0 0 60px #ff8800;">CLEAR!</div>
-        <div style="font-size:0.9rem;color:#00ccee;font-weight:600;letter-spacing:2px;margin-top:4px;">📡 암호해독 작전 클리어!</div>
+    # ── HAE Victory 메인 이미지 ──
+    _ASSETS_CL = os.path.join(os.path.dirname(os.path.dirname(__file__)), "assets")
+    _hae_v_img = os.path.join(_ASSETS_CL, "hae_victory.png")
+    _ch1, _ch2, _ch3 = st.columns([1, 2, 1])
+    with _ch2:
+        if os.path.exists(_hae_v_img): st.image(_hae_v_img, width=180)
+    st.markdown('''<div style="text-align:center;padding:0.3rem 0 0.5rem 0;">
+        <div style="font-size:2.2rem;font-weight:900;color:#ffd700;letter-spacing:3px;text-shadow:0 0 30px #ffd700;">CLEAR!</div>
+        <div style="font-size:0.82rem;color:#00ccee;font-weight:600;letter-spacing:2px;margin-top:4px;">암호해독 작전 클리어!</div>
     </div>''', unsafe_allow_html=True)
     st.markdown(f'''<div style="background:#0c0c1e;border:1.5px solid #00ccee;border-left:4px solid #00ccee;border-radius:12px;padding:10px;text-align:center;margin:8px 0;">
         <div style="font-size:0.75rem;color:#9aa5b4;margin-bottom:2px;">이번 결과</div>
@@ -982,14 +987,7 @@ elif st.session_state.p7_phase == "victory":
     </div>''', unsafe_allow_html=True)
     _nick_cl = st.session_state.get("battle_nickname") or st.session_state.get("nickname","요원")
     _HB = '<span style="background:#001520;border:1px solid #00ccee;border-radius:5px;padding:1px 8px;color:#00ddff;font-weight:900;font-size:11px;letter-spacing:2px;">HAE</span>'
-    # ── 해 Victory 이미지 ──
-    _ASSETS_CL = os.path.join(os.path.dirname(os.path.dirname(__file__)), "assets")
-    _hae_v_img = os.path.join(_ASSETS_CL, "hae_victory.png")
-    _hv1, _hv2 = st.columns([1, 3])
-    with _hv1:
-        if os.path.exists(_hae_v_img): st.image(_hae_v_img, width=70)
-    with _hv2:
-        st.markdown(f'<div style="background:#001520;border:1.5px solid #00ccee;border-radius:10px;padding:10px 12px;margin-top:6px;"><div style="margin-bottom:5px;">{_HB}</div><div style="font-size:13px;font-weight:900;color:#00ccee;">{_nick_cl}, 정보 확보 완료. 브리핑 준비.</div></div>', unsafe_allow_html=True)
+    st.markdown(f'<div style="text-align:center;padding:6px 0;"><div style="margin-bottom:4px;">{_HB}</div><div style="font-size:13px;font-weight:900;color:#00ccee;">{_nick_cl}, 정보 확보 완료. 브리핑 준비.</div></div>', unsafe_allow_html=True)
     st.markdown('''<style>
     button[data-testid="stBaseButton-primary"]{
         background:#0c0c00!important;border:2px solid #00ccee!important;
@@ -1054,14 +1052,19 @@ elif st.session_state.p7_phase == "lost":
     _ok = len([a for a in _answers if a])
     _is_timeout = (st.session_state.get("p7_phase_reason","") == "timeout")
     st.markdown('<style>.stApp{background:#080008!important;}</style>', unsafe_allow_html=True)
-    st.markdown('''<div style="text-align:center;padding:1rem 0 0.4rem 0;">
-        <div style="font-size:0.9rem;letter-spacing:3px;opacity:0.5;margin-bottom:6px;">💀 ☠️ 🪦 💔 ⚰️ 🩸 💀</div>
-        <div style="font-size:2.6rem;font-weight:900;color:#cc0000;letter-spacing:2px;">💀 GAME OVER</div>
-        <div style="font-size:0.8rem;color:#660000;letter-spacing:2px;margin-top:3px;">넌 오늘도 졌다...</div>
+    # ── HAE Warning 메인 이미지 ──
+    _ASSETS_GO2 = os.path.join(os.path.dirname(os.path.dirname(__file__)), "assets")
+    _hae_w_img = os.path.join(_ASSETS_GO2, "hae_warning.png")
+    _cg1, _cg2, _cg3 = st.columns([1, 2, 1])
+    with _cg2:
+        if os.path.exists(_hae_w_img): st.image(_hae_w_img, width=200)
+    st.markdown(f'''<div style="text-align:center;padding:0.3rem 0;">
+        <div style="font-size:2rem;font-weight:900;color:#cc0000;letter-spacing:2px;">GAME OVER</div>
+        <div style="font-size:0.75rem;color:#660000;letter-spacing:2px;margin-top:3px;">넌 오늘도 졌다...</div>
     </div>''', unsafe_allow_html=True)
     st.markdown(f'''<div style="background:#0c0008;border:1.5px solid #cc2244;border-left:4px solid #cc2244;border-radius:12px;padding:10px;text-align:center;margin:6px 0;">
         <div style="font-size:0.72rem;color:#9aa5b4;margin-bottom:2px;">처참한 결과</div>
-        <div style="font-size:1.5rem;font-weight:900;color:#cc2244;">💀 {_ok} / 3</div>
+        <div style="font-size:1.5rem;font-weight:900;color:#cc2244;">{_ok} / 3</div>
     </div>''', unsafe_allow_html=True)
 
     if _is_timeout:
@@ -1084,14 +1087,7 @@ elif st.session_state.p7_phase == "lost":
 
     _nick_go2 = st.session_state.get("battle_nickname") or st.session_state.get("nickname","요원")
     _HB = '<span style="background:#001520;border:1px solid #00ccee;border-radius:5px;padding:1px 8px;color:#00ddff;font-weight:900;font-size:11px;letter-spacing:2px;">HAE</span>'
-    # ── 해 Warning 이미지 ──
-    _ASSETS_GO2 = os.path.join(os.path.dirname(os.path.dirname(__file__)), "assets")
-    _hae_w_img = os.path.join(_ASSETS_GO2, "hae_warning.png")
-    _hw1, _hw2 = st.columns([1, 3])
-    with _hw1:
-        if os.path.exists(_hae_w_img): st.image(_hae_w_img, width=70)
-    with _hw2:
-        st.markdown(f'<div style="background:#1a0000;border:1.5px solid #cc2244;border-radius:10px;padding:10px 12px;margin-top:6px;"><div style="margin-bottom:5px;">{_HB}</div><div style="font-size:13px;font-weight:900;color:#ff6644;">{_nick_go2}, 통신 두절. 재접속하라.</div></div>', unsafe_allow_html=True)
+    st.markdown(f'<div style="text-align:center;padding:6px 0;"><div style="margin-bottom:4px;">{_HB}</div><div style="font-size:13px;font-weight:900;color:#ff6644;">{_nick_go2}, 통신 두절. 재접속하라.</div></div>', unsafe_allow_html=True)
 
     st.markdown('''<style>
     button[data-testid="stBaseButton-primary"]{
