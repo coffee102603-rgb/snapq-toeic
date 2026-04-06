@@ -1400,7 +1400,7 @@ elif st.session_state.phase=="briefing":
         st.markdown(f'''<div style="display:flex;justify-content:space-between;align-items:center;
             background:#06080f;border:1px solid #1e2235;border-radius:10px;padding:8px 14px;margin-bottom:5px;">
             <div style="display:flex;align-items:center;gap:2px;">{_dots_html}</div>
-            <span style="font-family:Orbitron,monospace;font-size:11px;color:#44ee66;font-weight:900;letter-spacing:2px;">
+            <span style="font-family:Orbitron,monospace;font-size:14px;color:#44ee66;font-weight:900;letter-spacing:2px;">
                 🚔 {_jail_cnt}</span>
         </div>''', unsafe_allow_html=True)
 
@@ -1430,7 +1430,7 @@ elif st.session_state.phase=="briefing":
                 <span style="font-size:0.65rem;color:#444;letter-spacing:2px;">{cat}{_jail_badge}</span>
             </div>
             <div style="font-size:1.05rem;font-weight:700;color:#eeeeff;line-height:1.7;margin-bottom:8px;">{sent_html}</div>
-            <div style="font-size:0.82rem;color:#6a7a8a;margin-bottom:7px;">📖 {kr}</div>
+            <div style="font-size:0.85rem;color:#ccddee;margin-bottom:7px;padding-bottom:5px;border-bottom:1.5px solid #aa882244;text-decoration:underline;text-decoration-color:#aa882288;text-underline-offset:4px;text-decoration-thickness:1.5px;">📖 {kr}</div>
             <div style="background:#040d04;border-left:3px solid #50c878;border-radius:0 8px 8px 0;padding:7px 10px;">
                 <div style="font-size:0.82rem;color:#50c878;font-weight:700;">💡 {exk}</div>
             </div>
@@ -1472,7 +1472,7 @@ elif st.session_state.phase=="briefing":
             st.markdown('</div>', unsafe_allow_html=True)
         elif _is_saved:
             _save_msg = "🚔 자동 투옥 완료!" if not ok else "✅ 투옥 완료!"
-            st.markdown(f'<div style="text-align:center;padding:4px 0;font-size:0.78rem;color:#336644;font-weight:700;letter-spacing:1px;">{_save_msg}</div>', unsafe_allow_html=True)
+            st.markdown(f'<div style="text-align:center;padding:8px 0;margin:6px 0;font-size:0.82rem;color:#336644;font-weight:700;letter-spacing:1px;">{_save_msg}</div>', unsafe_allow_html=True)
 
         # ── 다음 심문 / 브리핑 완료 버튼 ──
         _is_last = (bi + 1 >= num_qs)
