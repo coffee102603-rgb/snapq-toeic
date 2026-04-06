@@ -1188,7 +1188,7 @@ elif st.session_state.phase=="briefing":
         font-size:1.0rem!important;font-weight:900!important;min-height:50px!important;}
     .br-next-btn div[data-testid="stButton"] button p{color:#00ddff!important;font-size:1.0rem!important;font-weight:900!important;}
 
-    /* ── 가둘래 버튼 ── */
+    /* ── 포획 버튼 ── */
     .br-jail-btn div[data-testid="stButton"] button{
         background:#0c1800!important;border:2.5px solid #44ee66!important;
         border-radius:12px!important;color:#44ee66!important;
@@ -1225,7 +1225,7 @@ elif st.session_state.phase=="briefing":
     if st.session_state.get("_br_game_uid") != _br_game_uid:
         st.session_state.br_saved = set()
         st.session_state.br_idx   = 0
-        st.session_state.br_auto_jailed = set()  # 오답 자동 투옥 추적
+        st.session_state.br_auto_jailed = set()  # 오답 자동 포획 추적
         st.session_state.br_jail_count = 0
         st.session_state["_br_game_uid"] = _br_game_uid
     for _bk,_bv in {"br_saved":set(),"br_auto_jailed":set(),"br_jail_count":0}.items():
@@ -1280,8 +1280,8 @@ elif st.session_state.phase=="briefing":
           <div class="score">✅ {sc_v} &nbsp; ❌ {wr_v}</div>
           <div class="sub">5문제 브리핑 완료</div>
           <div class="jail">
-            <div class="jail-num">🚔 {_jail_total}</div>
-            <div class="jail-label">포로 투옥 완료</div>
+            <div class="jail-num">⛓ {_jail_total}</div>
+            <div class="jail-label">포로 포획 · 수용소 이송</div>
           </div>
           <div class="weak">⚠️ 약점: {_weak_str}</div>
         </div>
@@ -1345,7 +1345,7 @@ elif st.session_state.phase=="briefing":
         ans_clean = q["ch"][q["a"]].split(") ",1)[-1] if ") " in q["ch"][q["a"]] else q["ch"][q["a"]]
         kr = q.get("kr",""); exk = q.get("exk",""); cat = q.get("cat","")
 
-        # ── 오답 자동 투옥 (이 카드 처음 도착 시 1회만) ──
+        # ── 오답 자동 포획 (이 카드 처음 도착 시 1회만) ──
         if not ok and bi not in st.session_state.br_auto_jailed:
             st.session_state.br_auto_jailed.add(bi)
             st.session_state.br_saved.add(bi)
@@ -1395,13 +1395,13 @@ elif st.session_state.phase=="briefing":
             else:
                 _dots_html += '<span style="display:inline-block;width:12px;height:12px;border-radius:50%;background:#1a1a2a;border:1px solid #333;margin:0 4px;"></span>'
 
-        # ── 상단 HUD (진행 + 투옥 카운터) ──
+        # ── 상단 HUD (진행 + 포획 카운터) ──
         _jail_cnt = st.session_state.br_jail_count
         st.markdown(f'''<div style="display:flex;justify-content:space-between;align-items:center;
             background:#06080f;border:1px solid #1e2235;border-radius:10px;padding:8px 14px;margin-bottom:5px;">
             <div style="display:flex;align-items:center;gap:2px;">{_dots_html}</div>
             <span style="font-family:Orbitron,monospace;font-size:14px;color:#44ee66;font-weight:900;letter-spacing:2px;">
-                🚔 {_jail_cnt}</span>
+                ⛓ {_jail_cnt}</span>
         </div>''', unsafe_allow_html=True)
 
         # ── 문제 카드 ──
@@ -1414,12 +1414,12 @@ elif st.session_state.phase=="briefing":
                 f'<span style="color:#50c878;font-weight:900;border-bottom:2px solid #50c878;">{ans_clean}</span>')
             card_border="#FF2D55"; qnum_color="#ff4466"; qnum_sym="❌"
 
-        # 오답 자동 투옥 뱃지
+        # 오답 자동 포획 뱃지
         _jail_badge = ""
         if not ok:
             _jail_badge = ('<span style="background:#1a0000;border:1px solid #ff4444;border-radius:6px;'
                 'padding:2px 8px;font-size:0.65rem;color:#ff6644;font-weight:900;margin-left:8px;">'
-                '🚔 자동 투옥!</span>')
+                '⛓ 적 포획!</span>')
 
         st.markdown(f'''<div style="background:#080c1a;border:1.5px solid {card_border};
             border-left:4px solid {card_border};border-radius:14px;padding:12px;margin:3px 0;">
@@ -1436,10 +1436,10 @@ elif st.session_state.phase=="briefing":
             </div>
         </div>''', unsafe_allow_html=True)
 
-        # ── 정답: "이것도 가둘래?" 선택 버튼 ──
+        # ── 정답: "이것도 포획할까?" 선택 버튼 ──
         if ok and not _is_saved:
             st.markdown('<div class="br-jail-btn">', unsafe_allow_html=True)
-            if st.button("📌 이것도 가둘래? → 포로수용소 투옥!", key=f"jail_{q['id']}_{bi}", use_container_width=True):
+            if st.button("📌 이것도 포획할까? → 수용소 이송!", key=f"jail_{q['id']}_{bi}", use_container_width=True):
                 st.session_state.br_saved.add(bi)
                 st.session_state.br_jail_count += 1
                 item = {"id":q["id"],"text":q["text"],"ch":q["ch"],"a":q["a"],"ex":q.get("ex",""),
@@ -1471,7 +1471,7 @@ elif st.session_state.phase=="briefing":
                 st.rerun()
             st.markdown('</div>', unsafe_allow_html=True)
         elif _is_saved:
-            _save_msg = "🚔 자동 투옥 완료!" if not ok else "✅ 투옥 완료!"
+            _save_msg = "⛓ 포획 완료!" if not ok else "✅ 포획 완료!"
             st.markdown(f'<div style="text-align:center;padding:8px 0;margin:6px 0;font-size:0.82rem;color:#336644;font-weight:700;letter-spacing:1px;">{_save_msg}</div>', unsafe_allow_html=True)
 
         # ── 다음 심문 / 브리핑 완료 버튼 ──
