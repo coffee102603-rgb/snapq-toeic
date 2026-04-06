@@ -17,7 +17,7 @@ import random, time, json, os
 import sys as _sys
 _sys.path.insert(0, os.path.dirname(__file__))
 from _responsive_css import inject_css as _inject_css
-_inject_css()
+# inject_css()는 set_page_config() 이후에 호출해야 함 → 아래로 이동
 
 # ═══ GOOGLE SHEETS 연동 ═══
 def save_to_sheets(record):
@@ -62,6 +62,7 @@ def save_to_sheets(record):
         st.error(f"Sheets 오류: {e}")
 
 st.set_page_config(page_title="암호해독 작전 📡", page_icon="📡", layout="wide", initial_sidebar_state="collapsed")
+_inject_css()  # set_page_config 직후 호출 (StreamlitSetPageConfigMustBeFirst 방지)
 # ★★★ iOS Safari 세션 가드 — WebSocket 끊겨도 세션 자동 복원 ★★★
 _qs_nick = st.query_params.get("nick", "")
 _qs_ag   = st.query_params.get("ag", "")
