@@ -57,6 +57,63 @@ def save_to_storage(items):
     with open(STORAGE_FILE, "w", encoding="utf-8") as f:
         json.dump(data, f, ensure_ascii=False, indent=2)
 
+# ═══ 연구 데이터 — rt_logs 저장 함수 ═══════════════════════════
+# 논문 01·02·04 핵심 데이터 / 특허 3순위 (오답타이밍 자동분류)
+# IRB 승인 전: research_phase="pre_irb" / 승인 후 "post_irb"로 변경
+RESEARCH_PHASE = "pre_irb"
+
+def _classify_error_timing(seconds_remaining, timer_setting):
+    """타이머 잔여시간 비율 → fast/mid/slow 자동 분류 (특허 3순위 핵심)"""
+    if timer_setting <= 0:
+        return "unknown"
+    ratio = seconds_remaining / timer_setting
+    if ratio > 0.667:
+        return "fast_wrong"   # 충동형 오답 (잔여 > 2/3)
+    elif ratio > 0.333:
+        return "mid_wrong"    # 표준형 오답 (1/3 ~ 2/3)
+    else:
+        return "slow_wrong"   # 인지과부하형 오답 (잔여 < 1/3)
+
+def _save_rt_log(q, is_correct, seconds_remaining, timer_setting, uid, session_no, adp_level):
+    """문제 1개 풀이 후 rt_log 저장 — 논문 01·02·04 데이터"""
+    try:
+        _tp = q.get("tp", "grammar")
+        _grammar_type = {
+            "grammar": "GRM", "g1": "GRM",
+            "form": "FORM",   "g2": "FORM",
+            "link": "LINK",   "g3": "LINK",
+            "vocab": "VOCAB",
+        }.get(_tp, "GRM")
+
+        _entry = {
+            "timestamp":         __import__("datetime").datetime.now().isoformat(),
+            "user_id":           uid,
+            "question_id":       q.get("id", ""),
+            "is_correct":        is_correct,
+            "seconds_remaining": round(max(0, seconds_remaining), 2),
+            "timer_setting":     timer_setting,
+            "rt_proxy":          round(max(0, timer_setting - seconds_remaining), 2),
+            "grammar_type":      _grammar_type,
+            "cat":               q.get("cat", ""),
+            "diff":              q.get("diff", ""),
+            "adp_level":         adp_level,
+            "session_no":        session_no,
+            "research_phase":    RESEARCH_PHASE,
+            # 오답일 때만 타이밍 분류 (논문 04 · 특허 3순위)
+            "error_timing_type": (
+                _classify_error_timing(seconds_remaining, timer_setting)
+                if not is_correct else None
+            ),
+        }
+        _data = load_storage()
+        if "rt_logs" not in _data:
+            _data["rt_logs"] = []
+        _data["rt_logs"].append(_entry)
+        with open(STORAGE_FILE, "w", encoding="utf-8") as _f:
+            json.dump(_data, _f, ensure_ascii=False, indent=2)
+    except Exception:
+        pass  # 데이터 저장 실패해도 게임 계속 진행
+
 # ═══ 전역 CSS — 화력전 전용 폰게임 스타일 ═══
 st.markdown("""
 <style>
@@ -703,6 +760,19 @@ if st.session_state.phase=="battle":
             if ok: st.session_state.sc+=1
             else: st.session_state.wrong+=1
             st.session_state.ta+=1
+            # ── ★ rt_log 저장 (논문 01·02·04 / 특허 3순위) ──────────
+            _elapsed_rt = time.time() - st.session_state.qst
+            _rem_rt     = max(0, st.session_state.tsec - _elapsed_rt)
+            _save_rt_log(
+                q               = q,
+                is_correct      = ok,
+                seconds_remaining = _rem_rt,
+                timer_setting   = st.session_state.tsec,
+                uid             = st.session_state.get("nickname", "guest"),
+                session_no      = st.session_state.get("p5_session_no", 0),
+                adp_level       = st.session_state.get("adp_level", "normal"),
+            )
+            # ────────────────────────────────────────────────────────
             # iOS 2-phase: 버튼 제거 후 다음 문제
             st.session_state["_fp_processing"] = True
             st.rerun()
