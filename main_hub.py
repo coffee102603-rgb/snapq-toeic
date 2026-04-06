@@ -1291,7 +1291,7 @@ _GRID_HTML = f"""
   z-index:10;padding:14px 12px;text-align:center;
 }}
 .npc-ov.tour-active{{opacity:1;pointer-events:none;}}
-.npc-inbody-on .npc-ov{{opacity:1;pointer-events:none;}}
+/* npc-inbody-on disabled */
 .npc-sk{{font-size:26px;margin-bottom:6px;animation:skPulse 0.85s ease-in-out infinite;}}
 @keyframes skPulse{{0%,100%{{transform:scale(1);}}50%{{transform:scale(1.2);}}}}
 .npc-tx{{font-size:12px;font-weight:900;color:#fff;line-height:1.6;text-shadow:0 0 10px rgba(255,255,255,0.5);}}
@@ -1477,10 +1477,7 @@ _GRID_HTML = f"""
     var s=el.querySelector('.npc-stat');if(s)s.style.display='block';
   }});
   document.querySelectorAll('.card,.pb').forEach(function(el){{
-    el.addEventListener('mouseenter',function(){{el.classList.add('npc-inbody-on');}});
-    el.addEventListener('mouseleave',function(){{el.classList.remove('npc-inbody-on');}});
-    el.addEventListener('touchstart',function(){{el.classList.add('npc-inbody-on');}},{{passive:true}});
-    el.addEventListener('touchend',function(){{setTimeout(function(){{el.classList.remove('npc-inbody-on');}},900);}});
+    /* hover overlay disabled */
   }});
 }})();
 </script>
@@ -1493,10 +1490,7 @@ _GRID_HTML = f"""
     var s=el.querySelector('.npc-stat');if(s)s.style.display='block';
   }});
   document.querySelectorAll('.card,.pb').forEach(function(el){{
-    el.addEventListener('mouseenter',function(){{el.classList.add('npc-inbody-on');}});
-    el.addEventListener('mouseleave',function(){{el.classList.remove('npc-inbody-on');}});
-    el.addEventListener('touchstart',function(){{el.classList.add('npc-inbody-on');}},{{passive:true}});
-    el.addEventListener('touchend',function(){{setTimeout(function(){{el.classList.remove('npc-inbody-on');}},900);}});
+    /* hover overlay disabled */
   }});
 }})();
 </script>
