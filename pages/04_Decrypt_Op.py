@@ -988,7 +988,7 @@ elif st.session_state.p7_phase == "victory":
     with _hv1:
         if os.path.exists(_hae_v_img): st.image(_hae_v_img, width=70)
     with _hv2:
-        st.markdown(f'<div style="background:#001520;border:1.5px solid #00ccee;border-radius:10px;padding:10px 12px;margin-top:6px;"><div style="font-size:13px;font-weight:900;color:#00ccee;">{_HB} {_nick_cl}, 정보 확보 완료. 브리핑 준비.</div></div>', unsafe_allow_html=True)
+        st.markdown(f'<div style="background:#001520;border:1.5px solid #00ccee;border-radius:10px;padding:10px 12px;margin-top:6px;"><div style="font-size:13px;">{_HB}<div style="font-size:13px;font-weight:900;color:#00ccee;margin-top:4px;">{_nick_cl}, 정보 확보 완료. 브리핑 준비.</div></div>', unsafe_allow_html=True)
     st.markdown('''<style>
     button[data-testid="stBaseButton-primary"]{
         background:#0c0c00!important;border:2px solid #00ccee!important;
@@ -1090,7 +1090,7 @@ elif st.session_state.p7_phase == "lost":
     with _hw1:
         if os.path.exists(_hae_w_img): st.image(_hae_w_img, width=70)
     with _hw2:
-        st.markdown(f'<div style="background:#1a0000;border:1.5px solid #cc2244;border-radius:10px;padding:10px 12px;margin-top:6px;"><div style="font-size:13px;font-weight:900;color:#ff6644;">{_HB} {_nick_go2}, 통신 두절. 재접속하라.</div></div>', unsafe_allow_html=True)
+        st.markdown(f'<div style="background:#1a0000;border:1.5px solid #cc2244;border-radius:10px;padding:10px 12px;margin-top:6px;"><div style="font-size:13px;">{_HB}<div style="font-size:13px;font-weight:900;color:#ff6644;margin-top:4px;">{_nick_go2}, 통신 두절. 재접속하라.</div></div>', unsafe_allow_html=True)
 
     st.markdown('''<style>
     button[data-testid="stBaseButton-primary"]{

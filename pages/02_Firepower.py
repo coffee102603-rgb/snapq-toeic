@@ -925,7 +925,7 @@ elif st.session_state.phase=="victory":
     with _tv1:
         if os.path.exists(_tori_v_img): st.image(_tori_v_img, width=70)
     with _tv2:
-        st.markdown(f'<div style="background:#1a0800;border:1.5px solid #ff6600;border-radius:10px;padding:10px 12px;margin-top:6px;"><div style="font-size:13px;font-weight:900;color:#ffaa44;">{_TB} {_nick_v}! {_tori_v} 사령부에 보고하라.</div></div>', unsafe_allow_html=True)
+        st.markdown(f'<div style="background:#1a0800;border:1.5px solid #ff6600;border-radius:10px;padding:10px 12px;margin-top:6px;"><div style="font-size:13px;">{_TB}<div style="font-size:13px;font-weight:900;color:#ffaa44;margin-top:4px;">{_nick_v}! {_tori_v} 사령부에 보고하라.</div></div>', unsafe_allow_html=True)
 
     st.markdown("""<style>
     @keyframes zapPulse{
@@ -1158,7 +1158,7 @@ elif st.session_state.phase=="lost":
     with _tw1:
         if os.path.exists(_tori_w_img): st.image(_tori_w_img, width=70)
     with _tw2:
-        st.markdown(f'<div style="background:#1a0000;border:1.5px solid #cc2244;border-radius:10px;padding:10px 12px;margin-top:6px;"><div style="font-size:13px;font-weight:900;color:#ff6644;">{_TB} {_nick_go}! 후퇴! 재정비 후 재출격!</div></div>', unsafe_allow_html=True)
+        st.markdown(f'<div style="background:#1a0000;border:1.5px solid #cc2244;border-radius:10px;padding:10px 12px;margin-top:6px;"><div style="font-size:13px;">{_TB}<div style="font-size:13px;font-weight:900;color:#ff6644;margin-top:4px;">{_nick_go}! 후퇴! 재정비 후 재출격!</div></div>', unsafe_allow_html=True)
 
     st.markdown("""<style>
     div[data-testid="stButton"]:nth-of-type(1) button{
