@@ -925,7 +925,7 @@ elif st.session_state.phase=="victory":
     with _tv1:
         if os.path.exists(_tori_v_img): st.image(_tori_v_img, width=70)
     with _tv2:
-        st.markdown(f'<div style="background:#1a0800;border:1.5px solid #ff6600;border-radius:10px;padding:10px 12px;margin-top:6px;"><div style="font-size:13px;">{_TB}<div style="font-size:13px;font-weight:900;color:#ffaa44;margin-top:4px;">{_nick_v}! {_tori_v} 사령부에 보고하라.</div></div>', unsafe_allow_html=True)
+        st.markdown(f'<div style="background:#1a0800;border:1.5px solid #ff6600;border-radius:10px;padding:10px 12px;margin-top:6px;"><div style="margin-bottom:5px;">{_TB}</div><div style="font-size:13px;font-weight:900;color:#ffaa44;">{_nick_v}! {_tori_v} 사령부에 보고하라.</div></div>', unsafe_allow_html=True)
 
     st.markdown("""<style>
     @keyframes zapPulse{
@@ -1158,7 +1158,7 @@ elif st.session_state.phase=="lost":
     with _tw1:
         if os.path.exists(_tori_w_img): st.image(_tori_w_img, width=70)
     with _tw2:
-        st.markdown(f'<div style="background:#1a0000;border:1.5px solid #cc2244;border-radius:10px;padding:10px 12px;margin-top:6px;"><div style="font-size:13px;">{_TB}<div style="font-size:13px;font-weight:900;color:#ff6644;margin-top:4px;">{_nick_go}! 후퇴! 재정비 후 재출격!</div></div>', unsafe_allow_html=True)
+        st.markdown(f'<div style="background:#1a0000;border:1.5px solid #cc2244;border-radius:10px;padding:10px 12px;margin-top:6px;"><div style="margin-bottom:5px;">{_TB}</div><div style="font-size:13px;font-weight:900;color:#ff6644;">{_nick_go}! 후퇴! 재정비 후 재출격!</div></div>', unsafe_allow_html=True)
 
     st.markdown("""<style>
     div[data-testid="stButton"]:nth-of-type(1) button{
@@ -1751,13 +1751,13 @@ div[data-testid="stButton"] button.fp-nav p { color:#3d5066 !important; }
     _npc_nick = st.session_state.get('student_nickname', '')
     _TB = '<span style="background:#331100;border:1px solid #ff6600;border-radius:5px;padding:1px 8px;color:#ff8833;font-weight:900;font-size:11px;letter-spacing:2px;">TORI</span>'
     _tori_msgs = [
-        f"{_TB} {_npc_nick}! 오늘도 불처럼!",
-        f"{_TB} {_npc_nick}! 약점 카테고리 집중 공략!",
-        f"{_TB} {_npc_nick}! BLITZ 도전할 때다!",
-        f"{_TB} {_npc_nick}! 전장에서 기다린다!",
+        f"{_npc_nick}! 오늘도 불처럼!",
+        f"{_npc_nick}! 약점 카테고리 집중 공략!",
+        f"{_npc_nick}! BLITZ 도전할 때다!",
+        f"{_npc_nick}! 전장에서 기다린다!",
     ]
     _tori_img = os.path.join(_ASSETS_DIR, "tori_normal.png")
-    _tori_msg = _rnd_npc.choice(_tori_msgs) if _npc_nick else "{_TB} 전장에 온 걸 환영한다!"
+    _tori_msg = _rnd_npc.choice(_tori_msgs) if _npc_nick else "전장에 온 걸 환영한다!"
     _tc_img, _tc_txt = st.columns([1, 3])
     with _tc_img:
         if os.path.exists(_tori_img):
@@ -1765,7 +1765,8 @@ div[data-testid="stButton"] button.fp-nav p { color:#3d5066 !important; }
     with _tc_txt:
         st.markdown(f'''<div style="background:rgba(10,5,20,0.96);border:1.5px solid #cc6633;
             border-radius:10px;padding:12px 14px;margin-top:6px;">
-            <div style="font-size:13px;font-weight:900;color:#ffaa44;letter-spacing:0.5px;">
+            <div style="margin-bottom:5px;">{_TB}</div>
+            <div style="font-size:13px;font-weight:900;color:#ffcc88;">
             {_tori_msg}</div>
         </div>''', unsafe_allow_html=True)
 
