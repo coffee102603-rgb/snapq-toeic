@@ -1307,8 +1307,8 @@ _GRID_HTML = f"""
   transition:opacity 0.28s;
   z-index:10;padding:20px;text-align:center;
 }}
-.card:hover .npc-ov,.card.npc-on .npc-ov{{opacity:1;pointer-events:none;}}
-.pb:hover .npc-ov,.pb.npc-on .npc-ov{{opacity:1;pointer-events:none;}}
+.card.npc-on .npc-ov{{opacity:1;pointer-events:none;}}
+.pb.npc-on .npc-ov{{opacity:1;pointer-events:none;}}
 .npc-sk{{font-size:34px;margin-bottom:10px;animation:skPulse 0.9s ease-in-out infinite;}}
 @keyframes skPulse{{0%,100%{{transform:scale(1);}}50%{{transform:scale(1.3);}}}}
 .npc-tx{{
