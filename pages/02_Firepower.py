@@ -1779,22 +1779,22 @@ div[data-testid="stButton"] button.fp-nav p { color:#3d5066 !important; }
       }}
 
       // 작전 카드
-      if(txt.indexOf("\uc2dc\uc81c")>-1){{
+      if(txt.indexOf("\ubb38\ubc95")>-1 && txt.indexOf("\ucd9c\uaca9")===-1){{
         b.classList.add("fp-mode","fp-g1");
         if(selM==="g1") b.classList.add("fp-sel"); else b.classList.remove("fp-sel");
         b.querySelectorAll("p").forEach(function(p){{p.classList.add("fp-g1");if(selM==="g1")p.classList.add("fp-sel");else p.classList.remove("fp-sel");}});
       }}
-      if(txt.indexOf("\ud488\uc0ac\uc804\ud658")>-1){{
+      if(txt.indexOf("\ud615\ud0dc")>-1 && txt.indexOf("\ucd9c\uaca9")===-1){{
         b.classList.add("fp-mode","fp-g2");
         if(selM==="g2") b.classList.add("fp-sel"); else b.classList.remove("fp-sel");
         b.querySelectorAll("p").forEach(function(p){{p.classList.add("fp-g2");if(selM==="g2")p.classList.add("fp-sel");else p.classList.remove("fp-sel");}});
       }}
-      if(txt.indexOf("\uc5f0\uacb0\uc5b4")>-1){{
+      if(txt.indexOf("\uc5f0\uacb0")>-1 && txt.indexOf("\ucd9c\uaca9")===-1){{
         b.classList.add("fp-mode","fp-g3");
         if(selM==="g3") b.classList.add("fp-sel"); else b.classList.remove("fp-sel");
         b.querySelectorAll("p").forEach(function(p){{p.classList.add("fp-g3");if(selM==="g3")p.classList.add("fp-sel");else p.classList.remove("fp-sel");}});
       }}
-      if(txt.indexOf("\ub3d9\uc758\uc5b4")>-1){{
+      if(txt.indexOf("\uc5b4\ud718")>-1 && txt.indexOf("\ucd9c\uaca9")===-1){{
         b.classList.add("fp-mode","fp-vc");
         if(selM==="vocab") b.classList.add("fp-sel"); else b.classList.remove("fp-sel");
         b.querySelectorAll("p").forEach(function(p){{p.classList.add("fp-vc");if(selM==="vocab")p.classList.add("fp-sel");else p.classList.remove("fp-sel");}});
