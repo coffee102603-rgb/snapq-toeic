@@ -974,6 +974,27 @@ elif st.session_state.phase=="victory":
     _TB = '<span style="background:#331100;border:1px solid #ff6600;border-radius:5px;padding:1px 8px;color:#ff8833;font-weight:900;font-size:11px;letter-spacing:2px;">TORI</span>'
     st.markdown(f'<div style="text-align:center;padding:6px 0;"><div style="margin-bottom:4px;">{_TB}</div><div style="font-size:13px;font-weight:900;color:#ffaa44;">{_nick_v}! {_tori_v} 사령부에 보고하라.</div></div>', unsafe_allow_html=True)
 
+    # ── Adaptive Difficulty 변화 알림 ─────────────────────────
+    _adp_v = st.session_state.get("adp_level", "normal")
+    _adp_v_color = {"easy": "#44cc66", "normal": "#FFD600", "hard": "#ff3344"}
+    _adp_v_next = {
+        "easy":   ("🟢 EASY", "계속 틀리면 여기 머문다. 집중해!"),
+        "normal": ("🟡 NORMAL", "잘 하면 HARD, 틀리면 EASY — 네 선택이야."),
+        "hard":   ("🔴 HARD", "최고 난이도 유지 중. 이게 진짜 실력이야."),
+    }
+    _v_tag, _v_msg = _adp_v_next[_adp_v]
+    _vc = _adp_v_color[_adp_v]
+    st.markdown(
+        f'<div style="text-align:center;background:#07091a;border:1px solid {_vc}33;'
+        f'border-radius:8px;padding:5px 10px;margin:4px 0;">'
+        f'<span style="font-family:Orbitron,monospace;font-size:0.75rem;font-weight:900;color:{_vc};">'
+        f'{_v_tag}</span>'
+        f'<span style="font-size:0.72rem;color:#888;"> · {_v_msg}</span>'
+        f'</div>',
+        unsafe_allow_html=True
+    )
+    # ─────────────────────────────────────────────────────────
+
     st.markdown("""<style>
     @keyframes zapPulse{
       0%,100%{box-shadow:0 0 18px #00d4ff,0 0 40px rgba(0,212,255,0.5),inset 0 0 18px rgba(0,212,255,0.1);}
@@ -1188,6 +1209,27 @@ elif st.session_state.phase=="lost":
     _nick_go = st.session_state.get("battle_nickname") or st.session_state.get("nickname","전사")
     _TB = '<span style="background:#331100;border:1px solid #ff6600;border-radius:5px;padding:1px 8px;color:#ff8833;font-weight:900;font-size:11px;letter-spacing:2px;">TORI</span>'
     st.markdown(f'<div style="text-align:center;padding:6px 0;"><div style="margin-bottom:4px;">{_TB}</div><div style="font-size:13px;font-weight:900;color:#ff6644;">{_nick_go}! 후퇴! 재정비 후 재출격!</div></div>', unsafe_allow_html=True)
+
+    # ── Adaptive Difficulty 하락 경고 ─────────────────────────
+    _adp_go = st.session_state.get("adp_level", "normal")
+    _go_color = {"easy": "#44cc66", "normal": "#FFD600", "hard": "#ff8833"}
+    _go_msgs = {
+        "easy":   ("🟢 EASY", "더 내려갈 곳 없다. 여기서 반드시 올라와라."),
+        "normal": ("🟡 NORMAL", "틀리면 EASY로 내려간다. 정신 차려."),
+        "hard":   ("🔴→🟡 HARD→NORMAL", "한 번 졌다. NORMAL로 내려갈 수도 있다."),
+    }
+    _go_tag, _go_hint = _go_msgs[_adp_go]
+    _gc = _go_color[_adp_go]
+    st.markdown(
+        f'<div style="text-align:center;background:#0d0005;border:1px solid {_gc}33;'
+        f'border-radius:8px;padding:5px 10px;margin:4px 0;">'
+        f'<span style="font-family:Orbitron,monospace;font-size:0.75rem;font-weight:900;color:{_gc};">'
+        f'{_go_tag}</span>'
+        f'<span style="font-size:0.72rem;color:#888;"> · {_go_hint}</span>'
+        f'</div>',
+        unsafe_allow_html=True
+    )
+    # ─────────────────────────────────────────────────────────
 
     st.markdown("""<style>
     div[data-testid="stButton"]:nth-of-type(1) button{
@@ -1847,6 +1889,56 @@ div[data-testid="stButton"] button.fp-nav p { color:#3d5066 !important; }
     with b4:
         if st.button("📘\nVOCAB\n어휘 폭격", key="svc", use_container_width=True):
             st.session_state.sel_mode="vocab"; st.rerun()
+
+    # ── ADAPTIVE DIFFICULTY 상태 표시 ──────────────────────────
+    _adp_now   = st.session_state.get("adp_level", "normal")
+    _adp_hist  = st.session_state.get("adp_history", [])
+    _last_sc   = round(_adp_hist[-1] * 100) if _adp_hist else None
+
+    _adp_color = {"easy": "#44cc66", "normal": "#FFD600", "hard": "#ff3344"}
+    _adp_bar   = {"easy": "█░░", "normal": "██░", "hard": "███"}
+    _adp_tag   = {"easy": "EASY", "normal": "NORMAL", "hard": "HARD"}
+    _adp_arrow = {
+        "easy":   ("🔼 맞히면 올라간다",  "#44cc66"),
+        "normal": ("🔼 계속 맞히면 HARD", "#FFD600"),
+        "hard":   ("🔥 최고 난이도 진입!", "#ff3344"),
+    }
+    _adp_taunt = {
+        "easy":   "지금은 기초다. 여기서 무너지면 끝이야.",
+        "normal": "딱 중간이야. 올라갈래, 내려갈래?",
+        "hard":   "최정예만 오는 구역. 버텨봐.",
+    }
+    _col, _msg_col = _adp_color[_adp_now], _adp_arrow[_adp_now][1]
+    _arrow_txt = _adp_arrow[_adp_now][0]
+    _score_html = (
+        f'<span style="font-size:1.1rem;font-weight:900;color:{_col};">'
+        f'{_last_sc}%</span>'
+    ) if _last_sc is not None else ""
+
+    st.markdown(f"""
+<div style="background:linear-gradient(135deg,#07091a,#0a0c1e);
+  border:1px solid {_col}44;border-left:3px solid {_col};
+  border-radius:10px;padding:7px 12px;margin:10px 0 2px;
+  display:flex;align-items:center;justify-content:space-between;">
+  <div>
+    <div style="font-size:0.6rem;color:#444;letter-spacing:3px;font-weight:700;">
+      ⚙ ADAPTIVE DIFFICULTY
+    </div>
+    <div style="margin-top:2px;">
+      <span style="font-family:Orbitron,monospace;font-size:1.0rem;
+        font-weight:900;color:{_col};">{_adp_bar[_adp_now]} {_adp_tag[_adp_now]}</span>
+      &nbsp;&nbsp;
+      <span style="font-size:0.72rem;color:{_msg_col};font-weight:700;">
+        {_arrow_txt}
+      </span>
+    </div>
+    <div style="font-size:0.7rem;color:#666;margin-top:2px;font-style:italic;">
+      {_adp_taunt[_adp_now]}
+    </div>
+  </div>
+  <div style="text-align:right;">{_score_html}</div>
+</div>""", unsafe_allow_html=True)
+    # ────────────────────────────────────────────────────────────
 
     # ── 생존 규칙 ──
     st.markdown(
