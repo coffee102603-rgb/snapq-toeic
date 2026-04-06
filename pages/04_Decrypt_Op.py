@@ -463,12 +463,29 @@ div[data-testid="stButton"] button.p7nav:hover{
     </div>''', unsafe_allow_html=True)
 
     import streamlit.components.v1 as _nc
-    # NPC_BOARD
+    # ── 해 NPC 배너 (이미지 + 메시지) ──
+    import random as _rnd_npc2
+    _ASSETS_DIR2 = os.path.join(os.path.dirname(os.path.dirname(__file__)), "assets")
     _npc_nick = st.session_state.get('student_nickname', '')
-    _npc_html = """<div id='npc-board' style='background:rgba(10,5,20,0.96);border:1.5px solid #0099cc;border-radius:10px;padding:10px 14px;text-align:center;margin-bottom:4px;'><span id='npc-icon' style='font-size:28px;margin-bottom:4px;animation:iconPop 0.9s ease-in-out infinite;display:block;'></span><div id='npc-txt' style='font-size:13px;font-weight:900;color:#fff;min-height:20px;'></div></div><style>@keyframes iconPop{0%,100%{transform:scale(1)}50%{transform:scale(1.18)}}</style><script>(function(){var KEY='snapq_tour_day';var today=new Date().toISOString().slice(0,10);var raw=localStorage.getItem(KEY);var data=raw?JSON.parse(raw):{'first':''};if(!data.first){data.first=today;localStorage.setItem(KEY,JSON.stringify(data));}var diff=(new Date(today)-new Date(data.first))/(1000*60*60*24);var nick='__NICK__';var tour=[["🎯🔍", "해: PRECISION 모드로 시작. 정독이 답이다."], ["🕵️⚠️", "해: 찍으면 전멸. 이해하면 클리어."], ["⏱️💡", "해: 시간 욕심은 버려. 이해가 먼저."], ["📡🔓", "해: SIGNAL부터 정복. 단계별로."]];var inbody=[["📡💡", "해: __NICK__, 답은 지문 안에 있다."], ["⏱️🔓", "해: __NICK__, 시간 줄일 준비 됐나?"], ["📋🏆", "해: __NICK__, 유형별 현황 분석 완료."]];inbody=inbody.map(function(m){return[m[0],m[1].replace(/__NICK__/g,nick)];});var msgs=diff<3?tour:inbody;var ic=document.getElementById('npc-icon');var tx=document.getElementById('npc-txt');var mi=0,ci=0;function run(){var m=msgs[mi%msgs.length];ic.textContent=m[0];if(ci<m[1].length){tx.textContent+=m[1][ci++];setTimeout(run,45);}else{setTimeout(function(){tx.textContent='';ci=0;mi++;run();},3500);}}setTimeout(run,500);})();</script>"""
-    _npc_html = _npc_html.replace('__NICK__', _npc_nick)
-    import streamlit.components.v1 as _nc
-    _nc.html(_npc_html, height=80)
+    _hae_msgs = [
+        f"해: {_npc_nick}, 답은 지문 안에 있다.",
+        f"해: {_npc_nick}, 시간 줄일 준비 됐나?",
+        f"해: {_npc_nick}, 유형별 현황 분석 완료.",
+        f"해: {_npc_nick}, 신호에 집중하라.",
+    ]
+    _hae_img = os.path.join(_ASSETS_DIR2, "hae_normal.png")
+    _hae_msg = _rnd_npc2.choice(_hae_msgs) if _npc_nick else "해: 정독이 답이다. 집중."
+    _hc_img, _hc_txt = st.columns([1, 3])
+    with _hc_img:
+        if os.path.exists(_hae_img):
+            st.image(_hae_img, width=75)
+    with _hc_txt:
+        st.markdown(f'''<div style="background:rgba(5,10,20,0.96);border:1.5px solid #0099cc;
+            border-radius:10px;padding:12px 14px;margin-top:6px;">
+            <div style="font-size:13px;font-weight:900;color:#00ccee;letter-spacing:0.5px;">
+            {_hae_msg}</div>
+        </div>''', unsafe_allow_html=True)
+
     # ── 시간 선택 (A안: SIGNAL FREQUENCY 세그먼트) ──
     st.markdown('''<div style="font-size:10px;color:#88aacc;letter-spacing:4px;padding:14px 0 7px;font-weight:900;">
       ⏱  SIGNAL FREQUENCY</div>''', unsafe_allow_html=True)
@@ -962,7 +979,14 @@ elif st.session_state.p7_phase == "victory":
         <div style="font-size:0.72rem;color:#555;margin-top:2px;">지금 브리핑에서 핵심표현 무기로 장착하라!</div>
     </div>''', unsafe_allow_html=True)
     _nick_cl = st.session_state.get("battle_nickname") or st.session_state.get("nickname","요원")
-    st.markdown(f'<div style="text-align:center;padding:6px 0;font-size:0.82rem;color:#559999;font-weight:700;letter-spacing:1px;">해: {_nick_cl}, 정보 확보 완료. 브리핑 준비.</div>', unsafe_allow_html=True)
+    # ── 해 Victory 이미지 ──
+    _ASSETS_CL = os.path.join(os.path.dirname(os.path.dirname(__file__)), "assets")
+    _hae_v_img = os.path.join(_ASSETS_CL, "hae_victory.png")
+    _hv1, _hv2 = st.columns([1, 3])
+    with _hv1:
+        if os.path.exists(_hae_v_img): st.image(_hae_v_img, width=70)
+    with _hv2:
+        st.markdown(f'<div style="background:#001520;border:1.5px solid #00ccee;border-radius:10px;padding:10px 12px;margin-top:6px;"><div style="font-size:13px;font-weight:900;color:#00ccee;">해: {_nick_cl}, 정보 확보 완료. 브리핑 준비.</div></div>', unsafe_allow_html=True)
     st.markdown('''<style>
     button[data-testid="stBaseButton-primary"]{
         background:#0c0c00!important;border:2px solid #00ccee!important;
@@ -1056,7 +1080,14 @@ elif st.session_state.p7_phase == "lost":
     </div>''', unsafe_allow_html=True)
 
     _nick_go2 = st.session_state.get("battle_nickname") or st.session_state.get("nickname","요원")
-    st.markdown(f'<div style="text-align:center;padding:6px 0;font-size:0.82rem;color:#884444;font-weight:700;letter-spacing:1px;">해: {_nick_go2}, 통신 두절. 재접속하라.</div>', unsafe_allow_html=True)
+    # ── 해 Warning 이미지 ──
+    _ASSETS_GO2 = os.path.join(os.path.dirname(os.path.dirname(__file__)), "assets")
+    _hae_w_img = os.path.join(_ASSETS_GO2, "hae_warning.png")
+    _hw1, _hw2 = st.columns([1, 3])
+    with _hw1:
+        if os.path.exists(_hae_w_img): st.image(_hae_w_img, width=70)
+    with _hw2:
+        st.markdown(f'<div style="background:#1a0000;border:1.5px solid #cc2244;border-radius:10px;padding:10px 12px;margin-top:6px;"><div style="font-size:13px;font-weight:900;color:#ff6644;">해: {_nick_go2}, 통신 두절. 재접속하라.</div></div>', unsafe_allow_html=True)
 
     st.markdown('''<style>
     button[data-testid="stBaseButton-primary"]{
