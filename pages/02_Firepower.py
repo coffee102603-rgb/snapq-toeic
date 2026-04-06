@@ -914,6 +914,11 @@ elif st.session_state.phase=="victory":
     </div>
     """, height=320)
 
+    # ── 토리 한 줄 ──
+    _nick_v = st.session_state.get("battle_nickname") or st.session_state.get("nickname","전사")
+    _tori_v = f"⛓ 포획 대기 중" if _wr_v > 0 else "전원 격파!"
+    st.markdown(f'<div style="text-align:center;padding:6px 0;font-size:0.82rem;color:#aa8855;font-weight:700;letter-spacing:1px;">토리: {_nick_v}! {_tori_v} 사령부에 보고하라.</div>', unsafe_allow_html=True)
+
     st.markdown("""<style>
     @keyframes zapPulse{
       0%,100%{box-shadow:0 0 18px #00d4ff,0 0 40px rgba(0,212,255,0.5),inset 0 0 18px rgba(0,212,255,0.1);}
@@ -1134,6 +1139,10 @@ elif st.session_state.phase=="lost":
         <div class="taunt">{_taunt}</div>
         <div class="sub">{_sub}</div>
     </div>""", height=300)
+
+    # ── 토리 한 줄 ──
+    _nick_go = st.session_state.get("battle_nickname") or st.session_state.get("nickname","전사")
+    st.markdown(f'<div style="text-align:center;padding:6px 0;font-size:0.82rem;color:#884444;font-weight:700;letter-spacing:1px;">토리: {_nick_go}! 후퇴! 재정비 후 재출격!</div>', unsafe_allow_html=True)
 
     st.markdown("""<style>
     div[data-testid="stButton"]:nth-of-type(1) button{
@@ -1723,7 +1732,7 @@ div[data-testid="stButton"] button.fp-nav p { color:#3d5066 !important; }
     import streamlit.components.v1 as _nc
     # NPC_BOARD
     _npc_nick = st.session_state.get('student_nickname', '')
-    _npc_html = """<div id='npc-board' style='background:rgba(10,5,20,0.96);border:1.5px solid #cc6633;border-radius:10px;padding:10px 14px;text-align:center;margin-bottom:4px;'><span id='npc-icon' style='font-size:28px;margin-bottom:4px;animation:iconPop 0.9s ease-in-out infinite;display:block;'></span><div id='npc-txt' style='font-size:13px;font-weight:900;color:#fff;min-height:20px;'></div></div><style>@keyframes iconPop{0%,100%{transform:scale(1)}50%{transform:scale(1.18)}}</style><script>(function(){var KEY='snapq_tour_day';var today=new Date().toISOString().slice(0,10);var raw=localStorage.getItem(KEY);var data=raw?JSON.parse(raw):{'first':''};if(!data.first){data.first=today;localStorage.setItem(KEY,JSON.stringify(data));}var diff=(new Date(today)-new Date(data.first))/(1000*60*60*24);var nick='__NICK__';var tour=[["🔥💥", "불같은 P5! 시험장은 30문제 9분!"], ["🎯⚡", "일단 50s SNIPER! 5문제로 시작!"], ["⚔️🔥", "약점 카테고리 집중 연습! 취약점을 강점으로!"], ["💥🏆", "BLITZ 정복하면 P5 만점이다!"]];var inbody=[["🔥⚡", "__NICK__야, 오늘도 불처럼! P5 정복이다!"], ["🎯💥", "__NICK__야, 약점 카테고리 집중 공략!"], ["⏱️🏆", "__NICK__야, BLITZ 도전할 때 됐어!"]];inbody=inbody.map(function(m){return[m[0],m[1].replace(/__NICK__/g,nick)];});var msgs=diff<3?tour:inbody;var ic=document.getElementById('npc-icon');var tx=document.getElementById('npc-txt');var mi=0,ci=0;function run(){var m=msgs[mi%msgs.length];ic.textContent=m[0];if(ci<m[1].length){tx.textContent+=m[1][ci++];setTimeout(run,45);}else{setTimeout(function(){tx.textContent='';ci=0;mi++;run();},3500);}}setTimeout(run,500);})();</script>"""
+    _npc_html = """<div id='npc-board' style='background:rgba(10,5,20,0.96);border:1.5px solid #cc6633;border-radius:10px;padding:10px 14px;text-align:center;margin-bottom:4px;'><span id='npc-icon' style='font-size:28px;margin-bottom:4px;animation:iconPop 0.9s ease-in-out infinite;display:block;'></span><div id='npc-txt' style='font-size:13px;font-weight:900;color:#fff;min-height:20px;'></div></div><style>@keyframes iconPop{0%,100%{transform:scale(1)}50%{transform:scale(1.18)}}</style><script>(function(){var KEY='snapq_tour_day';var today=new Date().toISOString().slice(0,10);var raw=localStorage.getItem(KEY);var data=raw?JSON.parse(raw):{'first':''};if(!data.first){data.first=today;localStorage.setItem(KEY,JSON.stringify(data));}var diff=(new Date(today)-new Date(data.first))/(1000*60*60*24);var nick='__NICK__';var tour=[["🔥💥", "토리: 전장에 온 걸 환영한다! 30초부터 시작!"], ["🎯⚡", "토리: SNIPER 모드로 워밍업! 50초다!"], ["⚔️🔥", "토리: 약점을 찾아서 박살 내자!"], ["💥🏆", "토리: BLITZ 정복하면 진짜 전사다!"]];var inbody=[["🔥⚡", "토리: __NICK__! 오늘도 불처럼!"], ["🎯💥", "토리: __NICK__! 약점 카테고리 집중 공략!"], ["⏱️🏆", "토리: __NICK__! BLITZ 도전할 때다!"]];inbody=inbody.map(function(m){return[m[0],m[1].replace(/__NICK__/g,nick)];});var msgs=diff<3?tour:inbody;var ic=document.getElementById('npc-icon');var tx=document.getElementById('npc-txt');var mi=0,ci=0;function run(){var m=msgs[mi%msgs.length];ic.textContent=m[0];if(ci<m[1].length){tx.textContent+=m[1][ci++];setTimeout(run,45);}else{setTimeout(function(){tx.textContent='';ci=0;mi++;run();},3500);}}setTimeout(run,500);})();</script>"""
     _npc_html = _npc_html.replace('__NICK__', _npc_nick)
     import streamlit.components.v1 as _nc
     _nc.html(_npc_html, height=80)
