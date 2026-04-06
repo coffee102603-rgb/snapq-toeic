@@ -1471,198 +1471,33 @@ _GRID_HTML = f"""
 
 <script>
 (function(){{
-  var KEY='snapq_npc_v3';
-  var v=parseInt(localStorage.getItem(KEY)||'0')+1;
-  localStorage.setItem(KEY,v);
-  var ovIds=['ov-pb','ov-p5','ov-p7','ov-pow'];
   var allOvs=document.querySelectorAll('.npc-ov');
-  allOvs.forEach(function(el){{var s=el.querySelector('.npc-stat');if(s)s.style.display='none';}});
-  if(v>3){{
-    document.querySelectorAll('.card,.pb').forEach(function(el){{
-      el.addEventListener('mouseenter',function(){{el.classList.add('npc-inbody-on');}});
-      el.addEventListener('mouseleave',function(){{el.classList.remove('npc-inbody-on');}});
-    }});
-    return;
-  }}
-  var idx=0;
-  function next(){{
-    allOvs.forEach(function(el){{el.classList.remove('tour-active');}});
-    if(idx<ovIds.length){{
-      var ov=document.getElementById(ovIds[idx]);
-      if(ov)ov.classList.add('tour-active');
-      idx++;
-      setTimeout(next,2200);
-    }}
-  }}
-  setTimeout(next,600);
+  allOvs.forEach(function(el){{
+    var t=el.querySelector('.npc-tx');if(t)t.style.display='none';
+    var s=el.querySelector('.npc-stat');if(s)s.style.display='block';
+  }});
+  document.querySelectorAll('.card,.pb').forEach(function(el){{
+    el.addEventListener('mouseenter',function(){{el.classList.add('npc-inbody-on');}});
+    el.addEventListener('mouseleave',function(){{el.classList.remove('npc-inbody-on');}});
+    el.addEventListener('touchstart',function(){{el.classList.add('npc-inbody-on');}},{{passive:true}});
+    el.addEventListener('touchend',function(){{setTimeout(function(){{el.classList.remove('npc-inbody-on');}},900);}});
+  }});
 }})();
 </script>
 
 <script>
 (function(){{
-  var ovIds=['ov-pb','ov-p5','ov-p7','ov-pow'];
   var allOvs=document.querySelectorAll('.npc-ov');
-  allOvs.forEach(function(el){{var s=el.querySelector('.npc-stat');if(s)s.style.display='none';}});
-
-  // 자동투어 항상 실행
-  var idx=0;
-  function next(){{
-    allOvs.forEach(function(el){{el.classList.remove('tour-active');}});
-    if(idx<ovIds.length){{
-      var ov=document.getElementById(ovIds[idx]);
-      if(ov)ov.classList.add('tour-active');
-      idx++;
-      setTimeout(next,2200);
-    }} else {{
-      // 투어 끝나면 hover/touch 활성화
-      document.querySelectorAll('.card,.pb').forEach(function(el){{
-        el.addEventListener('mouseenter',function(){{el.classList.add('npc-inbody-on');}});
-        el.addEventListener('mouseleave',function(){{el.classList.remove('npc-inbody-on');}});
-        el.addEventListener('touchstart',function(){{el.classList.add('npc-inbody-on');}},{{passive:true}});
-        el.addEventListener('touchend',function(){{setTimeout(function(){{el.classList.remove('npc-inbody-on');}},800);}});
-      }});
-    }}
-  }}
-  setTimeout(next,800);
-}})();
-</script>
-
-<script>
-(function(){{
-  var KEY='snapq_tour_v1';
-  var v=parseInt(localStorage.getItem(KEY)||'0')+1;
-  localStorage.setItem(KEY,v);
-  var ovIds=['ov-pb','ov-p5','ov-p7','ov-pow'];
-  var allOvs=document.querySelectorAll('.npc-ov');
-
-  if(v<=3){{
-    // 1~3회: 자동투어 (각 4초)
-    allOvs.forEach(function(el){{var s=el.querySelector('.npc-stat');if(s)s.style.display='none';}});
-    var idx=0;
-    function next(){{
-      allOvs.forEach(function(el){{el.classList.remove('tour-active');}});
-      if(idx<ovIds.length){{
-        var ov=document.getElementById(ovIds[idx]);
-        if(ov)ov.classList.add('tour-active');
-        idx++;
-        setTimeout(next,6000);
-      }} else {{
-        idx=0;
-        setTimeout(next,6000);
-      }}
-    }}
-    setTimeout(next,800);
-  }} else {{
-    // 4회~: hover/touch 인바디 통계
-    allOvs.forEach(function(el){{var t=el.querySelector('.npc-tx');if(t)t.style.display='none';}});
-    document.querySelectorAll('.card,.pb').forEach(function(el){{
-      el.addEventListener('mouseenter',function(){{el.classList.add('npc-inbody-on');}});
-      el.addEventListener('mouseleave',function(){{el.classList.remove('npc-inbody-on');}});
-      el.addEventListener('touchstart',function(){{el.classList.add('npc-inbody-on');}},{{passive:true}});
-      el.addEventListener('touchend',function(){{setTimeout(function(){{el.classList.remove('npc-inbody-on');}},900);}});
-    }});
-  }}
-}})();
-</script>
-
-<script>
-(function(){{
-  var KEY='snapq_tour_day';
-  var today=new Date().toISOString().slice(0,10);
-  var data=JSON.parse(localStorage.getItem(KEY)||'{{"first":"","count":0}}');
-  if(!data.first){{ data.first=today; data.count=1; }}
-  else{{
-    var diff=(new Date(today)-new Date(data.first))/(1000*60*60*24);
-    if(diff>=3) data.count=99;
-  }}
-  localStorage.setItem(KEY,JSON.stringify(data));
-
-  var ovIds=['ov-pb','ov-p5','ov-p7','ov-pow'];
-  var allOvs=document.querySelectorAll('.npc-ov');
-
-  if(data.count<99){{
-    // 3일 이내: 자동투어 무한반복
-    allOvs.forEach(function(el){{
-      var s=el.querySelector('.npc-stat');
-      if(s)s.style.display='none';
-      var t=el.querySelector('.npc-tx');
-      if(t)t.style.display='block';
-    }});
-    var idx=0;
-    function next(){{
-      allOvs.forEach(function(el){{el.classList.remove('tour-active');}});
-      var ov=document.getElementById(ovIds[idx]);
-      if(ov)ov.classList.add('tour-active');
-      idx=(idx+1)%ovIds.length;
-      setTimeout(next,6000);
-    }}
-    setTimeout(next,800);
-  }} else {{
-    // 3일 이후: hover/touch 인바디
-    allOvs.forEach(function(el){{
-      var t=el.querySelector('.npc-tx');
-      if(t)t.style.display='none';
-      var s=el.querySelector('.npc-stat');
-      if(s)s.style.display='block';
-    }});
-    document.querySelectorAll('.card,.pb').forEach(function(el){{
-      el.addEventListener('mouseenter',function(){{el.classList.add('npc-inbody-on');}});
-      el.addEventListener('mouseleave',function(){{el.classList.remove('npc-inbody-on');}});
-      el.addEventListener('touchstart',function(){{el.classList.add('npc-inbody-on');}},{{passive:true}});
-      el.addEventListener('touchend',function(){{setTimeout(function(){{el.classList.remove('npc-inbody-on');}},900);}});
-    }});
-  }}
-}})();
-</script>
-
-<script>
-(function(){{
-  var KEY='snapq_tour_day';
-  var today=new Date().toISOString().slice(0,10);
-  var data=JSON.parse(localStorage.getItem(KEY)||'{{"first":"","count":0}}');
-  if(!data.first){{ data.first=today; }}
-  else{{
-    var diff=(new Date(today)-new Date(data.first))/(1000*60*60*24);
-    if(diff>=3) data.count=99;
-  }}
-  localStorage.setItem(KEY,JSON.stringify(data));
-
-  var roundA=['ov-pb-a','ov-p5-a','ov-p7-a','ov-pow-a'];
-  var roundB=['ov-pb-b','ov-p5-b','ov-p7-b','ov-pow-b'];
-  var allOvs=document.querySelectorAll('.npc-ov');
-
-  if(data.count<99){{
-    allOvs.forEach(function(el){{
-      var s=el.querySelector('.npc-stat');
-      if(s)s.style.display='none';
-      var t=el.querySelector('.npc-tx');
-      if(t)t.style.display='block';
-    }});
-    var round=0; var idx=0;
-    function next(){{
-      allOvs.forEach(function(el){{el.classList.remove('tour-active');}});
-      var cur=(round%2===0)?roundA:roundB;
-      var ov=document.getElementById(cur[idx]);
-      if(ov)ov.classList.add('tour-active');
-      idx++;
-      if(idx>=cur.length){{ idx=0; round++; }}
-      setTimeout(next,6000);
-    }}
-    setTimeout(next,800);
-  }} else {{
-    allOvs.forEach(function(el){{
-      var t=el.querySelector('.npc-tx');
-      if(t)t.style.display='none';
-      var s=el.querySelector('.npc-stat');
-      if(s)s.style.display='block';
-    }});
-    document.querySelectorAll('.card,.pb').forEach(function(el){{
-      el.addEventListener('mouseenter',function(){{el.classList.add('npc-inbody-on');}});
-      el.addEventListener('mouseleave',function(){{el.classList.remove('npc-inbody-on');}});
-      el.addEventListener('touchstart',function(){{el.classList.add('npc-inbody-on');}},{{passive:true}});
-      el.addEventListener('touchend',function(){{setTimeout(function(){{el.classList.remove('npc-inbody-on');}},900);}});
-    }});
-  }}
+  allOvs.forEach(function(el){{
+    var t=el.querySelector('.npc-tx');if(t)t.style.display='none';
+    var s=el.querySelector('.npc-stat');if(s)s.style.display='block';
+  }});
+  document.querySelectorAll('.card,.pb').forEach(function(el){{
+    el.addEventListener('mouseenter',function(){{el.classList.add('npc-inbody-on');}});
+    el.addEventListener('mouseleave',function(){{el.classList.remove('npc-inbody-on');}});
+    el.addEventListener('touchstart',function(){{el.classList.add('npc-inbody-on');}},{{passive:true}});
+    el.addEventListener('touchend',function(){{setTimeout(function(){{el.classList.remove('npc-inbody-on');}},900);}});
+  }});
 }})();
 </script>
 """
