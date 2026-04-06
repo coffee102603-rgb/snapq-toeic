@@ -239,12 +239,9 @@ def _render_test(stage: int, nickname: str, month_key: str) -> None:
     </div>
     """, unsafe_allow_html=True)
 
-    # 선택지
-    col1, col2 = st.columns(2)
+    # 선택지 (모바일 순서 보장: 2컬럼 제거 → 단일 컬럼 A→B→C→D)
     for idx, ch in enumerate(q["ch"]):
-        col = col1 if idx % 2 == 0 else col2
-        with col:
-            if st.button(ch, key=f"tq_{qi}_{idx}", use_container_width=True):
+        if st.button(ch, key=f"tq_{qi}_{idx}", use_container_width=True):
                 st.session_state.test_answers.append(idx)
                 if qi + 1 >= total:
                     st.session_state.test_phase = "result"
