@@ -263,10 +263,10 @@ import json as _json, os as _os, random as _rnd
 def _load_passages():
     _base = _os.path.join(_os.path.dirname(_os.path.dirname(__file__)), "data")
     _map = {
-        "article":     "passages_signal.json",
-        "letter":      "passages_cipher.json",
-        "notice":      "passages_intercept.json",
-        "information": "passages_blackout.json",
+        "recon":       "passages_recon.json",       # 1단계 RECON — 이메일·편지·메모 (X·Y·Z)
+        "article":     "passages_signal.json",       # 2단계 SIGNAL — 광고·공지
+        "notice":      "passages_intercept.json",    # 3단계 CIPHER — 기사·안내
+        "information": "passages_blackout.json",     # 4단계 BLACKOUT — 고난도
     }
     _result = {}
     for _cat, _fname in _map.items():
@@ -381,29 +381,29 @@ div[data-testid="stButton"] button.p7pass{
   min-height:92px!important;text-align:center!important;padding:10px 4px!important;
 }
 
-/* SIGNAL LV.1 초록 */
-div[data-testid="stButton"] button.p7art{
+/* RECON LV.1 초록 */
+div[data-testid="stButton"] button.p7rec{
   background:#060e0a!important;border-color:#1a6633!important;color:#33aa66!important;
 }
-div[data-testid="stButton"] button.p7art p{color:#33aa66!important;}
-div[data-testid="stButton"] button.p7art.p7sel{
+div[data-testid="stButton"] button.p7rec p{color:#33aa66!important;}
+div[data-testid="stButton"] button.p7rec.p7sel{
   background:#081a10!important;border-color:#00cc66!important;border-width:2px!important;
   color:#00ccee!important;box-shadow:0 0 20px rgba(0,200,238,0.5)!important;
 }
-div[data-testid="stButton"] button.p7art.p7sel p{color:#00ccee!important;}
+div[data-testid="stButton"] button.p7rec.p7sel p{color:#00ccee!important;}
 
-/* CIPHER LV.2 노랑 */
-div[data-testid="stButton"] button.p7let{
+/* SIGNAL LV.2 노랑 */
+div[data-testid="stButton"] button.p7art{
   background:#0e0e06!important;border-color:#666600!important;color:#aaaa33!important;
 }
-div[data-testid="stButton"] button.p7let p{color:#aaaa33!important;}
-div[data-testid="stButton"] button.p7let.p7sel{
+div[data-testid="stButton"] button.p7art p{color:#aaaa33!important;}
+div[data-testid="stButton"] button.p7art.p7sel{
   background:#1a1800!important;border-color:#cccc00!important;border-width:2px!important;
   color:#ffff44!important;box-shadow:0 0 20px rgba(204,204,0,0.5)!important;
 }
-div[data-testid="stButton"] button.p7let.p7sel p{color:#ffff44!important;}
+div[data-testid="stButton"] button.p7art.p7sel p{color:#ffff44!important;}
 
-/* DECRYPT LV.3 주황 */
+/* CIPHER LV.3 주황 */
 div[data-testid="stButton"] button.p7not{
   background:#0e0700!important;border-color:#663300!important;color:#aa6622!important;
 }
@@ -503,18 +503,18 @@ div[data-testid="stButton"] button.p7nav:hover{
         if st.button("💎 100s\nPRECISION", key="p7t100", use_container_width=True):
             st.session_state.p7_tsec=100; st.session_state.p7_tsec_chosen=True; st.rerun()
 
-    # ── 지문 선택 (SIGNAL/CIPHER/DECRYPT/BLACKOUT 4개 한 줄) ──
+    # ── 지문 선택 (RECON/SIGNAL/CIPHER/BLACKOUT 4개 한 줄) ──
     st.markdown('''<div style="font-size:10px;color:#dd88aa;letter-spacing:4px;padding:14px 0 7px;font-weight:900;">
       ⚔  TARGET CLASSIFICATION</div>''', unsafe_allow_html=True)
     pc1, pc2, pc3, pc4 = st.columns(4)
     with pc1:
-        if st.button("📢\nSIGNAL\n광고·공지\n▂░░░", key="p7c1", use_container_width=True):
-            st.session_state.p7_cat="article"; st.rerun()
+        if st.button("🎯\nRECON\n편지·이메일\n▂░░░", key="p7c1", use_container_width=True):
+            st.session_state.p7_cat="recon"; st.rerun()
     with pc2:
-        if st.button("✉️\nCIPHER\n편지·이메일\n▂▄░░", key="p7c2", use_container_width=True):
-            st.session_state.p7_cat="letter"; st.rerun()
+        if st.button("📢\nSIGNAL\n광고·공지\n▂▄░░", key="p7c2", use_container_width=True):
+            st.session_state.p7_cat="article"; st.rerun()
     with pc3:
-        if st.button("📰\nINTERCEPT\n기사·안내\n▂▄▆░", key="p7c3", use_container_width=True):
+        if st.button("📰\nCIPHER\n기사·안내\n▂▄▆░", key="p7c3", use_container_width=True):
             st.session_state.p7_cat="notice"; st.rerun()
     with pc4:
         if st.button("☠️\nBLACKOUT\n고난도\n▂▄▆█", key="p7c4", use_container_width=True):
@@ -525,7 +525,7 @@ div[data-testid="stButton"] button.p7nav:hover{
 
     # ── 출격 버튼 ──
     if _ready:
-        _cat_name = {"article":"📢 SIGNAL","letter":"✉️ CIPHER","notice":"📰 INTERCEPT","information":"☠️ BLACKOUT"}.get(cat, cat)
+        _cat_name = {"recon":"🎯 RECON","article":"📢 SIGNAL","notice":"📰 CIPHER","information":"☠️ BLACKOUT"}.get(cat, cat)
         _tlabel = {"60":"🔥 60s RAPID","80":"⚡ 80s STANDARD","100":"💎 100s PRECISION"}.get(str(_p7_tsec), str(_p7_tsec)+"초")
         if st.button(f"▶ 출격! — {_cat_name}  ⏱ {_tlabel}", key="p7go", use_container_width=True):
             st.session_state.p7_data = pick_passage(cat)
@@ -585,17 +585,17 @@ div[data-testid="stButton"] button.p7nav:hover{
       }}
 
       // 지문 카드
+      if(txt.indexOf("RECON")>-1 && txt.indexOf("\ucd9c\uaca9")===-1){{
+        b.classList.add("p7pass","p7rec");
+        if(selC==="recon") b.classList.add("p7sel"); else b.classList.remove("p7sel");
+        b.querySelectorAll("p").forEach(function(p){{p.classList.add("p7rec");if(selC==="recon")p.classList.add("p7sel");else p.classList.remove("p7sel");}});
+      }}
       if(txt.indexOf("SIGNAL")>-1 && txt.indexOf("\ucd9c\uaca9")===-1){{
         b.classList.add("p7pass","p7art");
         if(selC==="article") b.classList.add("p7sel"); else b.classList.remove("p7sel");
         b.querySelectorAll("p").forEach(function(p){{p.classList.add("p7art");if(selC==="article")p.classList.add("p7sel");else p.classList.remove("p7sel");}});
       }}
       if(txt.indexOf("CIPHER")>-1 && txt.indexOf("\ucd9c\uaca9")===-1){{
-        b.classList.add("p7pass","p7let");
-        if(selC==="letter") b.classList.add("p7sel"); else b.classList.remove("p7sel");
-        b.querySelectorAll("p").forEach(function(p){{p.classList.add("p7let");if(selC==="letter")p.classList.add("p7sel");else p.classList.remove("p7sel");}});
-      }}
-      if(txt.indexOf("INTERCEPT")>-1 && txt.indexOf("\ucd9c\uaca9")===-1){{
         b.classList.add("p7pass","p7not");
         if(selC==="notice") b.classList.add("p7sel"); else b.classList.remove("p7sel");
         b.querySelectorAll("p").forEach(function(p){{p.classList.add("p7not");if(selC==="notice")p.classList.add("p7sel");else p.classList.remove("p7sel");}});
@@ -707,6 +707,32 @@ elif st.session_state.p7_phase == "battle":
         <span style="font-size:11px;font-weight:700;">✅{correct_cnt} ❌{wrong_cnt}</span>
       </div>
     </div>""", unsafe_allow_html=True)
+
+    # ── RECON 전용: X·Y·Z 스텝 라벨 + 대명사 감지 힌트 ──
+    if st.session_state.get("p7_cat") == "recon":
+        _xyz_labels = {0: "X — 발신자(Sender) 파악", 1: "Y — 수신자(Recipient) 파악", 2: "Z — 목적(Purpose) 파악"}
+        _xyz_cols   = {0: "#00cc66", 1: "#cccc00", 2: "#ff8800"}
+        _xyz_icons  = {0: "🔍", 1: "📨", 2: "🎯"}
+        _slabel = _xyz_labels.get(step, f"Q{step+1}")
+        _scol   = _xyz_cols.get(step, "#00ccee")
+        _sicon  = _xyz_icons.get(step, "")
+        st.markdown(
+            f'<div style="text-align:center;background:#050a06;border:1px solid {_scol}55;'
+            f'border-radius:8px;padding:5px 10px;margin-bottom:3px;">'
+            f'<span style="font-size:10px;font-weight:900;letter-spacing:3px;color:{_scol};">'
+            f'{_sicon} {_slabel}</span></div>',
+            unsafe_allow_html=True)
+        # 대명사 자동 감지 힌트
+        _cur_sent = cur.get("sentences", [""])[0]
+        _pronouns_check = ["I ", "I'", "I've", "I'm", "We ", "We'", "My ", "Our ", "You ", "You'", "Your "]
+        _found_p = [p.strip("'") for p in _pronouns_check if p in _cur_sent]
+        if _found_p:
+            _p_str = " / ".join(f"<b>{p}</b>" for p in sorted(set(_found_p)))
+            st.markdown(
+                f'<div style="background:#030805;border:1px solid #00aa4433;border-radius:6px;'
+                f'padding:3px 10px;margin-bottom:3px;font-size:10px;color:#00aa55;">'
+                f'💡 대명사 감지: {_p_str} → 맥락 파악 힌트!</div>',
+                unsafe_allow_html=True)
 
     # 지문 (누적)
     all_sents = []

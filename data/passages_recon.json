@@ -1,0 +1,452 @@
+[
+  {
+    "id": "recon_001",
+    "passage_type": "email",
+    "steps": [
+      {
+        "sentences": ["I am writing to request a brief meeting with you next Monday morning to discuss an urgent matter related to our project timeline."],
+        "question": "이 이메일을 보낸 사람(발신자)은 누구입니까?",
+        "q_type": "sender",
+        "choices": ["A) 회사 임원", "B) 프로젝트 담당 직원", "C) 외부 고객", "D) 회계 부서 직원"],
+        "choices_kr": ["회사 임원", "프로젝트 담당 직원", "외부 고객", "회계 부서 직원"],
+        "answer": 1,
+        "expressions": [
+          {"expr": "request a meeting", "kr": "회의를 요청하다"},
+          {"expr": "project timeline", "kr": "프로젝트 일정"}
+        ],
+        "kr": "저는 프로젝트 일정과 관련된 긴급한 사안을 논의하기 위해 다음 주 월요일 오전에 귀하와의 짧은 회의를 요청드리고자 이 이메일을 씁니다."
+      },
+      {
+        "sentences": ["As the project manager overseeing our department's deliverables, your approval is required before we can proceed."],
+        "question": "이 이메일의 수신자는 누구입니까?",
+        "q_type": "recipient",
+        "choices": ["A) 신입 직원", "B) 팀 전체 구성원", "C) 프로젝트 승인 권한이 있는 관리자", "D) 외부 협력 업체"],
+        "choices_kr": ["신입 직원", "팀 전체 구성원", "프로젝트 승인 권한이 있는 관리자", "외부 협력 업체"],
+        "answer": 2,
+        "expressions": [
+          {"expr": "project manager", "kr": "프로젝트 매니저"},
+          {"expr": "deliverables", "kr": "납품물, 결과물"}
+        ],
+        "kr": "우리 부서의 산출물을 총괄하는 프로젝트 매니저로서 귀하의 승인이 있어야 진행이 가능합니다."
+      },
+      {
+        "sentences": ["I would appreciate it if you could confirm your availability by replying to this email at your earliest convenience."],
+        "question": "이 이메일을 보낸 주요 목적은 무엇입니까?",
+        "q_type": "purpose",
+        "choices": ["A) 프로젝트 결과 보고", "B) 회의 일정 확인 요청", "C) 업무 지침 전달", "D) 프로젝트 취소 통보"],
+        "choices_kr": ["프로젝트 결과 보고", "회의 일정 확인 요청", "업무 지침 전달", "프로젝트 취소 통보"],
+        "answer": 1,
+        "expressions": [
+          {"expr": "at your earliest convenience", "kr": "가능한 한 빨리"},
+          {"expr": "confirm your availability", "kr": "일정 가능 여부를 확인하다"}
+        ],
+        "kr": "가능한 한 빨리 이 이메일에 회신하여 귀하의 일정 가능 여부를 알려주시면 감사하겠습니다."
+      }
+    ]
+  },
+  {
+    "id": "recon_002",
+    "passage_type": "email",
+    "steps": [
+      {
+        "sentences": ["I am contacting you regarding my order placed on April 3rd through your company's online store."],
+        "question": "이 이메일을 보낸 사람은 어떤 입장의 사람입니까?",
+        "q_type": "sender",
+        "choices": ["A) 회사 영업 직원", "B) 온라인 쇼핑몰 고객", "C) 배송 업체 직원", "D) 제품 제조사 직원"],
+        "choices_kr": ["회사 영업 직원", "온라인 쇼핑몰 고객", "배송 업체 직원", "제품 제조사 직원"],
+        "answer": 1,
+        "expressions": [
+          {"expr": "contacting you regarding", "kr": "~에 관하여 연락 드립니다"},
+          {"expr": "online store", "kr": "온라인 쇼핑몰"}
+        ],
+        "kr": "저는 4월 3일 귀사의 온라인 쇼핑몰에서 주문한 건과 관련하여 연락드립니다."
+      },
+      {
+        "sentences": ["Your website confirmed the purchase, but I have not received any shipping notification or tracking number after five business days."],
+        "question": "이 이메일의 수신자(you)는 어느 측 담당자입니까?",
+        "q_type": "recipient",
+        "choices": ["A) 같은 회사 동료", "B) 배송 추적 앱 관리자", "C) 온라인 쇼핑몰 측 담당자", "D) 관세청 직원"],
+        "choices_kr": ["같은 회사 동료", "배송 추적 앱 관리자", "온라인 쇼핑몰 측 담당자", "관세청 직원"],
+        "answer": 2,
+        "expressions": [
+          {"expr": "shipping notification", "kr": "배송 알림"},
+          {"expr": "tracking number", "kr": "운송장 번호"}
+        ],
+        "kr": "귀사의 웹사이트에서 구매가 확인되었지만, 영업일 기준 5일이 지난 후에도 배송 알림이나 운송장 번호를 받지 못했습니다."
+      },
+      {
+        "sentences": ["Could you please provide an update on the delivery status and let me know when I can expect to receive my package?"],
+        "question": "이 이메일을 보낸 목적은 무엇입니까?",
+        "q_type": "purpose",
+        "choices": ["A) 구매 취소 요청", "B) 환불 신청", "C) 배송 현황 확인 요청", "D) 제품 교환 요청"],
+        "choices_kr": ["구매 취소 요청", "환불 신청", "배송 현황 확인 요청", "제품 교환 요청"],
+        "answer": 2,
+        "expressions": [
+          {"expr": "delivery status", "kr": "배송 현황"},
+          {"expr": "expect to receive", "kr": "수령 예정이다"}
+        ],
+        "kr": "배송 현황을 업데이트해 주시고 언제쯤 소포를 받을 수 있는지 알려주시겠습니까?"
+      }
+    ]
+  },
+  {
+    "id": "recon_003",
+    "passage_type": "memo",
+    "steps": [
+      {
+        "sentences": ["This memo is issued by the Human Resources Department to inform all staff members of an important policy change effective May 1st."],
+        "question": "이 메모를 작성한 부서(발신처)는 어디입니까?",
+        "q_type": "sender",
+        "choices": ["A) 영업부", "B) 재무부", "C) 인사부", "D) IT 지원부"],
+        "choices_kr": ["영업부", "재무부", "인사부", "IT 지원부"],
+        "answer": 2,
+        "expressions": [
+          {"expr": "Human Resources Department", "kr": "인사부"},
+          {"expr": "effective", "kr": "~부터 시행되는"}
+        ],
+        "kr": "이 메모는 5월 1일부로 시행되는 중요한 정책 변경 사항을 전 직원에게 알리기 위해 인사부에서 발송합니다."
+      },
+      {
+        "sentences": ["All employees, regardless of department or employment status, are required to comply with the updated attendance tracking system."],
+        "question": "이 메모의 수신 대상은 누구입니까?",
+        "q_type": "recipient",
+        "choices": ["A) 신입 직원만", "B) 관리직 직원만", "C) 특정 부서 직원만", "D) 전체 직원"],
+        "choices_kr": ["신입 직원만", "관리직 직원만", "특정 부서 직원만", "전체 직원"],
+        "answer": 3,
+        "expressions": [
+          {"expr": "regardless of", "kr": "~에 관계없이"},
+          {"expr": "attendance tracking system", "kr": "근태 관리 시스템"}
+        ],
+        "kr": "부서나 고용 형태에 관계없이 전 직원은 업데이트된 근태 관리 시스템을 준수해야 합니다."
+      },
+      {
+        "sentences": ["Please attend the mandatory orientation session on Friday at 10 A.M. in Conference Room B to learn how to use the new system."],
+        "question": "이 메모를 배포한 주된 목적은 무엇입니까?",
+        "q_type": "purpose",
+        "choices": ["A) 부서 이동 공지", "B) 신규 시스템 교육 안내", "C) 휴일 일정 공지", "D) 급여 정책 변경 안내"],
+        "choices_kr": ["부서 이동 공지", "신규 시스템 교육 안내", "휴일 일정 공지", "급여 정책 변경 안내"],
+        "answer": 1,
+        "expressions": [
+          {"expr": "mandatory orientation session", "kr": "필수 오리엔테이션 세션"},
+          {"expr": "Conference Room", "kr": "회의실"}
+        ],
+        "kr": "새로운 시스템 사용법을 익히기 위해 금요일 오전 10시 B 회의실에서 진행되는 필수 오리엔테이션 세션에 참석하십시오."
+      }
+    ]
+  },
+  {
+    "id": "recon_004",
+    "passage_type": "email",
+    "steps": [
+      {
+        "sentences": ["I am writing on behalf of GlobalTech Customer Service in response to the complaint you submitted on March 28th."],
+        "question": "이 이메일을 보낸 사람(발신자)은 어떤 입장입니까?",
+        "q_type": "sender",
+        "choices": ["A) 불만을 제기한 고객", "B) 제품 배송 담당자", "C) 고객 서비스 담당자", "D) 제품 제조 부서 직원"],
+        "choices_kr": ["불만을 제기한 고객", "제품 배송 담당자", "고객 서비스 담당자", "제품 제조 부서 직원"],
+        "answer": 2,
+        "expressions": [
+          {"expr": "on behalf of", "kr": "~를 대신하여"},
+          {"expr": "in response to", "kr": "~에 대한 답변으로"}
+        ],
+        "kr": "저는 3월 28일 귀하께서 제출하신 불만 사항에 대한 답변으로 GlobalTech 고객 서비스를 대신하여 이 이메일을 드립니다."
+      },
+      {
+        "sentences": ["We sincerely apologize for the inconvenience you experienced with our product and understand your frustration."],
+        "question": "이 이메일의 수신자(you)는 어떤 상황의 사람입니까?",
+        "q_type": "recipient",
+        "choices": ["A) 신제품 구매를 문의 중인 잠재 고객", "B) 제품 관련 불만을 제기한 고객", "C) 환불 이미 완료된 고객", "D) 경쟁사로 이직을 고려 중인 직원"],
+        "choices_kr": ["신제품 구매를 문의 중인 잠재 고객", "제품 관련 불만을 제기한 고객", "환불 이미 완료된 고객", "경쟁사로 이직을 고려 중인 직원"],
+        "answer": 1,
+        "expressions": [
+          {"expr": "inconvenience", "kr": "불편함"},
+          {"expr": "frustration", "kr": "좌절감, 불만"}
+        ],
+        "kr": "저희 제품으로 인해 귀하께서 겪으신 불편함에 진심으로 사과드리며 귀하의 불만을 충분히 이해합니다."
+      },
+      {
+        "sentences": ["To resolve this matter promptly, we would like to offer you a full refund or a free replacement unit, whichever you prefer."],
+        "question": "이 이메일의 주된 목적은 무엇입니까?",
+        "q_type": "purpose",
+        "choices": ["A) 고객 불만에 대해 해결책 제시", "B) 신제품 홍보", "C) 환불 정책 약관 안내", "D) 추가 구매 할인 혜택 제공"],
+        "choices_kr": ["고객 불만에 대해 해결책 제시", "신제품 홍보", "환불 정책 약관 안내", "추가 구매 할인 혜택 제공"],
+        "answer": 0,
+        "expressions": [
+          {"expr": "resolve this matter", "kr": "이 문제를 해결하다"},
+          {"expr": "full refund", "kr": "전액 환불"}
+        ],
+        "kr": "이 문제를 신속히 해결하기 위해 귀하께서 원하시는 대로 전액 환불이나 무상 교체 제품 중 하나를 제공해 드리고자 합니다."
+      }
+    ]
+  },
+  {
+    "id": "recon_005",
+    "passage_type": "email",
+    "steps": [
+      {
+        "sentences": ["I am pleased to inform you that you have been selected for the position of Marketing Coordinator at BrightPath Inc."],
+        "question": "이 이메일의 발신자는 어떤 역할을 하는 사람입니까?",
+        "q_type": "sender",
+        "choices": ["A) 취업 지원자", "B) 면접관 또는 채용 담당자", "C) 헤드헌팅 에이전시 직원", "D) 급여 담당 직원"],
+        "choices_kr": ["취업 지원자", "면접관 또는 채용 담당자", "헤드헌팅 에이전시 직원", "급여 담당 직원"],
+        "answer": 1,
+        "expressions": [
+          {"expr": "I am pleased to inform you", "kr": "기쁘게 알려드립니다"},
+          {"expr": "Marketing Coordinator", "kr": "마케팅 코디네이터"}
+        ],
+        "kr": "귀하께서 BrightPath Inc.의 마케팅 코디네이터 직책에 선발되셨음을 기쁘게 알려드립니다."
+      },
+      {
+        "sentences": ["After carefully reviewing your application and your outstanding performance during the interview, our hiring team unanimously agreed on your candidacy."],
+        "question": "이 이메일의 수신자(you)는 어떤 상황에 있는 사람입니까?",
+        "q_type": "recipient",
+        "choices": ["A) 현재 근무 중인 재직자", "B) 입사 지원 후 결과를 기다리는 지원자", "C) 인턴십 참가자", "D) 협력업체 담당자"],
+        "choices_kr": ["현재 근무 중인 재직자", "입사 지원 후 결과를 기다리는 지원자", "인턴십 참가자", "협력업체 담당자"],
+        "answer": 1,
+        "expressions": [
+          {"expr": "unanimously agreed", "kr": "만장일치로 동의하다"},
+          {"expr": "candidacy", "kr": "후보자 자격"}
+        ],
+        "kr": "귀하의 지원서와 면접에서의 탁월한 성과를 면밀히 검토한 결과, 저희 채용 팀은 귀하의 후보자 자격에 만장일치로 동의했습니다."
+      },
+      {
+        "sentences": ["We would like you to join us on May 15th and kindly ask you to confirm your acceptance within three business days."],
+        "question": "이 이메일을 보낸 목적은 무엇입니까?",
+        "q_type": "purpose",
+        "choices": ["A) 면접 결과 불합격 통보", "B) 추가 서류 제출 요청", "C) 채용 합격 통보 및 입사 확인 요청", "D) 연봉 협상 요청"],
+        "choices_kr": ["면접 결과 불합격 통보", "추가 서류 제출 요청", "채용 합격 통보 및 입사 확인 요청", "연봉 협상 요청"],
+        "answer": 2,
+        "expressions": [
+          {"expr": "confirm your acceptance", "kr": "수락 의사를 확인하다"},
+          {"expr": "business days", "kr": "영업일"}
+        ],
+        "kr": "5월 15일에 함께하시길 바라며, 영업일 기준 3일 이내에 수락 의사를 확인해 주시기 바랍니다."
+      }
+    ]
+  },
+  {
+    "id": "recon_006",
+    "passage_type": "email",
+    "steps": [
+      {
+        "sentences": ["I am submitting this expense report for my business trip to Busan from April 10 to April 12."],
+        "question": "이 이메일의 발신자는 어떤 상황에 있는 사람입니까?",
+        "q_type": "sender",
+        "choices": ["A) 출장을 다녀온 직원", "B) 출장 일정을 조율하는 비서", "C) 회사 경비를 감사하는 감사 담당자", "D) 신입 직원 교육 담당자"],
+        "choices_kr": ["출장을 다녀온 직원", "출장 일정을 조율하는 비서", "회사 경비를 감사하는 감사 담당자", "신입 직원 교육 담당자"],
+        "answer": 0,
+        "expressions": [
+          {"expr": "expense report", "kr": "경비 정산 보고서"},
+          {"expr": "business trip", "kr": "출장"}
+        ],
+        "kr": "저는 4월 10일부터 12일까지의 부산 출장에 대한 경비 정산 보고서를 제출합니다."
+      },
+      {
+        "sentences": ["As per company policy, all travel expenses must be submitted to the Finance Department within two weeks of returning from the trip."],
+        "question": "이 이메일은 누구(어느 부서)를 향해 쓰인 것입니까?",
+        "q_type": "recipient",
+        "choices": ["A) 직속 상사", "B) 재무부", "C) 인사부", "D) 출장지 숙박 업체"],
+        "choices_kr": ["직속 상사", "재무부", "인사부", "출장지 숙박 업체"],
+        "answer": 1,
+        "expressions": [
+          {"expr": "as per company policy", "kr": "회사 방침에 따라"},
+          {"expr": "Finance Department", "kr": "재무부"}
+        ],
+        "kr": "회사 방침에 따라 모든 출장 경비는 귀국 후 2주 이내에 재무부에 제출해야 합니다."
+      },
+      {
+        "sentences": ["Please process the attached receipts totaling $620 and transfer the amount to my designated bank account within five business days."],
+        "question": "이 이메일을 보낸 주된 목적은 무엇입니까?",
+        "q_type": "purpose",
+        "choices": ["A) 출장 일정 승인 요청", "B) 출장 결과 보고", "C) 출장 경비 정산 및 송금 요청", "D) 출장지 예약 확인"],
+        "choices_kr": ["출장 일정 승인 요청", "출장 결과 보고", "출장 경비 정산 및 송금 요청", "출장지 예약 확인"],
+        "answer": 2,
+        "expressions": [
+          {"expr": "process the attached receipts", "kr": "첨부된 영수증을 처리하다"},
+          {"expr": "designated bank account", "kr": "지정 은행 계좌"}
+        ],
+        "kr": "총 $620에 해당하는 첨부된 영수증을 처리하고 영업일 기준 5일 이내에 제 지정 은행 계좌로 금액을 이체해 주십시오."
+      }
+    ]
+  },
+  {
+    "id": "recon_007",
+    "passage_type": "email",
+    "steps": [
+      {
+        "sentences": ["We at Pinnacle Solutions are delighted to invite you to our annual client appreciation dinner to be held on May 20th."],
+        "question": "이 이메일을 보낸 곳(발신처)은 어디입니까?",
+        "q_type": "sender",
+        "choices": ["A) 식당 예약 대행 업체", "B) 이벤트 기획사", "C) Pinnacle Solutions 회사", "D) 지역 상공회의소"],
+        "choices_kr": ["식당 예약 대행 업체", "이벤트 기획사", "Pinnacle Solutions 회사", "지역 상공회의소"],
+        "answer": 2,
+        "expressions": [
+          {"expr": "client appreciation dinner", "kr": "고객 감사 만찬"},
+          {"expr": "annual", "kr": "연례의, 매년 열리는"}
+        ],
+        "kr": "저희 Pinnacle Solutions는 5월 20일에 개최될 연례 고객 감사 만찬에 귀하를 초대하게 되어 기쁩니다."
+      },
+      {
+        "sentences": ["As one of our most valued long-term clients, you and one guest are cordially invited to this exclusive event at the Grand Hotel."],
+        "question": "이 이메일의 수신자(you)는 어떤 사람입니까?",
+        "q_type": "recipient",
+        "choices": ["A) 신규 고객", "B) 회사 내부 직원", "C) 장기 거래 고객", "D) 협력 업체 영업 사원"],
+        "choices_kr": ["신규 고객", "회사 내부 직원", "장기 거래 고객", "협력 업체 영업 사원"],
+        "answer": 2,
+        "expressions": [
+          {"expr": "cordially invited", "kr": "정중히 초대받다"},
+          {"expr": "exclusive event", "kr": "특별 행사"}
+        ],
+        "kr": "저희의 가장 소중한 장기 고객 중 한 분으로서, 귀하와 동반 1명은 Grand Hotel에서의 이 특별 행사에 정중히 초대됩니다."
+      },
+      {
+        "sentences": ["Kindly confirm your attendance by May 10th by replying to this email or calling our events coordinator at 555-0193."],
+        "question": "이 이메일을 보낸 주된 목적은 무엇입니까?",
+        "q_type": "purpose",
+        "choices": ["A) 신제품 카탈로그 배포", "B) 연간 계약 갱신 협상", "C) 고객 감사 행사 초대 및 참석 확인 요청", "D) 서비스 이용 불만 처리"],
+        "choices_kr": ["신제품 카탈로그 배포", "연간 계약 갱신 협상", "고객 감사 행사 초대 및 참석 확인 요청", "서비스 이용 불만 처리"],
+        "answer": 2,
+        "expressions": [
+          {"expr": "confirm your attendance", "kr": "참석 여부를 확인하다"},
+          {"expr": "events coordinator", "kr": "행사 담당자"}
+        ],
+        "kr": "5월 10일까지 이 이메일에 회신하거나 행사 담당자(555-0193)에게 전화하여 참석 여부를 알려주십시오."
+      }
+    ]
+  },
+  {
+    "id": "recon_008",
+    "passage_type": "letter",
+    "steps": [
+      {
+        "sentences": ["I am reaching out on behalf of SecureNet IT Solutions to discuss the upcoming renewal of your current service contract."],
+        "question": "이 편지의 발신자는 어느 회사 소속입니까?",
+        "q_type": "sender",
+        "choices": ["A) 수신자의 회사 내부 IT팀", "B) 정부 기관", "C) SecureNet IT Solutions", "D) 보험 서비스 회사"],
+        "choices_kr": ["수신자의 회사 내부 IT팀", "정부 기관", "SecureNet IT Solutions", "보험 서비스 회사"],
+        "answer": 2,
+        "expressions": [
+          {"expr": "reaching out", "kr": "연락을 취하다"},
+          {"expr": "service contract", "kr": "서비스 계약"}
+        ],
+        "kr": "저는 현재 서비스 계약의 갱신에 대해 논의하기 위해 SecureNet IT Solutions를 대신하여 연락드립니다."
+      },
+      {
+        "sentences": ["Your current agreement with us is set to expire on June 30th, and we value the strong partnership we have built over the past three years."],
+        "question": "이 편지의 수신자(you)는 SecureNet과 어떤 관계입니까?",
+        "q_type": "recipient",
+        "choices": ["A) 신규 고객 문의자", "B) 기존 서비스 이용 계약 고객", "C) SecureNet 직원", "D) 경쟁 IT 회사"],
+        "choices_kr": ["신규 고객 문의자", "기존 서비스 이용 계약 고객", "SecureNet 직원", "경쟁 IT 회사"],
+        "answer": 1,
+        "expressions": [
+          {"expr": "set to expire", "kr": "만료될 예정이다"},
+          {"expr": "partnership", "kr": "파트너십, 협력 관계"}
+        ],
+        "kr": "귀하의 현재 계약은 6월 30일에 만료될 예정이며, 저희는 지난 3년간 구축한 강한 파트너십을 소중히 여깁니다."
+      },
+      {
+        "sentences": ["We would like to schedule a call at your convenience to present our updated service packages and discuss pricing options that suit your needs."],
+        "question": "이 편지를 보낸 목적은 무엇입니까?",
+        "q_type": "purpose",
+        "choices": ["A) 계약 해지 통보", "B) 서비스 장애 사과", "C) 서비스 계약 갱신을 위한 상담 일정 요청", "D) 신규 고객 유치 홍보"],
+        "choices_kr": ["계약 해지 통보", "서비스 장애 사과", "서비스 계약 갱신을 위한 상담 일정 요청", "신규 고객 유치 홍보"],
+        "answer": 2,
+        "expressions": [
+          {"expr": "at your convenience", "kr": "귀하의 편한 시간에"},
+          {"expr": "pricing options", "kr": "가격 옵션"}
+        ],
+        "kr": "업데이트된 서비스 패키지를 소개하고 귀하의 필요에 맞는 가격 옵션을 논의하기 위해 편한 시간에 통화 일정을 잡고 싶습니다."
+      }
+    ]
+  },
+  {
+    "id": "recon_009",
+    "passage_type": "memo",
+    "steps": [
+      {
+        "sentences": ["This notice is from the Training and Development Department and applies to all employees who joined the company within the past three months."],
+        "question": "이 메모는 어느 부서에서 발송했습니까?",
+        "q_type": "sender",
+        "choices": ["A) 재무부", "B) 교육개발부", "C) 마케팅부", "D) 총무부"],
+        "choices_kr": ["재무부", "교육개발부", "마케팅부", "총무부"],
+        "answer": 1,
+        "expressions": [
+          {"expr": "Training and Development Department", "kr": "교육개발부"},
+          {"expr": "applies to", "kr": "~에 적용되다"}
+        ],
+        "kr": "이 공지는 교육개발부에서 발송하며, 최근 3개월 이내에 입사한 모든 직원에게 적용됩니다."
+      },
+      {
+        "sentences": ["You are required to complete the mandatory onboarding program before being assigned to your permanent team or project."],
+        "question": "이 메모의 수신 대상은 누구입니까?",
+        "q_type": "recipient",
+        "choices": ["A) 전체 직원", "B) 관리직 임원", "C) 최근 입사한 신규 직원", "D) 특정 프로젝트 팀원"],
+        "choices_kr": ["전체 직원", "관리직 임원", "최근 입사한 신규 직원", "특정 프로젝트 팀원"],
+        "answer": 2,
+        "expressions": [
+          {"expr": "mandatory onboarding program", "kr": "필수 온보딩 프로그램"},
+          {"expr": "permanent team", "kr": "정규 팀"}
+        ],
+        "kr": "귀하는 정규 팀 또는 프로젝트에 배정되기 전에 필수 온보딩 프로그램을 이수해야 합니다."
+      },
+      {
+        "sentences": ["The program covers workplace safety, company values, communication guidelines, and an introduction to all major departments."],
+        "question": "이 메모를 발송한 주된 목적은 무엇입니까?",
+        "q_type": "purpose",
+        "choices": ["A) 부서 이동 안내", "B) 연말 성과 평가 안내", "C) 신규 직원 온보딩 프로그램 안내", "D) 사내 복지 혜택 설명"],
+        "choices_kr": ["부서 이동 안내", "연말 성과 평가 안내", "신규 직원 온보딩 프로그램 안내", "사내 복지 혜택 설명"],
+        "answer": 2,
+        "expressions": [
+          {"expr": "workplace safety", "kr": "직장 안전"},
+          {"expr": "communication guidelines", "kr": "커뮤니케이션 지침"}
+        ],
+        "kr": "이 프로그램은 직장 안전, 회사 가치관, 커뮤니케이션 지침, 그리고 모든 주요 부서 소개를 포함합니다."
+      }
+    ]
+  },
+  {
+    "id": "recon_010",
+    "passage_type": "email",
+    "steps": [
+      {
+        "sentences": ["I am sending this follow-up email to summarize the key decisions made during yesterday's project status meeting."],
+        "question": "이 이메일의 발신자는 어떤 역할을 맡은 사람입니까?",
+        "q_type": "sender",
+        "choices": ["A) 회의에 불참한 외부 관계자", "B) 회의를 주재하거나 요약을 보내는 담당자", "C) 프로젝트에 반대 의견을 제출한 팀원", "D) 회사 임원의 비서"],
+        "choices_kr": ["회의에 불참한 외부 관계자", "회의를 주재하거나 요약을 보내는 담당자", "프로젝트에 반대 의견을 제출한 팀원", "회사 임원의 비서"],
+        "answer": 1,
+        "expressions": [
+          {"expr": "follow-up email", "kr": "후속 이메일"},
+          {"expr": "project status meeting", "kr": "프로젝트 현황 회의"}
+        ],
+        "kr": "저는 어제 프로젝트 현황 회의에서 결정된 주요 사항을 요약하기 위해 이 후속 이메일을 보내드립니다."
+      },
+      {
+        "sentences": ["As participants in the meeting, you are each responsible for reviewing the action items assigned to your respective teams."],
+        "question": "이 이메일의 수신자들(you)은 누구입니까?",
+        "q_type": "recipient",
+        "choices": ["A) 회의에 참석하지 않은 다른 부서 직원", "B) 회의에 참석한 팀 담당자들", "C) 회사 전체 직원", "D) 외부 감사 담당자"],
+        "choices_kr": ["회의에 참석하지 않은 다른 부서 직원", "회의에 참석한 팀 담당자들", "회사 전체 직원", "외부 감사 담당자"],
+        "answer": 1,
+        "expressions": [
+          {"expr": "action items", "kr": "실행 항목, 해야 할 일"},
+          {"expr": "respective teams", "kr": "각자의 팀"}
+        ],
+        "kr": "회의 참석자로서 귀하는 각자의 팀에 배정된 실행 항목을 검토할 책임이 있습니다."
+      },
+      {
+        "sentences": ["Please submit a brief progress report on your assigned tasks by next Wednesday so we can track our overall project status."],
+        "question": "이 이메일을 보낸 목적은 무엇입니까?",
+        "q_type": "purpose",
+        "choices": ["A) 회의 일정 변경 안내", "B) 프로젝트 예산 승인 요청", "C) 회의 내용 공유 및 업무 진행 보고 요청", "D) 팀 구성원 변경 통보"],
+        "choices_kr": ["회의 일정 변경 안내", "프로젝트 예산 승인 요청", "회의 내용 공유 및 업무 진행 보고 요청", "팀 구성원 변경 통보"],
+        "answer": 2,
+        "expressions": [
+          {"expr": "progress report", "kr": "진행 상황 보고서"},
+          {"expr": "track our overall project status", "kr": "전체 프로젝트 현황을 파악하다"}
+        ],
+        "kr": "전체 프로젝트 현황을 파악할 수 있도록 다음 주 수요일까지 배정된 업무에 대한 간단한 진행 상황 보고서를 제출해 주십시오."
+      }
+    ]
+  }
+]
