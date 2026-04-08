@@ -30,6 +30,9 @@ def save(data):
 
 def append_log(key, entry):
     try:
+        save_to_sheets(key, entry)
+    except: pass
+    try:
         d = load()
         if key not in d: d[key] = []
         d[key].append(entry)
@@ -142,4 +145,5 @@ def save_to_sheets(log_key, entry):
         return True
     except Exception:
         return False
+
 
