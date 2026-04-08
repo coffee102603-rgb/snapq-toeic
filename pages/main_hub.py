@@ -215,6 +215,10 @@ load_all_css()
 nickname = require_access()
 require_pretest_gate()
 
+# ★ 닉네임 세션 저장 — _storage.get_uid() 연동
+st.session_state["nickname"]        = nickname
+st.session_state["battle_nickname"] = nickname
+
 # 프로필 로드
 if "profile" not in st.session_state:
     st.session_state.profile = load_profile()
@@ -332,6 +336,7 @@ st.markdown("""
     </p>
 </div>
 """, unsafe_allow_html=True)
+
 
 
 
