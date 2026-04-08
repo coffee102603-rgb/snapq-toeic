@@ -112,38 +112,32 @@ def _save_rt_log(q, is_correct, seconds_remaining, timer_setting, uid, session_n
         _data["rt_logs"].append(_entry)
         with open(STORAGE_FILE, "w", encoding="utf-8") as _f:
             json.dump(_data, _f, ensure_ascii=False, indent=2)
-        # 2. Google Sheets save for research data
+        # 2. Google Sheets 저장 (Cloud 영구 보존 - 논문 핵심)
         try:
             import gspread
-            from google.oauth2.service_account import Credentials
-            _scopes = ["https://www.googleapis.com/auth/spreadsheets"]
-            _creds = Credentials.from_service_account_info(
-                dict(st.secrets["gcp_service_account"]), scopes=_scopes)
-            _gc = gspread.authorize(_creds)
-            _sh = _gc.open_by_key(st.secrets["SPREADSHEET_ID"])
+            _gc2 = gspread.service_account_from_dict(dict(st.secrets["gcp_service_account"]))
+            _sh2 = _gc2.open_by_key(st.secrets["SPREADSHEET_ID"])
             try:
-                _ws = _sh.worksheet("rt_logs")
+                _ws2 = _sh2.worksheet("rt_logs")
             except Exception:
-                _ws = _sh.add_worksheet(title="rt_logs", rows=1000, cols=20)
-                _ws.append_row([
-                    "timestamp","user_id","question_id","is_correct",
-                    "seconds_remaining","timer_setting","rt_proxy",
-                    "grammar_type","cat","diff","adp_level",
-                    "session_no","error_timing_type","research_phase"
-                ])
-            _ws.append_row([
-                _entry["timestamp"], _entry["user_id"], _entry["question_id"],
-                str(_entry["is_correct"]), _entry["seconds_remaining"],
-                _entry["timer_setting"], _entry["rt_proxy"],
-                _entry["grammar_type"], _entry["cat"], _entry["diff"],
-                _entry["adp_level"], _entry["session_no"],
-                str(_entry.get("error_timing_type", "")), _entry["research_phase"]
+                _ws2 = _sh2.add_worksheet(title="rt_logs", rows=5000, cols=20)
+                _ws2.append_row(["timestamp","user_id","question_id","is_correct",
+                    "seconds_remaining","timer_setting","rt_proxy","grammar_type",
+                    "cat","diff","adp_level","session_no","error_timing_type","research_phase"])
+            _ws2.append_row([
+                str(_entry["timestamp"]), str(_entry["user_id"]),
+                str(_entry["question_id"]), str(_entry["is_correct"]),
+                str(_entry["seconds_remaining"]), str(_entry["timer_setting"]),
+                str(_entry["rt_proxy"]), str(_entry["grammar_type"]),
+                str(_entry["cat"]), str(_entry["diff"]),
+                str(_entry["adp_level"]), str(_entry["session_no"]),
+                str(_entry.get("error_timing_type", "")),
+                str(_entry["research_phase"])
             ])
-        except Exception as _gs_err:
-            import streamlit as _st_err
-            _st_err.toast(str(_gs_err)[:100], icon='X')
+        except Exception:
+            pass
     except Exception:
-        pass  # continue game even if save fails
+        pass  # 데이터 저장 실패해도 게임 계속 진행
 
 # ═══ 전역 CSS — 화력전 전용 폰게임 스타일 ═══
 st.markdown("""
