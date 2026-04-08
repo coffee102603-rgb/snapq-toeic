@@ -1,15 +1,11 @@
 ﻿"""
 FILE: main_hub.py
-ROLE: SnapQ TOEIC 메인 허브 — 로그인·출석·전장 네비게이션
+ROLE: SnapQ TOEIC 메인 허브
 PAGES:
-  → pages/02_Firepower.py   (화력전 — 문법·어휘)
-  → pages/04_Decrypt_Op.py  (암호해독 — P7 독해)
-  → pages/03_POW_HQ.py      (포로사령부 — 오답 리뷰)
-  → pages/01_Admin.py       (관리자 대시보드)
-AI-AGENT NOTE:
-  - switch_page 경로는 실제 파일명과 반드시 일치해야 함
-  - profile = load_profile() → XP/Coin 표시용
-  - require_access() → 닉네임 반환 (로그인 게이트)
+  → pages/02_Firepower.py   (화력전)
+  → pages/04_Decrypt_Op.py  (암호해독)
+  → pages/03_POW_HQ.py      (포로사령부)
+  → pages/01_Admin.py       (관리자)
 """
 
 import streamlit as st
@@ -97,37 +93,37 @@ st.markdown("""
 
 st.markdown("""
 <div class="arena-card arena-card-p5">
-    <div class="arena-emoji">⚡</div>
-    <div class="arena-title">화력전</div>
-    <div class="arena-subtitle">문법·어휘 5문제 서바이벌</div>
+    <div class="arena-emoji">💣</div>
+    <div class="arena-title">P5 TIMEBOMB</div>
+    <div class="arena-subtitle">40초 문법 전투</div>
     <div class="arena-hint">터치하여 입장</div>
 </div>
 """, unsafe_allow_html=True)
-if st.button("", key="p5_arena", use_container_width=True, help="화력전"):
+if st.button("", key="p5_arena", use_container_width=True, help="P5 Timebomb Arena"):
     st.session_state.phase = "lobby"
     st.session_state._p5_active = False
     st.switch_page("pages/02_Firepower.py")
 
 st.markdown("""
 <div class="arena-card arena-card-p7">
-    <div class="arena-emoji">📡</div>
-    <div class="arena-title">암호해독</div>
-    <div class="arena-subtitle">RECON·X·Y·Z 독해 작전</div>
+    <div class="arena-emoji">📖</div>
+    <div class="arena-title">P7 READING</div>
+    <div class="arena-subtitle">60초 독해 전투</div>
     <div class="arena-hint">터치하여 입장</div>
 </div>
 """, unsafe_allow_html=True)
-if st.button("", key="p7_arena", use_container_width=True, help="암호해독"):
+if st.button("", key="p7_arena", use_container_width=True, help="P7 Reading Arena"):
     st.switch_page("pages/04_Decrypt_Op.py")
 
 st.markdown("""
 <div class="arena-card arena-card-armory">
-    <div class="arena-emoji">💀</div>
-    <div class="arena-title">포로사령부</div>
-    <div class="arena-subtitle">오답 리뷰 · 단어감옥 · 망각곡선</div>
+    <div class="arena-emoji">📦</div>
+    <div class="arena-title">저장고</div>
+    <div class="arena-subtitle">P5 학습 · VOCA 웨이브 · 콤보러시</div>
     <div class="arena-hint">터치하여 입장</div>
 </div>
 """, unsafe_allow_html=True)
-if st.button("", key="armory", use_container_width=True, help="포로사령부"):
+if st.button("", key="armory", use_container_width=True, help="저장고"):
     st.session_state.sg_phase = "lobby"
     st.switch_page("pages/03_POW_HQ.py")
 
