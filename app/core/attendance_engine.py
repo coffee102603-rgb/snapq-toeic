@@ -80,9 +80,33 @@ def _ensure_files(month_key: str) -> None:
         xp.touch()
 
 
+def _save_to_sheets(sheet_name: str, obj: Dict[str, Any]) -> None:
+    """Google Sheets에 데이터 저장 (Cloud 영구 보존)"""
+    try:
+        import gspread
+        from google.oauth2.service_account import Credentials
+        scopes = ["https://www.googleapis.com/auth/spreadsheets"]
+        creds = Credentials.from_service_account_info(
+            dict(st.secrets["gcp_service_account"]), scopes=scopes)
+        gc = gspread.authorize(creds)
+        sh = gc.open_by_key(st.secrets["SPREADSHEET_ID"])
+        try:
+            ws = sh.worksheet(sheet_name)
+        except Exception:
+            headers = list(obj.keys())
+            ws = sh.add_worksheet(title=sheet_name, rows=5000, cols=len(headers))
+            ws.append_row(headers)
+        ws.append_row([str(obj.get(k, "")) for k in ws.row_values(1)])
+    except Exception:
+        pass
+
+
 def _append_jsonl(path: Path, obj: Dict[str, Any]) -> None:
-    with open(path, "a", encoding="utf-8") as f:
-        f.write(json.dumps(obj, ensure_ascii=False) + "\n")
+    try:
+        with open(path, "a", encoding="utf-8") as f:
+            f.write(json.dumps(obj, ensure_ascii=False) + "\n")
+    except Exception:
+        pass
 
 
 def _read_jsonl(path: Path) -> Iterable[Dict[str, Any]]:
@@ -127,6 +151,7 @@ def mark_attendance_once(nickname: str, month_key: Optional[str] = None) -> bool
         "ts": _now_iso(),
     }
     _append_jsonl(attendance_path(month_key), obj)
+    _save_to_sheets("attendance", obj)
     return True
 
 
@@ -152,6 +177,7 @@ def record_activity(
         "ts": _now_iso(),
     }
     _append_jsonl(activity_path(month_key), obj)
+    _save_to_sheets("activity", obj)
 
 
 def is_today_mission_done(nickname: str, month_key: Optional[str] = None) -> bool:
