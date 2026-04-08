@@ -62,6 +62,34 @@ def save_to_storage(items):
 # IRB 승인 전: research_phase="pre_irb" / 승인 후 "post_irb"로 변경
 RESEARCH_PHASE = "pre_irb"
 
+def _save_rt_to_sheets(entry):
+    try:
+        import gspread
+        from google.oauth2.service_account import Credentials
+        scopes = ["https://www.googleapis.com/auth/spreadsheets"]
+        creds = Credentials.from_service_account_info(
+            dict(st.secrets["gcp_service_account"]), scopes=scopes)
+        gc = gspread.authorize(creds)
+        sh = gc.open_by_key(st.secrets["SPREADSHEET_ID"])
+        try:
+            ws = sh.worksheet("rt_logs")
+        except Exception:
+            ws = sh.add_worksheet(title="rt_logs", rows=5000, cols=20)
+            ws.append_row(["timestamp","user_id","question_id","is_correct",
+                "seconds_remaining","timer_setting","rt_proxy","grammar_type",
+                "cat","diff","adp_level","session_no","error_timing_type","research_phase"])
+        ws.append_row([
+            str(entry.get("timestamp","")), str(entry.get("user_id","")),
+            str(entry.get("question_id","")), str(entry.get("is_correct","")),
+            str(entry.get("seconds_remaining","")), str(entry.get("timer_setting","")),
+            str(entry.get("rt_proxy","")), str(entry.get("grammar_type","")),
+            str(entry.get("cat","")), str(entry.get("diff","")),
+            str(entry.get("adp_level","")), str(entry.get("session_no","")),
+            str(entry.get("error_timing_type","")), str(entry.get("research_phase",""))
+        ])
+    except Exception:
+        pass
+
 def _classify_error_timing(seconds_remaining, timer_setting):
     """타이머 잔여시간 비율 → fast/mid/slow 자동 분류 (특허 3순위 핵심)"""
     if timer_setting <= 0:
@@ -105,12 +133,14 @@ def _save_rt_log(q, is_correct, seconds_remaining, timer_setting, uid, session_n
                 if not is_correct else None
             ),
         }
+        # 1. 로컬 JSON 저장
         _data = load_storage()
         if "rt_logs" not in _data:
             _data["rt_logs"] = []
         _data["rt_logs"].append(_entry)
         with open(STORAGE_FILE, "w", encoding="utf-8") as _f:
             json.dump(_data, _f, ensure_ascii=False, indent=2)
+        _save_rt_to_sheets(_entry)
     except Exception:
         pass  # 데이터 저장 실패해도 게임 계속 진행
 
