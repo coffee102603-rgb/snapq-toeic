@@ -34,85 +34,49 @@ from _responsive_css import inject_css as _inject_css
 _inject_css()
 
 # ═══ STORAGE PATH ═══
-STORAGE_FILE = os.path.join(os.path.dirname(os.path.dirname(__file__)), "storage_data.json")
+# ═══ _storage.py 공통 모듈 연동 ═══════════════════════════════
+# PURPOSE: 로컬 중복 함수 제거 → _storage.py 단일 진입점 사용
+# PAPER:   rt_logs(논문01·02·04), zpd_logs(논문03), p5_logs(논문A)
+# PATENT:  error_timing_type 자동분류 (특허 3순위) — _storage 내부 처리
+import _storage
 
+# 하위 호환 래퍼 (기존 코드가 load_storage/save_to_storage 호출하는 부분 유지)
 def load_storage():
-    if os.path.exists(STORAGE_FILE):
-        with open(STORAGE_FILE, "r", encoding="utf-8") as f:
-            d = json.load(f)
-            if isinstance(d, dict):
-                return d
-            return {"saved_questions": d, "saved_expressions": []}
-    return {"saved_questions": [], "saved_expressions": []}
+    return _storage.load()
 
 def save_to_storage(items):
-    data = load_storage()
-    existing = data.get("saved_questions", [])
-    ids = {x["id"] for x in existing if isinstance(x, dict) and "id" in x}
-    for it in items:
-        if it["id"] not in ids:
-            existing.append(it)
-            ids.add(it["id"])
-    data["saved_questions"] = existing
-    with open(STORAGE_FILE, "w", encoding="utf-8") as f:
-        json.dump(data, f, ensure_ascii=False, indent=2)
+    """오답 문제 목록을 saved_questions에 저장"""
+    try:
+        data = _storage.load()
+        existing = data.get("saved_questions", [])
+        ids = {x["id"] for x in existing if isinstance(x, dict) and "id" in x}
+        for it in items:
+            if it.get("id") not in ids:
+                existing.append(it)
+                ids.add(it["id"])
+        data["saved_questions"] = existing
+        _storage.save(data)
+    except Exception:
+        pass
 
-# ═══ 연구 데이터 — rt_logs 저장 함수 ═══════════════════════════
-# 논문 01·02·04 핵심 데이터 / 특허 3순위 (오답타이밍 자동분류)
-# IRB 승인 전: research_phase="pre_irb" / 승인 후 "post_irb"로 변경
-RESEARCH_PHASE = "pre_irb"
-
-def _classify_error_timing(seconds_remaining, timer_setting):
-    """타이머 잔여시간 비율 → fast/mid/slow 자동 분류 (특허 3순위 핵심)"""
-    if timer_setting <= 0:
-        return "unknown"
-    ratio = seconds_remaining / timer_setting
-    if ratio > 0.667:
-        return "fast_wrong"   # 충동형 오답 (잔여 > 2/3)
-    elif ratio > 0.333:
-        return "mid_wrong"    # 표준형 오답 (1/3 ~ 2/3)
-    else:
-        return "slow_wrong"   # 인지과부하형 오답 (잔여 < 1/3)
+STORAGE_FILE = _storage.STORAGE_FILE  # Admin 등 참조용
 
 def _save_rt_log(q, is_correct, seconds_remaining, timer_setting, uid, session_no, adp_level):
-    """문제 1개 풀이 후 rt_log 저장 — 논문 01·02·04 데이터"""
+    """
+    PURPOSE: 문제 1개 풀이 후 rt_log 저장 — _storage.save_rt_log() 위임
+    PAPER:   논문01(반응속도), 논문02(적응형), 논문04(오답타이밍)
+    PATENT:  특허 3순위 — error_timing_type 자동분류
+    """
     try:
-        _tp = q.get("tp", "grammar")
-        _grammar_type = {
-            "grammar": "GRM", "g1": "GRM",
-            "form": "FORM",   "g2": "FORM",
-            "link": "LINK",   "g3": "LINK",
-            "vocab": "VOCAB",
-        }.get(_tp, "GRM")
-
-        _entry = {
-            "timestamp":         __import__("datetime").datetime.now().isoformat(),
-            "user_id":           uid,
-            "question_id":       q.get("id", ""),
-            "is_correct":        is_correct,
-            "seconds_remaining": round(max(0, seconds_remaining), 2),
-            "timer_setting":     timer_setting,
-            "rt_proxy":          round(max(0, timer_setting - seconds_remaining), 2),
-            "grammar_type":      _grammar_type,
-            "cat":               q.get("cat", ""),
-            "diff":              q.get("diff", ""),
-            "adp_level":         adp_level,
-            "session_no":        session_no,
-            "research_phase":    RESEARCH_PHASE,
-            # 오답일 때만 타이밍 분류 (논문 04 · 특허 3순위)
-            "error_timing_type": (
-                _classify_error_timing(seconds_remaining, timer_setting)
-                if not is_correct else None
-            ),
-        }
-        _data = load_storage()
-        if "rt_logs" not in _data:
-            _data["rt_logs"] = []
-        _data["rt_logs"].append(_entry)
-        with open(STORAGE_FILE, "w", encoding="utf-8") as _f:
-            json.dump(_data, _f, ensure_ascii=False, indent=2)
+        _storage.save_rt_log(
+            q=q, is_correct=is_correct,
+            seconds_remaining=seconds_remaining,
+            timer_setting=timer_setting,
+            session_no=session_no,
+            adp_level=adp_level,
+        )
     except Exception:
-        pass  # 데이터 저장 실패해도 게임 계속 진행
+        pass
 
 # ═══ 전역 CSS — 화력전 전용 폰게임 스타일 ═══
 st.markdown("""
@@ -844,43 +808,32 @@ elif st.session_state.phase=="victory":
         st.session_state.adp_history = _hist
         st.session_state.adp_level = _calc_adp_level()
     except: pass
-    # ── zpd_logs + p5_logs ──
+    # ── zpd_logs + p5_logs (_storage 통합) ──
     try:
         st.session_state.p5_session_no = st.session_state.get("p5_session_no", 0) + 1
-        _st2 = load_storage()
-        _uid2 = st.session_state.get("nickname", "guest")
-        _today2 = __import__("datetime").datetime.now().strftime("%Y-%m-%d")
         _sno2 = st.session_state.p5_session_no
-        if "p5_start_date" not in st.session_state:
-            st.session_state.p5_start_date = _today2
-        try:
-            _dt2 = __import__("datetime")
-            _days2 = (_dt2.datetime.strptime(_today2, "%Y-%m-%d") -
-                      _dt2.datetime.strptime(st.session_state.p5_start_date, "%Y-%m-%d")).days
-            _week2 = _days2 // 7 + 1
-        except:
-            _week2 = 1
-        _zpd_entry = {
-            "user_id":        _uid2,"session_date":   _today2,"session_no":     _sno2,
-            "arena":          "P5","timer_setting":  st.session_state.tsec,
-            "game_over_q_no": None,"result":         "VICTORY","max_q_reached":  5,
-            "week":           _week2,"timestamp":      __import__("datetime").datetime.now().isoformat(),
-        }
-        if "zpd_logs" not in _st2: _st2["zpd_logs"] = []
-        _st2["zpd_logs"].append(_zpd_entry)
-        _p5_entry = {
-            "user_id":       _uid2,"session_date":  _today2,"session_no":    _sno2,
-            "timer_selected": st.session_state.tsec,"mode":          st.session_state.mode,
-            "result":        "VICTORY","correct_count": st.session_state.sc,
-            "wrong_count":   st.session_state.wrong,"week":          _week2,
-            "timestamp":     __import__("datetime").datetime.now().isoformat(),
-        }
-        if "p5_logs" not in _st2: _st2["p5_logs"] = []
+        _uid2 = _storage.get_uid()
+        _week2 = _storage.get_week(_uid2)
+        # zpd_log (VICTORY = game_over_q_no None)
+        _storage.append_log("zpd_logs", {
+            "user_id": _uid2, "session_no": _sno2, "arena": "P5",
+            "timer_setting": st.session_state.tsec,
+            "game_over_q_no": None, "result": "VICTORY", "max_q_reached": 5,
+            "week": _week2, "timestamp": __import__("datetime").datetime.now().isoformat(),
+            "research_phase": _storage.RESEARCH_PHASE,
+        })
+        # p5_log (중복 방지)
+        _st2 = _storage.load()
         if not any(p.get("session_no") == _sno2 and p.get("user_id") == _uid2 and p.get("result") == "VICTORY"
-                   for p in _st2["p5_logs"]):
-            _st2["p5_logs"].append(_p5_entry)
-        with open(STORAGE_FILE, "w", encoding="utf-8") as _f2:
-            json.dump(_st2, _f2, ensure_ascii=False, indent=2)
+                   for p in _st2.get("p5_logs", [])):
+            _storage.append_log("p5_logs", {
+                "user_id": _uid2, "session_no": _sno2,
+                "timer_selected": st.session_state.tsec, "mode": st.session_state.mode,
+                "result": "VICTORY", "correct_count": st.session_state.sc,
+                "wrong_count": st.session_state.wrong, "week": _week2,
+                "timestamp": __import__("datetime").datetime.now().isoformat(),
+                "research_phase": _storage.RESEARCH_PHASE,
+            })
     except: pass
 
     _sc_v = st.session_state.sc
@@ -1079,45 +1032,33 @@ elif st.session_state.phase=="lost":
     except: pass
     try:
         st.session_state.p5_session_no = st.session_state.get("p5_session_no", 0) + 1
-        _st3 = load_storage()
-        _uid3 = st.session_state.get("nickname", "guest")
-        _today3 = __import__("datetime").datetime.now().strftime("%Y-%m-%d")
         _sno3 = st.session_state.p5_session_no
-        if "p5_start_date" not in st.session_state:
-            st.session_state.p5_start_date = _today3
-        try:
-            _dt3 = __import__("datetime")
-            _days3 = (_dt3.datetime.strptime(_today3, "%Y-%m-%d") -
-                      _dt3.datetime.strptime(st.session_state.p5_start_date, "%Y-%m-%d")).days
-            _week3 = _days3 // 7 + 1
-        except:
-            _week3 = 1
-        _pending = _st3.get("_zpd_pending", {}).get(_uid3, {})
-        _go_q = _pending.get("game_over_q_no", st.session_state.qi + 1)
-        _zpd3 = {
-            "user_id":        _uid3,"session_date":   _today3,"session_no":     _sno3,
-            "arena":          "P5","timer_setting":  st.session_state.tsec,
-            "game_over_q_no": _go_q,"result":         "GAME_OVER",
-            "max_q_reached":  st.session_state.qi + 1,"week":           _week3,
-            "timestamp":      __import__("datetime").datetime.now().isoformat(),
-        }
-        if "zpd_logs" not in _st3: _st3["zpd_logs"] = []
+        _uid3 = _storage.get_uid()
+        _week3 = _storage.get_week(_uid3)
+        _go_q = st.session_state.qi + 1
+        # zpd_log (중복 방지)
+        _st3 = _storage.load()
         if not any(z.get("session_no") == _sno3 and z.get("user_id") == _uid3
-                   for z in _st3["zpd_logs"]):
-            _st3["zpd_logs"].append(_zpd3)
-        _p5e3 = {
-            "user_id":        _uid3,"session_date":   _today3,"session_no":     _sno3,
-            "timer_selected": st.session_state.tsec,"mode":           st.session_state.mode,
-            "result":         "GAME_OVER","correct_count":  st.session_state.sc,
-            "wrong_count":    st.session_state.wrong,"week":           _week3,
-            "timestamp":      __import__("datetime").datetime.now().isoformat(),
-        }
-        if "p5_logs" not in _st3: _st3["p5_logs"] = []
+                   for z in _st3.get("zpd_logs", [])):
+            _storage.append_log("zpd_logs", {
+                "user_id": _uid3, "session_no": _sno3, "arena": "P5",
+                "timer_setting": st.session_state.tsec,
+                "game_over_q_no": _go_q, "result": "GAME_OVER",
+                "max_q_reached": st.session_state.qi + 1, "week": _week3,
+                "timestamp": __import__("datetime").datetime.now().isoformat(),
+                "research_phase": _storage.RESEARCH_PHASE,
+            })
+        # p5_log (중복 방지)
         if not any(p.get("session_no") == _sno3 and p.get("user_id") == _uid3 and p.get("result") == "GAME_OVER"
-                   for p in _st3["p5_logs"]):
-            _st3["p5_logs"].append(_p5e3)
-        with open(STORAGE_FILE, "w", encoding="utf-8") as _f3:
-            json.dump(_st3, _f3, ensure_ascii=False, indent=2)
+                   for p in _st3.get("p5_logs", [])):
+            _storage.append_log("p5_logs", {
+                "user_id": _uid3, "session_no": _sno3,
+                "timer_selected": st.session_state.tsec, "mode": st.session_state.mode,
+                "result": "GAME_OVER", "correct_count": st.session_state.sc,
+                "wrong_count": st.session_state.wrong, "week": _week3,
+                "timestamp": __import__("datetime").datetime.now().isoformat(),
+                "research_phase": _storage.RESEARCH_PHASE,
+            })
     except: pass
 
     _sc = st.session_state.sc

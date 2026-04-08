@@ -99,6 +99,67 @@ def save_research_record(record):
         pass
     save_to_sheets(record)
 
+# ═══ _storage 공통 모듈 연동 ═══════════════════════════════════
+# PURPOSE: cross_logs / recon_xyz_logs / unified storage 연동
+# PAPER:   논문B(cross_logs), X·Y·Z 스캐폴딩 로그(신규 논문)
+import _storage
+
+def _save_cross_log(passage_id):
+    """
+    PURPOSE: P7 암호해독 완료 후 P5 화력전 어휘와 겹치는 단어 감지 → cross_logs 저장
+    INPUT:   passage_id (암호해독 지문 ID)
+    OUTPUT:  None
+    PAPER:   논문B — P7 독해 어휘가 P5 문법전투에서도 출현하는 크로스스킬 전이 효과
+    PATENT:  크로스모듈 어휘 전이 자동 감지 (신규 청구항 후보)
+    """
+    try:
+        import re as _re
+        data = _storage.load()
+        # P5 오답 문제 어휘 수집
+        saved_qs = data.get("saved_questions", [])
+        p5_words = set()
+        for q in saved_qs:
+            words = _re.findall(r"[a-zA-Z]{4,}", q.get("text", "") + " " + q.get("ex", ""))
+            p5_words.update(w.lower() for w in words)
+        # 현재 P7 지문 어휘 추출
+        p7_data = st.session_state.get("p7_data", {})
+        p7_text = " ".join(
+            " ".join(s.get("sentences", []))
+            for s in p7_data.get("steps", [])
+        )
+        p7_words = set(w.lower() for w in _re.findall(r"[a-zA-Z]{4,}", p7_text))
+        # 겹치는 어휘
+        matched = list(p5_words & p7_words)
+        matched_ids = [q.get("id", "") for q in saved_qs
+                       if any(w in q.get("text", "").lower() for w in matched)]
+        _storage.save_cross_log(
+            p7_passage_id=passage_id,
+            p5_matched_ids=matched_ids[:10],
+            match_count=len(matched),
+        )
+    except Exception:
+        pass
+
+def _save_recon_xyz_log(passage_id, session_no):
+    """
+    PURPOSE: X·Y·Z 3단계 정답여부·소요시간 저장
+    INPUT:   passage_id, session_no
+    PAPER:   X·Y·Z 스캐폴딩 효과 논문 (전 세계 0건 연구공백)
+    PATENT:  청구항 1B 실증 데이터
+    """
+    try:
+        answers = st.session_state.get("p7_answers", [])
+        analytics = st.session_state.get("p7_analytics", {})
+        step_times = analytics.get("step_times", [])
+        _storage.save_recon_xyz_log(
+            passage_id=passage_id,
+            step_results=answers[:3],
+            step_times=step_times[:3],
+            session_no=session_no,
+        )
+    except Exception:
+        pass
+
 def build_research_record(result):
     """현재 세션 데이터로 논문용 레코드 생성"""
     import uuid
@@ -951,6 +1012,18 @@ elif st.session_state.p7_phase == "battle":
                 st.session_state.p7_phase = "lost"; st.rerun()
             if step >= 2:
                 try: save_research_record(build_research_record("victory"))
+                except: pass
+                # ── cross_logs: P7→P5 크로스스킬 전이 감지 (논문B) ──
+                try:
+                    _pid = st.session_state.get("p7_data", {}).get("id", "unknown")
+                    _save_cross_log(_pid)
+                except: pass
+                # ── recon_xyz_logs: X·Y·Z 단계별 정답·소요시간 (신규 논문) ──
+                try:
+                    _pid2 = st.session_state.get("p7_data", {}).get("id", "unknown")
+                    _sno = st.session_state.get("p7_session_no", 0)
+                    st.session_state.p7_session_no = _sno + 1
+                    _save_recon_xyz_log(_pid2, _sno + 1)
                 except: pass
                 st.session_state.p7_phase = "victory"; st.rerun()
             else:
