@@ -139,8 +139,9 @@ def _save_rt_log(q, is_correct, seconds_remaining, timer_setting, uid, session_n
                 _entry["adp_level"], _entry["session_no"],
                 str(_entry.get("error_timing_type", "")), _entry["research_phase"]
             ])
-        except Exception:
-            pass
+        except Exception as _gs_err:
+            import streamlit as _st_err
+            _st_err.toast(str(_gs_err)[:100], icon='X')
     except Exception:
         pass  # continue game even if save fails
 
