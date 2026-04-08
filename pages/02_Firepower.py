@@ -112,7 +112,7 @@ def _save_rt_log(q, is_correct, seconds_remaining, timer_setting, uid, session_n
         _data["rt_logs"].append(_entry)
         with open(STORAGE_FILE, "w", encoding="utf-8") as _f:
             json.dump(_data, _f, ensure_ascii=False, indent=2)
-        # 2. Google Sheets 저장 (Cloud 영구 보존 - 논문 핵심)
+        # 2. Google Sheets save for research data
         try:
             import gspread
             from google.oauth2.service_account import Credentials
@@ -142,7 +142,7 @@ def _save_rt_log(q, is_correct, seconds_remaining, timer_setting, uid, session_n
         except Exception:
             pass
     except Exception:
-        pass  # 데이터 저장 실패해도 게임 계속 진행
+        pass  # continue game even if save fails
 
 # ═══ 전역 CSS — 화력전 전용 폰게임 스타일 ═══
 st.markdown("""
