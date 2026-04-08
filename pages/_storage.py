@@ -103,3 +103,43 @@ def _ensure(d):
         if k not in d: d[k] = v
     return d
 
+
+# ═══ Google Sheets 저장 ═══
+def _get_sheets_client():
+    try:
+        import gspread
+        from google.oauth2.service_account import Credentials
+        scopes = ["https://www.googleapis.com/auth/spreadsheets"]
+        creds_dict = dict(st.secrets["gcp_service_account"])
+        creds = Credentials.from_service_account_info(creds_dict, scopes=scopes)
+        gc = gspread.authorize(creds)
+        sh = gc.open_by_key(st.secrets["SPREADSHEET_ID"])
+        return sh
+    except Exception:
+        return None
+
+def save_to_sheets(log_key, entry):
+    try:
+        sh = _get_sheets_client()
+        if not sh: return False
+        headers_map = {
+            "rt_logs":["timestamp","user_id","question_id","is_correct","seconds_remaining","timer_setting","rt_proxy","grammar_type","cat","diff","adp_level","session_no","week","error_timing_type","research_phase"],
+            "p5_logs":["timestamp","user_id","session_no","result","correct_count","wrong_count","timer_selected","mode","week","research_phase"],
+            "zpd_logs":["timestamp","user_id","session_no","arena","timer_setting","result","game_over_q_no","max_q_reached","week","research_phase"],
+            "forget_logs":["timestamp","user_id","problem_id","grammar_type","source","first_wrong_date","revisit_date","interval_days","re_wrong","revisit_count","finally_correct","days_to_overcome","week","research_phase"],
+            "cross_logs":["timestamp","user_id","p7_passage_id","p5_matched_ids","match_count","week","research_phase"],
+            "recon_xyz_logs":["timestamp","user_id","passage_id","x_correct","y_correct","z_correct","x_sec","y_sec","z_sec","total_score","session_no","week","research_phase"],
+        }
+        headers = headers_map.get(log_key, list(entry.keys()))
+        try:
+            ws = sh.worksheet(log_key)
+        except Exception:
+            ws = sh.add_worksheet(title=log_key, rows=1000, cols=len(headers))
+        if not ws.row_values(1):
+            ws.append_row(headers)
+        row = [str(entry.get(h,"")) if entry.get(h) is not None else "" for h in headers]
+        ws.append_row(row)
+        return True
+    except Exception:
+        return False
+
