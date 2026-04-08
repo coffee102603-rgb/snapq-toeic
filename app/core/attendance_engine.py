@@ -81,14 +81,15 @@ def _ensure_files(month_key: str) -> None:
 
 
 def _save_to_sheets(sheet_name: str, obj: Dict[str, Any]) -> None:
-    """Google Sheets에 데이터 저장 (Cloud 영구 보존)"""
+    """
+    PURPOSE: Google Sheets에 데이터 저장 (Cloud 영구 보존)
+    INPUT:   sheet_name (시트명), obj (저장할 dict)
+    COMPAT:  gspread >= 6.0.0 (service_account_from_dict 방식)
+    NOTE:    실패해도 조용히 pass (게임 중단 방지)
+    """
     try:
         import gspread
-        from google.oauth2.service_account import Credentials
-        scopes = ["https://www.googleapis.com/auth/spreadsheets"]
-        creds = Credentials.from_service_account_info(
-            dict(st.secrets["gcp_service_account"]), scopes=scopes)
-        gc = gspread.authorize(creds)
+        gc = gspread.service_account_from_dict(dict(st.secrets["gcp_service_account"]))
         sh = gc.open_by_key(st.secrets["SPREADSHEET_ID"])
         try:
             ws = sh.worksheet(sheet_name)
@@ -96,6 +97,8 @@ def _save_to_sheets(sheet_name: str, obj: Dict[str, Any]) -> None:
             headers = list(obj.keys())
             ws = sh.add_worksheet(title=sheet_name, rows=5000, cols=len(headers))
             ws.append_row(headers)
+        if not ws.row_values(1):
+            ws.append_row(list(obj.keys()))
         ws.append_row([str(obj.get(k, "")) for k in ws.row_values(1)])
     except Exception:
         pass

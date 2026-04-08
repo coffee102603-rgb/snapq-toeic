@@ -31,6 +31,14 @@ if _qs_nick and _qs_ag == "1":
 import sys as _sys
 _sys.path.insert(0, os.path.dirname(__file__))
 from _responsive_css import inject_css as _inject_css
+# ── 활동 기록 (논문A 참여율, 논문B 정복률) ──
+try:
+    import sys as _sys_path
+    import os as _os_path
+    _sys_path.path.insert(0, _os_path.path.join(_os_path.path.dirname(_os_path.path.dirname(__file__)), "app", "core"))
+    from attendance_engine import record_activity as _record_activity
+except Exception:
+    def __record_activity(*a, **kw): pass
 _inject_css()
 
 # ═══ STORAGE PATH ═══
@@ -694,6 +702,18 @@ if st.session_state.phase=="battle":
             st.session_state.phase='lost'; st.rerun()
         if st.session_state.qi>=4:
             st.session_state.phase='victory' if st.session_state.sc>=4 else 'lost'
+            # ── 게임 결과 기록 (activity.jsonl + Google Sheets) ──
+            # PAPER: 논문A(정복률), 논문B(참여율)
+            try:
+                _acc = round(st.session_state.sc / max(st.session_state.ta, 1) * 100, 1)
+                _record_activity(
+                    nickname=st.session_state.get("battle_nickname", "guest"),
+                    arena="P5",
+                    acc=_acc,
+                    completed=(st.session_state.sc >= 4),
+                )
+            except Exception:
+                pass
             st.rerun()
         _nqi2=st.session_state.qi+1
         if _nqi2<len(st.session_state.round_qs):
@@ -702,6 +722,18 @@ if st.session_state.phase=="battle":
             st.session_state.ans=False; st.session_state.sel=None
         else:
             st.session_state.phase='victory' if st.session_state.sc>=4 else 'lost'
+            # ── 게임 결과 기록 (activity.jsonl + Google Sheets) ──
+            # PAPER: 논문A(정복률), 논문B(참여율)
+            try:
+                _acc = round(st.session_state.sc / max(st.session_state.ta, 1) * 100, 1)
+                _record_activity(
+                    nickname=st.session_state.get("battle_nickname", "guest"),
+                    arena="P5",
+                    acc=_acc,
+                    completed=(st.session_state.sc >= 4),
+                )
+            except Exception:
+                pass
         st.rerun()
 
     if not st.session_state.ans:
@@ -813,6 +845,18 @@ if st.session_state.phase=="battle":
                 st.session_state.ans=False; st.session_state.sel=None
             else:
                 st.session_state.phase='victory' if st.session_state.sc>=4 else 'lost'
+            # ── 게임 결과 기록 (activity.jsonl + Google Sheets) ──
+            # PAPER: 논문A(정복률), 논문B(참여율)
+            try:
+                _acc = round(st.session_state.sc / max(st.session_state.ta, 1) * 100, 1)
+                _record_activity(
+                    nickname=st.session_state.get("battle_nickname", "guest"),
+                    arena="P5",
+                    acc=_acc,
+                    completed=(st.session_state.sc >= 4),
+                )
+            except Exception:
+                pass
             st.rerun()
 
     else:
@@ -851,7 +895,19 @@ if st.session_state.phase=="battle":
             if st.session_state.wrong>=2:
                 st.session_state.phase='lost'; st.rerun()
             if st.session_state.qi>=4:
-                st.session_state.phase='victory' if st.session_state.sc>=4 else 'lost'; st.rerun()
+                st.session_state.phase='victory' if st.session_state.sc>=4 else 'lost'
+            # ── 게임 결과 기록 (activity.jsonl + Google Sheets) ──
+            # PAPER: 논문A(정복률), 논문B(참여율)
+            try:
+                _acc = round(st.session_state.sc / max(st.session_state.ta, 1) * 100, 1)
+                _record_activity(
+                    nickname=st.session_state.get("battle_nickname", "guest"),
+                    arena="P5",
+                    acc=_acc,
+                    completed=(st.session_state.sc >= 4),
+                )
+            except Exception:
+                pass; st.rerun()
             nqi = st.session_state.qi + 1
             if nqi < len(st.session_state.round_qs):
                 st.session_state.qi = nqi
@@ -859,6 +915,18 @@ if st.session_state.phase=="battle":
                 st.session_state.ans=False; st.session_state.sel=None
             else:
                 st.session_state.phase='victory' if st.session_state.sc>=4 else 'lost'
+            # ── 게임 결과 기록 (activity.jsonl + Google Sheets) ──
+            # PAPER: 논문A(정복률), 논문B(참여율)
+            try:
+                _acc = round(st.session_state.sc / max(st.session_state.ta, 1) * 100, 1)
+                _record_activity(
+                    nickname=st.session_state.get("battle_nickname", "guest"),
+                    arena="P5",
+                    acc=_acc,
+                    completed=(st.session_state.sc >= 4),
+                )
+            except Exception:
+                pass
             st.rerun()
 
 # ════════════════════════════════════════

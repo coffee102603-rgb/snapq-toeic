@@ -1,4 +1,4 @@
-﻿"""
+"""
 FILE: _storage.py
 ROLE: 공통 저장소 모듈
 """
@@ -107,40 +107,62 @@ def _ensure(d):
     return d
 
 
-# ═══ Google Sheets 저장 ═══
-def _get_sheets_client():
+# ═══ Google Sheets 저장 (논문 데이터 영구 보존) ════════════════
+# AI-AGENT NOTE:
+#   - gspread 6.x 호환: service_account_from_dict() 사용
+#   - 실패해도 게임 계속 (try/except)
+#   - 시트 없으면 자동 생성 + 헤더 추가
+#   - SPREADSHEET_ID: Streamlit secrets에 저장
+
+# 논문별 로그 스키마 정의
+_SHEETS_HEADERS = {
+    "rt_logs":       ["timestamp","user_id","question_id","is_correct",
+                      "seconds_remaining","timer_setting","rt_proxy",
+                      "grammar_type","cat","diff","adp_level","session_no",
+                      "week","error_timing_type","research_phase"],
+    "p5_logs":       ["timestamp","user_id","session_no","result",
+                      "correct_count","wrong_count","timer_selected","mode",
+                      "week","research_phase"],
+    "zpd_logs":      ["timestamp","user_id","session_no","arena",
+                      "timer_setting","result","game_over_q_no",
+                      "max_q_reached","week","research_phase"],
+    "forget_logs":   ["timestamp","user_id","problem_id","grammar_type",
+                      "source","first_wrong_date","revisit_date",
+                      "interval_days","re_wrong","revisit_count",
+                      "finally_correct","days_to_overcome","week","research_phase"],
+    "cross_logs":    ["timestamp","user_id","p7_passage_id","p5_matched_ids",
+                      "match_count","week","research_phase"],
+    "recon_xyz_logs":["timestamp","user_id","passage_id",
+                      "x_correct","y_correct","z_correct",
+                      "x_sec","y_sec","z_sec","total_score",
+                      "session_no","week","research_phase"],
+    "activity":      ["date","month","nickname","arena","duration_sec",
+                      "acc","completed","ts"],
+    "attendance":    ["date","month","nickname","ts"],
+}
+
+
+def save_to_sheets(log_key: str, entry: dict) -> bool:
+    """
+    PURPOSE: 로그 1개를 Google Sheets에 저장
+    INPUT:   log_key (시트명), entry (dict)
+    OUTPUT:  bool (성공 여부)
+    PAPER:   모든 논문 데이터 영구 보존 (Cloud 재시작해도 유지)
+    COMPAT:  gspread >= 6.0.0 (service_account_from_dict 방식)
+    """
     try:
         import gspread
-        from google.oauth2.service_account import Credentials
-        scopes = ["https://www.googleapis.com/auth/spreadsheets"]
-        creds_dict = dict(st.secrets["gcp_service_account"])
-        creds = Credentials.from_service_account_info(creds_dict, scopes=scopes)
-        gc = gspread.authorize(creds)
+        gc = gspread.service_account_from_dict(dict(st.secrets["gcp_service_account"]))
         sh = gc.open_by_key(st.secrets["SPREADSHEET_ID"])
-        return sh
-    except Exception:
-        return None
-
-def save_to_sheets(log_key, entry):
-    try:
-        sh = _get_sheets_client()
-        if not sh: return False
-        headers_map = {
-            "rt_logs":["timestamp","user_id","question_id","is_correct","seconds_remaining","timer_setting","rt_proxy","grammar_type","cat","diff","adp_level","session_no","week","error_timing_type","research_phase"],
-            "p5_logs":["timestamp","user_id","session_no","result","correct_count","wrong_count","timer_selected","mode","week","research_phase"],
-            "zpd_logs":["timestamp","user_id","session_no","arena","timer_setting","result","game_over_q_no","max_q_reached","week","research_phase"],
-            "forget_logs":["timestamp","user_id","problem_id","grammar_type","source","first_wrong_date","revisit_date","interval_days","re_wrong","revisit_count","finally_correct","days_to_overcome","week","research_phase"],
-            "cross_logs":["timestamp","user_id","p7_passage_id","p5_matched_ids","match_count","week","research_phase"],
-            "recon_xyz_logs":["timestamp","user_id","passage_id","x_correct","y_correct","z_correct","x_sec","y_sec","z_sec","total_score","session_no","week","research_phase"],
-        }
-        headers = headers_map.get(log_key, list(entry.keys()))
+        headers = _SHEETS_HEADERS.get(log_key, list(entry.keys()))
         try:
             ws = sh.worksheet(log_key)
         except Exception:
-            ws = sh.add_worksheet(title=log_key, rows=1000, cols=len(headers))
+            ws = sh.add_worksheet(title=log_key, rows=5000, cols=len(headers))
+            ws.append_row(headers)
         if not ws.row_values(1):
             ws.append_row(headers)
-        row = [str(entry.get(h,"")) if entry.get(h) is not None else "" for h in headers]
+        row = [str(entry.get(h, "")) if entry.get(h) is not None else "" for h in headers]
         ws.append_row(row)
         return True
     except Exception:
