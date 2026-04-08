@@ -41,20 +41,19 @@ except Exception:
     def __record_activity(*a, **kw): pass
 _inject_css()
 
+# ═══ _storage.py 공통 모듈 연동 ═══════════════════════════════
+# PURPOSE: user_id 통일 (get_uid), rt_logs 저장 함수 통일
+# PAPER:   논문A(adp_logs), 논문D(rt_logs), 특허 청구항3(error_timing_type)
+import _storage
+
 # ═══ STORAGE PATH ═══
-STORAGE_FILE = os.path.join(os.path.dirname(os.path.dirname(__file__)), "storage_data.json")
+STORAGE_FILE = _storage.STORAGE_FILE  # 단일 경로 통일
 
 def load_storage():
-    if os.path.exists(STORAGE_FILE):
-        with open(STORAGE_FILE, "r", encoding="utf-8") as f:
-            d = json.load(f)
-            if isinstance(d, dict):
-                return d
-            return {"saved_questions": d, "saved_expressions": []}
-    return {"saved_questions": [], "saved_expressions": []}
+    return _storage.load()
 
 def save_to_storage(items):
-    data = load_storage()
+    data = _storage.load()
     existing = data.get("saved_questions", [])
     ids = {x["id"] for x in existing if isinstance(x, dict) and "id" in x}
     for it in items:
@@ -62,41 +61,12 @@ def save_to_storage(items):
             existing.append(it)
             ids.add(it["id"])
     data["saved_questions"] = existing
-    with open(STORAGE_FILE, "w", encoding="utf-8") as f:
-        json.dump(data, f, ensure_ascii=False, indent=2)
+    _storage.save(data)
 
-# ═══ 연구 데이터 — rt_logs 저장 함수 ═══════════════════════════
+# ═══ 연구 데이터 — rt_logs 저장 ═══════════════════════════════
 # 논문 01·02·04 핵심 데이터 / 특허 3순위 (오답타이밍 자동분류)
-# IRB 승인 전: research_phase="pre_irb" / 승인 후 "post_irb"로 변경
-RESEARCH_PHASE = "pre_irb"
-
-def _save_rt_to_sheets(entry):
-    try:
-        import gspread
-        from google.oauth2.service_account import Credentials
-        scopes = ["https://www.googleapis.com/auth/spreadsheets"]
-        creds = Credentials.from_service_account_info(
-            dict(st.secrets["gcp_service_account"]), scopes=scopes)
-        gc = gspread.authorize(creds)
-        sh = gc.open_by_key(st.secrets["SPREADSHEET_ID"])
-        try:
-            ws = sh.worksheet("rt_logs")
-        except Exception:
-            ws = sh.add_worksheet(title="rt_logs", rows=5000, cols=20)
-            ws.append_row(["timestamp","user_id","question_id","is_correct",
-                "seconds_remaining","timer_setting","rt_proxy","grammar_type",
-                "cat","diff","adp_level","session_no","error_timing_type","research_phase"])
-        ws.append_row([
-            str(entry.get("timestamp","")), str(entry.get("user_id","")),
-            str(entry.get("question_id","")), str(entry.get("is_correct","")),
-            str(entry.get("seconds_remaining","")), str(entry.get("timer_setting","")),
-            str(entry.get("rt_proxy","")), str(entry.get("grammar_type","")),
-            str(entry.get("cat","")), str(entry.get("diff","")),
-            str(entry.get("adp_level","")), str(entry.get("session_no","")),
-            str(entry.get("error_timing_type","")), str(entry.get("research_phase",""))
-        ])
-    except Exception:
-        pass
+# IRB 승인 전: _storage.RESEARCH_PHASE = "pre_irb"
+# IRB 승인 후: _storage.py 에서 "post_irb" 로 한 번만 변경하면 전 파일 동시 적용
 
 def _classify_error_timing(seconds_remaining, timer_setting):
     """타이머 잔여시간 비율 → fast/mid/slow 자동 분류 (특허 3순위 핵심)"""
@@ -109,48 +79,6 @@ def _classify_error_timing(seconds_remaining, timer_setting):
         return "mid_wrong"    # 표준형 오답 (1/3 ~ 2/3)
     else:
         return "slow_wrong"   # 인지과부하형 오답 (잔여 < 1/3)
-
-def _save_rt_log(q, is_correct, seconds_remaining, timer_setting, uid, session_no, adp_level):
-    """문제 1개 풀이 후 rt_log 저장 — 논문 01·02·04 데이터"""
-    try:
-        _tp = q.get("tp", "grammar")
-        _grammar_type = {
-            "grammar": "GRM", "g1": "GRM",
-            "form": "FORM",   "g2": "FORM",
-            "link": "LINK",   "g3": "LINK",
-            "vocab": "VOCAB",
-        }.get(_tp, "GRM")
-
-        _entry = {
-            "timestamp":         __import__("datetime").datetime.now().isoformat(),
-            "user_id":           uid,
-            "question_id":       q.get("id", ""),
-            "is_correct":        is_correct,
-            "seconds_remaining": round(max(0, seconds_remaining), 2),
-            "timer_setting":     timer_setting,
-            "rt_proxy":          round(max(0, timer_setting - seconds_remaining), 2),
-            "grammar_type":      _grammar_type,
-            "cat":               q.get("cat", ""),
-            "diff":              q.get("diff", ""),
-            "adp_level":         adp_level,
-            "session_no":        session_no,
-            "research_phase":    RESEARCH_PHASE,
-            # 오답일 때만 타이밍 분류 (논문 04 · 특허 3순위)
-            "error_timing_type": (
-                _classify_error_timing(seconds_remaining, timer_setting)
-                if not is_correct else None
-            ),
-        }
-        # 1. 로컬 JSON 저장
-        _data = load_storage()
-        if "rt_logs" not in _data:
-            _data["rt_logs"] = []
-        _data["rt_logs"].append(_entry)
-        with open(STORAGE_FILE, "w", encoding="utf-8") as _f:
-            json.dump(_data, _f, ensure_ascii=False, indent=2)
-        _save_rt_to_sheets(_entry)
-    except Exception:
-        pass  # 데이터 저장 실패해도 게임 계속 진행
 
 # ═══ 전역 CSS — 화력전 전용 폰게임 스타일 ═══
 st.markdown("""
@@ -823,16 +751,17 @@ if st.session_state.phase=="battle":
             else: st.session_state.wrong+=1
             st.session_state.ta+=1
             # ── ★ rt_log 저장 (논문 01·02·04 / 특허 3순위) ──────────
+            # user_id: _storage.get_uid() 로 통일 (POW HQ·Decrypt Op 동일)
             _elapsed_rt = time.time() - st.session_state.qst
             _rem_rt     = max(0, st.session_state.tsec - _elapsed_rt)
-            _save_rt_log(
-                q               = q,
-                is_correct      = ok,
+            _storage.save_rt_log(
+                q                 = q,
+                is_correct        = ok,
                 seconds_remaining = _rem_rt,
-                timer_setting   = st.session_state.tsec,
-                uid             = st.session_state.get("nickname", "guest"),
-                session_no      = st.session_state.get("p5_session_no", 0),
-                adp_level       = st.session_state.get("adp_level", "normal"),
+                timer_setting     = st.session_state.tsec,
+                session_no        = st.session_state.get("p5_session_no", 0),
+                adp_level         = st.session_state.get("adp_level", "normal"),
+                error_timing_type = _classify_error_timing(_rem_rt, st.session_state.tsec) if not ok else None,
             )
             # ────────────────────────────────────────────────────────
             # iOS 2-phase: 버튼 제거 후 다음 문제
@@ -933,7 +862,7 @@ if st.session_state.phase=="battle":
 # PHASE: VICTORY
 # ════════════════════════════════════════
 elif st.session_state.phase=="victory":
-    # ── adaptive difficulty 기록 ──
+    # ── adaptive difficulty 기록 + adp_logs 영속화 ──
     try:
         _sc_adp = st.session_state.get("sc", 0)
         _rate_adp = _sc_adp / 5.0
@@ -941,23 +870,26 @@ elif st.session_state.phase=="victory":
         _hist.append(_rate_adp)
         st.session_state.adp_history = _hist
         st.session_state.adp_level = _calc_adp_level()
+        # ★ adp_logs 영속화 — 세션 종료해도 성장 이력 유지 (논문A 핵심)
+        _storage.append_log("adp_logs", {
+            "timestamp":   __import__("datetime").datetime.now().isoformat(),
+            "user_id":     _storage.get_uid(),
+            "adp_level":   st.session_state.adp_level,
+            "score":       _sc_adp,
+            "rate":        _rate_adp,
+            "history_len": len(_hist),
+            "week":        _storage.get_week(_storage.get_uid()),
+            "research_phase": _storage.RESEARCH_PHASE,
+        })
     except: pass
     # ── zpd_logs + p5_logs ──
     try:
         st.session_state.p5_session_no = st.session_state.get("p5_session_no", 0) + 1
-        _st2 = load_storage()
-        _uid2 = st.session_state.get("nickname", "guest")
+        _st2 = _storage.load()
+        _uid2 = _storage.get_uid()
         _today2 = __import__("datetime").datetime.now().strftime("%Y-%m-%d")
         _sno2 = st.session_state.p5_session_no
-        if "p5_start_date" not in st.session_state:
-            st.session_state.p5_start_date = _today2
-        try:
-            _dt2 = __import__("datetime")
-            _days2 = (_dt2.datetime.strptime(_today2, "%Y-%m-%d") -
-                      _dt2.datetime.strptime(st.session_state.p5_start_date, "%Y-%m-%d")).days
-            _week2 = _days2 // 7 + 1
-        except:
-            _week2 = 1
+        _week2 = _storage.get_week(_uid2)
         _zpd_entry = {
             "user_id":        _uid2,"session_date":   _today2,"session_no":     _sno2,
             "arena":          "P5","timer_setting":  st.session_state.tsec,
@@ -977,8 +909,7 @@ elif st.session_state.phase=="victory":
         if not any(p.get("session_no") == _sno2 and p.get("user_id") == _uid2 and p.get("result") == "VICTORY"
                    for p in _st2["p5_logs"]):
             _st2["p5_logs"].append(_p5_entry)
-        with open(STORAGE_FILE, "w", encoding="utf-8") as _f2:
-            json.dump(_st2, _f2, ensure_ascii=False, indent=2)
+        _storage.save(_st2)
     except: pass
 
     _sc_v = st.session_state.sc
@@ -1174,22 +1105,26 @@ elif st.session_state.phase=="lost":
         _hist.append(_rate_adp)
         st.session_state.adp_history = _hist
         st.session_state.adp_level = _calc_adp_level()
+        # ★ adp_logs 영속화 — GAME OVER도 성장 이력 기록 (논문A)
+        _storage.append_log("adp_logs", {
+            "timestamp":   __import__("datetime").datetime.now().isoformat(),
+            "user_id":     _storage.get_uid(),
+            "adp_level":   st.session_state.adp_level,
+            "score":       _sc_adp,
+            "rate":        _rate_adp,
+            "history_len": len(_hist),
+            "result":      "GAME_OVER",
+            "week":        _storage.get_week(_storage.get_uid()),
+            "research_phase": _storage.RESEARCH_PHASE,
+        })
     except: pass
     try:
         st.session_state.p5_session_no = st.session_state.get("p5_session_no", 0) + 1
-        _st3 = load_storage()
-        _uid3 = st.session_state.get("nickname", "guest")
+        _st3 = _storage.load()
+        _uid3 = _storage.get_uid()
         _today3 = __import__("datetime").datetime.now().strftime("%Y-%m-%d")
         _sno3 = st.session_state.p5_session_no
-        if "p5_start_date" not in st.session_state:
-            st.session_state.p5_start_date = _today3
-        try:
-            _dt3 = __import__("datetime")
-            _days3 = (_dt3.datetime.strptime(_today3, "%Y-%m-%d") -
-                      _dt3.datetime.strptime(st.session_state.p5_start_date, "%Y-%m-%d")).days
-            _week3 = _days3 // 7 + 1
-        except:
-            _week3 = 1
+        _week3 = _storage.get_week(_uid3)
         _pending = _st3.get("_zpd_pending", {}).get(_uid3, {})
         _go_q = _pending.get("game_over_q_no", st.session_state.qi + 1)
         _zpd3 = {
@@ -1214,8 +1149,7 @@ elif st.session_state.phase=="lost":
         if not any(p.get("session_no") == _sno3 and p.get("user_id") == _uid3 and p.get("result") == "GAME_OVER"
                    for p in _st3["p5_logs"]):
             _st3["p5_logs"].append(_p5e3)
-        with open(STORAGE_FILE, "w", encoding="utf-8") as _f3:
-            json.dump(_st3, _f3, ensure_ascii=False, indent=2)
+        _storage.save(_st3)
     except: pass
 
     _sc = st.session_state.sc
@@ -1562,7 +1496,7 @@ elif st.session_state.phase=="briefing":
                 _fp_sent = q.get("text","").replace("_______", ans_clean)
                 _fp_cat  = q.get("cat","")
                 _matched = _find_words(_fp_sent, max_words=3)
-                _fp_data = load_storage()
+                _fp_data = _storage.load()
                 if "word_prison" not in _fp_data: _fp_data["word_prison"] = []
                 _changed = False
                 for _m in _matched:
@@ -1577,9 +1511,7 @@ elif st.session_state.phase=="briefing":
                     })
                     _changed = True
                 if _changed:
-                    import json as _jfp2
-                    with open(STORAGE_FILE,"w",encoding="utf-8") as _ffp:
-                        _jfp2.dump(_fp_data,_ffp,ensure_ascii=False,indent=2)
+                    _storage.save(_fp_data)
             except Exception:
                 pass
 
@@ -1663,7 +1595,7 @@ elif st.session_state.phase=="briefing":
                     from _word_family_db import find_words_in_sentence as _find_words2
                     _fp_sent2 = q.get("text","").replace("_______", ans_clean)
                     _matched2 = _find_words2(_fp_sent2, max_words=3)
-                    _fp_data2 = load_storage()
+                    _fp_data2 = _storage.load()
                     if "word_prison" not in _fp_data2: _fp_data2["word_prison"] = []
                     for _m2 in _matched2:
                         _w2 = _m2["word"].strip()
@@ -1675,9 +1607,7 @@ elif st.session_state.phase=="briefing":
                             "captured_date":_fdt2.datetime.now().strftime("%Y-%m-%d"),
                             "correct_streak":0,"last_reviewed":None,"cat":q.get("cat",""),
                         })
-                    import json as _jfp3
-                    with open(STORAGE_FILE,"w",encoding="utf-8") as _ffp2:
-                        _jfp3.dump(_fp_data2,_ffp2,ensure_ascii=False,indent=2)
+                    _storage.save(_fp_data2)
                 except Exception:
                     pass
                 st.rerun()
