@@ -6,9 +6,7 @@ import os, json
 from datetime import datetime
 import streamlit as st
 
-_THIS_DIR = os.path.dirname(os.path.abspath(__file__))
-_ROOT_DIR = os.path.dirname(_THIS_DIR) if _THIS_DIR.endswith("pages") else _THIS_DIR
-STORAGE_FILE = os.path.join(_ROOT_DIR, "storage_data.json")
+STORAGE_FILE = os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))), "storage_data.json")
 RESEARCH_PHASE = "pre_irb"
 
 def load():
@@ -104,3 +102,4 @@ def _ensure(d):
     for k,v in _empty().items():
         if k not in d: d[k] = v
     return d
+
