@@ -52,20 +52,19 @@ _sys.path.insert(0, os.path.dirname(__file__))
 from _responsive_css import inject_css as _inject_css
 _inject_css()
 
-STORAGE_FILE = os.path.join(os.path.dirname(os.path.dirname(__file__)), "storage_data.json")
+# ═══ _storage.py 공통 모듈 연동 ═══════════════════════════════
+# PURPOSE: 로컬 중복 함수 제거 → _storage.py 단일 진입점 사용
+# PAPER:   forget_logs(논문C 망각곡선), word_prison(특허 어휘포획)
+import _storage
 
+STORAGE_FILE = _storage.STORAGE_FILE  # 참조용
+
+# 하위 호환 래퍼
 def load_storage():
-    if os.path.exists(STORAGE_FILE):
-        with open(STORAGE_FILE,"r",encoding="utf-8") as f:
-            d = json.load(f)
-            if isinstance(d, list): return {"saved_questions":d,"saved_expressions":[]}
-            if "saved_questions" not in d: d["saved_questions"]=[]
-            if "saved_expressions" not in d: d["saved_expressions"]=[]
-            return d
-    return {"saved_questions":[],"saved_expressions":[]}
+    return _storage.load()
 
 def save_storage(data):
-    with open(STORAGE_FILE,"w",encoding="utf-8") as f: json.dump(data,f,ensure_ascii=False,indent=2)
+    _storage.save(data)
 
 # ★ 포로수용소 — 스마트 단어 1개 추출 함수
 _PRISON_STOP = {
@@ -804,7 +803,7 @@ elif st.session_state.sg_phase == "p5_study":
             try:
                 _dt2 = __import__("datetime")
                 _today2 = _dt2.datetime.now().strftime("%Y-%m-%d")
-                _uid2   = st.session_state.get("nickname", "guest")
+                _uid2   = _storage.get_uid()
                 _qid2   = q.get("id", "?")
                 _first2 = q.get("first_wrong_date", q.get("saved_date", _today2))
                 try:
@@ -812,8 +811,9 @@ elif st.session_state.sg_phase == "p5_study":
                               _dt2.datetime.strptime(_first2, "%Y-%m-%d")).days
                 except:
                     _days2 = 0
-                _st2 = load_storage()
-                # 최근 forget_log 중 이 문제를 finally_correct=True로 업데이트
+                # ── finally_correct 업데이트 (_storage 통합) ──
+                # PAPER: 논문C — 오답 극복까지 걸린 일수 (days_to_overcome)
+                _st2 = _storage.load()
                 _updated = False
                 for _lg in reversed(_st2.get("forget_logs", [])):
                     if _lg.get("problem_id") == _qid2 and _lg.get("user_id") == _uid2:
@@ -821,7 +821,6 @@ elif st.session_state.sg_phase == "p5_study":
                         _lg["days_to_overcome"] = _days2
                         _updated = True
                         break
-                # 업데이트된 항목 없으면 새로 추가
                 if not _updated:
                     _st2.setdefault("forget_logs", []).append({
                         "user_id":          _uid2,
@@ -835,10 +834,11 @@ elif st.session_state.sg_phase == "p5_study":
                         "revisit_count":    st.session_state.get(f"revisit_{_qid2}", 0),
                         "finally_correct":  True,
                         "days_to_overcome": _days2,
+                        "week":             _storage.get_week(_uid2),
                         "timestamp":        _dt2.datetime.now().isoformat(),
+                        "research_phase":   _storage.RESEARCH_PHASE,
                     })
-                with open(STORAGE_FILE, "w", encoding="utf-8") as _ff2:
-                    json.dump(_st2, _ff2, ensure_ascii=False, indent=2)
+                _storage.save(_st2)
             except:
                 pass
 
@@ -1023,7 +1023,7 @@ elif st.session_state.sg_phase == "p5_exam":
         try:
             _dt = __import__("datetime")
             _today = _dt.datetime.now().strftime("%Y-%m-%d")
-            _uid  = st.session_state.get("nickname", "guest")
+            _uid  = _storage.get_uid()
             _qid  = q.get("id", "?")
             _cat  = q.get("cat", "")
             _src  = "P5"
@@ -1036,8 +1036,9 @@ elif st.session_state.sg_phase == "p5_exam":
             _rv_key = f"revisit_{_qid}"
             _rv_cnt = st.session_state.get(_rv_key, 0) + 1
             st.session_state[_rv_key] = _rv_cnt
-            _st_f = load_storage()
-            _fl = {
+            # ── forget_log 저장 (_storage 통합) ──
+            # PAPER: 논문C 망각곡선 핵심 데이터
+            _storage.append_log("forget_logs", {
                 "user_id":          _uid,
                 "problem_id":       _qid,
                 "grammar_type":     _cat,
@@ -1049,13 +1050,10 @@ elif st.session_state.sg_phase == "p5_exam":
                 "revisit_count":    _rv_cnt,
                 "finally_correct":  False,
                 "days_to_overcome": None,
+                "week":             _storage.get_week(_uid),
                 "timestamp":        _dt.datetime.now().isoformat(),
-            }
-            if "forget_logs" not in _st_f:
-                _st_f["forget_logs"] = []
-            _st_f["forget_logs"].append(_fl)
-            with open(STORAGE_FILE, "w", encoding="utf-8") as _ff:
-                json.dump(_st_f, _ff, ensure_ascii=False, indent=2)
+                "research_phase":   _storage.RESEARCH_PHASE,
+            })
         except:
             pass
 
