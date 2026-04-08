@@ -105,12 +105,42 @@ def _save_rt_log(q, is_correct, seconds_remaining, timer_setting, uid, session_n
                 if not is_correct else None
             ),
         }
+        # 1. 로컬 JSON 저장
         _data = load_storage()
         if "rt_logs" not in _data:
             _data["rt_logs"] = []
         _data["rt_logs"].append(_entry)
         with open(STORAGE_FILE, "w", encoding="utf-8") as _f:
             json.dump(_data, _f, ensure_ascii=False, indent=2)
+        # 2. Google Sheets 저장 (Cloud 영구 보존 - 논문 핵심)
+        try:
+            import gspread
+            from google.oauth2.service_account import Credentials
+            _scopes = ["https://www.googleapis.com/auth/spreadsheets"]
+            _creds = Credentials.from_service_account_info(
+                dict(st.secrets["gcp_service_account"]), scopes=_scopes)
+            _gc = gspread.authorize(_creds)
+            _sh = _gc.open_by_key(st.secrets["SPREADSHEET_ID"])
+            try:
+                _ws = _sh.worksheet("rt_logs")
+            except Exception:
+                _ws = _sh.add_worksheet(title="rt_logs", rows=1000, cols=20)
+                _ws.append_row([
+                    "timestamp","user_id","question_id","is_correct",
+                    "seconds_remaining","timer_setting","rt_proxy",
+                    "grammar_type","cat","diff","adp_level",
+                    "session_no","error_timing_type","research_phase"
+                ])
+            _ws.append_row([
+                _entry["timestamp"], _entry["user_id"], _entry["question_id"],
+                str(_entry["is_correct"]), _entry["seconds_remaining"],
+                _entry["timer_setting"], _entry["rt_proxy"],
+                _entry["grammar_type"], _entry["cat"], _entry["diff"],
+                _entry["adp_level"], _entry["session_no"],
+                str(_entry.get("error_timing_type", "")), _entry["research_phase"]
+            ])
+        except Exception:
+            pass
     except Exception:
         pass  # 데이터 저장 실패해도 게임 계속 진행
 
