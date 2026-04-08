@@ -1,20 +1,20 @@
-"""
-FILE: 02_Firepower.py  (구: 02_P5_Arena.py)
-ROLE: 화력전 — 문법·어휘 5문제 서바이벌 전장
-PHASES: LOBBY → BATTLE → BRIEFING → RESULT
-DATA:   storage_data.json → rt_logs(논문D), adp_logs(논문A), word_prison(오답 자동 포획)
-LINKS:  main_hub.py (작전사령부 귀환) | 03_POW_HQ.py (포로사령부)
-PAPERS: 논문D(rt_logs 반응속도), 논문A(adp_logs 적응형 난이도)
-EXTEND: P5 포로수용소 자동저장 재구현 예정 (안전한 옵션A 방식)
-EXTEND: Adaptive 난이도 고도화 예정
+﻿"""
+FILE: 02_Firepower.py  (援? 02_P5_Arena.py)
+ROLE: ?붾젰????臾몃쾿쨌?댄쐶 5臾몄젣 ?쒕컮?대쾶 ?꾩옣
+PHASES: LOBBY ??BATTLE ??BRIEFING ??RESULT
+DATA:   storage_data.json ??rt_logs(?쇰ЦD), adp_logs(?쇰ЦA), word_prison(?ㅻ떟 ?먮룞 ?ы쉷)
+LINKS:  main_hub.py (?묒쟾?щ졊遺 洹?? | 03_POW_HQ.py (?щ줈?щ졊遺)
+PAPERS: ?쇰ЦD(rt_logs 諛섏쓳?띾룄), ?쇰ЦA(adp_logs ?곸쓳???쒖씠??
+EXTEND: P5 ?щ줈?섏슜???먮룞????ш뎄???덉젙 (?덉쟾???듭뀡A 諛⑹떇)
+EXTEND: Adaptive ?쒖씠??怨좊룄???덉젙
 """
 import streamlit as st
 import streamlit.components.v1 as components
 from streamlit_autorefresh import st_autorefresh
 import random, time, json, os, re
 
-st.set_page_config(page_title="화력전 ⚡", page_icon="⚡", layout="wide", initial_sidebar_state="collapsed")
-# ★★★ iOS Safari 세션 가드 — WebSocket 끊겨도 세션 자동 복원 ★★★
+st.set_page_config(page_title="?붾젰????, page_icon="??, layout="wide", initial_sidebar_state="collapsed")
+# ?끸쁾??iOS Safari ?몄뀡 媛????WebSocket ?딄꺼???몄뀡 ?먮룞 蹂듭썝 ?끸쁾??
 _qs_nick = st.query_params.get("nick", "")
 _qs_ag   = st.query_params.get("ag", "")
 if _qs_nick and _qs_ag == "1":
@@ -27,13 +27,13 @@ if _qs_nick and _qs_ag == "1":
     st.query_params.clear()
 
 
-# ★ 공유 반응형 CSS (iOS Safari 수정 + PC 글씨 확대)
+# ??怨듭쑀 諛섏쓳??CSS (iOS Safari ?섏젙 + PC 湲???뺣?)
 import sys as _sys
 _sys.path.insert(0, os.path.dirname(__file__))
 from _responsive_css import inject_css as _inject_css
 _inject_css()
 
-# ═══ STORAGE PATH ═══
+# ?먥븧??STORAGE PATH ?먥븧??
 STORAGE_FILE = os.path.join(os.path.dirname(os.path.dirname(__file__)), "storage_data.json")
 
 def load_storage():
@@ -57,25 +57,25 @@ def save_to_storage(items):
     with open(STORAGE_FILE, "w", encoding="utf-8") as f:
         json.dump(data, f, ensure_ascii=False, indent=2)
 
-# ═══ 연구 데이터 — rt_logs 저장 함수 ═══════════════════════════
-# 논문 01·02·04 핵심 데이터 / 특허 3순위 (오답타이밍 자동분류)
-# IRB 승인 전: research_phase="pre_irb" / 승인 후 "post_irb"로 변경
+# ?먥븧???곌뎄 ?곗씠????rt_logs ????⑥닔 ?먥븧?먥븧?먥븧?먥븧?먥븧?먥븧?먥븧?먥븧?먥븧?먥븧?먥븧?먥븧?먥븧??
+# ?쇰Ц 01쨌02쨌04 ?듭떖 ?곗씠??/ ?뱁뿀 3?쒖쐞 (?ㅻ떟??대컢 ?먮룞遺꾨쪟)
+# IRB ?뱀씤 ?? research_phase="pre_irb" / ?뱀씤 ??"post_irb"濡?蹂寃?
 RESEARCH_PHASE = "pre_irb"
 
 def _classify_error_timing(seconds_remaining, timer_setting):
-    """타이머 잔여시간 비율 → fast/mid/slow 자동 분류 (특허 3순위 핵심)"""
+    """??대㉧ ?붿뿬?쒓컙 鍮꾩쑉 ??fast/mid/slow ?먮룞 遺꾨쪟 (?뱁뿀 3?쒖쐞 ?듭떖)"""
     if timer_setting <= 0:
         return "unknown"
     ratio = seconds_remaining / timer_setting
     if ratio > 0.667:
-        return "fast_wrong"   # 충동형 오답 (잔여 > 2/3)
+        return "fast_wrong"   # 異⑸룞???ㅻ떟 (?붿뿬 > 2/3)
     elif ratio > 0.333:
-        return "mid_wrong"    # 표준형 오답 (1/3 ~ 2/3)
+        return "mid_wrong"    # ?쒖????ㅻ떟 (1/3 ~ 2/3)
     else:
-        return "slow_wrong"   # 인지과부하형 오답 (잔여 < 1/3)
+        return "slow_wrong"   # ?몄?怨쇰??섑삎 ?ㅻ떟 (?붿뿬 < 1/3)
 
 def _save_rt_log(q, is_correct, seconds_remaining, timer_setting, uid, session_no, adp_level):
-    """문제 1개 풀이 후 rt_log 저장 — 논문 01·02·04 데이터"""
+    """臾몄젣 1媛??????rt_log ??????쇰Ц 01쨌02쨌04 ?곗씠??""
     try:
         _tp = q.get("tp", "grammar")
         _grammar_type = {
@@ -99,7 +99,7 @@ def _save_rt_log(q, is_correct, seconds_remaining, timer_setting, uid, session_n
             "adp_level":         adp_level,
             "session_no":        session_no,
             "research_phase":    RESEARCH_PHASE,
-            # 오답일 때만 타이밍 분류 (논문 04 · 특허 3순위)
+            # ?ㅻ떟???뚮쭔 ??대컢 遺꾨쪟 (?쇰Ц 04 쨌 ?뱁뿀 3?쒖쐞)
             "error_timing_type": (
                 _classify_error_timing(seconds_remaining, timer_setting)
                 if not is_correct else None
@@ -112,34 +112,34 @@ def _save_rt_log(q, is_correct, seconds_remaining, timer_setting, uid, session_n
         with open(STORAGE_FILE, "w", encoding="utf-8") as _f:
             json.dump(_data, _f, ensure_ascii=False, indent=2)
     except Exception:
-        pass  # 데이터 저장 실패해도 게임 계속 진행
+        pass  # ?곗씠??????ㅽ뙣?대룄 寃뚯엫 怨꾩냽 吏꾪뻾
 
-# ═══ 전역 CSS — 화력전 전용 폰게임 스타일 ═══
+# ?먥븧???꾩뿭 CSS ???붾젰???꾩슜 ?곌쾶???ㅽ????먥븧??
 st.markdown("""
 <style>
 @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@700;900&family=Rajdhani:wght@600;700&display=swap');
 
-/* ── 기반 ── */
+/* ?? 湲곕컲 ?? */
 .stApp{background:#06060e!important;color:#eeeeff!important;}
 section[data-testid="stSidebar"]{display:none!important;}
 header[data-testid="stHeader"]{background:transparent!important;height:0!important;min-height:0!important;overflow:hidden!important;}
 .block-container{padding-top:0!important;padding-bottom:0!important;margin-top:-8px!important;}
 
-/* ── 타이틀 헤더 ── */
+/* ?? ??댄? ?ㅻ뜑 ?? */
 .ah{text-align:center;padding:0;margin:0 0 2px 0;line-height:1;}
 .ah h1{font-family:'Orbitron',monospace!important;font-size:0.85rem;font-weight:900;margin:0;
   background:linear-gradient(90deg,#00d4ff,#ffffff,#FFD600,#00d4ff);background-size:300%;
   -webkit-background-clip:text;-webkit-text-fill-color:transparent;
   animation:titleShine 2s linear infinite;letter-spacing:4px;}
 
-/* ── 키프레임 ── */
+/* ?? ?ㅽ봽?덉엫 ?? */
 @keyframes titleShine{0%{background-position:200% center}100%{background-position:-200% center}}
 @keyframes warningPulse{0%,100%{color:#ff4466;text-shadow:0 0 8px rgba(255,68,102,0.8);}50%{color:#ff8888;text-shadow:0 0 20px rgba(255,68,102,1),0 0 40px rgba(255,0,50,0.6);}}
 @keyframes neonPulse{0%,100%{box-shadow:0 0 5px #00d4ff,0 0 15px rgba(0,212,255,0.4);}50%{box-shadow:0 0 15px #00d4ff,0 0 40px rgba(0,212,255,0.7),0 0 60px rgba(0,212,255,0.3);}}
 @keyframes answerGlow{0%,100%{opacity:1;}50%{opacity:0.85;}}
 @keyframes shake{0%{transform:translate(0,0)}20%{transform:translate(-4px,2px)}40%{transform:translate(4px,-2px)}60%{transform:translate(-3px,3px)}80%{transform:translate(3px,-3px)}100%{transform:translate(0,0)}}
 
-/* ── HUD 배틀바 ── */
+/* ?? HUD 諛고?諛??? */
 .bt{display:flex;align-items:center;justify-content:space-between;
   padding:0.15rem 0.8rem;border-radius:8px;margin-bottom:2px;
   background:#0a0c18;border:1px solid rgba(0,212,255,0.4);
@@ -149,7 +149,7 @@ header[data-testid="stHeader"]{background:transparent!important;height:0!importa
 .bq-g,.bq-v{color:#00d4ff;text-shadow:0 0 12px rgba(0,212,255,0.9);}
 .bs{font-family:'Orbitron',monospace;font-size:1.0rem;font-weight:800;color:#fff;}
 
-/* ── 라운드 도트 → 전투 프로그레스 pill ── */
+/* ?? ?쇱슫???꾪듃 ???꾪닾 ?꾨줈洹몃젅??pill ?? */
 .rd-dots{display:flex;justify-content:center;gap:0.3rem;}
 .rd-dot{width:38px;height:22px;border-radius:5px;border:1.5px solid #1e2030;
   display:flex;align-items:center;justify-content:center;
@@ -161,7 +161,7 @@ header[data-testid="stHeader"]{background:transparent!important;height:0!importa
 .rd-no{background:#ff2244;border-color:#ff2244;color:#fff;}
 .rd-wait{background:#0a0c18;border-color:#1e2030;color:#2a2a3a;}
 
-/* ── 문제 카드 ── */
+/* ?? 臾몄젣 移대뱶 ?? */
 .qb{border-radius:14px;padding:0.55rem 0.75rem;margin:0.05rem 0;background:#080c1a;}
 .qb-g{background:#07091a!important;
   border:1.5px solid rgba(0,212,255,0.35)!important;
@@ -181,7 +181,7 @@ header[data-testid="stHeader"]{background:transparent!important;height:0!importa
 .qk{color:#00d4ff;font-weight:900;font-size:0.85rem;border-bottom:2px solid #00d4ff;
   text-shadow:0 0 12px rgba(0,212,255,0.9);padding:0 2px;}
 
-/* ── 답 버튼 — 게임 스타일 ── */
+/* ?? ??踰꾪듉 ??寃뚯엫 ?ㅽ????? */
 div[data-testid="stButton"] button{
   background:#0a0c18!important;
   border:2px solid rgba(0,212,255,0.35)!important;
@@ -209,7 +209,7 @@ div[data-testid="stButton"] button:active{
   transform:scale(0.98)!important;
 }
 
-/* ── 브리핑 카드 ── */
+/* ?? 釉뚮━??移대뱶 ?? */
 .wb{background:#0a0c18;border-radius:16px;padding:1.2rem 1.2rem;margin:0.4rem 0;
   border:1px solid rgba(0,212,255,0.3);}
 .wb-qn-ok{color:#00d4ff;}.wb-qn-no{color:#ff2244;}
@@ -223,12 +223,12 @@ div[data-testid="stButton"] button:active{
 details{background:rgba(0,212,255,0.03)!important;border-radius:12px!important;}
 summary{color:#aaa!important;font-weight:700!important;}
 
-/* ── 스크롤바 ── */
+/* ?? ?ㅽ겕濡ㅻ컮 ?? */
 ::-webkit-scrollbar{width:4px;}
 ::-webkit-scrollbar-track{background:#0a0a0a;}
 ::-webkit-scrollbar-thumb{background:rgba(0,212,255,0.4);border-radius:2px;}
 
-/* ── 모바일 반응형 ── */
+/* ?? 紐⑤컮??諛섏쓳???? */
 @media(max-width:768px){
   .block-container{padding-top:0.5rem!important;padding-bottom:2rem!important;padding-left:0.6rem!important;padding-right:0.6rem!important;}
   .ah h1{font-size:1.4rem!important;letter-spacing:2px!important;}
@@ -258,39 +258,39 @@ summary{color:#aaa!important;font-weight:700!important;}
 </style>
 """, unsafe_allow_html=True)
 
-# ═══ 문제 ═══
+# ?먥븧??臾몄젣 ?먥븧??
 GQ=[
-{"id":"G1","word_count":13,"diff":"easy","text":"All employees _______ to attend the safety training session scheduled for next Monday.","ch":["(A) require","(B) are required","(C) requiring","(D) has required"],"a":1,"ex":"주어 'All employees'는 복수+수동태 → 'are required'가 정답. require(능동)는 목적어 필요, has required는 수 불일치.","exk":"쉽게: '직원들이 요구된다'니까 수동태! 복수 주어니까 are!","cat":"수동태/수일치","kr":"모든 직원들은 다음 월요일로 예정된 안전 교육 세션에 참석하도록 요구된다."},
-{"id":"G2","word_count":10,"diff":"easy","text":"The manager suggested that the report _______ submitted by Friday.","ch":["(A) is","(B) be","(C) was","(D) will be"],"a":1,"ex":"suggest 뒤 that절 → (should)+동사원형. 'be submitted'가 정답.","exk":"쉽게: suggest(제안) 뒤에는 항상 동사원형! should가 숨어있다고 생각!","cat":"가정법/당위","kr":"매니저는 그 보고서가 금요일까지 제출되어야 한다고 제안했다."},
-{"id":"G3","word_count":11,"diff":"easy","text":"_______ the budget has been approved, the project can begin immediately.","ch":["(A) Now that","(B) In case","(C) So that","(D) Even if"],"a":0,"ex":"'Now that~'='~이므로'. 예산 승인→프로젝트 시작 인과관계.","exk":"쉽게: '이제 ~했으니까'라는 뜻! 원인→결과 연결!","cat":"접속사","kr":"예산이 승인되었으므로, 프로젝트는 즉시 시작될 수 있다."},
-{"id":"G4","word_count":13,"diff":"easy","text":"Neither the supervisor nor the team members _______ aware of the policy change.","ch":["(A) is","(B) was","(C) were","(D) has been"],"a":2,"ex":"Neither A nor B → B에 수 일치. B=team members(복수) → 'were'","exk":"쉽게: neither nor에서는 뒤쪽(B)에 맞추기! members=복수 → were!","cat":"수일치","kr":"상사도 팀원들도 정책 변경을 알지 못했다."},
-{"id":"G5","word_count":11,"diff":"easy","text":"The equipment, along with all the spare parts, _______ shipped yesterday.","ch":["(A) were","(B) have been","(C) was","(D) are"],"a":2,"ex":"'along with'는 주어 불포함. 주어=equipment(단수) → 'was'","exk":"쉽게: along with는 무시! 진짜 주어만 보기! equipment=단수 → was!","cat":"수일치","kr":"그 장비는 모든 여분 부품과 함께 어제 배송되었다."},
-{"id":"G6","word_count":13,"diff":"easy","text":"Ms. Kim is responsible for _______ that all invoices are processed on time.","ch":["(A) ensure","(B) ensuring","(C) ensured","(D) to ensure"],"a":1,"ex":"전치사 for 뒤 → 동명사(-ing). 'ensuring'이 정답.","exk":"쉽게: for 다음에는 ~ing! 전치사+동명사 공식!","cat":"동명사/준동사","kr":"김 씨는 모든 송장이 제때 처리되는 것을 보장할 책임이 있다."},
-{"id":"G7","word_count":10,"diff":"easy","text":"Had the shipment arrived on time, we _______ the deadline.","ch":["(A) will meet","(B) would meet","(C) would have met","(D) had met"],"a":2,"ex":"Had+S+p.p.=가정법 과거완료 도치 → 주절 would have+p.p.","exk":"쉽게: Had로 시작=과거 가정법! → would have p.p.가 짝꿍!","cat":"가정법","kr":"만약 배송이 제때 도착했더라면, 우리는 마감을 맞출 수 있었을 텐데."},
-{"id":"G8","word_count":9,"diff":"easy","text":"The number of participants _______ increased significantly this year.","ch":["(A) have","(B) has","(C) are","(D) were"],"a":1,"ex":"'The number of~'=단수 → 'has'","exk":"쉽게: The number of=그 수(하나) → 단수! A number of=많은 → 복수! 구별!","cat":"수일치","kr":"참가자의 수가 올해 크게 증가했다."},
-{"id":"G9","word_count":12,"diff":"easy","text":"_______ reviewed the contract, the lawyer found several clauses that needed revision.","ch":["(A) Having","(B) Have","(C) Had","(D) To have"],"a":0,"ex":"분사구문 앞선 시제 → Having+p.p.","exk":"쉽게: 먼저 한 일+나중 한 일 → Having이 '먼저'를 표시!","cat":"분사구문","kr":"계약서를 검토한 후, 변호사는 수정이 필요한 여러 조항을 발견했다."},
-{"id":"G10","word_count":11,"diff":"easy","text":"It is essential that every employee _______ the new security protocol.","ch":["(A) follows","(B) follow","(C) following","(D) followed"],"a":1,"ex":"It is essential that+S+(should) 동사원형 → 'follow'","exk":"쉽게: essential(필수적) 뒤에도 동사원형! suggest랑 같은 규칙!","cat":"가정법/당위","kr":"모든 직원이 새 보안 프로토콜을 따르는 것이 필수적이다."},
-{"id":"G11","word_count":12,"diff":"easy","text":"The CEO, _______ founded the company in 2005, announced her retirement today.","ch":["(A) who","(B) whom","(C) which","(D) whose"],"a":0,"ex":"관계대명사 주어 역할 → 주격 'who'. 사람 → which 불가.","exk":"쉽게: 빈칸 뒤에 바로 동사(founded) → 주격 who! 사람이니까 which 안 됨!","cat":"관계대명사","kr":"2005년에 회사를 설립한 CEO가 오늘 은퇴를 발표했다."},
-{"id":"G12","word_count":12,"diff":"easy","text":"Not until the final report is submitted _______ begin the evaluation process.","ch":["(A) we can","(B) we will","(C) can we","(D) will"],"a":2,"ex":"Not until~ 문두 → 주절 도치 → 'can we'","exk":"쉽게: Not until이 앞에 오면 뒤집기! can+we 순서!","cat":"도치","kr":"최종 보고서가 제출될 때까지는 평가 과정을 시작할 수 없다."},
-{"id":"G13","word_count":13,"diff":"easy","text":"The policies _______ by the board last week will take effect next month.","ch":["(A) approve","(B) approving","(C) approved","(D) to approve"],"a":2,"ex":"명사 수식 수동 → 과거분사 approved","exk":"쉽게: 정책이 승인되는 것이니 수동! approved!","cat":"수동태/수일치","kr":"지난주 이사회에 의해 승인된 정책들은 다음 달부터 효력을 발휘할 것이다."},
-{"id":"G14","word_count":11,"diff":"easy","text":"A number of employees _______ volunteered to work overtime this week.","ch":["(A) has","(B) have","(C) is","(D) was"],"a":1,"ex":"A number of=많은 → 복수 → have","exk":"쉽게: A number of=여러 명→복수! The number of=그 수→단수!","cat":"수일치","kr":"많은 직원들이 이번 주 초과 근무를 자원했다."},
-{"id":"G15","word_count":14,"diff":"easy","text":"If the company _______ more staff last year, the project would have been completed.","ch":["(A) hired","(B) had hired","(C) would hire","(D) has hired"],"a":1,"ex":"가정법 과거완료 → if절 had+p.p.","exk":"쉽게: 과거 못한 일 가정 → if절에 had p.p.!","cat":"가정법","kr":"회사가 작년에 직원을 더 채용했더라면 프로젝트가 완료되었을 것이다."},
-{"id":"G16","word_count":9,"diff":"easy","text":"Only after the meeting ended _______ the final decision.","ch":["(A) they announced","(B) announced they","(C) did they announce","(D) they did announce"],"a":2,"ex":"Only after~ 문두 도치 → did+주어+동사원형","exk":"쉽게: Only로 시작하면 뒤집기! did+they+announce!","cat":"도치","kr":"회의가 끝난 후에야 그들은 최종 결정을 발표했다."},
-{"id":"G17","word_count":12,"diff":"easy","text":"The contractor, _______ proposal was accepted last week, will start work Monday.","ch":["(A) who","(B) whom","(C) whose","(D) which"],"a":2,"ex":"빈칸 뒤 명사(proposal) → 소유격 관계대명사 whose","exk":"쉽게: 빈칸 뒤에 명사 바로 오면 whose!","cat":"관계대명사","kr":"지난주 제안서가 채택된 계약업체가 월요일에 작업을 시작할 것이다."},
-{"id":"G18","word_count":12,"diff":"easy","text":"_______ the construction noise, the staff managed to concentrate on their work.","ch":["(A) Despite","(B) Although","(C) However","(D) Because of"],"a":0,"ex":"빈칸 뒤 명사구 → 전치사 Despite","exk":"쉽게: Despite 뒤=명사! Although 뒤=주어+동사!","cat":"접속사","kr":"공사 소음에도 불구하고 직원들은 업무에 집중할 수 있었다."},
-{"id":"G19","word_count":14,"diff":"easy","text":"The report _______ by the committee before the deadline was praised by the board.","ch":["(A) submit","(B) submitting","(C) submitted","(D) to submit"],"a":2,"ex":"명사 수식 수동 → 과거분사 submitted","exk":"쉽게: 보고서가 제출된 것 → 수동! submitted!","cat":"수동태/수일치","kr":"마감 전에 위원회에 의해 제출된 보고서는 이사회의 칭찬을 받았다."},
-{"id":"G20","word_count":12,"diff":"easy","text":"Not only _______ the project on time, but they also exceeded expectations.","ch":["(A) they completed","(B) did they complete","(C) they did complete","(D) completed they"],"a":1,"ex":"Not only~ 문두 도치 → did+주어+동사원형","exk":"쉽게: Not only가 앞에 오면 뒤집기! did+they+complete!","cat":"도치","kr":"그들은 프로젝트를 제때 완료했을 뿐만 아니라 기대를 초과했다."},
-{"id":"G21","word_count":10,"diff":"easy","text":"The employee _______ performance has improved significantly received a bonus.","ch":["(A) who","(B) whom","(C) whose","(D) which"],"a":2,"ex":"빈칸 뒤 명사(performance) → 소유격 whose","exk":"쉽게: 뒤에 명사 바로 오면 whose!","cat":"관계대명사","kr":"성과가 크게 향상된 직원은 보너스를 받았다."},
-{"id":"G22","word_count":11,"diff":"easy","text":"_______ she had more experience, she might have gotten the promotion.","ch":["(A) If","(B) Unless","(C) Had","(D) Since"],"a":2,"ex":"Had+S → 가정법 과거완료 도치","exk":"쉽게: Had로 시작=과거 가정법 도치!","cat":"가정법","kr":"그녀가 더 많은 경험이 있었다면 승진했을 것이다."},
-{"id":"G23","word_count":10,"diff":"easy","text":"The team is proud of _______ the project under budget.","ch":["(A) complete","(B) completed","(C) having completed","(D) to complete"],"a":2,"ex":"전치사 of 뒤 + 완료 → having+p.p.","exk":"쉽게: of 뒤=동명사! 이미 완료된 일=having completed!","cat":"동명사/준동사","kr":"팀은 예산 내에서 프로젝트를 완료한 것을 자랑스러워한다."},
-{"id":"G24","word_count":12,"diff":"easy","text":"_______ all the data, the analyst presented her findings to the board.","ch":["(A) Having reviewed","(B) Have reviewed","(C) Reviewed","(D) To reviewing"],"a":0,"ex":"앞선 동작 분사구문 → Having+p.p.","exk":"쉽게: 먼저 한 일+나중 한 일 → Having p.p.가 먼저!","cat":"분사구문","kr":"모든 데이터를 검토한 후 분석가는 이사회에 결과를 발표했다."},
+{"id":"G1","word_count":13,"diff":"easy","text":"All employees _______ to attend the safety training session scheduled for next Monday.","ch":["(A) require","(B) are required","(C) requiring","(D) has required"],"a":1,"ex":"二쇱뼱 'All employees'??蹂듭닔+?섎룞????'are required'媛 ?뺣떟. require(?λ룞)??紐⑹쟻???꾩슂, has required????遺덉씪移?","exk":"?쎄쾶: '吏곸썝?ㅼ씠 ?붽뎄?쒕떎'?덇퉴 ?섎룞?? 蹂듭닔 二쇱뼱?덇퉴 are!","cat":"?섎룞???섏씪移?,"kr":"紐⑤뱺 吏곸썝?ㅼ? ?ㅼ쓬 ?붿슂?쇰줈 ?덉젙???덉쟾 援먯쑁 ?몄뀡??李몄꽍?섎룄濡??붽뎄?쒕떎."},
+{"id":"G2","word_count":10,"diff":"easy","text":"The manager suggested that the report _______ submitted by Friday.","ch":["(A) is","(B) be","(C) was","(D) will be"],"a":1,"ex":"suggest ??that????(should)+?숈궗?먰삎. 'be submitted'媛 ?뺣떟.","exk":"?쎄쾶: suggest(?쒖븞) ?ㅼ뿉????긽 ?숈궗?먰삎! should媛 ?⑥뼱?덈떎怨??앷컖!","cat":"媛?뺣쾿/?뱀쐞","kr":"留ㅻ땲???洹?蹂닿퀬?쒓? 湲덉슂?쇨퉴吏 ?쒖텧?섏뼱???쒕떎怨??쒖븞?덈떎."},
+{"id":"G3","word_count":11,"diff":"easy","text":"_______ the budget has been approved, the project can begin immediately.","ch":["(A) Now that","(B) In case","(C) So that","(D) Even if"],"a":0,"ex":"'Now that~'='~?대?濡?. ?덉궛 ?뱀씤?믫봽濡쒖젥???쒖옉 ?멸낵愿怨?","exk":"?쎄쾶: '?댁젣 ~?덉쑝?덇퉴'?쇰뒗 ?? ?먯씤?믨껐怨??곌껐!","cat":"?묒냽??,"kr":"?덉궛???뱀씤?섏뿀?쇰?濡? ?꾨줈?앺듃??利됱떆 ?쒖옉?????덈떎."},
+{"id":"G4","word_count":13,"diff":"easy","text":"Neither the supervisor nor the team members _______ aware of the policy change.","ch":["(A) is","(B) was","(C) were","(D) has been"],"a":2,"ex":"Neither A nor B ??B?????쇱튂. B=team members(蹂듭닔) ??'were'","exk":"?쎄쾶: neither nor?먯꽌???ㅼそ(B)??留욎텛湲? members=蹂듭닔 ??were!","cat":"?섏씪移?,"kr":"?곸궗????먮뱾???뺤콉 蹂寃쎌쓣 ?뚯? 紐삵뻽??"},
+{"id":"G5","word_count":11,"diff":"easy","text":"The equipment, along with all the spare parts, _______ shipped yesterday.","ch":["(A) were","(B) have been","(C) was","(D) are"],"a":2,"ex":"'along with'??二쇱뼱 遺덊룷?? 二쇱뼱=equipment(?⑥닔) ??'was'","exk":"?쎄쾶: along with??臾댁떆! 吏꾩쭨 二쇱뼱留?蹂닿린! equipment=?⑥닔 ??was!","cat":"?섏씪移?,"kr":"洹??λ퉬??紐⑤뱺 ?щ텇 遺?덇낵 ?④퍡 ?댁젣 諛곗넚?섏뿀??"},
+{"id":"G6","word_count":13,"diff":"easy","text":"Ms. Kim is responsible for _______ that all invoices are processed on time.","ch":["(A) ensure","(B) ensuring","(C) ensured","(D) to ensure"],"a":1,"ex":"?꾩튂??for ?????숇챸??-ing). 'ensuring'???뺣떟.","exk":"?쎄쾶: for ?ㅼ쓬?먮뒗 ~ing! ?꾩튂???숇챸??怨듭떇!","cat":"?숇챸??以?숈궗","kr":"源 ?⑤뒗 紐⑤뱺 ?≪옣???쒕븣 泥섎━?섎뒗 寃껋쓣 蹂댁옣??梨낆엫???덈떎."},
+{"id":"G7","word_count":10,"diff":"easy","text":"Had the shipment arrived on time, we _______ the deadline.","ch":["(A) will meet","(B) would meet","(C) would have met","(D) had met"],"a":2,"ex":"Had+S+p.p.=媛?뺣쾿 怨쇨굅?꾨즺 ?꾩튂 ??二쇱젅 would have+p.p.","exk":"?쎄쾶: Had濡??쒖옉=怨쇨굅 媛?뺣쾿! ??would have p.p.媛 吏앷퓤!","cat":"媛?뺣쾿","kr":"留뚯빟 諛곗넚???쒕븣 ?꾩갑?덈뜑?쇰㈃, ?곕━??留덇컧??留욎텧 ???덉뿀???먮뜲."},
+{"id":"G8","word_count":9,"diff":"easy","text":"The number of participants _______ increased significantly this year.","ch":["(A) have","(B) has","(C) are","(D) were"],"a":1,"ex":"'The number of~'=?⑥닔 ??'has'","exk":"?쎄쾶: The number of=洹????섎굹) ???⑥닔! A number of=留롮? ??蹂듭닔! 援щ퀎!","cat":"?섏씪移?,"kr":"李멸??먯쓽 ?섍? ?ы빐 ?ш쾶 利앷??덈떎."},
+{"id":"G9","word_count":12,"diff":"easy","text":"_______ reviewed the contract, the lawyer found several clauses that needed revision.","ch":["(A) Having","(B) Have","(C) Had","(D) To have"],"a":0,"ex":"遺꾩궗援щЦ ?욎꽑 ?쒖젣 ??Having+p.p.","exk":"?쎄쾶: 癒쇱? ?????섏쨷 ??????Having??'癒쇱?'瑜??쒖떆!","cat":"遺꾩궗援щЦ","kr":"怨꾩빟?쒕? 寃?좏븳 ?? 蹂?몄궗???섏젙???꾩슂???щ윭 議고빆??諛쒓껄?덈떎."},
+{"id":"G10","word_count":11,"diff":"easy","text":"It is essential that every employee _______ the new security protocol.","ch":["(A) follows","(B) follow","(C) following","(D) followed"],"a":1,"ex":"It is essential that+S+(should) ?숈궗?먰삎 ??'follow'","exk":"?쎄쾶: essential(?꾩닔?? ?ㅼ뿉???숈궗?먰삎! suggest??媛숈? 洹쒖튃!","cat":"媛?뺣쾿/?뱀쐞","kr":"紐⑤뱺 吏곸썝????蹂댁븞 ?꾨줈?좎퐳???곕Ⅴ??寃껋씠 ?꾩닔?곸씠??"},
+{"id":"G11","word_count":12,"diff":"easy","text":"The CEO, _______ founded the company in 2005, announced her retirement today.","ch":["(A) who","(B) whom","(C) which","(D) whose"],"a":0,"ex":"愿怨꾨?紐낆궗 二쇱뼱 ??븷 ??二쇨꺽 'who'. ?щ엺 ??which 遺덇?.","exk":"?쎄쾶: 鍮덉뭏 ?ㅼ뿉 諛붾줈 ?숈궗(founded) ??二쇨꺽 who! ?щ엺?대땲源?which ????","cat":"愿怨꾨?紐낆궗","kr":"2005?꾩뿉 ?뚯궗瑜??ㅻ┰??CEO媛 ?ㅻ뒛 ??대? 諛쒗몴?덈떎."},
+{"id":"G12","word_count":12,"diff":"easy","text":"Not until the final report is submitted _______ begin the evaluation process.","ch":["(A) we can","(B) we will","(C) can we","(D) will"],"a":2,"ex":"Not until~ 臾몃몢 ??二쇱젅 ?꾩튂 ??'can we'","exk":"?쎄쾶: Not until???욎뿉 ?ㅻ㈃ ?ㅼ쭛湲? can+we ?쒖꽌!","cat":"?꾩튂","kr":"理쒖쥌 蹂닿퀬?쒓? ?쒖텧???뚭퉴吏???됯? 怨쇱젙???쒖옉?????녿떎."},
+{"id":"G13","word_count":13,"diff":"easy","text":"The policies _______ by the board last week will take effect next month.","ch":["(A) approve","(B) approving","(C) approved","(D) to approve"],"a":2,"ex":"紐낆궗 ?섏떇 ?섎룞 ??怨쇨굅遺꾩궗 approved","exk":"?쎄쾶: ?뺤콉???뱀씤?섎뒗 寃껋씠???섎룞! approved!","cat":"?섎룞???섏씪移?,"kr":"吏?쒖＜ ?댁궗?뚯뿉 ?섑빐 ?뱀씤???뺤콉?ㅼ? ?ㅼ쓬 ?щ????⑤젰??諛쒗쐶??寃껋씠??"},
+{"id":"G14","word_count":11,"diff":"easy","text":"A number of employees _______ volunteered to work overtime this week.","ch":["(A) has","(B) have","(C) is","(D) was"],"a":1,"ex":"A number of=留롮? ??蹂듭닔 ??have","exk":"?쎄쾶: A number of=?щ윭 紐끸넂蹂듭닔! The number of=洹??섃넂?⑥닔!","cat":"?섏씪移?,"kr":"留롮? 吏곸썝?ㅼ씠 ?대쾲 二?珥덇낵 洹쇰Т瑜??먯썝?덈떎."},
+{"id":"G15","word_count":14,"diff":"easy","text":"If the company _______ more staff last year, the project would have been completed.","ch":["(A) hired","(B) had hired","(C) would hire","(D) has hired"],"a":1,"ex":"媛?뺣쾿 怨쇨굅?꾨즺 ??if??had+p.p.","exk":"?쎄쾶: 怨쇨굅 紐삵븳 ??媛????if?덉뿉 had p.p.!","cat":"媛?뺣쾿","kr":"?뚯궗媛 ?묐뀈??吏곸썝????梨꾩슜?덈뜑?쇰㈃ ?꾨줈?앺듃媛 ?꾨즺?섏뿀??寃껋씠??"},
+{"id":"G16","word_count":9,"diff":"easy","text":"Only after the meeting ended _______ the final decision.","ch":["(A) they announced","(B) announced they","(C) did they announce","(D) they did announce"],"a":2,"ex":"Only after~ 臾몃몢 ?꾩튂 ??did+二쇱뼱+?숈궗?먰삎","exk":"?쎄쾶: Only濡??쒖옉?섎㈃ ?ㅼ쭛湲? did+they+announce!","cat":"?꾩튂","kr":"?뚯쓽媛 ?앸궃 ?꾩뿉??洹몃뱾? 理쒖쥌 寃곗젙??諛쒗몴?덈떎."},
+{"id":"G17","word_count":12,"diff":"easy","text":"The contractor, _______ proposal was accepted last week, will start work Monday.","ch":["(A) who","(B) whom","(C) whose","(D) which"],"a":2,"ex":"鍮덉뭏 ??紐낆궗(proposal) ???뚯쑀寃?愿怨꾨?紐낆궗 whose","exk":"?쎄쾶: 鍮덉뭏 ?ㅼ뿉 紐낆궗 諛붾줈 ?ㅻ㈃ whose!","cat":"愿怨꾨?紐낆궗","kr":"吏?쒖＜ ?쒖븞?쒓? 梨꾪깮??怨꾩빟?낆껜媛 ?붿슂?쇱뿉 ?묒뾽???쒖옉??寃껋씠??"},
+{"id":"G18","word_count":12,"diff":"easy","text":"_______ the construction noise, the staff managed to concentrate on their work.","ch":["(A) Despite","(B) Although","(C) However","(D) Because of"],"a":0,"ex":"鍮덉뭏 ??紐낆궗援????꾩튂??Despite","exk":"?쎄쾶: Despite ??紐낆궗! Although ??二쇱뼱+?숈궗!","cat":"?묒냽??,"kr":"怨듭궗 ?뚯쓬?먮룄 遺덇뎄?섍퀬 吏곸썝?ㅼ? ?낅Т??吏묒쨷?????덉뿀??"},
+{"id":"G19","word_count":14,"diff":"easy","text":"The report _______ by the committee before the deadline was praised by the board.","ch":["(A) submit","(B) submitting","(C) submitted","(D) to submit"],"a":2,"ex":"紐낆궗 ?섏떇 ?섎룞 ??怨쇨굅遺꾩궗 submitted","exk":"?쎄쾶: 蹂닿퀬?쒓? ?쒖텧??寃????섎룞! submitted!","cat":"?섎룞???섏씪移?,"kr":"留덇컧 ?꾩뿉 ?꾩썝?뚯뿉 ?섑빐 ?쒖텧??蹂닿퀬?쒕뒗 ?댁궗?뚯쓽 移?갔??諛쏆븯??"},
+{"id":"G20","word_count":12,"diff":"easy","text":"Not only _______ the project on time, but they also exceeded expectations.","ch":["(A) they completed","(B) did they complete","(C) they did complete","(D) completed they"],"a":1,"ex":"Not only~ 臾몃몢 ?꾩튂 ??did+二쇱뼱+?숈궗?먰삎","exk":"?쎄쾶: Not only媛 ?욎뿉 ?ㅻ㈃ ?ㅼ쭛湲? did+they+complete!","cat":"?꾩튂","kr":"洹몃뱾? ?꾨줈?앺듃瑜??쒕븣 ?꾨즺?덉쓣 肉먮쭔 ?꾨땲??湲곕?瑜?珥덇낵?덈떎."},
+{"id":"G21","word_count":10,"diff":"easy","text":"The employee _______ performance has improved significantly received a bonus.","ch":["(A) who","(B) whom","(C) whose","(D) which"],"a":2,"ex":"鍮덉뭏 ??紐낆궗(performance) ???뚯쑀寃?whose","exk":"?쎄쾶: ?ㅼ뿉 紐낆궗 諛붾줈 ?ㅻ㈃ whose!","cat":"愿怨꾨?紐낆궗","kr":"?깃낵媛 ?ш쾶 ?μ긽??吏곸썝? 蹂대꼫?ㅻ? 諛쏆븯??"},
+{"id":"G22","word_count":11,"diff":"easy","text":"_______ she had more experience, she might have gotten the promotion.","ch":["(A) If","(B) Unless","(C) Had","(D) Since"],"a":2,"ex":"Had+S ??媛?뺣쾿 怨쇨굅?꾨즺 ?꾩튂","exk":"?쎄쾶: Had濡??쒖옉=怨쇨굅 媛?뺣쾿 ?꾩튂!","cat":"媛?뺣쾿","kr":"洹몃?媛 ??留롮? 寃쏀뿕???덉뿀?ㅻ㈃ ?뱀쭊?덉쓣 寃껋씠??"},
+{"id":"G23","word_count":10,"diff":"easy","text":"The team is proud of _______ the project under budget.","ch":["(A) complete","(B) completed","(C) having completed","(D) to complete"],"a":2,"ex":"?꾩튂??of ??+ ?꾨즺 ??having+p.p.","exk":"?쎄쾶: of ???숇챸?? ?대? ?꾨즺????having completed!","cat":"?숇챸??以?숈궗","kr":"?? ?덉궛 ?댁뿉???꾨줈?앺듃瑜??꾨즺??寃껋쓣 ?먮옉?ㅻ윭?뚰븳??"},
+{"id":"G24","word_count":12,"diff":"easy","text":"_______ all the data, the analyst presented her findings to the board.","ch":["(A) Having reviewed","(B) Have reviewed","(C) Reviewed","(D) To reviewing"],"a":0,"ex":"?욎꽑 ?숈옉 遺꾩궗援щЦ ??Having+p.p.","exk":"?쎄쾶: 癒쇱? ?????섏쨷 ??????Having p.p.媛 癒쇱?!","cat":"遺꾩궗援щЦ","kr":"紐⑤뱺 ?곗씠?곕? 寃?좏븳 ??遺꾩꽍媛???댁궗?뚯뿉 寃곌낵瑜?諛쒗몴?덈떎."},
 ]
 
-# ═══ GRAMMAR BATCH JSON 자동 로드 ═══
+# ?먥븧??GRAMMAR BATCH JSON ?먮룞 濡쒕뱶 ?먥븧??
 import glob as _glob
 
 def _load_grammar_batches():
-    """data/ 폴더의 firepower_grammar_batch*.json 전부 읽어서 GQ 포맷으로 변환"""
+    """data/ ?대뜑??firepower_grammar_batch*.json ?꾨? ?쎌뼱??GQ ?щ㎎?쇰줈 蹂??""
     DATA_DIR = os.path.join(os.path.dirname(os.path.dirname(__file__)), "data")
     batch_files = sorted(_glob.glob(os.path.join(DATA_DIR, "firepower_grammar_batch*.json")))
     loaded = []
@@ -301,8 +301,8 @@ def _load_grammar_batches():
                 items = json.load(f)
             for q in items:
                 if q.get("id") in existing_ids:
-                    continue  # 중복 방지
-                # 배치 포맷 → GQ 포맷 변환
+                    continue  # 以묐났 諛⑹?
+                # 諛곗튂 ?щ㎎ ??GQ ?щ㎎ 蹂??
                 converted = {
                     "id":       q.get("id", ""),
                     "word_count": q.get("word_count", 10),
@@ -324,11 +324,11 @@ def _load_grammar_batches():
 
 GQ.extend(_load_grammar_batches())
 
-# ═══ FORM BATCH JSON 자동 로드 ═══
+# ?먥븧??FORM BATCH JSON ?먮룞 濡쒕뱶 ?먥븧??
 FQ = []  # Form Questions
 
 def _load_form_batches():
-    """data/ 폴더의 firepower_form_batch*.json 전부 읽어서 FQ 포맷으로 변환"""
+    """data/ ?대뜑??firepower_form_batch*.json ?꾨? ?쎌뼱??FQ ?щ㎎?쇰줈 蹂??""
     DATA_DIR = os.path.join(os.path.dirname(os.path.dirname(__file__)), "data")
     batch_files = sorted(_glob.glob(os.path.join(DATA_DIR, "firepower_form_batch*.json")))
     loaded = []
@@ -360,11 +360,11 @@ def _load_form_batches():
     return loaded
 
 FQ.extend(_load_form_batches())
-# ═══ LINK BATCH JSON 로딩 ═══
+# ?먥븧??LINK BATCH JSON 濡쒕뵫 ?먥븧??
 LQ = []
 
 def _load_link_batches():
-    """data/ 폴더의 firepower_link_batch*.json 읽어서 LQ 로 변환"""
+    """data/ ?대뜑??firepower_link_batch*.json ?쎌뼱??LQ 濡?蹂??""
     DATA_DIR = os.path.join(os.path.dirname(os.path.dirname(__file__)), "data")
     batch_files = sorted(_glob.glob(os.path.join(DATA_DIR, "firepower_link_batch*.json")))
     loaded = []
@@ -398,11 +398,11 @@ def _load_link_batches():
 LQ.extend(_load_link_batches())
 
 
-# ═══ VOCAB BATCH JSON 로딩 ═══
+# ?먥븧??VOCAB BATCH JSON 濡쒕뵫 ?먥븧??
 VQ = []
 
 def _load_vocab_batches():
-    """data/ 폴더의 firepower_vocab_batch*.json 읽어서 VQ 로 변환"""
+    """data/ ?대뜑??firepower_vocab_batch*.json ?쎌뼱??VQ 濡?蹂??""
     DATA_DIR = os.path.join(os.path.dirname(os.path.dirname(__file__)), "data")
     batch_files = sorted(_glob.glob(os.path.join(DATA_DIR, "firepower_vocab_batch*.json")))
     loaded = []
@@ -435,7 +435,7 @@ def _load_vocab_batches():
 
 VQ.extend(_load_vocab_batches())
 
-# ═══ 세션 ═══
+# ?먥븧???몄뀡 ?먥븧??
 D={"started":False,"cq":None,"qi":0,"sc":0,"wrong":0,"ta":0,"sk":0,"msk":0,
     "ans":False,"sel":None,"tsec":30,"qst":None,"round_qs":[],"round_results":[],
     "round_num":1,"phase":"lobby","mode":None,"used":[],
@@ -455,45 +455,45 @@ if st.session_state.get("_p5_just_left", False):
     st.session_state.tsec_chosen = False
 
 def pool(m): return GQ if m=="grammar" else FQ if m=="form" else LQ if m=="link" else VQ if m=="vocab" else LQ+VQ
-FORM_CATS=["명사형","형용사형","부사형","동사형","분사형","FORM"]
+FORM_CATS=["紐낆궗??,"?뺤슜?ы삎","遺?ы삎","?숈궗??,"遺꾩궗??,"FORM"]
 GRP={
     # g1 = GRAMMAR
     "g1":[
-        "수동태","수일치","시제","가정법","도치",
-        "수동태/수일치","가정법/당위","분사구문",
-        "관계대명사","접속사","동명사/준동사","GRAMMAR"
+        "?섎룞??,"?섏씪移?,"?쒖젣","媛?뺣쾿","?꾩튂",
+        "?섎룞???섏씪移?,"媛?뺣쾿/?뱀쐞","遺꾩궗援щЦ",
+        "愿怨꾨?紐낆궗","?묒냽??,"?숇챸??以?숈궗","GRAMMAR"
     ],
-    # g2 = FORM (품사전환)
+    # g2 = FORM (?덉궗?꾪솚)
     "g2": FORM_CATS,
-    # g3 = LINK (미래)
-    "g3":["접속사","동명사/준동사","분사구문","관계대명사"]
+    # g3 = LINK (誘몃옒)
+    "g3":["?묒냽??,"?숇챸??以?숈궗","遺꾩궗援щЦ","愿怨꾨?紐낆궗"]
 }
-GRP["g3"] = ["전치사","접속사","접속부사","LINK"]
+GRP["g3"] = ["?꾩튂??,"?묒냽??,"?묒냽遺??,"LINK"]
 
 VGRP={"v1":"easy","v2":"hard"}
 
 def _calc_adp_level():
     """
-    즉시 전환 방식: 1문제 결과로 바로 난이도 변경
-    word_count 기준 — easy:≤15 / normal:16-19 / hard:20-23
-    맞으면 한 단계 UP, 틀리면 한 단계 DOWN
+    利됱떆 ?꾪솚 諛⑹떇: 1臾몄젣 寃곌낵濡?諛붾줈 ?쒖씠??蹂寃?
+    word_count 湲곗? ??easy:??5 / normal:16-19 / hard:20-23
+    留욎쑝硫????④퀎 UP, ?由щ㈃ ???④퀎 DOWN
     """
     hist = st.session_state.get("adp_history", [])
     if len(hist) < 1:
         return st.session_state.get("adp_level", "normal")
-    last = hist[-1]  # 가장 최근 1문제만 반영
+    last = hist[-1]  # 媛??理쒓렐 1臾몄젣留?諛섏쁺
     cur  = st.session_state.get("adp_level", "normal")
-    if last == 1:   # 정답 → 한 단계 UP
+    if last == 1:   # ?뺣떟 ?????④퀎 UP
         if cur == "easy":   return "normal"
         if cur == "normal": return "hard"
         return "hard"
-    else:           # 오답 → 한 단계 DOWN
+    else:           # ?ㅻ떟 ?????④퀎 DOWN
         if cur == "hard":   return "normal"
         if cur == "normal": return "easy"
         return "easy"
 
 def pick5(m, grp=None):
-    # ── FORM 모드(g2): FQ 풀 사용 ──
+    # ?? FORM 紐⑤뱶(g2): FQ ? ?ъ슜 ??
     if grp == "g2":
         p = FQ if FQ else pool(m)
         adp = _calc_adp_level()
@@ -513,13 +513,13 @@ def pick5(m, grp=None):
         p=[q for q in p if q.get("cat","") in cats]
         adp = _calc_adp_level()
         st.session_state.adp_level = adp
-        # ── word_count 기반 diff 필터 (문제 충분할 때만 적용) ──
+        # ?? word_count 湲곕컲 diff ?꾪꽣 (臾몄젣 異⑸텇???뚮쭔 ?곸슜) ??
         diff_p = [q for q in p if q.get("diff","easy") == adp]
         if len(diff_p) >= 5:
             p = diff_p
-        # ── 기존 cat 기반 적응형 (fallback) ──
+        # ?? 湲곗〈 cat 湲곕컲 ?곸쓳??(fallback) ??
         if adp == "hard" and len(p) >= 5:
-            hard_cats = ["가정법","가정법/당위","도치","분사구문"]
+            hard_cats = ["媛?뺣쾿","媛?뺣쾿/?뱀쐞","?꾩튂","遺꾩궗援щЦ"]
             hard_p = [q for q in p if q.get("cat","") in hard_cats]
             easy_p = [q for q in p if q.get("cat","") not in hard_cats]
             if len(hard_p) >= 3 and len(easy_p) >= 2:
@@ -532,7 +532,7 @@ def pick5(m, grp=None):
                 for q in chosen: st.session_state.used.append(q["id"]); q["tp"]=grp or "grammar"
                 return chosen
         elif adp == "easy" and len(p) >= 5:
-            easy_cats = ["수일치","수동태/수일치","접속사","관계대명사"]
+            easy_cats = ["?섏씪移?,"?섎룞???섏씪移?,"?묒냽??,"愿怨꾨?紐낆궗"]
             easy_p = [q for q in p if q.get("cat","") in easy_cats]
             hard_p = [q for q in p if q.get("cat","") not in easy_cats]
             if len(easy_p) >= 4 and len(hard_p) >= 1:
@@ -568,9 +568,9 @@ def tcls(r,t):
     x=r/t if t>0 else 0
     return "safe" if x>0.6 else "warn" if x>0.35 else "danger" if x>0.15 else "critical"
 
-# ════════════════════════════════════════
+# ?먥븧?먥븧?먥븧?먥븧?먥븧?먥븧?먥븧?먥븧?먥븧?먥븧?먥븧?먥븧?먥븧?먥븧?먥븧?먥븧?먥븧?먥븧?먥븧?먥븧
 # PHASE: BATTLE
-# ════════════════════════════════════════
+# ?먥븧?먥븧?먥븧?먥븧?먥븧?먥븧?먥븧?먥븧?먥븧?먥븧?먥븧?먥븧?먥븧?먥븧?먥븧?먥븧?먥븧?먥븧?먥븧?먥븧
 if st.session_state.phase=="battle":
     if st.session_state.get("_battle_entry_ans_reset", False):
         st.session_state.ans = False
@@ -579,20 +579,20 @@ if st.session_state.phase=="battle":
     if not q: st.session_state.phase="lobby"; st.rerun()
     _tp = q.get("tp","grammar")
     ig = _tp in ("grammar","g1","g2","g3","form","link"); th="g" if ig else "v"; bt="primary" if ig else "secondary"
-    ej={"grammar":"🔴","g1":"🔴","form":"🔵","g2":"🔵","link":"🔴","g3":"🔴","vocab":"🔵"}.get(_tp,"🔵")
-    tn={"grammar":"문법","g1":"문법","form":"품사","g2":"품사","link":"연결","g3":"연결","vocab":"어휘"}.get(_tp,"어휘")
+    ej={"grammar":"?뵶","g1":"?뵶","form":"?뵷","g2":"?뵷","link":"?뵶","g3":"?뵶","vocab":"?뵷"}.get(_tp,"?뵷")
+    tn={"grammar":"臾몃쾿","g1":"臾몃쾿","form":"?덉궗","g2":"?덉궗","link":"?곌껐","g3":"?곌껐","vocab":"?댄쐶"}.get(_tp,"?댄쐶")
 
-    _en_mode = {"grammar":"GRM · 문법 사격","g1":"GRM · 문법 사격","form":"FORM · 형태 변환","g2":"FORM · 형태 변환","link":"LINK · 연결 작전","g3":"LINK · 연결 작전","vocab":"VOCAB · 어휘 폭격"}.get(_tp,"VOCAB · 어휘 폭격")
+    _en_mode = {"grammar":"GRM 쨌 臾몃쾿 ?ш꺽","g1":"GRM 쨌 臾몃쾿 ?ш꺽","form":"FORM 쨌 ?뺥깭 蹂??,"g2":"FORM 쨌 ?뺥깭 蹂??,"link":"LINK 쨌 ?곌껐 ?묒쟾","g3":"LINK 쨌 ?곌껐 ?묒쟾","vocab":"VOCAB 쨌 ?댄쐶 ??꺽"}.get(_tp,"VOCAB 쨌 ?댄쐶 ??꺽")
     _rn_str  = f"WAVE {st.session_state.round_num}" if st.session_state.round_num > 1 else "WAVE 1"
-    st.markdown(f'<div class="ah"><h1>⚡ {_en_mode} FIREPOWER · {_rn_str}</h1></div>', unsafe_allow_html=True)
+    st.markdown(f'<div class="ah"><h1>??{_en_mode} FIREPOWER 쨌 {_rn_str}</h1></div>', unsafe_allow_html=True)
 
-    # ── HUD 배틀바 ──
+    # ?? HUD 諛고?諛???
     qi=st.session_state.qi; results=st.session_state.round_results
     dots=""
     for i in range(5):
         if i<len(results):
             cls="rd-ok" if results[i] else "rd-no"
-            sym="✓" if results[i] else "✗"
+            sym="?? if results[i] else "??
         elif i==qi:
             cls="rd-cur"; sym=str(i+1)
         else:
@@ -602,10 +602,10 @@ if st.session_state.phase=="battle":
     st.markdown(f'''<div class="bt bt-{th}">
         <span class="bq bq-{th}">{ej} {qi+1}/5</span>
         <div class="rd-dots">{dots}</div>
-        <span class="bs">✅{st.session_state.sc} ❌{st.session_state.wrong}</span>
+        <span class="bs">??st.session_state.sc} ??st.session_state.wrong}</span>
     </div>''', unsafe_allow_html=True)
 
-    # ── 타이머 ──
+    # ?? ??대㉧ ??
     if not st.session_state.ans:
         st_autorefresh(interval=1000, limit=st.session_state.tsec+5, key="battle_timer")
         elapsed=time.time()-st.session_state.qst
@@ -653,10 +653,10 @@ if st.session_state.phase=="battle":
         if rem<=0:
             st.session_state.phase="lost"; st.rerun()
 
-    # ── 문제 카드 ──
-    st.markdown(f'<div class="qb qb-{th}"><div class="qc qc-{th}">{ej} {tn} · {q.get("cat","")}</div><div class="qt">{fq(q["text"])}</div></div>', unsafe_allow_html=True)
+    # ?? 臾몄젣 移대뱶 ??
+    st.markdown(f'<div class="qb qb-{th}"><div class="qc qc-{th}">{ej} {tn} 쨌 {q.get("cat","")}</div><div class="qt">{fq(q["text"])}</div></div>', unsafe_allow_html=True)
 
-    # ── 답 버튼 4개 — A/B/C/D 네온 스타일 ──
+    # ?? ??踰꾪듉 4媛???A/B/C/D ?ㅼ삩 ?ㅽ?????
     # iOS 2-phase rerun fix
     if st.session_state.get("_fp_processing"):
         st.session_state.pop("_fp_processing")
@@ -679,8 +679,8 @@ if st.session_state.phase=="battle":
         _rn = st.session_state.get('round_num', 0)
 
         _labels = ["A", "B", "C", "D"]
-        # ★ div id 래퍼로 버튼 색상 확실히 고정
-        # ★ .stMarkdown/.element-container 여백 0으로 → 버튼 간격 밀림 방지
+        # ??div id ?섑띁濡?踰꾪듉 ?됱긽 ?뺤떎??怨좎젙
+        # ??.stMarkdown/.element-container ?щ갚 0?쇰줈 ??踰꾪듉 媛꾧꺽 諛由?諛⑹?
         _ans_cfg = [
             ("fp-ans-a", "#ff6633", "#160800", "rgba(255,102,51,0.55)"),
             ("fp-ans-b", "#00E5FF", "#001518", "rgba(0,229,255,0.55)"),
@@ -688,11 +688,11 @@ if st.session_state.phase=="battle":
             ("fp-ans-d", "#44FF88", "#001408", "rgba(68,255,136,0.55)"),
         ]
         _css = """<style>
-        /* ── 전장 버튼 래퍼 여백 완전 제거 ── */
+        /* ?? ?꾩옣 踰꾪듉 ?섑띁 ?щ갚 ?꾩쟾 ?쒓굅 ?? */
         .stMarkdown{margin:0!important;padding:0!important;}
         .element-container{margin:0!important;padding:0!important;}
         div[data-testid="stVerticalBlock"]{gap:3px!important;}
-        /* ── 답 버튼 공통 ── */
+        /* ?? ??踰꾪듉 怨듯넻 ?? */
         div[data-testid="stButton"] button{
             min-height:50px!important;font-size:0.95rem!important;
             font-weight:800!important;border-radius:10px!important;
@@ -725,7 +725,7 @@ if st.session_state.phase=="battle":
             var ci=0;
             btns.forEach(function(btn){
                 var t=btn.innerText||btn.textContent||'';
-                if(t.match(/[【]A[】]|[【]B[】]|[【]C[】]|[【]D[】]/)){
+                if(t.match(/[??A[??|[??B[??|[??C[??|[??D[??/)){
                     var clr=colors[ci%4];
                     btn.style.setProperty('background',clr.bg,'important');
                     btn.style.setProperty('border-left',clr.bl,'important');
@@ -746,7 +746,7 @@ if st.session_state.phase=="battle":
         with _btn_slot.container():
             for _ii, _ch in enumerate(q['ch']):
                 _ch_clean = re.sub(r'^\([A-D]\)[:\s]*', '', _ch).strip()
-                _display = f"【{_labels[_ii]}】  {_ch_clean}"
+                _display = f"??_labels[_ii]}?? {_ch_clean}"
                 _aid = _ans_cfg[_ii][0]
                 if st.button(_display, key=f"ans_{_rn}_{_qi}_{_ii}", use_container_width=True):
                     _clicked = _ii
@@ -760,7 +760,7 @@ if st.session_state.phase=="battle":
             if ok: st.session_state.sc+=1
             else: st.session_state.wrong+=1
             st.session_state.ta+=1
-            # ── ★ rt_log 저장 (논문 01·02·04 / 특허 3순위) ──────────
+            # ?? ??rt_log ???(?쇰Ц 01쨌02쨌04 / ?뱁뿀 3?쒖쐞) ??????????
             _elapsed_rt = time.time() - st.session_state.qst
             _rem_rt     = max(0, st.session_state.tsec - _elapsed_rt)
             _save_rt_log(
@@ -772,8 +772,8 @@ if st.session_state.phase=="battle":
                 session_no      = st.session_state.get("p5_session_no", 0),
                 adp_level       = st.session_state.get("adp_level", "normal"),
             )
-            # ────────────────────────────────────────────────────────
-            # iOS 2-phase: 버튼 제거 후 다음 문제
+            # ????????????????????????????????????????????????????????
+            # iOS 2-phase: 踰꾪듉 ?쒓굅 ???ㅼ쓬 臾몄젣
             st.session_state["_fp_processing"] = True
             st.rerun()
             nqi = st.session_state.qi + 1
@@ -786,7 +786,7 @@ if st.session_state.phase=="battle":
             st.rerun()
 
     else:
-        # ── 정답/오답 피드백 (답 선택 후) ──
+        # ?? ?뺣떟/?ㅻ떟 ?쇰뱶諛?(???좏깮 ?? ??
         _sel = st.session_state.sel
         _correct_idx = q['a']
         _ok = (_sel == _correct_idx)
@@ -800,7 +800,7 @@ if st.session_state.phase=="battle":
               text-shadow:0 0 20px #44FF88,0 0 50px #22cc66;letter-spacing:4px;
               animation:popIn 0.4s cubic-bezier(0.34,1.56,0.64,1) forwards;}
             </style>
-            <div class="hit">💥 격파!</div>""", height=60)
+            <div class="hit">?뮙 寃⑺뙆!</div>""", height=60)
         else:
             _ans_text = q['ch'][_correct_idx]
             components.html(f"""
@@ -812,12 +812,12 @@ if st.session_state.phase=="battle":
               text-shadow:0 0 20px #FF2D55,0 0 50px #cc0033;letter-spacing:3px;
               animation:shk 0.4s ease-in-out;}}
             </style>
-            <div class="miss">💀 피격! &nbsp;<span style="font-size:1rem;color:#aaa;">정답: {_ans_text}</span></div>""", height=60)
+            <div class="miss">?? ?쇨꺽! &nbsp;<span style="font-size:1rem;color:#aaa;">?뺣떟: {_ans_text}</span></div>""", height=60)
 
         st.markdown(f'<div style="background:#0a0c14;border-left:4px solid {"#44FF88" if _ok else "#FF2D55"};border-radius:0 10px 10px 0;padding:8px 12px;margin:4px 0;">'
-                    f'<span style="font-size:0.85rem;color:{"#44FF88" if _ok else "#FF2D55"};font-weight:700;">💡 {q.get("exk","")}</span></div>', unsafe_allow_html=True)
+                    f'<span style="font-size:0.85rem;color:{"#44FF88" if _ok else "#FF2D55"};font-weight:700;">?뮕 {q.get("exk","")}</span></div>', unsafe_allow_html=True)
 
-        if st.button("▶ 다음 문제", key="next_q", use_container_width=True):
+        if st.button("???ㅼ쓬 臾몄젣", key="next_q", use_container_width=True):
             if st.session_state.wrong>=2:
                 st.session_state.phase='lost'; st.rerun()
             if st.session_state.qi>=4:
@@ -831,11 +831,11 @@ if st.session_state.phase=="battle":
                 st.session_state.phase='victory' if st.session_state.sc>=4 else 'lost'
             st.rerun()
 
-# ════════════════════════════════════════
+# ?먥븧?먥븧?먥븧?먥븧?먥븧?먥븧?먥븧?먥븧?먥븧?먥븧?먥븧?먥븧?먥븧?먥븧?먥븧?먥븧?먥븧?먥븧?먥븧?먥븧
 # PHASE: VICTORY
-# ════════════════════════════════════════
+# ?먥븧?먥븧?먥븧?먥븧?먥븧?먥븧?먥븧?먥븧?먥븧?먥븧?먥븧?먥븧?먥븧?먥븧?먥븧?먥븧?먥븧?먥븧?먥븧?먥븧
 elif st.session_state.phase=="victory":
-    # ── adaptive difficulty 기록 ──
+    # ?? adaptive difficulty 湲곕줉 ??
     try:
         _sc_adp = st.session_state.get("sc", 0)
         _rate_adp = _sc_adp / 5.0
@@ -844,7 +844,7 @@ elif st.session_state.phase=="victory":
         st.session_state.adp_history = _hist
         st.session_state.adp_level = _calc_adp_level()
     except: pass
-    # ── zpd_logs + p5_logs ──
+    # ?? zpd_logs + p5_logs ??
     try:
         st.session_state.p5_session_no = st.session_state.get("p5_session_no", 0) + 1
         _st2 = load_storage()
@@ -888,30 +888,30 @@ elif st.session_state.phase=="victory":
     _rn_v = st.session_state.round_num
 
     _PERFECT_list = [
-        ("👑 PERFECT!", "천재 등장!! 토익 990은 그냥 따놓은 당상이잖아 👑", "#FFD600"),
-        ("👑 PERFECT!", "5/5?? 실화냐?? 나도 이제 너한테 배워야겠다 🙇", "#FFD600"),
-        ("👑 PERFECT!", "오답이 없어... 이거 혹시 커닝한 거 아니지?? 😏", "#FFD600"),
-        ("👑 PERFECT!", "인간 문법 사전 등장!! 토익은 그냥 산책이겠네 🚶", "#FFD600"),
-        ("👑 PERFECT!", "이 실력이면 교재 써도 되겠는데?? 진심으로 🏆", "#FFD600"),
-        ("👑 PERFECT!", "와... 진짜야? 완벽해!! 토익 만점도 그냥 따놓은 거지? 🔥", "#FFD600"),
-        ("👑 PERFECT!", "5개 전부 격파!! 넌 공부하러 온 게 아니라 자랑하러 온 거지?? 💥", "#FFD600"),
-        ("👑 PERFECT!", "문법 강사 해도 되는 거 아니야?? 이 정도면 진심 🎓", "#FFD600"),
-        ("👑 PERFECT!", "만점이잖아!! 토익 시험장 가면 이름만 써도 되겠는데? 😂", "#FFD600"),
-        ("👑 PERFECT!", "완벽 그 자체!! 오늘 이 실력 그대로 시험장 가면 990점 🎯", "#FFD600"),
+        ("?몣 PERFECT!", "泥쒖옱 ?깆옣!! ?좎씡 990? 洹몃깷 ?곕넃? ?뱀긽?댁옏???몣", "#FFD600"),
+        ("?몣 PERFECT!", "5/5?? ?ㅽ솕??? ?섎룄 ?댁젣 ?덊븳??諛곗썙?쇨쿋???솂", "#FFD600"),
+        ("?몣 PERFECT!", "?ㅻ떟???놁뼱... ?닿굅 ?뱀떆 而ㅻ떇??嫄??꾨땲吏?? ?삈", "#FFD600"),
+        ("?몣 PERFECT!", "?멸컙 臾몃쾿 ?ъ쟾 ?깆옣!! ?좎씡? 洹몃깷 ?곗콉?닿쿋???슯", "#FFD600"),
+        ("?몣 PERFECT!", "???ㅻ젰?대㈃ 援먯옱 ?⑤룄 ?섍쿋?붾뜲?? 吏꾩떖?쇰줈 ?룇", "#FFD600"),
+        ("?몣 PERFECT!", "?... 吏꾩쭨?? ?꾨꼍??! ?좎씡 留뚯젏??洹몃깷 ?곕넃? 嫄곗?? ?뵦", "#FFD600"),
+        ("?몣 PERFECT!", "5媛??꾨? 寃⑺뙆!! ??怨듬??섎윭 ??寃??꾨땲???먮옉?섎윭 ??嫄곗??? ?뮙", "#FFD600"),
+        ("?몣 PERFECT!", "臾몃쾿 媛뺤궗 ?대룄 ?섎뒗 嫄??꾨땲??? ???뺣룄硫?吏꾩떖 ?럳", "#FFD600"),
+        ("?몣 PERFECT!", "留뚯젏?댁옏??! ?좎씡 ?쒗뿕??媛硫??대쫫留??⑤룄 ?섍쿋?붾뜲? ?쁻", "#FFD600"),
+        ("?몣 PERFECT!", "?꾨꼍 洹??먯껜!! ?ㅻ뒛 ???ㅻ젰 洹몃?濡??쒗뿕??媛硫?990???렞", "#FFD600"),
     ]
     _VICTORY_list = [
-        ("⚔️ VICTORY!", "강해!! 이 기세면 토익 900+ 그냥 간다! 💪", "#ff8833"),
-        ("⚔️ VICTORY!", "4/5!! 딱 하나 방심한 거지? 다음엔 PERFECT 각이야 🔥", "#ff8833"),
-        ("⚔️ VICTORY!", "아깝다 하나!! 그 하나만 잡으면 토익 고득점 확정이야 🎯", "#ff8833"),
-        ("⚔️ VICTORY!", "90점짜리 실력!! 조금만 더 갈면 진짜 된다 💥", "#ff8833"),
-        ("⚔️ VICTORY!", "거의 다 왔어!! 완벽까지 딱 한 걸음이야 😤", "#ff8833"),
+        ("?뷂툘 VICTORY!", "媛뺥빐!! ??湲곗꽭硫??좎씡 900+ 洹몃깷 媛꾨떎! ?뮞", "#ff8833"),
+        ("?뷂툘 VICTORY!", "4/5!! ???섎굹 諛⑹떖??嫄곗?? ?ㅼ쓬??PERFECT 媛곸씠???뵦", "#ff8833"),
+        ("?뷂툘 VICTORY!", "?꾧튉???섎굹!! 洹??섎굹留??≪쑝硫??좎씡 怨좊뱷???뺤젙?댁빞 ?렞", "#ff8833"),
+        ("?뷂툘 VICTORY!", "90?먯쭨由??ㅻ젰!! 議곌툑留???媛덈㈃ 吏꾩쭨 ?쒕떎 ?뮙", "#ff8833"),
+        ("?뷂툘 VICTORY!", "嫄곗쓽 ???붿뼱!! ?꾨꼍源뚯? ????嫄몄쓬?댁빞 ?삤", "#ff8833"),
     ]
     _CLEAR_list = [
-        ("✅ CLEAR!", "아슬아슬 살아남았어... 겨우겨우지만 그래도 살았잖아 😅", "#ff9944"),
-        ("✅ CLEAR!", "3개... 딱 생존선이네. 운이 좋았어 🍀", "#ff9944"),
-        ("✅ CLEAR!", "살긴 살았는데, 이게 실력이야? 솔직히 말해봐 😐", "#ff9944"),
-        ("✅ CLEAR!", "통과는 했는데... 토익은 이렇게 안 되거든? 알지? 😬", "#ff9944"),
-        ("✅ CLEAR!", "3/5... 기초는 됐어. 근데 딱 기초만이야 😑", "#ff9944"),
+        ("??CLEAR!", "?꾩뒳?꾩뒳 ?댁븘?⑥븯??.. 寃⑥슦寃⑥슦吏留?洹몃옒???댁븯?뽰븘 ?쁾", "#ff9944"),
+        ("??CLEAR!", "3媛?.. ???앹〈?좎씠?? ?댁씠 醫뗭븯????", "#ff9944"),
+        ("??CLEAR!", "?닿릿 ?댁븯?붾뜲, ?닿쾶 ?ㅻ젰?댁빞? ?붿쭅??留먰빐遊??삉", "#ff9944"),
+        ("??CLEAR!", "?듦낵???덈뒗??.. ?좎씡? ?대젃寃????섍굅?? ?뚯?? ?삱", "#ff9944"),
+        ("??CLEAR!", "3/5... 湲곗큹???먯뼱. 洹쇰뜲 ??湲곗큹留뚯씠???삊", "#ff9944"),
     ]
     if _sc_v == 5:
         _grade, _praise, _pcol = random.choice(_PERFECT_list)
@@ -920,7 +920,7 @@ elif st.session_state.phase=="victory":
     else:
         _grade, _praise, _pcol = random.choice(_CLEAR_list)
 
-    # ── 토리 Victory 메인 이미지 ──
+    # ?? ?좊━ Victory 硫붿씤 ?대?吏 ??
     _ASSETS_V = os.path.join(os.path.dirname(os.path.dirname(__file__)), "assets")
     _tori_v_path = os.path.join(_ASSETS_V, "tori_victory.png")
     _cv1, _cv2, _cv3 = st.columns([1, 2, 1])
@@ -961,26 +961,26 @@ elif st.session_state.phase=="victory":
         <div class="grade">{_grade}</div>
         <div class="scorebox">
             <div class="sc-num">{_sc_v}<span style="font-size:1.4rem;color:#886600;"> / 5</span></div>
-            <div class="sc-label">✅ {_sc_v}격파 &nbsp;·&nbsp; ❌ {_wr_v}개 놓침</div>
+            <div class="sc-label">??{_sc_v}寃⑺뙆 &nbsp;쨌&nbsp; ??{_wr_v}媛??볦묠</div>
         </div>
         <div class="bar-wrap"><div class="bar-fill"></div></div>
         <div class="praise">{_praise}</div>
     </div>
     """, height=220)
 
-    # ── 토리 한 줄 ──
-    _nick_v = st.session_state.get("battle_nickname") or st.session_state.get("nickname","전사")
-    _tori_v = f"⛓ 포획 대기 중" if _wr_v > 0 else "전원 격파!"
+    # ?? ?좊━ ??以???
+    _nick_v = st.session_state.get("battle_nickname") or st.session_state.get("nickname","?꾩궗")
+    _tori_v = f"???ы쉷 ?湲?以? if _wr_v > 0 else "?꾩썝 寃⑺뙆!"
     _TB = '<span style="background:#331100;border:1px solid #ff6600;border-radius:5px;padding:1px 8px;color:#ff8833;font-weight:900;font-size:11px;letter-spacing:2px;">TORI</span>'
-    st.markdown(f'<div style="text-align:center;padding:6px 0;"><div style="margin-bottom:4px;">{_TB}</div><div style="font-size:13px;font-weight:900;color:#ffaa44;">{_nick_v}! {_tori_v} 사령부에 보고하라.</div></div>', unsafe_allow_html=True)
+    st.markdown(f'<div style="text-align:center;padding:6px 0;"><div style="margin-bottom:4px;">{_TB}</div><div style="font-size:13px;font-weight:900;color:#ffaa44;">{_nick_v}! {_tori_v} ?щ졊遺??蹂닿퀬?섎씪.</div></div>', unsafe_allow_html=True)
 
-    # ── Adaptive Difficulty 변화 알림 ─────────────────────────
+    # ?? Adaptive Difficulty 蹂???뚮┝ ?????????????????????????
     _adp_v = st.session_state.get("adp_level", "normal")
     _adp_v_color = {"easy": "#44cc66", "normal": "#FFD600", "hard": "#ff3344"}
     _adp_v_next = {
-        "easy":   ("🟢 EASY", "계속 틀리면 여기 머문다. 집중해!"),
-        "normal": ("🟡 NORMAL", "잘 하면 HARD, 틀리면 EASY — 네 선택이야."),
-        "hard":   ("🔴 HARD", "최고 난이도 유지 중. 이게 진짜 실력이야."),
+        "easy":   ("?윟 EASY", "怨꾩냽 ?由щ㈃ ?ш린 癒몃Ц?? 吏묒쨷??"),
+        "normal": ("?윞 NORMAL", "???섎㈃ HARD, ?由щ㈃ EASY ?????좏깮?댁빞."),
+        "hard":   ("?뵶 HARD", "理쒓퀬 ?쒖씠???좎? 以? ?닿쾶 吏꾩쭨 ?ㅻ젰?댁빞."),
     }
     _v_tag, _v_msg = _adp_v_next[_adp_v]
     _vc = _adp_v_color[_adp_v]
@@ -989,18 +989,18 @@ elif st.session_state.phase=="victory":
         f'border-radius:8px;padding:5px 10px;margin:4px 0;">'
         f'<span style="font-family:Orbitron,monospace;font-size:0.75rem;font-weight:900;color:{_vc};">'
         f'{_v_tag}</span>'
-        f'<span style="font-size:0.72rem;color:#888;"> · {_v_msg}</span>'
+        f'<span style="font-size:0.72rem;color:#888;"> 쨌 {_v_msg}</span>'
         f'</div>',
         unsafe_allow_html=True
     )
-    # ─────────────────────────────────────────────────────────
+    # ?????????????????????????????????????????????????????????
 
     st.markdown("""<style>
     @keyframes zapPulse{
       0%,100%{box-shadow:0 0 18px #00d4ff,0 0 40px rgba(0,212,255,0.5),inset 0 0 18px rgba(0,212,255,0.1);}
       50%{box-shadow:0 0 35px #00d4ff,0 0 80px rgba(0,212,255,0.8),inset 0 0 35px rgba(0,212,255,0.2);}
     }
-    /* ① 즉시 재출격 — 전기 파란 불꽃, 최상위 강조 */
+    /* ??利됱떆 ?ъ텧寃????꾧린 ?뚮? 遺덇퐙, 理쒖긽??媛뺤“ */
     div[data-testid="stButton"]:nth-of-type(1) button{
       background:linear-gradient(135deg,#001a2e,#00121f)!important;
       border:2px solid #00d4ff!important;
@@ -1017,22 +1017,22 @@ elif st.session_state.phase=="victory":
       background:linear-gradient(135deg,#002a40,#001a2e)!important;
       box-shadow:0 0 45px rgba(0,212,255,0.9)!important;
     }
-    /* ② 브리핑 보기 — 골드 */
+    /* ??釉뚮━??蹂닿린 ??怨⑤뱶 */
     div[data-testid="stButton"]:nth-of-type(2) button{
       background:#0c0c00!important;border:2px solid #FFD600!important;
       border-left:5px solid #FFD600!important;border-radius:12px!important;
     }
     div[data-testid="stButton"]:nth-of-type(2) button p{color:#FFD600!important;font-size:1.05rem!important;font-weight:900!important;}
     div[data-testid="stButton"]:nth-of-type(2) button:hover{box-shadow:0 0 22px rgba(255,214,0,0.6)!important;}
-    /* ③ 홈 — 회색 */
+    /* ???????뚯깋 */
     div[data-testid="stButton"]:nth-of-type(3) button{
       background:#0a0a0a!important;border:1.5px solid rgba(255,255,255,0.2)!important;
     }
     div[data-testid="stButton"]:nth-of-type(3) button p{color:#666!important;font-size:0.95rem!important;}
     </style>""", unsafe_allow_html=True)
 
-    # ── ① 즉시 재출격 (전체 폭, 최우선) ──
-    if st.button("⚡ 즉시 재출격!", use_container_width=True, key="btn_relaunch"):
+    # ?? ??利됱떆 ?ъ텧寃?(?꾩껜 ?? 理쒖슦?? ??
+    if st.button("??利됱떆 ?ъ텧寃?", use_container_width=True, key="btn_relaunch"):
         _keep_mode = st.session_state.get("mode")
         _keep_grp  = st.session_state.get("battle_grp")
         _keep_adp  = st.session_state.get("adp_level", "normal")
@@ -1049,13 +1049,13 @@ elif st.session_state.phase=="victory":
         st.session_state.phase = "lobby"
         st.rerun()
 
-    # ── ②③ 브리핑 보기 / 홈 ──
+    # ?? ?△몾 釉뚮━??蹂닿린 / ????
     vc=st.columns(2)
     with vc[0]:
-        if st.button("📋 브리핑 보기", use_container_width=True):
+        if st.button("?뱥 釉뚮━??蹂닿린", use_container_width=True):
             st.session_state.phase="briefing"; st.rerun()
     with vc[1]:
-        if st.button("🏠 홈", use_container_width=True):
+        if st.button("?룧 ??, use_container_width=True):
             st.session_state._p5_just_left = True
             st.session_state.ans = False
             st.session_state["_battle_entry_ans_reset"] = True
@@ -1065,9 +1065,9 @@ elif st.session_state.phase=="victory":
                 st.query_params["ag"] = "1"
             st.switch_page("main_hub.py")
 
-# ════════════════════════════════════════
+# ?먥븧?먥븧?먥븧?먥븧?먥븧?먥븧?먥븧?먥븧?먥븧?먥븧?먥븧?먥븧?먥븧?먥븧?먥븧?먥븧?먥븧?먥븧?먥븧?먥븧
 # PHASE: YOU LOST
-# ════════════════════════════════════════
+# ?먥븧?먥븧?먥븧?먥븧?먥븧?먥븧?먥븧?먥븧?먥븧?먥븧?먥븧?먥븧?먥븧?먥븧?먥븧?먥븧?먥븧?먥븧?먥븧?먥븧
 elif st.session_state.phase=="lost":
     try:
         _sc_adp = st.session_state.get("sc", 0)
@@ -1124,35 +1124,35 @@ elif st.session_state.phase=="lost":
     _wrong = st.session_state.wrong
     _pct = int(_sc / 5 * 100)
     _is_timeout = (time.time()-st.session_state.qst > st.session_state.tsec)
-    _reason = "시간초과 ⏰" if _is_timeout else f"오답 {_wrong}개 💀"
+    _reason = "?쒓컙珥덇낵 ?? if _is_timeout else f"?ㅻ떟 {_wrong}媛???"
 
     _ZERO_list = [
-        ("0개?? 이건 운도 안 따라줬네... 그냥 전멸이잖아 💀", "문법책 한 번이라도 펴봐. 딱 한 번만"),
-        ("0점이야. 전멸. 진짜 전멸. 할 말이 없다 😶", "수일치도 모르면서 토익 점수 바라지 마"),
-        ("하나도 못 맞혔어?? 찍어도 하나는 맞아야 하는데 😂", "랜덤으로 찍는 원숭이도 1개는 맞힌다고"),
-        ("이건 실력 문제가 아니라 공부를 안 한 거야 📚", "교재 한 번이라도 펴봤어? 솔직히 말해봐"),
-        ("0개 격파... 격파당한 건 본인이잖아 💥", "이 정도면 진짜 기초부터 다시 시작해야 해"),
+        ("0媛?? ?닿굔 ?대룄 ???곕씪以щ꽕... 洹몃깷 ?꾨㈇?댁옏????", "臾몃쾿梨???踰덉씠?쇰룄 ?대킄. ????踰덈쭔"),
+        ("0?먯씠?? ?꾨㈇. 吏꾩쭨 ?꾨㈇. ??留먯씠 ?녿떎 ?샄", "?섏씪移섎룄 紐⑤Ⅴ硫댁꽌 ?좎씡 ?먯닔 諛붾씪吏 留?),
+        ("?섎굹??紐?留욏삍??? 李띿뼱???섎굹??留욎븘???섎뒗???쁻", "?쒕뜡?쇰줈 李띾뒗 ?먯댂?대룄 1媛쒕뒗 留욏엺?ㅺ퀬"),
+        ("?닿굔 ?ㅻ젰 臾몄젣媛 ?꾨땲??怨듬?瑜?????嫄곗빞 ?뱴", "援먯옱 ??踰덉씠?쇰룄 ?대뇬?? ?붿쭅??留먰빐遊?),
+        ("0媛?寃⑺뙆... 寃⑺뙆?뱁븳 嫄?蹂몄씤?댁옏???뮙", "???뺣룄硫?吏꾩쭨 湲곗큹遺???ㅼ떆 ?쒖옉?댁빞 ??),
     ]
     _TIMEOUT_list = [
-        ("느려도 너무 느려!! 토익은 스피드도 실력이야 🐢", "시간 관리가 안 되면 토익 절대 못 올려"),
-        ("시간이 부족했다고? 그게 실력이야 ⏰", "토익은 느린 사람 기다려주지 않아"),
-        ("30초도 모자라?? 50초로 해봐... 그래도 빠듯할 것 같지만 😂", "생각이 느린 게 아니라 감각이 없는 거야"),
-        ("시간초과!! 토익 시험장에서도 이럴 거야?? 😱", "실전에선 시간이 2배 빠르게 느껴진다"),
-        ("타이머 보이지?? 그게 적이야. 지금 적한테 진 거야 ⏰", "속도 없이 정확도만? 토익엔 통하지 않아"),
+        ("?먮젮???덈Т ?먮젮!! ?좎씡? ?ㅽ뵾?쒕룄 ?ㅻ젰?댁빞 ?맊", "?쒓컙 愿由ш? ???섎㈃ ?좎씡 ?덈? 紐??щ젮"),
+        ("?쒓컙??遺議깊뻽?ㅺ퀬? 洹멸쾶 ?ㅻ젰?댁빞 ??, "?좎씡? ?먮┛ ?щ엺 湲곕떎?ㅼ＜吏 ?딆븘"),
+        ("30珥덈룄 紐⑥옄??? 50珥덈줈 ?대킄... 洹몃옒??鍮좊벏??寃?媛숈?留??쁻", "?앷컖???먮┛ 寃??꾨땲??媛먭컖???녿뒗 嫄곗빞"),
+        ("?쒓컙珥덇낵!! ?좎씡 ?쒗뿕?μ뿉?쒕룄 ?대윺 嫄곗빞?? ?삺", "?ㅼ쟾?먯꽑 ?쒓컙??2諛?鍮좊Ⅴ寃??먭뺨吏꾨떎"),
+        ("??대㉧ 蹂댁씠吏?? 洹멸쾶 ?곸씠?? 吏湲??곹븳??吏?嫄곗빞 ??, "?띾룄 ?놁씠 ?뺥솗?꾨쭔? ?좎씡???듯븯吏 ?딆븘"),
     ]
     _LOW_list = [
-        (f"찍어서 {_sc}개 맞춘 거 다 알아 😂", "운도 실력이라고? 그건 토익엔 없어"),
-        (f"겨우 {_sc}개... 어법이 이 정도면 문장도 못 읽겠다 😤", "접속사? 수일치? 기초부터 다시 해"),
-        (f"{_sc}개?? 이러고 토익 점수 올리길 바라는 거야?? 🙃", "기대치를 낮추거나 공부량을 늘려"),
-        (f"진짜야? {_sc}개?? 오늘 컨디션 문제인 거 맞지?? 😬", "컨디션 탓은 딱 한 번만 허용해줄게"),
-        (f"문법 감각이 없는 게 아니라 없애버린 것 같아 💀", f"{_sc}개로는 토익 600점도 힘들어"),
+        (f"李띿뼱??{_sc}媛?留욎텣 嫄????뚯븘 ?쁻", "?대룄 ?ㅻ젰?대씪怨? 洹멸굔 ?좎씡???놁뼱"),
+        (f"寃⑥슦 {_sc}媛?.. ?대쾿?????뺣룄硫?臾몄옣??紐??쎄쿋???삤", "?묒냽?? ?섏씪移? 湲곗큹遺???ㅼ떆 ??),
+        (f"{_sc}媛?? ?대윭怨??좎씡 ?먯닔 ?щ━湲?諛붾씪??嫄곗빞?? ?셾", "湲곕?移섎? ??텛嫄곕굹 怨듬??됱쓣 ?섎젮"),
+        (f"吏꾩쭨?? {_sc}媛?? ?ㅻ뒛 而⑤뵒??臾몄젣??嫄?留욎??? ?삱", "而⑤뵒???볦? ????踰덈쭔 ?덉슜?댁쨪寃?),
+        (f"臾몃쾿 媛먭컖???녿뒗 寃??꾨땲???놁븷踰꾨┛ 寃?媛숈븘 ??", f"{_sc}媛쒕줈???좎씡 600?먮룄 ?섎뱾??),
     ]
     _CLOSE_list = [
-        ("딱 한 문제 차이야. 억울하지?? 😭", "그 한 문제가 토익 점수 50점 차이야"),
-        ("2개 모자라서 전멸이라니... 진짜 아깝다 😤", "아깝다고 점수 올라가진 않아. 다시 해"),
-        ("이 정도 실력이면 왜 졌어?? 집중력 문제야 😡", "실력 있는데 지면 더 억울한 거 알지?"),
-        ("아깝다!! 근데 토익은 아까운 거 안 봐줘 😂", "다음엔 이 분한 마음 그대로 시험장 가"),
-        ("거의 다 됐는데 왜 무너진 거야!! 😱", "2개 차이면 실력은 있어. 멘탈이 문제야"),
+        ("????臾몄젣 李⑥씠?? ?듭슱?섏??? ?삲", "洹???臾몄젣媛 ?좎씡 ?먯닔 50??李⑥씠??),
+        ("2媛?紐⑥옄?쇱꽌 ?꾨㈇?대씪??.. 吏꾩쭨 ?꾧튉???삤", "?꾧튉?ㅺ퀬 ?먯닔 ?щ씪媛吏??딆븘. ?ㅼ떆 ??),
+        ("???뺣룄 ?ㅻ젰?대㈃ ??議뚯뼱?? 吏묒쨷??臾몄젣???삞", "?ㅻ젰 ?덈뒗??吏硫????듭슱??嫄??뚯??"),
+        ("?꾧튉??! 洹쇰뜲 ?좎씡? ?꾧퉴??嫄???遊먯쨾 ?쁻", "?ㅼ쓬????遺꾪븳 留덉쓬 洹몃?濡??쒗뿕??媛"),
+        ("嫄곗쓽 ???먮뒗????臾대꼫吏?嫄곗빞!! ?삺", "2媛?李⑥씠硫??ㅻ젰? ?덉뼱. 硫섑깉??臾몄젣??),
     ]
     if _pct == 0:
         _taunt, _sub = random.choice(_ZERO_list)
@@ -1172,10 +1172,10 @@ elif st.session_state.phase=="lost":
     _skulls = "".join([
         f'<div style="position:absolute;left:{random.randint(2,95)}%;top:{random.randint(2,85)}%;'
         f'font-size:{random.randint(10,32)}px;opacity:{random.random()*0.2:.2f};'
-        f'animation:fadeFloat {0.8+random.random()*1.2:.1f}s ease-in-out infinite {random.random():.1f}s;">{"💀" if random.random()>0.3 else "☠️"}</div>'
+        f'animation:fadeFloat {0.8+random.random()*1.2:.1f}s ease-in-out infinite {random.random():.1f}s;">{"??" if random.random()>0.3 else "?좑툘"}</div>'
         for _ in range(18)])
 
-    # ── 토리 Warning 메인 이미지 ──
+    # ?? ?좊━ Warning 硫붿씤 ?대?吏 ??
     _ASSETS_GO = os.path.join(os.path.dirname(os.path.dirname(__file__)), "assets")
     _tori_w_path = os.path.join(_ASSETS_GO, "tori_warning.png")
     _cg1, _cg2, _cg3 = st.columns([1, 2, 1])
@@ -1201,22 +1201,22 @@ elif st.session_state.phase=="lost":
     <div class="wrap">
         <div class="lost-txt">GAME OVER</div>
         <div class="reason">[ {_reason} ]</div>
-        <div class="score">{_pct}점</div>
+        <div class="score">{_pct}??/div>
         <div class="taunt">{_taunt}</div>
         <div class="sub">{_sub}</div>
     </div>""", height=200)
 
-    _nick_go = st.session_state.get("battle_nickname") or st.session_state.get("nickname","전사")
+    _nick_go = st.session_state.get("battle_nickname") or st.session_state.get("nickname","?꾩궗")
     _TB = '<span style="background:#331100;border:1px solid #ff6600;border-radius:5px;padding:1px 8px;color:#ff8833;font-weight:900;font-size:11px;letter-spacing:2px;">TORI</span>'
-    st.markdown(f'<div style="text-align:center;padding:6px 0;"><div style="margin-bottom:4px;">{_TB}</div><div style="font-size:13px;font-weight:900;color:#ff6644;">{_nick_go}! 후퇴! 재정비 후 재출격!</div></div>', unsafe_allow_html=True)
+    st.markdown(f'<div style="text-align:center;padding:6px 0;"><div style="margin-bottom:4px;">{_TB}</div><div style="font-size:13px;font-weight:900;color:#ff6644;">{_nick_go}! ?꾪눜! ?ъ젙鍮????ъ텧寃?</div></div>', unsafe_allow_html=True)
 
-    # ── Adaptive Difficulty 하락 경고 ─────────────────────────
+    # ?? Adaptive Difficulty ?섎씫 寃쎄퀬 ?????????????????????????
     _adp_go = st.session_state.get("adp_level", "normal")
     _go_color = {"easy": "#44cc66", "normal": "#FFD600", "hard": "#ff8833"}
     _go_msgs = {
-        "easy":   ("🟢 EASY", "더 내려갈 곳 없다. 여기서 반드시 올라와라."),
-        "normal": ("🟡 NORMAL", "틀리면 EASY로 내려간다. 정신 차려."),
-        "hard":   ("🔴→🟡 HARD→NORMAL", "한 번 졌다. NORMAL로 내려갈 수도 있다."),
+        "easy":   ("?윟 EASY", "???대젮媛?怨??녿떎. ?ш린??諛섎뱶???щ씪???"),
+        "normal": ("?윞 NORMAL", "?由щ㈃ EASY濡??대젮媛꾨떎. ?뺤떊 李⑤젮."),
+        "hard":   ("?뵶?믮윜?HARD?묿ORMAL", "??踰?議뚮떎. NORMAL濡??대젮媛??섎룄 ?덈떎."),
     }
     _go_tag, _go_hint = _go_msgs[_adp_go]
     _gc = _go_color[_adp_go]
@@ -1225,11 +1225,11 @@ elif st.session_state.phase=="lost":
         f'border-radius:8px;padding:5px 10px;margin:4px 0;">'
         f'<span style="font-family:Orbitron,monospace;font-size:0.75rem;font-weight:900;color:{_gc};">'
         f'{_go_tag}</span>'
-        f'<span style="font-size:0.72rem;color:#888;"> · {_go_hint}</span>'
+        f'<span style="font-size:0.72rem;color:#888;"> 쨌 {_go_hint}</span>'
         f'</div>',
         unsafe_allow_html=True
     )
-    # ─────────────────────────────────────────────────────────
+    # ?????????????????????????????????????????????????????????
 
     st.markdown("""<style>
     div[data-testid="stButton"]:nth-of-type(1) button{
@@ -1245,12 +1245,12 @@ elif st.session_state.phase=="lost":
     </style>""", unsafe_allow_html=True)
     bc=st.columns(2)
     with bc[0]:
-        if st.button("🔥 설욕전! 다시 싸운다!", use_container_width=True):
+        if st.button("?뵦 ?ㅼ슃?? ?ㅼ떆 ?몄슫??", use_container_width=True):
             for k in ["cq","qi","sc","wrong","ta","ans","sel","round_qs","round_results","round_num"]:
                 if k in D: st.session_state[k]=D[k]
             st.session_state.phase="lobby"; st.rerun()
     with bc[1]:
-        if st.button("🏠 홈", use_container_width=True):
+        if st.button("?룧 ??, use_container_width=True):
             st.session_state._p5_just_left = True
             st.session_state.ans = False
             st.session_state["_battle_entry_ans_reset"] = True
@@ -1260,9 +1260,9 @@ elif st.session_state.phase=="lost":
                 st.query_params["ag"] = "1"
             st.switch_page("main_hub.py")
 
-# ════════════════════════════════════════
+# ?먥븧?먥븧?먥븧?먥븧?먥븧?먥븧?먥븧?먥븧?먥븧?먥븧?먥븧?먥븧?먥븧?먥븧?먥븧?먥븧?먥븧?먥븧?먥븧?먥븧
 # PHASE: BRIEFING
-# ════════════════════════════════════════
+# ?먥븧?먥븧?먥븧?먥븧?먥븧?먥븧?먥븧?먥븧?먥븧?먥븧?먥븧?먥븧?먥븧?먥븧?먥븧?먥븧?먥븧?먥븧?먥븧?먥븧
 elif st.session_state.phase=="briefing":
     st.markdown("""<style>
     @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@700;900&display=swap');
@@ -1277,35 +1277,35 @@ elif st.session_state.phase=="briefing":
     div[data-testid="stButton"] button{width:100%!important;min-height:44px!important;
         font-size:0.88rem!important;padding:6px 4px!important;border-radius:10px!important;}
 
-    /* ── 다음 심문 버튼 ── */
+    /* ?? ?ㅼ쓬 ?щЦ 踰꾪듉 ?? */
     .br-next-btn div[data-testid="stButton"] button{
         background:#0a0a20!important;border:2px solid #00ccff!important;
         border-radius:12px!important;color:#00ddff!important;
         font-size:1.0rem!important;font-weight:900!important;min-height:50px!important;}
     .br-next-btn div[data-testid="stButton"] button p{color:#00ddff!important;font-size:1.0rem!important;font-weight:900!important;}
 
-    /* ── 포획 버튼 ── */
+    /* ?? ?ы쉷 踰꾪듉 ?? */
     .br-jail-btn div[data-testid="stButton"] button{
         background:#0c1800!important;border:2.5px solid #44ee66!important;
         border-radius:12px!important;color:#44ee66!important;
         font-size:0.92rem!important;font-weight:900!important;min-height:46px!important;}
     .br-jail-btn div[data-testid="stButton"] button p{color:#44ee66!important;font-size:0.92rem!important;font-weight:900!important;}
 
-    /* ── POW HQ CTA 버튼 ── */
+    /* ?? POW HQ CTA 踰꾪듉 ?? */
     .br-pow-btn div[data-testid="stButton"] button{
         background:#0e0020!important;border:2px solid #8833ff!important;
         border-radius:12px!important;color:#aa66ff!important;
         font-size:0.92rem!important;font-weight:900!important;min-height:48px!important;}
     .br-pow-btn div[data-testid="stButton"] button p{color:#aa66ff!important;font-size:0.92rem!important;font-weight:900!important;}
 
-    /* ── 재전투 버튼 ── */
+    /* ?? ?ъ쟾??踰꾪듉 ?? */
     .br-retry-btn div[data-testid="stButton"] button{
         background:#1a0600!important;border:2px solid #ff6600!important;
         border-radius:12px!important;color:#ff9944!important;
         font-size:0.92rem!important;font-weight:900!important;min-height:48px!important;}
     .br-retry-btn div[data-testid="stButton"] button p{color:#ff9944!important;font-size:0.92rem!important;font-weight:900!important;}
 
-    /* ── 홈 버튼 ── */
+    /* ?? ??踰꾪듉 ?? */
     .br-home-btn div[data-testid="stButton"] button{
         background:#05050e!important;border:1px solid #151525!important;
         border-radius:10px!important;color:#3d5066!important;min-height:40px!important;font-size:0.82rem!important;}
@@ -1315,13 +1315,13 @@ elif st.session_state.phase=="briefing":
     was_victory = st.session_state.sc >= 3
     if "br_idx" not in st.session_state: st.session_state.br_idx = 0
 
-    # ── 새 게임이면 br_saved 초기화 ──
+    # ?? ??寃뚯엫?대㈃ br_saved 珥덇린????
     rqs_temp = st.session_state.get("round_qs", [])
     _br_game_uid = rqs_temp[0].get("id","") if rqs_temp else ""
     if st.session_state.get("_br_game_uid") != _br_game_uid:
         st.session_state.br_saved = set()
         st.session_state.br_idx   = 0
-        st.session_state.br_auto_jailed = set()  # 오답 자동 포획 추적
+        st.session_state.br_auto_jailed = set()  # ?ㅻ떟 ?먮룞 ?ы쉷 異붿쟻
         st.session_state.br_jail_count = 0
         st.session_state["_br_game_uid"] = _br_game_uid
     for _bk,_bv in {"br_saved":set(),"br_auto_jailed":set(),"br_jail_count":0}.items():
@@ -1336,22 +1336,22 @@ elif st.session_state.phase=="briefing":
     sc_v  = st.session_state.sc
     wr_v  = st.session_state.wrong
 
-    # ═══════════════════════════════════
-    # 모든 Q 순회 완료 → 최종 요약 화면
-    # ═══════════════════════════════════
+    # ?먥븧?먥븧?먥븧?먥븧?먥븧?먥븧?먥븧?먥븧?먥븧?먥븧?먥븧?먥븧?먥븧?먥븧?먥븧?먥븧?먥븧??
+    # 紐⑤뱺 Q ?쒗쉶 ?꾨즺 ??理쒖쥌 ?붿빟 ?붾㈃
+    # ?먥븧?먥븧?먥븧?먥븧?먥븧?먥븧?먥븧?먥븧?먥븧?먥븧?먥븧?먥븧?먥븧?먥븧?먥븧?먥븧?먥븧??
     if bi >= num_qs:
         _jail_total = st.session_state.br_jail_count
         _victory_col = "#ff8833" if was_victory else "#FF2D55"
         _victory_txt = "FIREPOWER COMPLETE" if was_victory else "MISSION FAILED"
-        _victory_emoji = "💥" if was_victory else "💀"
+        _victory_emoji = "?뮙" if was_victory else "??"
 
-        # 약점 분석: 오답 카테고리 집계
+        # ?쎌젏 遺꾩꽍: ?ㅻ떟 移댄뀒怨좊━ 吏묎퀎
         _weak_cats = {}
         for _wi in range(num_qs):
             if not rrs[_wi]:
                 _wcat = rqs[_wi].get("cat","")
                 _weak_cats[_wcat] = _weak_cats.get(_wcat,0) + 1
-        _weak_str = " · ".join([f"{c}({n})" for c,n in sorted(_weak_cats.items(), key=lambda x:-x[1])]) if _weak_cats else "없음!"
+        _weak_str = " 쨌 ".join([f"{c}({n})" for c,n in sorted(_weak_cats.items(), key=lambda x:-x[1])]) if _weak_cats else "?놁쓬!"
 
         _BR_ASSETS2 = os.path.join(os.path.dirname(os.path.dirname(__file__)), "assets")
         _br_tori_fin = os.path.join(_BR_ASSETS2, "tori_victory.png" if was_victory else "tori_warning.png")
@@ -1379,30 +1379,30 @@ elif st.session_state.phase=="briefing":
         .weak{{font-size:13px;color:#ff8866;font-weight:700;margin-top:10px;}}
         </style>
         <div class="card">
-          <div class="title">{_victory_emoji} WAVE {rn} · {_victory_txt}</div>
-          <div class="score">✅ {sc_v} &nbsp; ❌ {wr_v}</div>
-          <div class="sub">5문제 브리핑 완료</div>
+          <div class="title">{_victory_emoji} WAVE {rn} 쨌 {_victory_txt}</div>
+          <div class="score">??{sc_v} &nbsp; ??{wr_v}</div>
+          <div class="sub">5臾몄젣 釉뚮━???꾨즺</div>
           <div class="jail">
-            <div class="jail-num">⛓ {_jail_total}</div>
-            <div class="jail-label">포로 포획 · 수용소 이송</div>
+            <div class="jail-num">??{_jail_total}</div>
+            <div class="jail-label">?щ줈 ?ы쉷 쨌 ?섏슜???댁넚</div>
           </div>
-          <div class="weak">⚠️ 약점: {_weak_str}</div>
+          <div class="weak">?좑툘 ?쎌젏: {_weak_str}</div>
         </div>
         """, height=300)
 
         st.markdown('<div style="height:6px;"></div>', unsafe_allow_html=True)
 
-        # CTA 버튼
+        # CTA 踰꾪듉
         if was_victory:
             _bc1, _bc2 = st.columns(2)
             with _bc1:
                 st.markdown('<div class="br-pow-btn">', unsafe_allow_html=True)
-                if st.button("💀 포로사령부 돌입!", use_container_width=True):
+                if st.button("?? ?щ줈?щ졊遺 ?뚯엯!", use_container_width=True):
                     st.switch_page("pages/03_POW_HQ.py")
                 st.markdown('</div>', unsafe_allow_html=True)
             with _bc2:
                 st.markdown('<div class="br-retry-btn">', unsafe_allow_html=True)
-                if st.button("🔥 다음 WAVE!", use_container_width=True):
+                if st.button("?뵦 ?ㅼ쓬 WAVE!", use_container_width=True):
                     for k in ["cq","qi","sc","wrong","ta","ans","sel","round_qs","round_results","br_idx","br_saved","br_auto_jailed","br_jail_count"]:
                         if k in st.session_state: del st.session_state[k]
                     for k,v in D.items():
@@ -1414,7 +1414,7 @@ elif st.session_state.phase=="briefing":
                 st.markdown('</div>', unsafe_allow_html=True)
         else:
             st.markdown('<div class="br-retry-btn">', unsafe_allow_html=True)
-            if st.button("🔥 설욕전!", use_container_width=True):
+            if st.button("?뵦 ?ㅼ슃??", use_container_width=True):
                 for k in ["cq","qi","sc","wrong","ta","ans","sel","round_qs","round_results","br_idx","br_saved","br_auto_jailed","br_jail_count"]:
                     if k in st.session_state: del st.session_state[k]
                 for k,v in D.items():
@@ -1426,12 +1426,12 @@ elif st.session_state.phase=="briefing":
             _rc1, _rc2 = st.columns([3, 1])
             with _rc1:
                 st.markdown('<div class="br-pow-btn">', unsafe_allow_html=True)
-                if st.button("💀 포로사령부!", use_container_width=True):
+                if st.button("?? ?щ줈?щ졊遺!", use_container_width=True):
                     st.switch_page("pages/03_POW_HQ.py")
                 st.markdown('</div>', unsafe_allow_html=True)
             with _rc2:
                 st.markdown('<div class="br-home-btn">', unsafe_allow_html=True)
-                if st.button("🏠 홈", use_container_width=True):
+                if st.button("?룧 ??, use_container_width=True):
                     st.session_state._p5_just_left = True
                     st.session_state.ans = False
                     st.session_state["_battle_entry_ans_reset"] = True
@@ -1440,20 +1440,20 @@ elif st.session_state.phase=="briefing":
                     st.switch_page("main_hub.py")
                 st.markdown('</div>', unsafe_allow_html=True)
 
-    # ═══════════════════════════════════
-    # Q카드 순차 표시 (bi < num_qs)
-    # ═══════════════════════════════════
+    # ?먥븧?먥븧?먥븧?먥븧?먥븧?먥븧?먥븧?먥븧?먥븧?먥븧?먥븧?먥븧?먥븧?먥븧?먥븧?먥븧?먥븧??
+    # Q移대뱶 ?쒖감 ?쒖떆 (bi < num_qs)
+    # ?먥븧?먥븧?먥븧?먥븧?먥븧?먥븧?먥븧?먥븧?먥븧?먥븧?먥븧?먥븧?먥븧?먥븧?먥븧?먥븧?먥븧??
     else:
         q  = rqs[bi]; ok = rrs[bi]
         ans_clean = q["ch"][q["a"]].split(") ",1)[-1] if ") " in q["ch"][q["a"]] else q["ch"][q["a"]]
         kr = q.get("kr",""); exk = q.get("exk",""); cat = q.get("cat","")
 
-        # ── 오답 자동 포획 (이 카드 처음 도착 시 1회만) ──
+        # ?? ?ㅻ떟 ?먮룞 ?ы쉷 (??移대뱶 泥섏쓬 ?꾩갑 ??1?뚮쭔) ??
         if not ok and bi not in st.session_state.br_auto_jailed:
             st.session_state.br_auto_jailed.add(bi)
             st.session_state.br_saved.add(bi)
             st.session_state.br_jail_count += 1
-            # 실제 저장
+            # ?ㅼ젣 ???
             item = {"id":q["id"],"text":q["text"],"ch":q["ch"],"a":q["a"],"ex":q.get("ex",""),
                     "exk":q.get("exk",""),"cat":q.get("cat",""),"kr":q.get("kr",""),"tp":q.get("tp","grammar")}
             save_to_storage([item])
@@ -1487,7 +1487,7 @@ elif st.session_state.phase=="briefing":
 
         _is_saved = bi in st.session_state.br_saved
 
-        # ── 진행 도트 (● ○ ○ ○ ○) ──
+        # ?? 吏꾪뻾 ?꾪듃 (?????????? ??
         _dots_html = ""
         for _di in range(num_qs):
             if _di < bi:
@@ -1498,7 +1498,7 @@ elif st.session_state.phase=="briefing":
             else:
                 _dots_html += '<span style="display:inline-block;width:12px;height:12px;border-radius:50%;background:#1a1a2a;border:1px solid #333;margin:0 4px;"></span>'
 
-        # ── TORI 캐릭터 (Q카드 상단) ──
+        # ?? TORI 罹먮┃??(Q移대뱶 ?곷떒) ??
         _BR_ASSETS = os.path.join(os.path.dirname(os.path.dirname(__file__)), "assets")
         _br_tori_path = os.path.join(_BR_ASSETS, "tori_normal.png")
         if os.path.exists(_br_tori_path):
@@ -1507,33 +1507,33 @@ elif st.session_state.phase=="briefing":
                 st.image(_br_tori_path, width=55)
             with _tc2:
                 _TB_BR = '<span style="background:#331100;border:1px solid #ff6600;border-radius:5px;padding:1px 8px;color:#ff8833;font-weight:900;font-size:11px;letter-spacing:2px;">TORI</span>'
-                st.markdown(f'<div style="padding:6px 0 0 4px;"><div style="margin-bottom:3px;">{_TB_BR}</div><div style="font-size:12px;font-weight:900;color:#ffaa55;">Q{bi+1} 브리핑 — {"맞혔다!" if ok else "틀렸다... 포획!"}</div></div>', unsafe_allow_html=True)
+                st.markdown(f'<div style="padding:6px 0 0 4px;"><div style="margin-bottom:3px;">{_TB_BR}</div><div style="font-size:12px;font-weight:900;color:#ffaa55;">Q{bi+1} 釉뚮━????{"留욏삍??" if ok else "??몃떎... ?ы쉷!"}</div></div>', unsafe_allow_html=True)
 
-        # ── 상단 HUD (진행 + 포획 카운터) ──
+        # ?? ?곷떒 HUD (吏꾪뻾 + ?ы쉷 移댁슫?? ??
         _jail_cnt = st.session_state.br_jail_count
         st.markdown(f'''<div style="display:flex;justify-content:space-between;align-items:center;
             background:#06080f;border:1px solid #1e2235;border-radius:10px;padding:8px 14px;margin-bottom:5px;">
             <div style="display:flex;align-items:center;gap:2px;">{_dots_html}</div>
             <span style="font-family:Orbitron,monospace;font-size:14px;color:#44ee66;font-weight:900;letter-spacing:2px;">
-                ⛓ {_jail_cnt}</span>
+                ??{_jail_cnt}</span>
         </div>''', unsafe_allow_html=True)
 
-        # ── 문제 카드 ──
+        # ?? 臾몄젣 移대뱶 ??
         if ok:
             sent_html = q["text"].replace("_______", f'<span style="color:#50c878;font-weight:900;border-bottom:2px solid #50c878;">{ans_clean}</span>')
-            card_border="#00d4ff"; qnum_color="#50c878"; qnum_sym="✅"
+            card_border="#00d4ff"; qnum_color="#50c878"; qnum_sym="??
         else:
             sent_html = q["text"].replace("_______",
                 f'<span style="color:#ff4466;font-weight:900;text-decoration:line-through;margin-right:4px;">?</span>'
                 f'<span style="color:#50c878;font-weight:900;border-bottom:2px solid #50c878;">{ans_clean}</span>')
-            card_border="#FF2D55"; qnum_color="#ff4466"; qnum_sym="❌"
+            card_border="#FF2D55"; qnum_color="#ff4466"; qnum_sym="??
 
-        # 오답 자동 포획 뱃지
+        # ?ㅻ떟 ?먮룞 ?ы쉷 諭껋?
         _jail_badge = ""
         if not ok:
             _jail_badge = ('<span style="background:#1a0000;border:1px solid #ff4444;border-radius:6px;'
                 'padding:2px 8px;font-size:0.65rem;color:#ff6644;font-weight:900;margin-left:8px;">'
-                '⛓ 적 포획!</span>')
+                '?????ы쉷!</span>')
 
         st.markdown(f'''<div style="background:#080c1a;border:1.5px solid {card_border};
             border-left:4px solid {card_border};border-radius:14px;padding:12px;margin:3px 0;">
@@ -1544,16 +1544,16 @@ elif st.session_state.phase=="briefing":
                 <span style="font-size:0.65rem;color:#444;letter-spacing:2px;">{cat}{_jail_badge}</span>
             </div>
             <div style="font-size:1.05rem;font-weight:700;color:#eeeeff;line-height:1.7;margin-bottom:8px;">{sent_html}</div>
-            <div style="font-size:0.85rem;color:#ccddee;margin-bottom:7px;padding-bottom:5px;border-bottom:1.5px solid #aa882244;text-decoration:underline;text-decoration-color:#aa882288;text-underline-offset:4px;text-decoration-thickness:1.5px;">📖 {kr}</div>
+            <div style="font-size:0.85rem;color:#ccddee;margin-bottom:7px;padding-bottom:5px;border-bottom:1.5px solid #aa882244;text-decoration:underline;text-decoration-color:#aa882288;text-underline-offset:4px;text-decoration-thickness:1.5px;">?뱰 {kr}</div>
             <div style="background:#040d04;border-left:3px solid #50c878;border-radius:0 8px 8px 0;padding:7px 10px;">
-                <div style="font-size:0.82rem;color:#50c878;font-weight:700;">💡 {exk}</div>
+                <div style="font-size:0.82rem;color:#50c878;font-weight:700;">?뮕 {exk}</div>
             </div>
         </div>''', unsafe_allow_html=True)
 
-        # ── 정답: "이것도 포획할까?" 선택 버튼 ──
+        # ?? ?뺣떟: "?닿쾬???ы쉷?좉퉴?" ?좏깮 踰꾪듉 ??
         if ok and not _is_saved:
             st.markdown('<div class="br-jail-btn">', unsafe_allow_html=True)
-            if st.button("📌 이것도 포획할까? → 수용소 이송!", key=f"jail_{q['id']}_{bi}", use_container_width=True):
+            if st.button("?뱦 ?닿쾬???ы쉷?좉퉴? ???섏슜???댁넚!", key=f"jail_{q['id']}_{bi}", use_container_width=True):
                 st.session_state.br_saved.add(bi)
                 st.session_state.br_jail_count += 1
                 item = {"id":q["id"],"text":q["text"],"ch":q["ch"],"a":q["a"],"ex":q.get("ex",""),
@@ -1585,12 +1585,12 @@ elif st.session_state.phase=="briefing":
                 st.rerun()
             st.markdown('</div>', unsafe_allow_html=True)
         elif _is_saved:
-            _save_msg = "⛓ 포획 완료!" if not ok else "✅ 포획 완료!"
+            _save_msg = "???ы쉷 ?꾨즺!" if not ok else "???ы쉷 ?꾨즺!"
             st.markdown(f'<div style="text-align:center;padding:8px 0;margin:6px 0;font-size:0.82rem;color:#336644;font-weight:700;letter-spacing:1px;">{_save_msg}</div>', unsafe_allow_html=True)
 
-        # ── 다음 심문 / 브리핑 완료 버튼 ──
+        # ?? ?ㅼ쓬 ?щЦ / 釉뚮━???꾨즺 踰꾪듉 ??
         _is_last = (bi + 1 >= num_qs)
-        _next_label = "🏁 브리핑 완료!" if _is_last else f"다음 심문 → Q{bi+2}"
+        _next_label = "?뢾 釉뚮━???꾨즺!" if _is_last else f"?ㅼ쓬 ?щЦ ??Q{bi+2}"
         st.markdown('<div class="br-next-btn">', unsafe_allow_html=True)
         if st.button(_next_label, key=f"br_next_{bi}", use_container_width=True):
             st.session_state.br_idx = bi + 1
@@ -1599,7 +1599,7 @@ elif st.session_state.phase=="briefing":
 
 
 # PHASE: LOBBY
-# ════════════════════════════════════════
+# ?먥븧?먥븧?먥븧?먥븧?먥븧?먥븧?먥븧?먥븧?먥븧?먥븧?먥븧?먥븧?먥븧?먥븧?먥븧?먥븧?먥븧?먥븧?먥븧?먥븧
 else:
     _nav = st.query_params.get('nav', '')
     if _nav == 'hub':
@@ -1618,20 +1618,20 @@ else:
     sm        = st.session_state.sel_mode
     rn        = st.session_state.round_num
     _tsec_chosen = st.session_state.get('tsec_chosen', False)
-    lbl_map  = {"g1":"⚔️ GRM · 문법 사격","g2":"🔄 FORM · 형태 변환","g3":"🔗 LINK · 연결 작전","vocab":"📘 VOCAB · 어휘 폭격"}
+    lbl_map  = {"g1":"?뷂툘 GRM 쨌 臾몃쾿 ?ш꺽","g2":"?봽 FORM 쨌 ?뺥깭 蹂??,"g3":"?뵕 LINK 쨌 ?곌껐 ?묒쟾","vocab":"?뱲 VOCAB 쨌 ?댄쐶 ??꺽"}
     mode_map = {"g1":("grammar","g1"),"g2":("grammar","g2"),"g3":("link","g3"),"vocab":("vocab",None)}
     _cur_sm  = st.session_state.get("sel_mode","") or ""
     _cur_tc  = st.session_state.get("tsec_chosen", False)
     _cur_tsec= st.session_state.get("tsec", 30)
     _ready   = _cur_tc and _cur_sm in ["g1","g2","g3","vocab"]
     _adp     = st.session_state.get("adp_level","normal")
-    _adp_lbl = {"easy":"🟢 EASY (≤15단어)","normal":"🟡 NORMAL (16-19단어)","hard":"🔴 HARD (20-23단어)"}.get(_adp,"🟡 NORMAL (16-19단어)")
+    _adp_lbl = {"easy":"?윟 EASY (??5?⑥뼱)","normal":"?윞 NORMAL (16-19?⑥뼱)","hard":"?뵶 HARD (20-23?⑥뼱)"}.get(_adp,"?윞 NORMAL (16-19?⑥뼱)")
     _hist_len= len(st.session_state.get("adp_history",[]))
 
-    # ══════════════════════════════════════════════════════
-    # 로비 CSS + 렌더링 — 암호해독 수준 고급화
-    # ══════════════════════════════════════════════════════
-    _tlabel_map = {"30":"🔥 BLITZ 30s","40":"⚡ STANDARD 40s","50":"🛡 SNIPER 50s"}
+    # ?먥븧?먥븧?먥븧?먥븧?먥븧?먥븧?먥븧?먥븧?먥븧?먥븧?먥븧?먥븧?먥븧?먥븧?먥븧?먥븧?먥븧?먥븧?먥븧?먥븧?먥븧?먥븧?먥븧?먥븧?먥븧?먥븧?먥븧
+    # 濡쒕퉬 CSS + ?뚮뜑留????뷀샇?대룆 ?섏? 怨좉툒??
+    # ?먥븧?먥븧?먥븧?먥븧?먥븧?먥븧?먥븧?먥븧?먥븧?먥븧?먥븧?먥븧?먥븧?먥븧?먥븧?먥븧?먥븧?먥븧?먥븧?먥븧?먥븧?먥븧?먥븧?먥븧?먥븧?먥븧?먥븧
+    _tlabel_map = {"30":"?뵦 BLITZ 30s","40":"??STANDARD 40s","50":"?썳 SNIPER 50s"}
 
     st.markdown("""
 <style>
@@ -1667,7 +1667,7 @@ div[data-testid="stHorizontalBlock"] div[data-testid="stColumn"] {
   50%     { filter:brightness(1.12); }
 }
 
-/* 공통 버튼 */
+/* 怨듯넻 踰꾪듉 */
 div[data-testid="stButton"] button {
   background:#070b17 !important;
   border:1.5px solid rgba(0,180,255,0.18) !important;
@@ -1684,7 +1684,7 @@ div[data-testid="stButton"] button p {
   color:#4a6688 !important; white-space:pre-line !important; line-height:1.3 !important;
 }
 
-/* 시간: BLITZ 30s 오렌지/불꽃 */
+/* ?쒓컙: BLITZ 30s ?ㅻ젋吏/遺덇퐙 */
 div[data-testid="stButton"] button.fp-t30 {
   background:#0e0700 !important;
   border-color:rgba(200,90,20,0.3) !important; color:#886644 !important;
@@ -1699,7 +1699,7 @@ div[data-testid="stButton"] button.fp-t30.fp-sel {
 }
 div[data-testid="stButton"] button.fp-t30.fp-sel p { color:#ffaa44 !important; }
 
-/* 시간: STANDARD 40s 파랑 */
+/* ?쒓컙: STANDARD 40s ?뚮옉 */
 div[data-testid="stButton"] button.fp-t40 {
   background:#03091a !important;
   border-color:rgba(40,110,230,0.3) !important; color:#335577 !important;
@@ -1714,7 +1714,7 @@ div[data-testid="stButton"] button.fp-t40.fp-sel {
 }
 div[data-testid="stButton"] button.fp-t40.fp-sel p { color:#55aaff !important; }
 
-/* 시간: SNIPER 50s 보라 */
+/* ?쒓컙: SNIPER 50s 蹂대씪 */
 div[data-testid="stButton"] button.fp-t50 {
   background:#0a051e !important;
   border-color:rgba(130,55,220,0.3) !important; color:#664488 !important;
@@ -1729,14 +1729,14 @@ div[data-testid="stButton"] button.fp-t50.fp-sel {
 }
 div[data-testid="stButton"] button.fp-t50.fp-sel p { color:#cc77ff !important; }
 
-/* 작전 카드 공통 — 4열 한 줄 */
+/* ?묒쟾 移대뱶 怨듯넻 ??4????以?*/
 div[data-testid="stButton"] button.fp-mode {
   min-height:90px !important;
   text-align:center !important; padding:10px 3px !important;
   font-family:'Rajdhani',sans-serif !important; font-size:0.82rem !important;
 }
 
-/* 문법력 파랑 */
+/* 臾몃쾿???뚮옉 */
 div[data-testid="stButton"] button.fp-g1 {
   background:#1a0800 !important; border-color:rgba(255,100,0,0.35) !important; color:#cc5500 !important;
 }
@@ -1748,7 +1748,7 @@ div[data-testid="stButton"] button.fp-g1.fp-sel {
 }
 div[data-testid="stButton"] button.fp-g1.fp-sel p { color:#ff8833 !important; }
 
-/* 구조력 보라 */
+/* 援ъ“??蹂대씪 */
 div[data-testid="stButton"] button.fp-g2 {
   background:#1a0c00 !important; border-color:rgba(220,140,0,0.35) !important; color:#bb8800 !important;
 }
@@ -1760,7 +1760,7 @@ div[data-testid="stButton"] button.fp-g2.fp-sel {
 }
 div[data-testid="stButton"] button.fp-g2.fp-sel p { color:#ddaaff !important; }
 
-/* 연결력 청록 */
+/* ?곌껐??泥?줉 */
 div[data-testid="stButton"] button.fp-g3 {
   background:#181000 !important; border-color:rgba(200,160,0,0.35) !important; color:#aa8800 !important;
 }
@@ -1772,7 +1772,7 @@ div[data-testid="stButton"] button.fp-g3.fp-sel {
 }
 div[data-testid="stButton"] button.fp-g3.fp-sel p { color:#ffdd44 !important; }
 
-/* 어휘력 초록 */
+/* ?댄쐶??珥덈줉 */
 div[data-testid="stButton"] button.fp-vc {
   background:#1a0400 !important; border-color:rgba(220,60,0,0.35) !important; color:#cc3300 !important;
 }
@@ -1784,7 +1784,7 @@ div[data-testid="stButton"] button.fp-vc.fp-sel {
 }
 div[data-testid="stButton"] button.fp-vc.fp-sel p { color:#ff6633 !important; }
 
-/* 출격 버튼 */
+/* 異쒓꺽 踰꾪듉 */
 div[data-testid="stButton"] button.fp-launch {
   background:#280800 !important; border:2.5px solid #ff4400 !important;
   border-radius:14px !important; color:#ffcc55 !important;
@@ -1805,7 +1805,7 @@ div[data-testid="stButton"] button.fp-launch-off {
 }
 div[data-testid="stButton"] button.fp-launch-off p { color:#18182a !important; }
 
-/* 네비 버튼 */
+/* ?ㅻ퉬 踰꾪듉 */
 div[data-testid="stButton"] button.fp-nav {
   background:#05050e !important; border:1px solid #151525 !important;
   border-radius:10px !important; color:#3d5066 !important;
@@ -1822,31 +1822,31 @@ div[data-testid="stButton"] button.fp-nav p { color:#3d5066 !important; }
 }
 </style>""", unsafe_allow_html=True)
 
-    # ── 타이틀 ──
-    _rb = f'<span style="background:#1a0800;border:1px solid #cc6600;border-radius:20px;padding:1px 10px;font-size:0.68rem;color:#ffaa44;font-weight:900;">🏆 ROUND {rn}</span> ' if rn > 1 else ''
+    # ?? ??댄? ??
+    _rb = f'<span style="background:#1a0800;border:1px solid #cc6600;border-radius:20px;padding:1px 10px;font-size:0.68rem;color:#ffaa44;font-weight:900;">?룇 ROUND {rn}</span> ' if rn > 1 else ''
     st.markdown(f"""<div style="text-align:center;padding:10px 0 14px;">
       <div style="font-size:8px;color:#442200;letter-spacing:4px;margin-bottom:4px;font-weight:700;">FIREPOWER BATTLE</div>
       <div style="font-family:Orbitron,monospace;font-size:2rem;font-weight:900;letter-spacing:6px;
         background:linear-gradient(90deg,#00e5ff,#ffffff,#FFD600,#ff3300,#00e5ff);background-size:300%;
         -webkit-background-clip:text;-webkit-text-fill-color:transparent;
-        animation:titleShine 2s linear infinite;line-height:1.2;">{_rb}⚡ 화력전</div>
+        animation:titleShine 2s linear infinite;line-height:1.2;">{_rb}???붾젰??/div>
       <div style="font-size:0.65rem;color:#334455;letter-spacing:2px;margin-top:5px;">
-        5문제 · 살아남아라! · 문법어휘 실전 포격전</div>
+        5臾몄젣 쨌 ?댁븘?⑥븘?? 쨌 臾몃쾿?댄쐶 ?ㅼ쟾 ?ш꺽??/div>
     </div>""", unsafe_allow_html=True)
 
-    # ── 토리 NPC 배너 (이미지 + 메시지) ──
+    # ?? ?좊━ NPC 諛곕꼫 (?대?吏 + 硫붿떆吏) ??
     import random as _rnd_npc
     _ASSETS_DIR = os.path.join(os.path.dirname(os.path.dirname(__file__)), "assets")
     _npc_nick = st.session_state.get('student_nickname', '')
     _TB = '<span style="background:#331100;border:1px solid #ff6600;border-radius:5px;padding:1px 8px;color:#ff8833;font-weight:900;font-size:11px;letter-spacing:2px;">TORI</span>'
     _tori_msgs = [
-        f"{_npc_nick}! 오늘도 불처럼!",
-        f"{_npc_nick}! 약점 카테고리 집중 공략!",
-        f"{_npc_nick}! BLITZ 도전할 때다!",
-        f"{_npc_nick}! 전장에서 기다린다!",
+        f"{_npc_nick}! ?ㅻ뒛??遺덉쿂??",
+        f"{_npc_nick}! ?쎌젏 移댄뀒怨좊━ 吏묒쨷 怨듬왂!",
+        f"{_npc_nick}! BLITZ ?꾩쟾???뚮떎!",
+        f"{_npc_nick}! ?꾩옣?먯꽌 湲곕떎由곕떎!",
     ]
     _tori_img = os.path.join(_ASSETS_DIR, "tori_normal.png")
-    _tori_msg = _rnd_npc.choice(_tori_msgs) if _npc_nick else "전장에 온 걸 환영한다!"
+    _tori_msg = _rnd_npc.choice(_tori_msgs) if _npc_nick else "?꾩옣????嫄??섏쁺?쒕떎!"
     _tc_img, _tc_txt = st.columns([1, 3])
     with _tc_img:
         if os.path.exists(_tori_img):
@@ -1859,54 +1859,54 @@ div[data-testid="stButton"] button.fp-nav p { color:#3d5066 !important; }
             {_tori_msg}</div>
         </div>''', unsafe_allow_html=True)
 
-    # ── COMBAT TIME 섹션 ──
+    # ?? COMBAT TIME ?뱀뀡 ??
     st.markdown('<div style="height:4px;"></div>', unsafe_allow_html=True)
-    st.markdown('<div style="font-size:9px;color:#cc6633;letter-spacing:4px;padding:4px 0 6px;font-weight:700;">⚡  COMBAT TIME</div>', unsafe_allow_html=True)
+    st.markdown('<div style="font-size:9px;color:#cc6633;letter-spacing:4px;padding:4px 0 6px;font-weight:700;">?? COMBAT TIME</div>', unsafe_allow_html=True)
     tc1, tc2, tc3 = st.columns(3)
     with tc1:
-        if st.button("🔥 30s\nBLITZ", key="t30", use_container_width=True):
+        if st.button("?뵦 30s\nBLITZ", key="t30", use_container_width=True):
             st.session_state.tsec=30; st.session_state.tsec_chosen=True; st.rerun()
     with tc2:
-        if st.button("⚡ 40s\nSTANDARD", key="t40", use_container_width=True):
+        if st.button("??40s\nSTANDARD", key="t40", use_container_width=True):
             st.session_state.tsec=40; st.session_state.tsec_chosen=True; st.rerun()
     with tc3:
-        if st.button("🛡️ 50s\nSNIPER", key="t50", use_container_width=True):
+        if st.button("?썳截?50s\nSNIPER", key="t50", use_container_width=True):
             st.session_state.tsec=50; st.session_state.tsec_chosen=True; st.rerun()
 
-    # ── MISSION SELECT 섹션 ──
+    # ?? MISSION SELECT ?뱀뀡 ??
     st.markdown('<div style="height:6px;"></div>', unsafe_allow_html=True)
-    st.markdown('<div style="font-size:9px;color:#cc3355;letter-spacing:4px;padding:4px 0 6px;font-weight:700;">🎯  MISSION SELECT</div>', unsafe_allow_html=True)
+    st.markdown('<div style="font-size:9px;color:#cc3355;letter-spacing:4px;padding:4px 0 6px;font-weight:700;">?렞  MISSION SELECT</div>', unsafe_allow_html=True)
     b1, b2, b3, b4 = st.columns(4)
     with b1:
-        if st.button("⚔️\nGRM\n문법 사격", key="sg1", use_container_width=True):
+        if st.button("?뷂툘\nGRM\n臾몃쾿 ?ш꺽", key="sg1", use_container_width=True):
             st.session_state.sel_mode="g1"; st.rerun()
     with b2:
-        if st.button("🔄\nFORM\n형태 변환", key="sg2", use_container_width=True):
+        if st.button("?봽\nFORM\n?뺥깭 蹂??, key="sg2", use_container_width=True):
             st.session_state.sel_mode="g2"; st.rerun()
     with b3:
-        if st.button("🔗\nLINK\n연결 작전", key="sg3", use_container_width=True):
+        if st.button("?뵕\nLINK\n?곌껐 ?묒쟾", key="sg3", use_container_width=True):
             st.session_state.sel_mode="g3"; st.rerun()
     with b4:
-        if st.button("📘\nVOCAB\n어휘 폭격", key="svc", use_container_width=True):
+        if st.button("?뱲\nVOCAB\n?댄쐶 ??꺽", key="svc", use_container_width=True):
             st.session_state.sel_mode="vocab"; st.rerun()
 
-    # ── ADAPTIVE DIFFICULTY 상태 표시 ──────────────────────────
+    # ?? ADAPTIVE DIFFICULTY ?곹깭 ?쒖떆 ??????????????????????????
     _adp_now   = st.session_state.get("adp_level", "normal")
     _adp_hist  = st.session_state.get("adp_history", [])
     _last_sc   = round(_adp_hist[-1] * 100) if _adp_hist else None
 
     _adp_color = {"easy": "#44cc66", "normal": "#FFD600", "hard": "#ff3344"}
-    _adp_bar   = {"easy": "█░░", "normal": "██░", "hard": "███"}
+    _adp_bar   = {"easy": "?댿뼇??, "normal": "?댿뻽??, "hard": "?댿뻽??}
     _adp_tag   = {"easy": "EASY", "normal": "NORMAL", "hard": "HARD"}
     _adp_arrow = {
-        "easy":   ("🔼 맞히면 올라간다",  "#44cc66"),
-        "normal": ("🔼 계속 맞히면 HARD", "#FFD600"),
-        "hard":   ("🔥 최고 난이도 진입!", "#ff3344"),
+        "easy":   ("?뵾 留욏엳硫??щ씪媛꾨떎",  "#44cc66"),
+        "normal": ("?뵾 怨꾩냽 留욏엳硫?HARD", "#FFD600"),
+        "hard":   ("?뵦 理쒓퀬 ?쒖씠??吏꾩엯!", "#ff3344"),
     }
     _adp_taunt = {
-        "easy":   "지금은 기초다. 여기서 무너지면 끝이야.",
-        "normal": "딱 중간이야. 올라갈래, 내려갈래?",
-        "hard":   "최정예만 오는 구역. 버텨봐.",
+        "easy":   "吏湲덉? 湲곗큹?? ?ш린??臾대꼫吏硫??앹씠??",
+        "normal": "??以묎컙?댁빞. ?щ씪媛덈옒, ?대젮媛덈옒?",
+        "hard":   "理쒖젙?덈쭔 ?ㅻ뒗 援ъ뿭. 踰꾪뀲遊?",
     }
     _col, _msg_col = _adp_color[_adp_now], _adp_arrow[_adp_now][1]
     _arrow_txt = _adp_arrow[_adp_now][0]
@@ -1922,7 +1922,7 @@ div[data-testid="stButton"] button.fp-nav p { color:#3d5066 !important; }
   display:flex;align-items:center;justify-content:space-between;">
   <div>
     <div style="font-size:0.6rem;color:#444;letter-spacing:3px;font-weight:700;">
-      ⚙ ADAPTIVE DIFFICULTY
+      ??ADAPTIVE DIFFICULTY
     </div>
     <div style="margin-top:2px;">
       <span style="font-family:Orbitron,monospace;font-size:1.0rem;
@@ -1938,22 +1938,22 @@ div[data-testid="stButton"] button.fp-nav p { color:#3d5066 !important; }
   </div>
   <div style="text-align:right;">{_score_html}</div>
 </div>""", unsafe_allow_html=True)
-    # ────────────────────────────────────────────────────────────
+    # ????????????????????????????????????????????????????????????
 
-    # ── 생존 규칙 ──
+    # ?? ?앹〈 洹쒖튃 ??
     st.markdown(
         '<div style="text-align:center;margin:20px 0 4px;font-size:0.82rem;font-weight:900;'
         'color:#cc3333;letter-spacing:1px;'
         'animation:warnBlink 1.4s ease-in-out infinite;">'
-        '💀 3개 이상 격파해야 생존 · 그 이하면 전멸!</div>',
+        '?? 3媛??댁긽 寃⑺뙆?댁빞 ?앹〈 쨌 洹??댄븯硫??꾨㈇!</div>',
         unsafe_allow_html=True
     )
 
-    # ── 출격 버튼 ──
+    # ?? 異쒓꺽 踰꾪듉 ??
     if _ready:
         _cat = lbl_map.get(_cur_sm,"")
         _tl  = _tlabel_map.get(str(_cur_tsec), str(_cur_tsec)+"s")
-        if st.button(f"🔥 출격! — {_cat}  ⏱ {_tl}", key="go_start", use_container_width=True):
+        if st.button(f"?뵦 異쒓꺽! ??{_cat}  ??{_tl}", key="go_start", use_container_width=True):
             try:
                 _md, _grp = mode_map[_cur_sm]
                 _qs = pick5(_md, _grp)
@@ -1972,18 +1972,18 @@ div[data-testid="stButton"] button.fp-nav p { color:#3d5066 !important; }
                 st.session_state.phase        = "battle"
                 st.rerun()
             except Exception as _e:
-                st.error(f"오류: {_e}")
+                st.error(f"?ㅻ쪟: {_e}")
     else:
-        st.button("⏱ COMBAT TIME + 🎯 MISSION → 출격!", key="go_disabled", use_container_width=True, disabled=True)
+        st.button("??COMBAT TIME + ?렞 MISSION ??異쒓꺽!", key="go_disabled", use_container_width=True, disabled=True)
 
-    # ── 네비 ──
+    # ?? ?ㅻ퉬 ??
     st.markdown('<div style="height:1px;background:#0e0e1e;margin:4px 0 3px;"></div>', unsafe_allow_html=True)
     nc1, nc2 = st.columns(2)
     with nc1:
-        if st.button("💀 포로사령부", key="p5nav1", use_container_width=True):
+        if st.button("?? ?щ줈?щ졊遺", key="p5nav1", use_container_width=True):
             st.switch_page("pages/03_POW_HQ.py")
     with nc2:
-        if st.button("🏠 홈", key="p5nav2", use_container_width=True):
+        if st.button("?룧 ??, key="p5nav2", use_container_width=True):
             st.session_state._p5_just_left = True
             _nick = st.session_state.get("battle_nickname") or st.session_state.get("nickname","")
             if _nick:
@@ -1991,7 +1991,7 @@ div[data-testid="stButton"] button.fp-nav p { color:#3d5066 !important; }
                 st.query_params["ag"]   = "1"
             st.switch_page("main_hub.py")
 
-    # ── JS: 클래스 부여 (setTimeout 2회 + 출격 border-color flicker) ──
+    # ?? JS: ?대옒??遺??(setTimeout 2??+ 異쒓꺽 border-color flicker) ??
     _sel_t  = str(_cur_tsec) if _cur_tc else ""
     _sel_m  = _cur_sm
     _js_ready = "true" if _ready else "false"
@@ -2005,7 +2005,7 @@ div[data-testid="stButton"] button.fp-nav p { color:#3d5066 !important; }
       var txt=(b.innerText||b.textContent||"").trim();
       if(!txt) return;
 
-      // 시간 버튼 (영문 라벨)
+      // ?쒓컙 踰꾪듉 (?곷Ц ?쇰꺼)
       if(txt.indexOf("30s")>-1 && txt.indexOf("\ucd9c\uaca9")===-1){{
         b.classList.add("fp-t30");
         if(selT==="30") b.classList.add("fp-sel"); else b.classList.remove("fp-sel");
@@ -2022,7 +2022,7 @@ div[data-testid="stButton"] button.fp-nav p { color:#3d5066 !important; }
         b.querySelectorAll("p").forEach(function(p){{p.classList.add("fp-t50");if(selT==="50")p.classList.add("fp-sel");else p.classList.remove("fp-sel");}});
       }}
 
-      // 작전 카드
+      // ?묒쟾 移대뱶
       if(txt.indexOf("\ubb38\ubc95")>-1 && txt.indexOf("\ucd9c\uaca9")===-1){{
         b.classList.add("fp-mode","fp-g1");
         if(selM==="g1") b.classList.add("fp-sel"); else b.classList.remove("fp-sel");
@@ -2044,12 +2044,12 @@ div[data-testid="stButton"] button.fp-nav p { color:#3d5066 !important; }
         b.querySelectorAll("p").forEach(function(p){{p.classList.add("fp-vc");if(selM==="vocab")p.classList.add("fp-sel");else p.classList.remove("fp-sel");}});
       }}
 
-      // 출격 버튼
+      // 異쒓꺽 踰꾪듉
       if(txt.indexOf("\ucd9c\uaca9!")>-1 && txt.indexOf("COMBAT")===-1){{
         if(isReady){{ b.classList.add("fp-launch"); b.classList.remove("fp-launch-off"); }}
         else{{ b.classList.add("fp-launch-off"); b.classList.remove("fp-launch"); }}
       }}
-      // 네비
+      // ?ㅻ퉬
       if(txt.indexOf("\ud3ec\ub85c\uc0ac\ub839\ubd80")>-1||txt.indexOf("\ud648")>-1){{
         b.classList.add("fp-nav");
       }}
@@ -2071,3 +2071,4 @@ div[data-testid="stButton"] button.fp-nav p { color:#3d5066 !important; }
   }}
 }})();
 </script>""", height=0)
+
