@@ -879,7 +879,6 @@ elif st.session_state.p7_phase == "battle":
     </div>''', unsafe_allow_html=True)
 
     # 답 버튼 — div id 래퍼로 색상 고정
-    # 중복 클릭 방지: _p7_processing 플래그
     if st.session_state.get("_p7_processing"):
         st.session_state.pop("_p7_processing")
         st.rerun()
@@ -1040,34 +1039,7 @@ elif st.session_state.p7_phase == "battle":
             st.rerun()
             st.markdown('</div>', unsafe_allow_html=True)
 
-    components.html("""
-    <script>
-    function p7choiceColors(){
-        const doc=window.parent.document;
-        const btns=doc.querySelectorAll('button[kind="primary"]');
-        const colors=[
-            {bg:'#0f0f1e',bd:'1px solid #1a1a2a',bl:'4px solid #00ccee'},
-            {bg:'#0f0f1e',bd:'1px solid #1a1a2a',bl:'4px solid #9aa5b4'},
-            {bg:'#0f0f1e',bd:'1px solid #1a1a2a',bl:'4px solid #50c878'},
-            {bg:'#0f0f1e',bd:'1px solid #1a1a2a',bl:'4px solid #4488cc'}
-        ];
-        let ci=0;
-        btns.forEach(btn=>{
-            const t=btn.textContent||'';
-            if(t.match(/\(A\)|\(B\)|\(C\)|\(D\)/)){
-                const c=colors[ci%4];
-                btn.style.background=c.bg;
-                btn.style.setProperty('background', c.bg, 'important');
-                btn.style.setProperty('border', c.bd, 'important');
-                btn.style.setProperty('border-left', c.bl||c.bd, 'important');
-                btn.style.setProperty('color', '#e8e0cc', 'important');
-                ci++;
-            }
-        });
-    }
-    setTimeout(p7choiceColors,80);setTimeout(p7choiceColors,250);setTimeout(p7choiceColors,500);setTimeout(p7choiceColors,900);
-    </script>
-    """, height=0)
+    # ★ p7choiceColors 제거 — 정규식 오류+iframe 터치 방해. 버튼색상은 #btn-p7a/b/c/d CSS로 처리됨.
 
 # ═══════════════════════════════════════
 # PHASE: VICTORY
