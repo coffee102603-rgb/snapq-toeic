@@ -161,10 +161,6 @@ div[data-testid="stButton"] button{
   transition:box-shadow 0.15s ease,border-color 0.15s ease!important;
   transform:none!important;
   color:#ddd8c8!important;
-  touch-action:manipulation!important;
-  -webkit-tap-highlight-color:transparent!important;
-  user-select:none!important;
-  -webkit-user-select:none!important;
 }
 div[data-testid="stButton"] button p{
   font-size:1.05rem!important;font-weight:700!important;
@@ -732,7 +728,7 @@ if st.session_state.phase=="battle":
                 }
             });
         }
-        setTimeout(fpColors,80);setTimeout(fpColors,250);setTimeout(fpColors,500);setTimeout(fpColors,900);
+        setTimeout(fpColors,100);setTimeout(fpColors,300);setTimeout(fpColors,600);setInterval(fpColors,500);
         </script>""", height=0)
 
         _btn_slot = st.empty()
@@ -1279,6 +1275,19 @@ elif st.session_state.phase=="lost":
     }
     div[data-testid="stButton"]:nth-of-type(2) button p{color:#666!important;font-size:0.95rem!important;}
     </style>""", unsafe_allow_html=True)
+    # ── 브리핑 버튼: 1문제라도 풀었으면 표시 ──
+    if _sc > 0:
+        st.markdown("""<style>
+        div[data-testid="stButton"]:nth-of-type(1) button{
+          background:#0a0800!important;border:2px solid #FFD600!important;
+          border-left:5px solid #FFD600!important;border-radius:12px!important;
+        }
+        div[data-testid="stButton"]:nth-of-type(1) button p{color:#FFD600!important;font-size:1.05rem!important;font-weight:900!important;}
+        div[data-testid="stButton"]:nth-of-type(1) button:hover{box-shadow:0 0 20px rgba(255,214,0,0.5)!important;}
+        </style>""", unsafe_allow_html=True)
+        if st.button(f"📋 브리핑 보기  ({_sc}문제 복기)", use_container_width=True):
+            st.session_state.phase="briefing"; st.rerun()
+
     bc=st.columns(2)
     with bc[0]:
         if st.button("🔥 설욕전! 다시 싸운다!", use_container_width=True):
