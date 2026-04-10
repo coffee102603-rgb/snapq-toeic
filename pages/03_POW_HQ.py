@@ -153,6 +153,45 @@ def _add_to_prison(word, source, sentence="", kr="", cat=""):
     except Exception:
         pass
 
+def _prison_from_sentence(sentence, source, cat="", max_words=3):
+    """
+    ★ DB 교집합 기반 단어수용소 저장 (논문A 청구항1 핵심)
+    PURPOSE: 문장에서 플랫폼 DB에 있는 단어만 추출 → word_prison 저장
+    PAPER:   모든 오답 경로에서 DB 교집합 어휘만 입감 → 일관된 주장 가능
+    """
+    try:
+        import datetime as _pdt2, sys as _ps2, os as _po2
+        _ps2.path.insert(0, _po2.path.dirname(__file__))
+        from _word_family_db import find_words_in_sentence as _fws
+        _matched = _fws(sentence, max_words=max_words)
+        if not _matched:
+            return
+        _st = load_storage()
+        if "word_prison" not in _st: _st["word_prison"] = []
+        _changed = False
+        for _m in _matched:
+            _w = _m["word"].strip()
+            if not _w or len(_w) < 3: continue
+            if any(p.get("word","").lower() == _w.lower() for p in _st["word_prison"]): continue
+            _st["word_prison"].append({
+                "word":          _w,
+                "kr":            _m.get("kr", ""),
+                "pos":           _m.get("pos", ""),
+                "family_root":   _m.get("family_root", ""),
+                "source":        source,
+                "sentence":      sentence,
+                "captured_date": _pdt2.datetime.now().strftime("%Y-%m-%d"),
+                "correct_streak": 0,
+                "last_reviewed":  None,
+                "cat":           cat,
+            })
+            _changed = True
+        if _changed:
+            save_storage(_st)
+    except Exception:
+        pass
+
+
 def make_alt_question(q):
     ans = q["ch"][q["a"]]
     clean_ans = ans.split(") ",1)[-1] if ") " in ans else ans
@@ -1066,23 +1105,11 @@ elif st.session_state.sg_phase == "p5_exam":
             pass
 
         if not ok:
+            # ★ DB 교집합 기반 단어 추출 (논문A 청구항1)
             try:
-                _pw = _extract_prison_word(
-                    text=q.get("text",""),
-                    ex_field=q.get("ex",""),
-                    cat=q.get("cat",""),
-                    ch=q.get("ch",[]),
-                    a_idx=q.get("a",0)
-                )
-                if _pw:
-                    _sent = q.get("text","").replace("_______", _pw)
-                    _add_to_prison(
-                        word=_pw,
-                        source="P5 시험 오답",
-                        sentence=_sent,
-                        kr=q.get("kr",""),
-                        cat=q.get("cat","")
-                    )
+                _ans_clean2 = q["ch"][q["a"]].split(") ",1)[-1] if ") " in q["ch"][q["a"]] else q["ch"][q["a"]]
+                _exam_sent = q.get("text","").replace("_______", _ans_clean2)
+                _prison_from_sentence(_exam_sent, "P5 시험 오답", q.get("cat",""))
             except Exception:
                 pass
             st.session_state.sg_exam_wrong = True
@@ -1400,15 +1427,10 @@ elif st.session_state.sg_phase == "survival":
                     st.session_state.puzzle_streak = 0
                     old_level = st.session_state.get("puzzle_blank_level", 2)
                     st.session_state.puzzle_blank_level = max(1, old_level - 1)
-                    # ★ 포로수용소 — 퍼즐 오답: blank_order 중 1개 (가장 긴 단어)
+                    # ★ 퍼즐 오답 → DB 교집합 기반 단어 추출 (논문A 청구항1)
                     try:
-                        _pr_sent = item.get("sentences",[""])[0] if item.get("sentences") else item.get("expr","")
-                        _pr_kr   = item.get("kr", item.get("meaning",""))
-                        _bw_list = [w.strip(".,!?;:()") for w in blank_order if len(w.strip(".,!?;:()")) >= 3]
-                        if _bw_list:
-                            _best = max(_bw_list, key=len)
-                            if _best.lower() not in _PRISON_STOP:
-                                _add_to_prison(_best, "퍼즐 오답", _pr_sent, _pr_kr, "vocabulary")
+                        _pr_sent3 = item.get("sentences",[""])[0] if item.get("sentences") else item.get("expr","")
+                        _prison_from_sentence(_pr_sent3, "퍼즐 오답", "vocabulary")
                     except Exception:
                         pass
                     st.session_state.sb_idx=idx+1; st.session_state.sb_wrong_cnt=0
@@ -1444,15 +1466,10 @@ elif st.session_state.sg_phase == "survival":
     c1,c2=st.columns(2)
     with c1:
         if st.button("⏭ 건너뛰기",key=f"sv_skip_{idx}",use_container_width=True):
-            # ★ 포로수용소 — 건너뛴 문장 핵심 단어 1개
+            # ★ 퍼즐 건너뜀 → DB 교집합 기반 단어 추출 (논문A 청구항1)
             try:
-                _sk_sent = item.get("sentences",[""])[0] if item.get("sentences") else item.get("expr","")
-                _sk_kr   = item.get("kr", item.get("meaning",""))
-                _sk_words = [w.strip(".,!?;:()") for w in st.session_state.get("sb_blank_order",[]) if len(w.strip(".,!?;:()")) >= 3]
-                if _sk_words:
-                    _sk_best = max(_sk_words, key=len)
-                    if _sk_best.lower() not in _PRISON_STOP:
-                        _add_to_prison(_sk_best, "퍼즐 건너뜀", _sk_sent, _sk_kr, "vocabulary")
+                _sk_sent4 = item.get("sentences",[""])[0] if item.get("sentences") else item.get("expr","")
+                _prison_from_sentence(_sk_sent4, "퍼즐 건너뜀", "vocabulary")
             except Exception:
                 pass
             st.session_state.sb_idx=idx+1
@@ -1596,19 +1613,10 @@ elif st.session_state.sg_phase == "combo_rush":
                 results.append(True); st.session_state.sg_combo_score=score+100; st.session_state.sg_combo_count=combo+1
             else:
                 results.append(False)
-                # ★ 포로수용소 — P7 오답 시 key_word 자동 저장
+                # ★ 콤보러시 P7 오답 → DB 교집합 기반 단어 추출 (논문A 청구항1)
                 try:
-                    _kw = correct_ans.strip(".,!?;:()")
-                    if _kw and len(_kw) >= 3 and _kw.lower() not in _PRISON_STOP:
-                        _pr_sent = sentences[0] if sentences else ""
-                        _pr_kr = q_item.get("meaning", q_item.get("kr",""))
-                        _add_to_prison(
-                            word=_kw,
-                            source="P7 어휘 오답",
-                            sentence=_pr_sent,
-                            kr=_pr_kr,
-                            cat="vocabulary"
-                        )
+                    _cb_sent5 = sentences[0] if sentences else ""
+                    _prison_from_sentence(_cb_sent5, "P7 콤보러시 오답", "vocabulary")
                 except Exception:
                     pass
             st.session_state.sg_combo_results=results; st.session_state.sg_combo_idx=cidx+1
