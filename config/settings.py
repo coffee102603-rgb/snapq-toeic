@@ -1,11 +1,19 @@
-﻿"""
-SnapQ TOEIC V2 - 전역 설정
+"""
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+FILE:     config/settings.py
+ROLE:     전역 설정값 (페이지 설정, 타이머, 점수 등)
+VERSION:  SnapQ TOEIC V3
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+AI-AGENT NOTES:
+  - PAGE_CONFIG: 모든 페이지에서 st.set_page_config(**PAGE_CONFIG) 호출
+  - 타이머/점수 변경 시 이 파일만 수정하면 전체 반영
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 """
 
 # 프로젝트 정보
-PROJECT_NAME = "SnapQ TOEIC V2"
-VERSION = "2.0.0"
-AUTHOR = "최정은 선생님"
+PROJECT_NAME = "SnapQ TOEIC"
+VERSION      = "3.0.0"
+AUTHOR       = "최정은 (대구교육대학교 AI교육학과 박사과정)"
 
 # 페이지 설정
 PAGE_CONFIG = {

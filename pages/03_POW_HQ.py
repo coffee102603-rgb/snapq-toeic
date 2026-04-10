@@ -1,13 +1,31 @@
 """
-FILE: 03_POW_HQ.py  (구: 03_오답전장.py)
-ROLE: 포로사령부 — 오답 관리 허브 (학습·시험·포로수용소·어휘시험 통합)
-PHASES: LOBBY → PUZZLE_BATTLE | EXAM | WORD_PRISON | VOCA_EXAM
-DATA:   storage_data.json → saved_questions, saved_expressions, word_prison, forget_logs(논문C)
-LINKS:  main_hub.py (작전사령부 귀환) | 02_Firepower.py (화력전) | 04_Decrypt_Op.py (암호해독 작전)
-PAPERS: 논문C(forget_logs 망각곡선), 논문A(armory_p5 정복률)
-EXTEND: 단어 포로수용소 심문(퀴즈) 기능 추가 예정 — WORD_PRISON phase 하단에 삽입
-EXTEND: 슬라이드 제스처 완성 예정
-EXTEND: P4 청음전장 연동 예정
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+FILE:     03_POW_HQ.py
+ROLE:     포로사령부 — 오답 관리 허브 (학습·시험·포로수용소·어휘시험 통합)
+VERSION:  SnapQ TOEIC V3
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+PHASES:   LOBBY → PUZZLE_BATTLE | EXAM | WORD_PRISON | VOCA_EXAM
+DATA IN:  storage_data.json (saved_questions, saved_expressions, word_prison)
+DATA OUT: forget_logs (망각곡선), word_prison (추가 저장)
+LINKS:    main_hub.py ↔ 02_Firepower.py ↔ 03_POW_HQ.py ↔ 04_Decrypt_Op.py
+PAPERS:   논문C (forget_logs 망각곡선)
+          논문A (armory_p5 정복률, DB 교집합 저장)
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+AI-AGENT NOTES:
+  [핵심 로직]
+  - _prison_from_sentence(): 모든 오답 경로의 단어수용소 저장 헬퍼
+    → 퍼즐 오답/건너뜀, 시험 오답, 콤보러시 오답 모두 이 함수 통과
+    → _word_family_db.py DB 교집합 단어만 저장 (논문A 청구항1)
+  - 문장 퍼즐 적응형 난이도: puzzle_blank_level 1~3
+    → 레벨별 품사 전략: 명사(1) → 명사+동사(2) → 명사+동사+부사(3)
+  - 단어수용소(WORD_PRISON): 플립카드 심문 방식
+  - 콤보러시(COMBO_RUSH): P7 지문 기반 문장 연속 퀴즈
+
+  [수정 주의사항]
+  - puzzle_blank_level, puzzle_streak 세션 상태 함께 관리
+  - _prison_from_sentence() 우회 금지 — 모든 저장 경로 반드시 통과
+  - word_prison source 필드: "P5 시험 오답" / "퍼즐 오답" / "퍼즐 건너뜀" / "P7 콤보러시 오답"
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 """
 import streamlit as st
 import streamlit.components.v1 as components

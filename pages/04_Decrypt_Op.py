@@ -1,12 +1,33 @@
 """
-FILE: 04_Decrypt_Op.py  (구: 04_P7_Reading.py)
-ROLE: 암호해독 작전 — 독해 지문 3문제 전투 전장
-PHASES: LOBBY → BATTLE → BRIEFING → RESULT
-DATA:   storage_data.json → saved_expressions, cross_logs(논문B), rt_logs(논문D)
-LINKS:  main_hub.py (작전사령부 귀환) | 03_POW_HQ.py (포로사령부)
-PAPERS: 논문B(cross_logs P7→P5 크로스스킬 전이 ★★★), 논문D(rt_logs 반응속도)
-EXTEND: P7 어휘 → 포로수용소 자동 포획 고도화 예정
-EXTEND: 지문 유형별 전략 브리핑 추가 예정
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+FILE:     04_Decrypt_Op.py
+ROLE:     암호해독 작전 — 독해 지문 3문제 전투 전장 (P7)
+VERSION:  SnapQ TOEIC V3
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+PHASES:   LOBBY → BATTLE → BRIEFING → RESULT
+DATA IN:  data/passages_*.json (signal/cipher/intercept/blackout 4단계)
+          storage_data.json (saved_expressions, rt_logs)
+DATA OUT: saved_expressions (정보 포획), word_prison (오답 자동 저장), recon_xyz_logs
+LINKS:    main_hub.py → 04_Decrypt_Op.py → 03_POW_HQ.py
+PAPERS:   논문B (cross_logs P7→P5 크로스스킬 전이 ★★★)
+          논문D (rt_logs 반응속도)
+          논문A (ZPD 즉사 메커니즘 — 1오답 즉시 LOST, 청구항2)
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+AI-AGENT NOTES:
+  [핵심 로직]
+  - ZPD 즉사 메커니즘: 3문제 중 1개라도 틀리면 즉시 LOST
+    → 논문A 청구항2 핵심 — 절대 제거하지 말 것
+  - LOST 화면에도 브리핑 버튼 존재 (_ok > 0 or p7_step > 0 조건)
+  - 브리핑 진입 즉시 오답 문장 자동 저장 (source: "P7 자동")
+  - 정답 문장은 선택 저장 ("📌 정보 포획!" 버튼)
+  - 지문 로딩: _load_passages() → 4개 JSON 파일 동적 로딩
+    passages_signal(쉬움) → cipher → intercept → blackout(어려움)
+
+  [수정 주의사항]
+  - 즉사 메커니즘 유지 필수 (ZPD 경계 탐지, 논문 청구항)
+  - 오답 자동 저장은 브리핑 진입 시 1회만 실행 (중복 저장 방지)
+  - p7_step 카운터와 _ok/_wrong 카운터 동기화 주의
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 """
 import streamlit as st
 import streamlit.components.v1 as components

@@ -1,12 +1,30 @@
 """
-FILE: 02_Firepower.py  (구: 02_P5_Arena.py)
-ROLE: 화력전 — 문법·어휘 5문제 서바이벌 전장
-PHASES: LOBBY → BATTLE → BRIEFING → RESULT
-DATA:   storage_data.json → rt_logs(논문D), adp_logs(논문A), word_prison(오답 자동 포획)
-LINKS:  main_hub.py (작전사령부 귀환) | 03_POW_HQ.py (포로사령부)
-PAPERS: 논문D(rt_logs 반응속도), 논문A(adp_logs 적응형 난이도)
-EXTEND: P5 포로수용소 자동저장 재구현 예정 (안전한 옵션A 방식)
-EXTEND: Adaptive 난이도 고도화 예정
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+FILE:     02_Firepower.py
+ROLE:     화력전 — 문법·어휘 5문제 서바이벌 전장 (P5)
+VERSION:  SnapQ TOEIC V3
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+PHASES:   LOBBY → BATTLE → BRIEFING → RESULT
+DATA IN:  storage_data.json (rt_logs, word_prison, saved_expressions)
+DATA OUT: rt_logs (반응속도·정답여부), word_prison (오답 포획), adp_logs
+LINKS:    main_hub.py → 02_Firepower.py → 03_POW_HQ.py
+PAPERS:   논문D (rt_logs 반응속도 프록시)
+          논문A (adp_logs 적응형 난이도, word_prison DB 교집합)
+          논문B (오답 타이밍 3분류: fast/mid/slow_wrong)
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+AI-AGENT NOTES:
+  [핵심 로직]
+  - 오답 타이밍 3분류: round_timings[] 배열로 fast/mid/slow 분류
+    → slow_wrong만 강제 저장 (논문B 청구항3)
+  - find_words_in_sentence(): _word_family_db.py DB와 교집합 추출
+    → 플랫폼 DB에 있는 단어만 word_prison 저장 (논문A 청구항1)
+  - GAME OVER 화면에도 브리핑 버튼 존재 (_sc > 0 조건)
+
+  [수정 주의사항]
+  - 'answer' 필드 경고는 false positive — 'a' 필드명이 정상, 수정 불필요
+  - round_results[], round_timings[] 반드시 함께 리셋할 것
+  - HTML은 문자열 연결(+)로 처리 — f-string 멀티라인 금지 (</div> 렌더 오류)
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 """
 import streamlit as st
 import streamlit.components.v1 as components

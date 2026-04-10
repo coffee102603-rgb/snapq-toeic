@@ -1,11 +1,31 @@
-﻿"""
-FILE: main_hub.py
-ROLE: 작전사령부 (메인 허브/로비) — 닉네임 접속, 스탯 표시, 전장 선택
-PHASES: LOGIN → LOBBY (단어 포로수용소 카드 + 전장 3종 선택)
-DATA:   storage_data.json → word_prison, devices, research_logs
-LINKS:  02_Firepower.py (화력전) | 03_POW_HQ.py (포로사령부) | 04_Decrypt_Op.py (암호해독 작전)
-PAPERS: 논문D(rt_logs), 논문A(adp_logs) 연결 허브
-EXTEND: P4 청음전장 연동 예정 | 모바일 푸시 알림 예정
+"""
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+FILE:     main_hub.py
+ROLE:     작전사령부 — 메인 허브 (로그인·스탯·NPC 피드백·전장 선택)
+VERSION:  SnapQ TOEIC V3
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+PHASES:   LOGIN → LOBBY (NPC 피드백 + 단어수용소 카드 + 전장 3종 선택)
+DATA IN:  storage_data.json (word_prison, rt_logs, saved_expressions)
+          data/cohorts/YYYY-MM/ (attendance, activity)
+DATA OUT: attendance.jsonl, session_time.json
+LINKS:    main_hub.py → 02_Firepower.py | 03_POW_HQ.py | 04_Decrypt_Op.py | 01_Admin.py
+PAPERS:   논문D (rt_logs 기반 NPC 개인화 피드백)
+          논문A (adp_logs) 연결 허브
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+AI-AGENT NOTES:
+  [핵심 로직]
+  - require_access(): 로그인 게이트 (이름+전화뒷4+월별코드)
+  - _calc_stats(): rt_logs 분석 → p5_rate, p7_rate, arm_pending 계산
+  - NPC 오버레이 메시지: _npc_p5_tx / _npc_p7_tx / _npc_pow_tx
+    → 정답률 기반 개인화 (80%↑ / 60~79% / 60%↓ / 첫접속 분기)
+  - 카드 호버 시 NPC 오버레이 표시 (ov-p5-a, ov-p7-a, ov-pow-a)
+  - TEACHER_B64: 고양이 이미지 base64 내장 (외부 파일 의존 없음)
+
+  [수정 주의사항]
+  - st.switch_page() 경로: pages/02_Firepower.py 형식 유지
+  - NPC 메시지 변수(_npc_p5_tx 등)는 _calc_stats() 이후에 정의됨
+  - HTML 문자열 연결(+) 방식 유지 — f-string 멀티라인 금지
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 """
 
 import streamlit as st
