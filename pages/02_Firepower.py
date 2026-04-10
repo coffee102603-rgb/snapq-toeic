@@ -403,7 +403,7 @@ VQ.extend(_load_vocab_batches())
 
 # ═══ 세션 ═══
 D={"started":False,"cq":None,"qi":0,"sc":0,"wrong":0,"ta":0,"sk":0,"msk":0,
-    "ans":False,"sel":None,"tsec":30,"qst":None,"round_qs":[],"round_results":[],
+    "ans":False,"sel":None,"tsec":30,"qst":None,"round_qs":[],"round_results":[],"round_timings":[],
     "round_num":1,"phase":"lobby","mode":None,"used":[],
     "adp_level":"normal",
     "adp_history":[],
@@ -413,7 +413,7 @@ for k,v in D.items():
 
 if st.session_state.get("_p5_just_left", False):
     st.session_state._p5_just_left = False
-    for k in ["cq","qi","sc","wrong","ta","ans","sel","round_qs","round_results","round_num","mode"]:
+    for k in ["cq","qi","sc","wrong","ta","ans","sel","round_qs","round_results","round_timings","round_num","mode"]:
         if k in D: st.session_state[k] = D[k]
     st.session_state.phase = "lobby"
     st.session_state.sel_mode = None
@@ -754,6 +754,10 @@ if st.session_state.phase=="battle":
             # user_id: _storage.get_uid() 로 통일 (POW HQ·Decrypt Op 동일)
             _elapsed_rt = time.time() - st.session_state.qst
             _rem_rt     = max(0, st.session_state.tsec - _elapsed_rt)
+            # ── ★ 오답 타이밍 3분류 → 브리핑 저장 로직 연동 (논문B 청구항3) ──
+            _timing_type = _classify_error_timing(_rem_rt, st.session_state.tsec) if not ok else None
+            if "round_timings" not in st.session_state: st.session_state.round_timings = []
+            st.session_state.round_timings.append(_timing_type)
             _storage.save_rt_log(
                 q                 = q,
                 is_correct        = ok,
@@ -761,7 +765,7 @@ if st.session_state.phase=="battle":
                 timer_setting     = st.session_state.tsec,
                 session_no        = st.session_state.get("p5_session_no", 0),
                 adp_level         = st.session_state.get("adp_level", "normal"),
-                error_timing_type = _classify_error_timing(_rem_rt, st.session_state.tsec) if not ok else None,
+                error_timing_type = _timing_type,
             )
             # ────────────────────────────────────────────────────────
             # iOS 2-phase: 버튼 제거 후 다음 문제
@@ -1291,7 +1295,7 @@ elif st.session_state.phase=="lost":
     bc=st.columns(2)
     with bc[0]:
         if st.button("🔥 설욕전! 다시 싸운다!", use_container_width=True):
-            for k in ["cq","qi","sc","wrong","ta","ans","sel","round_qs","round_results","round_num"]:
+            for k in ["cq","qi","sc","wrong","ta","ans","sel","round_qs","round_results","round_timings","round_num"]:
                 if k in D: st.session_state[k]=D[k]
             st.session_state.phase="lobby"; st.rerun()
     with bc[1]:
@@ -1448,7 +1452,7 @@ elif st.session_state.phase=="briefing":
             with _bc2:
                 st.markdown('<div class="br-retry-btn">', unsafe_allow_html=True)
                 if st.button("🔥 다음 WAVE!", use_container_width=True):
-                    for k in ["cq","qi","sc","wrong","ta","ans","sel","round_qs","round_results","br_idx","br_saved","br_auto_jailed","br_jail_count"]:
+                    for k in ["cq","qi","sc","wrong","ta","ans","sel","round_qs","round_results","round_timings","br_idx","br_saved","br_auto_jailed","br_jail_count"]:
                         if k in st.session_state: del st.session_state[k]
                     for k,v in D.items():
                         if k not in st.session_state: st.session_state[k]=v
@@ -1460,7 +1464,7 @@ elif st.session_state.phase=="briefing":
         else:
             st.markdown('<div class="br-retry-btn">', unsafe_allow_html=True)
             if st.button("🔥 설욕전!", use_container_width=True):
-                for k in ["cq","qi","sc","wrong","ta","ans","sel","round_qs","round_results","br_idx","br_saved","br_auto_jailed","br_jail_count"]:
+                for k in ["cq","qi","sc","wrong","ta","ans","sel","round_qs","round_results","round_timings","br_idx","br_saved","br_auto_jailed","br_jail_count"]:
                     if k in st.session_state: del st.session_state[k]
                 for k,v in D.items():
                     if k not in st.session_state: st.session_state[k]=v
@@ -1493,40 +1497,47 @@ elif st.session_state.phase=="briefing":
         ans_clean = q["ch"][q["a"]].split(") ",1)[-1] if ") " in q["ch"][q["a"]] else q["ch"][q["a"]]
         kr = q.get("kr",""); exk = q.get("exk",""); cat = q.get("cat","")
 
-        # ── 오답 자동 포획 (이 카드 처음 도착 시 1회만) ──
+        # ── 오답 타이밍 3분류 기반 저장 로직 (논문B 청구항3 핵심) ──
+        # slow_wrong: 완전히 모르는 것 → 강제 저장 (Schmidt 1990 + Cepeda 2006)
+        # fast/mid_wrong: 알면서 틀렸을 가능성 → 학습자 자기조절에 맡김 (Lantolf 2014)
+        _timings = st.session_state.get("round_timings", [])
+        _this_timing = _timings[bi] if bi < len(_timings) else None  # None or fast/mid/slow_wrong
+
         if not ok and bi not in st.session_state.br_auto_jailed:
             st.session_state.br_auto_jailed.add(bi)
-            st.session_state.br_saved.add(bi)
-            st.session_state.br_jail_count += 1
-            # 실제 저장
-            item = {"id":q["id"],"text":q["text"],"ch":q["ch"],"a":q["a"],"ex":q.get("ex",""),
-                    "exk":q.get("exk",""),"cat":q.get("cat",""),"kr":q.get("kr",""),"tp":q.get("tp","grammar")}
-            save_to_storage([item])
-            try:
-                import datetime as _fdt, sys as _sys2, os as _os2
-                _sys2.path.insert(0, _os2.path.dirname(__file__))
-                from _word_family_db import find_words_in_sentence as _find_words
-                _fp_sent = q.get("text","").replace("_______", ans_clean)
-                _fp_cat  = q.get("cat","")
-                _matched = _find_words(_fp_sent, max_words=3)
-                _fp_data = _storage.load()
-                if "word_prison" not in _fp_data: _fp_data["word_prison"] = []
-                _changed = False
-                for _m in _matched:
-                    _w = _m["word"].strip()
-                    if not _w or len(_w) < 3: continue
-                    if any(p.get("word","").lower()==_w.lower() for p in _fp_data["word_prison"]): continue
-                    _fp_data["word_prison"].append({
-                        "word":_w,"kr":_m["kr"],"pos":_m["pos"],"family_root":_m["family_root"],
-                        "source":"P5","sentence":_fp_sent,
-                        "captured_date":_fdt.datetime.now().strftime("%Y-%m-%d"),
-                        "correct_streak":0,"last_reviewed":None,"cat":_fp_cat,
-                    })
-                    _changed = True
-                if _changed:
-                    _storage.save(_fp_data)
-            except Exception:
-                pass
+            if _this_timing == "slow_wrong":
+                # ★ slow_wrong → 강제 저장 (이론적으로 정당)
+                st.session_state.br_saved.add(bi)
+                st.session_state.br_jail_count += 1
+                item = {"id":q["id"],"text":q["text"],"ch":q["ch"],"a":q["a"],"ex":q.get("ex",""),
+                        "exk":q.get("exk",""),"cat":q.get("cat",""),"kr":q.get("kr",""),"tp":q.get("tp","grammar")}
+                save_to_storage([item])
+                # ★ slow_wrong만 word_prison 추출 (완전히 모르는 단어)
+                try:
+                    import datetime as _fdt, sys as _sys2, os as _os2
+                    _sys2.path.insert(0, _os2.path.dirname(__file__))
+                    from _word_family_db import find_words_in_sentence as _find_words
+                    _fp_sent = q.get("text","").replace("_______", ans_clean)
+                    _fp_cat  = q.get("cat","")
+                    _matched = _find_words(_fp_sent, max_words=3)
+                    _fp_data = _storage.load()
+                    if "word_prison" not in _fp_data: _fp_data["word_prison"] = []
+                    _changed = False
+                    for _m in _matched:
+                        _w = _m["word"].strip()
+                        if not _w or len(_w) < 3: continue
+                        if any(p.get("word","").lower()==_w.lower() for p in _fp_data["word_prison"]): continue
+                        _fp_data["word_prison"].append({
+                            "word":_w,"kr":_m["kr"],"pos":_m["pos"],"family_root":_m["family_root"],
+                            "source":"P5","sentence":_fp_sent,
+                            "captured_date":_fdt.datetime.now().strftime("%Y-%m-%d"),
+                            "correct_streak":0,"last_reviewed":None,"cat":_fp_cat,
+                        })
+                        _changed = True
+                    if _changed:
+                        _storage.save(_fp_data)
+                except Exception:
+                    pass
 
         _is_saved = bi in st.session_state.br_saved
 
@@ -1571,7 +1582,7 @@ elif st.session_state.phase=="briefing":
                 f'<span style="color:#50c878;font-weight:900;border-bottom:2px solid #50c878;">{ans_clean}</span>')
             card_border="#FF2D55"; qnum_color="#ff4466"; qnum_sym="❌"
 
-        # 오답 자동 포획 뱃지
+        # 오답 자동 포획 뱃지 (slow_wrong 강제 저장 시만)
         _jail_badge = ""
         if not ok:
             _jail_badge = ('<span style="background:#1a0000;border:1px solid #ff4444;border-radius:6px;'
@@ -1592,6 +1603,44 @@ elif st.session_state.phase=="briefing":
                 <div style="font-size:0.82rem;color:#50c878;font-weight:700;">💡 {exk}</div>
             </div>
         </div>''', unsafe_allow_html=True)
+
+        # ── fast/mid_wrong 오답: 선택 저장 버튼 (자기조절 원리, Lantolf 2014) ──
+        if not ok and not _is_saved and _this_timing in ("fast_wrong", "mid_wrong", None):
+            _timing_label = {
+                "fast_wrong": "⚡ 충동형 오답",
+                "mid_wrong":  "🔶 표준형 오답",
+                None:         "❓ 오답"
+            }.get(_this_timing, "오답")
+            st.markdown('<div class="br-jail-btn">', unsafe_allow_html=True)
+            if st.button(f"📌 {_timing_label} — 포로로 잡을까?", key=f"jail_wrong_{q['id']}_{bi}", use_container_width=True):
+                st.session_state.br_saved.add(bi)
+                st.session_state.br_jail_count += 1
+                item = {"id":q["id"],"text":q["text"],"ch":q["ch"],"a":q["a"],"ex":q.get("ex",""),
+                        "exk":q.get("exk",""),"cat":q.get("cat",""),"kr":q.get("kr",""),"tp":q.get("tp","grammar")}
+                save_to_storage([item])
+                try:
+                    import datetime as _fdt3, sys as _sys4, os as _os4
+                    _sys4.path.insert(0, _os4.path.dirname(__file__))
+                    from _word_family_db import find_words_in_sentence as _find_words3
+                    _fp_sent3 = q.get("text","").replace("_______", ans_clean)
+                    _matched3 = _find_words3(_fp_sent3, max_words=3)
+                    _fp_data3 = _storage.load()
+                    if "word_prison" not in _fp_data3: _fp_data3["word_prison"] = []
+                    for _m3 in _matched3:
+                        _w3 = _m3["word"].strip()
+                        if not _w3 or len(_w3) < 3: continue
+                        if any(p.get("word","").lower()==_w3.lower() for p in _fp_data3["word_prison"]): continue
+                        _fp_data3["word_prison"].append({
+                            "word":_w3,"kr":_m3["kr"],"pos":_m3["pos"],"family_root":_m3["family_root"],
+                            "source":"P5","sentence":_fp_sent3,
+                            "captured_date":_fdt3.datetime.now().strftime("%Y-%m-%d"),
+                            "correct_streak":0,"last_reviewed":None,
+                        })
+                    _storage.save(_fp_data3)
+                except Exception:
+                    pass
+                st.rerun()
+            st.markdown('</div>', unsafe_allow_html=True)
 
         # ── 정답: "이것도 포획할까?" 선택 버튼 ──
         if ok and not _is_saved:
