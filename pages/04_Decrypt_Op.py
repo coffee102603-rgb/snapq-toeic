@@ -708,7 +708,6 @@ elif st.session_state.p7_phase == "battle":
       transition:border-color .12s,box-shadow .12s!important;
       touch-action:manipulation!important;
       -webkit-tap-highlight-color:transparent!important;
-      user-select:none!important;-webkit-user-select:none!important;
     }
     div[data-testid="stButton"] button p{color:#8899bb!important;font-size:0.88rem!important;font-weight:700!important;}
     div[data-testid="stButton"] button:hover{border-color:rgba(100,180,255,0.7)!important;color:#aaccff!important;}
@@ -729,9 +728,8 @@ elif st.session_state.p7_phase == "battle":
     steps = data["steps"]
     cur = steps[step]
 
-    # ★ 게임별 고유 키 사용 — 재시도해도 카운터 초기화됨 (Q3 클릭 버그 원인 수정)
-    _ar_key = f"p7ar_{int(st.session_state.p7_started_at)}"
-    st_autorefresh(interval=1500, limit=st.session_state.p7_tsec+20, key=_ar_key)
+    # st_autorefresh 제거 — hidden iframe이 Q3 버튼 터치를 방해하는 핵심 원인
+    # 타임아웃 감지는 클라이언트 JS + 버튼 클릭 시 rem<=0 체크로 대체
 
     elapsed = time.time() - st.session_state.p7_started_at
     total   = st.session_state.p7_tsec
@@ -863,7 +861,24 @@ elif st.session_state.p7_phase == "battle":
           if(card){{
             card.style.borderTopColor=c;
             card.style.borderBottomColor=c;
-            /* 지문 흔들림 제거 — 테두리 색상 변화만 유지 */
+          }}
+          if(r<=0){{
+            /* 시간 종료: 버튼 시각적 비활성화 */
+            doc.querySelectorAll('div[data-testid="stButton"] button').forEach(function(b){{
+              b.style.setProperty('opacity','0.3','important');
+              b.style.setProperty('pointer-events','none','important');
+            }});
+            /* 타임아웃 표시 */
+            if(card){{
+              var to=doc.getElementById('p7-timeout-msg');
+              if(!to){{
+                to=doc.createElement('div');
+                to.id='p7-timeout-msg';
+                to.style.cssText='text-align:center;color:#ff2244;font-weight:900;font-size:1.1rem;padding:8px;margin-top:6px;letter-spacing:2px;';
+                to.textContent='⏰ TIME UP — 화면을 터치하세요';
+                card.parentNode.insertBefore(to,card.nextSibling);
+              }}
+            }}
           }}
         }},1000);
       }}
@@ -884,17 +899,11 @@ elif st.session_state.p7_phase == "battle":
     </div>''', unsafe_allow_html=True)
 
     # 답 버튼 — div id 래퍼로 색상 고정
-    if st.session_state.pop("_p7_processing", None):
-        pass  # 중복클릭 방지 클리어
     for i, ch in enumerate(cur["choices"]):
         _ch_clean = ch.split(") ",1)[-1] if ") " in ch else ch
         _bid = _btn_ids[i]
         st.markdown(f'<div id="btn-{_bid}">', unsafe_allow_html=True)
         if st.button(f"【{_btn_labels[i]}】  {_ch_clean}", key=f"p7ch{step}_{i}", use_container_width=True):
-            if st.session_state.get("_p7_processing"):
-                st.markdown('</div>', unsafe_allow_html=True)
-                continue
-            st.session_state["_p7_processing"] = True
             ok = (i == cur["answer"])
             st.session_state.p7_answers.append(ok)
             # ─── analytics 기록 ───
@@ -1042,7 +1051,7 @@ elif st.session_state.p7_phase == "battle":
             st.rerun()
             st.markdown('</div>', unsafe_allow_html=True)
 
-    # p7choiceColors 블록 삭제 — 정규식 오류로 무효, iframe이 Q3 터치 방해
+    # p7choiceColors 제거 — 정규식 오류+iframe 방해. 색상은 #btn-p7a/b/c/d CSS로 처리
 
 # ═══════════════════════════════════════
 # PHASE: VICTORY
