@@ -301,7 +301,7 @@ button[kind="primary"] p,button[kind="secondary"] p{font-size:1rem!important;}
 .p7-sent{font-size:1.05rem!important;}.p7-q{font-size:1rem!important;}
 .p7-br-s{font-size:1.1rem!important;}
 }
-.stButton button{min-height:43px!important;padding:4px 6px!important;touch-action:manipulation!important;-webkit-tap-highlight-color:transparent!important;user-select:none!important;-webkit-user-select:none!important;}
+.stButton button{min-height:43px!important;padding:4px 6px!important;}
 .stButton button p{font-size:1.0rem!important;}
 
 /* 브리핑 버튼 강제 가로배치 */
@@ -706,6 +706,9 @@ elif st.session_state.p7_phase == "battle":
       padding:0.5rem 0.8rem!important;min-height:46px!important;
       text-align:left!important;width:100%!important;
       transition:border-color .12s,box-shadow .12s!important;
+      touch-action:manipulation!important;
+      -webkit-tap-highlight-color:transparent!important;
+      user-select:none!important;-webkit-user-select:none!important;
     }
     div[data-testid="stButton"] button p{color:#8899bb!important;font-size:0.88rem!important;font-weight:700!important;}
     div[data-testid="stButton"] button:hover{border-color:rgba(100,180,255,0.7)!important;color:#aaccff!important;}
@@ -726,7 +729,9 @@ elif st.session_state.p7_phase == "battle":
     steps = data["steps"]
     cur = steps[step]
 
-    st_autorefresh(interval=1000, limit=st.session_state.p7_tsec+10, key="p7_timer")
+    # ★ 게임별 고유 키 사용 — 재시도해도 카운터 초기화됨 (Q3 클릭 버그 원인 수정)
+    _ar_key = f"p7ar_{int(st.session_state.p7_started_at)}"
+    st_autorefresh(interval=1500, limit=st.session_state.p7_tsec+20, key=_ar_key)
 
     elapsed = time.time() - st.session_state.p7_started_at
     total   = st.session_state.p7_tsec
@@ -879,10 +884,8 @@ elif st.session_state.p7_phase == "battle":
     </div>''', unsafe_allow_html=True)
 
     # 답 버튼 — div id 래퍼로 색상 고정
-    if st.session_state.get("_p7_processing"):
-        st.session_state.pop("_p7_processing")
-        st.rerun()
-
+    if st.session_state.pop("_p7_processing", None):
+        pass  # 중복클릭 방지 클리어
     for i, ch in enumerate(cur["choices"]):
         _ch_clean = ch.split(") ",1)[-1] if ") " in ch else ch
         _bid = _btn_ids[i]
@@ -1039,7 +1042,7 @@ elif st.session_state.p7_phase == "battle":
             st.rerun()
             st.markdown('</div>', unsafe_allow_html=True)
 
-    # ★ p7choiceColors 제거 — 정규식 오류+iframe 터치 방해. 버튼색상은 #btn-p7a/b/c/d CSS로 처리됨.
+    # p7choiceColors 블록 삭제 — 정규식 오류로 무효, iframe이 Q3 터치 방해
 
 # ═══════════════════════════════════════
 # PHASE: VICTORY
