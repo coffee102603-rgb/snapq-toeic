@@ -301,7 +301,7 @@ button[kind="primary"] p,button[kind="secondary"] p{font-size:1rem!important;}
 .p7-sent{font-size:1.05rem!important;}.p7-q{font-size:1rem!important;}
 .p7-br-s{font-size:1.1rem!important;}
 }
-.stButton button{min-height:43px!important;padding:4px 6px!important;}
+.stButton button{min-height:43px!important;padding:4px 6px!important;touch-action:manipulation!important;-webkit-tap-highlight-color:transparent!important;user-select:none!important;-webkit-user-select:none!important;}
 .stButton button p{font-size:1.0rem!important;}
 
 /* 브리핑 버튼 강제 가로배치 */
@@ -879,11 +879,20 @@ elif st.session_state.p7_phase == "battle":
     </div>''', unsafe_allow_html=True)
 
     # 답 버튼 — div id 래퍼로 색상 고정
+    # 중복 클릭 방지: _p7_processing 플래그
+    if st.session_state.get("_p7_processing"):
+        st.session_state.pop("_p7_processing")
+        st.rerun()
+
     for i, ch in enumerate(cur["choices"]):
         _ch_clean = ch.split(") ",1)[-1] if ") " in ch else ch
         _bid = _btn_ids[i]
         st.markdown(f'<div id="btn-{_bid}">', unsafe_allow_html=True)
         if st.button(f"【{_btn_labels[i]}】  {_ch_clean}", key=f"p7ch{step}_{i}", use_container_width=True):
+            if st.session_state.get("_p7_processing"):
+                st.markdown('</div>', unsafe_allow_html=True)
+                continue
+            st.session_state["_p7_processing"] = True
             ok = (i == cur["answer"])
             st.session_state.p7_answers.append(ok)
             # ─── analytics 기록 ───
@@ -1056,7 +1065,7 @@ elif st.session_state.p7_phase == "battle":
             }
         });
     }
-    setTimeout(p7choiceColors,100);setTimeout(p7choiceColors,300);setTimeout(p7choiceColors,600);setTimeout(p7choiceColors,1000);setInterval(p7choiceColors,500);
+    setTimeout(p7choiceColors,80);setTimeout(p7choiceColors,250);setTimeout(p7choiceColors,500);setTimeout(p7choiceColors,900);
     </script>
     """, height=0)
 

@@ -715,7 +715,7 @@ if st.session_state.sg_phase == "lobby":
         }
         setTimeout(styleNavBtns,150);setTimeout(styleNavBtns,500);setTimeout(styleNavBtns,1200);
         var ob=new MutationObserver(function(){setTimeout(styleNavBtns,100);});
-        ob.observe(window.parent.document.body,{childList:true,subtree:true,attributes:true,attributeFilter:['style']});
+        ob.observe(window.parent.document.body,{childList:true,subtree:false});
     })();
     </script>""", height=0)
 
@@ -945,6 +945,8 @@ elif st.session_state.sg_phase == "p5_exam":
         min-height:46px!important;font-size:0.9rem!important;
         font-weight:800!important;border-radius:12px!important;
         text-align:left!important;padding:0.4rem 0.9rem!important;margin:0!important;
+        touch-action:manipulation!important;-webkit-tap-highlight-color:transparent!important;
+        user-select:none!important;-webkit-user-select:none!important;
     }
     div[data-testid="stButton"] button p{font-size:0.9rem!important;font-weight:800!important;}
     """
@@ -1003,6 +1005,10 @@ elif st.session_state.sg_phase == "p5_exam":
         unsafe_allow_html=True)
 
     # ── 답 버튼 4개 — div id 래퍼 + 클릭 로직 ──
+    # 중복 클릭 방지
+    if st.session_state.get("_exam_processing"):
+        st.session_state.pop("_exam_processing")
+        st.rerun()
     _prev_result_len = len(st.session_state.sg_exam_results)
     for i, ch in enumerate(q["ch"]):
         _ch_clean = ch.split(") ",1)[-1] if ") " in ch else ch
@@ -1010,8 +1016,10 @@ elif st.session_state.sg_phase == "p5_exam":
         _eid      = _exam_cfg[i][0]
         st.markdown(f'<div id="btn-{_eid}">', unsafe_allow_html=True)
         if st.button(_display, key=f"ex_{qi}_{i}", use_container_width=True):
-            ok = (i == q["a"])
-            st.session_state.sg_exam_results.append(ok)
+            if not st.session_state.get("_exam_processing"):
+                st.session_state["_exam_processing"] = True
+                ok = (i == q["a"])
+                st.session_state.sg_exam_results.append(ok)
         st.markdown('</div>', unsafe_allow_html=True)
 
     # ── forget_logs + phase 처리 (div-래퍼 루프에서 ok가 append된 경우) ──
@@ -1779,6 +1787,8 @@ div[data-testid="stHorizontalBlock"] div[data-testid="stColumn"]{padding:0!impor
 div[data-testid="stButton"] button{
   border-radius:14px!important;font-weight:800!important;min-height:44px!important;width:100%!important;
   background:#0e1020!important;border:1.5px solid #2a2d45!important;color:#c0c8e0!important;font-size:0.9rem!important;
+  touch-action:manipulation!important;-webkit-tap-highlight-color:transparent!important;
+  user-select:none!important;-webkit-user-select:none!important;
 }
 div[data-testid="stButton"] button p{color:#c0c8e0!important;font-size:0.9rem!important;font-weight:800!important;}
 #btn-know div[data-testid="stButton"] button{background:#081a0e!important;border:2.5px solid #22dd55!important;color:#aa66ff!important;min-height:64px!important;font-size:1.05rem!important;}
@@ -2350,7 +2360,8 @@ div[data-testid="stButton"] button p{color:#c0c8e0!important;font-size:0.9rem!im
                 _c1,_c2=st.columns(2)
                 with _c1:
                     st.markdown('<div id="btn-know">', unsafe_allow_html=True)
-                    if st.button("✅  I KNOW!  석방 +1", key=f"wp_know_{_idx}", use_container_width=True):
+                    if st.button("✅  I KNOW!  석방 +1", key=f"wp_know_{_idx}", use_container_width=True) and not st.session_state.get("_wp_processing"):
+                        st.session_state["_wp_processing"] = True
                         _ri=next((i for i,x in enumerate(_pr_st["word_prison"]) if x.get("word","").lower()==_word.lower()),None)
                         if _ri is not None:
                             _ns=_streak+1

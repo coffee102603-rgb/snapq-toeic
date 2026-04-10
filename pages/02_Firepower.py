@@ -161,6 +161,10 @@ div[data-testid="stButton"] button{
   transition:box-shadow 0.15s ease,border-color 0.15s ease!important;
   transform:none!important;
   color:#ddd8c8!important;
+  touch-action:manipulation!important;
+  -webkit-tap-highlight-color:transparent!important;
+  user-select:none!important;
+  -webkit-user-select:none!important;
 }
 div[data-testid="stButton"] button p{
   font-size:1.05rem!important;font-weight:700!important;
@@ -728,7 +732,7 @@ if st.session_state.phase=="battle":
                 }
             });
         }
-        setTimeout(fpColors,100);setTimeout(fpColors,300);setTimeout(fpColors,600);setInterval(fpColors,500);
+        setTimeout(fpColors,80);setTimeout(fpColors,250);setTimeout(fpColors,500);setTimeout(fpColors,900);
         </script>""", height=0)
 
         _btn_slot = st.empty()
