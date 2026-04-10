@@ -1191,6 +1191,20 @@ elif st.session_state.p7_phase == "lost":
     }
     button[data-testid="stBaseButton-primary"] p{color:#ff4466!important;font-size:1.1rem!important;font-weight:900!important;}
     </style>''', unsafe_allow_html=True)
+    # ── 브리핑 버튼: 답한 문제 있으면 표시 (읽은 지문 복기 기회 보장) ──
+    if _ok > 0 or st.session_state.get("p7_step", 0) > 0:
+        st.markdown("""<style>
+        div[data-testid="stButton"]:nth-of-type(1) button{
+          background:#001520!important;border:2px solid #00ccee!important;
+          border-left:5px solid #00ccee!important;border-radius:12px!important;
+        }
+        div[data-testid="stButton"]:nth-of-type(1) button p{
+          color:#00ccee!important;font-size:1.0rem!important;font-weight:900!important;}
+        </style>""", unsafe_allow_html=True)
+        _answered = st.session_state.get("p7_step", len(st.session_state.get("p7_answers",[])))
+        if st.button(f"📋 브리핑 보기  ({_answered}문제 복기)", key="lost_brief", use_container_width=True):
+            st.session_state.p7_phase = "briefing"; st.rerun()
+
     if st.button("🔥 설욕전! 다시 싸운다!", type="primary", use_container_width=True):
         for k in ["p7_phase","p7_cat","p7_tsec","p7_tsec_chosen","p7_step","p7_started_at","p7_answers","p7_data","p7_phase_reason"]:
             if k in st.session_state: del st.session_state[k]
@@ -1247,6 +1261,70 @@ elif st.session_state.p7_phase == "briefing":
             if _k.startswith("br_sent_saved_") or _k.startswith("br_sv_"):
                 del st.session_state[_k]
         st.session_state["p7_br_passage_uid"] = _passage_uid
+
+        # ★ 브리핑 진입 즉시 — 오답 문장 자동 저장 (논문A 청구항1 + Krashen 1985)
+        # 오답 문장: 읽었지만 못 푼 것 → 강제 복기 대상
+        # 정답 문장: 학습자 선택 저장 유지 (자기조절 원리)
+        try:
+            import sys as _bsys, os as _bos
+            _bsys.path.insert(0, _bos.path.dirname(__file__))
+            from _word_family_db import find_words_in_sentence as _find_w_br
+            _br_storage = load_storage()
+            if "word_prison" not in _br_storage: _br_storage["word_prison"] = []
+            if "saved_expressions" not in _br_storage: _br_storage["saved_expressions"] = []
+            _cat_auto = st.session_state.get("p7_cat", "P7")
+            _br_changed = False
+            for _ai, _step_data in enumerate(steps):
+                if _ai >= len(answers): break
+                if answers[_ai]: continue  # 정답은 건너뜀 (선택저장 유지)
+                # 오답 step의 모든 문장 자동 저장
+                for _sent_auto in _step_data.get("sentences", []):
+                    if not _sent_auto or not _sent_auto.strip(): continue
+                    # saved_expressions 중복 확인
+                    _exists = any(
+                        (x.get("sentences") or [None])[0] == _sent_auto
+                        for x in _br_storage["saved_expressions"]
+                    )
+                    if not _exists:
+                        import datetime as _bdt2
+                        _exprs_auto = [
+                            e for e in _step_data.get("expressions", [])
+                            if e.get("expr") and e.get("expr","").lower() in _sent_auto.lower()
+                        ]
+                        _auto_entry = dict(_step_data)
+                        _auto_entry["sentences"] = [_sent_auto]
+                        _auto_entry["kr"] = _step_data.get("kr", "")
+                        _auto_entry["auto_saved"] = True  # 자동저장 마킹
+                        _br_storage["saved_expressions"].append(_auto_entry)
+                        # 자동저장 시 br_sent_saved 키도 True로 표시
+                        st.session_state[f"br_sent_saved_{_ai}_{_sent_auto[:20]}"] = True
+                        _br_changed = True
+                    # word_prison DB 교집합 추출
+                    _matched_auto = _find_w_br(_sent_auto, max_words=3)
+                    for _ma in _matched_auto:
+                        _wa = _ma["word"].strip()
+                        if not _wa or len(_wa) < 3: continue
+                        if any(p.get("word","").lower()==_wa.lower() for p in _br_storage["word_prison"]): continue
+                        import datetime as _bdt3
+                        _br_storage["word_prison"].append({
+                            "word":          _wa,
+                            "kr":            _ma.get("kr",""),
+                            "pos":           _ma.get("pos",""),
+                            "family_root":   _ma.get("family_root",""),
+                            "source":        "P7 자동",
+                            "sentence":      _sent_auto,
+                            "captured_date": _bdt3.datetime.now().strftime("%Y-%m-%d"),
+                            "correct_streak": 0,
+                            "last_reviewed":  None,
+                            "cat":           _cat_auto,
+                        })
+                        _br_changed = True
+            if _br_changed:
+                save_storage(_br_storage)
+                st.session_state["saved_expressions"] = _br_storage["saved_expressions"]
+        except Exception:
+            pass
+
     num_steps = min(len(steps), len(answers))
     if num_steps == 0: num_steps = 1
     # bi clamping handled by sequential mode below
@@ -1485,7 +1563,11 @@ div[data-testid="stButton"] button.br-home p{color:#3d5066!important;}
                     unsafe_allow_html=True)
 
                 _sv_key = f"br_sv_{bi}_{si}"
-                _btn_label = "📌 정보 포획! → 수용소 이송" if ok else "⛓ 오답 정보 — 자동 포획!"
+                # 오답 문장은 자동 저장됨 → 정답 문장만 수동 저장 버튼 표시
+                if not ok:
+                    st.markdown('<div style="background:#001a10;border:1px solid #225533;border-radius:8px;padding:5px 10px;font-size:0.75rem;color:#44aa66;font-weight:700;margin-bottom:4px;">⛓ 오답 문장 — 자동 저장 완료 (포로사령부 + 단어수용소)</div>', unsafe_allow_html=True)
+                    continue
+                _btn_label = "📌 정보 포획! → 수용소 이송"
                 if st.button(_btn_label, key=_sv_key, use_container_width=True):
                     sent_data = dict(s)
                     sent_data["sentences"] = [sent]
