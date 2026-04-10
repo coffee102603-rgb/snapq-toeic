@@ -1290,17 +1290,57 @@ elif st.session_state.sg_phase == "survival":
 
     # 블랭크 준비 (한 번만)
     if not st.session_state.sb_blanked:
-        # ★ 적응형 빈칸 개수 — 레벨에 따라 1~3개
+        # ★ 적응형 빈칸 — 레벨별 품사 위치 다양화 (논문A: Focus on Form 단계적 심화)
         _blank_level = st.session_state.get("puzzle_blank_level", 2)
-        _blank_count = max(1, min(3, _blank_level))  # 1~3 범위 보장
-        words=sentence.split()
-        stopwords={"the","a","an","in","on","at","to","for","of","by","with","is","are","was","were","has","have","had","be","been","that","this","it","its","and","or","but","as","if","so","not","do","did","will","shall","would","could","should","must","from","into","upon","than","then","also"}
-        candidates=[w.strip(".,!?;:()") for w in words if w.strip(".,!?;:()").lower() not in stopwords and len(w.strip(".,!?;:()"))>=3]
-        rng=random.Random(hash(sentence))
-        rng.shuffle(candidates)
-        blank_words=candidates[:_blank_count] if len(candidates)>=_blank_count else candidates
+        _blank_count = max(1, min(3, _blank_level))
+        words = sentence.split()
+        rng = random.Random(hash(sentence))
+
+        # 품사 분류 기준 단어 목록
+        _VERBS = {"confirm","provide","submit","request","require","inform","ensure","schedule","complete","review","process","prepare","attend","contact","receive","send","update","arrange","discuss","include","attach","follow","check","address","apply","deliver","conduct","establish","maintain","manage","improve","develop","indicate","support","offer","allow","extend","refer","determine","proceed","notify","resolve","approve","coordinate","participate","demonstrate","present","assist","recommend","announce","register","respond","continue","increase","reduce","note","find","make","take","give","hold","place","set","use","need","want","work","help","keep","start","end","meet","pay","call","ask","try","plan"}
+        _FUNC_WORDS = {"however","therefore","moreover","furthermore","consequently","nevertheless","additionally","accordingly","specifically","particularly","generally","recently","currently","typically","primarily","significantly","immediately","approximately","carefully","directly","effectively","efficiently","previously","temporarily","usually","normally","frequently","mainly","largely","strongly","clearly","highly","greatly","fully","properly","briefly","closely","regularly","consistently","actively","recently","nearly","almost","quite","rather","already","still","even","just","also","only","always","never","often","sometimes","soon","now","here","there","yet","once","twice"}
+
+        def _pos_group(w):
+            clean = w.strip(".,!?;:()")
+            cl = clean.lower()
+            if cl in _FUNC_WORDS: return "func"
+            if cl in _VERBS: return "verb"
+            if len(clean) >= 4 and clean[0].isupper() and not words.index(w) == 0: return "noun"
+            if len(clean) >= 5 and cl not in {"their","these","those","where","which","while","about","after","before","under","above","below","among","other","every","first","second","third","would","could","should","might"}: return "noun"
+            return None
+
+        # 레벨별 빈칸 품사 전략
+        _nouns = [w.strip(".,!?;:()") for w in words if _pos_group(w) == "noun"]
+        _verbs = [w.strip(".,!?;:()") for w in words if _pos_group(w) == "verb"]
+        _funcs = [w.strip(".,!?;:()") for w in words if _pos_group(w) == "func"]
+        rng.shuffle(_nouns); rng.shuffle(_verbs); rng.shuffle(_funcs)
+
+        blank_words = []
+        if _blank_level == 1:
+            # 🟢 기초: 명사 1개 (문맥 유추 가능 — 가장 쉬움)
+            blank_words = (_nouns[:1] or _verbs[:1])
+        elif _blank_level == 2:
+            # 🟡 표준: 명사 1개 + 동사 1개 (구조 파악 필요)
+            blank_words = (_nouns[:1] + _verbs[:1])
+            if len(blank_words) < 2:
+                # 동사 없으면 명사 2개
+                blank_words = _nouns[:2]
+        else:
+            # 🔴 심화: 명사 + 동사 + 기능어/부사 (형태 초점 최고 난이도)
+            blank_words = (_nouns[:1] + _verbs[:1] + _funcs[:1])
+            if len(blank_words) < 3:
+                # 기능어 없으면 명사+동사+명사
+                blank_words = (_nouns[:1] + _verbs[:1] + _nouns[1:2])
+            if len(blank_words) < 2:
+                blank_words = _nouns[:3]
+
+        # 후보 부족 시 폴백 (기존 방식)
         if not blank_words:
-            blank_words=[w.strip(".,!?;:()") for w in words if len(w.strip(".,!?;:()"))>=3][:_blank_count]
+            stopwords = {"the","a","an","in","on","at","to","for","of","by","with","is","are","was","were","has","have","had","be","been","that","this","it","its","and","or","but","as","if","so","not","do","did","will","shall","would","could","should","must","from","into","upon","than","then","also"}
+            blank_words = [w.strip(".,!?;:()") for w in words if w.strip(".,!?;:()").lower() not in stopwords and len(w.strip(".,!?;:()")) >= 3]
+            rng.shuffle(blank_words)
+            blank_words = blank_words[:_blank_count]
+        blank_words = blank_words[:_blank_count]  # 최대 개수 보장
         blanked=sentence
         border=[]
         for bw in blank_words:
@@ -1334,7 +1374,7 @@ elif st.session_state.sg_phase == "survival":
 
     # ── 헤더 ──
     _cur_lv = st.session_state.get("puzzle_blank_level", 2)
-    _lv_label = ["", "🟢 기초(빈칸 1개)", "🟡 표준(빈칸 2개)", "🔴 심화(빈칸 3개)"][_cur_lv]
+    _lv_label = ["", "🟢 기초(명사 1개)", "🟡 표준(명사+동사)", "🔴 심화(명사+동사+부사)"][_cur_lv]
     st.markdown(f'''<div style="background:#150830;border:1.5px solid #8833ff;border-radius:14px;padding:8px 14px;text-align:center;margin-bottom:8px;">
         <div style="font-size:0.95rem;font-weight:700;color:#aa66ff;">📖 문장 퍼즐 배틀</div>
         <div style="font-size:0.8rem;color:#aaa;margin-top:2px;">{idx+1} / {total} 문장 &nbsp;|&nbsp; {_lv_label}</div>
