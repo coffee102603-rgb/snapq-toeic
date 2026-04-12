@@ -646,11 +646,8 @@ if st.session_state.phase=="battle":
             st.session_state.phase="lost"; st.rerun()
         st.markdown('</div>', unsafe_allow_html=True)
 
-    # ── 문제 카드 ──
-    st.markdown(f'<div class="qb qb-{th}"><div class="qc qc-{th}">{ej} {tn} · {q.get("cat","")}</div><div class="qt">{fq(q["text"])}</div></div>', unsafe_allow_html=True)
-
     # ── 답 버튼 4개 — A/B/C/D 네온 스타일 ──
-    # iOS 2-phase rerun fix
+    # iOS 2-phase rerun fix (문제 카드 렌더링 전에 처리해야 겹침 방지)
     if st.session_state.get("_fp_processing"):
         st.session_state.pop("_fp_processing")
         if st.session_state.wrong>=2:
@@ -690,6 +687,9 @@ if st.session_state.phase=="battle":
             except Exception:
                 pass
         st.rerun()
+
+    # ── 문제 카드 ──
+    st.markdown(f'<div class="qb qb-{th}"><div class="qc qc-{th}">{ej} {tn} · {q.get("cat","")}</div><div class="qt">{fq(q["text"])}</div></div>', unsafe_allow_html=True)
 
     if not st.session_state.ans:
         _qi = st.session_state.get('qi', 0)
