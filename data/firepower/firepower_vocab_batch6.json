@@ -3132,35 +3132,6 @@
     ]
   },
   {
-    "id": "VOCAB_734",
-    "category": "VOCAB",
-    "cat": "문맥어휘",
-    "word_count": 16,
-    "diff": "hard",
-    "sentence": "The initiative was designed to _______ the community's _______ by improving access to affordable housing.",
-    "choices": [
-      "(A) enhance/wellbeing",
-      "(B) endure/welfare",
-      "(C) eliminate/working",
-      "(D) ensure/wording"
-    ],
-    "answer": 0,
-    "answer_word": "enhance/wellbeing",
-    "explanation_kr": "저렴한 주택 접근성 향상으로 지역 사회의 '웰빙을 향상시키다' → enhance wellbeing! endure=견디다, eliminate=제거하다, ensure=보장하다.",
-    "explanation": "enhance wellbeing = improve the quality of life in the community.",
-    "kr": "계획은 저렴한 주택 접근성을 향상시킴으로써 지역 사회의 웰빙을 향상시키도록 설계되었다.",
-    "expressions": [
-      {
-        "expr": "enhance wellbeing",
-        "meaning": "웰빙을 향상시키다"
-      },
-      {
-        "expr": "wellbeing = quality of life = welfare",
-        "meaning": "웰빙/복지!"
-      }
-    ]
-  },
-  {
     "id": "VOCAB_735",
     "category": "VOCAB",
     "cat": "문맥어휘",

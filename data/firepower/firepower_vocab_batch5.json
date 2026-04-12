@@ -2784,35 +2784,6 @@
     ]
   },
   {
-    "id": "VOCAB_597",
-    "category": "VOCAB",
-    "cat": "혼동어휘",
-    "word_count": 13,
-    "diff": "normal",
-    "sentence": "The regulation requires that companies _______ the total quantity and _______ of materials used.",
-    "choices": [
-      "(A) quality / quantity",
-      "(B) quantity / quantity",
-      "(C) quantity / quality",
-      "(D) quality / quality"
-    ],
-    "answer": 2,
-    "answer_word": "quantity / quality",
-    "explanation_kr": "총 '수량(quantity)'과 '품질(quality)'을 보고하도록 요구 → quantity / quality! 문맥상 수량을 먼저, 품질을 나중에 언급.",
-    "explanation": "quantity = how much. quality = how good. The sentence lists total amount first, then standard.",
-    "kr": "규정은 회사들이 사용된 재료의 총 수량과 품질을 보고하도록 요구한다.",
-    "expressions": [
-      {
-        "expr": "quantity (수량) vs quality (품질)",
-        "meaning": "토익 빈출 혼동어휘!"
-      },
-      {
-        "expr": "total quantity and quality",
-        "meaning": "총 수량과 품질!"
-      }
-    ]
-  },
-  {
     "id": "VOCAB_598",
     "category": "VOCAB",
     "cat": "혼동어휘",

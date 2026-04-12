@@ -2634,35 +2634,6 @@
     ]
   },
   {
-    "id": "GRM_466",
-    "category": "GRAMMAR",
-    "cat": "도치",
-    "word_count": 16,
-    "diff": "normal",
-    "sentence": "So rapidly _______ the artificial intelligence sector that new job roles _______ being created faster than universities could train graduates.",
-    "choices": [
-      "(A) grew the sector / was",
-      "(B) the sector has grown / is",
-      "(C) the sector grew / were",
-      "(D) has the sector grown / are"
-    ],
-    "answer": 3,
-    "answer_word": "has the sector grown / are",
-    "explanation": "So rapidly 문두 → 현재완료 도치 has + the sector + grown.",
-    "explanation_kr": "So rapidly 도치! 현재완료로 급성장 표현! has + the sector + grown! AI 섹터가 너무 빠르게 성장했다는 거야~",
-    "kr": "인공지능 섹터가 너무 빠르게 성장하여 대학이 졸업생을 배출하는 것보다 빠르게 새로운 직업 역할이 만들어지고 있다.",
-    "expressions": [
-      {
-        "expr": "so rapidly has + 주어 + p.p.",
-        "meaning": "So 도치 + 현재완료!"
-      },
-      {
-        "expr": "artificial intelligence sector",
-        "meaning": "인공지능 섹터"
-      }
-    ]
-  },
-  {
     "id": "GRM_467",
     "category": "GRAMMAR",
     "cat": "도치",
