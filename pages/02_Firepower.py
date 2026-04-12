@@ -255,39 +255,14 @@ summary{color:#aaa!important;font-weight:700!important;}
 """, unsafe_allow_html=True)
 
 # ═══ 문제 ═══
-GQ=[
-{"id":"G1","word_count":13,"diff":"easy","text":"All employees _______ to attend the safety training session scheduled for next Monday.","ch":["(A) require","(B) are required","(C) requiring","(D) has required"],"a":1,"ex":"주어 'All employees'는 복수+수동태 → 'are required'가 정답. require(능동)는 목적어 필요, has required는 수 불일치.","exk":"쉽게: '직원들이 요구된다'니까 수동태! 복수 주어니까 are!","cat":"수동태/수일치","kr":"모든 직원들은 다음 월요일로 예정된 안전 교육 세션에 참석하도록 요구된다."},
-{"id":"G2","word_count":10,"diff":"easy","text":"The manager suggested that the report _______ submitted by Friday.","ch":["(A) is","(B) be","(C) was","(D) will be"],"a":1,"ex":"suggest 뒤 that절 → (should)+동사원형. 'be submitted'가 정답.","exk":"쉽게: suggest(제안) 뒤에는 항상 동사원형! should가 숨어있다고 생각!","cat":"가정법/당위","kr":"매니저는 그 보고서가 금요일까지 제출되어야 한다고 제안했다."},
-{"id":"G3","word_count":11,"diff":"easy","text":"_______ the budget has been approved, the project can begin immediately.","ch":["(A) Now that","(B) In case","(C) So that","(D) Even if"],"a":0,"ex":"'Now that~'='~이므로'. 예산 승인→프로젝트 시작 인과관계.","exk":"쉽게: '이제 ~했으니까'라는 뜻! 원인→결과 연결!","cat":"접속사","kr":"예산이 승인되었으므로, 프로젝트는 즉시 시작될 수 있다."},
-{"id":"G4","word_count":13,"diff":"easy","text":"Neither the supervisor nor the team members _______ aware of the policy change.","ch":["(A) is","(B) was","(C) were","(D) has been"],"a":2,"ex":"Neither A nor B → B에 수 일치. B=team members(복수) → 'were'","exk":"쉽게: neither nor에서는 뒤쪽(B)에 맞추기! members=복수 → were!","cat":"수일치","kr":"상사도 팀원들도 정책 변경을 알지 못했다."},
-{"id":"G5","word_count":11,"diff":"easy","text":"The equipment, along with all the spare parts, _______ shipped yesterday.","ch":["(A) were","(B) have been","(C) was","(D) are"],"a":2,"ex":"'along with'는 주어 불포함. 주어=equipment(단수) → 'was'","exk":"쉽게: along with는 무시! 진짜 주어만 보기! equipment=단수 → was!","cat":"수일치","kr":"그 장비는 모든 여분 부품과 함께 어제 배송되었다."},
-{"id":"G6","word_count":13,"diff":"easy","text":"Ms. Kim is responsible for _______ that all invoices are processed on time.","ch":["(A) ensure","(B) ensuring","(C) ensured","(D) to ensure"],"a":1,"ex":"전치사 for 뒤 → 동명사(-ing). 'ensuring'이 정답.","exk":"쉽게: for 다음에는 ~ing! 전치사+동명사 공식!","cat":"동명사/준동사","kr":"김 씨는 모든 송장이 제때 처리되는 것을 보장할 책임이 있다."},
-{"id":"G7","word_count":10,"diff":"easy","text":"Had the shipment arrived on time, we _______ the deadline.","ch":["(A) will meet","(B) would meet","(C) would have met","(D) had met"],"a":2,"ex":"Had+S+p.p.=가정법 과거완료 도치 → 주절 would have+p.p.","exk":"쉽게: Had로 시작=과거 가정법! → would have p.p.가 짝꿍!","cat":"가정법","kr":"만약 배송이 제때 도착했더라면, 우리는 마감을 맞출 수 있었을 텐데."},
-{"id":"G8","word_count":9,"diff":"easy","text":"The number of participants _______ increased significantly this year.","ch":["(A) have","(B) has","(C) are","(D) were"],"a":1,"ex":"'The number of~'=단수 → 'has'","exk":"쉽게: The number of=그 수(하나) → 단수! A number of=많은 → 복수! 구별!","cat":"수일치","kr":"참가자의 수가 올해 크게 증가했다."},
-{"id":"G9","word_count":12,"diff":"easy","text":"_______ reviewed the contract, the lawyer found several clauses that needed revision.","ch":["(A) Having","(B) Have","(C) Had","(D) To have"],"a":0,"ex":"분사구문 앞선 시제 → Having+p.p.","exk":"쉽게: 먼저 한 일+나중 한 일 → Having이 '먼저'를 표시!","cat":"분사구문","kr":"계약서를 검토한 후, 변호사는 수정이 필요한 여러 조항을 발견했다."},
-{"id":"G10","word_count":11,"diff":"easy","text":"It is essential that every employee _______ the new security protocol.","ch":["(A) follows","(B) follow","(C) following","(D) followed"],"a":1,"ex":"It is essential that+S+(should) 동사원형 → 'follow'","exk":"쉽게: essential(필수적) 뒤에도 동사원형! suggest랑 같은 규칙!","cat":"가정법/당위","kr":"모든 직원이 새 보안 프로토콜을 따르는 것이 필수적이다."},
-{"id":"G11","word_count":12,"diff":"easy","text":"The CEO, _______ founded the company in 2005, announced her retirement today.","ch":["(A) who","(B) whom","(C) which","(D) whose"],"a":0,"ex":"관계대명사 주어 역할 → 주격 'who'. 사람 → which 불가.","exk":"쉽게: 빈칸 뒤에 바로 동사(founded) → 주격 who! 사람이니까 which 안 됨!","cat":"관계대명사","kr":"2005년에 회사를 설립한 CEO가 오늘 은퇴를 발표했다."},
-{"id":"G12","word_count":12,"diff":"easy","text":"Not until the final report is submitted _______ begin the evaluation process.","ch":["(A) we can","(B) we will","(C) can we","(D) will"],"a":2,"ex":"Not until~ 문두 → 주절 도치 → 'can we'","exk":"쉽게: Not until이 앞에 오면 뒤집기! can+we 순서!","cat":"도치","kr":"최종 보고서가 제출될 때까지는 평가 과정을 시작할 수 없다."},
-{"id":"G13","word_count":13,"diff":"easy","text":"The policies _______ by the board last week will take effect next month.","ch":["(A) approve","(B) approving","(C) approved","(D) to approve"],"a":2,"ex":"명사 수식 수동 → 과거분사 approved","exk":"쉽게: 정책이 승인되는 것이니 수동! approved!","cat":"수동태/수일치","kr":"지난주 이사회에 의해 승인된 정책들은 다음 달부터 효력을 발휘할 것이다."},
-{"id":"G14","word_count":11,"diff":"easy","text":"A number of employees _______ volunteered to work overtime this week.","ch":["(A) has","(B) have","(C) is","(D) was"],"a":1,"ex":"A number of=많은 → 복수 → have","exk":"쉽게: A number of=여러 명→복수! The number of=그 수→단수!","cat":"수일치","kr":"많은 직원들이 이번 주 초과 근무를 자원했다."},
-{"id":"G15","word_count":14,"diff":"easy","text":"If the company _______ more staff last year, the project would have been completed.","ch":["(A) hired","(B) had hired","(C) would hire","(D) has hired"],"a":1,"ex":"가정법 과거완료 → if절 had+p.p.","exk":"쉽게: 과거 못한 일 가정 → if절에 had p.p.!","cat":"가정법","kr":"회사가 작년에 직원을 더 채용했더라면 프로젝트가 완료되었을 것이다."},
-{"id":"G16","word_count":9,"diff":"easy","text":"Only after the meeting ended _______ the final decision.","ch":["(A) they announced","(B) announced they","(C) did they announce","(D) they did announce"],"a":2,"ex":"Only after~ 문두 도치 → did+주어+동사원형","exk":"쉽게: Only로 시작하면 뒤집기! did+they+announce!","cat":"도치","kr":"회의가 끝난 후에야 그들은 최종 결정을 발표했다."},
-{"id":"G17","word_count":12,"diff":"easy","text":"The contractor, _______ proposal was accepted last week, will start work Monday.","ch":["(A) who","(B) whom","(C) whose","(D) which"],"a":2,"ex":"빈칸 뒤 명사(proposal) → 소유격 관계대명사 whose","exk":"쉽게: 빈칸 뒤에 명사 바로 오면 whose!","cat":"관계대명사","kr":"지난주 제안서가 채택된 계약업체가 월요일에 작업을 시작할 것이다."},
-{"id":"G18","word_count":12,"diff":"easy","text":"_______ the construction noise, the staff managed to concentrate on their work.","ch":["(A) Despite","(B) Although","(C) However","(D) Because of"],"a":0,"ex":"빈칸 뒤 명사구 → 전치사 Despite","exk":"쉽게: Despite 뒤=명사! Although 뒤=주어+동사!","cat":"접속사","kr":"공사 소음에도 불구하고 직원들은 업무에 집중할 수 있었다."},
-{"id":"G19","word_count":14,"diff":"easy","text":"The report _______ by the committee before the deadline was praised by the board.","ch":["(A) submit","(B) submitting","(C) submitted","(D) to submit"],"a":2,"ex":"명사 수식 수동 → 과거분사 submitted","exk":"쉽게: 보고서가 제출된 것 → 수동! submitted!","cat":"수동태/수일치","kr":"마감 전에 위원회에 의해 제출된 보고서는 이사회의 칭찬을 받았다."},
-{"id":"G20","word_count":12,"diff":"easy","text":"Not only _______ the project on time, but they also exceeded expectations.","ch":["(A) they completed","(B) did they complete","(C) they did complete","(D) completed they"],"a":1,"ex":"Not only~ 문두 도치 → did+주어+동사원형","exk":"쉽게: Not only가 앞에 오면 뒤집기! did+they+complete!","cat":"도치","kr":"그들은 프로젝트를 제때 완료했을 뿐만 아니라 기대를 초과했다."},
-{"id":"G21","word_count":10,"diff":"easy","text":"The employee _______ performance has improved significantly received a bonus.","ch":["(A) who","(B) whom","(C) whose","(D) which"],"a":2,"ex":"빈칸 뒤 명사(performance) → 소유격 whose","exk":"쉽게: 뒤에 명사 바로 오면 whose!","cat":"관계대명사","kr":"성과가 크게 향상된 직원은 보너스를 받았다."},
-{"id":"G22","word_count":11,"diff":"easy","text":"_______ she had more experience, she might have gotten the promotion.","ch":["(A) If","(B) Unless","(C) Had","(D) Since"],"a":2,"ex":"Had+S → 가정법 과거완료 도치","exk":"쉽게: Had로 시작=과거 가정법 도치!","cat":"가정법","kr":"그녀가 더 많은 경험이 있었다면 승진했을 것이다."},
-{"id":"G23","word_count":10,"diff":"easy","text":"The team is proud of _______ the project under budget.","ch":["(A) complete","(B) completed","(C) having completed","(D) to complete"],"a":2,"ex":"전치사 of 뒤 + 완료 → having+p.p.","exk":"쉽게: of 뒤=동명사! 이미 완료된 일=having completed!","cat":"동명사/준동사","kr":"팀은 예산 내에서 프로젝트를 완료한 것을 자랑스러워한다."},
-{"id":"G24","word_count":12,"diff":"easy","text":"_______ all the data, the analyst presented her findings to the board.","ch":["(A) Having reviewed","(B) Have reviewed","(C) Reviewed","(D) To reviewing"],"a":0,"ex":"앞선 동작 분사구문 → Having+p.p.","exk":"쉽게: 먼저 한 일+나중 한 일 → Having p.p.가 먼저!","cat":"분사구문","kr":"모든 데이터를 검토한 후 분석가는 이사회에 결과를 발표했다."},
-]
+GQ=[]
 
 # ═══ GRAMMAR BATCH JSON 자동 로드 ═══
 import glob as _glob
 
 def _load_grammar_batches() -> list:
     """data/ 폴더의 firepower_grammar_batch*.json 전부 읽어서 GQ 포맷으로 변환"""
-    DATA_DIR = os.path.join(os.path.dirname(os.path.dirname(__file__)), "data")
+    DATA_DIR = os.path.join(os.path.dirname(os.path.dirname(__file__)), "data", "firepower")
     batch_files = sorted(_glob.glob(os.path.join(DATA_DIR, "firepower_grammar_batch*.json")))
     loaded = []
     existing_ids = {q["id"] for q in GQ}
@@ -325,7 +300,7 @@ FQ = []  # Form Questions
 
 def _load_form_batches() -> list:
     """data/ 폴더의 firepower_form_batch*.json 전부 읽어서 FQ 포맷으로 변환"""
-    DATA_DIR = os.path.join(os.path.dirname(os.path.dirname(__file__)), "data")
+    DATA_DIR = os.path.join(os.path.dirname(os.path.dirname(__file__)), "data", "firepower")
     batch_files = sorted(_glob.glob(os.path.join(DATA_DIR, "firepower_form_batch*.json")))
     loaded = []
     existing_ids = set()
@@ -361,7 +336,7 @@ LQ = []
 
 def _load_link_batches() -> list:
     """data/ 폴더의 firepower_link_batch*.json 읽어서 LQ 로 변환"""
-    DATA_DIR = os.path.join(os.path.dirname(os.path.dirname(__file__)), "data")
+    DATA_DIR = os.path.join(os.path.dirname(os.path.dirname(__file__)), "data", "firepower")
     batch_files = sorted(_glob.glob(os.path.join(DATA_DIR, "firepower_link_batch*.json")))
     loaded = []
     seen = set()
@@ -399,7 +374,7 @@ VQ = []
 
 def _load_vocab_batches() -> list:
     """data/ 폴더의 firepower_vocab_batch*.json 읽어서 VQ 로 변환"""
-    DATA_DIR = os.path.join(os.path.dirname(os.path.dirname(__file__)), "data")
+    DATA_DIR = os.path.join(os.path.dirname(os.path.dirname(__file__)), "data", "firepower")
     batch_files = sorted(_glob.glob(os.path.join(DATA_DIR, "firepower_vocab_batch*.json")))
     loaded = []
     seen = set()
