@@ -641,10 +641,23 @@ if st.session_state.phase=="battle":
         if rem<=0:
             st.session_state.phase="lost"; st.rerun()
         # 숨겨진 타임아웃 버튼 (JS 타이머가 0이 되면 자동 클릭)
-        st.markdown('<div style="height:0;overflow:hidden;">', unsafe_allow_html=True)
+        st.markdown('<div id="btn-timeout" style="position:absolute;left:-9999px;">', unsafe_allow_html=True)
         if st.button("TIMEOUT", key="timeout_btn"):
             st.session_state.phase="lost"; st.rerun()
         st.markdown('</div>', unsafe_allow_html=True)
+        import streamlit.components.v1 as _to_js
+        _to_js.html("""<script>
+        setTimeout(function(){
+            var d=window.parent.document;
+            var btns=d.querySelectorAll('button');
+            btns.forEach(function(b){
+                if((b.innerText||'').indexOf('TIMEOUT')>-1){
+                    b.parentElement.style.position='absolute';
+                    b.parentElement.style.left='-9999px';
+                }
+            });
+        },120);
+        </script>""", height=0)
 
     # ── 답 버튼 4개 — A/B/C/D 네온 스타일 ──
     # iOS 2-phase rerun fix (문제 카드 렌더링 전에 처리해야 겹침 방지)
