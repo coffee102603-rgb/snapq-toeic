@@ -67,10 +67,11 @@ import _storage
 # ═══ STORAGE PATH ═══
 STORAGE_FILE = _storage.STORAGE_FILE  # 단일 경로 통일
 
-def load_storage():
+def load_storage() -> dict:
+    """storage_data.json 로드 → dict 반환."""
     return _storage.load()
 
-def save_to_storage(items):
+def save_to_storage(items: list) -> None:
     data = _storage.load()
     existing = data.get("saved_questions", [])
     ids = {x["id"] for x in existing if isinstance(x, dict) and "id" in x}
@@ -86,8 +87,15 @@ def save_to_storage(items):
 # IRB 승인 전: _storage.RESEARCH_PHASE = "pre_irb"
 # IRB 승인 후: _storage.py 에서 "post_irb" 로 한 번만 변경하면 전 파일 동시 적용
 
-def _classify_error_timing(seconds_remaining, timer_setting):
-    """타이머 잔여시간 비율 → fast/mid/slow 자동 분류 (특허 3순위 핵심)"""
+def _classify_error_timing(seconds_remaining: float, timer_setting: float) -> str:
+    """타이머 잔여시간 비율 → fast/mid/slow 자동 분류 (특허 B-3 핵심).
+
+    Args:
+        seconds_remaining: 남은 시간(초)
+        timer_setting: 총 제한시간(초)
+    Returns:
+        "fast_wrong" | "mid_wrong" | "slow_wrong" | "unknown"
+    """
     if timer_setting <= 0:
         return "unknown"
     ratio = seconds_remaining / timer_setting
@@ -108,6 +116,10 @@ st.markdown("""
 section[data-testid="stSidebar"]{display:none!important;}
 header[data-testid="stHeader"]{background:transparent!important;height:0!important;min-height:0!important;overflow:hidden!important;}
 .block-container{padding-top:0!important;padding-bottom:0!important;margin-top:-8px!important;}
+
+/* ── iframe 클릭 차단 방지 — components.html이 버튼을 덮지 않도록 ── */
+iframe[height="0"]{pointer-events:none!important;position:absolute!important;}
+div[data-testid="stButton"]{position:relative;z-index:10!important;}
 
 /* ── 타이틀 헤더 ── */
 .ah{text-align:center;padding:0;margin:0 0 2px 0;line-height:1;}
@@ -273,7 +285,7 @@ GQ=[
 # ═══ GRAMMAR BATCH JSON 자동 로드 ═══
 import glob as _glob
 
-def _load_grammar_batches():
+def _load_grammar_batches() -> list:
     """data/ 폴더의 firepower_grammar_batch*.json 전부 읽어서 GQ 포맷으로 변환"""
     DATA_DIR = os.path.join(os.path.dirname(os.path.dirname(__file__)), "data")
     batch_files = sorted(_glob.glob(os.path.join(DATA_DIR, "firepower_grammar_batch*.json")))
@@ -311,7 +323,7 @@ GQ.extend(_load_grammar_batches())
 # ═══ FORM BATCH JSON 자동 로드 ═══
 FQ = []  # Form Questions
 
-def _load_form_batches():
+def _load_form_batches() -> list:
     """data/ 폴더의 firepower_form_batch*.json 전부 읽어서 FQ 포맷으로 변환"""
     DATA_DIR = os.path.join(os.path.dirname(os.path.dirname(__file__)), "data")
     batch_files = sorted(_glob.glob(os.path.join(DATA_DIR, "firepower_form_batch*.json")))
@@ -347,7 +359,7 @@ FQ.extend(_load_form_batches())
 # ═══ LINK BATCH JSON 로딩 ═══
 LQ = []
 
-def _load_link_batches():
+def _load_link_batches() -> list:
     """data/ 폴더의 firepower_link_batch*.json 읽어서 LQ 로 변환"""
     DATA_DIR = os.path.join(os.path.dirname(os.path.dirname(__file__)), "data")
     batch_files = sorted(_glob.glob(os.path.join(DATA_DIR, "firepower_link_batch*.json")))
@@ -385,7 +397,7 @@ LQ.extend(_load_link_batches())
 # ═══ VOCAB BATCH JSON 로딩 ═══
 VQ = []
 
-def _load_vocab_batches():
+def _load_vocab_batches() -> list:
     """data/ 폴더의 firepower_vocab_batch*.json 읽어서 VQ 로 변환"""
     DATA_DIR = os.path.join(os.path.dirname(os.path.dirname(__file__)), "data")
     batch_files = sorted(_glob.glob(os.path.join(DATA_DIR, "firepower_vocab_batch*.json")))
@@ -438,7 +450,9 @@ if st.session_state.get("_p5_just_left", False):
     st.session_state.tsec = 30
     st.session_state.tsec_chosen = False
 
-def pool(m): return GQ if m=="grammar" else FQ if m=="form" else LQ if m=="link" else VQ if m=="vocab" else LQ+VQ
+def pool(m: str) -> list:
+    """모드별 문제 풀 반환 (grammar/form/link/vocab)."""
+    return GQ if m=="grammar" else FQ if m=="form" else LQ if m=="link" else VQ if m=="vocab" else LQ+VQ
 FORM_CATS=["명사형","형용사형","부사형","동사형","분사형","FORM"]
 GRP={
     # g1 = GRAMMAR
@@ -456,7 +470,7 @@ GRP["g3"] = ["전치사","접속사","접속부사","LINK"]
 
 VGRP={"v1":"easy","v2":"hard"}
 
-def _calc_adp_level():
+def _calc_adp_level() -> str:
     """
     즉시 전환 방식: 1문제 결과로 바로 난이도 변경
     word_count 기준 — easy:≤15 / normal:16-19 / hard:20-23
@@ -476,7 +490,15 @@ def _calc_adp_level():
         if cur == "normal": return "easy"
         return "easy"
 
-def pick5(m, grp=None):
+def pick5(m: str, grp: str | None = None) -> list:
+    """적응형 난이도 적용하여 5문제 선택 (특허 A-3 핵심).
+
+    Args:
+        m: 모드 ("grammar" | "form" | "link" | "vocab")
+        grp: 그룹 코드 ("g1"~"g4", "v1"~"v4" 등)
+    Returns:
+        선택된 5문제 리스트
+    """
     # ── FORM 모드(g2): FQ 풀 사용 ──
     if grp == "g2":
         p = FQ if FQ else pool(m)
@@ -547,8 +569,12 @@ def pick5(m, grp=None):
     for q in chosen: st.session_state.used.append(q["id"]); q["tp"]=q.get("tp","grammar") if q.get("tp") in ("grammar","form","link","vocab") else (grp or ("grammar" if q["id"].startswith("G") else "vocab"))
     return chosen
 
-def fq(t): return t.replace("_______",'<span class="qk">________</span>')
-def tcls(r,t):
+def fq(t: str) -> str:
+    """문제 문장의 빈칸을 HTML 하이라이트로 교체."""
+    return t.replace("_______",'<span class="qk">________</span>')
+
+def tcls(r: int, t: int) -> str:
+    """정답률 기반 CSS 클래스 반환 (safe/warn/danger/critical)."""
     x=r/t if t>0 else 0
     return "safe" if x>0.6 else "warn" if x>0.35 else "danger" if x>0.15 else "critical"
 
@@ -591,7 +617,6 @@ if st.session_state.phase=="battle":
 
     # ── 타이머 ──
     if not st.session_state.ans:
-        st_autorefresh(interval=1000, limit=st.session_state.tsec+5, key="battle_timer")
         elapsed=time.time()-st.session_state.qst
         total=st.session_state.tsec; rem=max(0,total-int(elapsed))
         tcl=tcls(rem,total); pct=rem/total*100 if total>0 else 0
@@ -621,7 +646,7 @@ if st.session_state.phase=="battle":
           <div id="bw"><div id="b" class="b{'s' if tcl=='safe' else 'w' if tcl=='warn' else 'd' if tcl=='danger' else 'c'}" style="width:{pct}%"></div></div>
         </div>
         <script>
-        var l={rem},t={total};
+        var l={rem},t={total},fired=false;
         var e=document.getElementById("n"),b=document.getElementById("b");
         setInterval(function(){{
             l--;if(l<0)l=0;
@@ -631,11 +656,20 @@ if st.session_state.phase=="battle":
             e.className=c;
             b.className="b"+(r>0.6?"s":r>0.35?"w":r>0.15?"d":"c");
             b.style.width=(r*100)+"%";
+            if(l<=0 && !fired){{fired=true;
+              var btns=window.parent.document.querySelectorAll('button');
+              btns.forEach(function(btn){{if((btn.innerText||'').indexOf('TIMEOUT')>-1)btn.click();}});
+            }}
         }},1000);
         </script>""", height=52)
 
         if rem<=0:
             st.session_state.phase="lost"; st.rerun()
+        # 숨겨진 타임아웃 버튼 (JS 타이머가 0이 되면 자동 클릭)
+        st.markdown('<div style="height:0;overflow:hidden;">', unsafe_allow_html=True)
+        if st.button("TIMEOUT", key="timeout_btn"):
+            st.session_state.phase="lost"; st.rerun()
+        st.markdown('</div>', unsafe_allow_html=True)
 
     # ── 문제 카드 ──
     st.markdown(f'<div class="qb qb-{th}"><div class="qc qc-{th}">{ej} {tn} · {q.get("cat","")}</div><div class="qt">{fq(q["text"])}</div></div>', unsafe_allow_html=True)
@@ -816,28 +850,20 @@ if st.session_state.phase=="battle":
         _correct_idx = q['a']
         _ok = (_sel == _correct_idx)
         if _ok:
-            components.html("""
-            <style>
-            *{margin:0;padding:0;box-sizing:border-box;}
-            body{background:transparent;display:flex;align-items:center;justify-content:center;height:60px;}
-            @keyframes popIn{0%{transform:scale(0.5);opacity:0;}60%{transform:scale(1.15);}100%{transform:scale(1);opacity:1;}}
-            .hit{font-family:'Arial Black',sans-serif;font-size:1.6rem;font-weight:900;color:#44FF88;
-              text-shadow:0 0 20px #44FF88,0 0 50px #22cc66;letter-spacing:4px;
-              animation:popIn 0.4s cubic-bezier(0.34,1.56,0.64,1) forwards;}
-            </style>
-            <div class="hit">💥 격파!</div>""", height=60)
+            st.markdown(
+                '<div style="text-align:center;padding:12px 0;">'
+                '<span style="font-family:Arial Black,sans-serif;font-size:1.6rem;font-weight:900;'
+                'color:#44FF88;text-shadow:0 0 20px #44FF88,0 0 50px #22cc66;letter-spacing:4px;">'
+                '💥 격파!</span></div>', unsafe_allow_html=True)
         else:
             _ans_text = q['ch'][_correct_idx]
-            components.html(f"""
-            <style>
-            *{{margin:0;padding:0;box-sizing:border-box;}}
-            body{{background:transparent;display:flex;align-items:center;justify-content:center;height:60px;}}
-            @keyframes shk{{0%{{transform:translate(0,0)}}20%{{transform:translate(-5px,0)}}40%{{transform:translate(5px,0)}}60%{{transform:translate(-4px,0)}}80%{{transform:translate(4px,0)}}100%{{transform:translate(0,0)}}}}
-            .miss{{font-family:'Arial Black',sans-serif;font-size:1.4rem;font-weight:900;color:#FF2D55;
-              text-shadow:0 0 20px #FF2D55,0 0 50px #cc0033;letter-spacing:3px;
-              animation:shk 0.4s ease-in-out;}}
-            </style>
-            <div class="miss">💀 피격! &nbsp;<span style="font-size:1rem;color:#aaa;">정답: {_ans_text}</span></div>""", height=60)
+            st.markdown(
+                '<div style="text-align:center;padding:12px 0;">'
+                '<span style="font-family:Arial Black,sans-serif;font-size:1.4rem;font-weight:900;'
+                'color:#FF2D55;text-shadow:0 0 20px #FF2D55,0 0 50px #cc0033;letter-spacing:3px;">'
+                '💀 피격!</span>'
+                + f' <span style="font-size:1rem;color:#aaa;">정답: {_ans_text}</span>'
+                + '</div>', unsafe_allow_html=True)
 
         st.markdown(f'<div style="background:#0a0c14;border-left:4px solid {"#44FF88" if _ok else "#FF2D55"};border-radius:0 10px 10px 0;padding:8px 12px;margin:4px 0;">'
                     f'<span style="font-size:0.85rem;color:{"#44FF88" if _ok else "#FF2D55"};font-weight:700;">💡 {q.get("exk","")}</span></div>', unsafe_allow_html=True)
