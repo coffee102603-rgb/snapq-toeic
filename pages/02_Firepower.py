@@ -884,7 +884,7 @@ if st.session_state.phase=="battle":
                     completed=(st.session_state.sc >= 4),
                 )
             except Exception:
-                pass; st.rerun()
+                pass
             nqi = st.session_state.qi + 1
             if nqi < len(st.session_state.round_qs):
                 st.session_state.qi = nqi
