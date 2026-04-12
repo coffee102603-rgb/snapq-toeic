@@ -41,8 +41,8 @@ from _responsive_css import inject_css as _inject_css
 # inject_css()는 set_page_config() 이후에 호출해야 함 → 아래로 이동
 
 # ═══ GOOGLE SHEETS 연동 ═══
-def save_to_sheets(record):
-    """연구 데이터를 Google Sheets에 저장"""
+def save_to_sheets(record: dict) -> None:
+    """연구 데이터를 Google Sheets에 저장."""
     try:
         import gspread
         from google.oauth2.service_account import Credentials
@@ -102,15 +102,16 @@ if _qs_nick and _qs_ag == "1":
 STORAGE_FILE = os.path.join(os.path.dirname(os.path.dirname(__file__)), "storage_data.json")
 RESEARCH_FILE = os.path.join(os.path.dirname(os.path.dirname(__file__)), "p7_research_data.json")
 
-def load_research_data():
+def load_research_data() -> list:
+    """논문용 연구 데이터 로드."""
     if os.path.exists(RESEARCH_FILE):
         with open(RESEARCH_FILE, "r", encoding="utf-8") as f:
             try: return json.load(f)
             except: return []
     return []
 
-def save_research_record(record):
-    """플레이 1회 기록을 누적 저장 (논문용) + Google Sheets"""
+def save_research_record(record: dict) -> None:
+    """플레이 1회 기록을 누적 저장 (논문용) + Google Sheets."""
     try:
         data = load_research_data()
         data.append(record)
@@ -125,7 +126,7 @@ def save_research_record(record):
 # PAPER:   논문B(cross_logs), X·Y·Z 스캐폴딩 로그(신규 논문)
 import _storage
 
-def _save_cross_log(passage_id):
+def _save_cross_log(passage_id: str) -> None:
     """
     PURPOSE: P7 암호해독 완료 후 P5 화력전 어휘와 겹치는 단어 감지 → cross_logs 저장
     INPUT:   passage_id (암호해독 지문 ID)
@@ -161,7 +162,7 @@ def _save_cross_log(passage_id):
     except Exception:
         pass
 
-def _save_recon_xyz_log(passage_id, session_no):
+def _save_recon_xyz_log(passage_id: str, session_no: int) -> None:
     """
     PURPOSE: X·Y·Z 3단계 정답여부·소요시간 저장
     INPUT:   passage_id, session_no
@@ -181,8 +182,8 @@ def _save_recon_xyz_log(passage_id, session_no):
     except Exception:
         pass
 
-def build_research_record(result):
-    """현재 세션 데이터로 논문용 레코드 생성"""
+def build_research_record(result: str) -> dict:
+    """현재 세션 데이터로 논문용 레코드 생성."""
     import uuid
     from datetime import datetime
     an = st.session_state.get("p7_analytics", {})
@@ -211,7 +212,8 @@ def build_research_record(result):
         "total_score": len([a for a in answers if a]),
         "steps": step_records,
     }
-def load_storage():
+def load_storage() -> dict:
+    """P7 전용 storage_data.json 로드."""
     if os.path.exists(STORAGE_FILE):
         try:
             with open(STORAGE_FILE,"r",encoding="utf-8") as f:
@@ -226,12 +228,14 @@ def load_storage():
         except (json.JSONDecodeError, ValueError, Exception):
             return {"saved_questions":[],"saved_expressions":[]}
     return {"saved_questions":[],"saved_expressions":[]}
-def save_storage(data):
+def save_storage(data: dict) -> None:
+    """P7 전용 storage_data.json 저장."""
     try:
         with open(STORAGE_FILE,"w",encoding="utf-8") as f:
             json.dump(data,f,ensure_ascii=False,indent=2)
     except Exception: pass
-def save_expressions(exprs, step_data=None):
+def save_expressions(exprs: list, step_data: dict | None = None) -> None:
+    """정보 포획 표현을 saved_expressions에 저장."""
     data=load_storage()
     if "saved_expressions" not in data: data["saved_expressions"]=[]
     new_sentence = step_data.get("sentences", [None])[0] if step_data else None
@@ -342,7 +346,8 @@ button[kind="primary"] p,button[kind="secondary"] p{font-size:1rem!important;}
 # 문제 유형 키: "purpose"=주제/목적, "detail"=세부사항, "inference"=추론, "not"=NOT문제, "synonym"=동의어
 import json as _json, os as _os, random as _rnd
 
-def _load_passages():
+def _load_passages() -> dict:
+    """4개 난이도별 지문 JSON 동적 로딩."""
     _base = _os.path.join(_os.path.dirname(_os.path.dirname(__file__)), "data")
     _map = {
         "recon":       "passages_recon.json",       # 1단계 RECON — 이메일·편지·메모 (X·Y·Z)
@@ -361,7 +366,8 @@ def _load_passages():
     return _result
 
 PASSAGES = _load_passages()
-def pick_passage(cat):
+def pick_passage(cat: str) -> dict:
+    """지정 카테고리에서 랜덤 지문 1편 선택."""
     pool = PASSAGES.get(cat, [])
     return _rnd.choice(pool) if pool else {}
 

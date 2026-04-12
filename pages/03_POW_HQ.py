@@ -41,8 +41,8 @@ except Exception:
     _prison_lookup = None
     _WORD_INDEX = {}
 
-def _lookup_kr(word):
-    """개별 단어의 한국어 뜻 조회 — FAMILY_DB 우선, VOCAB_DICT fallback"""
+def _lookup_kr(word: str) -> str:
+    """개별 단어의 한국어 뜻 조회 — FAMILY_DB 우선, VOCAB_DICT fallback."""
     if not word or not _prison_lookup:
         return ""
     info = _prison_lookup(word)
@@ -78,10 +78,12 @@ import _storage
 STORAGE_FILE = _storage.STORAGE_FILE  # 참조용
 
 # 하위 호환 래퍼
-def load_storage():
+def load_storage() -> dict:
+    """storage_data.json 로드."""
     return _storage.load()
 
-def save_storage(data):
+def save_storage(data: dict) -> None:
+    """storage_data.json 저장."""
     _storage.save(data)
 
 # ★ 포로수용소 — 스마트 단어 1개 추출 함수
@@ -100,8 +102,8 @@ _PRISON_STOP = {
     "beyond","down","up","off","out","over","past","through","under","until","upon"
 }
 
-def _extract_prison_word(text, ex_field="", cat="", ch=None, a_idx=0):
-    """P5 문제에서 포로 단어 1개 스마트 추출"""
+def _extract_prison_word(text: str, ex_field: str = "", cat: str = "", ch: list | None = None, a_idx: int = 0) -> str:
+    """P5 문제에서 포로 단어 1개 스마트 추출."""
     # 1순위: ex 필드 "단어=설명" 패턴
     if ex_field:
         m = re.match(r"^([a-zA-Z_\-]+)\s*=", ex_field.strip())
@@ -134,8 +136,8 @@ def _extract_prison_word(text, ex_field="", cat="", ch=None, a_idx=0):
                 return _w
     return None
 
-def _add_to_prison(word, source, sentence="", kr="", cat=""):
-    """포로수용소에 단어 추가 (중복 없이, kr 자동 조회)"""
+def _add_to_prison(word: str, source: str, sentence: str = "", kr: str = "", cat: str = "") -> None:
+    """포로수용소에 단어 추가 (중복 없이, kr 자동 조회)."""
     if not word or len(word) < 2:
         return
     try:
@@ -171,7 +173,7 @@ def _add_to_prison(word, source, sentence="", kr="", cat=""):
     except Exception:
         pass
 
-def _prison_from_sentence(sentence, source, cat="", max_words=3):
+def _prison_from_sentence(sentence: str, source: str, cat: str = "", max_words: int = 3) -> None:
     """
     ★ DB 교집합 기반 단어수용소 저장 (논문A 청구항1 핵심)
     PURPOSE: 문장에서 플랫폼 DB에 있는 단어만 추출 → word_prison 저장
@@ -210,7 +212,8 @@ def _prison_from_sentence(sentence, source, cat="", max_words=3):
         pass
 
 
-def make_alt_question(q):
+def make_alt_question(q: dict) -> dict | None:
+    """P5 오답 문제를 변형 퍼즐로 재구성."""
     ans = q["ch"][q["a"]]
     clean_ans = ans.split(") ",1)[-1] if ") " in ans else ans
     full = q["text"].replace("_______", clean_ans)
@@ -2343,12 +2346,20 @@ div[data-testid="stButton"] button p{color:#c0c8e0!important;font-size:0.9rem!im
                         f'<span style="color:#ffee44;font-weight:900;border-bottom:2px solid #ffee44;padding:0 1px;">\\1</span>',
                         _sent_short
                     )
+                    _sent_kr_line = ""
+                    if _sent_kr:
+                        _sent_kr_line = (
+                            f'<div style="font-size:12px;color:#88ccaa;line-height:1.6;'
+                            f'margin-top:5px;padding-top:5px;border-top:1px solid #1a3020;">'
+                            f'{_sent_kr}</div>'
+                        )
                     _sent_block = (
                         f'<div style="background:#08100a;border:1.5px solid #1a3020;border-radius:12px;'
                         f'padding:9px 12px;margin:8px 0 4px;text-align:left;">'
                         f'<div style="font-size:11px;font-weight:700;color:#66aa88;letter-spacing:2px;margin-bottom:5px;text-align:center;">📝 예문</div>'
                         f'<div style="font-size:13px;color:#c8d8e0;line-height:1.65;font-style:italic;">&ldquo;{_hl_sent}&rdquo;</div>'
-                        f'</div>'
+                        + _sent_kr_line
+                        + f'</div>'
                     )
 
                 # ⛓ 공범 단어 패밀리 블록
@@ -2400,7 +2411,7 @@ div[data-testid="stButton"] button p{color:#c0c8e0!important;font-size:0.9rem!im
                     for i in range(3)
                 ])
                 # 동적 높이: base + 예문 + 패밀리행
-                _card_h = 150 + (90 if _sent else 0) + (55 + _shown*35 if _family_block else 0) + 50
+                _card_h = 150 + (90 if _sent else 0) + (40 if _sent_kr else 0) + (55 + _shown*35 if _family_block else 0) + 50
                 components.html(f"""
                 <style>
                 @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@900&display=swap');
