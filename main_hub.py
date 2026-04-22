@@ -47,6 +47,19 @@ st.set_page_config(
     initial_sidebar_state='collapsed'
 )
 
+# ★ BUG FIX 2026.04: WebSocket 끊김 등으로 session_state가 증발해도
+# URL 쿼리(?nick=...&ag=1)로부터 닉네임 자동 복구.
+# 02/03 페이지와 동일한 패턴. clear 하지 않음으로써 재복구 가능.
+_qs_nick = st.query_params.get("nick", "")
+_qs_ag   = st.query_params.get("ag", "")
+if _qs_nick and _qs_ag == "1":
+    if not st.session_state.get("nickname") or not st.session_state.get("battle_nickname"):
+        st.session_state["battle_nickname"] = _qs_nick
+        st.session_state["nickname"]        = _qs_nick
+        st.session_state["access_granted"]  = True
+        st.session_state["_code_verified"]  = True
+        st.session_state["_id_verified"]    = True
+
 # =========================================================
 # 데이터 헬퍼
 # =========================================================
@@ -740,6 +753,17 @@ _hc.html("""
 nickname = require_access()
 require_pretest_gate()
 
+# ★ BUG FIX 2026.04: URL 쿼리에 nickname 자동 저장 → 세션 증발 시 자동 복구
+# 로그인 성공 직후 URL을 '?nick=사용자명&ag=1' 로 유지.
+# WebSocket 끊김·탭 전환·페이지 이동 후에도 쿼리가 있으면 다른 페이지 상단
+# 가드가 session_state를 자동 복구 (guest 낙인 방지).
+if nickname:
+    _cur_nick = st.query_params.get("nick", "")
+    _cur_ag = st.query_params.get("ag", "")
+    if _cur_nick != nickname or _cur_ag != "1":
+        st.query_params["nick"] = nickname
+        st.query_params["ag"] = "1"
+
 # 출석 자동 기록
 mark_attendance_once(nickname)
 
@@ -1071,28 +1095,29 @@ window.addEventListener('message', function(e) {
 </script>
 """, height=0)
 # iOS URL 파라미터 감지
+# ★ BUG FIX 2026.04: clear() 전면 삭제 대신 nav만 제거 → nick, ag 유지로 세션 복구 가능
 _nav = st.query_params.get("nav", "")
 if _nav == "PRISON_GO":
-    st.query_params.clear()
+    if "nav" in st.query_params: del st.query_params["nav"]
     st.session_state.sg_phase = "word_prison"
     st.switch_page("pages/03_POW_HQ.py")
 elif _nav == "P5_GO":
-    st.query_params.clear()
+    if "nav" in st.query_params: del st.query_params["nav"]
     st.session_state.phase = "lobby"
     st.session_state._p5_active = False
     st.switch_page("pages/02_Firepower.py")
 elif _nav == "P7_GO":
-    st.query_params.clear()
+    if "nav" in st.query_params: del st.query_params["nav"]
     if "p7_phase" in st.session_state:
         st.session_state.p7_phase = "lobby"
     st.switch_page("pages/04_Decrypt_Op.py")
 elif _nav == "ARM_GO":
-    st.query_params.clear()
+    if "nav" in st.query_params: del st.query_params["nav"]
     st.session_state.sg_phase = "lobby"
     st.session_state["_wp_guard"] = False
     st.switch_page("pages/03_POW_HQ.py")
 elif _nav == "ADMIN_GO":
-    st.query_params.clear()
+    if "nav" in st.query_params: del st.query_params["nav"]
     st.switch_page("pages/01_Admin.py")
 
 _prison_go = st.button("PRISON_GO", key="prison_btn")
