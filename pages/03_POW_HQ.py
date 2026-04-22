@@ -75,6 +75,18 @@ _inject_css()
 # PAPER:   forget_logs(논문C 망각곡선), word_prison(특허 어휘포획)
 import _storage
 
+# ── 활동 기록 (대서사시 L1: 자동 데이터 수집) ─────────────────────
+# PAPER:   ⑤ 탐색적 로그 분석 (이탈·완주 구분), ⑩ 임계값 성장 모델
+# PATTERN: 02_Firepower.py의 record_activity import 방식을 그대로 이식
+# ──────────────────────────────────────────────────────────────
+try:
+    import sys as _sys_path
+    import os as _os_path
+    _sys_path.path.insert(0, _os_path.path.join(_os_path.path.dirname(_os_path.path.dirname(__file__)), "app", "core"))
+    from attendance_engine import record_activity as _record_activity
+except Exception:
+    def _record_activity(*a, **kw): pass
+
 STORAGE_FILE = _storage.STORAGE_FILE  # 참조용
 
 # 하위 호환 래퍼
@@ -1125,6 +1137,28 @@ elif st.session_state.sg_phase == "p5_exam":
         except:
             pass
 
+        # ── rt_logs 저장 (대서사시 L2: AI 자동 진단·분류) ─────────────
+        # PAPER:  ④ AI 자동 분류 시스템 (rt_logs 10개월 집약, Messick 타당도)
+        #         ⑤ 탐색적 로그 분석 (반응시간 패턴)
+        # NOTE:   p5_exam은 세션 단위 33초 타이머. 문항별 RT는
+        #         _sg_p5_q_start 보조 변수로 추적 (첫 문항은 sg_exam_start 사용)
+        # ─────────────────────────────────────────────────────────
+        try:
+            _now = time.time()
+            _q_start = st.session_state.get("_sg_p5_q_start", st.session_state.sg_exam_start)
+            _elapsed_session = _now - st.session_state.sg_exam_start
+            _storage.save_rt_log(
+                q=q,
+                is_correct=ok,
+                seconds_remaining=max(0, 33 - _elapsed_session),
+                timer_setting=33,
+                session_no=st.session_state.get("sg_exam_idx", 0) + 1,
+                adp_level="pow_p5_exam",
+            )
+            st.session_state["_sg_p5_q_start"] = _now  # 다음 문항 시작 시간
+        except Exception:
+            pass
+
         if not ok:
             # ★ DB 교집합 기반 단어 추출 (논문A 청구항1)
             try:
@@ -1144,6 +1178,31 @@ elif st.session_state.sg_phase == "p5_exam":
 # P5 시험 결과
 # ════════════════════════════════
 elif st.session_state.sg_phase == "p5_exam_result":
+    # ── 활동 기록: POW 33초 시험 완주 (대서사시 L1 + L3) ──────────
+    # PAPER:     ⑤ 탐색적 로그 분석 (이탈·완주 구분)
+    #            ⑦ AI 스캐폴딩 ZPD (시간 압박 하 완주율)
+    # completed= 5문항 전부 응답 완료 (타임아웃·중단 없이 자체 종료)
+    # 근거:      쟁점 A — "시간 압박 하 정확성"이 본 플랫폼 임계값 철학
+    # idempotent: sg_exam_start 타임스탬프를 세션 ID로 사용
+    # ─────────────────────────────────────────────────────────
+    _exam_start_ts = st.session_state.get("sg_exam_start", 0)
+    _last_logged_ts = st.session_state.get("_pow_p5exam_logged_ts", 0)
+    if _exam_start_ts > _last_logged_ts and _exam_start_ts > 0:
+        try:
+            _res_list = st.session_state.get("sg_exam_results", [])
+            _ok_cnt = sum(1 for r in _res_list if r)
+            _total = max(len(_res_list), 1)
+            _fully_completed = (len(_res_list) == 5 and not st.session_state.get("sg_exam_wrong", False))
+            _record_activity(
+                nickname=st.session_state.get("battle_nickname", "guest"),
+                arena="POW_p5exam",
+                acc=round(_ok_cnt / _total * 100, 1),
+                completed=_fully_completed,
+            )
+            st.session_state._pow_p5exam_logged_ts = _exam_start_ts
+        except Exception:
+            pass
+
     results = st.session_state.sg_exam_results
     ok_cnt = sum(results)
     passed = not st.session_state.sg_exam_wrong and ok_cnt == 5
@@ -1546,6 +1605,29 @@ elif st.session_state.sg_phase == "survival":
             st.session_state.rv_mode="p7e"; st.session_state.sg_phase="combo_rush"; st.rerun()
 
 elif st.session_state.sg_phase == "survival_result":
+    # ── 활동 기록: POW P7 서바이벌 완주 (대서사시 L1 + L4) ────────
+    # PAPER:     ⑤ 탐색적 로그 분석, ⑩ 임계값 성장 모델 (SSCI)
+    # completed= wave > 4 (4 wave 전부 돌파)
+    # 근거:      대서사시 L4 게이미피케이션 성장 시스템의 명시적 단계 구조
+    # ─────────────────────────────────────────────────────────
+    _sv_start_ts = st.session_state.get("sg_wave_start", 0)
+    _sv_last_ts = st.session_state.get("_pow_survival_logged_ts", 0)
+    if _sv_start_ts > _sv_last_ts and _sv_start_ts > 0:
+        try:
+            _sv_wave = st.session_state.get("sg_wave", 1)
+            _sv_res = st.session_state.get("sg_wave_results", [])
+            _sv_ok = sum(1 for r in _sv_res if r)
+            _sv_total = max(len(_sv_res), 1)
+            _record_activity(
+                nickname=st.session_state.get("battle_nickname", "guest"),
+                arena="POW_survival",
+                acc=round(_sv_ok / _sv_total * 100, 1),
+                completed=(_sv_wave > 4),
+            )
+            st.session_state._pow_survival_logged_ts = _sv_start_ts
+        except Exception:
+            pass
+
     wave = st.session_state.get("sg_wave", 1)
     results = st.session_state.get("sg_wave_results", [])
     ok_cnt = sum(results)
@@ -1680,7 +1762,29 @@ elif st.session_state.sg_phase == "combo_rush":
                     _prison_from_sentence(_cb_sent5, "P7 콤보러시 오답", "vocabulary")
                 except Exception:
                     pass
-            st.session_state.sg_combo_results=results; st.session_state.sg_combo_idx=cidx+1
+            st.session_state.sg_combo_results=results
+            # ── rt_logs 저장 (대서사시 L2: 어휘 자동화) ──────────────
+            # PAPER: ④ AI 자동 분류 (콤보 어휘 RT), ⑤ 탐색적 로그
+            # NOTE:  30초 세션 타이머. _sg_combo_q_start로 문항별 RT 보조 추적
+            # ─────────────────────────────────────────────────────
+            try:
+                _cb_now = time.time()
+                _cb_q_start = st.session_state.get("_sg_combo_q_start", st.session_state.sg_combo_start)
+                _cb_elapsed_session = _cb_now - st.session_state.sg_combo_start
+                _cb_ok = (i == correct_idx)
+                _cb_q = {"id": f"combo_{cidx}", "cat": "VOCAB", "diff": "normal", "tp": "vocab"}
+                _storage.save_rt_log(
+                    q=_cb_q,
+                    is_correct=_cb_ok,
+                    seconds_remaining=max(0, 30 - _cb_elapsed_session),
+                    timer_setting=30,
+                    session_no=cidx + 1,
+                    adp_level="pow_combo_rush",
+                )
+                st.session_state["_sg_combo_q_start"] = _cb_now
+            except Exception:
+                pass
+            st.session_state.sg_combo_idx=cidx+1
             wrong_cnt=sum(1 for r in results if not r)
             if wrong_cnt>(total_qs-3): st.session_state.sg_combo_over=True
             st.rerun()
@@ -1727,6 +1831,30 @@ if st.session_state.get("rv_mode") == "p7_vault":
 # 콤보 러시 결과
 # ════════════════════════════════
 elif st.session_state.sg_phase == "combo_result":
+    # ── 활동 기록: POW 콤보러시 완주 (대서사시 L1 + L2) ──────────
+    # PAPER:     ⑤ 탐색적 로그 분석, ④ AI 자동 분류 (어휘 자동화)
+    # completed= 30초 타임아웃 도달 + 최소 1문항 응답 (중도 이탈 없음)
+    # 근거:      DeKeyser(2007) Skill Acquisition — 시간 압박 하 자동화 측정
+    # ─────────────────────────────────────────────────────────
+    _cb_start_ts = st.session_state.get("sg_combo_start", 0)
+    _cb_last_ts = st.session_state.get("_pow_combo_logged_ts", 0)
+    if _cb_start_ts > _cb_last_ts and _cb_start_ts > 0:
+        try:
+            _cb_res = st.session_state.get("sg_combo_results", [])
+            _cb_ok_cnt = sum(1 for r in _cb_res if r)
+            _cb_total = max(len(_cb_res), 1)
+            _cb_over = st.session_state.get("sg_combo_over", False)
+            _cb_completed = _cb_over and len(_cb_res) >= 1  # 타임아웃+1문항 이상
+            _record_activity(
+                nickname=st.session_state.get("battle_nickname", "guest"),
+                arena="POW_combo",
+                acc=round(_cb_ok_cnt / _cb_total * 100, 1),
+                completed=_cb_completed,
+            )
+            st.session_state._pow_combo_logged_ts = _cb_start_ts
+        except Exception:
+            pass
+
     score = st.session_state.get("sg_combo_score", 0)
     combo = st.session_state.get("sg_combo_count", 0)
     cidx = st.session_state.get("sg_combo_idx", 0)
@@ -1840,6 +1968,27 @@ elif st.session_state.sg_phase == "combo_result":
 # PHASE: WORD_PRISON — 극적인 심문실
 # ════════════════════════════════════════
 elif st.session_state.sg_phase == "word_prison":
+    # ── 활동 기록: POW 단어감옥 진입 (대서사시 L1 + 논문 +@) ──────
+    # PAPER:     ⑤ 탐색적 로그 분석, +@ P7 쓰기 순환 학습
+    # completed= 한 퀴즈 사이클 완료 (여기선 진입 자체를 '세션 시작'으로 기록)
+    # 근거:      Bloom 완전학습의 반복 단위. 단어감옥 하위 모드(wp_mode)는
+    #            여러 개이므로 "진입"만 1회 기록하고 세부 응답은 rt_logs로 추적
+    # idempotent: 일자별로 1회 기록 (동일 날짜 재진입 시 스킵)
+    # ─────────────────────────────────────────────────────────
+    try:
+        import datetime as _wp_dt0
+        _wp_today = _wp_dt0.date.today().isoformat()
+        if st.session_state.get("_pow_wordprison_logged_date") != _wp_today:
+            _record_activity(
+                nickname=st.session_state.get("battle_nickname", "guest"),
+                arena="POW_wordprison",
+                acc=0.0,  # 진입 기록이므로 acc는 placeholder
+                completed=False,  # 진입 시점에선 아직 완료 아님
+            )
+            st.session_state._pow_wordprison_logged_date = _wp_today
+    except Exception:
+        pass
+
     import datetime as _pr_dt2, random as _pr_random
 
     _nick = st.session_state.get("nickname","")
@@ -2740,6 +2889,22 @@ div[data-testid="stButton"] button p{color:#c0c8e0!important;font-size:0.9rem!im
                         _lc = st.session_state.get("wp_lineup_correct",[])
                         _lc.append(_q["word"])
                         st.session_state.wp_lineup_correct = _lc
+                    # ── rt_logs 저장 (대서사시 L2 + 논문 +@) ─────────────
+                    # PAPER: ④ AI 자동 분류, +@ P7 쓰기 순환
+                    # NOTE:  단어감옥 LINEUP 퀴즈 — 6초 타임아웃. 선택측 left
+                    # ─────────────────────────────────────────────────
+                    try:
+                        _lu_q = {"id": f"lineup_{_q.get('word','?')}", "cat": "VOCAB", "diff": "normal", "tp": "vocab"}
+                        _storage.save_rt_log(
+                            q=_lu_q,
+                            is_correct=_ok,
+                            seconds_remaining=0,
+                            timer_setting=6,
+                            session_no=_qi + 1,
+                            adp_level="pow_wordprison_lineup",
+                        )
+                    except Exception:
+                        pass
                     st.session_state.wp_quiz_feedback = {"correct":_ok,"timeout":False}
                     st.rerun()
                 st.markdown('</div>', unsafe_allow_html=True)
@@ -2758,6 +2923,22 @@ div[data-testid="stButton"] button p{color:#c0c8e0!important;font-size:0.9rem!im
                         _lc = st.session_state.get("wp_lineup_correct",[])
                         _lc.append(_q["word"])
                         st.session_state.wp_lineup_correct = _lc
+                    # ── rt_logs 저장 (대서사시 L2 + 논문 +@) ─────────────
+                    # PAPER: ④ AI 자동 분류, +@ P7 쓰기 순환
+                    # NOTE:  단어감옥 LINEUP 퀴즈 — 6초 타임아웃. 선택측 right
+                    # ─────────────────────────────────────────────────
+                    try:
+                        _lu_q = {"id": f"lineup_{_q.get('word','?')}", "cat": "VOCAB", "diff": "normal", "tp": "vocab"}
+                        _storage.save_rt_log(
+                            q=_lu_q,
+                            is_correct=_ok,
+                            seconds_remaining=0,
+                            timer_setting=6,
+                            session_no=_qi + 1,
+                            adp_level="pow_wordprison_lineup",
+                        )
+                    except Exception:
+                        pass
                     st.session_state.wp_quiz_feedback = {"correct":_ok,"timeout":False}
                     st.rerun()
                 st.markdown('</div>', unsafe_allow_html=True)
