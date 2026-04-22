@@ -967,15 +967,16 @@ elif st.session_state.sg_phase == "p5_exam":
     q = qs[qi]
     elapsed = time.time() - st.session_state.sg_exam_start
 
-    # ★ BUG FIX 2026.04: 1초 autorefresh가 버튼 클릭을 먹는 문제 해결
-    # 매초 rerun 대신 "33초 후 타임아웃 트리거"용 1회 autorefresh로 변경.
-    # 타이머 UI(숫자·바·경고)는 JS 컴포넌트가 독립 카운트다운. Python은
-    # 타임아웃 감지 + 버튼 클릭 처리에만 집중. → 클릭 이벤트 손실 없음.
+    # ★ BUG FIX 2026.04 (v2): 1초 autorefresh가 버튼 클릭을 먹는 문제 해결
+    # v1 실패 원인: key에 qi 포함 → 문항 넘어갈 때마다 autorefresh 새 인스턴스 누적
+    #              → 3~4번째 문항에서 다시 race condition 재발
+    # v2 수정:     key에서 qi 제거 → 세션당 autorefresh 단 1개만 유지
+    #              interval은 첫 호출 값으로 고정되지만 33초 타임아웃 목적은 충족
     _tmo_ms = max(500, int((34 - elapsed) * 1000))
     st_autorefresh(
         interval=_tmo_ms,
         limit=1,
-        key=f"p5_exam_tmo_{int(st.session_state.sg_exam_start)}_{qi}"
+        key=f"p5_exam_tmo_{int(st.session_state.sg_exam_start)}"
     )
 
     rem = max(0, 33 - int(elapsed))
