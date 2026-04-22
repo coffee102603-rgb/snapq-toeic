@@ -1174,6 +1174,77 @@ elif st.session_state.sg_phase == "p5_exam":
                 st.rerun()  # ← autorefresh race 방지를 위한 명시적 rerun
         st.markdown('</div>', unsafe_allow_html=True)
 
+    # ── JS 즉시 클릭 피드백 (체감 속도 개선) ─────────────────────
+    # AI-AGENT NOTE:
+    #   Streamlit 버튼 클릭 → 서버 rerun 왕복 0.3~1초 딜레이 존재.
+    #   이 JS는 클릭 즉시 버튼 배경색을 변경하여 "눌렸다!" 체감을 줌.
+    #   동작 로직 변경 없음 — 시각 피드백만 추가 (안전).
+    #   mousedown 이벤트 사용 → click보다 ~100ms 빠른 반응.
+    # PAPER: ② ADDIE — UX 반복 개선 사례
+    # ──────────────────────────────────────────────────────────
+    components.html("""
+    <script>
+    (function(){
+      var doc = window.parent.document;
+      var colors = {
+        'ex-ans-a': '#ff6633',
+        'ex-ans-b': '#00E5FF',
+        'ex-ans-c': '#FF2D55',
+        'ex-ans-d': '#44FF88'
+      };
+      function addFeedback(){
+        Object.keys(colors).forEach(function(eid){
+          var wrapper = doc.getElementById('btn-' + eid);
+          if(!wrapper) return;
+          var btn = wrapper.querySelector('button');
+          if(!btn || btn.dataset.fbAdded) return;
+          btn.dataset.fbAdded = '1';
+          btn.addEventListener('mousedown', function(){
+            btn.style.setProperty('background', colors[eid] + '22', 'important');
+            btn.style.setProperty('box-shadow', '0 0 30px ' + colors[eid] + '88, inset 0 0 20px ' + colors[eid] + '33', 'important');
+            btn.style.setProperty('transform', 'scale(0.97)', 'important');
+            btn.style.setProperty('transition', 'all 0.08s ease', 'important');
+            // 다른 버튼 즉시 비활성화 (더블클릭 방지)
+            Object.keys(colors).forEach(function(eid2){
+              if(eid2 !== eid){
+                var w2 = doc.getElementById('btn-' + eid2);
+                if(w2){
+                  var b2 = w2.querySelector('button');
+                  if(b2){
+                    b2.style.setProperty('opacity', '0.3', 'important');
+                    b2.style.setProperty('pointer-events', 'none', 'important');
+                  }
+                }
+              }
+            });
+          });
+          // 터치 디바이스용 (iOS/갤럭시)
+          btn.addEventListener('touchstart', function(){
+            btn.style.setProperty('background', colors[eid] + '22', 'important');
+            btn.style.setProperty('box-shadow', '0 0 30px ' + colors[eid] + '88, inset 0 0 20px ' + colors[eid] + '33', 'important');
+            btn.style.setProperty('transform', 'scale(0.97)', 'important');
+            Object.keys(colors).forEach(function(eid2){
+              if(eid2 !== eid){
+                var w2 = doc.getElementById('btn-' + eid2);
+                if(w2){
+                  var b2 = w2.querySelector('button');
+                  if(b2){
+                    b2.style.setProperty('opacity', '0.3', 'important');
+                    b2.style.setProperty('pointer-events', 'none', 'important');
+                  }
+                }
+              }
+            });
+          }, {passive: true});
+        });
+      }
+      setTimeout(addFeedback, 150);
+      setTimeout(addFeedback, 500);
+      setTimeout(addFeedback, 1000);
+    })();
+    </script>
+    """, height=0)
+
     # ── forget_logs + phase 처리 (div-래퍼 루프에서 ok가 append된 경우) ──
     if len(st.session_state.sg_exam_results) > _prev_result_len:
         ok = st.session_state.sg_exam_results[-1]
