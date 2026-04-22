@@ -55,13 +55,18 @@ st.set_page_config(page_title="💀 포로사령부", page_icon="💀", layout="
 _qs_nick = st.query_params.get("nick", "")
 _qs_ag   = st.query_params.get("ag", "")
 if _qs_nick and _qs_ag == "1":
-    if not st.session_state.get("access_granted"):
+    # ★ BUG FIX 2026.04: WebSocket 끊김 등으로 session_state가 증발하면
+    # nickname이 사라져 'guest'로 낙인찍히는 문제 해결.
+    # 기존: if not access_granted (첫 진입만 복구)
+    # 수정: if not nickname (증발 감지 시 언제든 복구)
+    # + st.query_params.clear() 제거 — URL 유지로 재복구 가능
+    if not st.session_state.get("nickname") or not st.session_state.get("battle_nickname"):
         st.session_state["battle_nickname"] = _qs_nick
         st.session_state["nickname"]        = _qs_nick
         st.session_state["access_granted"]  = True
         st.session_state["_code_verified"]  = True
         st.session_state["_id_verified"]    = True
-    st.query_params.clear()
+    # NOTE: st.query_params.clear() 제거됨 — 재복구 가능 위해 URL 유지
 
 
 # ★ 공유 반응형 CSS (iOS Safari 수정 + PC 글씨 확대)

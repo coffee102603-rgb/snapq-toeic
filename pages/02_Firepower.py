@@ -36,13 +36,18 @@ st.set_page_config(page_title="화력전 ⚡", page_icon="⚡", layout="wide", i
 _qs_nick = st.query_params.get("nick", "")
 _qs_ag   = st.query_params.get("ag", "")
 if _qs_nick and _qs_ag == "1":
-    if not st.session_state.get("access_granted"):
+    # ★ BUG FIX 2026.04: WebSocket 끊김 등으로 session_state가 증발하면
+    # nickname이 사라져 'guest'로 낙인찍히는 문제 해결.
+    # 기존: if not access_granted (첫 진입만 복구)
+    # 수정: if not nickname (증발 감지 시 언제든 복구)
+    # + st.query_params.clear() 제거 — URL 유지로 재복구 가능
+    if not st.session_state.get("nickname") or not st.session_state.get("battle_nickname"):
         st.session_state["battle_nickname"] = _qs_nick
         st.session_state["nickname"]        = _qs_nick
         st.session_state["access_granted"]  = True
         st.session_state["_code_verified"]  = True
         st.session_state["_id_verified"]    = True
-    st.query_params.clear()
+    # NOTE: st.query_params.clear() 제거됨 — 재복구 가능 위해 URL 유지
 
 
 # ★ 공유 반응형 CSS (iOS Safari 수정 + PC 글씨 확대)
@@ -1725,13 +1730,17 @@ elif st.session_state.phase=="briefing":
 else:
     _nav = st.query_params.get('nav', '')
     if _nav == 'hub':
-        st.query_params.clear()
+        # ★ BUG FIX 2026.04: clear() 대신 nav만 제거 → nick, ag 유지로 세션 복구 가능
+        if "nav" in st.query_params:
+            del st.query_params["nav"]
         st.session_state._p5_just_left = True
         st.session_state.ans = False
         st.session_state["_battle_entry_ans_reset"] = True
         st.switch_page("main_hub.py")
     elif _nav == 'stg':
-        st.query_params.clear()
+        # ★ BUG FIX 2026.04: clear() 대신 nav만 제거
+        if "nav" in st.query_params:
+            del st.query_params["nav"]
         st.switch_page("pages/03_POW_HQ.py")
     st.session_state.phase="lobby"
     if "sel_mode" not in st.session_state: st.session_state.sel_mode=None
