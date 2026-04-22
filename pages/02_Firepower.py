@@ -54,15 +54,29 @@ if _qs_nick and _qs_ag == "1":
 import sys as _sys
 _sys.path.insert(0, os.path.dirname(__file__))
 from _responsive_css import inject_css as _inject_css
-# ── 활동 기록 (논문A 참여율, 논문B 정복률) ──
+# ── 활동 기록 (논문A 참여율, 논문B 정복률, 논문⑤ 이탈 분석) ──
+# ★ BUG FIX 2026.04: __record_activity (언더스코어 2개) 오타 수정 완료
 try:
     import sys as _sys_path
     import os as _os_path
     _sys_path.path.insert(0, _os_path.path.join(_os_path.path.dirname(_os_path.path.dirname(__file__)), "app", "core"))
     from attendance_engine import record_activity as _record_activity
+    from attendance_engine import record_session_event as _record_session_event
 except Exception:
-    def __record_activity(*a, **kw): pass
+    def _record_activity(*a, **kw): pass
+    def _record_session_event(*a, **kw): pass
 _inject_css()
+
+# ── 페이지 진입 이벤트 기록 (대서사시 L1: 세션 흐름 추적) ──────
+# PAPER: ⑤ 탐색적 로그 분석 (페이지 방문 빈도·이탈 분석)
+# ──────────────────────────────────────────────────────────────
+if not st.session_state.get("_arena_entered_P5"):
+    try:
+        _nick_ent = st.session_state.get("battle_nickname", "") or st.session_state.get("nickname", "guest")
+        _record_session_event(nickname=_nick_ent, arena="P5", event="enter")
+        st.session_state["_arena_entered_P5"] = True
+    except Exception:
+        pass
 
 # ═══ _storage.py 공통 모듈 연동 ═══════════════════════════════
 # PURPOSE: user_id 통일 (get_uid), rt_logs 저장 함수 통일

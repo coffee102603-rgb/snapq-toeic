@@ -88,13 +88,18 @@ _inject_css()  # set_page_config 직후 호출 (StreamlitSetPageConfigMustBeFirs
 _qs_nick = st.query_params.get("nick", "")
 _qs_ag   = st.query_params.get("ag", "")
 if _qs_nick and _qs_ag == "1":
-    if not st.session_state.get("access_granted"):
+    # ★ BUG FIX 2026.04: WebSocket 끊김 등으로 session_state가 증발하면
+    # nickname이 사라져 'guest'로 낙인찍히는 문제 해결.
+    # 기존: if not access_granted (첫 진입만 복구)
+    # 수정: if not nickname (증발 감지 시 언제든 복구)
+    # + st.query_params.clear() 제거 — URL 유지로 재복구 가능
+    if not st.session_state.get("nickname") or not st.session_state.get("battle_nickname"):
         st.session_state["battle_nickname"] = _qs_nick
         st.session_state["nickname"]        = _qs_nick
         st.session_state["access_granted"]  = True
         st.session_state["_code_verified"]  = True
         st.session_state["_id_verified"]    = True
-    st.query_params.clear()
+    # NOTE: st.query_params.clear() 제거됨 — 재복구 가능 위해 URL 유지
 
 
 
@@ -125,6 +130,31 @@ def save_research_record(record: dict) -> None:
 # PURPOSE: cross_logs / recon_xyz_logs / unified storage 연동
 # PAPER:   논문B(cross_logs), X·Y·Z 스캐폴딩 로그(신규 논문)
 import _storage
+
+# ── 활동 기록 (대서사시 L1: 자동 데이터 수집) ─────────────────────
+# PAPER:   ⑤ 탐색적 로그 분석 (P7 독해 완주·이탈), ⑩ 임계값 성장 모델
+# PATTERN: 02/03 페이지와 동일한 record_activity import 패턴
+# ──────────────────────────────────────────────────────────────
+try:
+    import sys as _sys_ae
+    import os as _os_ae
+    _sys_ae.path.insert(0, _os_ae.path.join(_os_ae.path.dirname(_os_ae.path.dirname(__file__)), "app", "core"))
+    from attendance_engine import record_activity as _record_activity
+    from attendance_engine import record_session_event as _record_session_event
+except Exception:
+    def _record_activity(*a, **kw): pass
+    def _record_session_event(*a, **kw): pass
+
+# ── 페이지 진입 이벤트 기록 (대서사시 L1: 세션 흐름 추적) ──────
+# PAPER: ⑤ 탐색적 로그 분석 (P7 독해 세션 빈도·이탈 분석)
+# ──────────────────────────────────────────────────────────────
+if not st.session_state.get("_arena_entered_P7"):
+    try:
+        _nick_ent_p7 = st.session_state.get("battle_nickname", "") or st.session_state.get("nickname", "guest")
+        _record_session_event(nickname=_nick_ent_p7, arena="P7", event="enter")
+        st.session_state["_arena_entered_P7"] = True
+    except Exception:
+        pass
 
 def _save_cross_log(passage_id: str) -> None:
     """
@@ -945,6 +975,32 @@ elif st.session_state.p7_phase == "battle":
             st.session_state.p7_type_correct = None
 
             # ══════════════════════════════════════════════════
+            # ★ rt_logs 저장 (대서사시 L2: P7 독해 문항별 반응시간)
+            # PAPER: ④ AI 자동 분류 (P7 독해 RT 집약)
+            #        ⑤ 탐색적 로그 분석 (독해 속도 패턴)
+            # NOTE:  _step_t = 이 문항 응답 소요시간 (초)
+            # ══════════════════════════════════════════════════
+            try:
+                _cat_for_rt = st.session_state.get("p7_cat", "unknown")
+                _tsec_for_rt = st.session_state.get("p7_tsec", 80)
+                _q_rt = {
+                    "id":   f"p7_{_cat_for_rt}_step{step+1}",
+                    "cat":  _cat_for_rt,
+                    "diff": f"p7_{_cat_for_rt}",
+                    "tp":   "vocab",
+                }
+                _storage.save_rt_log(
+                    q=_q_rt,
+                    is_correct=ok,
+                    seconds_remaining=max(0, _tsec_for_rt - _step_t),
+                    timer_setting=_tsec_for_rt,
+                    session_no=step + 1,
+                    adp_level=f"p7_battle_{_cat_for_rt}",
+                )
+            except Exception:
+                pass
+
+            # ══════════════════════════════════════════════════
             # ★ cross_logs + p7_logs 저장 (논문 04 SSCI + 특허)
             # ══════════════════════════════════════════════════
             try:
@@ -1084,6 +1140,31 @@ elif st.session_state.p7_phase == "battle":
 # PHASE: VICTORY
 # ═══════════════════════════════════════
 elif st.session_state.p7_phase == "victory":
+    # ── 활동 기록: P7 암호해독 완주 (대서사시 L1 + L4) ──────────
+    # PAPER:     ⑤ 탐색적 로그 분석 (이탈·완주 구분)
+    #            ⑩ 임계값 성장 모델 (P7 난이도 돌파)
+    # completed= 3문항 전부 정답 통과 (승리 진입 자체가 완주 증거)
+    # 근거:      쟁점 A — "시간 압박 하 정확성"의 P7 판본 (ZPD 즉사 구조)
+    # idempotent: p7_analytics.step_started_at 첫 문항 시각을 세션 ID로 사용
+    # ─────────────────────────────────────────────────────────
+    _p7_an_v = st.session_state.get("p7_analytics", {})
+    _p7v_ts = _p7_an_v.get("session_id", _p7_an_v.get("step_started_at", 0))
+    _p7v_last = st.session_state.get("_p7_victory_logged_ts", 0)
+    if _p7v_ts and _p7v_ts != _p7v_last:
+        try:
+            _p7v_answers = st.session_state.get("p7_answers", [])
+            _p7v_ok = sum(1 for a in _p7v_answers if a)
+            _p7v_total = max(len(_p7v_answers), 1)
+            _record_activity(
+                nickname=st.session_state.get("battle_nickname", "") or st.session_state.get("nickname", "guest"),
+                arena="P7",
+                acc=round(_p7v_ok / _p7v_total * 100, 1),
+                completed=True,  # victory 진입 = 3문항 전부 정답
+            )
+            st.session_state._p7_victory_logged_ts = _p7v_ts
+        except Exception:
+            pass
+
     _answers = st.session_state.p7_answers
     _ok = len([a for a in _answers if a])
     st.markdown('<style>.stApp{background:#08080f!important;}</style>', unsafe_allow_html=True)
@@ -1167,6 +1248,30 @@ elif st.session_state.p7_phase == "victory":
 # PHASE: LOST
 # ═══════════════════════════════════════
 elif st.session_state.p7_phase == "lost":
+    # ── 활동 기록: P7 암호해독 실패/이탈 (대서사시 L1) ──────────
+    # PAPER:     ⑤ 탐색적 로그 분석 (이탈 지점 추적)
+    # completed= False (즉사 또는 타임아웃)
+    # 근거:      논문A 청구항2 ZPD 즉사 메커니즘 — 1오답 즉시 lost
+    #            이 이탈 지점이 ZPD 경계의 증거
+    # ─────────────────────────────────────────────────────────
+    _p7_an_l = st.session_state.get("p7_analytics", {})
+    _p7l_ts = _p7_an_l.get("session_id", _p7_an_l.get("step_started_at", 0))
+    _p7l_last = st.session_state.get("_p7_lost_logged_ts", 0)
+    if _p7l_ts and _p7l_ts != _p7l_last:
+        try:
+            _p7l_answers = st.session_state.get("p7_answers", [])
+            _p7l_ok = sum(1 for a in _p7l_answers if a)
+            _p7l_total = max(len(_p7l_answers), 1)
+            _record_activity(
+                nickname=st.session_state.get("battle_nickname", "") or st.session_state.get("nickname", "guest"),
+                arena="P7",
+                acc=round(_p7l_ok / _p7l_total * 100, 1),
+                completed=False,  # lost 진입 = 즉사 또는 타임아웃
+            )
+            st.session_state._p7_lost_logged_ts = _p7l_ts
+        except Exception:
+            pass
+
     import random as _rnd2
     _answers = st.session_state.p7_answers
     _ok = len([a for a in _answers if a])

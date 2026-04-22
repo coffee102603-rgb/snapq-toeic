@@ -89,8 +89,22 @@ try:
     import os as _os_path
     _sys_path.path.insert(0, _os_path.path.join(_os_path.path.dirname(_os_path.path.dirname(__file__)), "app", "core"))
     from attendance_engine import record_activity as _record_activity
+    from attendance_engine import record_session_event as _record_session_event
 except Exception:
     def _record_activity(*a, **kw): pass
+    def _record_session_event(*a, **kw): pass
+
+# ── 페이지 진입 이벤트 기록 (대서사시 L1: 세션 흐름 추적) ─────────
+# PAPER:   ⑤ 탐색적 로그 분석 (페이지 방문 빈도·이탈 분석)
+# IDEMPOTENT: session_state 플래그로 한 세션당 1회만 기록
+# ──────────────────────────────────────────────────────────────
+if not st.session_state.get("_arena_entered_POW_HQ"):
+    try:
+        _nick_ent = st.session_state.get("battle_nickname", "") or st.session_state.get("nickname", "guest")
+        _record_session_event(nickname=_nick_ent, arena="POW_HQ", event="enter")
+        st.session_state["_arena_entered_POW_HQ"] = True
+    except Exception:
+        pass
 
 STORAGE_FILE = _storage.STORAGE_FILE  # 참조용
 
@@ -1745,7 +1759,6 @@ elif st.session_state.sg_phase == "combo_rush":
         st.warning("저장된 P7 단어/표현이 없습니다!")
         if st.button("돌아가기"): st.session_state.sg_phase="lobby"; st.session_state.rv_battle=None; st.session_state.rv_mode=None; st.rerun()
         st.stop()
-    st_autorefresh(interval=1000, limit=40, key="combo_timer")
     if "sg_combo_score" not in st.session_state: st.session_state.sg_combo_score=0
     if "sg_combo_count" not in st.session_state: st.session_state.sg_combo_count=0
     if "sg_combo_idx" not in st.session_state: st.session_state.sg_combo_idx=0
@@ -1765,6 +1778,16 @@ elif st.session_state.sg_phase == "combo_rush":
         st.session_state.sg_phase="combo_result"; st.rerun()
     q_item=c_pool[cidx]
     elapsed=time.time()-st.session_state.sg_combo_start
+
+    # ★ BUG FIX 2026.04: 1초 autorefresh가 버튼 클릭을 먹는 문제 해결
+    # p5_exam과 동일 패턴: 30초 후 타임아웃 1회 autorefresh + JS 타이머 UI
+    _cb_tmo_ms = max(500, int((31 - elapsed) * 1000))
+    st_autorefresh(
+        interval=_cb_tmo_ms,
+        limit=1,
+        key=f"combo_tmo_{int(st.session_state.sg_combo_start)}"
+    )
+
     rem=max(0,30-int(elapsed))
     if rem<=0: st.session_state.sg_combo_over=True; st.session_state.sg_phase="combo_result"; st.rerun()
     if rem<=5: bg_css="background:linear-gradient(135deg,#2a0808,#3a0a1a)!important;"; tcl="#ff0000"; tsz="2.5rem"; tglow="text-shadow:0 0 40px #ff0000;"; twarn='<div style="text-align:center;font-size:1.2rem;color:#ff0000;font-weight:900;margin:8px 0 6px;">💀 폭발한다!! 💀</div>'
@@ -1777,7 +1800,37 @@ elif st.session_state.sg_phase == "combo_rush":
     needed=max(0,3-ok_cnt); remain_q=total_qs-cidx
     survive_color="#aa66ff" if ok_cnt>=3 else "#ffcc00" if needed<=remain_q else "#ff4444"
     st.markdown(f'<div style="background:linear-gradient(180deg,#0a0118,#1a0830);border:2.5px solid #8833ff;border-radius:22px;padding:8px;text-align:center;"><div style="font-size:1.0rem;font-weight:900;color:#aa66ff;">⚡ P7 실전 블랭크 · 5문제 중 3개 이상!</div><div style="display:flex;justify-content:space-around;margin-top:6px;"><span style="font-size:0.85rem;font-weight:900;color:#aa66ff;">✅ {ok_cnt}개</span><span style="font-size:0.85rem;font-weight:900;color:#ffcc00;">{cidx+1}/{total_qs}</span><span style="font-size:0.85rem;font-weight:900;color:{survive_color};">필요 {needed}개</span></div></div>',unsafe_allow_html=True)
-    st.markdown(f'<div style="text-align:center;margin:4px 0;"><span style="font-size:{tsz};font-weight:900;color:{tcl};{tglow}">{rem}</span><span style="font-size:0.8rem;color:{tcl};opacity:0.7;">s</span></div>',unsafe_allow_html=True)
+
+    # ── JS 타이머 (autorefresh 없이 매초 독립 카운트다운) ──
+    # ★ BUG FIX 2026.04: Python rem 매초 갱신을 JS에 위임 (p5_exam과 동일)
+    _cb_ts_start_ms = int(st.session_state.sg_combo_start * 1000)
+    _cb_twarn_esc = twarn.replace("`", "\\`").replace("</", "<\\/")
+    components.html(f"""
+    <div style="text-align:center;margin:4px 0;">
+      <span id="cbtimer-num" style="font-size:{tsz};font-weight:900;color:{tcl};{tglow}">{rem}</span>
+      <span style="font-size:0.8rem;color:{tcl};opacity:0.7;">s</span>
+    </div>
+    <div id="cbtimer-warn" style="text-align:center;min-height:20px;">{_cb_twarn_esc}</div>
+    <script>
+    (function(){{
+      var startMs = {_cb_ts_start_ms};
+      var total = 30;
+      var num = document.getElementById('cbtimer-num');
+      var warn = document.getElementById('cbtimer-warn');
+      function tick(){{
+        if (!num || !warn) return;
+        var r = Math.max(0, total - Math.floor((Date.now() - startMs)/1000));
+        num.innerText = r;
+        if (r <= 5) {{ num.style.color='#ff0000'; num.style.fontSize='2.5rem'; num.style.textShadow='0 0 40px #ff0000'; warn.innerHTML='<div style="text-align:center;font-size:1.2rem;color:#ff0000;font-weight:900;margin:4px 0;">💀 폭발한다!! 💀</div>'; }}
+        else if (r <= 10) {{ num.style.color='#ff2200'; num.style.fontSize='2rem'; num.style.textShadow='0 0 25px #ff2200'; warn.innerHTML='<div style="text-align:center;font-size:1rem;color:#ff4444;font-weight:900;margin:4px 0;">💀 서둘러!! 💀</div>'; }}
+        else if (r <= 15) {{ num.style.color='#ff6600'; num.style.fontSize='1.6rem'; num.style.textShadow='0 0 15px #ff6600'; warn.innerHTML='<div style="text-align:center;font-size:0.9rem;color:#ff8844;font-weight:900;margin:4px 0;">⚡ 서둘러!!</div>'; }}
+        else {{ num.style.color='#aa66ff'; num.style.fontSize='1.2rem'; num.style.textShadow=''; warn.innerHTML=''; }}
+        if (r > 0) setTimeout(tick, 300);
+      }}
+      tick();
+    }})();
+    </script>
+    """, height=70)
     st.markdown(f'<div style="background:rgba(255,255,255,0.06);border-radius:12px;padding:3px;margin:4px 0;"><div style="background:linear-gradient(90deg,{tcl},#8833ff);height:12px;border-radius:10px;width:{tpct}%;"></div></div>',unsafe_allow_html=True)
     if twarn: st.markdown(twarn,unsafe_allow_html=True)
     import re as _re2

@@ -42,6 +42,8 @@ _SHEETS_HEADERS = {
     "attendance": ["date", "month", "nickname", "ts"],
     "activity":   ["date", "month", "nickname", "arena", "duration_sec",
                    "acc", "completed", "ts"],
+    "session_events": ["timestamp", "user_id", "arena", "event",
+                      "duration_sec", "extra_info", "research_phase"],
 }
 
 
@@ -223,3 +225,56 @@ def record_activity(nickname: str = "",
 
     # 2. Google Sheets activity 탭 (독립적 gspread 호출)
     _save_to_sheets("activity", entry)
+
+
+def record_session_event(nickname: str = "",
+                         arena: str = "",
+                         event: str = "enter",
+                         duration_sec: int = 0,
+                         extra_info: str = ""):
+    """
+    세션 이벤트 기록 — session_events 시트.
+
+    PURPOSE:
+        학습자의 페이지 진입·이탈 등 미시적 세션 이벤트 추적.
+        논문 ⑤ 탐색적 로그 분석의 "이탈 지점 식별" 변수.
+
+    PARAMS:
+        nickname:     사용자 식별자 (빈 문자열이면 "guest")
+        arena:        페이지/영역 태그 ("MAIN_HUB", "P5", "POW_HQ", "P7" 등)
+        event:        이벤트 종류
+                      - "enter": 페이지 진입
+                      - "leave": 페이지 떠남
+                      - "quit":  중도 포기
+                      - "play":  일반 이벤트
+        duration_sec: 이벤트가 체류/완료까지 걸린 시간 (선택)
+        extra_info:   부가 정보 (마지막 문항 번호 등, 최대 200자)
+
+    STORAGE:
+        Google Sheets "session_events" 탭 — 활동 흐름 분석용 append-only
+
+    USAGE:
+        # 페이지 진입 시 (각 페이지 상단, idempotent)
+        if not st.session_state.get("_arena_entered_P5"):
+            record_session_event(nickname, "P5", "enter")
+            st.session_state["_arena_entered_P5"] = True
+
+        # 중도 이탈 시
+        record_session_event(nickname, "POW_p5exam", "quit",
+                            extra_info=f"last_q={qi}")
+    """
+    if not nickname:
+        nickname = "guest"
+
+    now = datetime.now()
+    entry = {
+        "timestamp":      now.isoformat()[:19],
+        "user_id":        nickname,
+        "arena":          arena or "unknown",
+        "event":          event,
+        "duration_sec":   int(duration_sec) if duration_sec else 0,
+        "extra_info":     str(extra_info)[:200] if extra_info else "",
+        "research_phase": "pre_irb",  # TODO: IRB 승인 후 "main"으로 변경
+    }
+
+    _save_to_sheets("session_events", entry)

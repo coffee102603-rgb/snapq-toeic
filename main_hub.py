@@ -37,7 +37,7 @@ from pathlib import Path
 
 from app.core.access_guard import require_access
 from app.core.pretest_gate import require_pretest_gate
-from app.core.attendance_engine import mark_attendance_once, has_attended_today
+from app.core.attendance_engine import mark_attendance_once, has_attended_today, record_session_event
 from app.core.battle_state import load_profile
 
 st.set_page_config(
@@ -767,6 +767,16 @@ if nickname:
 # 출석 자동 기록
 mark_attendance_once(nickname)
 
+# ── 페이지 진입 이벤트 기록 (대서사시 L1: 세션 흐름 추적) ──────
+# PAPER: ⑤ 탐색적 로그 분석 (허브 방문 빈도·체류 시간 분석)
+# ──────────────────────────────────────────────────────────────
+if nickname and not st.session_state.get("_arena_entered_MAIN_HUB"):
+    try:
+        record_session_event(nickname=nickname, arena="MAIN_HUB", event="enter")
+        st.session_state["_arena_entered_MAIN_HUB"] = True
+    except Exception:
+        pass
+
 # ★★★ iOS Safari 세션 영속화 — localStorage에 닉네임 저장 + WebSocket 킵얼라이브 ★★★
 import streamlit.components.v1 as _ios_persist_cmp
 _ios_nick_js = str(nickname).replace("'", "\\'") if nickname else ""
@@ -786,7 +796,23 @@ _vp_cmp.html("""
 # viewport_width를 devices storage에 저장
 try:
     _vw_raw = st.query_params.get("vw", None)
-    if _vw_raw and not st.session_state.get("_vw_saved_" + nickname):
+    _vh_raw = st.query_params.get("vh", None)
+    # ★ 2026.04: session_state에도 저장 → _storage.save_rt_log()에서 자동 추출
+    # PAPER ⑤: rt_logs에 device_type·viewport 필드 연동
+    if _vw_raw:
+        try:
+            _vw_int_live = int(_vw_raw)
+            st.session_state["_dev_vw"] = _vw_int_live
+            st.session_state["_dev_device_type"] = "mobile" if _vw_int_live < 768 else "desktop"
+        except Exception:
+            pass
+    if _vh_raw:
+        try:
+            st.session_state["_dev_vh"] = int(_vh_raw)
+        except Exception:
+            pass
+
+    if _vw_raw and nickname and not st.session_state.get("_vw_saved_" + nickname):
         _vw_int = int(_vw_raw)
         _STORAGE_FILE_HUB = os.path.join(os.path.dirname(__file__), "storage_data.json")
         if os.path.exists(_STORAGE_FILE_HUB):

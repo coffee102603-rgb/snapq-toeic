@@ -55,7 +55,34 @@ def get_week(uid):
         return delta // 7 + 1
     except: return 1
 
-def save_rt_log(q, is_correct, seconds_remaining, timer_setting, session_no, adp_level, error_timing_type=None):
+def save_rt_log(q, is_correct, seconds_remaining, timer_setting, session_no, adp_level,
+                error_timing_type=None,
+                answer_changes=0,           # ★ 신규: 답 변경 횟수 (기본 0)
+                hesitation_ms=0):           # ★ 신규: 망설임 시간 ms (기본 0)
+    """
+    문항 응답 기록 — rt_logs 시트.
+
+    PARAMS:
+        q:                문항 dict (id, tp, cat, diff 포함)
+        is_correct:       정답 여부
+        seconds_remaining: 남은 시간 (초)
+        timer_setting:    제한 시간 설정 (초)
+        session_no:       세션 번호
+        adp_level:        적응형 난이도 레벨
+        error_timing_type: 오답 타이밍 분류 (선택)
+        answer_changes:   답 변경 횟수 (논문 ④ 신중도 분석용)
+        hesitation_ms:    첫 상호작용~제출 시간 ms (논문 ④ 망설임 분석용)
+
+    DEVICE INFO (자동 수집):
+        session_state에서 device_type, viewport_w/h 자동 추출.
+        값은 main_hub.py에서 JS로 수집하여 session_state에 저장.
+        수집 안 된 경우 빈 값으로 기록.
+
+    PAPER:
+        ④ AI 자동 분류: 답변경·망설임은 자신감 클러스터링 핵심 변수
+        ⑤ 탐색적 로그 분석: device_type은 모바일·PC 학습 패턴 차이
+        ⑦ ZPD 스캐폴딩: 기본 rt_logs 확장의 상위 집합
+    """
     uid = get_uid()
     gmap = {"grammar":"GRM","g1":"GRM","form":"FORM","g2":"FORM","link":"LINK","g3":"LINK","vocab":"VOCAB"}
     return append_log("rt_logs", {
@@ -69,6 +96,12 @@ def save_rt_log(q, is_correct, seconds_remaining, timer_setting, session_no, adp
         "adp_level": adp_level, "session_no": session_no,
         "week": get_week(uid), "research_phase": RESEARCH_PHASE,
         "error_timing_type": error_timing_type if not is_correct else None,
+        # ── 대서사시 v7 확장 필드 (2026.04) ──
+        "answer_changes":  int(answer_changes) if answer_changes else 0,
+        "hesitation_ms":   int(hesitation_ms) if hesitation_ms else 0,
+        "device_type":     st.session_state.get("_dev_device_type", ""),
+        "viewport_w":      st.session_state.get("_dev_vw", ""),
+        "viewport_h":      st.session_state.get("_dev_vh", ""),
     })
 
 def save_cross_log(p7_passage_id, p5_matched_ids, match_count):
@@ -119,13 +152,28 @@ _SHEETS_HEADERS = {
     "rt_logs":       ["timestamp","user_id","question_id","is_correct",
                       "seconds_remaining","timer_setting","rt_proxy",
                       "grammar_type","cat","diff","adp_level","session_no",
-                      "week","error_timing_type","research_phase"],
+                      "week","error_timing_type","research_phase",
+                      # ── 대서사시 v7 확장 필드 (2026.04) ──
+                      # PAPER ④: 답 변경 횟수 (신중도·자신감 분류)
+                      "answer_changes",
+                      # PAPER ④: 첫 상호작용~제출 시간 (ms) — 망설임 정도
+                      "hesitation_ms",
+                      # PAPER ⑤: 디바이스·뷰포트 (모바일·PC 학습 패턴 차이)
+                      "device_type","viewport_w","viewport_h"],
     "p5_logs":       ["timestamp","user_id","session_no","result",
                       "correct_count","wrong_count","timer_selected","mode",
                       "week","research_phase"],
     "zpd_logs":      ["timestamp","user_id","session_no","arena",
                       "timer_setting","result","game_over_q_no",
-                      "max_q_reached","week","research_phase"],
+                      "max_q_reached","week","research_phase",
+                      # ── 대서사시 v7 쟁점 A·B 대응 (2026.04) ──
+                      # PAPER ⑦: 임계값 돌파 이벤트 추적
+                      "threshold_event",      # T_target_met / level_up / reset
+                      "current_level",        # 상승된 난이도 레벨
+                      "rt_recent_mean",       # 최근 RT 평균 (T_target 계산 기준)
+                      "rt_target",            # 목표 RT (T_target)
+                      "consecutive_correct",  # 연속 정답 수
+                      "is_correct_at_speed"], # 5문항 연속 정답+T_target 이하 여부
     "forget_logs":   ["timestamp","user_id","problem_id","grammar_type",
                       "source","first_wrong_date","revisit_date",
                       "interval_days","re_wrong","revisit_count",
@@ -138,6 +186,16 @@ _SHEETS_HEADERS = {
                       "session_no","week","research_phase"],
     "activity":      ["date","month","nickname","arena","duration_sec",
                       "acc","completed","ts"],
+    # ── 대서사시 v7 신규 시트 (2026.04) ──
+    # PAPER ②: ADDIE 개발 사례 논문 — Design 단계 의사결정 증거
+    #   최샘이 수기로 Google Sheets에 직접 입력 (행 append)
+    #   또는 admin 페이지 내부 수기 입력 UI (다음 세션)
+    "design_decisions": ["timestamp","addie_phase","topic","context",
+                         "options","chosen","rationale","evidence",
+                         "research_phase"],
+    # PAPER ⑤: 세션 이벤트 로그 — 페이지 진입·이탈 흐름 분석
+    "session_events":   ["timestamp","user_id","arena","event",
+                         "duration_sec","extra_info","research_phase"],
     "attendance":    ["date","month","nickname","ts"],
 }
 
