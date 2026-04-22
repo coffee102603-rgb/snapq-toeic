@@ -1077,21 +1077,21 @@ elif st.session_state.sg_phase == "p5_exam":
         unsafe_allow_html=True)
 
     # ── 답 버튼 4개 — div id 래퍼 + 클릭 로직 ──
-    # 중복 클릭 방지
-    if st.session_state.get("_exam_processing"):
-        st.session_state.pop("_exam_processing")
-        st.rerun()
-    _prev_result_len = len(st.session_state.sg_exam_results)
+    # ★ BUG FIX 2026.04: autorefresh ↔ 버튼 race condition 해결
+    # 기존 _exam_processing 플래그 방식은 3중 rerun으로 인해 갤럭시/iOS에서
+    # 클릭이 먹히지 않음. qi 기반 중복 방지 + 즉시 rerun으로 단순화.
+    _prev_result_len = qi  # qi번째 문항 답하기 전 results 길이는 qi여야 정상
     for i, ch in enumerate(q["ch"]):
         _ch_clean = ch.split(") ",1)[-1] if ") " in ch else ch
         _display  = f"【{_exam_labels[i]}】  {_ch_clean}"
         _eid      = _exam_cfg[i][0]
         st.markdown(f'<div id="btn-{_eid}">', unsafe_allow_html=True)
         if st.button(_display, key=f"ex_{qi}_{i}", use_container_width=True):
-            if not st.session_state.get("_exam_processing"):
-                st.session_state["_exam_processing"] = True
+            # qi번째 문항에 아직 답 안 한 경우만 처리 (중복 클릭 방지)
+            if len(st.session_state.sg_exam_results) == qi:
                 ok = (i == q["a"])
                 st.session_state.sg_exam_results.append(ok)
+                st.rerun()  # ← autorefresh race 방지를 위한 명시적 rerun
         st.markdown('</div>', unsafe_allow_html=True)
 
     # ── forget_logs + phase 처리 (div-래퍼 루프에서 ok가 append된 경우) ──
