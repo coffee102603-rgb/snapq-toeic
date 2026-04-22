@@ -960,13 +960,24 @@ elif st.session_state.sg_phase == "p5_study":
 # P5 시험모드 — 33초 타임폭탄
 # ════════════════════════════════
 elif st.session_state.sg_phase == "p5_exam":
-    st_autorefresh(interval=1000, limit=36, key="p5_exam_timer")
     qs = st.session_state.sg_exam_qs
     qi = st.session_state.sg_exam_idx
     if qi >= len(qs):
         st.session_state.sg_phase = "p5_exam_result"; st.rerun()
     q = qs[qi]
     elapsed = time.time() - st.session_state.sg_exam_start
+
+    # ★ BUG FIX 2026.04: 1초 autorefresh가 버튼 클릭을 먹는 문제 해결
+    # 매초 rerun 대신 "33초 후 타임아웃 트리거"용 1회 autorefresh로 변경.
+    # 타이머 UI(숫자·바·경고)는 JS 컴포넌트가 독립 카운트다운. Python은
+    # 타임아웃 감지 + 버튼 클릭 처리에만 집중. → 클릭 이벤트 손실 없음.
+    _tmo_ms = max(500, int((34 - elapsed) * 1000))
+    st_autorefresh(
+        interval=_tmo_ms,
+        limit=1,
+        key=f"p5_exam_tmo_{int(st.session_state.sg_exam_start)}_{qi}"
+    )
+
     rem = max(0, 33 - int(elapsed))
     left = 5 - qi
     if rem <= 0:
@@ -1049,22 +1060,71 @@ elif st.session_state.sg_phase == "p5_exam":
         )
     _dots += '</div>'
 
-    # ── 타이머 + 도트 + 바 + 경고 ──
-    st.markdown(
-        f'<div style="text-align:center;margin:2px 0;padding:2px;">'
-        f'<span style="font-size:{tsz};font-weight:900;color:{tcl};'
-        f'font-family:Impact,Arial Black,sans-serif;{tglow}">{rem}</span>'
-        f'<span style="font-size:0.75rem;color:{tcl};opacity:0.7;">s</span></div>',
-        unsafe_allow_html=True)
+    # ── 도트 (문제 진행 표시) ──
     st.markdown(_dots, unsafe_allow_html=True)
-    bar_color = tcl if rem <= 15 else "#aa66ff"
-    st.markdown(
-        f'<div style="background:rgba(255,255,255,0.06);border-radius:10px;padding:2px;margin:2px 0;">'
-        f'<div style="background:linear-gradient(90deg,{bar_color},{tcl});height:10px;'
-        f'border-radius:8px;width:{tpct}%;transition:width 0.5s;"></div></div>',
-        unsafe_allow_html=True)
-    if twarn:
-        st.markdown(twarn, unsafe_allow_html=True)
+
+    # ── JS 타이머 (autorefresh 없이 매초 독립 카운트다운) ──────
+    # ★ BUG FIX 2026.04: Python의 rem 매초 갱신을 JS에 위임
+    # Python autorefresh 제거 → 버튼 클릭 이벤트가 먹히지 않음
+    # 초기 값(rem, tcl, tsz, tglow, tpct, twarn)은 Python 계산값을
+    # 그대로 사용. 이후 JS가 setTimeout으로 300ms마다 갱신.
+    # ────────────────────────────────────────────────────
+    _ts_start_ms = int(st.session_state.sg_exam_start * 1000)
+    _twarn_escaped = twarn.replace("`", "\\`").replace("</", "<\\/")
+    components.html(f"""
+    <div style="text-align:center;margin:2px 0;padding:2px;font-family:Arial,sans-serif;">
+      <span id="p5timer-num" style="font-size:{tsz};font-weight:900;color:{tcl};font-family:Impact,Arial Black,sans-serif;{tglow}">{rem}</span>
+      <span style="font-size:0.75rem;color:{tcl};opacity:0.7;">s</span>
+    </div>
+    <div style="background:rgba(255,255,255,0.06);border-radius:10px;padding:2px;margin:4px 0;">
+      <div id="p5timer-bar" style="background:{tcl};height:10px;border-radius:8px;width:{max(0, rem/33*100)}%;transition:width 0.5s;"></div>
+    </div>
+    <div id="p5timer-warn" style="text-align:center;min-height:20px;">{_twarn_escaped}</div>
+    <script>
+    (function(){{
+      var startMs = {_ts_start_ms};
+      var total = 33;
+      var num = document.getElementById('p5timer-num');
+      var bar = document.getElementById('p5timer-bar');
+      var warn = document.getElementById('p5timer-warn');
+      function tick(){{
+        if (!num || !bar || !warn) return;
+        var r = Math.max(0, total - Math.floor((Date.now() - startMs)/1000));
+        var pct = Math.max(0, (r/total)*100);
+        num.innerText = r;
+        bar.style.width = pct + '%';
+        if (r <= 5) {{
+          num.style.color='#ff0000'; num.style.fontSize='2.5rem';
+          num.style.textShadow='0 0 40px #ff0000,0 0 80px #cc0000';
+          bar.style.background='#ff0000';
+          warn.innerHTML='<div style="text-align:center;font-size:1.2rem;color:#ff0000;font-weight:900;margin:4px 0;">💀💀 폭발한다!! 💀💀</div>';
+        }} else if (r <= 10) {{
+          num.style.color='#ff2200'; num.style.fontSize='2rem';
+          num.style.textShadow='0 0 25px #ff2200,0 0 50px #ff0000';
+          bar.style.background='#ff2200';
+          warn.innerHTML='<div style="text-align:center;font-size:1rem;color:#ff4444;font-weight:900;margin:4px 0;">💀 서둘러!! 또 틀릴 거야?! 💀</div>';
+        }} else if (r <= 15) {{
+          num.style.color='#ff6600'; num.style.fontSize='1.6rem';
+          num.style.textShadow='0 0 15px #ff6600';
+          bar.style.background='#ff6600';
+          warn.innerHTML='<div style="text-align:center;font-size:0.9rem;color:#ff8844;font-weight:900;margin:4px 0;">⚡ 서둘러!! ⚡</div>';
+        }} else if (r <= 20) {{
+          num.style.color='#ffaa00'; num.style.fontSize='1.4rem';
+          num.style.textShadow='0 0 8px #ffaa00';
+          bar.style.background='#ffaa00';
+          warn.innerHTML='';
+        }} else {{
+          num.style.color='#aa66ff'; num.style.fontSize='1.2rem';
+          num.style.textShadow='';
+          bar.style.background='#aa66ff';
+          warn.innerHTML='';
+        }}
+        if (r > 0) setTimeout(tick, 300);
+      }}
+      tick();
+    }})();
+    </script>
+    """, height=110)
 
     # ── 문제 카드 (사이즈 축소) ──
     blank_text = q["text"].replace("_______", '<span style="border-bottom:3px solid #cc88ff;padding:0 10px;color:#88bbff;">________</span>')
