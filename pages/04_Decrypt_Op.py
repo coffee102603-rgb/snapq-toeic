@@ -40,18 +40,23 @@ _sys.path.insert(0, os.path.dirname(__file__))
 from _responsive_css import inject_css as _inject_css
 # inject_css()는 set_page_config() 이후에 호출해야 함 → 아래로 이동
 
-# ═══ GOOGLE SHEETS 연동 ═══
+# ═══ GOOGLE SHEETS 연동 ═══════════════════════════════════════
+# AI-AGENT NOTE:
+#   이 함수는 P7 세션 기록을 Google Sheets "Sheet1"에 저장하는 레거시 함수.
+#   04_Decrypt_Op 고유의 세션 레코드 형식 (step1/step2/step3 포함)을 사용하므로
+#   _storage.py의 범용 save_to_sheets()와는 스키마가 다름.
+#   → 이 함수는 P7 전용으로 유지하되, 인증 방식만 _storage.py와 통일.
+#
+# PAPER:   ④ AI 자동 분류 (P7 RT 데이터), ⑥ 크로스스킬 전이
+# SAFETY:  실패해도 게임 계속 (try/except), st.error 제거 (학생에게 노출 방지)
+# ═══════════════════════════════════════════════════════════════
 def save_to_sheets(record: dict) -> None:
-    """연구 데이터를 Google Sheets에 저장."""
+    """P7 세션 기록을 Google Sheets에 저장 (레거시 형식 유지)."""
     try:
         import gspread
-        from google.oauth2.service_account import Credentials
-        scopes = ["https://www.googleapis.com/auth/spreadsheets"]
-        creds_dict = dict(st.secrets["gcp_service_account"])
-        creds = Credentials.from_service_account_info(creds_dict, scopes=scopes)
-        gc = gspread.authorize(creds)
-        spreadsheet_id = st.secrets["SPREADSHEET_ID"]
-        sh = gc.open_by_key(spreadsheet_id)
+        # ★ 인증 방식 통일: service_account_from_dict (gspread 6.x 호환)
+        gc = gspread.service_account_from_dict(dict(st.secrets["gcp_service_account"]))
+        sh = gc.open_by_key(st.secrets["SPREADSHEET_ID"])
         ws = sh.sheet1
         # 헤더가 없으면 추가
         if ws.row_count == 0 or ws.cell(1,1).value is None:
@@ -79,8 +84,8 @@ def save_to_sheets(record: dict) -> None:
             sv(steps,2,"type_guess_correct",""),
         ]
         ws.append_row(row)
-    except Exception as e:
-        st.error(f"Sheets 오류: {e}")
+    except Exception:
+        pass  # 실패해도 게임 계속 (원칙 5: 이중 기록, 한쪽 실패 OK)
 
 st.set_page_config(page_title="암호해독 작전 📡", page_icon="📡", layout="wide", initial_sidebar_state="collapsed")
 _inject_css()  # set_page_config 직후 호출 (StreamlitSetPageConfigMustBeFirst 방지)
@@ -1076,8 +1081,10 @@ elif st.session_state.p7_phase == "battle":
                 _st_p7["p7_logs"].append(_p7l)
 
                 # ZPD: LOST 시 종료 지점 기록
+                # PAPER: ⑦ ZPD 스캐폴딩 (P7 즉사 지점 추적)
+                # STORAGE: 로컬 + Sheets 이중 저장 (원칙 5)
                 if not ok:
-                    _st_p7.setdefault("zpd_logs", []).append({
+                    _zpd_p7_entry = {
                         "user_id":        _uid_p7,
                         "session_date":   _today_p7,
                         "session_no":     st.session_state.p7_session_no,
@@ -1088,9 +1095,14 @@ elif st.session_state.p7_phase == "battle":
                         "max_q_reached":  step + 1,
                         "week":           _week_p7,
                         "timestamp":      _dt_p7.datetime.now().isoformat(),
-                    })
+                        "research_phase": _storage.RESEARCH_PHASE,
+                    }
+                    _st_p7.setdefault("zpd_logs", []).append(_zpd_p7_entry)
+                    # Sheets 이중 저장
+                    try: _storage.save_to_sheets("zpd_logs", _zpd_p7_entry)
+                    except: pass
                 elif step >= 2:
-                    _st_p7.setdefault("zpd_logs", []).append({
+                    _zpd_p7_victory = {
                         "user_id":        _uid_p7,
                         "session_date":   _today_p7,
                         "session_no":     st.session_state.p7_session_no,
@@ -1101,7 +1113,12 @@ elif st.session_state.p7_phase == "battle":
                         "max_q_reached":  3,
                         "week":           _week_p7,
                         "timestamp":      _dt_p7.datetime.now().isoformat(),
-                    })
+                        "research_phase": _storage.RESEARCH_PHASE,
+                    }
+                    _st_p7.setdefault("zpd_logs", []).append(_zpd_p7_victory)
+                    # Sheets 이중 저장
+                    try: _storage.save_to_sheets("zpd_logs", _zpd_p7_victory)
+                    except: pass
                     st.session_state.p7_session_no += 1
 
                 with open(STORAGE_FILE, "w", encoding="utf-8") as _fp7:

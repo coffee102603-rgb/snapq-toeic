@@ -937,7 +937,12 @@ elif st.session_state.phase=="victory":
             "research_phase": _storage.RESEARCH_PHASE,
         })
     except: pass
-    # ── zpd_logs + p5_logs ──
+    # ── zpd_logs + p5_logs (VICTORY) ─────────────────────────────
+    # STORAGE: 로컬 JSON + Google Sheets 이중 저장 (원칙 5)
+    # PAPER:   ⑤ 탐색적 로그 분석 (p5_logs 세션 요약)
+    #          ⑦ ZPD 스캐폴딩 (zpd_logs 임계값 돌파 추적)
+    # SAFETY:  기존 로컬 저장 유지 + append_log()로 Sheets 추가
+    # ──────────────────────────────────────────────────────────────
     try:
         st.session_state.p5_session_no = st.session_state.get("p5_session_no", 0) + 1
         _st2 = _storage.load()
@@ -946,25 +951,33 @@ elif st.session_state.phase=="victory":
         _sno2 = st.session_state.p5_session_no
         _week2 = _storage.get_week(_uid2)
         _zpd_entry = {
-            "user_id":        _uid2,"session_date":   _today2,"session_no":     _sno2,
-            "arena":          "P5","timer_setting":  st.session_state.tsec,
-            "game_over_q_no": None,"result":         "VICTORY","max_q_reached":  5,
-            "week":           _week2,"timestamp":      __import__("datetime").datetime.now().isoformat(),
+            "user_id":        _uid2, "session_date":   _today2, "session_no":     _sno2,
+            "arena":          "P5",  "timer_setting":  st.session_state.tsec,
+            "game_over_q_no": None,  "result":         "VICTORY", "max_q_reached":  5,
+            "week":           _week2, "timestamp":     __import__("datetime").datetime.now().isoformat(),
+            "research_phase": _storage.RESEARCH_PHASE,
         }
+        # 1) 로컬 JSON 저장 (기존 방식 유지)
         if "zpd_logs" not in _st2: _st2["zpd_logs"] = []
         _st2["zpd_logs"].append(_zpd_entry)
         _p5_entry = {
-            "user_id":       _uid2,"session_date":  _today2,"session_no":    _sno2,
-            "timer_selected": st.session_state.tsec,"mode":          st.session_state.mode,
-            "result":        "VICTORY","correct_count": st.session_state.sc,
-            "wrong_count":   st.session_state.wrong,"week":          _week2,
-            "timestamp":     __import__("datetime").datetime.now().isoformat(),
+            "user_id":        _uid2, "session_date":  _today2, "session_no":    _sno2,
+            "timer_selected": st.session_state.tsec,  "mode":  st.session_state.mode,
+            "result":         "VICTORY", "correct_count": st.session_state.sc,
+            "wrong_count":    st.session_state.wrong,  "week":  _week2,
+            "timestamp":      __import__("datetime").datetime.now().isoformat(),
+            "research_phase": _storage.RESEARCH_PHASE,
         }
         if "p5_logs" not in _st2: _st2["p5_logs"] = []
         if not any(p.get("session_no") == _sno2 and p.get("user_id") == _uid2 and p.get("result") == "VICTORY"
                    for p in _st2["p5_logs"]):
             _st2["p5_logs"].append(_p5_entry)
         _storage.save(_st2)
+        # 2) Google Sheets 이중 저장 (대서사시 원칙 5: 이중 기록)
+        try: _storage.save_to_sheets("zpd_logs", _zpd_entry)
+        except: pass
+        try: _storage.save_to_sheets("p5_logs", _p5_entry)
+        except: pass
     except: pass
 
     _sc_v = st.session_state.sc
@@ -1173,6 +1186,12 @@ elif st.session_state.phase=="lost":
             "research_phase": _storage.RESEARCH_PHASE,
         })
     except: pass
+    # ── zpd_logs + p5_logs (GAME_OVER) ──────────────────────────
+    # STORAGE: 로컬 JSON + Google Sheets 이중 저장 (원칙 5)
+    # PAPER:   ⑤ 탐색적 로그 분석 (p5_logs 이탈 기록)
+    #          ⑦ ZPD 스캐폴딩 (zpd_logs 실패 지점 추적)
+    # SAFETY:  기존 로컬 저장 유지 + append_log()로 Sheets 추가
+    # ──────────────────────────────────────────────────────────────
     try:
         st.session_state.p5_session_no = st.session_state.get("p5_session_no", 0) + 1
         _st3 = _storage.load()
@@ -1183,28 +1202,36 @@ elif st.session_state.phase=="lost":
         _pending = _st3.get("_zpd_pending", {}).get(_uid3, {})
         _go_q = _pending.get("game_over_q_no", st.session_state.qi + 1)
         _zpd3 = {
-            "user_id":        _uid3,"session_date":   _today3,"session_no":     _sno3,
-            "arena":          "P5","timer_setting":  st.session_state.tsec,
-            "game_over_q_no": _go_q,"result":         "GAME_OVER",
-            "max_q_reached":  st.session_state.qi + 1,"week":           _week3,
+            "user_id":        _uid3, "session_date":   _today3, "session_no":     _sno3,
+            "arena":          "P5",  "timer_setting":  st.session_state.tsec,
+            "game_over_q_no": _go_q, "result":         "GAME_OVER",
+            "max_q_reached":  st.session_state.qi + 1, "week":  _week3,
             "timestamp":      __import__("datetime").datetime.now().isoformat(),
+            "research_phase": _storage.RESEARCH_PHASE,
         }
+        # 1) 로컬 JSON 저장 (기존 방식 유지)
         if "zpd_logs" not in _st3: _st3["zpd_logs"] = []
         if not any(z.get("session_no") == _sno3 and z.get("user_id") == _uid3
                    for z in _st3["zpd_logs"]):
             _st3["zpd_logs"].append(_zpd3)
         _p5e3 = {
-            "user_id":        _uid3,"session_date":   _today3,"session_no":     _sno3,
-            "timer_selected": st.session_state.tsec,"mode":           st.session_state.mode,
-            "result":         "GAME_OVER","correct_count":  st.session_state.sc,
-            "wrong_count":    st.session_state.wrong,"week":           _week3,
+            "user_id":        _uid3, "session_date":   _today3, "session_no":     _sno3,
+            "timer_selected": st.session_state.tsec,   "mode":  st.session_state.mode,
+            "result":         "GAME_OVER", "correct_count":  st.session_state.sc,
+            "wrong_count":    st.session_state.wrong,  "week":  _week3,
             "timestamp":      __import__("datetime").datetime.now().isoformat(),
+            "research_phase": _storage.RESEARCH_PHASE,
         }
         if "p5_logs" not in _st3: _st3["p5_logs"] = []
         if not any(p.get("session_no") == _sno3 and p.get("user_id") == _uid3 and p.get("result") == "GAME_OVER"
                    for p in _st3["p5_logs"]):
             _st3["p5_logs"].append(_p5e3)
         _storage.save(_st3)
+        # 2) Google Sheets 이중 저장 (대서사시 원칙 5: 이중 기록)
+        try: _storage.save_to_sheets("zpd_logs", _zpd3)
+        except: pass
+        try: _storage.save_to_sheets("p5_logs", _p5e3)
+        except: pass
     except: pass
 
     _sc = st.session_state.sc
@@ -1950,13 +1977,26 @@ div[data-testid="stButton"] button.fp-launch-off {
 }
 div[data-testid="stButton"] button.fp-launch-off p { color:#18182a !important; }
 
-/* 네비 버튼 */
+/* 네비 버튼 — 다크그린 계열 */
 div[data-testid="stButton"] button.fp-nav {
-  background:#05050e !important; border:1px solid #151525 !important;
-  border-radius:10px !important; color:#3d5066 !important;
+  background:#050e08 !important; border:1px solid rgba(50,160,80,0.2) !important;
+  border-radius:10px !important; color:#448855 !important;
   min-height:40px !important; font-size:0.82rem !important;
 }
-div[data-testid="stButton"] button.fp-nav p { color:#3d5066 !important; }
+div[data-testid="stButton"] button.fp-nav p { color:#448855 !important; }
+div[data-testid="stButton"] button.fp-nav:hover {
+  border-color:rgba(80,200,100,0.4) !important;
+  box-shadow:0 0 10px rgba(50,160,80,0.2) !important;
+}
+
+/* ═══════════════════════════════════════════════════════════
+   리모컨 구역 배경 — 3구역 시각적 분리
+   AI-AGENT NOTE:
+     Streamlit은 div wrapper로 버튼 그룹을 감쌀 수 없으므로
+     CSS nth-of-type selector로 stVerticalBlock 내부 구역에 배경 적용.
+     이 방식은 요소 순서가 바뀌면 깨질 수 있으므로
+     로비 UI 요소 순서를 변경할 때 이 CSS도 함께 점검할 것.
+═══════════════════════════════════════════════════════════ */
 
 @media(max-width:480px) {
   div[data-testid="stButton"] button.fp-t30,
@@ -2123,6 +2163,7 @@ div[data-testid="stButton"] button.fp-nav p { color:#3d5066 !important; }
 
     # ── 네비 ──
     st.markdown('<div style="height:1px;background:#0e0e1e;margin:4px 0 3px;"></div>', unsafe_allow_html=True)
+    st.markdown('<div style="font-size:9px;color:#338855;letter-spacing:4px;padding:4px 0 3px;font-weight:700;">🧭  NAVIGATE</div>', unsafe_allow_html=True)
     nc1, nc2 = st.columns(2)
     with nc1:
         if st.button("💀 포로사령부", key="p5nav1", use_container_width=True):
@@ -2203,6 +2244,39 @@ div[data-testid="stButton"] button.fp-nav p { color:#3d5066 !important; }
 
   setTimeout(applyClasses, 120);
   setTimeout(applyClasses, 450);
+
+  // ── 리모컨 구역 배경 주입 ──────────────────────────────────
+  // AI-AGENT NOTE:
+  //   Streamlit은 임의 div wrapper를 삽입할 수 없으므로
+  //   JS로 구역 라벨(COMBAT TIME / MISSION SELECT)을 찾아
+  //   해당 영역에 배경색을 동적으로 적용한다.
+  //   안전: 라벨을 못 찾으면 아무것도 안 함 (try/catch).
+  // ──────────────────────────────────────────────────────────
+  function applyZones(){{
+    try {{
+      var allEls = doc.querySelectorAll('[data-testid="stMarkdownContainer"] div');
+      allEls.forEach(function(el){{
+        var t = (el.textContent || '').trim();
+        // COMBAT TIME 구역 라벨 → 네이비 배경
+        if(t.indexOf('COMBAT TIME') > -1 && !el.dataset.zoned){{
+          el.dataset.zoned = '1';
+          el.style.cssText += ';background:linear-gradient(135deg,#0a1628,#0d1a30);border:1px solid rgba(0,140,255,0.15);border-radius:12px;padding:8px 10px;margin:4px 0;';
+        }}
+        // MISSION SELECT 구역 라벨 → 다크레드 배경
+        if(t.indexOf('MISSION SELECT') > -1 && !el.dataset.zoned){{
+          el.dataset.zoned = '1';
+          el.style.cssText += ';background:linear-gradient(135deg,#1a0810,#200c14);border:1px solid rgba(200,50,80,0.15);border-radius:12px;padding:8px 10px;margin:4px 0;';
+        }}
+        // NAVIGATE 구역 라벨 → 다크그린 배경
+        if(t.indexOf('NAVIGATE') > -1 && !el.dataset.zoned){{
+          el.dataset.zoned = '1';
+          el.style.cssText += ';background:linear-gradient(135deg,#081a0e,#0c200f);border:1px solid rgba(50,160,80,0.15);border-radius:12px;padding:8px 10px;margin:4px 0;';
+        }}
+      }});
+    }} catch(e) {{}}
+  }}
+  setTimeout(applyZones, 150);
+  setTimeout(applyZones, 500);
 
   if(isReady){{
     var _fi=0;
