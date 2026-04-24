@@ -104,7 +104,7 @@ POST_SURVEY_DAY  = POSTTEST_DAY
 
 # --- 데일리 게이트 ---
 DAILY_GATE_QUESTIONS     = 5     # 매일 아침 첫 접속 시 5문항
-DAILY_GATE_TIME_SEC      = 120   # ⭐ 데일리 총 제한: 2분
+DAILY_GATE_TIME_SEC      = 33    # ⭐ 모닝팩 P5: 5문제 33초 (속도 훈련)
 DAILY_GATE_SECONDS       = 20    # (레거시, 참고용)
 MILESTONE_GATE_QUESTIONS = 30    # ⭐ 관문검사 30문항
 MILESTONE_GATE_TIME_SEC  = 900   # ⭐ 관문검사 총 제한: 15분
@@ -1100,7 +1100,7 @@ def _render_daily_gate(nickname: str, month_key: str) -> None:
         <div style="text-align:center;padding:60px 20px;">
             <div style="font-size:64px;margin-bottom:16px;">🌅</div>
             <div style="font-size:28px;font-weight:900;color:#fff;margin-bottom:12px;">
-                오늘의 워밍업 완료!
+                모닝팩 P5 완료!
             </div>
             <div style="font-size:20px;color:#3B82F6;margin-bottom:8px;">
                 {st.session_state.daily_correct} / {DAILY_GATE_QUESTIONS} 정답
@@ -1147,7 +1147,7 @@ def _render_daily_gate(nickname: str, month_key: str) -> None:
     st.markdown(f"""
     <div style="text-align:center;margin-top:8px;margin-bottom:12px;">
         <div style="font-size:22px;color:#3B82F6;font-weight:900;margin-bottom:4px;">
-            🌅 오늘의 워밍업 · Day {day}
+            🌅 모닝팩 P5 · Day {day}
         </div>
         <div style="font-size:13px;color:rgba(255,255,255,0.5);">
             문항 {qi+1} / {DAILY_GATE_QUESTIONS}
@@ -1242,101 +1242,100 @@ def _render_daily_gate(nickname: str, month_key: str) -> None:
 
 # --- 데일리 게이트용 내장 기본 문항 풀 (30문항) ---
 _BUILTIN_DAILY_POOL = [
-    # === 어법 15문항 ===
-    {"id":"D001","type":"grammar","diff":"easy",
-     "question":"The report ___ by the manager yesterday.",
-     "choices":["reviewed","was reviewed","reviewing","has reviewed"],"answer_idx":1},
+    # ═══ 어법 15문항 (TOEIC P5 수준, 15-18단어) ═══
+    {"id":"D001","type":"grammar","diff":"medium",
+     "question":"The manager announced that the quarterly report ___ by the accounting department before Friday.",
+     "choices":["completing","completed","will be completed","was completing"],"answer_idx":2},
     {"id":"D002","type":"grammar","diff":"easy",
-     "question":"All employees ___ attend the safety training.",
-     "choices":["must","musts","must to","musting"],"answer_idx":0},
-    {"id":"D003","type":"grammar","diff":"easy",
-     "question":"The meeting has been ___ to next Monday.",
-     "choices":["postpone","postponed","postponing","postpones"],"answer_idx":1},
-    {"id":"D004","type":"grammar","diff":"medium",
-     "question":"Neither the CEO nor the managers ___ available now.",
-     "choices":["is","are","was","has"],"answer_idx":1},
+     "question":"All documents submitted to the legal department must be ___ reviewed before the signing ceremony.",
+     "choices":["thorough","thoroughly","thoroughness","more thorough"],"answer_idx":1},
+    {"id":"D003","type":"grammar","diff":"medium",
+     "question":"The new marketing strategy ___ last month has already increased sales by over twenty percent.",
+     "choices":["implement","implemented","implementing","to implement"],"answer_idx":1},
+    {"id":"D004","type":"grammar","diff":"hard",
+     "question":"Unless the proposal ___ by the board next week, the project will be postponed indefinitely.",
+     "choices":["approved","approves","is approved","approving"],"answer_idx":2},
     {"id":"D005","type":"grammar","diff":"medium",
-     "question":"If you ___ the file, please send it again.",
-     "choices":["lose","lost","had lost","will lose"],"answer_idx":1},
+     "question":"The senior engineers ___ on the new prototype have requested additional funding from the director this month.",
+     "choices":["work","works","working","worked"],"answer_idx":2},
     {"id":"D006","type":"grammar","diff":"easy",
-     "question":"The documents ___ on the desk.",
-     "choices":["is","are","was","has"],"answer_idx":1},
+     "question":"Mr. Chen, ___ has been with the company for fifteen years, will retire this December.",
+     "choices":["who","whom","which","whose"],"answer_idx":0},
     {"id":"D007","type":"grammar","diff":"medium",
-     "question":"She suggested ___ the deadline.",
-     "choices":["to extend","extending","extend","extended"],"answer_idx":1},
-    {"id":"D008","type":"grammar","diff":"medium",
-     "question":"The package will be delivered ___ Friday.",
-     "choices":["on","in","at","by"],"answer_idx":0},
-    {"id":"D009","type":"grammar","diff":"easy",
-     "question":"Please ___ the form before leaving.",
-     "choices":["complete","completing","completed","completion"],"answer_idx":0},
-    {"id":"D010","type":"grammar","diff":"medium",
-     "question":"He is responsible ___ the new project.",
-     "choices":["for","to","of","on"],"answer_idx":0},
+     "question":"The training session will begin promptly at nine AM ___ all participants arrive on time.",
+     "choices":["as long as","in spite of","because of","due to"],"answer_idx":0},
+    {"id":"D008","type":"grammar","diff":"hard",
+     "question":"Not only ___ the annual revenue exceeded expectations, but customer satisfaction also improved quite significantly.",
+     "choices":["have","has","did","does"],"answer_idx":1},
+    {"id":"D009","type":"grammar","diff":"medium",
+     "question":"The company's decision to expand into Asian markets ___ by many analysts as highly strategic.",
+     "choices":["views","viewing","viewed","is viewed"],"answer_idx":3},
+    {"id":"D010","type":"grammar","diff":"easy",
+     "question":"Before finalizing the annual budget, the finance team consulted with senior management for three days.",
+     "choices":["Before","While","During","Since"],"answer_idx":0},
     {"id":"D011","type":"grammar","diff":"hard",
-     "question":"Had the manager known, he ___ differently.",
-     "choices":["would act","would have acted","will act","acts"],"answer_idx":1},
+     "question":"Had the contract been signed yesterday afternoon, the project ___ started on schedule this morning.",
+     "choices":["will","would","would have","had"],"answer_idx":2},
     {"id":"D012","type":"grammar","diff":"medium",
-     "question":"Most of the employees ___ satisfied with the change.",
-     "choices":["is","are","was","has"],"answer_idx":1},
+     "question":"The research findings, ___ were published last month, have attracted significant attention from industry experts.",
+     "choices":["who","which","that","what"],"answer_idx":1},
     {"id":"D013","type":"grammar","diff":"easy",
-     "question":"We need ___ more staff this quarter.",
-     "choices":["hire","to hire","hiring","hired"],"answer_idx":1},
+     "question":"The newly released software is significantly faster ___ the previous version in almost every aspect.",
+     "choices":["as","than","to","from"],"answer_idx":1},
     {"id":"D014","type":"grammar","diff":"medium",
-     "question":"The letter ___ on Tuesday morning.",
-     "choices":["sent","was sent","sending","send"],"answer_idx":1},
+     "question":"Employees ___ training programs regularly tend to show higher productivity than those who do not.",
+     "choices":["attend","attending","attended","have attended"],"answer_idx":1},
     {"id":"D015","type":"grammar","diff":"hard",
-     "question":"Only after the report was finished ___ home.",
-     "choices":["she went","did she go","she did go","went she"],"answer_idx":1},
+     "question":"Please ensure that all visitors ___ at the reception desk immediately upon entering the building.",
+     "choices":["register","registers","to register","registered"],"answer_idx":0},
 
-    # === 어휘 15문항 ===
+    # ═══ 어휘 15문항 (TOEIC P5 수준, 15-18단어) ═══
     {"id":"D016","type":"vocab","diff":"easy",
-     "question":"The company plans to ___ its offices next year.",
-     "choices":["expend","expand","expound","expire"],"answer_idx":1},
-    {"id":"D017","type":"vocab","diff":"easy",
-     "question":"Please ___ the attached document carefully.",
-     "choices":["review","revise","reverse","reserve"],"answer_idx":0},
+     "question":"The board of directors will ___ the new proposal during tomorrow's executive meeting at headquarters.",
+     "choices":["retain","replace","reject","review"],"answer_idx":3},
+    {"id":"D017","type":"vocab","diff":"medium",
+     "question":"Customer complaints have ___ quite significantly after the implementation of the new quality control system.",
+     "choices":["increased","released","decreased","expressed"],"answer_idx":2},
     {"id":"D018","type":"vocab","diff":"medium",
-     "question":"The new policy will ___ all employees.",
-     "choices":["effect","affect","except","accept"],"answer_idx":1},
-    {"id":"D019","type":"vocab","diff":"medium",
-     "question":"We need to ___ the budget by 10%.",
-     "choices":["raise","rise","arise","arouse"],"answer_idx":0},
-    {"id":"D020","type":"vocab","diff":"easy",
-     "question":"She is ___ for the marketing department.",
-     "choices":["responsible","response","respond","respect"],"answer_idx":0},
+     "question":"The company's financial position has become much more ___ since the merger was completed last year.",
+     "choices":["stabled","stable","stability","stably"],"answer_idx":1},
+    {"id":"D019","type":"vocab","diff":"hard",
+     "question":"Please kindly ___ from using mobile devices during the presentation in the main conference hall.",
+     "choices":["refrain","refer","refresh","reduce"],"answer_idx":0},
+    {"id":"D020","type":"vocab","diff":"medium",
+     "question":"The marketing team will ___ a comprehensive new strategy to attract international clients next quarter.",
+     "choices":["divide","deliver","decline","devise"],"answer_idx":3},
     {"id":"D021","type":"vocab","diff":"medium",
-     "question":"The meeting has been ___ until next week.",
-     "choices":["delayed","delighted","delivered","declined"],"answer_idx":0},
-    {"id":"D022","type":"vocab","diff":"medium",
-     "question":"All staff are ___ to attend the training.",
-     "choices":["require","required","requires","requiring"],"answer_idx":1},
-    {"id":"D023","type":"vocab","diff":"easy",
-     "question":"Please ___ any questions to HR.",
-     "choices":["direct","directly","direction","director"],"answer_idx":0},
-    {"id":"D024","type":"vocab","diff":"medium",
-     "question":"The quality of the product has ___ significantly.",
-     "choices":["improved","improving","improvement","improve"],"answer_idx":0},
+     "question":"The factory's production capacity has already ___ the limit set by current industry regulations this month.",
+     "choices":["exhausted","extracted","exceeded","extended"],"answer_idx":2},
+    {"id":"D022","type":"vocab","diff":"hard",
+     "question":"All staff members are expected to ___ to the company's strict code of conduct at all times.",
+     "choices":["adhere","adjust","address","admit"],"answer_idx":0},
+    {"id":"D023","type":"vocab","diff":"medium",
+     "question":"The CEO expressed her ___ for the team's outstanding performance during the difficult economic period.",
+     "choices":["hesitation","explanation","appreciation","limitation"],"answer_idx":2},
+    {"id":"D024","type":"vocab","diff":"easy",
+     "question":"The supplier failed to ___ the shipment as promised, causing significant delays in our production schedule.",
+     "choices":["divide","deliver","declare","devote"],"answer_idx":1},
     {"id":"D025","type":"vocab","diff":"hard",
-     "question":"Sales figures show a ___ increase this quarter.",
-     "choices":["substantial","substantive","subsequent","subdued"],"answer_idx":0},
-    {"id":"D026","type":"vocab","diff":"easy",
-     "question":"We ___ your order on time.",
-     "choices":["deliver","delivery","delivered","delivering"],"answer_idx":2},
+     "question":"The new company policy will ___ every employee across all departments starting from next Monday.",
+     "choices":["effect","infect","reflect","affect"],"answer_idx":3},
+    {"id":"D026","type":"vocab","diff":"medium",
+     "question":"The conference attendees ___ from various industries around the world gathered for the keynote speech.",
+     "choices":["representing","represented","represent","representation"],"answer_idx":0},
     {"id":"D027","type":"vocab","diff":"medium",
-     "question":"Please confirm your ___ by Friday.",
-     "choices":["attend","attendance","attention","attentive"],"answer_idx":1},
-    {"id":"D028","type":"vocab","diff":"medium",
-     "question":"The CEO ___ the new strategy last week.",
-     "choices":["announce","announced","announces","announcing"],"answer_idx":1},
+     "question":"The research team will need to ___ the data very carefully before publishing the final findings.",
+     "choices":["apologize","announce","analyze","anticipate"],"answer_idx":2},
+    {"id":"D028","type":"vocab","diff":"easy",
+     "question":"The proposal submitted by our competitor is ___ to ours in terms of technical specifications.",
+     "choices":["simulated","similar","stimulating","strategic"],"answer_idx":1},
     {"id":"D029","type":"vocab","diff":"hard",
-     "question":"The contract terms are ___ to both parties.",
-     "choices":["agreeable","agreement","agreeing","agreed"],"answer_idx":0},
-    {"id":"D030","type":"vocab","diff":"easy",
-     "question":"Please ___ the email to the right person.",
-     "choices":["forward","foreword","forbid","forge"],"answer_idx":0},
+     "question":"The client's detailed requirements have been clearly ___ in the technical specifications document distributed last Friday.",
+     "choices":["outlined","outlaid","outsourced","outlawed"],"answer_idx":0},
+    {"id":"D030","type":"vocab","diff":"medium",
+     "question":"Due to unexpected circumstances, the launch event has been ___ until further notice from management.",
+     "choices":["postponed","prospected","promoted","preserved"],"answer_idx":0},
 ]
-
 
 def require_pretest_gate() -> None:
     nickname = _get_nickname()
