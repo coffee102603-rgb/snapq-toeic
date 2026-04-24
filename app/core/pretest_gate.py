@@ -566,7 +566,7 @@ def _inject_gate_css(color: str = "#7C5CFF") -> None:
     [data-testid*="Button"] button,
     [data-testid*="Button"] button *,
     [data-testid*="Button"] button p {{
-        font-size: 40px !important;
+        font-size: 20px !important;
         line-height: 1.3 !important;
         font-weight: 900 !important;
     }}
@@ -668,7 +668,7 @@ def _render_survey(survey_type: str, nickname: str, month_key: str) -> None:
         <div style="font-size:11px;color:{color};font-weight:700;letter-spacing:2px;margin-bottom:8px;">
             {cat_name} · {key}
         </div>
-        <div style="font-size:20px;font-weight:700;color:#fff;line-height:1.6;">
+        <div style="font-size:26px;font-weight:700;color:#fff;line-height:1.6;">
             {text}
         </div>
     </div>
@@ -830,7 +830,7 @@ def _render_test(stage: int, nickname: str, month_key: str) -> None:
         <div style="font-size:11px;color:{color};font-weight:700;letter-spacing:2px;margin-bottom:8px;">
             {q['cat']}
         </div>
-        <div style="font-size:20px;font-weight:700;color:#fff;line-height:1.6;">
+        <div style="font-size:26px;font-weight:700;color:#fff;line-height:1.6;">
             {q['text']}
         </div>
     </div>
@@ -1211,7 +1211,7 @@ def _render_daily_gate(nickname: str, month_key: str) -> None:
     st.markdown(f"""
     <div style="background:rgba(59,130,246,0.08);border:1px solid rgba(59,130,246,0.3);
                 border-radius:12px;padding:24px;margin-bottom:20px;">
-        <div style="font-size:16px;color:#fff;line-height:1.6;">
+        <div style="font-size:22px;color:#fff;line-height:1.6;font-weight:700;">
             {q.get("question", "")}
         </div>
     </div>
