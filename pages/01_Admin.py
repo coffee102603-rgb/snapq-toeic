@@ -72,6 +72,7 @@ _check_admin_access()
 
 
 import streamlit as st
+import pandas as pd
 import json, os, pandas as pd
 from datetime import datetime
 
@@ -252,7 +253,7 @@ with tab1:
             total = len(udf)
             correct = udf["_correct"].sum()
             acc_u = round(correct / total * 100, 1) if total > 0 else 0
-            avg_rt = round(udf["rt_proxy"].astype(float).mean(), 1) if "rt_proxy" in udf.columns else "-"
+            avg_rt = round(pd.to_numeric(udf["rt_proxy"], errors='coerce').mean(), 1) if "rt_proxy" in udf.columns else "-"
             cats = list(udf["grammar_type"].unique()) if "grammar_type" in udf.columns else []
             last = str(udf["timestamp"].max())[:10] if "timestamp" in udf.columns else "-"
             rows.append({
