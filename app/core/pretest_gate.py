@@ -89,10 +89,18 @@ import streamlit as st
 #   ⑪ 자기문화기술지: 전체 사용 패턴 질적 데이터
 # =========================================================
 
-# --- 관문검사 (Milestone) ---
-PRE_DAY          = 1     # Day 1: 사전 (검사 + 설문 A~F)
-MILESTONE_EVERY  = 10    # 10일마다 관문검사 (Day 1, 11, 21, 31...)
-POST_SURVEY_DAY  = 21    # Day 21 이상부터 사후 설문 G 추가
+# --- 관문검사 (Milestone) — 재설계 2026.04.24 ---
+# 학원 월 사이클(안정 20일)에 맞춘 3회 고정 측정
+PRE_SURVEY_DAY   = 1     # ⭐ Day 1:  사전 설문 A~F만 (검사 X, 온보딩)
+PRETEST_DAY      = 2     # ⭐ Day 2:  pretest baseline (검사 30만)
+MIDTEST_DAY      = 11    # ⭐ Day 11: midtest (검사 30만)
+POSTTEST_DAY     = 20    # ⭐ Day 20: posttest (검사 30 + 사후 설문 G)
+MILESTONE_DAYS   = {PRETEST_DAY, MIDTEST_DAY, POSTTEST_DAY}  # {2, 11, 20}
+
+# 레거시 호환 (기존 코드/로그에서 참조)
+PRE_DAY          = PRE_SURVEY_DAY
+MILESTONE_EVERY  = 10
+POST_SURVEY_DAY  = POSTTEST_DAY
 
 # --- 데일리 게이트 ---
 DAILY_GATE_QUESTIONS     = 5     # 매일 아침 첫 접속 시 5문항
@@ -108,17 +116,14 @@ POST_START  = 21         # Day 21~: 사후 (레거시)
 
 
 def is_milestone_day(day: int) -> bool:
-    """개인 Day가 관문검사 날인지 판정. Day 1, 11, 21, 31... = True"""
-    if day < 1:
-        return False
-    return (day - 1) % MILESTONE_EVERY == 0
+    """개인 Day가 관문검사 날인지 판정. Day 2, 11, 20 = True"""
+    return day in MILESTONE_DAYS
 
 
 def get_milestone_round(day: int) -> int:
-    """관문검사 회차 계산 (Day 1=1회, Day 11=2회, Day 21=3회...)"""
-    if not is_milestone_day(day):
-        return 0
-    return ((day - 1) // MILESTONE_EVERY) + 1
+    """관문검사 회차 계산 (Day 2=1회 pretest, Day 11=2회 mid, Day 20=3회 post)"""
+    mapping = {PRETEST_DAY: 1, MIDTEST_DAY: 2, POSTTEST_DAY: 3}
+    return mapping.get(day, 0)
 
 
 # =========================================================
@@ -433,36 +438,29 @@ def _get_user_day(nickname: str, month_key: str) -> int:
 
 
 def _get_required_stage(nickname: str = "", month_key: str = "") -> Optional[int]:
-    """개인 Day 기준으로 필요한 관문검사 단계 반환.
+    """개인 Day 기준 필요한 stage 반환. — 재설계 2026.04.24
 
-    옵션 A 설계:
-        Day 1  → stage 1 (사전검사 + 사전 설문 A~F)
-        Day 11, 21, 31, 41... (is_milestone_day=True) → stage 2 (검사만)
-        Day 21 이상 milestone → stage 3 (검사 + 사후 설문 G, 최초 1회만)
-        기타 → None (자유 입장)
+        Day 1  → stage 1 (사전 설문 A~F만, 검사 X)
+        Day 2  → stage 2 (pretest baseline 30문항)
+        Day 11 → stage 2 (midtest 30문항)
+        Day 20 → stage 3 (posttest 30문항 + 사후 설문 G)
+        그 외  → None (게이트 없이 자유 입장, 데일리 5문항만)
     """
     day = _get_user_day(nickname, month_key)
 
-    # Day 1: 사전 (설문 + 검사)
-    if day == PRE_DAY:
+    # Day 1: 사전 설문만 (관문검사 없음)
+    if day == PRE_SURVEY_DAY:
         return 1
 
-    # 관문검사 날이 아니면 게이트 없음
-    if not is_milestone_day(day):
-        return None
+    # Day 20: posttest (관문 + 사후 설문 G)
+    if day == POSTTEST_DAY:
+        return 3
 
-    # Day 11 이후 milestone → stage 2 (검사만)
-    # 단, 사후 설문 아직 안 했으면 Day 21 이상에서 stage 3 처리
-    if day >= POST_SURVEY_DAY:
-        # 이미 사후 설문을 했는지 확인
-        try:
-            student_tests = _get_student_tests(nickname, month_key)
-            if not student_tests.get("survey_post"):
-                return 3  # 아직 사후 설문 미완료 → stage 3
-        except Exception:
-            pass
+    # Day 2, 11: 관문검사만
+    if day in (PRETEST_DAY, MIDTEST_DAY):
+        return 2
 
-    return 2  # 관문검사만
+    return None
 
 def _stage_name(stage: int) -> str:
     names = {1: "사전검사", 2: "중간검사", 3: "사후검사"}
@@ -616,6 +614,15 @@ def _render_test(stage: int, nickname: str, month_key: str) -> None:
         st.session_state.test_start = time.time()
         st.session_state.test_phase = "quiz"
 
+    # ─── ⏱ 시간 초과 → 서버측 강제 완료 (JS 실패해도 안전) ───
+    _ts_start = st.session_state.get("test_start", time.time())
+    _test_elapsed = time.time() - _ts_start
+    _test_remaining = max(0, MILESTONE_GATE_TIME_SEC - int(_test_elapsed))
+    if _test_remaining <= 0 and st.session_state.get("test_phase") == "quiz":
+        st.session_state.test_time_spent_sec = int(_test_elapsed)
+        st.session_state.test_phase = "result"
+        st.rerun()
+
     if st.session_state.get("test_phase") == "result":
         _render_result(stage, nickname, month_key)
         return
@@ -636,11 +643,61 @@ def _render_test(stage: int, nickname: str, month_key: str) -> None:
             <div style="background:{color};height:6px;border-radius:999px;
                         width:{int((qi / total) * 100)}%;transition:width 0.3s;"></div>
         </div>
-        <div style="font-size:12px;color:rgba(255,255,255,0.4);">
-            ⏱ 약 3분 · 편하게 풀어보세요
-        </div>
     </div>
     """, unsafe_allow_html=True)
+
+    # ─── ⏱ JS 카운트다운 타이머 (60초 이하 빨간 깜빡임) ───
+    import streamlit.components.v1 as _components
+    _mm, _ss = divmod(_test_remaining, 60)
+    _components.html(f"""
+    <div style="text-align:center;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;">
+      <div id="snapq-test-timer-box" style="
+           font-size:20px;font-weight:900;color:{color};
+           padding:8px 22px;border-radius:24px;display:inline-block;
+           background:rgba(0,229,255,0.10);
+           border:1.5px solid {color}99;
+           transition:all 0.3s ease;">
+        ⏱ <span id="snapq-test-time">{_mm}:{_ss:02d}</span>
+      </div>
+    </div>
+    <script>
+    (function() {{
+        let rem = {_test_remaining};
+        const timeEl = document.getElementById('snapq-test-time');
+        const boxEl  = document.getElementById('snapq-test-timer-box');
+        if (!timeEl || !boxEl) return;
+        function fmt(n) {{ return n < 10 ? '0' + n : '' + n; }}
+        function render() {{
+            const m = Math.floor(rem / 60);
+            const s = rem % 60;
+            timeEl.textContent = m + ':' + fmt(s);
+            if (rem <= 60) {{
+                boxEl.style.color = '#EF4444';
+                boxEl.style.background = 'rgba(239,68,68,0.15)';
+                boxEl.style.borderColor = 'rgba(239,68,68,0.6)';
+                boxEl.style.animation = 'snapq-test-pulse 0.9s ease-in-out infinite';
+            }}
+        }}
+        render();
+        const iv = setInterval(function() {{
+            rem -= 1;
+            if (rem < 0) {{
+                clearInterval(iv);
+                try {{ window.parent.location.reload(); }} catch(e) {{ location.reload(); }}
+                return;
+            }}
+            render();
+        }}, 1000);
+    }})();
+    </script>
+    <style>
+    @keyframes snapq-test-pulse {{
+        0%, 100% {{ opacity: 1; transform: scale(1); }}
+        50%      {{ opacity: 0.55; transform: scale(1.04); }}
+    }}
+    body {{ margin:0; padding:0; background:transparent; }}
+    </style>
+    """, height=62)
 
     q = TEST_QUESTIONS[qi]
 
@@ -1184,9 +1241,10 @@ def require_pretest_gate() -> None:
     stage_done = student_tests.get(stage_key) is not None
 
     if required_stage == 1:
+        # ⭐ 재설계: Day 1은 설문만. 검사 없음.
         survey_done = student_tests.get("survey_pre") is not None
-        if stage_done and survey_done:
-            return  # 둘 다 완료
+        if survey_done:
+            return  # 설문 완료 → 입장
     elif required_stage == 3:
         survey_done = student_tests.get("survey_post") is not None
         if stage_done and survey_done:
@@ -1199,26 +1257,17 @@ def require_pretest_gate() -> None:
     flow = st.session_state.get("current_gate_flow", "")
     stage = st.session_state.get("current_test_stage", required_stage)
 
-    # --- STAGE 1: 사전 설문 → 검사 ---
+    # --- STAGE 1: 사전 설문만 (검사 없음) — 재설계 2026.04.24 ---
     if flow == "pre_survey":
         if st.session_state.get("_survey_pre_done"):
-            # 설문 완료 → 검사로 전환
-            st.session_state.current_gate_flow = "pre_test"
-            st.session_state.test_qi = 0
-            st.session_state.test_answers = []
-            st.session_state.test_start = time.time()
-            st.session_state.test_phase = "quiz"
-            st.rerun()
+            return  # 설문 완료 → 바로 입장 (검사 X)
         else:
             _render_survey("pre", nickname, month_key)
             st.stop()
 
+    # flow == "pre_test" 레거시 경로: 혹시 남은 세션 있으면 통과 처리
     if flow == "pre_test":
-        if st.session_state.get("test_phase") in ("quiz", "result"):
-            _render_test(stage, nickname, month_key)
-            st.stop()
-        else:
-            return  # 검사 완료 → 입장
+        return
 
     # --- STAGE 2: 검사만 ---
     if flow == "mid_test":
