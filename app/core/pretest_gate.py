@@ -1,4 +1,4 @@
-"""
+﻿"""
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 FILE:     pretest_gate.py
 ROLE:     검사·설문 게이트 — 사전/중간/사후 TOEIC 검사 + 리커트 설문
@@ -477,7 +477,7 @@ def _inject_gate_css(color: str = "#7C5CFF") -> None:
     st.markdown(f"""
     <style>
     .stApp {{ background: #0D0F1A !important; }}
-    .block-container {{ max-width: 600px !important; margin: 0 auto !important; padding: 20px !important; }}
+    .block-container {{ max-width: 600px !important; margin: 0 auto !important; padding: 60px 20px 40px 20px !important; }}
     div.stButton > button {{
         border-radius: 14px !important; font-size: 18px !important;
         font-weight: 900 !important; padding: 14px !important;
