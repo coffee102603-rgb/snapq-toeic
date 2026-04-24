@@ -107,7 +107,7 @@ DAILY_GATE_QUESTIONS     = 5     # 매일 아침 첫 접속 시 5문항
 DAILY_GATE_TIME_SEC      = 33    # ⭐ 모닝팩 P5: 5문제 33초 (속도 훈련)
 DAILY_GATE_SECONDS       = 20    # (레거시, 참고용)
 MILESTONE_GATE_QUESTIONS = 30    # ⭐ 관문검사 30문항
-MILESTONE_GATE_TIME_SEC  = 900   # ⭐ 관문검사 총 제한: 15분
+MILESTONE_GATE_TIME_SEC  = 600   # ⭐ 관문검사: 30문항 10분 (정기토익 속도)
 
 # --- 레거시 호환 (기존 코드에서 참조되는 경우 대비) ---
 MID_START   = 11         # Day 11: 1차 중간 (레거시)
@@ -232,68 +232,81 @@ def _get_category_name(key: str) -> str:
 # TOEIC 검사 문제 (10문제)
 # =========================================================
 TEST_QUESTIONS = [
-    {"id": "T1", "text": "The new marketing strategy _______ a significant increase in sales last quarter.",
-     "ch": ["(A) result", "(B) resulted", "(C) results", "(D) resulting"], "a": 1, "cat": "동사/시제"},
-    {"id": "T2", "text": "All employees are required to submit their reports _______ the end of the month.",
-     "ch": ["(A) by", "(B) until", "(C) during", "(D) while"], "a": 0, "cat": "전치사"},
-    {"id": "T3", "text": "The manager asked that the project _______ completed before the deadline.",
-     "ch": ["(A) is", "(B) was", "(C) be", "(D) being"], "a": 2, "cat": "가정법"},
-    {"id": "T4", "text": "_______ the rain, the outdoor event was postponed until next week.",
-     "ch": ["(A) Because of", "(B) Although", "(C) Despite", "(D) However"], "a": 0, "cat": "접속/연결"},
-    {"id": "T5", "text": "The financial report was _______ reviewed by the board of directors.",
-     "ch": ["(A) care", "(B) careful", "(C) carefully", "(D) carefulness"], "a": 2, "cat": "품사/수식"},
-    {"id": "T6", "text": "Ms. Chen, _______ has worked here for ten years, will be promoted next month.",
-     "ch": ["(A) who", "(B) whom", "(C) which", "(D) whose"], "a": 0, "cat": "관계절"},
-    {"id": "T7", "text": "The company will _______ its annual conference in Seoul this year.",
-     "ch": ["(A) hold", "(B) held", "(C) holding", "(D) holds"], "a": 0, "cat": "동사형태"},
-    {"id": "T8", "text": "Please ensure that all documents are _______ before the meeting begins.",
-     "ch": ["(A) prepare", "(B) preparation", "(C) prepared", "(D) preparing"], "a": 2, "cat": "수동태"},
-    {"id": "T9", "text": "The new software _______ employees to manage their schedules more efficiently.",
-     "ch": ["(A) allows", "(B) allow", "(C) allowed", "(D) allowing"], "a": 0, "cat": "주어-동사 일치"},
-    {"id": "T10", "text": "The budget for next year has not _______ been finalized by the finance team.",
-     "ch": ["(A) yet", "(B) already", "(C) still", "(D) ever"], "a": 0, "cat": "부사"},
-    # ─────── 옵션 A 확장: 관문검사 30문항 (T11~T30) ───────
-    {"id": "T11", "text": "The seminar will be held _______ the conference room on the third floor.",
-     "ch": ["(A) at", "(B) in", "(C) on", "(D) by"], "a": 1, "cat": "전치사"},
-    {"id": "T12", "text": "Employees who _______ the training last week should contact HR.",
-     "ch": ["(A) miss", "(B) missing", "(C) missed", "(D) misses"], "a": 2, "cat": "동사/시제"},
-    {"id": "T13", "text": "The director _______ the proposal yesterday during the board meeting.",
-     "ch": ["(A) approve", "(B) approved", "(C) approving", "(D) approval"], "a": 1, "cat": "동사/시제"},
-    {"id": "T14", "text": "_______ the weather is bad tomorrow, the event will be held indoors.",
-     "ch": ["(A) Unless", "(B) If", "(C) Because", "(D) Since"], "a": 1, "cat": "접속/연결"},
-    {"id": "T15", "text": "The company's new product line has been _______ received by customers.",
-     "ch": ["(A) warm", "(B) warmth", "(C) warmly", "(D) warmer"], "a": 2, "cat": "품사/수식"},
-    {"id": "T16", "text": "Neither the manager _______ the employees were informed about the changes.",
-     "ch": ["(A) or", "(B) nor", "(C) and", "(D) but"], "a": 1, "cat": "상관접속사"},
-    {"id": "T17", "text": "Please ensure that your ID badge is _______ visible at all times.",
-     "ch": ["(A) clear", "(B) clearly", "(C) clearing", "(D) clearness"], "a": 1, "cat": "품사/수식"},
-    {"id": "T18", "text": "The documents _______ on the shared drive are confidential.",
-     "ch": ["(A) stored", "(B) storing", "(C) store", "(D) stores"], "a": 0, "cat": "분사구"},
-    {"id": "T19", "text": "Mr. Kim has been with our company _______ more than fifteen years.",
-     "ch": ["(A) since", "(B) from", "(C) for", "(D) during"], "a": 2, "cat": "전치사"},
-    {"id": "T20", "text": "The training session was _______ than expected, so we ended early.",
-     "ch": ["(A) short", "(B) shorter", "(C) shortest", "(D) shortly"], "a": 1, "cat": "비교급"},
-    # ─────── 어휘 10문항 (T21~T30) ───────
-    {"id": "T21", "text": "The company plans to _______ into Southeast Asian markets next year.",
-     "ch": ["(A) extend", "(B) expand", "(C) exceed", "(D) expose"], "a": 1, "cat": "어휘"},
-    {"id": "T22", "text": "All visitors must _______ at the reception desk upon arrival.",
-     "ch": ["(A) register", "(B) registry", "(C) registration", "(D) registered"], "a": 0, "cat": "어휘"},
-    {"id": "T23", "text": "The new policy will take _______ starting next Monday.",
-     "ch": ["(A) affect", "(B) effect", "(C) effective", "(D) effectively"], "a": 1, "cat": "어휘"},
-    {"id": "T24", "text": "Please _______ from using mobile phones during the presentation.",
-     "ch": ["(A) refrain", "(B) refer", "(C) reflect", "(D) refuse"], "a": 0, "cat": "어휘"},
-    {"id": "T25", "text": "The committee will _______ the candidates based on their qualifications.",
-     "ch": ["(A) evaluate", "(B) evacuate", "(C) elevate", "(D) elaborate"], "a": 0, "cat": "어휘"},
-    {"id": "T26", "text": "We need to _______ the issue before it becomes a bigger problem.",
-     "ch": ["(A) address", "(B) advance", "(C) admit", "(D) adjust"], "a": 0, "cat": "어휘"},
-    {"id": "T27", "text": "The report provides a _______ analysis of the current market trends.",
-     "ch": ["(A) comprehensive", "(B) compensate", "(C) component", "(D) component"], "a": 0, "cat": "어휘"},
-    {"id": "T28", "text": "Our team has _______ remarkable progress in the past six months.",
-     "ch": ["(A) make", "(B) made", "(C) making", "(D) makes"], "a": 1, "cat": "어휘"},
-    {"id": "T29", "text": "The invoice must be paid within 30 days of _______.",
-     "ch": ["(A) receive", "(B) receipt", "(C) receiver", "(D) receiving"], "a": 1, "cat": "어휘"},
-    {"id": "T30", "text": "Customer feedback is _______ to improving our products.",
-     "ch": ["(A) essential", "(B) essence", "(C) essentially", "(D) essentials"], "a": 0, "cat": "어휘"},
+    # ═══ 어법 20문항 (TOEIC 정기시험 수준, 20단어) ═══
+
+    # --- 쉬움 6문항 (정답률 85%+ 기대) ---
+    {"id": "T1", "text": "The detailed quarterly sales report _______ to all department heads before tomorrow's management meeting scheduled at the main office.",
+     "ch": ["(A) distributes", "(B) distributing", "(C) will be distributed", "(D) has distributed"], "a": 2, "cat": "수동태·시제"},
+    {"id": "T2", "text": "The new employees have been working very _______ to complete the training program before the end of the month.",
+     "ch": ["(A) diligent", "(B) diligently", "(C) diligence", "(D) most diligent"], "a": 1, "cat": "품사/수식"},
+    {"id": "T3", "text": "Ms. Rodriguez, _______ has been promoted to senior vice president, will oversee the Asia-Pacific division starting next January.",
+     "ch": ["(A) who", "(B) whom", "(C) whose", "(D) which"], "a": 0, "cat": "관계절"},
+    {"id": "T4", "text": "Employees currently _______ in the new wellness program have reported significantly improved energy levels and overall workplace satisfaction.",
+     "ch": ["(A) participate", "(B) participating", "(C) participated", "(D) to participate"], "a": 1, "cat": "분사구"},
+    {"id": "T5", "text": "All conference participants must register _______ the main reception desk at least thirty minutes before the keynote speech begins.",
+     "ch": ["(A) to", "(B) at", "(C) in", "(D) on"], "a": 1, "cat": "전치사"},
+    {"id": "T6", "text": "Sales performance this quarter has been considerably _______ than last quarter due to the new integrated marketing campaign strategies.",
+     "ch": ["(A) good", "(B) better", "(C) best", "(D) well"], "a": 1, "cat": "비교급"},
+
+    # --- 중간 8문항 (정답률 55-65% 기대) ---
+    {"id": "T7", "text": "Rarely _______ the finance department encountered such significant discrepancies in the annual audit report submitted just last week.",
+     "ch": ["(A) have", "(B) has", "(C) did", "(D) does"], "a": 1, "cat": "도치"},
+    {"id": "T8", "text": "The committee members strongly recommended that the current proposal _______ thoroughly before the final decision is made at headquarters.",
+     "ch": ["(A) reconsiders", "(B) reconsidered", "(C) be reconsidered", "(D) is reconsidered"], "a": 2, "cat": "가정법/주장동사"},
+    {"id": "T9", "text": "By the time the merger is finalized, the negotiation team _______ the details for over six months straight.",
+     "ch": ["(A) discusses", "(B) has discussed", "(C) will have been discussing", "(D) was discussing"], "a": 2, "cat": "시제"},
+    {"id": "T10", "text": "_______ by the chief executive officer, the new company policy will take effect at the beginning of next month.",
+     "ch": ["(A) Approve", "(B) Approved", "(C) Approving", "(D) Having approved"], "a": 1, "cat": "분사구문"},
+    {"id": "T11", "text": "The important clients were quite satisfied with the proposal _______ they had initially requested several additional features for the platform.",
+     "ch": ["(A) although", "(B) because", "(C) unless", "(D) whereas"], "a": 0, "cat": "접속사"},
+    {"id": "T12", "text": "The confidential financial documents need _______ by the external auditor before the board meeting scheduled for next Friday afternoon.",
+     "ch": ["(A) reviewing", "(B) to review", "(C) to be reviewed", "(D) reviewed"], "a": 2, "cat": "부정사/수동"},
+    {"id": "T13", "text": "The conference room _______ we held the last strategy meeting has recently been equipped with advanced audiovisual technology equipment.",
+     "ch": ["(A) which", "(B) where", "(C) that", "(D) when"], "a": 1, "cat": "관계부사"},
+    {"id": "T14", "text": "Each of the department managers, along with their personal assistants, _______ required to attend the quarterly strategic planning session.",
+     "ch": ["(A) is", "(B) are", "(C) have", "(D) being"], "a": 0, "cat": "주어동사 일치"},
+
+    # --- 어려움 6문항 (정답률 30-40% 기대) ---
+    {"id": "T15", "text": "Had the company _______ the innovative technology earlier, the market share would have increased by at least thirty percent.",
+     "ch": ["(A) adopt", "(B) adopted", "(C) adopts", "(D) adopting"], "a": 1, "cat": "가정법 도치"},
+    {"id": "T16", "text": "The consulting firm presented exactly _______ they claimed would be the most profitable investment strategy for our overseas expansion.",
+     "ch": ["(A) that", "(B) which", "(C) what", "(D) whose"], "a": 2, "cat": "관계대명사 what"},
+    {"id": "T17", "text": "The complicated negotiations took much longer than expected, _______ a significant delay in the project's originally planned completion date.",
+     "ch": ["(A) cause", "(B) caused", "(C) causing", "(D) to cause"], "a": 2, "cat": "분사구문"},
+    {"id": "T18", "text": "So rapidly _______ the entire technology sector evolved that traditional business models have become obsolete within just a few years.",
+     "ch": ["(A) has", "(B) have", "(C) had", "(D) does"], "a": 0, "cat": "도치"},
+    {"id": "T19", "text": "_______ any further assistance be required at any stage of the process, please do not hesitate to contact our team.",
+     "ch": ["(A) If", "(B) Should", "(C) Were", "(D) Had"], "a": 1, "cat": "가정법 도치"},
+    {"id": "T20", "text": "The new CEO has introduced innovative policies that prioritize not only increased efficiency _______ also enhanced employee satisfaction and retention.",
+     "ch": ["(A) and", "(B) or", "(C) but", "(D) with"], "a": 2, "cat": "상관접속사"},
+
+    # ═══ 어휘 10문항 (TOEIC 정기시험 수준, 20단어) ═══
+
+    # --- 쉬움 3문항 ---
+    {"id": "T21", "text": "The annual financial report indicates that our company has achieved _______ growth in all three major international markets this year.",
+     "ch": ["(A) substantial", "(B) substantive", "(C) subsequent", "(D) subjective"], "a": 0, "cat": "어휘"},
+    {"id": "T22", "text": "All department heads must _______ their quarterly budget proposal to the finance committee by the end of next week.",
+     "ch": ["(A) submit", "(B) subject", "(C) submerge", "(D) subside"], "a": 0, "cat": "어휘"},
+    {"id": "T23", "text": "The new marketing strategy requires a detailed _______ of consumer behavior patterns across different demographic segments and regional markets.",
+     "ch": ["(A) analysis", "(B) anxiety", "(C) amnesty", "(D) ambition"], "a": 0, "cat": "어휘"},
+
+    # --- 중간 4문항 ---
+    {"id": "T24", "text": "The CEO's inspiring speech at the annual company conference had a _______ impact on employee morale throughout the entire organization.",
+     "ch": ["(A) productive", "(B) profound", "(C) protective", "(D) provocative"], "a": 1, "cat": "어휘"},
+    {"id": "T25", "text": "Due to unforeseen global economic circumstances, the senior management team has decided to _______ all non-essential expenditures until further notice.",
+     "ch": ["(A) postpone", "(B) promote", "(C) preserve", "(D) predict"], "a": 0, "cat": "어휘"},
+    {"id": "T26", "text": "The conference venue was booked for our industry event, making it necessary to find a _______ location on short notice.",
+     "ch": ["(A) alternate", "(B) alternative", "(C) alternating", "(D) alternation"], "a": 1, "cat": "어휘"},
+    {"id": "T27", "text": "The research team will need to very carefully _______ the experimental data before drawing any definitive conclusions from the study.",
+     "ch": ["(A) examine", "(B) exempt", "(C) exceed", "(D) exclaim"], "a": 0, "cat": "어휘"},
+
+    # --- 어려움 3문항 ---
+    {"id": "T28", "text": "The strict regulatory changes announced last month will _______ a significant shift in how financial institutions manage their investment portfolios.",
+     "ch": ["(A) necessitate", "(B) negotiate", "(C) neutralize", "(D) nominate"], "a": 0, "cat": "어휘"},
+    {"id": "T29", "text": "Despite the initial setbacks, the entire project team demonstrated remarkable _______ by successfully meeting all critical milestones ahead of schedule.",
+     "ch": ["(A) resilience", "(B) reluctance", "(C) reverence", "(D) redundancy"], "a": 0, "cat": "어휘"},
+    {"id": "T30", "text": "The new merger agreement _______ all parties involved to strict confidentiality clauses regarding the financial details of the transaction.",
+     "ch": ["(A) subjects", "(B) subjugates", "(C) submits", "(D) subscribes"], "a": 0, "cat": "어휘"},
 ]
 
 
