@@ -477,7 +477,7 @@ def _inject_gate_css(color: str = "#7C5CFF") -> None:
     st.markdown(f"""
     <style>
     .stApp {{ background: #0D0F1A !important; }}
-    .block-container {{ max-width: 600px !important; margin: 0 auto !important; padding: 60px 20px 40px 20px !important; }}
+    .block-container {{ max-width: 600px !important; margin: 0 auto !important; padding: 1rem 1rem 2rem 1rem !important; }}
     div.stButton > button {{
         border-radius: 14px !important; font-size: 18px !important;
         font-weight: 900 !important; padding: 14px !important;
@@ -485,7 +485,7 @@ def _inject_gate_css(color: str = "#7C5CFF") -> None:
     }}
     div.stRadio > label {{ color: #ffffff !important; font-size: 16px !important; }}
     div[data-testid="stRadio"] label span {{ color: #ffffff !important; }}
-    #MainMenu, footer, header {{ visibility: hidden; }}
+    #MainMenu {{ display: none !important; }} footer {{ display: none !important; }} header {{ display: none !important; }} [data-testid="stHeader"] {{ display: none !important; }} [data-testid="stToolbar"] {{ display: none !important; }}
     </style>
     """, unsafe_allow_html=True)
 
@@ -949,12 +949,12 @@ def _render_daily_gate(nickname: str, month_key: str) -> None:
 
     # 헤더
     st.markdown(f"""
-    <div style="text-align:center;margin-bottom:24px;">
-        <div style="font-size:14px;color:#3B82F6;letter-spacing:3px;font-weight:700;">
-            🌅 TODAY'S WARMUP · DAY {day}
+    <div style="text-align:center;margin-top:8px;margin-bottom:20px;">
+        <div style="font-size:22px;color:#3B82F6;font-weight:900;margin-bottom:4px;">
+            🌅 오늘의 워밍업 · Day {day}
         </div>
-        <div style="font-size:13px;color:rgba(255,255,255,0.5);margin-top:6px;">
-            문항 {qi+1} / {DAILY_GATE_QUESTIONS} · 오늘의 사전 체크
+        <div style="font-size:13px;color:rgba(255,255,255,0.5);">
+            문항 {qi+1} / {DAILY_GATE_QUESTIONS}
         </div>
     </div>
     """, unsafe_allow_html=True)
