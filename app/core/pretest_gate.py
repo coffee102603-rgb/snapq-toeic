@@ -530,7 +530,7 @@ def _inject_gate_css(color: str = "#7C5CFF") -> None:
     .stApp {{ background: #0D0F1A !important; }}
     .block-container {{ max-width: 600px !important; margin: 0 auto !important; padding: 2.5rem 1rem 2rem 1rem !important; }}
     div.stButton > button {{
-        border-radius: 14px !important; font-size: 18px !important;
+        border-radius: 14px !important; font-size: 22px !important;
         font-weight: 900 !important; padding: 14px !important;
         touch-action: manipulation !important;
     }}
