@@ -529,19 +529,37 @@ def _inject_gate_css(color: str = "#7C5CFF") -> None:
     <style>
     .stApp {{ background: #0D0F1A !important; }}
     .block-container {{ max-width: 600px !important; margin: 0 auto !important; padding: 2.5rem 1rem 2rem 1rem !important; }}
+    /* v6: 모바일 강제 확대 (2026.04.24) */
+    html, body {{
+        -webkit-text-size-adjust: 100% !important;
+        text-size-adjust: 100% !important;
+    }}
     div.stButton > button {{
-        border-radius: 14px !important; font-size: 36px !important;
-        font-weight: 900 !important; padding: 14px !important;
+        border-radius: 14px !important;
+        font-size: 40px !important;
+        font-weight: 900 !important;
+        padding: 16px !important;
         touch-action: manipulation !important;
-        line-height: 1.3 !important;
+        line-height: 1.35 !important;
+        -webkit-text-size-adjust: 100% !important;
     }}
-    /* 그리드 안의 버튼 (리커트 5열, 관문검사 2×2)은 작게 유지 */
+    /* 관문검사 2x2 그리드만 작게 유지 (긴 영문 선택지) */
     div[data-testid="column"] div.stButton > button {{
-        font-size: 16px !important;
-        padding: 12px 4px !important;
-        line-height: 1.2 !important;
+        font-size: 22px !important;
+        padding: 14px 6px !important;
+        line-height: 1.25 !important;
     }}
-    div.stRadio > label {{ color: #ffffff !important; font-size: 16px !important; }}
+    /* 모바일 (≤768px) 강제 확대 — iOS Safari 자동 축소 방지용 */
+    @media (max-width: 768px) {{
+        div.stButton > button {{
+            font-size: 48px !important;
+            line-height: 1.4 !important;
+        }}
+        div[data-testid="column"] div.stButton > button {{
+            font-size: 26px !important;
+        }}
+    }}
+    div.stRadio > label {{ color: #ffffff !important; font-size: 18px !important; }}
     div[data-testid="stRadio"] label span {{ color: #ffffff !important; }}
     #MainMenu {{ display: none !important; }} footer {{ display: none !important; }} header {{ visibility: hidden !important; }} [data-testid="stHeader"] {{ visibility: hidden !important; }} [data-testid="stToolbar"] {{ display: none !important; }}
     </style>
