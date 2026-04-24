@@ -104,6 +104,80 @@ def save_rt_log(q, is_correct, seconds_remaining, timer_setting, session_no, adp
         "viewport_h":      st.session_state.get("_dev_vh", ""),
     })
 
+# ═══ 옵션 A: 게이트 로그 저장 함수 ════════════════════════════
+def save_gate_daily_log(user_id, personal_day, q_id, is_correct,
+                        response_time_ms, q_type="grammar", difficulty=""):
+    """
+    데일리 게이트 문항별 로그 저장.
+
+    PAPER:
+        ⑤ 탐색적 분석: 일일 정답률·반응시간 미세 궤적
+        ⑦ ZPD: 반응시간 단축 = 자동화 진전
+        ⑪ 자기문화기술지: 학생 행동 패턴 증거
+    """
+    return append_log("gate_daily_logs", {
+        "timestamp": datetime.now().isoformat(),
+        "user_id": user_id,
+        "personal_day": personal_day,
+        "q_id": q_id,
+        "is_correct": bool(is_correct),
+        "response_time_ms": int(response_time_ms) if response_time_ms else 0,
+        "q_type": q_type,
+        "difficulty": difficulty,
+        "research_phase": RESEARCH_PHASE,
+    })
+
+
+def save_gate_milestone_log(user_id, personal_day, milestone_round,
+                            q_id, is_correct, response_time_ms,
+                            q_type="grammar", difficulty=""):
+    """
+    관문검사 문항별 로그 저장.
+
+    PAPER:
+        ① 설계원리: 임계값 돌파 증거
+        ⑤ 탐색적 분석: 10일 단위 변화량
+        ⑩ SSCI: 사전·중간·사후 심화 측정
+    """
+    return append_log("gate_milestone_logs", {
+        "timestamp": datetime.now().isoformat(),
+        "user_id": user_id,
+        "personal_day": personal_day,
+        "milestone_round": milestone_round,
+        "q_id": q_id,
+        "is_correct": bool(is_correct),
+        "response_time_ms": int(response_time_ms) if response_time_ms else 0,
+        "q_type": q_type,
+        "difficulty": difficulty,
+        "research_phase": RESEARCH_PHASE,
+    })
+
+
+def save_gate_milestone_summary(user_id, personal_day, milestone_round,
+                                 total_questions, correct_count,
+                                 avg_response_time_ms, duration_sec):
+    """
+    관문검사 세션 요약 저장 (분석 편의용).
+
+    PAPER:
+        모든 논문 분석의 기본 지표
+        (1 session = 1 row, 성장곡선 모형 입력 데이터)
+    """
+    accuracy = (correct_count / total_questions * 100) if total_questions else 0
+    return append_log("gate_milestone_summary", {
+        "timestamp": datetime.now().isoformat(),
+        "user_id": user_id,
+        "personal_day": personal_day,
+        "milestone_round": milestone_round,
+        "total_questions": total_questions,
+        "correct_count": correct_count,
+        "accuracy_pct": round(accuracy, 1),
+        "avg_response_time_ms": int(avg_response_time_ms) if avg_response_time_ms else 0,
+        "duration_sec": int(duration_sec) if duration_sec else 0,
+        "research_phase": RESEARCH_PHASE,
+    })
+
+
 def save_cross_log(p7_passage_id, p5_matched_ids, match_count):
     uid = get_uid()
     return append_log("cross_logs", {
@@ -197,6 +271,20 @@ _SHEETS_HEADERS = {
     "session_events":   ["timestamp","user_id","arena","event",
                          "duration_sec","extra_info","research_phase"],
     "attendance":    ["date","month","nickname","ts"],
+    # ── 옵션 A: 데일리 게이트 (매일 5문항 = 매일 사전검사) ──────
+    # PAPER ⑤⑦⑩⑪: 일일 반응시간·정답률 미세 궤적
+    "gate_daily_logs":    ["timestamp","user_id","personal_day",
+                           "q_id","is_correct","response_time_ms",
+                           "q_type","difficulty","research_phase"],
+    # ── 옵션 A: 관문검사 (Day 1, 11, 21... 30문항) ───────────
+    # PAPER ①⑤⑩: 10일 단위 심화 측정, 임계값 돌파 확증
+    "gate_milestone_logs":["timestamp","user_id","personal_day","milestone_round",
+                           "q_id","is_correct","response_time_ms",
+                           "q_type","difficulty","research_phase"],
+    # ── 옵션 A: 관문검사 세션 요약 (1 row = 1 session) ──────
+    "gate_milestone_summary":["timestamp","user_id","personal_day","milestone_round",
+                              "total_questions","correct_count","accuracy_pct",
+                              "avg_response_time_ms","duration_sec","research_phase"],
 }
 
 

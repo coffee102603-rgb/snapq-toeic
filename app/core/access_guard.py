@@ -24,7 +24,15 @@ MONTHLY_CODES = {
     "2026-06": "JUN2026",
 }
 
-# 월말 잠금일 (이 날 이후 접속 불가)
+# ═══ 연구 모드 설정 (2026.05 연구 개시) ═══════════════════════
+# RESEARCH_MODE = True 면:
+#   - LOCK_DAY 해제 (월말에도 접속 가능 — 관문검사 Day 21, 31... 대응)
+#   - 학생 등록 시 pretest_gate_schedule 자동 생성
+#   - IRB 승인 전/후 플래그 자동 전환
+RESEARCH_MODE = True
+RESEARCH_START_DATE = "2026-05-01"  # 연구 개시일
+
+# 월말 잠금일 (연구 모드 아닐 때만 적용)
 LOCK_DAY = 28  # 매월 28일 이후 잠금
 
 
@@ -83,6 +91,9 @@ def _read_jsonl(path: Path) -> Iterable[Dict[str, Any]]:
 # 월말 잠금 체크
 # =========================================================
 def _is_locked() -> bool:
+    # 연구 모드에서는 잠금 해제 (관문검사 Day 21, 31... 대응)
+    if RESEARCH_MODE:
+        return False
     today = date.today()
     return today.day > LOCK_DAY
 
@@ -106,13 +117,25 @@ def _register_student(nickname: str, month_key: str) -> None:
                     continue
 
     # 새 학생 등록
+    today_str = _today_str()
     obj = {
         "nickname": nickname,
         "month": month_key,
         "registered_at": _now_iso(),
+        # ── 옵션 A: 개인 Day 기준 연구 설계 ──────────────────────
+        "study_day1_date": today_str,   # 이 학생의 Day 1 (연구 Day 계산 기준)
+        # ── 데일리 게이트 (매일 5문항 = 매일 사전검사) ──────────
+        "daily_gate_last_date": "",     # 마지막 데일리 게이트 완료 날짜
+        "daily_gate_total_count": 0,    # 데일리 게이트 누적 완료 횟수
+        # ── 관문검사 (Day 1, 11, 21... 10일마다 30문항) ─────────
+        "gate_check_last_day": 0,       # 마지막 관문검사 완료 day
+        "gate_check_count": 0,          # 관문검사 누적 완료 횟수
+        # ── 레거시 (하위 호환) ────────────────────────────────
         "pre_test_done": False,
         "mid_test_done": False,
         "post_test_done": False,
+        # ── 개인정보 고지 동의 (2026.05 예비 운영 시작) ────────
+        "privacy_agreed_at": "",
     }
     with open(roster_path, "a", encoding="utf-8") as f:
         f.write(json.dumps(obj, ensure_ascii=False) + "\n")
@@ -154,12 +177,212 @@ def update_student_record(nickname: str, month_key: str, updates: Dict) -> None:
 
 
 # =========================================================
-# 메인 로그인 함수
+# 옵션 A: 개인 Day 기준 연구 설계 헬퍼
 # =========================================================
+def get_personal_day(nickname: str, month_key: Optional[str] = None) -> int:
+    """
+    학생 개인의 연구 Day 계산 (Day 1부터 시작).
+
+    RETURNS:
+        1 이상의 정수 (첫 등록일이 Day 1)
+        학생 레코드 없으면 0
+    """
+    month_key = month_key or get_cohort_month()
+    record = get_student_record(nickname, month_key)
+    if not record or not record.get("study_day1_date"):
+        return 0
+    try:
+        day1 = datetime.strptime(record["study_day1_date"], "%Y-%m-%d").date()
+        today = date.today()
+        return (today - day1).days + 1  # Day 1은 등록 당일
+    except Exception:
+        return 0
+
+
+def needs_daily_gate(nickname: str, month_key: Optional[str] = None) -> bool:
+    """
+    오늘 데일리 게이트(5문항)를 풀어야 하는가?
+
+    RETURNS:
+        True:  오늘 아직 안 풀었음 → 5문항 강제
+        False: 오늘 이미 완료 → 자유 접속
+    """
+    month_key = month_key or get_cohort_month()
+    record = get_student_record(nickname, month_key)
+    if not record:
+        return True  # 레코드 없으면 일단 강제
+    today = _today_str()
+    return record.get("daily_gate_last_date", "") != today
+
+
+def needs_milestone_gate(nickname: str, month_key: Optional[str] = None) -> bool:
+    """
+    오늘 관문검사(30문항)를 풀어야 하는가?
+    개인 Day가 1, 11, 21, 31... (10n+1)이면서 아직 그 Day에 안 풀었을 때 True.
+
+    RETURNS:
+        True:  오늘이 관문검사 날 + 아직 안 풀었음
+        False: 관문검사 날 아님 또는 이미 완료
+    """
+    month_key = month_key or get_cohort_month()
+    day = get_personal_day(nickname, month_key)
+    if day < 1:
+        return False
+    # Day 1, 11, 21, 31... 검사
+    if (day - 1) % 10 != 0:
+        return False
+    record = get_student_record(nickname, month_key)
+    if not record:
+        return True
+    return record.get("gate_check_last_day", 0) != day
+
+
+def mark_daily_gate_done(nickname: str, month_key: Optional[str] = None) -> None:
+    """데일리 게이트 완료 기록."""
+    month_key = month_key or get_cohort_month()
+    record = get_student_record(nickname, month_key)
+    if not record:
+        return
+    count = record.get("daily_gate_total_count", 0) + 1
+    update_student_record(nickname, month_key, {
+        "daily_gate_last_date": _today_str(),
+        "daily_gate_total_count": count,
+    })
+
+
+def mark_milestone_gate_done(nickname: str, month_key: Optional[str] = None) -> None:
+    """관문검사 완료 기록."""
+    month_key = month_key or get_cohort_month()
+    day = get_personal_day(nickname, month_key)
+    record = get_student_record(nickname, month_key)
+    if not record:
+        return
+    count = record.get("gate_check_count", 0) + 1
+    update_student_record(nickname, month_key, {
+        "gate_check_last_day": day,
+        "gate_check_count": count,
+    })
+
+
+# =========================================================
+# 개인정보 고지 안내 (5월 1일 예비 운영 시작 전 필수)
+# =========================================================
+def _show_privacy_notice() -> bool:
+    """
+    최초 접속 시 개인정보 수집 고지 및 동의 페이지.
+
+    RETURNS:
+        True:  동의 완료 (또는 이미 동의함)
+        False: 아직 동의 전
+
+    NOTE:
+        - session_state에 'privacy_agreed' 저장 (세션 동안만 유효)
+        - roster에 'privacy_agreed_at' 저장 (영구 기록)
+        - IRB 승인 전 '예비 운영' 단계에서도 최소한의 고지 의무 충족
+    """
+    # 이미 동의 완료?
+    if st.session_state.get("privacy_agreed"):
+        return True
+
+    st.markdown("""
+    <style>
+    .stApp { background: #0D0F1A !important; }
+    .block-container { max-width: 720px !important; margin: 0 auto !important; padding-top: 40px !important; }
+    .privacy-box {
+        background: rgba(255,255,255,0.05);
+        border: 1px solid rgba(244,201,93,0.3);
+        border-radius: 16px;
+        padding: 28px;
+        margin: 20px 0;
+        color: rgba(255,255,255,0.85);
+        line-height: 1.8;
+        font-size: 15px;
+    }
+    .privacy-title {
+        font-size: 22px;
+        font-weight: 900;
+        color: #F4C95D;
+        margin-bottom: 16px;
+    }
+    .privacy-h3 {
+        font-size: 16px;
+        font-weight: 800;
+        color: #7DD3FC;
+        margin-top: 18px;
+        margin-bottom: 8px;
+    }
+    #MainMenu, footer, header { visibility: hidden; }
+    </style>
+    """, unsafe_allow_html=True)
+
+    st.markdown("""
+    <div style="text-align:center;margin-bottom:24px;">
+        <div style="font-size:48px;margin-bottom:8px;">⚡</div>
+        <div style="font-size:28px;font-weight:900;color:#fff;letter-spacing:2px;">SnapQ TOEIC</div>
+    </div>
+    """, unsafe_allow_html=True)
+
+    st.markdown("""
+    <div class="privacy-box">
+        <div class="privacy-title">📋 서비스 이용 및 개인정보 안내</div>
+
+        <div class="privacy-h3">1. 서비스 목적</div>
+        SnapQ TOEIC은 영어 강사 최정은이 제작한 학습용 플랫폼입니다.
+        여러분의 학습을 돕기 위해 운영됩니다.
+
+        <div class="privacy-h3">2. 수집하는 정보</div>
+        • 식별 정보: 이름, 전화번호 뒷 4자리<br>
+        • 학습 기록: 문제 응답, 반응 시간, 접속 기록<br>
+        • 수집 목적: 개인별 학습 맞춤 피드백 제공
+
+        <div class="privacy-h3">3. 연구 활용 안내 (중요)</div>
+        선생님이 현재 박사과정생으로서, 향후 연구 윤리 심의(IRB) 승인 후
+        여러분의 학습 데이터를 학술 연구에 활용할 수 있습니다.<br>
+        단, 연구 활용 시에는 <b>별도의 동의</b>를 다시 여쭤봅니다.
+        동의하지 않으셔도 플랫폼 사용에는 전혀 지장이 없습니다.
+
+        <div class="privacy-h3">4. 데이터 보호</div>
+        • 모든 개인정보는 암호화되어 저장됩니다<br>
+        • 언제든 탈퇴 및 데이터 삭제 요청 가능합니다<br>
+        • 문의: 최정은 선생님
+
+        <div class="privacy-h3">5. 이용 권리</div>
+        • 언제든 이용 중단 가능<br>
+        • 본인 데이터 열람·수정·삭제 요청 가능
+    </div>
+    """, unsafe_allow_html=True)
+
+    col1, col2 = st.columns(2)
+    with col1:
+        if st.button("❌ 동의하지 않음", use_container_width=True):
+            st.info("안내를 확인해주셔서 감사합니다. 동의 시 다시 접속해주세요.")
+            st.stop()
+    with col2:
+        if st.button("✅ 안내 확인 · 동의합니다", use_container_width=True, type="primary"):
+            st.session_state["privacy_agreed"] = True
+            st.session_state["privacy_agreed_at"] = _now_iso()
+            st.rerun()
+
+    st.stop()
+
+
+
 def require_access(context_tag: str = "ACCESS", roster_path: str = "") -> str:
-    # 이미 로그인된 경우
+    # 이미 로그인된 경우 → 개인정보 고지 확인 후 통과
     if st.session_state.get("access_granted") and st.session_state.get("battle_nickname"):
-        return st.session_state["battle_nickname"]
+        # 고지 미확인 시 페이지 표시
+        if not st.session_state.get("privacy_agreed"):
+            _show_privacy_notice()  # 이 함수가 st.stop() 걸어줌
+        # 통과
+        nickname = st.session_state["battle_nickname"]
+        month_key = st.session_state.get("cohort_month", date.today().strftime("%Y-%m"))
+        # roster에 privacy_agreed_at 저장 (최초 1회)
+        record = get_student_record(nickname, month_key)
+        if record and not record.get("privacy_agreed_at"):
+            update_student_record(nickname, month_key, {
+                "privacy_agreed_at": st.session_state.get("privacy_agreed_at", _now_iso())
+            })
+        return nickname
 
     # 월말 잠금 체크
     if _is_locked():

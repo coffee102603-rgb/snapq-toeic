@@ -71,10 +71,51 @@ import streamlit as st
 #   장기 수강생: 사전/중간/사후 각 1회만 (완료 플래그)
 #   이후에는 게이트 없이 바로 입장 → rt_logs만 계속 누적
 # =========================================================
-PRE_DAY     = 1          # Day 1: 사전 (첫 접속일)
-MID_START   = 8          # Day 8~14: 중간 검사 창
-MID_END     = 14
-POST_START  = 21         # Day 21~: 사후 (마감 없음)
+# =========================================================
+# 🎯 옵션 A: 완전한 종단 연구 설계 (2026.05 연구 개시)
+# =========================================================
+# MILESTONE 관문검사: Day 1, 11, 21, 31, 41... (10일마다, 30문항)
+# DAILY 게이트: 매일 첫 접속 시 5문항 (2분)
+#
+# 설계 철학:
+#   - 개인 Day 기준 (달력 날짜 무관)
+#   - 10일 간격 = 학원 현실 (1~2개월 이탈자 패턴) 대응
+#   - 매일 데이터 수집으로 임계값 돌파 미세 궤적 포착
+#
+# 논문 연결:
+#   ① 설계원리: Day 1 사전 설문 (B3·B4·D4·E2 임계값 변수)
+#   ⑤ 탐색적 분석: 매일 RT 변화 + 관문검사 성장 곡선
+#   ⑩ SSCI: 10일 간격 반복측정 ANOVA
+#   ⑪ 자기문화기술지: 전체 사용 패턴 질적 데이터
+# =========================================================
+
+# --- 관문검사 (Milestone) ---
+PRE_DAY          = 1     # Day 1: 사전 (검사 + 설문 A~F)
+MILESTONE_EVERY  = 10    # 10일마다 관문검사 (Day 1, 11, 21, 31...)
+POST_SURVEY_DAY  = 21    # Day 21 이상부터 사후 설문 G 추가
+
+# --- 데일리 게이트 ---
+DAILY_GATE_QUESTIONS = 5     # 매일 아침 첫 접속 시 5문항
+DAILY_GATE_SECONDS   = 20    # 문항당 20초
+
+# --- 레거시 호환 (기존 코드에서 참조되는 경우 대비) ---
+MID_START   = 11         # Day 11: 1차 중간 (레거시)
+MID_END     = 11         # 단일 날짜로 변경
+POST_START  = 21         # Day 21~: 사후 (레거시)
+
+
+def is_milestone_day(day: int) -> bool:
+    """개인 Day가 관문검사 날인지 판정. Day 1, 11, 21, 31... = True"""
+    if day < 1:
+        return False
+    return (day - 1) % MILESTONE_EVERY == 0
+
+
+def get_milestone_round(day: int) -> int:
+    """관문검사 회차 계산 (Day 1=1회, Day 11=2회, Day 21=3회...)"""
+    if not is_milestone_day(day):
+        return 0
+    return ((day - 1) // MILESTONE_EVERY) + 1
 
 
 # =========================================================
@@ -153,6 +194,48 @@ TEST_QUESTIONS = [
      "ch": ["(A) allows", "(B) allow", "(C) allowed", "(D) allowing"], "a": 0, "cat": "주어-동사 일치"},
     {"id": "T10", "text": "The budget for next year has not _______ been finalized by the finance team.",
      "ch": ["(A) yet", "(B) already", "(C) still", "(D) ever"], "a": 0, "cat": "부사"},
+    # ─────── 옵션 A 확장: 관문검사 30문항 (T11~T30) ───────
+    {"id": "T11", "text": "The seminar will be held _______ the conference room on the third floor.",
+     "ch": ["(A) at", "(B) in", "(C) on", "(D) by"], "a": 1, "cat": "전치사"},
+    {"id": "T12", "text": "Employees who _______ the training last week should contact HR.",
+     "ch": ["(A) miss", "(B) missing", "(C) missed", "(D) misses"], "a": 2, "cat": "동사/시제"},
+    {"id": "T13", "text": "The director _______ the proposal yesterday during the board meeting.",
+     "ch": ["(A) approve", "(B) approved", "(C) approving", "(D) approval"], "a": 1, "cat": "동사/시제"},
+    {"id": "T14", "text": "_______ the weather is bad tomorrow, the event will be held indoors.",
+     "ch": ["(A) Unless", "(B) If", "(C) Because", "(D) Since"], "a": 1, "cat": "접속/연결"},
+    {"id": "T15", "text": "The company's new product line has been _______ received by customers.",
+     "ch": ["(A) warm", "(B) warmth", "(C) warmly", "(D) warmer"], "a": 2, "cat": "품사/수식"},
+    {"id": "T16", "text": "Neither the manager _______ the employees were informed about the changes.",
+     "ch": ["(A) or", "(B) nor", "(C) and", "(D) but"], "a": 1, "cat": "상관접속사"},
+    {"id": "T17", "text": "Please ensure that your ID badge is _______ visible at all times.",
+     "ch": ["(A) clear", "(B) clearly", "(C) clearing", "(D) clearness"], "a": 1, "cat": "품사/수식"},
+    {"id": "T18", "text": "The documents _______ on the shared drive are confidential.",
+     "ch": ["(A) stored", "(B) storing", "(C) store", "(D) stores"], "a": 0, "cat": "분사구"},
+    {"id": "T19", "text": "Mr. Kim has been with our company _______ more than fifteen years.",
+     "ch": ["(A) since", "(B) from", "(C) for", "(D) during"], "a": 2, "cat": "전치사"},
+    {"id": "T20", "text": "The training session was _______ than expected, so we ended early.",
+     "ch": ["(A) short", "(B) shorter", "(C) shortest", "(D) shortly"], "a": 1, "cat": "비교급"},
+    # ─────── 어휘 10문항 (T21~T30) ───────
+    {"id": "T21", "text": "The company plans to _______ into Southeast Asian markets next year.",
+     "ch": ["(A) extend", "(B) expand", "(C) exceed", "(D) expose"], "a": 1, "cat": "어휘"},
+    {"id": "T22", "text": "All visitors must _______ at the reception desk upon arrival.",
+     "ch": ["(A) register", "(B) registry", "(C) registration", "(D) registered"], "a": 0, "cat": "어휘"},
+    {"id": "T23", "text": "The new policy will take _______ starting next Monday.",
+     "ch": ["(A) affect", "(B) effect", "(C) effective", "(D) effectively"], "a": 1, "cat": "어휘"},
+    {"id": "T24", "text": "Please _______ from using mobile phones during the presentation.",
+     "ch": ["(A) refrain", "(B) refer", "(C) reflect", "(D) refuse"], "a": 0, "cat": "어휘"},
+    {"id": "T25", "text": "The committee will _______ the candidates based on their qualifications.",
+     "ch": ["(A) evaluate", "(B) evacuate", "(C) elevate", "(D) elaborate"], "a": 0, "cat": "어휘"},
+    {"id": "T26", "text": "We need to _______ the issue before it becomes a bigger problem.",
+     "ch": ["(A) address", "(B) advance", "(C) admit", "(D) adjust"], "a": 0, "cat": "어휘"},
+    {"id": "T27", "text": "The report provides a _______ analysis of the current market trends.",
+     "ch": ["(A) comprehensive", "(B) compensate", "(C) component", "(D) component"], "a": 0, "cat": "어휘"},
+    {"id": "T28", "text": "Our team has _______ remarkable progress in the past six months.",
+     "ch": ["(A) make", "(B) made", "(C) making", "(D) makes"], "a": 1, "cat": "어휘"},
+    {"id": "T29", "text": "The invoice must be paid within 30 days of _______.",
+     "ch": ["(A) receive", "(B) receipt", "(C) receiver", "(D) receiving"], "a": 1, "cat": "어휘"},
+    {"id": "T30", "text": "Customer feedback is _______ to improving our products.",
+     "ch": ["(A) essential", "(B) essence", "(C) essentially", "(D) essentials"], "a": 0, "cat": "어휘"},
 ]
 
 
@@ -347,16 +430,36 @@ def _get_user_day(nickname: str, month_key: str) -> int:
 
 
 def _get_required_stage(nickname: str = "", month_key: str = "") -> Optional[int]:
-    """개인 Day 기준으로 필요한 검사 단계 반환."""
+    """개인 Day 기준으로 필요한 관문검사 단계 반환.
+
+    옵션 A 설계:
+        Day 1  → stage 1 (사전검사 + 사전 설문 A~F)
+        Day 11, 21, 31, 41... (is_milestone_day=True) → stage 2 (검사만)
+        Day 21 이상 milestone → stage 3 (검사 + 사후 설문 G, 최초 1회만)
+        기타 → None (자유 입장)
+    """
     day = _get_user_day(nickname, month_key)
 
+    # Day 1: 사전 (설문 + 검사)
     if day == PRE_DAY:
-        return 1   # Day 1: 사전
-    elif MID_START <= day <= MID_END:
-        return 2   # Day 8~14: 중간
-    elif day >= POST_START:
-        return 3   # Day 21~: 사후
-    return None    # Day 2~7, 15~20: 검사 없음 → 바로 입장
+        return 1
+
+    # 관문검사 날이 아니면 게이트 없음
+    if not is_milestone_day(day):
+        return None
+
+    # Day 11 이후 milestone → stage 2 (검사만)
+    # 단, 사후 설문 아직 안 했으면 Day 21 이상에서 stage 3 처리
+    if day >= POST_SURVEY_DAY:
+        # 이미 사후 설문을 했는지 확인
+        try:
+            student_tests = _get_student_tests(nickname, month_key)
+            if not student_tests.get("survey_post"):
+                return 3  # 아직 사후 설문 미완료 → stage 3
+        except Exception:
+            pass
+
+    return 2  # 관문검사만
 
 def _stage_name(stage: int) -> str:
     names = {1: "사전검사", 2: "중간검사", 3: "사후검사"}
@@ -700,6 +803,293 @@ def _render_gate(stage: int, nickname: str) -> None:
 #     mid_test → done
 #     post_test → post_survey → done
 # =========================================================
+# =========================================================
+# 🌅 데일리 게이트 (옵션 A 핵심) — 매일 첫 접속 시 5문항
+# =========================================================
+DAILY_POOL_PATH = Path(__file__).parent.parent / "content" / "daily_gate_pool.json"
+
+
+def _load_daily_pool() -> list:
+    """데일리 게이트용 문항 풀 로드. 파일 없으면 내장 기본 풀 사용."""
+    try:
+        if DAILY_POOL_PATH.exists():
+            with open(DAILY_POOL_PATH, "r", encoding="utf-8") as f:
+                return json.load(f)
+    except Exception:
+        pass
+    # 폴백: 내장 기본 풀 (30문항 샘플)
+    return _BUILTIN_DAILY_POOL
+
+
+def _needs_daily_gate(nickname: str, month_key: str) -> bool:
+    """오늘 데일리 게이트 아직 안 풀었으면 True."""
+    if not nickname:
+        return False
+    try:
+        roster_path = _cohort_dir(month_key) / "roster.jsonl"
+        if not roster_path.exists():
+            return True
+        today = date.today().isoformat()
+        with open(roster_path, "r", encoding="utf-8") as f:
+            for line in f:
+                try:
+                    r = json.loads(line.strip())
+                    if r.get("nickname") == nickname:
+                        last = r.get("daily_gate_last_date", "")
+                        return last != today
+                except Exception:
+                    continue
+    except Exception:
+        pass
+    return True
+
+
+def _mark_daily_gate_done(nickname: str, month_key: str) -> None:
+    """roster에 오늘 날짜로 데일리 게이트 완료 기록."""
+    try:
+        roster_path = _cohort_dir(month_key) / "roster.jsonl"
+        if not roster_path.exists():
+            return
+        today = date.today().isoformat()
+        lines = []
+        with open(roster_path, "r", encoding="utf-8") as f:
+            for line in f:
+                try:
+                    r = json.loads(line.strip())
+                    if r.get("nickname") == nickname:
+                        r["daily_gate_last_date"] = today
+                        r["daily_gate_total_count"] = r.get("daily_gate_total_count", 0) + 1
+                    lines.append(json.dumps(r, ensure_ascii=False))
+                except Exception:
+                    lines.append(line.strip())
+        with open(roster_path, "w", encoding="utf-8") as f:
+            f.write("\n".join(lines) + "\n")
+    except Exception:
+        pass
+
+
+def _save_daily_gate_log(user_id: str, personal_day: int,
+                         q: dict, is_correct: bool, rt_ms: int) -> None:
+    """데일리 게이트 문항 응답 → Google Sheets gate_daily_logs"""
+    entry = {
+        "timestamp": datetime.now().isoformat(),
+        "user_id": user_id,
+        "personal_day": personal_day,
+        "q_id": q.get("id", ""),
+        "is_correct": bool(is_correct),
+        "response_time_ms": int(rt_ms) if rt_ms else 0,
+        "q_type": q.get("type", "grammar"),
+        "difficulty": q.get("diff", ""),
+        "research_phase": "pre_irb",  # IRB 승인 후 "main"으로 변경
+    }
+    _save_to_sheets("gate_daily_logs", entry)
+
+
+def _render_daily_gate(nickname: str, month_key: str) -> None:
+    """
+    데일리 게이트 UI 렌더링.
+    5문항 연속 → 결과 요약 → 입장 허용
+    """
+    _inject_gate_css(color="#3B82F6")  # 파란색 (데일리 = 아침)
+
+    # 세션 상태 초기화
+    if "daily_qi" not in st.session_state:
+        st.session_state.daily_qi = 0
+        st.session_state.daily_pool = _load_daily_pool()
+        # 랜덤 5문항 선택
+        import random
+        pool = st.session_state.daily_pool
+        if len(pool) >= DAILY_GATE_QUESTIONS:
+            st.session_state.daily_questions = random.sample(pool, DAILY_GATE_QUESTIONS)
+        else:
+            st.session_state.daily_questions = pool[:DAILY_GATE_QUESTIONS]
+        st.session_state.daily_correct = 0
+        st.session_state.daily_start_time = time.time()
+        st.session_state.daily_q_start_time = time.time()
+        st.session_state.daily_phase = "quiz"
+
+    questions = st.session_state.daily_questions
+    qi = st.session_state.daily_qi
+    phase = st.session_state.daily_phase
+
+    # --- 완료 화면 ---
+    if phase == "done":
+        st.markdown(f"""
+        <div style="text-align:center;padding:60px 20px;">
+            <div style="font-size:64px;margin-bottom:16px;">🌅</div>
+            <div style="font-size:28px;font-weight:900;color:#fff;margin-bottom:12px;">
+                오늘의 워밍업 완료!
+            </div>
+            <div style="font-size:20px;color:#3B82F6;margin-bottom:8px;">
+                {st.session_state.daily_correct} / {DAILY_GATE_QUESTIONS} 정답
+            </div>
+            <div style="font-size:16px;color:rgba(255,255,255,0.6);margin-bottom:32px;">
+                좋아요! 이제 SnapQ로 들어가세요 🚀
+            </div>
+        </div>
+        """, unsafe_allow_html=True)
+        if st.button("⚡ SnapQ 입장하기", use_container_width=True, type="primary"):
+            # 세션 상태 정리
+            for k in ["daily_qi", "daily_pool", "daily_questions",
+                      "daily_correct", "daily_start_time",
+                      "daily_q_start_time", "daily_phase"]:
+                st.session_state.pop(k, None)
+            st.rerun()
+        st.stop()
+
+    # --- 퀴즈 화면 ---
+    if qi >= len(questions):
+        # 모든 문항 완료 → 기록 & done 전환
+        _mark_daily_gate_done(nickname, month_key)
+        st.session_state.daily_phase = "done"
+        st.rerun()
+
+    q = questions[qi]
+    day = _get_user_day(nickname, month_key)
+
+    # 헤더
+    st.markdown(f"""
+    <div style="text-align:center;margin-bottom:24px;">
+        <div style="font-size:14px;color:#3B82F6;letter-spacing:3px;font-weight:700;">
+            🌅 TODAY'S WARMUP · DAY {day}
+        </div>
+        <div style="font-size:13px;color:rgba(255,255,255,0.5);margin-top:6px;">
+            문항 {qi+1} / {DAILY_GATE_QUESTIONS} · 오늘의 사전 체크
+        </div>
+    </div>
+    """, unsafe_allow_html=True)
+
+    # 문제
+    st.markdown(f"""
+    <div style="background:rgba(59,130,246,0.08);border:1px solid rgba(59,130,246,0.3);
+                border-radius:12px;padding:24px;margin-bottom:20px;">
+        <div style="font-size:16px;color:#fff;line-height:1.6;">
+            {q.get("question", "")}
+        </div>
+    </div>
+    """, unsafe_allow_html=True)
+
+    # 선택지
+    choices = q.get("choices", [])
+    for idx, choice in enumerate(choices):
+        if st.button(f"{chr(65+idx)}. {choice}", key=f"daily_c{qi}_{idx}",
+                     use_container_width=True):
+            # 응답 처리
+            rt_ms = int((time.time() - st.session_state.daily_q_start_time) * 1000)
+            is_correct = (idx == q.get("answer_idx", 0))
+            if is_correct:
+                st.session_state.daily_correct += 1
+            # 로그 저장 (실패해도 진행)
+            try:
+                _save_daily_gate_log(nickname, day, q, is_correct, rt_ms)
+            except Exception:
+                pass
+            # 다음 문항
+            st.session_state.daily_qi += 1
+            st.session_state.daily_q_start_time = time.time()
+            st.rerun()
+
+    st.stop()
+
+
+# --- 데일리 게이트용 내장 기본 문항 풀 (30문항) ---
+_BUILTIN_DAILY_POOL = [
+    # === 어법 15문항 ===
+    {"id":"D001","type":"grammar","diff":"easy",
+     "question":"The report ___ by the manager yesterday.",
+     "choices":["reviewed","was reviewed","reviewing","has reviewed"],"answer_idx":1},
+    {"id":"D002","type":"grammar","diff":"easy",
+     "question":"All employees ___ attend the safety training.",
+     "choices":["must","musts","must to","musting"],"answer_idx":0},
+    {"id":"D003","type":"grammar","diff":"easy",
+     "question":"The meeting has been ___ to next Monday.",
+     "choices":["postpone","postponed","postponing","postpones"],"answer_idx":1},
+    {"id":"D004","type":"grammar","diff":"medium",
+     "question":"Neither the CEO nor the managers ___ available now.",
+     "choices":["is","are","was","has"],"answer_idx":1},
+    {"id":"D005","type":"grammar","diff":"medium",
+     "question":"If you ___ the file, please send it again.",
+     "choices":["lose","lost","had lost","will lose"],"answer_idx":1},
+    {"id":"D006","type":"grammar","diff":"easy",
+     "question":"The documents ___ on the desk.",
+     "choices":["is","are","was","has"],"answer_idx":1},
+    {"id":"D007","type":"grammar","diff":"medium",
+     "question":"She suggested ___ the deadline.",
+     "choices":["to extend","extending","extend","extended"],"answer_idx":1},
+    {"id":"D008","type":"grammar","diff":"medium",
+     "question":"The package will be delivered ___ Friday.",
+     "choices":["on","in","at","by"],"answer_idx":0},
+    {"id":"D009","type":"grammar","diff":"easy",
+     "question":"Please ___ the form before leaving.",
+     "choices":["complete","completing","completed","completion"],"answer_idx":0},
+    {"id":"D010","type":"grammar","diff":"medium",
+     "question":"He is responsible ___ the new project.",
+     "choices":["for","to","of","on"],"answer_idx":0},
+    {"id":"D011","type":"grammar","diff":"hard",
+     "question":"Had the manager known, he ___ differently.",
+     "choices":["would act","would have acted","will act","acts"],"answer_idx":1},
+    {"id":"D012","type":"grammar","diff":"medium",
+     "question":"Most of the employees ___ satisfied with the change.",
+     "choices":["is","are","was","has"],"answer_idx":1},
+    {"id":"D013","type":"grammar","diff":"easy",
+     "question":"We need ___ more staff this quarter.",
+     "choices":["hire","to hire","hiring","hired"],"answer_idx":1},
+    {"id":"D014","type":"grammar","diff":"medium",
+     "question":"The letter ___ on Tuesday morning.",
+     "choices":["sent","was sent","sending","send"],"answer_idx":1},
+    {"id":"D015","type":"grammar","diff":"hard",
+     "question":"Only after the report was finished ___ home.",
+     "choices":["she went","did she go","she did go","went she"],"answer_idx":1},
+
+    # === 어휘 15문항 ===
+    {"id":"D016","type":"vocab","diff":"easy",
+     "question":"The company plans to ___ its offices next year.",
+     "choices":["expend","expand","expound","expire"],"answer_idx":1},
+    {"id":"D017","type":"vocab","diff":"easy",
+     "question":"Please ___ the attached document carefully.",
+     "choices":["review","revise","reverse","reserve"],"answer_idx":0},
+    {"id":"D018","type":"vocab","diff":"medium",
+     "question":"The new policy will ___ all employees.",
+     "choices":["effect","affect","except","accept"],"answer_idx":1},
+    {"id":"D019","type":"vocab","diff":"medium",
+     "question":"We need to ___ the budget by 10%.",
+     "choices":["raise","rise","arise","arouse"],"answer_idx":0},
+    {"id":"D020","type":"vocab","diff":"easy",
+     "question":"She is ___ for the marketing department.",
+     "choices":["responsible","response","respond","respect"],"answer_idx":0},
+    {"id":"D021","type":"vocab","diff":"medium",
+     "question":"The meeting has been ___ until next week.",
+     "choices":["delayed","delighted","delivered","declined"],"answer_idx":0},
+    {"id":"D022","type":"vocab","diff":"medium",
+     "question":"All staff are ___ to attend the training.",
+     "choices":["require","required","requires","requiring"],"answer_idx":1},
+    {"id":"D023","type":"vocab","diff":"easy",
+     "question":"Please ___ any questions to HR.",
+     "choices":["direct","directly","direction","director"],"answer_idx":0},
+    {"id":"D024","type":"vocab","diff":"medium",
+     "question":"The quality of the product has ___ significantly.",
+     "choices":["improved","improving","improvement","improve"],"answer_idx":0},
+    {"id":"D025","type":"vocab","diff":"hard",
+     "question":"Sales figures show a ___ increase this quarter.",
+     "choices":["substantial","substantive","subsequent","subdued"],"answer_idx":0},
+    {"id":"D026","type":"vocab","diff":"easy",
+     "question":"We ___ your order on time.",
+     "choices":["deliver","delivery","delivered","delivering"],"answer_idx":2},
+    {"id":"D027","type":"vocab","diff":"medium",
+     "question":"Please confirm your ___ by Friday.",
+     "choices":["attend","attendance","attention","attentive"],"answer_idx":1},
+    {"id":"D028","type":"vocab","diff":"medium",
+     "question":"The CEO ___ the new strategy last week.",
+     "choices":["announce","announced","announces","announcing"],"answer_idx":1},
+    {"id":"D029","type":"vocab","diff":"hard",
+     "question":"The contract terms are ___ to both parties.",
+     "choices":["agreeable","agreement","agreeing","agreed"],"answer_idx":0},
+    {"id":"D030","type":"vocab","diff":"easy",
+     "question":"Please ___ the email to the right person.",
+     "choices":["forward","foreword","forbid","forge"],"answer_idx":0},
+]
+
+
 def require_pretest_gate() -> None:
     nickname = _get_nickname()
     month_key = _get_cohort_month()
@@ -707,9 +1097,16 @@ def require_pretest_gate() -> None:
     if not nickname:
         return
 
+    # ═══ 옵션 A: 데일리 게이트 체크 (매일 첫 접속) ═══
+    # 관문검사보다 우선 실행 — 학생이 오늘 아직 안 풀었으면 5문항 먼저
+    if _needs_daily_gate(nickname, month_key):
+        _render_daily_gate(nickname, month_key)
+        st.stop()  # 데일리 게이트 완료 후 재진입
+
+    # ═══ 관문검사 체크 (Day 1, 11, 21, 31...) ═══
     required_stage = _get_required_stage(nickname, month_key)
     if required_stage is None:
-        return  # 검사 기간 아님 (Day 2~7, 15~20 → 바로 입장)
+        return  # 관문검사 날 아님 → 바로 입장
 
     student_tests = _get_student_tests(nickname, month_key)
 
