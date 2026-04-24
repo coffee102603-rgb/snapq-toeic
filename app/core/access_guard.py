@@ -1,4 +1,4 @@
-"""
+﻿"""
 SnapQ TOEIC V2 - Access Guard
 로그인: 이름 + 전화번호 뒷 4자리 + 월별코드
 """
@@ -322,35 +322,37 @@ def _show_privacy_notice() -> bool:
     </div>
     """, unsafe_allow_html=True)
 
-    st.markdown("""
-    <div class="privacy-box">
-        <div class="privacy-title">📋 서비스 이용 및 개인정보 안내</div>
-
-        <div class="privacy-h3">1. 서비스 목적</div>
-        SnapQ TOEIC은 영어 강사 최정은이 제작한 학습용 플랫폼입니다.
-        여러분의 학습을 돕기 위해 운영됩니다.
-
-        <div class="privacy-h3">2. 수집하는 정보</div>
-        • 식별 정보: 이름, 전화번호 뒷 4자리<br>
-        • 학습 기록: 문제 응답, 반응 시간, 접속 기록<br>
-        • 수집 목적: 개인별 학습 맞춤 피드백 제공
-
-        <div class="privacy-h3">3. 연구 활용 안내 (중요)</div>
-        선생님이 현재 박사과정생으로서, 향후 연구 윤리 심의(IRB) 승인 후
-        여러분의 학습 데이터를 학술 연구에 활용할 수 있습니다.<br>
-        단, 연구 활용 시에는 <b>별도의 동의</b>를 다시 여쭤봅니다.
-        동의하지 않으셔도 플랫폼 사용에는 전혀 지장이 없습니다.
-
-        <div class="privacy-h3">4. 데이터 보호</div>
-        • 모든 개인정보는 암호화되어 저장됩니다<br>
-        • 언제든 탈퇴 및 데이터 삭제 요청 가능합니다<br>
-        • 문의: 최정은 선생님
-
-        <div class="privacy-h3">5. 이용 권리</div>
-        • 언제든 이용 중단 가능<br>
-        • 본인 데이터 열람·수정·삭제 요청 가능
-    </div>
-    """, unsafe_allow_html=True)
+    privacy_html = (
+        '<div class="privacy-box">'
+        '<div class="privacy-title">📋 서비스 이용 및 개인정보 안내</div>'
+        '<div class="privacy-h3">1. 서비스 목적</div>'
+        '<p>SnapQ TOEIC은 영어 강사 최정은이 제작한 학습용 플랫폼입니다. '
+        '여러분의 학습을 돕기 위해 운영됩니다.</p>'
+        '<div class="privacy-h3">2. 수집하는 정보</div>'
+        '<ul>'
+        '<li>식별 정보: 이름, 전화번호 뒷 4자리</li>'
+        '<li>학습 기록: 문제 응답, 반응 시간, 접속 기록</li>'
+        '<li>수집 목적: 개인별 학습 맞춤 피드백 제공</li>'
+        '</ul>'
+        '<div class="privacy-h3">3. 연구 활용 안내 (중요)</div>'
+        '<p>선생님이 현재 박사과정생으로서, 향후 연구 윤리 심의(IRB) 승인 후 '
+        '여러분의 학습 데이터를 학술 연구에 활용할 수 있습니다.<br>'
+        '단, 연구 활용 시에는 <b>별도의 동의</b>를 다시 여쭤봅니다. '
+        '동의하지 않으셔도 플랫폼 사용에는 전혀 지장이 없습니다.</p>'
+        '<div class="privacy-h3">4. 데이터 보호</div>'
+        '<ul>'
+        '<li>모든 개인정보는 암호화되어 저장됩니다</li>'
+        '<li>언제든 탈퇴 및 데이터 삭제 요청 가능합니다</li>'
+        '<li>문의: 최정은 선생님</li>'
+        '</ul>'
+        '<div class="privacy-h3">5. 이용 권리</div>'
+        '<ul>'
+        '<li>언제든 이용 중단 가능</li>'
+        '<li>본인 데이터 열람·수정·삭제 요청 가능</li>'
+        '</ul>'
+        '</div>'
+    )
+    st.markdown(privacy_html, unsafe_allow_html=True)
 
     col1, col2 = st.columns(2)
     with col1:
