@@ -529,37 +529,71 @@ def _inject_gate_css(color: str = "#7C5CFF") -> None:
     <style>
     .stApp {{ background: #0D0F1A !important; }}
     .block-container {{ max-width: 600px !important; margin: 0 auto !important; padding: 2.5rem 1rem 2rem 1rem !important; }}
-    /* v6: 모바일 강제 확대 (2026.04.24) */
-    html, body {{
-        -webkit-text-size-adjust: 100% !important;
-        text-size-adjust: 100% !important;
+    /* v7: CSS 총폭격 — 모든 Streamlit 버전 대응 (2026.04.24) */
+    html, body, #root, [data-testid="stAppViewContainer"] {{
+        -webkit-text-size-adjust: none !important;
+        text-size-adjust: none !important;
     }}
-    div.stButton > button {{
-        border-radius: 14px !important;
-        font-size: 40px !important;
+    /* 모든 버튼 겨냥 (Streamlit 구/신 버전 총망라) */
+    button,
+    button[kind],
+    button[kind="secondary"],
+    button[kind="primary"],
+    div.stButton > button,
+    div.stButton button,
+    .stButton > button,
+    .stButton button,
+    [data-testid*="stButton"] button,
+    [data-testid*="stBaseButton"] button,
+    [data-testid*="baseButton"] button,
+    [class*="stButton"] button,
+    [class*="st-emotion"] button {{
+        font-size: 44px !important;
         font-weight: 900 !important;
-        padding: 16px !important;
-        touch-action: manipulation !important;
         line-height: 1.35 !important;
-        -webkit-text-size-adjust: 100% !important;
+        padding: 16px !important;
+        border-radius: 14px !important;
+        touch-action: manipulation !important;
+        -webkit-text-size-adjust: none !important;
     }}
     /* 관문검사 2x2 그리드만 작게 유지 (긴 영문 선택지) */
-    div[data-testid="column"] div.stButton > button {{
+    div[data-testid="column"] button,
+    div[data-testid="column"] div.stButton > button,
+    [data-testid="column"] button {{
         font-size: 22px !important;
         padding: 14px 6px !important;
         line-height: 1.25 !important;
     }}
-    /* 모바일 (≤768px) 강제 확대 — iOS Safari 자동 축소 방지용 */
-    @media (max-width: 768px) {{
-        div.stButton > button {{
-            font-size: 48px !important;
+    /* 모바일 강제 확대 — 모든 모바일 기기 대응 */
+    @media (max-width: 768px), (max-device-width: 768px), (pointer: coarse) {{
+        button,
+        div.stButton > button,
+        div.stButton button,
+        .stButton button,
+        [data-testid*="Button"] button {{
+            font-size: 52px !important;
             line-height: 1.4 !important;
+            padding: 18px !important;
         }}
-        div[data-testid="column"] div.stButton > button {{
+        div[data-testid="column"] button,
+        [data-testid="column"] button {{
             font-size: 26px !important;
+            padding: 14px 6px !important;
         }}
     }}
     div.stRadio > label {{ color: #ffffff !important; font-size: 18px !important; }}
+    /* 텍스트 입력창도 크게 */
+    div.stTextArea textarea,
+    div.stTextInput input {{
+        font-size: 22px !important;
+        line-height: 1.5 !important;
+    }}
+    @media (max-width: 768px) {{
+        div.stTextArea textarea,
+        div.stTextInput input {{
+            font-size: 28px !important;
+        }}
+    }}
     div[data-testid="stRadio"] label span {{ color: #ffffff !important; }}
     #MainMenu {{ display: none !important; }} footer {{ display: none !important; }} header {{ visibility: hidden !important; }} [data-testid="stHeader"] {{ visibility: hidden !important; }} [data-testid="stToolbar"] {{ display: none !important; }}
     </style>
