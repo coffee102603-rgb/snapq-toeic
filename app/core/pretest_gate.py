@@ -525,7 +525,7 @@ def _stage_color(stage: int) -> str:
 # 공통 CSS
 # =========================================================
 def _inject_gate_css(color: str = "#7C5CFF") -> None:
-    """v8 — 모든 버튼 60px 강제 확대 (모바일/PC 공통)"""
+    """v9 — button 내부 <p> 태그까지 font-size 강제 적용"""
     st.markdown(f"""
     <style>
     /* 앱 기본 */
@@ -535,49 +535,60 @@ def _inject_gate_css(color: str = "#7C5CFF") -> None:
         margin: 0 auto !important;
         padding: 2.5rem 1rem 2rem 1rem !important;
     }}
-    /* iOS/Android 자동 축소 방지 */
+    /* iOS 자동 축소 방지 */
     html, body {{
         -webkit-text-size-adjust: none !important;
         text-size-adjust: none !important;
     }}
-    /* 모든 버튼 총동원 (어떤 Streamlit 버전이든 매칭) */
+    /* 박스 크기 (원래대로 복원) */
     button,
-    div.stButton button,
     div.stButton > button,
-    .stButton button,
     .stButton > button,
-    [data-testid*="Button"] button,
-    [data-testid*="button"] button,
-    [data-testid*="stBaseButton"] button,
-    [class*="stButton"] button {{
-        font-size: 60px !important;
-        font-weight: 900 !important;
-        line-height: 1.4 !important;
-        padding: 20px !important;
+    [data-testid*="Button"] button {{
         border-radius: 14px !important;
+        padding: 14px !important;
+        font-weight: 900 !important;
         touch-action: manipulation !important;
-        min-height: 110px !important;
-        -webkit-text-size-adjust: none !important;
     }}
-    /* 관문검사 2x2 그리드 (columns 안)는 예외로 작게 */
+    /* ⭐⭐⭐ 핵심: button 안의 모든 자식 요소(p, span 등)에 font-size 직접 적용 */
+    button,
+    button *,
+    button p,
+    button span,
+    button div,
+    div.stButton > button,
+    div.stButton > button *,
+    div.stButton button p,
+    div.stButton button span,
+    .stButton button,
+    .stButton button *,
+    .stButton button p,
+    [data-testid*="Button"] button,
+    [data-testid*="Button"] button *,
+    [data-testid*="Button"] button p {{
+        font-size: 40px !important;
+        line-height: 1.3 !important;
+        font-weight: 900 !important;
+    }}
+    /* 관문검사 2x2 그리드만 작게 유지 */
     div[data-testid="column"] button,
+    div[data-testid="column"] button *,
+    div[data-testid="column"] button p,
     [data-testid="column"] button,
-    div[data-testid="column"] div.stButton button {{
-        font-size: 28px !important;
-        padding: 16px 8px !important;
+    [data-testid="column"] button * {{
+        font-size: 22px !important;
         line-height: 1.25 !important;
-        min-height: 70px !important;
     }}
-    /* 텍스트 입력창도 크게 */
+    /* 입력창 */
     div.stTextArea textarea,
     div.stTextInput input {{
-        font-size: 28px !important;
+        font-size: 24px !important;
         line-height: 1.5 !important;
     }}
     /* 라디오 */
-    div.stRadio > label {{ color: #ffffff !important; font-size: 20px !important; }}
-    div[data-testid="stRadio"] label span {{ color: #ffffff !important; font-size: 20px !important; }}
-    /* Streamlit 헤더/메뉴 숨김 */
+    div.stRadio > label {{ color: #ffffff !important; font-size: 18px !important; }}
+    div[data-testid="stRadio"] label span {{ color: #ffffff !important; }}
+    /* Streamlit UI 숨김 */
     #MainMenu {{ display: none !important; }}
     footer {{ display: none !important; }}
     header {{ visibility: hidden !important; }}
