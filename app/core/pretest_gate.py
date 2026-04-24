@@ -95,8 +95,11 @@ MILESTONE_EVERY  = 10    # 10일마다 관문검사 (Day 1, 11, 21, 31...)
 POST_SURVEY_DAY  = 21    # Day 21 이상부터 사후 설문 G 추가
 
 # --- 데일리 게이트 ---
-DAILY_GATE_QUESTIONS = 5     # 매일 아침 첫 접속 시 5문항
-DAILY_GATE_SECONDS   = 20    # 문항당 20초
+DAILY_GATE_QUESTIONS     = 5     # 매일 아침 첫 접속 시 5문항
+DAILY_GATE_TIME_SEC      = 120   # ⭐ 데일리 총 제한: 2분
+DAILY_GATE_SECONDS       = 20    # (레거시, 참고용)
+MILESTONE_GATE_QUESTIONS = 30    # ⭐ 관문검사 30문항
+MILESTONE_GATE_TIME_SEC  = 900   # ⭐ 관문검사 총 제한: 15분
 
 # --- 레거시 호환 (기존 코드에서 참조되는 경우 대비) ---
 MID_START   = 11         # Day 11: 1차 중간 (레거시)
@@ -477,7 +480,7 @@ def _inject_gate_css(color: str = "#7C5CFF") -> None:
     st.markdown(f"""
     <style>
     .stApp {{ background: #0D0F1A !important; }}
-    .block-container {{ max-width: 600px !important; margin: 0 auto !important; padding: 1rem 1rem 2rem 1rem !important; }}
+    .block-container {{ max-width: 600px !important; margin: 0 auto !important; padding: 2.5rem 1rem 2rem 1rem !important; }}
     div.stButton > button {{
         border-radius: 14px !important; font-size: 18px !important;
         font-weight: 900 !important; padding: 14px !important;
@@ -485,7 +488,7 @@ def _inject_gate_css(color: str = "#7C5CFF") -> None:
     }}
     div.stRadio > label {{ color: #ffffff !important; font-size: 16px !important; }}
     div[data-testid="stRadio"] label span {{ color: #ffffff !important; }}
-    #MainMenu {{ display: none !important; }} footer {{ display: none !important; }} header {{ display: none !important; }} [data-testid="stHeader"] {{ display: none !important; }} [data-testid="stToolbar"] {{ display: none !important; }}
+    #MainMenu {{ display: none !important; }} footer {{ display: none !important; }} header {{ visibility: hidden !important; }} [data-testid="stHeader"] {{ visibility: hidden !important; }} [data-testid="stToolbar"] {{ display: none !important; }}
     </style>
     """, unsafe_allow_html=True)
 
@@ -947,9 +950,23 @@ def _render_daily_gate(nickname: str, month_key: str) -> None:
     q = questions[qi]
     day = _get_user_day(nickname, month_key)
 
-    # 헤더
+    # ─── ⏱ 타이머 시작 시각 (오늘 날짜 key: 매일 자동 리셋) ───
+    _today_key = date.today().isoformat()
+    _ts_key = f"daily_gate_start_ts_{_today_key}"
+    if _ts_key not in st.session_state:
+        st.session_state[_ts_key] = time.time()
+    _elapsed = time.time() - st.session_state[_ts_key]
+    _remaining = max(0, DAILY_GATE_TIME_SEC - int(_elapsed))
+
+    # ─── 시간 초과 → 서버측 강제 완료 (JS 실패해도 안전장치) ───
+    if _remaining <= 0:
+        st.session_state.daily_time_spent_sec = int(_elapsed)
+        st.session_state.daily_qi = DAILY_GATE_QUESTIONS
+        st.rerun()
+
+    # ─── 헤더 ───
     st.markdown(f"""
-    <div style="text-align:center;margin-top:8px;margin-bottom:20px;">
+    <div style="text-align:center;margin-top:8px;margin-bottom:12px;">
         <div style="font-size:22px;color:#3B82F6;font-weight:900;margin-bottom:4px;">
             🌅 오늘의 워밍업 · Day {day}
         </div>
@@ -958,6 +975,58 @@ def _render_daily_gate(nickname: str, month_key: str) -> None:
         </div>
     </div>
     """, unsafe_allow_html=True)
+
+    # ─── ⏱ JS 카운트다운 타이머 (30초 이하 빨간 깜빡임) ───
+    import streamlit.components.v1 as _components
+    _m, _s = divmod(_remaining, 60)
+    _components.html(f"""
+    <div style="text-align:center;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;">
+      <div id="snapq-timer-box" style="
+           font-size:22px;font-weight:900;color:#3B82F6;
+           padding:8px 22px;border-radius:24px;display:inline-block;
+           background:rgba(59,130,246,0.12);
+           border:1.5px solid rgba(59,130,246,0.4);
+           transition:all 0.3s ease;">
+        ⏱ <span id="snapq-time">{_m}:{_s:02d}</span>
+      </div>
+    </div>
+    <script>
+    (function() {{
+        let remaining = {_remaining};
+        const timeEl = document.getElementById('snapq-time');
+        const boxEl  = document.getElementById('snapq-timer-box');
+        if (!timeEl || !boxEl) return;
+        function render() {{
+            const m = Math.floor(remaining / 60);
+            const s = remaining % 60;
+            timeEl.textContent = m + ':' + (s < 10 ? '0' : '') + s;
+            if (remaining <= 30) {{
+                boxEl.style.color = '#EF4444';
+                boxEl.style.background = 'rgba(239,68,68,0.15)';
+                boxEl.style.borderColor = 'rgba(239,68,68,0.6)';
+                boxEl.style.animation = 'snapq-pulse 0.9s ease-in-out infinite';
+            }}
+        }}
+        render();
+        const iv = setInterval(function() {{
+            remaining -= 1;
+            if (remaining < 0) {{
+                clearInterval(iv);
+                try {{ window.parent.location.reload(); }} catch(e) {{ location.reload(); }}
+                return;
+            }}
+            render();
+        }}, 1000);
+    }})();
+    </script>
+    <style>
+    @keyframes snapq-pulse {{
+        0%, 100% {{ opacity: 1; transform: scale(1); }}
+        50%      {{ opacity: 0.55; transform: scale(1.04); }}
+    }}
+    body {{ margin:0; padding:0; background:transparent; }}
+    </style>
+    """, height=70)
 
     # 문제
     st.markdown(f"""
