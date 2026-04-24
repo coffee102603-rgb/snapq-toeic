@@ -661,16 +661,14 @@ def _render_survey(survey_type: str, nickname: str, month_key: str) -> None:
             st.rerun()
 
     else:
-        # 5점 리커트
-        cols = st.columns(5)
+        # 5점 리커트 — 세로 1열 (v5 모바일 최적, 2026.04.24)
         for li, label in enumerate(LIKERT_OPTIONS):
             score = li + 1  # 1~5
-            with cols[li]:
-                if st.button(f"{score}\n{label}", key=f"sv_{qi}_{li}",
-                             use_container_width=True):
-                    st.session_state.survey_responses[key] = score
-                    st.session_state.survey_qi = qi + 1
-                    st.rerun()
+            if st.button(f"{score}. {label}", key=f"sv_{qi}_{li}",
+                         use_container_width=True):
+                st.session_state.survey_responses[key] = score
+                st.session_state.survey_qi = qi + 1
+                st.rerun()
 
 
 # =========================================================
