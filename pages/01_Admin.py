@@ -23,6 +23,54 @@ AI-AGENT NOTES:
     Sheets 연결 실패 시 로컬 storage_data.json fallback.
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 """
+
+# ═══════════════════════════════════════════════════════════
+# ADMIN_PASSWORD_GATE_V13 — 관리자 페이지 비밀번호 보호
+# ═══════════════════════════════════════════════════════════
+import streamlit as _st_gate
+_ADMIN_PASSWORD = "CJE2026"  # 선생님만 아는 비밀번호
+_ADMIN_NICKNAMES = ["admin_CJE", "최정은_ADMIN", "최정은"]  # 관리자 별명 리스트
+
+def _check_admin_access():
+    """관리자 접근 권한 확인 — 별명 또는 비밀번호"""
+    # 이미 인증된 세션이면 통과
+    if _st_gate.session_state.get("_admin_authenticated_v13"):
+        return True
+    
+    # 별명이 관리자 목록에 있으면 자동 통과
+    current_nick = _st_gate.session_state.get("nickname", "")
+    if current_nick in _ADMIN_NICKNAMES:
+        _st_gate.session_state["_admin_authenticated_v13"] = True
+        return True
+    
+    # 비밀번호 입력 UI
+    _st_gate.set_page_config(page_title="🔒 관리자 인증", layout="centered")
+    _st_gate.title("🔒 관리자 전용 페이지")
+    _st_gate.markdown("### 이 페이지는 연구자만 접근 가능합니다")
+    _st_gate.info("학생은 이 페이지에 접근할 수 없습니다. 메인으로 돌아가세요.")
+    
+    with _st_gate.form("admin_pw_form"):
+        pw = _st_gate.text_input("🔑 비밀번호", type="password", placeholder="비밀번호를 입력하세요")
+        submitted = _st_gate.form_submit_button("입장")
+        if submitted:
+            if pw == _ADMIN_PASSWORD:
+                _st_gate.session_state["_admin_authenticated_v13"] = True
+                _st_gate.success("✅ 인증 성공! 페이지를 불러옵니다...")
+                _st_gate.rerun()
+            else:
+                _st_gate.error("❌ 비밀번호가 틀렸습니다.")
+    
+    col_back, _ = _st_gate.columns([1, 3])
+    with col_back:
+        if _st_gate.button("🏠 메인으로"):
+            _st_gate.switch_page("main_hub.py")
+    
+    _st_gate.stop()  # 인증 안 되면 여기서 중단
+
+_check_admin_access()
+# ═══════════════════════════════════════════════════════════
+
+
 import streamlit as st
 import json, os, pandas as pd
 from datetime import datetime

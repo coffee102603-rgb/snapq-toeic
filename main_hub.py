@@ -1633,12 +1633,35 @@ _hc.html("""
     <div class="ico">🎵</div>
     <div class="lbl">P4 Coming Soon</div>
   </div>
-  <div class="box box-adm" onclick="goAdmin()">
+  <div class="box box-adm" id="admBox" onclick="goAdmin()" style="display:none;">
     <div class="ico">🔒</div>
     <div class="lbl lbl-adm">관리자 전용</div>
   </div>
 </div>
 <script>
+// v13: 선생님(admin_CJE)일 때만 관리자 박스 표시
+(function checkAdminVisibility(){
+    try {
+        var nicknameEl = document.querySelector('[data-testid="stMarkdownContainer"]');
+        var bodyText = document.body.innerText || '';
+        // nickname이 admin_CJE로 시작하면 관리자 박스 표시
+        if (bodyText.indexOf('admin_CJE') !== -1 || bodyText.indexOf('최정은_ADMIN') !== -1) {
+            var admBox = document.getElementById('admBox');
+            if (admBox) { admBox.style.display = ''; }
+        }
+    } catch(e) { console.log('admin check error:', e); }
+})();
+// 500ms 후에 다시 한 번 체크 (Streamlit 렌더링 지연 대응)
+setTimeout(function(){
+    try {
+        var bodyText = document.body.innerText || '';
+        if (bodyText.indexOf('admin_CJE') !== -1 || bodyText.indexOf('최정은_ADMIN') !== -1) {
+            var admBox = document.getElementById('admBox');
+            if (admBox) { admBox.style.display = ''; }
+        }
+    } catch(e) {}
+}, 500);
+
 function goAdmin(){
   window.parent.document.querySelectorAll('button').forEach(b=>{
     if((b.innerText||'').trim()==='ADMIN_GO') b.click();
