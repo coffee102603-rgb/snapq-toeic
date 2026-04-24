@@ -530,9 +530,16 @@ def _inject_gate_css(color: str = "#7C5CFF") -> None:
     .stApp {{ background: #0D0F1A !important; }}
     .block-container {{ max-width: 600px !important; margin: 0 auto !important; padding: 2.5rem 1rem 2rem 1rem !important; }}
     div.stButton > button {{
-        border-radius: 14px !important; font-size: 22px !important;
+        border-radius: 14px !important; font-size: 36px !important;
         font-weight: 900 !important; padding: 14px !important;
         touch-action: manipulation !important;
+        line-height: 1.3 !important;
+    }}
+    /* 그리드 안의 버튼 (리커트 5열, 관문검사 2×2)은 작게 유지 */
+    div[data-testid="column"] div.stButton > button {{
+        font-size: 16px !important;
+        padding: 12px 4px !important;
+        line-height: 1.2 !important;
     }}
     div.stRadio > label {{ color: #ffffff !important; font-size: 16px !important; }}
     div[data-testid="stRadio"] label span {{ color: #ffffff !important; }}
