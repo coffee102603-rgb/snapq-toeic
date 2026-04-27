@@ -2,43 +2,20 @@
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 FILE:     app/core/attendance_engine.py
 ROLE:     출석·활동 자동 기록 엔진
-VERSION:  SnapQ TOEIC V3.1 — 2026.04.27 (v3.1)
+VERSION:  SnapQ TOEIC V3 — 2026.04 (v3)
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 USAGE:
     from attendance_engine import mark_attendance_once, record_activity
     mark_attendance_once(nickname)
     record_activity(nickname, arena="POW_p5exam", acc=80.0, completed=True)
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-
-╔═══════════════════════════════════════════════════════════════╗
-║  ★ RESEARCH ETHICS GUARD — IRB 승인 전 데이터 수집 완전 차단    ║
-╠═══════════════════════════════════════════════════════════════╣
-║                                                               ║
-║  RESEARCH_MODE = False                                        ║
-║  ────────────────────                                         ║
-║  ▷ 5~8월(IRB 전): 학습 도구 정상 작동, 단 영구 저장은 0건       ║
-║  ▷ 9월 이후:      지도교수 배정 후 IRB 신청 → 승인 후 True로 변경 ║
-║                                                               ║
-║  ★ 절대 규칙:                                                  ║
-║  1. RESEARCH_MODE = True 변경은 IRB 승인서 수령 후에만           ║
-║  2. True로 변경 전 반드시 지도교수 사전 확인                     ║
-║  3. True 상태에서는 학습자 사전 동의서 필수                      ║
-║  4. 본 가드는 *물리적 차단* — 의지가 아닌 코드로 윤리 보장        ║
-║                                                               ║
-╚═══════════════════════════════════════════════════════════════╝
-
 CHANGELOG:
-  v1 (~2026.03):   초기 — has_attended_today, mark_attendance_once만 존재
-                   → record_activity 미구현으로 2주간 사일런트 실패
-  v2 (2026.04):    record_activity 추가했으나 pages/_storage.py 재호출 방식
-                   → Streamlit Cloud 환경에서 sys.path 의존성 실패 추정
-  v3 (2026.04):    _storage 의존성 제거, gspread 직접 호출로 단순화
-                   + 실패 시 st.session_state에 에러 기록 (디버깅용)
-  v3.1 (2026.04.27): ★ RESEARCH_MODE 가드 추가 — IRB 윤리 보장
-                   → 5월 어학원 시범 운영 시작 전 데이터 수집 차단
-                   → 모든 쓰기 함수 + 저수준 저장 함수에 이중 방어
-                   → 읽기 함수는 통과(학습 도구 UX 유지)
-                   → 9월 지도교수 배정 후 IRB 신청 예정
+  v1 (~2026.03): 초기 — has_attended_today, mark_attendance_once만 존재
+                 → record_activity 미구현으로 2주간 사일런트 실패
+  v2 (2026.04):  record_activity 추가했으나 pages/_storage.py 재호출 방식
+                 → Streamlit Cloud 환경에서 sys.path 의존성 실패 추정
+  v3 (2026.04):  _storage 의존성 제거, gspread 직접 호출로 단순화
+                 + 실패 시 st.session_state에 에러 기록 (디버깅용)
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 DATA:
     로컬:    data/cohorts/YYYY-MM/attendance.json
@@ -46,11 +23,8 @@ DATA:
     Sheets: attendance 탭, activity 탭
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 PAPER LINKS:
-  ② ADDIE 개발 사례 (2026~2027): v1→v2→v3→v3.1 진화 자체가 Implementation 사례
-                                  특히 v3.1의 윤리 가드 추가는 Evaluation 단계의 증거
-  ④ 교사-연구자 자전적 사례연구: RESEARCH_MODE 가드 도입 결정 자체가 분석 대상
-                                  (코드 차원의 연구 윤리 의식 형성 과정)
-  ⑤ 탐색적 로그 분석 (IRB 후): activity — 이탈·완주 구분의 핵심 변수
+  ⑤ 탐색적 로그 분석 (2026.12): activity — 이탈·완주 구분의 핵심 변수
+  ② ADDIE 개발 사례 (2026.12): v1→v2→v3 진화 자체가 Implementation 사례
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 """
 
@@ -62,27 +36,6 @@ from pathlib import Path
 import streamlit as st
 
 BASE = Path(__file__).parent.parent.parent
-
-# ═══════════════════════════════════════════════════════════════
-# ★ RESEARCH ETHICS GUARD ★
-# ═══════════════════════════════════════════════════════════════
-# 본 플래그는 IRB 승인 전 *모든 데이터 수집을 물리적으로 차단*하기 위함.
-#
-# 변경 절차 (9월 이후):
-#   1. 지도교수 배정 확인
-#   2. IRB 신청 → 승인서 수령
-#   3. 학습자 사전 동의서 받음
-#   4. 본 줄을 RESEARCH_MODE = True 로 변경
-#   5. git commit -m "v4.0: IRB-승인후-데이터수집-개시 (IRB 승인번호: XXX)"
-#
-# 변경 절대 금지 사유:
-#   ▷ "잠깐 켜서 테스트만" — git log에 흔적 남고 IRB 위반
-#   ▷ "환경변수로 덮어쓰기" — 본 코드는 환경변수 덮어쓰기 일부러 미지원
-#   ▷ "한 명만 시범으로" — 한 명도 IRB 위반
-# ═══════════════════════════════════════════════════════════════
-RESEARCH_MODE = False  # ← 9월 IRB 승인 후에만 True로 변경
-# ═══════════════════════════════════════════════════════════════
-
 
 # Google Sheets 헤더 스키마 (self-contained, _storage 의존 없음)
 _SHEETS_HEADERS = {
@@ -119,7 +72,6 @@ def _att_file() -> Path:
 
 
 def _load_att() -> dict:
-    """읽기 함수 — RESEARCH_MODE 무관하게 작동 (학습 도구 UX 유지)."""
     f = _att_file()
     if f.exists():
         try:
@@ -129,38 +81,20 @@ def _load_att() -> dict:
     return {}
 
 
-def _save_att(data: dict) -> bool:
-    """
-    로컬 attendance.json 저장.
-
-    ★ RESEARCH_MODE 가드 (1차 방어) ★
-        IRB 전에는 디스크에 어떤 출석 데이터도 영구 저장하지 않음.
-        조용히 False 반환하여 호출자에게는 "저장 시도됨"처럼 보이게.
-    """
-    if not RESEARCH_MODE:
-        return False  # ← IRB 전: 영구 저장 차단
-
+def _save_att(data: dict):
     f = _att_file()
     f.parent.mkdir(parents=True, exist_ok=True)
     f.write_text(json.dumps(data, ensure_ascii=False, indent=2), encoding="utf-8")
-    return True
 
 
 def _save_to_sheets(log_key: str, entry: dict) -> bool:
     """
     Google Sheets에 직접 저장 (gspread 직접 호출, _storage 의존 없음).
 
-    ★ RESEARCH_MODE 가드 (1차 방어) ★
-        IRB 전에는 어떤 시트에도 단 한 행도 보내지 않음.
-        조용히 False 반환.
-
     PURPOSE: Streamlit secrets에서 credentials 가져와 gspread로 시트에 append
     FAILURE: 실패 시 session_state에 에러 기록 (디버깅 가능)
-    RETURNS: 성공 True, 실패/차단 False
+    RETURNS: 성공 True, 실패 False
     """
-    if not RESEARCH_MODE:
-        return False  # ← IRB 전: 시트 저장 완전 차단
-
     try:
         import gspread
         gc = gspread.service_account_from_dict(dict(st.secrets["gcp_service_account"]))
@@ -195,13 +129,7 @@ def _save_to_sheets(log_key: str, entry: dict) -> bool:
 # ─────────────────────────────────────────────────────────────
 
 def has_attended_today(nickname: str) -> bool:
-    """
-    오늘 이미 출석 기록이 있으면 True.
-
-    ★ 읽기 함수 — RESEARCH_MODE 무관하게 작동.
-        단, IRB 전에는 _save_att이 차단되므로 attendance.json이
-        애초에 생성되지 않아 항상 False 반환됨. 학습 도구 UX 정상.
-    """
+    """오늘 이미 출석 기록이 있으면 True"""
     today = date.today().isoformat()
     data = _load_att()
     days = data.get(nickname, {}).get("days", [])
@@ -212,16 +140,9 @@ def mark_attendance_once(nickname: str):
     """
     세션당 1회만 출석 기록.
 
-    ★ RESEARCH_MODE 가드 (2차 방어) ★
-        IRB 전에는 함수 진입 즉시 종료. 학습자는 정상적으로 시스템을
-        사용하지만, 출석 데이터는 *어디에도* 영구 저장되지 않음.
-
-    - 로컬 attendance.json: 항상 갱신 (단, IRB 전엔 _save_att이 차단)
-    - Google Sheets attendance 탭: 오늘 첫 출석만 1행 추가 (IRB 전엔 차단)
+    - 로컬 attendance.json: 항상 갱신
+    - Google Sheets attendance 탭: 오늘 첫 출석만 1행 추가
     """
-    if not RESEARCH_MODE:
-        return  # ← IRB 전: 출석 기록 함수 자체를 통과시키지 않음
-
     if not nickname:
         return
 
@@ -266,15 +187,9 @@ def record_activity(nickname: str = "",
     """
     게임 결과 활동 기록 — activity.jsonl + Google Sheets activity 탭.
 
-    ★ RESEARCH_MODE 가드 (2차 방어) ★
-        IRB 전에는 함수 진입 즉시 종료. 학습자가 게임을 완료해도
-        결과 데이터는 *어디에도* 영구 저장되지 않음. 학습자는 게임을
-        정상 플레이하고 즉시 결과 화면을 보지만, 그 기록은 메모리상에서만.
-
     PURPOSE:
         학습자가 어느 게임 영역을 언제 플레이했고, 어떤 정확도로, 완주했는지를
         이벤트 단위로 기록. 논문 ⑤ 탐색적 로그 분석의 종속변수(이탈·완주) 근거.
-        ※ IRB 승인 후에만 활성화.
 
     PARAMS:
         nickname:     사용자 식별자 (빈 문자열이면 "guest"로 fallback)
@@ -287,7 +202,7 @@ def record_activity(nickname: str = "",
         completed:    해당 모드의 대서사시 정의상 '완주' 조건 충족 여부
         duration_sec: 게임 지속 시간(초) — 생략 시 0
 
-    STORAGE (이중 저장, IRB 후에만):
+    STORAGE (이중 저장):
         1. data/cohorts/YYYY-MM/activity.jsonl  (로컬 append-only)
         2. Google Sheets "activity" 탭          (영구 보존)
 
@@ -295,9 +210,6 @@ def record_activity(nickname: str = "",
         실패해도 예외 전파 안 함 (try/except). Sheets 실패 시 에러는
         st.session_state["_sheets_err_activity"] 에 기록 (디버깅 가능).
     """
-    if not RESEARCH_MODE:
-        return  # ← IRB 전: 활동 기록 함수 자체를 통과시키지 않음
-
     if not nickname:
         nickname = "guest"
 
@@ -335,13 +247,9 @@ def record_session_event(nickname: str = "",
     """
     세션 이벤트 기록 — session_events 시트.
 
-    ★ RESEARCH_MODE 가드 (2차 방어) ★
-        IRB 전에는 함수 진입 즉시 종료. 페이지 진입·이탈 추적 0건.
-
     PURPOSE:
         학습자의 페이지 진입·이탈 등 미시적 세션 이벤트 추적.
         논문 ⑤ 탐색적 로그 분석의 "이탈 지점 식별" 변수.
-        ※ IRB 승인 후에만 활성화.
 
     PARAMS:
         nickname:     사용자 식별자 (빈 문자열이면 "guest")
@@ -356,7 +264,6 @@ def record_session_event(nickname: str = "",
 
     STORAGE:
         Google Sheets "session_events" 탭 — 활동 흐름 분석용 append-only
-        (IRB 후에만)
 
     USAGE:
         # 페이지 진입 시 (각 페이지 상단, idempotent)
@@ -368,9 +275,6 @@ def record_session_event(nickname: str = "",
         record_session_event(nickname, "POW_p5exam", "quit",
                             extra_info=f"last_q={qi}")
     """
-    if not RESEARCH_MODE:
-        return  # ← IRB 전: 세션 이벤트 기록 함수 자체를 통과시키지 않음
-
     if not nickname:
         nickname = "guest"
 
@@ -382,32 +286,7 @@ def record_session_event(nickname: str = "",
         "event":          event,
         "duration_sec":   int(duration_sec) if duration_sec else 0,
         "extra_info":     str(extra_info)[:200] if extra_info else "",
-        "research_phase": "main",  # IRB 승인 후 활성화되므로 "main"
+        "research_phase": "pre_irb",  # TODO: IRB 승인 후 "main"으로 변경
     }
 
     _save_to_sheets("session_events", entry)
-
-
-# ─────────────────────────────────────────────────────────────
-# 디버깅 / 자가 점검 유틸 (개발자용, 학습자 UX와 무관)
-# ─────────────────────────────────────────────────────────────
-
-def assert_research_mode_off() -> dict:
-    """
-    현재 RESEARCH_MODE 상태를 반환. 메인 허브 우측 하단 등에 작은 인디케이터로
-    표시할 때 사용 가능. (학습자에겐 안 보이게, 개발자/연구자만 확인)
-
-    Returns:
-        {
-            "research_mode": False,
-            "data_collection": "BLOCKED",  # 또는 "ACTIVE"
-            "checked_at": "2026-04-27T...",
-            "phase": "pre_irb_pilot",      # 또는 "irb_approved"
-        }
-    """
-    return {
-        "research_mode":    RESEARCH_MODE,
-        "data_collection":  "ACTIVE" if RESEARCH_MODE else "BLOCKED",
-        "checked_at":       datetime.now().isoformat()[:19],
-        "phase":            "irb_approved" if RESEARCH_MODE else "pre_irb_pilot",
-    }
