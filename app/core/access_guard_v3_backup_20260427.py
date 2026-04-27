@@ -1,23 +1,14 @@
 """
 SnapQ TOEIC V3 - Access Guard
-로그인 (IRB 후): 이름 + 전화번호 뒷 4자리 + 월별코드
-로그인 (IRB 전, 시범 운영): 별명 + 입장코드만
+로그인: 이름 + 전화번호 뒷 4자리 + 월별코드
 
 CHANGELOG:
-  v2 (2026.04.초):   월별코드 + privacy_agreed_at 도입
-  v3 (2026.04.27):   박사학위논문 통계 변수 추가
-                     - COHORT_MAP / get_cohort_id (5개 코호트 매핑)
-                     - roster.jsonl에 박사 변수 6개 추가
-                     - _show_research_consent_notice (4단 분리 동의)
-                     - withdraw_consent / 동의 철회 처리
-  v3.1 (2026.04.27): ★ IRB 전 시범 운영 분기 추가 ★
-                     - RESEARCH_MODE 단일 진실 소스화
-                       (attendance_engine.py에서 import)
-                     - _show_pilot_notice() 신규: 시범 운영 안내 화면
-                     - 로그인 폼 분기: IRB 전엔 별명+코드만
-                       (개인정보 수집 0건)
-                     - 9월 IRB 승인 시 attendance_engine.py 한 줄
-                       (RESEARCH_MODE = True) 변경으로 자동 복귀
+  v2 (2026.04.초): 월별코드 + privacy_agreed_at 도입
+  v3 (2026.04.27): 박사학위논문 통계 변수 추가
+                  - COHORT_MAP / get_cohort_id (5개 코호트 매핑)
+                  - roster.jsonl에 박사 변수 6개 추가
+                  - _show_research_consent_notice (4단 분리 동의)
+                  - withdraw_consent / 동의 철회 처리
 """
 from __future__ import annotations
 
@@ -57,25 +48,13 @@ MONTHLY_CODES = {
     "2026-06": "JUN2026",
 }
 
-# ═══ 연구 모드 설정 ═══════════════════════════════════════════
-# ★ 단일 진실 소스: app/core/attendance_engine.py
-#    9월 IRB 승인 후 attendance_engine.py 한 곳만 True로 변경하면
-#    이 파일과 다른 모든 모듈이 자동 동기화됨.
-#
-# RESEARCH_MODE = True (IRB 후, 정식 연구):
-#   - 4단 IRB 동의서 화면 표시 (CONSENT_VERSION 기록)
-#   - 이름 + 전화번호 4자리 + 월별 코드 로그인
-#   - 모든 학습 데이터 정상 수집·저장
-#   - LOCK_DAY 해제 (월말에도 접속 가능, 관문검사 Day 21·31 대응)
-#   - pretest_gate_schedule 자동 생성
-#
-# RESEARCH_MODE = False (IRB 전, 시범 운영, 5~8월):
-#   - 간단한 학습 도구 안내만 표시 (정식 연구 동의 X)
-#   - 별명 + 입장 코드만 (개인정보 수집 0건)
-#   - 모든 데이터 수집 차단 (attendance_engine.py 가드가 처리)
-#   - LOCK_DAY 적용 (필요 시 해제는 별도 조치)
-from app.core.attendance_engine import RESEARCH_MODE
-RESEARCH_START_DATE = "2026-09-01"  # IRB 승인 후 정식 연구 개시 예정
+# ═══ 연구 모드 설정 (2026.05 연구 개시) ═══════════════════════
+# RESEARCH_MODE = True 면:
+#   - LOCK_DAY 해제 (월말에도 접속 가능 — 관문검사 Day 21, 31... 대응)
+#   - 학생 등록 시 pretest_gate_schedule 자동 생성
+#   - IRB 승인 전/후 플래그 자동 전환
+RESEARCH_MODE = True
+RESEARCH_START_DATE = "2026-05-01"  # 연구 개시일
 
 # 월말 잠금일 (연구 모드 아닐 때만 적용)
 LOCK_DAY = 28  # 매월 28일 이후 잠금
@@ -362,160 +341,12 @@ def _show_privacy_notice() -> bool:
         - 동의서 버전 기록 (CONSENT_VERSION)
         - 철회 안내 명시
     """
-    # ★ RESEARCH_MODE 분기 (v3.1, 2026-04-27) ★
-    # IRB 전 시범 운영 — 정식 연구 동의 절차 우회, 간단한 학습 도구 안내만 표시
-    if not RESEARCH_MODE:
-        return _show_pilot_notice()
-
-    # ── IRB 후 정식 연구 모드 ──
     # 이미 동의 완료?
     if st.session_state.get("privacy_agreed") and \
        st.session_state.get("consent_research_given") is not None:
         return True
 
     return _show_research_consent_notice()
-
-
-def _show_pilot_notice() -> bool:
-    """
-    ★ v3.1 (2026-04-27) — IRB 전 시범 운영 안내 화면.
-
-    PURPOSE:
-        RESEARCH_MODE = False 상태(5~8월 어학원 시범 운영)에서 띄우는
-        간단한 학습 도구 안내. 정식 연구 동의 X. 데이터 수집 X.
-
-    DESIGN PRINCIPLE — 학습자 기만 방지:
-        ✅ "이건 영어 학습 도구입니다" 명시 (연구 아님)
-        ✅ "학습 기록은 저장되지 않습니다" 정직한 안내
-        ✅ "정식 연구는 9월 IRB 승인 후 별도 진행" 미래 안내
-        ✅ 이름·연락처 등 개인정보 수집 안 함
-
-    PAPER LINKS:
-        ④ 자전적 사례연구: 본 함수 도입 결정 자체가 연구자 윤리 의식
-                          형성 과정의 데이터
-
-    RETURNS:
-        True:  안내 확인 완료 (또는 이미 확인함)
-        False: 아직 확인 전 (st.stop()으로 페이지 정지)
-    """
-    # 이미 확인했는가?
-    if st.session_state.get("pilot_notice_acknowledged"):
-        # 다른 코드와의 호환성 (기존 코드가 privacy_agreed를 체크함)
-        st.session_state["privacy_agreed"] = True
-        st.session_state["consent_research_given"] = False  # 명시적 미동의 (IRB 전)
-        return True
-
-    # CSS — 간결한 시범 운영 톤
-    st.markdown("""
-    <style>
-    .stApp { background: #0D0F1A !important; }
-    .block-container { max-width: 600px !important; margin: 0 auto !important;
-                       padding-top: 28px !important; padding-bottom: 30px !important; }
-    .pilot-welcome { text-align: center; margin-bottom: 16px; }
-    .pilot-welcome-emoji { font-size: 38px; }
-    .pilot-welcome-title {
-        font-size: 22px; font-weight: 900; color: #ffffff;
-        margin: 4px 0 4px 0;
-    }
-    .pilot-welcome-sub {
-        font-size: 12px; color: rgba(255,255,255,0.7);
-    }
-    .pilot-hero {
-        background: linear-gradient(135deg, rgba(125,211,252,0.14), rgba(244,201,93,0.08));
-        border: 1px solid rgba(125,211,252,0.4);
-        border-radius: 14px;
-        padding: 14px 16px;
-        margin-bottom: 14px;
-        color: #ffffff;
-        font-size: 14px;
-        line-height: 1.6;
-    }
-    .pilot-hero-title {
-        font-size: 15px; font-weight: 800; color: #7DD3FC;
-        margin-bottom: 6px;
-    }
-    .pilot-info {
-        background: rgba(0,200,150,0.10);
-        border-left: 4px solid #00C896;
-        border-radius: 8px;
-        padding: 12px 14px;
-        font-size: 13px;
-        color: #ffffff !important;
-        line-height: 1.7;
-        margin: 12px 0;
-    }
-    .pilot-info-title {
-        color: #00C896; font-weight: 900; font-size: 13px;
-        margin-bottom: 6px;
-    }
-    .pilot-future {
-        background: rgba(244,201,93,0.08);
-        border-left: 4px solid #F4C95D;
-        border-radius: 8px;
-        padding: 12px 14px;
-        font-size: 12px;
-        color: rgba(255,255,255,0.85) !important;
-        line-height: 1.6;
-        margin: 12px 0;
-    }
-    #MainMenu, footer, header { visibility: hidden; }
-    </style>
-    """, unsafe_allow_html=True)
-
-    # 환영
-    st.markdown("""
-    <div class="pilot-welcome">
-        <div class="pilot-welcome-emoji">📚</div>
-        <div class="pilot-welcome-title">SnapQ TOEIC</div>
-        <div class="pilot-welcome-sub">영어 학습 도구</div>
-    </div>
-    """, unsafe_allow_html=True)
-
-    # 핵심 안내 — "학습 도구입니다"
-    st.markdown("""
-    <div class="pilot-hero">
-        <div class="pilot-hero-title">📌 이 도구에 대하여</div>
-        영어 강사 <b>최정은</b>이 만든 <b>토익 학습 보조 도구</b>입니다.<br>
-        수업 시간에 자유롭게 활용해주세요.
-    </div>
-    """, unsafe_allow_html=True)
-
-    # 데이터 처리 안내 — 정직
-    st.markdown("""
-    <div class="pilot-info">
-        <div class="pilot-info-title">✅ 학습 기록 안내</div>
-        • 학습 기록은 <b>저장되지 않습니다</b><br>
-        • 매번 새로운 세션으로 시작됩니다<br>
-        • 개인정보(이름·연락처)는 수집하지 않습니다
-    </div>
-    """, unsafe_allow_html=True)
-
-    # 미래 안내 — IRB 후 별도 절차
-    st.markdown("""
-    <div class="pilot-future">
-        <b>💡 안내:</b> 본 도구는 현재 시범 운영 중입니다.
-        추후 정식 연구 단계에서는 별도의 동의 절차가 진행될 예정입니다.
-    </div>
-    """, unsafe_allow_html=True)
-
-    # 확인 버튼
-    if st.button("✅ 안내 확인 · 학습 시작", use_container_width=True, type="primary"):
-        st.session_state["pilot_notice_acknowledged"] = True
-        st.session_state["privacy_agreed"] = True  # 다른 코드 호환용
-        st.session_state["consent_research_given"] = False
-        st.session_state["consent_data_purpose"] = []
-        st.session_state["pilot_acknowledged_at"] = _now_iso()
-        st.rerun()
-
-    # 푸터 — 현재 모드 표시 (개발자/교사용)
-    st.markdown("""
-    <div style="text-align:center; margin-top:18px; font-size:10px;
-                color:rgba(255,255,255,0.3); line-height:1.4;">
-        ※ 시범 운영 모드 (IRB 승인 전, 데이터 수집 없음)
-    </div>
-    """, unsafe_allow_html=True)
-
-    st.stop()
 
 
 def _show_research_consent_notice() -> bool:
@@ -823,41 +654,25 @@ def require_access(context_tag: str = "ACCESS", roster_path: str = "") -> str:
     </div>
     """, unsafe_allow_html=True)
 
-    # ★ RESEARCH_MODE 분기 (v3.1) — IRB 전엔 별명만, IRB 후엔 이름+전화번호 ★
-    if RESEARCH_MODE:
-        # IRB 후 정식 연구: 이름 + 전화번호 4자리 + 월별 코드
-        name = st.text_input("📛 이름", placeholder="예: 홍길동", key="login_name")
-        phone4 = st.text_input("📱 전화번호 뒷 4자리", placeholder="예: 1234", max_chars=4, key="login_phone")
-    else:
-        # IRB 전 시범 운영: 별명만 (개인정보 수집 0건)
-        name = st.text_input("📛 별명 (자유롭게)", placeholder="예: 토익러버", key="login_name")
-        phone4 = ""  # 사용 안 함
-    code = st.text_input("🔑 입장 코드", placeholder="선생님이 알려준 코드 입력", key="login_code")
+    name = st.text_input("📛 이름", placeholder="예: 홍길동", key="login_name")
+    phone4 = st.text_input("📱 전화번호 뒷 4자리", placeholder="예: 1234", max_chars=4, key="login_phone")
+    code = st.text_input("🔑 월별 입장 코드", placeholder="선생님이 알려준 코드 입력", key="login_code")
 
     if st.button("⚡ 입장하기", use_container_width=True, type="primary"):
         # 입력 검증
         if not name.strip():
-            st.error("별명을 입력해주세요!" if not RESEARCH_MODE else "이름을 입력해주세요!")
+            st.error("이름을 입력해주세요!")
             st.stop()
-        if RESEARCH_MODE:
-            # IRB 후 정식 연구: 전화번호 4자리 검증
-            if not phone4.strip().isdigit() or len(phone4.strip()) != 4:
-                st.error("전화번호 뒷 4자리를 숫자로 입력해주세요!")
-                st.stop()
+        if not phone4.strip().isdigit() or len(phone4.strip()) != 4:
+            st.error("전화번호 뒷 4자리를 숫자로 입력해주세요!")
+            st.stop()
         if code.strip() != valid_code:
             st.error("입장 코드가 틀렸어요! 선생님께 확인해주세요.")
             st.stop()
 
-        # ID 생성
+        # ID 생성: 이름_전화뒷4_월코드
         month_short = date.today().strftime("%Y%m")
-        if RESEARCH_MODE:
-            # IRB 후: 이름_전화뒷4_월
-            nickname = f"{name.strip()}_{phone4.strip()}_{month_short}"
-        else:
-            # IRB 전 시범 운영: pilot_별명_타임스탬프 (익명, 비식별, 매 세션 새로 생성)
-            import time
-            ts_suffix = str(int(time.time()))[-6:]
-            nickname = f"pilot_{name.strip()}_{ts_suffix}"
+        nickname = f"{name.strip()}_{phone4.strip()}_{month_short}"
 
         # 세션 저장
         st.session_state["battle_nickname"] = nickname
