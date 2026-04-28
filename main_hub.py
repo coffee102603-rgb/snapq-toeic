@@ -37,6 +37,8 @@ from pathlib import Path
 
 from app.core.access_guard import require_access
 from app.core.pretest_gate import require_pretest_gate
+# ★ v3 신규 (2026.04.27) — 박사 ⑩⑪ TOEIC 시계열 데이터 수집 게이트
+from app.core.toeic_baseline_gate import require_toeic_baseline_gate
 from app.core.attendance_engine import mark_attendance_once, has_attended_today, record_session_event
 from app.core.battle_state import load_profile
 
@@ -59,6 +61,10 @@ if _qs_nick and _qs_ag == "1":
         st.session_state["access_granted"]  = True
         st.session_state["_code_verified"]  = True
         st.session_state["_id_verified"]    = True
+        # PATCH v3.5: pilot/privacy 상태도 함께 복구 (페이지 전환 시 안내 재표시 방지)
+        st.session_state["privacy_agreed"]            = True
+        st.session_state["pilot_notice_acknowledged"] = True
+        st.session_state["consent_research_given"]    = False
 
 # =========================================================
 # 데이터 헬퍼
@@ -751,6 +757,9 @@ _hc.html("""
 
 # 로그인 + 검사 체크
 nickname = require_access()
+# ★ v3 (2026.04.27): 매월 첫 접속 시 TOEIC 점수 입력 게이트
+#   PAPER ⑩⑪ — Growth Curve Model의 시계열 종속변수 확보
+require_toeic_baseline_gate(nickname)
 require_pretest_gate()
 
 # ★ BUG FIX 2026.04: URL 쿼리에 nickname 자동 저장 → 세션 증발 시 자동 복구
