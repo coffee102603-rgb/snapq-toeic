@@ -797,7 +797,10 @@ def require_access(context_tag: str = "ACCESS", roster_path: str = "") -> str:
 
     # 로그인 화면
     month_key = date.today().strftime("%Y-%m")
-    valid_code = MONTHLY_CODES.get(month_key, "")
+    if RESEARCH_MODE:
+        valid_code = MONTHLY_CODES.get(month_key, "")
+    else:
+        valid_code = "QQQ2026"  # IRB 전 시범 운영용 통일 코드
 
     st.markdown("""
     <style>
@@ -830,7 +833,7 @@ def require_access(context_tag: str = "ACCESS", roster_path: str = "") -> str:
         phone4 = st.text_input("📱 전화번호 뒷 4자리", placeholder="예: 1234", max_chars=4, key="login_phone")
     else:
         # IRB 전 시범 운영: 별명만 (개인정보 수집 0건)
-        name = st.text_input("📛 별명 (자유롭게)", placeholder="예: 토익러버", key="login_name")
+        name = st.text_input("📛 별명 (한글 2글자)", placeholder="예: 민지", max_chars=2, key="login_name")
         phone4 = ""  # 사용 안 함
     code = st.text_input("🔑 입장 코드", placeholder="선생님이 알려준 코드 입력", key="login_code")
 
@@ -839,6 +842,12 @@ def require_access(context_tag: str = "ACCESS", roster_path: str = "") -> str:
         if not name.strip():
             st.error("별명을 입력해주세요!" if not RESEARCH_MODE else "이름을 입력해주세요!")
             st.stop()
+        if not RESEARCH_MODE:
+            # IRB 전 시범 운영: 한글 2글자 강제
+            _nm = name.strip()
+            if len(_nm) != 2 or not all("\uAC00" <= ch <= "\uD7A3" for ch in _nm):
+                st.error("별명은 한글 2글자로 입력해주세요! (예: 민지, 은비)")
+                st.stop()
         if RESEARCH_MODE:
             # IRB 후 정식 연구: 전화번호 4자리 검증
             if not phone4.strip().isdigit() or len(phone4.strip()) != 4:
@@ -854,10 +863,8 @@ def require_access(context_tag: str = "ACCESS", roster_path: str = "") -> str:
             # IRB 후: 이름_전화뒷4_월
             nickname = f"{name.strip()}_{phone4.strip()}_{month_short}"
         else:
-            # IRB 전 시범 운영: pilot_별명_타임스탬프 (익명, 비식별, 매 세션 새로 생성)
-            import time
-            ts_suffix = str(int(time.time()))[-6:]
-            nickname = f"pilot_{name.strip()}_{ts_suffix}"
+            # IRB 전 시범 운영: 별명 그대로 사용 (개인정보 0건, 데이터 저장 0건)
+            nickname = name.strip()
 
         # 세션 저장
         st.session_state["battle_nickname"] = nickname
