@@ -750,6 +750,12 @@ div[data-testid="stButton"] button.p7nav:hover{
 # ════════════════════════════════════════
 # ═══════════════════════════════════════
 elif st.session_state.p7_phase == "battle":
+    # AUTO-REFRESH: server-side timer needs periodic rerun to detect timeout
+    try:
+        from streamlit_autorefresh import st_autorefresh
+        st_autorefresh(interval=1000, limit=300, key="p7_battle_autorefresh")
+    except Exception:
+        pass
     st.markdown("""<style>
     @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@700;900&display=swap');
     #MainMenu{visibility:hidden!important;}
