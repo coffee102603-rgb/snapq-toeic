@@ -50,6 +50,12 @@ from typing import Optional
 
 import streamlit as st
 
+# IRB_GUARD_MARKER: RESEARCH_MODE import
+try:
+    from app.core.attendance_engine import RESEARCH_MODE
+except Exception:
+    RESEARCH_MODE = False
+
 
 # =========================================================
 # 검사 일정 설정 — 개인 첫 접속일 기준 Day 카운트
@@ -1351,6 +1357,8 @@ _BUILTIN_DAILY_POOL = [
 ]
 
 def require_pretest_gate() -> None:
+    if not RESEARCH_MODE:
+        return  # IRB pilot: pretest disabled
     nickname = _get_nickname()
     month_key = _get_cohort_month()
 
