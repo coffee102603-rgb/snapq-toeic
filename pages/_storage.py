@@ -2,7 +2,7 @@
 FILE: _storage.py
 ROLE: 공통 저장소 모듈
 """
-import os, json
+import os, json, threading
 from datetime import datetime
 import streamlit as st
 
@@ -29,9 +29,7 @@ def save(data):
     except: return False
 
 def append_log(key, entry):
-    try:
-        save_to_sheets(key, entry)
-    except: pass
+    threading.Thread(target=save_to_sheets, args=(key, entry), daemon=True).start()
     try:
         d = load()
         if key not in d: d[key] = []
