@@ -803,7 +803,7 @@ def require_access(context_tag: str = "ACCESS", roster_path: str = "") -> str:
     if RESEARCH_MODE:
         valid_code = MONTHLY_CODES.get(month_key, "")
     else:
-        valid_code = "QQQ2026"  # IRB 전 시범 운영용 통일 코드
+        valid_code = "5555"  # IRB 전 시범 운영용 통일 코드
 
     st.markdown("""
     <style>
