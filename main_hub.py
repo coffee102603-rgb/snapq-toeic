@@ -2,7 +2,7 @@
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 FILE:     main_hub.py
 ROLE:     작전사령부 — 메인 허브 (로그인·스탯·NPC 피드백·전장 선택)
-VERSION:  SnapQ TOEIC V3
+VERSION:  Snap 토익 V3
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 PHASES:   LOGIN → LOBBY (NPC 피드백 + 단어수용소 카드 + 전장 3종 선택)
 DATA IN:  storage_data.json (word_prison, rt_logs, saved_expressions)
@@ -43,7 +43,7 @@ from app.core.attendance_engine import mark_attendance_once, has_attended_today,
 from app.core.battle_state import load_profile
 
 st.set_page_config(
-    page_title='SnapQ TOEIC',
+    page_title='Snap 토익',
     page_icon='⚡',
     layout='wide',
     initial_sidebar_state='collapsed'
@@ -1479,7 +1479,7 @@ _GRID_HTML = f"""
 <!-- ★ HUD 상단바 -->
 <div class="topbar">
   <img class="tb-photo" src="data:image/jpeg;base64,{TEACHER_B64}" alt="최샘">
-  <span class="tb-brand">⚡ SNAPQ</span>
+  <span class="tb-brand">⚡ Snap 토익</span>
   <span class="tb-sep">|</span>
   <span class="tb-name">👤 {student_name}</span>
   <span class="tb-sep">|</span>

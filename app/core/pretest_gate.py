@@ -2,7 +2,7 @@
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 FILE:     pretest_gate.py
 ROLE:     검사·설문 게이트 — 사전/중간/사후 TOEIC 검사 + 리커트 설문
-VERSION:  SnapQ TOEIC V3 — 2026.04.23 전면 재작성
+VERSION:  Snap 토익 V3 — 2026.04.23 전면 재작성
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 FLOW:
     1차 (1~10일):  설문 A~F (24문항) → TOEIC 검사 (10문항) → 입장
@@ -199,7 +199,7 @@ SURVEY_PRE_EXTRA = {
 
 # ── 📝 사후 전용 (G) ──
 SURVEY_POST_ONLY = {
-    "G1": "SnapQ가 영어 실력 향상에 도움이 되었다",
+    "G1": "Snap 토익이 영어 실력 향상에 도움이 되었다",
     "G2_choice": "가장 도움이 된 모드는?",
     "G3": "난이도가 자동으로 바뀌는 것이 도움이 되었다",        # 논문 ⑦
     "G4": "NPC(토리/해이) 메시지가 동기부여에 도움이 되었다",   # 논문 ⑧
@@ -665,7 +665,7 @@ def _render_survey(survey_type: str, nickname: str, month_key: str) -> None:
     st.markdown(f"""
     <div style="text-align:center;padding:16px 0 12px;">
         <div style="font-size:12px;font-weight:700;color:{color};letter-spacing:4px;margin-bottom:4px;">
-            SnapQ TOEIC · {label_type}
+            Snap 토익 · {label_type}
         </div>
         <div style="font-size:24px;font-weight:900;color:#fff;">
             {qi + 1} / {total}
@@ -775,7 +775,7 @@ def _render_test(stage: int, nickname: str, month_key: str) -> None:
     st.markdown(f"""
     <div style="text-align:center;padding:16px 0 12px;">
         <div style="font-size:12px;font-weight:700;color:{color};letter-spacing:4px;margin-bottom:4px;">
-            SnapQ TOEIC · {name}
+            Snap 토익 · {name}
         </div>
         <div style="font-size:24px;font-weight:900;color:#fff;">
             {qi + 1} / {total}
@@ -1125,11 +1125,11 @@ def _render_daily_gate(nickname: str, month_key: str) -> None:
                 {st.session_state.daily_correct} / {DAILY_GATE_QUESTIONS} 정답
             </div>
             <div style="font-size:16px;color:rgba(255,255,255,0.6);margin-bottom:32px;">
-                좋아요! 이제 SnapQ로 들어가세요 🚀
+                좋아요! 이제 Snap 토익으로 들어가세요 🚀
             </div>
         </div>
         """, unsafe_allow_html=True)
-        if st.button("⚡ SnapQ 입장하기", use_container_width=True, type="primary"):
+        if st.button("⚡ Snap 토익 입장하기", use_container_width=True, type="primary"):
             # 세션 상태 정리
             for k in ["daily_qi", "daily_pool", "daily_questions",
                       "daily_correct", "daily_start_time",

@@ -2,7 +2,7 @@
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 FILE:     01_Admin.py
 ROLE:     관리자 대시보드 — Google Sheets 실시간 데이터
-VERSION:  SnapQ TOEIC V3 — 2026.04.23 재작성
+VERSION:  Snap 토익 V3 — 2026.04.23 재작성
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 DATA SOURCE:
     Google Sheets (SPREADSHEET_ID in secrets)
@@ -76,7 +76,7 @@ import pandas as pd
 import json, os, pandas as pd
 from datetime import datetime
 
-st.set_page_config(page_title="SnapQ Admin", page_icon="📊", layout="wide")
+st.set_page_config(page_title="Snap 토익 Admin", page_icon="📊", layout="wide")
 st.markdown("""<style>
 .main, .block-container {background:#ffffff !important; color:#111111 !important;}
 h1,h2,h3,h4,h5,h6,p,span,div,label {color:#111111 !important;}
@@ -95,7 +95,7 @@ h1,h2,h3,h4,h5,h6,p,span,div,label {color:#111111 !important;}
 # ═══════════════════════════════════════════════════════════════
 col_title, col_back = st.columns([5, 1])
 with col_title:
-    st.title("📊 SnapQ 관리자 대시보드")
+    st.title("📊 Snap 토익 관리자 대시보드")
     st.caption("논문 연구용 데이터 분석 시스템 — 학생에게 비공개")
 with col_back:
     st.markdown("<div style='padding-top:1.2rem;'>", unsafe_allow_html=True)

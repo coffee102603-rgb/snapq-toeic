@@ -1,5 +1,5 @@
 """
-SnapQ TOEIC V3 - Access Guard
+Snap 토익 V3 - Access Guard
 로그인 (IRB 후): 이름 + 전화번호 뒷 4자리 + 월별코드
 로그인 (IRB 전, 시범 운영): 별명 + 입장코드만
 
@@ -469,7 +469,7 @@ def _show_pilot_notice() -> bool:
     st.markdown("""
     <div class="pilot-welcome">
         <div class="pilot-welcome-emoji">📚</div>
-        <div class="pilot-welcome-title">SnapQ TOEIC</div>
+        <div class="pilot-welcome-title">Snap 토익</div>
         <div class="pilot-welcome-sub">영어 학습 도구</div>
     </div>
     """, unsafe_allow_html=True)
@@ -636,7 +636,7 @@ def _show_research_consent_notice() -> bool:
     """, unsafe_allow_html=True)
 
     # ── 환영 (3줄) ──
-    welcome_title = WELCOME_TITLE if 'WELCOME_TITLE' in dir() else "✨ SnapQ에 오신 것을 환영해요!"
+    welcome_title = WELCOME_TITLE if 'WELCOME_TITLE' in dir() else "✨ Snap 토익에 오신 것을 환영해요!"
     welcome_sub = WELCOME_SUBTITLE if 'WELCOME_SUBTITLE' in dir() else "더 좋은 학습을 위한 안내"
     try:
         from app.research.irb_consent_text import WELCOME_TITLE as _wt, WELCOME_SUBTITLE as _ws
@@ -657,14 +657,14 @@ def _show_research_consent_notice() -> bool:
     st.markdown("""
     <div class="v12-hero">
         <div class="v12-hero-title">🌱 영어 실력 향상이 1순위!</div>
-        SnapQ는 게임처럼 즐겁게 영어 공부하는 곳이에요.<br>
+        Snap 토익은 게임처럼 즐겁게 영어 공부하는 곳이에요.<br>
         학습 기록은 <strong style="color:#F4C95D;">더 좋은 학습법 연구</strong>에도 도움 될 수 있어요. (선택)
     </div>
     """, unsafe_allow_html=True)
 
     # ── 1단: 필수 동의 (한 줄) ──
     agree_basic = st.checkbox(
-        "✅ (필수) SnapQ 시작 — 이름·전화 뒷4자리·학습 기록 저장에 동의해요",
+        "✅ (필수) Snap 토익 시작 — 이름·전화 뒷4자리·학습 기록 저장에 동의해요",
         value=False, key="consent_tier_1",
     )
 
@@ -737,7 +737,7 @@ def _show_research_consent_notice() -> bool:
     with col2:
         if st.button("✨ 시작할게요!", use_container_width=True, type="primary"):
             if not agree_basic:
-                st.error("⚠️ 1단(SnapQ 시작) 동의가 필수예요!")
+                st.error("⚠️ 1단(Snap 토익 시작) 동의가 필수예요!")
                 st.stop()
             now = _now_iso()
             st.session_state["privacy_agreed"]         = True
@@ -824,7 +824,7 @@ def require_access(context_tag: str = "ACCESS", roster_path: str = "") -> str:
     st.markdown("""
     <div style="text-align:center;margin-bottom:32px;">
         <div style="font-size:56px;margin-bottom:8px;">⚡</div>
-        <div style="font-size:28px;font-weight:900;color:#fff;letter-spacing:3px;">SnapQ TOEIC</div>
+        <div style="font-size:28px;font-weight:900;color:#fff;letter-spacing:3px;">Snap 토익</div>
         <div style="font-size:14px;color:rgba(255,255,255,0.4);margin-top:6px;letter-spacing:2px;">BATTLE PLATFORM</div>
     </div>
     """, unsafe_allow_html=True)

@@ -444,7 +444,7 @@ def _show_toeic_input_screen(nickname: str, month_key: str) -> None:
         """, unsafe_allow_html=True)
 
         submitted = st.form_submit_button(
-            "✅ 입력 완료 · SnapQ 시작!",
+            "✅ 입력 완료 · Snap 토익 시작!",
             use_container_width=True,
             type="primary",
         )
@@ -480,7 +480,7 @@ def _show_toeic_input_screen(nickname: str, month_key: str) -> None:
                 f"✅ {month_key} 점수 입력 완료!\n\n"
                 f"점수: **{entry['toeic_score']}** ({entry['toeic_level']})\n\n"
                 f"{diff_text}\n\n"
-                f"잠시 후 SnapQ로 자동 입장합니다... 🚀"
+                f"잠시 후 Snap 토익으로 자동 입장합니다... 🚀"
             )
             st.session_state[f"_toeic_gate_done_{month_key}"] = True
             st.balloons()

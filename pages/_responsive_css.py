@@ -1,5 +1,5 @@
 """
-SnapQ TOEIC — 공유 반응형 CSS 모듈
+Snap 토익 — 공유 반응형 CSS 모듈
 적용 내용:
   1. iOS Safari 버튼 클릭 무반응 수정
   2. PC(1024px↑) 글씨·버튼 자동 확대
