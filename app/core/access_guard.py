@@ -156,7 +156,10 @@ def _read_jsonl(path: Path) -> Iterable[Dict[str, Any]]:
 # 월말 잠금 체크
 # =========================================================
 def _is_locked() -> bool:
-    # 연구 모드에서는 잠금 해제 (관문검사 Day 21, 31... 대응)
+    # === PILOT MODE (2026-04 to 2026-06): LOCK_DAY disabled ===
+    # To restore: delete the next line (return False)
+    return False
+    # === Below is original logic ===
     if RESEARCH_MODE:
         return False
     today = date.today()
