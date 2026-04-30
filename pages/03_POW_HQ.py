@@ -200,18 +200,22 @@ div.stButton > button {
     box-shadow: 0 0 14px rgba(255,34,68,0.5) !important;
 }
 
-/* 수배 감방 비활성 (0명) — 어두운 회색 톤 */
+/* 수배 감방 비활성 (0명) — 또렷한 회색-분홍 (잘 보임) */
 .wanted-empty-key-wrap div.stButton > button {
-    background: #2a1a1f !important;
-    color: #6a4a55 !important;
-    border: 2.5px solid #5a2a3a !important;
+    background: #3a2a2f !important;
+    color: #aa8a95 !important;
+    border: 2.5px solid #7a4a5a !important;
     border-top: none !important;
     border-radius: 0 0 12px 12px !important;
     margin-top: -8px !important;
     padding: 12px !important;
     font-weight: 700 !important;
     cursor: not-allowed !important;
-    opacity: 0.6 !important;
+    opacity: 1 !important;
+}
+.wanted-empty-key-wrap div.stButton > button[disabled] {
+    background: #3a2a2f !important;
+    color: #aa8a95 !important;
 }
 
 /* 메인으로 — 차가운 회색 (감방과 완전 분리) */
@@ -550,9 +554,9 @@ def render_main_screen():
             '</div>'
         )
         st.markdown(wanted_empty_html, unsafe_allow_html=True)
-        # 비활성 버튼 (회색)
+        # 비활성 버튼 (또렷한 회색-분홍)
         st.markdown('<div class="wanted-empty-key-wrap">', unsafe_allow_html=True)
-        st.button("🎯 수배 단어 없음", use_container_width=True,
+        st.button("🎯 수배 단어 없음 · 잘하고 있어!", use_container_width=True,
                   key="btn_wanted_empty", disabled=True)
         st.markdown('</div>', unsafe_allow_html=True)
 
