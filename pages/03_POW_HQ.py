@@ -485,19 +485,20 @@ def render_main_screen():
         '<div style="position:relative;text-align:center;">'
         '<div style="display:flex;align-items:center;justify-content:center;'
         'gap:6px;margin-bottom:2px;">'
-        '<span style="font-size:12px;color:#ffcc44;">⚜️</span>'
-        f'<span style="font-size:18px;">{tier_emoji}</span>'
+        '<span style="font-size:14px;">🎯</span>'
         '<span style="color:#ffd966;font-size:14px;font-weight:900;'
         'letter-spacing:2px;text-shadow:0 0 8px rgba(255,204,68,0.4);">'
-        '👑 마스터 감방</span>'
-        f'<span style="font-size:18px;">{tier_emoji}</span>'
-        '<span style="font-size:12px;color:#ffcc44;">⚜️</span>'
+        'TOEIC 빈출 510</span>'
+        '<span style="font-size:14px;">🎯</span>'
         '</div>'
-        f'<div style="color:#ffaaff;font-size:20px;font-weight:900;'
+        '<div style="color:#ffaa66;font-size:10px;font-style:italic;'
+        'margin-bottom:2px;line-height:1.4;">'
+        '⚡ 이 510개만 마스터하면 토익 어휘 끝!'
+        '</div>'
+        f'<div style="color:#ffd966;font-size:22px;font-weight:900;'
         f'line-height:1;">{progress_text}</div>'
-        '<div style="color:#aabbcc;font-size:10px;margin-top:2px;">'
-        f'<strong style="color:#ffcc44;">{tier_label}</strong> 도전 중 · '
-        '<span style="color:#7766aa;font-style:italic;">⚜️ 왕실의 시험</span>'
+        '<div style="color:#ddccaa;font-size:10px;margin-top:2px;">'
+        f'<strong style="color:#ffcc44;">{tier_emoji} {tier_label}</strong> 도전 중'
         '</div>'
         '</div>'
         '</div>'
@@ -506,7 +507,7 @@ def render_main_screen():
 
     # 마스터 입장 버튼 (보라/금색 그라디언트 — 카드와 통일)
     st.markdown('<div class="master-key-wrap">', unsafe_allow_html=True)
-    btn_master_clicked = st.button("👑 마스터 감방 입장 🔑", use_container_width=True,
+    btn_master_clicked = st.button("🎯 510 도전 시작 🔑", use_container_width=True,
                                     key="btn_master")
     st.markdown('</div>', unsafe_allow_html=True)
     if btn_master_clicked:
@@ -545,20 +546,21 @@ def render_main_screen():
             '<div style="position:relative;text-align:center;">'
             '<div style="display:flex;align-items:center;justify-content:center;'
             'gap:6px;margin-bottom:2px;">'
-            '<span style="font-size:12px;">⛓️</span>'
-            '<span style="font-size:18px;">🎯</span>'
+            '<span style="font-size:14px;">🚨</span>'
             '<span style="color:#ff6688;font-size:14px;font-weight:900;'
             'letter-spacing:2px;text-shadow:0 0 8px rgba(255,34,68,0.5);">'
-            '🔥 수배 감방</span>'
-            '<span style="font-size:18px;">🎯</span>'
-            '<span style="font-size:12px;">⛓️</span>'
+            '약점 집결소</span>'
+            '<span style="font-size:14px;">🚨</span>'
             '</div>'
-            f'<div style="color:#ff4477;font-size:20px;font-weight:900;'
+            '<div style="color:#ffaa99;font-size:10px;font-style:italic;'
+            'margin-bottom:2px;line-height:1.4;">'
+            '⛓️ 마스터·화력전·암호해독에서 틀린 단어 한 곳에!'
+            '</div>'
+            f'<div style="color:#ff4477;font-size:22px;font-weight:900;'
             f'line-height:1;text-shadow:0 0 6px rgba(255,68,119,0.6);">'
             f'{wanted_count}명 수감</div>'
             '<div style="color:#ffaa99;font-size:10px;margin-top:2px;">'
-            '<strong style="color:#ff8844;">자꾸 도망친 놈들</strong> · '
-            '<span style="color:#aa4455;font-style:italic;">⛓️ 끝까지 잡아라</span>'
+            '<span style="color:#ff8844;">📉 24시간 안 외우면 68% 사라진다</span>'
             '</div>'
             '</div>'
             '</div>'
@@ -567,7 +569,7 @@ def render_main_screen():
 
         # 수배 진압 버튼 (빨강/검정 그라디언트 — 카드와 통일)
         st.markdown('<div class="wanted-key-wrap">', unsafe_allow_html=True)
-        btn_wanted_clicked = st.button("🔥 수배 감방 진압 🔑", use_container_width=True,
+        btn_wanted_clicked = st.button("🔥 약점 정복 시작 🔑", use_container_width=True,
                                         key="btn_wanted")
         st.markdown('</div>', unsafe_allow_html=True)
         if btn_wanted_clicked:
@@ -600,14 +602,16 @@ def render_main_screen():
             '<div style="position:relative;text-align:center;">'
             '<div style="display:flex;align-items:center;justify-content:center;'
             'gap:6px;margin-bottom:2px;">'
-            '<span style="font-size:12px;">⛓️</span>'
-            '<span style="font-size:18px;">🎯</span>'
+            '<span style="font-size:14px;">🚨</span>'
             '<span style="color:#ff6688;font-size:14px;font-weight:900;'
-            'letter-spacing:2px;">🔥 수배 감방</span>'
-            '<span style="font-size:18px;">🎯</span>'
-            '<span style="font-size:12px;">⛓️</span>'
+            'letter-spacing:2px;">약점 집결소</span>'
+            '<span style="font-size:14px;">🚨</span>'
             '</div>'
-            '<div style="color:#ff4477;font-size:20px;font-weight:900;'
+            '<div style="color:#ffaa99;font-size:10px;font-style:italic;'
+            'margin-bottom:2px;line-height:1.4;">'
+            '⛓️ 마스터·화력전·암호해독에서 틀린 단어 한 곳에!'
+            '</div>'
+            '<div style="color:#ff4477;font-size:22px;font-weight:900;'
             'line-height:1;">0명 수감</div>'
             '<div style="color:#ffaa99;font-size:10px;margin-top:2px;">'
             '<strong style="color:#22cc88;">🎉 잘하고 있다!</strong> · '
@@ -619,9 +623,9 @@ def render_main_screen():
         st.markdown(wanted_empty_html, unsafe_allow_html=True)
         # 활성 버튼 (클릭 시 메시지 — disabled 안 쓰는 이유: 모바일 CSS 회피)
         st.markdown('<div class="wanted-empty-key-wrap">', unsafe_allow_html=True)
-        if st.button("🎯 수배 단어 없음 · 잘하고 있어!", use_container_width=True,
+        if st.button("🚨 약점 없음 · 잘하고 있어!", use_container_width=True,
                      key="btn_wanted_empty"):
-            st.info("🎉 수배 단어가 없어요! 마스터 감방으로 입장해주세요!")
+            st.info("🎉 약점이 없어요! TOEIC 빈출 510에 도전해주세요!")
         st.markdown('</div>', unsafe_allow_html=True)
 
     # 메인으로 버튼은 좌상단으로 이동했음 (위 헤더 참조)
