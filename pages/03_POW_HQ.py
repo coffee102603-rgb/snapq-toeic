@@ -802,6 +802,10 @@ body { margin: 0; padding: 0; background: transparent; font-family: system-ui; }
     <span class="timer-text" id="txt">3.0s</span>
 </div>
 <script>
+// 단어 인덱스 — HTML이 매번 달라지게 하는 식별자 (Streamlit 캐시 방지)
+const WORD_IDX = '__WORD_IDX__';
+console.log('[Timer] Starting for word index:', WORD_IDX);
+
 let timeLeft = 3.0;
 const interval = setInterval(() => {
     timeLeft -= 0.1;
@@ -859,6 +863,7 @@ function update() {
         timer_html = timer_html.replace("__TIMER_SAFE__", timer_safe)
         timer_html = timer_html.replace("__TIMER_SAFE_END__", timer_safe_end)
         timer_html = timer_html.replace("__TIMER_WARN__", timer_color_warn)
+        timer_html = timer_html.replace("__WORD_IDX__", str(idx))
         components.html(timer_html, height=24)
 
     # 4지선다 버튼
