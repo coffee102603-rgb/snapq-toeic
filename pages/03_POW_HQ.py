@@ -789,15 +789,8 @@ const interval = setInterval(() => {
         clearInterval(interval);
         timeLeft = 0;
         update();
-        try {
-            const buttons = window.parent.document.querySelectorAll('button');
-            for (const btn of buttons) {
-                if (btn.textContent && btn.textContent.includes('TIMEOUT_HIDDEN')) {
-                    btn.click();
-                    return;
-                }
-            }
-        } catch(e) {}
+        // 시간 초과 시 시각 효과만 (자동 처리 X)
+        document.getElementById('txt').textContent = '⏰ 빨리!';
         return;
     }
     update();
@@ -858,10 +851,7 @@ function update() {
     </div>
     """, unsafe_allow_html=True)
 
-    # TIMEOUT_HIDDEN 버튼 (CSS+JS로 숨김)
-    if st.button("TIMEOUT_HIDDEN", key=f"timeout_{idx}",
-                 help="시간 초과 자동 처리"):
-        handle_timeout(current)
+    # 시간 초과 기능 제거 (학생이 직접 클릭해야 함)
 
 
 def handle_answer(picked: int, correct: int, item: Dict):
@@ -884,29 +874,6 @@ def handle_answer(picked: int, correct: int, item: Dict):
     st.session_state[EXAM_RESULTS_KEY] = results
 
     st.session_state[EXAM_FEEDBACK_KEY] = "correct" if is_correct else "wrong"
-    st.session_state[EXAM_INDEX_KEY] = st.session_state.get(EXAM_INDEX_KEY, 0) + 1
-    st.rerun()
-
-
-def handle_timeout(item: Dict):
-    pos = item.get("pos", "noun")
-    word = item["word"]
-
-    try:
-        log_word_attempt(
-            nickname=nickname,
-            word=word,
-            pos=pos,
-            is_correct=False,
-        )
-    except Exception:
-        pass
-
-    results = st.session_state.get(EXAM_RESULTS_KEY, [])
-    results.append({"word": word, "pos": pos, "correct": False})
-    st.session_state[EXAM_RESULTS_KEY] = results
-
-    st.session_state[EXAM_FEEDBACK_KEY] = "timeout"
     st.session_state[EXAM_INDEX_KEY] = st.session_state.get(EXAM_INDEX_KEY, 0) + 1
     st.rerun()
 
