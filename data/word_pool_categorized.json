@@ -527,6 +527,42 @@
     {
       "word": "prerequisite",
       "meaning": "전제조건, 필수 요건"
+    },
+    {
+      "word": "itinerary",
+      "meaning": "여행 일정표"
+    },
+    {
+      "word": "warranty",
+      "meaning": "품질 보증서"
+    },
+    {
+      "word": "refurbishment",
+      "meaning": "재단장, 개보수"
+    },
+    {
+      "word": "reimbursement",
+      "meaning": "환급, 변제"
+    },
+    {
+      "word": "testimonial",
+      "meaning": "추천글, 사용 후기"
+    },
+    {
+      "word": "proximity",
+      "meaning": "근접성, 가까움"
+    },
+    {
+      "word": "inventory",
+      "meaning": "재고, 재고 목록"
+    },
+    {
+      "word": "premise",
+      "meaning": "전제, 부지"
+    },
+    {
+      "word": "venue",
+      "meaning": "장소, 개최지"
     }
   ],
   "verb": [
@@ -1009,6 +1045,50 @@
     {
       "word": "anticipate",
       "meaning": "예상하다, 기대하다"
+    },
+    {
+      "word": "endorse",
+      "meaning": "지지하다, 보증하다"
+    },
+    {
+      "word": "undermine",
+      "meaning": "약화시키다, 훼손하다"
+    },
+    {
+      "word": "reinforce",
+      "meaning": "강화하다"
+    },
+    {
+      "word": "dispatch",
+      "meaning": "발송하다, 파견하다"
+    },
+    {
+      "word": "finalize",
+      "meaning": "마무리하다, 확정하다"
+    },
+    {
+      "word": "postpone",
+      "meaning": "연기하다"
+    },
+    {
+      "word": "resume",
+      "meaning": "재개하다"
+    },
+    {
+      "word": "retrieve",
+      "meaning": "회수하다, 검색하다"
+    },
+    {
+      "word": "refrain",
+      "meaning": "자제하다, 삼가다"
+    },
+    {
+      "word": "designate",
+      "meaning": "지정하다"
+    },
+    {
+      "word": "distribute",
+      "meaning": "배포하다, 분배하다"
     }
   ],
   "adjective": [
@@ -1767,6 +1847,34 @@
     {
       "word": "confidential",
       "meaning": "기밀의, 비밀의"
+    },
+    {
+      "word": "tentative",
+      "meaning": "잠정적인, 망설이는"
+    },
+    {
+      "word": "imminent",
+      "meaning": "임박한"
+    },
+    {
+      "word": "redundant",
+      "meaning": "불필요한, 중복된"
+    },
+    {
+      "word": "thriving",
+      "meaning": "번창하는"
+    },
+    {
+      "word": "exempt",
+      "meaning": "면제된"
+    },
+    {
+      "word": "obsolete",
+      "meaning": "구식의, 쓸모없는"
+    },
+    {
+      "word": "reluctant",
+      "meaning": "꺼리는, 마지못한"
     }
   ],
   "adverb": [
@@ -2205,6 +2313,38 @@
     {
       "word": "temporarily",
       "meaning": "일시적으로"
+    },
+    {
+      "word": "inadvertently",
+      "meaning": "무심코, 우연히"
+    },
+    {
+      "word": "reluctantly",
+      "meaning": "마지못해"
+    },
+    {
+      "word": "tentatively",
+      "meaning": "잠정적으로"
+    },
+    {
+      "word": "prematurely",
+      "meaning": "너무 이르게"
+    },
+    {
+      "word": "indefinitely",
+      "meaning": "무기한으로"
+    },
+    {
+      "word": "predominantly",
+      "meaning": "주로, 대체로"
+    },
+    {
+      "word": "hesitantly",
+      "meaning": "망설이며"
+    },
+    {
+      "word": "abruptly",
+      "meaning": "갑자기"
     }
   ],
   "_summary": {
