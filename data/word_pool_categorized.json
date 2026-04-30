@@ -479,6 +479,54 @@
     {
       "word": "leverage",
       "meaning": "영향력, 지렛대"
+    },
+    {
+      "word": "deficit",
+      "meaning": "적자, 부족분"
+    },
+    {
+      "word": "liability",
+      "meaning": "부채, 법적 책임"
+    },
+    {
+      "word": "renovation",
+      "meaning": "수리, 보수 공사"
+    },
+    {
+      "word": "consortium",
+      "meaning": "컨소시엄, 합동 기업체"
+    },
+    {
+      "word": "mandate",
+      "meaning": "권한, 명령, 위임"
+    },
+    {
+      "word": "procurement",
+      "meaning": "조달, 구매"
+    },
+    {
+      "word": "stakeholder",
+      "meaning": "이해관계자"
+    },
+    {
+      "word": "subsidiary",
+      "meaning": "자회사"
+    },
+    {
+      "word": "turnover",
+      "meaning": "매출액, 이직률"
+    },
+    {
+      "word": "expenditure",
+      "meaning": "지출, 비용"
+    },
+    {
+      "word": "surplus",
+      "meaning": "잉여금, 흑자"
+    },
+    {
+      "word": "prerequisite",
+      "meaning": "전제조건, 필수 요건"
     }
   ],
   "verb": [
@@ -929,6 +977,38 @@
     {
       "word": "delegate",
       "meaning": "위임하다"
+    },
+    {
+      "word": "negotiate",
+      "meaning": "협상하다"
+    },
+    {
+      "word": "outsource",
+      "meaning": "외주를 주다"
+    },
+    {
+      "word": "reimburse",
+      "meaning": "환급하다, 상환하다"
+    },
+    {
+      "word": "terminate",
+      "meaning": "종료하다, 해고하다"
+    },
+    {
+      "word": "collaborate",
+      "meaning": "협력하다, 공동 작업하다"
+    },
+    {
+      "word": "facilitate",
+      "meaning": "촉진하다, 용이하게 하다"
+    },
+    {
+      "word": "expedite",
+      "meaning": "신속히 처리하다"
+    },
+    {
+      "word": "anticipate",
+      "meaning": "예상하다, 기대하다"
     }
   ],
   "adjective": [
@@ -1667,6 +1747,26 @@
     {
       "word": "lucrative",
       "meaning": "수익성 있는"
+    },
+    {
+      "word": "preliminary",
+      "meaning": "예비의, 사전의"
+    },
+    {
+      "word": "stringent",
+      "meaning": "엄격한, 까다로운"
+    },
+    {
+      "word": "substantial",
+      "meaning": "상당한, 실질적인"
+    },
+    {
+      "word": "provisional",
+      "meaning": "임시의, 잠정적인"
+    },
+    {
+      "word": "confidential",
+      "meaning": "기밀의, 비밀의"
     }
   ],
   "adverb": [
@@ -2081,6 +2181,30 @@
     {
       "word": "concurrently",
       "meaning": "동시에"
+    },
+    {
+      "word": "consecutively",
+      "meaning": "연속적으로"
+    },
+    {
+      "word": "explicitly",
+      "meaning": "명시적으로, 분명하게"
+    },
+    {
+      "word": "mutually",
+      "meaning": "상호적으로"
+    },
+    {
+      "word": "presumably",
+      "meaning": "아마도, 추정컨대"
+    },
+    {
+      "word": "simultaneously",
+      "meaning": "동시에"
+    },
+    {
+      "word": "temporarily",
+      "meaning": "일시적으로"
     }
   ],
   "_summary": {
