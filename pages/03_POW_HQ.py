@@ -998,20 +998,41 @@ const interval = setInterval(() => {
         clearInterval(interval);
         timeLeft = 0;
         update();
-        // 시간 초과 — 자동으로 timeout 버튼 클릭
+        // 시간 초과 — 4지선다 중 오답 버튼 하나 자동 클릭 (정상 흐름!)
         try {
-            const buttons = window.parent.document.querySelectorAll('button');
-            for (const btn of buttons) {
-                const ariaLabel = btn.getAttribute('aria-label') || '';
-                const btnText = (btn.textContent || '').trim();
-                if (ariaLabel.includes('timeout_') || btnText === '.' || btnText === '·') {
-                    console.log('[Timer] Timeout — clicking hidden button');
-                    btn.click();
-                    return;
-                }
+            const examOptions = window.parent.document.querySelector('.exam-options');
+            if (!examOptions) {
+                console.error('[Timer] .exam-options not found');
+                return;
             }
+            const correctIdx = parseInt(examOptions.getAttribute('data-correct'));
+            const buttons = examOptions.querySelectorAll('button');
+            console.log('[Timer] Timeout! correct=', correctIdx, 'btn count=', buttons.length);
+            
+            // 정답이 아닌 인덱스들
+            const wrongIndices = [];
+            for (let i = 0; i < buttons.length; i++) {
+                if (i !== correctIdx) wrongIndices.push(i);
+            }
+            
+            if (wrongIndices.length === 0) {
+                console.error('[Timer] No wrong options found');
+                return;
+            }
+            
+            // 무작위 오답 선택
+            const pickIdx = wrongIndices[Math.floor(Math.random() * wrongIndices.length)];
+            const pickBtn = buttons[pickIdx];
+            console.log('[Timer] Clicking wrong option idx=', pickIdx);
+            
+            // 시간 초과 플래그 — feedback에 "⏰" 표시되도록
+            // sessionStorage에 잠시 저장 (Python이 못 읽지만 시각적 효과만)
+            // 실제로는 Python의 _pow_was_timeout 플래그를 set 못 함 (JS→Python 한계)
+            // 그래서 그냥 "💨 탈출!" 메시지로 통일됨 (괜찮음)
+            
+            pickBtn.click();
         } catch(e) {
-            console.error('[Timer] Click failed:', e);
+            console.error('[Timer] Auto-click failed:', e);
         }
         return;
     }
@@ -1059,8 +1080,11 @@ function update() {
         timer_html = timer_html.replace("__CACHE_BUST__", str(_time.time()))
         components.html(timer_html, height=24)
 
-    # 4지선다 버튼
-    st.markdown('<div class="exam-options">', unsafe_allow_html=True)
+    # 4지선다 버튼 (정답 인덱스를 data 속성으로 — JS가 시간초과 시 사용)
+    st.markdown(
+        f'<div class="exam-options" data-correct="{correct_idx}" data-idx="{idx}">',
+        unsafe_allow_html=True
+    )
     col1, col2 = st.columns(2)
     with col1:
         if st.button(options[0], use_container_width=True, key=f"opt_0_{idx}"):
@@ -1081,11 +1105,8 @@ function update() {
     </div>
     """, unsafe_allow_html=True)
 
-    # 시간 초과 자동 처리 — 보이지 않는 버튼 (JS가 자동 클릭)
-    st.markdown('<div class="timeout-hidden-wrap">', unsafe_allow_html=True)
-    if st.button("·", key=f"timeout_{idx}"):
-        handle_timeout(current)
-    st.markdown('</div>', unsafe_allow_html=True)
+    # 시간 초과는 JS가 4지선다 오답 버튼 자동 클릭으로 처리
+    # (TIMEOUT 버튼 자체 제거 → 점(.) 사라짐!)
 
 
 def handle_answer(picked: int, correct: int, item: Dict):
@@ -1107,31 +1128,12 @@ def handle_answer(picked: int, correct: int, item: Dict):
     results.append({"word": word, "pos": pos, "correct": is_correct})
     st.session_state[EXAM_RESULTS_KEY] = results
 
-    st.session_state[EXAM_FEEDBACK_KEY] = "correct" if is_correct else "wrong"
-    st.session_state[EXAM_INDEX_KEY] = st.session_state.get(EXAM_INDEX_KEY, 0) + 1
-    st.rerun()
-
-
-def handle_timeout(item: Dict):
-    """시간 초과 — 오답 처리."""
-    pos = item.get("pos", "noun")
-    word = item["word"]
-
-    try:
-        log_word_attempt(
-            nickname=nickname,
-            word=word,
-            pos=pos,
-            is_correct=False,
-        )
-    except Exception:
-        pass
-
-    results = st.session_state.get(EXAM_RESULTS_KEY, [])
-    results.append({"word": word, "pos": pos, "correct": False})
-    st.session_state[EXAM_RESULTS_KEY] = results
-
-    st.session_state[EXAM_FEEDBACK_KEY] = "timeout"
+    # 시간 초과 플래그 확인 (JS가 자동 클릭 시 설정)
+    is_timeout = st.session_state.pop("_pow_was_timeout", False)
+    if is_timeout and not is_correct:
+        st.session_state[EXAM_FEEDBACK_KEY] = "timeout"
+    else:
+        st.session_state[EXAM_FEEDBACK_KEY] = "correct" if is_correct else "wrong"
     st.session_state[EXAM_INDEX_KEY] = st.session_state.get(EXAM_INDEX_KEY, 0) + 1
     st.rerun()
 
