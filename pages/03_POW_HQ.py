@@ -1,30 +1,20 @@
 """
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-FILE:     pages/03_POW_HQ.py (v6 — Streamlit 네이티브 시험)
+FILE:     pages/03_POW_HQ.py (v7 — 분위기 차별화)
 ROLE:     단어 포로수용소
 VERSION:  SnapQ TOEIC V3 — 2026.04.30
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-v6 변경 (★ 진짜 작동!):
-    - JS 두더지 게임 폐기 → Streamlit 네이티브 시험
-    - 한 단어씩 표시 → Streamlit 버튼 4개
-    - 클릭 즉시 log_word_attempt() 정확히 호출
-    - 수배 감방 진짜 작동!
-
-게임 흐름:
-    main → study(JS 카드) → exam(Streamlit 단어별) → result → main
-
-시험장 (한 단어씩):
-    - 단어 #N 표시
-    - 4지선다 (Streamlit 버튼)
-    - 3초 타이머 (JS, 시간초과 시 자동 다음)
-    - 클릭 → 즉시 기록 → 다음 단어 (자동 rerun)
-    - 10단어 끝 → 결과 화면 → 메인
+v7 변경:
+    1. 마스터 감방 = 왕실 던전 (보라/금색, 위엄 톤)
+    2. 수배 감방 = 지옥 감옥 (빨강/검정, 거친 톤)
+    3. 결과 카드 위로 (시험 끝 후 한 화면에)
+    4. TIMEOUT_HIDDEN 버튼 숨김
+    5. 멘트 차별화 (마스터: 위엄 / 수배: 거침)
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 """
 
 import json
 import random
-import time
 from datetime import date
 from pathlib import Path
 from typing import Dict, List
@@ -78,12 +68,12 @@ def load_word_pool() -> dict:
 
 
 # 세션 키
-PAGE_MODE_KEY = "_pow_mode"        # main / study / exam / result
-GAME_WORDS_KEY = "_pow_words"      # 시험 대상 단어 리스트
-GAME_TYPE_KEY = "_pow_type"        # master / wanted
-EXAM_INDEX_KEY = "_pow_exam_idx"   # 현재 시험 단어 인덱스 (0~9)
-EXAM_RESULTS_KEY = "_pow_results"  # 정답/오답 추적 [{word, pos, correct}, ...]
-EXAM_FEEDBACK_KEY = "_pow_feedback"  # 직전 답변 피드백 (correct/wrong/timeout)
+PAGE_MODE_KEY = "_pow_mode"
+GAME_WORDS_KEY = "_pow_words"
+GAME_TYPE_KEY = "_pow_type"
+EXAM_INDEX_KEY = "_pow_exam_idx"
+EXAM_RESULTS_KEY = "_pow_results"
+EXAM_FEEDBACK_KEY = "_pow_feedback"
 
 
 def get_mode() -> str:
@@ -95,7 +85,28 @@ def set_mode(m: str):
 
 
 # ═══════════════════════════════════════════════════════════════
-# CSS
+# 멘트 풀 (차별화)
+# ═══════════════════════════════════════════════════════════════
+
+MASTER_QUOTES = [
+    "왕실의 시험이다.",
+    "단어를 정복하라.",
+    "이 단어를 외워라.",
+    "위엄을 보여라.",
+    "마스터의 길이다.",
+]
+
+WANTED_QUOTES = [
+    "또 도망쳤어? 이번엔 잡는다!",
+    "이놈 끈질기네. 잡아!",
+    "수배범, 이번엔 못 도망간다.",
+    "다시 만난 놈이다. 끝장낸다.",
+    "이놈 또 탈출하려고? 안 된다!",
+]
+
+
+# ═══════════════════════════════════════════════════════════════
+# CSS — TIMEOUT_HIDDEN 버튼 숨김 + 시험장 버튼 스타일
 # ═══════════════════════════════════════════════════════════════
 
 st.markdown("""
@@ -117,7 +128,7 @@ div.stButton > button {
     font-size: 14px !important;
 }
 
-/* 시험장 4지선다 버튼 (큼직하게) */
+/* 시험장 4지선다 버튼 */
 .exam-options div.stButton > button {
     padding: 16px 8px !important;
     font-size: 14px !important;
@@ -127,12 +138,54 @@ div.stButton > button {
     min-height: 60px !important;
     word-break: keep-all !important;
 }
+
+/* TIMEOUT_HIDDEN 버튼 숨기기 — 텍스트로 매칭 */
+button:has(div p:contains("TIMEOUT_HIDDEN")),
+[data-testid="stButton"] button[aria-label*="TIMEOUT"] {
+    display: none !important;
+    visibility: hidden !important;
+}
 </style>
+
+<script>
+// TIMEOUT_HIDDEN 버튼 숨기기 (CSS :contains이 모든 브라우저에서 안 되니 JS로도)
+(function hideTimeoutButtons() {
+    const buttons = document.querySelectorAll('button');
+    for (const btn of buttons) {
+        if (btn.textContent && btn.textContent.includes('TIMEOUT_HIDDEN')) {
+            btn.style.display = 'none';
+            btn.style.height = '0';
+            btn.style.overflow = 'hidden';
+            btn.style.padding = '0';
+            btn.style.margin = '0';
+            // 부모 컨테이너도 숨기기
+            const parent = btn.closest('[data-testid="stButton"]');
+            if (parent) {
+                parent.style.display = 'none';
+                parent.style.height = '0';
+            }
+        }
+    }
+})();
+
+// 페이지 변화 감지해서 계속 숨기기
+const observer = new MutationObserver(() => {
+    const buttons = document.querySelectorAll('button');
+    for (const btn of buttons) {
+        if (btn.textContent && btn.textContent.includes('TIMEOUT_HIDDEN')) {
+            btn.style.display = 'none';
+            const parent = btn.closest('[data-testid="stButton"]');
+            if (parent) parent.style.display = 'none';
+        }
+    }
+});
+observer.observe(document.body, { childList: true, subtree: true });
+</script>
 """, unsafe_allow_html=True)
 
 
 # ═══════════════════════════════════════════════════════════════
-# 메인 화면
+# 메인 화면 — 분위기 차별화!
 # ═══════════════════════════════════════════════════════════════
 
 def render_main_screen():
@@ -178,41 +231,51 @@ def render_main_screen():
     wanted_count = len(wanted)
     progress_text = f"{total_mastered} / {next_at}" if next_at else f"{total_mastered}"
 
-    # 🥉 마스터 감방
+    # 🥉 마스터 감방 — 왕실 던전 (보라+금색)
     master_html = (
-        '<div style="background:linear-gradient(135deg,#2a1a4a 0%,#1a1228 100%);'
-        'border:2.5px solid #cc44ff;border-radius:12px;padding:14px 16px;'
-        'margin-bottom:8px;position:relative;overflow:hidden;">'
-        '<div style="position:absolute;top:0;bottom:0;left:14%;width:2px;'
-        'background:#cc44ff;opacity:0.35;"></div>'
-        '<div style="position:absolute;top:0;bottom:0;left:38%;width:2px;'
-        'background:#cc44ff;opacity:0.35;"></div>'
-        '<div style="position:absolute;top:0;bottom:0;left:62%;width:2px;'
-        'background:#cc44ff;opacity:0.35;"></div>'
-        '<div style="position:absolute;top:0;bottom:0;left:86%;width:2px;'
-        'background:#cc44ff;opacity:0.35;"></div>'
+        '<div style="background:linear-gradient(135deg,#2a1a4a 0%,#1a1228 50%,#3a2055 100%);'
+        'border:2.5px solid #ffcc44;border-radius:12px;padding:16px 16px;'
+        'margin-bottom:8px;position:relative;overflow:hidden;'
+        'box-shadow:0 0 18px rgba(204,68,255,0.2);">'
+        # 가는 세로 창살 (왕실 느낌)
+        '<div style="position:absolute;top:0;bottom:0;left:14%;width:1.5px;'
+        'background:linear-gradient(180deg,#ffcc44 0%,#cc44ff 100%);opacity:0.4;"></div>'
+        '<div style="position:absolute;top:0;bottom:0;left:38%;width:1.5px;'
+        'background:linear-gradient(180deg,#ffcc44 0%,#cc44ff 100%);opacity:0.4;"></div>'
+        '<div style="position:absolute;top:0;bottom:0;left:62%;width:1.5px;'
+        'background:linear-gradient(180deg,#ffcc44 0%,#cc44ff 100%);opacity:0.4;"></div>'
+        '<div style="position:absolute;top:0;bottom:0;left:86%;width:1.5px;'
+        'background:linear-gradient(180deg,#ffcc44 0%,#cc44ff 100%);opacity:0.4;"></div>'
+        # 가로 — 왕실 띠 (금색)
         '<div style="position:absolute;top:0;left:0;right:0;height:2px;'
-        'background:#cc44ff;opacity:0.6;"></div>'
+        'background:linear-gradient(90deg,transparent,#ffcc44,transparent);"></div>'
         '<div style="position:absolute;bottom:0;left:0;right:0;height:2px;'
-        'background:#cc44ff;opacity:0.6;"></div>'
+        'background:linear-gradient(90deg,transparent,#ffcc44,transparent);"></div>'
+        # 콘텐츠
         '<div style="position:relative;text-align:center;">'
         '<div style="display:flex;align-items:center;justify-content:center;'
-        'gap:10px;margin-bottom:4px;">'
+        'gap:8px;margin-bottom:4px;">'
+        '<span style="font-size:14px;color:#ffcc44;">⚜️</span>'
         f'<span style="font-size:24px;">{tier_emoji}</span>'
-        '<span style="color:#dd99ff;font-size:16px;font-weight:900;'
-        'letter-spacing:2px;">마스터 감방</span>'
+        '<span style="color:#ffd966;font-size:16px;font-weight:900;'
+        'letter-spacing:2px;text-shadow:0 0 8px rgba(255,204,68,0.4);">'
+        '👑 마스터 감방</span>'
+        f'<span style="font-size:24px;">{tier_emoji}</span>'
+        '<span style="font-size:14px;color:#ffcc44;">⚜️</span>'
         '</div>'
         f'<div style="color:#ffaaff;font-size:24px;font-weight:900;'
         f'line-height:1;">{progress_text}</div>'
         '<div style="color:#aabbcc;font-size:11px;margin-top:4px;">'
-        f'<strong style="color:#dd99ff;">{tier_label}</strong> 도전 중'
+        f'<strong style="color:#ffcc44;">{tier_label}</strong> 도전 중'
         '</div>'
+        '<div style="color:#7766aa;font-size:9px;margin-top:2px;font-style:italic;">'
+        '⚜️ 왕실의 시험이다 ⚜️</div>'
         '</div>'
         '</div>'
     )
     st.markdown(master_html, unsafe_allow_html=True)
 
-    if st.button("🥉 마스터 감방 입장", use_container_width=True, type="primary",
+    if st.button("👑 마스터 감방 입장", use_container_width=True, type="primary",
                  key="btn_master"):
         words = build_master_game_words(nickname)
         if not words:
@@ -223,42 +286,53 @@ def render_main_screen():
             set_mode("study")
             st.rerun()
 
-    # 🎯 수배 감방
+    # 🎯 수배 감방 — 지옥 감옥 (빨강+검정)
     if wanted_count > 0:
         wanted_html = (
-            '<div style="background:linear-gradient(135deg,#4a1a28 0%,#1a0810 100%);'
-            'border:2.5px solid #ff4477;border-radius:12px;padding:14px 16px;'
-            'margin:10px 0 8px;position:relative;overflow:hidden;">'
-            '<div style="position:absolute;top:0;left:0;right:0;height:4px;'
-            'background:repeating-linear-gradient(90deg,#ff4477 0,#ff4477 8px,'
-            '#220004 8px,#220004 16px);"></div>'
-            '<div style="position:absolute;bottom:0;left:0;right:0;height:4px;'
-            'background:repeating-linear-gradient(90deg,#ff4477 0,#ff4477 8px,'
-            '#220004 8px,#220004 16px);"></div>'
-            '<div style="position:absolute;top:0;bottom:0;left:20%;width:2px;'
-            'background:#ff4477;opacity:0.5;"></div>'
+            '<div style="background:linear-gradient(135deg,#5a0a14 0%,#000 50%,#3a0a08 100%);'
+            'border:2.5px solid #ff2244;border-radius:12px;padding:16px 16px;'
+            'margin:10px 0 8px;position:relative;overflow:hidden;'
+            'box-shadow:0 0 18px rgba(255,34,68,0.25);">'
+            # 굵은 가로 창살 (지옥 느낌)
+            '<div style="position:absolute;top:0;left:0;right:0;height:5px;'
+            'background:repeating-linear-gradient(90deg,#ff2244 0,#ff2244 6px,'
+            '#000 6px,#000 12px);"></div>'
+            '<div style="position:absolute;bottom:0;left:0;right:0;height:5px;'
+            'background:repeating-linear-gradient(90deg,#ff2244 0,#ff2244 6px,'
+            '#000 6px,#000 12px);"></div>'
+            # X자 사슬 느낌 (대각선)
+            '<div style="position:absolute;top:0;bottom:0;left:25%;width:2px;'
+            'background:#ff2244;opacity:0.4;transform:skewX(-5deg);"></div>'
             '<div style="position:absolute;top:0;bottom:0;left:50%;width:2px;'
-            'background:#ff4477;opacity:0.5;"></div>'
-            '<div style="position:absolute;top:0;bottom:0;left:80%;width:2px;'
-            'background:#ff4477;opacity:0.5;"></div>'
+            'background:#ff2244;opacity:0.6;"></div>'
+            '<div style="position:absolute;top:0;bottom:0;left:75%;width:2px;'
+            'background:#ff2244;opacity:0.4;transform:skewX(5deg);"></div>'
+            # 콘텐츠
             '<div style="position:relative;text-align:center;">'
             '<div style="display:flex;align-items:center;justify-content:center;'
-            'gap:10px;margin-bottom:4px;">'
+            'gap:8px;margin-bottom:4px;">'
+            '<span style="font-size:14px;">⛓️</span>'
             '<span style="font-size:24px;">🎯</span>'
-            '<span style="color:#ff99bb;font-size:16px;font-weight:900;'
-            'letter-spacing:2px;">수배 감방</span>'
+            '<span style="color:#ff6688;font-size:16px;font-weight:900;'
+            'letter-spacing:2px;text-shadow:0 0 8px rgba(255,34,68,0.5);">'
+            '🔥 수배 감방</span>'
+            '<span style="font-size:24px;">🎯</span>'
+            '<span style="font-size:14px;">⛓️</span>'
             '</div>'
             f'<div style="color:#ff4477;font-size:24px;font-weight:900;'
-            f'line-height:1;">{wanted_count}명 수감</div>'
-            '<div style="color:#aabbcc;font-size:11px;margin-top:4px;">'
-            '<strong style="color:#ff99bb;">자꾸 도망친 놈들</strong>'
+            f'line-height:1;text-shadow:0 0 6px rgba(255,68,119,0.6);">'
+            f'{wanted_count}명 수감</div>'
+            '<div style="color:#ffaa99;font-size:11px;margin-top:4px;">'
+            '<strong style="color:#ff8844;">자꾸 도망친 놈들</strong>'
             '</div>'
+            '<div style="color:#aa4455;font-size:9px;margin-top:2px;font-style:italic;">'
+            '⛓️ 끝까지 잡아라 ⛓️</div>'
             '</div>'
             '</div>'
         )
         st.markdown(wanted_html, unsafe_allow_html=True)
 
-        if st.button("🎯 수배 감방 입장", use_container_width=True,
+        if st.button("🔥 수배 감방 진압", use_container_width=True,
                      key="btn_wanted"):
             words = build_wanted_game_words(nickname, wanted)
             if words:
@@ -334,7 +408,7 @@ def build_wanted_game_words(nick: str, wanted: List[Dict]) -> List[Dict]:
 
 
 # ═══════════════════════════════════════════════════════════════
-# 학습장 (그대로 유지)
+# 학습장 — 분위기 차별화!
 # ═══════════════════════════════════════════════════════════════
 
 def render_study_screen():
@@ -346,19 +420,33 @@ def render_study_screen():
         st.rerun()
         return
 
-    accent = "#ff4477" if game_type == "wanted" else "#cc44ff"
-    title = "수배 감방 학습장" if game_type == "wanted" else "마스터 감방 학습장"
+    # 게임 타입별 차별화
+    if game_type == "wanted":
+        accent = "#ff4477"
+        accent_light = "#ff99bb"
+        title = "🔥 수배 감방 학습장"
+        subtitle = "⛓️ 도망친 놈들을 외워라"
+        title_color = "#ff6688"
+        bg_pattern = "wanted"
+    else:
+        accent = "#ffcc44"
+        accent_light = "#ffd966"
+        title = "👑 왕실 학습장"
+        subtitle = "⚜️ 단어를 외워서 왕실에 입성하라"
+        title_color = "#ffd966"
+        bg_pattern = "master"
 
     st.markdown(f"""
     <div style="text-align:center;margin-bottom:6px;">
         <div style="display:flex;align-items:center;justify-content:center;gap:8px;">
             <span style="font-size:20px;">🃏</span>
-            <span style="color:{accent};font-size:14px;font-weight:900;letter-spacing:2px;">
+            <span style="color:{title_color};font-size:14px;font-weight:900;letter-spacing:2px;
+                        text-shadow:0 0 6px {accent}55;">
                 {title}
             </span>
         </div>
-        <div style="color:#557788;font-size:10px;margin-top:1px;">
-            모르는 단어 카드 탭 → 뜻 보기
+        <div style="color:#557788;font-size:10px;margin-top:1px;font-style:italic;">
+            {subtitle}
         </div>
     </div>
     """, unsafe_allow_html=True)
@@ -368,6 +456,16 @@ def render_study_screen():
         for i, w in enumerate(words)
     ]
     words_json = json.dumps(words_simple, ensure_ascii=False)
+
+    # 카드 배경 차별화
+    if bg_pattern == "wanted":
+        card_bg = "#2a0e1a"
+        card_border = "#5a2a3a"
+        card_flipped_bg = "#3a1820"
+    else:
+        card_bg = "#1a1838"
+        card_border = "#3d2a78"
+        card_flipped_bg = "#2a1a48"
 
     cards_html = """
 <!DOCTYPE html>
@@ -384,8 +482,8 @@ body {
     gap: 6px;
 }
 .card {
-    background: #1a2030;
-    border: 1.5px solid #3d5278;
+    background: __CARD_BG__;
+    border: 1.5px solid __CARD_BORDER__;
     border-radius: 8px;
     padding: 8px 4px;
     min-height: 56px;
@@ -401,8 +499,9 @@ body {
 }
 .card:active { transform: scale(0.97); }
 .card.flipped {
-    background: #2a1a30;
+    background: __CARD_FLIPPED_BG__;
     border-color: __ACCENT__;
+    box-shadow: 0 0 8px __ACCENT__44;
 }
 .card.seen::after {
     content: "✓";
@@ -413,9 +512,17 @@ body {
     font-size: 9px;
     font-weight: 700;
 }
-.card-no { color: #5a6878; font-size: 8px; font-weight: 700; margin-bottom: 2px; }
-.card-en { color: #fff; font-size: 13px; font-weight: 800; word-break: break-word; line-height: 1.1; }
-.card-kr { color: __ACCENT_LIGHT__; font-size: 11px; font-weight: 700; line-height: 1.2; word-break: keep-all; }
+.card-no {
+    color: #5a6878; font-size: 8px; font-weight: 700; margin-bottom: 2px;
+}
+.card-en {
+    color: #fff; font-size: 13px; font-weight: 800;
+    word-break: break-word; line-height: 1.1;
+}
+.card-kr {
+    color: __ACCENT_LIGHT__; font-size: 11px; font-weight: 700;
+    line-height: 1.2; word-break: keep-all;
+}
 </style>
 </head>
 <body>
@@ -460,8 +567,10 @@ render();
 """
     cards_html = cards_html.replace("__WORDS_JSON__", words_json)
     cards_html = cards_html.replace("__ACCENT__", accent)
-    cards_html = cards_html.replace("__ACCENT_LIGHT__",
-                                     "#ff99bb" if game_type == "wanted" else "#dd99ff")
+    cards_html = cards_html.replace("__ACCENT_LIGHT__", accent_light)
+    cards_html = cards_html.replace("__CARD_BG__", card_bg)
+    cards_html = cards_html.replace("__CARD_BORDER__", card_border)
+    cards_html = cards_html.replace("__CARD_FLIPPED_BG__", card_flipped_bg)
 
     components.html(cards_html, height=370, scrolling=False)
 
@@ -469,9 +578,9 @@ render();
 
     col1, col2 = st.columns([2, 1])
     with col1:
-        if st.button("⚔️ 시험장 입장!", use_container_width=True, type="primary",
+        exam_label = "🔥 진압 시작!" if game_type == "wanted" else "⚔️ 시험장 입장!"
+        if st.button(exam_label, use_container_width=True, type="primary",
                      key="btn_to_exam"):
-            # 시험장 진입 시 — 단어 셔플 + 인덱스 초기화
             exam_words = words.copy()
             random.shuffle(exam_words)
             for i, w in enumerate(exam_words, 1):
@@ -491,20 +600,10 @@ render();
 
 
 # ═══════════════════════════════════════════════════════════════
-# ⚔️ 시험장 — Streamlit 네이티브 (한 단어씩, 진짜 작동!)
+# ⚔️ 시험장 — 분위기 차별화!
 # ═══════════════════════════════════════════════════════════════
 
 def render_exam_screen():
-    """
-    시험장 — Streamlit 네이티브 한 단어씩.
-    
-    Flow:
-        EXAM_INDEX_KEY = 현재 단어 (0~9)
-        EXAM_RESULTS_KEY = [{word, pos, correct}, ...] 누적
-        
-        한 단어 표시 → 4지선다 버튼 → 클릭 즉시 기록 → 다음 단어
-        시간 초과: JS가 자동으로 timeout 버튼 클릭
-    """
     words = st.session_state.get(GAME_WORDS_KEY, [])
     game_type = st.session_state.get(GAME_TYPE_KEY, "master")
     idx = st.session_state.get(EXAM_INDEX_KEY, 0)
@@ -520,69 +619,141 @@ def render_exam_screen():
         finish_exam()
         return
 
-    accent = "#ff4477" if game_type == "wanted" else "#cc44ff"
+    # 게임 타입별 차별화
+    if game_type == "wanted":
+        accent = "#ff4477"
+        accent_dark = "#aa1133"
+        title = "🔥 수배 진압"
+        subtitle = "⛓️ 끝까지 잡아라!"
+        timer_color_safe = "#ff8844"
+        timer_color_warn = "#ff2244"
+        word_card_bg = "#3a0a14"
+        word_card_border = "#7a2a3a"
+        bar_pattern = "wanted"
+        quotes = WANTED_QUOTES
+    else:
+        accent = "#ffcc44"
+        accent_dark = "#aa8822"
+        title = "👑 왕실 시험"
+        subtitle = "⚜️ 위엄을 보여라!"
+        timer_color_safe = "#ffd966"
+        timer_color_warn = "#ff8844"
+        word_card_bg = "#2a1a4a"
+        word_card_border = "#7a5acc"
+        bar_pattern = "master"
+        quotes = MASTER_QUOTES
+
     current = words[idx]
     word = current["word"]
     options = current["options"]
     correct_idx = current["correct_index"]
     display_no = current["display_no"]
-    pos = current.get("pos", "noun")
 
     total = len(words)
     remaining = total - idx
 
-    # 헤더
-    st.markdown(f"""
-    <div style="background:#1a1f2e;border:1.5px solid {accent};border-radius:10px;
-                padding:8px 12px;margin-bottom:8px;
-                display:flex;align-items:center;gap:10px;">
-        <span style="font-size:20px;">💀</span>
-        <div>
-            <div style="color:{accent};font-size:13px;font-weight:900;letter-spacing:2px;">
-                시험장
-            </div>
-            <div style="color:#88aabb;font-size:9px;">⛓️ 3초 안에 답!</div>
-        </div>
-        <div style="margin-left:auto;text-align:right;">
-            <div style="color:#7a8fa8;font-size:8px;">남은 단어</div>
-            <div style="color:{accent};font-size:16px;font-weight:700;">
-                {remaining} / {total}
-            </div>
-        </div>
-    </div>
-    """, unsafe_allow_html=True)
+    # 멘트 (랜덤)
+    quote = random.choice(quotes)
+    quote_emoji = "👑" if game_type == "master" else "💀"
 
-    # 단어 카드 (창살 무늬)
+    # 헤더 — 게임 타입별 차별화
+    header_html = (
+        f'<div style="background:#1a1f2e;border:1.5px solid {accent};border-radius:10px;'
+        f'padding:8px 12px;margin-bottom:8px;display:flex;align-items:center;gap:10px;'
+        f'box-shadow:0 0 12px {accent}22;">'
+        f'<span style="font-size:20px;">{quote_emoji}</span>'
+        f'<div>'
+        f'<div style="color:{accent};font-size:13px;font-weight:900;letter-spacing:2px;">'
+        f'{title}</div>'
+        f'<div style="color:#88aabb;font-size:9px;">{subtitle}</div>'
+        f'</div>'
+        f'<div style="margin-left:auto;text-align:right;">'
+        f'<div style="color:#7a8fa8;font-size:8px;">남은 단어</div>'
+        f'<div style="color:{accent};font-size:16px;font-weight:700;">{remaining} / {total}</div>'
+        f'</div>'
+        f'</div>'
+    )
+    st.markdown(header_html, unsafe_allow_html=True)
+
+    # 멘트 박스
+    quote_html = (
+        f'<div style="background:#243044;border:1px solid {accent_dark};'
+        f'border-radius:6px;padding:5px 10px;margin-bottom:8px;'
+        f'display:flex;align-items:center;gap:6px;min-height:26px;">'
+        f'<span style="font-size:12px;">{quote_emoji}</span>'
+        f'<div style="color:#ddccaa;font-size:11px;font-style:italic;flex:1;">'
+        f'{quote}</div>'
+        f'</div>'
+    )
+    st.markdown(quote_html, unsafe_allow_html=True)
+
+    # 단어 카드 — 게임 타입별 차별화
+    if bar_pattern == "wanted":
+        # 가로 사슬 패턴
+        bar_style = (
+            "background:repeating-linear-gradient(90deg,transparent 0,transparent 18px,"
+            "rgba(255,68,119,0.2) 18px,rgba(255,68,119,0.2) 20px);"
+        )
+    else:
+        # 세로 왕실 창살
+        bar_style = (
+            "background:repeating-linear-gradient(0deg,transparent 0,transparent 20px,"
+            "rgba(255,204,68,0.15) 20px,rgba(255,204,68,0.15) 22px);"
+        )
+
     word_card_html = (
-        '<div style="background:#243044;border:2px solid #3d5278;border-radius:10px;'
-        'padding:14px 10px;text-align:center;margin-bottom:10px;'
-        'position:relative;overflow:hidden;">'
-        '<div style="position:absolute;top:0;bottom:0;left:0;width:100%;'
-        'background:repeating-linear-gradient(0deg,transparent 0,transparent 20px,'
-        'rgba(120,140,180,0.15) 20px,rgba(120,140,180,0.15) 22px);'
-        'pointer-events:none;"></div>'
-        '<div style="position:relative;display:flex;align-items:center;'
-        'justify-content:center;gap:6px;margin-bottom:4px;">'
-        '<span style="font-size:12px;">⛓️</span>'
-        f'<span style="color:#7a8fa8;font-size:8px;font-weight:700;'
+        f'<div style="background:{word_card_bg};border:2px solid {word_card_border};'
+        f'border-radius:10px;padding:14px 10px;text-align:center;margin-bottom:10px;'
+        f'position:relative;overflow:hidden;'
+        f'box-shadow:0 0 14px {accent}22;">'
+        f'<div style="position:absolute;top:0;bottom:0;left:0;right:0;'
+        f'{bar_style}pointer-events:none;"></div>'
+        f'<div style="position:relative;display:flex;align-items:center;'
+        f'justify-content:center;gap:6px;margin-bottom:4px;">'
+        f'<span style="font-size:12px;">⛓️</span>'
+        f'<span style="color:{accent};font-size:8px;font-weight:700;'
         f'letter-spacing:2px;">단어 #{display_no}</span>'
-        '<span style="font-size:12px;">⛓️</span>'
-        '</div>'
+        f'<span style="font-size:12px;">⛓️</span>'
+        f'</div>'
         f'<div style="position:relative;color:#fff;font-size:26px;'
         f'font-weight:800;letter-spacing:1px;">{word}</div>'
-        '</div>'
+        f'</div>'
     )
     st.markdown(word_card_html, unsafe_allow_html=True)
 
-    # 3초 타이머 (JS, 시간초과 시 자동 timeout 버튼 클릭)
-    timer_html = """
+    # 직전 답변 피드백
+    feedback = st.session_state.pop(EXAM_FEEDBACK_KEY, None)
+    if feedback:
+        if feedback == "correct":
+            msg_color = "#88ffcc"
+            msg_bg = "#0a3322"
+            msg_border = "#22cc88"
+            msg_text = "🔒 체포!"
+        elif feedback == "wrong":
+            msg_color = "#ffaa88"
+            msg_bg = "#3a1010"
+            msg_border = "#ff4422"
+            msg_text = "💨 탈출! 수배행!"
+        else:  # timeout
+            msg_color = "#ffaa88"
+            msg_bg = "#3a2010"
+            msg_border = "#ff8844"
+            msg_text = "⏰ 시간 초과! 수배행!"
+
+        st.markdown(f"""
+        <div style="background:{msg_bg};border:1.5px solid {msg_border};border-radius:8px;
+                    padding:6px 10px;margin-bottom:8px;text-align:center;">
+            <span style="color:{msg_color};font-size:13px;font-weight:800;">{msg_text}</span>
+        </div>
+        """, unsafe_allow_html=True)
+    else:
+        # 타이머 (피드백 없을 때만, 게임 타입별 색)
+        timer_html = """
 <!DOCTYPE html>
 <html><head><meta charset="utf-8">
 <style>
 body { margin: 0; padding: 0; background: transparent; font-family: system-ui; }
-.timer-box {
-    display: flex; align-items: center; gap: 6px; padding: 0;
-}
+.timer-box { display: flex; align-items: center; gap: 6px; padding: 0; }
 .timer-icon { font-size: 11px; color: #88aabb; min-width: 16px; }
 .timer-bar {
     flex: 1; background: #0e1220; border: 1px solid #2a3550;
@@ -590,11 +761,11 @@ body { margin: 0; padding: 0; background: transparent; font-family: system-ui; }
 }
 .timer-fill {
     height: 100%; width: 100%;
-    background: linear-gradient(90deg, #22cc88, #88ffcc);
+    background: linear-gradient(90deg, __TIMER_SAFE__, __TIMER_SAFE_END__);
     transition: width 0.1s linear; border-radius: 20px;
 }
 .timer-text {
-    color: #88ffcc; font-size: 13px; font-weight: 700;
+    color: __TIMER_SAFE__; font-size: 13px; font-weight: 700;
     min-width: 32px; text-align: right;
 }
 @keyframes timerPulse {
@@ -618,7 +789,6 @@ const interval = setInterval(() => {
         clearInterval(interval);
         timeLeft = 0;
         update();
-        // 시간 초과 — 부모의 timeout 버튼을 자동 클릭 시도
         try {
             const buttons = window.parent.document.querySelectorAll('button');
             for (const btn of buttons) {
@@ -627,9 +797,7 @@ const interval = setInterval(() => {
                     return;
                 }
             }
-        } catch(e) {
-            // 부모 접근 불가 - 사용자가 수동으로 답변 필요
-        }
+        } catch(e) {}
         return;
     }
     update();
@@ -643,49 +811,32 @@ function update() {
     const txt = document.getElementById('txt');
     const tb = document.getElementById('tb');
     if (timeLeft <= 1.0) {
-        bar.style.background = '#ff4422';
-        txt.style.color = '#ff8844';
+        bar.style.background = '__TIMER_WARN__';
+        txt.style.color = '__TIMER_WARN__';
         tb.classList.add('timer-warn');
     } else if (timeLeft <= 2.0) {
-        bar.style.background = 'linear-gradient(90deg,#ffaa55,#ff8844)';
-        txt.style.color = '#ffaa55';
+        bar.style.background = 'linear-gradient(90deg,__TIMER_SAFE_END__,__TIMER_WARN__)';
+        txt.style.color = '__TIMER_SAFE_END__';
         tb.classList.remove('timer-warn');
     }
 }
 </script>
 </body></html>
 """
+        # 게임 타입별 타이머 색
+        if game_type == "wanted":
+            timer_safe = "#ff8844"
+            timer_safe_end = "#ffcc88"
+        else:
+            timer_safe = "#ffcc44"
+            timer_safe_end = "#ffe699"
 
-    # 직전 답변 피드백
-    feedback = st.session_state.pop(EXAM_FEEDBACK_KEY, None)
-    if feedback:
-        if feedback == "correct":
-            st.markdown("""
-            <div style="background:#0a3322;border:1.5px solid #22cc88;border-radius:8px;
-                        padding:6px 10px;margin-bottom:8px;text-align:center;">
-                <span style="color:#88ffcc;font-size:13px;font-weight:800;">🔒 체포!</span>
-            </div>
-            """, unsafe_allow_html=True)
-        elif feedback == "wrong":
-            st.markdown("""
-            <div style="background:#3a1010;border:1.5px solid #ff4422;border-radius:8px;
-                        padding:6px 10px;margin-bottom:8px;text-align:center;">
-                <span style="color:#ffaa88;font-size:13px;font-weight:800;">💨 탈출! 수배행!</span>
-            </div>
-            """, unsafe_allow_html=True)
-        elif feedback == "timeout":
-            st.markdown("""
-            <div style="background:#3a2010;border:1.5px solid #ff8844;border-radius:8px;
-                        padding:6px 10px;margin-bottom:8px;text-align:center;">
-                <span style="color:#ffaa88;font-size:13px;font-weight:800;">⏰ 시간 초과! 수배행!</span>
-            </div>
-            """, unsafe_allow_html=True)
-
-    # 타이머 표시 (피드백 없을 때만)
-    if not feedback:
+        timer_html = timer_html.replace("__TIMER_SAFE__", timer_safe)
+        timer_html = timer_html.replace("__TIMER_SAFE_END__", timer_safe_end)
+        timer_html = timer_html.replace("__TIMER_WARN__", timer_color_warn)
         components.html(timer_html, height=24)
 
-    # 4지선다 버튼 (Streamlit 네이티브!)
+    # 4지선다 버튼
     st.markdown('<div class="exam-options">', unsafe_allow_html=True)
     col1, col2 = st.columns(2)
     with col1:
@@ -707,19 +858,17 @@ function update() {
     </div>
     """, unsafe_allow_html=True)
 
-    # 시간 초과 처리용 hidden 버튼 (JS가 자동 클릭)
+    # TIMEOUT_HIDDEN 버튼 (CSS+JS로 숨김)
     if st.button("TIMEOUT_HIDDEN", key=f"timeout_{idx}",
                  help="시간 초과 자동 처리"):
         handle_timeout(current)
 
 
 def handle_answer(picked: int, correct: int, item: Dict):
-    """학생이 4지선다 클릭 시 호출."""
     is_correct = (picked == correct)
     pos = item.get("pos", "noun")
     word = item["word"]
 
-    # word_mastery에 즉시 기록!
     try:
         log_word_attempt(
             nickname=nickname,
@@ -730,19 +879,16 @@ def handle_answer(picked: int, correct: int, item: Dict):
     except Exception:
         pass
 
-    # 결과 누적
     results = st.session_state.get(EXAM_RESULTS_KEY, [])
     results.append({"word": word, "pos": pos, "correct": is_correct})
     st.session_state[EXAM_RESULTS_KEY] = results
 
-    # 피드백 + 다음 단어
     st.session_state[EXAM_FEEDBACK_KEY] = "correct" if is_correct else "wrong"
     st.session_state[EXAM_INDEX_KEY] = st.session_state.get(EXAM_INDEX_KEY, 0) + 1
     st.rerun()
 
 
 def handle_timeout(item: Dict):
-    """시간 초과 시."""
     pos = item.get("pos", "noun")
     word = item["word"]
 
@@ -776,7 +922,6 @@ def finish_exam():
         "wrong": wrong,
     }
 
-    # 정리
     st.session_state.pop(GAME_WORDS_KEY, None)
     st.session_state.pop(GAME_TYPE_KEY, None)
     st.session_state.pop(EXAM_INDEX_KEY, None)
