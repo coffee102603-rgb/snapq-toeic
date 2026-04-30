@@ -1341,8 +1341,8 @@ _GRID_HTML = f"""
 
 /* ── 포로수용소 바 ── */
 .pb{{
-  background:linear-gradient(90deg,#110820,#2a0e55);
-  border:1.5px solid {_pr_border};
+  background:linear-gradient(135deg,#0a0204 0%,#1a0a08 50%,#0a0408 100%);
+  border:2.5px solid #ffcc44;
   border-radius:14px;
   padding:12px 14px;
   display:flex;align-items:center;justify-content:space-between;
@@ -1352,17 +1352,28 @@ _GRID_HTML = f"""
   touch-action:manipulation;
   -webkit-tap-highlight-color:transparent;
   user-select:none;
+  position:relative;
+  overflow:hidden;
+  box-shadow:0 0 20px rgba(255,68,68,0.25),inset 0 0 30px rgba(255,204,68,0.05);
 }}
+.pb::before{{content:'';position:absolute;top:0;left:0;right:0;height:2px;
+background:linear-gradient(90deg,transparent,#ff4466,transparent);z-index:1;}}
+.pb::after{{content:'';position:absolute;bottom:0;left:0;right:0;height:2px;
+background:linear-gradient(90deg,transparent,#ffcc44,transparent);z-index:1;}}
 .pb:active{{opacity:0.8;transform:scale(0.98);}}
 .pb-left{{display:flex;align-items:center;gap:8px;}}
 .pb-icon{{font-size:20px;flex-shrink:0;}}
-.pb-name{{font-size:13px;font-weight:900;color:#e8d0ff;}}
+.pb-name{{font-size:14px;font-weight:900;color:#ffcc44;letter-spacing:1.5px;text-shadow:0 0 8px rgba(255,204,68,0.4);}}
 .pb-sub{{font-size:10px;color:{_pr_color};margin-top:1px;}}
 .pb-btn{{
-  background:{_pr_color};
-  border-radius:8px;padding:6px 12px;
-  font-size:11px;color:#fff;font-weight:700;
+  background:linear-gradient(135deg,#ffcc44 0%,#ff4466 100%);
+  border-radius:8px;padding:7px 14px;
+  font-size:12px;color:#000;font-weight:900;
   white-space:nowrap;flex-shrink:0;
+  letter-spacing:1px;
+  box-shadow:0 0 12px rgba(255,68,68,0.35);
+  position:relative;
+  z-index:2;
 }}
 
 /* ── 전장 그리드 ── */
