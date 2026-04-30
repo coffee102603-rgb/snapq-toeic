@@ -254,11 +254,11 @@ def get_mastery_stats(nickname: str) -> Dict:
         conn = get_conn()
         cur = conn.cursor()
 
-        # 카테고리별 마스터 개수
+        # 카테고리별 외운 단어 개수 (한 번이라도 정답한 단어)
         cur.execute("""
             SELECT pos, COUNT(*) AS cnt
             FROM word_mastery
-            WHERE nickname = ? AND mastered = 1
+            WHERE nickname = ? AND total_correct >= 1
             GROUP BY pos
         """, (nickname,))
 

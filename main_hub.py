@@ -1150,7 +1150,7 @@ _nav = st.query_params.get("nav", "")
 if _nav == "PRISON_GO":
     if "nav" in st.query_params: del st.query_params["nav"]
     st.session_state.sg_phase = "word_prison"
-    st.switch_page("pages/03_POW_HQ.py")
+    st.switch_page("pages/01_Word_Prison.py")
 elif _nav == "P5_GO":
     if "nav" in st.query_params: del st.query_params["nav"]
     st.session_state.phase = "lobby"
@@ -1173,7 +1173,7 @@ elif _nav == "ADMIN_GO":
 _prison_go = st.button("PRISON_GO", key="prison_btn")
 if _prison_go:
     st.session_state.sg_phase = "word_prison"
-    st.switch_page("pages/03_POW_HQ.py")
+    st.switch_page("pages/01_Word_Prison.py")
 
 _p5_go = st.button("P5_GO", key="p5_btn")
 if _p5_go:
