@@ -159,6 +159,57 @@ div.stButton > button {
     visibility: hidden !important;
 }
 
+/* 마스터 감방 입장 — 보라/금색 그라디언트 (왕실 톤) */
+.master-key-wrap div.stButton > button {
+    background: linear-gradient(135deg,#5a3aaa 0%,#cc44ff 50%,#ffcc44 100%) !important;
+    color: #fff !important;
+    border: 2.5px solid #ffcc44 !important;
+    border-top: none !important;
+    border-radius: 0 0 12px 12px !important;
+    margin-top: -8px !important;
+    padding: 12px !important;
+    font-weight: 700 !important;
+    text-shadow: 0 1px 2px rgba(0,0,0,0.5) !important;
+}
+.master-key-wrap div.stButton > button:hover {
+    filter: brightness(1.1) !important;
+    box-shadow: 0 0 14px rgba(255,204,68,0.4) !important;
+}
+
+/* 수배 감방 진압 — 빨강/검정 그라디언트 (지옥 톤) */
+.wanted-key-wrap div.stButton > button {
+    background: linear-gradient(135deg,#000 0%,#5a0a14 50%,#ff2244 100%) !important;
+    color: #fff !important;
+    border: 2.5px solid #ff2244 !important;
+    border-top: none !important;
+    border-radius: 0 0 12px 12px !important;
+    margin-top: -8px !important;
+    padding: 12px !important;
+    font-weight: 700 !important;
+    text-shadow: 0 1px 2px rgba(0,0,0,0.7) !important;
+}
+.wanted-key-wrap div.stButton > button:hover {
+    filter: brightness(1.15) !important;
+    box-shadow: 0 0 14px rgba(255,34,68,0.5) !important;
+}
+
+/* 메인으로 — 차가운 회색 (감방과 완전 분리) */
+.home-key-wrap div.stButton > button {
+    background: #1a2030 !important;
+    color: #88aabb !important;
+    border: 1.5px solid #2a3550 !important;
+    border-radius: 10px !important;
+    font-weight: 600 !important;
+}
+.home-key-wrap div.stButton > button:hover {
+    background: #232a3a !important;
+    border-color: #4a5570 !important;
+}
+
+/* 카드의 둥근 모서리 — 아래 둥근 부분 제거 (버튼과 합치기) */
+.master-cell-wrap > div { border-radius: 12px 12px 0 0 !important; border-bottom: none !important; }
+.wanted-cell-wrap > div { border-radius: 12px 12px 0 0 !important; border-bottom: none !important; }
+
 /* TIMEOUT_HIDDEN 버튼 숨기기 — 텍스트로 매칭 */
 button:has(div p:contains("TIMEOUT_HIDDEN")),
 [data-testid="stButton"] button[aria-label*="TIMEOUT"] {
@@ -254,8 +305,9 @@ def render_main_screen():
     # 🥉 마스터 감방 — 왕실 던전 (보라+금색)
     master_html = (
         '<div style="background:linear-gradient(135deg,#2a1a4a 0%,#1a1228 50%,#3a2055 100%);'
-        'border:2.5px solid #ffcc44;border-radius:12px;padding:16px 16px;'
-        'margin-bottom:8px;position:relative;overflow:hidden;'
+        'border:2.5px solid #ffcc44;border-radius:12px 12px 0 0;border-bottom:none;'
+        'padding:16px 16px 12px;'
+        'margin-bottom:0;position:relative;overflow:hidden;'
         'box-shadow:0 0 18px rgba(204,68,255,0.2);">'
         # 가는 세로 창살 (왕실 느낌)
         '<div style="position:absolute;top:0;bottom:0;left:14%;width:1.5px;'
@@ -295,8 +347,12 @@ def render_main_screen():
     )
     st.markdown(master_html, unsafe_allow_html=True)
 
-    if st.button("👑 마스터 감방 입장", use_container_width=True, type="primary",
-                 key="btn_master"):
+    # 마스터 입장 버튼 (보라/금색 그라디언트 — 카드와 통일)
+    st.markdown('<div class="master-key-wrap">', unsafe_allow_html=True)
+    btn_master_clicked = st.button("👑 마스터 감방 입장 🔑", use_container_width=True,
+                                    key="btn_master")
+    st.markdown('</div>', unsafe_allow_html=True)
+    if btn_master_clicked:
         words = build_master_game_words(nickname)
         if not words:
             st.warning("학습할 단어가 없어요.")
@@ -310,8 +366,9 @@ def render_main_screen():
     if wanted_count > 0:
         wanted_html = (
             '<div style="background:linear-gradient(135deg,#5a0a14 0%,#000 50%,#3a0a08 100%);'
-            'border:2.5px solid #ff2244;border-radius:12px;padding:16px 16px;'
-            'margin:10px 0 8px;position:relative;overflow:hidden;'
+            'border:2.5px solid #ff2244;border-radius:12px 12px 0 0;border-bottom:none;'
+            'padding:16px 16px 12px;'
+            'margin:10px 0 0;position:relative;overflow:hidden;'
             'box-shadow:0 0 18px rgba(255,34,68,0.25);">'
             # 굵은 가로 창살 (지옥 느낌)
             '<div style="position:absolute;top:0;left:0;right:0;height:5px;'
@@ -352,8 +409,12 @@ def render_main_screen():
         )
         st.markdown(wanted_html, unsafe_allow_html=True)
 
-        if st.button("🔥 수배 감방 진압", use_container_width=True,
-                     key="btn_wanted"):
+        # 수배 진압 버튼 (빨강/검정 그라디언트 — 카드와 통일)
+        st.markdown('<div class="wanted-key-wrap">', unsafe_allow_html=True)
+        btn_wanted_clicked = st.button("🔥 수배 감방 진압 🔑", use_container_width=True,
+                                        key="btn_wanted")
+        st.markdown('</div>', unsafe_allow_html=True)
+        if btn_wanted_clicked:
             words = build_wanted_game_words(nickname, wanted)
             if words:
                 st.session_state[GAME_WORDS_KEY] = words
@@ -378,7 +439,12 @@ def render_main_screen():
         </div>
         """, unsafe_allow_html=True)
 
-    if st.button("🏠 메인으로", use_container_width=True, key="btn_back_main"):
+    # 메인으로 (회색 — 감방과 분리)
+    st.markdown('<div class="home-key-wrap">', unsafe_allow_html=True)
+    btn_home_clicked = st.button("🏠 메인으로", use_container_width=True,
+                                  key="btn_back_main")
+    st.markdown('</div>', unsafe_allow_html=True)
+    if btn_home_clicked:
         st.switch_page("main_hub.py")
 
 
