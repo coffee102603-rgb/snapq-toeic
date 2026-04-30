@@ -1132,11 +1132,30 @@ elif st.session_state.p7_phase == "battle":
             except:
                 pass
 
+            # ═══════════════════════════════════════════
+            # 정답·오답 처리 — 상호배타적 분기 (3중 안전망)
+            # BUG FIX 2026-05-01: if/if/else → if/elif/else
+            #   - 기존: not ok에서 rerun 후에도 step>=2 분기 계속 실행
+            #   - 기존: 마지막 st.rerun()으로 중복 rerun 발생
+            #   - 결과: p7_step 폭주 (19/3 같은 비정상 점수)
+            # ═══════════════════════════════════════════
+
+            # 🛡️ 안전망 1: 처리 중복 방지 락 (autorefresh + 다중 클릭 대응)
+            _process_key = f"p7_processed_{st.session_state.p7_session_no}_{step}"
+            if st.session_state.get(_process_key, False):
+                st.stop()  # 이미 처리됨 — 즉시 종료
+            st.session_state[_process_key] = True
+
+            # 🛡️ 안전망 2: if/elif/else — 정확히 하나의 분기만 실행
             if not ok:
+                # 오답 → LOST
                 try: save_research_record(build_research_record("lost"))
                 except: pass
-                st.session_state.p7_phase = "lost"; st.rerun()
-            if step >= 2:
+                st.session_state.p7_phase = "lost"
+                st.rerun()
+
+            elif step >= 2:
+                # 3번째 정답 → VICTORY
                 try: save_research_record(build_research_record("victory"))
                 except: pass
                 # ── cross_logs: P7→P5 크로스스킬 전이 감지 (논문B) ──
@@ -1151,10 +1170,16 @@ elif st.session_state.p7_phase == "battle":
                     st.session_state.p7_session_no = _sno + 1
                     _save_recon_xyz_log(_pid2, _sno + 1)
                 except: pass
-                st.session_state.p7_phase = "victory"; st.rerun()
+                st.session_state.p7_phase = "victory"
+                st.rerun()
+
             else:
+                # 1, 2번째 정답 → 다음 문제로
                 st.session_state.p7_step += 1
-            st.rerun()
+                st.rerun()
+
+            # 🛡️ 안전망 3: 위 분기 중 하나는 반드시 st.rerun() 실행됨
+            #              이 줄 이후 도달 시 코드 흐름 오류 (도달 불가)
             st.markdown('</div>', unsafe_allow_html=True)
 
     # p7choiceColors 제거 — 정규식 오류+iframe 방해. 색상은 #btn-p7a/b/c/d CSS로 처리
