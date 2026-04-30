@@ -623,6 +623,42 @@
     {
       "word": "downturn",
       "meaning": "경기 침체, 하락"
+    },
+    {
+      "word": "malfunction",
+      "meaning": "오작동, 고장"
+    },
+    {
+      "word": "breakdown",
+      "meaning": "고장, 분석"
+    },
+    {
+      "word": "downtime",
+      "meaning": "가동 중단 시간"
+    },
+    {
+      "word": "prototype",
+      "meaning": "시제품, 원형"
+    },
+    {
+      "word": "metric",
+      "meaning": "측정 기준, 지표"
+    },
+    {
+      "word": "bottleneck",
+      "meaning": "병목 현상"
+    },
+    {
+      "word": "defect",
+      "meaning": "결함"
+    },
+    {
+      "word": "logistics",
+      "meaning": "물류, 운영"
+    },
+    {
+      "word": "infrastructure",
+      "meaning": "기반 시설"
     }
   ],
   "verb": [
@@ -1193,6 +1229,54 @@
     {
       "word": "overhaul",
       "meaning": "점검·정비하다"
+    },
+    {
+      "word": "install",
+      "meaning": "설치하다"
+    },
+    {
+      "word": "uninstall",
+      "meaning": "제거하다, 설치를 해제하다"
+    },
+    {
+      "word": "troubleshoot",
+      "meaning": "문제를 해결하다"
+    },
+    {
+      "word": "calibrate",
+      "meaning": "보정하다, 조정하다"
+    },
+    {
+      "word": "automate",
+      "meaning": "자동화하다"
+    },
+    {
+      "word": "inspect",
+      "meaning": "점검하다, 검사하다"
+    },
+    {
+      "word": "manufacture",
+      "meaning": "제조하다"
+    },
+    {
+      "word": "assemble",
+      "meaning": "조립하다, 모으다"
+    },
+    {
+      "word": "dismantle",
+      "meaning": "분해하다"
+    },
+    {
+      "word": "configure",
+      "meaning": "구성하다, 설정하다"
+    },
+    {
+      "word": "restore",
+      "meaning": "복구하다, 회복시키다"
+    },
+    {
+      "word": "duplicate",
+      "meaning": "복제하다"
     }
   ],
   "adjective": [
@@ -2015,6 +2099,46 @@
     {
       "word": "tax-deductible",
       "meaning": "세금 공제가 되는"
+    },
+    {
+      "word": "malfunctioning",
+      "meaning": "오작동하는"
+    },
+    {
+      "word": "defective",
+      "meaning": "결함이 있는"
+    },
+    {
+      "word": "flawless",
+      "meaning": "흠 없는, 완벽한"
+    },
+    {
+      "word": "portable",
+      "meaning": "휴대용의"
+    },
+    {
+      "word": "wireless",
+      "meaning": "무선의"
+    },
+    {
+      "word": "proprietary",
+      "meaning": "독점적인, 사유의"
+    },
+    {
+      "word": "cutting-edge",
+      "meaning": "최첨단의"
+    },
+    {
+      "word": "state-of-the-art",
+      "meaning": "최신식의"
+    },
+    {
+      "word": "obsolescent",
+      "meaning": "노후화된"
+    },
+    {
+      "word": "user-friendly",
+      "meaning": "사용자 친화적인"
     }
   ],
   "adverb": [
@@ -2521,6 +2645,34 @@
     {
       "word": "henceforth",
       "meaning": "이제부터, 향후"
+    },
+    {
+      "word": "remotely",
+      "meaning": "원격으로"
+    },
+    {
+      "word": "digitally",
+      "meaning": "디지털 방식으로"
+    },
+    {
+      "word": "wirelessly",
+      "meaning": "무선으로"
+    },
+    {
+      "word": "manually",
+      "meaning": "수동으로"
+    },
+    {
+      "word": "electronically",
+      "meaning": "전자적으로"
+    },
+    {
+      "word": "physically",
+      "meaning": "물리적으로"
+    },
+    {
+      "word": "virtually",
+      "meaning": "사실상, 가상으로"
     }
   ],
   "_summary": {
