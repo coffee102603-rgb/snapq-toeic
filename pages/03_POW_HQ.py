@@ -396,7 +396,7 @@ def render_main_screen():
     progress_text = f"{total_mastered} / {next_at}" if next_at else f"{total_mastered}"
 
     # ═══════════════════════════════════════════
-    # 진행바 — 목표의식 + 동기부여
+    # 등급 진행 정보 계산 (TOEIC 빈출 510 카드 안에 통합)
     # ═══════════════════════════════════════════
     next_label = stats.get("next_tier_label", "최고 등급!")
     next_remaining = stats.get("next_tier_remaining", 0)
@@ -425,41 +425,6 @@ def render_main_screen():
     elif next_label and "💎" in next_label:
         next_tier_emoji = "💎"
 
-    progress_html = (
-        '<div style="background:linear-gradient(135deg,#1a1228 0%,#0a0414 100%);'
-        'border:2px solid #cc44ff;border-radius:12px;padding:12px 14px;'
-        'margin-bottom:10px;box-shadow:0 0 18px rgba(204,68,255,0.3);">'
-        '<div style="display:flex;align-items:center;justify-content:space-between;'
-        'margin-bottom:6px;">'
-        f'<div style="color:#ddccaa;font-size:11px;font-weight:700;">'
-        f'{tier_emoji} <strong style="color:#ffaaff;">{tier_label}</strong> 도전 중'
-        f'</div>'
-        f'<div style="color:#aabbcc;font-size:10px;">'
-        f'다음: {next_tier_emoji} <strong style="color:#dd99ff;">{next_label}</strong>'
-        f'</div>'
-        '</div>'
-        '<div style="background:#0a0414;border-radius:8px;height:14px;overflow:hidden;'
-        'border:1px solid #44225a;position:relative;">'
-        f'<div style="background:linear-gradient(90deg,#cc44ff,#ff66cc);'
-        f'height:100%;width:{pct:.1f}%;transition:width .5s ease;'
-        f'box-shadow:0 0 10px rgba(255,102,204,0.6);"></div>'
-        '<div style="position:absolute;top:0;left:0;right:0;bottom:0;'
-        'display:flex;align-items:center;justify-content:center;'
-        'color:#fff;font-size:10px;font-weight:900;'
-        'text-shadow:0 0 4px rgba(0,0,0,0.8);">'
-        f'{total_mastered} / {next_at if next_at else "MAX"}'
-        '</div>'
-        '</div>'
-        f'<div style="text-align:center;color:#ffaa66;font-size:11px;'
-        f'margin-top:6px;font-weight:700;letter-spacing:0.5px;">'
-        + (f'🔥 <strong style="color:#ffdd44;">{next_remaining}개</strong> 더 외우면 '
-           f'<strong style="color:#dd99ff;">{next_label}</strong>!'
-           if next_remaining else '🎉 최고 등급 달성!')
-        + '</div>'
-        '</div>'
-    )
-    st.markdown(progress_html, unsafe_allow_html=True)
-
     # 🥉 마스터 감방 — 왕실 던전 (보라+금색)
     master_html = (
         '<div style="background:linear-gradient(135deg,#2a1a4a 0%,#1a1228 50%,#3a2055 100%);'
@@ -484,22 +449,43 @@ def render_main_screen():
         # 콘텐츠
         '<div style="position:relative;text-align:center;">'
         '<div style="display:flex;align-items:center;justify-content:center;'
-        'gap:6px;margin-bottom:2px;">'
+        'gap:6px;margin-bottom:4px;">'
         '<span style="font-size:14px;">🎯</span>'
-        '<span style="color:#ffd966;font-size:14px;font-weight:900;'
+        '<span style="color:#ffd966;font-size:15px;font-weight:900;'
         'letter-spacing:2px;text-shadow:0 0 8px rgba(255,204,68,0.4);">'
         'TOEIC 빈출 510</span>'
         '<span style="font-size:14px;">🎯</span>'
         '</div>'
         '<div style="color:#ffaa66;font-size:10px;font-style:italic;'
-        'margin-bottom:2px;line-height:1.4;">'
+        'margin-bottom:8px;line-height:1.4;">'
         '⚡ 이 510개만 마스터하면 토익 어휘 끝!'
         '</div>'
-        f'<div style="color:#ffd966;font-size:22px;font-weight:900;'
-        f'line-height:1;">{progress_text}</div>'
-        '<div style="color:#ddccaa;font-size:10px;margin-top:2px;">'
-        f'<strong style="color:#ffcc44;">{tier_emoji} {tier_label}</strong> 도전 중'
+        # 골드 진행바 (510 카드 안에 통합)
+        '<div style="background:#0a0408;border-radius:6px;height:16px;overflow:hidden;'
+        'border:1px solid #5a4400;position:relative;margin-bottom:6px;">'
+        f'<div style="background:linear-gradient(90deg,#ffcc44,#ff9944);'
+        f'height:100%;width:{pct:.1f}%;transition:width .5s ease;'
+        f'box-shadow:0 0 10px rgba(255,204,68,0.6);"></div>'
+        '<div style="position:absolute;top:0;left:0;right:0;bottom:0;'
+        'display:flex;align-items:center;justify-content:center;'
+        'color:#fff;font-size:10px;font-weight:900;'
+        'text-shadow:0 0 4px rgba(0,0,0,0.8);">'
+        f'{progress_text}'
         '</div>'
+        '</div>'
+        # 등급 정보 (한 줄)
+        '<div style="display:flex;align-items:center;justify-content:space-between;'
+        'font-size:10px;margin-bottom:4px;">'
+        f'<span style="color:#ddccaa;">{tier_emoji} <strong style="color:#ffcc44;">{tier_label}</strong> 도전 중</span>'
+        f'<span style="color:#aabbcc;">다음: {next_tier_emoji} <strong style="color:#ffcc44;">{next_label}</strong></span>'
+        '</div>'
+        # 동기부여 메시지
+        '<div style="text-align:center;color:#ffaa66;font-size:11px;'
+        'font-weight:700;letter-spacing:0.5px;">'
+        + (f'🔥 <strong style="color:#ffdd44;">{next_remaining}개</strong> 더 외우면 '
+           f'<strong style="color:#ffcc44;">{next_label}</strong>!'
+           if next_remaining else '🎉 최고 등급 달성!')
+        + '</div>'
         '</div>'
         '</div>'
     )
