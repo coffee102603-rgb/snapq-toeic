@@ -210,25 +210,46 @@ div.stButton > button {
 .master-cell-wrap > div { border-radius: 12px 12px 0 0 !important; border-bottom: none !important; }
 .wanted-cell-wrap > div { border-radius: 12px 12px 0 0 !important; border-bottom: none !important; }
 
-/* 좌상단 뒤로가기 버튼 — 작고 미니 */
+/* [← 메인] 뒤로가기 버튼 — 작고 통일 */
 .back-btn-wrap div.stButton > button {
-    background: transparent !important;
+    background: #1a2030 !important;
     color: #88aabb !important;
     border: 1.5px solid #2a3550 !important;
-    border-radius: 8px !important;
-    padding: 4px 10px !important;
-    font-size: 18px !important;
-    min-height: 32px !important;
+    border-radius: 6px !important;
+    padding: 4px 8px !important;
+    font-size: 11px !important;
+    min-height: 28px !important;
     font-weight: 700 !important;
+    letter-spacing: 0.5px !important;
 }
 .back-btn-wrap div.stButton > button:hover {
-    background: #1a2030 !important;
+    background: #232a3a !important;
     border-color: #4a5570 !important;
     color: #ccddee !important;
 }
 
 /* 컴팩트 — 줄간격 줄이기 */
 .block-container { padding-top: 4px !important; }
+
+/* 점(.) 완전 숨김 — 더 강력한 셀렉터 */
+.timeout-hidden-wrap,
+.timeout-hidden-wrap *,
+[data-testid="stMarkdownContainer"]:has(+ .stButton button[aria-label*="timeout"]),
+.element-container:has(.timeout-hidden-wrap) {
+    height: 0 !important;
+    min-height: 0 !important;
+    max-height: 0 !important;
+    padding: 0 !important;
+    margin: 0 !important;
+    border: 0 !important;
+    overflow: hidden !important;
+    opacity: 0 !important;
+    visibility: hidden !important;
+    pointer-events: none !important;
+    position: absolute !important;
+    left: -9999px !important;
+    top: -9999px !important;
+}
 
 /* TIMEOUT_HIDDEN 버튼 숨기기 — 텍스트로 매칭 */
 button:has(div p:contains("TIMEOUT_HIDDEN")),
@@ -280,16 +301,16 @@ observer.observe(document.body, { childList: true, subtree: true });
 # ═══════════════════════════════════════════════════════════════
 
 def render_main_screen():
-    # 헤더 — 좌상단 뒤로가기 + 중앙 타이틀 (한 줄)
-    col_back, col_title, col_spacer = st.columns([1, 4, 1])
+    # 헤더 — [← 메인] + 중앙 타이틀 (통일 패턴)
+    col_back, col_title = st.columns([2, 5])
     with col_back:
         st.markdown('<div class="back-btn-wrap">', unsafe_allow_html=True)
-        if st.button("←", key="btn_back_top", help="메인으로"):
+        if st.button("← 메인", key="btn_back_top", use_container_width=True):
             st.switch_page("main_hub.py")
         st.markdown('</div>', unsafe_allow_html=True)
     with col_title:
         st.markdown("""
-        <div style="text-align:center;padding-top:6px;">
+        <div style="text-align:center;padding-top:4px;">
             <span style="font-size:18px;">💀</span>
             <span style="color:#cc44ff;font-size:15px;font-weight:900;
                          letter-spacing:2px;margin-left:6px;">
@@ -542,20 +563,31 @@ def render_study_screen():
         title_color = "#ffd966"
         bg_pattern = "master"
 
-    st.markdown(f"""
-    <div style="text-align:center;margin-bottom:6px;">
-        <div style="display:flex;align-items:center;justify-content:center;gap:8px;">
-            <span style="font-size:20px;">🃏</span>
-            <span style="color:{title_color};font-size:14px;font-weight:900;letter-spacing:2px;
-                        text-shadow:0 0 6px {accent}55;">
-                {title}
-            </span>
+    # 학습장 헤더 — [← 메인] + 제목
+    col_back, col_title = st.columns([2, 5])
+    with col_back:
+        st.markdown('<div class="back-btn-wrap">', unsafe_allow_html=True)
+        if st.button("← 메인", key="btn_back_study", use_container_width=True):
+            st.session_state.pop(GAME_WORDS_KEY, None)
+            st.session_state.pop(GAME_TYPE_KEY, None)
+            set_mode("main")
+            st.rerun()
+        st.markdown('</div>', unsafe_allow_html=True)
+    with col_title:
+        st.markdown(f"""
+        <div style="text-align:center;padding-top:2px;">
+            <div style="display:flex;align-items:center;justify-content:center;gap:6px;">
+                <span style="font-size:16px;">🃏</span>
+                <span style="color:{title_color};font-size:13px;font-weight:900;
+                            letter-spacing:2px;text-shadow:0 0 6px {accent}55;">
+                    {title}
+                </span>
+            </div>
+            <div style="color:#557788;font-size:9px;margin-top:1px;font-style:italic;">
+                {subtitle}
+            </div>
         </div>
-        <div style="color:#557788;font-size:10px;margin-top:1px;font-style:italic;">
-            {subtitle}
-        </div>
-    </div>
-    """, unsafe_allow_html=True)
+        """, unsafe_allow_html=True)
 
     words_simple = [
         {"word": w["word"], "meaning": w["meaning"], "no": i + 1}
@@ -682,27 +714,20 @@ render();
 
     st.markdown("<div style='margin-top:6px;'></div>", unsafe_allow_html=True)
 
-    col1, col2 = st.columns([2, 1])
-    with col1:
-        exam_label = "🔥 진압 시작!" if game_type == "wanted" else "⚔️ 시험장 입장!"
-        if st.button(exam_label, use_container_width=True, type="primary",
-                     key="btn_to_exam"):
-            exam_words = words.copy()
-            random.shuffle(exam_words)
-            for i, w in enumerate(exam_words, 1):
-                w["display_no"] = i
-            st.session_state[GAME_WORDS_KEY] = exam_words
-            st.session_state[EXAM_INDEX_KEY] = 0
-            st.session_state[EXAM_RESULTS_KEY] = []
-            st.session_state.pop(EXAM_FEEDBACK_KEY, None)
-            set_mode("exam")
-            st.rerun()
-    with col2:
-        if st.button("← 돌아가기", use_container_width=True, key="btn_back_from_study"):
-            st.session_state.pop(GAME_WORDS_KEY, None)
-            st.session_state.pop(GAME_TYPE_KEY, None)
-            set_mode("main")
-            st.rerun()
+    # 시험장 입장 버튼만 (← 메인은 헤더에 있음)
+    exam_label = "🔥 진압 시작!" if game_type == "wanted" else "⚔️ 시험장 입장!"
+    if st.button(exam_label, use_container_width=True, type="primary",
+                 key="btn_to_exam"):
+        exam_words = words.copy()
+        random.shuffle(exam_words)
+        for i, w in enumerate(exam_words, 1):
+            w["display_no"] = i
+        st.session_state[GAME_WORDS_KEY] = exam_words
+        st.session_state[EXAM_INDEX_KEY] = 0
+        st.session_state[EXAM_RESULTS_KEY] = []
+        st.session_state.pop(EXAM_FEEDBACK_KEY, None)
+        set_mode("exam")
+        st.rerun()
 
 
 # ═══════════════════════════════════════════════════════════════
@@ -762,24 +787,38 @@ def render_exam_screen():
     quote = random.choice(quotes)
     quote_emoji = "👑" if game_type == "master" else "💀"
 
-    # 헤더 — 게임 타입별 차별화
-    header_html = (
-        f'<div style="background:#1a1f2e;border:1.5px solid {accent};border-radius:10px;'
-        f'padding:8px 12px;margin-bottom:8px;display:flex;align-items:center;gap:10px;'
-        f'box-shadow:0 0 12px {accent}22;">'
-        f'<span style="font-size:20px;">{quote_emoji}</span>'
-        f'<div>'
-        f'<div style="color:{accent};font-size:13px;font-weight:900;letter-spacing:2px;">'
-        f'{title}</div>'
-        f'<div style="color:#88aabb;font-size:9px;">{subtitle}</div>'
-        f'</div>'
-        f'<div style="margin-left:auto;text-align:right;">'
-        f'<div style="color:#7a8fa8;font-size:8px;">남은 단어</div>'
-        f'<div style="color:{accent};font-size:16px;font-weight:700;">{remaining} / {total}</div>'
-        f'</div>'
-        f'</div>'
-    )
-    st.markdown(header_html, unsafe_allow_html=True)
+    # 시험장 헤더 — [← 메인] + 제목 + 카운터
+    col_back, col_title, col_counter = st.columns([2, 4, 2])
+    with col_back:
+        st.markdown('<div class="back-btn-wrap">', unsafe_allow_html=True)
+        if st.button("← 메인", key=f"btn_back_exam_{idx}", use_container_width=True):
+            st.session_state.pop(GAME_WORDS_KEY, None)
+            st.session_state.pop(GAME_TYPE_KEY, None)
+            st.session_state.pop(EXAM_INDEX_KEY, None)
+            st.session_state.pop(EXAM_RESULTS_KEY, None)
+            st.session_state.pop(EXAM_FEEDBACK_KEY, None)
+            set_mode("main")
+            st.rerun()
+        st.markdown('</div>', unsafe_allow_html=True)
+    with col_title:
+        st.markdown(
+            f'<div style="text-align:center;padding-top:2px;">'
+            f'<div style="display:flex;align-items:center;justify-content:center;gap:6px;">'
+            f'<span style="font-size:16px;">{quote_emoji}</span>'
+            f'<span style="color:{accent};font-size:13px;font-weight:900;letter-spacing:2px;">'
+            f'{title}</span></div>'
+            f'<div style="color:#88aabb;font-size:9px;margin-top:1px;">{subtitle}</div>'
+            f'</div>',
+            unsafe_allow_html=True
+        )
+    with col_counter:
+        st.markdown(
+            f'<div style="text-align:right;padding-top:4px;">'
+            f'<div style="color:#7a8fa8;font-size:8px;">남은 단어</div>'
+            f'<div style="color:{accent};font-size:14px;font-weight:700;">{remaining} / {total}</div>'
+            f'</div>',
+            unsafe_allow_html=True
+        )
 
     # 멘트 박스
     quote_html = (
