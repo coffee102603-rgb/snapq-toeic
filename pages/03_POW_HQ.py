@@ -193,6 +193,20 @@ div.stButton > button {
     box-shadow: 0 0 14px rgba(255,34,68,0.5) !important;
 }
 
+/* 수배 감방 비활성 (0명) — 어두운 회색 톤 */
+.wanted-empty-key-wrap div.stButton > button {
+    background: #2a1a1f !important;
+    color: #6a4a55 !important;
+    border: 2.5px solid #5a2a3a !important;
+    border-top: none !important;
+    border-radius: 0 0 12px 12px !important;
+    margin-top: -8px !important;
+    padding: 12px !important;
+    font-weight: 700 !important;
+    cursor: not-allowed !important;
+    opacity: 0.6 !important;
+}
+
 /* 메인으로 — 차가운 회색 (감방과 완전 분리) */
 .home-key-wrap div.stButton > button {
     background: #1a2030 !important;
@@ -239,11 +253,14 @@ div.stButton > button {
 /* 컴팩트 — 줄간격 줄이기 */
 .block-container { padding-top: 4px !important; }
 
-/* 점(.) 완전 숨김 — 더 강력한 셀렉터 */
+/* 점(.) 진짜 완전 숨김 — 부모 컨테이너부터 모두 */
 .timeout-hidden-wrap,
 .timeout-hidden-wrap *,
-[data-testid="stMarkdownContainer"]:has(+ .stButton button[aria-label*="timeout"]),
-.element-container:has(.timeout-hidden-wrap) {
+.timeout-hidden-wrap > *,
+.timeout-hidden-wrap div,
+.timeout-hidden-wrap button,
+.element-container:has(.timeout-hidden-wrap),
+.element-container:has(.timeout-hidden-wrap) * {
     height: 0 !important;
     min-height: 0 !important;
     max-height: 0 !important;
@@ -255,8 +272,18 @@ div.stButton > button {
     visibility: hidden !important;
     pointer-events: none !important;
     position: absolute !important;
-    left: -9999px !important;
-    top: -9999px !important;
+    left: -99999px !important;
+    top: -99999px !important;
+    width: 0 !important;
+    display: block !important;  /* JS가 클릭하려면 display:block 필요 */
+    clip: rect(0,0,0,0) !important;
+    clip-path: inset(50%) !important;
+}
+
+/* 시험장 페이지에서 stButton의 마지막 자식 (timeout 버튼)도 강력 숨김 */
+.exam-options ~ div [data-testid="stButton"]:last-of-type,
+[data-testid="stVerticalBlock"] > [data-testid="stHorizontalBlock"] ~ [data-testid="stButton"]:last-of-type {
+    /* 추가 안전망 — 마지막 위치 버튼 */
 }
 
 /* TIMEOUT_HIDDEN 버튼 숨기기 — 텍스트로 매칭 */
@@ -477,22 +504,50 @@ def render_main_screen():
                 set_mode("study")
                 st.rerun()
     else:
-        st.markdown("""
-        <div style="background:#14171f;border:1.5px dashed #3a3f4a;border-radius:12px;
-                    padding:12px 16px;margin:10px 0 8px;position:relative;opacity:0.7;">
-            <div style="text-align:center;">
-                <div style="display:flex;align-items:center;justify-content:center;gap:8px;">
-                    <span style="font-size:20px;filter:grayscale(1);">🎯</span>
-                    <span style="color:#666c7a;font-size:14px;font-weight:900;letter-spacing:1px;">
-                        수배 감방
-                    </span>
-                    <span style="color:#22cc88;font-size:13px;font-weight:700;">
-                        🎉 깨끗해!
-                    </span>
-                </div>
-            </div>
-        </div>
-        """, unsafe_allow_html=True)
+        # 수배 0명 — 빨간 카드 그대로 표시 ("0명 수감")
+        wanted_empty_html = (
+            '<div style="background:linear-gradient(135deg,#5a0a14 0%,#000 50%,#3a0a08 100%);'
+            'border:2.5px solid #ff2244;border-radius:12px 12px 0 0;border-bottom:none;'
+            'padding:10px 14px 8px;'
+            'margin:6px 0 0;position:relative;overflow:hidden;'
+            'box-shadow:0 0 18px rgba(255,34,68,0.25);opacity:0.6;">'
+            '<div style="position:absolute;top:0;left:0;right:0;height:5px;'
+            'background:repeating-linear-gradient(90deg,#ff2244 0,#ff2244 6px,'
+            '#000 6px,#000 12px);"></div>'
+            '<div style="position:absolute;bottom:0;left:0;right:0;height:5px;'
+            'background:repeating-linear-gradient(90deg,#ff2244 0,#ff2244 6px,'
+            '#000 6px,#000 12px);"></div>'
+            '<div style="position:absolute;top:0;bottom:0;left:25%;width:2px;'
+            'background:#ff2244;opacity:0.4;"></div>'
+            '<div style="position:absolute;top:0;bottom:0;left:50%;width:2px;'
+            'background:#ff2244;opacity:0.6;"></div>'
+            '<div style="position:absolute;top:0;bottom:0;left:75%;width:2px;'
+            'background:#ff2244;opacity:0.4;"></div>'
+            '<div style="position:relative;text-align:center;">'
+            '<div style="display:flex;align-items:center;justify-content:center;'
+            'gap:6px;margin-bottom:2px;">'
+            '<span style="font-size:12px;">⛓️</span>'
+            '<span style="font-size:18px;">🎯</span>'
+            '<span style="color:#ff6688;font-size:14px;font-weight:900;'
+            'letter-spacing:2px;">🔥 수배 감방</span>'
+            '<span style="font-size:18px;">🎯</span>'
+            '<span style="font-size:12px;">⛓️</span>'
+            '</div>'
+            '<div style="color:#ff4477;font-size:20px;font-weight:900;'
+            'line-height:1;">0명 수감</div>'
+            '<div style="color:#ffaa99;font-size:10px;margin-top:2px;">'
+            '<strong style="color:#22cc88;">🎉 잘하고 있다!</strong> · '
+            '<span style="color:#aa4455;font-style:italic;">⛓️ 깨끗해</span>'
+            '</div>'
+            '</div>'
+            '</div>'
+        )
+        st.markdown(wanted_empty_html, unsafe_allow_html=True)
+        # 비활성 버튼 (회색)
+        st.markdown('<div class="wanted-empty-key-wrap">', unsafe_allow_html=True)
+        st.button("🎯 수배 단어 없음", use_container_width=True,
+                  key="btn_wanted_empty", disabled=True)
+        st.markdown('</div>', unsafe_allow_html=True)
 
     # 메인으로 버튼은 좌상단으로 이동했음 (위 헤더 참조)
 
@@ -795,19 +850,8 @@ def render_exam_screen():
     quote = random.choice(quotes)
     quote_emoji = "👑" if game_type == "master" else "💀"
 
-    # 시험장 헤더 — [×] + 제목 + 카운터 (한 줄)
-    col_x, col_title, col_counter = st.columns([1, 5, 2])
-    with col_x:
-        st.markdown('<div class="x-btn-wrap">', unsafe_allow_html=True)
-        if st.button("×", key=f"btn_back_exam_{idx}", help="메인으로"):
-            st.session_state.pop(GAME_WORDS_KEY, None)
-            st.session_state.pop(GAME_TYPE_KEY, None)
-            st.session_state.pop(EXAM_INDEX_KEY, None)
-            st.session_state.pop(EXAM_RESULTS_KEY, None)
-            st.session_state.pop(EXAM_FEEDBACK_KEY, None)
-            set_mode("main")
-            st.rerun()
-        st.markdown('</div>', unsafe_allow_html=True)
+    # 시험장 헤더 — 제목 + 카운터 (X 버튼 X! 시험은 끝까지)
+    col_title, col_counter = st.columns([6, 2])
     with col_title:
         st.markdown(
             f'<div style="text-align:center;padding-top:2px;">'
