@@ -231,26 +231,26 @@ div.stButton > button {
 .master-cell-wrap > div { border-radius: 12px 12px 0 0 !important; border-bottom: none !important; }
 .wanted-cell-wrap > div { border-radius: 12px 12px 0 0 !important; border-bottom: none !important; }
 
-/* [×] 닫기 버튼 — 헤더 안 작게 */
+/* [🏠 메인] 홈 버튼 — 작고 명확 */
 .x-btn-wrap div.stButton > button {
-    background: rgba(26,32,48,0.6) !important;
+    background: #1a2030 !important;
     color: #88aabb !important;
-    border: 1px solid #2a3550 !important;
-    border-radius: 50% !important;
-    padding: 0 !important;
-    font-size: 16px !important;
+    border: 1.5px solid #2a3550 !important;
+    border-radius: 6px !important;
+    padding: 4px 10px !important;
+    font-size: 11px !important;
     min-height: 28px !important;
-    width: 28px !important;
-    height: 28px !important;
-    line-height: 1 !important;
-    font-weight: 700 !important;
+    line-height: 1.2 !important;
+    font-weight: 600 !important;
+    letter-spacing: 0.5px !important;
+    white-space: nowrap !important;
 }
 .x-btn-wrap div.stButton > button:hover {
-    background: #2a1f3f !important;
-    border-color: #ff4477 !important;
-    color: #ff8899 !important;
+    background: #232a3a !important;
+    border-color: #4a5570 !important;
+    color: #ccddee !important;
 }
-/* X 버튼 wrap의 column 패딩 제거 */
+/* 홈 버튼 wrap 정렬 */
 .x-btn-wrap {
     display: flex;
     align-items: center;
@@ -343,11 +343,11 @@ observer.observe(document.body, { childList: true, subtree: true });
 # ═══════════════════════════════════════════════════════════════
 
 def render_main_screen():
-    # 헤더 — [×] + 중앙 타이틀 (한 줄)
-    col_x, col_title, col_pad = st.columns([1, 6, 1])
+    # 헤더 — [🏠 메인] + 중앙 타이틀 (한 줄)
+    col_x, col_title = st.columns([2, 5])
     with col_x:
         st.markdown('<div class="x-btn-wrap">', unsafe_allow_html=True)
-        if st.button("×", key="btn_back_top", help="메인으로"):
+        if st.button("🏠 메인", key="btn_back_top", use_container_width=False):
             st.switch_page("main_hub.py")
         st.markdown('</div>', unsafe_allow_html=True)
     with col_title:
@@ -633,11 +633,11 @@ def render_study_screen():
         title_color = "#ffd966"
         bg_pattern = "master"
 
-    # 학습장 헤더 — [×] + 제목 (한 줄)
-    col_x, col_title, col_pad = st.columns([1, 6, 1])
+    # 학습장 헤더 — [🏠 메인] + 제목 (한 줄)
+    col_x, col_title = st.columns([2, 5])
     with col_x:
         st.markdown('<div class="x-btn-wrap">', unsafe_allow_html=True)
-        if st.button("×", key="btn_back_study", help="메인으로"):
+        if st.button("🏠 메인", key="btn_back_study", use_container_width=False):
             st.session_state.pop(GAME_WORDS_KEY, None)
             st.session_state.pop(GAME_TYPE_KEY, None)
             set_mode("main")
