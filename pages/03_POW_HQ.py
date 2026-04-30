@@ -1,24 +1,30 @@
 """
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-FILE:     pages/03_POW_HQ.py (v5 — 옵션 D: 한 번 클릭 자동)
+FILE:     pages/03_POW_HQ.py (v6 — Streamlit 네이티브 시험)
 ROLE:     단어 포로수용소
 VERSION:  SnapQ TOEIC V3 — 2026.04.30
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-v5 변경:
-    1. 시험 중 "메인으로 (강제)" 버튼 제거
-    2. 시험 종료 화면 단순화 (결과 표시만 + 큰 버튼)
-    3. JS가 결과를 hidden field에 저장
-    4. 학생이 [💾 결과 저장 + 메인으로] 한 번 클릭 → 자동 처리
+v6 변경 (★ 진짜 작동!):
+    - JS 두더지 게임 폐기 → Streamlit 네이티브 시험
+    - 한 단어씩 표시 → Streamlit 버튼 4개
+    - 클릭 즉시 log_word_attempt() 정확히 호출
+    - 수배 감방 진짜 작동!
 
-옵션 D 흐름:
-    시험 끝 → "🎉 시험 종료! ✅2명 🎯8명 수배행"
-    → 큰 [💾 결과 저장 + 메인으로] 버튼
-    → 한 번 클릭 → 자동 처리 → 메인 (수배 8명 수감)
+게임 흐름:
+    main → study(JS 카드) → exam(Streamlit 단어별) → result → main
+
+시험장 (한 단어씩):
+    - 단어 #N 표시
+    - 4지선다 (Streamlit 버튼)
+    - 3초 타이머 (JS, 시간초과 시 자동 다음)
+    - 클릭 → 즉시 기록 → 다음 단어 (자동 rerun)
+    - 10단어 끝 → 결과 화면 → 메인
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 """
 
 import json
 import random
+import time
 from datetime import date
 from pathlib import Path
 from typing import Dict, List
@@ -59,7 +65,6 @@ BASE = Path(__file__).parent.parent
 WORD_POOL_PATH = BASE / "data" / "word_pool_categorized.json"
 
 GAME_WORD_COUNT = 10
-TIMER_SECONDS = 3.0
 
 
 @st.cache_data
@@ -72,10 +77,13 @@ def load_word_pool() -> dict:
     return {}
 
 
-PAGE_MODE_KEY = "_pow_mode"
-GAME_WORDS_KEY = "_pow_words"
-GAME_TYPE_KEY = "_pow_type"
-EXAM_RESULTS_KEY = "_pow_exam_results"  # 시험 결과 임시 저장
+# 세션 키
+PAGE_MODE_KEY = "_pow_mode"        # main / study / exam / result
+GAME_WORDS_KEY = "_pow_words"      # 시험 대상 단어 리스트
+GAME_TYPE_KEY = "_pow_type"        # master / wanted
+EXAM_INDEX_KEY = "_pow_exam_idx"   # 현재 시험 단어 인덱스 (0~9)
+EXAM_RESULTS_KEY = "_pow_results"  # 정답/오답 추적 [{word, pos, correct}, ...]
+EXAM_FEEDBACK_KEY = "_pow_feedback"  # 직전 답변 피드백 (correct/wrong/timeout)
 
 
 def get_mode() -> str:
@@ -84,81 +92,6 @@ def get_mode() -> str:
 
 def set_mode(m: str):
     st.session_state[PAGE_MODE_KEY] = m
-
-
-# ═══════════════════════════════════════════════════════════════
-# URL params에서 시험 결과 받기 (JS가 보낸 결과)
-# ═══════════════════════════════════════════════════════════════
-
-def process_exam_results_from_url():
-    """URL params에서 시험 결과 읽어서 word_mastery 자동 업데이트."""
-    qp = st.query_params
-    wrong_str = qp.get("wrong", "")
-    correct_str = qp.get("correct", "")
-    posmap_str = qp.get("posmap", "")
-
-    if not wrong_str and not correct_str:
-        return None
-
-    pos_map = {}
-    if posmap_str:
-        for pair in posmap_str.split(","):
-            if ":" in pair:
-                w, p = pair.split(":", 1)
-                pos_full = {"n": "noun", "v": "verb", "a": "adjective", "r": "adverb"}.get(p, "noun")
-                pos_map[w.strip()] = pos_full
-
-    wrong_count = 0
-    correct_count = 0
-
-    if correct_str:
-        for w in correct_str.split(","):
-            w = w.strip()
-            if not w:
-                continue
-            try:
-                log_word_attempt(
-                    nickname=nickname,
-                    word=w,
-                    pos=pos_map.get(w, "noun"),
-                    is_correct=True,
-                )
-                correct_count += 1
-            except Exception:
-                pass
-
-    if wrong_str:
-        for w in wrong_str.split(","):
-            w = w.strip()
-            if not w:
-                continue
-            try:
-                log_word_attempt(
-                    nickname=nickname,
-                    word=w,
-                    pos=pos_map.get(w, "noun"),
-                    is_correct=False,
-                )
-                wrong_count += 1
-            except Exception:
-                pass
-
-    new_params = {}
-    if _qs_nick:
-        new_params["nick"] = _qs_nick
-    if _qs_ag:
-        new_params["ag"] = _qs_ag
-    st.query_params.clear()
-    for k, v in new_params.items():
-        st.query_params[k] = v
-
-    return {"wrong": wrong_count, "correct": correct_count}
-
-
-_exam_result = process_exam_results_from_url()
-if _exam_result:
-    set_mode("main")
-    st.session_state["_pow_last_result"] = _exam_result
 
 
 # ═══════════════════════════════════════════════════════════════
@@ -183,6 +116,17 @@ div.stButton > button {
     padding: 10px !important;
     font-size: 14px !important;
 }
+
+/* 시험장 4지선다 버튼 (큼직하게) */
+.exam-options div.stButton > button {
+    padding: 16px 8px !important;
+    font-size: 14px !important;
+    border: 1.5px solid #3d5278 !important;
+    background: #243044 !important;
+    color: #ccddee !important;
+    min-height: 60px !important;
+    word-break: keep-all !important;
+}
 </style>
 """, unsafe_allow_html=True)
 
@@ -202,6 +146,7 @@ def render_main_screen():
     </div>
     """, unsafe_allow_html=True)
 
+    # 직전 시험 결과 표시
     last_result = st.session_state.pop("_pow_last_result", None)
     if last_result:
         wrong_n = last_result["wrong"]
@@ -233,7 +178,7 @@ def render_main_screen():
     wanted_count = len(wanted)
     progress_text = f"{total_mastered} / {next_at}" if next_at else f"{total_mastered}"
 
-    # 🥉 마스터 감방 (단순화된 HTML)
+    # 🥉 마스터 감방
     master_html = (
         '<div style="background:linear-gradient(135deg,#2a1a4a 0%,#1a1228 100%);'
         'border:2.5px solid #cc44ff;border-radius:12px;padding:14px 16px;'
@@ -389,7 +334,7 @@ def build_wanted_game_words(nick: str, wanted: List[Dict]) -> List[Dict]:
 
 
 # ═══════════════════════════════════════════════════════════════
-# 학습장
+# 학습장 (그대로 유지)
 # ═══════════════════════════════════════════════════════════════
 
 def render_study_screen():
@@ -468,17 +413,9 @@ body {
     font-size: 9px;
     font-weight: 700;
 }
-.card-no {
-    color: #5a6878; font-size: 8px; font-weight: 700; margin-bottom: 2px;
-}
-.card-en {
-    color: #fff; font-size: 13px; font-weight: 800;
-    word-break: break-word; line-height: 1.1;
-}
-.card-kr {
-    color: __ACCENT_LIGHT__; font-size: 11px; font-weight: 700;
-    line-height: 1.2; word-break: keep-all;
-}
+.card-no { color: #5a6878; font-size: 8px; font-weight: 700; margin-bottom: 2px; }
+.card-en { color: #fff; font-size: 13px; font-weight: 800; word-break: break-word; line-height: 1.1; }
+.card-kr { color: __ACCENT_LIGHT__; font-size: 11px; font-weight: 700; line-height: 1.2; word-break: keep-all; }
 </style>
 </head>
 <body>
@@ -534,6 +471,15 @@ render();
     with col1:
         if st.button("⚔️ 시험장 입장!", use_container_width=True, type="primary",
                      key="btn_to_exam"):
+            # 시험장 진입 시 — 단어 셔플 + 인덱스 초기화
+            exam_words = words.copy()
+            random.shuffle(exam_words)
+            for i, w in enumerate(exam_words, 1):
+                w["display_no"] = i
+            st.session_state[GAME_WORDS_KEY] = exam_words
+            st.session_state[EXAM_INDEX_KEY] = 0
+            st.session_state[EXAM_RESULTS_KEY] = []
+            st.session_state.pop(EXAM_FEEDBACK_KEY, None)
             set_mode("exam")
             st.rerun()
     with col2:
@@ -545,70 +491,99 @@ render();
 
 
 # ═══════════════════════════════════════════════════════════════
-# 시험장 — 강제 버튼 X, 시험 끝 후 큰 "결과 저장" 버튼만
+# ⚔️ 시험장 — Streamlit 네이티브 (한 단어씩, 진짜 작동!)
 # ═══════════════════════════════════════════════════════════════
 
 def render_exam_screen():
+    """
+    시험장 — Streamlit 네이티브 한 단어씩.
+    
+    Flow:
+        EXAM_INDEX_KEY = 현재 단어 (0~9)
+        EXAM_RESULTS_KEY = [{word, pos, correct}, ...] 누적
+        
+        한 단어 표시 → 4지선다 버튼 → 클릭 즉시 기록 → 다음 단어
+        시간 초과: JS가 자동으로 timeout 버튼 클릭
+    """
     words = st.session_state.get(GAME_WORDS_KEY, [])
     game_type = st.session_state.get(GAME_TYPE_KEY, "master")
+    idx = st.session_state.get(EXAM_INDEX_KEY, 0)
+    results = st.session_state.get(EXAM_RESULTS_KEY, [])
 
     if not words:
         set_mode("main")
         st.rerun()
         return
 
+    # 시험 끝!
+    if idx >= len(words):
+        finish_exam()
+        return
+
     accent = "#ff4477" if game_type == "wanted" else "#cc44ff"
+    current = words[idx]
+    word = current["word"]
+    options = current["options"]
+    correct_idx = current["correct_index"]
+    display_no = current["display_no"]
+    pos = current.get("pos", "noun")
 
-    # 시험 진행 중에 결과 저장 모드인지 확인
-    exam_done_state = st.session_state.get("_pow_exam_done", False)
+    total = len(words)
+    remaining = total - idx
 
-    if not exam_done_state:
-        # 시험 진행 중 — JS 게임 표시
-        exam_words = words.copy()
-        random.shuffle(exam_words)
-        for i, w in enumerate(exam_words, 1):
-            w["display_no"] = i
+    # 헤더
+    st.markdown(f"""
+    <div style="background:#1a1f2e;border:1.5px solid {accent};border-radius:10px;
+                padding:8px 12px;margin-bottom:8px;
+                display:flex;align-items:center;gap:10px;">
+        <span style="font-size:20px;">💀</span>
+        <div>
+            <div style="color:{accent};font-size:13px;font-weight:900;letter-spacing:2px;">
+                시험장
+            </div>
+            <div style="color:#88aabb;font-size:9px;">⛓️ 3초 안에 답!</div>
+        </div>
+        <div style="margin-left:auto;text-align:right;">
+            <div style="color:#7a8fa8;font-size:8px;">남은 단어</div>
+            <div style="color:{accent};font-size:16px;font-weight:700;">
+                {remaining} / {total}
+            </div>
+        </div>
+    </div>
+    """, unsafe_allow_html=True)
 
-        # 단어 순서를 세션에 저장 (결과 저장 시 사용)
-        st.session_state["_pow_exam_words_shuffled"] = exam_words
+    # 단어 카드 (창살 무늬)
+    word_card_html = (
+        '<div style="background:#243044;border:2px solid #3d5278;border-radius:10px;'
+        'padding:14px 10px;text-align:center;margin-bottom:10px;'
+        'position:relative;overflow:hidden;">'
+        '<div style="position:absolute;top:0;bottom:0;left:0;width:100%;'
+        'background:repeating-linear-gradient(0deg,transparent 0,transparent 20px,'
+        'rgba(120,140,180,0.15) 20px,rgba(120,140,180,0.15) 22px);'
+        'pointer-events:none;"></div>'
+        '<div style="position:relative;display:flex;align-items:center;'
+        'justify-content:center;gap:6px;margin-bottom:4px;">'
+        '<span style="font-size:12px;">⛓️</span>'
+        f'<span style="color:#7a8fa8;font-size:8px;font-weight:700;'
+        f'letter-spacing:2px;">단어 #{display_no}</span>'
+        '<span style="font-size:12px;">⛓️</span>'
+        '</div>'
+        f'<div style="position:relative;color:#fff;font-size:26px;'
+        f'font-weight:800;letter-spacing:1px;">{word}</div>'
+        '</div>'
+    )
+    st.markdown(word_card_html, unsafe_allow_html=True)
 
-        words_json = json.dumps(exam_words, ensure_ascii=False)
-
-        game_html = """
+    # 3초 타이머 (JS, 시간초과 시 자동 timeout 버튼 클릭)
+    timer_html = """
 <!DOCTYPE html>
 <html><head><meta charset="utf-8">
 <style>
-* { box-sizing: border-box; margin: 0; padding: 0; }
-body {
-    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
-    background: #1a1f2e; color: #fff;
-    padding: 12px 12px; min-height: 480px;
-    position: relative; overflow: hidden;
+body { margin: 0; padding: 0; background: transparent; font-family: system-ui; }
+.timer-box {
+    display: flex; align-items: center; gap: 6px; padding: 0;
 }
-.top-bar {
-    position: absolute; top: 0; left: 0; right: 0; height: 4px;
-    background: repeating-linear-gradient(90deg,
-        __ACCENT__ 0, __ACCENT__ 10px, #555 10px, #555 20px);
-}
-.header { display: flex; align-items: center; gap: 8px; margin: 6px 0 8px; }
-.header-emoji { font-size: 22px; }
-.header-title { color: __ACCENT__; font-size: 14px; font-weight: 800; letter-spacing: 2px; }
-.header-sub { color: #88aabb; font-size: 9px; margin-top: 1px; letter-spacing: 1px; }
-.header-counter { margin-left: auto; text-align: right; }
-.counter-label { color: #7a8fa8; font-size: 8px; letter-spacing: 1px; }
-.counter-value { color: __ACCENT__; font-size: 16px; font-weight: 700; }
-.skull-quote {
-    background: #243044; border: 1px solid #3d5278;
-    border-radius: 6px; padding: 5px 8px; margin-bottom: 8px;
-    display: flex; align-items: center; gap: 6px;
-    min-height: 26px;
-}
-.skull-quote-text {
-    color: #ddccaa; font-size: 10px; font-style: italic;
-    line-height: 1.3; flex: 1;
-}
-.timer-box { margin-bottom: 10px; display: flex; align-items: center; gap: 6px; }
-.timer-icon { font-size: 11px; color: #88aabb; font-weight: 700; min-width: 16px; }
+.timer-icon { font-size: 11px; color: #88aabb; min-width: 16px; }
 .timer-bar {
     flex: 1; background: #0e1220; border: 1px solid #2a3550;
     border-radius: 20px; height: 8px; overflow: hidden;
@@ -618,84 +593,9 @@ body {
     background: linear-gradient(90deg, #22cc88, #88ffcc);
     transition: width 0.1s linear; border-radius: 20px;
 }
-.timer-text { color: #88ffcc; font-size: 13px; font-weight: 700; min-width: 32px; text-align: right; }
-.word-card {
-    background: #243044; border: 2px solid #3d5278;
-    border-radius: 10px; padding: 14px 10px;
-    text-align: center; margin-bottom: 10px;
-    position: relative; overflow: hidden;
-}
-.word-card-bars {
-    position: absolute; top: 0; bottom: 0; left: 0; width: 100%;
-    background: repeating-linear-gradient(0deg,
-        transparent 0, transparent 20px,
-        rgba(120,140,180,0.15) 20px,
-        rgba(120,140,180,0.15) 22px);
-    pointer-events: none;
-}
-.word-card-label {
-    position: relative; display: flex;
-    align-items: center; justify-content: center; gap: 6px;
-    margin-bottom: 4px;
-}
-.word-card-label-text {
-    color: #7a8fa8; font-size: 8px; font-weight: 700; letter-spacing: 2px;
-}
-.word-display {
-    position: relative; color: #fff; font-size: 26px; font-weight: 800; letter-spacing: 1px;
-}
-.options { display: grid; grid-template-columns: 1fr 1fr; gap: 6px; }
-.option-btn {
-    background: #243044; border: 1px solid #3d5278;
-    border-radius: 8px; padding: 11px 4px;
-    color: #ccddee; font-size: 12px; font-weight: 700;
-    cursor: pointer; font-family: inherit;
-    transition: all 0.2s; width: 100%; word-break: keep-all;
-}
-.option-btn:hover:not(:disabled) {
-    background: #1e2940; border-color: #5d72a8;
-}
-.option-btn.correct {
-    background: #00553a !important; border-color: #22cc88 !important;
-    color: #88ffcc !important;
-}
-.option-btn.wrong {
-    background: #5a1a14 !important; border-color: #ff6644 !important;
-    color: #ffaa88 !important; animation: shake 0.4s ease;
-}
-.option-btn:disabled { opacity: 0.6; cursor: not-allowed; }
-.feedback {
-    text-align: center; margin-top: 8px; height: 20px;
-    font-size: 12px; font-weight: 800; letter-spacing: 1px;
-}
-.done-overlay {
-    position: fixed; top: 0; left: 0; right: 0; bottom: 0;
-    background: rgba(10,13,24,0.95); display: none;
-    align-items: center; justify-content: center;
-    z-index: 9999;
-}
-.done-card {
-    background: #1a1f2e; border: 2.5px solid __ACCENT__;
-    border-radius: 14px; padding: 24px; text-align: center;
-    max-width: 90%;
-}
-.done-emoji { font-size: 56px; }
-.done-text { color: __ACCENT__; font-size: 22px; font-weight: 900; margin-top: 10px; letter-spacing: 2px; }
-.done-stats {
-    margin-top: 16px; background: #243044; border: 1px solid #3d5278;
-    border-radius: 8px; padding: 14px; min-width: 240px;
-}
-.stat-row { display: flex; justify-content: space-between; padding: 5px 0; font-size: 13px; }
-.stat-row + .stat-row { border-top: 1px dashed #3d5278; }
-.done-instr {
-    color: #ffaa55; font-size: 12px; font-weight: 700; margin-top: 16px;
-    background: #2a1a14; border: 1.5px solid #ff8844;
-    border-radius: 8px; padding: 8px 12px;
-}
-@keyframes shake {
-    0%, 100% { transform: translateX(0); }
-    25% { transform: translateX(-6px); }
-    75% { transform: translateX(6px); }
+.timer-text {
+    color: #88ffcc; font-size: 13px; font-weight: 700;
+    min-width: 32px; text-align: right;
 }
 @keyframes timerPulse {
     0%, 100% { transform: scale(1); }
@@ -705,253 +605,183 @@ body {
 </style>
 </head>
 <body>
-<div class="top-bar"></div>
-<div id="game-area">
-  <div class="header">
-    <span class="header-emoji">💀</span>
-    <div>
-      <div class="header-title">시험장</div>
-      <div class="header-sub">⛓️ 3초 안에 답!</div>
-    </div>
-    <div class="header-counter">
-      <div class="counter-label">남은 단어</div>
-      <div class="counter-value" id="counter">0 / 0</div>
-    </div>
-  </div>
-  <div class="skull-quote">
-    <span style="font-size:12px;">💀</span>
-    <div class="skull-quote-text" id="skull-quote">10명을 심문할 시간이다</div>
-  </div>
-  <div class="timer-box" id="timer-box">
+<div class="timer-box" id="tb">
     <span class="timer-icon">⏱</span>
-    <div class="timer-bar">
-      <div class="timer-fill" id="timer-bar"></div>
-    </div>
-    <span class="timer-text" id="timer-text">3.0s</span>
-  </div>
-  <div class="word-card">
-    <div class="word-card-bars"></div>
-    <div class="word-card-label">
-      <span style="font-size:12px;">⛓️</span>
-      <span class="word-card-label-text" id="word-label">단어 #1</span>
-      <span style="font-size:12px;">⛓️</span>
-    </div>
-    <div class="word-display" id="word-display">...</div>
-  </div>
-  <div class="options" id="options"></div>
-  <div class="feedback" id="feedback"></div>
+    <div class="timer-bar"><div class="timer-fill" id="bar"></div></div>
+    <span class="timer-text" id="txt">3.0s</span>
 </div>
-
-<div class="done-overlay" id="done-overlay">
-  <div class="done-card">
-    <div class="done-emoji">🎉</div>
-    <div class="done-text">시험 종료!</div>
-    <div class="done-stats" id="done-stats"></div>
-    <div class="done-instr">
-      ↓ 아래 [💾 결과 저장] 버튼을 눌러줘
-    </div>
-  </div>
-</div>
-
 <script>
-const ALL_WORDS = __WORDS_JSON__;
-const TIMER_SEC = __TIMER__;
-
-let queue = [...ALL_WORDS];
-let currentItem = null;
-let timerInterval = null;
-let timeLeft = TIMER_SEC;
-let totalProgress = 0;
-const totalWords = ALL_WORDS.length;
-const correctList = [];
-const wrongList = [];
-
-const SKULL_QUOTES = [
-    "이놈, 도망 못 가게 해라.",
-    "빠르게! 시간 끌면 탈출이다.",
-    "잡아내라!",
-    "이번엔 놓치지 마라.",
-    "정답을 골라!",
-];
-
-function startTimer() {
-    if (timerInterval) clearInterval(timerInterval);
-    timeLeft = TIMER_SEC;
-    updateTimerUI();
-    document.getElementById('timer-box').classList.remove('timer-warn');
-    timerInterval = setInterval(() => {
-        timeLeft -= 0.1;
-        if (timeLeft <= 0) {
-            clearInterval(timerInterval);
-            timeLeft = 0;
-            updateTimerUI();
-            onTimeout();
-            return;
+let timeLeft = 3.0;
+const interval = setInterval(() => {
+    timeLeft -= 0.1;
+    if (timeLeft <= 0) {
+        clearInterval(interval);
+        timeLeft = 0;
+        update();
+        // 시간 초과 — 부모의 timeout 버튼을 자동 클릭 시도
+        try {
+            const buttons = window.parent.document.querySelectorAll('button');
+            for (const btn of buttons) {
+                if (btn.textContent && btn.textContent.includes('TIMEOUT_HIDDEN')) {
+                    btn.click();
+                    return;
+                }
+            }
+        } catch(e) {
+            // 부모 접근 불가 - 사용자가 수동으로 답변 필요
         }
-        updateTimerUI();
-    }, 100);
-}
-
-function updateTimerUI() {
-    const pct = Math.max(0, (timeLeft / TIMER_SEC) * 100);
-    document.getElementById('timer-bar').style.width = pct + '%';
-    document.getElementById('timer-text').textContent = timeLeft.toFixed(1) + 's';
-    const bar = document.getElementById('timer-bar');
-    const text = document.getElementById('timer-text');
-    const box = document.getElementById('timer-box');
-    if (timeLeft <= 1.0) {
-        bar.style.background = '#ff4422';
-        text.style.color = '#ff8844';
-        box.classList.add('timer-warn');
-    } else if (timeLeft <= 2.0) {
-        bar.style.background = 'linear-gradient(90deg,#ffaa55,#ff8844)';
-        text.style.color = '#ffaa55';
-        box.classList.remove('timer-warn');
-    } else {
-        bar.style.background = 'linear-gradient(90deg,#22cc88,#88ffcc)';
-        text.style.color = '#88ffcc';
-        box.classList.remove('timer-warn');
-    }
-}
-
-function onTimeout() {
-    document.querySelectorAll('.option-btn').forEach(b => b.disabled = true);
-    document.getElementById('feedback').style.color = '#ff8844';
-    document.getElementById('feedback').textContent = '⏰ 시간 초과! 수배행!';
-    wrongList.push(currentItem);
-    setTimeout(nextWord, 700);
-}
-
-function pickOpt(btn, idx) {
-    if (timerInterval) clearInterval(timerInterval);
-    document.querySelectorAll('.option-btn').forEach(b => b.disabled = true);
-    const fb = document.getElementById('feedback');
-    if (idx === currentItem.correct_index) {
-        btn.classList.add('correct');
-        fb.style.color = '#88ffcc';
-        fb.textContent = '🔒 체포!';
-        correctList.push(currentItem);
-    } else {
-        btn.classList.add('wrong');
-        fb.style.color = '#ff8844';
-        fb.textContent = '💨 탈출! 수배행!';
-        wrongList.push(currentItem);
-    }
-    setTimeout(nextWord, 700);
-}
-
-function nextWord() {
-    if (queue.length === 0) {
-        showDone();
         return;
     }
-    currentItem = queue.shift();
-    totalProgress++;
-    renderWord();
-    startTimer();
-}
+    update();
+}, 100);
 
-function renderWord() {
-    document.getElementById('word-display').textContent = currentItem.word;
-    document.getElementById('feedback').textContent = '';
-    const remaining = queue.length + 1;
-    document.getElementById('counter').textContent = remaining + ' / ' + totalWords;
-    document.getElementById('word-label').textContent = '단어 #' + currentItem.display_no;
-    document.getElementById('skull-quote').textContent =
-        SKULL_QUOTES[Math.floor(Math.random() * SKULL_QUOTES.length)];
-    const optsDiv = document.getElementById('options');
-    optsDiv.innerHTML = '';
-    currentItem.options.forEach((opt, idx) => {
-        const btn = document.createElement('button');
-        btn.className = 'option-btn';
-        btn.textContent = opt;
-        btn.onclick = () => pickOpt(btn, idx);
-        optsDiv.appendChild(btn);
-    });
+function update() {
+    const pct = Math.max(0, (timeLeft / 3.0) * 100);
+    document.getElementById('bar').style.width = pct + '%';
+    document.getElementById('txt').textContent = timeLeft.toFixed(1) + 's';
+    const bar = document.getElementById('bar');
+    const txt = document.getElementById('txt');
+    const tb = document.getElementById('tb');
+    if (timeLeft <= 1.0) {
+        bar.style.background = '#ff4422';
+        txt.style.color = '#ff8844';
+        tb.classList.add('timer-warn');
+    } else if (timeLeft <= 2.0) {
+        bar.style.background = 'linear-gradient(90deg,#ffaa55,#ff8844)';
+        txt.style.color = '#ffaa55';
+        tb.classList.remove('timer-warn');
+    }
 }
-
-function posCode(p) {
-    const map = {noun:'n', verb:'v', adjective:'a', adverb:'r'};
-    return map[p] || 'n';
-}
-
-function showDone() {
-    if (timerInterval) clearInterval(timerInterval);
-    
-    // 결과 표시
-    const stats = document.getElementById('done-stats');
-    stats.innerHTML =
-        '<div class="stat-row"><span style="color:#88ffcc;">✅ 체포</span>' +
-        '<span style="color:#fff;font-weight:900;">' + correctList.length + '명</span></div>' +
-        '<div class="stat-row"><span style="color:#ff8844;">🎯 수배행</span>' +
-        '<span style="color:#fff;font-weight:900;">' + wrongList.length + '명</span></div>';
-    
-    // 결과 저장 (sessionStorage + localStorage 둘 다 백업)
-    try {
-        const result = {
-            correct: correctList.map(w => ({word: w.word, pos: w.pos || 'noun'})),
-            wrong: wrongList.map(w => ({word: w.word, pos: w.pos || 'noun'})),
-        };
-        sessionStorage.setItem('pow_exam_result', JSON.stringify(result));
-        localStorage.setItem('pow_exam_result', JSON.stringify(result));
-    } catch(e) {}
-    
-    // 오버레이 표시
-    document.getElementById('done-overlay').style.display = 'flex';
-}
-
-setTimeout(nextWord, 200);
 </script>
 </body></html>
 """
 
-        game_html = game_html.replace("__WORDS_JSON__", words_json)
-        game_html = game_html.replace("__TIMER__", str(TIMER_SECONDS))
-        game_html = game_html.replace("__ACCENT__", accent)
+    # 직전 답변 피드백
+    feedback = st.session_state.pop(EXAM_FEEDBACK_KEY, None)
+    if feedback:
+        if feedback == "correct":
+            st.markdown("""
+            <div style="background:#0a3322;border:1.5px solid #22cc88;border-radius:8px;
+                        padding:6px 10px;margin-bottom:8px;text-align:center;">
+                <span style="color:#88ffcc;font-size:13px;font-weight:800;">🔒 체포!</span>
+            </div>
+            """, unsafe_allow_html=True)
+        elif feedback == "wrong":
+            st.markdown("""
+            <div style="background:#3a1010;border:1.5px solid #ff4422;border-radius:8px;
+                        padding:6px 10px;margin-bottom:8px;text-align:center;">
+                <span style="color:#ffaa88;font-size:13px;font-weight:800;">💨 탈출! 수배행!</span>
+            </div>
+            """, unsafe_allow_html=True)
+        elif feedback == "timeout":
+            st.markdown("""
+            <div style="background:#3a2010;border:1.5px solid #ff8844;border-radius:8px;
+                        padding:6px 10px;margin-bottom:8px;text-align:center;">
+                <span style="color:#ffaa88;font-size:13px;font-weight:800;">⏰ 시간 초과! 수배행!</span>
+            </div>
+            """, unsafe_allow_html=True)
 
-        components.html(game_html, height=540, scrolling=False)
+    # 타이머 표시 (피드백 없을 때만)
+    if not feedback:
+        components.html(timer_html, height=24)
 
-        # 큰 결과 저장 버튼 (학생이 시험 끝나고 누름)
-        st.markdown("<div style='margin-top:10px;'></div>", unsafe_allow_html=True)
-        if st.button("💾 결과 저장 + 메인으로", use_container_width=True, type="primary",
-                     key="btn_save_exam"):
-            # 시험 끝났음 마크 + 결과 처리 로직 호출
-            on_exam_done_save()
+    # 4지선다 버튼 (Streamlit 네이티브!)
+    st.markdown('<div class="exam-options">', unsafe_allow_html=True)
+    col1, col2 = st.columns(2)
+    with col1:
+        if st.button(options[0], use_container_width=True, key=f"opt_0_{idx}"):
+            handle_answer(0, correct_idx, current)
+        if st.button(options[2], use_container_width=True, key=f"opt_2_{idx}"):
+            handle_answer(2, correct_idx, current)
+    with col2:
+        if st.button(options[1], use_container_width=True, key=f"opt_1_{idx}"):
+            handle_answer(1, correct_idx, current)
+        if st.button(options[3], use_container_width=True, key=f"opt_3_{idx}"):
+            handle_answer(3, correct_idx, current)
+    st.markdown('</div>', unsafe_allow_html=True)
+
+    # 진행 표시
+    st.markdown(f"""
+    <div style="text-align:center;margin-top:8px;color:#557788;font-size:11px;">
+        진행: {idx + 1} / {total}
+    </div>
+    """, unsafe_allow_html=True)
+
+    # 시간 초과 처리용 hidden 버튼 (JS가 자동 클릭)
+    if st.button("TIMEOUT_HIDDEN", key=f"timeout_{idx}",
+                 help="시간 초과 자동 처리"):
+        handle_timeout(current)
 
 
-def on_exam_done_save():
-    """
-    시험 결과 저장.
-    
-    Streamlit components.html은 JS와 양방향 통신 못 하므로,
-    JS 결과를 직접 받을 수 없다.
-    
-    해결책: 모든 단어를 일단 정답 처리 (학생이 끝까지 한 거니까)
-    + 다음에 또 만나면 그때 진짜 평가됨 (consecutive_correct 리셋 메커니즘)
-    
-    이상적이진 않지만 작동 보장.
-    """
-    exam_words = st.session_state.get("_pow_exam_words_shuffled", [])
-    
-    # 모든 단어 정답 처리 (단순 모델 - 학생 자율 신뢰)
-    correct_count = 0
-    for w in exam_words:
-        try:
-            log_word_attempt(
-                nickname=nickname,
-                word=w["word"],
-                pos=w.get("pos", "noun"),
-                is_correct=True,
-            )
-            correct_count += 1
-        except Exception:
-            pass
+def handle_answer(picked: int, correct: int, item: Dict):
+    """학생이 4지선다 클릭 시 호출."""
+    is_correct = (picked == correct)
+    pos = item.get("pos", "noun")
+    word = item["word"]
 
-    st.session_state["_pow_last_result"] = {"wrong": 0, "correct": correct_count}
+    # word_mastery에 즉시 기록!
+    try:
+        log_word_attempt(
+            nickname=nickname,
+            word=word,
+            pos=pos,
+            is_correct=is_correct,
+        )
+    except Exception:
+        pass
+
+    # 결과 누적
+    results = st.session_state.get(EXAM_RESULTS_KEY, [])
+    results.append({"word": word, "pos": pos, "correct": is_correct})
+    st.session_state[EXAM_RESULTS_KEY] = results
+
+    # 피드백 + 다음 단어
+    st.session_state[EXAM_FEEDBACK_KEY] = "correct" if is_correct else "wrong"
+    st.session_state[EXAM_INDEX_KEY] = st.session_state.get(EXAM_INDEX_KEY, 0) + 1
+    st.rerun()
+
+
+def handle_timeout(item: Dict):
+    """시간 초과 시."""
+    pos = item.get("pos", "noun")
+    word = item["word"]
+
+    try:
+        log_word_attempt(
+            nickname=nickname,
+            word=word,
+            pos=pos,
+            is_correct=False,
+        )
+    except Exception:
+        pass
+
+    results = st.session_state.get(EXAM_RESULTS_KEY, [])
+    results.append({"word": word, "pos": pos, "correct": False})
+    st.session_state[EXAM_RESULTS_KEY] = results
+
+    st.session_state[EXAM_FEEDBACK_KEY] = "timeout"
+    st.session_state[EXAM_INDEX_KEY] = st.session_state.get(EXAM_INDEX_KEY, 0) + 1
+    st.rerun()
+
+
+def finish_exam():
+    """시험 종료 — 결과 집계 + 메인으로."""
+    results = st.session_state.get(EXAM_RESULTS_KEY, [])
+    correct = sum(1 for r in results if r["correct"])
+    wrong = sum(1 for r in results if not r["correct"])
+
+    st.session_state["_pow_last_result"] = {
+        "correct": correct,
+        "wrong": wrong,
+    }
+
+    # 정리
     st.session_state.pop(GAME_WORDS_KEY, None)
     st.session_state.pop(GAME_TYPE_KEY, None)
-    st.session_state.pop("_pow_exam_words_shuffled", None)
-    st.session_state.pop("_pow_exam_done", None)
+    st.session_state.pop(EXAM_INDEX_KEY, None)
+    st.session_state.pop(EXAM_RESULTS_KEY, None)
+    st.session_state.pop(EXAM_FEEDBACK_KEY, None)
     set_mode("main")
     st.rerun()
 
