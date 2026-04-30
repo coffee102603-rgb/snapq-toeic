@@ -266,52 +266,41 @@ def render_main_screen():
     progress_text = f"{total_mastered} / {next_at}" if next_at else f"{total_mastered}"
 
     # 🥉 마스터 감방 — 보라 왕실 감옥 느낌
-    st.markdown(f"""
-    <div style="
-        background: linear-gradient(135deg, #2a1a4a 0%, #1a1228 100%);
-        border: 2.5px solid #cc44ff;
-        border-radius: 12px;
-        padding: 14px 16px;
-        margin-bottom: 8px;
-        position: relative;
-        overflow: hidden;
-    ">
-        <!-- 세로 창살 (왕실 느낌) -->
-        <div style="position:absolute;top:0;bottom:0;left:14%;width:2px;
-                    background:linear-gradient(180deg,#cc44ff 0%,#7733aa 100%);
-                    opacity:0.4;"></div>
-        <div style="position:absolute;top:0;bottom:0;left:38%;width:2px;
-                    background:linear-gradient(180deg,#cc44ff 0%,#7733aa 100%);
-                    opacity:0.4;"></div>
-        <div style="position:absolute;top:0;bottom:0;left:62%;width:2px;
-                    background:linear-gradient(180deg,#cc44ff 0%,#7733aa 100%);
-                    opacity:0.4;"></div>
-        <div style="position:absolute;top:0;bottom:0;left:86%;width:2px;
-                    background:linear-gradient(180deg,#cc44ff 0%,#7733aa 100%);
-                    opacity:0.4;"></div>
-        <!-- 가로 창살 -->
-        <div style="position:absolute;top:0;left:0;right:0;height:2px;
-                    background:#cc44ff;opacity:0.6;"></div>
-        <div style="position:absolute;bottom:0;left:0;right:0;height:2px;
-                    background:#cc44ff;opacity:0.6;"></div>
-        
-        <div style="position:relative;text-align:center;">
-            <div style="display:flex;align-items:center;justify-content:center;gap:10px;
-                        margin-bottom:4px;">
-                <span style="font-size:24px;">{tier_emoji}</span>
-                <span style="color:#dd99ff;font-size:16px;font-weight:900;letter-spacing:2px;">
-                    마스터 감방
-                </span>
-            </div>
-            <div style="color:#ffaaff;font-size:24px;font-weight:900;line-height:1;">
-                {progress_text}
-            </div>
-            <div style="color:#aabbcc;font-size:11px;margin-top:4px;">
-                <strong style="color:#dd99ff;">{tier_label}</strong> 도전 중
-            </div>
-        </div>
-    </div>
-    """, unsafe_allow_html=True)
+    master_html = (
+        '<div style="background:linear-gradient(135deg,#2a1a4a 0%,#1a1228 100%);'
+        'border:2.5px solid #cc44ff;border-radius:12px;padding:14px 16px;'
+        'margin-bottom:8px;position:relative;overflow:hidden;">'
+        # 세로 창살
+        '<div style="position:absolute;top:0;bottom:0;left:14%;width:2px;'
+        'background:#cc44ff;opacity:0.35;"></div>'
+        '<div style="position:absolute;top:0;bottom:0;left:38%;width:2px;'
+        'background:#cc44ff;opacity:0.35;"></div>'
+        '<div style="position:absolute;top:0;bottom:0;left:62%;width:2px;'
+        'background:#cc44ff;opacity:0.35;"></div>'
+        '<div style="position:absolute;top:0;bottom:0;left:86%;width:2px;'
+        'background:#cc44ff;opacity:0.35;"></div>'
+        # 가로 창살
+        '<div style="position:absolute;top:0;left:0;right:0;height:2px;'
+        'background:#cc44ff;opacity:0.6;"></div>'
+        '<div style="position:absolute;bottom:0;left:0;right:0;height:2px;'
+        'background:#cc44ff;opacity:0.6;"></div>'
+        # 콘텐츠
+        '<div style="position:relative;text-align:center;">'
+        '<div style="display:flex;align-items:center;justify-content:center;'
+        'gap:10px;margin-bottom:4px;">'
+        f'<span style="font-size:24px;">{tier_emoji}</span>'
+        '<span style="color:#dd99ff;font-size:16px;font-weight:900;'
+        'letter-spacing:2px;">마스터 감방</span>'
+        '</div>'
+        f'<div style="color:#ffaaff;font-size:24px;font-weight:900;'
+        f'line-height:1;">{progress_text}</div>'
+        '<div style="color:#aabbcc;font-size:11px;margin-top:4px;">'
+        f'<strong style="color:#dd99ff;">{tier_label}</strong> 도전 중'
+        '</div>'
+        '</div>'
+        '</div>'
+    )
+    st.markdown(master_html, unsafe_allow_html=True)
 
     if st.button("🥉 마스터 감방 입장", use_container_width=True, type="primary",
                  key="btn_master"):
@@ -326,48 +315,41 @@ def render_main_screen():
 
     # 🎯 수배 감방 — 빨강 어둠의 감옥 느낌
     if wanted_count > 0:
-        st.markdown(f"""
-        <div style="
-            background: linear-gradient(135deg, #4a1a28 0%, #1a0810 100%);
-            border: 2.5px solid #ff4477;
-            border-radius: 12px;
-            padding: 14px 16px;
-            margin: 10px 0 8px;
-            position: relative;
-            overflow: hidden;
-        ">
-            <!-- 가로 창살 (어둠의 감옥 느낌 — 짧고 굵게) -->
-            <div style="position:absolute;top:0;left:0;right:0;height:4px;
-                        background:repeating-linear-gradient(90deg,
-                            #ff4477 0,#ff4477 8px,#220004 8px,#220004 16px);"></div>
-            <div style="position:absolute;bottom:0;left:0;right:0;height:4px;
-                        background:repeating-linear-gradient(90deg,
-                            #ff4477 0,#ff4477 8px,#220004 8px,#220004 16px);"></div>
-            <!-- 세로 창살 (불규칙적) -->
-            <div style="position:absolute;top:0;bottom:0;left:20%;width:2px;
-                        background:#ff4477;opacity:0.5;"></div>
-            <div style="position:absolute;top:0;bottom:0;left:50%;width:2px;
-                        background:#ff4477;opacity:0.5;"></div>
-            <div style="position:absolute;top:0;bottom:0;left:80%;width:2px;
-                        background:#ff4477;opacity:0.5;"></div>
-            
-            <div style="position:relative;text-align:center;">
-                <div style="display:flex;align-items:center;justify-content:center;gap:10px;
-                            margin-bottom:4px;">
-                    <span style="font-size:24px;">🎯</span>
-                    <span style="color:#ff99bb;font-size:16px;font-weight:900;letter-spacing:2px;">
-                        수배 감방
-                    </span>
-                </div>
-                <div style="color:#ff4477;font-size:24px;font-weight:900;line-height:1;">
-                    {wanted_count}명 수감
-                </div>
-                <div style="color:#aabbcc;font-size:11px;margin-top:4px;">
-                    <strong style="color:#ff99bb;">자꾸 도망친 놈들</strong>
-                </div>
-            </div>
-        </div>
-        """, unsafe_allow_html=True)
+        wanted_html = (
+            '<div style="background:linear-gradient(135deg,#4a1a28 0%,#1a0810 100%);'
+            'border:2.5px solid #ff4477;border-radius:12px;padding:14px 16px;'
+            'margin:10px 0 8px;position:relative;overflow:hidden;">'
+            # 가로 창살 (굵게)
+            '<div style="position:absolute;top:0;left:0;right:0;height:4px;'
+            'background:repeating-linear-gradient(90deg,#ff4477 0,#ff4477 8px,'
+            '#220004 8px,#220004 16px);"></div>'
+            '<div style="position:absolute;bottom:0;left:0;right:0;height:4px;'
+            'background:repeating-linear-gradient(90deg,#ff4477 0,#ff4477 8px,'
+            '#220004 8px,#220004 16px);"></div>'
+            # 세로 창살
+            '<div style="position:absolute;top:0;bottom:0;left:20%;width:2px;'
+            'background:#ff4477;opacity:0.5;"></div>'
+            '<div style="position:absolute;top:0;bottom:0;left:50%;width:2px;'
+            'background:#ff4477;opacity:0.5;"></div>'
+            '<div style="position:absolute;top:0;bottom:0;left:80%;width:2px;'
+            'background:#ff4477;opacity:0.5;"></div>'
+            # 콘텐츠
+            '<div style="position:relative;text-align:center;">'
+            '<div style="display:flex;align-items:center;justify-content:center;'
+            'gap:10px;margin-bottom:4px;">'
+            '<span style="font-size:24px;">🎯</span>'
+            '<span style="color:#ff99bb;font-size:16px;font-weight:900;'
+            'letter-spacing:2px;">수배 감방</span>'
+            '</div>'
+            f'<div style="color:#ff4477;font-size:24px;font-weight:900;'
+            f'line-height:1;">{wanted_count}명 수감</div>'
+            '<div style="color:#aabbcc;font-size:11px;margin-top:4px;">'
+            '<strong style="color:#ff99bb;">자꾸 도망친 놈들</strong>'
+            '</div>'
+            '</div>'
+            '</div>'
+        )
+        st.markdown(wanted_html, unsafe_allow_html=True)
 
         if st.button("🎯 수배 감방 입장", use_container_width=True,
                      key="btn_wanted"):
