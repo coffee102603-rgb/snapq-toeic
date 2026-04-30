@@ -210,22 +210,30 @@ div.stButton > button {
 .master-cell-wrap > div { border-radius: 12px 12px 0 0 !important; border-bottom: none !important; }
 .wanted-cell-wrap > div { border-radius: 12px 12px 0 0 !important; border-bottom: none !important; }
 
-/* [← 메인] 뒤로가기 버튼 — 작고 통일 */
-.back-btn-wrap div.stButton > button {
-    background: #1a2030 !important;
+/* [×] 닫기 버튼 — 헤더 안 작게 */
+.x-btn-wrap div.stButton > button {
+    background: rgba(26,32,48,0.6) !important;
     color: #88aabb !important;
-    border: 1.5px solid #2a3550 !important;
-    border-radius: 6px !important;
-    padding: 4px 8px !important;
-    font-size: 11px !important;
+    border: 1px solid #2a3550 !important;
+    border-radius: 50% !important;
+    padding: 0 !important;
+    font-size: 16px !important;
     min-height: 28px !important;
+    width: 28px !important;
+    height: 28px !important;
+    line-height: 1 !important;
     font-weight: 700 !important;
-    letter-spacing: 0.5px !important;
 }
-.back-btn-wrap div.stButton > button:hover {
-    background: #232a3a !important;
-    border-color: #4a5570 !important;
-    color: #ccddee !important;
+.x-btn-wrap div.stButton > button:hover {
+    background: #2a1f3f !important;
+    border-color: #ff4477 !important;
+    color: #ff8899 !important;
+}
+/* X 버튼 wrap의 column 패딩 제거 */
+.x-btn-wrap {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
 }
 
 /* 컴팩트 — 줄간격 줄이기 */
@@ -301,11 +309,11 @@ observer.observe(document.body, { childList: true, subtree: true });
 # ═══════════════════════════════════════════════════════════════
 
 def render_main_screen():
-    # 헤더 — [← 메인] + 중앙 타이틀 (통일 패턴)
-    col_back, col_title = st.columns([2, 5])
-    with col_back:
-        st.markdown('<div class="back-btn-wrap">', unsafe_allow_html=True)
-        if st.button("← 메인", key="btn_back_top", use_container_width=True):
+    # 헤더 — [×] + 중앙 타이틀 (한 줄)
+    col_x, col_title, col_pad = st.columns([1, 6, 1])
+    with col_x:
+        st.markdown('<div class="x-btn-wrap">', unsafe_allow_html=True)
+        if st.button("×", key="btn_back_top", help="메인으로"):
             st.switch_page("main_hub.py")
         st.markdown('</div>', unsafe_allow_html=True)
     with col_title:
@@ -563,11 +571,11 @@ def render_study_screen():
         title_color = "#ffd966"
         bg_pattern = "master"
 
-    # 학습장 헤더 — [← 메인] + 제목
-    col_back, col_title = st.columns([2, 5])
-    with col_back:
-        st.markdown('<div class="back-btn-wrap">', unsafe_allow_html=True)
-        if st.button("← 메인", key="btn_back_study", use_container_width=True):
+    # 학습장 헤더 — [×] + 제목 (한 줄)
+    col_x, col_title, col_pad = st.columns([1, 6, 1])
+    with col_x:
+        st.markdown('<div class="x-btn-wrap">', unsafe_allow_html=True)
+        if st.button("×", key="btn_back_study", help="메인으로"):
             st.session_state.pop(GAME_WORDS_KEY, None)
             st.session_state.pop(GAME_TYPE_KEY, None)
             set_mode("main")
@@ -787,11 +795,11 @@ def render_exam_screen():
     quote = random.choice(quotes)
     quote_emoji = "👑" if game_type == "master" else "💀"
 
-    # 시험장 헤더 — [← 메인] + 제목 + 카운터
-    col_back, col_title, col_counter = st.columns([2, 4, 2])
-    with col_back:
-        st.markdown('<div class="back-btn-wrap">', unsafe_allow_html=True)
-        if st.button("← 메인", key=f"btn_back_exam_{idx}", use_container_width=True):
+    # 시험장 헤더 — [×] + 제목 + 카운터 (한 줄)
+    col_x, col_title, col_counter = st.columns([1, 5, 2])
+    with col_x:
+        st.markdown('<div class="x-btn-wrap">', unsafe_allow_html=True)
+        if st.button("×", key=f"btn_back_exam_{idx}", help="메인으로"):
             st.session_state.pop(GAME_WORDS_KEY, None)
             st.session_state.pop(GAME_TYPE_KEY, None)
             st.session_state.pop(EXAM_INDEX_KEY, None)
@@ -814,19 +822,19 @@ def render_exam_screen():
     with col_counter:
         st.markdown(
             f'<div style="text-align:right;padding-top:4px;">'
-            f'<div style="color:#7a8fa8;font-size:8px;">남은 단어</div>'
-            f'<div style="color:{accent};font-size:14px;font-weight:700;">{remaining} / {total}</div>'
+            f'<div style="color:#7a8fa8;font-size:8px;">남은</div>'
+            f'<div style="color:{accent};font-size:14px;font-weight:700;">{remaining}/{total}</div>'
             f'</div>',
             unsafe_allow_html=True
         )
 
-    # 멘트 박스
+    # 멘트 박스 (작게)
     quote_html = (
         f'<div style="background:#243044;border:1px solid {accent_dark};'
-        f'border-radius:6px;padding:5px 10px;margin-bottom:8px;'
-        f'display:flex;align-items:center;gap:6px;min-height:26px;">'
-        f'<span style="font-size:12px;">{quote_emoji}</span>'
-        f'<div style="color:#ddccaa;font-size:11px;font-style:italic;flex:1;">'
+        f'border-radius:6px;padding:3px 8px;margin-bottom:6px;'
+        f'display:flex;align-items:center;gap:6px;min-height:22px;">'
+        f'<span style="font-size:11px;">{quote_emoji}</span>'
+        f'<div style="color:#ddccaa;font-size:10px;font-style:italic;flex:1;">'
         f'{quote}</div>'
         f'</div>'
     )
@@ -848,7 +856,7 @@ def render_exam_screen():
 
     word_card_html = (
         f'<div style="background:{word_card_bg};border:2px solid {word_card_border};'
-        f'border-radius:10px;padding:14px 10px;text-align:center;margin-bottom:10px;'
+        f'border-radius:10px;padding:10px 10px;text-align:center;margin-bottom:6px;'
         f'position:relative;overflow:hidden;'
         f'box-shadow:0 0 14px {accent}22;">'
         f'<div style="position:absolute;top:0;bottom:0;left:0;right:0;'
