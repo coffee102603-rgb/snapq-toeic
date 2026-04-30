@@ -467,6 +467,18 @@
     {
       "word": "volatility",
       "meaning": "변동성"
+    },
+    {
+      "word": "discrepancy",
+      "meaning": "불일치, 차이"
+    },
+    {
+      "word": "endeavor",
+      "meaning": "노력, 시도"
+    },
+    {
+      "word": "leverage",
+      "meaning": "영향력, 지렛대"
     }
   ],
   "verb": [
@@ -909,6 +921,14 @@
     {
       "word": "visualize",
       "meaning": "시각화하다"
+    },
+    {
+      "word": "alleviate",
+      "meaning": "완화하다, 경감하다"
+    },
+    {
+      "word": "delegate",
+      "meaning": "위임하다"
     }
   ],
   "adjective": [
@@ -1635,6 +1655,18 @@
     {
       "word": "widening",
       "meaning": "확대되고 있는"
+    },
+    {
+      "word": "ambiguous",
+      "meaning": "모호한, 애매한"
+    },
+    {
+      "word": "diligent",
+      "meaning": "근면한, 성실한"
+    },
+    {
+      "word": "lucrative",
+      "meaning": "수익성 있는"
     }
   ],
   "adverb": [
@@ -2045,6 +2077,10 @@
     {
       "word": "widely",
       "meaning": "널리"
+    },
+    {
+      "word": "concurrently",
+      "meaning": "동시에"
     }
   ],
   "_summary": {
@@ -2056,6 +2092,8 @@
     "categorized_total": 510,
     "skipped_no_pos": 372,
     "skipped_phrase": 0,
-    "fallback_used": 99
+    "fallback_used": 99,
+    "total": 519,
+    "last_updated": "20260430_181339"
   }
 }
