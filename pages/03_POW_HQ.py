@@ -200,11 +200,14 @@ div.stButton > button {
     box-shadow: 0 0 14px rgba(255,34,68,0.5) !important;
 }
 
-/* 수배 감방 비활성 (0명) — 또렷한 회색-분홍 (잘 보임) */
-.wanted-empty-key-wrap div.stButton > button {
-    background: #3a2a2f !important;
-    color: #aa8a95 !important;
-    border: 2.5px solid #7a4a5a !important;
+/* 수배 감방 비활성 (0명) — 강제로 또렷하게! */
+.wanted-empty-key-wrap div.stButton > button,
+.wanted-empty-key-wrap div.stButton > button:disabled,
+.wanted-empty-key-wrap div.stButton > button[disabled],
+.wanted-empty-key-wrap button {
+    background: #4a3540 !important;
+    color: #ffccdd !important;
+    border: 2.5px solid #aa6a8a !important;
     border-top: none !important;
     border-radius: 0 0 12px 12px !important;
     margin-top: -8px !important;
@@ -212,10 +215,14 @@ div.stButton > button {
     font-weight: 700 !important;
     cursor: not-allowed !important;
     opacity: 1 !important;
+    filter: none !important;
 }
-.wanted-empty-key-wrap div.stButton > button[disabled] {
-    background: #3a2a2f !important;
-    color: #aa8a95 !important;
+/* Streamlit disabled 버튼의 내부 span/p도 강제 색상 */
+.wanted-empty-key-wrap button p,
+.wanted-empty-key-wrap button span,
+.wanted-empty-key-wrap button div {
+    color: #ffccdd !important;
+    opacity: 1 !important;
 }
 
 /* 메인으로 — 차가운 회색 (감방과 완전 분리) */
@@ -788,8 +795,8 @@ render();
 
     st.markdown("<div style='margin-top:6px;'></div>", unsafe_allow_html=True)
 
-    # 시험장 입장 버튼 (카드 바로 아래에 붙음)
-    st.markdown('<div style="margin-top:-8px;"></div>', unsafe_allow_html=True)
+    # 시험장 입장 버튼 — 카드 바로 아래 (빈 공간 1/2)
+    st.markdown('<div style="margin-top:-50px;"></div>', unsafe_allow_html=True)
     exam_label = "🔥 진압 시작!" if game_type == "wanted" else "⚔️ 시험장 입장!"
     if st.button(exam_label, use_container_width=True, type="primary",
                  key="btn_to_exam"):
