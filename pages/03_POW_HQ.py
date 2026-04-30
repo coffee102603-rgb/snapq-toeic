@@ -129,6 +129,10 @@ div.stButton > button {
 }
 
 /* 시험장 4지선다 버튼 */
+.exam-options {
+    /* 빈 wrapper로만 작동 — 시각적으로 보이지 않게 */
+    display: contents !important;
+}
 .exam-options div.stButton > button {
     padding: 16px 8px !important;
     font-size: 14px !important;
@@ -138,6 +142,9 @@ div.stButton > button {
     min-height: 60px !important;
     word-break: keep-all !important;
 }
+
+/* exam-meta는 헤더 안에서 카운터처럼 표시 (data-correct 숨김 캐리어) */
+.exam-meta { /* 보통 div와 동일 */ }
 
 /* 시간 초과용 숨겨진 버튼 (키 기반 매칭) */
 [data-testid="stButton"]:has(button[kind="secondary"][aria-label*="timeout_"]),
@@ -864,8 +871,10 @@ def render_exam_screen():
             unsafe_allow_html=True
         )
     with col_counter:
+        # data-correct를 카운터에 숨겨서 추가 (JS 시간초과 시 사용)
         st.markdown(
-            f'<div style="text-align:right;padding-top:4px;">'
+            f'<div class="exam-meta" data-correct="{correct_idx}" data-idx="{idx}" '
+            f'style="text-align:right;padding-top:4px;">'
             f'<div style="color:#7a8fa8;font-size:8px;">남은</div>'
             f'<div style="color:{accent};font-size:14px;font-weight:700;">{remaining}/{total}</div>'
             f'</div>',
@@ -1000,12 +1009,14 @@ const interval = setInterval(() => {
         update();
         // 시간 초과 — 4지선다 중 오답 버튼 하나 자동 클릭 (정상 흐름!)
         try {
+            // 정답 인덱스는 헤더 .exam-meta에서 (4지선다는 깔끔하게)
+            const examMeta = window.parent.document.querySelector('.exam-meta');
             const examOptions = window.parent.document.querySelector('.exam-options');
-            if (!examOptions) {
-                console.error('[Timer] .exam-options not found');
+            if (!examMeta || !examOptions) {
+                console.error('[Timer] .exam-meta or .exam-options not found');
                 return;
             }
-            const correctIdx = parseInt(examOptions.getAttribute('data-correct'));
+            const correctIdx = parseInt(examMeta.getAttribute('data-correct'));
             const buttons = examOptions.querySelectorAll('button');
             console.log('[Timer] Timeout! correct=', correctIdx, 'btn count=', buttons.length);
             
@@ -1080,11 +1091,8 @@ function update() {
         timer_html = timer_html.replace("__CACHE_BUST__", str(_time.time()))
         components.html(timer_html, height=24)
 
-    # 4지선다 버튼 (정답 인덱스를 data 속성으로 — JS가 시간초과 시 사용)
-    st.markdown(
-        f'<div class="exam-options" data-correct="{correct_idx}" data-idx="{idx}">',
-        unsafe_allow_html=True
-    )
+    # 4지선다 버튼 (data-correct는 헤더 .exam-meta로 이동했음 — 5개 깜빡 방지)
+    st.markdown('<div class="exam-options">', unsafe_allow_html=True)
     col1, col2 = st.columns(2)
     with col1:
         if st.button(options[0], use_container_width=True, key=f"opt_0_{idx}"):
