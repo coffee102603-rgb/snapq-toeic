@@ -659,6 +659,138 @@
     {
       "word": "infrastructure",
       "meaning": "기반 시설"
+    },
+    {
+      "word": "recruitment",
+      "meaning": "채용, 모집"
+    },
+    {
+      "word": "onboarding",
+      "meaning": "신입 적응 교육"
+    },
+    {
+      "word": "resignation",
+      "meaning": "사직, 사임"
+    },
+    {
+      "word": "retirement",
+      "meaning": "은퇴"
+    },
+    {
+      "word": "promotion",
+      "meaning": "승진, 홍보"
+    },
+    {
+      "word": "severance",
+      "meaning": "퇴직금"
+    },
+    {
+      "word": "pension",
+      "meaning": "연금"
+    },
+    {
+      "word": "payroll",
+      "meaning": "급여 명부"
+    },
+    {
+      "word": "bonus",
+      "meaning": "상여금"
+    },
+    {
+      "word": "allowance",
+      "meaning": "수당, 용돈"
+    },
+    {
+      "word": "apprentice",
+      "meaning": "견습생, 수습"
+    },
+    {
+      "word": "mentorship",
+      "meaning": "멘토링, 사사"
+    },
+    {
+      "word": "curriculum",
+      "meaning": "교과 과정"
+    },
+    {
+      "word": "enrollment",
+      "meaning": "등록, 입학"
+    },
+    {
+      "word": "scholarship",
+      "meaning": "장학금"
+    },
+    {
+      "word": "accreditation",
+      "meaning": "인증, 공인"
+    },
+    {
+      "word": "fundraiser",
+      "meaning": "모금 행사, 모금 운동가"
+    },
+    {
+      "word": "banquet",
+      "meaning": "연회, 만찬"
+    },
+    {
+      "word": "aspiration",
+      "meaning": "열망, 포부"
+    },
+    {
+      "word": "breakthrough",
+      "meaning": "돌파구, 큰 발전"
+    },
+    {
+      "word": "catastrophe",
+      "meaning": "대재앙, 큰 재난"
+    },
+    {
+      "word": "commodity",
+      "meaning": "상품, 일용품"
+    },
+    {
+      "word": "coverage",
+      "meaning": "보도, 보장 범위"
+    },
+    {
+      "word": "discretion",
+      "meaning": "재량, 신중함"
+    },
+    {
+      "word": "excerpt",
+      "meaning": "발췌, 초록"
+    },
+    {
+      "word": "hypothesis",
+      "meaning": "가설"
+    },
+    {
+      "word": "margin",
+      "meaning": "여백, 이윤"
+    },
+    {
+      "word": "morale",
+      "meaning": "사기, 의욕"
+    },
+    {
+      "word": "outage",
+      "meaning": "정전, 운영 중단"
+    },
+    {
+      "word": "rebate",
+      "meaning": "환불금, 리베이트"
+    },
+    {
+      "word": "sanction",
+      "meaning": "제재, 승인"
+    },
+    {
+      "word": "threshold",
+      "meaning": "문턱, 한계점"
+    },
+    {
+      "word": "vicinity",
+      "meaning": "근처, 부근"
     }
   ],
   "verb": [
@@ -1277,6 +1409,110 @@
     {
       "word": "duplicate",
       "meaning": "복제하다"
+    },
+    {
+      "word": "recruit",
+      "meaning": "모집하다, 채용하다"
+    },
+    {
+      "word": "demote",
+      "meaning": "강등시키다"
+    },
+    {
+      "word": "resign",
+      "meaning": "사직하다"
+    },
+    {
+      "word": "retire",
+      "meaning": "은퇴하다"
+    },
+    {
+      "word": "deduct",
+      "meaning": "공제하다, 차감하다"
+    },
+    {
+      "word": "accrue",
+      "meaning": "발생하다, 누적되다"
+    },
+    {
+      "word": "invest",
+      "meaning": "투자하다"
+    },
+    {
+      "word": "withdraw",
+      "meaning": "인출하다, 철회하다"
+    },
+    {
+      "word": "deposit",
+      "meaning": "예금하다, 보증금을 두다"
+    },
+    {
+      "word": "mentor",
+      "meaning": "지도하다"
+    },
+    {
+      "word": "tutor",
+      "meaning": "가르치다"
+    },
+    {
+      "word": "enlist",
+      "meaning": "모집하다, 입대시키다"
+    },
+    {
+      "word": "commemorate",
+      "meaning": "기념하다"
+    },
+    {
+      "word": "honor",
+      "meaning": "명예를 주다, 기리다"
+    },
+    {
+      "word": "bolster",
+      "meaning": "강화하다, 북돋우다"
+    },
+    {
+      "word": "coincide",
+      "meaning": "일치하다, 동시에 일어나다"
+    },
+    {
+      "word": "compensate",
+      "meaning": "보상하다"
+    },
+    {
+      "word": "curtail",
+      "meaning": "축소하다, 단축하다"
+    },
+    {
+      "word": "deteriorate",
+      "meaning": "악화되다"
+    },
+    {
+      "word": "discontinue",
+      "meaning": "중단하다"
+    },
+    {
+      "word": "divert",
+      "meaning": "우회시키다, 전환시키다"
+    },
+    {
+      "word": "embark",
+      "meaning": "착수하다, 승선하다"
+    },
+    {
+      "word": "exceed",
+      "meaning": "초과하다, 능가하다"
+    },
+    {
+      "word": "pertain",
+      "meaning": "관련되다"
+    },
+    {
+      "word": "rectify",
+      "meaning": "바로잡다, 수정하다"
+    },
+    {
+      "word": "suspend",
+      "meaning": "중지하다, 정지시키다"
     }
   ],
   "adjective": [
@@ -2139,6 +2375,98 @@
     {
       "word": "user-friendly",
       "meaning": "사용자 친화적인"
+    },
+    {
+      "word": "salaried",
+      "meaning": "봉급을 받는"
+    },
+    {
+      "word": "hourly",
+      "meaning": "시간제의"
+    },
+    {
+      "word": "full-time",
+      "meaning": "정규직의"
+    },
+    {
+      "word": "part-time",
+      "meaning": "시간제의, 비정규의"
+    },
+    {
+      "word": "tenured",
+      "meaning": "종신 재직권이 있는"
+    },
+    {
+      "word": "vested",
+      "meaning": "기득권이 부여된"
+    },
+    {
+      "word": "charitable",
+      "meaning": "자선의"
+    },
+    {
+      "word": "nonprofit",
+      "meaning": "비영리의"
+    },
+    {
+      "word": "educational",
+      "meaning": "교육의"
+    },
+    {
+      "word": "recreational",
+      "meaning": "오락의, 레크리에이션의"
+    },
+    {
+      "word": "extracurricular",
+      "meaning": "과외의, 정규 과목 외의"
+    },
+    {
+      "word": "informative",
+      "meaning": "유익한, 정보를 주는"
+    },
+    {
+      "word": "adverse",
+      "meaning": "불리한, 부정적인"
+    },
+    {
+      "word": "concise",
+      "meaning": "간결한"
+    },
+    {
+      "word": "deliberate",
+      "meaning": "의도적인, 신중한"
+    },
+    {
+      "word": "elaborate",
+      "meaning": "정교한, 상세한"
+    },
+    {
+      "word": "exquisite",
+      "meaning": "정교한, 매우 아름다운"
+    },
+    {
+      "word": "lavish",
+      "meaning": "호화로운, 후한"
+    },
+    {
+      "word": "meticulous",
+      "meaning": "꼼꼼한"
+    },
+    {
+      "word": "perceptive",
+      "meaning": "통찰력 있는"
+    },
+    {
+      "word": "profound",
+      "meaning": "심오한, 깊은"
+    },
+    {
+      "word": "rigorous",
+      "meaning": "엄격한, 철저한"
+    },
+    {
+      "word": "spontaneous",
+      "meaning": "자발적인, 즉흥적인"
     }
   ],
   "adverb": [
@@ -2673,6 +3001,122 @@
     {
       "word": "virtually",
       "meaning": "사실상, 가상으로"
+    },
+    {
+      "word": "financially",
+      "meaning": "재정적으로"
+    },
+    {
+      "word": "academically",
+      "meaning": "학문적으로"
+    },
+    {
+      "word": "professionally",
+      "meaning": "전문적으로"
+    },
+    {
+      "word": "locally",
+      "meaning": "지역적으로"
+    },
+    {
+      "word": "internationally",
+      "meaning": "국제적으로"
+    },
+    {
+      "word": "domestically",
+      "meaning": "국내에서"
+    },
+    {
+      "word": "publicly",
+      "meaning": "공개적으로"
+    },
+    {
+      "word": "privately",
+      "meaning": "사적으로"
+    },
+    {
+      "word": "officially",
+      "meaning": "공식적으로"
+    },
+    {
+      "word": "unofficially",
+      "meaning": "비공식적으로"
+    },
+    {
+      "word": "formally",
+      "meaning": "정식으로"
+    },
+    {
+      "word": "informally",
+      "meaning": "비공식적으로"
+    },
+    {
+      "word": "involuntarily",
+      "meaning": "비자발적으로"
+    },
+    {
+      "word": "arguably",
+      "meaning": "거의 틀림없이"
+    },
+    {
+      "word": "belatedly",
+      "meaning": "뒤늦게"
+    },
+    {
+      "word": "concisely",
+      "meaning": "간결하게"
+    },
+    {
+      "word": "conversely",
+      "meaning": "반대로"
+    },
+    {
+      "word": "cordially",
+      "meaning": "진심으로, 정중하게"
+    },
+    {
+      "word": "drastically",
+      "meaning": "급격하게"
+    },
+    {
+      "word": "erroneously",
+      "meaning": "잘못되게, 틀리게"
+    },
+    {
+      "word": "inevitably",
+      "meaning": "불가피하게"
+    },
+    {
+      "word": "invariably",
+      "meaning": "예외 없이, 항상"
+    },
+    {
+      "word": "momentarily",
+      "meaning": "잠깐, 곧"
+    },
+    {
+      "word": "notably",
+      "meaning": "특히, 현저히"
+    },
+    {
+      "word": "optimally",
+      "meaning": "최적으로"
+    },
+    {
+      "word": "promisingly",
+      "meaning": "유망하게"
+    },
+    {
+      "word": "reportedly",
+      "meaning": "보도에 따르면"
+    },
+    {
+      "word": "sparingly",
+      "meaning": "절약하여, 드물게"
+    },
+    {
+      "word": "unequivocally",
+      "meaning": "명백하게, 분명히"
     }
   ],
   "_summary": {
