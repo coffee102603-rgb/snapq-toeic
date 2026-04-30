@@ -1158,8 +1158,13 @@ def handle_answer(picked: int, correct: int, item: Dict):
             pos=pos,
             is_correct=is_correct,
         )
-    except Exception:
-        pass
+        import streamlit as _st_dbg
+        _st_dbg.toast(f"DB저장: {word}/{pos}/{is_correct}", icon="✅")
+    except Exception as _e:
+        import streamlit as _st_dbg
+        import traceback as _tb
+        _st_dbg.error(f"❌ log_word_attempt 실패: {type(_e).__name__}: {_e}")
+        _st_dbg.code(_tb.format_exc())
 
     results = st.session_state.get(EXAM_RESULTS_KEY, [])
     results.append({"word": word, "pos": pos, "correct": is_correct})
