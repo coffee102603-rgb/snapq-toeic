@@ -139,6 +139,26 @@ div.stButton > button {
     word-break: keep-all !important;
 }
 
+/* 시간 초과용 숨겨진 버튼 (키 기반 매칭) */
+[data-testid="stButton"]:has(button[kind="secondary"][aria-label*="timeout_"]),
+.timeout-hidden-wrap,
+.timeout-hidden-wrap > div,
+.timeout-hidden-wrap button {
+    height: 1px !important;
+    min-height: 1px !important;
+    max-height: 1px !important;
+    padding: 0 !important;
+    margin: 0 !important;
+    overflow: hidden !important;
+    opacity: 0 !important;
+    border: none !important;
+    background: transparent !important;
+    color: transparent !important;
+    font-size: 0 !important;
+    line-height: 0 !important;
+    visibility: hidden !important;
+}
+
 /* TIMEOUT_HIDDEN 버튼 숨기기 — 텍스트로 매칭 */
 button:has(div p:contains("TIMEOUT_HIDDEN")),
 [data-testid="stButton"] button[aria-label*="TIMEOUT"] {
@@ -789,8 +809,20 @@ const interval = setInterval(() => {
         clearInterval(interval);
         timeLeft = 0;
         update();
-        // 시간 초과 시 시각 효과만 (자동 처리 X)
-        document.getElementById('txt').textContent = '⏰ 빨리!';
+        // 시간 초과 — 자동으로 timeout 버튼 클릭
+        try {
+            const buttons = window.parent.document.querySelectorAll('button');
+            for (const btn of buttons) {
+                // key가 timeout_으로 시작하는 버튼 찾기 (aria-label 또는 텍스트로)
+                const ariaLabel = btn.getAttribute('aria-label') || '';
+                const btnText = (btn.textContent || '').trim();
+                // 보이지 않는 버튼은 텍스트가 점(.)이거나 비어있음
+                if (ariaLabel.includes('timeout_') || btnText === '.' || btnText === '·') {
+                    btn.click();
+                    return;
+                }
+            }
+        } catch(e) {}
         return;
     }
     update();
@@ -851,7 +883,11 @@ function update() {
     </div>
     """, unsafe_allow_html=True)
 
-    # 시간 초과 기능 제거 (학생이 직접 클릭해야 함)
+    # 시간 초과 자동 처리 — 보이지 않는 버튼 (JS가 자동 클릭)
+    st.markdown('<div class="timeout-hidden-wrap">', unsafe_allow_html=True)
+    if st.button("·", key=f"timeout_{idx}"):
+        handle_timeout(current)
+    st.markdown('</div>', unsafe_allow_html=True)
 
 
 def handle_answer(picked: int, correct: int, item: Dict):
@@ -874,6 +910,30 @@ def handle_answer(picked: int, correct: int, item: Dict):
     st.session_state[EXAM_RESULTS_KEY] = results
 
     st.session_state[EXAM_FEEDBACK_KEY] = "correct" if is_correct else "wrong"
+    st.session_state[EXAM_INDEX_KEY] = st.session_state.get(EXAM_INDEX_KEY, 0) + 1
+    st.rerun()
+
+
+def handle_timeout(item: Dict):
+    """시간 초과 — 오답 처리."""
+    pos = item.get("pos", "noun")
+    word = item["word"]
+
+    try:
+        log_word_attempt(
+            nickname=nickname,
+            word=word,
+            pos=pos,
+            is_correct=False,
+        )
+    except Exception:
+        pass
+
+    results = st.session_state.get(EXAM_RESULTS_KEY, [])
+    results.append({"word": word, "pos": pos, "correct": False})
+    st.session_state[EXAM_RESULTS_KEY] = results
+
+    st.session_state[EXAM_FEEDBACK_KEY] = "timeout"
     st.session_state[EXAM_INDEX_KEY] = st.session_state.get(EXAM_INDEX_KEY, 0) + 1
     st.rerun()
 
