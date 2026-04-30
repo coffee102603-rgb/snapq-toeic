@@ -200,55 +200,20 @@ div.stButton > button {
     box-shadow: 0 0 14px rgba(255,34,68,0.5) !important;
 }
 
-/* 수배 감방 비활성 (0명) — 모바일까지 강제 또렷! */
-.wanted-empty-key-wrap,
-.wanted-empty-key-wrap *,
-.wanted-empty-key-wrap div.stButton > button,
-.wanted-empty-key-wrap div.stButton > button:disabled,
-.wanted-empty-key-wrap div.stButton > button[disabled],
-.wanted-empty-key-wrap button[kind="secondary"],
-.wanted-empty-key-wrap button[kind="primary"],
-.wanted-empty-key-wrap button {
-    opacity: 1 !important;
-    filter: none !important;
-    -webkit-filter: none !important;
-}
-.wanted-empty-key-wrap div.stButton > button,
-.wanted-empty-key-wrap button {
+/* 수배 감방 0명 — 활성 버튼 스타일 (회색-분홍) */
+.wanted-empty-key-wrap div.stButton > button {
     background: #5a4050 !important;
-    background-color: #5a4050 !important;
     color: #ffddee !important;
     border: 2.5px solid #cc88aa !important;
     border-top: none !important;
     border-radius: 0 0 12px 12px !important;
     margin-top: -8px !important;
     padding: 12px !important;
-    font-weight: 800 !important;
-    cursor: not-allowed !important;
+    font-weight: 700 !important;
 }
-/* Streamlit 자식 요소 모두 강제 — 모바일도! */
-.wanted-empty-key-wrap button p,
-.wanted-empty-key-wrap button span,
-.wanted-empty-key-wrap button div,
-.wanted-empty-key-wrap button > * {
-    color: #ffddee !important;
-    opacity: 1 !important;
-    filter: none !important;
-}
-/* 모바일 전용 추가 강제 */
-@media (max-width: 768px) {
-    .wanted-empty-key-wrap button,
-    .wanted-empty-key-wrap button:disabled,
-    .wanted-empty-key-wrap button[disabled] {
-        background: #5a4050 !important;
-        color: #ffddee !important;
-        opacity: 1 !important;
-        -webkit-text-fill-color: #ffddee !important;
-    }
-    .wanted-empty-key-wrap button p {
-        color: #ffddee !important;
-        -webkit-text-fill-color: #ffddee !important;
-    }
+.wanted-empty-key-wrap div.stButton > button:hover {
+    background: #6a4858 !important;
+    border-color: #ddaabb !important;
 }
 
 /* 메인으로 — 차가운 회색 (감방과 완전 분리) */
@@ -587,10 +552,11 @@ def render_main_screen():
             '</div>'
         )
         st.markdown(wanted_empty_html, unsafe_allow_html=True)
-        # 비활성 버튼 (또렷한 회색-분홍)
+        # 활성 버튼 (클릭 시 메시지 — disabled 안 쓰는 이유: 모바일 CSS 회피)
         st.markdown('<div class="wanted-empty-key-wrap">', unsafe_allow_html=True)
-        st.button("🎯 수배 단어 없음 · 잘하고 있어!", use_container_width=True,
-                  key="btn_wanted_empty", disabled=True)
+        if st.button("🎯 수배 단어 없음 · 잘하고 있어!", use_container_width=True,
+                     key="btn_wanted_empty"):
+            st.info("🎉 수배 단어가 없어요! 마스터 감방으로 입장해주세요!")
         st.markdown('</div>', unsafe_allow_html=True)
 
     # 메인으로 버튼은 좌상단으로 이동했음 (위 헤더 참조)
@@ -821,13 +787,7 @@ render();
 
     st.markdown("<div style='margin-top:6px;'></div>", unsafe_allow_html=True)
 
-    # 시험장 입장 버튼 — 카드 바로 아래 (강하게 위로)
-    st.markdown(
-        '<style>'
-        'div[data-testid="stVerticalBlock"] > div:has(> div > div > iframe) + div { margin-top: -120px !important; }'
-        '</style>',
-        unsafe_allow_html=True
-    )
+    # 시험장 입장 버튼 — 카드 바로 아래 (height 줄여서 자연스럽게)
     exam_label = "🔥 진압 시작!" if game_type == "wanted" else "⚔️ 시험장 입장!"
     if st.button(exam_label, use_container_width=True, type="primary",
                  key="btn_to_exam"):
