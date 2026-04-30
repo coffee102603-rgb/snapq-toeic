@@ -41,6 +41,10 @@ from app.core.pretest_gate import require_pretest_gate
 from app.core.toeic_baseline_gate import require_toeic_baseline_gate
 from app.core.attendance_engine import mark_attendance_once, has_attended_today, record_session_event
 from app.core.battle_state import load_profile
+# ★ 인바디 시스템 (2026.04.30)
+from app.core.inbody_db import init_db as _inbody_init_db
+from app.core.inbody_overlay import maybe_show_inbody
+from app.core.poro_hunt import maybe_show_poro_hunt
 
 st.set_page_config(
     page_title='Snap 토익',
@@ -65,6 +69,17 @@ if _qs_nick and _qs_ag == "1":
         st.session_state["privacy_agreed"]            = True
         st.session_state["pilot_notice_acknowledged"] = True
         st.session_state["consent_research_given"]    = False
+# ★ 인바디 시스템 진입 (2026.04.30)
+# 닉네임 복구 직후 — 인바디 → 포로소탕 → 메인 화면
+_inbody_nick = st.session_state.get("battle_nickname") or st.session_state.get("nickname", "")
+if _inbody_nick:
+    try:
+        _inbody_init_db()
+        maybe_show_inbody(_inbody_nick)
+        # maybe_show_poro_hunt 제거 (2026.04.30) — 단어 포로수용소로 이전
+    except Exception as _e:
+        # 인바디 실패해도 학습 도구는 정상 작동
+        print(f"[main_hub] 인바디 시스템 에러: {_e}")
 
 # =========================================================
 # 데이터 헬퍼

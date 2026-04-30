@@ -1,0 +1,2061 @@
+{
+  "noun": [
+    {
+      "word": "acceptance",
+      "meaning": "수용"
+    },
+    {
+      "word": "accessibility",
+      "meaning": "접근성"
+    },
+    {
+      "word": "accountability",
+      "meaning": "책임(감)"
+    },
+    {
+      "word": "achievement",
+      "meaning": "달성"
+    },
+    {
+      "word": "acknowledgment",
+      "meaning": "인정"
+    },
+    {
+      "word": "acquisition",
+      "meaning": "인수, 취득"
+    },
+    {
+      "word": "adaptability",
+      "meaning": "적응력"
+    },
+    {
+      "word": "adaptation",
+      "meaning": "적응"
+    },
+    {
+      "word": "adherence",
+      "meaning": "준수, 고수"
+    },
+    {
+      "word": "adoption",
+      "meaning": "채택"
+    },
+    {
+      "word": "advancement",
+      "meaning": "발전, 향상"
+    },
+    {
+      "word": "allocation",
+      "meaning": "할당"
+    },
+    {
+      "word": "analysis",
+      "meaning": "분석"
+    },
+    {
+      "word": "assessment",
+      "meaning": "평가"
+    },
+    {
+      "word": "awareness",
+      "meaning": "인식"
+    },
+    {
+      "word": "balance",
+      "meaning": "균형"
+    },
+    {
+      "word": "capability",
+      "meaning": "능력"
+    },
+    {
+      "word": "categorization",
+      "meaning": "분류"
+    },
+    {
+      "word": "circulation",
+      "meaning": "순환"
+    },
+    {
+      "word": "clarification",
+      "meaning": "명확화"
+    },
+    {
+      "word": "cohesion",
+      "meaning": "결속력"
+    },
+    {
+      "word": "collaboration",
+      "meaning": "협력"
+    },
+    {
+      "word": "commitment",
+      "meaning": "약속, 헌신"
+    },
+    {
+      "word": "communication",
+      "meaning": "소통"
+    },
+    {
+      "word": "compliance",
+      "meaning": "준수"
+    },
+    {
+      "word": "concentration",
+      "meaning": "집중, 농도"
+    },
+    {
+      "word": "consensus",
+      "meaning": "합의"
+    },
+    {
+      "word": "consolidation",
+      "meaning": "통합, 통폐합"
+    },
+    {
+      "word": "construction",
+      "meaning": "구축, 건설"
+    },
+    {
+      "word": "contribution",
+      "meaning": "기여"
+    },
+    {
+      "word": "convergence",
+      "meaning": "수렴, 융합"
+    },
+    {
+      "word": "conversion",
+      "meaning": "전환"
+    },
+    {
+      "word": "coordination",
+      "meaning": "조율"
+    },
+    {
+      "word": "creation",
+      "meaning": "창설, 생성"
+    },
+    {
+      "word": "credibility",
+      "meaning": "신뢰성"
+    },
+    {
+      "word": "decarbonization",
+      "meaning": "탈탄소화"
+    },
+    {
+      "word": "dedication",
+      "meaning": "헌신"
+    },
+    {
+      "word": "degradation",
+      "meaning": "저하, 악화"
+    },
+    {
+      "word": "delegation",
+      "meaning": "위임"
+    },
+    {
+      "word": "deployment",
+      "meaning": "배포, 구축"
+    },
+    {
+      "word": "determination",
+      "meaning": "결의, 결단"
+    },
+    {
+      "word": "development",
+      "meaning": "개발"
+    },
+    {
+      "word": "disclosure",
+      "meaning": "공개, 공시"
+    },
+    {
+      "word": "disruption",
+      "meaning": "혼란, 붕괴"
+    },
+    {
+      "word": "distribution",
+      "meaning": "분배"
+    },
+    {
+      "word": "diversity",
+      "meaning": "다양성"
+    },
+    {
+      "word": "documentation",
+      "meaning": "문서화, 서류"
+    },
+    {
+      "word": "effectiveness",
+      "meaning": "효과성"
+    },
+    {
+      "word": "elevation",
+      "meaning": "격상, 향상"
+    },
+    {
+      "word": "embedment",
+      "meaning": "내재화, 포함"
+    },
+    {
+      "word": "emergence",
+      "meaning": "출현"
+    },
+    {
+      "word": "erosion",
+      "meaning": "잠식, 침식"
+    },
+    {
+      "word": "establishment",
+      "meaning": "수립, 설립"
+    },
+    {
+      "word": "evolution",
+      "meaning": "진화, 전환"
+    },
+    {
+      "word": "expansion",
+      "meaning": "확장"
+    },
+    {
+      "word": "expertise",
+      "meaning": "전문성"
+    },
+    {
+      "word": "extraction",
+      "meaning": "추출"
+    },
+    {
+      "word": "facilitation",
+      "meaning": "촉진, 원활화"
+    },
+    {
+      "word": "finalization",
+      "meaning": "최종 확정"
+    },
+    {
+      "word": "fluctuation",
+      "meaning": "변동"
+    },
+    {
+      "word": "fragmentation",
+      "meaning": "분열, 파편화"
+    },
+    {
+      "word": "gain",
+      "meaning": "이득, 성장"
+    },
+    {
+      "word": "governance",
+      "meaning": "거버넌스"
+    },
+    {
+      "word": "harmonization",
+      "meaning": "조화, 일치"
+    },
+    {
+      "word": "identification",
+      "meaning": "식별, 파악"
+    },
+    {
+      "word": "implementation",
+      "meaning": "시행, 구현"
+    },
+    {
+      "word": "incentive",
+      "meaning": "인센티브"
+    },
+    {
+      "word": "inclusion",
+      "meaning": "포함, 편입"
+    },
+    {
+      "word": "information",
+      "meaning": "정보"
+    },
+    {
+      "word": "integration",
+      "meaning": "통합"
+    },
+    {
+      "word": "interaction",
+      "meaning": "상호작용"
+    },
+    {
+      "word": "intervention",
+      "meaning": "개입"
+    },
+    {
+      "word": "leadership",
+      "meaning": "리더십"
+    },
+    {
+      "word": "limitation",
+      "meaning": "제한"
+    },
+    {
+      "word": "maintenance",
+      "meaning": "유지보수"
+    },
+    {
+      "word": "merger",
+      "meaning": "합병"
+    },
+    {
+      "word": "migration",
+      "meaning": "마이그레이션, 이동"
+    },
+    {
+      "word": "misalignment",
+      "meaning": "불일치"
+    },
+    {
+      "word": "motivation",
+      "meaning": "동기"
+    },
+    {
+      "word": "negotiation",
+      "meaning": "협상"
+    },
+    {
+      "word": "normalization",
+      "meaning": "표준화, 정상화"
+    },
+    {
+      "word": "orientation",
+      "meaning": "방향 전환, 지향"
+    },
+    {
+      "word": "participation",
+      "meaning": "참여"
+    },
+    {
+      "word": "partnership",
+      "meaning": "파트너십"
+    },
+    {
+      "word": "penetration",
+      "meaning": "침투, 도입"
+    },
+    {
+      "word": "polarization",
+      "meaning": "양극화"
+    },
+    {
+      "word": "preservation",
+      "meaning": "보존"
+    },
+    {
+      "word": "prevalence",
+      "meaning": "만연, 확산"
+    },
+    {
+      "word": "proliferation",
+      "meaning": "확산"
+    },
+    {
+      "word": "proposal",
+      "meaning": "제안"
+    },
+    {
+      "word": "prosperity",
+      "meaning": "번영"
+    },
+    {
+      "word": "qualification",
+      "meaning": "자격 심사, 자격"
+    },
+    {
+      "word": "realization",
+      "meaning": "실현"
+    },
+    {
+      "word": "recognition",
+      "meaning": "인식, 인정"
+    },
+    {
+      "word": "reduction",
+      "meaning": "감소"
+    },
+    {
+      "word": "regulation",
+      "meaning": "규제"
+    },
+    {
+      "word": "reliance",
+      "meaning": "의존"
+    },
+    {
+      "word": "resilience",
+      "meaning": "회복력"
+    },
+    {
+      "word": "retention",
+      "meaning": "유지"
+    },
+    {
+      "word": "revitalization",
+      "meaning": "재활성화"
+    },
+    {
+      "word": "satisfaction",
+      "meaning": "만족"
+    },
+    {
+      "word": "scale",
+      "meaning": "규모"
+    },
+    {
+      "word": "shift",
+      "meaning": "변화, 전환"
+    },
+    {
+      "word": "shortage",
+      "meaning": "부족"
+    },
+    {
+      "word": "simplification",
+      "meaning": "단순화"
+    },
+    {
+      "word": "specification",
+      "meaning": "명세, 명시"
+    },
+    {
+      "word": "standardization",
+      "meaning": "표준화"
+    },
+    {
+      "word": "supplementation",
+      "meaning": "보충"
+    },
+    {
+      "word": "tension",
+      "meaning": "긴장, 갈등"
+    },
+    {
+      "word": "transformation",
+      "meaning": "전환, 변환"
+    },
+    {
+      "word": "transition",
+      "meaning": "전환"
+    },
+    {
+      "word": "uncertainty",
+      "meaning": "불확실성"
+    },
+    {
+      "word": "utilization",
+      "meaning": "활용"
+    },
+    {
+      "word": "validation",
+      "meaning": "검증"
+    },
+    {
+      "word": "verification",
+      "meaning": "검증"
+    },
+    {
+      "word": "visualization",
+      "meaning": "시각화"
+    },
+    {
+      "word": "volatility",
+      "meaning": "변동성"
+    }
+  ],
+  "verb": [
+    {
+      "word": "accelerate",
+      "meaning": "가속하다"
+    },
+    {
+      "word": "accommodate",
+      "meaning": "수용하다"
+    },
+    {
+      "word": "acknowledge",
+      "meaning": "인정하다"
+    },
+    {
+      "word": "adopt",
+      "meaning": "채택하다"
+    },
+    {
+      "word": "advocate",
+      "meaning": "옹호하다"
+    },
+    {
+      "word": "align",
+      "meaning": "일치시키다"
+    },
+    {
+      "word": "allocate",
+      "meaning": "배분하다"
+    },
+    {
+      "word": "amend",
+      "meaning": "개정하다"
+    },
+    {
+      "word": "assess",
+      "meaning": "평가하다"
+    },
+    {
+      "word": "audit",
+      "meaning": "감사하다"
+    },
+    {
+      "word": "authenticate",
+      "meaning": "인증하다"
+    },
+    {
+      "word": "benchmark",
+      "meaning": "벤치마크하다, 기준을 정하다"
+    },
+    {
+      "word": "bridge",
+      "meaning": "해소하다, 연결하다"
+    },
+    {
+      "word": "capitalize",
+      "meaning": "활용하다, 자본화하다"
+    },
+    {
+      "word": "centralize",
+      "meaning": "중앙화하다"
+    },
+    {
+      "word": "certify",
+      "meaning": "인증하다"
+    },
+    {
+      "word": "channel",
+      "meaning": "전달하다, 투자하다"
+    },
+    {
+      "word": "circulate",
+      "meaning": "순환하다, 배포하다"
+    },
+    {
+      "word": "classify",
+      "meaning": "분류하다"
+    },
+    {
+      "word": "complement",
+      "meaning": "보완하다"
+    },
+    {
+      "word": "comply",
+      "meaning": "준수하다"
+    },
+    {
+      "word": "conduct",
+      "meaning": "실시하다"
+    },
+    {
+      "word": "consolidate",
+      "meaning": "통합하다, 강화하다"
+    },
+    {
+      "word": "cultivate",
+      "meaning": "구축하다, 육성하다"
+    },
+    {
+      "word": "customize",
+      "meaning": "맞춤화하다"
+    },
+    {
+      "word": "decarbonize",
+      "meaning": "탈탄소화하다"
+    },
+    {
+      "word": "declare",
+      "meaning": "선언하다"
+    },
+    {
+      "word": "democratize",
+      "meaning": "민주화하다"
+    },
+    {
+      "word": "demonstrate",
+      "meaning": "입증하다"
+    },
+    {
+      "word": "develop",
+      "meaning": "개발하다"
+    },
+    {
+      "word": "differentiate",
+      "meaning": "차별화하다"
+    },
+    {
+      "word": "digitize",
+      "meaning": "디지털화하다"
+    },
+    {
+      "word": "disclose",
+      "meaning": "공개하다"
+    },
+    {
+      "word": "diversify",
+      "meaning": "다양화하다"
+    },
+    {
+      "word": "eliminate",
+      "meaning": "제거하다"
+    },
+    {
+      "word": "empower",
+      "meaning": "역량을 부여하다"
+    },
+    {
+      "word": "enact",
+      "meaning": "제정하다"
+    },
+    {
+      "word": "enforce",
+      "meaning": "시행하다"
+    },
+    {
+      "word": "enhance",
+      "meaning": "향상하다"
+    },
+    {
+      "word": "enrich",
+      "meaning": "풍요롭게 하다"
+    },
+    {
+      "word": "establish",
+      "meaning": "설립하다"
+    },
+    {
+      "word": "evaluate",
+      "meaning": "평가하다"
+    },
+    {
+      "word": "execute",
+      "meaning": "실행하다"
+    },
+    {
+      "word": "expand",
+      "meaning": "확장하다"
+    },
+    {
+      "word": "extend",
+      "meaning": "확대하다"
+    },
+    {
+      "word": "forecast",
+      "meaning": "예측하다"
+    },
+    {
+      "word": "formulate",
+      "meaning": "수립하다, 공식화하다"
+    },
+    {
+      "word": "foster",
+      "meaning": "육성하다, 조성하다"
+    },
+    {
+      "word": "generate",
+      "meaning": "생성하다"
+    },
+    {
+      "word": "govern",
+      "meaning": "규율하다, 지배하다"
+    },
+    {
+      "word": "harmonize",
+      "meaning": "조화시키다, 일치시키다"
+    },
+    {
+      "word": "implement",
+      "meaning": "시행하다"
+    },
+    {
+      "word": "incentivize",
+      "meaning": "인센티브를 제공하다"
+    },
+    {
+      "word": "incorporate",
+      "meaning": "포함하다, 통합하다"
+    },
+    {
+      "word": "institutionalize",
+      "meaning": "제도화하다"
+    },
+    {
+      "word": "integrate",
+      "meaning": "통합하다"
+    },
+    {
+      "word": "introduce",
+      "meaning": "도입하다"
+    },
+    {
+      "word": "justify",
+      "meaning": "정당화하다"
+    },
+    {
+      "word": "launch",
+      "meaning": "출범하다"
+    },
+    {
+      "word": "maintain",
+      "meaning": "유지하다"
+    },
+    {
+      "word": "measure",
+      "meaning": "측정하다"
+    },
+    {
+      "word": "mediate",
+      "meaning": "조정하다"
+    },
+    {
+      "word": "merge",
+      "meaning": "합병하다"
+    },
+    {
+      "word": "mitigate",
+      "meaning": "완화하다"
+    },
+    {
+      "word": "mobilize",
+      "meaning": "동원하다"
+    },
+    {
+      "word": "modernize",
+      "meaning": "현대화하다"
+    },
+    {
+      "word": "monetize",
+      "meaning": "수익화하다"
+    },
+    {
+      "word": "monitor",
+      "meaning": "모니터하다, 감시하다"
+    },
+    {
+      "word": "notify",
+      "meaning": "통보하다"
+    },
+    {
+      "word": "oblige",
+      "meaning": "의무화하다, 강요하다"
+    },
+    {
+      "word": "operationalize",
+      "meaning": "운영화하다"
+    },
+    {
+      "word": "optimize",
+      "meaning": "최적화하다"
+    },
+    {
+      "word": "orchestrate",
+      "meaning": "조율하다"
+    },
+    {
+      "word": "overcome",
+      "meaning": "극복하다"
+    },
+    {
+      "word": "predict",
+      "meaning": "예측하다"
+    },
+    {
+      "word": "preserve",
+      "meaning": "보존하다"
+    },
+    {
+      "word": "prioritize",
+      "meaning": "우선시하다"
+    },
+    {
+      "word": "process",
+      "meaning": "처리하다"
+    },
+    {
+      "word": "promote",
+      "meaning": "촉진하다, 홍보하다"
+    },
+    {
+      "word": "publicize",
+      "meaning": "공개하다, 알리다"
+    },
+    {
+      "word": "quantify",
+      "meaning": "정량화하다"
+    },
+    {
+      "word": "reduce",
+      "meaning": "줄이다"
+    },
+    {
+      "word": "register",
+      "meaning": "등록하다"
+    },
+    {
+      "word": "replicate",
+      "meaning": "복제하다, 재현하다"
+    },
+    {
+      "word": "report",
+      "meaning": "보고하다"
+    },
+    {
+      "word": "require",
+      "meaning": "요구하다"
+    },
+    {
+      "word": "resolve",
+      "meaning": "해결하다"
+    },
+    {
+      "word": "restructure",
+      "meaning": "재구조화하다"
+    },
+    {
+      "word": "revise",
+      "meaning": "수정하다"
+    },
+    {
+      "word": "revitalize",
+      "meaning": "재활성화하다"
+    },
+    {
+      "word": "revoke",
+      "meaning": "취소하다"
+    },
+    {
+      "word": "safeguard",
+      "meaning": "보호하다"
+    },
+    {
+      "word": "scrutinize",
+      "meaning": "면밀히 조사하다"
+    },
+    {
+      "word": "share",
+      "meaning": "공유하다"
+    },
+    {
+      "word": "specify",
+      "meaning": "명시하다"
+    },
+    {
+      "word": "standardize",
+      "meaning": "표준화하다"
+    },
+    {
+      "word": "sterilize",
+      "meaning": "멸균하다"
+    },
+    {
+      "word": "stimulate",
+      "meaning": "촉진하다, 자극하다"
+    },
+    {
+      "word": "streamline",
+      "meaning": "간소화하다"
+    },
+    {
+      "word": "strengthen",
+      "meaning": "강화하다"
+    },
+    {
+      "word": "submit",
+      "meaning": "제출하다"
+    },
+    {
+      "word": "synchronize",
+      "meaning": "동기화하다"
+    },
+    {
+      "word": "systematize",
+      "meaning": "체계화하다"
+    },
+    {
+      "word": "tailor",
+      "meaning": "맞춤화하다"
+    },
+    {
+      "word": "train",
+      "meaning": "교육하다"
+    },
+    {
+      "word": "undertake",
+      "meaning": "착수하다"
+    },
+    {
+      "word": "upgrade",
+      "meaning": "업그레이드하다"
+    },
+    {
+      "word": "validate",
+      "meaning": "검증하다"
+    },
+    {
+      "word": "verify",
+      "meaning": "검증하다"
+    },
+    {
+      "word": "visualize",
+      "meaning": "시각화하다"
+    }
+  ],
+  "adjective": [
+    {
+      "word": "accelerating",
+      "meaning": "가속화되고 있는"
+    },
+    {
+      "word": "acceptable",
+      "meaning": "수용 가능한"
+    },
+    {
+      "word": "accessible",
+      "meaning": "접근 가능한"
+    },
+    {
+      "word": "accumulated",
+      "meaning": "축적된"
+    },
+    {
+      "word": "accumulating",
+      "meaning": "축적되고 있는"
+    },
+    {
+      "word": "acknowledged",
+      "meaning": "인정된"
+    },
+    {
+      "word": "adaptable",
+      "meaning": "적응 가능한"
+    },
+    {
+      "word": "adaptive",
+      "meaning": "적응력 있는"
+    },
+    {
+      "word": "adequate",
+      "meaning": "충분한"
+    },
+    {
+      "word": "affected",
+      "meaning": "영향받은"
+    },
+    {
+      "word": "aggregated",
+      "meaning": "집계된"
+    },
+    {
+      "word": "aging",
+      "meaning": "고령화하고 있는"
+    },
+    {
+      "word": "alarmed",
+      "meaning": "경각심을 느끼는"
+    },
+    {
+      "word": "aligned",
+      "meaning": "일치하는"
+    },
+    {
+      "word": "ambitious",
+      "meaning": "야심찬"
+    },
+    {
+      "word": "anticipated",
+      "meaning": "기대된"
+    },
+    {
+      "word": "applicable",
+      "meaning": "적용 가능한"
+    },
+    {
+      "word": "appropriate",
+      "meaning": "적절한"
+    },
+    {
+      "word": "astonished",
+      "meaning": "놀란"
+    },
+    {
+      "word": "autonomous",
+      "meaning": "자율적인"
+    },
+    {
+      "word": "available",
+      "meaning": "이용 가능한"
+    },
+    {
+      "word": "beneficial",
+      "meaning": "유익한"
+    },
+    {
+      "word": "building",
+      "meaning": "형성되고 있는"
+    },
+    {
+      "word": "burdened",
+      "meaning": "부담받는"
+    },
+    {
+      "word": "capable",
+      "meaning": "~할 수 있는"
+    },
+    {
+      "word": "cautious",
+      "meaning": "조심하는, 신중한"
+    },
+    {
+      "word": "clarified",
+      "meaning": "명확화된"
+    },
+    {
+      "word": "committed",
+      "meaning": "전념하는"
+    },
+    {
+      "word": "compatible",
+      "meaning": "호환되는"
+    },
+    {
+      "word": "compelling",
+      "meaning": "설득력 있는"
+    },
+    {
+      "word": "competent",
+      "meaning": "유능한"
+    },
+    {
+      "word": "complete",
+      "meaning": "완전한"
+    },
+    {
+      "word": "compliant",
+      "meaning": "준수하는"
+    },
+    {
+      "word": "comprehensive",
+      "meaning": "포괄적인"
+    },
+    {
+      "word": "compulsory",
+      "meaning": "의무적인"
+    },
+    {
+      "word": "concerned",
+      "meaning": "우려하는"
+    },
+    {
+      "word": "consistent",
+      "meaning": "일치하는, 일관된"
+    },
+    {
+      "word": "constrained",
+      "meaning": "제약받는"
+    },
+    {
+      "word": "constructive",
+      "meaning": "건설적인"
+    },
+    {
+      "word": "continuing",
+      "meaning": "계속되는"
+    },
+    {
+      "word": "controversial",
+      "meaning": "논쟁적인"
+    },
+    {
+      "word": "convinced",
+      "meaning": "확신하는"
+    },
+    {
+      "word": "covered",
+      "meaning": "보호받는"
+    },
+    {
+      "word": "creative",
+      "meaning": "창의적인"
+    },
+    {
+      "word": "credible",
+      "meaning": "신뢰할 수 있는"
+    },
+    {
+      "word": "crucial",
+      "meaning": "결정적인"
+    },
+    {
+      "word": "customized",
+      "meaning": "맞춤화된"
+    },
+    {
+      "word": "deactivated",
+      "meaning": "비활성화된"
+    },
+    {
+      "word": "declining",
+      "meaning": "감소하고 있는"
+    },
+    {
+      "word": "dedicated",
+      "meaning": "헌신하는"
+    },
+    {
+      "word": "definitive",
+      "meaning": "확정적인, 결정적인"
+    },
+    {
+      "word": "delighted",
+      "meaning": "기뻐하는"
+    },
+    {
+      "word": "destabilized",
+      "meaning": "불안정화된"
+    },
+    {
+      "word": "detailed",
+      "meaning": "세부적인"
+    },
+    {
+      "word": "diminishing",
+      "meaning": "감소하고 있는"
+    },
+    {
+      "word": "disappointed",
+      "meaning": "실망한"
+    },
+    {
+      "word": "disillusioned",
+      "meaning": "환멸을 느끼는"
+    },
+    {
+      "word": "displaced",
+      "meaning": "대체된, 강제 이주된"
+    },
+    {
+      "word": "disturbed",
+      "meaning": "불안해진"
+    },
+    {
+      "word": "diversified",
+      "meaning": "다양화된"
+    },
+    {
+      "word": "durable",
+      "meaning": "내구성 있는"
+    },
+    {
+      "word": "effective",
+      "meaning": "효력이 있는"
+    },
+    {
+      "word": "efficient",
+      "meaning": "효율적인"
+    },
+    {
+      "word": "eligible",
+      "meaning": "자격이 있는"
+    },
+    {
+      "word": "embedded",
+      "meaning": "내재된, 뿌리깊은"
+    },
+    {
+      "word": "emerging",
+      "meaning": "신흥의, 출현하고 있는"
+    },
+    {
+      "word": "enabled",
+      "meaning": "가능해진"
+    },
+    {
+      "word": "encouraged",
+      "meaning": "고무된"
+    },
+    {
+      "word": "engaged",
+      "meaning": "몰입한, 참여하는"
+    },
+    {
+      "word": "enrolled",
+      "meaning": "등록된"
+    },
+    {
+      "word": "equitable",
+      "meaning": "공평한"
+    },
+    {
+      "word": "escalating",
+      "meaning": "고조되고 있는"
+    },
+    {
+      "word": "essential",
+      "meaning": "필수적인"
+    },
+    {
+      "word": "excited",
+      "meaning": "흥분한"
+    },
+    {
+      "word": "exclusive",
+      "meaning": "독점적인"
+    },
+    {
+      "word": "expanding",
+      "meaning": "확장하고 있는"
+    },
+    {
+      "word": "explicit",
+      "meaning": "명시적인"
+    },
+    {
+      "word": "exploited",
+      "meaning": "착취된"
+    },
+    {
+      "word": "falling",
+      "meaning": "미치지 못하는"
+    },
+    {
+      "word": "feasible",
+      "meaning": "실행 가능한"
+    },
+    {
+      "word": "flexible",
+      "meaning": "유연한"
+    },
+    {
+      "word": "fragmented",
+      "meaning": "분열된"
+    },
+    {
+      "word": "frustrated",
+      "meaning": "좌절한"
+    },
+    {
+      "word": "genuine",
+      "meaning": "진정한"
+    },
+    {
+      "word": "groundbreaking",
+      "meaning": "획기적인"
+    },
+    {
+      "word": "growing",
+      "meaning": "증가하는"
+    },
+    {
+      "word": "harmed",
+      "meaning": "피해받은"
+    },
+    {
+      "word": "heartened",
+      "meaning": "힘을 얻은"
+    },
+    {
+      "word": "impenetrable",
+      "meaning": "뚫기 힘든, 불투명한"
+    },
+    {
+      "word": "impressed",
+      "meaning": "감명받은"
+    },
+    {
+      "word": "inadequate",
+      "meaning": "불충분한"
+    },
+    {
+      "word": "incompatible",
+      "meaning": "호환되지 않는"
+    },
+    {
+      "word": "increasing",
+      "meaning": "증가하고 있는"
+    },
+    {
+      "word": "incremental",
+      "meaning": "점진적인"
+    },
+    {
+      "word": "indispensable",
+      "meaning": "불가결한"
+    },
+    {
+      "word": "inevitable",
+      "meaning": "피할 수 없는"
+    },
+    {
+      "word": "influential",
+      "meaning": "영향력 있는"
+    },
+    {
+      "word": "inherent",
+      "meaning": "내재된, 고유의"
+    },
+    {
+      "word": "innovative",
+      "meaning": "혁신적인"
+    },
+    {
+      "word": "inspired",
+      "meaning": "영감받은"
+    },
+    {
+      "word": "inspiring",
+      "meaning": "영감을 주는"
+    },
+    {
+      "word": "insufficient",
+      "meaning": "불충분한"
+    },
+    {
+      "word": "integral",
+      "meaning": "필수적인"
+    },
+    {
+      "word": "integrated",
+      "meaning": "통합된"
+    },
+    {
+      "word": "intensifying",
+      "meaning": "강화되고 있는"
+    },
+    {
+      "word": "intrigued",
+      "meaning": "흥미를 느끼는"
+    },
+    {
+      "word": "intuitive",
+      "meaning": "직관적인"
+    },
+    {
+      "word": "justifiable",
+      "meaning": "정당화 가능한"
+    },
+    {
+      "word": "legal",
+      "meaning": "법적인, 합법적인"
+    },
+    {
+      "word": "legitimate",
+      "meaning": "합법적인, 타당한"
+    },
+    {
+      "word": "mandatory",
+      "meaning": "의무적인"
+    },
+    {
+      "word": "marginalized",
+      "meaning": "소외된"
+    },
+    {
+      "word": "motivated",
+      "meaning": "동기부여된"
+    },
+    {
+      "word": "mounting",
+      "meaning": "증가하고 있는"
+    },
+    {
+      "word": "neglected",
+      "meaning": "소홀히 된"
+    },
+    {
+      "word": "neutral",
+      "meaning": "중립적인"
+    },
+    {
+      "word": "notable",
+      "meaning": "주목할 만한"
+    },
+    {
+      "word": "objective",
+      "meaning": "객관적인"
+    },
+    {
+      "word": "obligatory",
+      "meaning": "의무적인"
+    },
+    {
+      "word": "operational",
+      "meaning": "운영 중인"
+    },
+    {
+      "word": "optimistic",
+      "meaning": "낙관적인"
+    },
+    {
+      "word": "overlooked",
+      "meaning": "간과된"
+    },
+    {
+      "word": "overwhelmed",
+      "meaning": "압도된"
+    },
+    {
+      "word": "participated",
+      "meaning": "참여한"
+    },
+    {
+      "word": "persuasive",
+      "meaning": "설득력 있는"
+    },
+    {
+      "word": "pivotal",
+      "meaning": "중추적인"
+    },
+    {
+      "word": "practical",
+      "meaning": "실용적인"
+    },
+    {
+      "word": "productive",
+      "meaning": "생산적인"
+    },
+    {
+      "word": "promising",
+      "meaning": "유망한"
+    },
+    {
+      "word": "proportional",
+      "meaning": "비례하는"
+    },
+    {
+      "word": "puzzled",
+      "meaning": "당황한"
+    },
+    {
+      "word": "qualified",
+      "meaning": "자격을 갖춘"
+    },
+    {
+      "word": "radical",
+      "meaning": "급진적인, 근본적인"
+    },
+    {
+      "word": "realistic",
+      "meaning": "현실적인"
+    },
+    {
+      "word": "rejected",
+      "meaning": "거부된"
+    },
+    {
+      "word": "relevant",
+      "meaning": "관련된"
+    },
+    {
+      "word": "reliable",
+      "meaning": "신뢰할 수 있는"
+    },
+    {
+      "word": "representative",
+      "meaning": "대표하는"
+    },
+    {
+      "word": "responsible",
+      "meaning": "책임이 있는"
+    },
+    {
+      "word": "revised",
+      "meaning": "개정된"
+    },
+    {
+      "word": "rising",
+      "meaning": "오르고 있는"
+    },
+    {
+      "word": "robust",
+      "meaning": "강력한, 견고한"
+    },
+    {
+      "word": "scalable",
+      "meaning": "확장 가능한"
+    },
+    {
+      "word": "shocked",
+      "meaning": "충격받은"
+    },
+    {
+      "word": "significant",
+      "meaning": "중요한"
+    },
+    {
+      "word": "simple",
+      "meaning": "쉬운, 간단한"
+    },
+    {
+      "word": "simplified",
+      "meaning": "단순화된"
+    },
+    {
+      "word": "skeptical",
+      "meaning": "회의적인"
+    },
+    {
+      "word": "standard",
+      "meaning": "표준적인"
+    },
+    {
+      "word": "strategic",
+      "meaning": "전략적인"
+    },
+    {
+      "word": "streamlined",
+      "meaning": "간소화된"
+    },
+    {
+      "word": "strengthened",
+      "meaning": "강화된"
+    },
+    {
+      "word": "suitable",
+      "meaning": "적합한"
+    },
+    {
+      "word": "suppressed",
+      "meaning": "억제된"
+    },
+    {
+      "word": "surging",
+      "meaning": "급증하고 있는"
+    },
+    {
+      "word": "surprised",
+      "meaning": "놀란"
+    },
+    {
+      "word": "sustainable",
+      "meaning": "지속 가능한"
+    },
+    {
+      "word": "sustained",
+      "meaning": "지속된"
+    },
+    {
+      "word": "systematic",
+      "meaning": "체계적인"
+    },
+    {
+      "word": "systemic",
+      "meaning": "시스템적인"
+    },
+    {
+      "word": "tailored",
+      "meaning": "맞춤화된"
+    },
+    {
+      "word": "tangible",
+      "meaning": "실질적인, 유형의"
+    },
+    {
+      "word": "targeted",
+      "meaning": "목표로 한"
+    },
+    {
+      "word": "tightened",
+      "meaning": "강화된"
+    },
+    {
+      "word": "transformative",
+      "meaning": "변혁적인"
+    },
+    {
+      "word": "transparent",
+      "meaning": "투명한"
+    },
+    {
+      "word": "troubled",
+      "meaning": "불안해하는"
+    },
+    {
+      "word": "unachievable",
+      "meaning": "달성 불가능한"
+    },
+    {
+      "word": "underestimated",
+      "meaning": "과소평가된"
+    },
+    {
+      "word": "underutilized",
+      "meaning": "충분히 활용되지 않은"
+    },
+    {
+      "word": "unprecedented",
+      "meaning": "전례 없는"
+    },
+    {
+      "word": "updated",
+      "meaning": "업데이트된"
+    },
+    {
+      "word": "urgent",
+      "meaning": "긴급한"
+    },
+    {
+      "word": "varied",
+      "meaning": "다양한"
+    },
+    {
+      "word": "verified",
+      "meaning": "검증된"
+    },
+    {
+      "word": "versatile",
+      "meaning": "다재다능한"
+    },
+    {
+      "word": "viable",
+      "meaning": "실행 가능한"
+    },
+    {
+      "word": "vulnerable",
+      "meaning": "취약한"
+    },
+    {
+      "word": "weakened",
+      "meaning": "약화된"
+    },
+    {
+      "word": "wide",
+      "meaning": "광범위한"
+    },
+    {
+      "word": "widening",
+      "meaning": "확대되고 있는"
+    }
+  ],
+  "adverb": [
+    {
+      "word": "accordingly",
+      "meaning": "그에 따라"
+    },
+    {
+      "word": "accordingly,",
+      "meaning": "그에 따라"
+    },
+    {
+      "word": "accurately",
+      "meaning": "정확하게"
+    },
+    {
+      "word": "actively",
+      "meaning": "적극적으로"
+    },
+    {
+      "word": "additionally",
+      "meaning": "추가적으로"
+    },
+    {
+      "word": "adequately",
+      "meaning": "충분히"
+    },
+    {
+      "word": "aggressively",
+      "meaning": "공격적으로"
+    },
+    {
+      "word": "agilely",
+      "meaning": "민첩하게"
+    },
+    {
+      "word": "automatically",
+      "meaning": "자동으로"
+    },
+    {
+      "word": "autonomously",
+      "meaning": "자율적으로"
+    },
+    {
+      "word": "carefully",
+      "meaning": "신중하게"
+    },
+    {
+      "word": "collaboratively",
+      "meaning": "협력하여"
+    },
+    {
+      "word": "collectively",
+      "meaning": "공동으로"
+    },
+    {
+      "word": "compellingly",
+      "meaning": "설득력 있게"
+    },
+    {
+      "word": "competitively",
+      "meaning": "경쟁적으로"
+    },
+    {
+      "word": "comprehensively",
+      "meaning": "포괄적으로"
+    },
+    {
+      "word": "consequently",
+      "meaning": "그 결과"
+    },
+    {
+      "word": "consequently,",
+      "meaning": "그 결과"
+    },
+    {
+      "word": "considerably",
+      "meaning": "상당히"
+    },
+    {
+      "word": "consistently",
+      "meaning": "꾸준히, 일관되게"
+    },
+    {
+      "word": "constructively",
+      "meaning": "건설적으로"
+    },
+    {
+      "word": "continuously",
+      "meaning": "지속적으로"
+    },
+    {
+      "word": "convincingly",
+      "meaning": "설득력 있게"
+    },
+    {
+      "word": "creatively",
+      "meaning": "창의적으로"
+    },
+    {
+      "word": "decisively",
+      "meaning": "단호하게"
+    },
+    {
+      "word": "deliberately",
+      "meaning": "신중하게, 의도적으로"
+    },
+    {
+      "word": "diligently",
+      "meaning": "성실하게"
+    },
+    {
+      "word": "directly",
+      "meaning": "직접적으로"
+    },
+    {
+      "word": "discreetly",
+      "meaning": "신중하게"
+    },
+    {
+      "word": "dramatically",
+      "meaning": "극적으로"
+    },
+    {
+      "word": "dynamically",
+      "meaning": "역동적으로"
+    },
+    {
+      "word": "effectively",
+      "meaning": "효과적으로"
+    },
+    {
+      "word": "efficiently",
+      "meaning": "효율적으로"
+    },
+    {
+      "word": "equitably",
+      "meaning": "공평하게"
+    },
+    {
+      "word": "exceptionally",
+      "meaning": "예외적으로"
+    },
+    {
+      "word": "exclusively",
+      "meaning": "독점적으로"
+    },
+    {
+      "word": "extensively",
+      "meaning": "광범위하게"
+    },
+    {
+      "word": "flawlessly",
+      "meaning": "완벽하게"
+    },
+    {
+      "word": "fundamentally",
+      "meaning": "근본적으로"
+    },
+    {
+      "word": "furthermore",
+      "meaning": "더욱이, 게다가"
+    },
+    {
+      "word": "furthermore,",
+      "meaning": "더욱이"
+    },
+    {
+      "word": "globally",
+      "meaning": "세계적으로"
+    },
+    {
+      "word": "gradually",
+      "meaning": "점차적으로"
+    },
+    {
+      "word": "holistically",
+      "meaning": "전체론적으로"
+    },
+    {
+      "word": "however",
+      "meaning": "하지만"
+    },
+    {
+      "word": "however,",
+      "meaning": "하지만"
+    },
+    {
+      "word": "impartially",
+      "meaning": "공정하게"
+    },
+    {
+      "word": "incrementally",
+      "meaning": "점진적으로"
+    },
+    {
+      "word": "independently",
+      "meaning": "독립적으로"
+    },
+    {
+      "word": "jointly",
+      "meaning": "공동으로"
+    },
+    {
+      "word": "largely",
+      "meaning": "주로"
+    },
+    {
+      "word": "markedly",
+      "meaning": "현저하게"
+    },
+    {
+      "word": "massively",
+      "meaning": "대규모로"
+    },
+    {
+      "word": "measurably",
+      "meaning": "눈에 띄게, 측정 가능하게"
+    },
+    {
+      "word": "meticulously",
+      "meaning": "세심하게"
+    },
+    {
+      "word": "moreover",
+      "meaning": "더욱이"
+    },
+    {
+      "word": "moreover,",
+      "meaning": "더욱이"
+    },
+    {
+      "word": "nevertheless",
+      "meaning": "그럼에도 불구하고"
+    },
+    {
+      "word": "nonetheless",
+      "meaning": "그럼에도 불구하고"
+    },
+    {
+      "word": "noticeably",
+      "meaning": "눈에 띄게"
+    },
+    {
+      "word": "objectively",
+      "meaning": "객관적으로"
+    },
+    {
+      "word": "openly",
+      "meaning": "공개적으로"
+    },
+    {
+      "word": "organically",
+      "meaning": "자연스럽게, 유기적으로"
+    },
+    {
+      "word": "overwhelmingly",
+      "meaning": "압도적으로"
+    },
+    {
+      "word": "persistently",
+      "meaning": "꾸준히"
+    },
+    {
+      "word": "precisely",
+      "meaning": "정확하게"
+    },
+    {
+      "word": "primarily",
+      "meaning": "주로"
+    },
+    {
+      "word": "proactively",
+      "meaning": "선제적으로"
+    },
+    {
+      "word": "profitably",
+      "meaning": "수익성 있게"
+    },
+    {
+      "word": "promptly",
+      "meaning": "신속하게"
+    },
+    {
+      "word": "prudently",
+      "meaning": "신중하게"
+    },
+    {
+      "word": "purposefully",
+      "meaning": "의도적으로"
+    },
+    {
+      "word": "radically",
+      "meaning": "급진적으로, 근본적으로"
+    },
+    {
+      "word": "rapidly",
+      "meaning": "빠르게"
+    },
+    {
+      "word": "remarkably",
+      "meaning": "놀랍게도"
+    },
+    {
+      "word": "repeatedly",
+      "meaning": "반복적으로"
+    },
+    {
+      "word": "rigorously",
+      "meaning": "엄격하게"
+    },
+    {
+      "word": "seamlessly",
+      "meaning": "원활하게"
+    },
+    {
+      "word": "securely",
+      "meaning": "안전하게"
+    },
+    {
+      "word": "seldom",
+      "meaning": "거의 ~없다"
+    },
+    {
+      "word": "selectively",
+      "meaning": "선택적으로"
+    },
+    {
+      "word": "sensitively",
+      "meaning": "민감하게"
+    },
+    {
+      "word": "severely",
+      "meaning": "심각하게"
+    },
+    {
+      "word": "sharply",
+      "meaning": "강하게, 날카롭게"
+    },
+    {
+      "word": "significantly",
+      "meaning": "상당히"
+    },
+    {
+      "word": "specifically",
+      "meaning": "특별히"
+    },
+    {
+      "word": "strategically",
+      "meaning": "전략적으로"
+    },
+    {
+      "word": "substantially",
+      "meaning": "상당히"
+    },
+    {
+      "word": "successfully",
+      "meaning": "성공적으로"
+    },
+    {
+      "word": "sustainably",
+      "meaning": "지속 가능하게"
+    },
+    {
+      "word": "systematically",
+      "meaning": "체계적으로"
+    },
+    {
+      "word": "therefore",
+      "meaning": "따라서"
+    },
+    {
+      "word": "therefore,",
+      "meaning": "따라서"
+    },
+    {
+      "word": "thoroughly",
+      "meaning": "철저하게"
+    },
+    {
+      "word": "transparently",
+      "meaning": "투명하게"
+    },
+    {
+      "word": "ultimately",
+      "meaning": "궁극적으로"
+    },
+    {
+      "word": "unanimously",
+      "meaning": "만장일치로"
+    },
+    {
+      "word": "uniformly",
+      "meaning": "일관되게, 균일하게"
+    },
+    {
+      "word": "urgently",
+      "meaning": "긴급하게"
+    },
+    {
+      "word": "vigorously",
+      "meaning": "강력하게"
+    },
+    {
+      "word": "voluntarily",
+      "meaning": "자발적으로"
+    },
+    {
+      "word": "widely",
+      "meaning": "널리"
+    }
+  ],
+  "_summary": {
+    "total_input": 882,
+    "noun": 117,
+    "verb": 110,
+    "adjective": 181,
+    "adverb": 102,
+    "categorized_total": 510,
+    "skipped_no_pos": 372,
+    "skipped_phrase": 0,
+    "fallback_used": 99
+  }
+}
