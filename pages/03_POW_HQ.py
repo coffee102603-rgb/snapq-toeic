@@ -396,36 +396,13 @@ def render_main_screen():
     progress_text = f"{total_mastered} / {next_at}" if next_at else f"{total_mastered}"
 
     # ═══════════════════════════════════════════
-    # 등급 진행 정보 계산 (TOEIC 빈출 510 카드 안에 통합)
+    # 진행 정보 — 숫자만 (등급 시스템 UI 제거)
     # ═══════════════════════════════════════════
-    next_label = stats.get("next_tier_label", "최고 등급!")
-    next_remaining = stats.get("next_tier_remaining", 0)
+    TOTAL_TARGET = 777  # TOEIC 빈출 777 (전체 목표)
+    remaining = max(0, TOTAL_TARGET - total_mastered)
+    pct = (total_mastered / TOTAL_TARGET) * 100 if total_mastered < TOTAL_TARGET else 100
 
-    # 진행률 계산 (이전 등급 → 현재 등급)
-    if next_at:
-        prev_threshold = 0
-        try:
-            from app.core.word_mastery import TIERS
-            for tier_key, threshold, _, _ in TIERS:
-                if total_mastered >= threshold:
-                    prev_threshold = threshold
-            denom = next_at - prev_threshold
-            pct = ((total_mastered - prev_threshold) / denom) * 100 if denom else 100
-        except Exception:
-            pct = (total_mastered / next_at) * 100 if next_at else 100
-    else:
-        pct = 100
-
-    # 다음 등급 이모지
-    next_tier_emoji = "👑"
-    if next_label and "🥈" in next_label:
-        next_tier_emoji = "🥈"
-    elif next_label and "🥇" in next_label:
-        next_tier_emoji = "🥇"
-    elif next_label and "💎" in next_label:
-        next_tier_emoji = "💎"
-
-    # 🥉 마스터 감방 — 왕실 던전 (보라+금색)
+    # 🎯 TOEIC 빈출 777 — 메인 카드 (골드)
     master_html = (
         '<div style="background:linear-gradient(135deg,#2a1a4a 0%,#1a1228 50%,#3a2055 100%);'
         'border:2.5px solid #ffcc44;border-radius:12px 12px 0 0;border-bottom:none;'
@@ -448,43 +425,37 @@ def render_main_screen():
         'background:linear-gradient(90deg,transparent,#ffcc44,transparent);"></div>'
         # 콘텐츠
         '<div style="position:relative;text-align:center;">'
+        # 헤더 (제목)
         '<div style="display:flex;align-items:center;justify-content:center;'
         'gap:6px;margin-bottom:4px;">'
         '<span style="font-size:14px;">🎯</span>'
         '<span style="color:#ffd966;font-size:15px;font-weight:900;'
         'letter-spacing:2px;text-shadow:0 0 8px rgba(255,204,68,0.4);">'
-        'TOEIC 빈출 510</span>'
+        'TOEIC 빈출 777</span>'
         '<span style="font-size:14px;">🎯</span>'
         '</div>'
+        # 부제 (한 줄)
         '<div style="color:#ffaa66;font-size:10px;font-style:italic;'
-        'margin-bottom:8px;line-height:1.4;">'
-        '⚡ 이 510개만 마스터하면 토익 어휘 끝!'
+        'margin-bottom:10px;line-height:1.4;">'
+        '⚡ 이 777개만 마스터하면 토익 어휘 끝!'
         '</div>'
-        # 골드 진행바 (510 카드 안에 통합)
-        '<div style="background:#0a0408;border-radius:6px;height:16px;overflow:hidden;'
+        # 큰 숫자 (메인!)
+        f'<div style="color:#ffd966;font-size:28px;font-weight:900;'
+        f'text-align:center;line-height:1;margin:6px 0 4px;'
+        f'text-shadow:0 0 10px rgba(255,204,68,0.5);">'
+        f'{total_mastered} / {TOTAL_TARGET}</div>'
+        # 골드 진행바 (얇게)
+        '<div style="background:#0a0408;border-radius:6px;height:14px;overflow:hidden;'
         'border:1px solid #5a4400;position:relative;margin-bottom:6px;">'
         f'<div style="background:linear-gradient(90deg,#ffcc44,#ff9944);'
         f'height:100%;width:{pct:.1f}%;transition:width .5s ease;'
         f'box-shadow:0 0 10px rgba(255,204,68,0.6);"></div>'
-        '<div style="position:absolute;top:0;left:0;right:0;bottom:0;'
-        'display:flex;align-items:center;justify-content:center;'
-        'color:#fff;font-size:10px;font-weight:900;'
-        'text-shadow:0 0 4px rgba(0,0,0,0.8);">'
-        f'{progress_text}'
-        '</div>'
-        '</div>'
-        # 등급 정보 (한 줄)
-        '<div style="display:flex;align-items:center;justify-content:space-between;'
-        'font-size:10px;margin-bottom:4px;">'
-        f'<span style="color:#ddccaa;">{tier_emoji} <strong style="color:#ffcc44;">{tier_label}</strong> 도전 중</span>'
-        f'<span style="color:#aabbcc;">다음: {next_tier_emoji} <strong style="color:#ffcc44;">{next_label}</strong></span>'
         '</div>'
         # 동기부여 메시지
         '<div style="text-align:center;color:#ffaa66;font-size:11px;'
         'font-weight:700;letter-spacing:0.5px;">'
-        + (f'🔥 <strong style="color:#ffdd44;">{next_remaining}개</strong> 더 외우면 '
-           f'<strong style="color:#ffcc44;">{next_label}</strong>!'
-           if next_remaining else '🎉 최고 등급 달성!')
+        + (f'🔥 <strong style="color:#ffdd44;">{remaining}개</strong> 더 외우면 정복 완료!'
+           if remaining > 0 else '🎉 777개 완전 정복!')
         + '</div>'
         '</div>'
         '</div>'
@@ -493,7 +464,7 @@ def render_main_screen():
 
     # 마스터 입장 버튼 (보라/금색 그라디언트 — 카드와 통일)
     st.markdown('<div class="master-key-wrap">', unsafe_allow_html=True)
-    btn_master_clicked = st.button("🎯 510 도전 시작 🔑", use_container_width=True,
+    btn_master_clicked = st.button("🎯 777 도전 시작 🔑", use_container_width=True,
                                     key="btn_master")
     st.markdown('</div>', unsafe_allow_html=True)
     if btn_master_clicked:
@@ -611,7 +582,7 @@ def render_main_screen():
         st.markdown('<div class="wanted-empty-key-wrap">', unsafe_allow_html=True)
         if st.button("🚨 약점 없음 · 잘하고 있어!", use_container_width=True,
                      key="btn_wanted_empty"):
-            st.info("🎉 약점이 없어요! TOEIC 빈출 510에 도전해주세요!")
+            st.info("🎉 약점이 없어요! TOEIC 빈출 777에 도전해주세요!")
         st.markdown('</div>', unsafe_allow_html=True)
 
     # 메인으로 버튼은 좌상단으로 이동했음 (위 헤더 참조)
