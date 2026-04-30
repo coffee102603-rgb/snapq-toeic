@@ -1513,10 +1513,10 @@ _GRID_HTML = f"""
 <div class="npc-ov" style="border-radius:14px;"><div class="npc-sk">💀</div><div class="npc-tx">틀린 단어들이 여기 갇혔어.<br>3번 연속 맞혀야 석방.<br>모르면 평생 여기야.</div></div>
 <div class="npc-ov" id="ov-pb-a" style="border-radius:14px;"><div class="npc-sk">💀</div><div class="npc-tx">화력전·암호해독에서 틀린 단어들.<br>여기 다 갇혔어.<br>3번 연속 맞혀야 석방!</div><div class="npc-stat">{_npc_pb_stat}</div></div><div class="npc-ov" id="ov-pb-b" style="border-radius:14px;"><div class="npc-sk">💀</div><div class="npc-tx">화력전·암호해독에서 네가 모른 단어들.<br>여기 다 있어.<br>외울 때까지 절대 못 나가.</div><div class="npc-stat">{_npc_pb_stat}</div></div>
   <div class="pb-left">
-    <div class="pb-icon">💀</div>
+    <div class="pb-icon">🚨</div>
     <div>
       <div class="pb-name">단어 포로수용소</div>
-      <div style="font-size:9px;color:#aa88dd;margin-top:1px;font-weight:600;">틀린 단어를 가두고 · 외울 때까지 석방 금지!</div>
+      <div style="font-size:9px;color:#ffaa99;margin-top:1px;font-weight:700;font-style:italic;">⛓️ 한 번 틀리면 끝까지 추적!</div>
       <div class="pb-sub">{_pr_badge_txt}</div>
       <div style="font-size:10px;margin-top:3px;">
         <span style="color:#ff8833;font-weight:700;">⚡ 화력전 {_pr_p5}명</span>
@@ -1525,7 +1525,7 @@ _GRID_HTML = f"""
       </div>
     </div>
   </div>
-  <div class="pb-btn">심문 →</div>
+  <div class="pb-btn">체포 →</div>
 </div>
 
 <!-- 전장 그리드 -->
