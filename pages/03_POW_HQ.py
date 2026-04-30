@@ -1,17 +1,29 @@
 """
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-FILE:     pages/03_POW_HQ_NEW.py
-ROLE:     단어 포로수용소 — 감방 2개 (마스터 / 수배)
+FILE:     pages/03_POW_HQ.py (v2 — 학습장 + 시험장)
+ROLE:     단어 포로수용소
 VERSION:  SnapQ TOEIC V3 — 2026.04.30
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 PHILOSOPHY:
-    단순! 손가락 한 번 → 게임 바로 시작.
-    
-    [감방 2개]
-      🥉 마스터 감방  → 마스터 안 된 단어 5개 도전
-      🎯 수배 감방    → 자주 틀린 단어 5개 진압
-    
-    수배 0명 → 회색 비활성화 ("🎉 깨끗해!")
+    학습 → 평가 분리.
+    먼저 외우게 하고, 그 다음 시험.
+
+PAGE FLOW:
+    [메인 — 감방 2개]
+        🥉 마스터 감방 / 🎯 수배 감방
+        ↓
+    [학습장 — 낱말카드 10개]
+        2x5 그리드, 클릭 시 영어 ↔ 한글 토글
+        ↓
+    [⚔️ 시험장 입장]
+        ↓
+    [시험장 — 두더지 시험]
+        무작위 순서, 4지선다, 3초 타이머
+        오답/시간초과 → 수배 감방 직행
+        ↓
+    [결과 화면]
+        ✅ 정답 N개
+        🎯 수배 감방행 N개
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 """
 
@@ -48,7 +60,6 @@ st.set_page_config(
 nickname = require_access()
 init_db()
 
-# URL 쿼리 닉네임 복구
 _qs_nick = st.query_params.get("nick", "")
 _qs_ag = st.query_params.get("ag", "")
 if _qs_nick and _qs_ag == "1":
@@ -65,7 +76,7 @@ if _qs_nick and _qs_ag == "1":
 BASE = Path(__file__).parent.parent
 WORD_POOL_PATH = BASE / "data" / "word_pool_categorized.json"
 
-GAME_WORD_COUNT = 5
+GAME_WORD_COUNT = 10  # 카드 10개!
 TIMER_SECONDS = 3.0
 
 
@@ -83,9 +94,10 @@ def load_word_pool() -> dict:
 # 페이지 모드
 # ═══════════════════════════════════════════════════════════════
 
-PAGE_MODE_KEY = "_pow_hq_mode"      # "main" / "game"
-GAME_WORDS_KEY = "_pow_hq_words"
-GAME_TYPE_KEY = "_pow_hq_type"      # "master" / "wanted"
+PAGE_MODE_KEY = "_pow_mode"          # main / study / exam / result
+GAME_WORDS_KEY = "_pow_words"
+GAME_TYPE_KEY = "_pow_type"          # master / wanted
+EXAM_RESULTS_KEY = "_pow_results"    # 시험 결과 임시 저장
 
 
 def get_mode() -> str:
@@ -97,7 +109,7 @@ def set_mode(m: str):
 
 
 # ═══════════════════════════════════════════════════════════════
-# CSS — 다크 테마
+# CSS
 # ═══════════════════════════════════════════════════════════════
 
 st.markdown("""
@@ -110,15 +122,6 @@ st.markdown("""
     padding-bottom: 40px !important;
 }
 #MainMenu, footer, header { visibility: hidden; }
-
-/* 감방 카드 hover */
-.cell-card {
-    transition: transform 0.2s, box-shadow 0.2s;
-    cursor: pointer;
-}
-.cell-card:hover {
-    transform: translateY(-2px);
-}
 
 div.stButton > button {
     border-radius: 12px !important;
@@ -136,9 +139,8 @@ div.stButton > button {
 # ═══════════════════════════════════════════════════════════════
 
 def render_main_screen():
-    """단어 포로수용소 메인 — 감방 2개만!"""
+    """단어 포로수용소 메인 — 감방 2개."""
 
-    # 헤더
     st.markdown("""
     <div style="text-align:center;margin-bottom:24px;">
         <div style="font-size:48px;margin-bottom:6px;">💀</div>
@@ -151,7 +153,6 @@ def render_main_screen():
     </div>
     """, unsafe_allow_html=True)
 
-    # 진행도 + 수배 단어 가져오기
     stats = get_mastery_stats(nickname)
     wanted = get_wanted_words(nickname, limit=20)
 
@@ -159,25 +160,19 @@ def render_main_screen():
     tier_emoji = stats["tier_emoji"]
     tier_label = stats["tier_label"]
     next_at = stats.get("next_tier_at")
-    next_label = stats.get("next_tier_label", "최고!")
 
     wanted_count = len(wanted)
 
-    # ──────────────────────────────────────
     # 🥉 마스터 감방
-    # ──────────────────────────────────────
-    if next_at:
-        progress_text = f"{total_mastered} / {next_at}"
-    else:
-        progress_text = f"{total_mastered}"
+    progress_text = f"{total_mastered} / {next_at}" if next_at else f"{total_mastered}"
 
     st.markdown(f"""
-    <div class="cell-card" style="
+    <div style="
         background: linear-gradient(135deg, #2a1a4a 0%, #1a1228 100%);
         border: 2.5px solid #cc44ff;
         border-radius: 16px;
         padding: 26px 20px;
-        margin-bottom: 16px;
+        margin-bottom: 12px;
         text-align: center;
         position: relative;
     ">
@@ -214,21 +209,18 @@ def render_main_screen():
         else:
             st.session_state[GAME_WORDS_KEY] = words
             st.session_state[GAME_TYPE_KEY] = "master"
-            set_mode("game")
+            set_mode("study")
             st.rerun()
 
-    # ──────────────────────────────────────
     # 🎯 수배 감방
-    # ──────────────────────────────────────
     if wanted_count > 0:
-        # 활성 상태
         st.markdown(f"""
-        <div class="cell-card" style="
+        <div style="
             background: linear-gradient(135deg, #4a1a28 0%, #281218 100%);
             border: 2.5px solid #ff4477;
             border-radius: 16px;
             padding: 26px 20px;
-            margin: 18px 0 16px;
+            margin: 18px 0 12px;
             text-align: center;
             position: relative;
         ">
@@ -263,17 +255,16 @@ def render_main_screen():
             if words:
                 st.session_state[GAME_WORDS_KEY] = words
                 st.session_state[GAME_TYPE_KEY] = "wanted"
-                set_mode("game")
+                set_mode("study")
                 st.rerun()
     else:
-        # 비활성 (회색)
         st.markdown("""
         <div style="
             background: #14171f;
             border: 2px dashed #3a3f4a;
             border-radius: 16px;
             padding: 24px 20px;
-            margin: 18px 0 16px;
+            margin: 18px 0 12px;
             text-align: center;
             opacity: 0.7;
         ">
@@ -291,9 +282,9 @@ def render_main_screen():
         </div>
         """, unsafe_allow_html=True)
 
-    # 메인으로 돌아가기
+    # 메인으로
     st.markdown("<div style='margin-top:20px;'></div>", unsafe_allow_html=True)
-    if st.button("🏠 메인으로", use_container_width=True, key="btn_back"):
+    if st.button("🏠 메인으로", use_container_width=True, key="btn_back_main"):
         st.switch_page("main_hub.py")
 
 
@@ -302,7 +293,7 @@ def render_main_screen():
 # ═══════════════════════════════════════════════════════════════
 
 def _build_options(words: List[Dict], pool: dict) -> List[Dict]:
-    """4지선다 옵션 생성."""
+    """4지선다 옵션 생성 (시험용)."""
     all_meanings = list({
         item["meaning"].strip()
         for pos in ["noun", "verb", "adjective", "adverb"]
@@ -325,7 +316,7 @@ def _build_options(words: List[Dict], pool: dict) -> List[Dict]:
 
 
 def build_master_game_words(nick: str) -> List[Dict]:
-    """마스터 감방 — 마스터 안 된 단어 5개."""
+    """마스터 감방 — 마스터 안 된 단어 10개."""
     pool = load_word_pool()
     if not pool:
         return []
@@ -337,7 +328,7 @@ def build_master_game_words(nick: str) -> List[Dict]:
 
 
 def build_wanted_game_words(nick: str, wanted: List[Dict]) -> List[Dict]:
-    """수배 감방 — 자주 틀린 단어 5개."""
+    """수배 감방 — 수배 단어 최대 10개."""
     pool = load_word_pool()
     if not pool:
         return []
@@ -346,10 +337,11 @@ def build_wanted_game_words(nick: str, wanted: List[Dict]) -> List[Dict]:
 
 
 # ═══════════════════════════════════════════════════════════════
-# 게임 화면
+# 학습장 — 낱말카드 2x5 그리드
 # ═══════════════════════════════════════════════════════════════
 
-def render_game_screen():
+def render_study_screen():
+    """학습장 — 낱말카드 10개 표시 (자유 토글)."""
     words = st.session_state.get(GAME_WORDS_KEY, [])
     game_type = st.session_state.get(GAME_TYPE_KEY, "master")
 
@@ -358,16 +350,215 @@ def render_game_screen():
         st.rerun()
         return
 
-    if game_type == "wanted":
-        title = "수배 감방 진압"
-        subtitle = "⛓️ 도망친 놈들을 잡아라!"
-        accent = "#ff4477"
-    else:
-        title = "마스터 감방"
-        subtitle = "⛓️ 외울 때까지 가둔다"
-        accent = "#cc44ff"
+    accent = "#ff4477" if game_type == "wanted" else "#cc44ff"
+    title = "수배 감방 학습장" if game_type == "wanted" else "마스터 감방 학습장"
 
-    words_json = json.dumps(words, ensure_ascii=False)
+    # 헤더
+    st.markdown(f"""
+    <div style="text-align:center;margin-bottom:18px;">
+        <div style="font-size:36px;margin-bottom:4px;">🃏</div>
+        <div style="color:{accent};font-size:18px;font-weight:900;letter-spacing:2px;">
+            {title}
+        </div>
+        <div style="color:#557788;font-size:11px;margin-top:4px;letter-spacing:1px;">
+            모르는 단어 카드를 탭해서 확인해
+        </div>
+    </div>
+    """, unsafe_allow_html=True)
+
+    # 낱말카드 — JS로 처리 (Python rerun 안 함, 토글 효과)
+    words_simple = [
+        {
+            "word": w["word"],
+            "meaning": w["meaning"],
+            "no": i + 1,
+        }
+        for i, w in enumerate(words)
+    ]
+    words_json = json.dumps(words_simple, ensure_ascii=False)
+
+    cards_html = """
+<!DOCTYPE html>
+<html><head><meta charset="utf-8">
+<style>
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    background: transparent;
+    padding: 8px 0;
+}
+.card-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+}
+.card {
+    background: #1a2030;
+    border: 2px solid #3d5278;
+    border-radius: 12px;
+    padding: 18px 8px;
+    min-height: 90px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    cursor: pointer;
+    transition: all 0.3s;
+    position: relative;
+    user-select: none;
+}
+.card:hover {
+    background: #243044;
+    border-color: __ACCENT__;
+    transform: translateY(-2px);
+}
+.card.flipped {
+    background: #2a1a30;
+    border-color: __ACCENT__;
+}
+.card.seen::after {
+    content: "✓";
+    position: absolute;
+    top: 4px;
+    right: 6px;
+    color: __ACCENT__;
+    font-size: 11px;
+    font-weight: 700;
+}
+.card-no {
+    color: #5a6878;
+    font-size: 9px;
+    font-weight: 700;
+    letter-spacing: 1px;
+    margin-bottom: 4px;
+}
+.card-en {
+    color: #fff;
+    font-size: 16px;
+    font-weight: 800;
+    letter-spacing: 0.5px;
+}
+.card-kr {
+    color: __ACCENT_LIGHT__;
+    font-size: 13px;
+    font-weight: 700;
+    line-height: 1.4;
+}
+.card .hint {
+    color: #5a6878;
+    font-size: 8px;
+    margin-top: 4px;
+    font-style: italic;
+}
+</style>
+</head>
+<body>
+<div class="card-grid" id="grid"></div>
+<script>
+const WORDS = __WORDS_JSON__;
+const seen = new Set();
+
+function render() {
+    const grid = document.getElementById('grid');
+    grid.innerHTML = '';
+    WORDS.forEach((w, idx) => {
+        const card = document.createElement('div');
+        card.className = 'card';
+        if (seen.has(idx)) card.classList.add('seen');
+        if (w._flipped) card.classList.add('flipped');
+        
+        const no = document.createElement('div');
+        no.className = 'card-no';
+        no.textContent = '#' + w.no;
+        card.appendChild(no);
+        
+        if (w._flipped) {
+            const kr = document.createElement('div');
+            kr.className = 'card-kr';
+            kr.textContent = w.meaning;
+            card.appendChild(kr);
+            
+            const hint = document.createElement('div');
+            hint.className = 'hint';
+            hint.textContent = '탭하면 영어';
+            card.appendChild(hint);
+        } else {
+            const en = document.createElement('div');
+            en.className = 'card-en';
+            en.textContent = w.word;
+            card.appendChild(en);
+            
+            if (!seen.has(idx)) {
+                const hint = document.createElement('div');
+                hint.className = 'hint';
+                hint.textContent = '탭해서 뜻 보기';
+                card.appendChild(hint);
+            }
+        }
+        
+        card.onclick = () => {
+            w._flipped = !w._flipped;
+            seen.add(idx);
+            render();
+        };
+        
+        grid.appendChild(card);
+    });
+}
+
+render();
+</script>
+</body></html>
+"""
+
+    cards_html = cards_html.replace("__WORDS_JSON__", words_json)
+    cards_html = cards_html.replace("__ACCENT__", accent)
+    cards_html = cards_html.replace("__ACCENT_LIGHT__",
+                                     "#ff99bb" if game_type == "wanted" else "#dd99ff")
+
+    components.html(cards_html, height=560, scrolling=False)
+
+    st.markdown("<div style='margin-top:8px;'></div>", unsafe_allow_html=True)
+
+    # 시험장 입장 + 돌아가기
+    col1, col2 = st.columns([2, 1])
+    with col1:
+        if st.button("⚔️ 시험장 입장!", use_container_width=True, type="primary",
+                     key="btn_to_exam"):
+            set_mode("exam")
+            st.rerun()
+    with col2:
+        if st.button("← 돌아가기", use_container_width=True, key="btn_back_from_study"):
+            st.session_state.pop(GAME_WORDS_KEY, None)
+            st.session_state.pop(GAME_TYPE_KEY, None)
+            set_mode("main")
+            st.rerun()
+
+
+# ═══════════════════════════════════════════════════════════════
+# 시험장 — 두더지 시험 (HTML/JS)
+# ═══════════════════════════════════════════════════════════════
+
+def render_exam_screen():
+    """시험장 — 두더지 스타일 4지선다 + 3초 타이머."""
+    words = st.session_state.get(GAME_WORDS_KEY, [])
+    game_type = st.session_state.get(GAME_TYPE_KEY, "master")
+
+    if not words:
+        set_mode("main")
+        st.rerun()
+        return
+
+    accent = "#ff4477" if game_type == "wanted" else "#cc44ff"
+
+    # 무작위 셔플
+    exam_words = words.copy()
+    random.shuffle(exam_words)
+    for i, w in enumerate(exam_words, 1):
+        w["display_no"] = i
+
+    words_json = json.dumps(exam_words, ensure_ascii=False)
 
     game_html = """
 <!DOCTYPE html>
@@ -490,26 +681,22 @@ body {
     text-align: center; margin-top: 12px; height: 24px;
     font-size: 13px; font-weight: 800; letter-spacing: 1px;
 }
-.round-banner {
-    background: #2a1a30; border: 2px solid #cc44aa;
-    border-radius: 12px; padding: 24px 16px; text-align: center;
-    margin: 40px 0;
-}
-.round-banner-icon { font-size: 48px; margin-bottom: 12px; }
-.round-banner-title {
-    color: #ff66bb; font-size: 22px; font-weight: 900;
-    letter-spacing: 2px; margin-bottom: 8px;
-}
-.round-banner-sub {
-    color: #aabbcc; font-size: 13px; line-height: 1.5;
-}
-.clear-screen { text-align: center; padding: 40px 20px; }
-.clear-emoji { font-size: 60px; }
-.clear-text {
-    color: #88ffcc; font-size: 24px; font-weight: 900;
+.done-screen { text-align: center; padding: 30px 20px; }
+.done-emoji { font-size: 60px; }
+.done-text {
+    color: __ACCENT__; font-size: 22px; font-weight: 900;
     margin-top: 12px; letter-spacing: 2px;
 }
-.clear-sub { color: #888; font-size: 13px; margin-top: 8px; }
+.done-stats {
+    margin-top: 20px;
+    background: #243044; border: 1px solid #3d5278;
+    border-radius: 10px; padding: 16px;
+}
+.stat-row {
+    display: flex; justify-content: space-between;
+    padding: 6px 0; font-size: 13px;
+}
+.stat-row + .stat-row { border-top: 1px dashed #3d5278; }
 @keyframes shake {
     0%, 100% { transform: translateX(0); }
     25% { transform: translateX(-6px); }
@@ -529,17 +716,17 @@ body {
   <div class="header">
     <span class="header-emoji">💀</span>
     <div>
-      <div class="header-title">__TITLE__</div>
-      <div class="header-sub" id="round-sub">__SUBTITLE__</div>
+      <div class="header-title">시험장</div>
+      <div class="header-sub">⛓️ 3초 안에 답!</div>
     </div>
     <div class="header-counter">
-      <div class="counter-label">남은 포로</div>
+      <div class="counter-label">남은 단어</div>
       <div class="counter-value" id="counter">0 / 0</div>
     </div>
   </div>
   <div class="skull-quote">
     <span style="font-size:14px;">💀</span>
-    <div class="skull-quote-text" id="skull-quote">포로 입장 준비 중...</div>
+    <div class="skull-quote-text" id="skull-quote">10명을 심문할 시간이다</div>
   </div>
   <div class="progress">
     <div class="progress-fill" id="progress-bar"></div>
@@ -555,7 +742,7 @@ body {
     <div class="word-card-bars"></div>
     <div class="word-card-label">
       <span style="font-size:14px;">⛓️</span>
-      <span class="word-card-label-text" id="word-label">포로 #1</span>
+      <span class="word-card-label-text" id="word-label">단어 #1</span>
       <span style="font-size:14px;">⛓️</span>
     </div>
     <div class="word-display" id="word-display">...</div>
@@ -564,19 +751,14 @@ body {
   <div class="feedback" id="feedback"></div>
 </div>
 
-<div id="round-area" style="display:none;">
-  <div class="round-banner">
-    <div class="round-banner-icon">💀</div>
-    <div class="round-banner-title" id="round-title">재진압!</div>
-    <div class="round-banner-sub" id="round-desc">탈출한 포로를 다시 잡아라!</div>
-  </div>
-</div>
-
-<div id="clear-area" style="display:none;">
-  <div class="clear-screen">
-    <div class="clear-emoji">🎉</div>
-    <div class="clear-text">소탕 완료!</div>
-    <div class="clear-sub">아래 ✅ 진행도 갱신을 눌러줘.</div>
+<div id="done-area" style="display:none;">
+  <div class="done-screen">
+    <div class="done-emoji">🎉</div>
+    <div class="done-text">시험 종료!</div>
+    <div class="done-stats" id="done-stats"></div>
+    <div style="color:#888;font-size:11px;margin-top:14px;">
+      아래 ✅ 결과 보기 버튼을 눌러줘
+    </div>
   </div>
 </div>
 
@@ -585,13 +767,14 @@ const ALL_WORDS = __WORDS_JSON__;
 const TIMER_SEC = __TIMER__;
 
 let queue = [...ALL_WORDS];
-let currentRound = 1;
-let failedThisRound = [];
 let currentItem = null;
 let timerInterval = null;
 let timeLeft = TIMER_SEC;
 let totalProgress = 0;
-const totalRoundOne = ALL_WORDS.length;
+const totalWords = ALL_WORDS.length;
+
+const correctList = [];
+const wrongList = [];
 
 const SKULL_QUOTES = [
     "이놈, 도망 못 가게 해라.",
@@ -600,15 +783,6 @@ const SKULL_QUOTES = [
     "이번엔 놓치지 마라.",
     "정답을 골라!",
 ];
-
-function pickQuote(item, roundNum) {
-    if (roundNum === 2) return "탈출했던 놈이다. 다시 잡아라!";
-    if (item.wrong_count >= 3) {
-        return "이놈 " + item.wrong_count + "번 탈출했어. 이번엔 잡아.";
-    }
-    if (item.wrong_count >= 2) return "두 번 탈출한 놈이다.";
-    return SKULL_QUOTES[Math.floor(Math.random() * SKULL_QUOTES.length)];
-}
 
 function startTimer() {
     if (timerInterval) clearInterval(timerInterval);
@@ -653,8 +827,8 @@ function updateTimerUI() {
 function onTimeout() {
     document.querySelectorAll('.option-btn').forEach(b => b.disabled = true);
     document.getElementById('feedback').style.color = '#ff8844';
-    document.getElementById('feedback').textContent = '⏰ 시간 초과! 포로 탈출!';
-    failedThisRound.push(currentItem);
+    document.getElementById('feedback').textContent = '⏰ 시간 초과! 수배 감방행!';
+    wrongList.push({ word: currentItem.word, pos: currentItem.pos });
     setTimeout(nextWord, 800);
 }
 
@@ -666,24 +840,19 @@ function pickOpt(btn, idx) {
         btn.classList.add('correct');
         fb.style.color = '#88ffcc';
         fb.textContent = '🔒 체포 완료!';
-        currentItem._correct = true;
+        correctList.push({ word: currentItem.word, pos: currentItem.pos });
     } else {
         btn.classList.add('wrong');
         fb.style.color = '#ff8844';
-        fb.textContent = '💨 탈출 시도! 놓쳤다!';
-        failedThisRound.push(currentItem);
-        currentItem._correct = false;
+        fb.textContent = '💨 탈출! 수배 감방행!';
+        wrongList.push({ word: currentItem.word, pos: currentItem.pos });
     }
     setTimeout(nextWord, 800);
 }
 
 function nextWord() {
     if (queue.length === 0) {
-        if (currentRound === 1 && failedThisRound.length > 0) {
-            showRoundBanner();
-        } else {
-            showClear();
-        }
+        showDone();
         return;
     }
     currentItem = queue.shift();
@@ -695,12 +864,12 @@ function nextWord() {
 function renderWord() {
     document.getElementById('word-display').textContent = currentItem.word;
     document.getElementById('feedback').textContent = '';
-    const counterTotal = currentRound === 1 ? totalRoundOne : (failedThisRound.length + queue.length + 1);
-    const remaining = currentRound === 1 ? (totalRoundOne - totalProgress + 1) : (queue.length + 1);
-    document.getElementById('counter').textContent = remaining + ' / ' + counterTotal;
-    document.getElementById('word-label').textContent = '포로 #' + currentItem.display_no;
-    document.getElementById('skull-quote').textContent = pickQuote(currentItem, currentRound);
-    const pct = ((counterTotal - remaining) / counterTotal) * 100;
+    const remaining = queue.length + 1;
+    document.getElementById('counter').textContent = remaining + ' / ' + totalWords;
+    document.getElementById('word-label').textContent = '단어 #' + currentItem.display_no;
+    document.getElementById('skull-quote').textContent = 
+        SKULL_QUOTES[Math.floor(Math.random() * SKULL_QUOTES.length)];
+    const pct = ((totalWords - remaining) / totalWords) * 100;
     document.getElementById('progress-bar').style.width = pct + '%';
     const optsDiv = document.getElementById('options');
     optsDiv.innerHTML = '';
@@ -713,30 +882,23 @@ function renderWord() {
     });
 }
 
-function showRoundBanner() {
-    document.getElementById('game-area').style.display = 'none';
-    document.getElementById('round-area').style.display = 'block';
-    const n = failedThisRound.length;
-    document.getElementById('round-title').textContent = '🚨 재진압!';
-    document.getElementById('round-desc').innerHTML =
-        '탈출 포로 <strong style="color:#ff8844;">' + n + '명</strong> 발생!<br>다시 잡아라!';
-    setTimeout(() => {
-        currentRound = 2;
-        queue = failedThisRound;
-        failedThisRound = [];
-        totalProgress = 0;
-        document.getElementById('round-area').style.display = 'none';
-        document.getElementById('game-area').style.display = 'block';
-        document.getElementById('round-sub').textContent = '⛓️ 재진압 라운드!';
-        nextWord();
-    }, 2200);
-}
-
-function showClear() {
+function showDone() {
     if (timerInterval) clearInterval(timerInterval);
     document.getElementById('game-area').style.display = 'none';
-    document.getElementById('round-area').style.display = 'none';
-    document.getElementById('clear-area').style.display = 'block';
+    document.getElementById('done-area').style.display = 'block';
+    
+    const stats = document.getElementById('done-stats');
+    stats.innerHTML = 
+        '<div class="stat-row"><span style="color:#88ffcc;">✅ 체포 (정답)</span>' +
+        '<span style="color:#fff;font-weight:900;">' + correctList.length + '명</span></div>' +
+        '<div class="stat-row"><span style="color:#ff8844;">🎯 수배 감방행</span>' +
+        '<span style="color:#fff;font-weight:900;">' + wrongList.length + '명</span></div>';
+    
+    // 결과를 storage에 저장 (Streamlit이 못 읽을 수 있어서 백업 방안)
+    try {
+        const result = { correct: correctList, wrong: wrongList };
+        localStorage.setItem('pow_exam_result', JSON.stringify(result));
+    } catch(e) {}
 }
 
 setTimeout(nextWord, 200);
@@ -746,37 +908,137 @@ setTimeout(nextWord, 200);
 
     game_html = game_html.replace("__WORDS_JSON__", words_json)
     game_html = game_html.replace("__TIMER__", str(TIMER_SECONDS))
-    game_html = game_html.replace("__TITLE__", title)
-    game_html = game_html.replace("__SUBTITLE__", subtitle)
     game_html = game_html.replace("__ACCENT__", accent)
 
     components.html(game_html, height=620, scrolling=False)
 
-    # 종료 버튼
+    # 결과 보기 버튼 (학생이 시험 끝낸 후 누름)
     st.markdown("<div style='margin-top:8px;'></div>", unsafe_allow_html=True)
-    if st.button("✅ 진행도 갱신 + 돌아가기",
-                 use_container_width=True, type="primary", key="btn_game_done"):
-        on_game_clear()
+    if st.button("✅ 결과 보기", use_container_width=True, type="primary",
+                 key="btn_to_result"):
+        # 시험 결과 처리: 모든 단어 처리되었다고 가정
+        # JS에서 정확한 결과를 못 받기 때문에 학생 자율에 맡김
+        # → 결과 화면에서 학생이 직접 어느 단어를 틀렸는지 표시
+        on_exam_done(exam_words)
 
 
-def on_game_clear():
-    """게임 종료 — word_mastery 카운트 +."""
-    words = st.session_state.get(GAME_WORDS_KEY, [])
-    for item in words:
-        try:
-            log_word_attempt(
-                nickname=nickname,
-                word=item["word"],
-                pos=item.get("pos", "noun"),
-                is_correct=True,
-            )
-        except Exception:
-            pass
-
-    st.session_state.pop(GAME_WORDS_KEY, None)
-    st.session_state.pop(GAME_TYPE_KEY, None)
-    set_mode("main")
+def on_exam_done(exam_words):
+    """시험 종료 — 결과 화면으로."""
+    # 시험 결과 (이번 라운드의 단어들)
+    st.session_state[EXAM_RESULTS_KEY] = exam_words
+    set_mode("result")
     st.rerun()
+
+
+# ═══════════════════════════════════════════════════════════════
+# 결과 화면 — 어떤 단어를 틀렸는지 학생이 표시
+# ═══════════════════════════════════════════════════════════════
+
+def render_result_screen():
+    """
+    시험 결과 — 학생이 직접 정답/오답 체크.
+    
+    이유: HTML/JS에서 Python으로 데이터 전달이 모바일에서 신뢰 불가.
+    → 학생 정직성에 맡기는 셀프 평가 (대부분 정직함)
+    """
+    exam_words = st.session_state.get(EXAM_RESULTS_KEY, [])
+    game_type = st.session_state.get(GAME_TYPE_KEY, "master")
+
+    if not exam_words:
+        set_mode("main")
+        st.rerun()
+        return
+
+    accent = "#ff4477" if game_type == "wanted" else "#cc44ff"
+
+    st.markdown(f"""
+    <div style="text-align:center;margin-bottom:14px;">
+        <div style="font-size:36px;margin-bottom:4px;">📊</div>
+        <div style="color:{accent};font-size:18px;font-weight:900;letter-spacing:2px;">
+            시험 결과 정직 보고
+        </div>
+        <div style="color:#7a8fa8;font-size:11px;margin-top:4px;">
+            틀린 단어를 체크해줘 (수배 감방으로 직행)
+        </div>
+    </div>
+    """, unsafe_allow_html=True)
+
+    # 단어별 체크박스
+    st.markdown("""
+    <div style="background:#243044;border:1px solid #3d5278;border-radius:10px;
+                padding:8px 12px;margin-bottom:10px;color:#aabbcc;font-size:11px;
+                font-style:italic;text-align:center;">
+        💀 틀린 단어만 체크 → 정답은 안 체크하면 자동 처리
+    </div>
+    """, unsafe_allow_html=True)
+
+    # 각 단어별 체크박스 (틀린 거)
+    wrong_keys = []
+    for w in exam_words:
+        key = f"_wrong_{w['word']}"
+        wrong_keys.append((w, key))
+        # 단어 정보 카드
+        col1, col2 = st.columns([3, 1])
+        with col1:
+            st.markdown(f"""
+            <div style="background:#1a2030;border:1px solid #2a3550;border-radius:8px;
+                        padding:8px 12px;margin-bottom:4px;">
+                <span style="color:#fff;font-size:14px;font-weight:700;">
+                    {w['word']}
+                </span>
+                <span style="color:#7a8fa8;font-size:12px;margin-left:8px;">
+                    → {w['meaning']}
+                </span>
+            </div>
+            """, unsafe_allow_html=True)
+        with col2:
+            st.checkbox("틀림", key=key, label_visibility="collapsed")
+
+    st.markdown("<div style='margin-top:14px;'></div>", unsafe_allow_html=True)
+
+    # 결과 처리
+    col1, col2 = st.columns([2, 1])
+    with col1:
+        if st.button("💾 결과 저장 + 돌아가기", use_container_width=True,
+                     type="primary", key="btn_save_result"):
+            wrong_count = 0
+            correct_count = 0
+            for w, key in wrong_keys:
+                is_wrong = st.session_state.get(key, False)
+                try:
+                    log_word_attempt(
+                        nickname=nickname,
+                        word=w["word"],
+                        pos=w.get("pos", "noun"),
+                        is_correct=not is_wrong,
+                    )
+                    if is_wrong:
+                        wrong_count += 1
+                    else:
+                        correct_count += 1
+                except Exception:
+                    pass
+                # 체크박스 정리
+                st.session_state.pop(key, None)
+
+            # 안내 메시지
+            if wrong_count > 0:
+                st.success(f"✅ {correct_count}명 체포 / 🎯 {wrong_count}명 수배 감방행")
+            else:
+                st.success(f"🎉 전원 체포! 완벽!")
+
+            # 정리
+            st.session_state.pop(GAME_WORDS_KEY, None)
+            st.session_state.pop(GAME_TYPE_KEY, None)
+            st.session_state.pop(EXAM_RESULTS_KEY, None)
+            set_mode("main")
+            st.rerun()
+
+    with col2:
+        if st.button("🔁 다시", use_container_width=True, key="btn_redo"):
+            # 같은 단어로 다시
+            set_mode("study")
+            st.rerun()
 
 
 # ═══════════════════════════════════════════════════════════════
@@ -784,7 +1046,11 @@ def on_game_clear():
 # ═══════════════════════════════════════════════════════════════
 
 mode = get_mode()
-if mode == "game":
-    render_game_screen()
+if mode == "study":
+    render_study_screen()
+elif mode == "exam":
+    render_exam_screen()
+elif mode == "result":
+    render_result_screen()
 else:
     render_main_screen()
