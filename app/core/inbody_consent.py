@@ -165,11 +165,11 @@ def _show_consent_form(nickname: str) -> None:
     # 동의서 본문 (캐릭터 톤 + 명확한 정보)
     st.markdown(f"""
     <div style="background:#0a1218;border:2px solid #00d4aa;border-radius:16px;
-                padding:28px 24px;margin-bottom:20px;">
+                padding:28px 24px;margin-bottom:6px;">
 
-      <div style="text-align:center;margin-bottom:20px;">
-        <div style="font-size:48px;margin-bottom:8px;">🪖</div>
-        <div style="color:#00d4aa;font-size:22px;font-weight:900;letter-spacing:1px;">
+      <div style="text-align:center;margin-bottom:6px;">
+        <div style="font-size:28px;margin-bottom:8px;">🪖</div>
+        <div style="color:#00d4aa;font-size:13px;font-weight:900;letter-spacing:1px;">
           전사 등록 안내
         </div>
         <div style="color:#557766;font-size:12px;margin-top:6px;letter-spacing:2px;">
@@ -178,9 +178,9 @@ def _show_consent_form(nickname: str) -> None:
       </div>
 
       <div style="background:#050910;border-radius:10px;padding:16px;
-                  border-left:3px solid #00d4aa;margin-bottom:16px;">
-        <div style="color:#00ffcc;font-size:14px;font-weight:700;
-                    font-style:italic;line-height:1.6;">
+                  border-left:3px solid #00d4aa;margin-bottom:6px;">
+        <div style="color:#00ffcc;font-size:12px;font-weight:700;
+                    font-style:italic;line-height:1.3;">
           "전장에 들어오기 전, 한 가지만 확인하자."
         </div>
         <div style="color:#557766;font-size:11px;margin-top:6px;letter-spacing:1px;">
@@ -188,7 +188,7 @@ def _show_consent_form(nickname: str) -> None:
         </div>
       </div>
 
-      <div style="color:#aabbcc;font-size:14px;line-height:1.7;margin-bottom:16px;">
+      <div style="color:#aabbcc;font-size:12px;line-height:1.7;margin-bottom:6px;">
         <p style="margin:0 0 10px;font-weight:700;color:#00d4aa;">
           📊 너의 전투 기록을 인바디에 표시하려면, 이게 필요해:
         </p>
@@ -200,8 +200,8 @@ def _show_consent_form(nickname: str) -> None:
       </div>
 
       <div style="background:#1a0a08;border-left:3px solid #ff8844;
-                  border-radius:6px;padding:12px;margin-bottom:16px;">
-        <p style="color:#ffaa66;font-size:12px;margin:0;line-height:1.6;">
+                  border-radius:6px;padding:8px;margin-bottom:6px;">
+        <p style="color:#ffaa66;font-size:12px;margin:0;line-height:1.3;">
           <strong>중요</strong> — 이 데이터는 <strong>네 인바디 화면에만</strong> 사용돼.
           연구·분석엔 절대 안 쓰여 (IRB 별도 동의 후에만 가능).
         </p>
@@ -209,14 +209,14 @@ def _show_consent_form(nickname: str) -> None:
 
       <div style="background:#080a18;border-radius:6px;padding:10px 12px;
                   margin-bottom:18px;">
-        <p style="color:#557788;font-size:11px;margin:0;line-height:1.5;">
+        <p style="color:#557788;font-size:11px;margin:0;line-height:1.3;">
           🚪 언제든 빠져나갈 수 있어. 데이터 삭제는 추후 메뉴에 추가될 예정.
         </p>
       </div>
 
       <div style="background:#0e0620;border-left:3px solid #cc44ff;
                   border-radius:6px;padding:10px 12px;margin-bottom:8px;">
-        <p style="color:#dd99ff;font-size:11px;margin:0;line-height:1.5;">
+        <p style="color:#dd99ff;font-size:11px;margin:0;line-height:1.3;">
           💡 <strong>거부해도 학습은 정상</strong>이야. 인바디 화면만 안 보일 뿐.
         </p>
       </div>

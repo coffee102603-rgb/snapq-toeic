@@ -210,6 +210,26 @@ div.stButton > button {
 .master-cell-wrap > div { border-radius: 12px 12px 0 0 !important; border-bottom: none !important; }
 .wanted-cell-wrap > div { border-radius: 12px 12px 0 0 !important; border-bottom: none !important; }
 
+/* 좌상단 뒤로가기 버튼 — 작고 미니 */
+.back-btn-wrap div.stButton > button {
+    background: transparent !important;
+    color: #88aabb !important;
+    border: 1.5px solid #2a3550 !important;
+    border-radius: 8px !important;
+    padding: 4px 10px !important;
+    font-size: 18px !important;
+    min-height: 32px !important;
+    font-weight: 700 !important;
+}
+.back-btn-wrap div.stButton > button:hover {
+    background: #1a2030 !important;
+    border-color: #4a5570 !important;
+    color: #ccddee !important;
+}
+
+/* 컴팩트 — 줄간격 줄이기 */
+.block-container { padding-top: 4px !important; }
+
 /* TIMEOUT_HIDDEN 버튼 숨기기 — 텍스트로 매칭 */
 button:has(div p:contains("TIMEOUT_HIDDEN")),
 [data-testid="stButton"] button[aria-label*="TIMEOUT"] {
@@ -260,15 +280,23 @@ observer.observe(document.body, { childList: true, subtree: true });
 # ═══════════════════════════════════════════════════════════════
 
 def render_main_screen():
-    st.markdown("""
-    <div style="text-align:center;margin-bottom:8px;">
-        <div style="font-size:28px;line-height:1;">💀</div>
-        <div style="color:#cc44ff;font-size:17px;font-weight:900;letter-spacing:2px;
-                    margin-top:2px;">
-            단어 포로수용소
+    # 헤더 — 좌상단 뒤로가기 + 중앙 타이틀 (한 줄)
+    col_back, col_title, col_spacer = st.columns([1, 4, 1])
+    with col_back:
+        st.markdown('<div class="back-btn-wrap">', unsafe_allow_html=True)
+        if st.button("←", key="btn_back_top", help="메인으로"):
+            st.switch_page("main_hub.py")
+        st.markdown('</div>', unsafe_allow_html=True)
+    with col_title:
+        st.markdown("""
+        <div style="text-align:center;padding-top:6px;">
+            <span style="font-size:18px;">💀</span>
+            <span style="color:#cc44ff;font-size:15px;font-weight:900;
+                         letter-spacing:2px;margin-left:6px;">
+                단어 포로수용소
+            </span>
         </div>
-    </div>
-    """, unsafe_allow_html=True)
+        """, unsafe_allow_html=True)
 
     # 직전 시험 결과 표시
     last_result = st.session_state.pop("_pow_last_result", None)
@@ -306,7 +334,7 @@ def render_main_screen():
     master_html = (
         '<div style="background:linear-gradient(135deg,#2a1a4a 0%,#1a1228 50%,#3a2055 100%);'
         'border:2.5px solid #ffcc44;border-radius:12px 12px 0 0;border-bottom:none;'
-        'padding:16px 16px 12px;'
+        'padding:10px 14px 8px;'
         'margin-bottom:0;position:relative;overflow:hidden;'
         'box-shadow:0 0 18px rgba(204,68,255,0.2);">'
         # 가는 세로 창살 (왕실 느낌)
@@ -326,22 +354,21 @@ def render_main_screen():
         # 콘텐츠
         '<div style="position:relative;text-align:center;">'
         '<div style="display:flex;align-items:center;justify-content:center;'
-        'gap:8px;margin-bottom:4px;">'
-        '<span style="font-size:14px;color:#ffcc44;">⚜️</span>'
-        f'<span style="font-size:24px;">{tier_emoji}</span>'
-        '<span style="color:#ffd966;font-size:16px;font-weight:900;'
+        'gap:6px;margin-bottom:2px;">'
+        '<span style="font-size:12px;color:#ffcc44;">⚜️</span>'
+        f'<span style="font-size:18px;">{tier_emoji}</span>'
+        '<span style="color:#ffd966;font-size:14px;font-weight:900;'
         'letter-spacing:2px;text-shadow:0 0 8px rgba(255,204,68,0.4);">'
         '👑 마스터 감방</span>'
-        f'<span style="font-size:24px;">{tier_emoji}</span>'
-        '<span style="font-size:14px;color:#ffcc44;">⚜️</span>'
+        f'<span style="font-size:18px;">{tier_emoji}</span>'
+        '<span style="font-size:12px;color:#ffcc44;">⚜️</span>'
         '</div>'
-        f'<div style="color:#ffaaff;font-size:24px;font-weight:900;'
+        f'<div style="color:#ffaaff;font-size:20px;font-weight:900;'
         f'line-height:1;">{progress_text}</div>'
-        '<div style="color:#aabbcc;font-size:11px;margin-top:4px;">'
-        f'<strong style="color:#ffcc44;">{tier_label}</strong> 도전 중'
+        '<div style="color:#aabbcc;font-size:10px;margin-top:2px;">'
+        f'<strong style="color:#ffcc44;">{tier_label}</strong> 도전 중 · '
+        '<span style="color:#7766aa;font-style:italic;">⚜️ 왕실의 시험</span>'
         '</div>'
-        '<div style="color:#7766aa;font-size:9px;margin-top:2px;font-style:italic;">'
-        '⚜️ 왕실의 시험이다 ⚜️</div>'
         '</div>'
         '</div>'
     )
@@ -367,8 +394,8 @@ def render_main_screen():
         wanted_html = (
             '<div style="background:linear-gradient(135deg,#5a0a14 0%,#000 50%,#3a0a08 100%);'
             'border:2.5px solid #ff2244;border-radius:12px 12px 0 0;border-bottom:none;'
-            'padding:16px 16px 12px;'
-            'margin:10px 0 0;position:relative;overflow:hidden;'
+            'padding:10px 14px 8px;'
+            'margin:6px 0 0;position:relative;overflow:hidden;'
             'box-shadow:0 0 18px rgba(255,34,68,0.25);">'
             # 굵은 가로 창살 (지옥 느낌)
             '<div style="position:absolute;top:0;left:0;right:0;height:5px;'
@@ -387,23 +414,22 @@ def render_main_screen():
             # 콘텐츠
             '<div style="position:relative;text-align:center;">'
             '<div style="display:flex;align-items:center;justify-content:center;'
-            'gap:8px;margin-bottom:4px;">'
-            '<span style="font-size:14px;">⛓️</span>'
-            '<span style="font-size:24px;">🎯</span>'
-            '<span style="color:#ff6688;font-size:16px;font-weight:900;'
+            'gap:6px;margin-bottom:2px;">'
+            '<span style="font-size:12px;">⛓️</span>'
+            '<span style="font-size:18px;">🎯</span>'
+            '<span style="color:#ff6688;font-size:14px;font-weight:900;'
             'letter-spacing:2px;text-shadow:0 0 8px rgba(255,34,68,0.5);">'
             '🔥 수배 감방</span>'
-            '<span style="font-size:24px;">🎯</span>'
-            '<span style="font-size:14px;">⛓️</span>'
+            '<span style="font-size:18px;">🎯</span>'
+            '<span style="font-size:12px;">⛓️</span>'
             '</div>'
-            f'<div style="color:#ff4477;font-size:24px;font-weight:900;'
+            f'<div style="color:#ff4477;font-size:20px;font-weight:900;'
             f'line-height:1;text-shadow:0 0 6px rgba(255,68,119,0.6);">'
             f'{wanted_count}명 수감</div>'
-            '<div style="color:#ffaa99;font-size:11px;margin-top:4px;">'
-            '<strong style="color:#ff8844;">자꾸 도망친 놈들</strong>'
+            '<div style="color:#ffaa99;font-size:10px;margin-top:2px;">'
+            '<strong style="color:#ff8844;">자꾸 도망친 놈들</strong> · '
+            '<span style="color:#aa4455;font-style:italic;">⛓️ 끝까지 잡아라</span>'
             '</div>'
-            '<div style="color:#aa4455;font-size:9px;margin-top:2px;font-style:italic;">'
-            '⛓️ 끝까지 잡아라 ⛓️</div>'
             '</div>'
             '</div>'
         )
@@ -439,13 +465,7 @@ def render_main_screen():
         </div>
         """, unsafe_allow_html=True)
 
-    # 메인으로 (회색 — 감방과 분리)
-    st.markdown('<div class="home-key-wrap">', unsafe_allow_html=True)
-    btn_home_clicked = st.button("🏠 메인으로", use_container_width=True,
-                                  key="btn_back_main")
-    st.markdown('</div>', unsafe_allow_html=True)
-    if btn_home_clicked:
-        st.switch_page("main_hub.py")
+    # 메인으로 버튼은 좌상단으로 이동했음 (위 헤더 참조)
 
 
 # ═══════════════════════════════════════════════════════════════
