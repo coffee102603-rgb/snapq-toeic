@@ -783,7 +783,7 @@ render();
     cards_html = cards_html.replace("__CARD_BORDER__", card_border)
     cards_html = cards_html.replace("__CARD_FLIPPED_BG__", card_flipped_bg)
 
-    components.html(cards_html, height=370, scrolling=False)
+    components.html(cards_html, height=330, scrolling=False)
 
     st.markdown("<div style='margin-top:6px;'></div>", unsafe_allow_html=True)
 
