@@ -741,33 +741,34 @@ def render_exam_screen():
     )
     st.markdown(word_card_html, unsafe_allow_html=True)
 
-    # 직전 답변 피드백
+    # 직전 답변 피드백 (있으면 짧게 표시)
     feedback = st.session_state.pop(EXAM_FEEDBACK_KEY, None)
     if feedback:
         if feedback == "correct":
             msg_color = "#88ffcc"
             msg_bg = "#0a3322"
             msg_border = "#22cc88"
-            msg_text = "🔒 체포!"
+            msg_text = "🔒 직전: 체포!"
         elif feedback == "wrong":
             msg_color = "#ffaa88"
             msg_bg = "#3a1010"
             msg_border = "#ff4422"
-            msg_text = "💨 탈출! 수배행!"
+            msg_text = "💨 직전: 탈출!"
         else:  # timeout
             msg_color = "#ffaa88"
             msg_bg = "#3a2010"
             msg_border = "#ff8844"
-            msg_text = "⏰ 시간 초과! 수배행!"
+            msg_text = "⏰ 직전: 시간 초과!"
 
         st.markdown(f"""
-        <div style="background:{msg_bg};border:1.5px solid {msg_border};border-radius:8px;
-                    padding:6px 10px;margin-bottom:8px;text-align:center;">
-            <span style="color:{msg_color};font-size:13px;font-weight:800;">{msg_text}</span>
+        <div style="background:{msg_bg};border:1.5px solid {msg_border};border-radius:6px;
+                    padding:4px 10px;margin-bottom:6px;text-align:center;">
+            <span style="color:{msg_color};font-size:11px;font-weight:700;">{msg_text}</span>
         </div>
         """, unsafe_allow_html=True)
-    else:
-        # 타이머 (피드백 없을 때만, 게임 타입별 색)
+
+    # 타이머 (항상 표시 — 매 단어마다 새로 생성)
+    if True:  # 조건 무시, 항상 그림
         timer_html = """
 <!DOCTYPE html>
 <html><head><meta charset="utf-8">
@@ -796,15 +797,22 @@ body { margin: 0; padding: 0; background: transparent; font-family: system-ui; }
 </style>
 </head>
 <body>
-<div class="timer-box" id="tb">
+<!-- cache-bust: __CACHE_BUST__ -->
+<div class="timer-box" id="tb___WORD_IDX__">
     <span class="timer-icon">⏱</span>
-    <div class="timer-bar"><div class="timer-fill" id="bar"></div></div>
-    <span class="timer-text" id="txt">3.0s</span>
+    <div class="timer-bar"><div class="timer-fill" id="bar___WORD_IDX__"></div></div>
+    <span class="timer-text" id="txt___WORD_IDX__">3.0s</span>
 </div>
 <script>
-// 단어 인덱스 — HTML이 매번 달라지게 하는 식별자 (Streamlit 캐시 방지)
+// 단어 인덱스 + 캐시 버스터 (매번 다름)
 const WORD_IDX = '__WORD_IDX__';
-console.log('[Timer] Starting for word index:', WORD_IDX);
+const CACHE_BUST = '__CACHE_BUST__';
+console.log('[Timer] Word IDX:', WORD_IDX, 'CacheBust:', CACHE_BUST);
+
+// 동적 element ID
+const TB_ID = 'tb_' + WORD_IDX;
+const BAR_ID = 'bar_' + WORD_IDX;
+const TXT_ID = 'txt_' + WORD_IDX;
 
 let timeLeft = 3.0;
 const interval = setInterval(() => {
@@ -817,16 +825,17 @@ const interval = setInterval(() => {
         try {
             const buttons = window.parent.document.querySelectorAll('button');
             for (const btn of buttons) {
-                // key가 timeout_으로 시작하는 버튼 찾기 (aria-label 또는 텍스트로)
                 const ariaLabel = btn.getAttribute('aria-label') || '';
                 const btnText = (btn.textContent || '').trim();
-                // 보이지 않는 버튼은 텍스트가 점(.)이거나 비어있음
                 if (ariaLabel.includes('timeout_') || btnText === '.' || btnText === '·') {
+                    console.log('[Timer] Timeout — clicking hidden button');
                     btn.click();
                     return;
                 }
             }
-        } catch(e) {}
+        } catch(e) {
+            console.error('[Timer] Click failed:', e);
+        }
         return;
     }
     update();
@@ -834,11 +843,15 @@ const interval = setInterval(() => {
 
 function update() {
     const pct = Math.max(0, (timeLeft / 3.0) * 100);
-    document.getElementById('bar').style.width = pct + '%';
-    document.getElementById('txt').textContent = timeLeft.toFixed(1) + 's';
-    const bar = document.getElementById('bar');
-    const txt = document.getElementById('txt');
-    const tb = document.getElementById('tb');
+    const bar = document.getElementById(BAR_ID);
+    const txt = document.getElementById(TXT_ID);
+    const tb = document.getElementById(TB_ID);
+    if (!bar || !txt || !tb) {
+        console.error('[Timer] Element missing!', BAR_ID, TXT_ID, TB_ID);
+        return;
+    }
+    bar.style.width = pct + '%';
+    txt.textContent = timeLeft.toFixed(1) + 's';
     if (timeLeft <= 1.0) {
         bar.style.background = '__TIMER_WARN__';
         txt.style.color = '__TIMER_WARN__';
@@ -864,6 +877,9 @@ function update() {
         timer_html = timer_html.replace("__TIMER_SAFE_END__", timer_safe_end)
         timer_html = timer_html.replace("__TIMER_WARN__", timer_color_warn)
         timer_html = timer_html.replace("__WORD_IDX__", str(idx))
+        # 캐시 회피용 타임스탬프 (매 렌더링마다 다름)
+        import time as _time
+        timer_html = timer_html.replace("__CACHE_BUST__", str(_time.time()))
         components.html(timer_html, height=24)
 
     # 4지선다 버튼
