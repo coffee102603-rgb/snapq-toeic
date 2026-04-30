@@ -649,15 +649,15 @@ def render_study_screen():
         st.markdown('</div>', unsafe_allow_html=True)
     with col_title:
         st.markdown(f"""
-        <div style="text-align:center;padding-top:2px;">
+        <div style="text-align:center;padding-top:2px;margin-bottom:2px;">
             <div style="display:flex;align-items:center;justify-content:center;gap:6px;">
-                <span style="font-size:16px;">🃏</span>
-                <span style="color:{title_color};font-size:13px;font-weight:900;
+                <span style="font-size:14px;">🃏</span>
+                <span style="color:{title_color};font-size:12px;font-weight:900;
                             letter-spacing:2px;text-shadow:0 0 6px {accent}55;">
                     {title}
                 </span>
             </div>
-            <div style="color:#557788;font-size:9px;margin-top:1px;font-style:italic;">
+            <div style="color:#557788;font-size:8px;margin-top:0;font-style:italic;">
                 {subtitle}
             </div>
         </div>
@@ -788,7 +788,8 @@ render();
 
     st.markdown("<div style='margin-top:6px;'></div>", unsafe_allow_html=True)
 
-    # 시험장 입장 버튼만 (← 메인은 헤더에 있음)
+    # 시험장 입장 버튼 (카드 바로 아래에 붙음)
+    st.markdown('<div style="margin-top:-8px;"></div>', unsafe_allow_html=True)
     exam_label = "🔥 진압 시작!" if game_type == "wanted" else "⚔️ 시험장 입장!"
     if st.button(exam_label, use_container_width=True, type="primary",
                  key="btn_to_exam"):
