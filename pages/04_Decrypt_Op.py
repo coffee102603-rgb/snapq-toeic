@@ -969,16 +969,14 @@ elif st.session_state.p7_phase == "battle":
     </div>''', unsafe_allow_html=True)
 
     # 답 버튼 — div id 래퍼로 색상 고정
-    # ★ [BUG FIX 2026.05.09] 시각적 락: 이미 클릭됐으면 모든 버튼 비활성화 (UX 개선)
-    # ★ [HOTFIX 2026.05.09] p7_session_no 미초기화 시 AttributeError 방지 → .get() 사용
-    _p7_sn = st.session_state.get("p7_session_no", 0)
-    _click_lock_key_check = f"p7_clicked_{_p7_sn}_{step}"
-    _btns_disabled = st.session_state.get(_click_lock_key_check, False)
+    # ★ [HOTFIX 2026.05.09 v3] 시각적 락(disabled) 제거 — Q2에서 클릭 차단 버그 원인
+    #   Streamlit의 widget 상태와 rerun 사이클 때문에 disabled가 stale 상태로 남음
+    #   → 다중 클릭 차단은 클릭 핸들러 내부 락으로만 처리 (그것만으로 충분)
     for i, ch in enumerate(cur["choices"]):
         _ch_clean = ch.split(") ",1)[-1] if ") " in ch else ch
         _bid = _btn_ids[i]
         st.markdown(f'<div id="btn-{_bid}">', unsafe_allow_html=True)
-        if st.button(f"【{_btn_labels[i]}】  {_ch_clean}", key=f"p7ch{step}_{i}", use_container_width=True, disabled=_btns_disabled):
+        if st.button(f"【{_btn_labels[i]}】  {_ch_clean}", key=f"p7ch{step}_{i}", use_container_width=True):
             # ═══════════════════════════════════════════════════
             # 🛡️ [BUG FIX 2026.05.09] 다중 클릭 차단 — 가장 먼저!
             # 이전 버그: 락 체크가 append 이후에 있어서, 답을 다 클릭하면
