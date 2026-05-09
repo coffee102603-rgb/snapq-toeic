@@ -654,12 +654,6 @@ div[data-testid="stButton"] button.p7nav:hover{
             st.session_state.p7_type_guessed = False
             st.session_state.p7_type_correct = None
             st.session_state.p7_analytics = {"step_times":[],"step_correct":[],"step_type_correct":[],"step_started_at":time.time()}
-            # ★ [BUG FIX 2026.05.09] 새 세션 시작 시 클릭 락 모두 초기화
-            # 이전 세션의 락이 남아있으면 새 세션에서 클릭이 안 됨
-            _keys_to_clear = [k for k in st.session_state.keys()
-                              if isinstance(k, str) and (k.startswith("p7_clicked_") or k.startswith("p7_processed_"))]
-            for _k in _keys_to_clear:
-                del st.session_state[_k]
             st.session_state.p7_phase = "battle"
             st.rerun()
     else:
@@ -969,27 +963,11 @@ elif st.session_state.p7_phase == "battle":
     </div>''', unsafe_allow_html=True)
 
     # 답 버튼 — div id 래퍼로 색상 고정
-    # ★ [BUG FIX 2026.05.09] 시각적 락: 이미 클릭됐으면 모든 버튼 비활성화 (UX 개선)
-    _click_lock_key_check = f"p7_clicked_{st.session_state.p7_session_no}_{step}"
-    _btns_disabled = st.session_state.get(_click_lock_key_check, False)
     for i, ch in enumerate(cur["choices"]):
         _ch_clean = ch.split(") ",1)[-1] if ") " in ch else ch
         _bid = _btn_ids[i]
         st.markdown(f'<div id="btn-{_bid}">', unsafe_allow_html=True)
-        if st.button(f"【{_btn_labels[i]}】  {_ch_clean}", key=f"p7ch{step}_{i}", use_container_width=True, disabled=_btns_disabled):
-            # ═══════════════════════════════════════════════════
-            # 🛡️ [BUG FIX 2026.05.09] 다중 클릭 차단 — 가장 먼저!
-            # 이전 버그: 락 체크가 append 이후에 있어서, 답을 다 클릭하면
-            #            p7_answers에 4개가 쌓이고 (4/3 표시), 정답이 섞이면 진행됨
-            # 수정 원리: append() 호출 전에 STEP 단위 락을 체크하고 즉시 set
-            # ═══════════════════════════════════════════════════
-            _click_lock_key = f"p7_clicked_{st.session_state.p7_session_no}_{step}"
-            if st.session_state.get(_click_lock_key, False):
-                # 이미 이 STEP에서 답을 클릭했음 → 추가 클릭 무시
-                st.stop()
-            # 즉시 락 설정 (이 줄 이후 같은 STEP의 다른 버튼 클릭은 위에서 차단됨)
-            st.session_state[_click_lock_key] = True
-
+        if st.button(f"【{_btn_labels[i]}】  {_ch_clean}", key=f"p7ch{step}_{i}", use_container_width=True):
             ok = (i == cur["answer"])
             st.session_state.p7_answers.append(ok)
             # ─── analytics 기록 ───
@@ -1407,11 +1385,6 @@ elif st.session_state.p7_phase == "lost":
     if st.button("🔥 설욕전! 다시 싸운다!", type="primary", use_container_width=True):
         for k in ["p7_phase","p7_cat","p7_tsec","p7_tsec_chosen","p7_step","p7_started_at","p7_answers","p7_data","p7_phase_reason"]:
             if k in st.session_state: del st.session_state[k]
-        # ★ [BUG FIX 2026.05.09] 설욕전 시작 시 클릭 락 모두 초기화
-        _keys_to_clear = [k for k in st.session_state.keys()
-                          if isinstance(k, str) and (k.startswith("p7_clicked_") or k.startswith("p7_processed_"))]
-        for _k in _keys_to_clear:
-            del st.session_state[_k]
         st.rerun()
     if st.button("🏠 홈", key="lost_home", use_container_width=True):
         st.session_state._p7_just_left = True
