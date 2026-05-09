@@ -970,7 +970,9 @@ elif st.session_state.p7_phase == "battle":
 
     # 답 버튼 — div id 래퍼로 색상 고정
     # ★ [BUG FIX 2026.05.09] 시각적 락: 이미 클릭됐으면 모든 버튼 비활성화 (UX 개선)
-    _click_lock_key_check = f"p7_clicked_{st.session_state.p7_session_no}_{step}"
+    # ★ [HOTFIX 2026.05.09] p7_session_no 미초기화 시 AttributeError 방지 → .get() 사용
+    _p7_sn = st.session_state.get("p7_session_no", 0)
+    _click_lock_key_check = f"p7_clicked_{_p7_sn}_{step}"
     _btns_disabled = st.session_state.get(_click_lock_key_check, False)
     for i, ch in enumerate(cur["choices"]):
         _ch_clean = ch.split(") ",1)[-1] if ") " in ch else ch
@@ -983,7 +985,9 @@ elif st.session_state.p7_phase == "battle":
             #            p7_answers에 4개가 쌓이고 (4/3 표시), 정답이 섞이면 진행됨
             # 수정 원리: append() 호출 전에 STEP 단위 락을 체크하고 즉시 set
             # ═══════════════════════════════════════════════════
-            _click_lock_key = f"p7_clicked_{st.session_state.p7_session_no}_{step}"
+            # ★ [HOTFIX 2026.05.09] p7_session_no 안전 접근
+            _p7_sn2 = st.session_state.get("p7_session_no", 0)
+            _click_lock_key = f"p7_clicked_{_p7_sn2}_{step}"
             if st.session_state.get(_click_lock_key, False):
                 # 이미 이 STEP에서 답을 클릭했음 → 추가 클릭 무시
                 st.stop()
