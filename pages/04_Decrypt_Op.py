@@ -968,225 +968,216 @@ elif st.session_state.p7_phase == "battle":
         _bid = _btn_ids[i]
         st.markdown(f'<div id="btn-{_bid}">', unsafe_allow_html=True)
         if st.button(f"【{_btn_labels[i]}】  {_ch_clean}", key=f"p7ch{step}_{i}", use_container_width=True):
-            # ═══════════════════════════════════════════════════
-            # 🛡️ [BUG FIX 2026.05.09 v4] 다중 클릭 방지 — 안전 패턴
-            # 원리: 이 step에 이미 답이 있으면 처리 코드 전체를 스킵
-            #       - st.stop() 안 씀 → 위젯 트리 손상 0%
-            #       - 락 키 안 씀 → state 충돌 0%
-            #       - disabled 안 씀 → Q2/Q3 클릭 막힘 0%
-            # 효과: 두 번째 클릭은 자연스럽게 무시되고 이전 rerun이 진행됨
-            # ═══════════════════════════════════════════════════
-            if len(st.session_state.get("p7_answers", [])) <= step:
-                ok = (i == cur["answer"])
-                st.session_state.p7_answers.append(ok)
-                # ─── analytics 기록 ───
-                _an = st.session_state.p7_analytics
-                _step_t = time.time() - (_an.get("step_started_at") or time.time())
-                _an["step_times"].append(round(_step_t, 1))
-                _an["step_correct"].append(ok)
-                _an["step_started_at"] = time.time()
-                st.session_state.p7_analytics = _an
-                # Step 3 유형선택 상태 리셋
-                st.session_state.p7_type_guessed = False
-                st.session_state.p7_type_correct = None
+            ok = (i == cur["answer"])
+            st.session_state.p7_answers.append(ok)
+            # ─── analytics 기록 ───
+            _an = st.session_state.p7_analytics
+            _step_t = time.time() - (_an.get("step_started_at") or time.time())
+            _an["step_times"].append(round(_step_t, 1))
+            _an["step_correct"].append(ok)
+            _an["step_started_at"] = time.time()
+            st.session_state.p7_analytics = _an
+            # Step 3 유형선택 상태 리셋
+            st.session_state.p7_type_guessed = False
+            st.session_state.p7_type_correct = None
 
-                # ══════════════════════════════════════════════════
-                # ★ rt_logs 저장 (대서사시 L2: P7 독해 문항별 반응시간)
-                # PAPER: ④ AI 자동 분류 (P7 독해 RT 집약)
-                #        ⑤ 탐색적 로그 분석 (독해 속도 패턴)
-                # NOTE:  _step_t = 이 문항 응답 소요시간 (초)
-                # ══════════════════════════════════════════════════
+            # ══════════════════════════════════════════════════
+            # ★ rt_logs 저장 (대서사시 L2: P7 독해 문항별 반응시간)
+            # PAPER: ④ AI 자동 분류 (P7 독해 RT 집약)
+            #        ⑤ 탐색적 로그 분석 (독해 속도 패턴)
+            # NOTE:  _step_t = 이 문항 응답 소요시간 (초)
+            # ══════════════════════════════════════════════════
+            try:
+                _cat_for_rt = st.session_state.get("p7_cat", "unknown")
+                _tsec_for_rt = st.session_state.get("p7_tsec", 80)
+                _q_rt = {
+                    "id":   f"p7_{_cat_for_rt}_step{step+1}",
+                    "cat":  _cat_for_rt,
+                    "diff": f"p7_{_cat_for_rt}",
+                    "tp":   "vocab",
+                }
+                _storage.save_rt_log(
+                    q=_q_rt,
+                    is_correct=ok,
+                    seconds_remaining=max(0, _tsec_for_rt - _step_t),
+                    timer_setting=_tsec_for_rt,
+                    session_no=step + 1,
+                    adp_level=f"p7_battle_{_cat_for_rt}",
+                )
+            except Exception:
+                pass
+
+            # ══════════════════════════════════════════════════
+            # ★ cross_logs + p7_logs 저장 (논문 04 SSCI + 특허)
+            # ══════════════════════════════════════════════════
+            try:
+                _dt_p7 = __import__("datetime")
+                _today_p7 = _dt_p7.datetime.now().strftime("%Y-%m-%d")
+                _uid_p7   = st.session_state.get("nickname", "guest")
+                _cat_p7   = st.session_state.get("p7_cat", "unknown")
+                _tsec_p7  = st.session_state.get("p7_tsec", 80)
+
+                # 지문 고유 ID (카테고리 + 스텝)
+                _passage_id  = f"{_cat_p7}_step{step+1}"
+                # 이 지문에서 파생될 P5 문제 ID들 (expressions 기반)
+                _expressions = cur.get("expressions", [])
+                _derived_ids = [f"P5_from_{_cat_p7}_{e.get('expr','?').replace(' ','_')[:20]}"
+                                for e in _expressions]
+
+                # 세션 번호
+                if "p7_session_no" not in st.session_state:
+                    st.session_state.p7_session_no = 0
+
+                # 주차 계산
+                if "p7_start_date" not in st.session_state:
+                    st.session_state.p7_start_date = _today_p7
                 try:
-                    _cat_for_rt = st.session_state.get("p7_cat", "unknown")
-                    _tsec_for_rt = st.session_state.get("p7_tsec", 80)
-                    _q_rt = {
-                        "id":   f"p7_{_cat_for_rt}_step{step+1}",
-                        "cat":  _cat_for_rt,
-                        "diff": f"p7_{_cat_for_rt}",
-                        "tp":   "vocab",
-                    }
-                    _storage.save_rt_log(
-                        q=_q_rt,
-                        is_correct=ok,
-                        seconds_remaining=max(0, _tsec_for_rt - _step_t),
-                        timer_setting=_tsec_for_rt,
-                        session_no=step + 1,
-                        adp_level=f"p7_battle_{_cat_for_rt}",
-                    )
-                except Exception:
-                    pass
-
-                # ══════════════════════════════════════════════════
-                # ★ cross_logs + p7_logs 저장 (논문 04 SSCI + 특허)
-                # ══════════════════════════════════════════════════
-                try:
-                    _dt_p7 = __import__("datetime")
-                    _today_p7 = _dt_p7.datetime.now().strftime("%Y-%m-%d")
-                    _uid_p7   = st.session_state.get("nickname", "guest")
-                    _cat_p7   = st.session_state.get("p7_cat", "unknown")
-                    _tsec_p7  = st.session_state.get("p7_tsec", 80)
-
-                    # 지문 고유 ID (카테고리 + 스텝)
-                    _passage_id  = f"{_cat_p7}_step{step+1}"
-                    # 이 지문에서 파생될 P5 문제 ID들 (expressions 기반)
-                    _expressions = cur.get("expressions", [])
-                    _derived_ids = [f"P5_from_{_cat_p7}_{e.get('expr','?').replace(' ','_')[:20]}"
-                                    for e in _expressions]
-
-                    # 세션 번호
-                    if "p7_session_no" not in st.session_state:
-                        st.session_state.p7_session_no = 0
-
-                    # 주차 계산
-                    if "p7_start_date" not in st.session_state:
-                        st.session_state.p7_start_date = _today_p7
-                    try:
-                        _days_p7 = (_dt_p7.datetime.strptime(_today_p7, "%Y-%m-%d") -
-                                    _dt_p7.datetime.strptime(st.session_state.p7_start_date, "%Y-%m-%d")).days
-                        _week_p7 = _days_p7 // 7 + 1
-                    except:
-                        _week_p7 = 1
-
-                    _st_p7 = load_storage()
-
-                    # ── A. cross_logs: P7→P5 크로스스킬 전이 (논문 04 핵심) ──
-                    for _did in _derived_ids:
-                        _cl = {
-                            "user_id":          _uid_p7,
-                            "p7_passage_id":    _passage_id,
-                            "p7_category":      _cat_p7,
-                            "p7_step":          step + 1,
-                            "p7_q_type":        cur.get("q_type", "detail"),
-                            "p7_correct":       ok,
-                            "p7_session_date":  _today_p7,
-                            "p7_session_no":    st.session_state.p7_session_no,
-                            "derived_p5_id":    _did,
-                            "p5_correct":       None,   # P5 풀이 시 업데이트
-                            "p5_session_date":  None,
-                            "p7_first_exposed": True,
-                            "days_gap":         0,
-                            "week":             _week_p7,
-                            "timer_setting":    _tsec_p7,
-                            "timestamp":        _dt_p7.datetime.now().isoformat(),
-                        }
-                        if "cross_logs" not in _st_p7:
-                            _st_p7["cross_logs"] = []
-                        _st_p7["cross_logs"].append(_cl)
-
-                    # ── B. p7_logs: 세션 단계 기록 ──
-                    _p7l = {
-                        "user_id":       _uid_p7,
-                        "session_date":  _today_p7,
-                        "session_no":    st.session_state.p7_session_no,
-                        "category":      _cat_p7,
-                        "timer_setting": _tsec_p7,
-                        "step":          step + 1,
-                        "q_type":        cur.get("q_type", "detail"),
-                        "correct":       ok,
-                        "response_sec":  round(_step_t, 1),
-                        "week":          _week_p7,
-                        "timestamp":     _dt_p7.datetime.now().isoformat(),
-                    }
-                    if "p7_logs" not in _st_p7:
-                        _st_p7["p7_logs"] = []
-                    _st_p7["p7_logs"].append(_p7l)
-
-                    # ZPD: LOST 시 종료 지점 기록
-                    # PAPER: ⑦ ZPD 스캐폴딩 (P7 즉사 지점 추적)
-                    # STORAGE: 로컬 + Sheets 이중 저장 (원칙 5)
-                    if not ok:
-                        _zpd_p7_entry = {
-                            "user_id":        _uid_p7,
-                            "session_date":   _today_p7,
-                            "session_no":     st.session_state.p7_session_no,
-                            "arena":          "P7",
-                            "timer_setting":  _tsec_p7,
-                            "game_over_q_no": step + 1,
-                            "result":         "GAME_OVER",
-                            "max_q_reached":  step + 1,
-                            "week":           _week_p7,
-                            "timestamp":      _dt_p7.datetime.now().isoformat(),
-                            "research_phase": _storage.RESEARCH_PHASE,
-                        }
-                        _st_p7.setdefault("zpd_logs", []).append(_zpd_p7_entry)
-                        # Sheets 이중 저장
-                        try: _storage.save_to_sheets("zpd_logs", _zpd_p7_entry)
-                        except: pass
-                    elif step >= 2:
-                        _zpd_p7_victory = {
-                            "user_id":        _uid_p7,
-                            "session_date":   _today_p7,
-                            "session_no":     st.session_state.p7_session_no,
-                            "arena":          "P7",
-                            "timer_setting":  _tsec_p7,
-                            "game_over_q_no": None,
-                            "result":         "VICTORY",
-                            "max_q_reached":  3,
-                            "week":           _week_p7,
-                            "timestamp":      _dt_p7.datetime.now().isoformat(),
-                            "research_phase": _storage.RESEARCH_PHASE,
-                        }
-                        _st_p7.setdefault("zpd_logs", []).append(_zpd_p7_victory)
-                        # Sheets 이중 저장
-                        try: _storage.save_to_sheets("zpd_logs", _zpd_p7_victory)
-                        except: pass
-                        st.session_state.p7_session_no += 1
-
-                    # [2026.05.09 FIX] 사용자별 데이터 격리를 위해 _storage.save() 사용
-                    # (직접 디스크 쓰기 → _storage.save()로 변경 — 다른 사용자 데이터 덮어쓰기 방지)
-                    _storage.save(_st_p7)
+                    _days_p7 = (_dt_p7.datetime.strptime(_today_p7, "%Y-%m-%d") -
+                                _dt_p7.datetime.strptime(st.session_state.p7_start_date, "%Y-%m-%d")).days
+                    _week_p7 = _days_p7 // 7 + 1
                 except:
-                    pass
+                    _week_p7 = 1
 
-                # ═══════════════════════════════════════════
-                # 정답·오답 처리 — 상호배타적 분기 (3중 안전망)
-                # BUG FIX 2026-05-01: if/if/else → if/elif/else
-                #   - 기존: not ok에서 rerun 후에도 step>=2 분기 계속 실행
-                #   - 기존: 마지막 st.rerun()으로 중복 rerun 발생
-                #   - 결과: p7_step 폭주 (19/3 같은 비정상 점수)
-                # ═══════════════════════════════════════════
+                _st_p7 = load_storage()
 
-                # 🛡️ 안전망 1: 처리 중복 방지 락 (autorefresh + 다중 클릭 대응)
-                _process_key = f"p7_processed_{st.session_state.p7_session_no}_{step}"
-                if st.session_state.get(_process_key, False):
-                    st.stop()  # 이미 처리됨 — 즉시 종료
-                st.session_state[_process_key] = True
+                # ── A. cross_logs: P7→P5 크로스스킬 전이 (논문 04 핵심) ──
+                for _did in _derived_ids:
+                    _cl = {
+                        "user_id":          _uid_p7,
+                        "p7_passage_id":    _passage_id,
+                        "p7_category":      _cat_p7,
+                        "p7_step":          step + 1,
+                        "p7_q_type":        cur.get("q_type", "detail"),
+                        "p7_correct":       ok,
+                        "p7_session_date":  _today_p7,
+                        "p7_session_no":    st.session_state.p7_session_no,
+                        "derived_p5_id":    _did,
+                        "p5_correct":       None,   # P5 풀이 시 업데이트
+                        "p5_session_date":  None,
+                        "p7_first_exposed": True,
+                        "days_gap":         0,
+                        "week":             _week_p7,
+                        "timer_setting":    _tsec_p7,
+                        "timestamp":        _dt_p7.datetime.now().isoformat(),
+                    }
+                    if "cross_logs" not in _st_p7:
+                        _st_p7["cross_logs"] = []
+                    _st_p7["cross_logs"].append(_cl)
 
-                # 🛡️ 안전망 2: if/elif/else — 정확히 하나의 분기만 실행
+                # ── B. p7_logs: 세션 단계 기록 ──
+                _p7l = {
+                    "user_id":       _uid_p7,
+                    "session_date":  _today_p7,
+                    "session_no":    st.session_state.p7_session_no,
+                    "category":      _cat_p7,
+                    "timer_setting": _tsec_p7,
+                    "step":          step + 1,
+                    "q_type":        cur.get("q_type", "detail"),
+                    "correct":       ok,
+                    "response_sec":  round(_step_t, 1),
+                    "week":          _week_p7,
+                    "timestamp":     _dt_p7.datetime.now().isoformat(),
+                }
+                if "p7_logs" not in _st_p7:
+                    _st_p7["p7_logs"] = []
+                _st_p7["p7_logs"].append(_p7l)
+
+                # ZPD: LOST 시 종료 지점 기록
+                # PAPER: ⑦ ZPD 스캐폴딩 (P7 즉사 지점 추적)
+                # STORAGE: 로컬 + Sheets 이중 저장 (원칙 5)
                 if not ok:
-                    # 오답 → LOST
-                    try: save_research_record(build_research_record("lost"))
+                    _zpd_p7_entry = {
+                        "user_id":        _uid_p7,
+                        "session_date":   _today_p7,
+                        "session_no":     st.session_state.p7_session_no,
+                        "arena":          "P7",
+                        "timer_setting":  _tsec_p7,
+                        "game_over_q_no": step + 1,
+                        "result":         "GAME_OVER",
+                        "max_q_reached":  step + 1,
+                        "week":           _week_p7,
+                        "timestamp":      _dt_p7.datetime.now().isoformat(),
+                        "research_phase": _storage.RESEARCH_PHASE,
+                    }
+                    _st_p7.setdefault("zpd_logs", []).append(_zpd_p7_entry)
+                    # Sheets 이중 저장
+                    try: _storage.save_to_sheets("zpd_logs", _zpd_p7_entry)
                     except: pass
-                    st.session_state.p7_phase = "lost"
-                    st.rerun()
-
                 elif step >= 2:
-                    # 3번째 정답 → VICTORY
-                    try: save_research_record(build_research_record("victory"))
+                    _zpd_p7_victory = {
+                        "user_id":        _uid_p7,
+                        "session_date":   _today_p7,
+                        "session_no":     st.session_state.p7_session_no,
+                        "arena":          "P7",
+                        "timer_setting":  _tsec_p7,
+                        "game_over_q_no": None,
+                        "result":         "VICTORY",
+                        "max_q_reached":  3,
+                        "week":           _week_p7,
+                        "timestamp":      _dt_p7.datetime.now().isoformat(),
+                        "research_phase": _storage.RESEARCH_PHASE,
+                    }
+                    _st_p7.setdefault("zpd_logs", []).append(_zpd_p7_victory)
+                    # Sheets 이중 저장
+                    try: _storage.save_to_sheets("zpd_logs", _zpd_p7_victory)
                     except: pass
-                    # ── cross_logs: P7→P5 크로스스킬 전이 감지 (논문B) ──
-                    try:
-                        _pid = st.session_state.get("p7_data", {}).get("id", "unknown")
-                        _save_cross_log(_pid)
-                    except: pass
-                    # ── recon_xyz_logs: X·Y·Z 단계별 정답·소요시간 (신규 논문) ──
-                    try:
-                        _pid2 = st.session_state.get("p7_data", {}).get("id", "unknown")
-                        _sno = st.session_state.get("p7_session_no", 0)
-                        st.session_state.p7_session_no = _sno + 1
-                        _save_recon_xyz_log(_pid2, _sno + 1)
-                    except: pass
-                    st.session_state.p7_phase = "victory"
-                    st.rerun()
+                    st.session_state.p7_session_no += 1
 
-                else:
-                    # 1, 2번째 정답 → 다음 문제로
-                    st.session_state.p7_step += 1
-                    st.rerun()
+                # [2026.05.09 FIX] 사용자별 데이터 격리를 위해 _storage.save() 사용
+                # (직접 디스크 쓰기 → _storage.save()로 변경 — 다른 사용자 데이터 덮어쓰기 방지)
+                _storage.save(_st_p7)
+            except:
+                pass
 
-                # 🛡️ 안전망 3: 위 분기 중 하나는 반드시 st.rerun() 실행됨
-                #              이 줄 이후 도달 시 코드 흐름 오류 (도달 불가)
-                st.markdown('</div>', unsafe_allow_html=True)
+            # ═══════════════════════════════════════════
+            # 정답·오답 처리 — 상호배타적 분기 (3중 안전망)
+            # BUG FIX 2026-05-01: if/if/else → if/elif/else
+            #   - 기존: not ok에서 rerun 후에도 step>=2 분기 계속 실행
+            #   - 기존: 마지막 st.rerun()으로 중복 rerun 발생
+            #   - 결과: p7_step 폭주 (19/3 같은 비정상 점수)
+            # ═══════════════════════════════════════════
+
+            # 🛡️ 안전망 1: 처리 중복 방지 락 (autorefresh + 다중 클릭 대응)
+            _process_key = f"p7_processed_{st.session_state.p7_session_no}_{step}"
+            if st.session_state.get(_process_key, False):
+                st.stop()  # 이미 처리됨 — 즉시 종료
+            st.session_state[_process_key] = True
+
+            # 🛡️ 안전망 2: if/elif/else — 정확히 하나의 분기만 실행
+            if not ok:
+                # 오답 → LOST
+                try: save_research_record(build_research_record("lost"))
+                except: pass
+                st.session_state.p7_phase = "lost"
+                st.rerun()
+
+            elif step >= 2:
+                # 3번째 정답 → VICTORY
+                try: save_research_record(build_research_record("victory"))
+                except: pass
+                # ── cross_logs: P7→P5 크로스스킬 전이 감지 (논문B) ──
+                try:
+                    _pid = st.session_state.get("p7_data", {}).get("id", "unknown")
+                    _save_cross_log(_pid)
+                except: pass
+                # ── recon_xyz_logs: X·Y·Z 단계별 정답·소요시간 (신규 논문) ──
+                try:
+                    _pid2 = st.session_state.get("p7_data", {}).get("id", "unknown")
+                    _sno = st.session_state.get("p7_session_no", 0)
+                    st.session_state.p7_session_no = _sno + 1
+                    _save_recon_xyz_log(_pid2, _sno + 1)
+                except: pass
+                st.session_state.p7_phase = "victory"
+                st.rerun()
+
+            else:
+                # 1, 2번째 정답 → 다음 문제로
+                st.session_state.p7_step += 1
+                st.rerun()
+
+            # 🛡️ 안전망 3: 위 분기 중 하나는 반드시 st.rerun() 실행됨
+            #              이 줄 이후 도달 시 코드 흐름 오류 (도달 불가)
+            st.markdown('</div>', unsafe_allow_html=True)
 
     # p7choiceColors 제거 — 정규식 오류+iframe 방해. 색상은 #btn-p7a/b/c/d CSS로 처리
 
