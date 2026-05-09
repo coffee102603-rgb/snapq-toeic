@@ -248,26 +248,22 @@ def build_research_record(result: str) -> dict:
         "steps": step_records,
     }
 def load_storage() -> dict:
-    """P7 전용 storage_data.json 로드."""
-    if os.path.exists(STORAGE_FILE):
-        try:
-            with open(STORAGE_FILE,"r",encoding="utf-8") as f:
-                content = f.read().strip()
-            if not content:
-                return {"saved_questions":[],"saved_expressions":[]}
-            d = json.loads(content)
-            if isinstance(d, list): return {"saved_questions":d,"saved_expressions":[]}
-            if "saved_questions" not in d: d["saved_questions"]=[]
-            if "saved_expressions" not in d: d["saved_expressions"]=[]
-            return d
-        except (json.JSONDecodeError, ValueError, Exception):
-            return {"saved_questions":[],"saved_expressions":[]}
-    return {"saved_questions":[],"saved_expressions":[]}
-def save_storage(data: dict) -> None:
-    """P7 전용 storage_data.json 저장."""
+    """
+    P7 전용 storage 로드.
+    [2026.05.09 FIX] _storage.load()로 위임 → 사용자별 데이터 격리 자동 적용.
+    """
     try:
-        with open(STORAGE_FILE,"w",encoding="utf-8") as f:
-            json.dump(data,f,ensure_ascii=False,indent=2)
+        return _storage.load()
+    except Exception:
+        return {"saved_questions":[],"saved_expressions":[]}
+
+def save_storage(data: dict) -> None:
+    """
+    P7 전용 storage 저장.
+    [2026.05.09 FIX] _storage.save()로 위임 → 사용자별 데이터 격리 자동 적용.
+    """
+    try:
+        _storage.save(data)
     except Exception: pass
 def save_expressions(exprs: list, step_data: dict | None = None) -> None:
     """정보 포획 표현을 saved_expressions에 저장."""
@@ -1127,8 +1123,9 @@ elif st.session_state.p7_phase == "battle":
                     except: pass
                     st.session_state.p7_session_no += 1
 
-                with open(STORAGE_FILE, "w", encoding="utf-8") as _fp7:
-                    json.dump(_st_p7, _fp7, ensure_ascii=False, indent=2)
+                # [2026.05.09 FIX] 사용자별 데이터 격리를 위해 _storage.save() 사용
+                # (직접 디스크 쓰기 → _storage.save()로 변경 — 다른 사용자 데이터 덮어쓰기 방지)
+                _storage.save(_st_p7)
             except:
                 pass
 

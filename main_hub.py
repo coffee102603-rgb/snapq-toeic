@@ -1198,12 +1198,14 @@ if _adm_go:
     st.switch_page("pages/01_Admin.py")
 
 # ── 포로수용소 데이터 로드 ──
+# [2026.05.09 FIX] 직접 파일 읽기 → _storage.load() 사용
+# 사용자별 데이터 격리 적용 (이전: 모든 사용자가 전체 word_prison을 봤음)
 try:
-    _pr_sf = os.path.join(os.path.dirname(__file__), "storage_data.json")
-    _pr_raw = {}
-    if os.path.exists(_pr_sf):
-        with open(_pr_sf, "r", encoding="utf-8") as _pf:
-            _pr_raw = json.load(_pf)
+    # _storage 모듈 로드 (pages/_storage.py)
+    import sys as _pr_sys
+    _pr_sys.path.insert(0, os.path.join(os.path.dirname(__file__), "pages"))
+    import _storage as _pr_storage
+    _pr_raw = _pr_storage.load()  # 현재 사용자 데이터만 반환
     _pr_data  = _pr_raw.get("word_prison", [])
     _pr_total = len(_pr_data)
     import datetime as _pr_dt

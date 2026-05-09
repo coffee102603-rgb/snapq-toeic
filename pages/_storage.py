@@ -1,6 +1,22 @@
 """
 FILE: _storage.py
-ROLE: 공통 저장소 모듈
+ROLE: 공통 저장소 모듈 (사용자별 데이터 격리 v2)
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+변경 이력 (2026.05.09):
+  - 사용자별 데이터 격리 추가 (word_prison, saved_questions, saved_expressions)
+  - 기존 통합 데이터는 자동 마이그레이션 → "_legacy" 사용자로 보존
+  - load_storage()/save_storage() 호출자 입장에서는 변경 없음 (투명)
+  - 각 페이지에서 호출하는 load()/save()가 자동으로 현재 사용자만 반환
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+사용자별 격리 키:
+  - word_prison         → word_prison_by_user[uid]
+  - saved_questions     → saved_questions_by_user[uid]
+  - saved_expressions   → saved_expressions_by_user[uid]
+공유 키 (변경 없음):
+  - rt_logs, p5_logs, zpd_logs, cross_logs, recon_xyz_logs, forget_logs 등
+  - {uid}_start_date (기존부터 사용자별 분리되어 있던 항목)
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 """
 import os, json, threading
 from datetime import datetime
@@ -9,77 +25,267 @@ import streamlit as st
 STORAGE_FILE = os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))), "storage_data.json")
 RESEARCH_PHASE = "pre_irb"
 
-def load():
+# ═══════════════════════════════════════════════════════════════
+# 사용자별 격리가 필요한 키 (위에 명시)
+# ═══════════════════════════════════════════════════════════════
+_PER_USER_KEYS = ("word_prison", "saved_questions", "saved_expressions")
+
+
+def get_uid():
+    """현재 사용자 ID 반환. 없으면 'guest'."""
+    for k in ["nickname", "battle_nickname", "p7_player_id"]:
+        v = st.session_state.get(k, "")
+        if v and str(v).strip():
+            return str(v).strip()
+    return "guest"
+
+
+# ═══════════════════════════════════════════════════════════════
+# RAW 입출력 (디스크 직접 접근) — 외부 호출 금지
+# ═══════════════════════════════════════════════════════════════
+def _read_raw():
+    """디스크에서 storage_data.json 전체를 읽음. 마이그레이션 후 반환."""
     if os.path.exists(STORAGE_FILE):
         try:
             with open(STORAGE_FILE, "r", encoding="utf-8") as f:
                 content = f.read().strip()
-            if not content: return _empty()
+            if not content:
+                return _empty_raw()
             d = json.loads(content)
-            if isinstance(d, list): return {"saved_questions": d, "saved_expressions": []}
-            return _ensure(d)
-        except: return _empty()
-    return _empty()
+            # 옛날 list 형태 → dict 형태로 (saved_questions만 있던 시절)
+            if isinstance(d, list):
+                d = {"saved_questions": d, "saved_expressions": []}
+            return _migrate(d)
+        except Exception:
+            return _empty_raw()
+    return _empty_raw()
 
-def save(data):
+
+def _write_raw(data):
+    """디스크에 storage_data.json 전체를 씀."""
     try:
         with open(STORAGE_FILE, "w", encoding="utf-8") as f:
             json.dump(data, f, ensure_ascii=False, indent=2)
         return True
-    except: return False
+    except Exception:
+        return False
 
+
+def _empty_raw():
+    """완전히 비어있는 storage_data.json 기본 구조."""
+    return {
+        # 사용자별 격리 키 (dict[uid] = list)
+        "word_prison_by_user":       {},
+        "saved_questions_by_user":   {},
+        "saved_expressions_by_user": {},
+        # 전역 공유 로그 (사용자별 row 단위로 user_id 들어감)
+        "rt_logs":        [],
+        "p5_logs":        [],
+        "zpd_logs":       [],
+        "cross_logs":     [],
+        "recon_xyz_logs": [],
+        "recon_logs":     [],
+        "forget_logs":    [],
+    }
+
+
+def _migrate(d):
+    """
+    기존 통합 리스트 → 사용자별 격리 dict 자동 마이그레이션.
+
+    [핵심 안전 장치]
+    - 기존 데이터를 절대 삭제하지 않음
+    - "_legacy" 사용자에게 보존 → 박사논문 데이터로 활용 가능
+    - 마이그레이션은 1회만 수행 (이미 *_by_user가 있으면 건드리지 않음)
+    """
+    # 사용자별 격리 키들이 없으면 생성
+    if "word_prison_by_user" not in d:
+        d["word_prison_by_user"] = {}
+    if "saved_questions_by_user" not in d:
+        d["saved_questions_by_user"] = {}
+    if "saved_expressions_by_user" not in d:
+        d["saved_expressions_by_user"] = {}
+
+    # 기존 통합 리스트 → _legacy 사용자에게 한 번만 이전
+    # (이미 _legacy로 옮겼으면 두 번 합치지 않음)
+    if "word_prison" in d and isinstance(d["word_prison"], list) and d["word_prison"]:
+        if "_legacy" not in d["word_prison_by_user"]:
+            d["word_prison_by_user"]["_legacy"] = d["word_prison"]
+        # 원본은 빈 리스트로 (다음 마이그레이션 방지, 데이터는 _legacy에 보존)
+        d["word_prison"] = []
+
+    if "saved_questions" in d and isinstance(d["saved_questions"], list) and d["saved_questions"]:
+        if "_legacy" not in d["saved_questions_by_user"]:
+            d["saved_questions_by_user"]["_legacy"] = d["saved_questions"]
+        d["saved_questions"] = []
+
+    if "saved_expressions" in d and isinstance(d["saved_expressions"], list) and d["saved_expressions"]:
+        if "_legacy" not in d["saved_expressions_by_user"]:
+            d["saved_expressions_by_user"]["_legacy"] = d["saved_expressions"]
+        d["saved_expressions"] = []
+
+    # 빈 list 키 보장
+    for k in ("rt_logs", "p5_logs", "zpd_logs", "cross_logs",
+              "recon_xyz_logs", "recon_logs", "forget_logs"):
+        if k not in d:
+            d[k] = []
+
+    return d
+
+
+# ═══════════════════════════════════════════════════════════════
+# PUBLIC API: load() / save() — 호출자 관점에서는 변경 없음
+#   load()는 "현재 사용자의 데이터만 합성한 dict" 반환
+#   save(d)는 "현재 사용자 데이터만 추출해서 디스크에 반영"
+# ═══════════════════════════════════════════════════════════════
+def load():
+    """
+    현재 사용자의 데이터를 합성한 dict 반환.
+    호출자는 마치 자기만 쓰는 storage처럼 사용 가능.
+
+    반환 dict 구조 (호출자 관점 — 기존과 동일):
+      {
+        "word_prison":        [현재 사용자의 단어수용소 리스트],
+        "saved_questions":    [현재 사용자의 저장 문제 리스트],
+        "saved_expressions":  [현재 사용자의 저장 표현 리스트],
+        "rt_logs":            [전역 로그 — 변경 없음],
+        ...
+        "{uid}_start_date":   기존 키 보존
+      }
+    """
+    raw = _read_raw()
+    uid = get_uid()
+
+    # 호출자에게 보여줄 dict 구성
+    view = {}
+    # 사용자별 격리 키: 현재 사용자의 데이터만 꺼내서 평면 키로 노출
+    view["word_prison"]       = list(raw.get("word_prison_by_user", {}).get(uid, []))
+    view["saved_questions"]   = list(raw.get("saved_questions_by_user", {}).get(uid, []))
+    view["saved_expressions"] = list(raw.get("saved_expressions_by_user", {}).get(uid, []))
+
+    # 전역 공유 키: 그대로 노출
+    for k in ("rt_logs", "p5_logs", "zpd_logs", "cross_logs",
+              "recon_xyz_logs", "recon_logs", "forget_logs"):
+        view[k] = raw.get(k, [])
+
+    # {uid}_start_date 등 기타 키 (사용자별 시작일) 보존
+    for k, v in raw.items():
+        if k in view:
+            continue
+        if k.endswith("_by_user"):
+            continue  # 내부 구조는 노출하지 않음
+        if k in ("word_prison", "saved_questions", "saved_expressions"):
+            continue  # 빈 셸은 노출 안 함 (격리된 키로 대체됨)
+        view[k] = v
+
+    return view
+
+
+def save(data):
+    """
+    호출자가 수정한 dict를 디스크에 반영.
+    사용자별 격리 키는 자동으로 현재 사용자 슬롯에만 저장.
+    전역 키는 그대로 덮어씀.
+    """
+    if not isinstance(data, dict):
+        return False
+
+    raw = _read_raw()
+    uid = get_uid()
+
+    # 사용자별 격리 키: 호출자가 넘긴 리스트를 현재 사용자 슬롯에만 저장
+    if "word_prison" in data:
+        raw.setdefault("word_prison_by_user", {})[uid] = list(data.get("word_prison") or [])
+    if "saved_questions" in data:
+        raw.setdefault("saved_questions_by_user", {})[uid] = list(data.get("saved_questions") or [])
+    if "saved_expressions" in data:
+        raw.setdefault("saved_expressions_by_user", {})[uid] = list(data.get("saved_expressions") or [])
+
+    # 전역 공유 키: 호출자가 넘긴 값으로 덮어씀
+    for k in ("rt_logs", "p5_logs", "zpd_logs", "cross_logs",
+              "recon_xyz_logs", "recon_logs", "forget_logs"):
+        if k in data:
+            raw[k] = data[k]
+
+    # 기타 키 (예: {uid}_start_date): 호출자 값으로 덮어씀
+    for k, v in data.items():
+        if k in raw and isinstance(raw.get(k), dict) and k.endswith("_by_user"):
+            continue
+        if k in ("word_prison", "saved_questions", "saved_expressions"):
+            continue
+        if k in ("rt_logs", "p5_logs", "zpd_logs", "cross_logs",
+                 "recon_xyz_logs", "recon_logs", "forget_logs"):
+            continue
+        raw[k] = v
+
+    # 호환성을 위해 빈 셸 키도 유지 (다른 코드가 raw를 들여다볼 경우 대비)
+    raw.setdefault("word_prison", [])
+    raw.setdefault("saved_questions", [])
+    raw.setdefault("saved_expressions", [])
+
+    return _write_raw(raw)
+
+
+# ═══════════════════════════════════════════════════════════════
+# 진단 & 관리 헬퍼 (관리자 페이지에서 활용 가능)
+# ═══════════════════════════════════════════════════════════════
+def list_all_users():
+    """현재 storage_data.json에 데이터가 있는 모든 사용자 ID 반환."""
+    raw = _read_raw()
+    users = set()
+    for key in ("word_prison_by_user", "saved_questions_by_user", "saved_expressions_by_user"):
+        users.update(raw.get(key, {}).keys())
+    return sorted(users)
+
+
+def get_user_stats(uid):
+    """특정 사용자의 데이터 개수 통계 반환."""
+    raw = _read_raw()
+    return {
+        "word_prison":       len(raw.get("word_prison_by_user", {}).get(uid, [])),
+        "saved_questions":   len(raw.get("saved_questions_by_user", {}).get(uid, [])),
+        "saved_expressions": len(raw.get("saved_expressions_by_user", {}).get(uid, [])),
+    }
+
+
+# ═══════════════════════════════════════════════════════════════
+# 로그 append (변경 없음 — 기존 동작 유지)
+# ═══════════════════════════════════════════════════════════════
 def append_log(key, entry):
+    """전역 로그 시트에 1행 append. (rt_logs, p5_logs 등)"""
     threading.Thread(target=save_to_sheets, args=(key, entry), daemon=True).start()
     try:
-        d = load()
-        if key not in d: d[key] = []
-        d[key].append(entry)
-        return save(d)
-    except: return False
+        raw = _read_raw()
+        if key not in raw:
+            raw[key] = []
+        raw[key].append(entry)
+        return _write_raw(raw)
+    except Exception:
+        return False
 
-def get_uid():
-    for k in ["nickname", "battle_nickname", "p7_player_id"]:
-        v = st.session_state.get(k, "")
-        if v and str(v).strip(): return str(v).strip()
-    return "guest"
 
 def get_week(uid):
+    """사용자별 학습 시작일 기준 주차 계산. (기존 그대로)"""
     try:
-        d = load()
+        raw = _read_raw()
         key = f"{uid}_start_date"
         today = datetime.now().strftime("%Y-%m-%d")
-        if key not in d: d[key] = today; save(d)
-        delta = (datetime.strptime(today, "%Y-%m-%d") - datetime.strptime(d[key], "%Y-%m-%d")).days
+        if key not in raw:
+            raw[key] = today
+            _write_raw(raw)
+        delta = (datetime.strptime(today, "%Y-%m-%d") - datetime.strptime(raw[key], "%Y-%m-%d")).days
         return delta // 7 + 1
-    except: return 1
+    except Exception:
+        return 1
+
 
 def save_rt_log(q, is_correct, seconds_remaining, timer_setting, session_no, adp_level,
                 error_timing_type=None,
-                answer_changes=0,           # ★ 신규: 답 변경 횟수 (기본 0)
-                hesitation_ms=0):           # ★ 신규: 망설임 시간 ms (기본 0)
+                answer_changes=0,
+                hesitation_ms=0):
     """
     문항 응답 기록 — rt_logs 시트.
-
-    PARAMS:
-        q:                문항 dict (id, tp, cat, diff 포함)
-        is_correct:       정답 여부
-        seconds_remaining: 남은 시간 (초)
-        timer_setting:    제한 시간 설정 (초)
-        session_no:       세션 번호
-        adp_level:        적응형 난이도 레벨
-        error_timing_type: 오답 타이밍 분류 (선택)
-        answer_changes:   답 변경 횟수 (논문 ④ 신중도 분석용)
-        hesitation_ms:    첫 상호작용~제출 시간 ms (논문 ④ 망설임 분석용)
-
-    DEVICE INFO (자동 수집):
-        session_state에서 device_type, viewport_w/h 자동 추출.
-        값은 main_hub.py에서 JS로 수집하여 session_state에 저장.
-        수집 안 된 경우 빈 값으로 기록.
-
-    PAPER:
-        ④ AI 자동 분류: 답변경·망설임은 자신감 클러스터링 핵심 변수
-        ⑤ 탐색적 로그 분석: device_type은 모바일·PC 학습 패턴 차이
-        ⑦ ZPD 스캐폴딩: 기본 rt_logs 확장의 상위 집합
+    (기존과 완전히 동일 — 변경 없음)
     """
     uid = get_uid()
     gmap = {"grammar":"GRM","g1":"GRM","form":"FORM","g2":"FORM","link":"LINK","g3":"LINK","vocab":"VOCAB"}
@@ -94,7 +300,6 @@ def save_rt_log(q, is_correct, seconds_remaining, timer_setting, session_no, adp
         "adp_level": adp_level, "session_no": session_no,
         "week": get_week(uid), "research_phase": RESEARCH_PHASE,
         "error_timing_type": error_timing_type if not is_correct else None,
-        # ── 대서사시 v7 확장 필드 (2026.04) ──
         "answer_changes":  int(answer_changes) if answer_changes else 0,
         "hesitation_ms":   int(hesitation_ms) if hesitation_ms else 0,
         "device_type":     st.session_state.get("_dev_device_type", ""),
@@ -102,17 +307,10 @@ def save_rt_log(q, is_correct, seconds_remaining, timer_setting, session_no, adp
         "viewport_h":      st.session_state.get("_dev_vh", ""),
     })
 
-# ═══ 옵션 A: 게이트 로그 저장 함수 ════════════════════════════
+
+# ═══ 옵션 A: 게이트 로그 저장 함수 (기존 그대로) ════════════════
 def save_gate_daily_log(user_id, personal_day, q_id, is_correct,
                         response_time_ms, q_type="grammar", difficulty=""):
-    """
-    데일리 게이트 문항별 로그 저장.
-
-    PAPER:
-        ⑤ 탐색적 분석: 일일 정답률·반응시간 미세 궤적
-        ⑦ ZPD: 반응시간 단축 = 자동화 진전
-        ⑪ 자기문화기술지: 학생 행동 패턴 증거
-    """
     return append_log("gate_daily_logs", {
         "timestamp": datetime.now().isoformat(),
         "user_id": user_id,
@@ -129,14 +327,6 @@ def save_gate_daily_log(user_id, personal_day, q_id, is_correct,
 def save_gate_milestone_log(user_id, personal_day, milestone_round,
                             q_id, is_correct, response_time_ms,
                             q_type="grammar", difficulty=""):
-    """
-    관문검사 문항별 로그 저장.
-
-    PAPER:
-        ① 설계원리: 임계값 돌파 증거
-        ⑤ 탐색적 분석: 10일 단위 변화량
-        ⑩ SSCI: 사전·중간·사후 심화 측정
-    """
     return append_log("gate_milestone_logs", {
         "timestamp": datetime.now().isoformat(),
         "user_id": user_id,
@@ -154,13 +344,6 @@ def save_gate_milestone_log(user_id, personal_day, milestone_round,
 def save_gate_milestone_summary(user_id, personal_day, milestone_round,
                                  total_questions, correct_count,
                                  avg_response_time_ms, duration_sec):
-    """
-    관문검사 세션 요약 저장 (분석 편의용).
-
-    PAPER:
-        모든 논문 분석의 기본 지표
-        (1 session = 1 row, 성장곡선 모형 입력 데이터)
-    """
     accuracy = (correct_count / total_questions * 100) if total_questions else 0
     return append_log("gate_milestone_summary", {
         "timestamp": datetime.now().isoformat(),
@@ -185,6 +368,7 @@ def save_cross_log(p7_passage_id, p5_matched_ids, match_count):
         "research_phase": RESEARCH_PHASE,
     })
 
+
 def save_recon_xyz_log(passage_id, step_results, step_times, session_no):
     uid = get_uid()
     return append_log("recon_xyz_logs", {
@@ -201,36 +385,24 @@ def save_recon_xyz_log(passage_id, step_results, step_times, session_no):
         "research_phase": RESEARCH_PHASE,
     })
 
+
+# ─── 하위 호환을 위한 alias ───────────────────────────────────
+# 기존 코드에서 _empty/_ensure를 직접 호출하는 곳이 있을 경우 대비
 def _empty():
-    return {"saved_questions":[],"saved_expressions":[],"rt_logs":[],"p5_logs":[],
-            "zpd_logs":[],"cross_logs":[],"recon_xyz_logs":[],"recon_logs":[],
-            "forget_logs":[],"word_prison":[]}
+    return _empty_raw()
 
 def _ensure(d):
-    for k,v in _empty().items():
-        if k not in d: d[k] = v
-    return d
+    return _migrate(d)
 
 
-# ═══ Google Sheets 저장 (논문 데이터 영구 보존) ════════════════
-# AI-AGENT NOTE:
-#   - gspread 6.x 호환: service_account_from_dict() 사용
-#   - 실패해도 게임 계속 (try/except)
-#   - 시트 없으면 자동 생성 + 헤더 추가
-#   - SPREADSHEET_ID: Streamlit secrets에 저장
-
-# 논문별 로그 스키마 정의
+# ═══ Google Sheets 저장 (변경 없음) ════════════════════════════
 _SHEETS_HEADERS = {
     "rt_logs":       ["timestamp","user_id","question_id","is_correct",
                       "seconds_remaining","timer_setting","rt_proxy",
                       "grammar_type","cat","diff","adp_level","session_no",
                       "week","error_timing_type","research_phase",
-                      # ── 대서사시 v7 확장 필드 (2026.04) ──
-                      # PAPER ④: 답 변경 횟수 (신중도·자신감 분류)
                       "answer_changes",
-                      # PAPER ④: 첫 상호작용~제출 시간 (ms) — 망설임 정도
                       "hesitation_ms",
-                      # PAPER ⑤: 디바이스·뷰포트 (모바일·PC 학습 패턴 차이)
                       "device_type","viewport_w","viewport_h"],
     "p5_logs":       ["timestamp","user_id","session_no","result",
                       "correct_count","wrong_count","timer_selected","mode",
@@ -238,14 +410,12 @@ _SHEETS_HEADERS = {
     "zpd_logs":      ["timestamp","user_id","session_no","arena",
                       "timer_setting","result","game_over_q_no",
                       "max_q_reached","week","research_phase",
-                      # ── 대서사시 v7 쟁점 A·B 대응 (2026.04) ──
-                      # PAPER ⑦: 임계값 돌파 이벤트 추적
-                      "threshold_event",      # T_target_met / level_up / reset
-                      "current_level",        # 상승된 난이도 레벨
-                      "rt_recent_mean",       # 최근 RT 평균 (T_target 계산 기준)
-                      "rt_target",            # 목표 RT (T_target)
-                      "consecutive_correct",  # 연속 정답 수
-                      "is_correct_at_speed"], # 5문항 연속 정답+T_target 이하 여부
+                      "threshold_event",
+                      "current_level",
+                      "rt_recent_mean",
+                      "rt_target",
+                      "consecutive_correct",
+                      "is_correct_at_speed"],
     "forget_logs":   ["timestamp","user_id","problem_id","grammar_type",
                       "source","first_wrong_date","revisit_date",
                       "interval_days","re_wrong","revisit_count",
@@ -258,28 +428,18 @@ _SHEETS_HEADERS = {
                       "session_no","week","research_phase"],
     "activity":      ["date","month","nickname","arena","duration_sec",
                       "acc","completed","ts"],
-    # ── 대서사시 v7 신규 시트 (2026.04) ──
-    # PAPER ②: ADDIE 개발 사례 논문 — Design 단계 의사결정 증거
-    #   최샘이 수기로 Google Sheets에 직접 입력 (행 append)
-    #   또는 admin 페이지 내부 수기 입력 UI (다음 세션)
     "design_decisions": ["timestamp","addie_phase","topic","context",
                          "options","chosen","rationale","evidence",
                          "research_phase"],
-    # PAPER ⑤: 세션 이벤트 로그 — 페이지 진입·이탈 흐름 분석
     "session_events":   ["timestamp","user_id","arena","event",
                          "duration_sec","extra_info","research_phase"],
     "attendance":    ["date","month","nickname","ts"],
-    # ── 옵션 A: 데일리 게이트 (매일 5문항 = 매일 사전검사) ──────
-    # PAPER ⑤⑦⑩⑪: 일일 반응시간·정답률 미세 궤적
     "gate_daily_logs":    ["timestamp","user_id","personal_day",
                            "q_id","is_correct","response_time_ms",
                            "q_type","difficulty","research_phase"],
-    # ── 옵션 A: 관문검사 (Day 1, 11, 21... 30문항) ───────────
-    # PAPER ①⑤⑩: 10일 단위 심화 측정, 임계값 돌파 확증
     "gate_milestone_logs":["timestamp","user_id","personal_day","milestone_round",
                            "q_id","is_correct","response_time_ms",
                            "q_type","difficulty","research_phase"],
-    # ── 옵션 A: 관문검사 세션 요약 (1 row = 1 session) ──────
     "gate_milestone_summary":["timestamp","user_id","personal_day","milestone_round",
                               "total_questions","correct_count","accuracy_pct",
                               "avg_response_time_ms","duration_sec","research_phase"],
@@ -291,8 +451,6 @@ def save_to_sheets(log_key: str, entry: dict) -> bool:
     PURPOSE: 로그 1개를 Google Sheets에 저장
     INPUT:   log_key (시트명), entry (dict)
     OUTPUT:  bool (성공 여부)
-    PAPER:   모든 논문 데이터 영구 보존 (Cloud 재시작해도 유지)
-    COMPAT:  gspread >= 6.0.0 (service_account_from_dict 방식)
     """
     try:
         import gspread
@@ -311,5 +469,3 @@ def save_to_sheets(log_key: str, entry: dict) -> bool:
         return True
     except Exception:
         return False
-
-
