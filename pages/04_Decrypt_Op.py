@@ -432,9 +432,11 @@ _dbg_data_id = _dbg_data.get("id", "?") if isinstance(_dbg_data, dict) else "no_
 _v8_last = st.session_state.get("_v8_last_click", "no_click_yet")
 _v8_passed = st.session_state.get("_v8_guard_passed", "never")
 _v9_branch = st.session_state.get("_v9_branch", "no_branch_yet")
+_v10_marker = st.session_state.get("_v10_step_marker", "no_marker")
 st.error(f"🔍 DEBUG | uid={_dbg_uid} | phase={_dbg_phase} | step={_dbg_step} | session_no={_dbg_session_no} | data_id={_dbg_data_id} | answers(len={len(_dbg_answers)})={_dbg_answers}")
 st.info(f"🔍 v8 LAST CLICK: {_v8_last} | guard_passed={_v8_passed}")
 st.warning(f"🔍 v9 LAST BRANCH: {_v9_branch}")
+st.success(f"🔍 v10 LAST MARKER: {_v10_marker}")
 
 # ═══════════════════════════════════════
 # ════════════════════════════════════════
@@ -1012,8 +1014,10 @@ elif st.session_state.p7_phase == "battle":
             if _v5_phase_ok and _v5_no_dup:
                 # ★ [v8 DEBUG] 가드 통과 마커
                 st.session_state["_v8_guard_passed"] = True
+                st.session_state["_v10_step_marker"] = "M1: guard passed"
                 ok = (i == cur["answer"])
                 st.session_state.p7_answers.append(ok)
+                st.session_state["_v10_step_marker"] = "M2: answers appended"
                 # ─── analytics 기록 ───
                 _an = st.session_state.p7_analytics
                 _step_t = time.time() - (_an.get("step_started_at") or time.time())
@@ -1169,9 +1173,14 @@ elif st.session_state.p7_phase == "battle":
 
                     # [2026.05.09 FIX] 사용자별 데이터 격리를 위해 _storage.save() 사용
                     # (직접 디스크 쓰기 → _storage.save()로 변경 — 다른 사용자 데이터 덮어쓰기 방지)
+                    st.session_state["_v10_step_marker"] = "M3: before _storage.save"
                     _storage.save(_st_p7)
-                except:
+                    st.session_state["_v10_step_marker"] = "M4: after _storage.save"
+                except Exception as _e_v10:
+                    st.session_state["_v10_step_marker"] = f"M3.5 EXCEPTION: {str(_e_v10)[:80]}"
                     pass
+
+                st.session_state["_v10_step_marker"] = "M5: before branch decision"
 
                 # ═══════════════════════════════════════════
                 # 정답·오답 처리 — 상호배타적 분기 (3중 안전망)
