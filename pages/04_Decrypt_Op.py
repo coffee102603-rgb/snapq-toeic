@@ -1173,10 +1173,14 @@ elif st.session_state.p7_phase == "battle":
                 # ═══════════════════════════════════════════
 
                 # 🛡️ 안전망 1: 처리 중복 방지 락 (autorefresh + 다중 클릭 대응)
-                _process_key = f"p7_processed_{st.session_state.p7_session_no}_{step}"
-                if st.session_state.get(_process_key, False):
-                    st.stop()  # 이미 처리됨 — 즉시 종료
-                st.session_state[_process_key] = True
+                # ★ [BUG FIX 2026.05.10 v7] _process_key 제거
+                # 이유: 이 락이 첫 클릭에서도 발동되어 if not ok 분기 도달 못함
+                # 우리 v5 가드(_v5_phase_ok and _v5_no_dup)가 이미 다중 클릭 차단함
+                # _process_key 제거해도 안전
+                # _process_key = f"p7_processed_{st.session_state.p7_session_no}_{step}"
+                # if st.session_state.get(_process_key, False):
+                #     st.stop()
+                # st.session_state[_process_key] = True
 
                 # 🛡️ 안전망 2: if/elif/else — 정확히 하나의 분기만 실행
                 if not ok:
