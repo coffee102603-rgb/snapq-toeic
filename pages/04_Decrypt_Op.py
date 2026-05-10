@@ -823,6 +823,15 @@ elif st.session_state.p7_phase == "battle":
     correct_cnt = len([a for a in st.session_state.p7_answers if a])
     wrong_cnt   = len([a for a in st.session_state.p7_answers if not a])
 
+    # ─── 🔍 [TEMP DEBUG 2026.05.09] 진단용 임시 라인 — 다음 commit에서 제거 ───
+    _dbg_uid = _storage.get_uid() if hasattr(_storage, "get_uid") else "unknown"
+    _dbg_answers = st.session_state.get("p7_answers", [])
+    _dbg_step = st.session_state.get("p7_step", "?")
+    _dbg_phase = st.session_state.get("p7_phase", "?")
+    _dbg_session_no = st.session_state.get("p7_session_no", "?")
+    st.warning(f"🔍 DEBUG | uid={_dbg_uid} | step={_dbg_step} | phase={_dbg_phase} | session_no={_dbg_session_no} | p7_answers (len={len(_dbg_answers)}) = {_dbg_answers}")
+    # ─── 디버그 라인 끝 ───
+
     # ── 상단 HUD ──
     st.markdown(f"""<div style="display:flex;justify-content:space-between;align-items:center;
         background:#06080f;border:1px solid #1a2240;border-radius:10px;
