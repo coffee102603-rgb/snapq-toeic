@@ -1027,6 +1027,33 @@ elif st.session_state.p7_phase == "battle":
                 ok = (i == cur["answer"])
                 st.session_state.p7_answers.append(ok)
                 st.session_state["_v10_step_marker"] = "M2: answers appended"
+                
+                # ═══════════════════════════════════════════════════
+                # 🛡️ [v12 FIX] 분기 결정을 즉시 실행!
+                # 이전 버그: append 후 100줄 처리 코드를 거치다 silent 예외로 분기 도달 못함
+                # 수정: append 직후 phase 변경 + step 증가 즉시 실행
+                #       그 후 100줄 처리 코드는 분기 결정 후 실행 (logging만)
+                # ═══════════════════════════════════════════════════
+                if not ok:
+                    st.session_state["_v9_branch"] = f"LOST ok={ok} step={step}"
+                    st.session_state.p7_phase = "lost"
+                    st.session_state["_v10_step_marker"] = "M_LOST: phase set"
+                elif step >= 2:
+                    st.session_state["_v9_branch"] = f"VICTORY step={step}"
+                    st.session_state.p7_phase = "victory"
+                    st.session_state["_v10_step_marker"] = "M_VICTORY: phase set"
+                else:
+                    st.session_state["_v9_branch"] = f"NEXT step={step}->{step+1}"
+                    st.session_state.p7_step += 1
+                    st.session_state["_v10_step_marker"] = f"M_NEXT: step={step+1}"
+                
+                # 분기 결정 끝났으니 즉시 rerun (처리 코드는 다음 rerun에서 logging만)
+                # 이제 silent 예외가 발생해도 phase는 이미 변경됨
+                st.session_state["_v12_pending_logging"] = {
+                    "ok": ok, "step": step, "i": i,
+                    "ts": time.time(),
+                }
+                st.rerun()
                 # ─── analytics 기록 ───
                 _an = st.session_state.p7_analytics
                 _step_t = time.time() - (_an.get("step_started_at") or time.time())
