@@ -417,6 +417,21 @@ if st.session_state.get("_p7_just_left", False):
     for k,v in D.items(): st.session_state[k] = v
 
 # ═══════════════════════════════════════
+# 🔍 [TEMP DEBUG 2026.05.09 v2] 무조건 표시되는 디버그
+# ═══════════════════════════════════════
+try:
+    _dbg_uid = _storage.get_uid() if hasattr(_storage, "get_uid") else "N/A"
+except Exception:
+    _dbg_uid = "ERR"
+_dbg_phase = st.session_state.get("p7_phase", "NONE")
+_dbg_step = st.session_state.get("p7_step", "NONE")
+_dbg_session_no = st.session_state.get("p7_session_no", "NONE")
+_dbg_answers = st.session_state.get("p7_answers", [])
+_dbg_data = st.session_state.get("p7_data", None)
+_dbg_data_id = _dbg_data.get("id", "?") if isinstance(_dbg_data, dict) else "no_dict"
+st.error(f"🔍 DEBUG | uid={_dbg_uid} | phase={_dbg_phase} | step={_dbg_step} | session_no={_dbg_session_no} | data_id={_dbg_data_id} | answers(len={len(_dbg_answers)})={_dbg_answers}")
+
+# ═══════════════════════════════════════
 # ════════════════════════════════════════
 # PHASE: LOBBY
 # 기능: 지문 선택, 작전 선택, 난이도 표시
