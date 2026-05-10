@@ -417,28 +417,6 @@ if st.session_state.get("_p7_just_left", False):
     for k,v in D.items(): st.session_state[k] = v
 
 # ═══════════════════════════════════════
-# 🔍 [TEMP DEBUG 2026.05.09 v2] 무조건 표시되는 디버그
-# ═══════════════════════════════════════
-try:
-    _dbg_uid = _storage.get_uid() if hasattr(_storage, "get_uid") else "N/A"
-except Exception:
-    _dbg_uid = "ERR"
-_dbg_phase = st.session_state.get("p7_phase", "NONE")
-_dbg_step = st.session_state.get("p7_step", "NONE")
-_dbg_session_no = st.session_state.get("p7_session_no", "NONE")
-_dbg_answers = st.session_state.get("p7_answers", [])
-_dbg_data = st.session_state.get("p7_data", None)
-_dbg_data_id = _dbg_data.get("id", "?") if isinstance(_dbg_data, dict) else "no_dict"
-_v8_last = st.session_state.get("_v8_last_click", "no_click_yet")
-_v8_passed = st.session_state.get("_v8_guard_passed", "never")
-_v9_branch = st.session_state.get("_v9_branch", "no_branch_yet")
-_v10_marker = st.session_state.get("_v10_step_marker", "no_marker")
-st.error(f"🔍 DEBUG | uid={_dbg_uid} | phase={_dbg_phase} | step={_dbg_step} | session_no={_dbg_session_no} | data_id={_dbg_data_id} | answers(len={len(_dbg_answers)})={_dbg_answers}")
-st.info(f"🔍 v8 LAST CLICK: {_v8_last} | guard_passed={_v8_passed}")
-st.warning(f"🔍 v9 LAST BRANCH: {_v9_branch}")
-st.success(f"🔍 v10 LAST MARKER: {_v10_marker}")
-
-# ═══════════════════════════════════════
 # ════════════════════════════════════════
 # PHASE: LOBBY
 # 기능: 지문 선택, 작전 선택, 난이도 표시
@@ -845,15 +823,6 @@ elif st.session_state.p7_phase == "battle":
     correct_cnt = len([a for a in st.session_state.p7_answers if a])
     wrong_cnt   = len([a for a in st.session_state.p7_answers if not a])
 
-    # ─── 🔍 [TEMP DEBUG 2026.05.09] 진단용 임시 라인 — 다음 commit에서 제거 ───
-    _dbg_uid = _storage.get_uid() if hasattr(_storage, "get_uid") else "unknown"
-    _dbg_answers = st.session_state.get("p7_answers", [])
-    _dbg_step = st.session_state.get("p7_step", "?")
-    _dbg_phase = st.session_state.get("p7_phase", "?")
-    _dbg_session_no = st.session_state.get("p7_session_no", "?")
-    st.warning(f"🔍 DEBUG | uid={_dbg_uid} | step={_dbg_step} | phase={_dbg_phase} | session_no={_dbg_session_no} | p7_answers (len={len(_dbg_answers)}) = {_dbg_answers}")
-    # ─── 디버그 라인 끝 ───
-
     # ── 상단 HUD ──
     st.markdown(f"""<div style="display:flex;justify-content:space-between;align-items:center;
         background:#06080f;border:1px solid #1a2240;border-radius:10px;
@@ -1009,50 +978,31 @@ elif st.session_state.p7_phase == "battle":
             # ═══════════════════════════════════════════════════
             _v5_phase_ok = (st.session_state.get("p7_phase") == "battle")
             _v5_no_dup   = (len(st.session_state.get("p7_answers", [])) <= step)
-            # ★ [v11 FIX] TIMEOUT 체크 — 시간 만료 시 즉시 LOST로 전환
+            # ★ TIMEOUT 체크 — 시간 만료 시 즉시 LOST로 전환
             _v11_elapsed = time.time() - (st.session_state.get("p7_started_at") or time.time())
             _v11_rem = max(0, st.session_state.get("p7_tsec", 80) - int(_v11_elapsed))
             if _v11_rem <= 0:
                 # 시간 만료 — 클릭 무시하고 즉시 LOST
-                st.session_state["_v9_branch"] = f"TIMEOUT step={step}"
                 st.session_state.p7_phase = "lost"
                 st.session_state["p7_phase_reason"] = "timeout"
                 st.rerun()
-            # ★ [v8 DEBUG] 클릭 이벤트 기록 (rerun 후에도 살아남는 session_state에 저장)
-            st.session_state["_v8_last_click"] = f"i={i}, phase_ok={_v5_phase_ok}, no_dup={_v5_no_dup}, step={step}, len={len(st.session_state.get('p7_answers', []))}, rem={_v11_rem}"
             if _v5_phase_ok and _v5_no_dup:
-                # ★ [v8 DEBUG] 가드 통과 마커
-                st.session_state["_v8_guard_passed"] = True
-                st.session_state["_v10_step_marker"] = "M1: guard passed"
                 ok = (i == cur["answer"])
                 st.session_state.p7_answers.append(ok)
-                st.session_state["_v10_step_marker"] = "M2: answers appended"
                 
                 # ═══════════════════════════════════════════════════
-                # 🛡️ [v12 FIX] 분기 결정을 즉시 실행!
-                # 이전 버그: append 후 100줄 처리 코드를 거치다 silent 예외로 분기 도달 못함
+                # 🛡️ [BUG FIX 2026.05.10] 분기 결정을 즉시 실행
+                # 이유: append 후 100줄 처리 코드 중 silent 예외로 분기 도달 못하는 버그
                 # 수정: append 직후 phase 변경 + step 증가 즉시 실행
-                #       그 후 100줄 처리 코드는 분기 결정 후 실행 (logging만)
+                # 효과: 처리 코드에서 예외 발생해도 phase는 이미 변경됨
                 # ═══════════════════════════════════════════════════
                 if not ok:
-                    st.session_state["_v9_branch"] = f"LOST ok={ok} step={step}"
                     st.session_state.p7_phase = "lost"
-                    st.session_state["_v10_step_marker"] = "M_LOST: phase set"
                 elif step >= 2:
-                    st.session_state["_v9_branch"] = f"VICTORY step={step}"
                     st.session_state.p7_phase = "victory"
-                    st.session_state["_v10_step_marker"] = "M_VICTORY: phase set"
                 else:
-                    st.session_state["_v9_branch"] = f"NEXT step={step}->{step+1}"
                     st.session_state.p7_step += 1
-                    st.session_state["_v10_step_marker"] = f"M_NEXT: step={step+1}"
                 
-                # 분기 결정 끝났으니 즉시 rerun (처리 코드는 다음 rerun에서 logging만)
-                # 이제 silent 예외가 발생해도 phase는 이미 변경됨
-                st.session_state["_v12_pending_logging"] = {
-                    "ok": ok, "step": step, "i": i,
-                    "ts": time.time(),
-                }
                 st.rerun()
                 # ─── analytics 기록 ───
                 _an = st.session_state.p7_analytics
@@ -1209,14 +1159,9 @@ elif st.session_state.p7_phase == "battle":
 
                     # [2026.05.09 FIX] 사용자별 데이터 격리를 위해 _storage.save() 사용
                     # (직접 디스크 쓰기 → _storage.save()로 변경 — 다른 사용자 데이터 덮어쓰기 방지)
-                    st.session_state["_v10_step_marker"] = "M3: before _storage.save"
                     _storage.save(_st_p7)
-                    st.session_state["_v10_step_marker"] = "M4: after _storage.save"
-                except Exception as _e_v10:
-                    st.session_state["_v10_step_marker"] = f"M3.5 EXCEPTION: {str(_e_v10)[:80]}"
+                except Exception:
                     pass
-
-                st.session_state["_v10_step_marker"] = "M5: before branch decision"
 
                 # ═══════════════════════════════════════════
                 # 정답·오답 처리 — 상호배타적 분기 (3중 안전망)
@@ -1237,9 +1182,10 @@ elif st.session_state.p7_phase == "battle":
                 # st.session_state[_process_key] = True
 
                 # 🛡️ 안전망 2: if/elif/else — 정확히 하나의 분기만 실행
+                # (참고: v12 fix로 위에서 이미 phase 변경 + rerun되어 이 코드는 도달 안 함)
+                # 이 코드는 logging fallback 안전망으로만 남겨둠
                 if not ok:
                     # 오답 → LOST
-                    st.session_state["_v9_branch"] = f"LOST ok={ok} step={step}"
                     try: save_research_record(build_research_record("lost"))
                     except: pass
                     st.session_state.p7_phase = "lost"
@@ -1247,7 +1193,6 @@ elif st.session_state.p7_phase == "battle":
 
                 elif step >= 2:
                     # 3번째 정답 → VICTORY
-                    st.session_state["_v9_branch"] = f"VICTORY step={step}"
                     try: save_research_record(build_research_record("victory"))
                     except: pass
                     # ── cross_logs: P7→P5 크로스스킬 전이 감지 (논문B) ──
@@ -1267,7 +1212,6 @@ elif st.session_state.p7_phase == "battle":
 
                 else:
                     # 1, 2번째 정답 → 다음 문제로
-                    st.session_state["_v9_branch"] = f"NEXT step={step}->{step+1}"
                     st.session_state.p7_step += 1
                     st.rerun()
 
