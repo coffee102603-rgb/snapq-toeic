@@ -1009,8 +1009,17 @@ elif st.session_state.p7_phase == "battle":
             # ═══════════════════════════════════════════════════
             _v5_phase_ok = (st.session_state.get("p7_phase") == "battle")
             _v5_no_dup   = (len(st.session_state.get("p7_answers", [])) <= step)
+            # ★ [v11 FIX] TIMEOUT 체크 — 시간 만료 시 즉시 LOST로 전환
+            _v11_elapsed = time.time() - (st.session_state.get("p7_started_at") or time.time())
+            _v11_rem = max(0, st.session_state.get("p7_tsec", 80) - int(_v11_elapsed))
+            if _v11_rem <= 0:
+                # 시간 만료 — 클릭 무시하고 즉시 LOST
+                st.session_state["_v9_branch"] = f"TIMEOUT step={step}"
+                st.session_state.p7_phase = "lost"
+                st.session_state["p7_phase_reason"] = "timeout"
+                st.rerun()
             # ★ [v8 DEBUG] 클릭 이벤트 기록 (rerun 후에도 살아남는 session_state에 저장)
-            st.session_state["_v8_last_click"] = f"i={i}, phase_ok={_v5_phase_ok}, no_dup={_v5_no_dup}, step={step}, len={len(st.session_state.get('p7_answers', []))}"
+            st.session_state["_v8_last_click"] = f"i={i}, phase_ok={_v5_phase_ok}, no_dup={_v5_no_dup}, step={step}, len={len(st.session_state.get('p7_answers', []))}, rem={_v11_rem}"
             if _v5_phase_ok and _v5_no_dup:
                 # ★ [v8 DEBUG] 가드 통과 마커
                 st.session_state["_v8_guard_passed"] = True
