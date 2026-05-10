@@ -429,7 +429,10 @@ _dbg_session_no = st.session_state.get("p7_session_no", "NONE")
 _dbg_answers = st.session_state.get("p7_answers", [])
 _dbg_data = st.session_state.get("p7_data", None)
 _dbg_data_id = _dbg_data.get("id", "?") if isinstance(_dbg_data, dict) else "no_dict"
+_v8_last = st.session_state.get("_v8_last_click", "no_click_yet")
+_v8_passed = st.session_state.get("_v8_guard_passed", "never")
 st.error(f"🔍 DEBUG | uid={_dbg_uid} | phase={_dbg_phase} | step={_dbg_step} | session_no={_dbg_session_no} | data_id={_dbg_data_id} | answers(len={len(_dbg_answers)})={_dbg_answers}")
+st.info(f"🔍 v8 LAST CLICK: {_v8_last} | guard_passed={_v8_passed}")
 
 # ═══════════════════════════════════════
 # ════════════════════════════════════════
@@ -1002,7 +1005,11 @@ elif st.session_state.p7_phase == "battle":
             # ═══════════════════════════════════════════════════
             _v5_phase_ok = (st.session_state.get("p7_phase") == "battle")
             _v5_no_dup   = (len(st.session_state.get("p7_answers", [])) <= step)
+            # ★ [v8 DEBUG] 클릭 이벤트 기록 (rerun 후에도 살아남는 session_state에 저장)
+            st.session_state["_v8_last_click"] = f"i={i}, phase_ok={_v5_phase_ok}, no_dup={_v5_no_dup}, step={step}, len={len(st.session_state.get('p7_answers', []))}"
             if _v5_phase_ok and _v5_no_dup:
+                # ★ [v8 DEBUG] 가드 통과 마커
+                st.session_state["_v8_guard_passed"] = True
                 ok = (i == cur["answer"])
                 st.session_state.p7_answers.append(ok)
                 # ─── analytics 기록 ───
