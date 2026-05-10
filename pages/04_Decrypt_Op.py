@@ -431,8 +431,10 @@ _dbg_data = st.session_state.get("p7_data", None)
 _dbg_data_id = _dbg_data.get("id", "?") if isinstance(_dbg_data, dict) else "no_dict"
 _v8_last = st.session_state.get("_v8_last_click", "no_click_yet")
 _v8_passed = st.session_state.get("_v8_guard_passed", "never")
+_v9_branch = st.session_state.get("_v9_branch", "no_branch_yet")
 st.error(f"🔍 DEBUG | uid={_dbg_uid} | phase={_dbg_phase} | step={_dbg_step} | session_no={_dbg_session_no} | data_id={_dbg_data_id} | answers(len={len(_dbg_answers)})={_dbg_answers}")
 st.info(f"🔍 v8 LAST CLICK: {_v8_last} | guard_passed={_v8_passed}")
+st.warning(f"🔍 v9 LAST BRANCH: {_v9_branch}")
 
 # ═══════════════════════════════════════
 # ════════════════════════════════════════
@@ -1192,19 +1194,15 @@ elif st.session_state.p7_phase == "battle":
                 # 🛡️ 안전망 2: if/elif/else — 정확히 하나의 분기만 실행
                 if not ok:
                     # 오답 → LOST
-                    # 🔍 [DEBUG v6] 분기 도달 확인
-                    st.success(f"🚨 [v6 DEBUG] LOST 분기 진입! ok={ok}, phase 변경 전={st.session_state.get('p7_phase')}")
+                    st.session_state["_v9_branch"] = f"LOST ok={ok} step={step}"
                     try: save_research_record(build_research_record("lost"))
                     except: pass
                     st.session_state.p7_phase = "lost"
-                    st.success(f"🚨 [v6 DEBUG] phase 변경 후={st.session_state.get('p7_phase')}, st.rerun() 직전")
-                    import time as _t6
-                    _t6.sleep(2)  # 디버그 메시지 보이도록 2초 대기
                     st.rerun()
 
                 elif step >= 2:
                     # 3번째 정답 → VICTORY
-                    st.success(f"🚨 [v6 DEBUG] VICTORY 분기 진입! step={step}")
+                    st.session_state["_v9_branch"] = f"VICTORY step={step}"
                     try: save_research_record(build_research_record("victory"))
                     except: pass
                     # ── cross_logs: P7→P5 크로스스킬 전이 감지 (논문B) ──
@@ -1220,16 +1218,12 @@ elif st.session_state.p7_phase == "battle":
                         _save_recon_xyz_log(_pid2, _sno + 1)
                     except: pass
                     st.session_state.p7_phase = "victory"
-                    import time as _t6
-                    _t6.sleep(2)
                     st.rerun()
 
                 else:
                     # 1, 2번째 정답 → 다음 문제로
-                    st.success(f"🚨 [v6 DEBUG] NEXT 분기 진입! step={step} → {step+1}")
+                    st.session_state["_v9_branch"] = f"NEXT step={step}->{step+1}"
                     st.session_state.p7_step += 1
-                    import time as _t6
-                    _t6.sleep(2)
                     st.rerun()
 
                 # 🛡️ 안전망 3: 위 분기 중 하나는 반드시 st.rerun() 실행됨
